@@ -1,0 +1,172 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_page_home.vcss_c" />
+  </styles>
+	<snippets>
+		
+	</snippets>
+	
+	<DACHomePage hittest="false" class="DashboardPage">
+
+		<!--<Panel id="BackgroundContainer">-->
+			<!--<Image id="Layer1" src="s2r://panorama/images/dashboard/background/background_png.vtex" />-->
+			<!--<Panel id="Layer2">-->
+				<!--<Image  src="s2r://panorama/images/dashboard/background/middleground_png.vtex" />-->
+				<!--<Image id="Layer2Effects" src="s2r://panorama/images/dashboard/background/windows_png.vtex" />-->
+			<!--</Panel>-->
+			<!--<Image id="Layer4" src="s2r://panorama/images/dashboard/background/foreground_png.vtex" />-->
+
+			<!--<Image id="Layer5" src="s2r://panorama/images/dashboard/jull_png.vtex" />-->
+		<!--</Panel>-->
+
+		<Panel id="BetaBackground">
+			<Image id="Layer6" src="s2r://panorama/images/dashboard/background/flattened-bg_jpg.vtex" />
+			<Image id="Layer5" src="s2r://panorama/images/dashboard/heroes-beta-sil_png.vtex" />
+		</Panel>
+
+
+		<Panel id="ForegroundContainer">
+
+			<Panel id="LogoArea">
+				<Panel id="TitleImage"/>
+				<Label id="EarlyAccessLabel" class="PlayLabel" text="#DAC_EarlyAccess"/>
+			</Panel>
+
+			<Panel id="ButtonContainer">
+				<Button id="PlayButton" class="HomeButton" onactivate="DACMatchTypeSelect()">
+					<Label text="#DAC_DBHome_Mobile_Play"/>
+				</Button>
+				<Button id="ReconnectButton" class="ReconnectButton" onactivate="DACReconnectLobby()">
+					<Label class="ReconnectButton" text="#DAC_Home_Reconnect"/>
+				</Button>
+				<Button id="LeaveButton" class="BevelButton" onactivate="DACLeaveLobby()">
+					<Label text="#DAC_Home_LeaveGame"/>
+				</Button>
+
+				<Button id="ReconnectButton" class="HomeButton" onactivate="DACReconnectLobby()">
+					<Label text="#DAC_Home_Reconnect"/>
+				</Button>
+				<Button id="LeaveButton" class="BevelButton" onactivate="DACLeaveLobby()">
+					<Label text="#DAC_Home_LeaveGame"/>
+				</Button>
+
+			</Panel>
+
+			<Panel class="SafeArea" hittest="false">
+				<Panel id="SocialPanelButton" onactivate="DACToggleSocialPanel()">
+					<Panel class="SocialViolatorList">
+						<Panel class="SocialViolator PartyInvitesViolator">
+							<Panel class="InviteIcon"/>
+							<Panel class="InviteIconBright"/>
+						</Panel>
+						<Panel class="SocialViolator PartyReadyViolator"/>
+					</Panel>
+				</Panel>
+			</Panel>
+
+			<Panel id="SocialPanel" hittest="true">
+				<Panel id="SteamLoginRequired">
+					<Button class="SocialButtonClose" onactivate="DACToggleSocialPanel()" />
+					<Panel id="SteamLoginRequiredContents">
+						<Panel id="SteamLogo"/>
+            <Button class="PopupButton LoginButton" id="SteamLoginButton" onactivate="DACSteamLogin()">
+              <Label text="#DAC_SteamAccountLogin" />
+            </Button>
+            <Button class="PopupButton LoginButton" id="SteamReconnectButton" onactivate="DACSteamReconnect()">
+							<Label text="#DAC_Home_Reconnect" />
+						</Button>
+            <Button class="PopupButton LoginButton" id="SteamCreateButton" onactivate="DACSteamCreateAccount()">
+              <Label text="#DAC_SteamCreateAccount" />
+            </Button>
+            <Panel class="LoginDescContainer">
+              <Panel class="LogInDesc">
+                <Panel class="LogInDescBullet"/>
+                <Label text="#DAC_SteamLogIn_Desc1" class="LogInDescText"/>
+              </Panel>
+              <Panel class="LogInDesc">
+                <Panel class="LogInDescBullet"/>
+                <Label text="#DAC_SteamLogIn_Desc2" class="LogInDescText"/>
+              </Panel>
+              <Panel class="LogInDesc">
+                <Panel class="LogInDescBullet"/>
+                <Label text="#DAC_SteamLogIn_Desc3" class="LogInDescText"/>
+              </Panel>
+            </Panel>
+          </Panel>
+        </Panel>
+
+				<Panel id="SocialPanelHeader">
+					<Button class="SocialButtonClose" onactivate="DACToggleSocialPanel()" />
+					<Button id="SocialButtonFriends" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Friends' )">
+						<Label class="SocialTabTitle" text="#DAC_Social_FriendsTab"/>
+					</Button>
+					<Button id="SocialButtonParty" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Party' )">
+						<Label class="SocialTabTitle" text="#DAC_Social_PartyTab"/>
+						<Panel class="SocialViolatorList">
+						<Panel class="SocialViolator PartyInvitesViolator">
+							<Panel class="InviteIcon"/>
+							<Panel class="InviteIconBright"/>
+						</Panel>
+							<Panel class="SocialViolator PartyReadyViolator"/>
+						</Panel>
+					</Button>
+				</Panel>
+
+				<Panel id="SocialPanelBody">
+					<Panel id="SocialBodyFriends" class="SocialPanel">
+						<DACFriendMenu id="SocialFriends" />
+					</Panel>
+					<Panel id="SocialBodyParty" class="SocialPanel">
+						<DACParty id="SocialParty"/>
+					</Panel>
+				</Panel>
+			</Panel>
+
+			<!--
+			<Panel id="RightHomeMenu" >
+				<Button id="QuitButton" class="RightHomeButton" onactivate="DACQuitApp()">
+					<Label text="#DAC_Home_Quit"/>
+				</Button>
+				<Button id="GoOnlineButton" class="RightHomeButton" onactivate="DACGoOnline()">
+					<Label text="#DAC_Go_Online"/>
+				</Button>
+				<Button id="PlayButton" class="RightHomeButton" onactivate="DACStartMatchMaking()">
+					<Label text="#DAC_Home_Play"/>
+				</Button>
+				<Button id="CancelPlayButton" class="RightHomeButton" onactivate="DACCancelMatchMaking()">
+					<Label text="#DAC_Home_CancelPlay"/>
+				</Button>
+				<Panel id="PlayBots_NewGame">
+					<Button id="PlayBotsButton" class="RightHomeButton" onactivate="DACBotDifficultySelect()">
+						<Label text="#DAC_Home_PlayBots" />
+					</Button>
+				</Panel>
+				<Panel id="PlayBots_ResumeGame">
+					<Button id="DeleteSaveButton" class="RightHomeButton" onactivate="DACDeleteSaveGame()">
+						<Label text="#DAC_Home_DeleteSave" />
+					</Button>
+					<Button id="ResumeBotsButton" class="RightHomeButton" onactivate="DACResumeSaveGame()">
+						<Label text="#DAC_Home_ResumeBots" />
+					</Button>
+				</Panel>
+				<Button id="PlayPartyButton" class="RightHomeButton" onactivate="DACStartPartyMatchMaking()">
+					<Label text="#DAC_Home_Play"/>   
+				</Button>
+				<Button id="PlayButton" class="RightHomeButton" onactivate="DACStartMatchMaking()">
+					<Label text="#DAC_Home_Play"/>
+				</Button>
+				<Button id="TutorialButton" class="RightHomeButton" onactivate="DACStartTutorial()">
+					<Label text="#DAC_Home_Tutorial"/>
+				</Button>
+				<Button id="LeaveButton" class="RightHomeButton" onactivate="DACLeaveLobby()">
+					<Label text="#DAC_Home_LeaveGame"/>
+				</Button>
+				<Button id="ReconnectButton" class="RightHomeButton" onactivate="DACReconnectLobby()">
+					<Label text="#DAC_Home_Reconnect"/>
+				</Button>
+			</Panel>
+			-->
+		</Panel>
+	</DACHomePage>
+</root>

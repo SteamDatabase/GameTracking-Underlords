@@ -1,0 +1,1245 @@
+"lang"
+{
+	"Tokens"
+	{
+		"Element.CStateMachineAnimNode"		"State Machine Anim Node"
+		"Element.CStateMachineAnimNode:help"		"Graph node that uses states, transitions, and conditions to determine which child node should be used"
+		"Attribute.CStateMachineAnimNode.m_sName"		"Name"
+		"Attribute.CStateMachineAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Element.CSequenceAnimNode"		"Keyframe Anim Node"
+		"Element.CSequenceAnimNode:help"		"Represents a single keyframed animation (Sequence) and is responsible for its basic playback as part of the graph.  
+
+Resetting a Keyframed Anim Node will set its playback time (and current frame) back to zero.  "
+		"Attribute.CSequenceAnimNode.m_sName"		"Name"
+		"Attribute.CSequenceAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the name of the selected sequence.  "
+		"Attribute.CSequenceAnimNode.m_sequenceName"		"Sequence"
+		"Attribute.CSequenceAnimNode.m_sequenceName:help"		"The sequence that this node will play"
+		"Attribute.CSequenceAnimNode.m_playbackSpeed"		"Playback Speed"
+		"Attribute.CSequenceAnimNode.m_playbackSpeed:help"		"The speed scale at which the animation will be played.  eg: <br/>
+ 1 : Normal Speed <br/>
+ 2 : Twice normal speed <br/>
+ 0 : No speed; freeze on the current frame <br/>
+-1 : Play backwards
+
+Note that this value also affects the value of the duration that this node returns to its parents.  "
+		"Attribute.CSequenceAnimNode.m_bLoop"		"Loop"
+		"Attribute.CSequenceAnimNode.m_bLoop:help"		"Whether or not the animation should loop"
+		"Element.CChoiceAnimNode"		"Choice Anim Node"
+		"Element.CChoiceAnimNode:help"		"This node randomly chooses one of its children to play"
+		"Attribute.CChoiceAnimNode.m_sName"		"Name"
+		"Attribute.CChoiceAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CMoverAnimNode.m_sName"		"Name"
+		"Attribute.CMoverAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CBlendAnimNode.m_sName"		"Name"
+		"Attribute.CBlendAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CAddAnimNode.m_sName"		"Name"
+		"Attribute.CAddAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CRootAnimNode.m_sName"		"Name"
+		"Attribute.CRootAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CTurnHelperAnimNode.m_sName"		"Name"
+		"Attribute.CTurnHelperAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CCycleControlAnimNode.m_sName"		"Name"
+		"Attribute.CCycleControlAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CChoiceAnimNode.m_choiceMethod"		"Method"
+		"Attribute.CChoiceAnimNode.m_choiceMethod:help"		"The logic used to pick a child node.  <br/>
+<b>-<em> WeightedRandom:</em></b> Randomly choose the next child based on their weighting.  Can pick the same child twice in a row. <br/>
+<b>- <em>WeightedRandomNoRepeat:</em></b> Same as WeightedRandom, but prevents the same child from being chosen twice in a row. <br/>
+- Iterate: The next selected child is the one that comes after the current one. <br/>
+<b>- <em>IterateRandom:</em></b> Randomly choose between the children that have not been played, and don't repeat any children until they've all been played.  <br/>
+"
+		"Attribute.CChoiceAnimNode.m_choiceChangeMethod"		"Change Selection"
+		"Attribute.CChoiceAnimNode.m_choiceChangeMethod:help"		"Determine when the node selects a new child: <br/>
+- <b>OnReset:</b> Only make a new choice when the node is reset by its parent <br/>
+- <b>OnCycleEnd:</b> Make a new selection when the current one has finished playing.  <br/>
+- <b>OnResetOrCycleEnd:</b> Make a new choice when the node is reset or when the current selecion's cycle ends"
+		"Attribute.CChoiceAnimNode.m_blendTime"		"Blend Duration"
+		"Attribute.CChoiceAnimNode.m_blendTime:help"		"When a new choice has been made and the node has not been reset, the node will blend from the old choice to the new one.  This is how long the node should take to perform that blend.  "
+		"Attribute.CChoiceAnimNode.m_bResetChosen"		"Reset On Selection"
+		"Attribute.CChoiceAnimNode.m_bResetChosen:help"		"If true, the child nodes will be reset when they get selected"
+		"Element.CMoverAnimNode"		"Mover Anim Node"
+		"Element.CMoverAnimNode:help"		"Creates root motion procedurally"
+		"Attribute.CMoverAnimNode.m_bApplyMovement"		"Generate Movement"
+		"Attribute.CMoverAnimNode.m_bApplyMovement:help"		"Create root motion that matches the movement direction and speed input to the graph"
+		"Attribute.CMoverAnimNode.m_bOrientMovement"		"Orient Movement"
+		"Attribute.CMoverAnimNode.m_bOrientMovement:help"		"Add rotation root motion to turn the character to face the direction set in the \"Turn to Face\" property"
+		"Attribute.CMoverAnimNode.m_facingTarget"		"Face Direction"
+		"Attribute.CMoverAnimNode.m_facingTarget:help"		"If the \"Turn to Face\" property is true, this is the direction that the character will turn towards.  "
+		"Attribute.CMoverAnimNode.m_bLimitTurnSpeed"		"Limit Turn Speed"
+		"Attribute.CMoverAnimNode.m_bLimitTurnSpeed:help"		"If \"Orient Movement\" is true, this toggles whether or not rate of turn should be clamped"
+		"Attribute.CMoverAnimNode.m_flMaxTurnSpeed"		"Max Turn Speed"
+		"Attribute.CMoverAnimNode.m_flMaxTurnSpeed:help"		"If the rate of turn is clamped (ie: \"Limit Turn Speed\" is true), this is the speed (in degrees per second) that the turn rate will be clamped to.  "
+		"Attribute.CMoverAnimNode.m_bAdditive"		"Additive"
+		"Attribute.CMoverAnimNode.m_bAdditive:help"		"If true, the root motion generated by this node will be added to the root motion produced by its children.  <br/>
+<br/>
+If false, then the root motion from the children of this node will be ignored, and the root motion generated by this node will replace it.  
+"
+		"Element.CBlendAnimNode"		"Blend 1D Anim Node"
+		"Element.CBlendAnimNode:help"		"A 1-Dimensional blend between a set of child nodes.  
+<br/>
+<br/>
+The node is given an input parameter to track, and each node is given a value.  The node will then find the two children whose values the input parameter is between, and blend between them.  "
+		"Attribute.CBlendAnimNode.m_blendValueSource"		"Blend Source"
+		"Attribute.CBlendAnimNode.m_blendValueSource:help"		"The input source that is driving the blend"
+		"Attribute.CBlendAnimNode.m_param"		"Parameter"
+		"Attribute.CBlendAnimNode.m_param:help"		"If the Blend Source is set to \"Parameter\", this needs to be set to the parameter that should be used.  Note that only Float parameters are supported.  "
+		"Attribute.CBlendAnimNode.m_bLoop"		"Loop"
+		"Attribute.CBlendAnimNode.m_bLoop:help"		"Toggle whether or not the playback of the child nodes should loop.
+<br/>
+<br/>
+Note that the Blend 1D node explicitly controls the playback of its children, so that it can ensure that their cycles always match, even if the animations are different lengths.  This means that the loop setting on the children of blend nodes is ignored, and only the loop setting on the Blend 1D node matters.  "
+		"Attribute.CBlendAnimNode.m_bLockBlendOnReset"		"Lock Blend on Reset"
+		"Attribute.CBlendAnimNode.m_bLockBlendOnReset:help"		"When false, the blend is refreshed every frame.
+<br/>
+<br/>
+When true, the blend is only refresh when the node is reset.  The cycle advances normally, however.  This is so that you can keep the blend value the same for the duration of the playback of an animation, even if the input value changes.  "
+		"Element.CRootAnimNode"		"Final Pose"
+		"Element.CRootAnimNode:help"		"The top level (ie: right-most) node of the tree.  Each update of the graph, evaluation starts from here.  
+<br/>
+<br/>
+Each graph must have exactly one Final Pose node in order to work.  
+<br/>
+<br/>
+"
+		"Element.CAddAnimNode"		"Additive Anim Node"
+		"Element.CAddAnimNode:help"		"Additively blend two child nodes together"
+		"Element.CAnimState"		"State"
+		"Element.CAnimState:help"		"A state in the state machine.  Each state corresponds to one child of this anim node in the graph"
+		"Attribute.CAnimState.m_name"		"Name"
+		"Attribute.CAnimState.m_name:help"		"The name of this state. "
+		"Attribute.CAnimState.m_bIsStartState"		"Start State"
+		"Attribute.CAnimState.m_bIsStartState:help"		"Toggles whether this state should be the current state when the graph is reset.  Each state machine should have exactly one start state.  "
+		"Attribute.CAnimState.m_bIsEndtState"		"End State"
+		"Attribute.CAnimState.m_bIsEndtState:help"		"Is a state is marked as an End State, and its child is \"finished\", then the state machine will tell its parent that it also is \"finished\".  State machines can have zero or more End States"
+		"Attribute.CAnimState.m_bIsPassthrough"		"Passthrough"
+		"Attribute.CAnimState.m_bIsPassthrough:help"		"Normally when a state becomes the current state, its exit transitions are not evaluated until the next time the graph is updated.  Setting a state as a Passthrough State will cause it to evaluate its exit transitions during the same update that it becomes the current state.  So its possible for the state become the current state, then pass control to another state in the same frame.  "
+		"Attribute.CAnimState.m_bIsRootMotionExclusive"		"Exclusive Root Motion"
+		"Attribute.CAnimState.m_bIsRootMotionExclusive:help"		"Normally, root motion and the animation itself is blended between the old state and the new state when a state transition occurs.  
+<br/>
+<br/>
+When this option is set and this state becomes the current state, only its root motion is used, and it is not blended with the root motion of the old state, but the animation is still blended"
+		"Element.CAnimStateTransition"		"Transition"
+		"Element.CAnimStateTransition:help"		"A transition between two states.  Defines what conditions need to be met in order for the transition to be taken, and how the old node should blend into the new node.  "
+		"Attribute.CAnimStateTransition.m_blendDuration"		"Blend Duration"
+		"Attribute.CAnimStateTransition.m_blendDuration:help"		"How long the blend from the old state to the new state should take"
+		"Attribute.CAnimStateTransition.m_bReset"		"Reset Destination"
+		"Attribute.CAnimStateTransition.m_bReset:help"		"When true, the child node connected to the destination state will be reset when this transition is taken.  "
+		"Attribute.CAnimStateTransition.m_resetCycleOption"		"Start Cycle At"
+		"Attribute.CAnimStateTransition.m_resetCycleOption:help"		"Set the cycle that the destination state should be reset to. 
+<UL>
+<LI> <b>Beginning</b> : Set the state's cycle to 0
+<LI> <b>SameAsSourceState</b> : Set the destination state's cycle to the source state's cycle
+<LI> <b>InverseSourceCycle</b> : Set the destination state's cycle to (1 - source state's cycle)
+</UL>"
+		"Attribute.CMoverAnimNode.m_bTurnToFace"		"Turn to Face"
+		"Attribute.CMoverAnimNode.m_bTurnToFace:help"		"Toggle whether or not the character's body should turn to face a direction"
+		"Element.CAimMatrixAnimNode"		"Aim Matrix Node"
+		"Element.CAimMatrixAnimNode:help"		"Treats each frame of a single animation as the pose for a direction, and will blend them to create a combined pose to \"aim\" the character in that given direction"
+		"Attribute.CAimMatrixAnimNode.m_sName"		"Name"
+		"Attribute.CAimMatrixAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CAimMatrixAnimNode.m_sequenceName"		"Sequence"
+		"Attribute.CAimMatrixAnimNode.m_sequenceName:help"		"The sequence containing the aim poses in each frame.  Assumes that the frames are set up like this:
+
+<OL>
+<LI> Bottom Left
+<LI> Bottom Center
+<LI> Bottom Right
+<LI> Middle Left
+<LI> Middle Center
+<LI> Middle Right
+<LI> Up Left
+<LI> Up Center
+<LI> Up Right
+<LI> Straight Up
+</OL>"
+		"Attribute.CAimMatrixAnimNode.m_fAngleIncrement"		"Angle Increment"
+		"Attribute.CAimMatrixAnimNode.m_fAngleIncrement:help"		"The angle difference between the center pose and the outer poses.  eg: if the Angle Increment is 45, then the right pose is assumed to point 45 degrees to the right, the up pose points 45 degrees up, etc."
+		"Attribute.CAimMatrixAnimNode.m_targetDirection"		"Target Direction"
+		"Attribute.CAimMatrixAnimNode.m_targetDirection:help"		"The input vector that is driving the blend.  "
+		"Attribute.CAimMatrixAnimNode.m_param"		"Parameter"
+		"Attribute.CAimMatrixAnimNode.m_param:help"		"If <b>Target</b> is set to <em>Position Parameter</em>, this field is the anim parameter that is driving the blend.  Note that only Vector parameters are displayed as options"
+		"Attribute.CAimMatrixAnimNode.m_forwardDirection"		"Forward Direction"
+		"Attribute.CAimMatrixAnimNode.m_forwardDirection:help"		"The direction (in Model Space) that represents 'forward' for the blend.  By default, Source2 assumes +X is forward"
+		"Attribute.CAimMatrixAnimNode.m_damping"		"Damping"
+		"Attribute.CAimMatrixAnimNode.m_damping:help"		"Settings for damping the motion of the blended aim over time"
+		"Attribute.CAnimInputDamping.m_speedFunction"		"Speed Function"
+		"Attribute.CAnimInputDamping.m_speedFunction:help"		"Controls how damped speed is adjusted based on how far the current value is from the target value.  
+
+<UL>
+<LI> <b>No Damping:</b> Damping is not applied.  
+<LI> <b>Constant:</b> The damping speed does not change with distance from the target value
+<LI> <b>Spring:</b> A critically damped spring is used to accelerate the current value toward the target value.  The farther the current value is from the target, the more the acceleration.  However the spring will not overshoot the target value.  
+</UL>"
+		"Attribute.CAnimInputDamping.m_fSpeedScale"		"Speed Scale"
+		"Attribute.CAnimInputDamping.m_fSpeedScale:help"		"Scales the speed of the damping, or in the case of the Spring <b>Speed Function</b> it controls the strength of the spring.  "
+		"Attribute.CAnimInputDamping.m_bLimitSpeed"		"Limit Speed"
+		"Attribute.CAnimInputDamping.m_bLimitSpeed:help"		"Toggle whether or not to clamp the damping speed"
+		"Attribute.CAnimInputDamping.m_flMinSpeed"		"Min Speed"
+		"Attribute.CAnimInputDamping.m_flMinSpeed:help"		"If <b>Limit Speed </b>is set, this is the slowest speed that the dampened value can change at.  "
+		"Attribute.CAnimInputDamping.m_flMaxSpeed"		"Max Speed"
+		"Attribute.CAnimInputDamping.m_flMaxSpeed:help"		"If <b>Limit Speed </b>is set, this is the fastest speed that the dampened value can change at.  "
+		"Attribute.CMoverAnimNode.m_damping"		"Damping"
+		"Attribute.CMoverAnimNode.m_damping:help"		"Controls how fast the character will turn when <b>Turn to Face</b> is true.  "
+		"Attribute.CBoneMaskAnimNode.m_flRootMotionBlend"		"Root Motion Blend"
+		"Attribute.CBoneMaskAnimNode.m_flRootMotionBlend:help"		"Controls how the root motion is blended between the two source animations.  A value of 0 means use only the motion from child1, a value of 1 means use only child2"
+		"Element.CDirectPlaybackAnimNode"		"Direct Playback Node"
+		"Element.CDirectPlaybackAnimNode:help"		"Allows game code to tell the graph the play a sequence at this point in the graph hierarchy.  This node is necessary in order to play scripted sequences.  "
+		"Attribute.CSequenceAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CSequenceAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CBlendAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CBlendAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CRootAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CRootAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CStateMachineAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CStateMachineAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CChoiceAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CChoiceAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CCycleControlAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CCycleControlAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CAddAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CAddAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CSubtractAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CSubtractAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CMoverAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CMoverAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CTurnHelperAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CTurnHelperAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CAimMatrixAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CAimMatrixAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CSpeedScaleAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CSpeedScaleAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CDirectionalBlendAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CDirectionalBlendAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CWayPointHelperAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CWayPointHelperAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CBoneMaskAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CBoneMaskAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CChoreoAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CChoreoAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CDirectPlaybackAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CDirectPlaybackAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CTwoBoneIKAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CTwoBoneIKAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CLeanMatrixAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CLeanMatrixAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CBlendAnimNode.m_bSyncCycles"		"Sync Cycles"
+		"Attribute.CBlendAnimNode.m_bSyncCycles:help"		"Set this option to true to make all the blended animations have the same cycle.  The blend node will adjust the playback speed of its children so that they after each tick their cycles match.  "
+		"Attribute.CBlendAnimNode.m_damping"		"Damping"
+		"Attribute.CBlendAnimNode.m_damping:help"		"Controls how the output of this node is blended over time"
+		"Attribute.CAnimInputDamping.m_fMinSpeed"		"Minimum Speed"
+		"Attribute.CAnimInputDamping.m_fMinSpeed:help"		"Enforce a minimum speed at which the current value should approach the target value.  Especially important for the Spring setting, as the speed gets very slow as it approaches its target value.  "
+		"Element.CCycleControlAnimNode"		"Cycle Control"
+		"Element.CCycleControlAnimNode:help"		"Allows the cycle of its child's animation to be set directly by a parameter"
+		"Attribute.CCycleControlAnimNode.m_param"		"Parameter"
+		"Attribute.CCycleControlAnimNode.m_param:help"		"The parameter to use to control the cycle of the child node.  Only support Float parameters"
+		"Attribute.CAddAnimNode.m_bResetBase"		"Reset Base Child"
+		"Attribute.CAddAnimNode.m_bResetBase:help"		"If true, then when this node receives a reset it will forward the reset on to its Base Child"
+		"Attribute.CAddAnimNode.m_bResetAdditive"		"Reset Additive Child"
+		"Attribute.CAddAnimNode.m_bResetAdditive:help"		"If true, then when this node receives a reset it will forward the reset on to its Additive Child"
+		"Attribute.CSubtractAnimNode.m_sName"		"Name"
+		"Attribute.CSubtractAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CSpeedScaleAnimNode.m_sName"		"Name"
+		"Attribute.CSpeedScaleAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CDirectionalBlendAnimNode.m_sName"		"Name"
+		"Attribute.CDirectionalBlendAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CWayPointHelperAnimNode.m_sName"		"Name"
+		"Attribute.CWayPointHelperAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CBoneMaskAnimNode.m_sName"		"Name"
+		"Attribute.CBoneMaskAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CChoreoAnimNode.m_sName"		"Name"
+		"Attribute.CChoreoAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CDirectPlaybackAnimNode.m_sName"		"Name"
+		"Attribute.CDirectPlaybackAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CTwoBoneIKAnimNode.m_sName"		"Name"
+		"Attribute.CTwoBoneIKAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CLeanMatrixAnimNode.m_sName"		"Name"
+		"Attribute.CLeanMatrixAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Element.CSubtractAnimNode"		"Subtract Anim Node"
+		"Element.CSubtractAnimNode:help"		"Subtract the current pose of one animation from another, and return the result"
+		"Attribute.CSubtractAnimNode.m_bResetBase"		"Reset Base Child"
+		"Attribute.CSubtractAnimNode.m_bResetBase:help"		"If true, then when this node receives a reset it will forward the reset on to its Base Child"
+		"Attribute.CSubtractAnimNode.m_bResetSubtract"		"Reset Subtracted Child"
+		"Attribute.CSubtractAnimNode.m_bResetSubtract:help"		"If true, then when this node receives a reset it will forward the reset on to its Subtracted Child"
+		"Element.CTurnHelperAnimNode"		"Turn Helper Node"
+		"Element.CTurnHelperAnimNode:help"		"Creates additional root motion so that turn animations can be used to turn arbitrary distances.  Eg: use a 90 degree turn anim to turn 87 degrees or 102 degrees
+
+It does this by looking at the amount of rotation that happens over the length of the child to figure out what angle the character would face with the animation alone.  Then over the course of the animation it will add or remove rotation so that when the animation is done, its facing the desired direction.  "
+		"Attribute.CTurnHelperAnimNode.m_facingTarget"		"Turn to Face"
+		"Attribute.CTurnHelperAnimNode.m_facingTarget:help"		"The direction that we want the character to face"
+		"Attribute.CTurnHelperAnimNode.m_turnStartTime"		"Turn Start Time"
+		"Attribute.CTurnHelperAnimNode.m_turnStartTime:help"		"The time (in seconds) at which this node should start applying the additional root rotation.  Try to time this with your animation to hide any foot sliding"
+		"Attribute.CTurnHelperAnimNode.m_turnDuration"		"Turn Duration"
+		"Attribute.CTurnHelperAnimNode.m_turnDuration:help"		"How long (in seconds) after the start time that this node should take to apply its extra root rotation.  "
+		"Attribute.CTurnHelperAnimNode.m_bMatchChildDuration"		"Match Child Duration"
+		"Attribute.CTurnHelperAnimNode.m_bMatchChildDuration:help"		"If true, this setting will override the value set in <b>Turn Duration</b> and will instead use the duration of its child"
+		"Attribute.CTurnHelperAnimNode.m_bClampDurationToChild"		"Clamp Turn to Child Duration"
+		"Attribute.CTurnHelperAnimNode.m_bClampDurationToChild:help"		"When true, this setting will clamp the Turn Duration so that the turn is finished by the time the child node has finished playing"
+		"Attribute.CTurnHelperAnimNode.m_bUseManualTurnOffset"		"Use Manual Turn Offset"
+		"Attribute.CTurnHelperAnimNode.m_bUseManualTurnOffset:help"		"When turned off, this node will calculate the amount of rotation that its child node, and then procedurally generates the rest.
+
+When this option is on, the node will assume that the value of <b>Manual Turn Offset</b> is the amount of rotation of the child node, and will not calculate it.  "
+		"Attribute.CTurnHelperAnimNode.m_manualTurnOffset"		"Manual Turn Offset"
+		"Attribute.CTurnHelperAnimNode.m_manualTurnOffset:help"		"The amount of rotation that this node assumes the child nodes will provide"
+		"Attribute.CAimMatrixAnimNode.m_upDirection"		"Up Direction"
+		"Attribute.CAimMatrixAnimNode.m_upDirection:help"		"The up direction (in Model Space).  By default, Up in the Source2 engine is +Z"
+		"Element.CSpeedScaleAnimNode"		"Speed Scale"
+		"Element.CSpeedScaleAnimNode:help"		"Allows a parameter to directly control the playback speed of its child.  
+
+Note that playback speed is inherited: if a node tells its child to play at half speed, and that child node tells its child to play at half speed, then the last child will play at quarter speed.  "
+		"Attribute.CSpeedScaleAnimNode.m_param"		"Parameter"
+		"Attribute.CSpeedScaleAnimNode.m_param:help"		"The parameter used to control the speed.  Only Float Parameters are supported.  "
+		"Attribute.CDirectionalBlendAnimNode.m_animNamePrefix"		"Sequence Name Prefix"
+		"Attribute.CDirectionalBlendAnimNode.m_animNamePrefix:help"		"To avoid having to hook up 8 animations each time you use one of these nodes, you just need to give it the first part of the name of your animations, and it will append the suffixes to those names and load them. It looks for:
+
+*_n
+*_nw
+*_w
+*_sw
+*_s
+*_se
+*_e
+*_ne"
+		"Element.CDirectionalBlendAnimNode"		"Directional Blend"
+		"Element.CDirectionalBlendAnimNode:help"		"Like a Blend 1D, but specially configured for blends based on direction.  "
+		"Attribute.CDirectionalBlendAnimNode.m_blendValueSource"		"Blend Source"
+		"Attribute.CDirectionalBlendAnimNode.m_blendValueSource:help"		"The value that controls the blend"
+		"Attribute.CDirectionalBlendAnimNode.m_param"		"Parameter"
+		"Attribute.CDirectionalBlendAnimNode.m_param:help"		"If <b>Blend Source</b> is set to \"Parameter\", then this field indicates which parameter to use.  Only supports Float Parameters"
+		"Attribute.CDirectionalBlendAnimNode.m_bLoop"		"Loop"
+		"Attribute.CDirectionalBlendAnimNode.m_bLoop:help"		"When true, the cycle of the blended animations will loop"
+		"Attribute.CDirectionalBlendAnimNode.m_bLockBlendOnReset"		"Lock Blend on Reset"
+		"Attribute.CDirectionalBlendAnimNode.m_bLockBlendOnReset:help"		"Setting this to true will cause the blend weights to only get recalculated when this node is reset"
+		"Attribute.CDirectionalBlendAnimNode.m_playbackSpeed"		"Playback Speed"
+		"Attribute.CDirectionalBlendAnimNode.m_playbackSpeed:help"		"The speed at which the animations should be played back.  ie: 1 is normal speed, 2 is twice normal speed.  "
+		"Attribute.CDirectionalBlendAnimNode.m_damping"		"Damping"
+		"Attribute.CDirectionalBlendAnimNode.m_damping:help"		"Controls how the blend value can optionally be interpolated to the target value.  "
+		"Element.CWayPointHelperAnimNode"		"WayPoint Helper"
+		"Element.CWayPointHelperAnimNode:help"		"This node helps steer its animation so that it ends at a navigation waypoint"
+		"Attribute.CWayPointHelperAnimNode.m_flStartCycle"		"Start Cycle"
+		"Attribute.CWayPointHelperAnimNode.m_flStartCycle:help"		"The cycle when this node should start steering the character"
+		"Attribute.CWayPointHelperAnimNode.m_flEndCycle"		"End Cycle"
+		"Attribute.CWayPointHelperAnimNode.m_flEndCycle:help"		"The cycle at which this node should stop steering the character"
+		"Attribute.CWayPointHelperAnimNode.m_bOnlyGoals"		"Only align to Goals"
+		"Attribute.CWayPointHelperAnimNode.m_bOnlyGoals:help"		"Tells the node to only steer the character if the current waypoint is the goal of the current navigation path"
+		"Attribute.CWayPointHelperAnimNode.m_bPreventOvershoot"		"Prevent Overshoot"
+		"Attribute.CWayPointHelperAnimNode.m_bPreventOvershoot:help"		"Allow steering to prevent the character from going past the waypoint"
+		"Attribute.CWayPointHelperAnimNode.m_bPreventUndershoot"		"Prevent Undershoot"
+		"Attribute.CWayPointHelperAnimNode.m_bPreventUndershoot:help"		"Apply steering if the character's motion will not take them far enough to reach the waypoint"
+		"Element.CBoneMaskAnimNode"		"Bone Mask"
+		"Element.CBoneMaskAnimNode:help"		"Creates a new pose by doing a per-bone blend of two base poses.  The per-bone weights are defined in the model editor"
+		"Attribute.CBoneMaskAnimNode.m_weightListName"		"Bone Mask"
+		"Attribute.CBoneMaskAnimNode.m_weightListName:help"		"Pick which set of per-bone weights to use to blend the two child poses together.  This list is from the list of bone masks that are created on the model"
+		"Attribute.CBoneMaskAnimNode.m_bResetChild1"		"Reset Child1"
+		"Attribute.CBoneMaskAnimNode.m_bResetChild1:help"		"If true, then when this node receives a reset it will forward the reset on to Child1"
+		"Attribute.CBoneMaskAnimNode.m_bResetChild2"		"Reset Child2"
+		"Attribute.CBoneMaskAnimNode.m_bResetChild2:help"		"If true, then when this node receives a reset it will forward the reset on to Child2"
+		"Element.CChoreoAnimNode"		"Choreo"
+		"Element.CChoreoAnimNode:help"		"This node is repsonsible for responding to requests from FacePose to play choreo gestures and postures"
+		"Element.CTwoBoneIKAnimNode"		"Two-Bone IK"
+		"Element.CTwoBoneIKAnimNode:help"		"Implements a simple solver for 2 bone (plus 1 end-effector bone) inverse kinematics.  The IK chains are defined in the model editor.  The targets for the IK chain are attachments (ie: offsets from other bones in the skeleton, also defined in the model editor).  "
+		"Attribute.CTwoBoneIKAnimNode.m_ikChainName"		"IK Chain"
+		"Attribute.CTwoBoneIKAnimNode.m_ikChainName:help"		"The chain of bones to perform the IK solve on"
+		"Attribute.CTwoBoneIKAnimNode.m_attachmentName"		"Target Attachment"
+		"Attribute.CTwoBoneIKAnimNode.m_attachmentName:help"		"The Attachment that the end effector of the IK chain should be moved to.  "
+		"Attribute.CTwoBoneIKAnimNode.m_fallbackHingeAxis"		"Fallback Hinge Axis"
+		"Attribute.CTwoBoneIKAnimNode.m_fallbackHingeAxis:help"		"When the initial pose of the bones in the IK chain has a bend in it, the IK solver will preserve that existing axis of rotation.  But when the bones start out perfectly straight the solver will use this vector as the axis of rotation.  "
+		"Attribute.CTwoBoneIKAnimNode.m_bMatchTargetOrientation"		"Match Target Orientation"
+		"Attribute.CTwoBoneIKAnimNode.m_bMatchTargetOrientation:help"		"When true, the end effector bone in the IK chain will be rotated to match the orientation of the target Attachment"
+		"Attribute.CBoneMaskAnimNode.m_timingBehavior"		"Timing Control"
+		"Attribute.CBoneMaskAnimNode.m_timingBehavior:help"		"Choose how the node handles interprets and manages the playback of its children, and how its presents it own timing to its parent.    
+
+<UL>
+<LI> <B>Use Child1:</B> Use the cycle and duration of Child1 as the cycle and duration of this node.  The child nodes are not synchronized.   
+<LI> <B>Use Child2:</B> Use the cycle and duration of Child2 as the cycle and duration of this node.  The child nodes are not synchronized.   
+<LI> <B>Synchronize Children:</B> The cycle of the child nodes are kept in sync, and the cycle and duration of this node is a blend of the values from both children 
+</UL>"
+		"Attribute.CBoneMaskAnimNode.m_flTimingBlend"		"Timing Blend"
+		"Attribute.CBoneMaskAnimNode.m_flTimingBlend:help"		"When <b>Timing Control</b> is set to Synchronize Children, this value controls how the duration of the blended result.  A value of 0 means the duration of Child1 is used, 1 means the duration of Child2 is used.  "
+		"Attribute.CSubtractAnimNode.m_timingBehavior"		"Timing Control"
+		"Attribute.CSubtractAnimNode.m_timingBehavior:help"		"Choose how the node handles interprets and manages the playback of its children, and how its presents it own timing to its parent.    
+
+<UL>
+<LI> <B>Use Child1:</B> Use the cycle and duration of Child1 as the cycle and duration of this node.  The child nodes are not synchronized.   
+<LI> <B>Use Child2:</B> Use the cycle and duration of Child2 as the cycle and duration of this node.  The child nodes are not synchronized.   
+<LI> <B>Synchronize Children:</B> The cycle of the child nodes are kept in sync, and the cycle and duration of this node is a blend of the values from both children 
+</UL>"
+		"Attribute.CAddAnimNode.m_timingBehavior"		"Timing Control"
+		"Attribute.CAddAnimNode.m_timingBehavior:help"		"Choose how the node handles interprets and manages the playback of its children, and how its presents it own timing to its parent.    
+
+<UL>
+<LI> <B>Use Child1:</B> Use the cycle and duration of Child1 as the cycle and duration of this node.  The child nodes are not synchronized.   
+<LI> <B>Use Child2:</B> Use the cycle and duration of Child2 as the cycle and duration of this node.  The child nodes are not synchronized.   
+<LI> <B>Synchronize Children:</B> The cycle of the child nodes are kept in sync, and the cycle and duration of this node is a blend of the values from both children 
+</UL>"
+		"Attribute.CSubtractAnimNode.m_flTimingBlend"		"Timing Blend"
+		"Attribute.CSubtractAnimNode.m_flTimingBlend:help"		"When <b>Timing Control</b> is set to Synchronize Children, this value controls how the duration of the blended result.  A value of 0 means the duration of Child1 is used, 1 means the duration of Child2 is used.  "
+		"Attribute.CAddAnimNode.m_flTimingBlend"		"Timing Blend"
+		"Attribute.CAddAnimNode.m_flTimingBlend:help"		"When <b>Timing Control</b> is set to Synchronize Children, this value controls how the duration of the blended result.  A value of 0 means the duration of Child1 is used, 1 means the duration of Child2 is used.  "
+		"Attribute.CAimMatrixAnimNode.m_target"		"Target"
+		"Attribute.CAimMatrixAnimNode.m_target:help"		"What location should this node aim at?"
+		"Attribute.CAimMatrixAnimNode.m_attachmentName"		"Aim Attachment"
+		"Attribute.CAimMatrixAnimNode.m_attachmentName:help"		"The Aim Matrix needs to know not just what to aim <em>at</em>, but also where to aim <em>from</em>.  This field lets you pick an attachment that defines what this node considers \"forward\", and the blend of the aim frames will be made based on the direction to the target relative to this attachment.  "
+		"Attribute.CAimMatrixAnimNode.m_blendMode"		"Blend Mode"
+		"Attribute.CAimMatrixAnimNode.m_blendMode:help"		"Defines how the blend of the frames of the aim animation are applied to the pose from the child node:
+
+<UL>
+<LI><b>Additive:</b> The aim pose is added to the base pose</LI>
+<LI><b>Bone Mask:</b> The aim pose is blended into the base pose using a per-bone mask</LI>
+</UL>
+"
+		"Attribute.CAimMatrixAnimNode.m_boneMaskName"		"Bone Mask"
+		"Attribute.CAimMatrixAnimNode.m_boneMaskName:help"		"If the <b>Blend Mode</b> is set to <em>Bone Mask</em>, this field indicates which bone mask to use.  "
+		"Element.CLookAtAnimNode"		"LookAt"
+		"Element.CLookAtAnimNode:help"		"Procedurally rotate a chain of bones to face a certain direction"
+		"Attribute.CLookAtAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CLookAtAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CLookAtAnimNode.m_damping"		"Damping"
+		"Attribute.CLookAtAnimNode.m_damping:help"		"Settings for damping the motion of the blended aim over time"
+		"Attribute.CLookAtAnimNode.m_sName"		"Name"
+		"Attribute.CLookAtAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CLookAtAnimNode.m_target"		"Target"
+		"Attribute.CLookAtAnimNode.m_target:help"		"What the lookAt node should aim at.  Can be a direction or a location"
+		"Attribute.CLookAtAnimNode.m_param"		"Target Parameter"
+		"Attribute.CLookAtAnimNode.m_param:help"		"If <b>Target</b> is set to <em>Vector Parameter</em>, this field is the anim parameter that is driving the blend.  Note that only Vector parameters are displayed as options"
+		"Attribute.CLookAtAnimNode.m_lookatChainName"		"LookAt Chain"
+		"Attribute.CLookAtAnimNode.m_lookatChainName:help"		"The chain of bones that will be rotated as part of the lookat.  LookAt Chains are defined in ModelDoc, and referenced by name here"
+		"Attribute.CLookAtAnimNode.m_attachmentName"		"Aim Attachment"
+		"Attribute.CLookAtAnimNode.m_attachmentName:help"		"The LookAt op needs to know not just what to aim <em>at</em>, but also where to aim <em>from</em>.  This field lets you pick an attachment that defines what this node considers \"forward\", and the lookat rotation will be made based on the direction to the target relative to this attachment.  "
+		"Attribute.CLookAtAnimNode.m_flYawLimit"		"Yaw Limit"
+		"Attribute.CLookAtAnimNode.m_flYawLimit:help"		"The maximum angle that the lookat can turn the aim to the side"
+		"Attribute.CLookAtAnimNode.m_flPitchLimit"		"Pitch Limit"
+		"Attribute.CLookAtAnimNode.m_flPitchLimit:help"		"The maximum angle that the lookat can turn the aim up or down"
+		"Attribute.CLookAtAnimNode.m_bResetBase"		"Reset Child"
+		"Attribute.CLookAtAnimNode.m_bResetBase:help"		"If this option is checked, it will reset its child node when it gets reset by its parent.  "
+		"Attribute.CLookAtAnimNode.m_bUseHysteresis"		"Use Hysteresis"
+		"Attribute.CLookAtAnimNode.m_bUseHysteresis:help"		"Turns hysteresis support on and off.
+<P>
+Using Hysteresis on the lookat makes it act \"sticky\".  Once it has turned to look in a direction it will stay there until the target direction moves more than a certain threshold.  Once it does, it will turn to look in the new direction until it is within an inner threshold.  "
+		"Attribute.CLookAtAnimNode.m_flHysteresisInnerAngle"		"Inner Angle"
+		"Attribute.CLookAtAnimNode.m_flHysteresisInnerAngle:help"		"Once the lookat starts turning towards the target direction, it will keep turning towards the target until the target is within this angle.  For best results this should be less than <b>Outer Angle</b>"
+		"Attribute.CLookAtAnimNode.m_flHysteresisOuterAngle"		"Outer Angle"
+		"Attribute.CLookAtAnimNode.m_flHysteresisOuterAngle:help"		"If the lookat is at rest, the target direction must be more than this threshold in order for the lookat to start turning to face the target direction.  To get the best results this should be more than <b>Inner Angle</b>.  "
+		"Element.CFloatAnimParameter"		"Float Parameter"
+		"Element.CFloatAnimParameter:help"		"A parameter than is a number that can have a decimal value.  "
+		"Attribute.CFloatAnimParameter.m_name"		"Name"
+		"Attribute.CFloatAnimParameter.m_name:help"		"The name of the parameter.  This is how the parameter will be referred to in the AnimGraph editor and how the AI will identify this parameter.
+<p>
+Note that changing the name of the parameter will NOT break the graph; the code gives each parameter a unique ID so that their names can be safely changed.  However and AI or gameplay code that sets the parameter will need to be updated.  "
+		"Attribute.CBoolAnimParameter.m_name"		"Name"
+		"Attribute.CBoolAnimParameter.m_name:help"		"The name of the parameter.  This is how the parameter will be referred to in the AnimGraph editor and how the AI will identify this parameter.
+<p>
+Note that changing the name of the parameter will NOT break the graph; the code gives each parameter a unique ID so that their names can be safely changed.  However and AI or gameplay code that sets the parameter will need to be updated.  "
+		"Attribute.CEnumAnimParameter.m_name"		"Name"
+		"Attribute.CEnumAnimParameter.m_name:help"		"The name of the parameter.  This is how the parameter will be referred to in the AnimGraph editor and how the AI will identify this parameter.
+<p>
+Note that changing the name of the parameter will NOT break the graph; the code gives each parameter a unique ID so that their names can be safely changed.  However and AI or gameplay code that sets the parameter will need to be updated.  "
+		"Attribute.CIntAnimParameter.m_name"		"Name"
+		"Attribute.CIntAnimParameter.m_name:help"		"The name of the parameter.  This is how the parameter will be referred to in the AnimGraph editor and how the AI will identify this parameter.
+<p>
+Note that changing the name of the parameter will NOT break the graph; the code gives each parameter a unique ID so that their names can be safely changed.  However and AI or gameplay code that sets the parameter will need to be updated.  "
+		"Attribute.CVectorAnimParameter.m_name"		"Name"
+		"Attribute.CVectorAnimParameter.m_name:help"		"The name of the parameter.  This is how the parameter will be referred to in the AnimGraph editor and how the AI will identify this parameter.
+<p>
+Note that changing the name of the parameter will NOT break the graph; the code gives each parameter a unique ID so that their names can be safely changed.  However and AI or gameplay code that sets the parameter will need to be updated.  "
+		"Attribute.CFloatAnimParameter.m_fDefaultValue"		"Default Value"
+		"Attribute.CFloatAnimParameter.m_fDefaultValue:help"		"The value the parameter will start with when it is loaded in game.  "
+		"Attribute.CBoolAnimParameter.m_bDefaultValue"		"Default Value"
+		"Attribute.CBoolAnimParameter.m_bDefaultValue:help"		"The value the parameter will start with when it is loaded in game.  "
+		"Attribute.CEnumAnimParameter.m_defaultValue"		"Default Value"
+		"Attribute.CEnumAnimParameter.m_defaultValue:help"		"The value the parameter will start with when it is loaded in game.  "
+		"Attribute.CIntAnimParameter.m_defaultValue"		"Default Value"
+		"Attribute.CIntAnimParameter.m_defaultValue:help"		"The value the parameter will start with when it is loaded in game.  "
+		"Attribute.CVectorAnimParameter.m_defaultValue"		"Default Value"
+		"Attribute.CVectorAnimParameter.m_defaultValue:help"		"The value the parameter will start with when it is loaded in game.  "
+		"Element.CBoolAnimParameter"		"Bool Parameter"
+		"Element.CBoolAnimParameter:help"		"A parameter than can either be true or false"
+		"Element.CEnumAnimParameter"		"Enum Parameter"
+		"Element.CEnumAnimParameter:help"		"A parameter than can only be one of a small set of values.  These values are numbers, but for convenience they are associated with a name.  For example, a \"weapon\" enum parameter can be 0 (Knife), 1 (Pistol), or 2 (Rifle)"
+		"Element.CIntAnimParameter"		"Int Parameter"
+		"Element.CIntAnimParameter:help"		"A parameter with a non-decimal value"
+		"Element.CVectorAnimParameter"		"Vector Parameter"
+		"Element.CVectorAnimParameter:help"		"A parameter with 3 floating-point values.  "
+		"Attribute.CFloatAnimParameter.m_fMinValue"		"Min Value"
+		"Attribute.CFloatAnimParameter.m_fMinValue:help"		"The smallest value that this parameter is allowed to have.  If gameplay code tried to set it below this, it will be clamped to this value.  "
+		"Attribute.CFloatAnimParameter.m_fMaxValue"		"Max Value"
+		"Attribute.CFloatAnimParameter.m_fMaxValue:help"		"The largest value that this parameter is allowed to have.  If gameplay code tried to set it above this, it will be clamped to this value.  "
+		"Attribute.CIntAnimParameter.m_maxValue"		"Max Value"
+		"Attribute.CIntAnimParameter.m_maxValue:help"		"The smallest value that this parameter is allowed to have.  If gameplay code tried to set it below this, it will be clamped to this value.  "
+		"Attribute.CIntAnimParameter.m_minValue"		"Min Value"
+		"Attribute.CIntAnimParameter.m_minValue:help"		"The smallest value that this parameter is allowed to have.  If gameplay code tried to set it below this, it will be clamped to this value.  "
+		"Attribute.CFloatAnimParameter.m_bInterpolate"		"Interpolate"
+		"Attribute.CFloatAnimParameter.m_bInterpolate:help"		"If the <b>Network</b> option is set, this setting indicates that the value should be smoothly interpolated on the client.
+<P>
+This is necessary because the server usually ticks much slower than the framerate of the client, which can result in stuttery looking motion if interpolation is not used.  "
+		"Attribute.CFloatAnimParameter.m_previewButton"		"Preview Button"
+		"Attribute.CFloatAnimParameter.m_previewButton:help"		"If a gamepad or controller is connected, this lets you bind this parameter to a button when using the in-editor preview.  
+<p>
+When the button is pressed the parameter is set to <b>Max Value</b>.  When its released its set to <b>Default Value</b>.  "
+		"Attribute.CBoolAnimParameter.m_previewButton"		"Preview Button"
+		"Attribute.CBoolAnimParameter.m_previewButton:help"		"If a gamepad or controller is connected, this lets you bind this parameter to a button when using the in-editor preview.  
+<p>
+When the button is pressed the parameter is set to <b>Max Value</b>.  When its released its set to <b>Default Value</b>.  "
+		"Attribute.CEnumAnimParameter.m_previewButton"		"Preview Button"
+		"Attribute.CEnumAnimParameter.m_previewButton:help"		"If a gamepad or controller is connected, this lets you bind this parameter to a button when using the in-editor preview.  
+<p>
+When the button is pressed the parameter is set to <b>Max Value</b>.  When its released its set to <b>Default Value</b>.  "
+		"Attribute.CIntAnimParameter.m_previewButton"		"Preview Button"
+		"Attribute.CIntAnimParameter.m_previewButton:help"		"If a gamepad or controller is connected, this lets you bind this parameter to a button when using the in-editor preview.  
+<p>
+When the button is pressed the parameter is set to <b>Max Value</b>.  When its released its set to <b>Default Value</b>.  "
+		"Attribute.CVectorAnimParameter.m_previewButton"		"Preview Button"
+		"Attribute.CVectorAnimParameter.m_previewButton:help"		"If a gamepad or controller is connected, this lets you bind this parameter to a button when using the in-editor preview.  
+<p>
+When the button is pressed the parameter is set to <b>Max Value</b>.  When its released its set to <b>Default Value</b>.  "
+		"Attribute.CFloatAnimParameter.m_bNetwork"		"Network"
+		"Attribute.CFloatAnimParameter.m_bNetwork:help"		"Set whether or not the value of this parameter should be networked from the server to the client.  "
+		"Attribute.CBoolAnimParameter.m_bNetwork"		"Network"
+		"Attribute.CBoolAnimParameter.m_bNetwork:help"		"Set whether or not the value of this parameter should be networked from the server to the client.  "
+		"Attribute.CEnumAnimParameter.m_bNetwork"		"Network"
+		"Attribute.CEnumAnimParameter.m_bNetwork:help"		"Set whether or not the value of this parameter should be networked from the server to the client.  "
+		"Attribute.CIntAnimParameter.m_bNetwork"		"Network"
+		"Attribute.CIntAnimParameter.m_bNetwork:help"		"Set whether or not the value of this parameter should be networked from the server to the client.  "
+		"Attribute.CVectorAnimParameter.m_bNetwork"		"Network"
+		"Attribute.CVectorAnimParameter.m_bNetwork:help"		"Set whether or not the value of this parameter should be networked from the server to the client.  "
+		"Attribute.CFloatAnimParameter.m_bAutoReset"		"Auto Reset"
+		"Attribute.CFloatAnimParameter.m_bAutoReset:help"		"When checked, the parameter will get set back to its <b>Default Value</b> at the end of each tick.  "
+		"Attribute.CBoolAnimParameter.m_bAutoReset"		"Auto Reset"
+		"Attribute.CBoolAnimParameter.m_bAutoReset:help"		"When checked, the parameter will get set back to its <b>Default Value</b> at the end of each tick.  "
+		"Attribute.CEnumAnimParameter.m_bAutoReset"		"Auto Reset"
+		"Attribute.CEnumAnimParameter.m_bAutoReset:help"		"When checked, the parameter will get set back to its <b>Default Value</b> at the end of each tick.  "
+		"Attribute.CIntAnimParameter.m_bAutoReset"		"Auto Reset"
+		"Attribute.CIntAnimParameter.m_bAutoReset:help"		"When checked, the parameter will get set back to its <b>Default Value</b> at the end of each tick.  "
+		"Attribute.CVectorAnimParameter.m_bAutoReset"		"Auto Reset"
+		"Attribute.CVectorAnimParameter.m_bAutoReset:help"		"When checked, the parameter will get set back to its <b>Default Value</b> at the end of each tick.  "
+		"Attribute.CEnumAnimParameter.m_enumOptions"		"Values"
+		"Attribute.CEnumAnimParameter.m_enumOptions:help"		"The list of values that this parameter can be, and the friendly names associated with them.  "
+		"Attribute.CVectorAnimParameter.m_bInterpolate"		"Interpolate"
+		"Attribute.CVectorAnimParameter.m_bInterpolate:help"		"If the <b>Network</b> option is set, this setting indicates that the value should be smoothly interpolated on the client.
+<P>
+This is necessary because the server usually ticks much slower than the framerate of the client, which can result in stuttery looking motion if interpolation is not used.  "
+		"Element.CStringAnimTag"		"String Tag"
+		"Element.CStringAnimTag:help"		"A simple tag that contains a string for its payload.  Can be used to notify gameplay code about events in the graph, but in practice tends to be used mostly for communication within the graph itself"
+		"Attribute.CStringAnimTag.m_name"		"Name"
+		"Attribute.CStringAnimTag.m_name:help"		"The name of the tag used throughout the editor UI.  This is NOT normally used by gameplay code"
+		"Attribute.CSequenceFinishedAnimTag.m_name"		"Name"
+		"Attribute.CSequenceFinishedAnimTag.m_name:help"		"The name of the tag used throughout the editor UI.  This is <b>NOT</b> normally used by gameplay code.  
+<p>
+Changing the name of the tag will not break graph logic.  "
+		"Attribute.CTaskStatusAnimTag.m_name"		"Name"
+		"Attribute.CTaskStatusAnimTag.m_name:help"		"The name of the tag used throughout the editor UI.  This is <b>NOT</b> normally used by gameplay code.  
+<p>
+Changing the name of the tag will not break graph logic.  "
+		"Attribute.CPostGraphIKTag.m_name"		"Name"
+		"Attribute.CPostGraphIKTag.m_name:help"		"The name of the tag used throughout the editor UI.  This is <b>NOT</b> normally used by gameplay code.  
+<p>
+Changing the name of the tag will not break graph logic.  "
+		"Attribute.CStringAnimTag.m_value"		"Value"
+		"Attribute.CStringAnimTag.m_value:help"		"The string value to pass to gameplay code when this event fires. "
+		"Element.CSequenceFinishedAnimTag"		"Sequence Finished Tag"
+		"Element.CSequenceFinishedAnimTag:help"		"This tag is for backwards compatibility with the previous animation system. When it fires, it tells the gameplay code that a sequenece has 'finished'.  
+<p>
+Try to avoid using this tag type except when porting old characters to use the animgraph"
+		"Attribute.CSequenceFinishedAnimTag.m_sequenceName"		"Sequence"
+		"Attribute.CSequenceFinishedAnimTag.m_sequenceName:help"		"The name of the sequence that finished"
+		"Element.CTaskStatusAnimTag"		"Task Status Tag"
+		"Element.CTaskStatusAnimTag:help"		"This is the primary tag type used to communicate with AI.  Use it to notify the AI when tasks that is has requested the graph to perform are in progress and/or complete.  "
+		"Attribute.CTaskStatusAnimTag.m_identifierString"		"Identifier"
+		"Attribute.CTaskStatusAnimTag.m_identifierString:help"		"A text string that the AI can use to determine which task it has received a tag event about.  
+<p>
+The string value is hashed to a number that makes checking the identifier faster for the AI code.  "
+		"Element.CPostGraphIKTag"		"Post Graph IK Tag"
+		"Element.CPostGraphIKTag:help"		"Tells the foot IK, which is applied to the skeleton after the graph update, when to turn on and off.  "
+		"Attribute.CPostGraphIKTag.m_flBlendAmount"		"Blend Amount"
+		"Attribute.CPostGraphIKTag.m_flBlendAmount:help"		"What the blend weight between the animated position and the IK'd position should be.  
+<p>
+0 = 100% Animated <br>
+1 = 100% IK
+"
+		"Attribute.CLookAtAnimNode.m_weightParam"		"Weight Parameter"
+		"Attribute.CLookAtAnimNode.m_weightParam:help"		"<b>(Optional)</b>
+<p>
+Set a float parameter to control the blend weight of the lookat"
+		"Attribute.CClothSettingsAnimTag.m_name"		"Name"
+		"Attribute.CClothSettingsAnimTag.m_name:help"		"The name of the tag used throughout the editor UI.  This is NOT normally used by gameplay code"
+		"Element.CClothSettingsAnimTag"		"Cloth Settings Tag"
+		"Element.CClothSettingsAnimTag:help"		"Tells the cloth system to change its settings"
+		"Attribute.CChoiceAnimNode.m_children"		"Options"
+		"Attribute.CChoiceAnimNode.m_children:help"		"List of child nodes to choose from, and their relative probability weights"
+		"Attribute.CChoiceNodeChild.m_name"		"Name"
+		"Attribute.CChoiceNodeChild.m_name:help"		"Name of this Option"
+		"Attribute.CChoiceNodeChild.m_weight"		"Weight"
+		"Attribute.CChoiceNodeChild.m_weight:help"		"The probability weight that this option will get selected.  Weights are NOT percentage based; they are relative to the sum of all the weights for all the options.  "
+		"Attribute.CBlendAnimNode.m_children"		"Blend Items"
+		"Attribute.CBlendAnimNode.m_children:help"		"List of the items to blend between"
+		"Attribute.CBlendNodeChild.m_name"		"Name"
+		"Attribute.CBlendNodeChild.m_name:help"		"The friendly name of this blend item"
+		"Attribute.CBlendNodeChild.m_blendValue"		"Blend Value"
+		"Attribute.CBlendNodeChild.m_blendValue:help"		"The value at which the node should use 100% of this item as the result of its blend"
+		"Attribute.CBlendAnimNode.m_blendKeyType"		"Blend Key Values"
+		"Attribute.CBlendAnimNode.m_blendKeyType:help"		"Each child of this node has a \"blend key\" value associated with it that is used to create the blend.  This setting determine where those values come from.  The user can manually specify the blend values in the Blend Items setting, or they can be derived from the properties of the children themselves.
+
+<UL>
+<LI><B>User Defined Values: </B>  The user-defined values entered in the <I>Blend Value</I> field of each entry in the <I>Blend Items</I> list are used as the key values for each child </LI>
+
+<LI> <B>Velocity: </B>  The speed of each child node is used as its key value.  NOTE: when this option is used, it is assumed that Blend Source is also a speed, and the blended animation will be played back at a speed that matches the value of the <I>Blend Source</I>, even if it is outside the range of the child animations. </LI>
+
+<LI> <B> Distance: </B>  The total distance that each child node moves over the course of the entire animation is used as the blend key value for each child node.  
+</LI>
+
+</UL>
+
+<P/>
+Note that the user-entered blend values are only used when the <B>Blend Key Values</B> setting is <I>User Defined Values</I>"
+		"Attribute.CAddAnimNode.m_bApplyChannelsSeparately"		"Treat Translation Separately"
+		"Attribute.CAddAnimNode.m_bApplyChannelsSeparately:help"		"In the Source 1 anim system, translation and rotation were added independently of each other.  Enabling this option preserves the previous functionality.  Most of the time you won't notice a difference because most additive animations are rotation only.  But be aware that enabling this option means that additive animations may not appear the same in game as they do in Maya"
+		"Attribute.CSubtractAnimNode.m_bApplyChannelsSeparately"		"Treat Translation Separately"
+		"Attribute.CSubtractAnimNode.m_bApplyChannelsSeparately:help"		"In the Source 1 anim system, translation and rotation were added independently of each other.  Enabling this option preserves the previous functionality.  Most of the time you won't notice a difference because most additive animations are rotation only.  But be aware that enabling this option means that additive animations may not appear the same in game as they do in Maya"
+		"Attribute.CMoverAnimNode.m_flTurnToFaceOffset"		"Turn to Face Offset"
+		"Attribute.CMoverAnimNode.m_flTurnToFaceOffset:help"		"Apply an offset angle to the Turn to Face direction, so that the character can, for example, face away from the target direction"
+		"Attribute.CDirectPlaybackAnimNode.m_bFinishEarly"		"Finish Early"
+		"Attribute.CDirectPlaybackAnimNode.m_bFinishEarly:help"		"Normally when playing several scripted sequences in a row, the next sequence wont start until the current one has completely finished.  This can lead to stutters in the animation as the old sequence freezes on its last frame while the new sequence is blending in.  
+<BR/>
+<BR/>
+
+Enabling this option will cause all scripted sequences on this character to be considered \"finished\" early, so that they will still be animating while they are blending out.  The Fade Out on the sequence is used to determine how early the sequence should signal that its finished.  "
+		"Element.CPathAnimMotor"		"Path Motor"
+		"Element.CPathAnimMotor:help"		"Motor that drives the character to follow a path.  "
+		"Attribute.CPathAnimMotor.m_name"		"Name"
+		"Attribute.CPathAnimMotor.m_name:help"		"The name of the motor"
+		"Attribute.CPathAnimMotor.m_bLockToPath"		"Lock To Path"
+		"Attribute.CPathAnimMotor.m_bLockToPath:help"		"When enables, the motor will modify the the graph's root motion so that the character will stay on the path.  "
+		"Attribute.CPathAnimMotor.m_bPreventGoalOvershoot"		"Prevent Goal Overshoot"
+		"Attribute.CPathAnimMotor.m_bPreventGoalOvershoot:help"		"When enabled, if the graph's root motion would make the character move farther than the distance to the goal, it will modify the root motion to instead move it to the goal.  
+<BR/>
+<BR/>
+Since the path is usually gone before the character gets all the way to the goal, the motor remembers where the last goal position was and will use that.  Note that this will limit ambient motion when there is no path.  "
+		"Element.CDampedPathAnimMotor"		"Damped Path Motor"
+		"Element.CDampedPathAnimMotor:help"		"Motor that drives the character along a path, calculating acceleration and smoothly adjusting the speed to anticipate stops and sharp turns.  "
+		"Attribute.CDampedPathAnimMotor.m_name"		"Name"
+		"Attribute.CDampedPathAnimMotor.m_name:help"		"The name of the motor"
+		"Attribute.CDampedPathAnimMotor.m_bLockToPath"		"Lock To Path"
+		"Attribute.CDampedPathAnimMotor.m_bLockToPath:help"		"When enables, the motor will modify the the graph's root motion so that the character will stay on the path.  "
+		"Attribute.CDampedPathAnimMotor.m_bPreventGoalOvershoot"		"Prevent Goal Overshoot"
+		"Attribute.CDampedPathAnimMotor.m_bPreventGoalOvershoot:help"		"When enabled, if the graph's root motion would make the character move farther than the distance to the goal, it will modify the root motion to instead move it to the goal.  
+<BR/>
+<BR/>
+Since the path is usually gone before the character gets all the way to the goal, the motor remembers where the last goal position was and will use that.  Note that this will limit ambient motion when there is no path.  "
+		"Attribute.CDampedPathAnimMotor.m_flAnticipationTime"		"Anticipation Time"
+		"Attribute.CDampedPathAnimMotor.m_flAnticipationTime:help"		"How far ahead the motor should look to anticipate changes in the character's speed.  This determines how long it takes for the character to go from a standstill to its top speed, and how aggressively it tries to maintain speed in turns.  "
+		"Attribute.CDampedPathAnimMotor.m_flSpringConstant"		"Spring Constant"
+		"Attribute.CDampedPathAnimMotor.m_flSpringConstant:help"		"Determines how aggressively the character will stop.  Higher values with make the character use more force over a shorter diestance to stop"
+		"Attribute.CDampedPathAnimMotor.m_flMinSpringTension"		"Min Tension"
+		"Attribute.CDampedPathAnimMotor.m_flMinSpringTension:help"		"When stopping, the character will slow down as it approaches the goal.  Sometimes it can slow down too much and seem to take forever to stop.  Increasing this value will inrease the minumum speed that the character will use when coming to a stop.  "
+		"Attribute.CDampedPathAnimMotor.m_flMaxSpringTension"		"Max Tension"
+		"Attribute.CDampedPathAnimMotor.m_flMaxSpringTension:help"		"When stopping, forces are applied to slow the character down.  If the Spring Constant is high, the forces can be quite large.  This value acts as a clamp on how much force is applied to make the character slow down when stopping.  "
+		"Attribute.CBoneMaskAnimNode.m_blendSpace"		"Blend Space"
+		"Attribute.CBoneMaskAnimNode.m_blendSpace:help"		"The coordinate system that the bone transforms should be blended in
+
+<UL>
+<LI> <b>Parent Space (Default):</b> Relative to each bones' parent </LI>
+<LI> <b>Model Space:</b> Relative to the entity's model.  Think world space if the entity was standing at the world origin </LI>
+<LI> <b>Model Space, Rotation Only:</b> Same as model space, but only the rotation is blended.  This prevents the mesh from deforming unnaturally due to unwanted bone translation.  </LI>
+</UL>
+"
+		"Attribute.CBoneMaskAnimNode.m_bUseBlendScale"		"Use Blend Source"
+		"Attribute.CBoneMaskAnimNode.m_bUseBlendScale:help"		"When enabled, a value will be used to scale the values of the bone mask.  A value of 0 means nothing is blended in (ie: Child 1 is used unmodified), and a value of 1 means that 100% of the bone mask is used to blend Child 2 onto Child 1"
+		"Attribute.CBoneMaskAnimNode.m_blendValueSource"		"Blend Source"
+		"Attribute.CBoneMaskAnimNode.m_blendValueSource:help"		"Defines where the value used to drive the bone mask blend comes from"
+		"Attribute.CBoneMaskAnimNode.m_blendParameter"		"Blend Parameter"
+		"Attribute.CBoneMaskAnimNode.m_blendParameter:help"		"If the <b>Blend Source</b> is set to <em>Parameter</em>, this is the parameter that is used to drive the blend"
+		"Element.CFollowAttachmentAnimNode"		"Follow Attachment Node"
+		"Element.CFollowAttachmentAnimNode:help"		"Procedurally move a bone to match to position and/or rotation of a target Attachment"
+		"Attribute.CFollowAttachmentAnimNode.m_sName"		"Name"
+		"Attribute.CFollowAttachmentAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CFollowAttachmentAnimNode.m_boneName"		"Bone"
+		"Attribute.CFollowAttachmentAnimNode.m_boneName:help"		"The bone to modify"
+		"Attribute.CFollowAttachmentAnimNode.m_attachmentName"		"Target Attachment"
+		"Attribute.CFollowAttachmentAnimNode.m_attachmentName:help"		"The attachment that the selected bone should follow"
+		"Attribute.CFollowAttachmentAnimNode.m_bMatchTranslation"		"Match Translation"
+		"Attribute.CFollowAttachmentAnimNode.m_bMatchTranslation:help"		"When selected, will cause the position of the selected bone to match the position of the attachment"
+		"Attribute.CFollowAttachmentAnimNode.m_bMatchRotation"		"Match Rotation"
+		"Attribute.CFollowAttachmentAnimNode.m_bMatchRotation:help"		"When selected, will cause the rotation of the selected bone to match the rotation of the attachment"
+		"Attribute.CFollowAttachmentAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CFollowAttachmentAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CDampedPathAnimMotor.m_anticipationPosParam"		"Anticipation Position Parameter"
+		"Attribute.CDampedPathAnimMotor.m_anticipationPosParam:help"		"If set, the motor will place the current location on the path that it is anticipating into this parameter"
+		"Attribute.CDampedPathAnimMotor.m_anticipationHeadingParam"		"Anticipation Heading Parameter"
+		"Attribute.CDampedPathAnimMotor.m_anticipationHeadingParam:help"		"If set, the motor will place the heading to the current location on the path that it is anticipating into this parameter"
+		"Element.CIKLockTargetGeneratorAnimNode"		"IK Lock Target Generator"
+		"Element.CIKLockTargetGeneratorAnimNode:help"		"This node will generate IK locks based on the locks specified in modeldoc.  Without this node, the feet may slide if the runtime moves/blends the entiy differently than the animation expects."
+		"Element.CIKLockAnimNode"		"(Conditionally) Lock IK "
+		"Element.CIKLockAnimNode:shorthelp"		"Lock the end effector whenever the markup from modeldoc says so."
+		"Element.CIKLockAnimNode:help"		"<p>
+Animations can be marked up with IKLock ranges to indicate when an end effector should be considered \"locked\" to a position in the world.
+</p>
+<p>
+This node reads those locks as a 0-1 value (which are blended into bones) and locks/unlocks them based on an internal state machine, and breaks them based on certain heuristics.
+</p>
+
+<h2>Details</h2>
+
+<h3>State Machine</h3>
+
+<h4>Unlocked (default)</h4>
+
+<p>
+While unlocked, the end effector isn't touched.  The lock is read to see if it ever crosses the threshold (0.9 at the time of this writing) and records the lock position in world space, and switches to the locked state.
+</p>
+
+<h4>Locked</h4>
+<p>
+When locked, the end effector target's position is set to the location specified by the lock that was initiated.  As the lock fades (it's influence heads towards zero), the lock is blended with the position/orientation that would've resulted if unlocked, trying to blend us back to normal.  Upon reaching the release threshold (less than 0.1), we revert to the unlocked state.
+</p>
+
+<h3>Breaking Locks</h3>
+
+There are various heuristics for breaking a lock that have yet to be ported from skeleton instance that will be brough forward shortly - leg overextension, distance to target, etc."
+		"Element.CSkeletalInputAnimNode"		"SteamVR Skeletal Input"
+		"Element.CSkeletalInputAnimNode:help"		"Node to read the live skeletal animation data from SteamVR and retarget it to the current skeleton.  Provides options to pass to SteamVR to control how the data stream is delivered"
+		"Attribute.CSkeletalInputAnimNode.m_sName"		"Name"
+		"Attribute.CSkeletalInputAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CSkeletalInputAnimNode.m_hand"		"Hand"
+		"Attribute.CSkeletalInputAnimNode.m_hand:help"		"Choose which skeletal data stream to read from: either the right hand or the left hand.  "
+		"Attribute.CSkeletalInputAnimNode.m_motionRange"		"Motion Range"
+		"Attribute.CSkeletalInputAnimNode.m_motionRange:help"		"Choose whether SteamVR delivers the hand animation with a range of motion that matches the user's hand a closely as possible (ie: with the controller in the hand), or to convert to a full hand range of motion (as if the user was not holding a controller).  Note for some input devices, these options will be the same"
+		"Attribute.CSkeletalInputAnimNode.m_bAdditive"		"Additive"
+		"Attribute.CSkeletalInputAnimNode.m_bAdditive:help"		"Choose whether the skeletal data should be delivered as delta offsets from a common \"grip limit\" pose that can be added to other animations.  "
+		"Attribute.CSkeletalInputAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CSkeletalInputAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CBlendAnimNode.m_bLockWhenWaning"		"Lock Blend When Waning"
+		"Attribute.CBlendAnimNode.m_bLockWhenWaning:help"		"When true, the blend value will not get update while this node is being blended out of (aka: \"Waning\")"
+		"Element.CSelectorAnimNode"		"Selector Anim Node"
+		"Element.CSelectorAnimNode:help"		"Selects between two or more child nodes based on either a bool parameter or an enum parameter.  Provides support for blending between children when the \"current\" one changes, and for activating tags based on the \"current\" child"
+		"Attribute.CSelectorAnimNode.m_sName"		"Name"
+		"Attribute.CSelectorAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node and the name of the parameter used to control it as its name.  "
+		"Attribute.CSelectorAnimNode.m_selectionSource"		"Selection Source"
+		"Attribute.CSelectorAnimNode.m_selectionSource:help"		"Controls whether the Selector is controlled by a Boolean parameter or an Enum parameter.  "
+		"Attribute.CSelectorAnimNode.m_boolParamID"		"Bool Parameter"
+		"Attribute.CSelectorAnimNode.m_boolParamID:help"		"If <b>Selection Source</b> is <em>Bool</em>, this field defines which boolean parameter is used to control the Selector.  Otherwise it is not used.  "
+		"Attribute.CSelectorAnimNode.m_enumParamID"		"Enum Parameter"
+		"Attribute.CSelectorAnimNode.m_enumParamID:help"		"If <b>Selection Source</b> is <em>Enum</em>, this field defines which enum parameter is used to control the Selector.  Otherwise it is not used.  "
+		"Attribute.CSelectorAnimNode.m_blendDuration"		"Blend Duration"
+		"Attribute.CSelectorAnimNode.m_blendDuration:help"		"When the current selection changes, this field determines how long it takes to blend from the previous selection to the new one.  "
+		"Attribute.CSelectorAnimNode.m_tagBehavior"		"Tag Behavior"
+		"Attribute.CSelectorAnimNode.m_tagBehavior:help"		"Sets the logic use to determine when the tag associated with an option is active.  
+
+<UL>
+<LI> <b>Active While Current:</b> The current selection's tag is active the entire time it is the current selection </LI>
+<LI> <b>Off When Finished:</b> The current selection's tag is active until the node associated with it indicates that it is \"finished\"  </LI>
+<LI> <b>Off Before Finished:</b> The current selection's tag is active up until <em>Blend Duration</em> seconds before the node associated with it is expected to be finished.  </LI>
+</UL>"
+		"Attribute.CSelectorAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CSelectorAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CSelectorAnimNode.m_bResetOnChange"		"Reset On Change"
+		"Attribute.CSelectorAnimNode.m_bResetOnChange:help"		"When the current selection changes, reset the new one"
+		"Attribute.CSelectorAnimNode.m_bSyncCyclesOnChange"		"Start new option at same cycle"
+		"Attribute.CSelectorAnimNode.m_bSyncCyclesOnChange:help"		"If <b>Reset On Change</b> is true, this setting will apply the cycle of the previous selection to the new one"
+		"Element.CHitReactAnimNode"		"Procedural Hit Reacts"
+		"Element.CHitReactAnimNode:help"		"Applies a procedurally-generated hit reaction on top of a given pose.  Takes hit location, direction, and force into account.
+<br/>
+<br/>
+Generally it works like this:
+<UL> 
+<LI> The bones below the point of impact rotate in the direction of the impact based on the amount of force, and will return to normal based on spring settings </LI>
+<LI> The bones above the point of impact counter-rotate in the direction of the impact, so the hit bone appears to cave inward. They will then return to normal after a delay based on a separate spring value (Whip)</LI>
+<LI>The hip bone will be translated in the direction of the force and then return </LI>
+<LI>The hip bone will move downward and back (Hip Dip)</LI>
+</UL>"
+		"Attribute.CHitReactAnimNode.m_sName"		"Name"
+		"Attribute.CHitReactAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CHitReactAnimNode.m_triggerParam"		"Trigger Parameter"
+		"Attribute.CHitReactAnimNode.m_triggerParam:help"		"The bool parameter to use to trigger a hit reaction.  Should be set to auto-reset and NOT networked"
+		"Element.CBlend2DAnimNode"		"Blend 2D"
+		"Element.CBlend2DAnimNode:help"		"Blends between a set of animations based on the values of two variables.  "
+		"Attribute.CBlend2DAnimNode.m_sName"		"Name"
+		"Attribute.CBlend2DAnimNode.m_sName:help"		"The name of the anim graph node. Shown in the header bar of the node in the graph editor. If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name. "
+		"Attribute.CBlend2DAnimNode.m_items"		"Blend Items"
+		"Attribute.CBlend2DAnimNode.m_items:help"		"List of animations to blend between and the 2D coordinates that they represent in the blend space"
+		"Attribute.CBlend2DAnimNode.m_blendSourceX"		"Blend Source"
+		"Attribute.CBlend2DAnimNode.m_blendSourceX:help"		"The value controlling the horizonatal blend axis"
+		"Attribute.CBlend2DAnimNode.m_paramX"		"Parameter"
+		"Attribute.CBlend2DAnimNode.m_paramX:help"		"If <b>Blend Source</b> is set to Parameter, this field is the animgraph parameter to use to control the blend on this axis"
+		"Attribute.CBlend2DAnimNode.m_paramY"		"Parameter"
+		"Attribute.CBlend2DAnimNode.m_paramY:help"		"If <b>Blend Source</b> is set to Parameter, this field is the animgraph parameter to use to control the blend on this axis"
+		"Attribute.CBlend2DAnimNode.m_blendSourceY"		"Blend Source"
+		"Attribute.CBlend2DAnimNode.m_blendSourceY:help"		"The value controlling the vertical blend axis"
+		"Attribute.CBlend2DAnimNode.m_eBlendNode"		"Blend Mode"
+		"Attribute.CBlend2DAnimNode.m_eBlendNode:help"		"Choose between methods used to calculate the blend weights for the animations based on the current 2D blend value.  
+
+<UL>
+<LI> <b>General</b>: A context-independent 2D blending technique.  Good for many situations </LI>
+<LI> <b>Directional</b>: If the blend values are directions, using this method can produce more accurate results </LI>
+</UL>"
+		"Attribute.CBlend2DAnimNode.m_bLoop"		"Loop"
+		"Attribute.CBlend2DAnimNode.m_bLoop:help"		"Toggle whether or not the animations should loop or stop at the end"
+		"Attribute.CBlend2DAnimNode.m_bLockBlendOnReset"		"Lock Blend on Reset"
+		"Attribute.CBlend2DAnimNode.m_bLockBlendOnReset:help"		"When false, the blend is refreshed every frame.
+<br/>
+<br/>
+When true, the blend is only refresh when the node is reset.  The cycle advances normally, however.  This is so that you can keep the blend value the same for the duration of the playback of an animation, even if the input value changes.  "
+		"Attribute.CBlend2DAnimNode.m_playbackSpeed"		"Playback Speed"
+		"Attribute.CBlend2DAnimNode.m_playbackSpeed:help"		"Adjusts the speed at which the animations play.  "
+		"Attribute.CBlend2DAnimNode.m_damping"		"Damping"
+		"Attribute.CBlend2DAnimNode.m_damping:help"		"Controls how the output of this node is blended over time"
+		"Attribute.CBlend2DAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CBlend2DAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Element.CGroundIKSolveAnimNode"		"Name for the node."
+		"Attribute.CGroundIKSolveAnimNode.m_IkChains"		"The IK chains to apply ground IK to."
+		"Attribute.CGroundIKSolveAnimNode.m_TiltSource"		"Tilt Vector Source"
+		"Attribute.CGroundIKSolveAnimNode.m_TiltSource:help"		"<p>Ground IK can tilt your model for you, as well as compensate the amount the foot is pushed out by, based upon the ground vector.
+</p>
+<p>
+The three settings currently are:
+</p>
+<h3>
+- None
+</h3>
+<p>
+No tilting will be applied: all ground adjustments will be done as if on flat ground.
+</p>
+<h3>
+- Movement Manager Slope
+</h3>
+<p>
+Use the tilt vector from the movement manager.  This will play nicely with lean matrices and other graph citizens.
+</p>
+<h3>
+- IK
+</h3>
+<p>
+This uses the traces from IK to determine a ground vector.  This is legacy or for non-animgraph, and will be deprecated soon.
+</p>"
+		"Attribute.CGroundIKSolveAnimNode.m_bApplyLocks"		"Apply Locks"
+		"Attribute.CGroundIKSolveAnimNode.m_bApplyLocks:help"		"Toggle whether the IK locks on the animation are used to determine whether the foot stays still or not."
+		"Attribute.CGroundIKSolveAnimNode.m_bEnabled"		"Enabled"
+		"Attribute.CGroundIKSolveAnimNode.m_bEnabled:help"		"Whether this node is enabled or not."
+		"Attribute.CGroundIKSolveAnimNode.m_TargetBlendParameter"		"Target Blend Parameter"
+		"Attribute.CGroundIKSolveAnimNode.m_TargetBlendParameter:help"		"<p>
+The ground node will blend it's target between the animations default output and the ground IK target based on this float parameter, if present.
+</p>
+
+<p>This was needed to get anim events triggered from scripted sequences to be able to disable ground IK.</p>
+
+<p>See  <a href=\"https://confluence.valve.org/display/source2/Modeldoc+Setup#ModeldocSetup-AE_IK_SET_MASTER_BLEND_AMOUNT\">Modeldoc Setup</a> for more details.
+
+</p>"
+		"Attribute.CGroundIKSolveAnimNode.m_DebugDrawBoneTypes"		"Debug Bone Types to Draw"
+		"Attribute.CGroundIKSolveAnimNode.m_DebugDrawBoneTypes:help"		"A list of bone 'types' that we can debug draw."
+		"Attribute.CGroundIKSolveAnimNode.m_bDebugDrawLockValues"		"Debug Draw Lock Values"
+		"Attribute.CGroundIKSolveAnimNode.m_bDebugDrawLockValues:help"		"Draw the raw IK lock values as vertical lines coming off the end effector.
+
+When a lock reaches 1, a lock is placed.  As it fades towards 0, we lerp from the lock to the current target.  Once it gets to zero, the lock terminates until such time as it gets to 1 again."
+		"Attribute.CGroundIKSolveAnimNode.m_DebugDrawLockValuesColor"		"Debug Lock Values Color"
+		"Attribute.CGroundIKSolveAnimNode.m_DebugDrawLockValuesColor:help"		"The color to draw lock values at.  Useful if you're trying to track down different points in the graph that might be messing with the value."
+		"Attribute.CGroundIKSolveAnimNode.m_bDebugDrawBefore"		"Debug Draw Before"
+		"Attribute.CGroundIKSolveAnimNode.m_bDebugDrawBefore:help"		"Draw the bones described in \"Bone Types to Draw\" before ground IK is applied."
+		"Attribute.CGroundIKSolveAnimNode.m_DebugDrawBeforeColor"		"Debug Draw Before Color"
+		"Attribute.CGroundIKSolveAnimNode.m_DebugDrawBeforeColor:help"		"The color to draw the bones before ground IK is applied."
+		"Attribute.CGroundIKSolveAnimNode.m_bDebugDrawAfter"		"Debug Draw After"
+		"Attribute.CGroundIKSolveAnimNode.m_bDebugDrawAfter:help"		"Whether we should debug draw the set of bones after ground IK is applied."
+		"Attribute.CGroundIKSolveAnimNode.m_DebugDrawAfterColor"		"Debug Draw After Color"
+		"Attribute.CGroundIKSolveAnimNode.m_DebugDrawAfterColor:help"		"The color to draw the selected bones, after ground IK has been applied."
+		"Element.CFootLockAnimNode"		"Foot Lock"
+		"Element.CFootLockAnimNode:help"		"Uses the blended foot cycles of the child nodes to lock the feet in place when they are on the ground, and guide them to the predicted next step position when they are in the air.  The results are set on a user-defined bone for each foot, which should be used as the IK target for the leg.  "
+		"Attribute.CFootLockAnimNode.m_sName"		"Name"
+		"Attribute.CFootLockAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CFootLockAnimNode.m_items"		"Feet"
+		"Attribute.CFootLockAnimNode.m_items:help"		"List of the feet that this node should control.  The feet of the character are defined on the model using the Feet node in modeldoc"
+		"Attribute.CFootLockItem.m_footName"		"Foot"
+		"Attribute.CFootLockItem.m_footName:help"		"Which foot definition (as defined on the model) to calculate procedural motion for.  "
+		"Attribute.CFootLockItem.m_targetBoneName"		"Target Bone"
+		"Attribute.CFootLockItem.m_targetBoneName:help"		"The bone on the model that this node will position to where the foot should be.  
+<p>
+This bone should not be on the leg, but instead should be an IK target bone that is a child of the root.  "
+		"Attribute.CFootLockItem.m_disableTagID"		"Disable Tag"
+		"Attribute.CFootLockItem.m_disableTagID:help"		"<b>(Optional)</b> Specify a tag that, when active, will disable the procedural foot planting calculations for this foot.  "
+		"Attribute.CFootLockAnimNode.m_hipBoneName"		"Hip Bone"
+		"Attribute.CFootLockAnimNode.m_hipBoneName:help"		"Specify the name of the character's hip bone to allow this node to adjust the character's height as they are stepping up and down uneven terrain.  This same bone is also used for tilting the character on slopes if <em>Apply Tilt</em> is enabled"
+		"Attribute.CFootLockAnimNode.m_damping"		"Foot Rest Damping"
+		"Attribute.CFootLockAnimNode.m_damping:help"		"When the feet get \"parked\" in the middle of a stride, they will be moved straight down from wherever they are to a resting position on the ground over time.  These settings control the motion of how the feet are moved to the ground when this happens"
+		"Attribute.CAnimInputDamping.m_fMaxTension"		"Maximum Tension"
+		"Attribute.CAnimInputDamping.m_fMaxTension:help"		"When using the Spring speed function, the strength of the spring is based on how far the current position is from the target position.  To keep the strength of the spring from growing indefinitely, this value places a cap on the effective distance that the spring can be from its target position.  This does not effect the actual position of the damped motion other than to limit how fast it moves at the extremes.  "
+		"Attribute.CFootLockAnimNode.m_bApplyStepLimits"		"Apply Step Limits"
+		"Attribute.CFootLockAnimNode.m_bApplyStepLimits:help"		"It is possible for the predicted foot position to be so far away that the foot will reach in an unrealistic way to try to get there.  Enabling step limits will make the node limit how far the foot will reach beyond the motion of the original animation.  "
+		"Attribute.CFootLockAnimNode.m_flReachScale"		"Extra Reach Allowed"
+		"Attribute.CFootLockAnimNode.m_flReachScale:help"		"At compile time we calculate the maximum distance that the foot moves from its Stance Position for each foot cycle of each animation.  We then use that as a reference to detect if this node is trying to make the foot reach farther than the animator intended, which in many cases is ok.  This parameter applies a multiple to the default reach value from the animation when determining if the step distance is too far.  A value of 0 means that the foot should not move farther than the original animation moves it, and a value of 1 means it should be allowed to move twice as far.  "
+		"Attribute.CFootLockAnimNode.m_bApplyMotionLimits"		"Apply Motion Limits"
+		"Attribute.CFootLockAnimNode.m_bApplyMotionLimits:help"		"Once a foot gets locked, its possible that the root motion of the character will move the body of the character so far that the character's leg has to stretch out unnaturally to reach the locked position.  Enabling motion limits will cause this node to detect this situation, and reduce the effective root motion.  "
+		"Attribute.CFootLockAnimNode.m_flStretchScale"		"Extra Stretch Allowed"
+		"Attribute.CFootLockAnimNode.m_flStretchScale:help"		"Determines how much the leg should be allowed to reach beyond the original animation's stride length.  A value of zero means it should not stretch more than in the original animation, and a value of 1 means it should be allowed to strech and extra stride length beyond the original length.  "
+		"Attribute.CFootLockAnimNode.m_flMotionFalloffBias"		"Motion Reduction Curve"
+		"Attribute.CFootLockAnimNode.m_flMotionFalloffBias:help"		"Controls how much the root motion is decreased as the foot approaches the stretch limit.  The value is based on a <a href=\"http://demofox.org/biasgain.html\">bias curve</a>.  So values close to 0 mean that hardly and reduction happens until the end, 0.5 means that the reduction happens linearly, and values close to 1 mean that the reduction happens quickly once the foot is outside the stretch limit.  "
+		"Attribute.CFootLockAnimNode.m_flStrideCurveScale"		"Curve Foot Paths"
+		"Attribute.CFootLockAnimNode.m_flStrideCurveScale:help"		"Moving the foot in a straight line from its previous step position to the next can produce unnatural looking movement, and potentially make the legs pass through each other.  A more natural stride tends to curve the foot through its stance position half way through.  This value lets you control how much the foot should curve through the stance position during a step.  "
+		"Attribute.CFootLockAnimNode.m_flStrideCurveLimitScale"		"Curve Paths Limit"
+		"Attribute.CFootLockAnimNode.m_flStrideCurveLimitScale:help"		"Puts a limit on the maximim distance that the curved path can take the foot from the straight-line path, as a percentage of the length of the stride.  ie: if the step is short, the displacement of the curve should also be short.  "
+		"Attribute.CFootLockAnimNode.m_bModulateStepHeight"		"Modulate Step Height"
+		"Attribute.CFootLockAnimNode.m_bModulateStepHeight:help"		"When enabled, the height of each step will be increased or decreased in proportion to how much the step length is increased or decreased compared to the original animation"
+		"Attribute.CFootLockAnimNode.m_flStepHeightIncreaseScale"		"Height Increase Scale"
+		"Attribute.CFootLockAnimNode.m_flStepHeightIncreaseScale:help"		"How much to increase the height of the foot step when the stride length is longer than the original animation.  0 means don't increase it at all, 1 means increase it proportinally to the increase in stride length.  "
+		"Attribute.CFootLockAnimNode.m_flStepHeightDecreaseScale"		"Height Decrease Scale"
+		"Attribute.CFootLockAnimNode.m_flStepHeightDecreaseScale:help"		"How much to decrease the height of the foot step when the stride length is shorter than the original animation.  0 means don't decrease the height at all, 1 means decrease it proportionally to the reduction in step length.  "
+		"Attribute.CFootLockAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CFootLockAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CFootLockAnimNode.m_bApplyTilt"		"Apply Tilt"
+		"Attribute.CFootLockAnimNode.m_bApplyTilt:help"		"When enabled, will apply tilt to the Hip Bone based on the height of the feet due to sloped or uneven terrain.  "
+		"Attribute.CFootLockAnimNode.m_flTiltPlanePitchSpringStrength"		"Tilt Plane Pitch Strength"
+		"Attribute.CFootLockAnimNode.m_flTiltPlanePitchSpringStrength:help"		"Controls the strength of the spring that is damping the change in pitch of the tilt plane"
+		"Attribute.CFootLockAnimNode.m_flTiltPlaneRollSpringStrength"		"Tilt Plane Roll Spring Strength"
+		"Attribute.CFootLockAnimNode.m_flTiltPlaneRollSpringStrength:help"		"Controls the strength of the spring that is damping the change in roll of the tilt plane"
+		"Attribute.CAnimState.m_bExclusiveFootMotion"		"Exclusive Foot Motion"
+		"Attribute.CAnimState.m_bExclusiveFootMotion:help"		"When true, only the foot cycle motion from the current state will be used.  Otherwise, the foot motion will be blended between the last state and this one during transitions.  "
+		"Attribute.CAnimStateTransition.m_flFixedCycleValue"		"Fixed Start Cycle Value"
+		"Attribute.CAnimStateTransition.m_flFixedCycleValue:help"		"If this transition is set to reset the destination state to a fixed value, this is the cycle value to reset it to.  "
+		"Attribute.CAnimStateTransition.m_bForceFootPlant"		"Reset Foot Motion"
+		"Attribute.CAnimStateTransition.m_bForceFootPlant:help"		"When true, a signal will be sent to the foot lock node to force the feet to park when this transition happens.  This is necessary for most transitions where the foot motion between the source and destination state do not have the same cycle"
+		"Element.CFollowPathAnimNode"		"Follow Path"
+		"Element.CFollowPathAnimNode:help"		"Takes the root motion from its children and modifies it to move along the path, while also turning the character's body to face a desired direction.
+
+Also updates the predicted foot position to be along the path.
+
+This node provides an optional Goal Pose input connection, which should be to a stationary animation.  If a node is connected to this input, the foot motion calculated by this node will be modified as the character gets closer to the goal, so that when it stops its feet will be in the right place for the goal pose animation"
+		"Attribute.CFollowPathAnimNode.m_sName"		"Name"
+		"Attribute.CFollowPathAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CFollowPathAnimNode.m_facingTarget"		"Turn to Face"
+		"Attribute.CFollowPathAnimNode.m_facingTarget:help"		"The direction (if any) that the character's body should be turned towards as they walk the path"
+		"Attribute.CFollowPathAnimNode.m_flTurnToFaceOffset"		"Turn to Face Offset"
+		"Attribute.CFollowPathAnimNode.m_flTurnToFaceOffset:help"		"Apply an offset angle to the <em>Turn to Face</em> direction, so that the character can, for example, face away from the target direction"
+		"Attribute.CFollowPathAnimNode.m_damping"		"Damping"
+		"Attribute.CFollowPathAnimNode.m_damping:help"		"Controls the speed with which the character's body is turned toward the <em>Turn to Face</em> direction"
+		"Attribute.CFollowPathAnimNode.m_flStoppingDistance"		"Stopping Distance"
+		"Attribute.CFollowPathAnimNode.m_flStoppingDistance:help"		"If the node has a Goal Pose set, it will start blending the foot motion to use the stance positions of the goal pose when it is <em>Stopping Distance</em> from the goal.  "
+		"Attribute.CFollowPathAnimNode.m_bBlendAnimation"		"Blend Animation"
+		"Attribute.CFollowPathAnimNode.m_bBlendAnimation:help"		"When enabled, this node will blend the skeletal animation from the default input animation to the goal pose animation as the character approaches the goal.  The foot motion will still come from the default animation though so the stride will not be interrupted.  "
+		"Attribute.CFollowPathAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CFollowPathAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CHitReactAnimNode.m_hitBoneParam"		"Hit Bone Parameter"
+		"Attribute.CHitReactAnimNode.m_hitBoneParam:help"		"The parameter that the game will set to the index of the bone whose physics hull got hit.  This should be an Int parameter, with the <b>Max Value</b> at least as big as the number of bones in the skeleton, and <b>Network</b> and <b>Force Latest Value</b> set to True.
+
+Note that the game code expects this parameter's name to be i_Hit_Bone"
+		"Attribute.CHitReactAnimNode.m_hitOffsetParam"		"Hit Offset Parameter"
+		"Attribute.CHitReactAnimNode.m_hitOffsetParam:help"		"The parameter that the game code should set the offset of the point of impact from the hit bone in the hit bone's local space.  Should have <b>Network</b> and <b>Force Latest Value</b> set to True.
+
+Game code expects this variable to be set to v_Hit_Offset"
+		"Attribute.CHitReactAnimNode.m_hitDirectionParam"		"Hit Direction Parameter"
+		"Attribute.CHitReactAnimNode.m_hitDirectionParam:help"		"The parameter that the game code should set to be the world-space direction the object that hit the character was moving on impact.  Should have <b>Network</b> and <b>Force Latest Value</b> set to True.
+
+Game code expects this parameter to be named v_Hit_Direction"
+		"Attribute.CHitReactAnimNode.m_hitStrengthParam"		"Hit Strength Parameter"
+		"Attribute.CHitReactAnimNode.m_hitStrengthParam:help"		"The parameter that the game code should set to the strength with which the character was hit.  Should have <b>Network</b> and <b>Force Latest Value</b> set to True.
+
+Game code expects this parameter to be named f_Hit_Strength"
+		"Attribute.CHitReactAnimNode.m_weightListName"		"Bone Weights"
+		"Attribute.CHitReactAnimNode.m_weightListName:help"		"(Optional) Set this value to a weight list to define how much each bone can be effected by a hit reaction"
+		"Attribute.CHitReactAnimNode.m_hipBoneName"		"Hip Bone"
+		"Attribute.CHitReactAnimNode.m_hipBoneName:help"		"The bone close to the root of the character that will get translated by impacts and will have the hip dip applied to it.  "
+		"Attribute.CHitReactAnimNode.m_flHipBoneTranslationScale"		"Hip Translation Scale"
+		"Attribute.CHitReactAnimNode.m_flHipBoneTranslationScale:help"		"Scales the amount that the hips are translated based on the strength of the impact"
+		"Attribute.CHitReactAnimNode.m_nEffectedBoneCount"		"Number of bones effected"
+		"Attribute.CHitReactAnimNode.m_nEffectedBoneCount:help"		"The bones that get rotated as part of the hit reaction are this number of bones away from the hit bone.  "
+		"Attribute.CHitReactAnimNode.m_flMaxImpactForce"		"Max Impact Force"
+		"Attribute.CHitReactAnimNode.m_flMaxImpactForce:help"		"The largest amount of force that can be applied from an impact"
+		"Attribute.CHitReactAnimNode.m_flMinImpactForce"		"Min Impact Force"
+		"Attribute.CHitReactAnimNode.m_flMinImpactForce:help"		"The smallest amount of force that can be applied from an impact"
+		"Attribute.CHitReactAnimNode.m_flWhipImpactScale"		"Whip Impact Scale"
+		"Attribute.CHitReactAnimNode.m_flWhipImpactScale:help"		"This value scales to the amount of force that gets applied to the children of the hit bone.  So a value less than 1 will cause the child bones to be pushed back less by each hit"
+		"Attribute.CHitReactAnimNode.m_flCounterRotationScale"		"Counter Rotation Scale"
+		"Attribute.CHitReactAnimNode.m_flCounterRotationScale:help"		"The child bones of the hit bone will counter-rotate to offset the impact rotation of the parent bones, making the bone chain appear to bend inward at the point of impact.  This value will allow you to scale how much of the counter-rotation to apply.  "
+		"Attribute.CHitReactAnimNode.m_flDistanceFadeScale"		"Distance Fade"
+		"Attribute.CHitReactAnimNode.m_flDistanceFadeScale:help"		"How much to reduce the force of the impact on bones based on how far they are from the point of impact"
+		"Attribute.CHitReactAnimNode.m_flPropagationScale"		"Propagation Scale"
+		"Attribute.CHitReactAnimNode.m_flPropagationScale:help"		"Scales the impact force by this amount for each bone based on how many bones it is away from the hit bone.  "
+		"Attribute.CHitReactAnimNode.m_flWhipDelay"		"Whip Delay Time"
+		"Attribute.CHitReactAnimNode.m_flWhipDelay:help"		"Amount of time to delay moving the child bones of the hit bone back into place after they have finished moving in the direction of the impact.  "
+		"Attribute.CHitReactAnimNode.m_flSpringStrength"		"Spring Strength"
+		"Attribute.CHitReactAnimNode.m_flSpringStrength:help"		"How strongly the hit bone and its parents should resist the force of the impact.  Higher values will cause the bones to move less and return to their normal position faster.  "
+		"Attribute.CHitReactAnimNode.m_flWhipSpringStrength"		"Whip Spring Strength"
+		"Attribute.CHitReactAnimNode.m_flWhipSpringStrength:help"		"How strongly the children of the hit bone should resist the force of the impact.  Higher values will cause the bones to move less and return to their normal position faster.  "
+		"Attribute.CHitReactAnimNode.m_flHipDipSpringStrength"		"Hip Dip Spring Strength"
+		"Attribute.CHitReactAnimNode.m_flHipDipSpringStrength:help"		"How strongly the hip should resist the force of the impact.  Higher values will cause it to move less and return to its normal position faster.  "
+		"Attribute.CHitReactAnimNode.m_flHipDipImpactScale"		"Hip Dip Scale"
+		"Attribute.CHitReactAnimNode.m_flHipDipImpactScale:help"		"Scales the amount of the impact force that effects the hip dip"
+		"Attribute.CHitReactAnimNode.m_flHipDipDelay"		"Hip Dip Delay"
+		"Attribute.CHitReactAnimNode.m_flHipDipDelay:help"		"Number of seconds to wait before the hip dip movement starts"
+		"Attribute.CHitReactAnimNode.m_bResetBase"		"Reset Child"
+		"Attribute.CHitReactAnimNode.m_bResetBase:help"		"Whether or not the child of this node should get reset when it does.  "
+		"Attribute.CHitReactAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CHitReactAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Attribute.CBoolAnimParameter.m_bPredicted"		"Predict"
+		"Attribute.CBoolAnimParameter.m_bPredicted:help"		"When checked, the parameter is allowed to be predicted on the client."
+		"Attribute.CMotionMatchingAnimNode.m_sName"		"Name"
+		"Attribute.CMotionMatchingAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CMotionMatchingAnimNode.m_flPredictionTime"		"Prediction Time"
+		"Attribute.CMotionMatchingAnimNode.m_flPredictionTime:help"		"Amount of time into the future that the node will look to determine what the character's future state should be.  "
+		"Attribute.CMotionMatchingAnimNode.m_flSampleRate"		"Sample Rate"
+		"Attribute.CMotionMatchingAnimNode.m_flSampleRate:help"		"Each clip in the motion set is sampled at this rate to determine the list of possible entry points into the clip that will be included in the motion seach"
+		"Attribute.CMotionMatchingAnimNode.m_flBlendTime"		"Blend Time"
+		"Attribute.CMotionMatchingAnimNode.m_flBlendTime:help"		"The amount of time to take to blend to a new clip/entry point once its chosen"
+		"Attribute.CMotionMatchingAnimNode.m_flResponsiveness"		"Responsiveness"
+		"Attribute.CMotionMatchingAnimNode.m_flResponsiveness:help"		"Global blend value between pose metrics and goal metrics.  Since pose metrics try to match the character's current pose, and the goal metrics try to match against where the character should go, this value has the effect of shifting the balance between smooth animation and responsive changes in direction.  
+<br/>
+<br/>
+A value of 0.5 is an equal balance between pose and goal metrics.  Values closer to 0 favor pose metrics, and values close to 1 favor goal metrics"
+		"Attribute.CMotionMatchingAnimNode.m_flSelectionThreshold"		"Selection Threshold"
+		"Attribute.CMotionMatchingAnimNode.m_flSelectionThreshold:help"		"Any new selection must exceed the score of the current clip by this amount to be chosen as the new clip  "
+		"Attribute.CMotionMatchingAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CMotionMatchingAnimNode.m_networkMode:help"		"Defines where the logic for this graph node is evaluated:
+
+<UL>
+<LI> <b>Server Authoritative: </b> The logic for this node runs on the server, and the results are networked down to the client
+<LI> <b>Client Simulate: </b> The logic for this node runs on the client, and its state is not networked
+</UL>
+
+<p/>
+
+<em>Note: When a node is set to <b>Client Simulate</b> all of its children are forced to also be Client Simulate, regardless of what their Network Mode setting is </em>"
+		"Element.CMotionMatchingAnimNode"		"Motion Matching"
+		"Element.CMotionMatchingAnimNode:help"		"Continuously picks the best clip of animation to play from a given set of animations based on a defined set of cost metrics"
+		"Element.CGoalPositionMetric"		"Goal Position Metric"
+		"Element.CGoalPositionMetric:help"		"Check if clips match the desired position of the character at several future points in time"
+		"Attribute.CGoalPositionMetric.m_pathSamples"		"Path Samples"
+		"Attribute.CGoalPositionMetric.m_pathSamples:help"		"List of percentages through the prediction time to same where the character is predicted to be"
+	}
+}

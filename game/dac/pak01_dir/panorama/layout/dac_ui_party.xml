@@ -1,0 +1,92 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_party.vcss_c" />
+	</styles>
+
+	<DACParty>
+
+      
+    <Panel id="DisconnectedFromGCGroup">
+
+      <Label id="PartyNotConnectedToGC" text="#DAC_Party_NotConnectedToGC"/>
+      
+    </Panel>
+
+    <Panel id="ConnectedToGCGroup">
+
+      <Panel id="InPartyMMGroup">
+        <Label id="PartyCancelMMLabel" text="#DAC_Party_InMatchMaking"/>
+        <Button id="PartyCancelMM" class="PartyButton BevelButton" onactivate="DACPartyCancelMM()">
+          <Label text="#DAC_Party_CancelMM"/>  
+        </Button>
+      </Panel>
+    
+      <Panel id="InPartyGroup">
+
+        <Panel id="PartyInfoGroup">
+          <Button id="PartyCodeGroup" onactivate="DACCopyPartyCode()">
+            <Label class="PartyCode" text="#DAC_Party_PartyCodeLabel"/>
+            <Label id="PartyCodeVisible" class="PartyCode" text="{s:party_code}"/>
+            <Label id="PartyCodeHidden" class="PartyCode" text="#DAC_Party_PartyCodeHidden"/>
+          </Button>
+          <Panel id="PartyInfoInvites" onactivate="DACPartyInviteUsers()">
+            <Label text="#DAC_Party_InviteFriend"/>
+          </Panel>
+          <Panel id="PartyInfoPlayers" class="PartyInfoBlock">
+            <Panel class="PartyInfoIcon"/>
+            <Label text="{d:num_players}"/>
+          </Panel>
+          <Panel id="PartyInfoSpectators" class="PartyInfoBlock">
+            <Panel class="PartyInfoIcon"/>
+            <Label text="{d:num_spectators}"/>
+          </Panel>
+          <Panel id="PartyInfoReady" class="PartyInfoBlock">
+            <Panel class="PartyInfoIcon"/>
+            <Label text="{d:num_ready}/{d:max_ready}"/>
+          </Panel>
+        </Panel>
+
+        <Panel id="MemberList">
+           <!-- Dynamic Content -->
+        </Panel>
+      
+        <Panel id="PartyFooterGroup">
+          <Button id="PartyPrivateMatch" class="PartyButton BevelButton" onactivate="DACStartPartyPrivateMatch()">
+            <Label text="#DAC_Party_PrivateMatch"/>
+            <Label id="NoPartyPrivateReason" class="NoMatchReason" text="{s:party_private_error}"/>
+          </Button>
+          <Button id="PrivateBotSettings" class="BevelButton" onactivate="DACPartyBotDifficulty()">
+            <Label text="{s:party_bot_difficulty}"/>
+          </Button>
+        
+          <Button id="PartyMatchMaking" class="PartyButton BevelButton" onactivate="DACStartPartyMatchMaking()">
+            <Label text="#DAC_Party_MatchMaking"/>
+            <Label id="NoPartyMMReason" class="NoMatchReason" text="{s:party_mm_error}"/>
+          </Button>
+        </Panel>
+      
+      </Panel>
+
+      <Panel id="InviteGroup">
+        <Panel id="InviteHeaderGroup">
+          <Label class="InviteHeaderText" text="#DAC_Party_Invites"/>
+          <Label class="InviteHeaderText InviteCount" text="{d:party_invites}"/>
+        </Panel>
+        <Panel id="InviteList">
+          <!-- Dynamic Content -->
+        </Panel>
+      </Panel>
+      <Panel id="NotInPartyGroup">
+        <Button id="CreateParty" class="PartyButton BevelButton" onactivate="DACCreateParty()">
+          <Label text="#DAC_Party_CreateParty"/>
+        </Button>
+        <Button id="JoinParty" class="PartyButton BevelButton" onactivate="DACJoinPartyCode()">
+          <Label text="#DAC_Party_JoinParty"/>
+        </Button>
+      </Panel>
+    </Panel>
+
+  </DACParty>
+</root>

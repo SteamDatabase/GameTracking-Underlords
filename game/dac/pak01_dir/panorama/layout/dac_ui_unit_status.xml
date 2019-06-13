@@ -1,0 +1,73 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_unit_status.vcss_c" />
+	</styles>
+	<snippets>
+
+	</snippets>
+
+	<DACUnitStatus>
+		<Panel class="UnitNameContainer">
+			<Label class="HeaderPlayerName" id="PlayerNameContainer" text="{s:selectedUnitName}" html="true" />
+			<Label class="Rank1Label RankLabel" text="★" />
+			<Label class="Rank2Label RankLabel" text="★★" />
+			<Label class="Rank3Label RankLabel" text="★★★" />
+		</Panel>
+		
+		<Panel id="PlayerProfile">
+				<Label text="{i:selectedUnitHP}" id="StatusHP" />
+				<Panel id="PlayerFlag" >
+					
+				</Panel>
+
+				<Panel id="PlayerAvatar">
+					<DACUnitScenePanel id="UnitPortraitView" map="scenes/shop" camera="cam_main" renderdeferred="false" usePortraitData="true" />					
+
+					<CircularProgressBar id="HealthBar" max="100" min="0"  />
+
+
+					<Panel class="TextContainer">
+
+						
+
+					</Panel>
+					
+					
+
+				
+				</Panel>
+
+				<Panel id="PlayerProfileAvatarOverlay">
+
+				</Panel>
+
+
+
+
+		</Panel>
+
+		<Panel id="SelectUnitStats" class="TopBottomFlow">
+			<Panel class="SynergyContainer">
+				<DACSynergyCapsule id="SynergyCapsule" />
+			</Panel>
+			<Panel id="AbilityContainer" onmouseover="DACUnitShowAbilityTooltip()" onmouseout="DACUnitHideAbilityTooltip()">
+				<Image src="s2r://panorama/images/heroes/spellicons/empty_png.vtex" />
+				<Image id="UnitAbility" />
+				<Panel id="AbilityBevel" />
+			</Panel>
+			<Label class="Stat" text="#DAC_InGame_UnitDamage_Query" html="true" />
+			<Label class="Stat" text="#DAC_InGame_AttackSpeed_Query" html="true" />
+			<Label class="Stat" text="#DAC_InGame_UnitDPS_Query" html="true" />
+			<Label class="Stat" text="#DAC_InGame_UnitArmor_Query" html="true" />
+			<Label class="Stat" text="#DAC_InGame_KillCount_Query" html="true" />
+			<Label class="Stat" text="#DAC_InGame_KillStreak_Query" html="true" />
+
+			<Panel id="SelectUnitItem" />
+
+		</Panel>
+
+
+	</DACUnitStatus>
+</root>

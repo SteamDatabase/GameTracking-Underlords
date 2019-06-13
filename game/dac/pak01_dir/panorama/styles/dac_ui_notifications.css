@@ -1,0 +1,253 @@
+DACNotifications
+{
+	width: 800px;
+	height: 300px;
+
+	horizontal-align: center;
+	vertical-align: top;
+}
+
+#NotificationsContainer
+{
+	width: 100%;
+	height: fit-children;
+	flow-children: up;
+}
+
+.ButtonContainer
+{
+	vertical-align: bottom;
+	width: 100%;	
+	height: 100px;
+	background-color: grey;
+	flow-children: right;
+	padding: 10px;
+
+	visibility: collapse;
+}
+
+.TurnThisOnForDevButtons DACNotifications
+{
+	height: 800px;
+	width: 1000px;
+}
+
+.TurnThisOnForDevButtons .ButtonContainer
+{
+	visibility: visible;
+}
+
+Button
+{
+	color: white;
+	background-color: black;
+	height: 90px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin: 1px;
+}
+
+Button:hover
+{
+	background-color: #444;
+}
+
+Button Label
+{
+	font-size: 20px;
+	vertical-align: center;
+}
+
+#NotificationsContainer
+{
+	margin-top: 4px;
+}
+
+.NotificationItem
+{
+	horizontal-align: center;
+	width: 600px;
+	//background-color: #2d2b22CC;
+	background-color: #222222aa;
+	height: 60px;
+	margin-bottom: 5px;
+	padding: 5px;
+	flow-children: right;
+	border-radius: 2px;
+    //border: 2px solid #8c919244;
+	//border: 1px solid #8c919288;	
+	transition-property: opacity;
+	transition-duration: 0.2s;
+	opacity: 0;
+}
+
+.NotificationItem.LocalPlayer
+{	
+	//background-color: #423f33CC;
+	background-color: #111111dd;	
+	//border: 1px solid #888;
+}
+
+.NotificationItem.Appear
+{
+	opacity: 1;
+}
+
+.NotificationItem.FadeOut
+{
+	transition-duration: 0.5s;
+	opacity: 0;
+}
+
+.LowVisualQuality .NotificationItem
+{
+    transition-duration: 0.0s;
+	border-radius: 0px;
+}
+
+.NotificationItem.ChatMessage,
+.NotificationItem.ChatWheelMessage
+{
+	min-height: 60px;
+	height: fit-children;
+}
+
+.NotificationItem Label
+{
+	font-size: 24px;
+	text-shadow: 0px 1px 0px 2.0 #000;
+	color: #a8acca;
+	vertical-align: center;
+
+	margin-top: 5px;
+}
+
+#PlayerAvatar
+{
+	width: 45px;
+	height: 45px;
+	//border: 2px #000000ff;
+	border-radius: 20px;
+
+	vertical-align: center;
+	margin-right: 10px;
+	margin-left: 3px;
+}
+
+.PlayerName
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #c0daf4 ), to(#ffffff));
+	font-weight: bold;
+}
+
+.HeroCombineStars2
+{
+	color: rank2Color;
+}
+
+.HeroCombineStars3
+{
+	color: rank3Color;
+}
+
+.CombineImg
+{
+	background-image: url("s2r://panorama/images/hud/icon_tag_defense_png.vtex");
+	background-position: 0px, 0px;
+	background-size: 16px 16px;
+	background-repeat: no-repeat;
+
+	width: 12px;
+	height: 12px;
+}
+
+#Combine2Label, #Combine3Label
+{
+	visibility: collapse;
+}
+
+.NotificationItem.Combine2 #Combine2Label,
+.NotificationItem.Combine3 #Combine3Label
+{
+	visibility: visible;
+}
+
+.WinStreakCount
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #f3de98 ), to(#fefad1));
+	font-weight: bold;
+}
+
+.KnockedOut
+{
+	color: #ff4e31;
+	font-weight: bold;
+}
+
+.CombatDamage
+{
+	color: #ff4e31;
+	font-weight: bold;
+}
+
+.ChatMessageContents
+{
+	flow-children: down;
+}
+
+.NotificationItem .ChatMessageLabel
+{
+	color: #8588a0;
+	font-size: 24px;
+	margin-top: -6px;
+}
+
+.NotificationItem.PlayerEliminated,
+.NotificationItem.CombatLose,
+.NotificationItem.CombatLoseAway
+{
+	//background-color: gradient( linear, 0% 0%, 100% 0%, from( #451710), to( #75271b ) ); 
+	//background-color: #75271b33;
+	background-color: #320505cc;
+	//border: 1px solid #ff4e3155;
+}
+
+.NotificationItem.WinStreak,
+.NotificationItem.CombatWin
+{
+	background-color: #312c04cc;
+	//background-color: gradient( linear, 0% 0%, 100% 0%, from( #222222aa), to( #937c00aa ) ); 
+	//border: 2px solid #ffd70088;
+	//border: 1px solid #ffd70088;
+}
+
+#UpvoteContainer
+{
+	width: 55px;
+	height: 100%;
+	margin: 2px;
+
+	horizontal-align: right;
+
+	background-size: 35px 35px;
+	background-repeat: no-repeat;
+	background-position: right center;
+	background-image: url("s2r://panorama/images/hud/yo_psd.vtex");
+
+	opacity: 0.01;
+}
+
+.HasUpvotes #UpvoteContainer
+{
+	opacity: 1;
+}
+
+.UpvoteCount
+{
+	visibility: collapse;
+}
+
+.HasUpvotes .UpvoteCount
+{
+	visibility: visible;
+}

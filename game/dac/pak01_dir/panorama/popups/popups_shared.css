@@ -1,0 +1,189 @@
+/* styles that most popup dialogs should use */
+
+.PopupPanel
+{
+	background-color: #222933dd;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #333742 ), color-stop( 0.005, #272b36 ), color-stop( .5, rgb(30, 33, 45) ), to( #252934 ) );	
+	width:620px;
+    min-height:400px;
+	vertical-align: middle;
+	horizontal-align: center;
+	//opacity: 0.8;
+	box-shadow: black -4px -4px 8px 8px;
+	//#FFFFFF66 -4px -4px 8px 8px
+			
+	animation-duration: 0.6s;
+	animation-delay: 0.0s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+
+	transition-property: transform, pre-transform-scale2d, opacity, background-color, height;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+	transition-delay: 0.0s;
+
+	flow-children: down;
+}
+.isAutoCancel
+{
+    horizontal-align:center;
+}
+.isAutoConfirm
+{ 
+    horizontal-align:center;
+}
+.PopupButtonRow,
+.PopupBottomContainer
+{
+	height: 88px;
+	width: 100%;
+	horizontal-align: center;
+	background-size: cover;
+	vertical-align: bottom;
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #1a202c), to( #2f343e ) ); 
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( rgb(30, 34, 44) ), color-stop( .02, #272b36 ), color-stop( .5, #1C1C26 ), to( #25252D ) );
+    //margin-top:20px;
+	flow-children:right;
+	
+	padding: 16px;
+}
+
+.PopupFlowRight
+{
+    flow-children:right;
+}
+
+.CloseButton
+{
+	vertical-align: top;
+	horizontal-align: right;
+
+	width: 36px;
+	height: 36px;
+
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+
+	wash-color: #7c8e8e;
+    margin: 0px;
+    opacity: 0.7;
+    transition-property: opacity;
+	transition-duration: 0.4s;
+}
+
+.TopContainer .CloseButton
+{
+	margin-top: 24px;
+	margin-right: 24px;
+}
+
+.CloseButton:hover
+{
+	opacity: 1.3;
+}
+
+.PopupPanel.WideMode
+{
+	min-width: 800px;
+}
+
+.PopupPanel.Hidden
+{
+	opacity: 0.0;
+	pre-transform-scale2d: 1.25;
+	transform: translateY( -10px );
+	sound: "ui_custom_lobby_dialog_slide";
+}
+
+.PopupTitle
+{
+	font-size: 32px;
+    color: uiBrightGrey; 
+	font-weight: thin;
+	margin-bottom: 16px;
+	horizontal-align: center;
+}
+
+.PopupTitleLeft
+{
+    font-size: 30px;
+    color: uiBrightGrey; 
+	font-weight: thin;
+	margin-bottom: 15px;
+	margin-left:24px;
+	margin-top: 24px;
+}
+.PopupDescription Label
+{
+	font-size: 20px;
+	letter-spacing: 0px;
+}
+
+
+
+//
+// Animations
+//
+@keyframes 'links-and-more-button-focus'
+{
+	from
+	{
+		background-color: gradient( linear, 0% 0%, 0% 100%, from( #a9c8daee ), to( #000000ee ) ); 
+	}
+
+	50%
+	{
+		background-color: gradient( linear, 0% 0%, 0% 100%, from( #272d2eee ), to( #131617ee ) ); 
+	}
+
+	to
+	{
+		background-color: #252f3b; 
+	}
+}
+
+#ReplayPendingPopup #CancelButton
+{
+	margin-top: 32px;
+}
+
+.WarningDialog.PopupPanel
+{
+	border: 1px solid red;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #370202 ), to( #131617ee ) );
+}
+
+.WarningDialog .PopupTitle
+{
+	font-weight: bold;
+	color: #ff8d8d;
+}
+
+
+#DynamicPopupContainer
+{
+	width: 100%;
+	height: fit-children;
+	min-height: 300px;
+}
+
+.PopupContent
+{
+	padding-top: 32px;
+	width: 100%;
+	height: 100%;
+	height: fit-children;
+	min-height: 320px;
+	flow-children: down;
+}
+
+
+.PopupDialogListContainer
+{
+	width: 100%;
+	border: 1px solid black;
+    background-color:rgba(22, 25, 31, 0.86);
+	box-shadow: inset #00000066 3px 3px 6px 6px;
+}

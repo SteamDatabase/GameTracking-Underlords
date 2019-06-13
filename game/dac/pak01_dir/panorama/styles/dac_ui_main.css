@@ -1,0 +1,575 @@
+DACUIMain
+{
+	width: 100%;
+	height: 100%;
+}
+
+DACUIMain.InGame
+{
+	visibility: collapse;
+}
+
+#Core
+{
+	horizontal-align: center;
+	vertical-align: bottom;
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #FF00FF33 ), to( #00FF0033 ) );
+	margin-bottom: 100px;
+}
+
+.InGame #Core
+{
+	horizontal-align: right;
+	margin-bottom: 0px;
+}
+
+#SteamBetaLoginPanel
+{
+	horizontal-align: center;
+	vertical-align: top;
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #FF00FF33 ), to( #00FF0033 ) );
+	margin-bottom: 100px;
+}
+
+#HudModeDropdown {
+    vertical-align: bottom;
+    width: 200px;
+    //opacity: 0;
+}
+
+#TooltipManager, #ContextMenuManager, #DashboardPopupManager
+{
+	width: 100%;
+	height: 100%;
+}
+
+#ContextMenuManager
+{
+}
+
+.GCStatusVisible #MainMenuContainer
+{
+    margin-top: 30px;
+}
+
+.Loading #MainMenuContainer,
+{
+    visibility: collapse;
+}
+
+@define toastExitDuration: 0.3s;
+
+#ToastManager
+{
+	margin-top: 400px;
+	height: 100%;
+	width: 350px;
+	flow-children: down;
+}
+
+#ToastManager > .ToastPanel
+{
+	opacity: 0.0;
+	transform: translateX( -40px );
+
+	transition-property: position, opacity, transform;
+	transition-duration: toastExitDuration;
+}
+
+#ToastManager > .ToastPanel.ToastVisible
+{
+	opacity: 1.0;
+	transform: none;
+}
+
+.TempButton
+{
+	border: 1px solid black;
+	background-color: black;
+	min-width: 300px;
+	height: 80px;
+	padding: 0 3px;
+	margin: 3px;
+	flow-children: down;
+}
+
+.TempButton Label
+{
+	font-size: 24px;
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+.TempButton:hover
+{
+	background-color: #444;
+}
+
+.DefaultHidden
+{
+	visibility: collapse;
+}
+
+.CanLocalHost #LocalHost,
+.CanMM #StartMM,
+.CanCancelMM #CancelMM,
+.CanLeaveLobby #LeaveLobby,
+.CanLeaveGame #LeaveGame,
+.CanReconnect #Reconnect,
+.NeedsSteamLogin #SteamBetaLoginPanel,
+.NeedsSteamGuard #SteamGuardLabel,
+.NeedsSteamGuard #SteamGuard,
+.CanCreateParty #CreateParty,
+.CanForceMatch #ForceMatch
+{
+	visibility: visible;
+}
+
+.SettingsTextEntryPartyCode
+{
+	horizontal-align: center;
+	font-size: 24px;
+	width: 150px;
+	height: 30px;
+	border: 2px solid #5e686966;
+}
+
+.SettingsTextEntryUserName
+{
+	font-size: 64px;
+	width: 450px;
+	height: 80px;
+	border: 2px solid #5e686966;
+}
+
+.SettingsTextEntryPassword
+{
+	font-size: 36px;
+	width: 450px;
+	height: 80px;
+	border: 2px solid #5e686966;
+}
+
+.SettingTitle
+{
+	font-size: 24px;
+	margin-top: 8px;
+	text-transform: uppercase;
+}
+
+#TopBarStatusBar {
+	width: 100%;
+	padding: 5px;
+	max-height: 0px;
+	transition-property: max-height;
+	transition-duration: 0.35s;
+}
+
+.GCStatusVisible #TopBarStatusBar {
+	max-height: 30px;
+}
+
+.InitialDisplay #TopBarStatusBar {
+	max-height: 0px;
+	transition-delay: 3s;
+}
+
+#TopBarStatusMessageContainer {
+	horizontal-align: center;
+	flow-children: right;
+}
+
+#TopBarStatusMessageContainer Label {
+	letter-spacing: 1px;
+	horizontal-align: center;
+	font-weight: normal;
+	font-size: 18px;
+	text-transform: uppercase;
+	color: #aaccff;
+	text-shadow: 0px 0px 4px 1.0 #101010;
+}
+
+.GCStatusScary #TopBarStatusMessageContainer Label {
+	color: #ffaa88;
+	text-shadow: 0px 0px 6px 1.0 #ff1010;
+}
+
+
+#TopBarStatusSpinner {
+	visibility: collapse;
+}
+
+#TopBarStatusBar.ShowSpinner #TopBarStatusSpinner {
+	margin-top: 0px;
+	margin-right: 12px;
+	visibility: visible;
+	wash-color: #aaccff;
+}
+
+.GCStatusScary #TopBarStatusBar.ShowSpinner #TopBarStatusSpinner {
+	wash-color: #ffaa88;
+}
+
+
+#Background
+{
+    width: 100%;
+    height: 100%;
+    background-image: url("s2r://panorama/images/dashboard/mobile_bg_png.vtex");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.InGame #Background
+{
+	visibility: collapse;
+}
+
+.InGame #Profile
+{
+	visibility:collapse;
+}
+
+#Profile
+{
+	visibility:visible;
+}
+
+#PageManager
+{
+	width:100%;
+	height:100%;
+}
+
+#MainMenuContainer
+{
+    width: fit-children;
+    height: 158px;
+    vertical-align: top;
+    horizontal-align: center;
+    flow-children: right;
+}
+.MainMenuButtonContainer 
+{
+    /*width: 204px;*/
+	height: 200px;
+    /*height: 129px;*/
+	/*border-right: 4px solid #9086c344;*/
+	/*border-bottom: 4px solid #58518c44;*/
+	/*border-left: 4px solid #8c919244;*/
+	/*background-color: gradient(linear, 12% 100%, 0% 0%, from( #22222277 ), to( #ffffff13 ));*/
+	margin: 0px -5px 0px -5px;
+    transition-property: brightness;
+	transition-duration: 0.2s;
+}
+
+.MainMenuButton 
+{
+    //width: 150px;
+    horizontal-align: center;
+    background-position: center;
+    background-repeat: no-repeat;
+	background-image: url("s2r://panorama/images/dashboard/top-btn-play_png.vtex");
+}
+
+.MainMenuButton:hover {
+	opacity: 0.6;
+}
+
+#MainMenuContainer Label {
+	visibility: collapse;
+}
+
+.Selected #MainMenuLabel {
+	visibility: visible;
+}
+
+/*.MainMenuButton:hover {*/
+	/*brightness: 1.6;*/
+/*}*/
+
+#MainMenuLabel {
+	font-size: 30px;
+	color: #ffffff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-weight: bold;
+}
+
+.PlayLabel {
+	transform: rotateZ(-2deg);
+	margin-top: 163px;
+	margin-left: 10px;
+}
+
+.HeropediaLabel {
+	transform: rotateZ(2deg);
+	margin-top: 93px;
+}
+
+.SettingsLabel {
+	transform: rotateZ(-2deg);
+	margin-top: 93px;
+	margin-left: 0px;
+}
+
+.MainMenuButtonContainer.Selected
+{
+    /*brightness:1.2;*/
+} 
+
+#PlayButtonContainerheroe
+{
+    x:0px;
+}
+
+#HeropediaButtonContainer {
+    x: 180px;
+}
+
+#BattlePassButtonContainer
+{
+    visibility: collapse;
+    x: 360px;
+}
+
+#AchievementsButtonContainer
+{
+    visibility: collapse;
+    x: 540px;
+}
+
+#ProfileButtonContainer
+{
+    visibility: collapse;
+    x: 720px;
+}
+
+#SettingsMenuButtonContainer
+{
+    x: 360px;
+}
+
+#ZooButtonContainer
+{
+    visibility: collapse;
+    x: 1080px;
+}
+
+#QuitButtonContainer
+{
+    vertical-align: top;
+    horizontal-align: left;
+    border: 0px;
+    background-color: none;
+}
+
+#QuitButton
+{
+    background-image: url("s2r://panorama/images/dashboard/quit_psd.vtex");
+}
+
+.PlayContainer #PlayButtonContainer,
+.HeropediaContainer #HeropediaButtonContainer,
+.SettingsMenuContainer #SettingsMenuButtonContainer
+{
+	/*brightness: 3.0;*/
+}
+
+#PlayButton
+{
+    background-image: url("s2r://panorama/images/dashboard/top_btn_play_psd.vtex");
+	background-size: 100%;
+	width: 200px;
+	height: 140px;
+}
+
+.PlayContainer #PlayButton:hover,
+.HeropediaContainer #HeropediaButton:hover,
+.SettingsMenuContainer #SettingsMenuButton:hover
+{
+	opacity: 1;
+}
+
+.PlayContainer #PlayButton
+{
+	background-image: url("s2r://panorama/images/dashboard/top_btn_play_active_psd.vtex");
+}
+
+#HeropediaButton 
+{
+    background-image: url("s2r://panorama/images/dashboard/top_btn_heropedia_psd.vtex");
+	background-size: 100%;
+	height: 131px;
+	width: 200px;
+}
+
+.HeropediaContainer #HeropediaButton
+{
+	background-image: url("s2r://panorama/images/dashboard/top_btn_heropedia_active_psd.vtex");
+}
+
+#BattlePassButton 
+{
+    background-image: url("s2r://panorama/images/dashboard/battlepassbutton_png.vtex");
+}
+
+#AchievementsButton 
+{
+    background-image: url("s2r://panorama/images/dashboard/achievementsbutton_png.vtex");
+}
+
+#ProfileButton 
+{
+    background-image: url("s2r://panorama/images/dashboard/profilebutton_png.vtex");
+}
+
+#SettingsMenuButton 
+{
+    background-image: url("s2r://panorama/images/dashboard/top_btn_settings_psd.vtex");
+	background-size: 100%;
+	height: 131px;
+	width: 200px;
+}
+
+.SettingsMenuContainer #SettingsMenuButton
+{
+	background-image: url("s2r://panorama/images/dashboard/top_btn_settings_active_psd.vtex");
+}
+
+#ZooButton
+{
+	visibility: collapse;
+}
+
+.BetaUniverse #ZooButton
+{
+	visibility: visible;
+}
+
+.GCStatusVisible #QuitButtonContainer
+{
+    margin-top: 30px;
+}
+
+#QuitButtonContainer
+{
+    vertical-align: top;
+    horizontal-align: right;
+    flow-children: right;
+}
+
+.QuitButton
+{
+    width: 150px;
+    height: 129px;
+    horizontal-align: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("s2r://panorama/images/dashboard/quit_psd.vtex");
+    transition-property: wash-color;
+    transition-duration: 0.2s;    
+}
+
+.QuitButton:hover
+{
+    wash-color: #9086c388;
+}
+
+
+
+#TempQuitLogin
+{
+    background-image: url("s2r://panorama/images/dashboard/steam_logo_png.vtex");
+}
+
+.IsPlatformMobile #QuitButton
+{
+    visibility: collapse;
+}
+
+
+.FeedbackPanel
+{
+    vertical-align: top;
+    horizontal-align: right;
+    margin-right: 150px;
+    margin-top: 35px;
+    flow-children: right;
+}
+
+
+.SubmitFeedbackIntro
+{
+    font-weight: semi-bold;
+    font-size: 24px;
+    letter-spacing: 2px;
+    vertical-align: center;
+    //margin-left: 60px;
+    margin-top: 6px;
+    color: #ffffff88;
+    //color: gradient( linear, 100% 0%, 0% 0%, from( #a7e8e3 ), to( #fff ) );
+    text-transform: uppercase;
+    text-shadow: 0px 0px 0px 2.0 black;
+    visibility: collapse;
+}
+
+#SubmitFeedbackButton Label
+{
+    font-size: 24px;
+}
+
+#SubmitFeedbackButton
+{
+    height: 60px;
+    width: 400px;
+    margin: 0px;
+    margin-left: 10px;
+    opacity: .75;
+    width: fit-children;
+    padding: 0px 20px 0px 20px;
+    //border: 2px solid white;
+    //border: 0px 0px 2px 0px;
+}
+
+#IntroScreen
+{
+	width: 100%;
+	height: 100%;
+	background-color: #00000000;
+}
+
+.Startup #IntroScreen
+{
+	background-color: black;
+	transition-property: background-color;
+	transition-duration: 2.0s;
+}
+
+.IntroFinished #IntroScreen
+{
+	visibility: collapse;
+}
+
+#IntroLogo
+{
+	width: 655px;
+	height: 274px;
+	horizontal-align: center;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/logos/valve_white_png.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	
+	opacity: 0.001;
+	transition-property: opacity;
+	transition-duration: 1s;
+}
+
+.Startup #IntroLogo
+{
+	opacity: 1;
+	transition-property: opacity;
+	transition-duration: 0.5s;
+}

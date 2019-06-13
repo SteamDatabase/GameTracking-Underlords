@@ -1,0 +1,147 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_post_game_stats.vcss_c" />
+	</styles>
+	<snippets>
+		<snippet name="HeroIcon">
+			<Panel class="HeroIconPanel">
+				<Image id="HeroImage"/>
+				<Label text="{s:rank}"/>
+				<Image id="HeroItem"/>
+			</Panel>
+		</snippet>
+		<snippet name="PostGamePlayerProfile">
+			<Panel class="PostGamePlayerProfile">
+				<Panel id="PostGamePlayerAvatarContainer">
+					<Panel id="PostGamePlayerProfileAvatar"/>
+					<Panel id="PostGamePlayerProfileAvatarOverlay" />
+				</Panel>
+				<Panel id="PostGamePlayerProfileRank"/>
+				<Panel class="PostGamePlayerProfileName">
+					<Label text="{g:dac_player_slot_persona:b:player_slot}" html="true" />
+				</Panel>
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<DACPostGameStats>		
+		<Panel id="TopRow">
+			<Panel id="LeaderboardEntryContainer">
+				<!-- code generated -->
+			</Panel>
+			<Panel id="LocalPlayerContainer">
+				<Panel id="LocalPlayerInfo">
+					<Label class="LocalPlayerRoundText" text="#DAC_PostGameStats_Round"/>
+					<Panel id="LocalUnderlordContainer">
+						<Image id="LocalPlayerUnderlord"/>
+						<Panel id="LocalPlayerDetails">
+							<Label class="LocalPlayerTitleLabel" html="true" text="#DAC_PostGameStats_LocalPlayer"/>
+							<Panel id="LocalPlacementRoundContainer">
+								<Label class="LocalPlayerPlacementText" text="#DAC_PostGameStats_RoundRanking"/>
+								<Label class="LocalPlayerRoundLostText" text="#DAC_PostGameStats_RoundEliminated"/>
+								<Label class="LocalPlayerStillPlayingText" text="#DAC_PostGameStats_StillPlaying"/>
+							</Panel>
+							<Label class="LocalPlayerRankLabel" html="true" text="{s:vs_result}"/>
+							<Panel id="LocalPlayerGenericStats">
+								<Label text="#DAC_PostGameStats_PlayerHealth"/>
+								<Label text="#DAC_PostGameStats_PlayerGold"/>
+							</Panel>
+							<Label class="LocalPlayerRankLabel" text="#DAC_PostGameStats_PlayerGoldSpentOnRerolls"/>
+							<Label class="LocalPlayerRankLabel" text="#DAC_PostGameStats_PlayerGoldSpentOnLvlUp"/>
+							<Label class="LocalPlayerRankLabel" text="#DAC_PostGameStats_PlayerGoldSpentOnUnits"/>
+						</Panel>
+					</Panel>
+				</Panel>
+				<Panel id="LocalPlayerStats">
+					<Panel id="LocalPlayerGeneric">
+						<Label class="LocalPlayerTitleLabel" html="true" text="#DAC_PostGameStats_LocalPlayer"/>
+						<Label class="LocalPlayerRankLabel" html="true" text="{s:vs_result}"/>
+						<Panel id="LocalPlayerGenericStats">
+							<Label text="#DAC_PostGameStats_PlayerHealth"/>
+							<Label text="#DAC_PostGameStats_PlayerGold"/>
+						</Panel>
+						<Label class="LocalPlayerRankLabel" text="#DAC_PostGameStats_PlayerGoldSpentOnRerolls"/>
+						<Label class="LocalPlayerRankLabel" text="#DAC_PostGameStats_PlayerGoldSpentOnLvlUp"/>
+						<Label class="LocalPlayerRankLabel" text="#DAC_PostGameStats_PlayerGoldSpentOnUnits"/>
+					</Panel>
+					<Panel id="LocalPlayerUnits">
+						<Label class="LocalPlayerTitleLabel" text="#DAC_Units"/>
+						<Panel id="LocalPlayerUnitsContainer">
+							<!-- code generated -->
+						</Panel>
+
+					</Panel>
+					<Panel id="LocalPlayerSynergies">
+						<Label class="LocalPlayerTitleLabel" text="#DAC_Synergies"/>
+						<Panel id="LocalPlayerSynergyContainer">
+							<!-- code generated -->
+						</Panel>
+					</Panel>
+					<Panel id="LocalPlayerItems">
+						<Label class="LocalPlayerTitleLabel" text="#DAC_GlobalItems"/>
+						<Panel id="LocalPlayerItemsContainer">
+							<!-- code generated -->
+						</Panel>
+					</Panel>
+				</Panel>
+			</Panel>
+			<Panel id="OtherPlayerContainer">
+				<Panel id="OtherPlayerInfo">
+					<Panel id="OtherUnderlordContainer">
+						<Image id="OtherPlayerUnderlord" />
+						<Panel id="OtherPlayerDetails">
+							<Label class="OtherPlayerTitleLabel" html="true" text="#DAC_PostGameStats_OtherPlayer"/>
+							<Panel id="OtherPlacementRoundContainer">
+								<Label class="OtherPlayerPlacementText" text="#DAC_PostGameStats_RoundRanking"/>
+								<Label class="OtherPlayerRoundLostText" text="#DAC_PostGameStats_RoundEliminated"/>
+								<Label class="OtherPlayerStillPlayingText" text="#DAC_PostGameStats_StillPlaying"/>
+							</Panel>
+							<Label class="OtherPlayerRankLabel"  html="true" text="{s:vs_result}"/>
+							<Panel id="OtherPlayerGenericStats">
+								<Label text="#DAC_PostGameStats_PlayerHealth"/>
+								<Label text="#DAC_PostGameStats_PlayerGold"/>
+							</Panel>
+							<Label class="OtherPlayerRankLabel" text="#DAC_PostGameStats_PlayerGoldSpentOnRerolls"/>
+							<Label class="OtherPlayerRankLabel" text="#DAC_PostGameStats_PlayerGoldSpentOnLvlUp"/>
+							<Label class="OtherPlayerRankLabel" text="#DAC_PostGameStats_PlayerGoldSpentOnUnits"/>
+						</Panel>
+					</Panel>
+				</Panel>
+				<Panel id="OtherPlayerStats">					
+					<Panel id="OtherPlayerUnits">
+						<Label class="OtherPlayerTitleLabel" text="#DAC_Units"/>
+						<Panel id="OtherPlayerUnitsContainer">
+							<!-- code generated -->
+						</Panel>
+
+					</Panel>
+					<Panel id="OtherPlayerSynergies">
+						<Label class="OtherPlayerTitleLabel" text="#DAC_Synergies"/>
+						<Panel id="OtherPlayerSynergyContainer">
+							<!-- code generated -->
+						</Panel>
+					</Panel>
+					<Panel id="OtherPlayerItems">
+						<Label class="OtherPlayerTitleLabel" text="#DAC_GlobalItems"/>
+						<Panel id="OtherPlayerItemsContainer">
+							<!-- code generated -->
+						</Panel>
+					</Panel>
+				</Panel>
+			</Panel>			
+		</Panel>
+		<Panel id="BottomRow">
+			<Button id="MainMenuButton" class="PopupButton" onactivate="DACReturnToDashboard( true )">
+				<Label text="#DAC_InGame_ReturnToMainMenu" />
+			</Button>
+			<Panel id="SliderContainer">
+				<SlottedSlider id="RoundScrubSlider" class="HorizontalSlider Hidden" direction="horizontal" />
+			</Panel>
+			<Button id="SpectateButton" class="PopupButton">
+				<Label text="#DAC_InGame_KeepWatching"/>
+			</Button>
+		</Panel>
+	</DACPostGameStats>
+</root>

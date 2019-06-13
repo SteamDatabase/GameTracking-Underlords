@@ -1,0 +1,64 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/gamestyles.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popup_friend_code.vcss_c" />
+  </styles>
+
+
+  <Panel class="PopupPanel Hidden AddFriendPanel" popupbackground="dim">
+    <Label text="#DAC_FriendCode_Title" id="AddFriendTitle" class="PopupTitle"/>
+
+    <Panel id="CodeContainer">
+      <Panel id="CodeEnter">
+        <Label id="CodeEnterLabel" class ="FriendCodeMainText CodeEnterTitle" text="#DAC_FriendCode_AddFriendLabel"/>
+        <TextEntry id="FriendCodeEntry" placeholder="#DAC_FriendCode_AddFriendPrompt" oninputsubmit="DACPopupFriendCodeAddFriend()" />
+        <Button id="AddFriendButton" class="PopupButton" onactivate="DACPopupFriendCodeAddFriend()">
+          <Label text="#DAC_FriendCode_AddFriendButton" />
+        </Button>
+        <Panel id ="CodeEnterCodeDisplayWaiting">
+          <Label id="CodeEnterWaiting" text="#DAC_FriendCode_WaitingOnCode"/>
+        </Panel>
+      </Panel>
+
+      <Panel id="CodeGen">
+        <Label id="CodeGenLabel" class ="FriendCodeMainText CodeGenTitle" text="#DAC_FriendCode_GeneratedCodeLabel"/>
+        <Panel id ="CodeGenCodeDisplay">
+          <Button id="CodeCopyButton" onactivate="DACPopupFriendCodeReconnectCopyCode()">
+            <Label id="CodeGenCode" class ="FriendCodeText" text="{s:code}"/>
+          </Button>
+          <Label id="CodeGenCodeExpire" class ="FriendCodeTextSmaller" text="#DAC_FriendCode_Expiration"/>
+          <Label id="CodeGenCodeUses" class ="FriendCodeTextSmaller" text="#DAC_FriendCode_UsesLeft"/>
+          <Button id="RevokeCodeButton" class="PopupButton" onactivate="DACPopupFriendCodeRevoke()">
+            <Label text="#DAC_FriendCode_RevokeCodeButton" />
+          </Button>
+        </Panel>
+        <Panel id ="CodeGenCodeDisplayWaiting">
+          <Button id="ReconnectCodeButton" class="PopupButton" onactivate="DACPopupFriendCodeReconnect()">
+            <Label text="#DAC_FriendCode_Reconnect" />
+          </Button>
+        </Panel>
+        <Panel id ="CodeGenCodeDisplayGen">
+          <Button id="GenerateCodeButton" class="PopupButton" onactivate="DACPopupFriendCodeGenerate()">
+            <Label text="#DAC_FriendCode_GenerateCodeButton" />
+          </Button>
+        </Panel>
+      </Panel>
+    </Panel>
+
+    <Panel id="ConnectingContainer">
+      <Panel id="LogoThrobber"/>
+      <Panel id="ConnectingLabel">
+        <Label text="#DAC_FriendCode_GCContact"/>
+      </Panel>
+    </Panel>
+
+    <Panel class="PopupButtonRow">
+      <Button class="PopupButton AddFriendCloseButton" onactivate="UIPopupButtonClicked()">
+        <Label text="#DAC_PartyInviteFriend_Close" />
+      </Button>
+    </Panel>
+
+  </Panel>
+</root>

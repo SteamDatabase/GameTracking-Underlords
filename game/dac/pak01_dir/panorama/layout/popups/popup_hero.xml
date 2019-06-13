@@ -1,0 +1,156 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/gamestyles.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popup_hero.vcss_c" />
+  </styles>
+
+  <Panel class="PopupPanel Hidden UnitRank1" popupbackground="blur" onactivate="UIPopupButtonClicked( close )">
+    <Panel class="Inner">
+      <Panel class="Header">
+        <Image id="HeroIcon"/>
+        <Label class="HeaderText" text="{s:hero_name}" />
+        <Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
+      </Panel>
+      <Panel class="Body">
+        <Panel class="BodyLeft">
+          <Panel id="CostContainer">
+              <Label id="CostNumber" text="{i:UnitCost}" />
+         </Panel>
+         <DACSynergyCapsule id="SynergyCapsule" class="SynergyCapsule"/>
+          <DACUnitScenePanel id="HeroImage" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" usePortraitData="true" cleardepth="true" hittest="true">
+            <Panel id="BorderContainer" hittest="false"  />
+            <Panel id="BottomFade" hittest="false" />
+            <!--<Panel class="RotationButtons">
+              <Panel class="Arrow"/>
+              <Panel class="Arrow Right"/>
+            </Panel>-->
+          </DACUnitScenePanel>
+          <Panel class="RankToggleContainer">
+            <Button id="RankToggle1" class="RankToggle" onactivate="HeroPopupSetHeroRank( 1 );">
+              <Label text="#dac_hero_rank1"/>
+            </Button>
+            <Button id="RankToggle2" class="RankToggle" onactivate="HeroPopupSetHeroRank( 2 );">
+              <Label text="#dac_hero_rank2"/>
+            </Button>
+            <Button id="RankToggle3" class="RankToggle" onactivate="HeroPopupSetHeroRank( 3 );">
+              <Label text="#dac_hero_rank3"/>
+            </Button>
+          </Panel>
+        </Panel>
+        <Panel class="BodyRight">
+          <Panel id="UnitAbilityContainer">
+            <Label id="AbilityTitle" text="{s:ability_name}" />
+            <Panel id="UnitAbilityContainerSub">
+              <Panel id="UnitAbilityLeft">
+                <Image src="s2r://panorama/images/heroes/spellicons/empty_png.vtex" />
+                <Image id="UnitAbility" >
+                  <Panel id="BorderContainer" />
+                </Image>
+              </Panel>
+              <Panel id="UnitAbilityRight">
+                <Label id="AbilityDesc" html="true" text="{s:ability_description}" />
+                <Label id="AbilityStat" html="true" class="AbilityStat" text="#DAC_AbilityTooltip_Cooldown" />
+                <Label id="AbilityLore" html="true" text="{s:ability_lore}" />
+              </Panel>
+            </Panel>
+          </Panel>
+          <Panel id="StatStars" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#dac_star_level" />
+            <Label id="Stat1" class="StatLabel" text="#dac_hero_rank1" />
+            <Label id="Stat2" class="StatLabel" text="#dac_hero_rank2" />
+            <Label id="Stat3" class="StatLabel" text="#dac_hero_rank3" />
+          </Panel>
+          <Panel id="StatsHealth" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_Health" />
+            <Label id="Stat1" class="StatLabel" text="{i:maxHealth1}" />
+            <Label id="Stat2" class="StatLabel" text="{i:maxHealth2}" />
+            <Label id="Stat3" class="StatLabel" text="{i:maxHealth3}" />
+          </Panel>
+          <Panel id="MaxMana" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_Mana" />
+            <Label id="Stat1" class="StatLabel" text="{i:maxMana1}" />
+            <Label id="Stat2" class="StatLabel" text="{i:maxMana2}" />
+            <Label id="Stat3" class="StatLabel" text="{i:maxMana3}" />
+          </Panel>
+          <Panel id="StatDPS" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#dac_chart_type_dps" />
+            <Label id="Stat1" class="StatLabel" text="{i:dps1}" />
+            <Label id="Stat2" class="StatLabel" text="{i:dps2}" />
+            <Label id="Stat3" class="StatLabel" text="{i:dps3}" />
+          </Panel>
+          <Panel id="StatDamage" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#dac_chart_type_damagedealt" />
+            <Label id="Stat1" class="StatLabel" text="{s:damage1}" />
+            <Label id="Stat2" class="StatLabel" text="{s:damage2}" />
+            <Label id="Stat3" class="StatLabel" text="{s:damage3}" />
+          </Panel>
+          <Panel id="AttackSpeed" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_AttackSpeed" />
+            <Label id="Stat1" class="StatLabel" text="{f:attackSpeed1}" />
+            <Label id="Stat2" class="StatLabel" text="{f:attackSpeed2}" />
+            <Label id="Stat3" class="StatLabel" text="{f:attackSpeed3}" />
+          </Panel>
+          <Panel id="MoveSpeed" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_MoveSpeed" />
+            <Label id="Stat1" class="StatLabel" text="{i:moveSpeed}" />
+            <Label id="Stat2" class="StatLabel" text="{i:moveSpeed}" />
+            <Label id="Stat3" class="StatLabel" text="{i:moveSpeed}" />
+          </Panel>
+          <Panel id="AttackRange" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_AttackRange" />
+            <Label id="Stat1" class="StatLabel" text="{i:attackRange}" />
+            <Label id="Stat2" class="StatLabel" text="{i:attackRange}" />
+            <Label id="Stat3" class="StatLabel" text="{i:attackRange}" />
+          </Panel>
+          <Panel id="MagicResist" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_MagicResist" />
+            <Label id="Stat1" class="StatLabel" text="{i:magicResist1}" />
+            <Label id="Stat2" class="StatLabel" text="{i:magicResist2}" />
+            <Label id="Stat3" class="StatLabel" text="{i:magicResist3}" />
+          </Panel>
+          <Panel id="Armor" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_Armor" />
+            <Label id="Stat1" class="StatLabel" text="{i:armor1}" />
+            <Label id="Stat2" class="StatLabel" text="{i:armor2}" />
+            <Label id="Stat3" class="StatLabel" text="{i:armor3}" />
+          </Panel>
+          <Panel id="StatsHealthRegen" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_HealthRegen" />
+            <Label id="Stat1" class="StatLabel" text="{i:healthRegen1}" />
+            <Label id="Stat2" class="StatLabel" text="{i:healthRegen2}" />
+            <Label id="Stat3" class="StatLabel" text="{i:healthRegen3}" />
+          </Panel>
+          <!--<Panel id="DamageMax" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_DamageMax" />
+            <Label id="Stat1" class="StatLabel" text="{i:damageMax1}" />
+            <Label id="Stat2" class="StatLabel" text="{i:damageMax2}" />
+            <Label id="Stat3" class="StatLabel" text="{i:damageMax3}" />
+          </Panel>
+          <Panel id="DamageMin" class="StatRow">
+            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_DamageMin" />
+            <Label id="Stat1" class="StatLabel" text="{i:damageMin1}" />
+            <Label id="Stat2" class="StatLabel" text="{i:damageMin2}" />
+            <Label id="Stat3" class="StatLabel" text="{i:damageMin3}" />
+          </Panel>-->
+          <Label id="UnitLoreText" html="true" text="{s:unit_lore}"/>
+        </Panel>
+      </Panel>
+    </Panel>
+    <Panel class="NavigationButtons" hittest="false">
+      <Button class="Previous BevelButton" onactivate="HeroPopupSetPrevious();">
+        <Image class="Arrow"/>
+        <Label text="{s:previous_hero_name}"/>
+      </Button>
+      <Button class="Next Right BevelButton" onactivate="HeroPopupSetNext();">
+        <Label class="Right" text="{s:next_hero_name}"/>
+        <Image class="Arrow"/>
+      </Button>
+    </Panel>
+    
+  </Panel>
+  
+  
+  
+</root>

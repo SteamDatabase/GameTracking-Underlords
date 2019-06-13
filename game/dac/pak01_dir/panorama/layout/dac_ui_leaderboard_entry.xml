@@ -1,0 +1,49 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_leaderboard_entry.vcss_c" />
+	</styles>
+
+	<DACLeaderboardEntry>
+		
+		<Panel class="LeaderboardTargetIndicator">
+			<Image class="SwordIcon" src="s2r://panorama/images/leaderboard/icon_vs_psd.vtex" hittest="false" />
+			<Image class="DefendIcon" src="s2r://panorama/images/leaderboard/icon_defend_psd.vtex" hittest="false" />
+		</Panel>
+
+		<DACScenePanel id="ParticleBG" hittest="false" map="particles/leaderboard/streak_bkg" camera="cam_default" particleonly="true" />
+		<DACScenePanel id="ParticleFG" hittest="false" map="particles/leaderboard/streak" camera="cam_default" particleonly="true" />
+		
+		<Panel class="PlayerLeaderboard" hittest="true" onmouseover="PlaySoundEffect( 'DAC_UI.AvatarRollover' );">
+			<Panel class="LeftConnector"/>
+			<DACPlayerAvatar id="LeaderboardAvatar" />
+			<Image class="LeaderboardBackground" src="s2r://panorama/images/leaderboard/background_panel_psd.vtex" hittest="false" />
+			<Image class="LeaderboardSelfIndicator" src="s2r://panorama/images/leaderboard/self_glow_psd.vtex" hittest="false" />			
+			<Panel id="LeaderBoardBackgroundStrip"/>
+			
+			<Panel class="StatsContainer TopBottomFlow">
+				<Panel id="GoldStat" class="LeftRightFlow">
+					<Label id="LeaderboardGold" text="{d:leaderboard_Gold}" />
+					<Image class="GoldIcon" src="s2r://panorama/images/leaderboard/icon_gold_psd.vtex" hittest="false" />	
+				</Panel>
+				<Panel class="HealthContainer LeftRightFlow" >
+					<Label id="LeaderboardHealth" text="{d:leaderboard_Health}" />
+					<Panel class="HealthIcon" src="s2r://panorama/images/leaderboard/icon_health_psd.vtex" hittest="false" />
+				</Panel>
+			</Panel>
+			<Image class="LeaderboardDisconnectedIndicator" src="s2r://panorama/images/leaderboard/disconnected_glow_psd.vtex" hittest="false" />
+			<Label id="LeaderboardLevel" text="{d:leaderboard_Level}" />
+			<Panel class="LeaderboardBelow LeftRightFlow">
+				<Label text="{g:dac_player_slot_persona:b:leaderboard_Slot}" html="true"/>
+				<Panel class="LeaderboardIndicator">
+					
+				</Panel>
+			</Panel>
+			<Image class="LeaderboardDefeatedIndicator" src="s2r://panorama/images/leaderboard/defeated_glow_psd.vtex" hittest="false" />
+
+
+		</Panel>
+
+	</DACLeaderboardEntry>
+</root>

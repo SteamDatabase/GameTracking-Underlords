@@ -1,0 +1,64 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_page_heropedia_heroes_bysynergy.vcss_c" />
+	</styles>
+	<snippets>
+
+		<snippet name="HeroSnippet">
+			<Panel class="HeroContainer">
+				<Image id="HeroIcon" class="Icon">
+					<Panel id="CostContainer">
+						<Label id="CostNumber" text="{i:UnitCost}" />
+					</Panel>
+				</Image>
+				<!--Switch synergy capsules-->
+				<DACSynergyCapsule id="SynergyCapsulePC"/>
+				<DACSynergyCapsule id="SynergyCapsuleMobile" notooltip="1"/>
+				<Label text="{s:hero_name}"/>
+			</Panel>
+		</snippet>
+
+		<snippet name="SynergySnippet">
+
+			<Panel class="MainContainer">
+
+				<Panel class="Tier1 HeaderContainer">
+					<DACSynergyIcon id="SynergyIcon" iconstyle="circle" notooltip="1"/>
+					<Label class="HeaderLabel" text="{s:synergy_name}"/>
+				</Panel>
+
+				<Panel class="BodyContainer">
+
+					<Panel class="SynergyStats">
+						<Panel id="LevelRow1" class="LevelRow">
+							<DACSynergyIcon id="Row1SynergyIcon" class="SynergyIconList" iconstyle="levels" tooltip="false" />
+							<Label class="LevelDescription" text="{s:level_1_desc}" />
+						</Panel>
+						<Panel id="LevelRow2" class="LevelRow">
+							<DACSynergyIcon id="Row2SynergyIcon" class="SynergyIconList" iconstyle="levels" />
+							<Label class="LevelDescription" text="{s:level_2_desc}" />
+						</Panel>
+						<Panel id="LevelRow3" class="LevelRow">
+							<DACSynergyIcon id="Row3SynergyIcon" class="SynergyIconList" iconstyle="levels" />
+							<Label class="LevelDescription" text="{s:level_3_desc}" />
+						</Panel>
+					</Panel>
+
+					<Panel id="HeroIconList"/>
+
+				</Panel>
+			</Panel>
+
+		</snippet>
+
+	</snippets>
+
+	<DACHeropediaHeroesBySynergyPage hittest="false">
+		<Panel id="SectionTitleArea">
+			<Label id="SectionName" text="#DAC_InGame_Tab_Heroes" />
+			<Label id="SectionType" text="#DAC_Heropedia_BySynergy" />
+		</Panel>
+		<Panel id="SynergyList" class="HeropediaList"/>
+	</DACHeropediaHeroesBySynergyPage>
+</root>

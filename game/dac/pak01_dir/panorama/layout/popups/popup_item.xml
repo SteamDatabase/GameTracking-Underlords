@@ -1,0 +1,28 @@
+<root>
+	<styles>
+	<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+	<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+	<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+	<include src="s2r://panorama/styles/popups/popup_item.vcss_c" />
+  </styles>
+
+	<Panel class="PopupPanel Hidden" popupbackground="blur" onactivate="UIPopupButtonClicked( close )">
+		<Panel class="Header">
+      <Image class="ItemTypeIcon"/>
+			<Label text="{s:item_name}" />
+			<Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
+		</Panel>
+		<Panel class="Body">
+      <Panel class="Left">
+        <Image id="ItemImage" src="s2r://panorama/images/heroes/spellicons/empty_png.vtex"/>
+        <Panel id="CostContainer">
+          <Label id="CostNumber" text="{i:UnitCost}" />
+        </Panel>
+      </Panel>
+			<Panel class="Right">
+        <Label class="DescriptionText" html="true" text="{s:item_description}" />
+        <Label id="ItemLore" class="LoreText" html="true" text="{s:item_lore}" />
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

@@ -1,0 +1,45 @@
+<root>
+	<styles>
+	<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+	<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+	<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+	<include src="s2r://panorama/styles/popups/popup_player_state.vcss_c" />
+  </styles>
+	
+	<snippets>
+		<snippet name="UnitIcon">
+			<Panel class="UnitIcon">
+				<Image class="HeroIcon" id="HeroIcon"/>
+				<Label class="HeroRankLabel" text="{s:heroRankStr}" />
+			</Panel>
+		</snippet>
+				
+	</snippets>
+
+
+	<Panel class="PopupPanel Hidden" popupbackground="blur" onactivate="UIPopupButtonClicked( close )">
+		<Panel class="Header">
+			<Image id="AvatarIcon" />
+			<Label class="HeaderText" text="{g:dac_player_slot_persona:b:player_slot}" html="true"/>
+			<Panel id="StatsBox">
+				<Label class="HealthText" text="{d:health}" />
+				<Label class="LevelText" text="#DAC_PlayerState_Level" />
+			</Panel>
+			<Button class="CloseButton" onactivate="UIPopupButtonClicked()" />			
+		</Panel>
+		<Panel class="Body">
+			<Panel class="BodyItem">
+				<Label text="#DAC_PlayerState_ActiveUnits" />
+				<Panel class="BodyItemRow" id="ActiveUnitRow" />
+			</Panel>
+			<Panel class="BodyItem">
+				<Label text="#DAC_PlayerState_BenchUnits" />
+				<Panel class="BodyItemRow" id="BenchUnitRow" />
+			</Panel>
+			<Panel class="BodyItem">
+				<Label text="#DAC_PlayerState_Synergies" />
+				<Panel class="BodyItemRow" id="SynergyRow" />
+			</Panel>
+		</Panel>		
+	</Panel>
+</root>

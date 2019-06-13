@@ -1,0 +1,58 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/gamestyles.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popup_steam_login.vcss_c" />
+  </styles>
+
+  <PopupSteamLogin popupbackground="dim">
+    <Panel class="Contents PopupPanel">
+      <Panel class="LoginContainer" id="LoginDataEntryContainer">
+        <Panel id="LogInDataEntryContainer">
+          <Panel class="LogInDataEntry" id="SteamIDEntry">
+            <Label text="#DAC_SteamAccountName" class="SettingTitle" />
+            <TextEntry id="SteamIDTextEntry" class="SettingsTextEntryUserName" oninputsubmit="DACLoginUsernameEntered()" />
+          </Panel>
+
+          <Panel class="LogInDataEntry" id="SteamPasswordEntry">
+            <Panel id="PasswordTitle">
+              <Label text="#DAC_SteamAccountPassword" class="SettingTitle" />
+              <Panel id="ViewPasswordIcon" class="LogInDescBullet" onactivate="DACShowSteamPasswordClicked()"/>
+            </Panel>
+            <TextEntry id="SteamPasswordTextEntry" class="SettingsTextEntryPassword" textmode="password" oninputsubmit="DACLoginPasswordEntered()" />
+          </Panel>
+
+          <Panel class="LogInDataEntry" id="SteamGuardEntry">
+            <Label id="SteamGuardLabel" text="#DAC_SteamGuardCode" class="SettingTitle" />
+            <TextEntry id="SteamGuardTextEntry" class="SettingsTextEntryUserName" oninputsubmit="DACLoginSteamguardEntered()" />
+          </Panel>
+        </Panel>
+      </Panel>
+      <Panel class="LoginContainer" id="LoginOrNeedHelpContainer">
+        <Panel id="LogInButtonContainer">
+          <Button class="PopupButton LoginButton" id="SteamLoginButton" onactivate="DACAttemptSteamLogin()">
+            <Label text="#DAC_SteamAccountLogin" />
+          </Button>
+          <Button class="PopupButton LoginButton" id="HelpButton" onactivate="DACSteamLoginHelp()">
+            <Label text="#DAC_SteamLogIn_Help" />
+          </Button>
+          <Button class="PopupButton LoginButton" id="CancelButton" onactivate="UIPopupButtonClicked()">
+            <Label text="#Cancel" />
+          </Button>
+        </Panel>
+      </Panel>
+      <Panel class="ConnectingContainer">
+        <Panel id="ConnectingDesc">
+          <Panel id="LogoThrobber"/>
+          <Panel id="ConnectingLabel">
+            <Label text="#DAC_SteamLogIn_Connecting"/>
+          </Panel>
+        </Panel>
+        <Button class="PopupButton LoginButton" id="CancelLoginButton" onactivate="DACCancelSteamLogin()">
+          <Label text="#Cancel" />
+        </Button>
+      </Panel>
+    </Panel>
+  </PopupSteamLogin>
+</root>

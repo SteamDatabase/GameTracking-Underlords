@@ -1,0 +1,3220 @@
+DACUIHud {
+	width: 100%;
+	height: 100%;
+	visibility: collapse;
+}
+
+DACUIHud.IsConnected {
+	visibility: visible;
+}
+
+#WorldVignette
+{
+	width: 100%;
+	height: 100%;
+	background-image: url("s2r://panorama/images/hud/hud_vignette_psd.vtex");
+	background-size: 100%;
+	
+	opacity: 1;
+	transition-property: opacity;
+	transition-duration: 1s;
+	//visibility: collapse; 
+}
+
+.EGameState_Intro #WorldVignette
+{
+	opacity: .01;
+}
+
+#DeadOverlayPanel, #WinOverlayPanel
+{
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	visibility: collapse;
+	flow-children: down;
+}
+
+#WinOverlayPanel #HeroImage,
+#DeadOverlayPanel #HeroImage
+{
+	visibility: visible;
+	width: 100px;
+	height: 100px;
+	margin-right: 0px;
+	opacity-mask: url("s2r://panorama/images/masks/portrait_scratch_psd.vtex") 1;
+}
+
+#WinOverlayPanel .HeroRoster,
+#DeadOverlayPanel .HeroRoster
+{
+	flow-children: right-wrap;
+}
+
+#DeadOverlayPanel .PlaceTitle, 
+#WinOverlayPanel .PlaceTitle
+{
+	background-color: #fff;
+	height: 160px;
+	box-shadow: 0px 0px 3px #ffffff;
+	font-size: 130px;
+	font-weight: black;
+	letter-spacing: 2px;
+	color: #000;
+	//text-shadow: 0px 0px 0px 3.0 black;
+	horizontal-align: center;
+	vertical-align: middle;
+	text-transform: uppercase;
+	margin-top: 60px;
+	transform: rotateZ(1deg);
+	transition-duration: 4s;
+	transition-timing-function: ease-in;
+	transition-property: color;
+	padding: 0px 48px;
+}
+
+.IsLocalPlayerDead #DeadOverlayPanel .PlaceQuote,
+#WinOverlayPanel .PlaceQuote
+{
+	/* margin-top: 220px; */
+	color: #fff;
+	font-size: 24px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-style: italic;
+	font-weight: semi-bold;
+	padding: 8px 10px 4px 10px;
+	horizontal-align: center;
+	transform: rotateZ(1deg);
+	vertical-align: top;
+	transition-duration: 4s;
+	transition-timing-function: ease-in;
+	transition-property: color;
+	background-image: url("s2r://panorama/images/hud/black-bg_jpg.vtex");
+	background-size: cover;
+	box-shadow: 0px 0px 3px #000000;
+}
+
+.Language_schinese.IsLocalPlayerDead #DeadOverlayPanel .PlaceQuote,
+.Language_schinese #WinOverlayPanel .PlaceQuote,
+.Language_tchinese.IsLocalPlayerDead #DeadOverlayPanel .PlaceQuote,
+.Language_tchinese #WinOverlayPanel .PlaceQuote
+{
+	margin-top: 220px;
+}
+
+.LowVisualQuality #DeadOverlayPanel Label,
+.LowVisualQuality #WinOverlayPanel Label
+{
+	transition-property: none;
+	transition-duration: 0.0s;
+}
+
+.IsLocalPlayerDead #DeadOverlayPanel,
+.IsWinner #WinOverlayPanel {
+	visibility: visible;
+}
+
+.HideDeathPanel.IsLocalPlayerDead #DeadOverlayPanel {
+	visibility: collapse;
+}
+
+#WinOverlayPanel,
+#DeadOverlayPanel
+{
+	background-image: url("s2r://panorama/images/hud/post_game/post-game-bg_jpg.vtex");
+	background-size: cover;
+	background-position: center;
+}
+
+.LowVisualQuality #WinOverlayPanel,
+.LowVisualQuality #DeadOverlayPanel
+{
+	background-image: url("s2r://panorama/images/hud/post_game/post-game-bg-lowres_jpg.vtex");
+	background-size: cover;
+}
+
+.IsPlatformMobile #WinOverlayPanel,
+.IsPlatformMobile #DeadOverlayPanel
+{
+	background-image: url("s2r://panorama/images/hud/post_game/post-game-bg-mobile_jpg.vtex");
+	background-size: cover;
+	background-position: center;
+}
+
+#WinOverlayPanel .ButtonContainer,
+#DeadOverlayPanel .ButtonContainer
+{
+	flow-children: right;
+	width: 100%;
+	vertical-align: bottom;
+	margin-bottom: 40px;
+	//margin-right: 60px;
+}
+
+#WinOverlayPanel .PostGameButtons,
+#DeadOverlayPanel .PostGameButtons
+{
+	height: 100%;
+	margin-right: 60px;
+	horizontal-align: right;
+	flow-children: down;
+}
+
+#WinOverlayPanel .PostGameButtons Label,
+#DeadOverlayPanel .PostGameButtons Label
+{
+	font-size: 32px;
+    text-overflow: shrink;
+	font-weight: black;
+	letter-spacing: 4px;
+    vertical-align: center;
+	horizontal-align: center;
+	padding-top: 6px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.GlassButton {
+    width: 320px;
+    height: 64px;
+    background-image: url("s2r://panorama/images/hud/post_game/glass-texture_png.vtex");
+	background-size: cover;
+	background-repeat: no-repeat;
+	vertical-align: bottom;
+	margin-left: 60px;
+	box-shadow: inset 0px 0px 6px #ffffff50;
+	transition-property: brightness;
+	transition-duration: .2s; 
+}
+
+.GlassButton:hover
+{
+    brightness: 1.5;
+}
+
+.HomeButton {
+    /* horizontal-align: left;
+    //width: 585px;
+    width: 400px;
+    height: 123px;
+    background-image: url("s2r://panorama/images/dashboard/play_btn_bg_psd.vtex");
+	background-size: 100%;
+	margin-top: 20px;
+	transition-property: brightness;
+	transition-duration: .2s;  */
+	horizontal-align: left;
+    width: 500px;
+    height: 133px;
+    background-image: url("s2r://panorama/images/dashboard/play_btn_bg_psd.vtex");
+	background-size: 100%;
+	margin-left: 60px;
+	transition-property: brightness;
+	transition-duration: .2s; 
+}
+
+.HomeButton:hover
+{
+    brightness: 1.5;
+}
+
+#GoOnlineButton {
+    visibility: collapse;
+}
+
+.IsTutorialDisabled #TutorialButton {
+    visibility: collapse;
+}
+
+#WinOverlayPanel .HomeButton Label,
+#DeadOverlayPanel .HomeButton Label 
+{
+	font-size: 120px;
+	width: 100%;
+	text-overflow: shrink;
+	overflow: noclip;
+	text-align: center;
+	font-weight: black;
+	letter-spacing: 4px;
+    vertical-align: center;
+    horizontal-align: center;
+    //margin-left: 60px;
+	margin-top: 20px;
+    color: #ffffff;
+    text-transform: uppercase;
+    transform: rotateZ(-2deg);
+    text-shadow: 0px 1px 0px 3.0 #000;
+}
+
+.Language_schinese #WinOverlayPanel .HomeButton Label,
+.Language_schinese #DeadOverlayPanel .HomeButton Label,
+.Language_tchinese #WinOverlayPanel .HomeButton Label,
+.Language_tchinese #DeadOverlayPanel .HomeButton Label,
+{
+    font-size: 80px;
+}
+
+.tilt-left
+{
+	transform: rotateZ(-2deg);
+}
+
+
+.tilt-right
+{
+	transform: rotateZ(2deg);
+}
+
+.PlaceContainer
+{
+	horizontal-align: center;
+	width: 100%;
+	flow-children: down;
+	padding-bottom: 20px;
+}
+
+.SynergyContainer
+{
+	horizontal-align: center;
+	flow-children: down;
+	margin-top: 40px;
+}
+
+.final-synergies
+{
+	flow-children: right;
+	horizontal-align: center;
+	margin-top: 8px;
+}
+
+.final-synergies DACSynergyIcon
+{
+	ui-scale: 50%;
+	margin-right: -12px;
+}
+
+.FinalCrewTitle
+{
+	font-size: 24px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	text-align: center;
+	horizontal-align: center;
+	color: #fff;
+	margin-top: 4px;
+	background-color: #000;
+	padding: 8px 12px 4px 12px;
+	text-transform: uppercase;
+	box-shadow: 0px 0px 3px #000000;
+}
+
+.StatsContainer
+{
+	horizontal-align: center;
+	flow-children: right;
+	margin-top: 20px;
+}
+
+.StatsSubContainer
+{
+	min-width: 250px;
+	flow-children: down;
+}
+
+.StatsSubContainer Label
+{
+	horizontal-align: center;
+	//line-height: 40px;
+}
+
+.BigStat
+{
+	font-size: 84px;
+	font-weight: black;
+	text-shadow: 0px 0px 0px 2.0 black;
+	color: white;
+}
+
+.StatDescription
+{
+	font-size: 24px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	text-align: center;
+	color: #fff;
+	margin-top: -32px;
+	background-color: #000;
+	padding: 8px 12px 4px 12px;
+	text-transform: uppercase;
+	box-shadow: 0px 0px 3px #000000;
+}
+
+.HeroRoster
+{
+	vertical-align: bottom;
+	horizontal-align: center;
+	flow-children: right;
+}
+
+.HeroRoster Label
+{
+	horizontal-align: center;
+	//margin-bottom: 350px;
+	font-size: 60px;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #000000cc;
+	margin-top: 2px;
+	letter-spacing: 2px;
+}
+
+// new debug menu stuff
+
+.InDeveloperMode #DebugMenuWrapper {
+	visibility: visible;
+}
+
+
+#DebugMenuWrapper {
+	horizontal-align: right;
+	vertical-align: bottom;
+	width: fit-children;
+	height: fit-children;
+	flow-children: right;
+	background-color: #000000ef;
+	padding: 3px;
+	margin-bottom: 50px;
+	visibility: collapse;
+}
+
+.UnitSelected #DebugMenuWrapper {
+	opacity: 0.3;
+}
+
+#DebugMenuWrapper Label
+{
+	color: white;
+}
+
+#DebugMenu
+{
+	flow-children: down;
+	max-width: 500px;
+	visibility: collapse;
+}
+
+#OpenDebugMenuButton 
+{
+	width: 75px;
+	height: 75px;
+	background-color: #444444;
+	border-radius: 5px;
+	vertical-align: bottom;	
+	horizontal-align: right;
+}
+
+#CloseDebugMenuButton 
+{
+	width: 75px;
+	height: 75px;
+	background-color: #777777;
+	border-radius: 5px;
+	visibility: collapse;
+	vertical-align: bottom;	
+	horizontal-align: right;	
+}
+
+#DebugMenuWrapper .DebugText
+{
+	horizontal-align: center;
+	vertical-align: center;
+	font-size: 16px;
+	background-color: none;
+	animation-name: none;
+}
+
+.DebugMenuOpen #DebugMenu,
+.DebugMenuOpen #CloseDebugMenuButton
+{
+	visibility: visible;
+}
+
+.DebugMenuOpen #OpenDebugMenuButton
+{
+	visibility: collapse;
+}
+
+
+.DebugSection
+{
+	margin-bottom: 4px;
+}
+
+.CombatListSection
+{
+	//min-height: 100px;
+	max-height: 500px;
+}
+
+#CombatSelectorContainer
+{
+	font-size: 16px;
+	max-height: 400px;
+}
+
+#RoundSelector
+{
+	flow-children: right-wrap;
+}
+
+#CombatSelectorContainer Label
+{
+	border: 1px solid transparent;
+	margin: 1px 8px;
+	padding-top: 2px;
+}
+
+#CombatSelectorContainer RadioButton
+{
+	color: white;
+	background-color: #33333300;
+	text-align: center;
+	border: 1px solid transparent;
+}
+
+#CombatSelectorContainer RadioButton:selected
+{
+	border: 1px solid white;
+}
+
+#ButtonCombatAdvance
+{
+	height: 60px;
+}
+
+#ButtonCombatAdvance Label
+{
+	font-size: 24px;
+}
+
+.DevButton
+{
+	height: 40px;
+	width: fit-children;
+	padding: 10px;
+	border-radius: 4px;
+	background-color: black;
+}
+
+.DevButton:hover
+{
+	background-color: #444;
+}
+
+.DevButton Label
+{
+	color: white;
+	font-size: 18px;
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+#HudModeDropdown
+{
+	vertical-align: bottom;
+	width: 200px;
+}
+
+.EGameState_Intro.ERoundState_Ready #PlayerStateContainer
+{
+	visibility: collapse;
+}
+
+#PlayerStateContainer
+{
+	horizontal-align: left;
+	margin: 10px 0 0 250px;
+	padding: 3px;
+}
+
+#PowerBarContainer
+{
+	width: 40px;
+	height: 840px;
+
+	horizontal-align: right;
+	margin-right: 140px;
+	margin-top: 110px;
+
+	border: 1px solid #888;
+	background-color: #444;
+
+	flow-children: down;
+
+	visibility: collapse;
+}
+
+.InDeveloperMode #PowerBarContainer
+{
+	margin-right: 25%;
+}
+
+#PowerBarContainer > Label
+{
+	color: white;
+	horizontal-align: center;
+	font-size: 25px;
+}
+
+.ERoundState_Combat #PowerBarContainer,
+.ERoundState_RoundOver #PowerBarContainer
+{
+	visibility: visible;
+}
+
+.PowerBar
+{
+	height: 380px;
+	width: 100%;
+	margin: 2px;
+
+	padding: 2px;
+}
+
+#AwayPower
+{
+	flow-children: up;
+}
+
+#HomePower
+{
+	flow-children: down;
+}
+
+@keyframes 'PowerBarSegmentFadeOut'
+{
+	0%
+	{
+		opacity: 1;
+		transform: translateX( 0px );
+	}
+	100%
+	{
+		opacity: 0;
+		transform: translateX( 6px );
+	}
+}
+
+.PowerBarSegment
+{
+	width: 100%;
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #0000ff ), to( #0000b6 ) ); 
+	height: 10%;
+}
+
+#AwayPower .PowerBarSegment
+{
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #ff4500 ), to( #c03401 ) ); 
+}
+
+.PowerBarSegment.Dying
+{
+	animation-name: PowerBarSegmentFadeOut;
+	animation-duration: 1.0s;
+}
+
+#PlayerProfile {
+	background-image: url("s2r://panorama/images/hud/dac_profile_bg_png.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+
+	width: 410px;
+	height: 230px;
+}
+
+#PlayerProfileAvatar {
+	margin: 19px 0 0 19px;
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_placeholder_png.vtex");
+	width: 178px;
+	height: 179px;
+	border-radius: 80px;
+}
+
+#PlayerProfileAvatarOverlay {
+	margin: -28px 0 0 -1px;
+
+	width: 226px;
+	height: 251px;
+}
+
+#PlayerEXPContainer {
+	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_bg_png.vtex");
+	width: 141px;
+	height: 141px;
+	position: 230px 15px 0px;
+}
+
+#PlayerHealthGraph {
+	position: 2px 0px 0px;
+	width: 219px;
+	height: 219px;
+	transform: rotateZ(180deg);
+}
+
+#PlayerHealthGraph_FG {
+	background-image: url("s2r://panorama/images/hud/dac_profile_hp_progressbar_fg_png.vtex");
+	width: 209px;
+	height: 209px;
+	transition-property: clip;
+	transition-duration: 200ms;
+	transition-timing-function: ease-out;
+}
+
+#StatusHP {
+	position: 91px 182px 0px;
+	color: #9cfc00;
+	font-size: 25px;
+	text-align: center;
+	width: 42px;
+
+	background-color: #000000;
+}
+
+#ButtonBuyEXP {
+	width: 50px;
+	height: 51px;
+	background-image: url("s2r://panorama/images/hud/dac_profile_levelup_button_png.vtex");
+	position: 330px 16px 0px;
+}
+
+
+#SynergyIcons
+{
+	flow-children: down-wrap-left;
+	horizontal-align: right;
+
+	vertical-align: center;
+}
+
+#SynergyIcons DACSynergyIcon
+{
+	ui-scale: 80%;
+}
+
+#SynergyIcons.SynergyShrinkLevel1 DACSynergyIcon
+{
+	ui-scale: 60%;
+}
+
+#SynergyIcons.SynergyShrinkLevel2 DACSynergyIcon
+{
+	ui-scale: 55%;
+}
+
+.IsPlatformMobile #SynergyIcons DACSynergyIcon
+{
+	ui-scale: 100%;
+}
+
+.IsPlatformMobile #SynergyIcons.SynergyShrinkLevel1 DACSynergyIcon
+{
+	ui-scale: 90%;
+}
+
+.IsPlatformMobile #SynergyIcons.SynergyShrinkLevel2 DACSynergyIcon
+{
+	ui-scale: 80%;
+}
+
+#SynergyIcons DACSynergyIcon
+{
+	width: 180px;
+	height: 0px;
+	overflow: noclip;
+	
+	transition-duration: 0.25s;
+	transition-property: height;
+}
+
+#SynergyIcons DACSynergyIcon.Appear
+{
+	animation-name: SynergyIconAppear;
+	animation-duration: 0.5s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+
+	height: 95px;
+}
+
+#SynergyIcons DACSynergyIcon.AppearInstantly
+{
+	opacity: 1;
+	height: 95px;
+	min-height: 95px;
+	transition-duration: 0.01s;
+	animation-name: none;
+	animation-duration: 0.0s;
+}
+
+#SynergyIcons DACSynergyIcon.FadeOut
+{
+	animation-name: SynergyIconFadeOut;
+	animation-duration: 0.25s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+	height: 95px;
+}
+
+#SynergyIcons DACSynergyIcon.FadeOut.FadeOutShrink
+{	
+	opacity: 0;
+	height: 0px;
+}
+
+.SynergyIconTutorial
+{
+	horizontal-align: center;
+	vertical-align: middle;
+}
+
+/* Tabs */
+
+#TabContainer {
+	horizontal-align: right;
+	margin-right: 80px;
+	height: 100%;
+	vertical-align:top;
+	margin-bottom: 180px;
+	transition-property: opacity;
+	transition-duration: .2s;
+}
+
+.ShopVisible #TabContainer
+{
+	opacity: 0;
+}
+
+#TabContainer #VerticalScrollBar
+{
+	opacity:0;
+}
+
+#TabContainer Button
+{
+	height: 45px;
+	font-size: 20px;
+	width: 100px;
+	min-width: 100px;
+}
+
+#TabContainer
+{
+	height: 3240px;
+	width: 400px;
+	overflow: noclip;
+	transition-property: position;
+	transition-duration: 300ms;
+	flow-children: down;
+	transition-timing-function: ease-in-out;
+}
+
+.TabContainer
+{
+	height: 100%;
+	width: fit-children;
+	horizontal-align: right;
+	margin-right: 80px;
+}
+
+.TabContainer Button
+{
+	height: 45px;
+	font-size: 20px;
+	width: 100px;
+	min-width: 100px;
+}
+
+#DPSTab, #SynergyTab, #ItemsTab
+{
+	height: 100%;
+	width: fit-children;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: 300ms;
+	horizontal-align: right;
+}
+
+
+.TabPageSynergy #SynergyTab,
+.TabPageDPS #DPSTab,
+.TabPageItems #ItemsTab
+{
+	opacity: 1;
+}
+
+#DPSTab > DACDPSChart,
+#ItemsTab > DACInventory
+{
+	vertical-align: middle;
+	horizontal-align: right;
+}
+
+#DPSTab
+{
+	padding-left: 20px;
+}
+
+#SynergyTab,
+#ItemsTab
+{
+	padding-top: 180px;
+	padding-bottom: 170px;
+}
+
+#ItemsTab,
+#DPSTab
+{
+	padding-right: 20px;
+}
+
+#TabContainer
+{
+	visibility: visible;
+}
+
+#UnassignedItemsParticleScenePanel
+{
+	padding-top: 2px;
+	margin: 0px 0 0 5px;
+	width: 72px;
+	height: 72px;
+}
+
+#UnassignedItemsCount
+{
+	visibility: collapse;
+
+	padding-top: 2px;
+	margin: 17px 0 0 22px;
+	width: 38px;
+	height: 38px;
+	
+	background-image: url("s2r://panorama/images/hud/right_tab_items_unassigned_pip_psd.vtex");
+	background-size: 100%;
+	color: #fff;
+	font-size: 26px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #000;
+
+}
+
+.LowVisualQuality #UnassignedItemsCount {
+	text-shadow: 0px 1px 0px 2.0 #000;
+}
+
+.HasUnassignedItems #UnassignedItemsCount {
+	visibility: visible;
+}
+
+.BenchedItemsCount {
+	visibility: collapse;
+	
+	background-image: url("s2r://panorama/images/hud/right_tab_items_bench_pip_psd.vtex");
+	background-size: 100%;
+	color: #fff;
+	font-size: 26px;
+	padding-top: 2px;
+	margin: 117px 0 0 22px;
+	width: 38px;
+	height: 38px;
+	text-align: center;
+	text-shadow: 0px 1px 0px 3.0 #000;
+}
+
+.LowVisualQuality .BenchedItemsCount {
+	text-shadow: 0px 1px 0px 2.0 #000;
+}
+
+.HasBenchedItems .BenchedItemsCount {
+	visibility: visible;
+}
+
+/* Mobile styles */
+
+.IsPlatformMobile .PlayerItemSlot {
+	margin: 8px 0;
+	padding: 3px;
+	width: 250px;
+}
+
+
+#SynergyIcons .HiddenInactive
+{
+	visibility: collapse;
+}
+
+#PlayerStatusContainer {
+	color: #fff;
+	background-color: #211c2180;
+	padding: 3px;
+}
+
+#DPS, #DamageDealt,
+#DamageTaken, #HealingDone,
+#Kills
+{
+	width: fit-children;
+	height: fit-children;
+	background-color: #000000ee;
+	background-image: url("s2r://panorama/images/hud/stats_background_psd.vtex");
+	background-repeat: no-repeat;
+	box-shadow: #000000bb 0px 0px 22px;
+	padding: 10px;
+	visibility:collapse;
+}
+
+.DPSActive #DPS,
+.DamageDealtActive #DamageDealt, 
+.DamageTakenActive #DamageTaken, 
+.HealingDoneActive #HealingDone, 
+.KillsActive #Kills
+{
+	visibility:visible;
+}
+
+#DPS Label,
+#DamageDealt Label,
+#DamageTaken Label,
+#HealingDone Label,
+#Kills Label 
+{
+	color: white;
+	font-size: 18px;
+}
+
+.GameStatePanelChessCount
+{
+	margin-top: 20px;
+}
+
+#CurrentPhaseText
+{
+	visibility: collapse;
+}
+
+#CurrentOpponent
+{
+	horizontal-align: right; 
+	opacity: 0;
+	text-transform: uppercase;
+	font-size: 29px;
+	margin-top:0px;
+	text-align: left;
+	height: 90px;
+	width: 360px;
+	//background-color: red; 
+	text-overflow: shrink; 
+	padding-right: 90px;
+}
+
+.ERoundState_Combat #CurrentOpponent
+
+{
+	opacity: 1;
+}
+
+
+#CornerButtons
+{
+	horizontal-align: right;
+	vertical-align: bottom;
+	flow-children: left;
+}
+
+#HamburgerButton 
+{
+	background-image: url("s2r://panorama/images/hud/hamburger_psd.vtex");
+	background-size: 50px 45px;
+	background-repeat: no-repeat;
+	background-position: 85px 20px;
+	width: 150px;
+	height: 145px;
+	
+	opacity: 1;
+
+	transition-property: brightness;
+	vertical-align: top;
+	horizontal-align: right;
+	transition-duration: .12s;
+}
+
+#HamburgerButton:hover
+{
+	brightness: 3;	
+}
+
+#ShopButtonContainer 
+{
+	flow-children: left;
+}
+
+#ShopButton 
+{
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: fit-children;
+	
+	horizontal-align: right;
+	vertical-align: bottom;
+	tooltip-position: top left bottom right;
+	
+	animation-name: none;
+	
+}
+
+#GoldAmount 
+{
+	background-image: url("s2r://panorama/images/hud/dac_shop_button_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	//width: 128px;
+	//height: 127px;
+	width: 85px;
+	height: 85px;
+	margin-right: 140px;
+	margin-top: 92px;
+	//margin-bottom: 20px;
+	horizontal-align: right;
+	tooltip-position: top left bottom right;
+}
+
+#GoldAmountLabel {
+	width: 100%;
+	text-align: center;
+	margin-top: 13px;
+	margin-right: 5px;
+	color: gradient(linear, 0% 0%, 0% 100%, from(#973c00), to(#906030));
+
+	font-size: 36px;
+	font-weight: bold;
+}
+
+#OpenShopButton {
+	width: 227px;
+	height: 226px;
+	horizontal-align: right;
+	margin-right: 0px;
+	background-image: url("s2r://panorama/images/hud/icon_shop_open_psd.vtex");
+	background-size: contain;
+	transition-property: brightness;
+	transition-duration: .2s;
+}
+
+#OpenShopButton:hover
+{
+	brightness: 2;
+}
+
+
+
+#CloseShopButton {
+	width: 227px;
+	height: 226px;
+	horizontal-align: right;
+	margin-right: 0px;
+	background-image: url("s2r://panorama/images/hud/icon_shop_close_psd.vtex");
+	visibility: collapse;
+	background-size: contain;
+	transition-property: brightness;
+	transition-duration: .2s;
+}
+
+#CloseShopButton:hover
+{
+	brightness: 2;
+}
+
+#SellUnitButton
+{
+	vertical-align: bottom;
+	horizontal-align: right;
+	margin-right: 8px;
+	height: 100px;
+	width: 100px;
+	//margin-bottom: 60px;
+	margin-bottom: 15px;
+	border: 4px solid #ffffff88;
+	border-radius: 100px;
+	background-image: url("s2r://panorama/images/hud/sell_unit_icon_png.vtex");
+	background-color: #931c1c;
+}
+
+#SellUnitDesc
+{
+	margin-top: 40px;
+	visibility: collapse;
+}
+#SellUnitValue
+{
+	//margin-top: 100px;
+	//margin-bottom: 10px;
+	//font-size: 10px;
+}
+
+.ShopVisible #OpenShopButton
+{
+	visibility: collapse;
+}
+
+//.UnitSelected #OpenShopButton,
+//.UnitSelected #CloseShopButton
+
+
+.ShopVisible #CloseShopButton
+{
+	visibility: visible;
+}
+
+@keyframes 'HeadShake'
+{
+	0%
+	{
+		transform: scale3d( 1, 1, 1 );
+	}
+
+	50%
+	{
+		transform: scale3d( 1.1, 1.1, 1.1 );
+	}
+
+	100%
+	{
+		transform: scale3d( 1, 1, 1 );
+	}
+}
+
+.AnimatedHeadshake {
+
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-name: HeadShake;
+}
+
+.ShopButtonStatic #ShopButton {
+	animation-name: none;
+}
+
+DACUIShop
+{
+	width: 100%;
+	height: 100%;
+}
+
+#MenuButton {
+	vertical-align: bottom;
+	background-image: url("s2r://panorama/images/hud/dac_library_button_png.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 130px;
+	height: 130px;
+}
+
+#TempPlayerPanel {
+	flow-children: down;
+}
+
+#TempPlayerPanel>Label {
+	color: #FF8888;
+	font-size: 20px;
+}
+
+.PlayerStateName {
+	font-size: 24px;
+	color: #fff;
+}
+
+.HeadingContainer {
+	flow-children: right;
+}
+
+.Heading {
+	color: #fff;
+	font-size: 24px;
+	text-transform: uppercase;
+}
+
+.RankLabel {
+	visibility: collapse;
+	font-size: 24px;
+	margin-left: 5px;
+	margin-top: 2px;
+}
+
+.Rank_1 .Rank1Label,
+.Rank_2 .Rank2Label,
+.Rank_3 .Rank3Label {
+	visibility: visible;
+}
+
+#Synergies {
+	width: fit-children;
+	flow-children: down;
+}
+
+.SynergyRowItem {
+	font-size: 20px;
+	margin-right: 5px;
+	text-shadow: 0px 0px 0px 2.0 #000;
+	font-weight: bold;
+}
+
+#PlayerBench {
+	position: 200px 800px 0px;
+	height: 150px;
+	background-color: #00000030;
+	flow-children: right;
+}
+
+.BenchEntry {
+	flow-children: down;
+	margin: 5px;
+	background-color: #00000030;
+	border: 1px solid #000;
+	height: 100%;
+	width: 100px;
+}
+
+.BenchEntry:hover {
+	background-color: #00000060;
+}
+
+#SelectedUnitContainer {
+	visibility: collapse;
+	
+}
+
+
+.UnitSelected #SelectedUnitContainer {
+	visibility: visible;
+}
+
+.UnitSelected #MiniProfile {
+	visibility: collapse;
+}
+
+#SelectUnitItems {
+	background-color: #00000060;
+	flow-children: down;
+	padding: 10px;
+	color: #aaa;
+}
+
+#test
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_0_png.vtex");
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_1_png.vtex");
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_2_png.vtex");
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_3_png.vtex");
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_4_png.vtex");
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_5_png.vtex");
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_6_png.vtex");
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_7_png.vtex");
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_bot_png.vtex");
+}
+
+
+#PlayerInventoryContainer
+{
+	flow-children: right-wrap;
+	color: #fff;
+	font-size: 16px;
+	line-height: 20px;
+	width: 0%;
+}
+
+DACInventory
+{
+	horizontal-align: right;
+}
+
+.PlayerItemSlot
+{
+	margin: 2px 2px;
+	border: 1px solid #000000;
+	background-color: rgba( 0, 0, 0, 0.9 );
+	padding: 3px;
+	width: 260px;
+	font-size: 26px;
+
+	flow-children: right;
+}
+
+.PlayerItemSlot.Unassigned
+{
+	background-color: rgba( 100, 0, 0, 0.9 );
+}
+
+.PlayerItemSlot.InBench
+{
+	background-color: rgba( 100, 100, 0, 0.9 );
+}
+.PlayerItemSlot.SlotSelected
+{
+	border: 1px solid gold;
+}
+
+.PlayerItemSlot_Empty
+{
+	padding-left: 58px;
+	color: #555;
+
+	visibility: collapse;
+}
+
+.PlayerItemSlot_Equipment
+{
+	border: 1px solid #808080;
+	visibility: collapse;
+}
+
+.PlayerItemSlot_Equipment .AssignmentIndicator
+{
+	width: 56px;
+}
+
+.PlayerItemSlot_Equipment .AssignmentIndicator Label
+{
+	line-height: 14px;
+	width: 54px;
+	height: 25px;
+	text-align: center;
+	text-overflow: shrink;
+}
+
+.PlayerItemSlot_Equipment.Unassigned .AssignmentIndicator Label
+{
+	padding-top: 2px;
+	text-align: center;
+	font-size: 16px;
+	color: #BB1133;
+}
+
+.PlayerItemSlot_Global
+{
+	visibility: collapse;	
+}
+
+.PlayerItemSlot_Global .GlobalIndicator
+{
+	width: 56px;
+}
+
+.PlayerItemSlot_Global .GlobalIndicator Label
+{
+	line-height: 20px;
+	width: 54px;
+	font-size: 13px;
+	text-align: center;
+	color: #AAAAAA;
+}
+
+
+/* BEGIN ItemChoiceRewardPicker */
+
+#ItemChoiceRewardPicker
+{
+	position: 200px 250px 0px;
+	horizontal-align: center;
+	width: fit-children;
+	background-color: #000000DD;
+	border: 1px solid #000;
+	flow-children: down;
+	color: white;
+	padding-right: 20px;
+	padding-bottom: 20px;
+	visibility: collapse;
+}
+
+#ItemChoiceRewardPicker_Header
+{
+	width: 100%;
+	text-align: center;
+	font-size: 24px;
+	padding: 10px;
+	padding-left: 30px;
+}
+
+#ItemChoiceRewardPicker_Choices
+{
+	flow-children: right;
+}
+
+.ItemChoiceRewardPicker_Choice
+{
+	width: 320px;
+	margin-left: 20px;
+	flow-children: down;
+	background-color: #000000DD;
+	border: 1px solid #000000;
+	padding: 5px;
+}
+
+.ItemChoiceRewardPicker_Choice:not(.Available)
+{
+	opacity: 0.5;
+	color: #AAAAAA;
+	brightness: 0.4;
+	background-color: #000000FF;
+}
+
+Label.ChoiceItem_Name
+{
+	width: 300px;
+	height: 30px;
+	font-size: 30px;
+	text-overflow: shrink;
+}
+
+Label.ChoiceItem_Tier
+{
+	color: #AAA;
+	font-size: 28px;
+	padding-bottom: 20px;
+}
+
+Label.ChoiceItem_Description
+{
+	font-size: 26px;
+	padding-bottom: 20px;
+}
+
+#ItemChoiceRewardPicker_Skip
+{
+	horizontal-align: center;
+	text-align: center;
+	font-size: 20px;
+	padding: 6px 12px;
+
+	margin: 20px 0px 0px 20px;
+
+	background-color: #000000DD;
+	border: 1px solid #000000;
+	visibility:collapse;
+}
+
+/* END ItemChoiceRewardPicker */
+
+
+#RoundHeaderContainer
+{
+	width: 300px;
+}
+
+#GameStatePanel .GameStatePanelRound
+{
+	width: fit-children;
+	//margin-left: 15px;
+	
+}
+
+.HideCountdown #GameStatePanel .GameStatePanelRound
+{
+	visibility:collapse;
+}
+
+.EGameState_Intro #GameStatePanel
+{
+	opacity: 0;
+	transform: translateY( -150px );
+}
+
+.PlayPauseContainer
+{
+	flow-children: down;
+	margin-top: 60px;
+	height: fit-children;
+
+}
+
+.PauseButton,
+.FastForwardButton
+{
+	width: 75px;
+	height: 75px;
+	
+	vertical-align: bottom;
+
+	opacity: 0;
+	
+	background-size: 60%;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	transition-property: opacity;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
+
+	background-image: url("s2r://panorama/images/hud/game_pause_psd.vtex");
+	background-position: 90%;
+	//wash-color: rgba( 220, 220, 220, 1.0 );
+	wash-color: #c3bff2;
+}
+
+.FastForwardButton
+{
+	background-image: url("s2r://panorama/images/hud/game_fast_forward_psd.vtex");
+	//wash-color: #72d556;
+	wash-color: #c3bff2;	
+}
+
+.IsPaused .PauseButton
+{
+	background-image: url("s2r://panorama/images/hud/game_resume_psd.vtex");
+	//wash-color: #92f586;
+	wash-color: #c3bff2;	
+}
+
+.CanPauseOrResume .PauseButton,
+.CanFastForward .FastForwardButton
+{
+	opacity: 1;
+}
+
+#GameStatePanel {
+	
+	width: 520px;
+	horizontal-align: right;
+	margin-right: 130px;
+	flow-children: right;
+	visibility: visible;
+}
+
+.HideGameStatePanel #GameStatePanel
+{
+	visibility: collapse;
+}
+
+
+
+#GameStateBackerOutline
+{
+	opacity: 1;
+	background-image: url("s2r://panorama/images/hud/timer_backer_glass_outline_psd.vtex");
+	background-size: cover;
+	width: 520px;
+	height: 171px;
+	//horizontal-align: right;
+	//margin-right: 130px;
+	//flow-children: right;
+	//background-color: red; 
+}
+
+#GameStatePanel > Panel
+{
+	//width: fill-parent-flow(.57);
+}
+
+.HeaderRoundCount {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
+	text-shadow: 0px 1px 0px 3.0 #000;
+	font-size: 42px;
+	padding: 19px 0 0 30px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-bottom: -15px;
+}
+
+.LowVisualQuality .HeaderRoundCount {
+	text-shadow: 0px 1px 0px 2.0 #000;
+}
+
+
+#RoundPhaseText {
+	font-size: 42px;
+	padding: 0 0 0 30px;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 0px 3.0 #000;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #c0daf4 ), to(#ffffff));
+}
+
+.LowVisualQuality #RoundPhaseText {
+	text-shadow: 0px 1px 0px 2.0 #000;
+}
+
+.Language_schinese #RoundPhaseText,
+.Language_schinese .HeaderRoundCount,
+.Language_tchinese #RoundPhaseText,
+.Language_tchinese .HeaderRoundCount,
+.Language_koreana #RoundPhaseText,
+.Language_koreana .HeaderRoundCount,
+.Language_japanese #RoundPhaseText,
+.Language_japanese .HeaderRoundCount
+{
+	font-size: 36px;
+}
+
+.Language_russian #RoundPhaseText,
+.Language_russian .HeaderRoundCount
+{
+	font-size: 34px;
+}
+
+#RoundHeaderContainer
+{
+	margin-left: 10px;
+}
+
+
+#RoundCombatOpponent
+{
+	height: 44px;
+	text-overflow: shrink;
+	horizontal-align: right;
+	margin-top: 18px;
+	font-size: 30px;
+	font-weight: thin;
+	color: #a2a4d0;
+	text-align: right;
+	margin-right: 26px;
+	opacity: 0;
+	font-weight: bold;
+	transition-property: opacity, transform;
+	transition-duration: .5s;
+	transform:  translateY( -25px );
+	text-shadow: 0px 1px 0px 3.0 #000;
+	/*
+	Apparently this breaks text-align center?!
+	white-space: nowrap;
+	*/
+}
+
+.ERoundState_Combat.HasPlayerOpponent #RoundCombatOpponent
+{
+	opacity: 1;
+	transform:  translateY( 0px );
+}
+
+.HeaderRoundTime {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#ffffff));
+	text-shadow: 0px 1px 0px 3.0 #000;
+	font-size: 105px;
+	margin: 3px 0 0  46px;
+	font-family: radianceM;
+	letter-spacing: 0px;
+	text-align: center;
+	width: 130px;
+	height: 130px;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-out;
+	transition-property: color, text-shadow;
+		
+	text-transform: uppercase;
+	font-weight: bold;
+
+}
+
+#HeaderRoundTimeContainer {
+	flow-children: none;
+}
+
+#TimeRemaining
+{
+	opacity-mask: url("s2r://panorama/images/hud/timer_opacity_mask_psd.vtex");
+	margin-left: 58px;
+}
+
+#TimeRemainingLeftCorner
+{
+	margin-left: 58px;
+	margin-top: -1px;
+	opacity-mask: url("s2r://panorama/images/hud/timer_opacity_mask_left_psd.vtex");
+}
+
+#TimeRemainingRightCorner
+{
+	margin-left: 61px;
+	margin-top: 6px;
+	opacity-mask: url("s2r://panorama/images/hud/timer_opacity_mask_right_psd.vtex");
+}
+
+.LowVisualQuality .HeaderRoundTime {
+    text-shadow: 0px 1px 0px 2.0 #000;
+}
+
+#SpannerTop
+{
+	background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000cc ), to(#00000088));
+	//border-left: 1px solid #332124;
+	height: fill-parent-flow( 1.0 );
+	width: fill-parent-flow ( 1.0 );
+	margin-bottom: 2px;
+	background-image: url("s2r://panorama/images/hud/right_tab_spanner_backer_top_psd.vtex");
+	background-size: 100%;
+}
+
+#SpannerBottom
+{
+	background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000cc ), to(#00000088));
+	height: fill-parent-flow( 1.0 );
+	width: fill-parent-flow ( 1.0 );
+	margin-top: 2px;
+	background-image: url("s2r://panorama/images/hud/right_tab_spanner_backer_bottom_psd.vtex");
+	background-size: 100%;
+}
+
+#RightTabBar {
+		horizontal-align: right;
+		height: 100%;
+		width: 80px;
+		//background-color: #000;
+		//background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000cc ), to(#00000088));
+		//background-color: red; 
+}
+
+.TabBarButtonContainer {
+	vertical-align: center;
+	flow-children: down;
+}
+
+.TabBarButtonContainer .TempButton {
+	width: 100%;
+	height: 200px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+	//border-top: 3px solid #d6d7d7; 
+	//border-right: 3px solid #9086c3;
+	//border-bottom: 3px solid #58518c;
+	//border-left: 3px solid #8c9192;
+	//background-color: gradient(linear, 100% 100%, 0% 0%, from( #ffffff03 ), to( #ffffff27 ));
+	color: white; 
+	text-transform: uppercase; 
+	background-color: blue; 
+}
+
+.TabButton
+{
+	width: 100%;
+	height: 172px;
+}
+
+.TabButtonBackerSynergies,
+.TabButtonBackerDPS,
+.TabButtonBackerItems
+{
+	width: 100%;
+	height: 172px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	color: white; 
+	text-transform: uppercase; 
+	background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000cc ), to(#00000088));
+	background-image: url("s2r://panorama/images/hud/right_tab_backer_off_psd.vtex");
+	transition-property: background-image, background-color;
+	transition-duration: .2s;
+}
+
+.SynergyTabButton
+{
+	background-image: url("s2r://panorama/images/hud/right_tab_icon_synergies_psd.vtex");
+	background-size: 80px 100px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.TabPageSynergy .SynergyTabButton
+{
+	background-image: url("s2r://panorama/images/hud/right_tab_icon_synergies_on_psd.vtex");
+}
+
+.TabPageSynergy .TabButtonBackerSynergies
+{
+	background-image: url("s2r://panorama/images/hud/right_tab_backer_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: gradient(linear, 0% 0%, 100% 0%, from( #2b2448 ), to(#00000088));
+}
+
+.DPSTabButton
+{
+	background-image: url("s2r://panorama/images/hud/right_tab_icon_dps_psd.vtex");
+	background-size: 80px 100px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.TabPageDPS .DPSTabButton
+{
+	background-image: url("s2r://panorama/images/hud/right_tab_icon_dps_on_psd.vtex");
+}
+
+.TabPageDPS .TabButtonBackerDPS
+{
+	background-image: url("s2r://panorama/images/hud/right_tab_backer_alt_1_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: gradient(linear, 0% 0%, 100% 0%, from( #2b2448 ), to(#00000088));
+}
+
+.ItemsTabButton
+{
+	background-image: url("s2r://panorama/images/hud/right_tab_icon_items_psd.vtex");
+	background-size: 80px 100px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.TabPageItems .ItemsTabButton
+{
+	background-image: url("s2r://panorama/images/hud/right_tab_icon_items_on_psd.vtex");
+}
+
+.TabPageItems .TabButtonBackerItems
+{
+	background-image: url("s2r://panorama/images/hud/right_tab_backer_alt_2_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: gradient(linear, 0% 0%, 100% 0%, from( #2b2448 ), to(#00000088));
+}
+
+
+#Leftovers {
+	margin: 0 0 0 700px;
+}
+
+.HeaderRoundTime.TutorialHide {
+	visibility: collapse;
+}
+
+#MiniProfile {
+	margin-top: 50px;
+}
+
+.HeaderPlayerName {
+	margin-top: -4px;
+	color: #767cb1; 
+	text-shadow: 0px 0px 0px 2.0 #000;
+	font-size: 28px;
+	text-align: center;
+	width: 240px;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
+	text-shadow: 0px 1px 0px 3.0 #000;
+	font-size: 30px;
+	font-weight: bold;
+	text-overflow: shrink; 
+}
+
+.LowVisualQuality .HeaderPlayerName {
+	text-shadow: 0px 1px 0px 2.0 #000;
+}
+
+.HeaderPlayerInfo {
+	margin-top: 10px;
+	
+}
+
+.HeaderChessCount {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #edce6e ), to(#ffffff));
+	text-shadow: 0px 0px 0px 2.0 #000;
+	font-size: 42px;
+	font-weight: semi-bold;
+	margin-left: 34px;
+	margin-top: -1px;
+}
+
+.HeaderChessCount.TooMany {
+	color: #ff0000;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ff0101 ), to(#ff4901));
+}
+
+.HeaderChessCount.NotEnough {
+	color: #ffFF00;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #00ff1e ), to(#a2ff90));
+}
+
+.HeaderUnitIcon {
+	margin-left: 15px;
+	background-image: url("s2r://panorama/images/heroes/spellicons/empty_png.vtex");
+	width: 33px;
+	margin-top: 7px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	height: 33px;
+
+	visibility: collapse;
+}
+
+/* TEMP */
+.TempButton {
+	border: 1px solid grey;
+	background-color: black;
+	min-width: 150px;
+	padding: 0 3px;
+	margin: 3px;
+}
+
+.TempButton Label {
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+.TempButton:hover {
+	background-color: #444;
+}
+
+.TempButton.Mobile {
+	padding: 5px;
+	margin: 20px 5px;
+	width: 260px;
+}
+
+.TempButton.Mobile Label {
+	font-size: 30px;
+}
+
+
+.DefaultHidden {
+	visibility: collapse;
+}
+
+
+
+
+
+@keyframes 'InOutAnim'
+{
+	0%
+	{
+		position: -600px 0px 0px;
+		opacity: 0;
+	}
+	1%
+	{
+		position: -600px 0px 0px;
+		opacity: 1;
+	}
+	10%
+	{
+		position: 0px 0px 0px;
+	}	
+	50%
+	{
+		position: 0px 0px 0px;
+	}
+	90%
+	{
+		position: 0px 0px 0px;
+	}	
+	99%
+	{
+		position: -600px 0px 0px;	
+		opacity: 1;
+	}
+	100%
+	{
+		position: -600px 0px 0px;
+		opacity: 0;
+	}
+}
+
+#PlayerLeaderboardContainer {
+	margin-left: 0px;
+	vertical-align: middle;
+	width: 185px;
+	max-height: 100%;
+
+	overflow: noclip;
+	background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000 ), to(#000000));
+	background-image: url("s2r://panorama/images/leaderboard/leader_board_backer_psd.vtex");
+	background-size: 100%;
+	
+	box-shadow: #000000 0px 0px 15px;
+}
+
+DACLeaderboardEntry {
+	transition-property: position;
+	transition-duration: 0.4s;
+	transition-timing-function: ease-out;
+}
+
+
+
+.GiveHeroLabel
+{
+	margin-right: 5px;
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+#HeroDropdown, #UnitDropdown
+{
+	width: 240px;
+	margin-right: 4px;
+}
+
+DropDown Label
+{
+	color: white;
+}
+
+#HeroLevelDropdown
+{
+	width: 120px;
+	margin-right: 4px;
+}
+
+.GiveHeroButton
+{
+	margin-right: 20px;
+}
+
+#ItemDropdown
+{
+	width: 240px;
+	margin-right: 4px;
+}
+
+.GiveItemButton
+{
+	margin-right: 20px;
+}
+
+@keyframes 'TimerAnim'
+{
+	0%
+	{
+		color: #f00;
+		text-shadow: 0px 0px 0px 4.0 #000;
+
+	}
+	100%
+	{
+		text-shadow: 0px 0px 0px 2.0 #000;
+		color: gradient(linear, 0% 0%, 0% 100%, from( #bbd1ff ), to(#fff));
+	}
+}
+
+.HiddenForTutorial_Notifications DACNotifications
+{
+	visibility: collapse;
+}
+
+#MenuButtons
+{
+	visibility: collapse;
+	width: 100%;
+	height: 100%;
+	background-color: #060606F0;
+}
+
+.MenuButtonsVisible #MenuButtons
+{
+	visibility: visible;
+}
+
+.MenuButtonContainer.PopupPanel
+{
+	horizontal-align: center;
+	vertical-align: center;
+
+	padding-bottom: 70px;
+	background-image: none;
+	background-color: none;
+	border: 0px;
+	
+
+	flow-children: down;
+	width: 650px;
+}
+
+.MenuLogo
+{
+
+	width: 500px;
+	height: 300px;
+	horizontal-align: center;
+	margin-bottom: 20px;
+	//height: 200px;
+	background-size: 100% 100%;
+	background-position: 80% 80%;
+	background-repeat: no-repeat;
+	background-image: url("s2r://panorama/images/dashboard/ul_title_png.vtex");
+}
+
+
+.MenuButton 
+{
+	//border: 1px solid grey;
+	background-color: black;
+	padding: 10px;
+	margin: 3px;
+	margin: 10px 5px;
+	//border-radius: 10px;
+	width: 350px;
+	horizontal-align: center;
+}
+
+.MenuButton:hover
+{
+	//border: 1px solid white;
+	//background-color: #444;
+}
+
+.MenuButton Label
+{
+	color: white;
+	font-size: 30px;
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+.Language_russian .MenuButton Label
+{
+	font-size: 24px;
+}
+
+#ZooButton
+{
+	visibility: collapse;
+}
+
+.ShowZoo #ZooButton
+{
+	visibility: visible;
+}
+
+#Zoo
+{
+	visibility: collapse;
+}
+
+.ZooVisible #Zoo
+{
+	visibility: visible;
+}
+
+#TooltipManager, #ContextMenuManager, #DashboardPopupManager
+{
+	width: 100%;
+	height: 100%;
+}
+
+.ItemChoice0 #ItemChoiceRewardPicker_Choice_0,
+.ItemChoice1 #ItemChoiceRewardPicker_Choice_1,
+.ItemChoice2 #ItemChoiceRewardPicker_Choice_2,
+.ItemChoiceSkip #ItemChoiceRewardPicker_Skip
+{
+	border: 1px solid red;
+}
+
+
+/** Unit selection panel.  */
+
+#SelectedUnitName {
+	position: 0px -10px 0px;
+	color: white;
+	font-size: 14px;
+	text-align: center;
+	width: 40px;
+	text-overflow: shrink;
+	width: 260px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+.IsOpponent #SelectedUnitName {
+	color: red;
+}
+
+#UnitPortraitView {
+	width: 200px;
+	height: 200px;
+	margin: 10px 0 0 10px;
+	border-radius: 206px;
+}
+
+#SelectedUnitProfile {
+	background-image: url("s2r://panorama/images/hud/dac_profile_bg_png.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 430px;
+	height: 230px;
+}
+
+#UnitHealthGraph {
+	position: 2px 0px 0px;
+	width: 219px;
+	height: 219px;
+	transform: rotateZ( 207deg );
+}
+
+#UnitHealthGraph_FG {
+	background-image: url("s2r://panorama/images/hud/dac_profile_hp_progressbar_fg_png.vtex");
+	width: 209px;
+	height: 209px;
+	transition-property: clip;
+	transition-duration: 200ms;
+	transition-timing-function: ease-out;
+}
+
+#UnitHP {
+	position: 91px 182px 0px;
+	color: #9cfc00;
+	font-size: 25px;
+	text-align: center;
+	width: 40px;
+	text-overflow: shrink;
+	width: 42px;
+}
+
+#SynergyCapsule {
+	margin: 130px 0 0 200px;
+
+}
+
+#UnitAbilityContainer {
+	margin: 25px 0 0 240px;
+	width: 100px;
+	height: 100px;
+	visibility: collapse;
+}
+
+#UnitAbilityContainer.ContainsAbilities
+{
+	visibility: visible;
+}
+
+#UnitAbility {
+	width: 100px;
+	height: 100px;
+}
+
+.RankLabel {
+	margin: 125px 0 0 0px;
+	text-align: center;
+	width: 100%;
+	color: #fff;
+	font-size: 40px;
+	text-shadow: 0px 0px 0px 3.0 #000;
+	text-overflow: shrink; 
+}
+
+.LowVisualQuality .RankLabel {
+	text-shadow: 0px 0px 0px 2.0 #000;
+}
+
+#SelectedUnitContainer
+{
+	width: 240px;
+}
+
+#SelectUnitStats {
+	background-color: #000000A0;
+	padding: 10px;
+	
+}
+
+#SelectUnitStats .Stat {
+	color: #9b9696;
+}
+
+#SelectUnitStats .Count {
+	color: #fff;
+}
+
+#SelectUnitItem
+{
+	width: 100px;
+	height: 100px;
+	visibility: collapse;
+}
+
+#SelectUnitItem.ContainsItem
+{
+	visibility: visible;
+}
+
+#SelectedUnitAvatarOverlay {
+	margin: -28px 0 0 -1px;
+	width: 226px;
+	height: 251px;
+}
+
+.HeaderSelectedName {
+	font-size: 42px;
+}
+
+#UnitCountDisplay
+{
+	width: 600px;
+	height: 432px;
+	horizontal-align: center;
+	margin-right: 0;
+	color: #fff;
+	text-shadow: 0px 0px 0px 3.0 #00ff0080;
+}
+
+
+
+#UnitCountDisplayBench
+{
+	width: 600px;
+	height: 932px;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-right: 1270px;
+	margin-bottom: 55px;
+	color: #fff;
+	text-shadow: 0px 0px 0px 3.0 #00ff0080;
+	ui-scale: 28%;
+	opacity: 0;
+	
+	transition-property: opacity;
+	transition-duration: .2s;
+}
+
+.ShopVisible #UnitCountDisplayBench
+{
+	opacity: 1;
+}
+
+#IconContainerBench
+{
+	width: fit-children;
+	height: 232px;
+	flow-children: right; 
+	margin-bottom: -85px;
+	//margin-left: 40px;
+	horizontal-align: center;
+}
+
+#UnitCountContainerBench
+{
+	width: fit-children;
+	height: fit-children;
+	flow-children: right; 
+	horizontal-align: center;
+}
+
+.AspectRatio16x10 #UnitCountDisplayBench
+{
+	margin-right: 1400px;
+	margin-bottom: 55px;
+}
+
+.AspectRatio4x3 #UnitCountDisplayBench
+{
+	margin-right: 1480px;
+	margin-bottom: 150px;
+}
+
+
+.InCombatPreview #UnitCountDisplay
+{
+	opacity: 0.0;
+}
+
+.LowVisualQuality #UnitCountDisplay {
+	text-shadow: 0px 0px 0px 2.0 #00ff0080;
+}
+
+#UnitCountPanel
+{
+	width: fit-children;
+	height: 300px;
+	horizontal-align: center;
+	transform: rotateX(55deg) translateY( 8px ) scale3d( .75, .75, .75 );
+	vertical-align: bottom;
+	margin-bottom: 48px;
+	
+	transition-property: opacity, transform;
+	transition-duration: 0.1s;
+	
+	flow-children: right;
+	opacity: .285;
+}
+
+#UnitCountPanelBench
+{
+	width: fit-children;
+	height: fit-children;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 48px;
+	
+	transition-property: opacity, transform;
+	transition-duration: 0.1s;
+	
+	flow-children: down;
+	opacity: .285;
+}
+
+
+
+.PopulationDivider
+{
+	font-size:120px;
+	font-weight: ultra-thin;
+	margin-bottom: 100px;
+}
+
+.TooManyUnits #UnitCountPanel,
+.NotEnoughUnits #UnitCountPanel
+{
+	transform: rotateX(55deg) translateY( 2px ) scale3d( 1.0, 1.0, 1.0 );
+	opacity: 1;
+	transition-property: opacity, transform;
+	transition-duration: 0.1s;
+}
+
+.LowVisualQuality #UnitCountPanel,
+.LowVisualQuality.TooManyUnits #UnitCountPanel,
+.LowVisualQuality.NotEnoughUnits #UnitCountPanel 
+{
+	transform: rotateX(0deg) translateY( 13px ) scale3d( 1.0, 1.0, 1.0);
+}
+
+
+#UnitCountIconPanel
+{
+	width: 103px;
+	height: 100%;
+	flow-children: none;
+	vertical-align: center;
+	visibility: collapse;		
+	
+}
+
+
+#UnitCountIcon,
+#UnitCountIconGlow
+{
+	width: 100%;
+	height: 180px;
+	vertical-align: center;
+	flow-children: none;
+	background-image: url("s2r://panorama/images/hud/population_flat_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin-bottom: 18px;
+}
+
+.NotEnoughUnits #UnitCountIconPanel,
+.TooManyUnits #UnitCountIconPanel,
+{
+	width: 168px;
+	margin-bottom: 4px;
+}
+
+.NotEnoughUnits #UnitCountIcon,
+{
+	background-image: url("s2r://panorama/images/hud/population_under_psd.vtex");	
+}
+
+.NotEnoughUnits #UnitCountIconGlow
+{
+	background-image: url("s2r://panorama/images/hud/population_under_glow_psd.vtex");	
+	animation-name: GlowPulseAnimation;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	opacity:0.0;	
+}
+
+.TooManyUnits #UnitCountIcon
+{
+	background-image: url("s2r://panorama/images/hud/population_over_psd.vtex");	
+}
+
+.TooManyUnits #UnitCountIconGlow
+{
+	background-image: url("s2r://panorama/images/hud/population_over_glow_psd.vtex");	
+	animation-name: GlowPulseAnimation;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	opacity:0.0;	
+}
+
+@keyframes 'GlowPulseAnimation'
+{
+	0%
+	{
+		opacity: 0.0;
+	}
+	
+	25%
+	{
+		opacity: 0.0;
+	}
+
+	50%
+	{
+		opacity: 1.0;
+	}
+
+	75%
+	{
+		opacity: 0.0;
+	}
+
+	100%
+	{
+		opacity: 0.0;
+	}
+}
+
+#UnitCountLabel
+{
+	flow-children: none;
+	height: 200px;
+	vertical-align: center;
+	font-size: 150px;
+	
+	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#ffffff));
+	text-shadow: 0px 1px 0px 3.0 #000;
+}
+
+#UnitCountLabel, #UnitCountLabelShadow
+{
+	height: 200px;
+
+	font-size: 150px;
+	font-weight: semi-bold;
+	letter-spacing: 5px;
+	horizontal-align: center;
+	vertical-align: center;
+	visibility: collapse;
+}
+
+.TooManyUnits #UnitCountLabel, .TooManyUnits #UnitCountLabelShadow,
+.NotEnoughUnits #UnitCountLabel, .NotEnoughUnits #UnitCountLabelShadow
+{
+	font-size: 150px;
+}
+
+
+.CanManipulateUnits #UnitCountLabel, .CanManipulateUnits #UnitCountLabelShadow, .CanManipulateUnits #UnitCountIconPanel
+{
+	visibility: visible;
+}
+
+
+#UnitCountLabelShadow
+{
+	z-index: -1;
+	color: #00000040;
+	text-shadow: 0px 0px 0px 2.0 #00000040;
+	margin-top: 8px;
+	transition: margin-top;
+}
+
+.TooManyUnits #UnitCountLabelShadow,
+.NotEnoughUnits #UnitCountLabelShadow,
+{
+	margin-top: 12px;
+}
+
+
+.NotEnoughUnits #UnitCountLabel,
+.TooManyUnits #UnitCountLabel
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#ffffff));
+	text-shadow: 0px 1px 0px 3.0 #000;
+	animation-name: TextGlowPulseAnimation;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+}
+
+@keyframes 'TextGlowPulseAnimation'
+{
+	0%
+	{
+	text-shadow: 0px 1px 0px 3.0 #000;
+	}
+	
+	25%
+	{
+	text-shadow: 0px 1px 0px 3.0 #000;
+	}
+
+	50%
+	{
+	text-shadow: 0px 1px 0px 3.0 #ff544180;
+	}
+
+	75%
+	{
+	text-shadow: 0px 1px 0px 3.0 #000;
+	}
+
+	100%
+	{
+	text-shadow: 0px 1px 0px 3.0 #000;
+	}
+}
+
+.LowVisualQuality .TooManyUnits #UnitCountLabel {
+	text-shadow: 0px 0px 0px 2.0 #ff544180;
+}
+
+.HiddenForTutorial {
+	visibility: collapse;
+}
+
+#PostGameStats
+{
+	visibility:collapse;
+}
+
+.IsPostGameStats #PostGameStats,
+.DevIsPostGameStats #PostGameStats
+{
+	visibility: visible;
+}
+
+DACHUDItemDisplay
+{
+	width: 100%;
+	height: 100%;
+	visibility: visible;
+}
+
+DACHUDItemDisplay .HUDItem
+{
+	width: 64px;
+	height: 64px; 
+}
+
+DACHUDItemDisplay .HUDItem.UnitOnBench
+{
+	transform: translateY( -26px );
+}
+
+.HUDItem.EmptySlot
+{
+	visibility: collapse;
+}
+
+.IsDraggingItem .HUDItem.EmptySlot
+{
+	visibility: visible;
+}
+
+.IsDraggingItem .HUDItem.CannotAcceptDrag .Unavailable
+{
+	width: 100%;
+	height: 100%;
+
+	background-size: 120%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-image: url("s2r://panorama/images/hud/synergy_slash_psd.vtex");
+}
+
+.ERoundState_Combat.IsVersusOrCombatRunning DACHUDItemDisplay,
+.InCombatPreview DACHUDItemDisplay
+{
+	visibility: collapse;
+}
+
+DACHUDRankDisplay
+{
+	width: 100%;
+	height: 100%;
+	visibility: visible;
+}
+
+DACHUDRankDisplay .HUDRankDisplay
+{
+	width: 24px;
+	height: 24px;
+	background-size: 24px 24px;
+	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_1_psd.vtex");
+}
+
+.HUDRankDisplay.Rank2
+{
+	width: 48px;
+	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_2_psd.vtex");
+}
+
+.HUDRankDisplay.Rank3
+{
+	width: 72px;
+	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_3_psd.vtex");
+}
+
+
+@keyframes 'PopupAnimation'
+{
+	0%
+	{
+		pre-transform-scale2d: 0.95;
+	}
+
+	50%
+	{
+		pre-transform-scale2d: 1.05;
+	}
+
+	100%
+	{
+		pre-transform-scale2d: 0.95;
+	}
+}
+
+#ErrorMsg
+{
+	horizontal-align: center;
+	vertical-align: middle;
+	margin-top: 600px;
+	opacity: 0;
+	background-color: black;
+	padding-top: 6px;
+	padding-left: 20px;
+	padding-right: 20px;
+
+	transition-property: opacity;
+	transition-duration: 0.4s;
+}
+#ErrorMsg.Show
+{
+	animation-name: PopupAnimation;
+	animation-duration: 0.4s;
+	animation-timing-function: linear;
+	visibility:visible;
+	opacity:0.95;	
+}
+
+#ErrorMsg Label
+{
+	font-size: 60px;
+	color:white;
+	vertical-align: center;
+}
+
+#BenchPanelContainer
+{
+	width: 100%;
+	height: 100%;
+}
+
+.AspectRatio4x3 #BenchPanelContainer
+{
+	//margin-top: 100px;
+}
+
+#BenchPanelContainer #BenchPanel
+{
+	width: 100%;
+	height: 400px;
+	vertical-align: bottom;
+	horizontal-align: center;
+}
+
+
+#BenchBG, #BenchFX
+{
+	width: 100%;
+	height: 200px;
+	vertical-align: bottom;
+	margin-bottom: 0px;
+	horizontal-align: center;	
+}
+
+#BenchBG
+{
+	background-image: url("s2r://panorama/images/hud/bench_backer_full_psd.vtex");
+	background-repeat: no-repeat;
+	background-position: 50% 50px;
+	background-size: 1950px 200px;
+}
+
+
+.AspectRatio16x10 #BenchBG
+{
+	background-position: 50% 45px;
+	background-size: 2200px 200px;
+}
+
+.AspectRatio4x3 #BenchBG
+{
+	background-position: 50% -32px;
+	background-size: 2300px 200px;
+}
+
+.BenchIsFull #BenchBG
+{
+}
+
+.BenchSlotPanel
+{
+	height: 156px;
+	width: 128px;
+	vertical-align: center;
+	horizontal-align: center;
+	margin-bottom: 50px;
+	
+	background-size: contain;
+	background-position: 0px 130px;
+	background-repeat: no-repeat;
+}
+
+.BenchSlotPanel .BenchSlotEmptyFX
+{
+	visibility: visible;
+	width: 100%;
+	height: 100%;
+}
+
+
+.AspectRatio4x3 #BenchSlotEmptyFX
+{
+	height: 400px;
+}
+
+.AspectRatio4x3 .BenchSlotPanel
+{
+	margin-bottom: 10px;
+}
+
+#BenchSlot1 { margin-right: 1050px; }
+#BenchSlot2 { margin-right: 750px; }
+#BenchSlot3 { margin-right: 450px; }
+#BenchSlot4 { margin-right: 150px; }
+#BenchSlot5 { margin-left: 150px; }
+#BenchSlot6 { margin-left: 450px; }
+#BenchSlot7 { margin-left: 750px; }
+#BenchSlot8 { margin-left: 1050px; }
+
+.AspectRatio16x10 #BenchSlot1 { margin-right: 1150px; }
+.AspectRatio16x10 #BenchSlot2 { margin-right: 825px; }
+.AspectRatio16x10 #BenchSlot3 { margin-right: 500px; }
+.AspectRatio16x10 #BenchSlot4 { margin-right: 175px; }
+.AspectRatio16x10 #BenchSlot5 { margin-left: 175px; }
+.AspectRatio16x10 #BenchSlot6 { margin-left: 500px; }
+.AspectRatio16x10 #BenchSlot7 { margin-left: 825px; }
+.AspectRatio16x10 #BenchSlot8 { margin-left: 1150px; }
+
+.AspectRatio4x3 #BenchSlot1 { margin-right: 1225px; }
+.AspectRatio4x3 #BenchSlot2 { margin-right: 875px; }
+.AspectRatio4x3 #BenchSlot3 { margin-right: 525px; }
+.AspectRatio4x3 #BenchSlot4 { margin-right: 175px; }
+.AspectRatio4x3 #BenchSlot5 { margin-left: 175px; }
+.AspectRatio4x3 #BenchSlot6 { margin-left: 525px; }
+.AspectRatio4x3 #BenchSlot7 { margin-left: 875px; }
+.AspectRatio4x3 #BenchSlot8 { margin-left: 1225px; }
+
+.BenchSlot1Full #BenchSlot1 .BenchSlotEmptyFX,
+.BenchSlot2Full #BenchSlot2 .BenchSlotEmptyFX,
+.BenchSlot3Full #BenchSlot3 .BenchSlotEmptyFX,
+.BenchSlot4Full #BenchSlot4 .BenchSlotEmptyFX,
+.BenchSlot5Full #BenchSlot5 .BenchSlotEmptyFX,
+.BenchSlot6Full #BenchSlot6 .BenchSlotEmptyFX,
+.BenchSlot7Full #BenchSlot7 .BenchSlotEmptyFX,
+.BenchSlot8Full #BenchSlot8 .BenchSlotEmptyFX
+{
+	//visibility: collapse;
+}
+
+.BenchSlot1Full #BenchSlot1 { background-image: url("s2r://panorama/images/hud/bench_hero_shadow_psd.vtex"); }
+.BenchSlot2Full #BenchSlot2 { background-image: url("s2r://panorama/images/hud/bench_hero_shadow_psd.vtex"); }
+.BenchSlot3Full #BenchSlot3 { background-image: url("s2r://panorama/images/hud/bench_hero_shadow_psd.vtex"); }
+.BenchSlot4Full #BenchSlot4 { background-image: url("s2r://panorama/images/hud/bench_hero_shadow_psd.vtex"); }
+.BenchSlot5Full #BenchSlot5 { background-image: url("s2r://panorama/images/hud/bench_hero_shadow_psd.vtex"); }
+.BenchSlot6Full #BenchSlot6 { background-image: url("s2r://panorama/images/hud/bench_hero_shadow_psd.vtex"); }
+.BenchSlot7Full #BenchSlot7 { background-image: url("s2r://panorama/images/hud/bench_hero_shadow_psd.vtex"); }
+.BenchSlot8Full #BenchSlot8 { background-image: url("s2r://panorama/images/hud/bench_hero_shadow_psd.vtex"); }
+
+
+#PlayerLeaderboardContainer,
+#PlayerStateContainer,
+#SelectedUnitContainer,
+#CornerButtons,
+#BenchBG,
+#BenchFX,
+#GameStatePanel
+{
+	transition-property: opacity, transform, position;
+	transition-duration: 0.2s;
+}
+
+.LowVisualQuality #PlayerLeaderboardContainer,
+.LowVisualQuality #PlayerStateContainer,
+.LowVisualQuality #SelectedUnitContainer,
+.LowVisualQuality #CornerButtons,
+.LowVisualQuality #BenchBG,
+.LowVisualQuality #BenchFX,
+.LowVisualQuality #GameStatePanel
+{
+	transition-duration: 0.0s;
+}
+
+
+.ShopVisible #PlayerLeaderboardContainer,
+.ShopVisible #PlayerStateContainer,
+.EGameState_Intro #PlayerLeaderboardContainer,
+.EGameState_Intro #PlayerStateContainer,
+.EGameState_Intro #SelectedUnitContainer,
+.EGameState_Intro #CornerButtons
+{
+    opacity: 0;
+    position: -150px 0 0;
+}
+
+.SellUnitVisible #PlayerLeaderboardContainer
+{
+	opacity: 0;
+}
+.HUDWaiting #WaitingForPlayers
+{
+	visibility:visible;
+}
+#WaitingForPlayers
+{
+	width: 100%;
+	vertical-align: bottom;
+	margin-bottom: 10%;
+	visibility:collapse;
+}
+
+#WaitingForPlayers Label
+{
+	horizontal-align:center;
+	font-size: 40px;
+	font-weight: semi-bold;
+	letter-spacing: 2px;
+	margin-top: 6px;
+    color: white;
+    background-color: black;
+    padding: 10px 30px;
+    text-transform: uppercase;
+	text-shadow: 0px 0px 0px 2.0 black;
+
+}
+
+.EGameState_Intro #BenchBG, .EGameState_Intro #BenchFX
+{
+	opacity: 0;
+	position: 0 150px 0;
+}
+
+#RightTabBar
+{
+	transition-property: opacity, transform;
+	transition-duration: 0.2s;
+}
+
+.EGameState_Intro #RightTabBar
+{
+	opacity: 0;
+	transform: translateX( 150px );
+}
+
+.ShopVisible #RightTabBar
+{
+	opacity: 0;
+	transform: translateX( 150px );
+}
+
+/* Alternate headshake that shrinks instead of grows.
+    Gives us the same effect but means we don't exceed the our default panel size
+*/
+@keyframes 'HeadShakeShrink'
+{
+	0%
+	{
+		transform: scale3d( 1, 1, 1 );
+	}
+
+	50%
+	{
+		transform: scale3d( 0.9, 0.9, 0.9 );
+	}
+
+	100%
+	{
+		transform: scale3d( 1, 1, 1 );
+	}
+}
+
+/* used in tutorial to indicate the player UI */
+.OneShotHeadShake #PlayerStateContainer
+{
+	animation-duration: 0.75s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+	animation-name: HeadShake;
+}
+
+.CenteredForTutorial_TabContents #TabContainer
+{
+	horizontal-align: middle;	
+	position: 0 200px 0 0;
+	
+	margin-right: 0px;
+	
+    visibility: visible;
+    opacity: 1;
+}
+
+.HeadShakeForTutorial_ShopButton #ShopButton,
+.HeadShakeForTutorial_ShopButton #ShopButtonContainer
+{
+    animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-name: HeadShakeShrink;
+}
+
+.DisabledForTutorial_ShopButton #ShopButton
+{
+	brightness: 0.25;
+	saturation: 0;
+	animation-name: none;
+}
+
+.HiddenForTutorial_RightTab #TabBarButtons,
+.HiddenForTutorial_SynergyButton .SynergyTabButton,
+.HiddenForTutorial_DPSButton .DPSTabButton,
+.HiddenForTutorial_ItemButton .ItemsTabButton,
+.HiddenForTutorial_TabContents #TabContainer,
+.HiddenForTutorial_GameState #GameStatePanel,
+.HiddenForTutorial_Bench #BenchPanelContainer,
+.HiddenForTutorial_Leaderboard #PlayerLeaderboardContainer,
+.HiddenForTutorial_Player #PlayerStateContainer,
+.HiddenForTutorial_Unit #SelectedUnitContainer,
+.HiddenForTutorial_Corner #CornerButtons,
+.HiddenForTutorial_UnitCount #UnitCountDisplay,
+.HiddenForTutorial_PauseResume .PauseButton,
+.HiddenForTutorial_PauseResume .FastForwardButton,
+.HiddenForTutorial_Notifications DACNotifications,
+.HiddenForTutorial_MatchIntro #MatchIntro,
+.HiddenForTutorial_SellUnit #SellUnitBar,
+.HiddenForTuturial_ChoicesButton .CollapseItemChoicesButton
+.HiddenForTutorial_Timer #TimerBar
+{
+	visibility: collapse;
+}
+
+/*.TutorialCutscene #TabBarButtons,
+.TutorialCutscene #TabContainer,*/
+.TutorialCutscene #GameStatePanel,
+.TutorialCutscene #BenchPanelContainer,
+.TutorialCutscene #PlayerLeaderboardContainer,
+.TutorialCutscene #PlayerStateContainer,
+.TutorialCutscene #SelectedUnitContainer,
+.TutorialCutscene #CornerButtons,
+.TutorialCutscene #UnitCountDisplay,
+.TutorialCutscene .PauseButton,
+.TutorialCutscene .FastForwardButton,
+.TutorialCutscene #GameResumeButton,
+.TutorialCutscene #MatchIntro,
+.TutorialCutscene DACNotifications
+{
+	opacity: 0;
+}
+
+#BoardFlipButton
+{
+	width: 100px;
+	height: 100px;
+	background-image: url("s2r://panorama/images/hud/board_flip_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+
+	horizontal-align: right;
+	margin-right: 400px;
+
+	vertical-align: center;
+	margin-bottom: 300px;
+
+	visibility: collapse;
+}
+
+.ERoundState_Preparing.ViewingFlippableBoard #BoardFlipButton
+{
+	visibility: visible;
+}
+
+#BoardFlipButton:hover
+{
+	brightness: 2;
+}
+
+
+.HeroIconPanel
+{
+	flow-children: down;
+	horizontal-align: left;
+}
+
+#WinHeroRoster,
+#DeadHeroRoster
+{
+	width: 600px;
+}
+
+#WinHeroRoster.Large,
+#DeadHeroRoster.Large
+{	
+	width: 800px;
+}
+
+
+#WinHeroRoster .HeroIconPanel,
+#DeadHeroRoster .HeroIconPanel
+{
+	margin-left: 8px;
+	margin-right: 8px;
+	margin-top: 16px;
+}
+
+#WinHeroRoster #HeroItem,
+#DeadHeroRoster #HeroItem
+{
+	visibility: collapse;
+}
+
+.HeroIconPanel Label
+{
+	horizontal-align: center;
+	font-size: 20px;
+	color: white;
+}
+#HeroImage
+{
+	horizontal-align: center;
+}
+#HeroItem
+{
+	width: 60px;
+	height: 60px;
+}
+
+.InParty #PlayButton
+{
+	visibility:collapse;
+}
+
+.HeroIconPanel.Rank1 .HeroRank
+{
+	color: rank1Color;
+}
+
+.HeroIconPanel.Rank2 .HeroRank
+{
+	color: rank2Color;
+}
+
+.HeroIconPanel.Rank3 .HeroRank
+{
+	color: rank3Color;
+}

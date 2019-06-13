@@ -1,0 +1,54 @@
+<root>
+	<styles>
+	<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+	<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+	<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+	<include src="s2r://panorama/styles/popups/popup_heropedia.vcss_c" />
+  </styles>
+  
+  <snippets>
+
+  </snippets>
+  
+	<Panel class="PopupPanel Hidden" popupbackground="blur" onactivate="UIPopupButtonClicked( close )">
+    
+    <Panel class="Header">
+			<Label text="#DAC_Heropedia" />
+			
+      <Panel class="TabList">
+        <Button id="HeroTabButton" onactivate="HeropediaPopupShowHeroesPage();">
+          <Label id="HeroesTabLabel" text="#DAC_InGame_Tab_Heroes"/>
+        </Button>
+        <Button id="SynergyTabButton" onactivate="HeropediaPopupShowSynergiesPage();">
+          <Label id="SynergiesTabLabel" text="#DAC_InGame_Tab_Synergies"/>
+        </Button>
+        <Button id="ItemTabButton" onactivate="HeropediaPopupShowItemsPage();">
+          <Label id="ItemsTabLabel" text="#DAC_InGame_Tab_Items"/>
+        </Button>
+      </Panel>
+
+      <Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
+		</Panel>
+    
+    <Panel class="Body">
+
+      <DACHeropediaHeroesPage id="HeroPanel" class="HeropediaHeroPanelContainer"/>
+      <DACHeropediaSynergiesPage id="SynergyPanel" class="HeropediaHeroPanelContainer"/>
+      <DACHeropediaItemsPage id="ItemPanel" class="HeropediaHeroPanelContainer"/>
+
+      <Panel class="Filters">
+        <!--switch toggles-->
+        <Panel id="TogglePanel" class="FlowRight">
+          <ToggleButton id="ToggleOwnedHeroes" class="CheckBox RightGap" text="#DAC_Heropedia_OwnedUnits" onactivate="OnHeropediaToggleOwnedHeroes()"/>
+          <ToggleButton id="ToggleOwnedItems" class="CheckBox RightGap" text="#DAC_Heropedia_OwnedItems" onactivate="OnHeropediaToggleOwnedItems()"/>
+        </Panel>
+        <!--end switch toggles-->
+        <Button class="ResetButton FlowRight" onactivate="OnHeropediaButtonResetPressed()">
+          <Image class="ResetButtonImage"/>
+          <Label text="#DAC_Heropedia_Reset"/>
+        </Button>
+      </Panel>
+
+		</Panel>
+	</Panel>
+</root>

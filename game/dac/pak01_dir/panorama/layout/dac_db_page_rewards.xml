@@ -1,0 +1,59 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_page_rewards.vcss_c" />
+	</styles>
+	<snippets>
+    <snippet name="Reward">
+      <Panel class="RewardLineItem" >
+        <Panel id="RewardLineItemImageFree" class="RewardLineItemImage RewardLineItemImageFree">
+        </Panel>
+        <Panel class="RewardLineItemSeparator"/>
+        <Panel id="RewardLineItemImageBP" class="RewardLineItemImage RewardLineItemImageBP">
+        </Panel>
+        <Button class="RewardLineItemClaimButton">
+          <Label text="{d:reward_level}"/>
+        </Button>
+        <Button class="RewardLineItemEquipButton">
+          <Label class="ItemNotEquipped" text="Equip"/>
+          <Label class="ItemEquipped" text="Equipped"/>
+        </Button>
+      </Panel>
+    </snippet>
+	</snippets>
+	
+	<DACRewardsPage hittest="false" class="DashboardPage">
+    <Panel id="TopRow">
+      <Panel id="BattlePassProgress">
+        <Panel id="PlayerBPLevelContainer">
+          <CircularProgressBar value="500" max="1000" id="PlayerBPLevelGraph" />
+          <Label text="0" id="PlayerBPLevelGraphLevel" />
+        </Panel>
+        <Label class="BattlePassCurrentLevelProgress" text="#DAC_Rewards_BPCurrentLevelProgress"/>
+      </Panel>
+      <Panel id="BattlePassUpsell">
+        <Panel class="UpsellLabelContainer">
+          <Label class="UpsellTitle" text="#DAC_Rewards_BuyBattlePassTitle"/>
+          <Label class="UpsellDesc"  text="#DAC_Rewards_BuyBattlePassDesc"/>
+        </Panel>
+      </Panel>
+    </Panel>
+    <Panel id="BottomRow">
+      <Panel id="RewardLineContainer">
+        <Button id="ScrollLeft" onactivate="ScrollPrevious()">
+        </Button>
+        <Panel id="FreeBPPanels">
+          <Panel id="FreePanel">
+            <Label text="#DAC_Rewards_Free"/>
+          </Panel>
+          <Panel id="BPPanel"/>
+        </Panel>
+        <DelayLoadList itemheight="550px" itemwidth="240px" id="RewardLine">
+
+        </DelayLoadList >
+        <Button id="ScrollRight" onactivate="ScrollNext()">
+        </Button>
+      </Panel>
+    </Panel>
+	</DACRewardsPage>
+</root>

@@ -1,0 +1,45 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_dps_chart.vcss_c" />
+	</styles>
+	<snippets>
+		<snippet name="DPSRow">
+			<Panel class="DPSRow">
+				<Panel id="HeroIcon"></Panel>
+				<Panel class="BarContainer">
+					<Panel id="DPSBarContainer">
+            <Panel id="PhysicalDmgBar"/>
+            <Panel id="MagicalDmgBar"/>
+            <Panel id="PureDmgBar"/>
+          </Panel>
+					<Panel class="DPSOverlay LeftRightFlow">
+						<Label class="NameLabel" text="{s:unit_name}" />
+						<Label class="StarIcon OneStar" text="★"/>
+						<Label class="StarIcon TwoStar" text="★★"/>
+						<Label class="StarIcon ThreeStar" text="★★★"/>
+						<Panel class="NumberSpacer"/>
+						<Label class="NumberOutput" text=" {s:dps}" />						
+					</Panel>
+					
+				</Panel>
+			</Panel>
+		</snippet>
+				
+	</snippets>
+
+	<DACDPSChart>
+    <Label class="ChartType" text="{s:chart_type}"/>
+		<Panel id="DPSChartContainer">
+				
+		</Panel>
+    <Panel id="PipsContainer">
+      <Panel id="DamageDealtPip" class="Pip" onactivate="DACDPSBarSet(0)"/>
+      <Panel id="DPSPip" class="Pip" onactivate="DACDPSBarSet(1)"/>
+      <Panel id="DamageTakenPip" class="Pip" onactivate="DACDPSBarSet(2)"/>
+      <Panel id="HealingDonePip" class="Pip" onactivate="DACDPSBarSet(3)"/>
+      <Panel id="KillsPip" class="Pip" onactivate="DACDPSBarSet(4)"/>
+    </Panel>
+	</DACDPSChart>
+</root>

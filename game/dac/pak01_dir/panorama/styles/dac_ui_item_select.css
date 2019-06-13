@@ -1,0 +1,538 @@
+DACItemSelect {
+	width: 100%;
+	height: 100%;
+
+	vertical-align: middle;
+
+	horizontal-align: center;
+	background-color: gradient(linear, 0% 0%, 0% 100%, from( rgba(11, 6, 24, 0.933) ),color-stop(.15, rgba(30, 31, 77, 0.933)), color-stop(.75, rgba(19, 45, 46, 0.933)), to(#0002));
+	transition-property: background-color;
+	transition-duration: .24s;
+	transition-timing-function: ease-in-out;
+	visibility: collapse;
+}
+
+.Defeat {
+	background-color: gradient(linear, 0% 0%, 0% 100%, from( rgba(24, 6, 6, 0.979) ),color-stop(.15, rgba(43, 18, 33, 0.986)), color-stop(.75, rgba(37, 19, 46, 0.945)), to(#0002));
+}
+
+DACItemSelect.CollapseItemChoices 
+{
+	background-color: gradient(linear, 0% 0%, 0% 100%, from( #0000 ),color-stop(0, #0000), color-stop(0, #0000), to(#0000));
+}
+
+.CollapseItemChoicesButton
+{
+	width: 300px;
+	width: fit-children;
+	height: 60px;
+	horizontal-align: right;
+
+	margin-top: 180px;
+	margin-right: 284px;
+	
+}
+
+.CollapseItemChoicesButton.BevelButton Label
+{
+	text-align: center;
+	vertical-align: center;
+	font-size: 30px;
+	padding-bottom: 6px;
+	padding-left: 12px;
+	padding-right: 12px;
+
+    color: white;
+}
+
+#CollapseItemChoicesShowText
+{
+	visibility: collapse;
+}
+
+.CollapseItemChoices #CollapseItemChoicesShowText
+{
+	visibility: visible;
+}
+
+.CollapseItemChoices #CollapseItemChoicesHideText
+{
+	visibility: collapse;
+}
+
+.MainBG
+{	
+	width: 100%;
+	height: fit-children;
+	vertical-align: middle;
+	/*background-image: url("s2r://panorama/images/hud/neutral_win_item_backing_png.vtex");*/
+	background-repeat: no-repeat;
+	background-position: 100% 0%;
+	background-size: 100% 850px;
+	transition-property: opacity, transform;
+	transition-duration: .24s;
+	transition-timing-function: ease-in-out;
+	flow-children: down;
+}
+
+.CollapseItemChoices .MainBG
+{
+	opacity: 0;
+	transform: translateY(-200px);
+}
+
+.ExtraChoices .MainBG
+{
+	background-size: 100% 800px;
+}
+
+.Defeat .MainBG
+{
+	/*background-image: url("s2r://panorama/images/hud/defeat_slash_png.vtex");*/
+}
+
+@keyframes 'PanelAppear'
+{
+	from
+	{
+		opacity: 0;
+		pre-transform-scale2d: 6.5;
+		wash-color: black;
+	}
+
+	60%
+	{
+		wash-color: white;
+	}
+
+	99%
+	{
+		wash-color: white;
+	}
+
+	to
+	{
+		opacity: 1;
+		pre-transform-scale2d: 1;
+	}
+}
+
+DACItemSelect.ItemSelectVisible {
+	visibility: visible;
+
+	animation-name: PanelAppear;
+	animation-delay: 0.0s;
+	animation-duration: 0.25s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+}
+
+.LowVisualQuality DACItemSelect.ItemSelectVisible
+{
+    animation-name: none;
+    animation-duration: 0.0s;
+}
+
+.ItemSelectTextContainer
+{
+	width: 100%;
+	vertical-align: middle;
+	horizontal-align: center;
+	flow-children: down;
+	opacity: 1;
+	
+	transition-property: transform, opacity;
+	transition-duration: .2s;
+	transition-timing-function: ease-in-out;
+}
+
+.Header
+{
+	width: 100%;
+	color: white;
+	horizontal-align: center;
+	font-size: 64px;
+	color: #8ad8fc;	
+	text-transform: uppercase;
+	text-overflow: shrink;
+	text-align: center;
+}
+
+DACItemSelect.CollapseItemChoices .ItemSelectTextContainer
+{
+	transform: translateY(-100px);
+	opacity: 0;
+}
+
+.Defeat .VictoryHeader,
+.Defeat .HeaderSubtitle
+{
+	visibility: collapse;
+}
+
+.DefeatHeader
+{
+	visibility: collapse;
+}
+
+.Defeat .DefeatHeader
+{
+	color: #dd4e35;
+	visibility: visible;
+}
+
+.SubtitleHighlight
+{
+	font-weight: bold;
+}
+
+.HeaderSubtitle
+{
+	color: white;
+	width: 100%;
+	horizontal-align: center;
+	text-align: center;
+	font-size: 40px;
+	color: #8ad8fc;
+	text-transform: uppercase;
+}
+
+#ItemChoicesContainer
+{
+	horizontal-align: center;
+	flow-children: down;
+	margin-top: 16px;
+}
+
+.ItemChoice
+{
+	background-image: url("s2r://panorama/images/hud/itemselect_01_png.vtex");
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: fit-children;
+	width: 1000px;
+	margin-top: 15px;
+	padding-top: 22px;
+	padding-bottom: 12px;
+	padding-right: 64px;
+}
+
+.ItemChoice:not(.Unavailable):hover
+{
+	brightness: 2;
+}
+
+#ItemChoiceRewardPicker_Choice_0 
+{
+	background-image: url("s2r://panorama/images/hud/itemselect_01_psd.vtex"); 
+}
+
+#ItemChoiceRewardPicker_Choice_0.ItemChoice.Unavailable
+{
+	background-image: url("s2r://panorama/images/hud/itemselect_01_broken_psd.vtex"); 
+}
+
+#ItemChoiceRewardPicker_Choice_1 
+{
+	background-image: url("s2r://panorama/images/hud/itemselect_02_psd.vtex"); 
+	margin-top: 16px;
+}
+#ItemChoiceRewardPicker_Choice_1.ItemChoice.Unavailable
+{
+	background-image: url("s2r://panorama/images/hud/itemselect_02_broken_psd.vtex"); 
+}
+
+#ItemChoiceRewardPicker_Choice_2 
+{
+	background-image: url("s2r://panorama/images/hud/itemselect_03_psd.vtex"); 
+	margin-top: -5px;
+}
+
+#ItemChoiceRewardPicker_Choice_2.ItemChoice.Unavailable
+{
+	background-image: url("s2r://panorama/images/hud/itemselect_03_broken_psd.vtex"); 
+}
+
+
+#ItemChoiceRewardPicker_Choice_3 
+{
+	background-image: url("s2r://panorama/images/hud/itemselect_01_psd.vtex"); 
+}
+
+#ItemChoiceRewardPicker_Choice_3.ItemChoice.Unavailable
+{
+	background-image: url("s2r://panorama/images/hud/itemselect_01_broken_psd.vtex"); 
+}
+
+
+.ItemChoiceContents
+{
+	width: 100%;
+	height: fit-children;
+}
+
+.Unavailable .ItemName,
+.Unavailable .ItemDescContainer
+{
+	opacity: .4;
+	saturation: 0;
+}
+
+.ItemName
+{
+	text-transform: uppercase;
+	color: #ffffff;
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+	horizontal-align: left;
+	margin-left: 150px;
+	height: 100px;
+}
+
+.ItemDescContainer
+{
+	flow-children: down;
+
+	margin-top: 44px;
+	margin-left: 160px;
+}
+
+.ItemDescription
+{
+	color: #d0f5e7;
+	font-size: 28px;
+	font-weight: bold;
+	horizontal-align: left;
+}
+
+.ItemSynergyCountText
+{
+	margin-top: 5px;
+
+	color: gold;
+	font-size: 24px;
+	horizontal-align: right;
+	background-color: #A0ACE2;
+	background-color: gradient(linear, 0% 100%, 0% 0%, from( #A0ACE2 ), to(#9DB5B2));
+	color: black;
+	visibility: collapse;
+	padding: 4px 16px;
+	border-radius: 6px;
+	font-weight: bold;
+	margin-bottom: 14px;
+}
+
+.HasUnitTypeInfo .ItemSynergyCountText
+{
+	visibility: visible;
+}
+
+.ItemContainer
+{
+	horizontal-align: left;
+	height: 150px;
+}
+
+
+#ItemImage
+{
+	width: 130px;
+	height: 130px;
+	background-image: url("s2r://panorama/images/heroes/icons/npc_dota_hero_axe_png.vtex");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 1;
+}
+
+/*.ItemImageBackground
+{
+	width: 130px;
+	height: 130px;
+	background-image: url("s2r://panorama/images/items/border_1_psd.vtex");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	visibility: collapse;
+}*/
+
+/*.Tier1 .ItemImageBackground
+{
+	background-image: url("s2r://panorama/images/items/border_1_psd.vtex");
+}
+
+.Tier2 .ItemImageBackground
+{
+	background-image: url("s2r://panorama/images/items/border_2_psd.vtex");
+}
+
+.Tier3 .ItemImageBackground
+{
+	background-image: url("s2r://panorama/images/items/border_3_psd.vtex");
+}
+
+.Tier4 .ItemImageBackground
+{
+	background-image: url("s2r://panorama/images/items/border_4_psd.vtex");
+}
+
+.Tier5 .ItemImageBackground
+{
+	background-image: url("s2r://panorama/images/items/border_5_psd.vtex");
+}*/
+
+.Defeat .ItemName,
+.Defeat .ItemDescription
+{
+/*	color: #c49a91;*/
+}
+
+.ItemTypeIcon
+{
+	z-index: 3;
+	width: 48px;
+	height: 48px;
+	background-image: url("s2r://panorama/images/hud/item_icon_equip_psd.vtex");
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+
+	visibility: collapse;
+}
+
+
+.ItemChoice.Unavailable .ItemName,
+.ItemChoice.Unavailable .ItemDescription
+{
+	color: grey;
+}
+
+.ItemChoice.Unavailable #ItemImage,
+.ItemChoice.Unavailable .ItemImageBackground
+{
+	saturation: 0;
+	brightnesS: .25;
+	contrast: 1.13;
+}
+
+
+.ItemTypeIconOffensive
+{
+	background-image: url("s2r://panorama/images/hud/icon_tag_attack_png.vtex");
+}
+
+.ItemTypeIconDefensive
+{
+	background-image: url("s2r://panorama/images/hud/icon_tag_defense_png.vtex");
+}
+
+.ItemTypeIconSupport
+{
+	background-image: url("s2r://panorama/images/hud/icon_tag_support_png.vtex");
+}
+
+.ItemTypeEquipOffensive .ItemTypeIconOffensive,
+.ItemTypeEquipDefensive .ItemTypeIconDefensive,
+.ItemTypeEquipSupport .ItemTypeIconSupport
+{
+	visibility: visible;
+}
+
+.ItemTypeGlobal .ItemImageBackground
+{
+	visibility: collapse;
+}
+
+.ItemChoice.Unavailable .UnavailableIcon
+{
+	width: 180px;
+	height: 180px;
+	margin: -15px;
+	margin-left: -32px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: 0% 0%;
+	background-image: url("s2r://panorama/images/hud/synergy_slash_psd.vtex");
+}
+
+#TimerBar
+{
+	height: 16px;
+	horizontal-align: center;
+	background-color: #EE2222;
+	transition-property: width;
+	transition-duration: 1s;
+	transition-timing-function: linear;
+	border: 1px solid #000;
+	margin-top: 32px;
+}
+
+.HiddenForTuturial_ChoicesButton .CollapseItemChoicesButton
+.HiddenForTutorial_Timer #TimerBar
+{
+	visibility: collapse;
+    opacity: 0;
+}
+
+#ItemSelectFlow
+{
+	width: 100%;
+	height: fit-children;
+	flow-children: down;
+	vertical-align: middle;
+}
+
+.ItemTierContainer
+{
+	flow-children: right;
+	horizontal-align: center;
+	height: 100%;
+}
+
+.ItemTier
+{
+	text-transform: uppercase;
+	horizontal-align: center;
+	color: #208492;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: bottom;
+	margin-bottom: -6px;
+	background-color: black;
+	padding: 0 10px;
+	padding-top: 14px;
+	z-index: 0;
+	border-bottom: 1px solid #A4AFE633;
+	border-top: 1px solid #32364C33;
+	border-right: 1px solid #9086C333;
+	border-left: 1px solid #8C919233;
+}
+
+.Tier1 .ItemTier
+{
+	color: #C3C3C3;
+}
+
+.Tier2 .ItemTier
+{
+	color: #32CD2F;
+}
+
+.Tier3 .ItemTier
+{
+	color: #056BF7;
+}
+
+.Tier4 .ItemTier
+{
+	color: #BD05F7;
+}
+
+.Tier5 .ItemTier
+{
+	color: #F7C105;
+}
+

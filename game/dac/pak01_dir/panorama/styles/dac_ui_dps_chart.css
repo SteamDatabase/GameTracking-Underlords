@@ -1,0 +1,241 @@
+
+DACDPSChart {
+	width: 250px;
+	padding: 5px 10px;
+	flow-children:down;
+}
+
+.DPSRow {
+	height: 36px;
+	margin-bottom: 8px;
+	margin-right: 8px;
+	flow-children: right;
+	transition-property:position;
+	transition-duration:0.2s;
+}
+
+.TeamNumber2 {
+	//wash-color: #BBFFBB;
+}
+
+.TeamNumber3
+{
+	//wash-color:#FFBBBB;
+}
+.BarContainer {
+	width: 250px;
+	height: 200px;
+}
+
+.IsPlatformMobile .BarContainer {
+	width: 200px;
+}
+
+#HeroIcon {
+	width: 36px;
+	height: 36px;
+	margin-right: 5px;
+	margin-top: 6px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#DPSBarContainer
+{
+	height: 100%;
+	transition-property: width;
+	transition-duration: 1s;
+	flow-children: right;
+}
+#PhysicalDmgBar {
+	height: 100%;
+	background-image: url("s2r://panorama/images/hud/dps_physical_damage_bar_psd.vtex");
+	background-size: 250px 6px;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	transition-property: width;
+	transition-duration: 1s;
+	width: 100%;
+	margin-bottom: 2px;
+}
+#MagicalDmgBar {
+	height: 100%;
+	background-image: url("s2r://panorama/images/hud/dps_magical_damage_bar_psd.vtex");
+	background-size: 250px 6px;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	transition-property: width;
+	transition-duration: 1s;
+	width: 100%;
+	margin-bottom: 2px;
+}
+#PureDmgBar {
+	height: 100%;
+	background-image: url("s2r://panorama/images/hud/dps_pure_damage_bar_psd.vtex");
+	background-size: 250px 6px;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	transition-property: width;
+	transition-duration: 1s;
+	width: 100%;
+	margin-bottom: 2px;
+}
+
+.TeamNumber3 #PhysicalDmgBar {
+	background-image: url("s2r://panorama/images/hud/dps_physical_damage_bar_enemy_psd.vtex");
+}
+
+.TeamNumber3 #MagicalDmgBar {
+	background-image: url("s2r://panorama/images/hud/dps_magical_damage_bar_enemy_psd.vtex");
+}
+
+.TeamNumber3 #PureDmgBar {
+	background-image: url("s2r://panorama/images/hud/dps_pure_damage_bar_enemy_psd.vtex");
+}
+
+.DPSOverlay Label
+{
+	color: #8588a0;
+	//color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
+	text-shadow: 0px 0px 0px 2.0 #000;
+	font-size: 22px;
+	margin-top: 1px;
+	text-overflow: shrink;
+}
+
+.NameLabel {
+	//margin-left: 8px;
+}
+
+.DPSOverlay .NumberOutput
+{
+	color: #e4e7ff;
+	font-weight: bold;
+	horizontal-align: right;
+	text-align: right;
+}
+
+.NumberSpacer
+{
+	width: fill-parent-flow( 1 );
+	height: 100%;
+}
+
+#DPSChartContainer {
+
+}
+
+
+.DPSOverlay .StarIcon {
+	visibility: collapse;
+	letter-spacing: -3px;
+	text-overflow: clip;
+	margin-right: 8px;
+	margin-left: 3px;
+	margin-top: -1px;
+	font-size: 20px;
+}
+
+.DPSRow.OneStar .OneStar {
+	visibility: visible;
+	color: rank1Color;
+}
+
+.DPSRow.TwoStar .TwoStar {
+	visibility: visible;
+	color: rank2Color;
+}
+
+.DPSRow.ThreeStar .ThreeStar {
+	visibility: visible;
+	color: rank3Color;
+}
+
+/* Mobile sizing */
+
+.IsPlatformMobile .DPSRow {
+	height: 40px;
+}
+
+.IsPlatformMobile .DPSOverlay Label {
+	font-size: 24px;
+	vertical-align:middle;
+	text-overflow:ellipsis;
+	width: 120px;
+}
+
+.IsPlatformMobile #HeroIcon {
+	width: 40px;
+	height: 40px;
+	margin-right: 2px;
+
+}
+
+.IsPlatformMobile .StarIcon
+{
+	vertical-align:middle;
+}
+.IsPlatformMobile .NameLabel {
+	visibility: collapse;
+}
+
+.IsPlatformMobile .DPSOverlay .StarIcon {
+	margin-left: 0px;
+	font-size: 22px;
+	margin-top: 1px;
+}
+
+.ChartType
+{
+  horizontal-align:center;
+  color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
+	text-shadow: 0px 1px 0px 3.0 #000;
+	font-size: 24px;
+	margin-bottom: 8px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+#PipsContainer
+{
+	margin-top:12px;
+	margin-bottom:4px;
+	height:20px;
+	
+	flow-children:right;
+	horizontal-align:center;
+}
+.Pip {
+	width: 16px;
+	height: 16px;
+	background-image: url("s2r://panorama/images/hud/stats_pip_off_psd.vtex");
+	margin-left: 2px;
+	margin-right: 2px;
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+
+#DamageTaken #DamageTakenPip
+{
+	background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
+}
+
+#DamageDealt #DamageDealtPip 
+{
+	background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
+}
+
+#HealingDone #HealingDonePip 
+{
+	background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
+}
+
+#DPS #DPSPip
+{
+	background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
+}
+
+#Kills #KillsPip {
+	background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
+}

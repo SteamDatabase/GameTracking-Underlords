@@ -1,0 +1,42 @@
+<root>
+  <styles>
+    <include src="s2r://panorama/styles/gamestyles.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popup_party_invite_friend.vcss_c" />
+  </styles>
+  <snippets>
+
+    <snippet name="FriendSnippet">
+      <Panel class="InviteFriendGroup">
+        <DACFriend id="FriendView" class="SoloFriend PartyMember"/>
+        <Panel class="StatusGroup">
+          <Label class="CannotInviteText" text="{s:cannot_invite_reason}"/>
+          <Button id="InviteButton" class="PartyButton">
+            <Label text="#DAC_Party_InviteFriend"/>
+          </Button>
+          
+        </Panel>
+      </Panel>
+    </snippet>
+
+  </snippets>
+
+  <Panel class="PopupPanel Hidden" popupbackground="dim">
+    <Label text="#DAC_PartyInviteFriend_Title" class="PopupTitle"/>
+
+    <Panel id="FriendGroup">
+      <Label id="NoFriendsOnline" class="MessageLabel" text="#DAC_PartyInviteFriend_NoFriends"/>
+      <Panel id="FriendList">
+        <!-- Dynamic Content, FriendSnippet's -->
+      </Panel>
+    </Panel>
+
+    <Panel class="PopupButtonRow">
+      <Button class="PopupButton" onactivate="UIPopupButtonClicked()">
+        <Label text="#DAC_PartyInviteFriend_Close" />
+      </Button>
+    </Panel>
+
+  </Panel>
+</root>

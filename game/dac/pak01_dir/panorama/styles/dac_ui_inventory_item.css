@@ -1,0 +1,209 @@
+DACInventoryItem
+{
+	width: 90px;
+	height: 90px;
+
+	visibility: collapse;
+
+	margin-top: 5px;
+	margin-bottom: 5px;
+
+	ui-scale: 100%;
+
+	overflow: noclip;
+}
+
+/* Mobile styles */
+.IsPlatformMobile DACInventoryItem
+{
+	ui-scale: 120%;
+}
+
+.Slot_Equipment,
+.Slot_Global
+{
+	visibility: visible;
+}
+
+.Slot_Empty
+{
+	visibility: collapse;
+}
+
+#ItemImage
+{
+	width: 100%;
+	height: 100%;
+}
+
+#ParticleScenePanel
+{
+	width: 150%;
+	height: 150%;
+
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+.UnitAssignBG
+{
+	width: 40px;
+	height: 40px;
+	background-image: url("s2r://panorama/images/hud/assigned_hero_head_backing_psd.vtex");
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+#UnitAssignment
+{
+	width: 35px;
+	height: 35px;
+	margin: 2px;
+}
+
+.UnassignedIcon
+{
+	visibility: collapse;
+}
+
+.Slot_Equipment .UnassignedIcon
+{
+	width: 32px;
+	height: 32px;
+	margin: 4px;
+	
+	visibility: collapse;
+	background-image: url("s2r://panorama/images/hud/unassigned_item_head_psd.vtex");
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;	
+}
+
+.IsAssigned .UnassignedIcon
+{
+	visibility: collapse;
+}
+
+.UnitAssignBG,
+#UnitAssignment
+{
+	visibility: collapse;
+}
+
+.Slot_Equipment.IsAssigned .UnitAssignBG
+{
+	visibility: visible;
+}
+
+.Slot_Equipment.IsAssigned #UnitAssignment
+{
+	visibility: visible;
+}
+
+.TierBlob
+{
+	width: 5px;
+	height: 5px;
+
+	visibility: collapse;
+
+	background-color: grey;
+
+	horizontal-align: right;
+}
+
+.Tier2 .TierBlob
+{
+	background-color: green;
+}
+
+.Tier3 .TierBlob
+{
+	background-color: blue;
+}
+
+.Tier4 .TierBlob
+{
+	background-color: purple;
+}
+
+.Tier5 .TierBlob
+{
+	background-color: gold;
+}
+
+@keyframes 'ItemBGPulse'
+{
+	0%
+	{
+		opacity: 1;
+	}
+
+	50%
+	{
+		opacity: 0.15;
+	}
+
+	100%
+	{
+		opacity: 1;
+	}
+}
+
+.UnassignedBackground,
+.BenchBackground
+{
+	width: 100%;
+	height: 100%;
+
+
+	animation-name: ItemBGPulse;
+	animation-duration: .7s;
+	animation-iteration-count: infinite;
+}
+
+.Slot_Equipment .UnassignedBackground
+{
+	background-image: url("s2r://panorama/images/hud/inventory_unassigned_png.vtex");
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;	
+}
+
+.IsAssigned .UnassignedBackground
+{
+	visibility: collapse;
+}
+
+.BenchBackground
+{
+	visibility: collapse;
+}
+
+.InBench .BenchBackground
+{
+	visibility: visible;
+	background-image: url("s2r://panorama/images/hud/inventory_bench_png.vtex");
+	background-size: 100%;
+	background-position: center;
+	background-repeat: no-repeat;	
+}
+
+#ItemControllerGlyph
+{
+    visibility: collapse;
+}
+
+.ControllerHighlightingItem #ItemControllerGlyph
+{
+    visibility: visible;
+    margin-left: 22px;
+    margin-top: 50px;
+}
+
+.IsAssigned #ParticleScenePanel,
+.Slot_Global #ParticleScenePanel
+{
+	visibility: collapse;
+}

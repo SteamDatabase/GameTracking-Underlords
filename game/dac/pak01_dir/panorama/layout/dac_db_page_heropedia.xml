@@ -1,0 +1,49 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_page_heropedia.vcss_c" />
+	</styles>
+	<snippets>
+	</snippets>
+
+	<DACHeropediaPage hittest="false" class="DashboardPage">
+		<Panel class="Dimmer">
+			<Panel id="HeropediaContainer">
+				<Panel class="HeropediaHeader" />
+
+				<Panel class="HeropediaBody">
+
+					<Panel class="HeropediaTabButtons">
+						<Panel class="TabList">
+							<Panel id="TitleImage"/>
+							<Label id="TabTitle" text="#DAC_InGame_Heropedia" />
+							<Button id="SeasonButtonContainer" onactivate="DACShowHeropediaSeasonPage();">
+								<Label id="SeasonTabLabel" text="#DAC_Season"/>
+							</Button>
+
+							<Button id="HeroesButtonContainer" onactivate="DACShowHeropediaHeroesPage();">
+								<Label id="HeroesTabLabel" text="#DAC_InGame_Tab_Heroes"/>
+							</Button>
+							<Button id="SynergiesButtonContainer" onactivate="DACShowHeropediaSynergiesPage();">
+								<Label id="SynergiesTabLabel" text="#DAC_InGame_Tab_Synergies"/>
+							</Button>
+							<Button id="ItemsButtonContainer" onactivate="DACShowHeropediaItemsPage();">
+								<Label id="ItemsTabLabel" text="#DAC_InGame_Tab_Items"/>
+							</Button>
+						</Panel>
+					</Panel>
+
+					<Panel class="HeropediaTabPanels">
+						<DACHeropediaSeasonPage id="SeasonTabContainer" class="TabPageContainerNoScroll" hittest="true"/>
+						<DACHeropediaHeroesPage id="HeroesTabContainer" class="TabPageContainerNoScroll" hittest="true"/>
+						<DACHeropediaItemsPage id="ItemsTabContainer" class="TabPageContainerNoScroll" hittest="true"/>
+						<DACHeropediaSynergiesPage id="SynergiesTabContainer" class="TabPageContainerNoScroll" hittest="true"/>
+						<!--<DACHeropediaCreepsPage id="CreepsTabContainer" class="TabPageContainer" hittest="true"/>-->
+						<!--<DACHeropediaRulesPage id="RulesTabContainer" class="TabPageContainer" hittest="true"/>-->
+					</Panel>
+
+				</Panel>
+			</Panel>
+		</Panel>
+	</DACHeropediaPage>
+</root>

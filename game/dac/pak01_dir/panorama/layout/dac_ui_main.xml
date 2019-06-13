@@ -1,0 +1,72 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_main.vcss_c" />
+	</styles>
+	<snippets>
+
+	</snippets>
+
+	<DACUIMain hittest="false" >
+    <PageManager id="PageManager" />
+
+    <Panel id="MainMenuContainer" hittest="false">
+			<Panel id="ZooButtonContainer" class="MainMenuButtonContainer">
+				<Button id="ZooButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('ZooContainer'); DACShowZooPage();" onmouseover="DACHighlightDashboardButton('ZooButtonContainer')" onmouseout="DACUnhighlightDashboardButton('ZooButtonContainer')"/>
+			</Panel>
+			<Panel id="PlayButtonContainer" class="MainMenuButtonContainer">
+				<Button id="PlayButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); " onmouseover="DACHighlightDashboardButton('PlayButtonContainer')" onmouseout="DACUnhighlightDashboardButton('PlayButtonContainer')" />
+				<!--<Label id="MainMenuLabel" class="PlayLabel" text="#DAC_DBHome_Mobile_Play"/>-->
+			</Panel>
+			<Panel id="HeropediaButtonContainer" class="MainMenuButtonContainer">
+				<Button id="HeropediaButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('HeropediaContainer'); DACShowHeropediaPage();" onmouseover="DACHighlightDashboardButton('HeropediaButtonContainer')" onmouseout="DACUnhighlightDashboardButton('HeropediaButtonContainer')" />
+				<!--<Label id="MainMenuLabel" class="HeropediaLabel" text="#DAC_InGame_Heropedia"/>-->
+			</Panel>
+			<Panel id="BattlePassButtonContainer" class="MainMenuButtonContainer">
+				<Button id="BattlePassButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('BattlePassContainer'); DACShowRewardsPage();" onmouseover="DACHighlightDashboardButton('BattlePassButtonContainer')" onmouseout="DACUnhighlightDashboardButton('BattlePassButtonContainer')" />
+			</Panel>
+			<Panel id="AchievementsButtonContainer" class="MainMenuButtonContainer">
+				<Button id="AchievementsButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('AchievementsContainer'); DACShowAchievementsPage();" onmouseover="DACHighlightDashboardButton('AchievementsButtonContainer')" onmouseout="DACUnhighlightDashboardButton('AchievementsButtonContainer')"/>
+			</Panel>
+			<Panel id="ProfileButtonContainer" class="MainMenuButtonContainer">
+				<Button id="ProfileButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('ProfileContainer'); DACShowProfilePage();" onmouseover="DACHighlightDashboardButton('ProfileButtonContainer')" onmouseout="DACUnhighlightDashboardButton('ProfileButtonContainer')"/>
+			</Panel>
+      <Panel id="SettingsMenuButtonContainer" class="MainMenuButtonContainer">
+		  <Button id="SettingsMenuButton" class="MainMenuButton " onactivate="DACSelectDashboardButton('SettingsMenuContainer'); DACShowSettingsPage();" onmouseover="DACHighlightDashboardButton('SettingsMenuButtonContainer')" onmouseout="DACUnhighlightDashboardButton('SettingsMenuButtonContainer')"/>
+		  <!--<Label id="MainMenuLabel" class="SettingsLabel" text="#DAC_InGame_ShowSettings"/>-->
+	  </Panel>
+	</Panel>
+
+	<Panel id="QuitButtonContainer" class="MainMenuButtonContainer">
+		<Button id="QuitButton" class="QuitButton" onactivate="DACQuitApp()"/>
+	</Panel>
+
+	<Panel class="FeedbackPanel">
+		<Label class="SubmitFeedbackIntro" text="#DAC_Home_SubmitFeedbackIntro" />
+		<Button id="SubmitFeedbackButton" class="HomeButton BevelButton" onactivate="ExternalBrowserGoToURL( 'https://www.valvesoftware.com/en/contact?recipient=Dota+Underlords+Team' )" >
+			<Label text="#DAC_Home_SubmitFeedback"/>
+		</Button>
+	</Panel>
+
+    <DropDown id="HudModeDropdown">
+      <!-- Dynamic Content -->
+    </DropDown>
+
+		<PopupManager id="PopupManager" />
+		<ToastManager id="ToastManager" hittest="false" toastduration="5.0s" maxtoastsvisible="3" />
+		<DACContextMenuManager id="ContextMenuManager" />
+		<DACTooltipManager id="TooltipManager" hittest="false" />
+
+    <Panel id="TopBarStatusBar">
+      <Panel id="TopBarStatusMessageContainer">
+        <Panel id="TopBarStatusSpinner" class="Spinner" />
+        <Label id="TopBarStatusMessage" class="Hidden" />
+      </Panel>
+    </Panel>
+
+    <Panel id="IntroScreen" hittest="false">
+    	<Panel id="IntroLogo" hittest="false"/>
+    </Panel>
+
+  </DACUIMain>
+</root>

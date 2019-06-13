@@ -1,0 +1,49 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_miniprofile.vcss_c" />
+	</styles>
+	<snippets>
+
+	</snippets>
+
+	<DACMiniProfile>
+		<Label class="HeaderPlayerName" id="PlayerNameContainer" text="{g:dac_player_slot_persona:b:player_slot}" html="true" />
+		
+		<Panel id="PlayerProfile">
+
+			<DACRankIcon id="RankIcon" iconstyle="miniprofile"/>			
+
+			<!-- <Label text="#DAC_InGame_PlayerXP" id="StatusXP" /> -->
+
+
+
+			<Panel id="PlayerAvatar">
+					<DACPlayerAvatar id="PlayerProfileAvatar" />
+			
+					<DACScenePanel id="ParticleFG" map="particles/hud/profile_streak" camera="cam_default" particleonly="true"  />			
+				</Panel>
+			
+
+
+			<Panel id="PlayerProfileAvatarOverlay">
+					<Image src="s2r://panorama/images/mini_profile/mini_profile_avatar_vignette_psd.vtex" />
+					<Image src="s2r://panorama/images/mini_profile/mini_profile_avatar_border_psd.vtex" />
+			</Panel>
+
+			<Label text="{i:playerStateHP}" id="StatusHP" />
+
+		
+			
+			<Panel id="PlayerEXPContainer" onactivate="DACProfileBuyEXP()">
+				<CircularProgressBar value="0.5" id="PlayerEXPGraph" min="0" />
+				<Label text="{i:playerStateLevel}" id="PlayerEXPGraphLevel" />
+				<DACParticleScenePanel id="EXPInvestParticle" hittest="false" startActive="false" particleName="particles/ui/xp/ui_xp_invest.vpcf" fov="-200" cameraDist="10"/>
+				<DACParticleScenePanel id="LevelUpParticle" hittest="false" startActive="false" particleName="particles/ui/xp/ui_xp_lvlup.vpcf" fov="-200"/>
+			</Panel>
+		</Panel>
+
+
+	</DACMiniProfile>
+</root>

@@ -1,0 +1,139 @@
+@import url("file://{resources}/styles/battle_pass/current_battlepass.css");
+
+#MatchIntro {
+    width: 100%;
+	height: 100%;
+    visibility: collapse;
+}
+
+.EGameState_Intro.ERoundState_Ready #MatchIntro {
+    visibility: visible;
+}
+
+.IntroProfileContainer
+{
+    vertical-align: middle;
+	horizontal-align: middle;
+    
+	flow-children: down;
+	overflow: noclip;
+}
+
+.IntroProfileContainerRow
+{
+	margin-bottom: 64px;
+	flow-children: right;
+	overflow: noclip;
+}
+
+
+DACMiniProfile {
+	ui-scale: 80%;
+	opacity: 0;
+}
+
+
+/*@keyframes 'DACMatchIntroFadeInAndOut'
+{
+	from
+	{
+		opacity: 1; 
+		transform: translateX(0px) rotateY(5deg);
+	}
+		
+	40%
+	{
+		opacity: 1; 
+		transform: translateX(0px) rotateY(0deg);
+	}
+	80%
+	{
+		opacity: 1; 
+		transform: translateX(0px) rotateY(0deg);
+	}
+	95%
+	{
+		opacity: 0; 
+	}
+	to
+	{
+		opacity: 0; 
+		transform: translateX(-30%) rotateY(45deg);
+	}
+}*/
+
+
+.FadeInAndOut
+{
+	opacity: 0; 
+	pre-transform-scale2d: 0.9;
+	animation-name: DACMatchIntroFadeInAndOut;
+    animation-delay: 0.0s;
+    animation-duration: 7.51s;
+    animation-iteration-count: 1;
+	animation-timing-function: ease-in-out;
+}
+
+
+@keyframes 'DACMatchIntroFadeInAndOut'
+{
+	0%
+	{
+		opacity: 0; 
+		pre-transform-scale2d: 0.9;
+	}
+	30%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: 1;
+	}
+	70%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: 1;
+	}
+	100%
+	{
+		opacity: 0; 
+		pre-transform-scale2d: 0.9;
+	}
+}
+
+@keyframes 'IntroAppearAnim' {
+	from
+	{
+		opacity: 0;
+		transform: translateX(800px);
+	}
+	7% {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+	60% {
+		opacity: 1;
+		transform: translateX(0px);
+	}
+	73% {
+		opacity: 0;
+		transform: translateZ(-800px);
+	}
+	to {
+		opacity: 0;
+		transform: translateZ(-2000px);
+	}
+}
+
+.Appear {
+	opacity: 0;
+	transform: translateX(-2000px);
+	animation-name: IntroAppearAnim;
+	animation-delay: 0.0s;
+	animation-duration: 6s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in-out;
+}
+
+.HiddenForTutorial
+{
+    visibility: collapse;
+}

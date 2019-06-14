@@ -1,0 +1,181 @@
+{
+    "challenge_lists": {
+        "sample_list": {
+            "entries": [
+                {
+                    "challenge": "win_100_rounds_with_synergy",
+                    "config": 1,
+                    "weight": 5.0
+                },
+                {
+                    "challenge": "win_10_games_under_level_10"
+                }
+            ]
+        }
+    },
+    "challenges": {
+        "win_100_rounds_with_synergy": {
+            "id": 1,
+            "event": {
+                "event_name": "round_end",
+                "condition": {
+                    "operator": "AND",
+                    "operands": [
+                        {
+                            "has_synergy": {
+                                "=": "$synergy"
+                            }
+                        },
+                        {
+                            "round_result": {
+                                "=": "victory"
+                            }
+                        }
+                    ]
+                }
+            },
+            "goals": [
+                {
+                    "goal": "$threshold",
+                    "reward": {
+                        "event_points": 1000,
+                        "achievement_progress": [
+                            {
+                                "achievement": "Kill Count",
+                                "grant_progress": 1
+                            }
+                        ]
+                    }
+                }
+            ],
+            "configs": [
+                {
+                    "id": 1,
+                    "synergy": 20038,
+                    "threshold": 10
+                }
+            ],
+            "locstring": "#DAC_Challenge_Win100RoundsWithKnights3"
+        },
+        "win_10_games_under_level_10": {
+            "id": 2,
+            "event": {
+                "event_name": "game_end",
+                "condition": {
+                    "operator": "AND",
+                    "operands": [
+                        {
+                            "player_level": {
+                                "<": 10
+                            }
+                        },
+                        {
+                            "player_standing": {
+                                "=": 1
+                            }
+                        }
+                    ]
+                }
+
+            },
+            "goals": [
+                {
+                    "goal": 10,
+                    "reward": {
+                        "event_points": 1000
+                    }
+                }
+            ],
+            "locstring": "#DAC_Challenge_Win10GamesUnderLevel10"
+
+        },
+        "buy_500_units": {
+            "id": 3,
+            "event": {
+                "event_name": "buy_unit"
+            },
+            "goals": [
+                {
+                    "goal": 500,
+                    "reward": {
+                        "event_points": 1000,
+                        "achievement_progress": [
+                            {
+                                "achievement": "Win Count",
+                                "grant_progress": 1
+                            }
+                        ]
+                    }
+                }
+
+            ],
+            "locstring": "#DAC_Challenge_Buy500Units"
+
+        },
+        "heal_1000_damage_with_mek_in_a_round_10_times": {
+            "id": 4,
+            "event": {
+                "event_name": "round_end",
+                "condition": {
+                    "accumulator": {
+                        "accumulator_name": "healed_with_mek",
+                        ">=": 1000,
+                        "reset": true
+                    }
+                }
+            },
+            "goals": [
+                {
+                    "goal": 10,
+                    "reward": {
+                        "event_points": 1000
+                    }
+                }
+            ],
+            "accumulators": [
+                {
+                    "accumulator_name": "healed_with_mek",
+                    "event_name": "heal_unit",
+                    "condition": {
+                        "operator": "AND",
+                        "operands": [
+                            {
+                                "source_ability": {
+                                    "=": "mekansm"
+                                }
+                            },
+                            {
+                                "player": {
+                                    "=": "local"
+                                }
+                            }
+                        ]
+                    },
+                    "reset_event": "round_end"
+                }
+            ],
+            "locstring": "#DAC_Challenge_Heal1000DamageWithMekInARound",
+        },
+        "dodge_500_attacks": {
+            "id": 5,
+            "event": {
+                "event_name": "attack_dodge",
+                "condition": {
+                    "player": {
+                        "=": "local"
+                    }
+                }
+            },
+            "goals": [
+                {
+                    "goal": 500,
+                    "reward": {
+                        "event_points": 1000
+                    }
+                }
+            ],
+
+            "locstring": "#DAC_Challenge_Dodge500Attacks"
+        }
+    }
+}

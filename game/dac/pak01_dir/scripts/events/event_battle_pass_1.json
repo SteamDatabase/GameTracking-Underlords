@@ -1,0 +1,104 @@
+{
+    "1": {
+        "name": "Test Event",
+        "points_per_level": 1000,
+        "max_level": 60,
+        "active_start_time": "2019-03-15 00:00:00",
+        "active_end_time": "2019-06-15 00:00:00",
+        "claim_end_time": "2019-09-15 00:00:00",
+        "default_event_points": 0,
+        "challenges_file":  "scripts/events/challenges_season_1.json",
+        "achievements": [
+
+            {
+                "name": "Win Count",
+                "id": 1,
+                "requires_ownership": true,
+                "levels": [
+                    {
+                        "display_string": "dac_achievement_bp1_win",
+                        "progress": 1
+                    },
+                    {
+                        "display_string": "dac_achievement_bp100_win",
+                        "progress": 100
+                    }
+                ]
+            },
+
+            {
+                "name": "Kill Count",
+                "id": 2,
+                "requires_ownership": true,
+                "levels": [
+                    {
+                        "display_string": "dac_achievement_bp1_kill100units",
+                        "progress": 100
+                    },
+                    {
+                        "display_string": "dac_achievement_bp1_kill1000units",
+                        "progress": 1000
+                    }
+                ]
+            }
+
+        ],
+
+
+        "claims": [
+
+            {
+                "name": "Test Claim 1",
+                "id": 1,
+                "requires_ownership": true,
+                "max_claims": 1,
+                "rewards": {
+                    "event_points": 500,
+                    "grant_item": "TestTitle",
+                    "achievement_progress": [
+                        {
+                            "achievement": "Win Count",
+                            "grant_progress": 5
+                        },
+                        {
+                            "achievement": "Kill Count",
+                            "grant_progress": 10
+                        }
+                    ]
+                },
+                "criteria": [
+                    {
+                        "type": "event_level",
+                        "value": 5
+                    },
+                    {
+                        "type": "achievement_level",
+                        "achievement": "Kill Count",
+                        "value": 2
+                    }
+                ]
+            },
+            {
+                "name": "Test Claim 2",
+                "id": 2,
+                "requires_ownership": true,
+                "max_claims": 1,
+                "min_event_level": 10,
+                "rewards": {
+                    "event_points": 500,
+                    "grant_item": "TestTitle",
+                    "achievement_progress": [
+                        {
+                            "achievement": "Win Count",
+                            "grant_progress": 5
+                        },
+                        {
+                            "achievement": "Kill Count",
+                            "grant_progress": 10
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

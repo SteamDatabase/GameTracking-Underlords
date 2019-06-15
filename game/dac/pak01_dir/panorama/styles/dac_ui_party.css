@@ -78,6 +78,7 @@ DACParty {
     padding: 8px;
     margin-left: 20px;
     margin-right: 20px;
+    padding-right: 4px;
 }
 
 #InviteHeaderGroup {
@@ -202,21 +203,22 @@ DACParty {
     margin-top: 5px;
 }
 
-#PartyInfoInvites
+#PartyContextMenu
 {
     width: 35px;
-    margin: 0px;
+    margin: 5px;
     height: 35px;
     background-color: #ffffff08;
-    background-image: url("s2r://panorama/images/control_icons/plus_png.vtex");
-    background-size: 60% 60%;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
     border: 2px solid #99999933;
     vertical-align: center;
     transition-property: brightness;
     transition-duration: .2s;
     opacity: .8;
+}
+
+#PartyContextMenu  Label
+{
+    visibility: visible;
 }
 
 .IsPlatformMobile #PartyInfoInvites
@@ -227,22 +229,22 @@ DACParty {
 }
 
 
-#PartyInfoInvites:hover
+#PartyContextMenu:hover
 {
     brightness: 1.5;
 }
 
-#PartyInfoInvites Label
+#PartyContextMenu Label
 {
-    font-size: 30px;
-    //vertical-align: center;
-    //margin-bottom: 5px;
+    font-size: 24px;
+    vertical-align: center;
     horizontal-align: center;
+    //margin-bottom: 5px;
     color: #ffffffaa;
     //text-transform: uppercase;
 }
 
-.IsPlatformMobile #PartyInfoInvites Label
+.IsPlatformMobile #PartyContextMenu Label
 {
     font-size: 27px;
 }
@@ -276,7 +278,7 @@ DACParty {
 }
 
 .PartyButton .NoMatchReason {
-    margin-top: 0px;
+    margin-top: 30px;
     color: red;
 }
 
@@ -285,11 +287,12 @@ DACParty {
 }
 
 .PartyButton .NoMatchReason {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 .IsPlatformMobile .PartyButton .NoMatchReason {
-    font-size: 24px;
+    font-size: 20px;
+    margin-top: 70px;
 }
 
 .CanPartyMM #NoPartyMMReason {
@@ -301,12 +304,23 @@ DACParty {
 }
 
 #PartyMatchMaking, #PartyPrivateMatch {
-    flow-children: down;
-    brightness: 0.5;
+    //flow-children: down;
+    brightness: 1.0;
+    border-top: 4px solid #d6d7d777; 
+    border-right: 4px solid #9086c377;
+    border-bottom: 4px solid #58518c77;
+    border-left: 4px solid #8c919277; 
+    //border-top: 4px solid #fad02277; 
+    //border-right: 4px solid #f5a42e77;
+    //border-bottom: 4px solid #f5a42e77;
+    //border-left: 4px solid #fad02277; 
+    //background-color: #fad02205;
+
+    //wash-color: #d9a941;
 }
 
 #PartyMatchMaking:hover, #PartyPrivateMatch:hover {
-    brightness: 1.0;
+    brightness: 1.5;
 }
 
 .ShowPartyCode #PartyCodeVisible,
@@ -331,10 +345,14 @@ DACParty {
     horizontal-align: center;
     transition-property: background-color;
     transition-duration: .2s;
+    visibility: collapse;
 }
 
-.IsPlatformMobile #PrivateBotSettings
-{
+.HasBotSlots #PrivateBotSettings {
+    visibility: visible;
+}
+
+.IsPlatformMobile #PrivateBotSettings {
     width: 500px;
     height: 60px;
 }

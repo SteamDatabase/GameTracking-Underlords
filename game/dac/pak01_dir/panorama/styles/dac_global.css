@@ -286,21 +286,20 @@ PopupManager .PopupPanel #DimBackground {
 /* ------------------------------------------------------------------------- */
 DropDown
 {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #292e2e ), to( #191e1e ) );
+	background-color: #7d868810;
 
 	background-image: url("s2r://panorama/images/control_icons/arrow_dropdown_png.vtex");
 
 	background-repeat: no-repeat;
 	background-position: right 38px 35%;
 	background-size: 32px 32px;
-	box-shadow: #00000055 -2px -2px 1px 4px;
+	/* box-shadow: #00000055 -2px -2px 1px 4px; */
 
-	border: 2px solid #5e686966;
+	/* border: 2px solid #5e686966; */
 
 	font-size: 24px;
-	width: 320px;
 	height: 41px;
-	padding: 4px 8px;
+	/* padding: 8px 12px; */
 	z-index: 1;
 
 	transition-property: background-color, border;
@@ -310,7 +309,7 @@ DropDown
 
 DropDown:enabled:hover
 {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #393e3e ), to( #292e2e ) );
+	brightness: 2.0;
 }
 
 DropDown:focus .TickBox
@@ -344,7 +343,7 @@ DropDown.DropDownMenuVisible:focus
 DropDown Label
 {
 	width: 100%;
-	margin: 3px 29px 0px 6px;
+	margin: 8px 32px 8px 18px;
 	font-size: 18px;
 
 	transition-property: color;
@@ -565,24 +564,24 @@ ToggleButton .TickBox
 	height: 18px;
 	vertical-align: center;
 	background-color: black;
-	border: 2px solid #5e686966;
-	box-shadow: #00000055 -2px -2px 1px 4px;
+	/* border: 2px solid #5e686966;
+	box-shadow: #00000055 -2px -2px 1px 4px; */
 	transition-property: background-color, box-shadow, color, border;
 	transition-duration: 0.20s;
 	transition-timing-function: ease-in-out;
 }
 
-ToggleButton:selected .TickBox
+/* ToggleButton:selected .TickBox
 {
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #e7f6f5 ), to( #a0d6d7 ) );
 	border: 3px solid #000000;
 	box-shadow: #5b62bf77 -4px -4px 8px 8px;
-}
-
+} */
+/* 
 ToggleButton:hover .TickBox
 {
 	border: 2px solid #697879;
-}
+} */
 
 //
 // Text Entry
@@ -736,7 +735,20 @@ TextEntry.ThinTextEntry {
 	height: 100%;
 }
 
+#FullscreenFocusBehaviorButton
+{
+	opacity: 0.4;
+}
 
+#FullscreenFocusBehaviorButton:hover
+{
+	opacity: 0.7;
+}
+
+#FullscreenFocusBehaviorButton:selected
+{
+	opacity: 1.0;
+}
 
 
 //
@@ -761,22 +773,22 @@ Slider
 {
 	height: 120px;
 	width: 16px;
-	background-color: #283842;
+	background-color: #7d868810;
 	align: center center;
-	background-color: black;
-	border: 2px solid #5e686966;
-	box-shadow: #00000055 -2px -2px 1px 4px;
+	/* background-color: black;
+	border: 2px solid #5e686966; */
+	/* box-shadow: #00000055 -2px -2px 1px 4px; */
 	z-index: 2;
 
 }
 
 SlottedSlider.HorizontalSlider .SliderNotch
 {
-	margin-top: 14px;
-	border-bottom: 2px solid #5e686966;
+	margin-top: 8px;
+	/* border-bottom: 2px solid #5e686966;
 	border-left:2px solid #5e686966;
 	border-right:2px solid #5e686966;
-	background-color: black;
+	background-color: black; */
 	width: 12px;
 	height: 12px;
 	vertical-align: bottom;
@@ -786,15 +798,20 @@ SlottedSlider.HorizontalSlider .SliderNotch
 #SliderTrackProgress
 {
 	width: 10px;
-	height: 99%;
-	background-color: gradient( linear, 0% 100%, 0% 0%, from( #222222FF ), to( #444f52FF ) );
+	height: 100%;
+	background-color: #FF6511;
 	align: center center;
 	z-index: 3;
 }
 
+#SliderTrackProgress:disabled
+{
+	opacity: 0.4;
+}
+
 #SliderThumb
 {
-	background-color: gradient( radial, 50% 50%, -5% -5%, 60% 60%, from( #91a5b9 ), to( #444f52 ) );
+	background-color: #7d868810;
 	width: 30px;
 	height: 16px;
 	
@@ -825,34 +842,34 @@ Slider.HorizontalSlider, SlottedSlider.HorizontalSlider
 
 Slider.HorizontalSlider #SliderTrack, SlottedSlider.HorizontalSlider #SliderTrack
 {
-	height: 16px;
+	height: 8px;
 	width: 100%;
 
-	padding: 10px;
+	/* padding: 10px; */
 }
 
 Slider.HorizontalSlider #SliderTrackProgress, SlottedSlider.HorizontalSlider #SliderTrackProgress
 {
 	width: 100%;
-	height: 10px;
-	background-color: gradient( linear, 0% 0%, 100% 0%, from( #222222FF ), to( #444f52FF ) );
-	box-shadow: inset black 0px 1px 4px 0px;
-	margin-left: 1px;
+	height: 8px;
+	/* background-color: gradient( linear, 0% 0%, 100% 0%, from( #222222FF ), to( #444f52FF ) );
+	box-shadow: inset black 0px 1px 4px 0px; */
+	/* margin-left: 1px; */
 }
 
 Slider.HorizontalSlider #SliderTrackProgress:disabled, SlottedSlider.HorizontalSlider #SliderTrackProgress:disabled
 {
 	width: 100%;
-	height: 10px;
-	background-color: gradient( linear, 0% 0%, 100% 0%, from( #010101FF ), to( #333333FF ) );
-	box-shadow: inset black 0px 1px 4px 0px;  // flickering when sliding...bug?
-	margin-left: 1px;
+	height: 8px;
+	/* background-color: gradient( linear, 0% 0%, 100% 0%, from( #010101FF ), to( #333333FF ) );
+	box-shadow: inset black 0px 1px 4px 0px;  // flickering when sliding...bug? */
+	/* margin-left: 1px; */
 }
 
 
 Slider.HorizontalSlider #SliderThumb, SlottedSlider.HorizontalSlider #SliderThumb
 {
-	background-color: gradient( radial, 50% 50%, -5% -5%, 60% 60%, from( #91a5b9 ), to( #444f52 ) );
+	background-color: #7d8688;
 	width: 16px;
 	height: 30px;
 }
@@ -865,13 +882,14 @@ Slider.HorizontalSlider #SliderThumb, SlottedSlider.HorizontalSlider #SliderThum
 
 Slider.HorizontalSlider #SliderThumb:hover, SlottedSlider.HorizontalSlider #SliderThumb:hover
 {
-	background-color: gradient( radial, 50% 50%, -5% -5%, 60% 60%, from( #b8c5d3 ), to( #444f52 ) );
+	brightness: 2.0;
 }
 
 Slider.HorizontalSlider #SliderThumb:disabled, SlottedSlider.HorizontalSlider #SliderThumb:disabled
 {
 	background-color: #333333;
 }
+
 
 .PreGame #PreGameLabel
 {
@@ -908,9 +926,7 @@ ToggleButton .TickBox, DACSettingsCheckbox .TickBox
 	width: 18px;
 	height: 18px;
 	vertical-align: center;
-	background-color: black;
-	border: 2px solid #5e686966;
-	box-shadow: #00000055 -2px -2px 1px 4px;
+	background-color: #7d8688;
 
 	transition-property: background-color, box-shadow, color, border, background-image, wash-color, pre-transform-scale2d;
 	transition-duration: 0.20s;
@@ -920,16 +936,12 @@ ToggleButton .TickBox, DACSettingsCheckbox .TickBox
 
 ToggleButton:selected .TickBox, DACSettingsCheckbox:selected .TickBox
 {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #e7f6f5 ), to( #a0d6d7 ) );
-	border: 3px solid #000000;
-	box-shadow: #5b62bf77 -4px -4px 8px 8px;
-
+	background-color: #ff6511;
 }
 
 ToggleButton:hover .TickBox, DACSettingsCheckbox:hover .TickBox
 {
-	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #e7f6f5 ), to( #a0d6d7 ) );
-	border: 2px solid #697879;
+	
 }
 
 ToggleButton Label, DACSettingsCheckbox Label
@@ -945,10 +957,10 @@ ToggleButton Label, DACSettingsCheckbox Label
 	transition-timing-function: linear;
 }
 
-ToggleButton:enabled:hover Label, DACSettingsCheckbox:enabled:hover Label
+/* ToggleButton:enabled:hover Label, DACSettingsCheckbox:enabled:hover Label
 {
 	color: #d2d6d1;
-}
+} */
 
 ToggleButton:selected Label, DACSettingsCheckbox:selected Label
 {
@@ -964,13 +976,13 @@ ToggleButton:disabled .TickBox, DACSettingsCheckbox:disabled .TickBox
 {
 	border-color: #333333;
 }
-
+/* 
 ToggleButton:disabled:selected .TickBox, DACSettingsCheckbox:disabled:selected .TickBox
 {
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #222222 ), to( #333333 ) );
 	border: 3px solid #000000;
 	box-shadow: #33333377 -4px -4px 8px 8px;
-}
+} */
 
 
 ToggleButton.ExpandCollapseToggleButton
@@ -1043,10 +1055,7 @@ RadioButton > .RadioBox
 	min-width: 20px;
 	min-height: 20px;
 
-	background-color: gradient( radial, 50% 50%, 0% 0%, 10% 10%, from( #000000 ), to( #000000 ) );
-
-	
-
+	background-color: #7d8688;
 	transition-property: background-color, color, border;
 	transition-duration: 0.20s;
 	transition-timing-function: ease-in-out;
@@ -1054,23 +1063,25 @@ RadioButton > .RadioBox
 
 RadioButton:selected > .RadioBox
 {
-	background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, from( #e7f6f5 ), to( #333399 ) );
-	border: 3px solid #000000;
+	/* background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, from( #e7f6f5 ), to( #333399 ) ); */
+	/* border: 3px solid #000000; */
 
 
-	transition-property: background-color;
+	/* transition-property: background-color;
 	transition-duration: 0.5s;
-	transition-timing-function: ease-in-out;
+	transition-timing-function: ease-in-out; */
+	background-color: #ff6511;
+	vertical-align: top;
 }
 
 RadioButton:enabled:hover > .RadioBox
 {
-	border: 2px solid #697879;
+	/* border: 2px solid #697879; */
 }
 
 RadioButton:enabled:selected:hover > .RadioBox
 {
-	border: 3px solid #000000;
+	/* border: 3px solid #000000; */
 }
 
 RadioButton > Label
@@ -1086,8 +1097,11 @@ RadioButton > Label
 
 DACSettingsEnum RadioButton > Label
 {
-	font-size: 18px;
+	font-size: 16px;
 	color: #7d8688;
+	margin-left: 8px;
+	vertical-align: middle;
+	margin-top: 2px;
 }
 
 
@@ -1102,23 +1116,22 @@ RadioButton:selected > Label
 
 RadioButton:enabled:hover > Label
 {
-	color: white;
+	/* color: white; */
 
 	transition-property: color;
 	transition-duration: 0.2s;
 	transition-timing-function: linear;
 }
 
-RadioButton:disabled > .RadioBox
+RadioButton:disabled > .RadioBox,
+ToggleButton:disabled > .TickBox
 {
-	color: transparent;
-
-	background-color: #00000000;
+	background-color: #ffffff10;
 }
 
 RadioButton:disabled:selected > .RadioBox
 {
-	background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, from( #e7f6f533 ), to( #33339933 ) );
+	/* background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, from( #e7f6f533 ), to( #33339933 ) ); */
 }
 
 RadioButton:disabled > Label
@@ -1132,21 +1145,21 @@ RadioButton:disabled > Label
 /* ------------------------------------------------------------------------- */
 DropDown, DACSettingsEnumDropDown
 {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #292e2e ), to( #191e1e ) );
+	background-color: #7d868810;
 
 	background-image: url("s2r://panorama/images/control_icons/arrow_dropdown_png.vtex");
 
 	background-repeat: no-repeat;
-	background-position: right 38px 35%;
+	background-position: right 42px 35%;
 	background-size: 32px 32px;
-	box-shadow: #00000055 -2px -2px 1px 4px;
+	/* box-shadow: #00000055 -2px -2px 1px 4px; */
 
-	border: 2px solid #5e686966;
+	/* border: 2px solid #5e686966; */
 
 	font-size: 24px;
 	width: 320px;
-	height: 41px;
-	padding: 4px 8px;
+	height: 48px;
+	/* padding: 4px 8px; */
 	z-index: 1;
 
 	transition-property: background-color, border;
@@ -1156,7 +1169,7 @@ DropDown, DACSettingsEnumDropDown
 
 DropDown:enabled:hover, DACSettingsEnumDropDown:enabled:hover
 {
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #393e3e ), to( #292e2e ) );
+	/* background-color: gradient( linear, 0% 0%, 0% 100%, from( #393e3e ), to( #292e2e ) ); */
 }
 
 DropDown:focus .TickBox, DACSettingsEnumDropDown:focus .TickBox
@@ -1190,9 +1203,11 @@ DropDown.DropDownMenuVisible:focus, DACSettingsEnumDropDown.DropDownMenuVisible:
 DropDown Label, DACSettingsEnumDropDown Label
 {
 	width: 100%;
-	margin: 3px 29px 0px 6px;
+	/* margin: 3px 29px 0px 6px; */
+	vertical-align: middle;
 	font-size: 18px;
 
+	margin-left: 18px;
 	transition-property: color;
 	transition-duration: 0.15s;
 	transition-timing-function: linear;
@@ -1340,6 +1355,11 @@ DropDown.ThinDropDown
     opacity: 1.0;
     z-index: contextmenu_zindex;
     visibility: visible;
+}
+
+.IsPlatformPC .ContextMenu
+{
+	ui-scale: 80%;
 }
 
 .ContextMenu.Destructing {

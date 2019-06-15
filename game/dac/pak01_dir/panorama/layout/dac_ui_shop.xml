@@ -16,12 +16,15 @@
 					</Panel>
 				</Panel>
 				<Panel id="HeroCardRow">
-					<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" renderbatched="true" usePortraitData="true"/>
+					<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" renderbatched="true" usePortraitData="true" />
+					<DACUnitScenePanel id="SceneViewMinimal" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" renderbatched="true" usePortraitData="false" usePortraitCamera="false" usePortraitLighting="false" unitYaw="-90" cameraDistance="400" cameraOrthographicSize="275" />
 					<DACParticleScenePanel class="ParticleOverlay" id="HoverParticle" hittest="false" startActive="false" particleName="particles/ui/shop/ui_shop_hero_hover2.vpcf"  fov="-900" />
 					<DACParticleScenePanel class="ParticleOverlay" id="CombineParticle" hittest="false" startActive="false" particleName="particles/ui/shop/ui_shop_hero_combine_preview2.vpcf"  fov="-900" />
 					
 					<Panel id="UnitHeader" class="LeftRightFlow">
-						<Label id="CostNumber" text="{i:UnitCost}" />
+						<Panel class="CostContainer">
+							<Label id="CostNumber" text="{i:UnitCost}" />
+						</Panel>
 					</Panel>
 					<Panel id="BottomFade" />
 					<Panel id="WashLayer" hittest="false"/>
@@ -63,25 +66,40 @@
 
 			<Panel id="MainRow">
 				<Panel class="ButtonGutter">
-					<Button class="TempButton Mobile GutterButton" id="LibraryShop">
-						<Panel id="LibraryButton" onactivate="DACShowHeropediaPopup()"/>
+					<Button class="ShopButton" id="LibraryShop">
+						<Panel id="LibraryButton" onactivate="DACShowHeropediaPopup()"/>		<!-- DACShopToggleMinimal() -->
 					</Button>
 
-					<Button class="TempButton Mobile GutterButton" id="LockShop" onactivate="DACLockShop( true )">
+					<Button class="ShopButton" id="LockShop" onactivate="DACLockShop( true )">
 						<Panel id="LockButton" />
 					</Button>
 
-					<Button class="TempButton Mobile GutterButton" id="UnlockShop" onactivate="DACLockShop( false )">
+					<Button class="ShopButton" id="UnlockShop" onactivate="DACLockShop( false )">
 						<Panel id="UnlockButton" />
 					</Button>
 				</Panel>
 				<Panel id="ShopContainer">
 					<Panel id="UnitsShopBG" class="LeftRightFlow">
-						<Panel id="UnitShopBG1" class="UnitShopBGItem"><Panel class="CombineHighlight"/></Panel>
-						<Panel id="UnitShopBG2" class="UnitShopBGItem"><Panel class="CombineHighlight"/></Panel>
-						<Panel id="UnitShopBG3" class="UnitShopBGItem"><Panel class="CombineHighlight"/></Panel>
-						<Panel id="UnitShopBG4" class="UnitShopBGItem"><Panel class="CombineHighlight"/></Panel>
-						<Panel id="UnitShopBG5" class="UnitShopBGItem"><Panel class="CombineHighlight"/></Panel>
+						<Panel id="UnitShopBG1" class="UnitShopBGItem">
+							<Panel class="UnderfootImage"/>
+							<Panel class="CombineHighlight"/>
+						</Panel>
+						<Panel id="UnitShopBG2" class="UnitShopBGItem">
+							<Panel class="UnderfootImage"/>
+							<Panel class="CombineHighlight"/>
+						</Panel>
+						<Panel id="UnitShopBG3" class="UnitShopBGItem">
+							<Panel class="UnderfootImage"/>
+							<Panel class="CombineHighlight"/>
+						</Panel>
+						<Panel id="UnitShopBG4" class="UnitShopBGItem">
+							<Panel class="UnderfootImage"/>
+							<Panel class="CombineHighlight"/>
+						</Panel>
+						<Panel id="UnitShopBG5" class="UnitShopBGItem">
+							<Panel class="UnderfootImage"/>
+							<Panel class="CombineHighlight"/>
+						</Panel>
 					</Panel>
 					<Panel id="UnitsShop" class="LeftRightFlow">
 					</Panel>
@@ -94,14 +112,15 @@
 					</Panel>
 				</Panel>
 				<Panel class="ButtonGutter">
-					<Button class="TempButton Mobile GutterButton" id="RerollShop" onactivate="DACRerollShop()">
+					<Button class="ShopButton" id="RerollShop" onactivate="DACRerollShop()">
 						<Panel id="RerollButton" />
 						<Panel class="GoldValueContainer">
 							<Panel class="PlusMinus"/>
 							<Label class="CostLabel" text="2" />
 						</Panel>
+						<Label class="FreeRerollLabel" text="#DAC_InGame_FreeReroll" />
 					</Button>
-					<Button class="TempButton Mobile GutterButton" id="LevelUp" onactivate="DACBuyEXP()">
+					<Button class="ShopButton" id="LevelUp" onactivate="DACBuyEXP()">
 						<Panel id="PlayerEXPContainer" onactivate="DACBuyEXP()">
 							<CircularProgressBar value="0.5" id="PlayerEXPGraph" min="0" />
 							<Label text="{i:playerStateLevel}" id="PlayerEXPGraphLevel" />

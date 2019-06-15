@@ -162,7 +162,7 @@
 	{
 		"VulkanUseStreamingTextureManager"	"1"
 		"VulkanUseSecondaryCommandBuffers"	"1" // Use secondary command buffers for more efficiency on tiled based renderers. Desktop too to limit configurations.
-		"VulkanOnly"						"1"	[ $OSX ] // No OpenGL fallback on OSX, only Vulkan is supported.
+		"VulkanOnly"						"1"	[ $LINUX || $OSX ] // No OpenGL or D3D9/11 fallback on Linux or OSX, only Vulkan is supported.
 		"SheetCacheTextureRows"				"1024"
 		"SheetCacheTextureCols"				"128"
 	}

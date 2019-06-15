@@ -32,7 +32,14 @@ DACUIHud.IsConnected {
 	height: 100%;
 	background-color: black;
 	visibility: collapse;
+	
+}
+#WinOverlayPanel .OverlayContainer,
+#DeadOverlayPanel .OverlayContainer
+{
 	flow-children: down;
+	width: 100%;
+	height: 100%;
 }
 
 #WinOverlayPanel #HeroImage,
@@ -150,6 +157,7 @@ DACUIHud.IsConnected {
 	vertical-align: bottom;
 	margin-bottom: 40px;
 	//margin-right: 60px;
+	min-height: 130px;
 }
 
 #WinOverlayPanel .PostGameButtons,
@@ -538,6 +546,14 @@ DACUIHud.IsConnected {
 	padding: 3px;
 }
 
+.IsPlatformPC #PlayerStateContainer
+{
+    ui-scale: 80%;
+    margin-top: 40px;
+    margin-left: 200px;
+}
+
+
 #PowerBarContainer
 {
 	width: 40px;
@@ -699,7 +715,7 @@ DACUIHud.IsConnected {
 
 #SynergyIcons DACSynergyIcon
 {
-	ui-scale: 80%;
+	ui-scale: 60%;
 }
 
 #SynergyIcons.SynergyShrinkLevel1 DACSynergyIcon
@@ -865,11 +881,25 @@ DACUIHud.IsConnected {
 	padding-left: 20px;
 }
 
+.IsPlatformPC.ShopVisible #DPSTab
+{
+	padding-top: 320px;
+}
+
 #SynergyTab,
 #ItemsTab
 {
 	padding-top: 180px;
-	padding-bottom: 170px;
+	padding-bottom: 220px;
+
+	transition-property: padding-top;
+	transition-duration: 0.2s;
+}
+
+.IsPlatformPC.ShopVisible #SynergyTab,
+.IsPlatformPC.ShopVisible #ItemsTab
+{
+	padding-top: 380px;
 }
 
 #ItemsTab,
@@ -1032,6 +1062,12 @@ DACUIHud.IsConnected {
 	flow-children: left;
 }
 
+.IsPlatformPC #CornerButtons
+{
+    ui-scale: 80%;
+}
+
+
 #HamburgerButton 
 {
 	background-image: url("s2r://panorama/images/hud/hamburger_psd.vtex");
@@ -1048,6 +1084,13 @@ DACUIHud.IsConnected {
 	horizontal-align: right;
 	transition-duration: .12s;
 }
+
+.IsPlatformPC #HamburgerButton
+{
+    ui-scale: 80%;
+    background-position: 90px 20px;
+}
+
 
 #HamburgerButton:hover
 {
@@ -1115,7 +1158,6 @@ DACUIHud.IsConnected {
 {
 	brightness: 2;
 }
-
 
 
 #CloseShopButton {
@@ -1210,6 +1252,11 @@ DACUIShop
 {
 	width: 100%;
 	height: 100%;
+}
+
+DACUIShop.Minimal
+{
+	height: fit-children;
 }
 
 #MenuButton {
@@ -1591,6 +1638,13 @@ Label.ChoiceItem_Description
 	visibility: visible;
 }
 
+.IsPlatformPC #GameStatePanel
+{
+    ui-scale: 80%;
+	margin-right: 80px;
+}
+
+
 .HideGameStatePanel #GameStatePanel
 {
 	visibility: collapse;
@@ -1771,10 +1825,13 @@ Label.ChoiceItem_Description
 		horizontal-align: right;
 		height: 100%;
 		width: 80px;
-		//background-color: #000;
-		//background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000cc ), to(#00000088));
-		//background-color: red; 
 }
+
+.IsPlatformPC #RightTabBar
+{
+    ui-scale: 70%;
+}
+
 
 .TabBarButtonContainer {
 	vertical-align: center;
@@ -2021,12 +2078,16 @@ Label.ChoiceItem_Description
 	}
 }
 
-#PlayerLeaderboardContainer {
+.PlayerLeaderboardBackground
+{
 	margin-left: 0px;
 	vertical-align: middle;
-	width: 185px;
-	max-height: 100%;
 
+	width: 185px;
+	//max-height: 100%;
+	//height: fit-children;
+	height: 100%;
+	//height: 800px;
 	overflow: noclip;
 	background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000 ), to(#000000));
 	background-image: url("s2r://panorama/images/leaderboard/leader_board_backer_psd.vtex");
@@ -2034,6 +2095,28 @@ Label.ChoiceItem_Description
 	
 	box-shadow: #000000 0px 0px 15px;
 }
+
+#PlayerLeaderboardContainer {
+	width: 100%;
+	height: fit-children;
+	//height: 100%;
+	//height: 800px;
+	vertical-align: center;
+
+}
+
+.IsPlatformPC #PlayerLeaderboardContainer
+{
+    ui-scale: 80%;
+    //padding: 10% 0%;
+    margin: 10px;
+}
+
+.IsPlatformPC .PlayerLeaderboardBackground
+{
+	width: 160px;
+}
+
 
 DACLeaderboardEntry {
 	transition-property: position;
@@ -2103,6 +2186,11 @@ DropDown Label
 	visibility: collapse;
 }
 
+.ShopVisible DACNotifications
+{
+	opacity: 0.2;
+}
+
 #MenuButtons
 {
 	visibility: collapse;
@@ -2130,6 +2218,13 @@ DropDown Label
 	flow-children: down;
 	width: 650px;
 }
+
+.IsPlatformPC .MenuButtonContainer.PopupPanel
+{
+    ui-scale: 80%;
+}
+
+
 
 .MenuLogo
 {
@@ -2170,6 +2265,8 @@ DropDown Label
 	font-size: 30px;
 	horizontal-align: center;
 	vertical-align: center;
+    text-overflow: shrink;
+    overflow: squish;
 }
 
 .Language_russian .MenuButton Label
@@ -2489,6 +2586,13 @@ DropDown Label
 	
 }
 
+.IsPlatformPC #UnitCountDisplay
+{
+    ui-scale: 80%;
+    margin-top: 100px;
+    //padding: 10%;
+}
+
 
 #UnitCountIcon,
 #UnitCountIconGlow
@@ -2783,6 +2887,12 @@ DACHUDRankDisplay .HUDRankDisplay
 	transition-property: opacity;
 	transition-duration: 0.4s;
 }
+
+.IsPlatformPC #ErrorMsg
+{
+	ui-scale: 80%;
+}
+
 #ErrorMsg.Show
 {
 	animation-name: PopupAnimation;
@@ -2794,7 +2904,9 @@ DACHUDRankDisplay .HUDRankDisplay
 
 #ErrorMsg Label
 {
-	font-size: 60px;
+	font-size: 50px;
+	text-transform: uppercase;
+	font-weight: black;
 	color:white;
 	vertical-align: center;
 }
@@ -2933,7 +3045,7 @@ DACHUDRankDisplay .HUDRankDisplay
 .BenchSlot8Full #BenchSlot8 { background-image: url("s2r://panorama/images/hud/bench_hero_shadow_psd.vtex"); }
 
 
-#PlayerLeaderboardContainer,
+.PlayerLeaderboardBackground,
 #PlayerStateContainer,
 #SelectedUnitContainer,
 #CornerButtons,
@@ -2945,7 +3057,7 @@ DACHUDRankDisplay .HUDRankDisplay
 	transition-duration: 0.2s;
 }
 
-.LowVisualQuality #PlayerLeaderboardContainer,
+.LowVisualQuality .PlayerLeaderboardBackground,
 .LowVisualQuality #PlayerStateContainer,
 .LowVisualQuality #SelectedUnitContainer,
 .LowVisualQuality #CornerButtons,
@@ -2956,16 +3068,15 @@ DACHUDRankDisplay .HUDRankDisplay
 	transition-duration: 0.0s;
 }
 
-
-.ShopVisible #PlayerLeaderboardContainer,
 .ShopVisible #PlayerStateContainer,
-.EGameState_Intro #PlayerLeaderboardContainer,
+.ShopVisible .PlayerLeaderboardBackground,
+.EGameState_Intro .PlayerLeaderboardBackground,
 .EGameState_Intro #PlayerStateContainer,
 .EGameState_Intro #SelectedUnitContainer,
 .EGameState_Intro #CornerButtons
 {
-    opacity: 0;
-    position: -150px 0 0;
+	opacity: 0;
+	position: -150px 0 0;
 }
 
 .SellUnitVisible #PlayerLeaderboardContainer
@@ -3021,6 +3132,12 @@ DACHUDRankDisplay .HUDRankDisplay
 {
 	opacity: 0;
 	transform: translateX( 150px );
+}
+
+.IsPlatformPC.ShopVisible #RightTabBar
+{
+	opacity: 1;
+	transform: none;
 }
 
 /* Alternate headshake that shrinks instead of grows.

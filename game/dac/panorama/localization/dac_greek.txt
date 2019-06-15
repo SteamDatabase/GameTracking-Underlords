@@ -126,7 +126,7 @@
 	"DAC_PartyAction_FailedToGetResponse"				"Αδυναμία ομιλίας με το δίκτυο Dota Underlords αυτή τη στιγμή. Προσπαθήστε ξανά σε μερικά λεπτά."
 	"DAC_PartyAction_InternalError"						"Παρουσιάστηκε ένα απρόσμενο εσωτερικό σφάλμα. Προσπαθήστε ξανά σε μερικά λεπτά."
 	"DAC_PartyAction_InvalidParty"						"Αδυναμία εύρεσης παρέας. Μπορεί να έχει ήδη διαλυθεί."
-	"DAC_PartyAction_InvalidPermissions"				"Δεν έχετε άδεια να κάνετε αυτές τις αλλαγές σε αυτή την παρέα."
+	"DAC_PartyAction_InvalidPermissions"				"You do not have permission to make those changes to that party."
 	"DAC_PartyAction_InvalidTarget"						"Ο προσδιορισμένος στόχος δεν είναι πλέον μέλος της παρέας."
 	"DAC_PartyAction_InvalidValue"						"Η παρεχόμενη τιμή δεν είναι έγκυρη για αυτή την παρέα."
 	"DAC_PartyAction_InMatchMaking"						"Η παρέα είναι αυτή τη στιγμή σε εύρεση παιχνιδιού και αυτή η αλλαγή δεν μπορεί να γίνει αυτή τη στιγμή."
@@ -208,6 +208,13 @@
 	"DAC_Party_SetBotDifficultyTitle"					"Ορισμός δυσκολίας bot"
 	"DAC_Party_SetBotDifficultyText"					"Παρακαλούμε περιμένετε"
 
+	"DAC_Party_Context_Invite"							"Invite Friends"
+	"DAC_Party_Context_Open"							"Open Party"
+	"DAC_Party_Context_Close"							"Close Party"
+	"DAC_Party_Context_CopyCode"						"Copy Party Code"
+	"DAC_Party_Context_ShowCode"						"Show Party Code"
+	"DAC_Party_Context_HideCode"						"Hide Party Code"
+
 
 	"DAC_Party_KickedByTitle"							"Διώξιμο από παρέα"
 	"DAC_Party_KickedByText"							"Διωχτήκατε από την παρέα σας από {g:dac_persona:kicked_by_account}"
@@ -239,7 +246,7 @@
 	"DAC_CancelFriendInvite_ErrorTitle"					"Σφάλμα"
 	"DAC_CancelFriendInvite_ErrorBody"					"Αδυναμία ακύρωσης αυτής της πρόσκλησης τώρα. Προσπαθήστε ξανά αργότερα."
 	"DAC_CancelFriendInvite_ConfirmTitle"				"Ακύρωση πρόσκλησης"
-	"DAC_CancelFriendInvite_ConfirmBody"				"Θέλετε σίγουρα να ακυρώσετε την πρόσκληση φιλίας σας για {g:dac_persona:b:account_id};"
+	"DAC_CancelFriendInvite_ConfirmBody"				"Are you sure that you want to cancel your friend invite for {g:dac_persona:b:account_id}? You will be unable to send them another invite for several days."
 
 	"DAC_IgnoreFriendInvite_Title"						"Αγνόηση πρόσκλησης"
 	"DAC_IgnoreFriendInvite_Body"						"Παρακαλούμε περιμένετε"
@@ -275,10 +282,14 @@
 	"DAC_FriendCode_FailedInternalError"				"Unexpected internal server error. Please try again later."
 	"DAC_FriendCode_FailedRateLimited"					"You've sent too many requests. Please try again later."
 	"DAC_FriendCode_FailedTooBusy"						"This system is too busy right now. Please try again later."
+	"DAC_FriendCode_TargetHasTooManyFriends"			"This user already has the maximum number of allowed friends."
+	"DAC_FriendCode_HaveTooManyFriends"					"You already have the maximum number of allowed friends."
+	"DAC_FriendCode_Blocked"							"This user has blocked you. This may be a result of having recently sent a friend request."
+	"DAC_FriendCode_Ignored"							"You have been ignored by this user."
 
 	"DAC_PlayerContextMenu_InviteToParty"				"ΠΡΟΣΚΛΗΣΗ ΣΕ ΠΑΡΕΑ"
 	"DAC_PlayerContextMenu_SpectateGame"				"ΠΑΡΑΚΟΛΟΥΘΗΣΗ ΠΑΙΧΝΙΔΙΟΥ"
-	"DAC_PlayerContextMenu_AddFriend"					"ΠΡΟΣΘΗΚΗ ΦΙΛΟΥ"
+	"DAC_PlayerContextMenu_AddFriend"					"Add Friend"
 	"DAC_PlayerContextMenu_AcceptFriendRequest"			"ΑΠΟΔΟΧΗ ΑΙΤΗΜΑΤΟΣ ΦΙΛΙΑΣ"
 	"DAC_PlayerContextMenu_IgnoreFriendRequest"			"ΑΠΟΡΡΙΨΗ ΑΙΤΗΜΑΤΟΣ ΦΙΛΙΑΣ"
 	"DAC_PlayerContextMenu_PartyLeave"					"ΑΠΟΧΩΡΗΣΗ ΑΠΟ ΠΑΡΕΑ"
@@ -289,6 +300,7 @@
 	"DAC_PlayerContextMenu_PartyCreateWith"				"ΔΗΜΙΟΥΡΓΙΑ ΠΑΡΕΑΣ"
 	"DAC_PlayerContextMenu_RemoveFriend"				"Αφαίρεση φίλου"
 	"DAC_PlayerContextMenu_CancelFriendInvite"			"Ακύρωση πρόσκλησης φίλου"
+	"DAC_PlayerContextMenu_AddFriend"					"Send Friend Invite"
 	"DAC_PlayerContextMenu_EmptyMenu"					"--"
 	
 
@@ -628,7 +640,7 @@
 	
 	"dac_item_better_items"								"Smuggler"
 	"dac_item_better_items_desc"						"Η ποιότητα των αντικειμένων που προσφέρονται από ουδέτερους γύρους είναι από 1 κύμα παραπάνω."
-	"dac_item_better_items_lore"						"Αυτά που ΠΡΑΓΜΑΤΙΚΑ θέλεις είναι στο πίσω μέρος. - <i>Zenok, φύλακας Λευκού Οβελίσκου</i>"
+	"dac_item_better_items_lore"						"The stuff you REALLY want is in the back. - <i>Zenok, White Spire Fence</i>"
 	
 	"dac_item_bonus_damage_on_low_life"					"Desperate Measures"
 	"dac_item_bonus_damage_on_low_life_desc"			"Οι μονάδες σας λαμβάνουν +1% ζημιά επίθεσης ανά 5 πόντους ζημιάς που έχει ο Underlord σας."
@@ -771,6 +783,7 @@
 	"DAC_InGame_Reroll"									"Reroll"
 	"DAC_InGame_LockShop"								"Κλείδωμα αγοράς"
 	"DAC_InGame_UnlockShop"								"Ξεκλείδωμα αγοράς"
+	"DAC_InGame_FreeReroll"								"Free"
 	"DAC_InGame_Library"								"Συλλογή"
 	"DAC_InGame_Odds"									"ΑΠΟΔΟΣΗ"
 	"DAC_InGame_Deployed"								"Σε πίστα"
@@ -1372,6 +1385,10 @@
 	"dac_settings_5speakers"					"5.1 ηχεία"
 	"dac_settings_7speakers"					"7.1 ηχεία"
 	"dac_settings_captions"						"Χρήση υπότιτλων"
+
+	"dac_settings_ui_mode"						"Interface Mode"
+	"dac_settings_ui_config_mobile"				"Mobile"
+	"dac_settings_ui_config_pc"					"PC"
 	
 	"dac_settings_steam"						"Steam"
 	"dac_settings_synergies_hide_partial"		"Hide partial Alliances during combat."
@@ -1507,4 +1524,29 @@
 	"UI_TextEntry_CutToClipboard"	"Αποκοπή"
 	"UI_TextEntry_CopyToClipboard"	"Αντιγραφή"
 	"UI_TextEntry_PasteClipboard"	"Επικόλληση"
+
+	"dac_hotkey_sell_desc"							"Sell the selected unit."
+	"dac_hotkey_sell"								"E"
+	"dac_hotkey_tobench_desc"						"Send a unit to an open bench slot."
+	"dac_hotkey_tobench"							"W"
+	"dac_hotkey_reroll_desc"						"Re-roll the shop unit options."
+	"dac_hotkey_reroll"								"R"
+	"dac_hotkey_levelup_desc"						"Purchase 4 XP for 5 Gold."
+	"dac_hotkey_levelup"							"T"
+	"dac_hotkey_shop_desc"							"Open the Shop."
+	"dac_hotkey_shop"								"Space"
+	"dac_hotkey_home_desc"							"Select and view your board."
+	"dac_hotkey_home"								"F1"
+	"dac_hotkey_enemies_desc"						"Switch between enemy boards."
+	"dac_hotkey_enemies"							"Tab"
+	"dac_hotkey_tabs_desc"							"Scroll between DPS, Item, and Alliance tabs."
+	"dac_hotkey_tabs"								"Mouse Wheel"
+	"dac_hotkey_unitpurchase_desc"					"Purchase the corresponding unit from the shop."
+	"dac_hotkey_unitpurchase"						"1-5"
+	"dac_hotkey_lock_desc"							"Lock the shop, preventing it from re-rolling at the start of the next round."
+	"dac_hotkey_lock"								"Q"
+	"dac_hotkey_opponent_board_desc"				"View the board of your current opponent."
+	"dac_hotkey_opponent_board"						"S"
+	"dac_hotkey_away_board_desc"					"View the board of the player defending against your army."
+	"dac_hotkey_away_board"							"A"
 }

@@ -184,10 +184,12 @@
 			<DACItemSelect id="ItemSelect" />
 			<DACUIMatchIntro id="MatchIntro"/>
 			<DACRoundStart />
-			<Panel id="PlayerLeaderboardContainer" />
+			<Panel class="PlayerLeaderboardBackground">
+				<Panel id="PlayerLeaderboardContainer" />
+			</Panel>
 			<DACNotifications />
 			<DACRoundOverScreen />			
-			<DACUIShop/>
+			
 			<Panel id="CornerButtons" hittest="false">
 				<Panel id="ShopButtonContainer" hittest="false">
 					<Panel id="ShopButton" onactivate="DACToggleShop()">
@@ -223,6 +225,7 @@
 					</Panel>
 				</Panel>
 			</Panel>
+			<DACUIShop/>
 			<Panel id="HamburgerButton" onactivate="DACShowMenuButtons()" />			
 			<DACSellUnitBar id="SellUnitBar"/>
 
@@ -312,36 +315,39 @@
 
 		<!-- Make sure these are at the bottom to get the z-order right -->
 		<Panel id="DeadOverlayPanel" onactivate="">
-			<Panel class="PlaceContainer">
-				<Label class="PlaceTitle" text="#DAC_InGame_UserDiedPlace"/>
-				<Label class="PlaceQuote" text="{s:result_quote}"/>
-			</Panel>
-			<Panel class="StatsContainer">
-				<Panel class="StatsSubContainer">
-					<Label class="BigStat" text="{d:rounds_won}" />
-					<Label class="StatDescription tilt-left" text="#DAC_EndGame_RoundsWon" />
+			<Panel class="OverlayContainer">
+				<Panel class="PlaceContainer">
+					<Label class="PlaceTitle" text="#DAC_InGame_UserDiedPlace"/>
+					<Label class="PlaceQuote" text="{s:result_quote}"/>
 				</Panel>
-				<Panel class="StatsSubContainer">
-					<Label class="BigStat" text="{d:damage_dealt}" />
-					<Label class="StatDescription tilt-right" text="#DAC_EndGame_DamageDealt" />
+				<Panel class="StatsContainer">
+					<Panel class="StatsSubContainer">
+						<Label class="BigStat" text="{d:rounds_won}" />
+						<Label class="StatDescription tilt-left" text="#DAC_EndGame_RoundsWon" />
+					</Panel>
+					<Panel class="StatsSubContainer">
+						<Label class="BigStat" text="{d:damage_dealt}" />
+						<Label class="StatDescription tilt-right" text="#DAC_EndGame_DamageDealt" />
+					</Panel>
+					<Panel class="StatsSubContainer">
+						<Label class="BigStat" text="{d:gold_earned}" />
+						<Label class="StatDescription tilt-left" text="#DAC_EndGame_GoldEarned" />
+					</Panel>
+									<!-- <Panel class="StatsSubContainer">
+						<Label class="BigStat" text="{d:rounds_lost}" />
+						<Label class="StatDescription" text="#DAC_EndGame_RoundsLost" />
+					</Panel> -->
 				</Panel>
-				<Panel class="StatsSubContainer">
-					<Label class="BigStat" text="{d:gold_earned}" />
-					<Label class="StatDescription tilt-left" text="#DAC_EndGame_GoldEarned" />
-				</Panel>
-								<!-- <Panel class="StatsSubContainer">
-					<Label class="BigStat" text="{d:rounds_lost}" />
-					<Label class="StatDescription" text="#DAC_EndGame_RoundsLost" />
-				</Panel> -->
-			</Panel>
-			<Panel class="SynergyContainer">
-				<Label class="FinalCrewTitle tilt-right" text="#DAC_FinalCrew_Title"/>
-				<Panel id="DeadHeroSynergies" class="final-synergies">
-					
-				</Panel>
-				<Panel id="DeadHeroRoster" class="HeroRoster">
-			</Panel>
+				<Panel class="SynergyContainer">
+					<Label class="FinalCrewTitle tilt-right" text="#DAC_FinalCrew_Title"/>
+					<Panel id="DeadHeroSynergies" class="final-synergies">
+						<!-- Code generated -->
+					</Panel>
+					<Panel id="DeadHeroRoster" class="HeroRoster">
+						<!-- Code generated -->
+					</Panel>
 
+				</Panel>
 			</Panel>
 			<Panel class="ButtonContainer">
 				<!-- removing end game stats for now
@@ -364,37 +370,39 @@
 		</Panel>
 
 		<Panel id="WinOverlayPanel" onactivate="">
-			<Panel class="radial-gradient" />
-			<Panel class="PlaceContainer">
-				<Label class="PlaceTitle" html="true" text="#DAC_EndGame_Win"/>
-				<Label class="PlaceQuote" text="{s:result_quote}"/>
-			</Panel>
-			<Panel class="StatsContainer">
-				<Panel class="StatsSubContainer">
-					<Label class="BigStat" text="{d:rounds_won}" />
-					<Label class="StatDescription tilt-left" text="#DAC_EndGame_RoundsWon" />
+			<Panel class="OverlayContainer">
+				<Panel class="radial-gradient" />
+				<Panel class="PlaceContainer">
+					<Label class="PlaceTitle" html="true" text="#DAC_EndGame_Win"/>
+					<Label class="PlaceQuote" text="{s:result_quote}"/>
 				</Panel>
-				<Panel class="StatsSubContainer">
-					<Label class="BigStat" text="{d:damage_dealt}" />
-					<Label class="StatDescription tilt-right" text="#DAC_EndGame_DamageDealt" />
+				<Panel class="StatsContainer">
+					<Panel class="StatsSubContainer">
+						<Label class="BigStat" text="{d:rounds_won}" />
+						<Label class="StatDescription tilt-left" text="#DAC_EndGame_RoundsWon" />
+					</Panel>
+					<Panel class="StatsSubContainer">
+						<Label class="BigStat" text="{d:damage_dealt}" />
+						<Label class="StatDescription tilt-right" text="#DAC_EndGame_DamageDealt" />
+					</Panel>
+					<Panel class="StatsSubContainer">
+						<Label class="BigStat" text="{d:gold_earned}" />
+						<Label class="StatDescription tilt-left" text="#DAC_EndGame_GoldEarned" />
+					</Panel>
+					<!-- <Panel class="StatsSubContainer">
+						<Label class="BigStat" text="{d:rounds_lost}" />
+						<Label class="StatDescription" text="#DAC_EndGame_RoundsLost" />
+					</Panel> -->
 				</Panel>
-				<Panel class="StatsSubContainer">
-					<Label class="BigStat" text="{d:gold_earned}" />
-					<Label class="StatDescription tilt-left" text="#DAC_EndGame_GoldEarned" />
-				</Panel>
-				<!-- <Panel class="StatsSubContainer">
-					<Label class="BigStat" text="{d:rounds_lost}" />
-					<Label class="StatDescription" text="#DAC_EndGame_RoundsLost" />
-				</Panel> -->
-			</Panel>
-			<Panel class="SynergyContainer">
-				<Label class="FinalCrewTitle tilt-right" text="#DAC_FinalCrew_Title"/>
-				<Panel id="WinHeroSynergies" class="final-synergies">
-					
-				</Panel>
-				<Panel id="WinHeroRoster" class="HeroRoster">
-			</Panel>
+				<Panel class="SynergyContainer">
+					<Label class="FinalCrewTitle tilt-right" text="#DAC_FinalCrew_Title"/>
+					<Panel id="WinHeroSynergies" class="final-synergies">
 
+					</Panel>
+					<Panel id="WinHeroRoster" class="HeroRoster">
+					</Panel>
+
+				</Panel>
 			</Panel>
 			<Panel class="ButtonContainer">
 				<!-- removing end game stats for now

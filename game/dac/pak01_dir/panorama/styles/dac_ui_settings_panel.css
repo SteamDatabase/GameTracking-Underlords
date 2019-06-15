@@ -3,14 +3,22 @@
 }
 
 .SettingsSecondaryPanel {
-    margin-top: 40px;
-    padding-top: 6px;
+    margin-top: 60px;
     opacity: 1;
     width: 100%;
     height: 100%;
     transition-property: opacity;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
+    background-color: #161a1b;
+    border: 2px solid #73849205;
+    /* box-shadow: #73849206 0px 0px 80px 0px; */
+}
+
+#SecretTabContent
+{
+    flow-children: down;
+    padding: 18px 32px;
 }
 
 #HotkeysTabContent {
@@ -30,9 +38,8 @@ DACUISettingsPanel {
     transition-duration: 0.4s;
     transition-delay: 0.0s;
     transition-timing-function: ease-in-out;
-    background-color: gradient( linear, 0% 0%, 0% 25%, from( #232326 ), to( #1c1d20 ) );
-    box-shadow: #00000099 -4px -4px 8px 8px;
-    border: 2px solid #32383677;
+    /* box-shadow: #00000099 -4px -4px 8px 8px; */
+    //border: 2px solid #32383677;
 }
 
 .LowVisualQuality DACUISettingsPanel {
@@ -71,9 +78,10 @@ DACUISettingsPanel.Hidden {
 }
 
 DACUISettingsPanel Label {
-    font-size: 18px;
-    letter-spacing: 2px;
+    font-size: 21px;
+    letter-spacing: 1px;
     color: white;
+    font-weight: semi-bold;
 }
 
 #ChatWheelWheelPanel Label {
@@ -83,9 +91,9 @@ DACUISettingsPanel Label {
 /* NAV BAR */
 
 #SettingsNavBar {
-    background-color: black;
+    /* background-color: black; */
     margin-top: 0px;
-    //padding-bottom: 8px;
+    padding-bottom: 8px;
     vertical-align: top;
     horizontal-align: left;
     flow-children: right;
@@ -95,39 +103,87 @@ DACUISettingsPanel Label {
 .SettingsNavBarButton {
     height: 40px;
     margin-left: 6px;
-    margin-right: 6px;
+    margin-right: 18px;
+    margin-top: 2px;
+    margin-bottom: 2px;
     padding-top: 4px;
+    background-color: white;
+    box-shadow: 0px 0px 2px #ffffff;
 }
 
-    .SettingsNavBarButton Label {
-        color: #939da044;
-        font-size: 20px;
-        vertical-align: middle;
-        horizontal-align: center;
-        text-transform: uppercase;
-        margin: 0px;
-    }
+.SettingsNavBarButton Label {
+    color: #000;
+    font-size: 24px;
+    padding-right: 12px;
+    padding-left: 12px;
+    font-weight: black;
+    vertical-align: middle;
+    text-align: center;
+    horizontal-align: center;
+    text-transform: uppercase;
+    margin: 0px;
+}
 
-    .SettingsNavBarButton .RadioBox {
-        visibility: collapse;
-    }
+.SettingsNavBarButton .RadioBox {
+    visibility: collapse;
+}
 
-    .SettingsNavBarButton:hover Label {
-        color: #CCCCCC;
-    }
+.SettingsNavBarButton:hover {
+    brightness: 0.8;
+}
 
-    .SettingsNavBarButton:selected Label {
-        color: white;
-        sound: "ui_rollover_micro";
-    }
+.SettingsNavBarButton:hover > Label {
+    color: #000;
+}
 
-    .SettingsNavBarButton:active {
-        transform: translateY(2px);
-    }
+.SettingsNavBarButton:selected Label {
+    color: #000;
+    sound: "ui_rollover_micro";
+}
 
-        .SettingsNavBarButton:active:selected {
-            transform: translateY(0px);
-        }
+.SettingsNavBarButton:active {
+    transform: translateY(1px);
+}
+
+.SettingsNavBarButton:selected > Label,
+{
+    color: #fff;
+}
+
+.SettingsNavBarButton:selected,
+#BuildVersion:selected
+{
+    transform: rotateZ(2deg);
+    background-color: #ff6511;
+    box-shadow: 0px 0px 2px #ff6511;
+}
+
+#BuildVersion
+{
+    margin: 5px 0px;
+    background-color: #000;
+    box-shadow: 0px 0px 2px #000;
+}
+
+#BuildVersion:selected
+{
+    background-color: #000;
+    box-shadow: 0px 0px 2px #000;
+    transform: rotateZ(0deg);
+}
+
+#BuildVersion Label
+{
+	font-size: 16px;
+	vertical-align: middle;
+    color: #fff;
+    padding: 0;
+}
+
+#BuildVersion:selected > Label
+{
+    color: #ff6511;
+}
 
 .IsPlatformMobile .SettingsNavBarButton {
     height: 80px;
@@ -142,7 +198,7 @@ DACUISettingsPanel Label {
 }
 
 .IsPlatformMobile .SettingsSecondaryPanel {
-    margin-top: 60px;
+    margin-top: 90px;
 }
 
 .HotKeyPageButton {
@@ -219,7 +275,7 @@ DACUISettingsPanel Label {
     width: 100%;
     height: 100%;
     margin-top: 0px;
-    padding: 0px 38px 0px 38px;
+    padding: 18px 32px;
 }
 
 
@@ -238,8 +294,16 @@ DACUISettingsPanel Label {
 .SettingsDualColumn {
     flow-children: down;
     margin: 0px;
-    width: 50%;
-    padding: 0px 16px 0px 16px;
+    width: 46%;
+    margin-right: 30px;
+    /* padding: 0px 16px 0px 16px; */
+}
+
+.IsPlatformMobile .SettingsSection
+{
+    overflow: squish scroll;
+    padding-top: 10px;
+    padding-bottom: 0px;
 }
 
 .FullHeight {
@@ -695,14 +759,15 @@ DACUISettingsPanel Label {
 .SettingsSection {
     flow-children: down;
     width: 100%;
-    margin-top: 12px;
+    margin-top: 18px;
     //margin-top: 5px;
+    padding-left: 10px;
 }
 
 .SectionHeader {
     font-size: 24px;
-    font-weight: thin;
-    color: #939da0;
+    font-weight: bold;
+    color: #fff;
     text-transform: uppercase;
 }
 
@@ -795,19 +860,62 @@ DACSettingsCheckbox {
     //height: 32px;
     //margin: 5px;
     //padding-left: 8px;
+    //horizontal-align: left;
     padding-top: 12px;
     padding-bottom: 12px;
-    //horizontal-align: left;
 }
 
-    .OptionsCheckBox Label {
-        vertical-align: center;
-        margin-top: 2px;
-        margin-bottom: 0px;
-        margin-left: 8px;
-        font-size: 18px;
-        color: #7d8688;
-    }
+.OptionsCheckBox Label {
+    vertical-align: middle;
+    color: #7d8688;
+    letter-spacing: 1px;
+    font-weight: semi-bold;
+    font-size: 18px;
+    margin: 0;
+    margin-left: 12px;
+}
+
+.OptionsCheckBox
+{
+    opacity: 0.4;
+}
+
+.OptionsCheckBox:hover
+{
+    opacity: 0.6;
+}
+
+.OptionsCheckBox:selected
+{
+    opacity: 1.0;
+}
+
+
+.OptionsCheckBox:active
+{
+    transform: translateZ(-6px);
+}
+
+RadioButton > .RadioBox
+{
+    background-color: #7d8688;
+    vertical-align: top;
+}
+/* 
+RadioButton:hover > Label
+{
+    color: #7d8688;
+} */
+
+RadioButton:selected > .RadioBox
+{
+    background-color: #ff6511;
+}
+
+/* RadioButton:selected > .RadioBox
+{
+    background-color: #ff6511;
+} */
 
 #LegacyKeysCheckLabel {
     font-size: 12px;
@@ -944,7 +1052,7 @@ DACSettingsCheckbox {
     vertical-align: center;
     margin: 0px;
     padding-top: 4px;
-    padding-left: 5px;
+    padding-left: 12px;
     letter-spacing: 1px;
     font-weight: thin;
 }
@@ -958,7 +1066,7 @@ DACSettingsCheckbox {
     padding-top: 0px;
     padding-left: 5px;
     letter-spacing: 1px;
-    font-weight: thin;
+    font-weight: semi-bold;
     margin-bottom: 6px;
     vertical-align: top;
 }
@@ -1493,17 +1601,14 @@ Slider.HorizontalSlider {
 
 #TextureEnum {
     width: 100%;
-    margin-left: 6px;
 }
 
 #ParticleEnum {
     width: 100%;
-    margin-left: 6px;
 }
 
 #ShadowEnum {
     width: 100%;
-    margin-left: 6px;
 }
 
 .EnumButton {
@@ -1523,35 +1628,105 @@ Slider.HorizontalSlider {
     margin: 4px;
 }
 
-    .AudioVideoPanelButton:hover {
-        border: 1px solid #FFFFFF;
-        background-color: #666666;
-    }
+.AudioVideoPanelButton:hover {
+border: 1px solid #FFFFFF;
+background-color: #666666;
+}
 
-    .AudioVideoPanelButton:active {
-        transform: translateY(2px);
-    }
+.AudioVideoPanelButton:active {
+transform: translateY(2px);
+}
 
-        .AudioVideoPanelButton:active:selected {
-            transform: translateY(0px);
-        }
+.AudioVideoPanelButton:active:selected {
+    transform: translateY(0px);
+}
+
+#BottomVideoButtonsPanel
+{
+    width: 600px;
+    flow-children: right;
+}
 
 #BottomVideoButtonsPanel, #AudioDefaultsButton {
-    margin-top: 10px;
+    margin-top: 12px;
+}
+
+#UploadConsoleLogButton,
+#UploadSaveGameButton
+{
+    margin-top: 8px;
+}
+
+#VideoDefaultsButton,
+#ApplyResolutionButton,
+#AudioDefaultsButton,
+#UploadConsoleLogButton,
+#UploadSaveGameButton,
+#LogoutButton
+{
+    background-color: #7d8688;
+    border: 0px solid #fff;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+#VideoDefaultsButton > Label,
+#ApplyResolutionButton > Label,
+#AudioDefaultsButton > Label,
+#UploadSaveGameButton > Label,
+#UploadConsoleLogButton > Label,
+#LogoutButton > Label
+{
+    text-shadow: none;
+    color: #000;
+    font-weight: black;
+    font-size: 21px;
+    vertical-align: middle;
+    margin: 4px 0px;
+    padding-top: 4px;
+    letter-spacing: 1px;
+}
+
+#VideoDefaultsButton:hover,
+#ApplyResolutionButton:hover,
+#AudioDefaultsButton:hover
+{
+    brightness: 1.5;
+}
+
+
+#VideoDefaultsButton:active,
+#ApplyResolutionButton:active,
+#AudioDefaultsButton:active
+{
+    brightness: 0.5;
+}
+
+
+#ApplyResolutionButton
+{
+    background-color: #FF6511;
 }
 
 #VideoDefaultsButton {
-    margin-left: 16px;
+    margin-left: 24px;
 }
 
 #CustomVideoResolution {
     margin-top: 16px;
-    padding-left: 24px;
-    padding-right: 0px;
+    width: 100%;
 }
 
 DropDown {
-    width: 314px;
+    width: 600px;
+}
+
+.SubTitle
+{
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #777;
 }
 
 #RenderSystemPanel {
@@ -1577,7 +1752,7 @@ DropDown {
 }
 
 #LanguageDropDown {
-    width: 100%;
+    width: 600px;
 }
 
 
@@ -1592,8 +1767,13 @@ DropDown {
 }
 
 #AdvancedVideo {
-    padding-left: 12px;
+    padding-left: 24px;
     flow-children: down;
+}
+
+#AdvancedVideo:disabled
+{
+    opacity: 0.4;
 }
 
 #BasicVideo {
@@ -1609,8 +1789,8 @@ DropDown {
 }
 
 #RenderQuality {
-    margin-left: 10px;
-    margin-top: 12px;
+    margin-left: 0px;
+    margin-top: 24px;
 }
 
 .IsPlatformMobile #RenderQuality {
@@ -1618,7 +1798,7 @@ DropDown {
 }
 
 #FpsMaxSlider {
-    margin-left: 10px;
+    margin-left: 0px;
     margin-top: 8px;
 }
 
@@ -1627,8 +1807,9 @@ DropDown {
     margin-top: 16px;
 }
 
-#ResolutionPanel {
-    margin-right: 25px;
+.full-wdith
+{
+    width: 100%;
 }
 
 #DevicePanel {
@@ -1643,14 +1824,15 @@ DropDown {
 
 #BasicVideo SlottedSlider {
     width: 100%;
-    margin-left: 28px;
+    /* margin-left: 28px; */
 }
 
 #VideoSliderLabels {
     width: 100%;
-    margin-left: 28px;
+    /* margin-left: 28px; */
     margin-bottom: 12px;
     margin-top: 6px;
+
 }
 
 .IsPlatformMobile #VideoSliderLabels {
@@ -2464,6 +2646,24 @@ DACSettingsEnum .EnumButton {
     width: 100%;
 }
 
+#VolumeSettingsColumn .SectionHeader,
+#AudioSettingColumn .SectionHeader
+{
+    margin-bottom: 12px;
+}
+
+#VolumeSettingsColumn,
+#AudioSettingColumn
+{
+    flow-children: down;
+}
+
+#AudioSettingColumn
+{
+    margin-top: 24px;
+    width: 50%;
+}
+
 #MinimapSizeSlider {
     margin-left: 20px;
     width: 100%;
@@ -2544,21 +2744,11 @@ DACSettingsEnum .EnumButton {
     z-index: 20;
 }
 
-#BuildVersion Label,
-#BuildVersion:hover Label
-{
-	font-size: 16px;
-	vertical-align: bottom;
-	color: #444;
-}
-
 .SecretOptionSection
 {
-	horizontal-align: center;
+	horizontal-align: left;
 	width: 400px;
 	flow-children: down;
-	padding: 10px 20px 20px 20px;
-	background-color: rgba( 0, 0, 0, 0.2 );
 	margin-top: 10px;
 	margin-bottom: 20px;
 }
@@ -2567,7 +2757,7 @@ DACSettingsEnum .EnumButton {
 {
 	font-size: 20px;
 	text-transform: uppercase;
-	margin-bottom: 20px;
+	margin-bottom: 4px;
 }
 
 .IsPlatformMobile #ResolutionSettingsColumn {
@@ -2612,7 +2802,7 @@ DACSettingsEnum .EnumButton {
 .IsPlatformMobile #VolumeSettingsColumn.SettingsDualColumn,
 .IsPlatformMobile #GameSettingsColumn.SettingsDualColumn,
 {
-    ui-scale: 240%;
+    ui-scale: 170%;
     width: 100%;
 }
 
@@ -2636,7 +2826,7 @@ DACSettingsEnum .EnumButton {
 
 #GameOptionsSection
 {
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 // hiding these settings for now
 
@@ -2644,6 +2834,45 @@ DACSettingsEnum .EnumButton {
 #TreeWindToggle,
 #WaterToggle,
 #AutodetectLatency
+{
+    visibility: collapse;
+}
+
+#HotkeySettingsColumn
+{
+    margin-top: 180px;
+}
+
+.HotkeyContainer
+{
+    width: 100%;
+    margin: 8px 0px 8px 8px;
+    flow-children: right;
+}
+
+.HotkeyKey
+{
+    min-width: 180px;
+    padding: 12px 12px 8px 12px;
+    /* border: 2px solid #7d868850; */
+    background-color: #7d868810;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    color: #fff;
+    font-weight: black;
+}
+
+Label.HotkeyDesc
+{
+    vertical-align: middle;
+    margin-left: 10px;
+    color: #7d8688;
+    font-size: 18px;
+}
+
+.IsPlatformMobile .HotkeySettingsSection
 {
     visibility: collapse;
 }

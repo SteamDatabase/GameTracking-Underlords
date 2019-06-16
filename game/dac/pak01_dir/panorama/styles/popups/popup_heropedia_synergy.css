@@ -1,11 +1,13 @@
 @import url("file://{resources}/styles/battle_pass/current_battlepass.css");
 @import url("file://{resources}/styles/dac_db_page_heropedia_heroes_shared.css");
 
-.IsPlatformPC PopupHeropediaSynergy
-{
+.IsPlatformPC PopupHeropediaSynergy {
     ui-scale: 80%;
 }
 
+.IsPlatformMobile PopupHeropediaSynergy {
+    padding: safe-area-inset-top safe-area-inset-right safe-area-inset-bottom safe-area-inset-left;
+}
 
 .PopupPanel
 {
@@ -165,6 +167,7 @@
     /*max-height: 240px;*/
     margin: 10px;
     flow-children: down;
+    UI-Scale: 90%;
 }
 
 .HeroContainer:hover
@@ -204,3 +207,91 @@
         font-weight: semi-bold;
         text-shadow: 0px 1px 0px 3.0 #000;
     }
+
+
+.IsCreep .NavigationButtons {
+    visibility: collapse;
+}
+
+.NavigationButtons {
+    horizontal-align: center;
+    width: 100%;
+    height: 100%;
+}
+
+.IsPlatformPC .NavigationButtons {
+    horizontal-align: center;
+    width: 80%;
+    height: 100%;
+}
+
+    .NavigationButtons Button {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        vertical-align: middle;
+        border: 0px solid #666669;
+        background-color: #8588a022;
+        background-image: none;
+    }
+
+        .NavigationButtons Button:hover {
+            brightness: 1.75;
+            border: 0px solid #666669;
+        }
+
+        .NavigationButtons Button:active {
+            brightness: 1.75;
+            border: 0px solid #666669;
+            background-color: #8588a022;
+        }
+
+    .NavigationButtons .Previous {
+        horizontal-align: left;
+        margin-left: 50px;
+        opacity: .85;
+    }
+
+    .NavigationButtons .Next {
+        horizontal-align: right;
+        margin-right: 50px;
+        opacity: .85;
+    }
+
+    .NavigationButtons .Arrow {
+        width: 100px;
+        height: 100px;
+        background-image: url("s2r://panorama/images/dashboard/reward_arrow_png.vtex");
+        background-size: 40% 60%;
+        background-position: center;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        horizontal-align: center;
+        margin-right: 4px;
+    }
+
+    .NavigationButtons Label {
+        margin-right: 10px;
+        margin-left: 40px;
+        font-size: 20px;
+        line-height: 16px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: semi-bold;
+        text-overflow: clip;
+        horizontal-align: right;
+        vertical-align: middle;
+        text-align: right;
+        visibility: collapse;
+    }
+
+    .NavigationButtons .Right {
+        transform: ScaleX(-1);
+        horizontal-align: right;
+        text-align: left;
+    }
+
+        .NavigationButtons .Right Label {
+            transform: ScaleX(-1);
+            horizontal-align: right;
+        }

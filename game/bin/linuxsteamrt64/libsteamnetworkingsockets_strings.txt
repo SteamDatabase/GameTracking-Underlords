@@ -272,7 +272,7 @@
 #CMsgSteamSockets_UDP_ChallengeReply
 #CMsgSteamSockets_UDP_ConnectRequest
 #D$8H
-#H9D$
+#H9T$
 #P0_?G0
 #[]A\
 #[]A\A]A^
@@ -982,7 +982,6 @@ $tjHcF
 2D$KH
 2D$LH
 2D$MH
-2D;8u
 2I y)
 2Tm=#
 2Uiwp"9
@@ -1234,6 +1233,8 @@ $tjHcF
 ;!;#;-;9;E;S;Y;_;q;{;
 ;%|>0
 ;*3$"
+;-UVF
+;-_WF
 ;0|	;p
 ;2(-/
 ;5jNf
@@ -1439,7 +1440,6 @@ A;E8}
 A;G(|
 A;G`tFI
 A;GhA
-A;L$`A
 A;T$<A
 A;\$0|
 A;\$4|
@@ -1463,6 +1463,7 @@ A;m8|
 A;mH}RI
 A;mX}.
 A;n |
+A;t$`A
 A@tkf
 AA Compromise
 AACompromise
@@ -2073,6 +2074,7 @@ Assertion Failed: pAckEnd <= pPayloadEnd
 Assertion Failed: pChild->m_hSelfInParentListenSocketMap == h
 Assertion Failed: pChild->m_pParentListenSocket == this
 Assertion Failed: pClient->m_identityRemote == identity
+Assertion Failed: pClient->m_listRelaySessions.Count() == 1
 Assertion Failed: pClient->m_statsEndToEnd.m_nMaxRecvPktNum > 0
 Assertion Failed: pClient->m_unConnectionIDRemote == unConnectionID
 Assertion Failed: pCluster->m_ping.m_nSmoothedPing >= 0
@@ -2119,6 +2121,7 @@ Assertion Failed: pPrimarySession->m_pServer->m_stats.m_usecTimeLastRecv > 0
 Assertion Failed: pPublicKey->GetKeyType() == k_ECryptoKeyTypeKeyExchangePublic
 Assertion Failed: pPublicKey->GetKeyType() == k_ECryptoKeyTypeSigningPublic
 Assertion Failed: pQueue->m_pFirst
+Assertion Failed: pRelay->m_stats.m_nMaxRecvPktNum > 0
 Assertion Failed: pResult && pResult->m_hListenSocketSelf == sock
 Assertion Failed: pResult->m_identityRemote == identityRemote
 Assertion Failed: pResult->m_pPrev == nullptr
@@ -2153,7 +2156,6 @@ Assertion Failed: q.m_pFirst == this
 Assertion Failed: q.m_pLast != this
 Assertion Failed: q.m_pLast == this
 Assertion Failed: range.m_nBegin < u->first.m_nBegin
-Assertion Failed: relay.m_stats.m_nMaxRecvPktNum > 0
 Assertion Failed: remotePublicKey.IsValid()
 Assertion Failed: resizeNumBits >= 0
 Assertion Failed: route.m_bSendToPeer
@@ -2283,6 +2285,7 @@ BN lib
 BOOL ABSENT
 BPH9AP
 BRecvCryptoHandshake failed creating localhost socket pair
+BRecvCryptoHandshake failed creating loopback pipe socket pair
 BT]Q@
 BUF lib
 BUG: Duplicate connection ID!
@@ -2650,11 +2653,13 @@ CSharedSocket client table corruption!
 CSteamNetworkConnectionP2PSDR inbound connection received stats while in state 'connecting'.
 CSteamNetworkConnectionP2PSDR received ProcessMessage_P2PSessionEstablished while in state %d.  Rejecting packet with ConnectionClosed message.
 CSteamNetworkConnectionPipe connections shouldn't try to send 'packets'!
+CSteamNetworkConnectionPipe::BInitConnection failed.  %s
 CSteamNetworkConnectionSDRClientBase received data packet while in state %d.  Rejecting packet with ConnectionClosed message.
 CSteamNetworkConnectionSDRClientBase received data packet while in the 'connecting' state.  Dropping packet; resending ConnctRequest
 CSteamNetworkConnectionToSDRServer received ProcessMessage_GameserverSessionEstablished while in state %d.  Rejecting packet with ConnectionClosed message.
 CSteamNetworkConnectionToSDRServer received Stats while in state %d.  Rejecting packet with ConnectionClosed message.
 CSteamNetworkConnectionToSDRServer received e2e stats while in Connecting state.  Resending ConnectRequest.
+CSteamNetworkConnectionlocalhostLoopback::BInitConnection failed.  %s
 CSteamNetworkListenSocketP2P::BInit failed?  %s
 CT Certificate SCTs
 CT Precertificate Poison
@@ -2703,6 +2708,7 @@ Cannot create hosted dedicated server listen socket.  %s
 Cannot create listen socket.  %s
 Cannot create shared steam datagram socket.  %s
 Cannot deduce public IP.  Datacenter environment variables misconfigured!
+Cannot find session to mark as MRU!
 Cannot post failure callback for non-SteamID-based P2P
 Cannot request a cert; we don't know our SteamID (yet?).
 Cannot talk to any relays. Check Internet connection
@@ -2812,7 +2818,6 @@ D g)*
 D""fD""fT**~T**~;
 D#$$D;c8|
 D#D)D;D?DEDKDQDSDYDeDoD
-D#l$(E;
 D$  H
 D$ 9D$
 D$ A;F4
@@ -2837,6 +2842,7 @@ D$ I)
 D$ I;
 D$ Ic
 D$ L)
+D$ L;`
 D$ dH
 D$ fA
 D$ t#M
@@ -2878,6 +2884,7 @@ D$(f.
 D$(f=
 D$(fH
 D$(t9I
+D$(tDH
 D$(t_H
 D$)vmA
 D$*vVA
@@ -2892,6 +2899,7 @@ D$,v(A
 D$0(H
 D$0-I
 D$09D$
+D$0A:
 D$0E1
 D$0H	
 D$0H)
@@ -2914,7 +2922,6 @@ D$0Mc
 D$0f.
 D$0f=
 D$0fD
-D$0tDH
 D$0tO1
 D$0t_H
 D$0u(I
@@ -2923,7 +2930,6 @@ D$0~Q1
 D$4E1
 D$89C,
 D$8A9
-D$8A:
 D$8D)
 D$8D;d$0
 D$8E1
@@ -2932,7 +2938,6 @@ D$8H1C
 D$8H9
 D$8HcP,H
 D$8I9
-D$8Ic
 D$8L)
 D$8L9
 D$8L9h
@@ -3031,6 +3036,7 @@ D$`Mc
 D$`dH
 D$`f.
 D$`~(
+D$bfD
 D$h+D$ 
 D$h;D$ 
 D$hD9h8
@@ -3117,7 +3123,6 @@ D9cX~
 D9ch~$Ik
 D9cx~-Ii
 D9cx~/Ii
-D9d$,
 D9e ~
 D9e ~sHcC(
 D9e(~
@@ -3207,7 +3212,7 @@ D;t$`
 D;u\}
 D;u`D
 D;{X|
-D;|$0t}H
+D;|$0
 D;} |
 D;}(|
 D;}8|
@@ -3321,7 +3326,6 @@ E8HcU@
 E8|$p
 E9N\D
 E9f,~*Ii
-E9l$ 
 E9o,~UIi
 E9t$\t
 E9|$ uw
@@ -3600,7 +3604,6 @@ First argument to SwapFields() (of type "
 Flags
 Fm{#t
 For best results, you can download the nework config ahead of time and set SDR_NETWORK_CONFIG to the full path to that file.
-Forgetting client %s relay session.  Last communication was %.1f seconds ago
 F{(3?
 F|'|,
 F|w)a]c
@@ -3862,6 +3865,7 @@ H9z@H
 H9z@t
 H9z@u
 H;,$H
+H;-GyC
 H;0tfH
 H;2t%H
 H;8t0
@@ -3871,24 +3875,23 @@ H;8tX
 H;8t`
 H;8th
 H;=	KS
-H;=!1F
 H;=)IS
 H;=//P
-H;=7(F
 H;=93T
 H;=9QS
 H;=9oJ
 H;=?-P
-H;=A5F
 H;=KmS
+H;=McD
 H;=P1P
 H;=UoP
 H;=YRS
 H;=[`S
+H;=a+F
 H;=h*T
 H;=h+T
 H;=iJS
-H;=n7E
+H;=w"F
 H;=ySS
 H;A(tgH
 H;C@|aH
@@ -3963,7 +3966,6 @@ HcD$<L
 HcD$hL
 HcD$p
 HcE H
-HcE I
 HcE L
 HcE(H
 HcE,H
@@ -4126,7 +4128,6 @@ IT$@f
 IcC 9
 IcD$@
 IcD$HH
-IcE E
 IcE L
 IcG I
 IcG0I
@@ -4225,6 +4226,7 @@ Invalid reliable message header byte 0x%02x
 Invalid routing blob (%d bytes)
 Invalid signature
 Invalid signature length
+Invalid state %d
 Invalid strings::Substitute() format string: "
 Invalid symbol name: 
 Invalid syntax on line 
@@ -4286,7 +4288,7 @@ Ksg4X
 KuBEN
 K{"Kb,p
 L	t$0H
-L#52M2
+L#52G2
 L#8I	
 L#H M	
 L#L$ H
@@ -4762,7 +4764,7 @@ O AVL
 O!YNO
 O#wjk
 O%.U/
-O%].I
+O%]*I
 O%_ A
 O(AVAUATL
 O0AVAUATL
@@ -4878,6 +4880,7 @@ P2P %s
 P2PFailure via Steam from %s, connection %u.  Reason: %d %d %s
 P2PSession destroyed
 P2PSessionEstablished
+P8H9T$
 P:   
 P;Q |
 P?steamnetworkingsockets_udp.cpp
@@ -5092,8 +5095,6 @@ Received ConnectOK in P2P Rendezvous for ConnectionID %u to %s.
 Received ConnectOK in P2P rendezvous message, but we are the 'server'!
 Received ConnectRequest in P2P rendezvous message, but we are the 'client'!
 Received GameserverSessionEstablished from %s for connection ID %u
-Received NoSession from %s, RelaySessionID=%u.  Discarded relay session for client %s, connection %u/%u.  %d session(s) remain to talk to this client
-Received NoSession from %s, RelaySessionID=%u.  Ignoring, since client connection ID %u is incorrect, correct connection ID is %u
 Received Steam datagram ticket for server %s vport %d.%s
 Received SteamNetworkingSocketsRecvP2PRendezvous_t, but no ISteamNetworkingSocketsSerialized?
 Received client message from %s using RelaySessionID %u for %s connection %u.  But previously that session was for client %s connection %u!  This is suspicious.  Unlinking that session from this connection.
@@ -5963,13 +5964,17 @@ Z|(fD9P
 [%s] Cannot accept connection, current state is %d.
 [%s] Cannot accept connection; already closed by remote host.
 [%s] Cannot use unsigned cert; failing connection.
+[%s] Client switching active relay %s -> %s (msgID %d)
 [%s] Continuing with self-signed cert.
 [%s] Deselecting active session #%d.  We no longer have a route through that cluster.  Previous route went through remote relay in '%s'
+[%s] Forgetting relay session %s.  Last communication was %.1f seconds ago
 [%s] P2P route through '%s' now forwarding to '%s', revision %d
 [%s] Packet data chunk failed to decrypt!  Could be tampering/spoofing or a bug.
 [%s] Peer acked our routes for revision %u, but our latest revision is %u!
 [%s] RATELIM QueueTime is %.1fms, SendRate=%.1fk, BytesQueued=%d
 [%s] RX msg %lld offset %d+%d=%d %02x ... %02x
+[%s] Received NoSession from %s, RelaySessionID=%u.  Discarded relay session (remote conn #%u).  %d session(s) remain to talk to this client
+[%s] Received NoSession from %s, RelaySessionID=%u.  Ignoring, since remote client connection ID #%u is incorrect, correct connection ID is #%u
 [%s] Received P2P routes ack for revision %u (latest revision is %u).
 [%s] Received P2P routes, revision %u.  Contains %u clusters and %u routes
 [%s] Received P2PBadRoute from %s regarding peer's session on cluster %s.  Clearing session in our copy of peer's routing candidates.
@@ -6003,6 +6008,8 @@ Z|(fD9P
 [%s] StatsRouterToServer: Discarding end-to-end packet number %lld (latest %lld), but relay pkt num is OK %lld (last %lld)
 [%s] Switched primary to %s (%s) from %s (%s)
 [%s] Switched to backup #%d %s (%s) as primary, from %s (%s)
+[%s] Timed out.  %.1fms since last recv, %.1fms since timeout started, %d consecutive failures
+[%s] Timed out.  Cannot send end-to-end.  %.1fms since last recv, %d consecutive failures
 [%s] Trying to send a packet via steam datagram when no network configuration is available.
 [%s] Trying to send a packet via steam datagram, but we have lost connectivity to all relays.  Check your Internet connection.  Cannot send packet.
 [%s] Trying to send a packet via steam datagram, but we have not yet established a session on any relays.  This is common for the first few packets, but is a problem if it persists.
@@ -6498,7 +6505,6 @@ _}eOk
 `pt<H
 aF<7u
 aGw	4*
-aH=#]OH=x$
 aRWZ5
 aRecord
 aS&v&*
@@ -8259,6 +8265,7 @@ p A9u
 p H93s
 p I9u
 p!PcA1|
+p(Hc@0I
 p)ou}
 p+"	Hr9
 p-6\D 
@@ -8511,6 +8518,7 @@ rL[i+
 rRfKR
 rX&O0
 rZ1VwGf5
+r[J2(
 r`AUE1
 rand2
 rand@@GLIBC_2.2.5
@@ -9087,7 +9095,6 @@ t$0Hc
 t$0L!
 t$8;0
 t$8E1
-t$8Hc
 t$8L9
 t$8dH34%(
 t$@A;D$X
@@ -9463,7 +9470,6 @@ x	D9-
 x	D9-4
 x	D;%
 x	D;-
-x	D;-B
 x	D;=
 x	D;=b
 x	D;=p
@@ -9502,7 +9508,7 @@ x_long.c
 x_name.c
 x_pubkey.c
 x_x509.c
-xaD9%O
+xaD9%
 xbox_pairwise_id
 xboxpwid:
 xboxpwid:%s
@@ -9557,6 +9563,7 @@ zxNIjo
 |	9S(
 |$ 0t
 |$ E1
+|$ H9
 |$ Hc
 |$ I)
 |$ I1
@@ -9570,7 +9577,6 @@ zxNIjo
 |$(2D$@
 |$(E1
 |$(H=
-|$(I)
 |$,E1
 |$,s 
 |$0E1
@@ -9643,7 +9649,6 @@ zxNIjo
 |}Eq1
 }"6M:Q
 }$z9*
-}(IcE0M
 },Q$"'.4
 }-H;_
 }0tGH

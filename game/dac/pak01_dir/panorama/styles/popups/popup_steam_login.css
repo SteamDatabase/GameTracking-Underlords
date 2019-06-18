@@ -1,7 +1,8 @@
 PopupSteamLogin
 {
-    width: 1400px;
-    height: 500px;
+    width: 1300px;
+    height: 450px;
+    //height: fit-children;
     horizontal-align:center;
     vertical-align: top;
     margin-top: 32px;
@@ -23,25 +24,15 @@ PopupSteamLogin
 
 .LoginContainer
 {
-    width: 50%;
+    width: 65%;
+    //width: fit-children;
     height: 100%;
-    padding: 16px;
+    padding: 20px;
     flow-children: down;
 }
 
 .AttemptingLogin .LoginContainer
 {
-    visibility: collapse;
-}
-
-#SteamLogo
-{
-    width: 64px;
-    height: 64px;
-    background-image: url("s2r://panorama/images/dashboard/steam_logo_png.vtex");
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;
     visibility: collapse;
 }
 
@@ -64,10 +55,8 @@ PopupSteamLogin
 #LogInDataEntryContainer
 {
     width: 100%;
-    height: 100%;
-    padding: 16px;
-    border: 2px solid #5e686966;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #bec5da ), color-stop( 0.005, #aeb6cc ), color-stop( .5, #8189a1 ), to( #6d768f ) );
+    height: fit-children;
+    //padding-bottom: 10px;
     flow-children: down;
 }
 
@@ -81,6 +70,7 @@ PopupSteamLogin
 #SteamGuardEntry 
 {
     text-transform: uppercase;
+    margin-top: 150px;
 }
 
 .NeedsSteamGuard #SteamGuardEntry
@@ -132,6 +122,12 @@ PopupSteamLogin
     vertical-align: bottom;
 }
 
+#LogInButtonContainer Button
+{
+    height: 100px;
+    width: 400px;
+}
+
 .LoginButton 
 {
     width: 100%;
@@ -143,6 +139,29 @@ PopupSteamLogin
     width: 100%;
     height: fit-children;
     flow-children: down;
+}
+
+#HelpButton
+{
+    //height: 80px;
+    height: 60px;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 5px;
+    width: fit-children;
+    text-align: left;
+    horizontal-align: left;
+    border: 0px;
+    border-bottom: 2px solid 5e686966;
+}
+
+#HelpButton Label
+{
+    font-size: 28px;
+    color: #888888;
+    text-align: left;
+    horizontal-align: left;
+    vertical-align: bottom;
 }
 
 #SteamRememberCredentials
@@ -165,13 +184,40 @@ PopupSteamLogin
 #ViewPasswordIcon
 {
     horizontal-align: right;
-    width: 48px;
-    height: 48px;
+    width:60px;
+    height: 40px;
     vertical-align: center;
     background-image: url("s2r://panorama/images/dashboard/eye_png.vtex");
     background-repeat: no-repeat;
     background-position: 50% 50%;
-    background-size: cover;
+    background-size: 100% 100%;
+}
+
+#SteamIDEntry Label,
+#SteamPasswordEntry Label,
+#SteamGuardEntry Label
+{
+    font-weight: black;
+    color: white;
+}
+
+#SteamPasswordEntry
+{
+    margin-top: 20px;
+}
+
+#SteamIDTextEntry,
+#SteamPasswordTextEntry,
+#SteamGuardTextEntry
+{
+    height: 100px;
+    font-size: 70px;
+    text-transform: none;
+}
+
+#SteamPasswordTextEntry
+{
+    font-size: 50px;
 }
 
 #SteamGuardTextEntry
@@ -189,8 +235,7 @@ PopupSteamLogin
 #ConnectingDesc
 {
     margin-top: 33%;
-    margin-right: 200px;
-    horizontal-align: right;
+    horizontal-align: center;
     flow-children: left;
 }
 
@@ -203,22 +248,6 @@ PopupSteamLogin
 {
     font-size: 80px;
     color: uiLightGrey;
-}
-
-#LogoThrobber
-{
-    width: 128px;
-    height: 128px;
-    margin-left: 32px;
-    background-image: url("s2r://panorama/images/dashboard/steam_throbber_png.vtex");
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;
-
-    animation-name: Throbber;
-    animation-duration: 1.0s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
 }
 
 @keyframes 'Throbber'
@@ -245,4 +274,95 @@ PopupSteamLogin
     height: 20%;
     vertical-align: bottom;
     horizontal-align: center;
+}
+
+#SteamLogo
+{
+    width: 96px;
+    height: 96px;
+    /*    background-image: url("s2r://panorama/images/dashboard/steam_logo_high_png.vtex");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;*/
+    horizontal-align: center;
+    margin-bottom: 32px;
+    margin-left: 32px;
+}
+
+.SteamLogoAnimated
+{
+    width: 100%;
+    height: 100%;
+}
+
+
+#radial3
+{
+    background-image: url("s2r://panorama/images/dashboard/steamlogo_radiallines_psd.vtex");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    animation-name: radiallines;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: reverse;
+    margin: 3px;
+}
+
+#radialMask
+{
+    width: 100%;
+    height: 100%;
+    opacity-mask: url("s2r://panorama/images/dashboard/steamlogo_mask_psd.vtex");
+}
+
+#steamlogo_bg
+{
+    background-image: url("s2r://panorama/images/dashboard/steamlogo_bg_psd.vtex");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    animation-name: steamlogopulse;
+    animation-duration: 2.0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes
+
+'radiallines'
+{
+    0%
+
+{
+    pre-transform-rotate2d: 0deg;
+}
+
+100%
+{
+    pre-transform-rotate2d: 360deg;
+}
+
+}
+
+@keyframes
+
+'steamlogopulse'
+{
+    0%
+
+{
+    opacity: .3;
+}
+
+50%
+{
+    opacity: 1;
+}
+
+to
+{
+    opacity: .3;
+}
 }

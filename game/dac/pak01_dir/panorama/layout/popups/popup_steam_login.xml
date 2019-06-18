@@ -27,15 +27,15 @@
             <Label id="SteamGuardLabel" text="#DAC_SteamGuardCode" class="SettingTitle" />
             <TextEntry id="SteamGuardTextEntry" class="SettingsTextEntryUserName" oninputsubmit="DACLoginSteamguardEntered()" />
           </Panel>
+          <Button class="PopupButton LoginButton" id="HelpButton" onactivate="DACSteamLoginHelp()">
+            <Label text="#DAC_SteamLogIn_Help" />
+          </Button>
         </Panel>
       </Panel>
       <Panel class="LoginContainer" id="LoginOrNeedHelpContainer">
         <Panel id="LogInButtonContainer">
           <Button class="PopupButton LoginButton" id="SteamLoginButton" onactivate="DACAttemptSteamLogin()">
             <Label text="#DAC_SteamAccountLogin" />
-          </Button>
-          <Button class="PopupButton LoginButton" id="HelpButton" onactivate="DACSteamLoginHelp()">
-            <Label text="#DAC_SteamLogIn_Help" />
           </Button>
           <Button class="PopupButton LoginButton" id="CancelButton" onactivate="UIPopupButtonClicked()">
             <Label text="#Cancel" />
@@ -44,7 +44,12 @@
       </Panel>
       <Panel class="ConnectingContainer">
         <Panel id="ConnectingDesc">
-          <Panel id="LogoThrobber"/>
+          <Panel id="SteamLogo">
+            <Panel id="steamlogo_bg" class="SteamLogoAnimated"/>
+            <Panel id="radialMask" class="SteamLogoAnimated">
+              <Panel id="radial3" class="SteamLogoAnimated"/>
+            </Panel>
+          </Panel>
           <Panel id="ConnectingLabel">
             <Label text="#DAC_SteamLogIn_Connecting"/>
           </Panel>

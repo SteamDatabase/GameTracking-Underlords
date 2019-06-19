@@ -7,19 +7,17 @@
   </styles>
 
   <Panel class="PopupPanel Hidden UnitRank1" popupbackground="blur" onactivate="UIPopupButtonClicked( close )">
+    <Panel id="CloseButtonContainer">
+      <Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
+    </Panel>
     <Panel class="Inner">
-      <Panel class="Header">
-        <Image id="HeroIcon"/>
-        <Label class="HeaderText" text="{s:hero_name}" />
+      <!-- <Panel class="Header">
         <Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
-      </Panel>
+      </Panel> -->
       <Panel class="Body">
         <Panel class="BodyLeft">
-          <Panel id="CostContainer">
-              <Label id="CostNumber" text="{i:UnitCost}" />
-         </Panel>
-         <DACSynergyCapsule id="SynergyCapsule" class="SynergyCapsule"/>
-          <DACUnitScenePanel id="HeroImage" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" usePortraitData="true" cleardepth="true" hittest="true">
+          <!-- <DACUnitScenePanel id="HeroImage" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" usePortraitData="true" cleardepth="true" hittest="true"> -->
+          <DACUnitScenePanel id="HeroImage" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" usePortraitData="false" usePortraitCamera="false" usePortraitLighting="false" unitYaw="-90" cameraDistance="400" cameraOrthographicSize="275" >
             <Panel id="BorderContainer" hittest="false"  />
             <Panel id="BottomFade" hittest="false" />
             <!--<Panel class="RotationButtons">
@@ -40,8 +38,14 @@
           </Panel>
         </Panel>
         <Panel class="BodyRight">
+          <Label class="HeaderText" text="{s:hero_name}" />
+          <Image id="HeroIcon"/>
+          <!-- <Panel class="HeroTier" text="{i:UnitCost}"> -->
+          <Panel id="CostContainer">
+            <Label id="CostNumber" text="#DAC_Hero_Unit_Cost" />
+          </Panel>
+          <DACSynergyCapsule id="SynergyCapsule" class="SynergyCapsule" />
           <Panel id="UnitAbilityContainer">
-            <Label id="AbilityTitle" text="{s:ability_name}" />
             <Panel id="UnitAbilityContainerSub">
               <Panel id="UnitAbilityLeft">
                 <Image src="s2r://panorama/images/heroes/spellicons/empty_png.vtex" />
@@ -50,8 +54,9 @@
                 </Image>
               </Panel>
               <Panel id="UnitAbilityRight">
-                <Label id="AbilityDesc" html="true" text="{s:ability_description}" />
+                <Label id="AbilityTitle" text="{s:ability_name}" />
                 <Label id="AbilityStat" html="true" class="AbilityStat" text="#DAC_AbilityTooltip_Cooldown" />
+                <Label id="AbilityDesc" html="true" text="{s:ability_description}" />
                 <Label id="AbilityLore" html="true" text="{s:ability_lore}" />
               </Panel>
             </Panel>

@@ -257,7 +257,8 @@ DACHomePage
     background-image: url("s2r://panorama/images/dashboard/play_btn_bg_psd.vtex");
 	background-size: 100%;
     margin-top: 20px;
-	transition-property: brightness;
+    opacity: 1;
+	transition-property: brightness, opacity;
 	transition-duration: .2s; 
 }
 
@@ -280,10 +281,10 @@ DACHomePage
     text-overflow: shrink;
 	font-weight: black;
 	letter-spacing: 4px;
-    vertical-align: center;
+    vertical-align: middle;
     horizontal-align: center;
     //margin-left: 60px;
-	margin-top: -5px;
+	margin-top: 15px;
     color: #ffffff;
     text-transform: uppercase;
     transform: rotateZ(-2deg);
@@ -543,14 +544,16 @@ DACHomePage
 }
 
 #SocialPanelButton {
-    width: 45px;
-    height: 48px;
-    background-image: url("s2r://panorama/images/dashboard/profilebutton_png.vtex");
+    width: 136px;
+    height: 136px;
+    background-image: url("s2r://panorama/images/dashboard/icon_friends_list_psd.vtex");
     background-size: 100%;
     background-repeat: no-repeat;
     horizontal-align: left;
     vertical-align: top;
-    margin: 30px 0px 0px 30px;
+    margin: 8px 0px 0px 20px;
+    transition-property: brightness;
+    transition-duration: 0.2s;
 }
 
 
@@ -569,7 +572,7 @@ DACHomePage
 
 #SocialPanelButton:hover
 {
-    wash-color: #9086c388;
+    brightness: 1.5;
 }
 
 .GCStatusVisible #SocialPanel
@@ -577,44 +580,76 @@ DACHomePage
     margin-top: 30px;
 }
 
-#SocialPanel 
+#SocialPanel
+{
+	width: 100%;
+	height: 100%;
+	background-color: #000000ee;
+	opacity: 0.0001;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+#SocialPanelContents 
 {
     horizontal-align: left;
     vertical-align: top;
-    width: 20%;
-    height: fit-children;
-    max-height: 99%;
-    margin-top: 20px;
-    margin-left: 20px;
+    width: 400px;
+    height: 100%;
     flow-children: down;
-    visibility: collapse;
 
-
-    background-color: #000000ee;
-    background-image: url("s2r://panorama/images/hud/stats_background_psd.vtex");
+    background-color: #222222ef;
     background-repeat: no-repeat;
+    box-shadow: #000000 0px 0px 15px;
     padding: safe-area-inset-top 0 safe-area-inset-bottom safe-area-inset-left;
+    transform: translateX( -400px );
+    transition-property: transform;
+    transition-duration: 0.2s;
+    border-right: 2px solid #ffffff03;
 }
 
-.IsPlatformMobile #SocialPanel 
+#SocialPanelClickEater
 {
-    width: 30%;
+	width: 100%;
+	height: 100%;
+	visibility: collapse;
+}
+
+.ShowSocialPanel #SocialPanelClickEater
+{
+	visibility: visible;
+}
+
+.IsPlatformMobile #SocialPanelContents 
+{
+    width: 600px;
     height: 100%;
     max-height: 100%;
     margin-left: 0%;
     margin-top: 0%;
-    //visibility: collapse;
 }
 
-.ShowSocialPanel #SocialPanel {
-    visibility: visible;
+.ShowSocialPanel #SocialPanel,
+{
+    opacity: 1.0;
 }
+
+.ShowSocialPanel #SocialPanelContents
+{
+    transform: translateX( 0px );
+}
+
+.ShowSocialPanel .HomeButton 
+{
+	opacity: 0;
+}
+
 
 #SocialPanelHeader {
     width: 100%;
     flow-children: right;
     height: 80px;
-    //background-color: #111111;
+		margin: 20px 20px 10px 20px;
 }
 
 .IsPlatformMobile #SocialPanelHeader {
@@ -624,7 +659,30 @@ DACHomePage
 
 .SocialTabButton
 {
-    width: 40%;
+    width: 50%;
+    height: 48px;
+    margin-top: 12px;
+    margin-bottom: 2px;
+    padding-top: 1px;
+    //background-color: white;
+		border: 2px solid #ffffff22;
+}
+
+.ShowSocialFriends #SocialButtonFriends.SocialTabButton,
+.ShowSocialParty #SocialButtonParty.SocialTabButton {
+    background-color: #d07c18;
+    box-shadow: 0px 0px 2px #d07c18;
+		border: 0px;
+}
+
+#SocialButtonFriends.SocialTabButton
+{
+	margin-right: 6px;
+}	
+
+#SocialButtonParty.SocialTabButton
+{
+	margin-left: 6px;
 }
 
 .IsPlatformMobile .SocialTabButton {
@@ -642,8 +700,21 @@ DACHomePage
     margin-left: 5%;    
 }
 
+.SocialTabTitle
+{
+	  color: #fff;
+    font-size: 24px;
+    padding-right: 12px;
+    padding-left: 12px;
+    font-weight: black;
+    vertical-align: middle;
+    text-align: center;
+    horizontal-align: center;
+    text-transform: uppercase;
+    margin: 0px;
+}
 
-.SocialTabTitle {
+/*.SocialTabTitle {
     color: gray;
     font-size: 30px;
     font-weight: bold;
@@ -654,7 +725,7 @@ DACHomePage
     text-transform: uppercase;
     transition-property: brightness;
     transition-duration: .2s;
-}
+}*/
 
 .IsPlatformMobile .SocialTabTitle 
 {
@@ -663,13 +734,13 @@ DACHomePage
 }
 
 .SocialTabButton:hover .SocialTabTitle {
-    brightness: 2;
+    //brightness: 2;
 }
 
 .ShowSocialFriends #SocialButtonFriends .SocialTabTitle,
 .ShowSocialParty #SocialButtonParty .SocialTabTitle {
     color: white;
-    text-decoration: underline;
+    //text-decoration: underline;
 }
 
 .SocialButtonClose {
@@ -688,7 +759,7 @@ DACHomePage
     //transform: scaleX(1.0);
     transition-property: opacity;
     transition-duration: .2s;
-    //visibility: collapse;
+    visibility: collapse;
 }
 
 .SocialButtonClose:hover {
@@ -741,29 +812,36 @@ DACHomePage
     vertical-align: top;
 }
 
+#SocialPanelContents .SocialViolatorList
+{
+	margin-right: -20px;
+}
+
+.SocialTabButton .SocialViolatorList
+{
+	visibility: collapse;
+}
+
 .SocialViolatorList {
     horizontal-align: right;
     vertical-align: center;
-    width: 24px;
-    margin-top: 12px;
-    //margin-right: 10px;
-    margin-left: 5px;
+    width: 40px;
 }
 
 .IsPlatformMobile .SocialViolatorList {
-    width: 32px;
+    width: 40px;
     margin: 0px;
 }
 
 
 #SocialPanelButton .SocialViolatorList
 {
-    vertical-align: bottom;
+    //vertical-align: bottom;
 }
 
 .SocialViolator {
-    width: 24px;
-    height: 24px;
+    width: 40px;
+    height: 40px;
     visibility: collapse;
     background-size: 100% 100%;
 }
@@ -803,13 +881,13 @@ DACHomePage
 }
 
 .PartyReady .PartyReadyViolator {
-    background-image: url("s2r://panorama/images/dashboard/ready_button_png.vtex");
+    background-image: url("s2r://panorama/images/dashboard/icon_party_ready_psd.vtex");
     visibility: visible;
 }
 
 .PartyNotReady .PartyReadyViolator
 {
-    background-image: url("s2r://panorama/images/dashboard/not_ready_button_png.vtex");
+    background-image: url("s2r://panorama/images/dashboard/icon_party_not_ready_psd.vtex");
     visibility: visible;
 }
 

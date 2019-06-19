@@ -21,6 +21,7 @@ enum EDACMatchMode {
 }
 
 enum EDACPlatform {
+	k_eDACPlatform_None = 0;
 	k_eDACPlatform_PC = 1;
 	k_eDACPlatform_Mac = 2;
 	k_eDACPlatform_Linux = 3;
@@ -137,6 +138,7 @@ message CMsgRegionPingTimesClient {
 }
 
 message CSODACLobby {
+	optional uint32 server_version = 1;
 	optional fixed64 server_steam_id = 3;
 	optional uint64 lobby_id = 5;
 	optional uint64 match_id = 6;
@@ -205,7 +207,7 @@ message CSOGameAccountClient {
 message CMsgStartFindingMatchInfo {
 	optional uint32 client_version = 2;
 	optional .EDACMatchMode match_mode = 3 [default = k_EDACMatchMode_Casual];
-	optional .EDACPlatform platform = 4 [default = k_eDACPlatform_PC];
+	optional .EDACPlatform platform = 4 [default = k_eDACPlatform_None];
 }
 
 message CMsgAnyToGCReportAsserts {

@@ -46,7 +46,7 @@
 	</snippets>
 
 
-	<DACUIHud hittest="false" class="TabPageSynergy" acceptsfocus="false">
+	<DACUIHud hittest="false" class="" acceptsfocus="false">
 		<Panel id="WorldVignette" hittest="false" />
 		<Panel class="SafeArea" hittest="false">
 
@@ -119,6 +119,7 @@
 					<Panel class="TabButtonBackerSynergies">
 						<Button class="TabButton SynergyTabButton" onactivate="DACShowSynergiesTab(); PlaySoundEffect( 'DAC_UI.SelectBattleInfo' )" onmouseover="PlaySoundEffect( 'DAC_UI.RolloverBattleInfo' )">
 							<!--<Label text="#DAC_InGame_Tab_Synergies" />-->
+							<DACParticleScenePanel id="SynergyTabTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
 						</Button>
 					</Panel>
 					<Panel class="TabButtonBackerDPS">
@@ -132,13 +133,12 @@
 							<Label id="UnassignedItemsCount" text="{i:itemsUnassigned}" />
 							<Label class="BenchedItemsCount" text="{i:itemsBenched}" />
 							<DACScenePanel id="UnassignedItemsParticleScenePanel" hittest="false" map="particles/hud/items_unassigned" camera="cam_default" particleonly="true"/>
+							<DACParticleScenePanel id="ItemTabTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
 						</Button>
 					</Panel>
 					<Panel id="SpannerBottom"/>
 				</Panel>
 			</Panel>
-
-			<!-- <DACUIHudRightBar id="TabContainer" threshold="100" direction="vertical" size="1080" panels="3" hittest="false"> -->
 
 			<Panel class="TabContainer">
 
@@ -159,9 +159,8 @@
 				</Panel>
 
 			</Panel>
-
-			<!-- </DACUIHudRightBar> -->
-
+		
+			<DACSynergyPanel id="SynergyPanel" />
 
 			<Panel id="BoardFlipButton" onactivate="DACToggleFlipBoard()" />
 			<Panel id="PlayerStateContainer">
@@ -177,7 +176,6 @@
 			<Panel id="PlayerBench" />
 
 			<!-- Things that draw over the hud periodically -->
-			<DACSynergyPanel id="SynergyPanel" />
 
 			<!-- Popups that demand attention -->
 			<DACVSScreen id="VSScreen" hittest="false" />
@@ -191,19 +189,21 @@
 			<DACRoundOverScreen />			
 			
 			<Panel id="CornerButtons" hittest="false">
-				<Panel id="ShopButtonContainer" hittest="false">
+					<Panel class="PlayPauseContainer">
+						<Panel class="PauseButton" onactivate="DACTogglePauseGame()" />
+						<Panel class="FastForwardButton" onactivate="DACStepForward()">
+							<DACParticleScenePanel id="FastForwardButtonTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
+						</Panel>
+					</Panel>
 					<Panel id="ShopButton" onactivate="DACToggleShop()">
 						<Panel id="OpenShopButton" />
-						<Panel id="CloseShopButton" />
+						<Panel id="CloseShopButton" />						
 						<Panel id="GoldAmount">
 							<Label text="{i:shopGold}" id="GoldAmountLabel" />
 						</Panel>
+						<DACParticleScenePanel id="ShopButtonTutorialHighlight" hittest="false" startActive="true" cameraLeft="10" cameraUp="10" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
 					</Panel>
-					<Panel class="PlayPauseContainer">
-						<Panel class="PauseButton" onactivate="DACTogglePauseGame()" />
-						<Panel class="FastForwardButton" onactivate="DACStepForward()" />
-					</Panel>
-				</Panel>
+
 				<DropDown id="HudModeDropdown">
 					<!-- Dynamic Content -->
 				</DropDown>
@@ -233,8 +233,6 @@
 			<Panel id="ErrorMsg">
 				<Label text="{s:error_message}"/>
 			</Panel>
-
-			<DACUITutorial />
 
 			<!-- Chrome that draws over everything -->
 			<Panel id="MenuButtons">
@@ -321,15 +319,15 @@
 					<Label class="PlaceQuote" text="{s:result_quote}"/>
 				</Panel>
 				<Panel class="StatsContainer">
-					<Panel class="StatsSubContainer">
+					<Panel id="RoundsWon" class="StatsSubContainer">
 						<Label class="BigStat" text="{d:rounds_won}" />
 						<Label class="StatDescription tilt-left" text="#DAC_EndGame_RoundsWon" />
 					</Panel>
-					<Panel class="StatsSubContainer">
+					<Panel id="DamageDealt" class="StatsSubContainer">
 						<Label class="BigStat" text="{d:damage_dealt}" />
 						<Label class="StatDescription tilt-right" text="#DAC_EndGame_DamageDealt" />
 					</Panel>
-					<Panel class="StatsSubContainer">
+					<Panel id="GoldEarned" class="StatsSubContainer">
 						<Label class="BigStat" text="{d:gold_earned}" />
 						<Label class="StatDescription tilt-left" text="#DAC_EndGame_GoldEarned" />
 					</Panel>

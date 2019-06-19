@@ -1,6 +1,6 @@
 DACSynergyPanel
 {
-	width: 1100px;
+	width: 100%;
 	min-height: 100px;
 	vertical-align: top;
 	margin-top: 0px;
@@ -8,16 +8,18 @@ DACSynergyPanel
 
 	flow-children: down;
 
-	background-color: #444;
+	background-image: url("s2r://panorama/images/hud/mobile_popup_takeover_psd.vtex");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: bottom;
 	
 	transition-property: opacity;
 	transition-duration: 0.2s;
 	opacity: 0;
-}
 
-.IsPlatformPC DACSynergyPanel
-{
-	ui-scale: 80%;
+	padding-left: 210px;
+
+	padding-bottom: 20px;
 }
 
 DACSynergyPanel.Visible
@@ -27,12 +29,8 @@ DACSynergyPanel.Visible
 
 .Header
 {
-	padding: 10px;
-
-	background-color: black;
 	width: 100%;
-
-	height: 100px;
+	flow-children: right;
 }
 
 .Body
@@ -45,54 +43,19 @@ DACSynergyPanel.Visible
 {
 	color: white;
 	font-size: 60px;
-	height: 100px;
 
-	margin-left: 90px;
-	margin-top: 4px;
+	margin-top: 12px;
 
 	font-weight: bold;
 	text-transform: uppercase;
+	text-shadow: 0px 1px 0px 3.0 #000;
 
 	vertical-align: center;
-}
-
-.CountText
-{
-	color: white;
-	font-size: 30px;
-	vertical-align: bottom;
-	margin-bottom: 5px;
-	margin-left: 10px;
 }
 
 DACSynergyIcon
 {
-	ui-scale: 75%;
-}
-
-.CloseButton
-{
-	horizontal-align: right;
-	vertical-align: center;
-
-	width: 48px;
-	height: 48px;
-
-	margin-right: 8px;
-
-	wash-color: white;
-	
-	background-image: url("s2r://panorama/images/control_icons/x_out_png.vtex");
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-
-.CloseButton > Label
-{
-	font-size: 50px;
-	font-weight: bold;
-	color: white;
-	margin-top: -7px;
+	ui-scale: 100%;
 }
 
 .Body
@@ -100,6 +63,9 @@ DACSynergyIcon
 	width: 100%;
 	padding: 15px;
 	flow-children: down;
+	margin-top: 10px;
+
+	margin-right: 270px;
 }
 
 .Body Label
@@ -115,27 +81,24 @@ DACSynergyIcon
 	width: fit-children;
 	height: fit-children;
 	horizontal-align: left;
-}
 
-.Body .LevelNumber
-{
-	font-weight: bold;
-	font-size: 60px;
-	vertical-align: top;
+	flow-children: right;
 }
 
 .Body .LevelDescription
 {
-	font-size: 35px;
+	font-size: 36px;
 
-	padding-left: 60px;
-	margin-top: 10px;
+	margin-left: 20px;
 	line-height: 30px;
 
+	height: 80px;
+
 	white-space: normal;
+
+	color: #9f9fa5;
 }
 
-.LevelRow.Active .LevelNumber,
 .LevelRow.Active .LevelDescription
 {
 	color: gold;
@@ -167,4 +130,341 @@ DACSynergyIcon
 .HasBenchUnit .HasBenchUnitLabel
 {
 	visibility: collapse;
+}
+
+.LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_1_1_psd.vtex");
+
+	margin-top: -5px;
+	width: 60px;
+	height: 60px;
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+#LevelRow2 .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_1_2_psd.vtex");
+}
+
+#LevelRow3 .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_1_3_psd.vtex");
+}
+
+.SegmentsPerLevel_2 #LevelRow1 .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_2_1_psd.vtex");
+}
+
+.SegmentsPerLevel_2 #LevelRow2 .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_2_2_psd.vtex");
+}
+
+.SegmentsPerLevel_2 #LevelRow3 .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_2_3_psd.vtex");
+}
+
+.SegmentsPerLevel_3 #LevelRow1 .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_3_1_psd.vtex");
+}
+
+.SegmentsPerLevel_3 #LevelRow2 .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_3_2_psd.vtex");
+}
+
+.SegmentsPerLevel_3 #LevelRow3 .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_3_3_psd.vtex");
+}
+
+// and versions for the active .LevelRow
+
+#LevelRow1.Active .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_1_1_glow_psd.vtex");
+}
+
+#LevelRow2.Active .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_1_2_glow_psd.vtex");
+}
+
+#LevelRow3.Active .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_1_3_glow_psd.vtex");
+}
+
+.SegmentsPerLevel_2 #LevelRow1.Active .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_2_1_glow_psd.vtex");
+}
+
+.SegmentsPerLevel_2 #LevelRow2.Active .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_2_2_glow_psd.vtex");
+}
+
+.SegmentsPerLevel_2 #LevelRow3.Active .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_2_3_glow_psd.vtex");
+}
+
+.SegmentsPerLevel_3 #LevelRow1.Active .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_3_1_glow_psd.vtex");
+}
+
+.SegmentsPerLevel_3 #LevelRow2.Active .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_3_2_glow_psd.vtex");
+}
+
+.SegmentsPerLevel_3 #LevelRow3.Active .LevelIcon
+{
+	background-image: url("s2r://panorama/images/hud/synergy_column_3_3_glow_psd.vtex");
+}
+
+//=====
+
+.Beast .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( beastColor ), to( beastColorBright ) );
+}
+
+.Demon .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( demonColor ), to( demonColorBright ) );
+}
+
+.Dragon .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( dragonColor ), to( dragonColorBright ) );
+}
+
+.Dwarf .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( dwarfColor ), to( dwarfColorBright ) );
+}
+
+.Element .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( elementColor ), to( elementColorBright ) );
+}
+
+.Elf .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( elfColor ), to( elfColorBright ) );
+}
+
+.Goblin .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( goblinColor ), to( goblinColorBright ) );
+}
+
+.Human .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( humanColor ), to( humanColorBright ) );
+}
+
+.Naga .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( nagaColor ), to( nagaColorBright ) );
+}
+
+.Ogre .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( ogreColor ), to( ogreColorBright ) );
+}
+
+.Orc .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( orcColor ), to( orcColorBright ) );
+}
+
+.Troll .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( trollColor ), to( trollColorBright ) );
+}
+
+.Undead .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( undeadColor ), to( undeadColorBright ) );
+}
+
+.Assassin .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( assassinColor ), to( assassinColorBright ) );
+}
+
+.DemonHunter .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( demonhunterColor ), to( demonhunterColorBright ) );
+}
+
+.Druid .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( druidColor ), to( druidColorBright ) );
+}
+
+.Hunter .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( warriorColor ), to( warriorColorBright ) );
+}
+
+.Knight .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( knightColor ), to( knightColorBright ) );
+}
+
+.Mage .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( mageColor ), to( mageColorBright ) );
+}
+
+.Mech .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( mechColor ), to( mechColorBright ) );
+}
+
+.Shaman .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( shamanColor ), to( shamanColorBright ) );
+}
+
+.Warlock .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( warlockColor ), to( warlockColorBright ) );
+}
+
+.Warrior .HeaderText
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( warriorColor ), to( warriorColorBright ) );
+}
+
+//=====
+
+.Beast .LevelIcon
+{
+	wash-color: beastColor;
+}
+
+.Demon .LevelIcon
+{
+	wash-color: demonColor;
+}
+
+.Dragon .LevelIcon
+{
+	wash-color: dragonColor;
+}
+
+.Dwarf .LevelIcon
+{
+	wash-color: dwarfColor;
+}
+
+.Element .LevelIcon
+{
+	wash-color: elementColor;
+}
+
+.Elf .LevelIcon
+{
+	wash-color: elfColor;
+}
+
+.Goblin .LevelIcon
+{
+	wash-color: goblinColor;
+}
+
+.Human .LevelIcon
+{
+	wash-color: humanColor;
+}
+
+.Naga .LevelIcon
+{
+	wash-color: nagaColor;
+}
+
+.Ogre .LevelIcon
+{
+	wash-color: ogreColor;
+}
+
+.Orc .LevelIcon
+{
+	wash-color: orcColor;
+}
+
+.Troll .LevelIcon
+{
+	wash-color: trollColor;
+}
+
+.Undead .LevelIcon
+{
+	wash-color: undeadColor;
+}
+
+.Satyr .LevelIcon
+{
+	wash-color: satyrColor;
+}
+
+.Assassin .LevelIcon
+{
+	wash-color: assassinColor;
+}
+
+.DemonHunter .LevelIcon
+{
+	wash-color: demonhunterColor;
+}
+
+.Druid .LevelIcon
+{
+	wash-color: druidColor;
+}
+
+.Hunter .LevelIcon
+{
+	wash-color: hunterColor;
+}
+
+.Knight .LevelIcon
+{
+	wash-color: knightColor;
+}
+
+.Mage .LevelIcon
+{
+	wash-color: mageColor;
+}
+
+.Mech .LevelIcon
+{
+	wash-color: mechColor;
+}
+
+.Shaman .LevelIcon
+{
+	wash-color: shamanColor;
+}
+
+.Warlock .LevelIcon
+{
+	wash-color: warlockColor;
+}
+
+.Warrior .LevelIcon
+{
+	wash-color: warriorColor;
 }

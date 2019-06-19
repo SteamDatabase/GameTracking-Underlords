@@ -68,7 +68,7 @@ enum EItemEditorReservationResult {
 }
 
 message CMsgPartyMMInfo {
-	optional .EDACPlatform platform = 1 [default = k_eDACPlatform_PC];
+	optional .EDACPlatform platform = 1 [default = k_eDACPlatform_None];
 	optional .CMsgRegionPingTimesClient ping_times = 2;
 	optional uint32 client_version = 3;
 }
@@ -147,6 +147,7 @@ message CMsgClientToGCPartyCreate {
 	optional .CMsgPartyMMInfo party_mm_info = 1;
 	optional bool start_ready = 2;
 	optional uint32 invite_account_id = 3;
+	optional bool disable_party_code = 4;
 }
 
 message CMsgClientToGCPartyCreateResponse {
@@ -506,7 +507,7 @@ message CMsgClientToGCRecordLocalBotMatch {
 	optional uint32 difficulty = 5;
 	optional uint32 rounds = 6;
 	optional uint32 remaining_players = 7;
-	optional .EDACPlatform platform = 8 [default = k_eDACPlatform_PC];
+	optional .EDACPlatform platform = 8 [default = k_eDACPlatform_None];
 }
 
 message CMsgClientToGCRerollChallenge {
@@ -613,6 +614,10 @@ message CMsgClientToGCCheckFriendCodeResponse {
 		k_eKeyExpired = 6;
 		k_eKeyConsumed = 7;
 		k_eAlreadyFriends = 8;
+		k_eTargetHasTooManyFriends = 9;
+		k_eHaveTooManyFriends = 10;
+		k_eBlocked = 11;
+		k_eIgnored = 12;
 	}
 
 	optional .CMsgClientToGCCheckFriendCodeResponse.EResponse result = 1 [default = k_eInternalError];

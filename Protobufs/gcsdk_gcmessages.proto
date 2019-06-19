@@ -192,6 +192,7 @@ message CMsgClientHello {
 	optional uint32 client_language = 6;
 	optional .ESourceEngine engine = 7 [default = k_ESE_Source1];
 	optional bytes steamdatagram_login = 8;
+	optional uint32 platform_id = 9;
 }
 
 message CMsgClientWelcome {
@@ -296,6 +297,7 @@ message CWorkshop_SetItemPaymentRules_Request {
 		optional uint64 workshop_file_id = 1;
 		optional float revenue_percentage = 2;
 		optional string rule_description = 3;
+		optional uint32 rule_type = 4;
 	}
 
 	message PartnerItemPaymentRule {
@@ -308,9 +310,12 @@ message CWorkshop_SetItemPaymentRules_Request {
 	optional uint32 gameitemid = 2;
 	repeated .CWorkshop_SetItemPaymentRules_Request.WorkshopItemPaymentRule associated_workshop_files = 3;
 	repeated .CWorkshop_SetItemPaymentRules_Request.PartnerItemPaymentRule partner_accounts = 4;
+	optional bool validate_only = 5;
+	optional bool make_workshop_files_subscribable = 6;
 }
 
 message CWorkshop_SetItemPaymentRules_Response {
+	repeated string validation_errors = 1;
 }
 
 message CBroadcast_PostGameDataFrame_Request {

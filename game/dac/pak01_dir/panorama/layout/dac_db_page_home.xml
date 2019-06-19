@@ -9,17 +9,6 @@
 	
 	<DACHomePage hittest="false" class="DashboardPage">
 
-		<!--<Panel id="BackgroundContainer">-->
-			<!--<Image id="Layer1" src="s2r://panorama/images/dashboard/background/background_png.vtex" />-->
-			<!--<Panel id="Layer2">-->
-				<!--<Image  src="s2r://panorama/images/dashboard/background/middleground_png.vtex" />-->
-				<!--<Image id="Layer2Effects" src="s2r://panorama/images/dashboard/background/windows_png.vtex" />-->
-			<!--</Panel>-->
-			<!--<Image id="Layer4" src="s2r://panorama/images/dashboard/background/foreground_png.vtex" />-->
-
-			<!--<Image id="Layer5" src="s2r://panorama/images/dashboard/jull_png.vtex" />-->
-		<!--</Panel>-->
-
 		<Panel id="BetaBackground">
 			<Image id="Layer6" src="s2r://panorama/images/dashboard/background/flattened-bg_jpg.vtex" />
 			<Image id="Layer5" src="s2r://panorama/images/dashboard/heroes-beta-sil_png.vtex" />
@@ -65,55 +54,58 @@
 				</Panel>
 			</Panel>
 
-			<Panel id="SocialPanel" hittest="true">
-				<Panel id="SteamLoginRequired">
-					<Button class="SocialButtonClose" onactivate="DACToggleSocialPanel()" />
-					<Panel id="SteamLoginRequiredContents">
-						<Panel id="SteamLogo"/>
+			<Panel id="SocialPanel">
+				<Panel id="SocialPanelClickEater" hittest="true" onactivate="DACToggleSocialPanel()"/>
+				<Panel id="SocialPanelContents" hittest="true" onactivate="">
+					<Panel id="SteamLoginRequired">
+						<Button class="SocialButtonClose" onactivate="DACToggleSocialPanel()" />
+						<Panel id="SteamLoginRequiredContents">
+							<Panel id="SteamLogo"/>
 
-            <Button class="PopupButton LoginButton" id="SteamLoginButton" onactivate="DACSteamLogin()">
-              <Label text="#DAC_SteamAccountLogin" />
-            </Button>
-            <Button class="PopupButton LoginButton" id="SteamReconnectButton" onactivate="DACSteamReconnect()">
-							<Label text="#DAC_Home_Reconnect" />
+	            <Button class="PopupButton LoginButton" id="SteamLoginButton" onactivate="DACSteamLogin()">
+	              <Label text="#DAC_SteamAccountLogin" />
+	            </Button>
+	            <Button class="PopupButton LoginButton" id="SteamReconnectButton" onactivate="DACSteamReconnect()">
+								<Label text="#DAC_Home_Reconnect" />
+							</Button>
+	            <Button class="PopupButton LoginButton" id="SteamCreateButton" onactivate="DACSteamCreateAccount()">
+	              <Label text="#DAC_SteamCreateAccount" />
+	            </Button>
+	            <Panel class="LoginDescContainer">
+	              <Panel class="LogInDesc">
+	                <Panel class="LogInDescBullet"/>
+	                <Label text="#DAC_SteamLogIn_Desc1" class="LogInDescText"/>
+	              </Panel>
+	            </Panel>
+	          </Panel>
+	        </Panel>
+
+					<Panel id="SocialPanelHeader">
+						<Button class="SocialButtonClose" onactivate="DACToggleSocialPanel()" />
+						<Button id="SocialButtonFriends" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Friends' )">
+							<Label class="SocialTabTitle" text="#DAC_Social_FriendsTab"/>
 						</Button>
-            <Button class="PopupButton LoginButton" id="SteamCreateButton" onactivate="DACSteamCreateAccount()">
-              <Label text="#DAC_SteamCreateAccount" />
-            </Button>
-            <Panel class="LoginDescContainer">
-              <Panel class="LogInDesc">
-                <Panel class="LogInDescBullet"/>
-                <Label text="#DAC_SteamLogIn_Desc1" class="LogInDescText"/>
-              </Panel>
-            </Panel>
-          </Panel>
-        </Panel>
-
-				<Panel id="SocialPanelHeader">
-					<Button class="SocialButtonClose" onactivate="DACToggleSocialPanel()" />
-					<Button id="SocialButtonFriends" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Friends' )">
-						<Label class="SocialTabTitle" text="#DAC_Social_FriendsTab"/>
-					</Button>
-					<Button id="SocialButtonParty" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Party' )">
-						<Label class="SocialTabTitle" text="#DAC_Social_PartyTab"/>
-						<Panel class="SocialViolatorList">
-						<Panel class="SocialViolator PartyInvitesViolator">
-							<Panel class="InviteIcon"/>
-							<Panel class="InviteIconBright"/>
-						</Panel>
-							<Panel class="SocialViolator PartyReadyViolator"/>
-						</Panel>
-					</Button>
-				</Panel>
-
-				<Panel id="SocialPanelBody">
-					<Panel id="SocialBodyFriends" class="SocialPanel">
-						<DACFriendMenu id="SocialFriends" />
+						<Button id="SocialButtonParty" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Party' )">
+							<Label class="SocialTabTitle" text="#DAC_Social_PartyTab"/>
+							<Panel class="SocialViolatorList">
+							<Panel class="SocialViolator PartyInvitesViolator">
+								<Panel class="InviteIcon"/>
+								<Panel class="InviteIconBright"/>
+							</Panel>
+								<Panel class="SocialViolator PartyReadyViolator"/>
+							</Panel>
+						</Button>
 					</Panel>
-					<Panel id="SocialBodyParty" class="SocialPanel">
-						<DACParty id="SocialParty"/>
+
+					<Panel id="SocialPanelBody">
+						<Panel id="SocialBodyFriends" class="SocialPanel">
+							<DACFriendMenu id="SocialFriends" />
+						</Panel>
+						<Panel id="SocialBodyParty" class="SocialPanel">
+							<DACParty id="SocialParty"/>
+						</Panel>
 					</Panel>
-				</Panel>
+				</Panel>	
 			</Panel>
 
 			<!--

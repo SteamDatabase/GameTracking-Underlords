@@ -78,31 +78,38 @@
 	vertical-align: center;
 	text-shadow: 0px 1px 0px 2.0 #000;
 	padding-top: 3px;
+	transition-property: color;
+	transition-duration: .1s;
 }
 
 .Cost1 #HeroName
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from(#dedbca), to(#fdfcf8));
+	color: gradient(linear, 0% 0%, 0% 100%, from(#d0b2cd), to(#cedef8));
 }
 
 .Cost2 #HeroName
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from(#81fc9e), to(#d2ffdd));
+	color: gradient(linear, 0% 0%, 0% 100%, from(#3ed93b), to(#99d3a0));
 }
 
 .Cost3 #HeroName
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from(#81defc), to(#e3f8ff));
+	color: gradient(linear, 0% 0%, 0% 100%, from(#5990ff), to(#9cbbed));
 }
 
 .Cost4 #HeroName
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from(#ff9afe), to(#ffdfff));
+	color: gradient(linear, 0% 0%, 0% 100%, from(#e347ff), to(#e49bff));
 }
 
 .Cost5 #HeroName
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from(#fc9f45), to(#ffd0a2));
+}
+
+.ShopEntry.CannotAfford #HeroName
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from(#614a48), to(#846666));
 }
 
 #CostNumber
@@ -172,6 +179,8 @@
 {
 	background-image: url("s2r://panorama/images/shop/cost5_vignette_psd.vtex");
 }
+
+
 
 .LowVisualQuality #UnitShopContainer {
 	transition-property: none;
@@ -324,6 +333,20 @@
 	background-color: #000000dd;
 	margin-top: 142px;
 	padding: 4px;
+
+	opacity: 0.01;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+.LowVisualQuality #TimerContainer
+{
+	transition-duration: 0s;
+}
+
+.TimerVisible #TimerContainer
+{
+	opacity: 1;
 }
 
 #TimerBar {
@@ -337,11 +360,14 @@
 	border: 4px solid #000e;
 }
 
-.TimerHide #TimerBar {
-    visibility: collapse;
+
+.TimerHide #TimerBar
+{
+	visibility: collapse;
 }
 
-#MainRow {
+#MainRow
+{
 	flow-children: right;
 	height: 600px;
 	horizontal-align: center;
@@ -396,7 +422,31 @@
 	width: 100%;
 	height: 100%;
 }
-	
+
+.Minimal .UnitShopBGItem.CannotAfford .UnderfootImage 
+{
+    /*background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_5_psd.vtex");
+    wash-color: #700;*/
+}
+
+.Minimal .ShopEntry.CannotAfford .CostContainer
+{
+    wash-color: #614a48;
+}
+
+.CannotAffordLevelUp #LevelUp .GoldValueContainer,
+.CannotAffordReroll #RerollShop .GoldValueContainer
+{
+    wash-color: #614a48;
+}
+
+.CannotAffordLevelUp #LevelUp .CostLabel,
+.CannotAffordReroll #RerollShop .CostLabel,
+.Minimal .ShopEntry.CannotAfford #CostNumber
+{
+    color: black;
+}
+
 
 .ShopEntry.Purchased {
 	opacity: 0;
@@ -483,6 +533,11 @@ DACSynergyIcon.HiddenInactive
 	visibility: collapse;
 }
 
+.Minimal #ContentBG
+{
+	margin-bottom: -34px;
+}
+
 #ContentBG
 {
 	vertical-align: bottom;
@@ -502,7 +557,7 @@ DACSynergyIcon.HiddenInactive
 	width: 380px;
 	margin-left: -100px;
 	margin-right: -100px;
-	margin-top: -100px;
+	margin-top: -35px;
 	height: 340px;
 	visibility: collapse;
 }
@@ -833,6 +888,15 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: center; 
 }
 
+.Minimal #SynergyCapsule
+{
+	background-image: url("s2r://panorama/images/shop/synergy_drop_shadow_psd.vtex");
+	background-size: 110%;
+	background-position: 50% 100%;
+	background-repeat: no-repeat;
+	overflow: noclip;
+}
+
 .SynergyHelpersContainer
 {
 	width: 1600px;
@@ -859,6 +923,46 @@ DACSynergyIcon.HiddenInactive
 {
 	width: fill-parent-flow(1);
 	height: 100%;
+	opacity: 0;
+	transition-property: opacity, transform;
+	transition-duration: .2s; 
+	transform: translateY( -100px );
+}
+
+.Minimal .SynergyHelper.ContainsInfo
+{
+	opacity: 1;
+	transform: translateY( 0px );
+}
+
+.Minimal #SynergyHelperSlot0
+{
+	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_psd.vtex");
+	background-size: 100%;
+}
+
+.Minimal #SynergyHelperSlot1
+{
+	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_01_psd.vtex");
+	background-size: 100%;
+}
+
+.Minimal #SynergyHelperSlot2
+{
+	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_02_psd.vtex");
+	background-size: 100%;
+}
+
+.Minimal #SynergyHelperSlot3
+{
+	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_03_psd.vtex");
+	background-size: 100%;
+}
+
+.Minimal #SynergyHelperSlot4
+{
+	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_04_psd.vtex");
+	background-size: 100%;
 }
 
 .SynergyHelperIcons
@@ -866,7 +970,8 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: center;
 	flow-children: right;
 	width: fit-children;
-	margin-left: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .SynergyHelperIcons
@@ -890,6 +995,13 @@ DACSynergyIcon.HiddenInactive
 	width: 36px;
 	height: 36px;
 	margin: 4px;
+
+	vertical-align: bottom;
+	margin-top: 35px;
+}
+
+.UnitContent
+{
 }
 
 .NewRankDivider .UnitContent
@@ -914,9 +1026,7 @@ DACSynergyIcon.HiddenInactive
 .HeroRankLabel
 {
 	color: white;
-	vertical-align: bottom;
 	horizontal-align: center;
-	margin-top: 44px;
 	width: 36px;
 	text-overflow: shrink;
 	text-align: center;
@@ -1126,6 +1236,11 @@ DACSynergyIcon.HiddenInactive
 	margin-top: 87px;
 }
 
+.Minimal #HeroCardRow
+{
+	margin-top: -60px;
+}
+
 .ParticleOverlay {
 	margin-left: -170px;
 	margin-top: -85px;
@@ -1203,7 +1318,7 @@ DACSynergyIcon.HiddenInactive
 	visibility: visible;
 
 	margin: 0px;
-	margin-bottom: 87px;
+	margin-bottom: 30px;
 
 	padding: 0px;
 	border: 0px solid #0000;
@@ -1223,6 +1338,7 @@ DACSynergyIcon.HiddenInactive
 	text-overflow: shrink;
 	font-size: 20px;
 	font-weight: bold;
+	text-shadow: 0px 1px 0px 3.0 #000000aa;
 }
 
 .Minimal #AbilityContainer
@@ -1406,7 +1522,7 @@ DACSynergyIcon.HiddenInactive
 
 .Minimal #UnitsShop
 {
-	margin-top: 65px;
+	margin-top: 0px;
 }
 
 .Minimal #UnitsShopLockLayer
@@ -1431,7 +1547,7 @@ DACSynergyIcon.HiddenInactive
 	width: 100%;
 	height: 60px;
 
-	margin-top: 149px;
+	margin-top: 147px;
 
 	background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_1_psd.vtex");
 	background-size: 120%;
@@ -1454,6 +1570,13 @@ DACSynergyIcon.HiddenInactive
 	font-size: 27px;
 	text-align: center;
 	padding-top: 0px; 
+	margin-top: 2px;
+}
+
+.Minimal .UnderfootImage
+{
+	transition-property: background-image;
+	transition-duration: .2s;
 }
 
 .Minimal .Purchased .UnderfootImage
@@ -1484,6 +1607,11 @@ DACSynergyIcon.HiddenInactive
 .Minimal .CombineHighlight
 {
 	visibility: collapse;
+}
+
+.Minimal .CannotAfford .UnderfootImage
+{
+	background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_cannot_afford_psd.vtex");
 }
 
 .CostContainer
@@ -1522,9 +1650,24 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: center;
 
 	text-shadow: none;
+	margin-top: -4px;
 }
 
 .Minimal #UnitHeader
 {
-	margin-top: 81px;
+	margin-top: 146px;
+}
+
+#PlayerEXPTutorialHighlight 
+{
+    width: 160px;
+    height: 160px;
+    margin-top: 1px;
+    margin-left: 1px;
+    visibility: collapse;
+}
+
+.TutorialBuyXPPopup #PlayerEXPTutorialHighlight
+{
+    visibility: visible;
 }

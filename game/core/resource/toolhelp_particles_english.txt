@@ -548,13 +548,11 @@ For example they can fly off into space, then reassemble themselves over time in
 This means when movement starts, stops, or change speed/direction, the input will change.  But if it is moving at a constant velocity, the delta of velocity will be zero."
 		"Attribute.C_OP_RenderSprites.m_nOrientationType"		"Orientation Type"
 		"Attribute.C_OP_RenderSprites.m_nOrientationType:help"		"Full 3-Axis Rotation: Must be used in conjuction with a \"Remap CP orientation to rotations\" and a \"Movement lock to control point\" with lock rotations on"
-		"Element.C_OP_PinParticleToCP:name_ref"		"Pin Particle to control point"
 		"Element.C_OP_PinParticleToCP:help"		"This takes a specific particle and locks it to a control point and sets its force scale to 0.  This can be used with a Rope Spring Contraint to pin desired points.  The pin can be broken by a number of different methods including distance to neighboring particles, distance to control point/s, or speed.  Any number of pins can be added to lock specific particles."
-		"Element.C_OP_PerParticleForce:name_ref"		"Per-Particle Force"
 		"Element.C_OP_PerParticleForce"		"Per-Particle Force"
 		"Element.C_OP_PerParticleForce:help"		"This force allows a local or world space force to be applied with a force scale that's a float evaluator.  It allows for per-particle based acceleration forces using the float evaluator."
 		"Element.C_OP_RopeSpringConstraint:name_ref"		"Rope Spring constraint"
-		"Element.C_OP_RopeSpringConstraint:help"		"This is a spring constraint intended for ropes of a static particle count.  This is intended for systems of around 8 - 32 particles in length.  Fewer particles will tend to work better than more.  The resting length is based on its spawn/initialization position.  Minimum and Maximum Segement Length is based off of percentages of that amount.  High scale factor for spring correction will make the springs stiffer, but also cause the springs to break down.  This can be compensated to a small degree with the maximum time step of the system."
+		"Element.C_OP_RopeSpringConstraint:help"		"This is a spring constraint intended for ropes of a static particle count.  This is intended for systems of around 5 - 32 particles in length.  Fewer particles will tend to work better than more.  The resting length is based on its spawn/initialization position, as such instantaneous systems work best.  However, you can manually set the reseting length spacing if desired, which will override the initial spacing - this also better allows for adding segments over time.  Minimum and Maximum Segement Length is based off of percentages of the resting length.  High scale factor for spring correction will make the springs stiffer, but also cause the springs to break down.  This can be compensated to a small degree with the maximum time step of the system."
 		"Attribute.C_OP_RopeSpringConstraint.m_flMinDistance"		"Minimum Segment Length %"
 		"Attribute.C_OP_RopeSpringConstraint.m_flMinDistance:help"		"The segment length between any two particles will try to remain at least this long (a percentage relative to the spacing it had upon creation)."
 		"Attribute.C_OP_RopeSpringConstraint.m_flMaxDistance"		"Maximum Segment Length %"
@@ -606,5 +604,8 @@ Distance to Either of Two Control Points
 Distance to Both of Two Control Points<br>
 
 The distance from the selected pin to both control points will be used in this case."
+		"Attribute.C_OP_RopeSpringConstraint.m_flInitialRestingLength"		"Manual Resting Length Spacing"
+		"Attribute.C_OP_RopeSpringConstraint.m_flInitialRestingLength:shorthelp"		"The resting length distance between any two particles. -1.0 == automatic distance from initial position"
+		"Attribute.C_OP_RopeSpringConstraint.m_flInitialRestingLength:help"		"This is the distance between any two particles when in a resting state.  By default (-1.0) this value is determined automatically by the initial state of the system and the average spacing between each particle.  However, it can be set manually to allow for both known setups that differ from the initial spacing, or dynamic systems that add particles over time or need to change the resting length."
 	}
 }

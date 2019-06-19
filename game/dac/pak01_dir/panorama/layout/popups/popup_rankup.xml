@@ -7,21 +7,42 @@
   </styles>
 
   <PopupRankUp>
-    <Panel class="Contents PopupPanel">
-			<Panel class="MainBody">
-				<Label class="Title" text="#DAC_RankUp_Title" />
-				<Label class="Subheading" text="#DAC_RankUp_Subheading" />
+		<Panel id="Overlay" />
+		
+		
+		<DACParticleScenePanel class="ParticleOverlay" id="RankUpParticle" hittest="false" startActive="false" particleName="particles/ui/rank/ui_rankup.vpcf"  fov="-900" />
+		<DACParticleScenePanel class="ParticleOverlay" id="RankDownParticle" hittest="false" startActive="false" particleName="particles/ui/rank/ui_rankdown.vpcf"  fov="-900" />
 
-        <Panel id="RankContainer">
-          <DACRankIcon id="RankIcon" iconstyle="standalone"/>
-        </Panel>
+		<DACParticleScenePanel id="TitleParticle" hittest="false" startActive="false" particleName="particles/ui/rank/ui_levelup.vpcf"  fov="-900" />
 
-      </Panel>
-			<Panel class="PopupBottomContainer">
-				<Button id="ContinueButton" class="PopupButton" onactivate="UIPopupButtonClicked()">
-					<Label text="#UI_OK"/>
-				</Button>
-			</Panel>	
+		<Button id="ContinueButton" class="PopupButton" onactivate="UIPopupButtonClicked()">
+			
+		</Button>
+
+		<Panel class="RankContainer">
+			<DACMiniProfile id="RankIconOld"  dashboardmode="true" />
 		</Panel>
+
+		<Panel id="RankTextContainer">
+			<Label class="RankText" id="OldRankText" html="true"  text="#DAC_LevelUp_Rank_Old" />
+			<Label class="RankText" id="NewRankText" html="true"  text="#DAC_LevelUp_Rank_New" />
+		</Panel>
+	
+		<Panel class="TitleContainer">
+			<Label class="Title" id="RankUpMinorTitle"  text="#DAC_LevelUp_Title_Minor" />
+			<Label class="Title" id="RankUpMajorTitle"  text="#DAC_LevelUp_Title_Major" />
+			<Label class="Title" id="RankDownTitle"  text="#DAC_LevelDown_Title_Minor" />
+		</Panel>
+
+
+		<Panel class="RankContainer">
+			<DACMiniProfile id="RankIcon"  dashboardmode="true" />
+		</Panel>
+
+
+
+			
+			
+	
   </PopupRankUp>
 </root>

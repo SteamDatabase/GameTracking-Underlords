@@ -34,6 +34,8 @@
 		//
 		SearchPaths
 		{
+			Game				dac_desktop [!$MOBILE && !$MOBILE_RSRC && !$BUILDALLSHADERS_RUN && !$CONTENTBUILDER_RUN && !$VMPI_GAMEINFO]
+			Game				dac_mobile [$MOBILE || $MOBILE_RSRC]
 			Game				dac
 			Game				core
 			Mod					dac

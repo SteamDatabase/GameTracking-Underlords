@@ -1,5 +1,7 @@
 DACNotifications
 {
+	z-index: -10;	
+
 	width: 800px;
 	height: 300px;
 
@@ -11,6 +13,12 @@ DACNotifications
 {
 	ui-scale: 80%;
 	width: 1200px;
+}
+
+.IsPlatformMobile DACNotifications
+{
+	width: 1000px;
+	margin-right: 130px;
 }
 
 #NotificationsContainer
@@ -32,13 +40,15 @@ DACNotifications
 	visibility: collapse;
 }
 
-.TurnThisOnForDevButtons DACNotifications
+.TurnThisOnForDevButtons 
+DACNotifications
 {
 	height: 800px;
 	width: 1000px;
 }
 
-.TurnThisOnForDevButtons .ButtonContainer
+.TurnThisOnForDevButtons 
+.ButtonContainer
 {
 	visibility: visible;
 }
@@ -72,12 +82,14 @@ Button Label
 .NotificationItem
 {
 	horizontal-align: center;
-	width: 600px;
-	//background-color: #2d2b22CC;
-	background-color: #222222aa;
+	width: 100%;
+	background-color: #222222ee;
+
 	height: 60px;
 	margin-bottom: 5px;
 	padding: 5px;
+	padding-right: 95px;
+	padding-left: 95px;
 	flow-children: right;
 	border-radius: 2px;
     //border: 2px solid #8c919244;
@@ -89,14 +101,23 @@ Button Label
 
 .IsPlatformPC .NotificationItem
 {
-	width: 800px;
+	width: 1000px;
 }
+
+.IsPlatformMobile .NotificationItem
+{
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #11111100 ), color-stop( 0.1, #111111ee ), color-stop( .9, #111111ee ), to( #11111100 ) );
+}
+
 
 .NotificationItem.LocalPlayer
 {	
-	//background-color: #423f33CC;
 	background-color: #111111dd;	
-	//border: 1px solid #888;
+}
+
+.IsPlatformMobile .NotificationItem.LocalPlayer
+{	
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #11111100 ), color-stop( 0.1, #111111ee ), color-stop( .9, #111111ee ), to( #11111100 ) );
 }
 
 .NotificationItem.Appear
@@ -112,7 +133,7 @@ Button Label
 
 .LowVisualQuality .NotificationItem
 {
-    transition-duration: 0.0s;
+	transition-duration: 0.0s;
 	border-radius: 0px;
 }
 
@@ -131,6 +152,11 @@ Button Label
 	vertical-align: center;
 
 	margin-top: 5px;
+}
+
+.IsPlatformMobile .NotificationItem Label
+{
+	font-size: 28px;	
 }
 
 #PlayerAvatar
@@ -217,19 +243,89 @@ Button Label
 .NotificationItem.CombatLose,
 .NotificationItem.CombatLoseAway
 {
-	//background-color: gradient( linear, 0% 0%, 100% 0%, from( #451710), to( #75271b ) ); 
-	//background-color: #75271b33;
-	background-color: #320505cc;
-	//border: 1px solid #ff4e3155;
+	background-color: #5b1124cc;
+}
+
+.IsPlatformMobile .NotificationItem.PlayerEliminated
+{
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #5b112400 ), color-stop( 0.1, #720b26 ), color-stop( .9, #720b26 ), to( #5b112400 ) );
+
+	animation-name: RedFadeInEliminated;
+	animation-duration: 1.3s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes 'RedFadeInEliminated'
+{
+	0%
+	{
+		background-color: gradient( linear, 0% 0%, 100% 0%, from( #5b112400 ), color-stop( 0.2, #5b1124cc ), color-stop( .8, #5b1124cc ), to( #5b112400 ) );
+	}
+	
+	50%
+	{
+		background-color: gradient( linear, 0% 0%, 100% 0%, from( #5b112400 ), color-stop( 0.2, #720b26 ), color-stop( .8, #720b26 ), to( #5b112400 ) );
+	}
+
+	100%
+	{
+		background-color: gradient( linear, 0% 0%, 100% 0%, from( #5b112400 ), color-stop( 0.2, #5b1124cc ), color-stop( .8, #5b1124cc ), to( #5b112400 ) );
+	}
+}
+
+.IsPlatformMobile .NotificationItem.CombatLoseAway
+{
+		background-color: gradient( linear, 0% 0%, 100% 0%, from( #5b112400 ), color-stop( 0.1, #5b1124aa ), color-stop( .9, #5b1124aa ), to( #5b112400 ) );
+
+	animation-name: RedFadeIn;
+	animation-duration: .3s;
+	animation-iteration-count: 1;
+		
+}
+
+@keyframes 'RedFadeIn'
+{
+	0%
+	{
+		background-color: gradient( linear, 0% 0%, 100% 0%, from( #5b112400 ), color-stop( 0.2, #5b112400 ), color-stop( .8, #5b112400 ), to( #5b112400 ) );
+	}
+
+	100%
+	{
+		background-color: gradient( linear, 0% 0%, 100% 0%, from( #5b112400 ), color-stop( 0.2, #5b1124aa ), color-stop( .8, #5b1124aa ), to( #5b112400 ) );
+	}
 }
 
 .NotificationItem.WinStreak,
 .NotificationItem.CombatWin
 {
-	background-color: #312c04cc;
-	//background-color: gradient( linear, 0% 0%, 100% 0%, from( #222222aa), to( #937c00aa ) ); 
-	//border: 2px solid #ffd70088;
-	//border: 1px solid #ffd70088;
+	background-color: #4c6fd475;
+}
+
+.IsPlatformMobile .NotificationItem.WinStreak,
+.IsPlatformMobile .NotificationItem.CombatWin,
+.IsPlatformMobile .NotificationItem.CombatLose
+{
+
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #25277c00 ), color-stop( 0.2, #25277caa ), color-stop( .8, #25277caa ), to( #25277c00 ) );
+		
+	animation-name: BlueFadeIn;
+	animation-duration: .3s;
+	animation-iteration-count: 1;
+		
+}
+
+@keyframes 'BlueFadeIn'
+{
+	0%
+	{
+		background-color: gradient( linear, 0% 0%, 100% 0%, from( #25277c00 ), color-stop( 0.2, #25277c00 ), color-stop( .8, #25277c00 ), to( #25277c00 ) );
+	}
+
+	100%
+	{
+		background-color: gradient( linear, 0% 0%, 100% 0%, from( #25277c00 ), color-stop( 0.2, #25277caa ), color-stop( .8, #25277caa ), to( #25277c00 ) );
+	}
 }
 
 #UpvoteContainer

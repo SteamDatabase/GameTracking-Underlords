@@ -230,8 +230,9 @@
  Can't back up over more bytes than were returned by the last call to Next().
  Driver %s (vendorid %x, deviceid %x DXSupport Level %d)
  E9l$\
- H;=W
- H;=v
+ H;=/
+ H;=0
+ H;=ozr
  H;D$PH
  H;D$`H
  NETWORK_DISCONNECT_CLIENT_NO_MAP
@@ -443,7 +444,6 @@
 ##GameUI_Disconnect_BadRelayPassword
 ##GameUI_Disconnect_ReliableOverflow
 ##GameUI_Disconnect_SnapshotOverflow
-#5elt
 #<GAME_ROOT
 #AppFramework_InvalidLocalFiles
 #AppFramework_OutOfMemory
@@ -704,6 +704,8 @@ $woL)
 %i CPUs%s, Frequency: %.01f %s, Features: %s
 %i demo(s) in loop
 %i frames %5.3f seconds %5.2f fps (%5.2f ms/f) %5.3f fps variability
+%i pred reason %s -- finish
+%i pred reason %s -- start
 %i users
 %i.%i.%i.%i
 %i.%i.%i.%i:%i
@@ -786,6 +788,7 @@ $woL)
 %s, string text, bool scrollbar
 %s, string title
 %s. Ack, Net Buffer overflowed.
+%s.%u
 %s.360%s
 %s.bz2
 %s.dem
@@ -1091,6 +1094,7 @@ $woL)
 -allocwarnmb
 -allow_no_lobby_connect
 -allowdebug
+-appidoverride
 -asset
 -attachtodebugger
 -auto -title "auto_bug %04d-%02d-%02d %02d:%02d:%02d" 
@@ -1110,6 +1114,7 @@ $woL)
 -con_timestamp
 -conclearlog
 -condebug
+-conrotate
 -console
 -consoleapp
 -consolelog
@@ -1203,6 +1208,8 @@ $woL)
 -sse4
 -steam
 -steamhdl_init
+-steamlogin_accesscode
+-steamlogin_authority
 -steamport
 -stereo
 -subprocess
@@ -1359,6 +1366,7 @@ $woL)
 00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
 0027015
 0027020
+00:36:06
 0123456789abcdef
 0: Force z prepass off. 1: Force on. -1: Don't force
 0: Use normals reconstructed from depth. 1: Output correct normals in z prepass.
@@ -1803,7 +1811,6 @@ $woL)
 15ISPSharedMemory
 15ISaveRestoreOps
 15ITextMessageMgr
-15ITickBaseHelper
 15IVEngineClient2
 15IVEngineServer2
 15SignedPayload_t
@@ -1961,7 +1968,6 @@ $woL)
 2$.CGameInfo.CDotaGameInfo.CPlayerInfo
 2).CGameInfo.CDotaGameInfo.CHeroSelectEvent
 200000
-20:34:30
 20CAsyncTrackingConvar
 20CBoundedCvar_CmdRate
 20CCLCMsg_ClientInfo_t
@@ -3109,10 +3115,10 @@ C-side of entity framework
 C0Hc}
 C2S_CONNECTION_Message
 C2S_CONNECT_Message
+C4[A\]
 C89C\
 C8t	H
 C8t#Lcc
-C<[A\]
 C<u'Hc{
 C@t8L
 C@u I
@@ -4283,7 +4289,6 @@ D$ E1
 D$ H9E
 D$ Hc
 D$ IcT$
-D$ fE
 D$ tO
 D$(9D$
 D$(Hc
@@ -4369,7 +4374,8 @@ D9t$LfE
 D;!ttHc
 D;(tPH
 D;+}N
-D;-yMv
+D;-)Pv
+D;-4"p
 D;a D
 D;c D
 D;c toH
@@ -4731,6 +4737,7 @@ Engine loading startup asset: '%s'
 Engine loading startup tool: '%s'
 Engine only supports 255 ConVars marked %i
 Engine only supports 255 ConVars marked 0x%llX
+Engine thread pool: %u job queue(s), %u thread(s)
 Engine window is on monitor %u, '%s' (default is %u)
 Engine2
 Engine2/AllowSaveGamesInMultiplayer
@@ -5443,83 +5450,72 @@ H;0t.H
 H;0t7H
 H;2t=H
 H;3t?H
-H;5	Kd
-H;5 Pd
-H;59Xd
-H;5Pbd
-H;5TMd
-H;="$c
-H;=#Tq
-H;=%Pq
-H;=&pk
-H;='i
-H;=(v
-H;=)6u
-H;=+>
-H;=+K
-H;=+wc
-H;=,5d
-H;=,6d
-H;=,7d
-H;=,k
-H;=,l
-H;=,m
-H;=.\o
-H;=.iq
-H;=0Wo
-H;=2$
-H;=2tq
-H;=6e
-H;=7Vh
-H;=7|d
-H;=89j
-H;=8u
-H;=97u
-H;=;aq
-H;=<K
-H;=<wd
-H;=>Yq
-H;=B	v
-H;=B"c
-H;=BWu
-H;=DRq
-H;=Did
-H;=Ecq
-H;=G(
-H;=GQh
-H;=Ht
-H;=Jhd
-H;=Jy
-H;=KL
-H;=L1
-H;=MSq
-H;=Oxr
-H;=R,v
-H;=Ri
-H;=W%
-H;=W'd
-H;=Xs
-H;=Z>q
-H;=[?
-H;=\_q
-H;=]fq
-H;=b6u
-H;=b^n
-H;=b|d
-H;=c!
-H;=eJ
-H;=e`q
-H;=f^o
-H;=fvd
-H;=gf
-H;=gzd
-H;=hr
-H;=q#d
-H;=rH
-H;=xq
-H;=z1
-H;={,d
-H;=|hd
+H;5![d
+H;58ed
+H;5<Pd
+H;5qQd
+H;= q
+H;="1
+H;=$zd
+H;='Sq
+H;='fq
+H;=*%c
+H;=*(v
+H;=,ld
+H;=/j
+H;=0+
+H;=04
+H;=0p
+H;=2kd
+H;=8J
+H;=:!
+H;=:Xu
+H;=:an
+H;=:f
+H;=>ao
+H;=?*d
+H;=@*
+H;=@Uq
+H;=@~
+H;=C:
+H;=CAq
+H;=Cvr
+H;=EPq
+H;=Niq
+H;=Nyd
+H;=O}d
+H;=P)
+H;=P}
+H;=UVq
+H;=VWq
+H;=Xbq
+H;=Y&d
+H;=Z1g
+H;=Zj
+H;=^}l
+H;=`(
+H;=`|
+H;=a 
+H;=c/d
+H;=cJ
+H;=dkd
+H;=ebg
+H;=hTo
+H;=liq
+H;=mcq
+H;=o&
+H;=o5
+H;=og
+H;=p'
+H;=pGq
+H;=p{
+H;=s;
+H;=sG
+H;=udq
+H;=xyd
+H;=zRn
+H;=}[o
+H;=~"
 H;C(H
 H;X@tuH
 H;Z@tSH9
@@ -5559,6 +5555,7 @@ Has Collision;
 HasField
 HasGameUI
 HasModAppSystems
+Hc5y%
 Hc@pH
 HcA H
 HcA`;Ap
@@ -5867,7 +5864,7 @@ Jh#B\H
 Jumping to %s
 Jumping to random tick %d (%.2f min)
 Jun 12 2019
-Jun 17 2019
+Jun 19 2019
 JustInTime Resource Spawn Group
 K(9K,
 K@H9J
@@ -6044,13 +6041,11 @@ L$hD)
 L$hHc
 L$xE1
 L+chI
-L8DHc
 L9(t2L
 L90t*H
 L9|$HJ
 L; tY
 L;8t(H
-L;=*Tq
 L;d$@L
 L;kPr
 L;l$ 
@@ -6106,6 +6101,7 @@ Lc'E)
 Lc(D;h
 Lc)D;i
 Lc+D;k
+Lc-6"p
 Lc.D;n
 Lc/E)
 Lc0D;p
@@ -6142,7 +6138,7 @@ LightStyle
 LightStyle with NULL value!
 LightType_t
 LightingBasis
-LightmapUVW
+LightmapUV
 Limbu
 Limits spectators to chat only every n seconds
 Line %d at "%s": %s
@@ -6411,6 +6407,7 @@ Migrating old convar '%s' (value='%s') in file '%s' to new configuration system
 Min bandwidth rate allowed on server, 0 == unlimited
 Min bytes/sec the host can receive data
 Min( %s, %s )
+MiniDumpAdditionalStringData_t
 MiniDumpCommentEnsureOSDescription
 MinidumpSetMiniDumpComment
 MinidumpUserStreamInfoAppend
@@ -6853,13 +6850,11 @@ P IcD$
 P(HcKHf
 P(IcD$
 P([A+
-P,Lce
 P0E;o
 P0XZL
 P0[A\]
 P8H=vtex
 P8LckhD;kxI
-P<[A\A]A^]
 P@A;] |
 PARALLEL_PROCESS sv_packedentities.cpp:911
 PARALLEL_PROCESS utlsoacontainer.cpp:2533
@@ -7033,6 +7028,7 @@ Plat_GetOSType
 Plat_GetPagedPoolInfo
 Plat_GetPeakRSS
 Plat_GetPlatformError
+Plat_GetSteamLoginWithAccessCode
 Plat_GetThreadIndex
 Plat_GetTimeString
 Plat_GetWindowBounds
@@ -7061,6 +7057,7 @@ Plat_MilliSecTickDiff
 Plat_MinimizeWindow
 Plat_NeedsLowFragmentation
 Plat_Printf
+Plat_QueueSteamLoginWithAccessCode
 Plat_RefreshDPI
 Plat_RegisterSignalHandler
 Plat_RelativeTicks
@@ -7752,6 +7749,7 @@ Send failed.
 Send tables cache file
 SendConnectPacket
 SendMessageToUser failed with result %d sending %d byte message %s to %s!
+SendMovePacket overflowed.
 SendRebroadcastMessage
 SendSignonData
 Sending C2S_CONNECT [%u protocol %u auth %d] to %s
@@ -8089,8 +8087,9 @@ Steam UGC subscriptions: unavailable
 Steam Universe is invalid, possibly asking before Steam was successfully initialized.
 Steam headless InitInstance failed, result %d
 Steam headless initialized without logon (no user name given)
-Steam headless logged in
+Steam headless logged in OK, initializing Steam engine interfaces
 Steam headless login call %d
+Steam headless re-logged in OK
 Steam headless reset embedded client token
 Steam headless using stored Steam credential info
 Steam headless using stored credential info
@@ -8188,9 +8187,9 @@ System/lock
 System/network
 T$ A;T$0
 T$ H9
+T$ fD
 T$"<iA
 T$(E1
-T$(fD
 T$0H9
 T$0Ic
 T$@H;r tIH
@@ -8942,8 +8941,8 @@ X[]A\A]A^A_
 X\$LM
 X\McP<
 XboxSystemInterface001
-Y%EQB
-Y=\QB
+Y%EHB
+Y=\HB
 Yaw; 
 You have been kicked and banned %s by the server.
 Your current chat group is "%s"
@@ -9054,7 +9053,7 @@ Z~A+E
 ]A\A]A^A_
 ]IcM Ic
 ^ [A\A]A^]
-^%jt4
+^%Ju4
 ^IcL$ Ic
 ^T$(f
 _,sPL)
@@ -9183,6 +9182,7 @@ _ZN9CVProfile38CalcBudgetGroupL2CacheMisses_RecursiveEP10CVProfNodePjif
 _ZNK16CMiniDumpComment13GetEndPointerEv
 _ZNK16CMiniDumpComment22GetAvailableBufferSizeEv
 _ZNK22CVirtualMemorySnapshot6ReportEi
+_ZNK22MiniDumpStandardData_t21HandlerQueueHeartBeatEv
 _ZNK9CVProfile14GetCounterNameEi
 _ZNK9CVProfile14GetNumCountersEv
 _ZNK9CVProfile15GetCounterGroupEi
@@ -9719,7 +9719,7 @@ choices
 choosesound
 chunkCount
 cl rendering at (%d) %f %f [dt %.2f]
-cl:  Sending %d commands at tick %d %f
+cl:  Sending %d commands at tick %d %f [%d bytes]
 cl:  create '%s'
 cl_allowupload
 cl_autorezoom
@@ -9889,6 +9889,7 @@ create_on_client
 create_particle
 created
 createdint
+createmove
 creationsequence
 csharp_namespace
 cstrike
@@ -10645,7 +10646,7 @@ libvstdlib.so
 lightcookie
 lightingbasis
 lightmap
-lightmapuvw
+lightmapuv
 lightsourceshape
 lightstyles
 lighttype
@@ -11584,6 +11585,7 @@ print
 priority
 process_id
 process_uptime
+processpacketentities executed command %d
 progress
 progress_enable
 prop_data
@@ -11827,38 +11829,39 @@ runevent
 runspeed
 s E9u
 s H;5
-s H;5	Md
-s H;5)
+s H;5!
+s H;5(
+s H;50Sd
+s H;50cd
 s H;58
-s H;5@
-s H;5H
-s H;5HPd
-s H;5H`d
-s H;5X
-s H;5y
+s H;5\
+s H;5`
 s off
 s(H;5
+s(H;50
+s(H;5P
 s(H;5h
 s0H;5
-s0H;5X
+s0H;5(
+s0H;5L
+s0H;5h
 s0[A\H
 s0[A\]
 s1_mapname
 s8H;5
-s8H;5 
-s8H;5@cd
-s8H;5U
+s8H;5(fd
+s8H;5t
+s8H;5x
 s@H;5
-s@H;5$dd
-s@H;58
-s@H;5X
+s@H;5 
+s@H;5q
 s@[A\]H
 sAmTb
 sHH;5
-sHH;5g>d
+sHH;5OAd
+sHH;5hHd
 sMA9|$ 
 sPH;5
-sPH;5R
 sX[A\A]A^A_]
 s_EntComponentInfo
 s`D;spD
@@ -11996,6 +11999,7 @@ signon_state
 sigprocmask
 simple
 simplified
+simulation
 singleplayer
 sint32
 sint64
@@ -12306,7 +12310,7 @@ t Hcw
 t [A\A]A^]
 t!IcT$
 t"L;%
-t"L;%1
+t"L;%y
 t"Mc7E;w
 t"[A\]
 t#IcD$
@@ -12338,21 +12342,21 @@ t%HcM
 t%~_=
 t&Ic]8A;]H
 t&L;%
-t&L;%`
+t&L;%H
 t'Hcu
 t'IcA
 t'Ic\$0A;\$@
 t'[A\]
 t(<)u
 t(D9m
-t(D;%
-t(D;=G
+t(D;%w
+t(D;='
 t(HcK 
 t)D;5
-t)D;=0
+t)D;=
 t)HcE
-t*D9%
-t*D;%Q
+t*D9%I
+t*D;%
 t*Ic\$
 t+Mc,$E;l$
 t+Mce
@@ -12378,7 +12382,6 @@ t0HcC(H
 t0HcG H
 t0HcG(H
 t0Mc/E
-t0[A\A]]
 t1HcKlH
 t1HcO8H
 t1HcOPH
@@ -12452,7 +12455,7 @@ t;~OU
 t<Hcs 
 t=[A\]
 t>Mcv
-t@;5U
+t@;5E
 tAHcC
 tALcc
 tC[A\A]A^]
@@ -13003,6 +13006,8 @@ x	A9]
 x "%f"
 x ;s|~
 x H;=
+x H;=W
+x H;=d
 x&;B`}!H
 x&;F`}!H
 x([A\A]A^]
@@ -13059,7 +13064,7 @@ z~u|f
 {}[]()=&, 	
 {}[]=, 	
 |$ H9
-|$ H;=
+|$ H;=o
 |$ H;}
 |$(Hc
 |$0E;|$@
@@ -13073,10 +13078,9 @@ z~u|f
 |^IcF
 |fIcG
 } H;=
-} H;=&
 } fD9{"r
 }!A;GTw
-}#f;=
+}#f;=MZ
 }$A;]
 }$f;w&w
 }%fA;\$&
@@ -13098,13 +13102,14 @@ z~u|f
 }cHcU
 }};C\
 ~ H;=
-~ H;=N.g
+~ H;=J
+~ H;=v`h
 ~ t1A
 ~)H;7I
 ~.E9~Hu
 ~/D;s@t_H
 ~0;s H
-~0H;=i
+~0H;=
 ~7;w$
 ~8;w$
 ~8H;=
@@ -13112,7 +13117,7 @@ z~u|f
 ~>HcE
 ~CServerChangelevelState with non empty m_Clients!!!
 ~Ef;w
-~HH;=w
+~HH;=O
 ~Ht	H
 ~I;w$
 ~IHcK

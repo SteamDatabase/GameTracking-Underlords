@@ -10,6 +10,7 @@ DACRoundOverScreen
 	transition-property: opacity;
 	transition-duration: 0.2s;
 	opacity: 0.001;
+
 		
 	visibility: visible;
 }
@@ -21,6 +22,15 @@ DACRoundOverScreen
     //padding: 10%;
 }
 
+.ShowVictory #RoundOverBackground,
+.ShowDraw #RoundOverBackground
+{
+	visibility: collapse;
+}
+.ShowDefeat #RoundOverBackground
+{
+	visibility:visible;
+}
 
 #RoundOverBackground {
 	width: 100%;
@@ -30,19 +40,18 @@ DACRoundOverScreen
 	transition-duration: 1s;
 	transition-timing-function: ease-in-out;
 	opacity: 1;
+	visibility:collapse;
+	opacity-mask: url("s2r://panorama/images/masks/end_round_bg_psd.vtex");
 }
 
 .AnimateIn #RoundOverBackground
 {
-	background-color: #000;
-	opacity: 0.9;
-	transition-delay: 5s;
+	
 }
 
 .AnimateOut #RoundOverBackground
 {
-	background-color: #000;
-	opacity: 0;
+
 }
 
 .BrushStroke {
@@ -50,8 +59,7 @@ DACRoundOverScreen
 	height: 100%;
 	background-image: url("s2r://panorama/images/hud/brushstroke_psd.vtex");	
 	background-size: 200% 100%;
-	opacity: 0.7;
-
+	opacity: 0.9;
     animation-delay: 0.0s;
     animation-duration: 2.25s;
     animation-iteration-count: 1;
@@ -71,19 +79,41 @@ DACRoundOverScreen
 	transform: rotateZ(-10deg) scaleX(-1) translateY( -100px );
 }
 
-#Brush3 {
+#Brush3
+{
 	transform: rotateZ(-10deg) scaleX(-1) translateX( 100px ) translateY( 200px );
 }
 
-#Brush4 {
-	transform: rotateZ(-10deg) translateX( 0px )  translateY( -200px );
+#Brush4
+{
+	transform: rotateZ(-10deg) translateX( 0px ) translateY( -200px );
 }
 
-DACRoundOverScreen.AnimateIn #Brush1 { animation-name: BrushIn_01; } 
-DACRoundOverScreen.AnimateIn #Brush2 { animation-name: BrushIn_02; } 
-DACRoundOverScreen.AnimateIn #Brush3 { animation-name: BrushIn_03; } 
-DACRoundOverScreen.AnimateIn #Brush4 { animation-name: BrushIn_04; } 
+DACRoundOverScreen.AnimateIn #Brush1 { animation-name: BrushIn_01; }
+DACRoundOverScreen.AnimateIn #Brush2 { animation-name: BrushIn_02; }
+DACRoundOverScreen.AnimateIn #Brush3 { animation-name: BrushIn_03; }
+DACRoundOverScreen.AnimateIn #Brush4 { animation-name: BrushIn_04; }
 
+DACRoundOverScreen #Brush1.AnimateOut
+{
+	animation-name: BrushOut_01;
+	animation-delay:2.5s;
+}
+DACRoundOverScreen #Brush2.AnimateOut
+{
+	animation-name: BrushOut_02;
+	animation-delay: 2.5s;
+}
+DACRoundOverScreen #Brush3.AnimateOut
+{
+	animation-name: BrushOut_03;
+	animation-delay: 2.5s;
+}
+DACRoundOverScreen #Brush4.AnimateOut
+{
+	animation-name: BrushOut_04;
+	animation-delay: 2.5s;
+}
 #MiniProfile {
 	horizontal-align: left;
 	margin: 10px 0 0 250px;
@@ -188,6 +218,88 @@ DACRoundOverScreen.AnimateIn #Brush4 { animation-name: BrushIn_04; }
 	to
 	{
 		transform: rotateZ(-10deg) translateX( 0px ) translateX( 0% ) translateY( -200px );
+	}
+}
+
+	@keyframes 'BrushOut_01'
+{
+	0% { transform: rotateZ(20deg) translateX( 0% ); }
+	10% { transform: rotateZ(20deg) translateX( 100% ); }
+	100% { transform: rotateZ(20deg) translateX( 100% ); }
+}
+
+
+@keyframes 'BrushOut_02'
+{
+	0%
+	{
+		transform:  rotateZ(-10deg) scaleX(-1) translateX( 0% ) translateY( -100px );
+	}
+	5%
+	{
+		transform: rotateZ(-10deg) scaleX(-1) translateX( 0% ) translateY( -100px );
+	}
+	15%
+	{
+		transform: rotateZ(20deg) translateX( 100% );
+	}
+	20%
+	{
+		transform: rotateZ(-10deg) scaleX(-1) translateX( 100% ) translateY( -100px );
+	}
+	100%
+	{
+		transform: rotateZ(-10deg) scaleX(-1) translateX( 100% ) translateY( -100px );
+	}
+}
+
+
+@keyframes 'BrushOut_03'
+{
+	0%
+	{
+		transform: rotateZ(-10deg) scaleX(-1) translateX( 100px ) translateY( 200px );
+	}
+	10%
+	{
+		transform: rotateZ(-10deg) scaleX(-1) translateX( 100px ) translateY( 200px );
+	}
+	20%
+	{
+		transform: rotateZ(20deg) translateX( 100% );
+	}
+	30%
+	{
+		transform: rotateZ(-10deg) scaleX(-1) translateX( 100% ) translateY( 200px );
+	}
+	100%
+	{
+		transform: rotateZ(-10deg) scaleX(-1) translateX( -100% ) translateY( 200px );
+	}
+}
+
+
+@keyframes 'BrushOut_04'
+{
+	0%
+	{
+		transform: rotateZ(-10deg) translateX( 0px ) translateX( 0% ) translateY( -200px );
+	}
+	15%
+	{
+		transform: rotateZ(-10deg) translateX( 0px ) translateX( 0% ) translateY( -200px );
+	}
+	25%
+	{
+		transform: rotateZ(20deg) translateX( 100% );
+	}
+	30%
+	{
+		transform: rotateZ(-10deg) translateX( 0px ) translateX( 100% ) translateY( -200px );
+	}
+	100%
+	{
+		transform: rotateZ(-10deg) translateX( 0px ) translateX( 100% ) translateY( -200px );
 	}
 }
 
@@ -297,7 +409,7 @@ DACRoundOverScreen.AnimateOut
 	vertical-align: top;
 	horizontal-align: center;
 	visibility: visible;
-	opacity: 0.001;
+	opacity: 0;
 	transition-property: opacity;
 	transition-timing-function: ease-in;
 	
@@ -306,7 +418,7 @@ DACRoundOverScreen.AnimateOut
 
 @keyframes 'FightResultPanelIn'
 {
-	from
+	0%
 	{
 		opacity: 0; 
 		pre-transform-scale2d: 6.5;
@@ -337,12 +449,17 @@ DACRoundOverScreen.AnimateOut
 .AnimateIn #FightResultPanel
 {
 	opacity: 1; 
-/*	animation-name: FightResultPanelIn;
-    animation-delay: 0.0s;
+	animation-name: FightResultPanelIn;
+    animation-delay: 1s;
     animation-duration: 1.251s;
     animation-iteration-count: 1;
-    animation-timing-function: ease-in;*/
+    animation-timing-function: ease-in;
 }
+.ShowDefeat.AnimateIn #FightResultPanel
+{	
+	animation-delay: 0.0s;	
+}
+
 
 @keyframes 'FightResultPanelOut'
 {
@@ -394,7 +511,7 @@ DACRoundOverScreen.AnimateOut
 #BreakLabel
 {
 	width: 100%;
-	margin-top: 150px;
+	margin-top: 200px;
 	overflow: noclip;
 	opacity: 0;
 	height: 0px;
@@ -414,6 +531,36 @@ DACRoundOverScreen.AnimateOut
 
 .FightResultLabel
 {
+	font-size: 110px;
+	font-weight: black;
+	color: #ffffff;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	background-image: url("s2r://panorama/images/hud/black_text_bg_psd.vtex");
+	background-size: cover;
+	background-repeat: no-repeat;
+	padding: 0px 30px;
+	transform: rotateZ(-2deg);
+	box-shadow: 0px 0px 3px #000000;
+	margin-top: 420px;
+	margin-left: 0px;
+	margin-bottom: 0px;
+	horizontal-align: center;
+	width: fit-children;
+	height: fit-children;
+	z-index: 0;
+    animation-delay: 0.0s;
+    animation-duration: 1.2s;
+    animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	transform-origin: 50% 50%;
+}
+
+
+/*
+.FightResultLabel
+{
 	letter-spacing: 8px;
 	margin-top: 350px;
 	margin-left: 0px;
@@ -423,11 +570,9 @@ DACRoundOverScreen.AnimateOut
 	text-align: center;
 	width: 100%;
 	height: 250px;
-	/*line-height: 30px;
-	text-overflow: shrink;*/
 	color: gradient(linear, 0% 0%, 0% 100%, from( #edce6e ), to(#fffdd7));
 	text-shadow: 2px 2px 0px 2.0 #000000aa;
-	font-size: 250px;
+	font-size: 170px;
 	font-weight: bold;  
 	z-index: 0;
     animation-delay: 0.0s;
@@ -436,6 +581,7 @@ DACRoundOverScreen.AnimateOut
 	animation-timing-function: ease-out;
 	transform-origin: 50% 50%;
 }
+*/
 
 .Language_schinese .FightResultLabel.Break1,
 .Language_schinese .FightResultLabel.Break2,
@@ -619,7 +765,7 @@ DACRoundOverScreen.AnimateOut
 	transition-delay: 0.0s;
 	transition-timing-function: ease-out;
 	overflow: noclip;
-	margin-top: -16px;
+	margin-top: 36px;
 	margin-bottom: 16px;
 	pre-transform-scale2d: 4;
 }
@@ -639,27 +785,29 @@ DACRoundOverScreen.AnimateOut
 
 #RoundLabel
 {
-	letter-spacing: 8px;
+	letter-spacing: 3px;
 	margin-left: 0px;
 	margin-bottom: 0px;
 	text-transform: uppercase;
 	text-align: center;
 	width: 100%;
-
-	color: gradient(linear, 0% 0%, 0% 100%, from( #edce6e ), to(#fffdd7));
-	text-shadow: 2px 2px 0px 2.0 #000000aa;
-	font-size: 48px;
+	color: #a2a4d0;
+	//color: gradient(linear, 0% 0%, 0% 100%, from( #c0daf4 ), to(#ffffff));
+	text-shadow: 0px 1px 0px 3.0 #000;
+	font-size: 36px;
 	font-weight: bold;
 	z-index: 0;
+	color: #c0493d;
 }
 
 #RoundRank
 {
 	text-align: center;
 	width: 100%;
-	color: red;
-	text-shadow: 2px 2px 0px 2.0 #000000aa;
-	font-size: 30px;
+	//color: gradient(linear, 0% 0%, 0% 100%, from( #c0daf4 ), to(#ffffff));
+	font-size: 26px;
+	color: #c0493d;
+	text-shadow: 0px 1px 0px 3.0 #000;
 	margin-bottom: 16px;
 }
 
@@ -668,13 +816,16 @@ DACRoundOverScreen.AnimateOut
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from( #ffc400 ), to(#fffdd7));
 	animation-name: FightResultLabelIn;
+	font-size: 160px;
+	height: 200px;
+	//background-image: url("s2r://panorama/images/hud/gold_text_bg_psd.vtex");
 }
 
 .ShowDefeat .FightResultLabel
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from( #a82a2a ), to(#ce5747));
 	animation-name: FightResultLabelIn;
-	font-size: 200px;
+	font-size: 160px;
 	height: 200px;
 }
 
@@ -696,8 +847,10 @@ DACRoundOverScreen.AnimateOut
 
 .ShowDraw .FightResultLabel
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from( #edce6e ), to(#fffdd7));
+	color: #fff;
 	animation-name: FightResultLabelIn;
+	font-size: 160px;
+	height: 200px;
 }
 
 #RoundOverSpecialLabel
@@ -783,7 +936,9 @@ DACRoundOverScreen.AnimateOut
 {
 	horizontal-align: center;
 	text-align: center;		
-	font-size: 22px;
+	font-size: 26px;
+	color: #c0493d;
+	text-shadow: 0px 1px 0px 3.0 #000;
 }
 
 #HealthPanel
@@ -821,11 +976,12 @@ DACRoundOverScreen.AnimateOut
 	margin-top: 0px;
 	margin-left: 0px;
 	text-transform: uppercase;
-	width: 100px;
+	width: 200px;
 	height: 100px;
 	/*line-height: 30px;*/
-	text-overflow: shrink;
-    color: gradient(linear, 0% 0%, 0% 100%, from( #ff3d18 ), to(#b38d20));
+	//color: gradient(linear, 0% 0%, 0% 100%, from( #ff3d18 ), to(#b38d20));
+	color: #c0493d;
+	text-shadow: 0px 1px 0px 3.0 #000;
 	font-size: 100px;
 	font-weight: bold;
 	text-align: center;
@@ -835,13 +991,13 @@ DACRoundOverScreen.AnimateOut
 #LostLabel
 {
 	font-size: 90px;
-	color: red;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #c0daf4 ), to(#ffffff));
 }
 
 #HealthLostLabel
 {
-	letter-spacing: 5px;
-	margin-top: 00px;
+	letter-spacing: 3px;
+	margin-top: 4px;
 	margin-left: 0px;
 	margin-bottom: 0px;
 	
@@ -851,8 +1007,9 @@ DACRoundOverScreen.AnimateOut
 	/*height: 200px;
 	line-height: 30px;*/
 	text-overflow: shrink;
-	color: gradient(linear, 0% 0%, 0% 100%, from( #ff3d18 ), to(#b38d20));
-	font-size: 25px;
+	text-shadow: 0px 1px 0px 3.0 #000;
+	color: #c0493d;
+	font-size: 36px;
 	font-weight: bold;
 	text-align: center;
 	/*vertical-align: bottom;*/
@@ -996,15 +1153,18 @@ DACRoundOverScreen.AnimateOut
 
 .RoundOpponent
 {
-	font-size:60px;
-	color:white;
-	margin-left: 1200px;
+	font-size:36px;
+	color:#8588a0;
+	margin-left: 1380px;
+	margin-top: 12px;
 	transition-property: transform, opacity;
 	transition-duration: .32s;
 	transition-delay: .6s;
 	transition-timing-function: ease-in-out;
 	transform: translateX(-320px);
 	opacity: 0;
+	font-weight: bold;
+	text-shadow: 0px 1px 0px 3.0 #000;
 }
 
 .LowVisualQuality #RoundAndRoundDamage,
@@ -1025,13 +1185,13 @@ DACRoundOverScreen.AnimateOut
 
 .ShowDefeat .RoundOpponent
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from( #dd0404 ), to(#740000));
+	//color: gradient(linear, 0% 0%, 0% 100%, from( #dd0404 ), to(#740000));
 }
 
 
 .ShowVictory .RoundOpponent
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from( #c9a52f ), to(#af7723));
+	//color: gradient(linear, 0% 0%, 0% 100%, from( #c9a52f ), to(#af7723));
 }
 
 .ShowVictory .RoundOpponent,

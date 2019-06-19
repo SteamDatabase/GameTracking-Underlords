@@ -57,10 +57,11 @@ DACParty {
     width: 100%;
     margin-left: 20px;
     margin-right: 20px;
+    margin-top: 24px;
     max-height: 500px;
     flow-children: down;
     overflow: clip scroll;
-    background-color: black;
+    //background-color: black;
 }
 
 #PartyFooterGroup {
@@ -68,6 +69,7 @@ DACParty {
     flow-children: down;
     //vertical-align: bottom;
     margin-top: 20px;
+    padding: 0px 20px 0px 20px;
     margin-bottom: 30px;
 }
 
@@ -78,7 +80,6 @@ DACParty {
     padding: 8px;
     margin-left: 20px;
     margin-right: 20px;
-    padding-right: 4px;
 }
 
 #InviteHeaderGroup {
@@ -118,14 +119,15 @@ DACParty {
     width: fill-parent-flow( 1.0 );
     flow-children: right;
     vertical-align: center;
-    margin-left: 15px;
-    margin-top: 5px;
+    margin-left: 8px;
+    margin-top: 2px;
 }
 
 .PartyCode {
-    color: white;
-    font-size: 21px;
+    color: #8588a0;
+		font-weight: bold;
     text-transform: uppercase;
+    font-size: 24px;
 }
 
 .IsPlatformMobile .PartyCode {
@@ -184,8 +186,11 @@ DACParty {
 #MemberList DACPartyMember {
     width: 100%;
     height: 60px;
-    padding-left: 20px;
-    margin-top: 5px;
+    padding-left: 8px;
+    padding-top: 2px;
+    padding-right: 4px;
+    margin-top: 8px;
+
 }
 
 #InviteList DACPartyInvite {
@@ -205,15 +210,17 @@ DACParty {
 
 #PartyContextMenu
 {
-    width: 35px;
-    margin: 5px;
-    height: 35px;
-    background-color: #ffffff08;
-    border: 2px solid #99999933;
+    width: 28px;
+    margin: 4px;
+    height: 28px;
     vertical-align: center;
-    transition-property: brightness;
+    transition-property: opacity;
     transition-duration: .2s;
-    opacity: .8;
+    opacity: .2;
+    background-image: url("s2r://panorama/images/dashboard/icon_dropdown_psd.vtex");
+    background-size: contain;
+    background-repeat: no-repeat;
+    wash-color: #b8bcdd;
 }
 
 #PartyContextMenu  Label
@@ -231,7 +238,7 @@ DACParty {
 
 #PartyContextMenu:hover
 {
-    brightness: 1.5;
+    opacity: 0.5;
 }
 
 #PartyContextMenu Label
@@ -251,9 +258,52 @@ DACParty {
 
 .PartyButton {
     horizontal-align: center;
-    width: 340px;
-    margin-top: 15px;
+    width: 100%;
+    margin-top: 12px;
     min-height: 60px;
+    border: 2px solid #ffffff22;
+		min-width: 192px;
+		min-height: 52px;
+		padding: 0px 10px 0px 10px;
+		margin: 0px 20px 12px 20px;
+		transition-property: background-color, wash-color, brightness;
+		transition-delay: 0.0s;
+		transition-duration: 0.1s;
+		transition-timing-function: linear;
+		//margin-right: 8px;
+		//margin-left: 8px;
+	}
+	
+	.MatchButton {
+    horizontal-align: center;
+    width: 100%;
+    margin-top: 16px;
+    min-height: 60px;
+    //border: 2px solid #000;
+		min-width: 192px;
+		min-height: 74px;
+		padding: 5px 10px 5px 10px;
+		transition-property: background-color, wash-color, brightness;
+		transition-delay: 0.0s;
+		transition-duration: 0.1s;
+		transition-timing-function: linear;
+    //background-image: url("s2r://panorama/images/dashboard/btn_find_match_psd.vtex");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    saturation: 0;
+    wash-color: #8588a0;
+    border-top: 4px solid #f8e0b622; 
+    border-right: 4px solid #7a370f33;
+    border-bottom: 4px solid #62290bee;
+    border-left: 4px solid #f8d25333;
+	}
+	
+.CanPartyMM .MatchButton,
+.CanPartyPrivate .MatchButton
+{
+		saturation: 1;
+	  wash-color: none;
 }
 
 .IsPlatformMobile .PartyButton {
@@ -265,32 +315,60 @@ DACParty {
 .PartyButton Label {
     font-size: 24px;
     vertical-align: center;
-   //margin-top: 12px;
-   margin-top: 0px;
     horizontal-align: center;
-    color: white;
     text-transform: uppercase;
+		text-align: center;
+    text-overflow: shrink;
+		font-weight: black;
+		letter-spacing: 3px;
+	  color: #eeeeee;
+
+		transition-property: color;
+		transition-delay: 0.0s;
+		transition-duration: 0.1s;
+		transition-timing-function: linear;
 }
+
+.MatchButton Label {
+    font-size: 28px;
+    vertical-align: center;
+    horizontal-align: center;
+    text-transform: uppercase;
+		padding-top: 3px;
+		text-align: center;
+    text-overflow: shrink;
+		font-weight: bold;
+		letter-spacing: 2px;
+	  color: #eeeeee;
+	  text-shadow: 0px 0px 0px 2.3 #000;
+
+		transition-property: color;
+		transition-delay: 0.0s;
+		transition-duration: 0.1s;
+		transition-timing-function: linear;
+}		
 
 .IsPlatformMobile .PartyButton Label {
     font-size: 40px;
     margin-top: 10px;
 }
 
-.PartyButton .NoMatchReason {
-    margin-top: 30px;
-    color: red;
+.NoMatchReason {
+    margin-top: 4px;
+    color: #dd4e35;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    horizontal-align: center;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .PartyButton:hover {
     brightness: 1.3;
 }
 
-.PartyButton .NoMatchReason {
-    font-size: 14px;
-}
-
-.IsPlatformMobile .PartyButton .NoMatchReason {
+.IsPlatformMobile .NoMatchReason {
     font-size: 20px;
     margin-top: 70px;
 }
@@ -304,28 +382,45 @@ DACParty {
 }
 
 #PartyMatchMaking, #PartyPrivateMatch {
-    //flow-children: down;
-    brightness: 1.0;
-    border-top: 4px solid #d6d7d777; 
-    border-right: 4px solid #9086c377;
-    border-bottom: 4px solid #58518c77;
-    border-left: 4px solid #8c919277; 
-    //border-top: 4px solid #fad02277; 
-    //border-right: 4px solid #f5a42e77;
-    //border-bottom: 4px solid #f5a42e77;
-    //border-left: 4px solid #fad02277; 
-    //background-color: #fad02205;
 
-    //wash-color: #d9a941;
 }
 
-#PartyMatchMaking:hover, #PartyPrivateMatch:hover {
-    brightness: 1.5;
+.CanPartyMM #PartyMatchMaking:hover, .CanPartyPrivate #PartyPrivateMatch:hover {
+    brightness: 1.3;
 }
+
+#PartyMatchMaking
+{
+	background-image: url("s2r://panorama/images/dashboard/btn_find_match_dis_psd.vtex");
+}
+
+#PartyPrivateMatch
+{
+	background-image: url("s2r://panorama/images/dashboard/btn_private_match_dis_psd.vtex");
+}
+
+.CanPartyMM #PartyMatchMaking
+{
+	background-image: url("s2r://panorama/images/dashboard/btn_find_match_psd.vtex");
+}
+
+.CanPartyPrivate #PartyPrivateMatch
+{
+	background-image: url("s2r://panorama/images/dashboard/btn_private_match_psd.vtex");
+}
+
+.CanPartyMM #PartyMatchMaking, .CanPartyPrivate #PartyPrivateMatch 
+{
+    border-top: 4px solid #f8e0b6aa; 
+    border-right: 4px solid #7a370faa;
+    border-bottom: 4px solid #62290baa;
+    border-left: 4px solid #f8d253cc;
+ }
 
 .ShowPartyCode #PartyCodeVisible,
 #PartyCodeHidden {
     visibility: visible;
+    color: #ffffff;
 }
 
 #PartyCodeVisible,
@@ -334,14 +429,10 @@ DACParty {
 }
 
 #PrivateBotSettings {
-    //border: 0px;
-    //border-right: 4px solid #9086c344;
-    //border-bottom: 4px solid #58518c44;
-    //border-left: 4px solid #8c919244;    
-    border-top: 0px;
-    background-color: #ffffff00;
-    width: 340px;
-    height: 45px;
+
+    width: 100%;
+    //height: 44px;
+    margin: 8px 0px 0px 0px;
     horizontal-align: center;
     transition-property: background-color;
     transition-duration: .2s;
@@ -362,7 +453,7 @@ DACParty {
     //background-color: #ffffff05;
 }
 
-#PrivateBotSettings Label {
+/*#PrivateBotSettings Label {
     color: gray;
     font-size: 21px;    
     margin: 8px;
@@ -370,7 +461,7 @@ DACParty {
     horizontal-align: center;
     transition-property: color;
     transition-duration: .2s;
-}
+}*/
 
 .IsPlatformMobile #PrivateBotSettings Label {
     font-size: 30px;    
@@ -408,5 +499,17 @@ DACParty {
 
 .ConnectedToGC #ConnectedToGCGroup {
     visibility: visible;
+}
+
+#PlayOptionDivider
+{
+	text-align: center;
+	horizontal-align: center;
+	color: #8588a0;
+	font-weight: bold;
+  text-transform: uppercase;
+  font-size: 24px;
+	margin-top: 20px;
+  width: 100%;
 }
 

@@ -1,3 +1,4 @@
+import "dac_gcmessages_common.proto";
 import "usermessages.proto";
 
 option optimize_for = SPEED;
@@ -153,6 +154,7 @@ message CClientReconnectInfo {
 	optional uint32 time_updated = 3;
 	optional uint32 udp_connect_ip = 4;
 	optional uint32 udp_connect_port = 5;
+	optional uint32 server_version = 6;
 }
 
 message CMsgPlayerOrder {
@@ -298,6 +300,7 @@ message CMsgPublicPlayerState {
 	optional uint32 vs_opponent_wins = 30;
 	optional uint32 vs_opponent_losses = 31;
 	optional uint32 vs_opponent_draws = 32;
+	optional .EDACPlatform platform = 33 [default = k_eDACPlatform_None];
 	oneof opponent {
 		uint32 opponent_player_slot = 24;
 		uint32 opponent_neutral_wave = 25;
@@ -377,7 +380,6 @@ message CMsgMatchState {
 	optional float state_change_time = 4;
 	optional float state_duration = 5;
 	optional float paused_state_time_remaining = 6;
-	optional bool is_tutorial = 7;
 }
 
 message CMsgUnitPositionAndFacing {

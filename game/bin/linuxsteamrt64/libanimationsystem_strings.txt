@@ -29,6 +29,7 @@
  A_H	
  D;S8|
  E9A 
+ E9l$
  E;f8
  E;o8
  L;c8t
@@ -38,6 +39,7 @@
  [A\]
  max. %f
  min. %f
+!Hc@ 
 !m_bNeedsSort
 "%s" 
 "%s" = "%s"
@@ -233,46 +235,43 @@ $t][A\A]A^]
 '":|;
 '=ioV@
 '=qs~?
-(%BM"
+(%/b"
+(%|b"
 (*%s*), 
+(-Gb"
+(-Wb"
+(-cb"
+(-ob"
+(5cb"
+(=Ob"
+(=sb"
 (A;\$
 (D$@H
 (ERROR): %s
 (HcG 
 (HcWP
-(L$0I
-(L$@A
-(L$PL
+(L$@H
 (Lc'A
 (N0UH
 (NPUH
 (None)
-(T$ A
-(T$PH
 ([A\A]A^A_]
 ([A\A]]
 ([A\]
 ([]fH
 (fD9V
 (null)
-)%!3G
-)%D,G
-)%F,G
-)%F3G
-)%h3G
-)--,G
-)-D3G
-)-^3G
-)-j3G
-)-v3G
-)5 ,G
-)5$,G
+)%@NG
+)%HNG
+)%aNG
+)-mGG
+)5'NG
+)5`GG
+)5dGG
 )8E;,$
-)=",G
-)D$0A
+)=bGG
 )D$0I
-)D$PH
-)GpHc
+)\" H
 *Cm_TiltBone
 *T$xH
 +S$Hc
@@ -325,7 +324,6 @@ $t][A\A]A^]
 00000000-0000-0000-0000-000000000000
 0;A }	
 0<	wD
-0D95I
 0H31t
 0[A\A]A^]
 0[A\]
@@ -788,6 +786,7 @@ $t][A\A]A^]
 28CModelDocAnimResourceSeqBase
 28CMoveHeadingConditionUpdater
 28ISchemaCollectionManipulator
+29CAnimationGraphVisualizerAxis
 29CAnimationGraphVisualizerLine
 29CAnimationGraphVisualizerText
 29CControlValueConditionUpdater
@@ -798,6 +797,7 @@ $t][A\A]A^]
 29CSolveIKChainAnimNodeInstance
 29CStateMachineAnimNodeInstance
 29CStrideLengthAdjusterAnimNode
+29IAnimationGraphVisualizerInfo
 29ISolveIKChainAnimNodeInstance
 2Way_0( %s )
 2Way_1( %s )
@@ -818,6 +818,7 @@ $t][A\A]A^]
 32CIKRuleData_Ground_VirtualPlanes
 33333333H
 33CBaseIntrospectedToKV3TypeManager
+33IAnimationGraphVisualizerRegistry
 34AnimationResultPoseAccessorWrapper
 34CAnimationGraphPhysicsTraceManager
 34CIKRuleDescription_FollowAnimation
@@ -828,6 +829,8 @@ $t][A\A]A^]
 35CIKRuleContext_Ground_VirtualPlanes
 35CSchemaRegistration_animationsystem
 35IAnimationGraphVisualizationManager
+36CAnimationGraphVisualizationRegistry
+37CFootLockAnimationGraphVisualizerInfo
 37CTypesafeIntrospectedToKV3TypeManagerILy1902474102E18CSequenceGroupDataE
 37CTypesafeIntrospectedToKV3TypeManagerILy469920276854E9CAnimDataE
 37CTypesafeIntrospectedToKV3TypeManagerILy482955714934E15CAnimationGroupE
@@ -937,6 +940,7 @@ $t][A\A]A^]
 >NewNode
 >f98u
 >fA9:u
+>fff?
 ?'%s' Target
 ?GridBlendNode
 ?HcSPH9
@@ -952,7 +956,8 @@ $t][A\A]A^]
 @0[A\]
 @0sHL
 @6W!?
-@Model origin
+@E9l$
+@Foot Locking
 @MotionMatchingNode
 @ParamList
 @XPAT
@@ -963,6 +968,7 @@ $t][A\A]A^]
 @hD;x
 @tBE+
 @tB[A\]
+A master convar that effectively disables the entire footlock node.
 A#W\H
 A#|$TH
 A+D$$H
@@ -1111,12 +1117,11 @@ AE_ZOMBIE_POPHEADCRAB
 AE_ZOMBIE_POPHEADCRAB event format missing velocity parameter! Usage: event AE_ZOMBIE_POPHEADCRAB "<BoneName> <Speed>" 
 AE_ZOMBIE_TOGGLE_HEAD
 AIWalkable
+ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Axis
 ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Line
 ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Pie
 ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Sphere
 ANIMATIONGRAPHVISUALIZERPRIMITIVETYPE_Text
-ANIMATIONGRAPHVISUALIZER_Count
-ANIMATIONGRAPHVISUALIZER_FootLock
 ANIMATION_PROCESSING_CLIENT_INTERPOLATION
 ANIMATION_PROCESSING_CLIENT_PREDICTION
 ANIMATION_PROCESSING_CLIENT_RENDER
@@ -1160,12 +1165,12 @@ AUATI
 AUATL
 AUATLc
 AUATM
+AUATMc
 AUATS
 AUATS1
 AUATSD
 AUATSH
 AUATSHc
-AUATSIc
 AUATSL
 AUATSLc'E)
 AUATSLc/E)
@@ -1183,6 +1188,7 @@ AVAUE1
 AVAUH
 AVAUI
 AVAUL
+AVAULc
 AVAUM
 AWAVA
 AWAVATSQH
@@ -1208,6 +1214,7 @@ AWAVI
 AWAVL
 AWAVLc
 AWAVM
+A[A\]
 A[Zu"
 A\A]A^A_]
 A\A]A^A_]L
@@ -1326,10 +1333,12 @@ Anticipation Heading Parameter
 Anticipation Position Parameter
 Anticipation Time
 AppendDataChannels( %s, %d, %s )
+Apply Foot Rotation Limits
 Apply Locks
 Apply Motion Limits
 Apply Step Limits
 Apply Tilt
+Apply a curved Z offset based on the begin/end normals.
 ApplyNewState %d at %f
 AssertMsg_ConditionFailed
 AssetBrowse( vpcf )
@@ -1345,7 +1354,7 @@ Audio Clip
 Audio Tag
 Auto Reset
 B(t&1
-B0IcF<
+B0IcD$,
 B2f9B,D
 B8Lck D;k0
 BLEND_PREALIGNED|
@@ -1519,7 +1528,7 @@ CAnimationDecodeContext::AddAnimationDecodeDesc ran out of allocator memory (2)
 CAnimationDecodeContext::AddAnimationDecodeDesc ran out of allocator memory (3)
 CAnimationGraph
 CAnimationGraphInstance
-CAnimationGraphVisualizer
+CAnimationGraphVisualizerAxis
 CAnimationGraphVisualizerLine
 CAnimationGraphVisualizerPie
 CAnimationGraphVisualizerPrimitiveBase
@@ -2142,7 +2151,6 @@ Enable Collision
 Enable Hip Drop
 Enable IK
 Enable IK.
-Enable Parking
 End Cycle
 End Effector
 End Effector Type
@@ -2277,6 +2285,8 @@ FOOT5
 FOOT6
 FOOT7
 FOOT8
+FOOTLOCKSUBVISUALIZATION_FootStretch
+FOOTLOCKSUBVISUALIZATION_RotationLimit
 FTYPEDESC_ADDITIONAL_FIELDS
 FTYPEDESC_ENUM
 FTYPEDESC_EXPLICIT_BASE
@@ -2369,15 +2379,15 @@ Foot Lock
 Foot Lock node (%s): Failed to find foot with name "%s"
 Foot Lock node (%s): Invalid target bone for foot "%s"
 Foot Lock node (%s): No feet defined; node will do nothing 
-Foot Locking
 Foot Rest Damping
+Foot Stretch
 FootFall Tag
 FootFallTagFoot_t
 FootLock:m_resetCount
+FootLockSubVisualization
 Force Latest Value
 FormatV
 Forward Speed
-Forward dir
 ForwardSpeed
 G A+G
 G H;p
@@ -2474,6 +2484,7 @@ HammerMapLoader001
 Has Collision; 
 Has a Path
 Hc8E1
+HcC H
 HcC(9E
 HcC01
 HcC8Hi
@@ -2494,7 +2505,7 @@ HcP@9
 HcP@I
 HcPl1
 HcQxH
-HcS I
+HcR 1
 HcS@H
 HcSHH
 HcSPH
@@ -2530,7 +2541,6 @@ HookUpConfigValue
 Horizontal Axis
 HostStateMgr001
 I9\$8
-I@fff?
 IAnimMotor
 IAnimMotorInstance
 IAnimNode
@@ -2601,7 +2611,6 @@ I[A\I
 Ic@0D9
 IcD$ 
 IcD$ 1
-IcD$ I
 IcD$(
 IcD$(1
 IcD$(H
@@ -2618,10 +2627,12 @@ IcE(f
 IcE0D9
 IcE0f
 IcE8A9
+IcE@1
 IcEDf
 IcEpH
 IcExM
 IcF 1
+IcF H
 IcF$f
 IcF(1
 IcF0A;F@
@@ -2640,6 +2651,7 @@ IcL$dI
 IcL$xIc
 IcM(Ic
 IcNPIc
+IcT$ H
 IcT$ Hc
 IcT$$A
 IcWHH
@@ -2651,7 +2663,6 @@ Ic\$hf
 Ic^0f
 Ic^@A;^PtsM
 Icp Hc
-Ideal to locked: %0.2f degree difference
 Identity
 IkEndEffectorType
 IkEndEffector_Attachment
@@ -2780,6 +2791,7 @@ Lc)D;i
 Lc+D;k
 Lc.D;n
 Lc.E)
+Lc/D)
 Lc/E)
 Lc3D;s
 Lc7D)
@@ -2812,7 +2824,7 @@ Left Shoulder
 Left Trigger
 Length; 
 LightingBasis
-LightmapUVW
+LightmapUV
 Line %d at "%s": 
 Line %d at "%s": %s
 Line %d: 
@@ -2911,6 +2923,7 @@ MathLib_Init
 Max Impact Force
 Max Tension
 Max Value
+Max Yaw Degrees From Forward
 Max( %s, %s )
 Maximum IK Extension
 Maximum Tension
@@ -2924,7 +2937,6 @@ Mce E;e0D
 Mce@I
 MceXHcChA9
 MceXI
-Mcf@1
 Mcg(f
 Mcl$HE;l$X
 Mcl$Xf
@@ -3382,9 +3394,7 @@ NetworkService_001
 NetworkSystemUtilsVersion001
 NetworkSystemVersion001
 Neural Network
-New Hip bone
 New ground target
-New target
 NewNode
 Newline in string literal
 Next step normal
@@ -3423,7 +3433,6 @@ Original Foot
 Original Joint
 Original Knee
 Original Thigh
-Original target
 Original target.
 Out of range %s on sequence %s.%s[%d] on model: %s
 Outer Angle
@@ -3571,7 +3580,6 @@ RadianEuler
 RandomFloat
 RandomInt
 RandomSeed
-Raytraced normal
 RecursiveLoadFromBuffer:  got EOF instead of keyname
 RecursiveLoadFromBuffer:  got NULL key
 RecursiveLoadFromBuffer:  got conditional between key and value
@@ -3670,6 +3678,7 @@ Root Motion Velocity
 RootMotionTurnSpeed
 RootMotionVelocity
 Rotation Damping
+Rotation Limit
 S;w0H
 S@HcE
 SATP1
@@ -3884,7 +3893,6 @@ ThreadYield
 Tilt Plane Pitch Spring Strength
 Tilt Plane Roll Spring Strength
 Tilt Source
-Tilt plane floor
 Time Condition
 Time in State
 Timing Blend
@@ -3917,7 +3925,6 @@ Two-Bone IK
 TwoBoneIK does not have a valid end effector attachment.
 TwoBoneIK does not have a valid target attachment.
 TypeManager
-U(A+U$
 U20>3
 U: %.2f deg
 UHc:L
@@ -3938,6 +3945,7 @@ Unnamed
 Unnamed Motor
 Unnamed Parameter
 Unnamed Tag
+Unpark at foot cycle start
 Unrecognized flag name '%s'
 Unrecognized resource version (%d): %s
 Unrecognized type '%d'
@@ -3961,6 +3969,7 @@ UserInfoChangeService_001
 Using 16-bit blend indices
 V JcT*
 V tC1
+V(A+V$L
 V0A;V@
 V@AUH
 VApplication001
@@ -4103,6 +4112,7 @@ WeightedRandom
 WeightedRandomNoRepeat
 Weights File
 Whether the script is running as part of an import process. (Returns false.)
+Whether we apply the foot lock we calculate or not.
 Whip Delay Time
 Whip Impact Scale
 Whip Spring Strength
@@ -4263,12 +4273,11 @@ animationsystem
 animationsystem/animationsysteminit
 animevents
 animgraph0
+animgraph_footlock_apply_lock
 animgraph_footlock_debug_foot_index
 animgraph_footlock_debug_type
 animgraph_footlock_enabled
 animgraph_footlock_offset_curve
-animgraph_footlock_rotate_locks_enabled
-animgraph_footlock_set
 animgraph_ik_debug
 animgraph_ik_locks_enabled
 archive
@@ -4561,7 +4570,7 @@ libtier0.so
 libvstdlib.so
 lightingbasis
 lightmap
-lightmapuvw
+lightmapuv
 lineNumber
 lineardelta
 local
@@ -4656,6 +4665,7 @@ m_b2D_TRI
 m_bAdditive
 m_bAllZeros
 m_bApplyChannelsSeparately
+m_bApplyFootRotationLimits
 m_bApplyLocks
 m_bApplyMinForce
 m_bApplyMotionLimits
@@ -4690,7 +4700,6 @@ m_bDrawLast
 m_bEnableCollision
 m_bEnableHipDrop
 m_bEnableIK
-m_bEnableParking
 m_bEnableRetarget
 m_bEnabled
 m_bExclusiveFootMotion
@@ -4789,6 +4798,7 @@ m_bTeleported
 m_bTrailBias
 m_bTranslationOnly
 m_bTurnToFace
+m_bUnparkAtCycleStart
 m_bUseBlendScale
 m_bUseCompressedNormalTangent
 m_bUseHighestEndCP
@@ -4904,6 +4914,7 @@ m_flAbsOriginDropHeight
 m_flAbsOriginDropSpringStrength
 m_flAngleWeight
 m_flAnticipationTime
+m_flAxisSize
 m_flBiasParameter
 m_flBlendAmount
 m_flBlendAmountOnEnter
@@ -4966,7 +4977,7 @@ m_flMaxLockDistanceToTarget
 m_flMaxRadians
 m_flMaxSpringTension
 m_flMaxValue
-m_flMaxYawDegreesFromAnimation
+m_flMaxYawDegreesFromForward
 m_flMin
 m_flMinAngle
 m_flMinImpactForce
@@ -5418,6 +5429,7 @@ m_weights
 m_weightsFile
 m_wristBones
 m_writeIndex
+m_xTransform
 malloc
 mapbuilder.nodraw
 mapbuilder.occluder
@@ -5759,10 +5771,10 @@ t$Mc7E;w
 t$p;sHt
 t%L;}
 t'HcJ
-t)@:=Qn8
+t)@:=
 t)A9\$
 t)HcE
-t*@:5
+t*@:59
 t+HcW
 t,Hcp
 t,[A\A]A^]
@@ -5813,7 +5825,6 @@ test_angles_relative
 texcoord
 texturescale
 tgIcT$
-tg[A\]
 thHcC(H
 tkL9;
 tolower
@@ -5830,6 +5841,7 @@ t|Ic]
 t}A#G
 t}D;u
 u [A\A]A^]
+u0Lc`
 u2IcE
 u64( %lld = 0x%llX )
 u6HcC

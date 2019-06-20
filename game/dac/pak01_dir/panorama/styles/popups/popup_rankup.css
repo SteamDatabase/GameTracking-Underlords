@@ -6,6 +6,17 @@ PopupRankUp
     sound: "DCG_Progression.Ranked_Tier_01";
 	overflow: noclip;
 	//background-color: #000000dd;
+	width: 1920px;
+	height: 1080px;
+}
+
+.IsPlatformMobile PopupRankUp 
+{
+	
+	ui-scale: 130%;
+	horizontal-align: center;
+	vertical-align: center;
+	margin-top: -25px;
 }
 
 
@@ -15,14 +26,32 @@ PopupRankUp
 	visibility: collapse;
 }
 
+.RankDown #ContinueButton {
+	hue-rotation: 170deg;
+}
+
 #Overlay {
 	background-color: #000000f8;
 	background-color: gradient( radial, 50% 50%, 0% 0%, 100% 100%, from( #000000cc ), color-stop( 0.4, #000000fc ), color-stop( 0.6, #000000 ), to( #000000 ) );
+	//background-color: gradient( radial, 50% 50%, 0% 0%, 100% 100%, from( #14465c ), color-stop( 0.4, #102634fa ), color-stop( 0.6, #000000 ), to( #000000 ) );
 	opacity: 0;
-	transition-property: opacity;
+	transition-property: opacity, background-color;
 	transition-duration: .2s;
 	width: 100%;
 	height: 100%;
+}
+
+.StepOldRank #Overlay {
+	background-color: gradient( radial, 50% 50%, 0% 0%, 100% 100%, from( #3f4041ee ), color-stop( 0.4, #000000fc ), color-stop( 0.6, #000000 ), to( #000000 ) );
+}
+
+
+.StepNewRank #Overlay {
+	background-color: gradient( radial, 50% 50%, 0% 0%, 100% 100%, from( #14465c ), color-stop( 0.35, #102634fa ), color-stop( 0.6, #000000 ), to( #000000 ) );
+}
+
+.RankDown.StepNewRank #Overlay {
+	background-color: gradient( radial, 50% 50%, 0% 0%, 100% 100%, from( #5c1414 ), color-stop( 0.35, #200a0afa ), color-stop( 0.6, #000000 ), to( #000000 ) );
 }
 
 
@@ -66,7 +95,7 @@ PopupRankUp
 
 
 .ParticleOverlay {
-	margin-top: -150px;
+	margin-top: -180px;
 	width: 1920px;
 	height: 1920px;
 	horizontal-align: center;
@@ -74,6 +103,16 @@ PopupRankUp
 	//hue-rotation: 156deg;
 }
 
+#RankDownParticle {
+	hue-rotation: 160deg;
+}
+
+
+.IsPlatformMobile #ContinueButton.PopupButton{
+	margin-right: 278px;
+	margin-top: 200px;
+	ui-scale: 135%;
+}
 
 #ContinueButton.PopupButton {
 	margin-top: 50px;
@@ -108,10 +147,47 @@ PopupRankUp
 	transition-duration: 200ms, 300ms;
 	box-shadow: 0px 0px 4px #000000;
 	//padding: 0px 50px;
-	background-image: url("s2r://panorama/images/hud/rank_up_title_backer_psd.vtex");	
-	background-size: 100%;
 	
 }
+
+.StepNewRank .TitleContainer {
+	background-image: url("s2r://panorama/images/hud/rank_up_title_backer_psd.vtex");
+	background-size: 100%;
+}
+
+.RankDown.StepNewRank .TitleContainer  {
+	background-image: url("s2r://panorama/images/hud/rank_up_title_backer_down_psd.vtex");
+	background-size: 100%;
+}
+
+.NewRankMajor2 .TitleContainer{
+	margin-top: 622px;
+}
+
+.NewRankMajor3 .TitleContainer{
+	margin-top: 628px;
+}
+
+.NewRankMajor4 .TitleContainer{
+	margin-top: 635px;
+}
+
+.NewRankMajor5 .TitleContainer{
+	margin-top: 642px;
+}
+
+.NewRankMajor6 .TitleContainer{
+	margin-top: 649px;
+}
+
+.NewRankMajor7 .TitleContainer{
+	margin-top: 656px;
+}
+
+.NewRankMajor8 .TitleContainer{
+	margin-top: 663px;
+}
+
 
 .Title {
 	color: gradient(linear, 0% 0%, 100% 0%, from( #f8b763 ), color-stop( .15, #f3d767 ), color-stop( .5, #ffffff ), color-stop( .85, #f3d767 ), to( #f8b763 ) );	
@@ -138,6 +214,34 @@ PopupRankUp
 	width: 1000px;
 }
 
+.NewRankMajor2 #NewRankText {
+	margin-top: 72px;
+}
+
+.NewRankMajor3 #NewRankText {
+	margin-top: 78px;
+}
+
+.NewRankMajor4 #NewRankText {
+	margin-top: 85px;
+}
+
+.NewRankMajor5 #NewRankText {
+	margin-top: 92px;
+}
+
+.NewRankMajor6 #NewRankText {
+	margin-top: 99px;
+}
+
+.NewRankMajor7 #NewRankText {
+	margin-top: 106px;
+}
+
+.NewRankMajor8 #NewRankText {
+	margin-top: 113px;
+}
+
 .RankText {
 	//color: gradient(linear, 0% 0%, 100% 0%, from( #69a2d7 ), color-stop( .4, #cbfff2 ), color-stop( .6, #cbfff2 ), to( #69a2d7 ) );
 	color: #987a59;
@@ -147,10 +251,12 @@ PopupRankUp
 	width: 100%;
 	transition-property: opacity;
 	transition-duration: 200ms;
-	transition-delay: 300ms;
+	transition-delay: 150ms;
 	font-weight: light;
 	text-transform: uppercase;
 }
+
+
 
 #NewRankText.RankText  
 {
@@ -161,9 +267,9 @@ PopupRankUp
 	opacity: 0;
 	text-align: center;
 	width: 100%;
-	transition-property: opacity;
+	transition-property: opacity, transform;
 	transition-duration: 200ms;
-	transition-delay: 1500ms;
+	transition-delay: 1800ms;
 	font-weight: light;
 	text-transform: uppercase;
 }
@@ -173,12 +279,13 @@ PopupRankUp
 	height: 1000px;
 	
 	horizontal-align: center;
-	margin-top: 300px;
+	margin-top: 190px;
 }
 
 #OldRankText {
-	color: #987a59;
+	color: #e7e7e766;
 	margin-top: -30px;
+	color: gradient(linear, 0% 0%, 12% 0%, from( #e7e7e7bb ), to( #e7e7e755 ) );
 }
 
 #NewRankText {
@@ -188,9 +295,14 @@ PopupRankUp
 	margin-top: 65px;
 }
 
+.RankDown #NewRankText {
+	hue-rotation: 160deg;
+}
+
 #OldRankText .RankName {
 	font-weight: bold;
-	color: #987a59;
+	color: #e7e7e766;
+	color: gradient(linear, 0% 0%, 20% 0%, from( #e7e7e755 ), to( #e7e7e7bb ) );
 }
 
 #NewRankText .RankName {

@@ -28,7 +28,7 @@ DACDPSChart {
 }
 
 .IsPlatformMobile .BarContainer {
-	width: 200px;
+	width: 250px;
 }
 
 #HeroIcon {
@@ -123,9 +123,15 @@ DACDPSChart {
 }
 
 #DPSChartContainer {
-
+	transition-property: opacity;
+	transition-duration: 0.2s;
 }
 
+#DPSChartContainerEnemy
+{
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
 
 .DPSOverlay .StarIcon {
 	visibility: collapse;
@@ -243,9 +249,10 @@ DACDPSChart {
 .ButtonHolder
 {
 	width:100%;
-	height:50px;
+	height:62px;
 	flow-children:right;
 	margin-bottom: 20px;
+	background-color: #000000dd;
 }
 
 .ButtonHolder Button
@@ -257,12 +264,14 @@ DACDPSChart {
 	background-position: top;
 	background-repeat: no-repeat;
 	background-color: gradient(linear, 0% 0%, 100% 0%, from( #2b2448 ), to(#00000088));
+	transition-property: background-image, brightness;
+	transition-duration: 0.2s;
 }
 .ButtonHolder Label
 {
 	text-align:center;
 	width:100%;
-	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
+	color: #8588a0;
 	text-shadow: 0px 1px 0px 3.0 #000;
 	font-size: 24px;
 	
@@ -272,11 +281,22 @@ DACDPSChart {
 	height:25px;
 }
 
-.ShowPlayer #PlayerButton, .ShowEnemy #EnemyButton
+.ShowPlayer #PlayerButton 
 {
-	background-image: url("s2r://panorama/images/hud/dps_tab_on_psd.vtex");
+	background-image: url("s2r://panorama/images/hud/dps_tab_on_left_psd.vtex");
+	brightness: 1.2;
 }
 
+.ShowEnemy #EnemyButton
+{
+	background-image: url("s2r://panorama/images/hud/dps_tab_on_right_psd.vtex");
+	brightness: 1.2;
+}
+
+.ShowPlayer #PlayerButton Label, .ShowEnemy #EnemyButton Label
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
+}
 .ShowPlayer #EnemyButton, .ShowEnemy #PlayerButton
 {
 	brightness: 0.5;

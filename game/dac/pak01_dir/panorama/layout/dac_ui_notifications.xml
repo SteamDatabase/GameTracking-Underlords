@@ -8,163 +8,205 @@
 	<snippets>
 	
 		<snippet name="SimpleNotification">
-			<Panel>
-				<Image id="PlayerAvatar" />
-				<Label id="NotificationLabel" html="true" text="{s:label_contents}" />
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="NotificationItem">
+				<Panel>
+					<Image id="PlayerAvatar" />
+					<Label id="NotificationLabel" html="true" text="{s:label_contents}" />
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="HeroCombine">
-			<Panel class="HeroCombine">
-				<Image id="PlayerAvatar" />
-				<Label id="Combine2Label" html="true" text="#DAC_Notification_HeroCombine_2" />
-				<Label id="Combine3Label" html="true" text="#DAC_Notification_HeroCombine_3" />
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="NotificationItem">
+				<Panel class="HeroCombine">
+					<Image id="PlayerAvatar" />
+					<Label id="Combine2Label" html="true" text="#DAC_Notification_HeroCombine_2" />
+					<Label id="Combine3Label" html="true" text="#DAC_Notification_HeroCombine_3" />
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="AcquiredItem">
-			<Panel class="AcquiredItem">
-				<Image id="PlayerAvatar" />
-				<Label id="AcquiredLabel" html="true" text="#DAC_Notification_AcquiredItem" />
-				<Image id="ItemImage" />
-				<Panel id="UpvoteContainer" >
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="NotificationItem">
+				<Panel class="AcquiredItem">
+					<Image id="PlayerAvatar" />
+					<Label id="AcquiredLabel" html="true" text="#DAC_Notification_AcquiredItem" />
+					<Image id="ItemImage" />
+					<Panel id="UpvoteContainer" >
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 		
 		<snippet name="ItemChangedOwner">
-			<Panel class="ItemChangedOwner">
-				<Image id="PlayerAvatar" />
-				<Label id="AcquiredLabel" html="true" text="#DAC_Notification_ItemChangedOwner" />
-				<Image id="ItemImage" />
-				<Panel id="UpvoteContainer" >
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="NotificationItem">
+				<Panel class="ItemChangedOwner">
+					<Image id="PlayerAvatar" />
+					<Label id="AcquiredLabel" html="true" text="#DAC_Notification_ItemChangedOwner" />
+					<Image id="ItemImage" />
+					<Panel id="UpvoteContainer" >
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 		
 		<snippet name="WinStreak">
-				<Panel class="WinStreak">
+			<Panel>
+				<Panel class="ParticleContainer" hittest="false">
+					<DACParticleScenePanel id="ParticleStreakLevel1" hittest="false" startActive="true" particleName="particles/ui/streaks/ui_win_streak_notifications_1.vpcf" fov="-1000"/>
+					<DACParticleScenePanel id="ParticleStreakLevel2" hittest="false" startActive="true" particleName="particles/ui/streaks/ui_win_streak_notifications_2.vpcf" fov="-1000"/>
+					<DACParticleScenePanel id="ParticleStreakLevel3" hittest="false" startActive="true" particleName="particles/ui/streaks/ui_win_streak_notifications_3.vpcf" fov="-1000"/>
+				</Panel>
+				
+				<Panel class="WinStreak NotificationItem">
 					<Image id="PlayerAvatar" />
 					<Label id="NotificationLabel" html="true" text="#DAC_Notification_WinStreak" />
 					<Panel id="UpvoteContainer">
 						<Label class="UpvoteCount" text="{d:upvote_count}" />
 					</Panel>
 				</Panel>
+
+				<Panel class="ParticleContainer"  hittest="false">
+					<DACParticleScenePanel id="ParticleStreakLevel1Burst" hittest="false" startActive="true" particleName="particles/ui/streaks/ui_win_streak_notifications_1_burst.vpcf" fov="-1500"/>
+					<DACParticleScenePanel id="ParticleStreakLevel2Burst" hittest="false" startActive="true" particleName="particles/ui/streaks/ui_win_streak_notifications_2_burst.vpcf" fov="-1500"/>
+					<DACParticleScenePanel id="ParticleStreakLevel3Burst" hittest="false" startActive="true" particleName="particles/ui/streaks/ui_win_streak_notifications_3_burst.vpcf" fov="-1500"/>
+				</Panel>
+			</Panel>
 		</snippet>
 
 		<snippet name="LevelUp">
-			<Panel class="LevelUp">
-				<Image id="PlayerAvatar" />
-				<Label id="LevelUpLabel" html="true" text="#DAC_Notification_LevelUp" />
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="">
+				<Panel class="LevelUp NotificationItem">
+					<Image id="PlayerAvatar" />
+					<Label id="LevelUpLabel" html="true" text="#DAC_Notification_LevelUp" />
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 		
 		<snippet name="PlayerEliminated">
-			<Panel class="PlayerEliminated">
-				<Panel>
-					<Image id="PlayerAvatar" />
-					<Panel class="PlayerAvatarCrossOut" />
-				</Panel>
-				<Label id="NotificationLabel" html="true" text="#DAC_Notification_PlayerEliminated" />
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="">
+				<Panel class="PlayerEliminated NotificationItem">
+					<Panel>
+						<Image id="PlayerAvatar" />
+						<Panel class="PlayerAvatarCrossOut" />
+					</Panel>
+					<Label id="NotificationLabel" html="true" text="#DAC_Notification_PlayerEliminated" />
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="CombatWin">
-			<Panel class="CombatWin">
-				<Image id="PlayerAvatar" />
-				<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Win" />
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="">
+				<Panel class="CombatWin NotificationItem">
+					<Image id="PlayerAvatar" />
+					<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Win" />
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="CombatWin_LocalPlayerOpponent">
-			<Panel class="CombatLoseAway">
-				<Image id="PlayerAvatar" />
-				<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Win_LocalPlayerOpponent" />
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="">
+				<Panel class="CombatLoseAway NotificationItem">
+					<Image id="PlayerAvatar" />
+					<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Win_LocalPlayerOpponent" />
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="CombatLose">
-			<Panel class="CombatLose">
-				<Image id="PlayerAvatar" />
-				<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Lose" />
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="">
+				<Panel class="CombatLose NotificationItem">
+					<Image id="PlayerAvatar" />
+					<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Lose" />
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="CombatLose_LocalPlayerOpponent">
-			<Panel class="CombatLose">
-				<Image id="PlayerAvatar" />
-				<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Lose_LocalPlayerOpponent" />
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="">
+				<Panel class="CombatLose NotificationItem">
+					<Image id="PlayerAvatar" />
+					<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Lose_LocalPlayerOpponent" />
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="CombatLoseToNeutrals">
-			<Panel class="CombatLoseToNeutrals">
-				<Image id="PlayerAvatar" />
-				<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Lose_To_Neutrals" />
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="">
+				<Panel class="CombatLoseToNeutrals NotificationItem">
+					<Image id="PlayerAvatar" />
+					<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Lose_To_Neutrals" />
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="CombatDraw">
-			<Panel class="CombatDraw">
-				<Image id="PlayerAvatar" />
-				<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Draw" />
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="">
+				<Panel class="CombatDraw NotificationItem">
+					<Image id="PlayerAvatar" />
+					<Label id="NotificationLabel" html="true" text="#DAC_Combat_Result_Draw" />
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="ChatMessage">
-			<Panel class="ChatMessage">
-				<Image id="PlayerAvatar" />
-				<Panel class="ChatMessageContents">
-					<Label id="NotificationLabel" html="true" text="#DAC_Notification_ChatMessage_Header" />
-					<Label class="ChatMessageLabel" text="{s:chat_msg}" />
-				</Panel>
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="">
+				<Panel class="ChatMessage NotificationItem">
+					<Image id="PlayerAvatar" />
+					<Panel class="ChatMessageContents">
+						<Label id="NotificationLabel" html="true" text="#DAC_Notification_ChatMessage_Header" />
+						<Label class="ChatMessageLabel" text="{s:chat_msg}" />
+					</Panel>
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="ChatWheelMessage">
-			<Panel class="ChatWheelMessage">
-				<Image id="PlayerAvatar" />
-				<Panel class="ChatMessageContents">
-					<Label id="NotificationLabel" html="true" text="#DAC_Notification_ChatMessage_Header" />
-					<Label class="ChatMessageLabel" text="{s:chat_msg}" />
-				</Panel>
-				<Panel id="UpvoteContainer">
-					<Label class="UpvoteCount" text="{d:upvote_count}" />
+			<Panel class="">
+				<Panel class="ChatWheelMessage NotificationItem">
+					<Image id="PlayerAvatar" />
+					<Panel class="ChatMessageContents">
+						<Label id="NotificationLabel" html="true" text="#DAC_Notification_ChatMessage_Header" />
+						<Label class="ChatMessageLabel" text="{s:chat_msg}" />
+					</Panel>
+					<Panel id="UpvoteContainer">
+						<Label class="UpvoteCount" text="{d:upvote_count}" />
+					</Panel>
 				</Panel>
 			</Panel>
 		</snippet>

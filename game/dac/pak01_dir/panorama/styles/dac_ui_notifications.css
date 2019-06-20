@@ -40,14 +40,15 @@ DACNotifications
 	visibility: collapse;
 }
 
-.TurnThisOnForDevButtons 
+.TurnThisOnForDevButtons
 DACNotifications
 {
+	margin-top: 10px;
 	height: 800px;
 	width: 1000px;
 }
 
-.TurnThisOnForDevButtons 
+.TurnThisOnForDevButtons
 .ButtonContainer
 {
 	visibility: visible;
@@ -92,20 +93,27 @@ Button Label
 	padding-left: 95px;
 	flow-children: right;
 	border-radius: 2px;
-    //border: 2px solid #8c919244;
-	//border: 1px solid #8c919288;	
 	transition-property: opacity;
 	transition-duration: 0.2s;
 	opacity: 0;
 }
 
+.NotificationItem.NoRightFlow
+{
+	flow-children: none;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
 .IsPlatformPC .NotificationItem
 {
-	width: 1000px;
+	width: 1100px;
 }
+
 
 .IsPlatformMobile .NotificationItem
 {
+	width: 1000px;
 	background-color: gradient( linear, 0% 0%, 100% 0%, from( #11111100 ), color-stop( 0.1, #111111ee ), color-stop( .9, #111111ee ), to( #11111100 ) );
 }
 
@@ -120,12 +128,11 @@ Button Label
 	background-color: gradient( linear, 0% 0%, 100% 0%, from( #11111100 ), color-stop( 0.1, #111111ee ), color-stop( .9, #111111ee ), to( #11111100 ) );
 }
 
-.NotificationItem.Appear
-{
+.Appear .NotificationItem {
 	opacity: 1;
 }
 
-.NotificationItem.FadeOut
+.FadeOut .NotificationItem
 {
 	transition-duration: 0.5s;
 	opacity: 0;
@@ -357,4 +364,67 @@ Button Label
 .HasUpvotes .UpvoteCount
 {
 	visibility: visible;
+}
+
+DACParticleScenePanel {
+	width: 2000px;
+	height: 2000px;
+	overflow: noclip;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+.NotificationItemContainer {
+	overflow: noclip;
+	flow-children: none;	
+
+}
+
+.ParticleContainer {
+	height: 100%;
+	width: 100%;
+	
+	overflow: noclip;
+}
+
+.NotificationContent {
+	flow-children: right;
+	width: 100%;
+	margin-left: 95px;
+	margin-right: 95px;
+}
+
+#ParticleStreakLevel1,
+#ParticleStreakLevel1Burst,
+#ParticleStreakLevel2,
+#ParticleStreakLevel2Burst,
+#ParticleStreakLevel3,
+#ParticleStreakLevel3Burst {
+	visibility: collapse;
+}
+
+
+.StreakLevel1 #ParticleStreakLevel1,
+.StreakLevel1 #ParticleStreakLevel1Burst,
+.StreakLevel2 #ParticleStreakLevel2,
+.StreakLevel2 #ParticleStreakLevel2Burst,
+.StreakLevel3 #ParticleStreakLevel3,
+.StreakLevel3 #ParticleStreakLevel3Burst {
+	visibility: visible;
+}
+
+
+.StreakLevel1 .NotificationItem.WinStreak
+{
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #1a1b4900 ), color-stop( 0.2, #1a1b49ee ), color-stop( .8, #1a1b49ee ), to( #1a1b4900 ) );
+}
+
+.StreakLevel2 .NotificationItem.WinStreak
+{
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #5c1e8300 ), color-stop( 0.2, #5c1e83ee ), color-stop( .8, #5c1e83ee ), to( #5c1e8300 ) );
+}
+
+.StreakLevel3 .NotificationItem.WinStreak
+{
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #875c1e00 ), color-stop( 0.2, #875c1eee ), color-stop( .8, #875c1eee ), to( #875c1e00 ) );
 }

@@ -302,7 +302,7 @@ DACUIMain.InGame
 }
 
 .MainMenuButton:hover {
-	opacity: 0.6;
+//	opacity: 0.6;
 }
 
 #MainMenuContainer Label {
@@ -407,10 +407,13 @@ DACUIMain.InGame
 
 #PlayButton
 {
-    background-image: url("s2r://panorama/images/dashboard/top_btn_play_psd.vtex");
+	background-image: url("s2r://panorama/images/dashboard/top_btn_play_psd.vtex");
 	background-size: 100%;
 	width: 200px;
 	height: 140px;
+	
+	transition-property: background-image;
+	transition-duration: .1s;//temp
 }
 
 .PlayContainer #PlayButton:hover,
@@ -423,19 +426,79 @@ DACUIMain.InGame
 .PlayContainer #PlayButton
 {
 	background-image: url("s2r://panorama/images/dashboard/top_btn_play_active_psd.vtex");
+	
+	transition-property: background-image;
+	transition-duration: .3s;
+	
+    animation-name: LightGlowPulse;
+    animation-duration: 4.0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 #HeropediaButton 
 {
-    background-image: url("s2r://panorama/images/dashboard/top_btn_heropedia_psd.vtex");
+	background-image: url("s2r://panorama/images/dashboard/top_btn_heropedia_psd.vtex");
 	background-size: 100%;
 	height: 131px;
 	width: 200px;
+	
+	transition-property: background-image;
+	transition-duration: .1s;
 }
 
 .HeropediaContainer #HeropediaButton
 {
 	background-image: url("s2r://panorama/images/dashboard/top_btn_heropedia_active_psd.vtex");
+	
+	transition-property: background-image;
+	transition-duration: .3s;
+	
+    animation-name: LightGlowPulse;
+    animation-duration: 5.0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes
+
+'LightGlowPulse'
+{
+
+0%
+{
+    brightness: 1.0;
+}
+
+12%
+{
+    brightness: 1.4;
+}
+
+25%
+{
+    brightness: 1.0;
+}
+
+50%
+{
+    brightness: 1.545;
+}
+
+80%
+{
+    brightness: 1.0;
+}
+
+95%
+{
+    brightness: 1.55;
+}
+
+100%
+{
+    brightness: 1.0;
+}
 }
 
 #BattlePassButton 
@@ -459,11 +522,24 @@ DACUIMain.InGame
 	background-size: 100%;
 	height: 131px;
 	width: 200px;
+	
+	transition-property: background-image;
+	transition-duration: .1s;
 }
 
 .SettingsMenuContainer #SettingsMenuButton
 {
 	background-image: url("s2r://panorama/images/dashboard/top_btn_settings_active_psd.vtex");
+	
+	transition-property: background-image;
+	transition-duration: .3s;
+	
+    animation-name: LightGlowPulse;
+    animation-duration: 4.0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+	
+	
 }
 
 #ZooButton
@@ -485,12 +561,13 @@ DACUIMain.InGame
 {
     vertical-align: top;
     horizontal-align: right;
+    margin-right: 24px;
+    margin-top: 28px;
     flow-children: right;
 }
 
 .IsPlatformPC #QuitButtonContainer
 {
-	margin-top: 0px;
 	height: 120px;
     //ui-scale: 80%;
 }
@@ -498,14 +575,16 @@ DACUIMain.InGame
 
 .QuitButton
 {
-    width: 150px;
-    height: 129px;
+    width: 64px;
+    height: 64px;
     horizontal-align: center;
     background-position: center;
     background-repeat: no-repeat;
+    background-size: contain;
     background-image: url("s2r://panorama/images/dashboard/quit_psd.vtex");
     transition-property: wash-color;
-    transition-duration: 0.2s;    
+    transition-duration: 0.2s;
+    wash-color: #908caa;    
 }
 
 .QuitButton:hover
@@ -531,7 +610,7 @@ DACUIMain.InGame
     vertical-align: top;
     horizontal-align: right;
     margin-right: 150px;
-    margin-top: 35px;
+    margin-top: 36px;
     flow-children: right;
 }
 
@@ -569,8 +648,15 @@ DACUIMain.InGame
     opacity: .75;
     width: fit-children;
     padding: 0px 20px 0px 20px;
-    //border: 2px solid white;
-    //border: 0px 0px 2px 0px;
+    border: 2px solid #555555;
+		background-image: none;
+		background-color: #11111188;
+		transition-property: background-color;
+}
+
+#SubmitFeedbackButton:hover
+{
+	background-color: #333333cc;
 }
 
 .IsPlatformMobile .FeedbackPanel

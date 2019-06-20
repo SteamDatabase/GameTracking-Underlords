@@ -76,6 +76,8 @@
                 </DropDown>
               </Panel>
               <ToggleButton id="FullscreenFocusBehaviorButton" class="CheckBox Hide" text="#dac_settings_fullscreen_focus_behavior" onactivate="DACSetFullscreenFocusBehavior();"/>
+              <DACSettingsCheckbox class="CheckBox Hide" convar="dac_colourblind_mode" text="#dac_settings_colourblind_mode" />
+              <DACSettingsCheckbox class="CheckBox Hide" convar="dac_draw_unit_outlines" text="#dac_settings_draw_unit_outlines" />
             </Panel>
           </Panel>
           <Panel id="RenderingSettingsColumn" class="SettingsDualColumn FullHeight">
@@ -132,8 +134,6 @@
                 <DACSettingsSlider id="RenderQuality" convar="mat_viewportscale" min="0.4" max="1.0" percentage="true" text="#dac_settings_renderquality" />
                 <DACSettingsSlider id="FpsMaxSlider" class="pconly" convar="fps_max" min="15" max="240" disableifoutofrange="true" text="#dac_settings_fps_max" onmouseover="UIShowTextTooltipStyled( #dac_settings_fps_max_tip, OptionsTooltip)" onmouseout="UIHideTextTooltip()" />
               </Panel>
-							<DACSettingsCheckbox convar="dac_colourblind_mode" text="#dac_settings_colourblind_mode" />
-              <DACSettingsCheckbox convar="dac_draw_unit_outlines" text="#dac_settings_draw_unit_outlines" />
             </Panel>
           </Panel>
         </Panel>
@@ -259,6 +259,10 @@
               <Button id="LogoutButton" class="ButtonBevel" onactivate="DACSteamLogout()">
                 <Label text="#DAC_SteamLogOut"/>
               </Button>
+            </Panel>
+            <Panel id="SteamOfflineSettingsSection" class="SettingsSection">
+              <Label text="#dac_settings_steam" class="SectionHeader" />
+              <DACSettingsCheckbox convar="dac_force_panorama_login" text="#dac_settings_use_panorama_login" />
             </Panel>
 
             <Panel id="GameOptionsSection" class="SettingsSection">

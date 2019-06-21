@@ -32,8 +32,8 @@
     max-height: 950px;
     horizontal-align: center;
     vertical-align: middle;
-    border: 2px solid black;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #2d2d2dfc ), to( #101010fc ) );
+    /* border: 2px solid black; */
+    /* background-color: gradient( linear, 0% 0%, 0% 100%, from( #2d2d2dfc ), to( #101010fc ) ); */
 }
 
 .Header
@@ -41,35 +41,64 @@
     width: 100%;
     height: 100px;
     padding: 10px;
-    background-color: gradient( linear, 0% 0%, 0% 100%, from( #00000000 ), to( #000 ) );
+    /* background-color: gradient( linear, 0% 0%, 0% 100%, from( #00000000 ), to( #000 ) ); */
 }
+
 
 .Header Label
 {
-    color: white;
-    font-size: 60px;
-    height: 100px;
-    margin-left: 90px;
-    margin-top: 4px;
-    font-weight: bold;
-    letter-spacing: 2px;
+    font-size: 72px;
+    font-weight: black;
+    color: gradient( linear, 0% 0%, 0% 100%, from( #C6DCFE ), to( #fff ) );
+    text-shadow: 0px 1px 0px 3.0 #000;
     text-transform: uppercase;
-    vertical-align: middle;
-    text-shadow: 2px 3px 0px 3.0 #101010;
+    letter-spacing: 4px;
+    line-height: 62px;
+    text-overflow: shrink;
+    width: 100%;
+    margin-left: 96px;
 }
 
-.CloseButton
+#CloseButtonContainer
 {
+    vertical-align: top;
+    width: 100%;
+    padding: 100px 260px;
+    padding-top: 0px;
+}
+
+.IsPlatformMobile .CloseButton
+{
+    width: 96px;
+    height: 96px;
+}
+
+.CloseButton {
     horizontal-align: right;
     vertical-align: middle;
-    width: 48px;
-    height: 48px;
-    margin-right: 8px;
-    background-color: #00000005; /*Must have color or wash/opacity bug*/
-    background-image: url("s2r://panorama/images/control_icons/x_out_png.vtex");
+    width: 72px;
+    height: 72px;
+    margin-right: 0px;
+    /* background-color: #00000005; Must have color or wash/opacity bug */
+    background-image: url("s2r://panorama/images/hud/close-button_png.vtex");
     background-size: cover;
     background-repeat: no-repeat;
-    wash-color: white;
+    /* wash-color: #8588a0; */
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    opacity: 1.0;
+    wash-color: transparent;
+}
+
+.CloseButton:hover
+{
+	opacity: 2.0;
+}
+
+.CloseButton:active
+{
+    opacity: 1.5;
 }
 
 .MainContainer
@@ -120,7 +149,7 @@
 
 #HeroIconList
 {
-    width: 850px;
+    width: 650px;
     height: fit-children;
     margin-left: 20px;
     margin-top: 10px;
@@ -129,9 +158,10 @@
 
 .SynergyStats
 {
-    width: 500px;
+    width: 700px;
     height: fit-children;
     padding: 30px;
+    padding-left: 0px;
     flow-children: down;
 }
 
@@ -147,17 +177,22 @@
 
 .LevelDescription
 {
-    font-size: 26px;
+    font-size: 28px;
+    font-weight: semi-bold;
+    vertical-align: middle;
     /*padding-left: 60px;*/
     margin-top: 0px;
+    padding-top: 8px;
     white-space: normal;
-    color: #dedede;
+    color: #CFD1DD;
+    line-height: 32px;
 }
 
 .LevelRow
 {
     height: fit-children;
-    flow-children: down;
+    flow-children: right;
+    margin-bottom: 48px;
 }
 
 .HeroContainer
@@ -213,85 +248,115 @@
     visibility: collapse;
 }
 
-.NavigationButtons {
-    horizontal-align: center;
+.NavigationButtons{
     width: 100%;
     height: 100%;
 }
 
-.IsPlatformPC .NavigationButtons {
-    horizontal-align: center;
-    width: 80%;
-    height: 100%;
+.NavigationButtons .BevelButton
+{
+    background-image: url("s2r://panorama/images/hud/cirlce-button-grey-bg_png.vtex");
+    background-size: contain;
+    background-color: transparent;
 }
 
-    .NavigationButtons Button {
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        vertical-align: middle;
-        border: 0px solid #666669;
-        background-color: #8588a022;
-        background-image: none;
-    }
+.IsPlatformMobile .NavigationButtons Button {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 0px solid #666669;
+}
 
-        .NavigationButtons Button:hover {
-            brightness: 1.75;
-            border: 0px solid #666669;
-        }
+.NavigationButtons Button {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 0px solid #666669;
+    background-color: #8588a022;
+}
 
-        .NavigationButtons Button:active {
-            brightness: 1.75;
-            border: 0px solid #666669;
-            background-color: #8588a022;
-        }
 
-    .NavigationButtons .Previous {
-        horizontal-align: left;
-        margin-left: 50px;
-        opacity: .85;
-    }
+.NavigationButtons Button:hover {
+    brightness: 2.0;
+    border: 0px solid #666669;
+}
 
-    .NavigationButtons .Next {
-        horizontal-align: right;
-        margin-right: 50px;
-        opacity: .85;
-    }
+.NavigationButtons Button:active {
+    brightness: 1.5;
+}
 
-    .NavigationButtons .Arrow {
-        width: 100px;
-        height: 100px;
-        background-image: url("s2r://panorama/images/dashboard/reward_arrow_png.vtex");
-        background-size: 40% 60%;
-        background-position: center;
-        background-repeat: no-repeat;
-        vertical-align: middle;
-        horizontal-align: center;
-        margin-right: 4px;
-    }
+.NavigationButtons .Previous {
+    horizontal-align: left;
+    margin-left: 250px;
+    opacity: .85;
+}
 
-    .NavigationButtons Label {
-        margin-right: 10px;
-        margin-left: 40px;
-        font-size: 20px;
-        line-height: 16px;
-        color: white;
-        text-transform: uppercase;
-        font-weight: semi-bold;
-        text-overflow: clip;
-        horizontal-align: right;
-        vertical-align: middle;
-        text-align: right;
-        visibility: collapse;
-    }
+.NavigationButtons .Next {
+    horizontal-align: right;
+    margin-right: 250px;
+    opacity: .85;
+}
 
-    .NavigationButtons .Right {
-        transform: ScaleX(-1);
-        horizontal-align: right;
-        text-align: left;
-    }
+.IsPlatformMobile .NavigationButtons .Previous {
+    margin-left: 50px;
+}
 
-        .NavigationButtons .Right Label {
-            transform: ScaleX(-1);
-            horizontal-align: right;
-        }
+.IsPlatformMobile .NavigationButtons .Next {
+    margin-right: 50px;
+}
+
+.NavigationButtons .Arrow {
+    width: 100px;
+    height: 100px;
+    /* background-image: url("s2r://panorama/images/dashboard/reward_arrow_png.vtex"); */
+    background-image: url("s2r://panorama/images/hud/arrow-left_png.vtex");
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    horizontal-align: center;
+    margin-right: 4px;
+    margin-top: 6px;
+}
+
+.IsPlatformMobile .NavigationButtons .Arrow
+{
+    background-size: 70%;
+}
+
+.NavigationButtons Label {
+    margin-right: 10px;
+    margin-left: 40px;
+    font-size: 20px;
+    line-height: 16px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: semi-bold;
+    text-overflow: clip;
+    horizontal-align: right;
+    vertical-align: middle;
+    text-align: right;
+    visibility: collapse;
+}
+
+.NavigationButtons .Right {
+    transform: ScaleX(-1);
+    horizontal-align: right;
+    text-align: left;
+}
+
+.NavigationButtons .Right Label {
+    transform: ScaleX(-1);
+    horizontal-align: right;
+}
+
+
+#Row1SynergyIcon,
+#Row2SynergyIcon,
+#Row3SynergyIcon
+
+{
+    ui-scale: 70%;
+}

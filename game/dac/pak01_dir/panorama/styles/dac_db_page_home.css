@@ -458,19 +458,23 @@ DACHomePage
 }
 
 #LogoArea {
-    width: 400px;
-    height: 180px;
+    width: fit-children;
+    height: fit-children;
+    //width: 400px;
+    //height: 180px;
     horizontal-align: right;
-    vertical-align: bottom;
-    margin-bottom: 20px;
-	//margin-right: 20px;
+    vertical-align: top;
+    //margin-bottom: 20px;
+	margin-right: 200px;
 }
 
 
 .IsPlatformPC #LogoArea
 {
-    width: 400px;
-    margin-right: 5px;
+    //width: 400px;
+    width: fit-children;
+    margin-right: 380px;
+    margin-top: 35px;
 }
 
 
@@ -489,7 +493,7 @@ DACHomePage
 
 #EarlyAccessLabel {
     background-color: #000000;
-    font-size: 48px;
+    font-size: 28px;
     color: #ffffff;
     vertical-align: bottom;
     horizontal-align: center;
@@ -498,7 +502,7 @@ DACHomePage
     font-weight: black;
     letter-spacing: 3px;
     padding: 5px 45px;
-    transform: rotateZ(-3deg);
+    //transform: rotateZ(-3deg);
     margin-bottom: 36px;
     margin-right: 36px;
     text-overflow: shrink;
@@ -958,12 +962,81 @@ DACHomePage
     font-weight: light;
 }
 
+#ForegroundContainer #RankIcon
+{
+    //ui-scale: 90%;
+    margin-left: 10px;
+    margin-top: 0px;
+}
+
+#ForegroundContainer #RankContainer
+{
+    width: 500px;
+    height: 220px;
+    background-image: url("s2r://panorama/images/dashboard/rank_backing_png.vtex");
+    background-size: 100% 90%;
+    background-repeat: no-repeat;
+    //margin: 800px 0 0 1425px;
+    vertical-align: bottom;
+    horizontal-align: right;
+    flow-children: right;
+}
+
+.AspectRatio4x3 #RankContainer
+{
+    margin-bottom: 70px;
+}
+
+.AspectRatio4x3 #RankContainer
+{
+    margin-bottom: 80px;
+}
+
+.IsPlatformMobile..AspectRatio21x9 #RankContainer
+{
+    margin-bottom: 30px;
+}
+
+.IsPlatformMobile.AspectRatio16x9 #RankContainer
+{
+    margin-bottom: 20px;
+}
+
+#ForegroundContainer #RankNumeral
+{
+    visibility: collapse;
+}
+
+.NameContainer {
+	flow-children: down;
+	vertical-align: top;
+    margin-top: 40px;
+    //margin-left: 5px;
+    width: fit-children;
+}
+
+#PlayerName {
+	color: #fff;
+	font-size: 30px;
+    //font-weight: regular;
+}
+
+#PlayerRank {
+	font-size: 30px;
+	color: #69a2d7;
+	text-transform: uppercase;
+}
+
+
+#PlayerRank .RankName {
+	font-weight: bold;
+	
+}
+
 #ForegroundContainer {
 	animation-duration: 3s;
 	animation-timing-function: ease-in;
-	
 	animation-name: UIAppear;
-
 	width: 100%;
 	height: 100%;
 }
@@ -1160,17 +1233,3 @@ DACHomePage
     }
 }
 
-#RankIcon
-{
-	x: 200px;
-	vertical-align: center;
-	opacity: 1;
-	transition-property: brightness, opacity;
-	transition-duration: .2s;
-    visibility: collapse;
-}
-
-.ShowSocialPanel #RankIcon
-{
-	//opacity:0;
-}

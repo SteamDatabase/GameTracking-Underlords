@@ -109,9 +109,10 @@
 
 .Body {
     width: 100%;
-    height: 100%;
+    height: 80%;
     padding: 12px;
-    margin-top: 100px;
+    vertical-align: middle;
+    /* margin-top: 100px; */
 }
 
 .IsPlatformMobile .Body
@@ -126,7 +127,8 @@
 
 .BodyRight {
     width: 100%;
-    height: 100%;
+    height: 80%;
+    vertical-align: middle;
     flow-children: down;
     horizontal-align: left;
     margin-left: 620px;
@@ -382,20 +384,23 @@ Label i
     color: gradient(linear, 0% 0%, 0% 100%, from(#D2E2FD), to (#fff));
 }
 
-#StatStars #Stat1
+#StatStars #Stat1,
+#RankToggle1 Label
 {
     color: gradient(linear, 0% 0%, 0% 100%, from(rank1Color), to(#81581A));
     text-shadow: 0px 1px 0px 3.0 #000;
 }
 
-#StatStars #Stat2
+#StatStars #Stat2,
+#RankToggle2 Label
 {
     color: gradient(linear, 0% 0%, 0% 100%, from(rank2Color), to(#4D88BD));
     text-shadow: 0px 1px 0px 3.0 #000;
 
 }
 
-#StatStars #Stat3
+#StatStars #Stat3,
+#RankToggle3 Label
 {
     color: gradient(linear, 0% 0%, 0% 100%, from(rank3Color), to(#FA9D12));
     text-shadow: 0px 1px 0px 3.0 #000;
@@ -419,33 +424,48 @@ Label i
 }
 
 .RankToggleContainer {
-    width: 100%;
-    height: 100px;
+    width: 440px;
+    height: 140px;
     margin-left: 15px;
     vertical-align: bottom;
+    margin-bottom: 180px;
+    padding-left: 96px;
+    padding-right: 96px;
+    padding-top: 18px;
     flow-children: right;
-    visibility: collapse;
+    horizontal-align: middle;
+    visibility: visible;
+    background-image: url("s2r://panorama/images/heropedia/paintbrush-neutral-bg_png.vtex");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.IsPlatformMobile .RankToggleContainer
+{
+    ui-scale: 80%;
 }
 
 .RankToggleContainer Label {
-    width:100px;
+    width: 72px;
     margin-bottom: 10px;
     color: white;
     font-weight: bold;
     text-transform: uppercase;
     horizontal-align: center;
     vertical-align: middle;
-    margin-right: 10px;
+    margin-right: 0px;
     text-align: center;
+    font-size: 60px;
 }
 
 .RankToggleContainer .RankToggle {
-    width: 100px;
-    height: 100px;
-    background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_bg_png.vtex");
+    /* width: 100px;
+    height: 100px; */
+    /* background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_bg_png.vtex"); */
     background-size: cover;
     font-size: 20px;
     z-index: 800;
+    width: fill-parent-flow(1.0);
 }
 
 .RankToggleContainer .RankToggle:hover {
@@ -460,7 +480,13 @@ Label i
 .UnitRank1 #RankToggle1,
 .UnitRank2 #RankToggle2,
 .UnitRank3 #RankToggle3 {
-    wash-color: #eaff00;
+    wash-color: #00000000;
+}
+
+#RankToggle1,
+#RankToggle2,
+#RankToggle3 {
+    wash-color: #000000ef;
 }
 
 

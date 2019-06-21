@@ -72,6 +72,7 @@
 	JS_NORMAL
 	JS_NUMBER
 	JS_STRING
+	Key: %s, Action = %s
 	None
 	PFT_SOUND
 	PROCESSING RESPONSE RULE FROM .NUT :
@@ -458,7 +459,7 @@
  Failed to pack %s
  Failed to unpack %s - Code %d
  GCConnectionStatus_GC_GOING_DOWN
- H;=3$
+ H;=;
  H;D$PH
  H;D$`H
  M9l$
@@ -972,6 +973,9 @@
 #DAC_JoinParty_NoRegionPings
 #DAC_JoinParty_RateLimited
 #DAC_JoinParty_TooBusy
+#DAC_Keybind_ALT
+#DAC_Keybind_GUI
+#DAC_Keybind_SHIFT
 #DAC_LeaveLobby_ErrorTitle
 #DAC_LeaveLobby_FailedToGetResponse
 #DAC_LeaveParty_ErrorTitle
@@ -1823,6 +1827,7 @@ $z0u.A
 %s(): Deprecated and unimplemented. Fix client code to use new postprocessing resources.
 %s+--
 %s+-- Schema Class: %s
+%s-%s
 %s.%u
 %s.360%s
 %s.Footstep%s
@@ -2119,22 +2124,26 @@ $z0u.A
 (#GameUI_Disconnect_RemoteProblem_BadCert
 (#GameUI_Disconnect_RemoteProblem_Timeout
 (%0.2f): %s
+(%95B
+(%B R
 (%d)  EffectName "%s"  Dormant? %s  Emission Stopped? %s 
 (%d) Name: %s (%s)
 (%g %g)
-(%gla
+(%n,B
 (%s,%s)
 (*%s*), 
 (*MARK) must have an argument
 (*VERB) not recognized or malformed
-(-#ja
+(-&,M
+(-cza
 (.CPlayer_GetCommunityPreferences_Request
 (.CPlayer_GetFriendsGameplayInfo_Response"K
 (.CPlayer_GetPerFriendPreferences_Request
 (.CPlayer_SetCommunityPreferences_Request
 (.CPlayer_SetPerFriendPreferences_Request
 (0x%08X)'??'
-(=; O
+(=K-O
+(=}3"
 (?R or (?[+-]digits must be followed by )
 (ACTIVE)
 (A^A_]
@@ -2670,6 +2679,7 @@ $z0u.A
 -pressdemo
 -publiccontent
 -reload
+-reset_keybindings
 -rr_allow_reload
 -s2-mix-blend-mode
 -s2-mix-blend-mode: multiply;
@@ -2702,9 +2712,9 @@ $z0u.A
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
 .%0*llu
+.%5]e
+.%I,T
 .(Optional) Set of tags for the published file.
-.-R{N
-.-o2O
 ...<truncated>...
 ../../public/appframework/tier1app.h
 ../../public/appframework/tier2app.h
@@ -2738,9 +2748,14 @@ $z0u.A
 ..CPlayer_GetNewSteamAnnouncementState_Response"_
 ..\content
 .3333
-.=q1P
+.5+^M
+.5B:~
+.=45C
+.=Ie]
+.=g'L
 .>()09
 .@(z$u"H
+.@(zzuxH
 .@,wwH
 .@Lzfud
 .@PzIuG
@@ -3144,7 +3159,7 @@ $z0u.A
 0D;#}qM
 0E;.|
 0GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW
-0H;=?%
+0H;=G
 0IcD$
 0Lcc8D;cH
 0Marks latest announcement timestamp read by user
@@ -4402,6 +4417,7 @@ $z0u.A
 20IClientAlphaProperty
 20IClientUIEntityPanel
 20IEconItemDescription
+20IHibernationListener
 20IParticleSystemQuery
 20IPartitionEnumerator
 20ISaveRestoreBlockSet
@@ -4436,6 +4452,7 @@ $z0u.A
 21CCloud_Delete_Request
 21CDACGameAccountClient
 21CDACInputMode_Default
+21CDACKeyBindingManager
 21CDAC_DB_Page_Settings
 21CDAC_UI_InventoryItem
 21CDAC_UI_Notifications
@@ -4509,6 +4526,7 @@ $z0u.A
 21IFlexSceneFileManager
 21IGameNetBufferHandler
 21IGameUIRenderCallback
+21IKeyValuesDumpContext
 21IPhysicsCollisionData
 21IVConCommDataReceived
 21TEBubbles_GameEvent_t
@@ -4557,6 +4575,7 @@ $z0u.A
 22CGlowHelperSceneObject
 22CInfoDynamicShadowHint
 22CInventoryIconModifier
+22CKeyBindQueuedCommands
 22CKeyBindingListenerMgr
 22CLoadingEntityListener
 22CLoadingScreenModifier
@@ -4638,6 +4657,7 @@ $z0u.A
 22IEconItemSetDefinition
 22IEventRegisterCallback
 22IKeyBindingListenerMgr
+22IKeybindChangeListener
 22IParticlePropertyOuter
 22ISaveRestoreFileSystem
 22ISceneObjectController
@@ -4815,6 +4835,7 @@ $z0u.A
 24CGameSystemStaticFactoryI21CViewportClientSystemS0_E
 24CGameSystemStaticFactoryI22CClientUIDialogManagerS0_E
 24CGameSystemStaticFactoryI22CDefaultResponseSystem15IResponseSystemE
+24CGameSystemStaticFactoryI22CKeyBindQueuedCommandsS0_E
 24CGameSystemStaticFactoryI23CCustomGameEventManagerS0_E
 24CGameSystemStaticFactoryI23CCustomTextureToolCacheS0_E
 24CGameSystemStaticFactoryI23CDACPortraitWorldSystemS0_E
@@ -4930,6 +4951,7 @@ $z0u.A
 25CDAC_DB_Page_Achievements
 25CDAC_UI_ContextMenu_Party
 25CDAC_UI_Popup_Steam_Login
+25CDAC_UI_SettingsKeyBinder
 25CDemoStringTables_items_t
 25CDemoStringTables_table_t
 25CDotaMaterialQuadRenderer
@@ -5205,6 +5227,7 @@ $z0u.A
 27CWrappedInterpolatedVarGutsI6VectorLi1ES0_Lb0E16CInterpolatedVarIS0_EE
 27C_PointHintUIHighlightModel
 27DestroyAllEntitiesToolEvent
+27IKeyValuesDumpContextAsText
 27IPredictionCopyFieldCompare
 27Source1LegacyListenEvents_t
 27TEArmorRicochet_GameEvent_t
@@ -5291,6 +5314,7 @@ $z0u.A
 29CDefaultIdleExpresionModifier
 29CEntityMessageRemoveAllDecals
 29CGCStorePurchaseInit_LineItem
+29CKeyValuesDumpContextAsDevMsg
 29CMsgClientToGCCheckFriendCode
 29CMsgClientToGCIsInMatchmaking
 29CMsgClientToGCPartyInviteUser
@@ -6078,6 +6102,7 @@ $z0u.A
 6k_EGCMsgInitiateTradeResponse_Shared_Account_Initiator
 6k_ItemPurgatoryResponse_Refund_Failed_CouldNotFindItem
 72CWorkshop_PopulateItemDescriptions_Request_ItemDescriptionsLanguageBlock
+7At!H
 7CP4File
 7CRender
 7CTEDust
@@ -6331,8 +6356,8 @@ $z0u.A
 ;G0}D
 ;GAME_PARTICLE_MANAGER_EVENT_CHANGE_CONTROL_POINT_ATTACHMENT
 ;GPttK
+;GTtO
 ;H9:t#
-;Hc5n"
 ;I9<$uY
 ;L$D|*
 ;Q tH
@@ -6718,7 +6743,6 @@ $z0u.A
 @2l9<)8
 @4A\]
 @8/N|
-@89u"
 @8:B8
 @8[A\A]A^]
 @8[A\]
@@ -6748,7 +6772,7 @@ $z0u.A
 @C_SceneEntity
 @DP5z5@
 @Gr}H
-@H;=X#
+@H;=`
 @HH;E
 @HI;D$H
 @Lcg(I
@@ -8588,15 +8612,17 @@ AVAUATH
 AVAUATI
 AVAUATL
 AVAUATLc
-AVAUATLc%/a
+AVAUATLc%_
 AVAUATM
 AVAUATS
+AVAUATS9
 AVAUATS9G$H
 AVAUATS9G(H
 AVAUATS9G0H
 AVAUATSD
 AVAUATSH
 AVAUATSHc
+AVAUATSI
 AVAUATSL
 AVAUATSf
 AVAUATSt
@@ -8676,6 +8702,7 @@ A[A\D
 A[A\E1
 A[A\L
 A[A^D
+A\A]1
 A\A]A^
 A\A]A^A_]
 A\A]A^A_]A
@@ -8701,8 +8728,20 @@ A^ZuZ
 A_txt
 AbilityDesc
 AbilityImage
+AbilityPrimary1
+AbilityPrimary1QuickCast
+AbilityPrimary2
+AbilityPrimary2QuickCast
+AbilityPrimary3
+AbilityPrimary3QuickCast
+AbilitySecondary1
+AbilitySecondary1QuickCast
+AbilitySecondary2
+AbilitySecondary2QuickCast
 AbilityStat
 AbilityTooltipPanel
+AbilityUltimate
+AbilityUltimateQuickCast
 AboutTabButton
 AboutTabContent
 AbsTagType(unknown)
@@ -8723,6 +8762,7 @@ Achievement_Blocks
 AchievementsContainer
 ActivateMainWindow
 Active projected textures: %d
+ActiveBindButton
 ActiveControllerTypeChanged
 ActiveModifiers
 ActiveUnitRow
@@ -8805,6 +8845,7 @@ Ago : lower-mid central unrounded vowel
 Ago : mid-central unrounded vowel
 AhE#A\Ic
 AimTargetManager
+AlgorithmicUpdateVersion
 All itemsets must have names.
 All lootlists must have names.
 AllReady
@@ -8821,6 +8862,7 @@ Allow direct peer to peer connectivity with the player running a listenserver yo
 Allow flex animation rules to run.
 AllowAddonDependencies
 AllowFlipping
+AllowGuiKeyToBind
 AllowOversized
 Allows anchor teleportation onto walls and ceiling. NOTE: WIP, mostly broken!
 Allows rain in splitscreen
@@ -8828,6 +8870,7 @@ Allows team members to injure other members of their team
 Alpha for rope antialiasing effect
 Already saw decimal point or exponent; can't have another one.
 Alternate icon definition index %d must be greater than or equal to zero
+AlternateActions
 Ambient %s:Unknown command %s
 AmbientCubes
 AmmoDefInitializer
@@ -9170,6 +9213,7 @@ Billing agreement is on hold
 Billing agreement not marked as type GAME
 Billing agreement not marked as type STEAM
 BinaryProperties_GetValue
+BindingLabelContainer
 Binding_AddRuleFromScript
 Binding_FindAllMatches
 Binding_FindAllMatches(query,leeway) : Returns an array of all matching responses. If leeway is nonzero, all results scoring within 'leeway' of the best score return. 
@@ -9279,6 +9323,11 @@ Button.DepressedBgColor
 Button.DepressedTextColor
 Button.FocusBorderColor
 ButtonBitMask_t
+Buy1Binder
+Buy2Binder
+Buy3Binder
+Buy4Binder
+Buy5Binder
 Byte size calculation and serialization were inconsistent.  This may indicate a bug in protocol buffers or it may be caused by concurrent modification of 
 C  tNH
 C  t~H
@@ -9340,7 +9389,7 @@ C8Hcu
 C8IcT$0H
 C8[A\A]A^]
 C8[A\]
-C8tEH
+C8tMH
 C9,h5
 C<[A\A]A^]
 C<tKH
@@ -10108,6 +10157,7 @@ CJobImplClassMgr::BRouteMsgToJob() - continue job
 CJobImplClassMgr::BRouteMsgToJob() - job
 CJobImplClassMgr::PassMsgToJob() job %s received unexpected message %s when paused for %s
 CJobImplClassMgr::m_WorkThreadPool
+CKeyBindQueuedCommands
 CL GameInit
 CL$(9
 CL+CH
@@ -11255,7 +11305,7 @@ C_ViewmodelWeapon
 C_World
 C_fogplayerparams_t
 C`D98~qH
-C`H;=
+C`H;=v
 C`[A\A]A^]
 C`[A\]
 C`_AXH
@@ -11279,6 +11329,7 @@ CallPrivateScriptFunction
 CallScriptFunction
 Callback for event "%s" is NULL!!!
 Caller should provide us with *buffer_ when buffer is non-empty
+CameraAdjusting
 Can only purchase one, and you already own one
 Can't 
 Can't BackUp() after failed Next().
@@ -11347,6 +11398,7 @@ Cannot save as KV3_FORMAT_LOAD_WITH_NO_UPCONVERSION.
 CannotAcceptDrag
 CannotAffordLevelUp
 CannotAffordReroll
+CannotEdit
 CannotInvite
 Canvas_DrawPoly
 CapsLock
@@ -11545,6 +11597,7 @@ CommandLineStr
 CommandLineStr(name) : returns the command line param as a string.
 CommandProcedure
 CommandProcedureList
+Command[%s] missing command data
 Commit the result of QueryBestResponse back to the given entity to play. Call with params (entity, airesponse)
 Common
 Compendium Event ID:
@@ -11674,6 +11727,7 @@ CountdownBeforeStart
 CountdownTimer
 CountryDailyRevenue
 Courier
+CourierAbility%d
 Cpf;E
 CpfA;
 CpfD; t
@@ -11898,8 +11952,8 @@ D+k$H
 D+k$Mc
 D+s$Mc
 D+{$H
-D-3vj
 D.$Hc
+D.DHc
 D0gPad
 D15S1
 D16_SHADOW
@@ -11913,6 +11967,7 @@ D8cUt
 D8hdt
 D9 tyHc@
 D9#v%H
+D9-d%
 D9;t3I
 D9C ~JMc
 D9D$4B
@@ -11948,21 +12003,26 @@ D; tyHc@
 D;!ttHc
 D;"tIH
 D;$2tWL
-D;%<J
-D;%B8
-D;%Zk
-D;%\L
-D;%|G
+D;%,}
+D;%RG
+D;%`D
+D;%l~
+D;%rl
 D;'t3H
 D;'tXH
 D;)t~HcI
-D;-"4
-D;-+&
+D;--ba
+D;-Rh
+D;-[Z
+D;-_A
+D;-d0
+D;-g;
 D;.tLH
 D;0}zH
 D;1Lc
 D;3t 
 D;3}5
+D;5NR
 D;8tQH
 D;9tlA
 D;;}0L
@@ -12040,6 +12100,7 @@ DACCancelMatchMaking
 DACCancelSteamLogin
 DACChatWheel
 DACCheckPurchaseProgress
+DACClearKeybinding
 DACClientConnectionStateChanged
 DACClientCore
 DACClientSimulation
@@ -12307,6 +12368,8 @@ DACSettingsChanged
 DACSettingsCheckbox
 DACSettingsEnum
 DACSettingsEnumDropDown
+DACSettingsKeyBindCapture
+DACSettingsKeyBinder
 DACSettingsPage
 DACSettingsSlider
 DACShopMouseOut
@@ -12423,6 +12486,7 @@ DACUnitStatus
 DACUnitStatusAbilitySelected
 DACUpdateColorblindSetting
 DACUpdateItemAssignCounts
+DACUpdateKeyBindingsText
 DACUpdateLeaderboard
 DACUpdateLocalPlayerData
 DACUpdateSelectedPlayerData
@@ -12676,6 +12740,7 @@ Default team when joining a game
 Default value for an enum field must be an identifier.
 DefaultChatWheel
 DefaultHidden
+DefaultKeyBindings
 DefaultLarge
 DefaultResponseSystem
 DefaultTouch
@@ -12695,6 +12760,8 @@ DeletePanel
 DeleteRowButton
 DeleteVideoPlayer
 Density of Particle Rain 0-1
+Dependency
+DependencyModifier
 DepthBufferTestLayer
 DepthPassBatchID
 Describe datamap_t for entindex
@@ -12719,13 +12786,16 @@ Destructing
 Detach from its parent
 DetachFromParent
 Detected video config level %d
+DevConsole
 DevIsPostGameStats
 DevMsg
 DevUniverse
 DevWarning
 Devanagari
 Developer
+Developer Binds:
 DeveloperConsole
+DeveloperKeys
 DeveloperVerbose
 DhUbv?
 Dictionary: %s
@@ -13858,6 +13928,7 @@ Failed to find input handle for action %s
 Failed to find levels block for achievement %s(%u)
 Failed to find price field within the price_info block for item %s(%u)
 Failed to find specified particle effect. Trying to add CP to '%s' on attachment named '%s'
+Failed to find the default key bindings template: DEFAULT.
 Failed to generate correct hostname for URL.
 Failed to get HTTP response data.
 Failed to get HTTP response size.
@@ -13887,6 +13958,7 @@ Failed to load unit "%s" - possibly a duplicate unitID?
 Failed to load units.json "%s"
 Failed to load vobuyunits.json "%s"
 Failed to load waves.json "%s"
+Failed to load/create default keyboard settings.
 Failed to map from %s to game-path
 Failed to merge the diff onto the previous buffer for type %s, ID %u, expected size %u but got %u
 Failed to message the GC
@@ -13908,6 +13980,7 @@ Failed to ready up: %s
 Failed to rescale UGC=%08X%08X to %d, %d.
 Failed to run entity framework script
 Failed to save local copy of custom image %s
+Failed to save personal key binding backup!
 Failed to send Hello message to the GC.
 Failed to send invite: %s
 Failed to set bot difficulty: %s
@@ -14080,6 +14153,9 @@ FontManager_001
 Fonts
 Footstep sound event invalid: %s (Anim: %s)
 Footstep: %s (Anim: %s, WalkSpeed Parameter: %.2f)
+For development: Bind a key to in dcg (ALT+key) allowed.
+For development: List all developer binds.
+For development: Unbind a key to in dota (ALT+key) allowed.
 Force Display:
 Force all clients to disable their game instructors.
 Force the height to something.  -1 to ignore
@@ -14215,6 +14291,7 @@ G<@tLL
 G<@tY
 G<@teA
 G<@teI
+G<@t}I
 G<@uCD
 G@Lcg(D;g8D
 GAME INSTRUCTOR: 
@@ -14609,7 +14686,6 @@ H90t:A
 H90tFA
 H92tQA
 H92tSA
-H92tYA
 H92taA
 H98t,1
 H98tpI9
@@ -14641,189 +14717,147 @@ H;0t*A
 H;0t+A
 H;0t0H
 H;0t\H
-H;5	@
-H;5$S
-H;5'p
-H;5)I
-H;50V
-H;50h
-H;54m
-H;57P
-H;58P
-H;59b
-H;59g
-H;59k
-H;59}
-H;5@<
-H;5Df
-H;5IL
-H;5IM
-H;5Iw
-H;5I~
-H;5Pf
-H;5Ta
-H;5Wo
-H;5Y5
-H;5Y{
-H;5]q
-H;5gW
-H;5p^
-H;5tU
-H;5yQ
+H;2tWA
+H;5!!
+H;5(*
+H;5(7
+H;5,&
+H;5,>
+H;510
+H;51p
+H;51u
+H;589
+H;58=
+H;58@
+H;58O
+H;5<{
+H;5?<
+H;5A'
+H;5PK
+H;5QA
+H;5Qu
+H;5X6
+H;5\/
+H;5aA
+H;5aH
+H;5h!
+H;5h}
+H;5pQ
+H;5q'
+H;5x,
+H;5xT
+H;5|$
 H;7t"
 H;9u#
-H;= '
-H;= +
-H;= 3
-H;= C
-H;= U
-H;= k
-H;=!.
-H;=!d
-H;=&7
-H;=&k
-H;='>
-H;='L
-H;=(/
-H;=)#
-H;=*1
-H;=*:
-H;=*J
-H;=*T
+H;=	k
+H;=	~
+H;= ,
+H;=!!
+H;=!0
+H;="^
+H;="b
+H;=$/
+H;='X
+H;=(6
+H;=(N
+H;=(p
+H;=*#
+H;=*%
+H;=*3
+H;=*5
+H;=*V
 H;=*f
-H;=+7
-H;=+R
-H;=,P
-H;=-j
-H;=/;
-H;=/F
-H;=0*
-H;=02
-H;=09
-H;=0B
-H;=0T
-H;=0V
-H;=0_
-H;=0j
-H;=0q
-H;=0r
-H;=1o
+H;=+%
+H;=.Q
+H;=2?
+H;=3'
+H;=3l
 H;=4G
-H;=56
-H;=8|
-H;=:6
-H;=:7
-H;=:?
-H;=:B
-H;=:H
-H;=:I
-H;=:O
-H;=:v
-H;=<	
-H;=>"
-H;=?O
-H;=?b
-H;=?d
-H;=@)
-H;=@1
-H;=@8
-H;=@A
-H;=@S
-H;=@i
-H;=@p
-H;=A3
-H;=B\
-H;=Cs
-H;=C~
-H;=E(
-H;=ED
-H;=Gr
-H;=H(
-H;=H*
-H;=H0
-H;=HW
-H;=IZ
-H;=JD
-H;=JS
-H;=JT
-H;=Jg
-H;=Jk
-H;=KD
-H;=KS
-H;=Nc
-H;=O?
-H;=P(
-H;=P0
-H;=P7
-H;=P@
-H;=PR
-H;=Ph
-H;=Po
-H;=S.
-H;=W`
-H;=Wc
-H;=X#
-H;=Xk
-H;=Z"
+H;=4U
+H;=4k
+H;=4u
+H;=4v
+H;=4w
+H;=4~
+H;=7~
+H;=8.^
+H;=8Q
+H;=9j
+H;=:$
+H;=:N
+H;=:[
+H;=:k
+H;=>`
+H;=?A
+H;=@D
+H;=@u
+H;=B1
+H;=CU
+H;=CX
+H;=D?
+H;=Dt
+H;=FH
+H;=H 
+H;=HO
+H;=I)
+H;=I~
+H;=J`
+H;=Jp
+H;=OF
+H;=OT
+H;=Pq
+H;=R/
+H;=SE
+H;=ST
+H;=TW
+H;=T^
+H;=UX
+H;=W{
+H;=X/^
+H;=Z'
+H;=Z,
 H;=Z.
-H;=Z;
-H;=ZW
-H;=ZY
-H;=\R
-H;=^6
-H;=_2
-H;=__
-H;=`'
-H;=`/
-H;=`6
-H;=`?
-H;=`Q
-H;=`c
-H;=`g
-H;=`n
-H;=aF
-H;=co
-H;=dC
-H;=hM
-H;=hZ
-H;=j1
-H;=j3
-H;=jC
-H;=jO
-H;=j~
-H;=kT
-H;=l!
-H;=l=
-H;=l>
-H;=l?
-H;=ns
-H;=o8
-H;=o_
-H;=p&
-H;=p(
-H;=p*
-H;=p.
-H;=p5
-H;=p>
-H;=pP
-H;=pm
-H;=tZ
-H;=tj
-H;=u"
-H;=v@
-H;=vW
-H;=w	
-H;=w?
-H;=wz
-H;=xD
-H;=z8
-H;=z?
-H;=zH
-H;=zZ
+H;=Ze
+H;=Zu
+H;=\P
+H;=]$
+H;=]Q
+H;=]}
+H;=d(
+H;=dj
+H;=g3
+H;=h+^
+H;=hN
+H;=hl
+H;=hu
+H;=i`
+H;=j,
+H;=jA
+H;=jz
+H;=l$
+H;=nD
+H;=ov
+H;=p1
+H;=r(
+H;=r?
+H;=s 
+H;=se
+H;=t)
+H;=tH
+H;=wF
+H;=x0^
+H;=x4
+H;=xH
+H;=xq
+H;=z1
+H;=zC
+H;=zF
+H;=zT
 H;=zd
-H;={'
-H;={:
-H;=}c
+H;=zi
+H;={~
+H;=|G
+H;=~{
 H;C(t
 H;CPw<I
 H;G tOH
@@ -14978,7 +15012,8 @@ HasUnits
 HasUpvotes
 HaticsType_Default
 HaticsType_None
-Hc5.%
+Hc5	Z
+Hc5Gt
 Hc@ H
 Hc@$H
 Hc@(E1
@@ -14992,7 +15027,6 @@ Hc@pD
 Hc@pH
 Hc@pL
 Hc@xH
-Hc@xI
 HcA I
 HcA@9
 HcAPM
@@ -15224,6 +15258,8 @@ HorizontalSplitter
 HorzArrow
 HostStateMgr001
 HostUtils001
+HotkeysTabButton
+HotkeysTabContent
 Hours
 HoverParticle
 Hovered
@@ -15246,7 +15282,7 @@ HunterDamage
 HunterDamage_global_client
 I	E0H
 I	G0I
-I t@I
+I tHI
 I$HcS4
 I("hq
 I(E9J(A
@@ -15935,6 +15971,7 @@ Katakana
 Kayah_Li
 Key in map fields cannot be enum types.
 Key in map fields cannot be float/double, bytes or message types.
+KeyBinderNewBind
 KeyPair
 KeyValueCache001
 KeyValues Error: %s in file %s
@@ -15951,7 +15988,7 @@ KnucklesEV1_3Controller
 Kochanek-Bartels
 Kochanek-Bartels Early
 Kochanek-Bartels Late
-Kp H;=Z
+Kp H;=
 L$ E;L$0ttI
 L$ H9
 L$ ^_H
@@ -15984,7 +16021,6 @@ L9kHv
 L9|$HJ
 L: %.2f deg
 L;"t!f.
-L;-<nj
 L;0t!A
 L;0t?H9
 L;0t[A
@@ -15992,7 +16028,7 @@ L;?u"
 L;O0UH
 L;d$@L
 L;k(t
-L;k`tsL;k8
+L;k@tyL;kH
 L;l$ 
 L;sPM
 LABEL_OPTIONAL
@@ -16074,7 +16110,7 @@ LayoutDirtied
 LayoutPositionType_e
 Lc#D;c
 Lc#fA
-Lc%Qk
+Lc%IG
 Lc&D;f
 Lc&E)
 Lc'D;g
@@ -16082,16 +16118,19 @@ Lc'E)
 Lc(D;h
 Lc)D;i
 Lc+D;k
-Lc-),
+Lc-$ba
+Lc-VA
 Lc.E)
 Lc/D)
 Lc/E)
 Lc3D;s
+Lc5ER
 Lc7E)
 Lc8D;x
 Lc;A9
 Lc;D;{
 Lc;E9
+Lc=z9
 Lc>D;~
 LcC$D
 LcC0D;C@I
@@ -16206,6 +16245,7 @@ Line2D
 Linear
 Linear Interp.
 Linear_B
+LinkPlayerToSpectator
 List all clientside entities thinking and time - will report and turn itself off.
 List all clientside simulations and time - will report and turn itself off.
 List all physics component contents of every entity in the game;
@@ -16377,6 +16417,7 @@ MODEL_PROCESSING_SERVICES_INTERFACE_001
 MOD_HAND_LEFT
 MOD_HAND_NONE
 MOD_HAND_RIGHT
+MOUSE3
 MOVECOLLIDE_COUNT
 MOVECOLLIDE_DEFAULT
 MOVECOLLIDE_FLY_BOUNCE
@@ -16405,6 +16446,8 @@ MSG_SPLITSCREEN_REMOVEUSER
 MTreatUnknownEnumeratorsAsZero
 M`H9KhH
 MagicalDmgBar
+MajorRank
+MajorRank%d
 Makes local player HMD avatar visible slightly in front of its actual position.
 Makes ropes use average of cubemap lighting instead of max intensity.
 Malayalam
@@ -17201,6 +17244,7 @@ NetworkService_001
 NetworkSystemUtilsVersion001
 NetworkSystemVersion001
 Neutral Wave
+NeutralAbility%d
 NeutralReward
 NeutralRound
 NeutralRound%d
@@ -17831,6 +17875,7 @@ Plat_DisableIOBuffering
 Plat_ExitProcess
 Plat_FileExists
 Plat_FileSize
+Plat_FlashWindow
 Plat_FloatTime
 Plat_GetCPUFrequency
 Plat_GetClockStart
@@ -18023,6 +18068,7 @@ PpA;]P|
 PpufH
 PreEntityPacketReceived
 PreEntityPacketReceived(no commands ack)
+PreGameBind
 Precache a list of entity KeyValues tables
 Precache an entity from KeyValues in table
 PrecacheCustomResponseSystem %s - Finish
@@ -18340,6 +18386,7 @@ RegisterEntityClass
 RegisterFormatConversion
 RegisterGameEventMessages
 RegisterGlobalObject
+RegisterHibernationListener
 RegisterSpawnGroupFilterProxy
 RegisterStringToken
 ReinitPredictables
@@ -18454,6 +18501,7 @@ ResetSequence : %s: %s -> %s
 ResetSequenceInfo
 ResetToDefaultValue
 Resets all display and success counts to zero.
+Resetting keybindings...
 ResolutionDropDown
 ResourceCompilerSystem001
 ResourceHandleUtils001
@@ -18920,6 +18968,10 @@ ScrollBarSlider.BgColor
 ScrollBarSlider.FgColor
 ScrollBarSlider/ScrollBarSliderBgColor
 ScrollBarSlider/ScrollBarSliderFgColor
+ScrollEnemiesDown
+ScrollEnemiesDownBinder
+ScrollEnemiesUp
+ScrollEnemiesUpBinder
 ScrollFlickTimeout
 ScrollNext
 ScrollPanelDown
@@ -18928,6 +18980,10 @@ ScrollPanelLeft
 ScrollPanelRight
 ScrollPanelUp
 ScrollPrevious
+ScrollTabsDown
+ScrollTabsDownBinder
+ScrollTabsUp
+ScrollTabsUpBinder
 ScrollToBottom
 ScrollToDelayLoadListItem
 ScrollToTop
@@ -18975,6 +19031,7 @@ SelectionBG
 SelectionBG2
 SelectionBgColor
 SelectionGroup
+SellUnitBinder
 SellUnitVisible
 Send a string to the console as a client command
 SendToConsole
@@ -19185,7 +19242,15 @@ Shop.Available
 Shop.Unavailable
 ShopButton
 ShopEntry
+ShopLevelUp
+ShopLevelUpBinder
+ShopLock
+ShopLockBinder
 ShopLocked
+ShopReroll
+ShopRerollBinder
+ShopToggle
+ShopToggleBinder
 ShopUnit%d
 ShopVisible
 Shopping
@@ -19436,10 +19501,13 @@ Specify account ID to spectate
 Specify the SO cache type to dump the contents of
 Spectate User
 Spectated player changed...
+SpectatorCameraGrip
+SpectatorCameraGrip2
 Speed up or slow down the env_clock rate
 Spew both interpolated var debug info and history for entity.
 Spew interpolated var info for entity.
 Spew state on when client entities become dormant or active.
+Spewing missing commands:
 Spews the list of names to display text debugging information about the given entity(ies) on top of the entity (See Overlay Text)
 SpinnerVisible
 Split screen users mimic base player's CUserCmds
@@ -19770,11 +19838,15 @@ TYPE_STRING
 TYPE_UINT32
 TYPE_UINT64
 Tab Index
+TabAlliances
+TabAlliancesBinder
 TabBackward
 TabContents
 TabDPS
+TabDPSBinder
 TabForward
 TabItems
+TabItemsBinder
 TabLeaderboard
 TabPage
 TabPageDPS
@@ -19795,6 +19867,7 @@ TeamNumber%d
 Teleport other splitscreen player to my location.
 Tells camera to change modes
 Telugu
+Templates
 TerrorGameRulesListener_Init
 TeslaHitboxes
 TeslaHitboxes_global_client
@@ -20326,6 +20399,7 @@ UnitRankSwitch
 UnitShopBG%d
 UnitShopContainer
 UnitTestCycleOverlayRenderType
+UnitToBenchBinder
 Unit_%d
 UnitsShop
 Unknown
@@ -20355,6 +20429,7 @@ Unrecognized resource version (%d): %s
 Unrecognized syntax: 
 Unrecognized type '%d'
 UnregisterAssertionFailureListener
+UnregisterHibernationListener
 Unresolved object reference '%s'
 Unserialize
 UnserializeKeys
@@ -20371,6 +20446,7 @@ Unsupported recipe component type: %s!
 Unsupported text encoding id.
 Unsupported: type mismatch
 Unzipping %s (%d files)
+UpAction
 Update
 Update spatial partition entities before we do latch work. Overcomes a potential deadlock in IK, but convared so we can test perf implications.
 Update the animation graph
@@ -20712,8 +20788,14 @@ VideoQualityPopup
 VideoSegment
 VideoTabButton
 VideoTabContent
+ViewAway
+ViewAwayBinder
 ViewEffectsGameSystem
 ViewFocus
+ViewHome
+ViewHomeBinder
+ViewOpponent
+ViewOpponentBinder
 ViewingFlippableBoard
 ViewportClientSystem
 VisBuilder_001
@@ -20899,6 +20981,7 @@ WorldTextPanelVerticalAlign_t
 WorldUITextPanel
 Worldspace Render Bounds: [%.2f %.2f %.2f] -> [%.2f %.2f %.2f]
 WpfE;
+Wpt6L
 Wrapper class over g_pDebugOverlay instance
 Write
 Write: Attempted to write to a read-only file
@@ -20911,19 +20994,16 @@ WriteUsercmd: from=%d to=%d
 Writing cubemaps to %s
 X Hc@
 X [A\]
-X%RbP
 X(9Z(@
 X(Hc@ L
 X(Optional) If true, only return the published file ids of files that satisfy this query.
-X-UUP
+X-$k_
 X360_DST16
 X360_DST24
 X360_DST24F
 X49Z4
-X5l__
 X89Z8
 X=2v?
-X=>="
 X@tZH
 XD$ A
 XD$8A
@@ -20954,12 +21034,10 @@ X\V@%
 X^'@d
 XboxSystemInterface001
 XhHc@dH
-Y%M=	
+Y%-@	
 Y(Optional) Starting index to begin enumeration at. Defaults to the beginning of the list."Z
-Y-5A	
-Y56		
-Y5w@	
-Y=[fF
+Y5WC	
+Y5bpF
 YD$(A
 YD$DH
 YFPL9
@@ -21105,8 +21183,9 @@ Z}uU
 \$PHc
 \$`Ic
 \%03o
-\%MpP
-\-='Q
+\%]}P
+\-m1Q
+\5<oM
 \C not allowed in lookbehind assertion
 \C8E1
 \IcL$
@@ -21129,6 +21208,7 @@ Z}uU
 \|e9d
 ] is an invalid data character in JavaScript compatibility mode
 ] ~1H
+](t,I9
 ](~ZI
 ]0A;]@
 ]8A;]H
@@ -22404,6 +22484,9 @@ cellz
 center_follow
 center_nopixelsnap
 centercapsule
+cfg/dackeys.lst
+cfg/dackeys_personal.bak
+cfg/dackeys_personal.lst
 cfg/video_defaults_%d.txt
 chD; 
 chainName
@@ -22975,7 +23058,6 @@ countevent
 country
 country_code
 country_revenue
-courier
 courier_flying
 covef
 cp0_model
@@ -23085,6 +23167,11 @@ dac_bench_unit_drag_distance
 dac_bp_set_active_avatar
 dac_bp_set_active_border
 dac_bp_set_active_title
+dac_buy_slot1
+dac_buy_slot2
+dac_buy_slot3
+dac_buy_slot4
+dac_buy_slot5
 dac_camera_bench_pan_distance
 dac_camera_blend_time
 dac_chart_type_%s
@@ -23101,6 +23188,7 @@ dac_debug_particle_attachment_lookups
 dac_developer_mode
 dac_drag_move
 dac_draw_unit_outlines
+dac_dump_keybindings
 dac_enable_vs_screen
 dac_fake_gc_connection_state
 dac_fake_gc_est_time
@@ -23157,6 +23245,7 @@ dac_item_name
 dac_item_price
 dac_item_select_delay
 dac_item_select_initial_delay
+dac_keybindings_cloud_disable
 dac_local_server_hnetconnection
 dac_main
 dac_max_reconnect_time_secs
@@ -23176,7 +23265,17 @@ dac_round_over_last_hero
 dac_round_over_max_defeat_time
 dac_round_over_round_reveal_time
 dac_rp_show_dev_messages
+dac_scroll_enemies_down
+dac_scroll_enemies_up
+dac_scroll_tabs_down
+dac_scroll_tabs_up
+dac_sell_unit
+dac_send_unit_to_bench
 dac_shop
+dac_shop_levelup
+dac_shop_lock
+dac_shop_reroll
+dac_shop_toggle
 dac_show_bot_difficulty
 dac_show_localization_errors
 dac_show_looking_for_match
@@ -23190,6 +23289,9 @@ dac_spoof
 dac_spoof_player_slot
 dac_synergies_hide_bench_in_combat
 dac_synergies_hide_partial_in_combat
+dac_tab_alliances
+dac_tab_dps
+dac_tab_items
 dac_test_camera_flyby
 dac_test_prop_animation
 dac_test_prop_animation: requires activity to trigger.
@@ -23197,7 +23299,13 @@ dac_ui_mode
 dac_unitchatwheel_dead_zone_radius
 dac_unitchatwheel_outer_radius
 dac_unitchatwheel_ui_center_radius
+dac_view_away
+dac_view_home
+dac_view_opponent
 dac_wearable
+dacdev_bind
+dacdev_binds_show
+dacdev_usebinds
 daisywheel
 damage1
 damage2
@@ -23257,6 +23365,7 @@ day_night
 days_to_expiration
 dcg_fake_market_price
 dcg_unitchatwheel_enable_mouse_clamp
+dcgdev_unbind
 de_DE
 deadflag
 deadlock_retries
@@ -23448,6 +23557,8 @@ dota_cheap_water
 dota_debug_global_light
 dota_dev missing_effect %s
 dota_height_fog_scale
+dota_leftclick_cameragrip_new 0
+dota_leftclick_cameragrip_new 1
 dota_lightning_fixed_angle
 dota_lightning_lerp_exponent
 dota_max_videomode_matches
@@ -24051,6 +24162,7 @@ file://{resources}/layout/popups/popup_tutorial_intro.xml
 file://{resources}/layout/popups/popup_tutorial_message.xml
 file://{resources}/layout/popups/settings_enum.xml
 file://{resources}/layout/popups/settings_slider.xml
+file://{resources}/layout/settings_keybinder.xml
 file://{resources}/layout/textinput/text_input_daisy.xml
 file://{resources}/layout/textinput/text_input_daisy_group.xml
 file://{resources}/layout/tooltip.xml
@@ -24705,7 +24817,6 @@ hungarian
 hurt_me
 hurt_them
 h|D;-
-h|D;-.
 i < length_
 i >= 0
 i t!H
@@ -28828,6 +28939,7 @@ muzzleflash_shotgun_player
 muzzleflash_smg1_player
 my_custom_images/%d.png
 n	ATSH
+n/ATL
 nDamageTaken
 nHATSH
 nHu6H
@@ -28958,8 +29070,10 @@ notify
 notify_client
 notooltip
 nowrap
+npc_dota_courier
 npc_dota_hero_%s
 npc_dota_hero_default
+npc_dota_neutral_default
 npc_height_adjust
 npc_material_override
 nqCBJ
@@ -29004,7 +29118,6 @@ o$ATSH
 o(ATL
 o(ATSH
 o*Ral
-o-%P=
 o0ATL
 o0E;o@
 o8ATL
@@ -29016,6 +29129,7 @@ oG8-x
 oH AQ
 oHATSH
 oPATL
+oXATA
 objc_class_prefix
 object_data
 objects
@@ -29868,6 +29982,7 @@ r8HcB
 r@~aLc
 rJ@LB
 rKK	@i;
+rPHcU
 r_3dsky
 r_AirboatViewDampenDamp
 r_AirboatViewDampenFreq
@@ -30393,45 +30508,50 @@ rumble
 runspeed
 russian
 s H;5
-s H;5	
-s H;5)
-s H;50y
-s H;58I
-s H;5H?
-s H;5L
-s H;5P]
-s H;5Y-
-s H;5YO
-s H;5hV
-s H;5i
-s H;5y
-s H;5y^
-s H;5yp
-s H;5yv
-s H;5|
+s H;5 
+s H;5!
+s H;5(
+s H;50
+s H;511
+s H;5<
+s H;5@
+s H;5L-
+s H;5P
+s H;5QM
+s H;5T
+s H;5X
+s H;5X7
+s H;5`9
+s H;5a5
+s H;5a9
+s H;5hO
+s H;5p
+s H;5q
+s H;5q;
 s off
 s(AUH
 s(E9&t-A
 s(H;5
-s(H;5,
+s(H;5 
+s(H;5!
 s(H;58
-s(H;5H
-s(H;5|
+s(H;5A
+s(H;5P
+s(H;5U
+s(H;5X
+s(H;5\
 s(t.H
 s)~+@
 s/glow.vH
 s/spriteH
 s0H;5
-s0H;5	s
-s0H;5$|
-s0H;5(Z
-s0H;50
-s0H;589
-s0H;5C
-s0H;5P
-s0H;5P^
-s0H;5g
-s0H;5p
+s0H;5<
+s0H;5E?
+s0H;5L
+s0H;5Lm
+s0H;5Pq
+s0H;5X
+s0H;5a
 s0H;5|
 s1_mapname
 s2r://
@@ -30439,34 +30559,31 @@ s69F~
 s7>Ip
 s8D;kP
 s8H;5
-s8H;5	
-s8H;5%
-s8H;5I
-s8H;5P
-s8H;5`
+s8H;58
+s8H;5H
+s8H;5aN
+s8H;5d
+s8H;5h
+s8H;5}?
 s8Lcm
 s@+dev_simulate_gcdown
 s@9C@
 s@H9sHv
 s@H;5
-s@H;5H
+s@H;5`
 s@HcR
 s@_AXH
 sHH;5
-sHH;5 @
-sHH;5'
-sHH;5'E
-sHH;5<|
-sHH;5]
+sHH;58
+sHH;5H
+sHH;5_
+sHH;5x
 sIHcB
 sIf true, then files must have all the tags specified.  If false, then must have at least one of the tags specified.
 sMA9|$ 
 sPH;5
-sPH;5@
-sPH;5@D
-sPH;5P@
-sPH;5`
 sXH;5
+sXH;5(
 sZtTH
 s_EntComponentInfo
 s_WindVector
@@ -30482,6 +30599,10 @@ s_kDynamicValuesArraySize
 s_nLatchPermissions
 s_nWatchTransmitEntity
 s`H;5
+s`H;5=i
+s`H;5X
+s`H;5`
+s`H;5d
 saddlebrown
 safe-area-inset-bottom
 safe-area-inset-left
@@ -30719,9 +30840,7 @@ setting.useadvanced
 severity
 sfixed32
 sfixed64
-shH;50
-shH;58<
-shH;5E
+shH;5
 shadowcascadecount
 shadowcascadedistance%d
 shadowcascadedistance0
@@ -30834,12 +30953,7 @@ slime_splash_02.vpcf
 slime_splash_03.vpcf
 slot, class
 slot0
-slot1
 slot10
-slot2
-slot3
-slot4
-slot5
 slot6
 slot7
 slot8
@@ -30937,8 +31051,7 @@ source_filename
 source_folder
 source_reference_id
 spH;5
-spH;5D>
-spH;5`
+spH;5m
 space
 space shuttle
 spacerperiod
@@ -31310,7 +31423,7 @@ svc_VoiceInit
 swedish
 swift_prefix
 sxH;5
-sxH;5M
+sxH;5H
 sxt!H
 symbol
 symbols
@@ -31343,12 +31456,12 @@ t!D8kSt
 t!IcE
 t!IcN 
 t";2}
-t"H;=C
+t"H;=
 t"HcS
 t"L;%
-t"L;%!
-t"L;%A
-t"L;%q
+t"L;%(
+t"L;%)
+t"L;%y
 t#;:u
 t#IcD$
 t#[A\A]A^]
@@ -31403,30 +31516,26 @@ t%HcSx
 t%Icv 
 t%L;}
 t%Lc;D;{
-t&;5o
 t&L;%
-t&L;%>
-t&L;%P
-t&L;%p
+t&L;%X
 t&Lcc
 t'A9\$H
 t'A;\$
-t'D:%^^i
-t'H;=
+t'D:%
+t'H;=PI
 t'Ic_
-t'McD$
 t(<)u
 t(D9m
 t(D;%
 t(Lc#D;c
 t(Mce
 t([A\A]A^]
-t)@:5aR
+t)@:5
 t)D;-
 t)HcE
 t)Mc<$E;|$
 t)[A\]
-t*D:=
+t*D:=1
 t*HcJPH
 t*Mc<$E;|$
 t+D9e
@@ -31814,6 +31923,8 @@ tj@:shtd@
 tkHcS8
 tlIcD$
 tm#C,
+tm;5&
+tm~zL
 tnHcCdH
 tnHcM
 tnHcU
@@ -31871,6 +31982,7 @@ tpHcK
 tpIcD$dI
 tqHcI
 tqIc\$ A;\$0
+tqUE1
 trHc_0
 tr[A\A]A^]
 tr_TR
@@ -31983,6 +32095,7 @@ type_instances
 type_value
 tzHcR
 tzHcVPH
+t{95"
 t{E;l$
 t{UE1
 t{riU
@@ -32096,6 +32209,7 @@ un-grabs all objects
 unLc#D;c
 un[A\]
 unable to load S1 to S2 decal mappings
+unbindall
 uncertainty
 uncheckedvalue
 unclaimed_reward_count
@@ -32687,6 +32801,7 @@ wPtOE
 wTAUL
 wXE;whH
 wXtYf
+w^UHc
 w`AUL
 wait_seconds
 waiting for lock
@@ -32783,14 +32898,14 @@ x	;B`
 x	;CH
 x	;F`
 x = %i, y = %i, w = %i h = %i text %s
-x H;=
+x H;=:
 x axis
 x#Hcw
 x$E9|$$
 x$HcSh;Sx
 x("tU
 x(9~(@
-x(H;==C
+x(H;=
 x*;XZ
 x+A9T$h~$H
 x,E9|$,
@@ -32961,10 +33076,10 @@ z|uzf
 z}u{L
 z~u|I
 { H;=
-{ H;=1
-{ H;=A
-{ H;=Zf
-{ H;=Zk
+{ H;="
+{ H;=9
+{ H;=I
+{ H;=b
 { t9I
 { t:I
 { u7H
@@ -32976,7 +33091,7 @@ z~u|I
 {([A\]
 {(fD9't)H
 {0D;{@A
-{0H;=
+{0H;==&^
 {8[A\H
 {@	u\
 {@u	H
@@ -33020,6 +33135,7 @@ z~u|I
 |$8A\]
 |$8Hc
 |$<E1
+|$<L9
 |$@u	H
 |$PA9
 |$`H;
@@ -33049,11 +33165,12 @@ z~u|I
 |GIcO
 |IIcO
 |IcJpIc
+|LIcO
 |MIcL$
 |MtcH
 |OIcO
+|PIcO
 |QHcK
-|SIcO
 |UIcO
 |YIcO0Ic
 |ZIcO

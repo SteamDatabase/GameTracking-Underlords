@@ -58,6 +58,7 @@
 	line-height: 44px;
 
 	margin-top: -4px;
+	margin-left: -12px;
 
 	width: 600px;
 	height: 70px;
@@ -128,16 +129,31 @@
 }
 
 .CloseButton {
-	horizontal-align: right;
-	vertical-align: top;
-	width: 48px;
-	height: 48px;
-	background-color: #000;
-	/*Must have color or wash/opacity bug*/
-	background-image: url("s2r://panorama/images/control_icons/x_out_png.vtex");
-	background-size: cover;
-	background-repeat: no-repeat;
-	wash-color: white;
+    horizontal-align: right;
+    vertical-align: middle;
+    width: 72px;
+    height: 72px;
+    margin-right: 0px;
+    /* background-color: #00000005; Must have color or wash/opacity bug */
+    background-image: url("s2r://panorama/images/hud/close-button_png.vtex");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* wash-color: #8588a0; */
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    opacity: 1.0;
+    wash-color: transparent;
+}
+
+.CloseButton:hover
+{
+	opacity: 2.0;
+}
+
+.CloseButton:active
+{
+    opacity: 1.5;
 }
 
 Label i {
@@ -222,5 +238,11 @@ Label i {
 .ItemTypeEquipSupport .ItemTypeIcon
 {
 	background-image: url("s2r://panorama/images/hud/icon_tag_support_psd.vtex");
+	visibility: visible;
+}
+
+.ItemTypeGlobal .ItemTypeIcon
+{
+	background-image: url("s2r://panorama/images/hud/item_icon_global_psd.vtex");
 	visibility: visible;
 }

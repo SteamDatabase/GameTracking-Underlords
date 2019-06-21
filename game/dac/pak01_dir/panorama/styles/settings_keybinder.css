@@ -1,0 +1,233 @@
+
+.BindingRow
+{
+    background-color: none;
+    flow-children: right;
+    width: 100%;
+    height: 56px;
+    margin: 4px 0px 4px 0px;
+    tooltip-position: bottom;
+}
+
+.ExtraTopSpace
+{	
+	margin-top: 16px;
+}
+
+#BindingLabelContainer
+{
+//	width: 100px;
+	height: 100%;
+	horizontal-align: center;
+	flow-children: right;
+	//border: 1px solid red;
+}
+
+#BindingLabelContainer.ActiveBindButton
+{
+	background-color: #1350a9;
+	width: 100%;
+
+	animation-name: BackgroundPulse;
+	animation-duration: 1.35s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+    
+#mod
+{
+	visibility: collapse;
+	margin-right: -2px;
+	text-overflow: shrink;
+}
+
+#dash
+{
+	visibility: collapse;
+	margin-right: 1px;
+}
+
+.ClearKeybinding
+{
+    width: 24px;
+    height: 24px;
+    vertical-align: center;
+    horizontal-align: right;
+	background-image: url("s2r://panorama/images/control_icons/x_close_png.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	border: 2px solid #49494999;
+    visibility: collapse;
+}
+
+DACSettingsKeyBinder:selected .ClearKeybinding
+{
+    visibility: visible;
+}
+
+DACSettingsKeyBinder:selected .ActiveBindButton #mod, DACSettingsKeyBinder:selected .ActiveBindButton #dash
+{
+	visibility: collapse;
+}
+
+.Modifier #dash, .Modifier #dash, .Modifier #mod, .Modifier #mod
+{
+	visibility: visible;
+}
+
+.BindingRow:hover .BindingRowButton
+{
+    color: white;
+}
+
+.BindingRow:hover Label
+{
+    color: white;
+
+    transition-property: color;
+	transition-duration: 0.16s;
+	transition-timing-function: ease-in-out;
+}
+
+.BindingRowLabel
+{
+	letter-spacing: 1px;
+	background-color: #141616;
+	width: fill-parent-flow( 0.7 );
+	margin-right: 8px;
+
+	height: 100%;
+	padding-top: 3px;
+	padding-left: 8px;
+    font-size: 18px;
+    font-weight: semi-bold;
+    color: #7d8688;    
+    horizontal-align: left;
+
+    transition-property: color, background-color;
+	transition-duration: 0.16s;
+	transition-timing-function: ease-in-out;
+
+   	font-family: Radiance,k_alwaysFontNames;
+}
+
+.BindingRow.CannotEdit:hover #LabelFXContainer,
+.CannotEdit #LabelFXContainer,
+.BindingRow.CannotEdit:hover .BindingRowLabel
+{
+	background-color: #141616;
+}
+
+.CannotEdit:hover Label
+{
+	color: #7d8688;
+}
+
+.CannotEdit:hover #LabelFXContainer Label
+{
+	color: #8d9698;
+}
+
+.BindingRowButton
+{
+    //width: 100%;
+    //height: 100%;
+    color: #8d9698;
+    horizontal-align: right;
+    vertical-align: center;
+    //text-align: center;
+    font-size: 18px;
+    padding-top: 3px;
+	text-overflow: shrink;
+}
+
+.BindingRowButton:hover
+{
+	color: white;
+}
+
+DACSettingsKeyBinder:disabled .BindingRowButton
+{
+}
+
+DACSettingsKeyBinder:selected .ActiveBindButton
+{
+    background-color: #1350a9;
+
+	animation-name: BackgroundPulse;
+	animation-duration: 1.35s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.BindingRow:selected #LabelFXContainer
+{
+	border: 2px solid #5c99ff;
+	box-shadow: #5c99ff22 -4px -4px 8px 8px;
+}
+
+DACSettingsKeyBinder:selected .ActiveBindFX
+{
+    opacity: 1;
+	transition-duration: 0.1s;
+}
+
+#LabelFXContainer
+{
+	background-color: #2b2f30;
+	width: fill-parent-flow( 0.3 );
+	height: 100%;
+	horizontal-align: right;
+	
+	transition-property: box-shadow, background-color;
+	transition-duration: 0.16s;
+	transition-timing-function: ease-in-out;
+}
+
+.BindingRow:hover #LabelFXContainer
+{
+	background-color: #393e3f;
+}
+
+.BindingRow:hover .BindingRowLabel
+{
+	background-color: #2B2F30;
+}
+
+.ActiveBindFX
+{
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	
+	transition-property: opacity;
+	transition-duration: 0.36s;
+	transition-timing-function: ease-in-out;
+}
+
+@keyframes 'BackgroundPulse'
+{
+	0%
+	{
+		background-color: #1350a9;
+	}
+
+	50%
+	{
+		background-color: #021088;
+	}
+				
+	100%
+	{
+		background-color: #1350a9;
+	}
+}
+
+.ControlGroupRow .BindingRowLabel
+{
+	width: 50%;
+}
+.ControlGroupRow #LabelFXContainer
+{
+	width: 47%;
+}

@@ -6,7 +6,30 @@
     <include src="s2r://panorama/styles/popups/popup_hero.vcss_c" />
   </styles>
 
-  <Panel class="PopupPanel Hidden UnitRank1" popupbackground="blur" onactivate="UIPopupButtonClicked( close )">
+	<snippets>
+
+		<snippet name="AbilitySnippet">
+			<Panel class="UnitAbilityContainerSub">
+				<Panel id="UnitAbilityLeft">
+					<Image src="s2r://panorama/images/heroes/spellicons/empty_png.vtex" />
+					<Image id="UnitAbility" >
+						<Panel id="BorderContainer" />
+					</Image>
+				</Panel>
+				<Panel id="UnitAbilityRight">
+					<Label id="AbilityTitle" text="{s:ability_name}" />
+					<Label id="AbilityStat" html="true" class="AbilityStat" text="#DAC_AbilityTooltip_Cooldown" />
+					<Label id="AbilityDesc" html="true" text="{s:ability_description}" />
+					<Label id="AbilityLore" html="true" text="{s:ability_lore}" />
+				</Panel>
+			</Panel>
+		</snippet>
+
+	</snippets>
+	
+
+
+	<Panel class="PopupPanel Hidden UnitRank1" popupbackground="blur" onactivate="UIPopupButtonClicked( close )">
     <Panel id="CloseButtonContainer">
       <Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
     </Panel>
@@ -46,20 +69,7 @@
           </Panel>
           <DACSynergyCapsule id="SynergyCapsule" class="SynergyCapsule" />
           <Panel id="UnitAbilityContainer">
-            <Panel id="UnitAbilityContainerSub">
-              <Panel id="UnitAbilityLeft">
-                <Image src="s2r://panorama/images/heroes/spellicons/empty_png.vtex" />
-                <Image id="UnitAbility" >
-                  <Panel id="BorderContainer" />
-                </Image>
-              </Panel>
-              <Panel id="UnitAbilityRight">
-                <Label id="AbilityTitle" text="{s:ability_name}" />
-                <Label id="AbilityStat" html="true" class="AbilityStat" text="#DAC_AbilityTooltip_Cooldown" />
-                <Label id="AbilityDesc" html="true" text="{s:ability_description}" />
-                <Label id="AbilityLore" html="true" text="{s:ability_lore}" />
-              </Panel>
-            </Panel>
+			  <!-- dynamic content -->
           </Panel>
           <Panel id="StatStars" class="StatRow">
             <Label id="Stat0" class="StatLabel" text="#dac_star_level" />

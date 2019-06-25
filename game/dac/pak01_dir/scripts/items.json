@@ -54,19 +54,19 @@
 		"icon": "mana_sponge"
 	},
 
-	"boots_of_speed": {
+	"tranquil_boots": {
 		"id": 10005,
 
 		"tier": 1,
 		"type": "equipment_support",
-		"aiTierOffset": -0.5,
 
-		"displayName": "#dac_item_boots_of_speed",
-		"description": "#dac_item_boots_of_speed_desc",
+		"displayName": "#dac_item_tranquil_boots",
+		"description": "#dac_item_tranquil_boots_desc",
 
 		"movement_speed": 100,
+		"health_regen": 16,
 
-		"icon": "boots_of_speed"
+		"icon": "tranquil_boots"
 	},
 
 	"octarine_fragment": {
@@ -476,7 +476,7 @@
 		"tier": 1,
 		"type": "equipment_defensive",
 
-		"armor": 10,
+		"bonus_armor": 10,
 
 		"icon": "chainmail"
 	},
@@ -597,7 +597,7 @@
 		"bash_chance": 25,
 		"bash_duration": 1.5,
 		"bonus_chance_damage": 100,
-		"bonus_damage": 25,
+		"attack_damage": 25,
 
 		"icon": "basher"
 	},
@@ -613,7 +613,7 @@
 		"description": "#dac_item_bloodthorn_desc",
 
 		"cooldown": 10,
-		"bonus_damage": 70,
+		"attack_damage": 70,
 		"mana_trigger_percentage": 75,
 		"silence_duration": 5,
 		"target_crit_multiplier": 140,
@@ -624,6 +624,30 @@
 		],
 
 		"icon": "bloodthorn"
+	},
+
+	"pipe": {
+		"id": 10035,
+
+		"tier": 4,
+		"type": "equipment_defensive",
+
+		"displayName": "#dac_item_pipe_of_insight",
+		"description": "#dac_item_pipe_of_insight_desc",
+
+		"bonus_magical_resistance": 50,
+		"cooldown": 65,
+		"barrier_radius": 1,
+		"barrier_amount": 400,
+		"barrier_duration": 60,
+		"mana_trigger_percentage": 100,
+
+		"precache": [
+			"particles/items2_fx/pipe_of_insight_launch.vpcf",
+			"particles/items2_fx/pipe_of_insight.vpcf"
+		],
+
+		"icon": "pipe_of_insight"
 	},
 
 	"summoning_stone": {
@@ -795,8 +819,10 @@
 		"type": "global",
 		"aiRequiresLowHealth": true,
 
-		"global": {
-			"damage_per_missing_health": 0.2
+		"global":
+		{
+			"damage_per_missing_health": 0.2,
+			"extra_mana_gain_per_missing_health": 0.2
 		},
 
 		"icon": "bonus_damage_lowlife"
@@ -1201,7 +1227,8 @@
 		"global": {
 			"assassins_blind": {
 				"blind_duration": 2,
-				"blind_chance": 50
+				"blind_chance": 50,
+				"mana_gain_reduction": 50
 			}
 		},
 		"precache": [ "particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_blinding_light_debuff.vpcf" ],

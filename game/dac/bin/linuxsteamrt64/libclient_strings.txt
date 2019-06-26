@@ -431,7 +431,7 @@
  CMsgClientToGCEquipItemsResponse
  CMsgClientToGCEventClaimResponse
  CMsgClientToGCGetGiftPermissions"
- CMsgClientToGCLeaveLobbyResponse"Q
+ CMsgClientToGCLeaveLobbyResponse"p
  CMsgClientToGCPartyClientVersion
  CMsgClientToGCPartyLeaveResponse
  CMsgClientToGCWrapAndDeliverGift
@@ -459,7 +459,8 @@
  Failed to pack %s
  Failed to unpack %s - Code %d
  GCConnectionStatus_GC_GOING_DOWN
- H;=P
+ H;= 
+ H;={
  H;D$PH
  H;D$`H
  M9l$
@@ -541,10 +542,10 @@
  t1HcG,H
  t2HcC0H
  t2HcG,H
- t2HcK|H
  t2HcO,H
  t2IcMHH
  t3HcG,H
+ t3HcG8H
  t3Ic|$\H
  t5Ic|$xH
  t6HcO,H
@@ -909,6 +910,7 @@
 #DAC_CreateParty_NotFriends
 #DAC_CreateParty_RateLimited
 #DAC_CreateParty_TooBusy
+#DAC_CreateParty_UnableToGetRegionPings
 #DAC_DBPlay_AbandonConfirm
 #DAC_DBPlay_AbandonGame
 #DAC_DisconnectedFromServer_Generic
@@ -1016,11 +1018,16 @@
 #DAC_PartyInvite_TooBusy
 #DAC_PartyInvite_TooManyInvites
 #DAC_PartyMM_GenericError
+#DAC_PartyMM_InvalidVersions
+#DAC_PartyMM_MismatchedVersions
 #DAC_PartyMM_PlayersNotReady
 #DAC_PartyMM_TooFewPlayers
 #DAC_PartyMM_TooManyPlayers
 #DAC_PartyMM_TooManyPlayersMM
 #DAC_PartyMM_TooManySpectators
+#DAC_PartyVersion_Invalid
+#DAC_PartyVersion_Mismatched
+#DAC_PartyVersion_Title
 #DAC_Party_BotsEasy
 #DAC_Party_BotsHard
 #DAC_Party_BotsMedium
@@ -1093,6 +1100,8 @@
 #DAC_RP_PlayingOtherGame
 #DAC_RP_Snooze
 #DAC_Rank_Name_%d
+#DAC_Reconnect_IncompatibleVersionBody
+#DAC_Reconnect_IncompatibleVersionTitle
 #DAC_RemoveFriend_Body
 #DAC_RemoveFriend_ConfirmBody
 #DAC_RemoveFriend_ConfirmTitle
@@ -2122,25 +2131,23 @@ $z0u.A
 (#GameUI_Disconnect_LoopLevelLoadActivate
 (#GameUI_Disconnect_RemoteProblem_BadCert
 (#GameUI_Disconnect_RemoteProblem_Timeout
+(%"$R
 (%0.2f): %s
 (%d)  EffectName "%s"  Dormant? %s  Emission Stopped? %s 
 (%d) Name: %s (%s)
 (%g %g)
 (%s,%s)
-(%w~a
 (*%s*), 
 (*MARK) must have an argument
 (*VERB) not recognized or malformed
-(-3|a
-(-v.M
+(-C~a
 (.CPlayer_GetCommunityPreferences_Request
 (.CPlayer_GetFriendsGameplayInfo_Response"K
 (.CPlayer_GetPerFriendPreferences_Request
 (.CPlayer_SetCommunityPreferences_Request
 (.CPlayer_SetPerFriendPreferences_Request
 (0x%08X)'??'
-(5@]d
-(=M@"
+(=+1O
 (?R or (?[+-]digits must be followed by )
 (ACTIVE)
 (A^A_]
@@ -2167,7 +2174,6 @@ $z0u.A
 (Fade Removed: [%d,%d,%d,%d])
 (G0E1
 (H9x(
-(H;=A
 (HcWP
 (ID of the Cloud file to get details for.
 (L$ A
@@ -2316,6 +2322,7 @@ $z0u.A
 *N5GCSDK17GCClientJobLambdaIZN14CDACItemSystem25ReleaseItemDefReservationE23item_definition_index_tPKcEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN14CDACItemSystem33RequestReservedItemDefinitionListEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN18CDACClientGCSystem14ConnectToLobbyEbEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN18CDACClientGCSystem17BGetReconnectInfoEP20CClientReconnectInfoEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController10LeaveLobbyEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController10LeavePartyEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController11CreatePartyEjEUlvE_EE
@@ -2332,6 +2339,7 @@ $z0u.A
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17RejectPartyInviteE9PartyID_tEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController21SetPartyBotDifficultyE26CSODACParty_EBotDifficultyEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController22InternalFindPartyMatchE13EDACMatchModeEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN19CDAC_UI_PartyMember33OnPartyMemberReportInvalidVersionEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_Popup_FriendCode11OnReconnectEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_Popup_FriendCode12OnRevokeCodeEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_Popup_FriendCode14OnGenerateCodeEvEUlvE_EE
@@ -2670,7 +2678,6 @@ $z0u.A
 -nomouse
 -nopanorama
 -noscripting
--nosteam
 -novid
 -novpk
 -playtest
@@ -2710,9 +2717,9 @@ $z0u.A
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
 .%0*llu
-.%|5R
+.%E`e
 .(Optional) Set of tags for the published file.
-.-OAO
+.-_CO
 ...<truncated>...
 ../../public/appframework/tier1app.h
 ../../public/appframework/tier2app.h
@@ -2746,10 +2753,9 @@ $z0u.A
 ..CPlayer_GetNewSteamAnnouncementState_Response"_
 ..\content
 .3333
-.5{_M
-.=D5C
-.=w'L
-.=yf]
+.5K`M
+.=)g]
+.=A<P
 .>()09
 .@(z$u"H
 .@(zzuxH
@@ -2781,7 +2787,6 @@ $z0u.A
 .CEntityMsg"]
 .CEntityMsg"g
 .CExtraMsgBlock
-.CExtraMsgBlock"
 .CGCMsgMemCachedSet.KeyPair
 .CGCStorePurchaseInit_LineItem"A
 .CGCToGCMsgMasterAck.Process
@@ -6182,6 +6187,7 @@ $z0u.A
 9.1.15
 90t&f
 95*P>
+95z'm
 98N*>
 99w(|&H
 9<t	]
@@ -6338,6 +6344,7 @@ $z0u.A
 ;2t#f.
 ;2t)H
 ;2t,H
+;5*'m
 ;7};UI
 ;9t4H
 ;:~`H
@@ -6357,8 +6364,7 @@ $z0u.A
 ;GPttK
 ;GTtO
 ;H9:t#
-;Hc5>
-;Hc5y
+;Hc5)
 ;I9<$uY
 ;L$D|*
 ;Q tH
@@ -8611,7 +8617,7 @@ AVAUATH
 AVAUATI
 AVAUATL
 AVAUATLc
-AVAUATLc%
+AVAUATLc%_
 AVAUATM
 AVAUATS
 AVAUATS1
@@ -11310,7 +11316,7 @@ C_ViewmodelWeapon
 C_World
 C_fogplayerparams_t
 C`D98~qH
-C`H;=F
+C`H;=
 C`[A\A]A^]
 C`[A\]
 C`_AXH
@@ -11359,7 +11365,6 @@ CanCombine
 CanCreateParty
 CanFastForward
 CanForceMatch
-CanKick
 CanLeaveLobby
 CanLocalHost
 CanMM
@@ -11525,6 +11530,8 @@ Client Rendering
 Client Scene Entity %d - Frame(%d)
 Client Simulation
 Client Soundscape data dump:
+Client Version
+Client compatibility version %u no longer matches the server %u
 Client decals
 Client mode %d took %f msecs to Enable()
 Client mode %d took %f msecs to Init()
@@ -11605,6 +11612,7 @@ CommandProcedureList
 Command[%s] missing command data
 Commit the result of QueryBestResponse back to the given entity to play. Call with params (entity, airesponse)
 Common
+Compat Version
 Compendium Event ID:
 Completed
 Completed (Post-Chargeback)
@@ -11970,13 +11978,11 @@ D24X8
 D24X8_SHADOW
 D7	_Hc
 D70A9
-D8=a(
 D8cUt
 D8hdt
 D9 tyHc@
 D9#v%H
-D9%"&
-D9%O2
+D9-d9
 D9;t3I
 D9C ~JMc
 D9D$4B
@@ -12012,25 +12018,24 @@ D; tyHc@
 D;!ttHc
 D;"tIH
 D;$2tWL
-D;%#S
-D;%@h
-D;%H0
-D;%KK
-D;%cp
-D;%f@
-D;%in
-D;%s+
+D;%	'
+D;%"a
+D;%`O
+D;%rw
 D;'t3H
 D;'tXH
 D;)t~HcI
-D;-^ea
-D;-}da
+D;--ma
+D;-/[
+D;-Rs
+D;-[e
+D;-d;
+D;-gF
 D;.tLH
 D;0}zH
 D;1Lc
 D;3t 
 D;3}5
-D;5~a
 D;8tQH
 D;9tlA
 D;;}0L
@@ -12277,7 +12282,7 @@ DACPartyKickAccountID
 DACPartyLeave
 DACPartyLeft
 DACPartyMember
-DACPartyMemberKick
+DACPartyMemberReportInvalidVersion
 DACPartyMemberToggleReady
 DACPartyMemberToggleType
 DACPartyOpenParty
@@ -13107,6 +13112,7 @@ E9ntu
 E9olD
 E9t$ M
 E9t$(D
+E9t$0
 E9t$h
 E9|$ L
 E9|$H
@@ -14726,178 +14732,186 @@ H;0t+A
 H;0t0H
 H;0t\H
 H;2tWA
-H;5!:
-H;5!X
-H;5!i
-H;5,s
-H;50H
-H;51>
-H;51s
-H;52!
-H;58"
-H;58$
-H;58.
-H;581
-H;5<Q
-H;5<U
-H;5@H
-H;5@Z
-H;5A7
-H;5A:
-H;5AK
-H;5AL
-H;5DN
-H;5HR
-H;5L(
-H;5P2
-H;5P\
-H;5QD
-H;5`-
-H;5a:
-H;5o 
-H;5p'
-H;5r!
-H;5tv
-H;5x)
-H;5x>
-H;5xN
-H;5|h
+H;5 ?
+H;5(-
+H;5(G
+H;5/-
+H;50:
+H;51G
+H;52.
+H;5@4
+H;5A'
+H;5Au
+H;5H6
+H;5HK
+H;5H[
+H;5Lu
+H;5Q\
+H;5Q]
+H;5T9
+H;5X,
+H;5X3
+H;5X4
+H;5Xv
+H;5\c
+H;5\n
+H;5`<
+H;5`t
+H;5a<
+H;5a@
+H;5aS
+H;5a]
+H;5ao
+H;5ar
+H;5h.
+H;5l6
+H;5l;
+H;5q%
+H;5qI
+H;5r.
+H;5u-
+H;5xR
+H;5x_
+H;5|N
 H;7t"
 H;9u#
-H;=	7
-H;= :
 H;= D
-H;= Z
-H;= k
-H;=#*
-H;=#`
-H;=#r
-H;=$p
-H;=$|
-H;=%Y
-H;=&&
-H;=(0^
-H;=)O
-H;=*!
-H;=*(
-H;=*-
-H;=*/
-H;=*`
-H;=*v
-H;=,6
-H;=-D
-H;=.7
-H;=.;
-H;=.<
-H;=.b
-H;=/^
-H;=/o
+H;= J
+H;= L
+H;= t
+H;= y
+H;=$*
+H;=%	
+H;=(	
+H;=(4
+H;=(6^
+H;=(A
+H;=(H
+H;=(Q
+H;=(X
+H;=) 
+H;=)3
+H;=)I
+H;=)a
+H;=*1
+H;=*s
+H;=,q
+H;=.+
+H;=/a
+H;=/h
 H;=0C
-H;=0j
-H;=2G
-H;=2[
-H;=3r
-H;=3u
-H;=6?
-H;=8,^
-H;=8<
-H;=8m
-H;=9!
-H;=:'
-H;=:-
-H;=:d
-H;=:e
-H;=:{
-H;=;7
-H;=;_
-H;=<=
-H;=>K
-H;=>Z
-H;=>r
-H;=?X
-H;=?m
-H;=?{
-H;=@4
+H;=0I
+H;=0s
+H;=0v
+H;=8;^
+H;=8]
+H;=9'
+H;=9B
+H;=:/
+H;=:Q
+H;=:b
+H;=:l
+H;=:x
+H;=<G
+H;=>;
+H;=?"
+H;=?f
 H;=@B
-H;=@i
-H;=@s
-H;=A8
-H;=Cc
-H;=Cs
-H;=Cw
-H;=F_
-H;=H1^
-H;=HR
-H;=Hz
-H;=J%
-H;=J2
-H;=Je
-H;=Jj
-H;=Ku
-H;=N:
-H;=O]
-H;=Ph
-H;=RZ
-H;=Sa
-H;=T&
-H;=U,
-H;=U>
-H;=Ub
-H;=W.
-H;=W6
-H;=X-^
-H;=X;
-H;=XD
-H;=Y7
-H;=Y;
-H;=Y<
-H;=Z(
-H;=Z^
-H;=Zj
-H;=Z}
-H;=[O
-H;=_"
-H;=`=
-H;=`g
-H;=`i
-H;=`l
-H;=c!
-H;=ct
-H;=d?
-H;=d@
-H;=h'
-H;=h2^
-H;=h4
-H;=hS
-H;=hs
-H;=i&
-H;=iT
-H;=j&
-H;=jH
-H;=jY
-H;=j_
-H;=jo
-H;=j~
-H;=ld
-H;=l~
-H;=n{
-H;=oT
-H;=o[
-H;=p<
-H;=pf
-H;=ph
-H;=qB
-H;=t_
-H;=ud
-H;=x.^
-H;=y5
-H;=z&
-H;=z^
-H;=zc
-H;=zt
+H;=@H
+H;=@g
+H;=@r
+H;=@u
+H;=AO
+H;=B3
+H;=BC
+H;=D$
+H;=D.
+H;=DD
+H;=DH
+H;=Dl
+H;=Em
+H;=H7^
+H;=I6
+H;=IM
+H;=J/
+H;=Jg
+H;=Jl
+H;=J}
+H;=MC
+H;=N	
+H;=NL
+H;=O#
+H;=O,
+H;=OM
+H;=Oy
+H;=O{
+H;=PG
+H;=Pk]
+H;=Pq
+H;=Pt
+H;=Q$
+H;=RH
+H;=SQ
+H;=Sr
+H;=TI
+H;=V4
+H;=XX
+H;=X^
+H;=Z	
+H;=Z*
+H;=Z4
+H;=Za
+H;=Zh
+H;=Zl
+H;=[3
+H;=[a
+H;=]}
+H;=^k
+H;=_,
+H;=`#
+H;=`F
+H;=`s
+H;=ak
+H;=d'
+H;=dX
+H;=dY
+H;=e;
+H;=h8^
+H;=hE
+H;=j"
+H;=j9
+H;=jG
+H;=jJ
+H;=jL
+H;=jW
+H;=jZ
+H;=jl
+H;=jq
+H;=kB
+H;=mC
+H;=ng
+H;=p3
+H;=pE
+H;=pP^
+H;=pl]
+H;=pr
+H;=qX
+H;=rl
+H;=rp
+H;=tB
+H;=tW
+H;=w	
+H;=z#
+H;=zM
+H;=ze
+H;=zq
 H;=zz
-H;=|:
-H;=~.
+H;={6
+H;={M
+H;=}H
+H;=~Q
+H;=~m
+H;=~y
 H;C(t
 H;CPw<I
 H;G tOH
@@ -14931,7 +14945,7 @@ HA;|$
 HC333?
 HDR Color Scale: %0.3f
 HELPER_BONE
-HH;=}
+HH;=M
 HIERARCHY_ABSORIGIN
 HIERARCHY_ATTACHMENT
 HIERARCHY_BONE
@@ -15417,8 +15431,6 @@ IcB$D
 IcD$ A
 IcD$ I
 IcD$(H
-IcD$0
-IcD$0A;D$4
 IcD$81
 IcD$8H
 IcD$8H9
@@ -15505,7 +15517,6 @@ IcT$(I
 IcT$0
 IcT$01
 IcT$0A
-IcT$0A;T$4
 IcT$0I
 IcT$8H
 IcT$8I
@@ -15517,6 +15528,7 @@ IcT$`I
 IcT$h
 IcU$A
 IcU$D
+IcU0A;U4
 IcU8H
 IcU<H
 IcUHI
@@ -16033,7 +16045,6 @@ L$$H;E
 L$(Hc
 L$(vU
 L$0 H
-L$0L9
 L$4A	
 L$4E1
 L$@D)
@@ -16059,6 +16070,7 @@ L9kHv
 L9|$HJ
 L: %.2f deg
 L;"t!f.
+L;%]*
 L;0t!A
 L;0t?H9
 L;0t[A
@@ -16148,9 +16160,6 @@ LayoutDirtied
 LayoutPositionType_e
 Lc#D;c
 Lc#fA
-Lc%*G
-Lc%]@
-Lc%yV
 Lc&D;f
 Lc&E)
 Lc'D;g
@@ -16158,18 +16167,18 @@ Lc'E)
 Lc(D;h
 Lc)D;i
 Lc+D;k
-Lc-Uea
-Lc-tda
+Lc-$ma
+Lc-&[
 Lc.E)
 Lc/D)
 Lc/E)
 Lc3D;s
-Lc5ua
 Lc7E)
 Lc8D;x
 Lc;A9
 Lc;D;{
 Lc;E9
+Lc=zM
 Lc>D;~
 LcC$D
 LcC0D;C@I
@@ -16669,6 +16678,7 @@ MinorRank
 MinorRank%d
 Minutes
 Mismatched CTier2AppSystemDict::SetAllowAddonChanges!!!
+MismatchedVersion
 Missing an event name
 Missing caption for '%s'
 Missing field: FileDescriptorProto.name.
@@ -17632,7 +17642,6 @@ PF_TYPE_PARTICLE_AGE_NORMALIZED
 PF_TYPE_RANDOM_UNIFORM
 PFiPKN8panorama14IUIPanelClientES2_E
 PFvP12CSceneObjectE
-PH;=5
 PHD9e
 PHD;u
 PHE9e
@@ -20288,6 +20297,7 @@ UIcL$0Ic
 UIcL$@Ic
 UIcL$XIc
 UIcL$hIc
+ULcG(H
 UM_AchievementEvent
 UM_AmmoDenied
 UM_AnimGraphUpdate
@@ -20863,7 +20873,6 @@ W%:O&t
 W(H92tOA
 W(H;2t'H
 W,:V,u
-W-G*Q
 W0;V0H
 W3|Uxa
 W49V4u
@@ -21034,14 +21043,17 @@ Writing cubemaps to %s
 Wxt6L
 X Hc@
 X [A\]
+X%bnP
+X%wl_
 X(9Z(@
 X(Hc@ L
 X(Optional) If true, only return the published file ids of files that satisfy this query.
+X-\n_
+X-eaP
 X360_DST16
 X360_DST24
 X360_DST24F
 X49Z4
-X5|m_
 X89Z8
 X=2v?
 X@tZH
@@ -21074,9 +21086,8 @@ X\V@%
 X^'@d
 XboxSystemInterface001
 XhHc@dH
-Y%"&T
 Y(Optional) Starting index to begin enumeration at. Defaults to the beginning of the list."Z
-Y5'E	
+Y57G	
 YD$(A
 YD$DH
 YFPL9
@@ -21222,7 +21233,7 @@ Z}uU
 \$PHc
 \$`Ic
 \%03o
-\5lpM
+\-M3Q
 \C not allowed in lookbehind assertion
 \C8E1
 \IcL$
@@ -23012,6 +23023,7 @@ commands
 commonitem
 community_market_item_remaps
 community_sparkle
+compatibility_version
 compendium
 compendium_event_id
 compendiumlevel
@@ -24857,7 +24869,6 @@ hungarian
 hurt_me
 hurt_them
 h|D;-
-h|D;-N
 i < length_
 i >= 0
 i t!H
@@ -25824,6 +25835,7 @@ k_eMatchMakingStopped_User
 k_eMatchMakingStopped_Version
 k_eMemberRights_Admin
 k_eMemberRights_Creator
+k_eMismatchedVersions
 k_eNoRegionPings
 k_eNoRewards
 k_eNotAllPlayersAvailable
@@ -28739,7 +28751,6 @@ max_angle
 max_claims
 max_classes
 max_client_limit
-max_client_version
 max_clients
 max_entries
 max_health
@@ -28828,7 +28839,6 @@ min-height
 min-width
 min_angle
 min_client_limit
-min_client_version
 min_event_level
 min_ilevel
 min_last_played
@@ -29313,7 +29323,6 @@ originz
 ortholightheight
 ortholightwidth
 os_type
-otATSH
 other
 otherPanelID, eventToFire
 other_player_slot
@@ -30554,76 +30563,77 @@ rumble
 runspeed
 russian
 s H;5
-s H;5 
-s H;50
-s H;54-
-s H;58
+s H;5!
+s H;5!6
+s H;5$/
+s H;51
+s H;51N
+s H;5<
+s H;5<t
+s H;5@g
 s H;5A
-s H;5P
-s H;5QV
-s H;5a
-s H;5a	
-s H;5a)
-s H;5d"
-s H;5l
-s H;5lg
-s H;5pZ
-s H;5qA
-s H;5qY
-s H;5|
+s H;5Af
+s H;5P?
+s H;5Q
+s H;5Q+
+s H;5X'
+s H;5Xh
+s H;5a 
+s H;5aC
+s H;5h
+s H;5p
+s H;5q
+s H;5qW
+s H;5x
 s off
 s(AUH
 s(E9&t-A
 s(H;5
-s(H;5 S
-s(H;50k
-s(H;5d-
-s(H;5h
+s(H;5$:
+s(H;5(
+s(H;5mg
+s(H;5q
 s(t.H
 s)~+@
 s/glow.vH
 s/spriteH
 s0H;5
-s0H;5 
-s0H;5+
-s0H;58
-s0H;5O
-s0H;5X(
-s0H;5d#
-s0H;5dk
-s0H;5l
+s0H;54x
+s0H;5<
+s0H;5H-
+s0H;5T.
+s0H;5X
+s0H;5h 
 s1_mapname
 s2r://
 s69F~
 s7>Ip
 s8D;kP
 s8H;5
-s8H;58!
-s8H;5H'
-s8H;5h
+s8H;5(*
+s8H;5X5
 s8Lcm
 s@+dev_simulate_gcdown
 s@9C@
 s@H9sHv
 s@H;5
-s@H;505
+s@H;5P4
+s@H;5Qh
+s@H;5X*
+s@H;5l
 s@HcR
 s@_AXH
 sHH;5
-sHH;5$
-sHH;5E(
-sHH;5E6
-sHH;5h
+sHH;5(
 sIHcB
 sIf true, then files must have all the tags specified.  If false, then must have at least one of the tags specified.
 sMA9|$ 
-sPH;5(
-sPH;58
-sPH;5H
-sPH;5h
-sPH;5z(
-sXH;5
-sXH;5x
+sPH;5
+sPH;5()
+sPH;5J5
+sXH;58+
+sXH;5X)
+sXH;5x,
 sZtTH
 s_EntComponentInfo
 s_WindVector
@@ -30639,8 +30649,8 @@ s_kDynamicValuesArraySize
 s_nLatchPermissions
 s_nWatchTransmitEntity
 s`H;5
-s`H;5X
-s`H;5}|
+s`H;5=
+s`H;5h+
 saddlebrown
 safe-area-inset-bottom
 safe-area-inset-left
@@ -30879,8 +30889,6 @@ severity
 sfixed32
 sfixed64
 shH;5
-shH;5 
-shH;5-
 shadowcascadecount
 shadowcascadedistance%d
 shadowcascadedistance0
@@ -31092,8 +31100,6 @@ source_folder
 source_player_slot
 source_reference_id
 spH;5
-spH;5,
-spH;5H 
 space
 space shuttle
 spacerperiod
@@ -31465,8 +31471,7 @@ svc_VoiceInit
 swedish
 swift_prefix
 sxH;5
-sxH;55 
-sxH;5x 
+sxH;58-
 sxt!H
 symbol
 symbols
@@ -31499,16 +31504,13 @@ t!D8kSt
 t!IcE
 t!IcN 
 t";2}
-t"H;=+,
-t"H;=+>
+t"H;=
 t"HcS
 t"L;%
-t"L;%	"
-t"L;%	$
-t"L;%)
-t"L;%Y#
+t"L;%H
+t"L;%I-
 t"L;%x
-t"L;%y 
+t"L;%y-
 t#;:u
 t#IcD$
 t#[A\A]A^]
@@ -31558,31 +31560,31 @@ t$`H9
 t$hH9
 t$pH9
 t$pvufA
-t%95^
+t%95.
 t%HcC0A
 t%HcSx
 t%Icv 
 t%L;}
 t%Lc;D;{
-t&;5/@
 t&L;%
-t&L;%8"
-t&L;%8$
-t&L;%X
+t&L;%&f
+t&L;%(,
+t&L;%H0
+t&L;%x-
 t&Lcc
 t'A9\$H
 t'A;\$
-t'D:%
+t'D:%n}i
 t'H;=
 t'Ic_
 t(<)u
 t(D9m
-t(D;%
+t(D;%WA
 t(Lc#D;c
 t(Mce
 t([A\A]A^]
 t)@:5
-t)D;-`7
+t)D;-0B
 t)HcE
 t)Mc<$E;|$
 t)[A\]
@@ -31626,7 +31628,6 @@ t0D;;
 t0HcC$H
 t0HcC(H
 t0HcG H
-t0HcG$H
 t0HcG(H
 t0HcK@H
 t0HcKXH
@@ -31657,6 +31658,7 @@ t2HcK4H
 t2HcKPH
 t2HcK`H
 t2HcKdH
+t2HcKtH
 t2HcO
 t2HcO H
 t2HcO4H
@@ -31679,7 +31681,7 @@ t3HcG H
 t3HcG$H
 t3HcG(H
 t3HcG,H
-t3HcG@H
+t3HcGDH
 t3HcK0H
 t3HcK8H
 t3HcKtH
@@ -31811,7 +31813,6 @@ tO[A\]
 tPA9Q ~JM
 tPIc](I
 tP[A\A]A^]
-tR;55
 tRIcE
 tS[A\]
 tTD;x
@@ -31975,7 +31976,7 @@ tj@:shtd@
 tkHcS8
 tlIcD$
 tm#C,
-tm;5v
+tm;5&'m
 tm~zL
 tnHcM
 tnHcU
@@ -32143,10 +32144,9 @@ type_field
 type_id
 type_instances
 type_value
-tz;5n
 tzHcR
 tzHcVPH
-t{95r
+t{95"'m
 t{E;l$
 t{UE1
 t{riU
@@ -32964,7 +32964,7 @@ x+A9T$h~$H
 x,E9|$,
 x09~0t@@
 x0;wH}+Hc
-x0H;=
+x0H;=j
 x0tNH
 x2t#I
 x49~4
@@ -32972,7 +32972,7 @@ x4A9WH~.H
 x7Hcw
 x8"tq
 x89~8
-x8H;=b
+x8H;="
 x@Hc@0E1
 x@HcO
 xBHcO
@@ -33129,9 +33129,8 @@ z|uzf
 z}u{L
 z~u|I
 { H;=
-{ H;=2
-{ H;=I
-{ H;=r
+{ H;=B
+{ H;=y
 { t9I
 { t:I
 { u7H

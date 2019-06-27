@@ -1,0 +1,149 @@
+// queen_of_pain - Hero
+criterion "Is_queen_of_pain" "unitName" "queen_of_pain" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response queen_of_pain_recruit_1
+{
+	speak "queen_of_pain_recruit" noscene 
+}
+
+Rule queen_of_pain_recruit_1_rule
+{
+	criteria Is_queen_of_pain ConceptRecruit UnitRank1
+	response queen_of_pain_recruit_1
+}
+
+
+Response queen_of_pain_recruit_2
+{
+	speak "queen_of_pain_upgrade" noscene 
+}
+
+Rule queen_of_pain_recruit_2_rule
+{
+	criteria Is_queen_of_pain ConceptRecruit UnitRank2
+	response queen_of_pain_recruit_2
+}
+
+
+Response queen_of_pain_recruit_3
+{
+	speak "queen_of_pain_final_upgrade" noscene 
+}
+
+Rule queen_of_pain_recruit_3_rule
+{
+	criteria Is_queen_of_pain ConceptRecruit UnitRank3
+	response queen_of_pain_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response queen_of_pain_start_round
+{
+	speak "queen_of_pain_start_round" noscene 
+}
+
+Rule queen_of_pain_start_round_rule
+{
+	criteria Is_queen_of_pain ConceptRoundStart 
+	response queen_of_pain_start_round
+}
+
+
+Response queen_of_pain_start_round_lost_last_round
+{
+	speak "queen_of_pain_start_round_lost_last_round" noscene 
+}
+
+Rule queen_of_pain_start_round_lost_last_round_rule
+{
+	criteria Is_queen_of_pain ConceptRoundStart LostLastGame
+	response queen_of_pain_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response queen_of_pain_flawless_victory
+{
+	speak "queen_of_pain_flawless_victory" noscene 
+}
+
+Rule queen_of_pain_flawless_victory_rule
+{
+	criteria Is_queen_of_pain ConceptRoundEnd Result_WinFlawless
+	response queen_of_pain_flawless_victory
+}
+
+
+Response queen_of_pain_decisive_victory
+{
+	speak "queen_of_pain_decisive_victory" noscene 
+}
+
+Rule queen_of_pain_decisive_victory_rule
+{
+	criteria Is_queen_of_pain ConceptRoundEnd Result_WinDecisive
+	response queen_of_pain_decisive_victory
+}
+
+Response queen_of_pain_narrow_victory
+{
+	speak "queen_of_pain_narrow_victory" noscene 
+}
+
+Rule queen_of_pain_narrow_victory_rule
+{
+	criteria Is_queen_of_pain ConceptRoundEnd Result_WinNarrow
+	response queen_of_pain_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response queen_of_pain_flawless_defeat
+{
+	speak "queen_of_pain_flawless_defeat" noscene 
+}
+
+Rule queen_of_pain_flawless_defeat_rule
+{
+	criteria Is_queen_of_pain ConceptRoundEnd Result_LoseFlawless
+	response queen_of_pain_flawless_defeat
+}
+
+
+Response queen_of_pain_decisive_defeat
+{
+	speak "queen_of_pain_decisive_defeat" noscene 
+}
+
+Rule queen_of_pain_decisive_defeat_rule
+{
+	criteria Is_queen_of_pain ConceptRoundEnd Result_LoseDecisive
+	response queen_of_pain_decisive_defeat
+}
+
+Response queen_of_pain_narrow_defeat
+{
+	speak "queen_of_pain_narrow_defeat" noscene 
+}
+
+Rule queen_of_pain_narrow_defeat_rule
+{
+	criteria Is_queen_of_pain ConceptRoundEnd Result_LoseNarrow
+	response queen_of_pain_narrow_defeat
+}

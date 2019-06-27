@@ -6,15 +6,24 @@
 	</styles>
 
 	<snippets>
+
+		<snippet name="AbilitySnippet">
+			<Panel class="AbilityContainer">
+				<Image src="s2r://panorama/images/heroes/spellicons/empty_png.vtex" />
+				<Image id="UnitAbility" />
+			</Panel>
+		</snippet>
+
 		<snippet name="ShopEntry">
 			<Button class="ShopEntry">
 				<Panel id="InfoRow">
-					<Label id="HeroName" text="{s:UnitName}" />
-					<!-- TODO <Panel id="AbilityContainer" onmouseover="DACUnitShowAbilityTooltip()" onmouseout="DACUnitHideAbilityTooltip()"> -->
-					<Panel id="AbilityContainer">
-						<Image src="s2r://panorama/images/heroes/spellicons/empty_png.vtex" />
-						<Image id="UnitAbility" />
+					<Label class="HeroName" text="{s:UnitName}" />
+					<Panel id="AbilitySnippetContainer">
+						<!-- dynamic content -->
 					</Panel>
+				</Panel>
+				<Panel id="InfoRowMinimal" hittest="false" hittestchildren="false">
+					<Label class="HeroName" text="{s:UnitName}" />
 				</Panel>
 				<Panel id="HeroCardRow">
 					<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" renderbatched="true" usePortraitData="true" />
@@ -34,6 +43,7 @@
 					<Panel id="ContentBG" class="TopBottomFlow">
 						<DACSynergyCapsule id="SynergyCapsule" />
 					</Panel>
+					<Panel id="InfoButton" />
 				</Panel>
 			</Button>
 		</snippet>
@@ -58,15 +68,19 @@
 		</snippet>
 	</snippets>
 
-	<DACUIShop  hittest="false" >
-		<Panel id="UnitShopContainer">
-
+	<DACUIShop hittest="false" >
+		<Panel id="UnitShopContainer" hittest="true" onactivate="DACCloseShop()">
 			<Panel id="TimerContainer">
 				<Panel id="TimerBar" />
 			</Panel>
 
 			<Panel id="MainRow">
 				<Panel class="ButtonGutter">
+
+					<Button class="ShopButton" id="OddsShop">
+						<Panel id="OddsButton" onactivate="DACShowHeroOddsPopup()"/>
+					</Button>
+
 					<Button class="ShopButton" id="LibraryShop">
 						<Panel id="LibraryButton" onactivate="DACShowHeropediaPopup()"/>		<!-- DACShopToggleMinimal() -->
 					</Button>
@@ -79,7 +93,7 @@
 						<Panel id="UnlockButton" />
 					</Button>
 				</Panel>
-				<Panel id="ShopContainer">
+				<Panel id="ShopContainer" onactivate="">
 					<Panel id="UnitsShopBG" class="LeftRightFlow">
 						<Panel id="UnitShopBG1" class="UnitShopBGItem">
 							<Panel class="UnderfootImage"/>
@@ -125,7 +139,7 @@
 						<Panel id="PlayerEXPContainer" onactivate="DACBuyEXP()">
 							<CircularProgressBar value="0.5" id="PlayerEXPGraph" min="0" />
 							<Label text="{i:playerStateLevel}" id="PlayerEXPGraphLevel" />
-              <DACParticleScenePanel id="PlayerEXPTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
+							<DACParticleScenePanel id="PlayerEXPTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
 						</Panel>
 						<Label text="#DAC_InGame_PlayerXP" id="StatusXP" />
 						<Panel class="GoldValueContainer">
@@ -136,7 +150,7 @@
 				</Panel>
 			</Panel>
 				
-			<Panel class="SynergyHelpersContainer" id="SynergyHelpers">
+			<Panel class="SynergyHelpersContainer" id="SynergyHelpers" onactivate="">
 				<Panel class="SynergyHelper" id="SynergyHelperSlot0">
 					<Panel class="SynergyHelperIcons" id="SynergyHelperIcons0" />
 				</Panel>

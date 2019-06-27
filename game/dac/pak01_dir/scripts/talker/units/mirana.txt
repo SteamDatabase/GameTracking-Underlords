@@ -1,0 +1,142 @@
+// Mirana - Hero
+criterion "Is_mirana" "unitName" "mirana" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+Response mirana_recruit_1
+{
+	speak "mirana_recruit" noscene 
+}
+
+Rule mirana_recruit_1_rule
+{
+	criteria Is_mirana ConceptRecruit UnitRank1
+	response mirana_recruit_1
+}
+
+Response mirana_recruit_2
+{
+	speak "mirana_upgrade" noscene 
+}
+
+Rule mirana_recruit_2_rule
+{
+	criteria Is_mirana ConceptRecruit UnitRank2
+	response mirana_recruit_2
+}
+
+Response mirana_recruit_3
+{
+	speak "mirana_final_upgrade" noscene 
+}
+
+Rule mirana_recruit_3_rule
+{
+	criteria Is_mirana ConceptRecruit UnitRank3
+	response mirana_recruit_3
+}
+
+////////////////
+//Round Start///
+////////////////
+
+Response mirana_start_round
+{
+	speak "mirana_start_round" noscene 
+}
+
+Rule mirana_start_round_rule
+{
+	criteria Is_mirana ConceptRoundStart 
+	response mirana_start_round
+}
+
+Response mirana_start_round_lost_last_round
+{
+	speak "mirana_start_round_lost_last_round" noscene 
+}
+
+Rule mirana_start_round_lost_last_round_rule
+{
+	criteria Is_mirana ConceptRoundStart LostLastGame
+	response mirana_start_round_lost_last_round
+}
+
+
+///////////
+//Victory//
+///////////
+
+Response mirana_flawless_victory
+{
+	speak "mirana_flawless_victory" noscene 
+}
+
+Rule mirana_flawless_victory_rule
+{
+	criteria Is_mirana ConceptRoundEnd Result_WinFlawless
+	response mirana_flawless_victory
+}
+
+
+Response mirana_decisive_victory
+{
+	speak "mirana_decisive_victory" noscene 
+}
+
+Rule mirana_decisive_victory_rule
+{
+	criteria Is_mirana ConceptRoundEnd Result_WinDecisive
+	response mirana_decisive_victory
+}
+
+Response mirana_narrow_victory
+{
+	speak "mirana_narrow_victory" noscene 
+}
+
+Rule mirana_narrow_victory_rule
+{
+	criteria Is_mirana ConceptRoundEnd Result_WinNarrow
+	response mirana_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response mirana_flawless_defeat
+{
+	speak "mirana_flawless_defeat" noscene 
+}
+
+Rule mirana_flawless_defeat_rule
+{
+	criteria Is_mirana ConceptRoundEnd Result_LoseFlawless
+	response mirana_flawless_defeat
+}
+
+
+Response mirana_decisive_defeat
+{
+	speak "mirana_decisive_defeat" noscene 
+}
+
+Rule mirana_decisive_defeat_rule
+{
+	criteria Is_mirana ConceptRoundEnd Result_LoseDecisive
+	response mirana_decisive_defeat
+}
+
+Response mirana_narrow_defeat
+{
+	speak "mirana_narrow_defeat" noscene 
+}
+
+Rule mirana_narrow_defeat_rule
+{
+	criteria Is_mirana ConceptRoundEnd Result_LoseNarrow
+	response mirana_narrow_defeat
+}

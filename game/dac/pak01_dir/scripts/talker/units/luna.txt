@@ -1,0 +1,149 @@
+// Luna - Hero
+criterion "Is_luna" "unitName" "luna" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response luna_recruit_1
+{
+	speak "luna_recruit" noscene 
+}
+
+Rule luna_recruit_1_rule
+{
+	criteria Is_luna ConceptRecruit UnitRank1
+	response luna_recruit_1
+}
+
+
+Response luna_recruit_2
+{
+	speak "luna_upgrade" noscene 
+}
+
+Rule luna_recruit_2_rule
+{
+	criteria Is_luna ConceptRecruit UnitRank2
+	response luna_recruit_2
+}
+
+
+Response luna_recruit_3
+{
+	speak "luna_final_upgrade" noscene 
+}
+
+Rule luna_recruit_3_rule
+{
+	criteria Is_luna ConceptRecruit UnitRank3
+	response luna_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response luna_start_round
+{
+	speak "luna_start_round" noscene 
+}
+
+Rule luna_start_round_rule
+{
+	criteria Is_luna ConceptRoundStart 
+	response luna_start_round
+}
+
+
+Response luna_start_round_lost_last_round
+{
+	speak "luna_start_round_lost_last_round" noscene 
+}
+
+Rule luna_start_round_lost_last_round_rule
+{
+	criteria Is_luna ConceptRoundStart LostLastGame
+	response luna_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response luna_flawless_victory
+{
+	speak "luna_flawless_victory" noscene 
+}
+
+Rule luna_flawless_victory_rule
+{
+	criteria Is_luna ConceptRoundEnd Result_WinFlawless
+	response luna_flawless_victory
+}
+
+
+Response luna_decisive_victory
+{
+	speak "luna_decisive_victory" noscene 
+}
+
+Rule luna_decisive_victory_rule
+{
+	criteria Is_luna ConceptRoundEnd Result_WinDecisive
+	response luna_decisive_victory
+}
+
+Response luna_narrow_victory
+{
+	speak "luna_narrow_victory" noscene 
+}
+
+Rule luna_narrow_victory_rule
+{
+	criteria Is_luna ConceptRoundEnd Result_WinNarrow
+	response luna_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response luna_flawless_defeat
+{
+	speak "luna_flawless_defeat" noscene 
+}
+
+Rule luna_flawless_defeat_rule
+{
+	criteria Is_luna ConceptRoundEnd Result_LoseFlawless
+	response luna_flawless_defeat
+}
+
+
+Response luna_decisive_defeat
+{
+	speak "luna_decisive_defeat" noscene 
+}
+
+Rule luna_decisive_defeat_rule
+{
+	criteria Is_luna ConceptRoundEnd Result_LoseDecisive
+	response luna_decisive_defeat
+}
+
+Response luna_narrow_defeat
+{
+	speak "luna_narrow_defeat" noscene 
+}
+
+Rule luna_narrow_defeat_rule
+{
+	criteria Is_luna ConceptRoundEnd Result_LoseNarrow
+	response luna_narrow_defeat
+}

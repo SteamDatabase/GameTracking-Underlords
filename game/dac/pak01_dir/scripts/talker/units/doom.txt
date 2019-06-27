@@ -1,0 +1,149 @@
+// Doom - Hero
+criterion "Is_doom" "unitName" "doom" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response doom_recruit_1
+{
+	speak "doom_recruit" noscene 
+}
+
+Rule doom_recruit_1_rule
+{
+	criteria Is_doom ConceptRecruit UnitRank1
+	response doom_recruit_1
+}
+
+
+Response doom_recruit_2
+{
+	speak "doom_upgrade" noscene 
+}
+
+Rule doom_recruit_2_rule
+{
+	criteria Is_doom ConceptRecruit UnitRank2
+	response doom_recruit_2
+}
+
+
+Response doom_recruit_3
+{
+	speak "doom_final_upgrade" noscene 
+}
+
+Rule doom_recruit_3_rule
+{
+	criteria Is_doom ConceptRecruit UnitRank3
+	response doom_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response doom_start_round
+{
+	speak "doom_start_round" noscene 
+}
+
+Rule doom_start_round_rule
+{
+	criteria Is_doom ConceptRoundStart 
+	response doom_start_round
+}
+
+
+Response doom_start_round_lost_last_round
+{
+	speak "doom_start_round_lost_last_round" noscene 
+}
+
+Rule doom_start_round_lost_last_round_rule
+{
+	criteria Is_doom ConceptRoundStart LostLastGame
+	response doom_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response doom_flawless_victory
+{
+	speak "doom_flawless_victory" noscene 
+}
+
+Rule doom_flawless_victory_rule
+{
+	criteria Is_doom ConceptRoundEnd Result_WinFlawless
+	response doom_flawless_victory
+}
+
+
+Response doom_decisive_victory
+{
+	speak "doom_decisive_victory" noscene 
+}
+
+Rule doom_decisive_victory_rule
+{
+	criteria Is_doom ConceptRoundEnd Result_WinDecisive
+	response doom_decisive_victory
+}
+
+Response doom_narrow_victory
+{
+	speak "doom_narrow_victory" noscene 
+}
+
+Rule doom_narrow_victory_rule
+{
+	criteria Is_doom ConceptRoundEnd Result_WinNarrow
+	response doom_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response doom_flawless_defeat
+{
+	speak "doom_flawless_defeat" noscene 
+}
+
+Rule doom_flawless_defeat_rule
+{
+	criteria Is_doom ConceptRoundEnd Result_LoseFlawless
+	response doom_flawless_defeat
+}
+
+
+Response doom_decisive_defeat
+{
+	speak "doom_decisive_defeat" noscene 
+}
+
+Rule doom_decisive_defeat_rule
+{
+	criteria Is_doom ConceptRoundEnd Result_LoseDecisive
+	response doom_decisive_defeat
+}
+
+Response doom_narrow_defeat
+{
+	speak "doom_narrow_defeat" noscene 
+}
+
+Rule doom_narrow_defeat_rule
+{
+	criteria Is_doom ConceptRoundEnd Result_LoseNarrow
+	response doom_narrow_defeat
+}

@@ -26,6 +26,13 @@ DACUIHud.IsConnected {
 	opacity: .01;
 }
 
+.LowVisualQuality #WorldVignette,
+.LowVisualQuality .EGameState_Intro #WorldVignette
+{
+    opacity: 0;
+    visibility: collapse;
+}
+
 #DeadOverlayPanel, #WinOverlayPanel
 {
 	width: 100%;
@@ -923,6 +930,15 @@ DACUIHud.IsConnected {
 	height: 0px;
 }
 
+.LowVisualQuality #SynergyIcons DACSynergyIcon,
+.LowVisualQuality #SynergyIcons DACSynergyIcon.Appear,
+.LowVisualQuality #SynergyIcons DACSynergyIcon.AppearInstantly,
+.LowVisualQuality #SynergyIcons DACSynergyIcon.FadeOut 
+{
+    transition-duration: 0s;
+    animation-duration: 0s;
+}
+
 .SynergyIconTutorial
 {
 	horizontal-align: center;
@@ -996,6 +1012,13 @@ DACUIHud.IsConnected {
 	horizontal-align: right;
 }
 
+.LowVisualQuality #DPSTab,
+.LowVisualQuality #SynergyTab,
+.LowVisualQuality #ItemsTab
+{
+	transition-property: none;
+	transition-duration: 0s;
+}
 
 .TabPageSynergy #SynergyTab,
 .TabPageDPS #DPSTab,
@@ -1390,17 +1413,6 @@ DACUIHud.IsConnected {
 	animation-name: none;
 }
 
-DACUIShop
-{
-	width: 100%;
-	height: 100%;
-}
-
-DACUIShop.Minimal
-{
-	height: fit-children;
-}
-
 #MenuButton {
 	vertical-align: bottom;
 	background-image: url("s2r://panorama/images/hud/dac_library_button_png.vtex");
@@ -1765,6 +1777,16 @@ Label.ChoiceItem_Description
 	//wash-color: rgba( 220, 220, 220, 1.0 );
 	wash-color: #c3bff2;
 
+}
+
+.LowVisualQuality .PauseButton, .LowVisualQuality .FastForwardButton {
+	pre-transform-scale2d: 1.0;
+	transition-property: none;
+	transition-duration: 0s;
+}
+
+.LowVisualQuality .PauseButton:hover, .LowVisualQuality .FastForwardButton:hover {
+	pre-transform-scale2d: 1.0;
 }
 
 .PauseButton:hover,
@@ -2286,6 +2308,11 @@ Label.ChoiceItem_Description
 	box-shadow: #000000 0px 0px 15px;
 }
 
+.LowVisualQuality .PlayerLeaderboardBackground 
+{
+    box-shadow: none;
+}
+
 #PlayerLeaderboardContainer {
 	width: 100%;
 	height: fit-children;
@@ -2297,9 +2324,8 @@ Label.ChoiceItem_Description
 
 .IsPlatformPC #PlayerLeaderboardContainer
 {
-    ui-scale: 80%;
-    //padding: 10% 0%;
-    margin: 10px;
+	ui-scale: 80%;
+	margin: 10px;
 }
 
 .IsPlatformPC .PlayerLeaderboardBackground
@@ -2678,8 +2704,12 @@ DropDown Label
 	transition-duration: .2s;
 }
 
-.ShopVisible #UnitCountDisplayBench
-{
+.LowVisualQuality #UnitCountDisplayBench {
+	transition-property: none;
+	transition-duration: 0s;
+}
+
+.ShopVisible #UnitCountDisplayBench {
 	opacity: 1;
 }
 
@@ -2777,8 +2807,14 @@ DropDown Label
 .LowVisualQuality.NotEnoughUnits #UnitCountPanel 
 {
 	transform: rotateX(0deg) translateY( 13px ) scale3d( 1.0, 1.0, 1.0);
+    	transition-duration: 0s;
 }
 
+
+.LowVisualQuality #UnitCountPanelBench 
+{
+    transition-duration: 0s;
+}
 
 #UnitCountIconPanel
 {
@@ -3313,6 +3349,12 @@ DACHUDRankDisplay .HUDRankDisplay
 {
 	opacity: 0;
 	position: -150px 0 0;
+}
+
+.IsPlatformPC.ShopVisible .PlayerLeaderboardBackground
+{
+	opacity: 1;
+	position: 0px 0 0;
 }
 
 .SynergyPanelVisible #PlayerStateContainer,

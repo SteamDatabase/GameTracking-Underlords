@@ -1,0 +1,149 @@
+// templar_assassin - Hero
+criterion "Is_templar_assassin" "unitName" "templar_assassin" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response templar_assassin_recruit_1
+{
+	speak "templar_assassin_recruit" noscene 
+}
+
+Rule templar_assassin_recruit_1_rule
+{
+	criteria Is_templar_assassin ConceptRecruit UnitRank1
+	response templar_assassin_recruit_1
+}
+
+
+Response templar_assassin_recruit_2
+{
+	speak "templar_assassin_upgrade" noscene 
+}
+
+Rule templar_assassin_recruit_2_rule
+{
+	criteria Is_templar_assassin ConceptRecruit UnitRank2
+	response templar_assassin_recruit_2
+}
+
+
+Response templar_assassin_recruit_3
+{
+	speak "templar_assassin_final_upgrade" noscene 
+}
+
+Rule templar_assassin_recruit_3_rule
+{
+	criteria Is_templar_assassin ConceptRecruit UnitRank3
+	response templar_assassin_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response templar_assassin_start_round
+{
+	speak "templar_assassin_start_round" noscene 
+}
+
+Rule templar_assassin_start_round_rule
+{
+	criteria Is_templar_assassin ConceptRoundStart 
+	response templar_assassin_start_round
+}
+
+
+Response templar_assassin_start_round_lost_last_round
+{
+	speak "templar_assassin_start_round_lost_last_round" noscene 
+}
+
+Rule templar_assassin_start_round_lost_last_round_rule
+{
+	criteria Is_templar_assassin ConceptRoundStart LostLastGame
+	response templar_assassin_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response templar_assassin_flawless_victory
+{
+	speak "templar_assassin_flawless_victory" noscene 
+}
+
+Rule templar_assassin_flawless_victory_rule
+{
+	criteria Is_templar_assassin ConceptRoundEnd Result_WinFlawless
+	response templar_assassin_flawless_victory
+}
+
+
+Response templar_assassin_decisive_victory
+{
+	speak "templar_assassin_decisive_victory" noscene 
+}
+
+Rule templar_assassin_decisive_victory_rule
+{
+	criteria Is_templar_assassin ConceptRoundEnd Result_WinDecisive
+	response templar_assassin_decisive_victory
+}
+
+Response templar_assassin_narrow_victory
+{
+	speak "templar_assassin_narrow_victory" noscene 
+}
+
+Rule templar_assassin_narrow_victory_rule
+{
+	criteria Is_templar_assassin ConceptRoundEnd Result_WinNarrow
+	response templar_assassin_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response templar_assassin_flawless_defeat
+{
+	speak "templar_assassin_flawless_defeat" noscene 
+}
+
+Rule templar_assassin_flawless_defeat_rule
+{
+	criteria Is_templar_assassin ConceptRoundEnd Result_LoseFlawless
+	response templar_assassin_flawless_defeat
+}
+
+
+Response templar_assassin_decisive_defeat
+{
+	speak "templar_assassin_decisive_defeat" noscene 
+}
+
+Rule templar_assassin_decisive_defeat_rule
+{
+	criteria Is_templar_assassin ConceptRoundEnd Result_LoseDecisive
+	response templar_assassin_decisive_defeat
+}
+
+Response templar_assassin_narrow_defeat
+{
+	speak "templar_assassin_narrow_defeat" noscene 
+}
+
+Rule templar_assassin_narrow_defeat_rule
+{
+	criteria Is_templar_assassin ConceptRoundEnd Result_LoseNarrow
+	response templar_assassin_narrow_defeat
+}

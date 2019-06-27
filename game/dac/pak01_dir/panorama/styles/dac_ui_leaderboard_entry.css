@@ -112,9 +112,14 @@ DACLeaderboardEntry {
 		visibility: visible;
 	}
 
-	.LowVisualQuality .LeaderboardBelow Label {
+    .IsPlatformMobile .LeaderboardBelow Label,
+	.LowVisualQuality .LeaderboardBelow Label 
+    {
 		text-shadow: 0px 0px 0px 2.0 #000;
+        opacity-mask: none;
 	}
+
+    
 
 .IsFinished .LeaderboardBelow Label,
 .IsOpponent .LeaderboardBelow Label 
@@ -475,13 +480,13 @@ DACLeaderboardEntry {
 	opacity: 0;
 	transition-property: opacity;
 	transition-duration: 300ms;
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #91339300 ), color-stop( .68, #b93f19 ), to(rgba(255, 94, 0, 0.281)));
+	//background-color: gradient(linear, 0% 0%, 100% 0%, from( #91339300 ), color-stop( .68, #b93f19 ), to(rgba(255, 94, 0, 0.281)));
 	border-radius: 18px;
 	width: 230px;
 	height: 72px;
 	margin-top: 32px;
 
-	animation-name: LeaderboardTargetIndicatorFighting;
+	//animation-name: LeaderboardTargetIndicatorFighting;
 	animation-duration: .81s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
@@ -503,6 +508,14 @@ DACLeaderboardEntry {
 	visibility: collapse;
 }
 
+.IsOpponent.IsAwayGame .SwordIcon,
+.IsAwayGame.IsOpponent .DefendIcon
+{
+	// show both icons when attacking / defending same player
+	visibility: visible;
+}
+
+
 .LeaderboardTargetIndicator Image {
 	vertical-align: middle;
 	horizontal-align: right;
@@ -516,9 +529,15 @@ DACLeaderboardEntry {
 	margin-bottom: 12px;
 }
 
+.IsOpponent.IsAwayGame .LeaderboardTargetIndicator Image
+{
+	// move sword out when hitting shield
+	margin-right: 10px;
+}
+
 .LeaderboardTargetIndicator .DefendIcon
 {
-	animation-name: none;
+	animation-name: Defending;
 	margin-top: 10px;
 	margin-right: 20px;
 }
@@ -535,15 +554,15 @@ DACLeaderboardEntry {
 {
 	0%
 	{
-		transform: translateX(0px);
+		transform: translateX(10px) translateY(5px);
 	}
 	15%
 	{
-		transform: translateX(-20px) translateY(-10px) rotateZ(-55deg);
+		transform: translateX(-15px) translateY(-5px) rotateZ(-55deg);
 	}	
 	100%
 	{
-		transform: translateX(0px);
+		transform: translateX(10px) translateY(5px);
 	}
 }
 
@@ -552,15 +571,15 @@ DACLeaderboardEntry {
 {
 	0%
 	{
-		pre-transform-scale2d: .8;
+		pre-transform-scale2d: 1.0;
 	}
-	25%
+	15%
 	{
-		pre-transform-scale2d: 1.2;
+		pre-transform-scale2d: 1.1;
 	}	
 	100%
 	{
-		pre-transform-scale2d: .8;
+		pre-transform-scale2d: 1.0;
 	}
 }
 

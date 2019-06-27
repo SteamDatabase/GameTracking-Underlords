@@ -1,0 +1,144 @@
+// Enchantress - Hero
+criterion "Is_enchantress" "unitName" "enchantress" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response enchantress_recruit_1
+{
+	speak "enchantress_recruit" noscene 
+}
+
+Rule enchantress_recruit_1_rule
+{
+	criteria Is_enchantress ConceptRecruit UnitRank1
+	response enchantress_recruit_1
+}
+
+Response enchantress_recruit_2
+{
+	speak "enchantress_upgrade" noscene 
+}
+
+Rule enchantress_recruit_2_rule
+{
+	criteria Is_enchantress ConceptRecruit UnitRank2
+	response enchantress_recruit_2
+}
+
+Response enchantress_recruit_3
+{
+	speak "enchantress_final_upgrade" noscene 
+}
+
+Rule enchantress_recruit_3_rule
+{
+	criteria Is_enchantress ConceptRecruit UnitRank3
+	response enchantress_recruit_3
+}
+
+////////////////
+//Round Start///
+////////////////
+
+Response enchantress_start_round
+{
+	speak "enchantress_start_round" noscene 
+}
+
+Rule enchantress_start_round_rule
+{
+	criteria Is_enchantress ConceptRoundStart 
+	response enchantress_start_round
+}
+
+Response enchantress_start_round_lost_last_round
+{
+	speak "enchantress_start_round_lost_last_round" noscene 
+}
+
+Rule enchantress_start_round_lost_last_round_rule
+{
+	criteria Is_enchantress ConceptRoundStart LostLastGame
+	response enchantress_start_round_lost_last_round
+}
+
+
+
+///////////
+//Victory//
+///////////
+
+Response enchantress_flawless_victory
+{
+	speak "enchantress_flawless_victory" noscene 
+}
+
+Rule enchantress_flawless_victory_rule
+{
+	criteria Is_enchantress ConceptRoundEnd Result_WinFlawless
+	response enchantress_flawless_victory
+}
+
+
+Response enchantress_decisive_victory
+{
+	speak "enchantress_decisive_victory" noscene 
+}
+
+Rule enchantress_decisive_victory_rule
+{
+	criteria Is_enchantress ConceptRoundEnd Result_WinDecisive
+	response enchantress_decisive_victory
+}
+
+Response enchantress_narrow_victory
+{
+	speak "enchantress_narrow_victory" noscene 
+}
+
+Rule enchantress_narrow_victory_rule
+{
+	criteria Is_enchantress ConceptRoundEnd Result_WinNarrow
+	response enchantress_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response enchantress_flawless_defeat
+{
+	speak "enchantress_flawless_defeat" noscene 
+}
+
+Rule enchantress_flawless_defeat_rule
+{
+	criteria Is_enchantress ConceptRoundEnd Result_LoseFlawless
+	response enchantress_flawless_defeat
+}
+
+
+Response enchantress_decisive_defeat
+{
+	speak "enchantress_decisive_defeat" noscene 
+}
+
+Rule enchantress_decisive_defeat_rule
+{
+	criteria Is_enchantress ConceptRoundEnd Result_LoseDecisive
+	response enchantress_decisive_defeat
+}
+
+Response enchantress_narrow_defeat
+{
+	speak "enchantress_narrow_defeat" noscene 
+}
+
+Rule enchantress_narrow_defeat_rule
+{
+	criteria Is_enchantress ConceptRoundEnd Result_LoseNarrow
+	response enchantress_narrow_defeat
+}

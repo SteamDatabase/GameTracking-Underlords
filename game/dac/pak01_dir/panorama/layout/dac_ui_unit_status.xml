@@ -18,14 +18,13 @@
 
 	<DACUnitStatus>
 		<Panel class="UnitNameContainer">
-			<Label class="HeaderPlayerName" id="PlayerNameContainer" text="{s:selectedUnitName}" html="true" />
 			<Label class="Rank1Label RankLabel" text="★" />
 			<Label class="Rank2Label RankLabel" text="★★" />
 			<Label class="Rank3Label RankLabel" text="★★★" />
+			<Label class="HeaderPlayerName" id="PlayerNameContainer" text="{s:selectedUnitName}" html="true" />
 		</Panel>
 		
 		<Panel id="PlayerProfile">
-				<Label text="{i:selectedUnitHP}" id="StatusHP" />
 				<Panel id="PlayerFlag" />
 
 				<Panel id="PlayerAvatar">
@@ -33,6 +32,9 @@
 					<CircularProgressBar id="HealthBar" max="100" min="0" />
 					<Panel class="TextContainer"/>
 				</Panel>
+
+				<Label text="{i:selectedUnitHP}" id="StatusHP" class="HPLabel" />
+				<Label text="{i:selectedUnitHP} / {i:selectedUnitMaxHP}" id="StatusHPInCombat" class="HPLabel" />
 
 				<Panel id="PlayerProfileAvatarOverlay"/>
 		</Panel>
@@ -44,6 +46,7 @@
 			<Panel id="AbilitySnippetContainer">
 				<!--dynamic content-->
 			</Panel>
+			<ProgressBar id="AbilityCooldown" />
 			<Label class="Stat" text="#DAC_InGame_UnitDamage_Query" html="true" />
 			<Label class="Stat" text="#DAC_InGame_AttackSpeed_Query" html="true" />
 			<Label class="Stat" text="#DAC_InGame_UnitDPS_Query" html="true" />

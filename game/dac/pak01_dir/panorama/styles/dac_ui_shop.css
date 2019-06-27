@@ -1,10 +1,15 @@
+DACUIShop
+{
+	width: 100%;
+	height: fit-children;
+}
 
 #UnitShopContainer {
 	horizontal-align: center;
 	background-color: #00000088;
 	background-color: gradient(linear, 0% 0%, 0% 100%, from(#00000088), color-stop( .65, #000000bb), color-stop( .8, #00000000), to(#00000000));
 	flow-children: down;
-	height: 100%;
+	height: fit-children;
 	width: 100%;
 	transition-property: opacity, position, transform;
 	transition-duration: 0.2s;
@@ -67,7 +72,7 @@
 	background-image: url("s2r://panorama/images/shop/cost5_corner_stone_psd.vtex");
 }
 
-#HeroName
+.HeroName
 {
 	margin-left: 18px;
 	line-height: 24px;
@@ -82,32 +87,37 @@
 	transition-duration: .1s;
 }
 
-.Cost1 #HeroName
+.LowVisualQuality .HeroName 
 {
+	transition-property: none;
+	transition-duration: 0s;
+}
+
+.Cost1 .HeroName {
 	color: gradient(linear, 0% 0%, 0% 100%, from(#d0b2cd), to(#cedef8));
 }
 
-.Cost2 #HeroName
+.Cost2 .HeroName
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from(#3ed93b), to(#99d3a0));
 }
 
-.Cost3 #HeroName
+.Cost3 .HeroName
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from(#5990ff), to(#9cbbed));
 }
 
-.Cost4 #HeroName
+.Cost4 .HeroName
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from(#e347ff), to(#e49bff));
 }
 
-.Cost5 #HeroName
+.Cost5 .HeroName
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from(#fc9f45), to(#ffd0a2));
 }
 
-.ShopEntry.CannotAfford #HeroName
+.ShopEntry.CannotAfford .HeroName
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from(#614a48), to(#846666));
 }
@@ -250,18 +260,18 @@
 }
 
 @keyframes 'IlluminateAnim' {
-    0%
+	0%
 
 {
-    background-color: #d3473d;
+	background-color: #d3473d;
 }
 
 50% {
-    background-color: #961c13;
+	background-color: #961c13;
 }
 
 100% {
-    background-color: #d3473d;
+	background-color: #d3473d;
 }
 
 }
@@ -269,20 +279,20 @@
 
 
 #BuyUnit Label {
-    //margin-top: 15px;
-    //margin-left: 18px;
-    text-transform: uppercase;
-    width: 205px;
-    height: 70px;
-    transform: translateY( 60px );
-    vertical-align: bottom;
-    horizontal-align: middle;
-    line-height: 26px;
-    //text-overflow: shrink;
-    color: #f3efd9;
-    font-size: 60px;
-    text-shadow: 0px 0px 0px 3.0 #000;
-    visibility: collapse;
+	//margin-top: 15px;
+	//margin-left: 18px;
+	text-transform: uppercase;
+	width: 205px;
+	height: 70px;
+	transform: translateY( 60px );
+	vertical-align: bottom;
+	horizontal-align: middle;
+	line-height: 26px;
+	//text-overflow: shrink;
+	color: #f3efd9;
+	font-size: 60px;
+	text-shadow: 0px 0px 0px 3.0 #000;
+	visibility: collapse;
 }
 
 .LowVisualQuality #BuyUnit Label {
@@ -290,7 +300,7 @@
 }
 
 .ShowBuyUnitLabel #BuyUnit{
-    visibility: visible;
+	visibility: visible;
 }
 
 #UnitHeader Label {
@@ -299,6 +309,11 @@
 
 .LowVisualQuality #UnitHeader Label {
 	text-shadow: 0px 0px 0px 2.0 #000;
+}
+
+.Minimal #UnitHeader Label
+{
+	text-shadow: 0px 0px 0px #000;
 }
 
 #UnitTypsContainer
@@ -383,6 +398,9 @@
 	flow-children: down;
 	width: 140px;
 	margin-right: 8px;
+
+	padding-top: 8px;
+	padding-bottom: 8px;
 }
 
 .CostLabel
@@ -425,26 +443,26 @@
 
 .Minimal .UnitShopBGItem.CannotAfford .UnderfootImage 
 {
-    /*background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_5_psd.vtex");
-    wash-color: #700;*/
+	/*background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_5_psd.vtex");
+	wash-color: #700;*/
 }
 
 .Minimal .ShopEntry.CannotAfford .CostContainer
 {
-    wash-color: #614a48;
+	wash-color: #614a48;
 }
 
 .CannotAffordLevelUp #LevelUp .GoldValueContainer,
 .CannotAffordReroll #RerollShop .GoldValueContainer
 {
-    wash-color: #614a48;
+	wash-color: #614a48;
 }
 
 .CannotAffordLevelUp #LevelUp .CostLabel,
 .CannotAffordReroll #RerollShop .CostLabel,
 .Minimal .ShopEntry.CannotAfford #CostNumber
 {
-    color: black;
+	color: black;
 }
 
 
@@ -730,8 +748,7 @@ DACSynergyIcon.HiddenInactive
 }
 
 .ShopButton {
-	margin-top: 16px;
-	margin-bottom: 16px;
+	margin: 8px;
 	padding: 0 3px;
 	transition-property: brightness, background-color;
 	transition-duration: .2s;
@@ -744,10 +761,15 @@ DACSynergyIcon.HiddenInactive
 	background-repeat: no-repeat;
 }
 
+.LowVisualQuality .ShopButton {
+	transition-property: none;
+	transition-duration: 0s;
+}
+
 #RerollButton
 {
-	width: 132px;
-	height: 132px;
+	width: 118px;
+	height: 118px;
 	vertical-align: center;
 	horizontal-align: center;
 	background-image: url("s2r://panorama/images/shop/reroll_button_psd.vtex");
@@ -759,9 +781,7 @@ DACSynergyIcon.HiddenInactive
 .FreeRerollLabel
 {	
 	font-size: 32px;
-	//color: gradient(linear, 0% 0%, 0% 100%, from( #999999 ), to(#f6f6f6));
 	color: gradient(linear, 0% 0%, 0% 100%, from( #fedd6e ), to(#e7c151));
-	//color: gold;
 	font-weight: bold;
 	text-shadow: 0px 0px 0px 2.0 #000;
 	text-transform: uppercase;
@@ -849,22 +869,15 @@ DACSynergyIcon.HiddenInactive
 	background-size: 100%;
 }
 
-#RerollShop
+#OddsButton
 {
-	margin-bottom: 8px;
-}
-
-#LockShop, #UnlockShop
-{
-	margin-top: 8px;
-	margin-left: 8px;
-}
-
-#LibraryShop
-{
-	margin-left: 8px;
-	margin-bottom: 8px;
-	margin-top: 16px;
+	width: 105px;
+	height: 105px;
+	z-index: 100;
+	vertical-align: center;
+	horizontal-align: center;
+	background-image: url("s2r://panorama/images/shop/odds_button_psd.vtex");
+	background-size: 100%;
 }
 
 .ShopButton:hover
@@ -927,6 +940,11 @@ DACSynergyIcon.HiddenInactive
 	transition-property: opacity, transform;
 	transition-duration: .2s; 
 	transform: translateY( -100px );
+}
+
+.LowVisualQuality .SynergyHelper 
+{
+    transition-duration: 0s;
 }
 
 .Minimal .SynergyHelper.ContainsInfo,
@@ -1079,12 +1097,12 @@ DACSynergyIcon.HiddenInactive
 {
 	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_bg_png.vtex");
 	background-size: 100%;
-	width: 166px;
-	height: 166px;
+	width: 118px;
+	height: 118px;
 	horizontal-align: center;
 	vertical-align: center;
 
-	ui-scale: 80%;
+	ui-scale: 100%;
 }
 
 #PlayerEXPGraph
@@ -1161,11 +1179,32 @@ DACSynergyIcon.HiddenInactive
 	visibility: collapse;
 }
 
-#AbilityContainer
+#AbilitySnippetContainer
 {
 	horizontal-align: right;
 	vertical-align: center;
+}
 
+.Minimal #AbilitySnippetContainer
+{
+	visibility: collapse;
+}
+
+.AbilityContainer.Ability0
+{
+	margin-right: -6px;
+	margin-bottom: -12px;
+	z-index: 10;
+}
+
+.AbilityContainer.Ability1
+{
+	margin-left: -18px;
+	margin-top: -12px;
+}
+
+.AbilityContainer
+{
 	width: 60px;
 	height: 60px;
 
@@ -1174,7 +1213,8 @@ DACSynergyIcon.HiddenInactive
 	opacity: 1;
 }
 
-#InfoRow
+#InfoRow,
+#InfoRowMinimal
 {
 	width: 100%;
 	height: 80px;
@@ -1194,6 +1234,17 @@ DACSynergyIcon.HiddenInactive
 #InfoRow:hover
 {
 	brightness: 2;
+}
+
+.LowVisualQuality #InfoRow
+{
+	transition-property: none;
+	transition-duration: 0s;
+}
+
+.Minimal #InfoRow
+{
+	visibility: collapse;
 }
 
 .Cost2 #InfoRow
@@ -1252,13 +1303,13 @@ DACSynergyIcon.HiddenInactive
 
 .GoldValueContainer
 {
-    width: 60px;
-    height: 54px;
+	width: 60px;
+	height: 54px;
 	horizontal-align: right;
 
-    background-image: url("s2r://panorama/images/hud/dac_shop_button_psd.vtex");
-    background-repeat: no-repeat;
-    background-size: contain;
+	background-image: url("s2r://panorama/images/hud/dac_shop_button_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
 	background-position: 50% 50%;
 	margin-top: 34px;
 	margin-right: 4px;
@@ -1272,14 +1323,14 @@ DACSynergyIcon.HiddenInactive
 .PlusMinus
 {
 	wash-color: #FFDE6D88;
-    width: 20px;
-    height: 20px;
+	width: 20px;
+	height: 20px;
 	margin-top: 12px;
 	margin-left: 0px;
-    background-image: url("s2r://panorama/images/hud/sell_unit_minus_psd.vtex");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50% 50%;
+	background-image: url("s2r://panorama/images/hud/sell_unit_minus_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
 	
 	visibility: collapse; 
 }
@@ -1298,8 +1349,8 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: center;
 	vertical-align: center;
 	background-image: url("s2r://panorama/images/shop/locked_icon_psd.vtex");
-    background-repeat: no-repeat;
-    background-size: contain;
+	background-repeat: no-repeat;
+	background-size: contain;
 	background-position: 50% 50%;
 	transition-property: opacity, pre-transform-scale2d;
 	transition-duration: 0.2s;
@@ -1314,10 +1365,8 @@ DACSynergyIcon.HiddenInactive
 
 
 // Minimal Mode
-.Minimal #InfoRow
+#InfoRowMinimal
 {
-	visibility: visible;
-
 	margin: 0px;
 	margin-bottom: 60px;
 
@@ -1327,10 +1376,17 @@ DACSynergyIcon.HiddenInactive
 
 	vertical-align: bottom;
 
+	visibility: collapse;
+
 	z-index: 1;	// move in front of the hero card
 }
 
-.Minimal #HeroName
+.Minimal #InfoRowMinimal
+{
+	visibility: visible;
+}
+
+.Minimal .HeroName
 {
 	text-align: center;
 	vertical-align: bottom;
@@ -1381,13 +1437,11 @@ DACSynergyIcon.HiddenInactive
 
 .Minimal #UnitShopContainer
 {
-	height: 450px;
-	//margin-top: 30px;
-
+	height: fit-children;
 	background-image:  url("s2r://panorama/images/shop/minimal_bg_psd.vtex");
 	background-size: 100% 100%;
-	//background-position: 0px 120px;
 	background-repeat: no-repeat;
+	background-position: 0 36px;
 }
 
 .Minimal #MainRow
@@ -1411,6 +1465,8 @@ DACSynergyIcon.HiddenInactive
 
 	width: fit-children;
 	height: fit-children;
+
+	padding: 0px;
 }
 
 .Minimal .ShopButton,
@@ -1560,8 +1616,8 @@ DACSynergyIcon.HiddenInactive
 
 .Minimal .GoldValueContainer
 {
-    width: 45px;
-    height: 45px;
+	width: 45px;
+	height: 45px;
 	horizontal-align: right;
 	margin-top: 33px;
  
@@ -1644,7 +1700,7 @@ DACSynergyIcon.HiddenInactive
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from(#973c00), to(#906030));
 	font-weight: bold;
-	font-size: 27px;
+	font-size: 28px;
 
 	text-align: center;
 	padding-top: 1px;
@@ -1652,7 +1708,8 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: center;
 
 	text-shadow: none;
-	margin-top: -4px;
+	margin-top: -2px;
+	margin-left: 2px;
 }
 
 .Minimal #UnitHeader
@@ -1662,14 +1719,50 @@ DACSynergyIcon.HiddenInactive
 
 #PlayerEXPTutorialHighlight 
 {
-    width: 160px;
-    height: 160px;
-    margin-top: 1px;
-    margin-left: 1px;
-    visibility: collapse;
+	width: 160px;
+	height: 160px;
+	margin-top: 1px;
+	margin-left: 1px;
+	visibility: collapse;
 }
 
 .TutorialBuyXPPopup #PlayerEXPTutorialHighlight
 {
-    visibility: visible;
+	visibility: visible;
+}
+
+#InfoButton
+{
+	background-image: url("s2r://panorama/images/shop/shop_info_icon_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+
+	width: 45px;
+	height: 45px;
+
+	vertical-align: bottom;
+	margin-bottom: 93px;
+	margin-left: 10px;
+
+	visibility: collapse;
+
+	z-index: 201;
+
+	brightness: 1;
+}
+
+.Minimal #HeroCardRow:hover #InfoButton
+{
+	visibility: visible;
+}
+
+#InfoButton:hover
+{
+	brightness: 2;
+}
+
+.Minimal #OddsShop
+{
+	visibility: collapse;
 }

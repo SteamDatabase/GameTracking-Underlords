@@ -1,0 +1,149 @@
+// Shadowfiend - Hero
+criterion "Is_shadowfiend" "unitName" "shadow_fiend" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response shadowfiend_recruit_1
+{
+	speak "shadowfiend_recruit" noscene 
+}
+
+Rule shadowfiend_recruit_1_rule
+{
+	criteria Is_shadowfiend ConceptRecruit UnitRank1
+	response shadowfiend_recruit_1
+}
+
+
+Response shadowfiend_recruit_2
+{
+	speak "shadowfiend_upgrade" noscene 
+}
+
+Rule shadowfiend_recruit_2_rule
+{
+	criteria Is_shadowfiend ConceptRecruit UnitRank2
+	response shadowfiend_recruit_2
+}
+
+
+Response shadowfiend_recruit_3
+{
+	speak "shadowfiend_final_upgrade" noscene 
+}
+
+Rule shadowfiend_recruit_3_rule
+{
+	criteria Is_shadowfiend ConceptRecruit UnitRank3
+	response shadowfiend_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response shadowfiend_start_round
+{
+	speak "shadowfiend_start_round" noscene 
+}
+
+Rule shadowfiend_start_round_rule
+{
+	criteria Is_shadowfiend ConceptRoundStart 
+	response shadowfiend_start_round
+}
+
+
+Response shadowfiend_start_round_lost_last_round
+{
+	speak "shadowfiend_start_round_lost_last_round" noscene 
+}
+
+Rule shadowfiend_start_round_lost_last_round_rule
+{
+	criteria Is_shadowfiend ConceptRoundStart LostLastGame
+	response shadowfiend_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response shadowfiend_flawless_victory
+{
+	speak "shadowfiend_flawless_victory" noscene 
+}
+
+Rule shadowfiend_flawless_victory_rule
+{
+	criteria Is_shadowfiend ConceptRoundEnd Result_WinFlawless
+	response shadowfiend_flawless_victory
+}
+
+
+Response shadowfiend_decisive_victory
+{
+	speak "shadowfiend_decisive_victory" noscene 
+}
+
+Rule shadowfiend_decisive_victory_rule
+{
+	criteria Is_shadowfiend ConceptRoundEnd Result_WinDecisive
+	response shadowfiend_decisive_victory
+}
+
+Response shadowfiend_narrow_victory
+{
+	speak "shadowfiend_narrow_victory" noscene 
+}
+
+Rule shadowfiend_narrow_victory_rule
+{
+	criteria Is_shadowfiend ConceptRoundEnd Result_WinNarrow
+	response shadowfiend_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response shadowfiend_flawless_defeat
+{
+	speak "shadowfiend_flawless_defeat" noscene 
+}
+
+Rule shadowfiend_flawless_defeat_rule
+{
+	criteria Is_shadowfiend ConceptRoundEnd Result_LoseFlawless
+	response shadowfiend_flawless_defeat
+}
+
+
+Response shadowfiend_decisive_defeat
+{
+	speak "shadowfiend_decisive_defeat" noscene 
+}
+
+Rule shadowfiend_decisive_defeat_rule
+{
+	criteria Is_shadowfiend ConceptRoundEnd Result_LoseDecisive
+	response shadowfiend_decisive_defeat
+}
+
+Response shadowfiend_narrow_defeat
+{
+	speak "shadowfiend_narrow_defeat" noscene 
+}
+
+Rule shadowfiend_narrow_defeat_rule
+{
+	criteria Is_shadowfiend ConceptRoundEnd Result_LoseNarrow
+	response shadowfiend_narrow_defeat
+}

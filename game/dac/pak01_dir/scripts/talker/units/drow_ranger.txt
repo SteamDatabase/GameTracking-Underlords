@@ -1,0 +1,144 @@
+// Drow Ranger - Hero
+criterion "Is_drow_ranger" "unitName" "drow_ranger" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response drow_ranger_recruit_1
+{
+	speak "drow_ranger_recruit" noscene 
+}
+
+Rule drow_ranger_recruit_1_rule
+{
+	criteria Is_drow_ranger ConceptRecruit UnitRank1
+	response drow_ranger_recruit_1
+}
+
+Response drow_ranger_recruit_2
+{
+	speak "drow_ranger_upgrade" noscene 
+}
+
+Rule drow_ranger_recruit_2_rule
+{
+	criteria Is_drow_ranger ConceptRecruit UnitRank2
+	response drow_ranger_recruit_2
+}
+
+Response drow_ranger_recruit_3
+{
+	speak "drow_ranger_final_upgrade" noscene 
+}
+
+Rule drow_ranger_recruit_3_rule
+{
+	criteria Is_drow_ranger ConceptRecruit UnitRank3
+	response drow_ranger_recruit_3
+}
+
+////////////////
+//Round Start///
+////////////////
+
+Response drow_ranger_start_round
+{
+	speak "drow_ranger_start_round" noscene 
+}
+
+Rule drow_ranger_start_round_rule
+{
+	criteria Is_drow_ranger ConceptRoundStart 
+	response drow_ranger_start_round
+}
+
+Response drow_ranger_start_round_lost_last_round
+{
+	speak "drow_ranger_start_round_lost_last_round" noscene 
+}
+
+Rule drow_ranger_start_round_lost_last_round_rule
+{
+	criteria Is_drow_ranger ConceptRoundStart LostLastGame
+	response drow_ranger_start_round_lost_last_round
+}
+
+
+
+///////////
+//Victory//
+///////////
+
+Response drow_ranger_flawless_victory
+{
+	speak "drow_ranger_flawless_victory" noscene 
+}
+
+Rule drow_ranger_flawless_victory_rule
+{
+	criteria Is_drow_ranger ConceptRoundEnd Result_WinFlawless
+	response drow_ranger_flawless_victory
+}
+
+
+Response drow_ranger_decisive_victory
+{
+	speak "drow_ranger_decisive_victory" noscene 
+}
+
+Rule drow_ranger_decisive_victory_rule
+{
+	criteria Is_drow_ranger ConceptRoundEnd Result_WinDecisive
+	response drow_ranger_decisive_victory
+}
+
+Response drow_ranger_narrow_victory
+{
+	speak "drow_ranger_narrow_victory" noscene 
+}
+
+Rule drow_ranger_narrow_victory_rule
+{
+	criteria Is_drow_ranger ConceptRoundEnd Result_WinNarrow
+	response drow_ranger_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response drow_ranger_flawless_defeat
+{
+	speak "drow_ranger_flawless_defeat" noscene 
+}
+
+Rule drow_ranger_flawless_defeat_rule
+{
+	criteria Is_drow_ranger ConceptRoundEnd Result_LoseFlawless
+	response drow_ranger_flawless_defeat
+}
+
+
+Response drow_ranger_decisive_defeat
+{
+	speak "drow_ranger_decisive_defeat" noscene 
+}
+
+Rule drow_ranger_decisive_defeat_rule
+{
+	criteria Is_drow_ranger ConceptRoundEnd Result_LoseDecisive
+	response drow_ranger_decisive_defeat
+}
+
+Response drow_ranger_narrow_defeat
+{
+	speak "drow_ranger_narrow_defeat" noscene 
+}
+
+Rule drow_ranger_narrow_defeat_rule
+{
+	criteria Is_drow_ranger ConceptRoundEnd Result_LoseNarrow
+	response drow_ranger_narrow_defeat
+}

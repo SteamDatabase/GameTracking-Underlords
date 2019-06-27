@@ -1,0 +1,143 @@
+// Lina - Hero
+criterion "Is_lina" "unitName" "lina" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+Response lina_recruit_1
+{
+	speak "lina_recruit" noscene 
+}
+
+Rule lina_recruit_1_rule
+{
+	criteria Is_lina ConceptRecruit UnitRank1
+	response lina_recruit_1
+}
+
+Response lina_recruit_2
+{
+	speak "lina_upgrade" noscene 
+}
+
+Rule lina_recruit_2_rule
+{
+	criteria Is_lina ConceptRecruit UnitRank2
+	response lina_recruit_2
+}
+
+Response lina_recruit_3
+{
+	speak "lina_final_upgrade" noscene 
+}
+
+Rule lina_recruit_3_rule
+{
+	criteria Is_lina ConceptRecruit UnitRank3
+	response lina_recruit_3
+}
+
+////////////////
+//Round Start///
+////////////////
+
+Response lina_start_round
+{
+	speak "lina_start_round" noscene 
+}
+
+Rule lina_start_round_rule
+{
+	criteria Is_lina ConceptRoundStart 
+	response lina_start_round
+}
+
+Response lina_start_round_lost_last_round
+{
+	speak "lina_start_round_lost_last_round" noscene 
+}
+
+Rule lina_start_round_lost_last_round_rule
+{
+	criteria Is_lina ConceptRoundStart LostLastGame
+	response lina_start_round_lost_last_round
+}
+
+
+
+///////////
+//Victory//
+///////////
+
+Response lina_flawless_victory
+{
+	speak "lina_flawless_victory" noscene 
+}
+
+Rule lina_flawless_victory_rule
+{
+	criteria Is_lina ConceptRoundEnd Result_WinFlawless
+	response lina_flawless_victory
+}
+
+
+Response lina_decisive_victory
+{
+	speak "lina_decisive_victory" noscene 
+}
+
+Rule lina_decisive_victory_rule
+{
+	criteria Is_lina ConceptRoundEnd Result_WinDecisive
+	response lina_decisive_victory
+}
+
+Response lina_narrow_victory
+{
+	speak "lina_narrow_victory" noscene 
+}
+
+Rule lina_narrow_victory_rule
+{
+	criteria Is_lina ConceptRoundEnd Result_WinNarrow
+	response lina_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response lina_flawless_defeat
+{
+	speak "lina_flawless_defeat" noscene 
+}
+
+Rule lina_flawless_defeat_rule
+{
+	criteria Is_lina ConceptRoundEnd Result_LoseFlawless
+	response lina_flawless_defeat
+}
+
+
+Response lina_decisive_defeat
+{
+	speak "lina_decisive_defeat" noscene 
+}
+
+Rule lina_decisive_defeat_rule
+{
+	criteria Is_lina ConceptRoundEnd Result_LoseDecisive
+	response lina_decisive_defeat
+}
+
+Response lina_narrow_defeat
+{
+	speak "lina_narrow_defeat" noscene 
+}
+
+Rule lina_narrow_defeat_rule
+{
+	criteria Is_lina ConceptRoundEnd Result_LoseNarrow
+	response lina_narrow_defeat
+}

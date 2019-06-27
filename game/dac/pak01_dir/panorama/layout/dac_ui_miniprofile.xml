@@ -12,31 +12,23 @@
 		<Label class="HeaderPlayerName" id="PlayerNameContainer" text="{g:dac_player_slot_persona:b:player_slot}" html="true" />
 		
 		<Panel id="PlayerProfile">
-
 			<DACRankIcon id="RankIcon" iconstyle="miniprofile"/>			
 
 			<!-- <Label text="#DAC_InGame_PlayerXP" id="StatusXP" /> -->
 
-
-
 			<Panel id="PlayerAvatar">
-					<DACPlayerAvatar id="PlayerProfileAvatar" />
-			
-					<DACScenePanel id="ParticleFG" map="particles/hud/profile_streak" camera="cam_default" particleonly="true"  />			
-				</Panel>
-			
-
+				<DACPlayerAvatar id="PlayerProfileAvatar" />			
+				<DACScenePanel id="ParticleFG" map="particles/hud/profile_streak" camera="cam_default" particleonly="true"  />
+			</Panel>
 
 			<Panel id="PlayerProfileAvatarOverlay">
-					<Image src="s2r://panorama/images/mini_profile/mini_profile_avatar_vignette_psd.vtex" />
-					<Image src="s2r://panorama/images/mini_profile/mini_profile_avatar_border_psd.vtex" />
+				<Image src="s2r://panorama/images/mini_profile/mini_profile_avatar_vignette_psd.vtex" />
+				<Image src="s2r://panorama/images/mini_profile/mini_profile_avatar_border_psd.vtex" />
 			</Panel>
 
 			<Label text="{i:playerStateHP}" id="StatusHP" />
-
-		
 			
-			<Panel id="PlayerEXPContainer" onactivate="DACProfileBuyEXP()">
+			<Panel id="PlayerEXPContainer" onactivate="DACProfileBuyEXP()" onmouseover="DACShowXPTooltip()" onmouseout="DACHideXPTooltip()">
 				<CircularProgressBar value="0.5" id="PlayerEXPGraph" min="0" />
 				<Label text="{i:playerStateLevel}" id="PlayerEXPGraphLevel" />
 				<DACParticleScenePanel id="EXPInvestParticle" hittest="false" startActive="false" particleName="particles/ui/xp/ui_xp_invest.vpcf" fov="-200" cameraDist="10"/>

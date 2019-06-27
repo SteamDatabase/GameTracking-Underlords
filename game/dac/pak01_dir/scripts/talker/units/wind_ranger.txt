@@ -1,0 +1,144 @@
+// Wind Ranger - Hero
+criterion "Is_wind_ranger" "unitName" "wind_ranger" required
+
+
+////////////////
+//Recruit Unit//
+////////////////
+
+Response wind_ranger_recruit_1
+{
+	speak "wind_ranger_recruit" noscene 
+}
+
+Rule wind_ranger_recruit_1_rule
+{
+	criteria Is_wind_ranger ConceptRecruit UnitRank1
+	response wind_ranger_recruit_1
+}
+
+Response wind_ranger_recruit_2
+{
+	speak "wind_ranger_upgrade" noscene 
+}
+
+Rule wind_ranger_recruit_2_rule
+{
+	criteria Is_wind_ranger ConceptRecruit UnitRank2
+	response wind_ranger_recruit_2
+}
+
+Response wind_ranger_recruit_3
+{
+	speak "wind_ranger_final_upgrade" noscene 
+}
+
+Rule wind_ranger_recruit_3_rule
+{
+	criteria Is_wind_ranger ConceptRecruit UnitRank3
+	response wind_ranger_recruit_3
+}
+
+////////////////
+//Round Start///
+////////////////
+
+Response wind_ranger_start_round
+{
+	speak "wind_ranger_start_round" noscene 
+}
+
+Rule wind_ranger_start_round_rule
+{
+	criteria Is_wind_ranger ConceptRoundStart 
+	response wind_ranger_start_round
+}
+
+Response wind_ranger_start_round_lost_last_round
+{
+	speak "wind_ranger_start_round_lost_last_round" noscene 
+}
+
+Rule wind_ranger_start_round_lost_last_round_rule
+{
+	criteria Is_wind_ranger ConceptRoundStart LostLastGame
+	response wind_ranger_start_round_lost_last_round
+}
+
+
+
+///////////
+//Victory//
+///////////
+
+Response wind_ranger_flawless_victory
+{
+	speak "wind_ranger_flawless_victory" noscene 
+}
+
+Rule wind_ranger_flawless_victory_rule
+{
+	criteria Is_wind_ranger ConceptRoundEnd Result_WinFlawless
+	response wind_ranger_flawless_victory
+}
+
+
+Response wind_ranger_decisive_victory
+{
+	speak "wind_ranger_decisive_victory" noscene 
+}
+
+Rule wind_ranger_decisive_victory_rule
+{
+	criteria Is_wind_ranger ConceptRoundEnd Result_WinDecisive
+	response wind_ranger_decisive_victory
+}
+
+Response wind_ranger_narrow_victory
+{
+	speak "wind_ranger_narrow_victory" noscene 
+}
+
+Rule wind_ranger_narrow_victory_rule
+{
+	criteria Is_wind_ranger ConceptRoundEnd Result_WinNarrow
+	response wind_ranger_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response wind_ranger_flawless_defeat
+{
+	speak "wind_ranger_flawless_defeat" noscene 
+}
+
+Rule wind_ranger_flawless_defeat_rule
+{
+	criteria Is_wind_ranger ConceptRoundEnd Result_LoseFlawless
+	response wind_ranger_flawless_defeat
+}
+
+
+Response wind_ranger_decisive_defeat
+{
+	speak "wind_ranger_decisive_defeat" noscene 
+}
+
+Rule wind_ranger_decisive_defeat_rule
+{
+	criteria Is_wind_ranger ConceptRoundEnd Result_LoseDecisive
+	response wind_ranger_decisive_defeat
+}
+
+Response wind_ranger_narrow_defeat
+{
+	speak "wind_ranger_narrow_defeat" noscene 
+}
+
+Rule wind_ranger_narrow_defeat_rule
+{
+	criteria Is_wind_ranger ConceptRoundEnd Result_LoseNarrow
+	response wind_ranger_narrow_defeat
+}

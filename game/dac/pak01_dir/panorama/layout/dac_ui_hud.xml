@@ -110,35 +110,32 @@
 		<DACHUDItemDisplay hittest="false"/>
 		<DACHUDRankDisplay hittest="false"/>
 
-		<Panel class="SafeArea" hittest="false">
+		<Panel class="RightTabBarBackground" />
 
-			<Panel id="RightTabBar">
+		<Panel id="RightTabBar">
 
-				<Panel id="TabBarButtons" class="TabBarButtonContainer">
-					<Panel id="SpannerTop"/>
-					<Panel class="TabButtonBackerSynergies">
-						<Button class="TabButton SynergyTabButton" onactivate="DACShowSynergiesTab(); PlaySoundEffect( 'DAC_UI.SelectBattleInfo' )" onmouseover="PlaySoundEffect( 'DAC_UI.RolloverBattleInfo' )">
-							<!--<Label text="#DAC_InGame_Tab_Synergies" />-->
-							<DACParticleScenePanel id="SynergyTabTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
-						</Button>
-					</Panel>
-					<Panel class="TabButtonBackerDPS">
-						<Button class="TabButton DPSTabButton" onactivate="DACShowDPSTab(); PlaySoundEffect( 'DAC_UI.SelectBattleInfo' )" onmouseover="PlaySoundEffect( 'DAC_UI.RolloverBattleInfo' )">
-							<!--<Label text="#DAC_InGame_Tab_Damage" />-->
-						</Button>
-					</Panel>
-					<Panel class="TabButtonBackerItems">
-						<Button class="TabButton ItemsTabButton" onactivate="DACShowItemsTab(); PlaySoundEffect( 'DAC_UI.SelectBattleInfo' )" onmouseover="PlaySoundEffect( 'DAC_UI.RolloverBattleInfo' )">
-							<!--<Label text="#DAC_InGame_Tab_Items" />-->
-							<Label id="UnassignedItemsCount" text="{i:itemsUnassigned}" />
-							<Label class="BenchedItemsCount" text="{i:itemsBenched}" />
-							<DACScenePanel id="UnassignedItemsParticleScenePanel" hittest="false" map="particles/hud/items_unassigned" camera="cam_default" particleonly="true"/>
-							<DACParticleScenePanel id="ItemTabTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
-						</Button>
-					</Panel>
-					<Panel id="SpannerBottom"/>
+			<Panel id="TabBarButtons" class="TabBarButtonContainer">
+				<Panel class="TabButtonBackerSynergies">
+					<Button class="TabButton SynergyTabButton" onactivate="DACShowSynergiesTab(); PlaySoundEffect( 'DAC_UI.SelectBattleInfo' )" onmouseover="PlaySoundEffect( 'DAC_UI.RolloverBattleInfo' )">
+						<DACParticleScenePanel id="SynergyTabTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
+					</Button>
+				</Panel>
+				<Panel class="TabButtonBackerDPS">
+					<Button class="TabButton DPSTabButton" onactivate="DACShowDPSTab(); PlaySoundEffect( 'DAC_UI.SelectBattleInfo' )" onmouseover="PlaySoundEffect( 'DAC_UI.RolloverBattleInfo' )">
+					</Button>
+				</Panel>
+				<Panel class="TabButtonBackerItems">
+					<Button class="TabButton ItemsTabButton" onactivate="DACShowItemsTab(); PlaySoundEffect( 'DAC_UI.SelectBattleInfo' )" onmouseover="PlaySoundEffect( 'DAC_UI.RolloverBattleInfo' )">
+						<Label id="UnassignedItemsCount" text="{i:itemsUnassigned}" />
+						<Label class="BenchedItemsCount" text="{i:itemsBenched}" />
+						<DACScenePanel id="UnassignedItemsParticleScenePanel" hittest="false" map="particles/hud/items_unassigned" camera="cam_default" particleonly="true"/>
+						<DACParticleScenePanel id="ItemTabTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
+					</Button>
 				</Panel>
 			</Panel>
+		</Panel>
+
+		<Panel class="SafeArea" hittest="false">
 
 			<Panel class="TabContainer">
 
@@ -168,46 +165,24 @@
 					<Label class="HeaderPlayerName" id="PlayerNameContainer" text="{g:dac_player_slot_persona:b:gameStatePlayerSlot}" html="true" />
 				</Panel>
 				<Panel>
-					<DACMiniProfile id="MiniProfile" showparticles="true" allowactions="true"/>
+					<DACMiniProfile id="MiniProfile" showparticles="true" allowactions="true" selectedplayer="true"/>
 					<DACUnitStatus id="SelectedUnitContainer" class="DefaultHidden" onmouseover="DACUnitSelected(-2)" hittest="false" />
 				</Panel>
 			</Panel>
 
 			<Panel id="PlayerBench" />
+		</Panel>
 
-			<!-- Things that draw over the hud periodically -->
+		<!-- Popups that demand attention -->
+		<!-- these panels have to manage their safe area internally, if applicable -->
+		<DACVSScreen id="VSScreen" hittest="false" />
+		<DACRoundStart />
+		<DACItemSelect id="ItemSelect" />
+		<DACUIMatchIntro id="MatchIntro"/>
+		<DACRoundOverScreen />
 
-			<!-- Popups that demand attention -->
-			<DACVSScreen id="VSScreen" hittest="false" />
-			<DACItemSelect id="ItemSelect" />
-			<DACUIMatchIntro id="MatchIntro"/>
-			<DACRoundStart />
-			<Panel class="PlayerLeaderboardBackground">
-				<Panel id="PlayerLeaderboardContainer" />
-			</Panel>
+		<Panel class="SafeArea" hittest="false">
 			<DACNotifications />
-			<DACRoundOverScreen />			
-			
-			<Panel id="CornerButtons" hittest="false">
-					<Panel class="PlayPauseContainer">
-						<Panel class="PauseButton" onactivate="DACTogglePauseGame()" />
-						<Panel class="FastForwardButton" onactivate="DACStepForward()">
-							<DACParticleScenePanel id="FastForwardButtonTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
-						</Panel>
-					</Panel>
-					<Panel id="ShopButton" onactivate="DACToggleShop()">
-						<Panel id="OpenShopButton" />
-						<Panel id="CloseShopButton" />						
-						<Panel id="GoldAmount">
-							<Label text="{i:shopGold}" id="GoldAmountLabel" />
-						</Panel>
-						<DACParticleScenePanel id="ShopButtonTutorialHighlight" hittest="false" startActive="true" cameraLeft="10" cameraUp="10" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
-					</Panel>
-
-				<DropDown id="HudModeDropdown">
-					<!-- Dynamic Content -->
-				</DropDown>
-			</Panel>
 			<Panel id="GameStatePanel">
 				<Panel class="GameStatePanelRound">
 					<Panel id="GameStateBackerOutline"/>
@@ -225,35 +200,53 @@
 					</Panel>
 				</Panel>
 			</Panel>
-			<DACUIShop/>
-			<Panel id="HamburgerButton" onactivate="DACShowMenuButtons()" />			
-			<DACSellUnitBar id="SellUnitBar"/>
 
+			<DACUIShop/>
+			<Panel id="HamburgerButton" onactivate="DACShowMenuButtons()" />
+			<Panel class="BatteryIndicator">
+				<ProgressBar value="1" max="1" id="BatteryStatus" />
+			</Panel>
 			<DACUIZoo id="Zoo"/>
 			<Panel id="ErrorMsg">
 				<Label text="{s:error_message}"/>
 			</Panel>
 
-			<!-- Chrome that draws over everything -->
-			<Panel id="MenuButtons">
-				<Panel class="MenuButtonContainer PopupPanel">
-					<Panel class="MenuLogo" />
-					<Button class="MenuButton BevelButton" onactivate="DACHideMenuButtons()">
-						<Label text="#DAC_InGame_MenuCancel"></Label>
-					</Button>
-					<Button class="MenuButton BevelButton" onactivate="DACShowHeropediaPopup();">
-						<Label text="#DAC_InGame_Heropedia"></Label>
-					</Button>
-					<Button class="MenuButton BevelButton SettingsButton" onactivate="DACShowSettingsPopup();">
-						<Label text="#DAC_InGame_ShowSettings"></Label>
-					</Button>
-					<Button id="ZooButton" class="MenuButton BevelButton" onactivate="DACShowHudZoo(); DACHideMenuButtons()">
-						<Label text="#DAC_InGame_Zoo"></Label>
-					</Button>
-					<Button class="MenuButton BevelButton" onactivate="DACReturnToDashboard( false )">
-						<Label text="#DAC_InGame_ReturnToMainMenu"></Label>
-					</Button>
+			<Panel class="CornerButtons" hittest="false">
+				<Panel id="ShopButton" onactivate="DACToggleShop()">
+					<Panel id="OpenShopButton" />
+					<Panel id="CloseShopButton" />
+					<Panel id="GoldAmount">
+						<Label text="{i:shopGold}" id="GoldAmountLabel" />
+					</Panel>
+					<DACParticleScenePanel id="ShopButtonTutorialHighlight" hittest="false" startActive="true" cameraLeft="10" cameraUp="10" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
 				</Panel>
+			</Panel>
+			
+		</Panel>
+		<Panel id="ScoreboardBG" onactivate="DACHideScoreboard()" />
+		<Panel class="SafeArea" hittest="false">
+
+			<Panel class="PlayerLeaderboardBackground">
+				<DACScoreboard />
+				<Panel id="PlayerLeaderboardContainer" />
+			</Panel>
+			<Panel class="HudToggleContainer">
+				<Panel id="ShowScoreboardButton" onactivate="DACShowScoreboard()" />
+				<Panel id="HideScoreboardButton" onactivate="DACHideScoreboard()" />
+			</Panel>
+			<DACSellUnitBar id="SellUnitBar"/>
+
+			<Panel class="CornerButtons" hittest="false">
+				<Panel class="PlayPauseContainer">
+					<Panel class="PauseButton" onactivate="DACTogglePauseGame()" />
+					<Panel class="FastForwardButton" onactivate="DACStepForward()">
+						<DACParticleScenePanel id="FastForwardButtonTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
+					</Panel>
+				</Panel>
+
+				<DropDown id="HudModeDropdown">
+					<!-- Dynamic Content -->
+				</DropDown>
 			</Panel>
 
 			<!-- Debug menu -->
@@ -307,6 +300,28 @@
 				</Button>
 				<Button id="CloseDebugMenuButton" onactivate="RemoveStyle(DebugMenuWrapper,DebugMenuOpen)">
 					<Label class="DebugText" text="Close\nDebug\nMenu"/>
+				</Button>
+			</Panel>
+		</Panel>
+
+		<!-- Chrome that draws over everything -->
+		<Panel id="MenuButtons" hittest="true">
+			<Panel class="MenuButtonContainer PopupPanel">
+				<Panel class="MenuLogo" />
+				<Button class="MenuButton BevelButton" onactivate="DACHideMenuButtons()">
+					<Label text="#DAC_InGame_MenuCancel"></Label>
+				</Button>
+				<Button class="MenuButton BevelButton" onactivate="DACShowHeropediaPopup();">
+					<Label text="#DAC_InGame_Heropedia"></Label>
+				</Button>
+				<Button class="MenuButton BevelButton SettingsButton" onactivate="DACShowSettingsPopup();">
+					<Label text="#DAC_InGame_ShowSettings"></Label>
+				</Button>
+				<Button id="ZooButton" class="MenuButton BevelButton" onactivate="DACShowHudZoo(); DACHideMenuButtons()">
+					<Label text="#DAC_InGame_Zoo"></Label>
+				</Button>
+				<Button class="MenuButton BevelButton" onactivate="DACReturnToDashboard( false )">
+					<Label text="#DAC_InGame_ReturnToMainMenu"></Label>
 				</Button>
 			</Panel>
 		</Panel>
@@ -366,7 +381,6 @@
 				</Panel>
 			</Panel>
 		</Panel>
-
 		<Panel id="WinOverlayPanel" onactivate="">
 			<Panel class="OverlayContainer">
 				<Panel class="radial-gradient" />
@@ -419,6 +433,7 @@
 			</Panel>
 		</Panel>
 		<Panel class="SafeArea" hittest="false">
+			
 			<DACChatWheel />
 			<DACPostGameStats id="PostGameStats"/>
 			<ToastManager id="ToastManager" hittest="false" toastduration="5.0s" maxtoastsvisible="3" />

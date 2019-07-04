@@ -1,11 +1,13 @@
 @import url("file://{resources}/styles/battle_pass/current_battlepass.css");
 
 DACHeropediaPage {
-	background-size: 100%;
 	width: 100%;
 	height: 100%;
-	/*background-image: url("s2r://panorama/images/heropedia/nav-bg_png.vtex");*/
-	/*background-color: red;*/
+
+	background-image: url("s2r://panorama/images/heropedia/heropedia-bg-2_psd.vtex");
+	background-size: 100%;
+	background-position: left;
+	background-repeat: no-repeat;
 }
 
 .Dimmer {
@@ -19,9 +21,9 @@ DACHeropediaPage {
 }
 
 #HeropediaContainer {
-    width: 100%;
-    height: 100%;
-    background-image: url("s2r://panorama/images/heropedia/heropedia-bg-2_psd.vtex");
+	width: 100%;
+	height: 100%;
+	background-image: url("s2r://panorama/images/heropedia/heropedia-bg-2_psd.vtex");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -29,62 +31,67 @@ DACHeropediaPage {
 
 .IsPlatformPC #HeropediaContainer
 {
-    //ui-scale: 70%;
-    //margin-left: 15%;
-    //margin-top: 15%;
-    background-size: 80%;
+	background-size: 80%;
 }
 
-.HeropediaHeader {
+.HeropediaBody
+{
 	width: 100%;
-	height: 132px;
-	/*background-color: gradient(linear, 0% 100%, 0% 0%, from( #233749 ), to( #030508 ));*/
-}
-
-.HeropediaBody {
-	width: 100%;
-	/*border: 1px solid red;*/
 	height: fill-parent-flow(0.5);
 	flow-children: right;
 	height: 100%;
 	vertical-align: bottom;
-	/*background-color: #333333;*/
 	padding: safe-area-inset-top safe-area-inset-right safe-area-inset-bottom safe-area-inset-left;
-	background-image: url("s2r://panorama/images/heropedia/heropedia-bg-2_psd.vtex");
-	background-size: 100%;
-	background-position: left;
-	background-repeat: no-repeat;
 }
 
 .HeroesTabContainer {}
 
 #TitleImage
 {
-    width: 120px;
-    height: 105px;
-    background-image: url("s2r://panorama/images/dashboard/logo_crown_png.vtex");
-    background-size: 100%;
-    background-repeat: no-repeat;
-    horizontal-align: left;
-    vertical-align: top;
-    margin-top: 40px;
-    margin-left: 50px;
-    margin-bottom: 30px;
+	width: 120px;
+	height: 105px;
+	background-image: url("s2r://panorama/images/dashboard/logo_crown_png.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	horizontal-align: left;
+	vertical-align: top;
+	margin-top: 40px;
+	margin-left: 50px;
+	margin-bottom: 30px;
 		visibility: collapse;
 }
 
-.HeropediaTabButtons {
+.HeropediaTabBackground
+{
+	height: 100%;
+	width: 517px;
+	
+	background-image: url("s2r://panorama/images/heropedia/nav-bg_png.vtex");
+	background-size: 100%;
+}
+
+.AspectRatio21x9.IsPlatformMobile .HeropediaTabBackground
+{
+	width: 644px;
+}
+
+.HeropediaTabButtons
+{
 	width: 540px;
 	height: 100%;
 	padding-top: 0px;
-	background-image: url("s2r://panorama/images/heropedia/nav-bg_png.vtex");
 	background-size: 100%;
 	opacity-mask: url("s2r://panorama/images/masks/heropedia-nav_psd.vtex") 1;
 }
 
 .IsPlatformPC .HeropediaTabButtons
 {
-    ui-scale: 80%;
+	ui-scale: 80%;
+}
+
+.IsPlatformPC .HeropediaTabBackground
+{
+	width: 416px;
 }
 
 
@@ -173,6 +180,7 @@ DACHeropediaPage {
 .ItemsButtonContainer #ItemsButtonContainer,
 .SynergiesButtonContainer #SynergiesButtonContainer,
 .CreepsButtonContainer #CreepsButtonContainer,
+.PatchNotesButtonContainer #PatchNotesButtonContainer,
 .RulesButtonContainer #RulesButtonContainer {
 	/*background-image: url("s2r://panorama/images/hud/right_tab_backer_psd.vtex");*/
 	background-size: 110% 100%;
@@ -202,11 +210,16 @@ DACHeropediaPage {
 	flow-children: right;
 }
 
+.AspectRatio21x9.IsPlatformMobile .HeropediaTabPanels
+{
+	width: 1800px;
+}
+
 .IsPlatformPC .HeropediaTabPanels
 {
 	width: 100%;
-    ui-scale: 80%;
-    padding: 0% 5%;
+	ui-scale: 80%;
+	padding: 0% 5%;
 }
 
 
@@ -232,7 +245,8 @@ DACHeropediaPage {
 .ItemsTabContainer #ItemsTabContainer,
 .CreepsTabContainer #CreepsTabContainer,
 .RulesTabContainer #RulesTabContainer,
-.SynergiesTabContainer #SynergiesTabContainer
+.SynergiesTabContainer #SynergiesTabContainer,
+.PatchNotesTabContainer #PatchNotesTabContainer
 {
 	visibility: visible;
 }

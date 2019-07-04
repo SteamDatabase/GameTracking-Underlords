@@ -299,7 +299,7 @@
 				"affects_all_enemies_with_keyword": true,
 				"special_keyword": "demon",
 				"cumulative": true,
-				"modifier_name": "demonhunter_immunity",
+				"modifier_name": "demonhunter_disable_demons",
 				"unitcount": 1
 			},
 			{
@@ -427,14 +427,12 @@
 		"levels": [
 			{
 				"id": 20043,
-				"unitcount": 2,
-				"affects_random_enemy": true
+				"unitcount": 3,
+				"affects_all_enemy_units": true
 			}
 		],
 		"base_modifiers": [ "modifier_bonus_mana_per_hit" ],
-		"delay": 1.0,
-		"duration": 6.0,
-		"movespeed": 140,
+		"mana_dampen": -200,
 		"color": "52 159 100"
 	},
 
@@ -444,22 +442,26 @@
 			{
 				"id": 20044,
 				"unitcount": 2,
-				"affects_all_allied_units": true
+        "affects_all_allies_with_keyword": true
 
 			},
 			{
 				"id": 20045,
 				"unitcount": 4,
-				"affects_all_allied_units": true
+        "affects_all_allies_with_keyword": true
 			},
 			{
 				"id": 20046,
 				"unitcount": 6,
-				"affects_all_allied_units": true
+        "affects_all_allies_with_keyword": true
 			}
-		],
+    ],
+    "precache": [
+      "particles/gameplay/synergy/warlock/warlock_link.vpcf"
+    ],
 		"base_modifiers": [ "modifier_bonus_mana_per_hit" ],
-		"lifesteal_pct": [ 15, 30, 50 ],
+    "lifesteal_pct": [ 50, 100, 150 ],
+    "duration": 3,
 		"color": "228 110 213"
 	},
 

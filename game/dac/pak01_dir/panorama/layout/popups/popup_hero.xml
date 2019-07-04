@@ -20,6 +20,7 @@
 					<Label id="AbilityTitle" text="{s:ability_name}" />
 					<Label id="AbilityStat" html="true" class="AbilityStat" text="#DAC_AbilityTooltip_Cooldown" />
 					<Label id="AbilityManaCost" html="true" class="AbilityManaCost" text="#DAC_AbilityTooltip_ManaCost" />
+          <Label id="AbilityDamageType" html="true" class="AbilityDamageType" text="#DAC_AbilityTooltip_DamageType" />
 					<Label id="AbilityDesc" html="true" text="{s:ability_description}" />
 					<Label id="AbilityLore" html="true" text="{s:ability_lore}" />
 				</Panel>
@@ -69,88 +70,95 @@
             <Label id="CostNumber" text="#DAC_Hero_Unit_Cost" />
           </Panel>
           <DACSynergyCapsule id="SynergyCapsule" class="SynergyCapsule" />
+          <Panel id ="ButtonsContainer">
+            <Label id ="UnitAbilityButton" text="#DAC_Hero_Unit_Ability" onactivate="HeroPopupShowAbility()"></Label>
+            <Label id ="UnitStatsButton" text="#DAC_Hero_Unit_Stats" onactivate="HeroPopupShowStats()"></Label>
+          </Panel>
+
           <Panel id="UnitAbilityContainer">
 			  <!-- dynamic content -->
           </Panel>
-          <Panel id="StatStars" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#dac_star_level" />
-            <Label id="Stat1" class="StatLabel" text="#dac_hero_rank1" />
-            <Label id="Stat2" class="StatLabel" text="#dac_hero_rank2" />
-            <Label id="Stat3" class="StatLabel" text="#dac_hero_rank3" />
+          <Panel id="UnitStatsContainer">
+            <Panel id="StatStars" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#dac_star_level" />
+              <Label id="Stat1" class="StatLabel" text="#dac_hero_rank1" />
+              <Label id="Stat2" class="StatLabel" text="#dac_hero_rank2" />
+              <Label id="Stat3" class="StatLabel" text="#dac_hero_rank3" />
+            </Panel>
+            <Panel id="StatsHealth" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#DAC_InGame_Health" />
+              <Label id="Stat1" class="StatLabel" text="{i:maxHealth1}" />
+              <Label id="Stat2" class="StatLabel" text="{i:maxHealth2}" />
+              <Label id="Stat3" class="StatLabel" text="{i:maxHealth3}" />
+            </Panel>
+            <Panel id="MaxMana" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#DAC_InGame_Mana" />
+              <Label id="Stat1" class="StatLabel" text="{i:maxMana1}" />
+              <Label id="Stat2" class="StatLabel" text="{i:maxMana2}" />
+              <Label id="Stat3" class="StatLabel" text="{i:maxMana3}" />
+            </Panel>
+            <Panel id="StatDPS" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#dac_chart_type_dps" />
+              <Label id="Stat1" class="StatLabel" text="{i:dps1}" />
+              <Label id="Stat2" class="StatLabel" text="{i:dps2}" />
+              <Label id="Stat3" class="StatLabel" text="{i:dps3}" />
+            </Panel>
+            <Panel id="StatDamage" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#dac_chart_type_damagedealt" />
+              <Label id="Stat1" class="StatLabel" text="{s:damage1}" />
+              <Label id="Stat2" class="StatLabel" text="{s:damage2}" />
+              <Label id="Stat3" class="StatLabel" text="{s:damage3}" />
+            </Panel>
+            <Panel id="AttackSpeed" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#DAC_InGame_AttackSpeed" />
+              <Label id="Stat1" class="StatLabel" text="{f:attackSpeed1}" />
+              <Label id="Stat2" class="StatLabel" text="{f:attackSpeed2}" />
+              <Label id="Stat3" class="StatLabel" text="{f:attackSpeed3}" />
+            </Panel>
+            <Panel id="MoveSpeed" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#DAC_InGame_MoveSpeed" />
+              <Label id="Stat1" class="StatLabel" text="{i:moveSpeed}" />
+              <Label id="Stat2" class="StatLabel" text="{i:moveSpeed}" />
+              <Label id="Stat3" class="StatLabel" text="{i:moveSpeed}" />
+            </Panel>
+            <Panel id="AttackRange" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#DAC_InGame_AttackRange" />
+              <Label id="Stat1" class="StatLabel" text="{i:attackRange}" />
+              <Label id="Stat2" class="StatLabel" text="{i:attackRange}" />
+              <Label id="Stat3" class="StatLabel" text="{i:attackRange}" />
+            </Panel>
+            <Panel id="MagicResist" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#DAC_InGame_MagicResist" />
+              <Label id="Stat1" class="StatLabel" text="{i:magicResist1}" />
+              <Label id="Stat2" class="StatLabel" text="{i:magicResist2}" />
+              <Label id="Stat3" class="StatLabel" text="{i:magicResist3}" />
+            </Panel>
+            <Panel id="Armor" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#DAC_InGame_Armor" />
+              <Label id="Stat1" class="StatLabel" text="{i:armor1}" />
+              <Label id="Stat2" class="StatLabel" text="{i:armor2}" />
+              <Label id="Stat3" class="StatLabel" text="{i:armor3}" />
+            </Panel>
+            <Panel id="StatsHealthRegen" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#DAC_InGame_HealthRegen" />
+              <Label id="Stat1" class="StatLabel" text="{i:healthRegen1}" />
+              <Label id="Stat2" class="StatLabel" text="{i:healthRegen2}" />
+              <Label id="Stat3" class="StatLabel" text="{i:healthRegen3}" />
+            </Panel>
+            <!--<Panel id="DamageMax" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#DAC_InGame_DamageMax" />
+              <Label id="Stat1" class="StatLabel" text="{i:damageMax1}" />
+              <Label id="Stat2" class="StatLabel" text="{i:damageMax2}" />
+              <Label id="Stat3" class="StatLabel" text="{i:damageMax3}" />
+            </Panel>
+            <Panel id="DamageMin" class="StatRow">
+              <Label id="Stat0" class="StatLabel" text="#DAC_InGame_DamageMin" />
+              <Label id="Stat1" class="StatLabel" text="{i:damageMin1}" />
+              <Label id="Stat2" class="StatLabel" text="{i:damageMin2}" />
+              <Label id="Stat3" class="StatLabel" text="{i:damageMin3}" />
+            </Panel>-->
+            <Label id="UnitLoreText" html="true" text="{s:unit_lore}"/>
           </Panel>
-          <Panel id="StatsHealth" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_Health" />
-            <Label id="Stat1" class="StatLabel" text="{i:maxHealth1}" />
-            <Label id="Stat2" class="StatLabel" text="{i:maxHealth2}" />
-            <Label id="Stat3" class="StatLabel" text="{i:maxHealth3}" />
-          </Panel>
-          <Panel id="MaxMana" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_Mana" />
-            <Label id="Stat1" class="StatLabel" text="{i:maxMana1}" />
-            <Label id="Stat2" class="StatLabel" text="{i:maxMana2}" />
-            <Label id="Stat3" class="StatLabel" text="{i:maxMana3}" />
-          </Panel>
-          <Panel id="StatDPS" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#dac_chart_type_dps" />
-            <Label id="Stat1" class="StatLabel" text="{i:dps1}" />
-            <Label id="Stat2" class="StatLabel" text="{i:dps2}" />
-            <Label id="Stat3" class="StatLabel" text="{i:dps3}" />
-          </Panel>
-          <Panel id="StatDamage" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#dac_chart_type_damagedealt" />
-            <Label id="Stat1" class="StatLabel" text="{s:damage1}" />
-            <Label id="Stat2" class="StatLabel" text="{s:damage2}" />
-            <Label id="Stat3" class="StatLabel" text="{s:damage3}" />
-          </Panel>
-          <Panel id="AttackSpeed" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_AttackSpeed" />
-            <Label id="Stat1" class="StatLabel" text="{f:attackSpeed1}" />
-            <Label id="Stat2" class="StatLabel" text="{f:attackSpeed2}" />
-            <Label id="Stat3" class="StatLabel" text="{f:attackSpeed3}" />
-          </Panel>
-          <Panel id="MoveSpeed" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_MoveSpeed" />
-            <Label id="Stat1" class="StatLabel" text="{i:moveSpeed}" />
-            <Label id="Stat2" class="StatLabel" text="{i:moveSpeed}" />
-            <Label id="Stat3" class="StatLabel" text="{i:moveSpeed}" />
-          </Panel>
-          <Panel id="AttackRange" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_AttackRange" />
-            <Label id="Stat1" class="StatLabel" text="{i:attackRange}" />
-            <Label id="Stat2" class="StatLabel" text="{i:attackRange}" />
-            <Label id="Stat3" class="StatLabel" text="{i:attackRange}" />
-          </Panel>
-          <Panel id="MagicResist" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_MagicResist" />
-            <Label id="Stat1" class="StatLabel" text="{i:magicResist1}" />
-            <Label id="Stat2" class="StatLabel" text="{i:magicResist2}" />
-            <Label id="Stat3" class="StatLabel" text="{i:magicResist3}" />
-          </Panel>
-          <Panel id="Armor" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_Armor" />
-            <Label id="Stat1" class="StatLabel" text="{i:armor1}" />
-            <Label id="Stat2" class="StatLabel" text="{i:armor2}" />
-            <Label id="Stat3" class="StatLabel" text="{i:armor3}" />
-          </Panel>
-          <Panel id="StatsHealthRegen" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_HealthRegen" />
-            <Label id="Stat1" class="StatLabel" text="{i:healthRegen1}" />
-            <Label id="Stat2" class="StatLabel" text="{i:healthRegen2}" />
-            <Label id="Stat3" class="StatLabel" text="{i:healthRegen3}" />
-          </Panel>
-          <!--<Panel id="DamageMax" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_DamageMax" />
-            <Label id="Stat1" class="StatLabel" text="{i:damageMax1}" />
-            <Label id="Stat2" class="StatLabel" text="{i:damageMax2}" />
-            <Label id="Stat3" class="StatLabel" text="{i:damageMax3}" />
-          </Panel>
-          <Panel id="DamageMin" class="StatRow">
-            <Label id="Stat0" class="StatLabel" text="#DAC_InGame_DamageMin" />
-            <Label id="Stat1" class="StatLabel" text="{i:damageMin1}" />
-            <Label id="Stat2" class="StatLabel" text="{i:damageMin2}" />
-            <Label id="Stat3" class="StatLabel" text="{i:damageMin3}" />
-          </Panel>-->
-          <Label id="UnitLoreText" html="true" text="{s:unit_lore}"/>
         </Panel>
       </Panel>
     </Panel>

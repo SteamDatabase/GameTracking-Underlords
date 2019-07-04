@@ -1,8 +1,10 @@
 /* styles for the player context menu */
 #Contents.PlayerMenuContents 
 {
-    width: 366px;
+    width: 500px;
     flow-children: down;
+	box-shadow: fill #000000ee -4px 4px 12px 8px;
+
 }
 
 #MenuOptionsContainer
@@ -12,21 +14,21 @@
 
 #MenuOptionsPanel
 {
-    flow-children: down;
-    //background-color: #161616;
-    background-color: #666666;
-    width: 100%;
+	flow-children: down;
+	width: 100%;
 
-	transform: translateY( -100% );
+	transform: TranslateY(-100% );
+	opacity: 0;
 
-	transition-property: transform;
-	transition-duration: 0.3s;
-	transition-timing-function: ease-out;
+	transition-property: transform, opacity;
+	transition-duration: 0.35s;
+	transition-timing-function: ease-in-out;
 }
 
 .EntranceAnimation #MenuOptionsPanel
 {
-	transform: translateY( 0px );
+	transform: TranslateY(0% );
+	opacity: 1;
 }
 
 /* Don't animate the options appearing if the menu is on the top */
@@ -37,44 +39,73 @@
 
 #MenuOptionsPanel Button
 {
-	padding: 6px 5px 3px 5px;
-    horizontal-align: center;
-    width: 100%;
-	border-top: 1px solid #2d3636;
-	border-left: 1px solid #2d2d2d;
-	border-bottom: 1px solid #121212;
-	border-right: 1px solid #121212;
-	//border: 2px solid red;
+	padding: 5px 4px 4px 4px;
+	margin-top: 6px;
+	margin-bottom: 6px;
+	horizontal-align: center;
+	width: 100%;
+	border: 1px solid #ffffff22;
+	background-color: #00000000;
+	transition-property: background-color;
+	transition-duration: .2s;
 }
 
-#MenuOptionsPanel Button.First
+.IsPlatformMobile #MenuOptionsPanel Button
 {
-	border-top: 1px solid transparent;
+	//padding: 20px 8px 19px 8px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	horizontal-align: center;
+	width: 100%;
+	border: 2px solid #ffffff22;
 }
 
 #MenuOptionsPanel Button Label
 {
     text-align: center;
     horizontal-align: center;
-    //color: #758d8c;
     color: #ffffffaa;
     padding: 10px 0px 10px 0px;
-    font-size: 24px;
+    font-size: 20px;
+    text-overflow: shrink;
+    font-weight: semi-bold;
 	text-transform: uppercase;
 	letter-spacing: 2px;
+	transition-property: color;
+	transition-duration: .2s;
+}
+
+.IsPlatformMobile #MenuOptionsPanel Button Label
+{
+    font-size: 28px;	
 }
 
 #MenuOptionsPanel Button:hover
 {
+	background-color: #00000075;
+	transition-property: background-color;
+	transition-duration: .1s;
 }
 
 #MenuOptionsPanel Button:active
 {
+	background-color: #000000cc;
+	transition-property: background-color;
+	transition-duration: .1s;
 }
 
 #MenuOptionsPanel Button:hover Label
 {
-	color: white;
+	color: #ffffffdd;
+	transition-property: color;
+	transition-duration: .1s;
+}
+
+#MenuOptionsPanel Button:active Label
+{
+	color: #ffffff;
+	transition-property: color;
+	transition-duration: .1s;
 }
 
 /* Custom styling for player context menu (with a profile card at the top) */

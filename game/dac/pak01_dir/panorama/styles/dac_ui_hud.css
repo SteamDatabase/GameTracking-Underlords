@@ -1203,7 +1203,7 @@ DACUIHud.IsConnected {
 }
 
 
-#CornerButtons
+.CornerButtons
 {
 	horizontal-align: left;
 	vertical-align: bottom;
@@ -1217,7 +1217,7 @@ DACUIHud.IsConnected {
 }
 
 
-.IsPlatformMobile #CornerButtons
+.IsPlatformMobile .CornerButtons
 {
 	horizontal-align: left;
 	vertical-align: bottom;
@@ -1227,7 +1227,7 @@ DACUIHud.IsConnected {
 	padding-left: 0px;
 }
 
-.IsPlatformPC #CornerButtons
+.IsPlatformPC .CornerButtons
 {
     ui-scale: 80%;
 }
@@ -1290,10 +1290,12 @@ DACUIHud.IsConnected {
 	//height: 127px;
 	width: 85px;
 	height: 85px;
+	margin: 0px;
+	padding: 0px;
 	margin-right: 140px;
-	margin-top: 92px;
 	//margin-bottom: 20px;
-	horizontal-align: right;
+	horizontal-align: left;
+		vertical-align: center;
 	tooltip-position: top left bottom right;
 }
 
@@ -1309,10 +1311,11 @@ DACUIHud.IsConnected {
 }
 
 #OpenShopButton {
-	width: 227px;
-	height: 226px;
+	width: 175px;
+	height: 175px;
 	horizontal-align: right;
-	margin-right: 0px;
+	margin-right: 13px;
+	margin-bottom: 10px;
 	background-image: url("s2r://panorama/images/hud/icon_shop_open_psd.vtex");
 	background-size: contain;
 	transition-property: brightness;
@@ -1326,10 +1329,11 @@ DACUIHud.IsConnected {
 
 
 #CloseShopButton {
-	width: 227px;
-	height: 226px;
+	width: 175px;
+	height: 175px;
 	horizontal-align: right;
-	margin-right: 0px;
+	margin-right: 13px;
+	margin-bottom: 10px;
 	background-image: url("s2r://panorama/images/hud/icon_shop_close_psd.vtex");
 	visibility: collapse;
 	background-size: contain;
@@ -2008,42 +2012,111 @@ Label.ChoiceItem_Description
 	opacity-mask: url("s2r://panorama/images/hud/timer_opacity_mask_right_psd.vtex");
 }
 
-.LowVisualQuality .HeaderRoundTime {
-    text-shadow: 0px 1px 0px 2.0 #000;
+.LowVisualQuality .HeaderRoundTime
+{
+	text-shadow: 0px 1px 0px 2.0 #000;
 }
 
-#SpannerTop
+.RightTabBarBackground
 {
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000cc ), to(#00000088));
-	//border-left: 1px solid #332124;
-	height: fill-parent-flow( 1.0 );
-	width: fill-parent-flow ( 1.0 );
-	margin-bottom: 2px;
-	background-image: url("s2r://panorama/images/hud/right_tab_spanner_backer_top_psd.vtex");
-	background-size: 100%;
-}
-
-#SpannerBottom
-{
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000cc ), to(#00000088));
-	height: fill-parent-flow( 1.0 );
-	width: fill-parent-flow ( 1.0 );
-	margin-top: 2px;
 	background-image: url("s2r://panorama/images/hud/right_tab_spanner_backer_bottom_psd.vtex");
 	background-size: 100%;
+
+	horizontal-align: right;
+	height: 100%;
+	width: 80px;
+
+	margin-right: safe-area-inset-right;
 }
 
-#RightTabBar {
-		horizontal-align: right;
-		height: 100%;
-		width: 80px;
+.IsPlatformPC .RightTabBarBackground
+{
+	// emulate ui-scale 70%
+	width: 56px;
+}
+
+#TabBarButtons
+{
+	width: fit-children;
+	height: fit-children;
+
+	vertical-align: center;
+}
+
+.TabButtonBacker
+{
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+}
+
+#RightTabBar
+{
+	horizontal-align: right;
+	height: 100%;
+	width: 80px;
+
+	padding-bottom: safe-area-inset-bottom;
 }
 
 .IsPlatformPC #RightTabBar
 {
-    ui-scale: 70%;
+	ui-scale: 70%;
 }
 
+.BatteryIndicator
+{
+	width: 60px;
+	height: 40px;
+	background-image: url("s2r://panorama/images/hud/battery_icon_png.vtex");
+	background-size: 100%;
+	horizontal-align: right;
+	vertical-align: top;
+	margin-top: 85px;
+	margin-right: 10px;
+	opacity: .5;
+	visibility: collapse;
+}
+
+.AspectRatio21x9 .BatteryIndicator
+{
+	//margin-right: 126px;
+}
+
+.IsPlatformMobile .BatteryIndicator
+{
+	visibility: visible;
+}
+
+.IsPlatformMobile .BatteryIndicator .HideBattery
+{
+	visibility: collapse;
+}
+
+#BatteryStatus
+{
+	width: 36px;
+	height: 24px;
+	margin-right: 2px;
+	margin-top: 1px;
+	border-radius: 2px;
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+#BatteryStatus_Left
+{
+	background-color: #e3e5ff;
+}
+
+#BatteryStatus_right
+{
+	//background-color: red;
+}
+
+.LowBattery #BatteryStatus
+{
+	background-color: red;
+}
 
 .TabBarButtonContainer {
 	vertical-align: center;
@@ -2075,7 +2148,7 @@ Label.ChoiceItem_Description
 .TabButtonBackerDPS,
 .TabButtonBackerItems
 {
-	width: 100%;
+	width: 80px;
 	height: 172px;
 	margin-top: 2px;
 	margin-bottom: 2px;
@@ -2085,6 +2158,9 @@ Label.ChoiceItem_Description
 	background-image: url("s2r://panorama/images/hud/right_tab_backer_off_psd.vtex");
 	transition-property: background-image, background-color;
 	transition-duration: .2s;
+
+	border-top: 3px solid black;
+	border-bottom: 1px solid black;
 }
 
 .SynergyTabButton
@@ -2296,36 +2372,51 @@ Label.ChoiceItem_Description
 	vertical-align: middle;
 
 	width: 185px;
-	//max-height: 100%;
-	//height: fit-children;
 	height: 100%;
-	//height: 800px;
 	overflow: noclip;
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000 ), to(#000000));
-	background-image: url("s2r://panorama/images/leaderboard/leader_board_backer_psd.vtex");
-	background-size: 100%;
 	
+	background-image: url("s2r://panorama/images/leaderboard/leader_board_backer_psd.vtex");
+	background-size: 160px 100%;
+	background-repeat: no-repeat;
+
 	box-shadow: #000000 0px 0px 15px;
+	//padding: safe-area-inset-top 0px safe-area-inset-bottom 0px;
+
+}
+
+.AspectRatio21x9.IsPlatformMobile .PlayerLeaderboardBackground
+{
+	width: 160px;
+}
+
+.IsPlatformMobile .PlayerLeaderboardBackground
+{
+	width: 160px;
 }
 
 .LowVisualQuality .PlayerLeaderboardBackground 
 {
-    box-shadow: none;
+	box-shadow: none;
 }
 
-#PlayerLeaderboardContainer {
-	width: 100%;
+#PlayerLeaderboardContainer
+{
+	width: fit-children;
 	height: fit-children;
-	//height: 100%;
-	//height: 800px;
 	vertical-align: center;
-
 }
 
 .IsPlatformPC #PlayerLeaderboardContainer
 {
 	ui-scale: 80%;
 	margin: 10px;
+	margin-left: 0;
+	width: 220px;
+}
+
+.AspectRatio21x9.IsPlatformMobile #PlayerLeaderboardContainer
+{
+	margin-top: 15px;
 }
 
 .IsPlatformPC .PlayerLeaderboardBackground
@@ -3319,7 +3410,7 @@ DACHUDRankDisplay .HUDRankDisplay
 }
 
 #SelectedUnitContainer,
-#CornerButtons,
+.CornerButtons,
 #BenchBG,
 #BenchFX,
 #GameStatePanel
@@ -3331,7 +3422,7 @@ DACHUDRankDisplay .HUDRankDisplay
 .LowVisualQuality .PlayerLeaderboardBackground,
 .LowVisualQuality #PlayerStateContainer,
 .LowVisualQuality #SelectedUnitContainer,
-.LowVisualQuality #CornerButtons,
+.LowVisualQuality .CornerButtons,
 .LowVisualQuality #BenchBG,
 .LowVisualQuality #BenchFX,
 .LowVisualQuality #GameStatePanel,
@@ -3345,7 +3436,7 @@ DACHUDRankDisplay .HUDRankDisplay
 .EGameState_Intro .PlayerLeaderboardBackground,
 .EGameState_Intro #PlayerStateContainer,
 .EGameState_Intro #SelectedUnitContainer,
-.EGameState_Intro #CornerButtons
+.EGameState_Intro .CornerButtons
 {
 	opacity: 0;
 	position: -150px 0 0;
@@ -3405,6 +3496,11 @@ DACHUDRankDisplay .HUDRankDisplay
 {
 	transition-property: opacity, transform;
 	transition-duration: 0.2s;
+}
+
+.AspectRatio21x9.IsPlatformMobile #RightTabBar
+{
+	margin-right: safe-area-inset-right;
 }
 
 .EGameState_Intro #RightTabBar
@@ -3492,7 +3588,7 @@ DACHUDRankDisplay .HUDRankDisplay
 .HiddenForTutorial_Leaderboard #PlayerLeaderboardContainer,
 .HiddenForTutorial_Player #PlayerStateContainer,
 .HiddenForTutorial_Unit #SelectedUnitContainer,
-.HiddenForTutorial_Corner #CornerButtons,
+.HiddenForTutorial_Corner .CornerButtons,
 .HiddenForTutorial_UnitCount #UnitCountDisplay,
 .HiddenForTutorial_PauseResume .PauseButton,
 .HiddenForTutorial_PauseResume .FastForwardButton,
@@ -3512,7 +3608,7 @@ DACHUDRankDisplay .HUDRankDisplay
 .TutorialCutscene #PlayerLeaderboardContainer,
 .TutorialCutscene #PlayerStateContainer,
 .TutorialCutscene #SelectedUnitContainer,
-.TutorialCutscene #CornerButtons,
+.TutorialCutscene .CornerButtons,
 .TutorialCutscene #UnitCountDisplay,
 .TutorialCutscene .PauseButton,
 .TutorialCutscene .FastForwardButton,
@@ -3649,3 +3745,129 @@ DACHUDRankDisplay .HUDRankDisplay
 	visibility: visible;
 }
 
+DACScoreboard {
+	position: -1920px 0 0;
+	opacity: 0;
+	transition-property: position, opacity;
+	transition-duration: 100ms;
+}
+
+.ScoreboardVisible DACScoreboard {
+	position: 0px 0px 0px;
+	opacity: 1;
+}
+
+#ScoreboardBG {
+	visibility:collapse;
+	width: 100%;
+	height: 100%;
+	background-color: #000000F0;
+}
+
+.ScoreboardVisible #ScoreboardBG {
+	visibility: visible;
+}
+
+#ShowScoreboardButton,
+#HideScoreboardButton
+{
+	width: 60px;
+	height: 60px;
+	margin-top: 48px;
+	margin-left: 48px;
+	background-image: url("s2r://panorama/images/hud/scoreboard_icon_psd.vtex");
+	background-size: 100%;
+	transition-property: brightness;
+	transition-duration: .2s;
+	brightness: .7;
+}
+
+.IsPlatformMobile #ShowScoreboardButton,
+.IsPlatformMobile #HideScoreboardButton
+{
+	width: 90px;
+	height: 90px;
+	margin-left: 190px;
+}
+
+.IsPlatformMobile.ShopVisible #ShowScoreboardButton,
+.IsPlatformMobile.ShopVisible #HideScoreboardButton
+{
+	visibility: collapse;
+}
+
+.IsPlatformMobile.AspectRatio4x3 #ShowScoreboardButton,
+.IsPlatformMobile.AspectRatio4x3 #HideScoreboardButton
+{
+	width: 90px;
+	height: 90px;
+	margin-left: 37px;
+	margin-top: 100px;
+}
+
+
+.EGameState_Intro #ShowScoreboardButton,
+.EGameState_Intro #HideScoreboardButton
+{
+	visibility: collapse;
+}
+
+#ShowScoreboardButton:hover,
+#HideScoreboardButton:hover
+{
+	brightness: 2.5;
+}
+
+#HideScoreboardButton
+{
+	brightness: .5;
+}
+
+#HideScoreboardButton {
+	visibility: collapse;
+}
+
+.ScoreboardVisible #ShowScoreboardButton {
+	visibility: collapse;
+}
+
+.ScoreboardVisible #HideScoreboardButton {
+	visibility: visible;
+}
+
+
+.ScoreboardVisible .PlayerLeaderboardBackground {
+	width: 100%;
+	overflow: clip scroll;
+}
+
+.ScoreboardVisible.AspectRatio21x9.IsPlatformMobile .PlayerLeaderboardBackground {
+	width: 100%;
+	overflow: clip clip;
+}
+
+#ShowScoreboardButton, #HideScoreboardButton {
+	font-size: 25px;
+	color: #fff;
+}
+
+//.ScoreboardVisible
+
+
+.ShowChat #Chat {
+	visibility: visible;
+}
+
+.IsPlatformMobile.ShowChat #Chat
+{
+	visibility:collapse;
+}
+
+#Chat
+{
+	width:100%;
+	horizontal-align: center;
+	vertical-align:bottom;
+	margin-bottom: 500px;
+	visibility:collapse;
+}

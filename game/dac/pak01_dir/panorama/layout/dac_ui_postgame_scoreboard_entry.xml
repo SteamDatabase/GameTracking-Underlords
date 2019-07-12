@@ -1,0 +1,64 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_postgame_scoreboard.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_postgame_scoreboard_entry.vcss_c" />
+	</styles>
+
+	<snippets>
+		<snippet name="RosterUnit">
+			<Panel class="RosterUnit">
+				<DACInventoryItem id="ItemIcon" />
+				<Image id="RosterUnitIcon" />
+				<Label class="HeroRank Rank1" text="#dac_hero_rank1" />
+				<Label class="HeroRank Rank2" text="#dac_hero_rank2" />
+				<Label class="HeroRank Rank3" text="#dac_hero_rank3" />
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<DACPostGameScoreboardEntry class="HideRank">
+
+		<Panel class="Column Place">
+			<Label class="PlaceLabel" text="{s:final_place}" />
+			<Panel class="HealthLabel">
+				<Label class="HealthLabel" text="{i:health}" />
+				<Panel class="HealthIcon" src="s2r://panorama/images/leaderboard/icon_health_psd.vtex" hittest="false" />
+			</Panel>
+			
+		</Panel>
+
+		<Panel class="Column MiniProfile">
+			<DACMiniProfile id="MiniProfile" showparticles="false" hiderank="true" dashboardmode="true" allowactions="false"  selectedplayer="false"/>
+		</Panel>
+
+		<Panel class="Column Rank">
+			<DACRankIcon id="RankIcon" iconstyle="standalone" />
+		</Panel>
+
+		<Panel class="Column Name">
+			<Label class="NameLabel" html="true" text="{g:dac_player_slot_persona:b:leaderboard_Slot}" />
+		</Panel>
+		
+		<Panel class="Column Roster" id="RosterContainer" />
+
+
+		<!-- <Panel class="Column TotalDamage">
+			<Label class="TotalDamageLabel" text="{i:total_damage}" />
+		</Panel> -->
+
+		<Panel class="Column Alliances" id="SynergyContainer" />
+		<Panel class="Column Global" id="GlobalContainer" />
+
+
+		<Panel class="Column Score">
+			<Label class="WinLossRecord" text="#dac_scoreboard_winlossrecord" />
+		</Panel>
+
+
+		<Panel class="Column TotalGold">
+			<Label class="TotalGoldLabel" text="{i:net_worth}" />
+		</Panel>
+
+	</DACPostGameScoreboardEntry>
+</root>

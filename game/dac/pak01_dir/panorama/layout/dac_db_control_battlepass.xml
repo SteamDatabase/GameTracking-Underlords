@@ -1,0 +1,48 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
+	</styles>
+
+	<DACControlBattlePass>
+		<Panel id="MainContent">
+			<Panel id="SectionTitleArea">
+				<Label class="BattlePassTitle" text="#DAC_BattlePassTitle" />
+				<Button id="RewardsAboutButton" onactivate="DACSelectDashboardButton('BattlePassContainer'); DACShowRewardsPage();" />
+			</Panel>
+			<Panel id="QuestLevelContainer">
+				<Panel id="QuestItemContainer" />
+
+				<Panel id="BattlePassProgress">
+					<Panel id="PlayerBPBackgroundTop" />
+					<ProgressBar value="0" max="1" id="PlayerProgress" />
+					<Panel class="BPBottomRow">
+						<Panel id="PlayerBPBackgroundBottom" />
+						<Panel class="BPLevelProgressContainer">
+							<Label class="BattlePassCurrentLevelProgress" text="#DAC_Rewards_BPCurrentLevelProgress"/>
+
+							<Label class="BPXPLabel" text="#DAC_BP_XP" />
+						</Panel>
+					</Panel>
+				</Panel>
+				<Panel id="PlayerBPLevel">
+					<Label class="BPLevelText" text="#DAC_BPLevelHeader" />
+					<Label class="BPLevel" text="{d:current_level}" id="PlayerBPLevelGraphLevel" />
+				</Panel>
+			</Panel>
+			<Panel id="ErrorContainer">
+				<Panel id="ConnectToSteamContainer">
+					<Label class="ErrorTitle" text="#DAC_Rewards_Sell" />
+					<Label class="ConnectToSteamText" text="#DAC_BattlePass_ConnectConvert" />
+					<Button class="PopupButton LoginButton" id="SteamLoginButton" onactivate="DACSteamLogin()">
+						<Label text="#DAC_SteamAccountLogin" />
+					</Button>
+				</Panel>
+
+				<Panel id="GCErrorContainer">
+					<Label class="ConnectToSteamText" text="#DAC_BattlePass_GCIssue" />
+				</Panel>
+			</Panel>
+		</Panel>
+	</DACControlBattlePass>
+</root>

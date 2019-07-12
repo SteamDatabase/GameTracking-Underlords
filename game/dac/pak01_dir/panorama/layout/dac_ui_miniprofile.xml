@@ -12,6 +12,7 @@
 		<Label class="HeaderPlayerName" id="PlayerNameContainer" text="{g:dac_player_slot_persona:b:player_slot}" html="true" />
 		
 		<Panel id="PlayerProfile">
+			<Button class="MuteButton" onactivate="DACToggleMuteStatus()"/>
 			<DACRankIcon id="RankIcon" iconstyle="miniprofile"/>			
 
 			<!-- <Label text="#DAC_InGame_PlayerXP" id="StatusXP" /> -->
@@ -21,9 +22,9 @@
 				<DACScenePanel id="ParticleFG" map="particles/hud/profile_streak" camera="cam_default" particleonly="true"  />
 			</Panel>
 
-			<Panel id="PlayerProfileAvatarOverlay">
-				<Image src="s2r://panorama/images/mini_profile/mini_profile_avatar_vignette_psd.vtex" />
-				<Image src="s2r://panorama/images/mini_profile/mini_profile_avatar_border_psd.vtex" />
+			<Panel id="PlayerProfileAvatarOverlay" hittest="false">
+				<Panel class="PlayerProfileAvatarVignette" />
+				<Panel class="PlayerProfileAvatarBorder" />
 			</Panel>
 
 			<Label text="{i:playerStateHP}" id="StatusHP" />

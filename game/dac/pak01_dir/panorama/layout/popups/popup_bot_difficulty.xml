@@ -12,22 +12,22 @@
             <Label class="SubTitle" text="#DAC_BotDifficulty_Desc" />
 
       <Panel id="DifficultyContainer">
-        <Panel id="Easy" class="DifficultyPanel" onactivate="DACSetBotDifficulty(0)">
+        <Panel id="Easy" class="DifficultyPanel" onactivate="DACSetBotDifficulty(0); PlaySoundEffect('DAC_UI.PlayMenu_DifficultySelect')">
           <Panel class="BotImage"/>
           <Label class="BotName EasyLabel" text="#DAC_BotDifficultyName0"/>
           <Label class="BotDesc" text="#DAC_BotDifficultyDesc0"/>
         </Panel>
-        <Panel id="Medium" class="DifficultyPanel" onactivate="DACSetBotDifficulty(1)">
+        <Panel id="Medium" class="DifficultyPanel" onactivate="DACSetBotDifficulty(1); PlaySoundEffect('DAC_UI.PlayMenu_DifficultySelect')">
           <Panel class="BotImage"/>
           <Label class="BotName MediumLabel" text="#DAC_BotDifficultyName1"/>
           <Label class="BotDesc" text="#DAC_BotDifficultyDesc1"/>
         </Panel>
-        <Panel id="Hard" class="DifficultyPanel" onactivate="DACSetBotDifficulty(2)">
+        <Panel id="Hard" class="DifficultyPanel" onactivate="DACSetBotDifficulty(2); PlaySoundEffect('DAC_UI.PlayMenu_DifficultySelect')">
           <Panel class="BotImage"/>
           <Label class="BotName HardLabel" text="#DAC_BotDifficultyName2"/>
           <Label class="BotDesc" text="#DAC_BotDifficultyDesc2"/>
         </Panel>
-        <Panel id="Challenging" class="DifficultyPanel" onactivate="DACSetBotDifficulty(3)">
+        <Panel id="Challenging" class="DifficultyPanel" onactivate="DACSetBotDifficulty(3); PlaySoundEffect('DAC_UI.PlayMenu_DifficultySelect')">
           <Panel class="BotImage"/>
           <Label class="BotName ChallengingLabel" text="#DAC_BotDifficultyName3"/>
           <Label class="BotDesc" text="#DAC_BotDifficultyDesc3"/>
@@ -38,10 +38,13 @@
           <Label class="BotDesc" text="#DAC_BotDifficultyDesc4"/>
         </Panel>
       </Panel>			
-				<ToggleButton id="PlayPausedButton" onactivate="DACSetPauseMode()">
-					<Label class="PlayPausedOption" text="#DAC_BotPlayPaused" />
-				</ToggleButton>
-      <Button id="ContinueButton" class="BevelButton DifficultyCancelButton" onactivate="DACSetBotDifficulty(5)">
+			<ToggleButton id="PlayPausedButton" onactivate="DACSetPauseMode()">
+				<Label class="PlayPausedOption" html="true" text="#DAC_BotPlayPaused" />
+			</ToggleButton>
+			<ToggleButton id="PlayOurServers" onactivate="DACSetDedicatedServerMode()">
+				<Label class="PlayPausedOption" html="true" text="#DAC_BotPlayOnDedicatedServer" />
+			</ToggleButton>
+      <Button id="ContinueButton" class="BevelButton DifficultyCancelButton" onactivate="DACSetBotDifficulty(5); PlaySoundEffect('DAC_UI.PlayMenu_Cancel')">
         <Label text="#Cancel"/>
       </Button>
 		</Panel>

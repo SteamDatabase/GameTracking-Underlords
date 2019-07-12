@@ -300,13 +300,14 @@ $zUuSA
 -validate
 -with flH
 . Do NotH
+.%~N,
 ../public/ordered_constructor.h
 ../public/tier0/tslist.h
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
 ../public/tier1/utlsortvector.h
-.=A=*
+.5&I,
 .AUndefined
 .CRnPrismaticJoint
 .KTwC
@@ -371,6 +372,7 @@ $zUuSA
 14CEmptySequence
 14ConCommandBase
 15CBaseConstraint
+15CFeAgglomerator
 15CResourceStream
 16CDefaultAccessor
 16CMorphConstraint
@@ -384,7 +386,7 @@ $zUuSA
 19CSchemaRegistration
 1D;G 
 1DBlend
-2019-05-10 06:50:45.653000
+2019-06-25 15:04:45.611000
 20CPostConnectCallback
 20CRefCountServiceBaseILb1E6CRefMTE
 20CResourceStreamFixed
@@ -483,6 +485,7 @@ $zUuSA
 6A91I
 6ConVar
 6H92t%H
+6IcEPH
 6IcEXH
 6QZ^&D
 6fD9s
@@ -629,7 +632,6 @@ $zUuSA
 ><b>No</H
 >Keyframed
 >NO</b> H
->P]8j
 >RjyA
 >Should H
 >femodel
@@ -678,14 +680,17 @@ $zUuSA
 @[A\A^]
 @[A\]
 @mathlib.cpp
+@physics_debug_draw
 @tBE+
 @tB[A\]
 @u'fA
 A#V\H
 A#|$TH
+A+D$ 
 A+D$$H
 A+D$(
 A+D$@
+A+D$P
 A+D$X
 A+D$`
 A+D$p
@@ -721,9 +726,7 @@ A9GXH
 A9T$0v
 A9T$0w?H
 A9Wpw
-A9\$ 
 A9\$(
-A9\$8
 A9\$@
 A9\$d
 A9\$hI
@@ -894,8 +897,8 @@ AWAVI
 AWAVL
 AWAVLc
 AWAVM
-AXAYH
 AYAZA
+AYAZH
 AYA[I
 AZA[z
 A\A]A^A_]
@@ -1003,7 +1006,6 @@ B(9st
 B(9s|
 B(A9w
 B0Lc.D;n
-B15CFeAgglomerator
 B2f9B,D
 B4A9|$
 BBu=H
@@ -1041,6 +1043,7 @@ BentNormalData
 Bh}hH
 BinaryProperties_GetValue
 BlendList
+Bodies: %d (%d)
 Body #%d
 BodyBuildMass
 BodyFlags
@@ -1341,6 +1344,7 @@ CResourceArray< uint8 > FeModelRefl_t::m_DynNodeVertexSetArray
 CResourceArray< uint8 > FeModelRefl_t::m_MorphSetData
 CResourceArray< uint8 > RnMeshRefl_t::m_Materials
 CResourceArray< uint8 > RnWorldRefl_t::m_RecordedApiCalls
+CResourceArray< uint8 > WorldDebugPayloadContainerRefl_t::m_DebugOverlay
 CResourceStreamFixed: trying to write past the end of allocated memory (new commit %u, allocated %u)
 CResourceString FeMorphLayerRefl_t::m_Name
 CResourceString PhysSurfacePropertiesRefl_t::m_description
@@ -1689,7 +1693,6 @@ D$@H9
 D$@Hc
 D$@fE
 D$HH9
-D$HI9
 D$HL9
 D$HL9u
 D$HM9
@@ -1698,6 +1701,7 @@ D$PA\A]A^]
 D$PH9
 D$PLc
 D$PLcSPE
+D$VD9
 D$XH9
 D$`H9
 D$hA9
@@ -1710,6 +1714,8 @@ D+k$Mc
 D+s$Mc
 D2$Hc
 D6DHc
+D9='T>
+D9=WT>
 D9C ~JMc
 D9c(D
 D9cpw
@@ -1752,6 +1758,7 @@ DebugDrawTreeBeginLevel
 DebugDrawTreeEndLevel
 DebugDrawTreeFlags
 DebugIndex
+DebugOverlay
 DebugPayload
 DebugSelection
 DebugShapeSerial
@@ -1848,6 +1855,7 @@ ERROR: Schema registration error - class '%s' is not marked as MModuleLocalTypeS
 ERROR: Specified full path %s does not lie under the mod search path!)
 ERROR: Specified path %s could not be made content-relative
 EXPORTSYSTEM_INTERFACE_VERSION_001
+EarlyComputeNodeBaseCount
 EarlyInit_Tier0
 EconItemToolModel_001
 EmptyAnim
@@ -2092,7 +2100,6 @@ HcAxD
 HcB(HcR@H
 HcB,H
 HcBHH
-HcC L
 HcC$H
 HcC$I
 HcC(1
@@ -2142,12 +2149,14 @@ HcK8Ic
 HcK@Ic
 HcKPIc
 HcKXIc
+HcK`H
 HcKpD
 HcKpH
 HcKxIc
 HcO$H
 HcQ(9
 HcS H
+HcS L
 HcS(H
 HcS0H
 HcS@L
@@ -2202,6 +2211,7 @@ IKRigBiped
 IKRigBug
 IKRigSimple
 IQuickTime001
+IReflectedValueSetter
 Ic0Ic
 Ic@<IcP@9
 IcB A
@@ -2230,12 +2240,13 @@ IcG81
 IcL$ I
 IcL$ f
 IcL$(Ic
+IcL$0Ic
 IcL$@Ic
 IcL$PIc
 IcL$XIc
+IcL$`Ic
 IcL$hIc
 IcL$pIc
-IcM0Ic
 IcM8Ic
 IcMpIc
 IcN f
@@ -2424,7 +2435,7 @@ LckPD;k`D
 LckPD;k`E
 LckpD
 Lco E
-Lcs8E
+Lc{8E
 Left Hand
 LeftHand
 Length; 
@@ -2460,6 +2471,7 @@ LowerLimitLambda
 LowerTwistLambda
 LrwcE
 M+g0H
+M=OT>
 MASS_PRIORITY_DEFAULT
 MASS_PRIORITY_TRIGGER
 MATCHFRAMEWORK_001
@@ -2537,11 +2549,12 @@ MbP?+
 Mc E;`
 Mc'E;g
 Mc(E;h
+Mc.E;n
 Mc<$E;|$
 Mc>E;~
 Mce@E
 McnXH
-Mcu8E
+Mct$8E
 McuHE;uXD
 Md5 Hash: %02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x
 MemAlloc_AllocFunc
@@ -2727,7 +2740,6 @@ P,[A\]
 P03Q0
 P8HcN
 P@[A\]
-PABodies: %d (%d)
 PARENT
 PARTICLE_DEPTH_FEATHERING_OFF
 PARTICLE_DEPTH_FEATHERING_ON_OPTIONAL
@@ -2994,6 +3006,7 @@ RN_DRAW_MESH_FACE_INDICES
 RN_DRAW_MESH_VERTEX_INDICES
 RN_DRAW_PROFILE
 RN_DRAW_PROXIES
+RN_DRAW_RECORDED_DEBUG_OVERLAY
 RN_DRAW_RECORDED_FORCES
 RN_DRAW_RECORDED_RAYCASTS
 RN_DRAW_SHAPE_EDGES
@@ -3468,10 +3481,12 @@ T$4fE
 T$8H9
 T$@Mc
 T$PE1
+T$XD9
 T$XH9
 T$pA\A]]
+T%bM+
 T7$Hc
-T=gz*
+T=4L+
 TILT_TWIST
 TIcL$
 TOI: Count
@@ -3771,6 +3786,8 @@ Vector RnBodyRefl_t::m_dragBasis
 Vector RnBodyRefl_t::m_vAngularVelocity
 Vector RnBodyRefl_t::m_vAngularVelocityAtTickStart
 Vector RnBodyRefl_t::m_vForceAccum
+Vector RnBodyRefl_t::m_vImplicitAngularVelocity
+Vector RnBodyRefl_t::m_vImplicitLinearVelocity
 Vector RnBodyRefl_t::m_vLinearVelocity
 Vector RnBodyRefl_t::m_vLinearVelocityAtTickStart
 Vector RnBodyRefl_t::m_vLocalMassCenter
@@ -3846,6 +3863,7 @@ WorldRendererMgr001
 Wrong alignment %d
 X(A;\$ps
 X2:jH
+X=H+$
 XForm1
 XForm2
 XIcL$
@@ -3857,12 +3875,6 @@ X[A\A]A^A_]
 X[A\A]]
 X[A\fH
 Xd$lD
-Y%DN*
-Y%_i$
-Y%c?$
-Y-6:,
-Y-p]:
-Y5^i$
 Y@serialize2_v%d.inl
 YCLfA
 YGLfA
@@ -3908,7 +3920,6 @@ Yaw;
 \$8fA
 \$HIcD$@I
 \>$Hc
-\IcEH1
 ]IcD$
 ]P[A\A]A^]
 ^IcL$ Ic
@@ -4141,6 +4152,7 @@ burst_scale
 c0HcC@A
 c8D;cHD
 cHE;o
+cIcD$H1
 cLc#D;c
 cable
 calloc
@@ -4307,7 +4319,7 @@ fA3W2f
 fA9D$
 fA;D$
 fA;G0
-fA;P*
+fA;S*
 fD3J"fA
 fD3Q"fA
 fD3X"fA
@@ -5232,6 +5244,7 @@ m_nMotorMode
 m_nNameHash
 m_nNext
 m_nNode
+m_nNodeBaseJiggleboneDependsCount
 m_nNodeCount
 m_nOldPointer
 m_nOpScaleCP
@@ -5399,7 +5412,6 @@ m_qLocalBasis2
 m_qMotorTargetOrientation
 m_qOffset
 m_qParentBindRotation
-m_qRotationOffset
 m_quat
 m_ranges
 m_refAnimGroups
@@ -5941,6 +5953,7 @@ t2[A\]
 t3DiB
 t3HcR
 t3HcS
+t3[A\]
 t4D;G`s.H
 t4E;u`s.L
 t4[A\A]]
@@ -6029,6 +6042,7 @@ uint16 FeModelRefl_t::m_nCollisionSpheres[ 2 ]
 uint16 FeModelRefl_t::m_nCtrlOffsets
 uint16 FeModelRefl_t::m_nCtrlOsOffsets
 uint16 FeModelRefl_t::m_nCtrlSoftOffsets
+uint16 FeModelRefl_t::m_nEarlyComputeNodeBaseCount
 uint16 FeModelRefl_t::m_nFitMatrixCount[ 3 ]
 uint16 FeModelRefl_t::m_nFollowNodeCount
 uint16 FeModelRefl_t::m_nFreeNodeCount
@@ -6168,6 +6182,8 @@ vGroundAnchor2
 vHitNormal
 vHitPoint
 vIcL$8Ic
+vImplicitAngularVelocity
+vImplicitLinearVelocity
 vLinearImpulse
 vLinearLambda
 vLinearVelocityAtTickStart
@@ -6291,6 +6307,7 @@ z:KEZ
 z=u;A
 zCuAH
 zIcD$
+zbu`H
 { HcU
 { [A\]
 {%.3f,%.3f,%.3f}
@@ -6307,6 +6324,7 @@ zIcD$
 |$ A9
 |$(A9
 |$(E1
+|$0A9
 |$0E;|$@
 |$0L9
 |$4M+e
@@ -6315,10 +6333,12 @@ zIcD$
 |$@Hc
 |$@I9
 |$@L9
+|$HA9
 |$HE1
 |$PA9
 |$PfA
 |$XHc
+|$`A9
 |$hA9
 |$pA9
 |)A9\$0

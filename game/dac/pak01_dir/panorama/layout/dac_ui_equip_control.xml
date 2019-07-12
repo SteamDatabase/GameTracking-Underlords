@@ -1,0 +1,35 @@
+<root>
+
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_equip_control.vcss_c" />
+	</styles>
+
+	<snippets>
+		<snippet name="EquippableItem">
+			<Panel class="EquippableItem" >
+				<Label class="EquipText" text="{s:item_name}"/>
+				<Button id="EquipButton">
+					<Label class="EquipLabel" text="#DAC_LoadoutEquip"/>
+				</Button>
+			</Panel>
+		</snippet>
+
+		<!-- snippets with names that match classes in items_prefabs.txt will be used over default item above, if provided -->
+		<snippet name="flag_base">
+			<Panel class="EquippableItem" >
+				<Label class="EquipText" text="{s:item_name}"/>
+				<Button id="EquipButton">
+					<Label class="EquipLabel" text="#DAC_LoadoutEquip"/>
+				</Button>
+			</Panel>
+		</snippet>		
+	</snippets>
+
+	<DACEquipControl>
+		<Panel id="EquippableItemContainer">
+			<!-- filled in through code with snippet "EquippableItem" -->
+		</Panel>
+	</DACEquipControl>
+</root>

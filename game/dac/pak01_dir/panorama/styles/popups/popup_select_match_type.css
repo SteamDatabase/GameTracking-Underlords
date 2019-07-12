@@ -44,7 +44,7 @@ PopupSelectMatchType
     text-transform: uppercase;
     transform: rotatez(-2deg);
     background-color: #ffffff;
-    padding: 0px 30px;
+    padding: 0px 30px -8px;
     margin-bottom: 30px;
     box-shadow: 0px 0px 3px #ffffff;
 }
@@ -60,7 +60,7 @@ PopupSelectMatchType
     background-color: #000000;
     padding: 0px 30px;
     letter-spacing: 2px;
-    margin-top: -35px;
+    margin-top: -38px;
     box-shadow: 0px 0px 3px #000000;
 }
 
@@ -178,23 +178,30 @@ PopupSelectMatchType
 
 
 
-#Multiplayer .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_multiplayer_psd.vtex"); }
+#Casual .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_multiplayer_psd.vtex"); }
+#Ranked .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_ranked_psd.vtex"); }
 #Bots .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_botmatch_psd.vtex"); }
 #Tutorial .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_tutorial_psd.vtex"); }
 
-#MultiplayerNoSteam .MatchTypeImage,
-#MultiplayerNoGC .MatchTypeImage
-{ 
-    brightness: .2; 
-    background-image: url("s2r://panorama/images/hud/selectmode_multiplayer_psd.vtex"); 
+#Ranked
+{
+    visibility: collapse;
 }
 
-#MultiplayerNoSteam .MatchName.MultiplayerLabel,
-#MultiplayerNoGC .MatchName.MultiplayerLabel
-{ 
+.NotConnectedToGC .Multiplayer .MatchTypeImage,
+{
+    brightness: .2;
+    background-image: url("s2r://panorama/images/hud/selectmode_multiplayer_psd.vtex");
+}
+.NotConnectedToGC .Multiplayer .MatchName.MultiplayerLabel
+{
     opacity: .2;
 }
 
+.ConnectedToGC.RankedIsLocked #RankedLocked .MatchTypeImage
+{
+    background-image: url("s2r://panorama/images/hud/selectmode_ranked_locked_psd.vtex");
+}
 
 
 #ContinueButton
@@ -210,19 +217,4 @@ PopupSelectMatchType
     font-size: 32px;
     //margin-bottom: 4px;
     font-weight: black;
-}
-
-#Multiplayer,
-#MultiplayerNoSteam,
-#MultiplayerNoGC,
-.NeedsSteamLogin.GCStatusScary #MultiplayerNoGC
-{
-    visibility: collapse;
-}
-
-.CanMM #Multiplayer,
-.NeedsSteamLogin #MultiplayerNoSteam,
-.GCStatusScary #MultiplayerNoGC
-{
-    visibility: visible;
 }

@@ -22,7 +22,7 @@ DACRoundOverScreen
 
 .IsPlatformPC #FightResultPanel
 {
-    ui-scale: 80%;
+    ui-scale: 100%;
     margin-top: 150px;
     //padding: 10%;
 }
@@ -735,7 +735,7 @@ DACRoundOverScreen.AnimateOut
 	transition-delay: 0.0s;
 	transition-timing-function: ease-out;
 	overflow: noclip;
-	margin-top: 36px;
+	margin-top: 8px;
 	margin-bottom: 16px;
 	pre-transform-scale2d: 4;
 }
@@ -786,18 +786,42 @@ DACRoundOverScreen.AnimateOut
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from( #ffc400 ), to(#fffdd7));
 	animation-name: FightResultLabelIn;
-	font-size: 160px;
-	height: 200px;
+	font-size: 120px;
+	height: 148px;
 	//background-image: url("s2r://panorama/images/hud/gold_text_bg_psd.vtex");
+	margin-top: 320px;
 }
+
+.IsPlatformMobile .ShowVictory .FightResultLabel
+{
+		ui-scale: 85%;
+}
+
+.IsPlatformPC .ShowVictory .FightResultLabel
+{
+		ui-scale: 70%;
+}
+
 
 .ShowDefeat .FightResultLabel
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from( #a82a2a ), to(#ce5747));
 	animation-name: FightResultLabelIn;
-	font-size: 160px;
-	height: 200px;
+	font-size: 120px;
+	height: 148px;
+	box-shadow: 0px 0px 3px #00000000;
 }
+
+.IsPlatformMobile .ShowDefeat .FightResultLabel
+{
+		ui-scale: 85%;
+}
+
+.IsPlatformPC .ShowDefeat .FightResultLabel
+{
+		ui-scale: 80%;
+}
+
 
 .ShowDefeat .FightResultLabel.Break2 
 {
@@ -819,8 +843,18 @@ DACRoundOverScreen.AnimateOut
 {
 	color: #fff;
 	animation-name: FightResultLabelIn;
-	font-size: 160px;
-	height: 200px;
+	font-size: 120px;
+	height: 148px;
+}
+
+.IsPlatformMobile .ShowDraw .FightResultLabel
+{
+		ui-scale: 85%;
+}
+
+.IsPlatformPC .ShowDraw .FightResultLabel
+{
+		ui-scale: 80%;
 }
 
 #RoundOverSpecialLabel
@@ -906,7 +940,7 @@ DACRoundOverScreen.AnimateOut
 {
 	horizontal-align: center;
 	text-align: center;		
-	font-size: 26px;
+	font-size: 24px;
 	color: #c0493d;
 	text-shadow: 0px 1px 0px 3.0 #000;
 }
@@ -1125,13 +1159,16 @@ DACRoundOverScreen.AnimateOut
 {
 	font-size:36px;
 	color:#8588a0;
-	margin-left: 1380px;
-	margin-top: 12px;
+	margin-left: 1100px;
+	margin-top: 0px;
+	visibility: collapse;
+	/*
 	transition-property: transform, opacity;
 	transition-duration: .32s;
 	transition-delay: .6s;
 	transition-timing-function: ease-in-out;
 	transform: translateX(-320px);
+	*/
 	opacity: 0;
 	font-weight: bold;
 	text-shadow: 0px 1px 0px 3.0 #000;

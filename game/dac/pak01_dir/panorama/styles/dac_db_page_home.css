@@ -26,6 +26,11 @@ DACHomePage
     visibility: collapse;
 }
 
+.NeedsSteamLogin.HasCredential.AttemptingLogin #SteamReconnectButton
+{
+    visibility: collapse;
+}
+
 .NeedsSteamLogin.HasCredential #SteamReconnectButton
 {
     visibility: visible;
@@ -312,6 +317,23 @@ DACHomePage
 }
 
 
+#HomeIOSMuted 
+{
+    font-size: 36px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    transition-property: opacity;
+    transition-duration: .2s;
+    visibility: collapse;
+}
+
+.ShowIOSMuted #HomeIOSMuted
+{
+    visibility: visible;
+}
+
+
 .ReconnectButton Label
 {
     font-size: 70px;
@@ -463,9 +485,9 @@ DACHomePage
     //width: 400px;
     //height: 180px;
     horizontal-align: right;
-    vertical-align: top;
+    vertical-align: bottom;
     //margin-bottom: 20px;
-	margin-right: 200px;
+	//margin-left: 200px;
 }
 
 
@@ -473,8 +495,8 @@ DACHomePage
 {
     //width: 400px;
     width: fit-children;
-    margin-right: 380px;
-    margin-top: 35px;
+    //margin-right: 380px;
+    margin-top: 30px;
 }
 
 
@@ -493,8 +515,8 @@ DACHomePage
 
 #EarlyAccessLabel {
     background-color: #000000;
-    font-size: 28px;
-    color: #ffffff;
+    font-size: 24px;
+    color: #6f7286;
     vertical-align: bottom;
     horizontal-align: center;
     text-align: center;
@@ -504,7 +526,7 @@ DACHomePage
     padding: 5px 45px;
     //transform: rotateZ(-3deg);
     margin-bottom: 36px;
-    margin-right: 36px;
+    margin-right: 40px;
     text-overflow: shrink;
 }
 
@@ -551,14 +573,16 @@ DACHomePage
 }
 
 #SocialPanelButton {
-    width: 116px;
-    height: 108px;
+    //width: 116px;
+    //height: 108px;
+    width: 92px;
+    height: 86px;
     background-image: url("s2r://panorama/images/dashboard/icon_friends_list_psd.vtex");
     background-size: contain;
     background-repeat: no-repeat;
     horizontal-align: left;
     vertical-align: top;
-    margin: 8px -40px 0px 20px;
+    margin: 18px -40px 0px 20px;
     transition-property: brightness;
     transition-duration: 0.2s;
 }
@@ -677,6 +701,7 @@ DACHomePage
     margin-top: 12px;
     margin-bottom: 2px;
     padding-top: 1px;
+    //padding-bottom: -3px;
     //background-color: white;
 		border: 2px solid #ffffff22;
 }
@@ -715,6 +740,7 @@ DACHomePage
     horizontal-align: center;
     text-transform: uppercase;
     margin: 0px;
+    padding-bottom: -3px;
 }
 
 /*.SocialTabTitle {
@@ -901,6 +927,11 @@ DACHomePage
     visibility: collapse;
 }
 
+.NeedsSteamLogin.AttemptingLogin #SteamLoginRequired
+{
+    visibility: collapse;
+}
+
 .NeedsSteamLogin #SteamLoginRequired
 {
     visibility: visible;
@@ -969,50 +1000,66 @@ DACHomePage
     margin-left: 8px;	
 }
 
+#SeasonProgressContainer
+{
+    vertical-align: middle;
+    horizontal-align: right;
+    flow-children: down;
+}
+
 #ForegroundContainer #RankContainer
 {
     width: 500px;
     height: 220px;
-    background-image: url("s2r://panorama/images/dashboard/rank_backing_png.vtex");
+    background-image: url("s2r://panorama/images/dashboard/rank_backing_psd.vtex");
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    /* //margin: 800px 0 0 1425px; */
-    vertical-align: bottom;
     horizontal-align: right;
     flow-children: right;
+    z-index: 9;
+    brightness: 1.4;
+    vertical-align: bottom;
+    margin-bottom: 36px;
+    //visibility: collapse;
+    //wait until we get unranked in
+}
+
+.RankedIsUnlocked #RankContainer
+{
+    visibility: visible;
 }
 
 DACRankIcon {
-	margin-top: 190px;
-	margin-left: 30px;
-	vertical-align: middle;
-	horizontal-align: center;
-	
+    margin-top: 190px;
+    margin-left: 30px;
+    vertical-align: middle;
+    horizontal-align: center;
 }
 
+/* Center heavy icons */
 .MajorRank1 #RankIcon {
-    margin-top: -12px;
+	margin-top: -38px;
 }
 
 .MajorRank2 #RankIcon {
-	margin-top: -14px;
+	margin-top: -38px;
 }
 
 .MajorRank3 #RankIcon {
-	margin-top: -18px;
+	margin-top: -38px;
 }
 
 .MajorRank4 #RankIcon {
-	margin-top: -20px;
+	margin-top: -38px;
 }
 .MajorRank5 #RankIcon {
-	margin-top: -22px;
+	margin-top: -38px;
 }
 .MajorRank6 #RankIcon {
-	margin-top: -22px;
+	margin-top: -38px;
 }
 .MajorRank7 #RankIcon {
-	margin-top: -22px;
+	margin-top: -15px;
 }
 .MajorRank8 #RankIcon {
 	margin-top: -16px;
@@ -1024,22 +1071,23 @@ DACRankIcon {
 
 .AspectRatio4x3 #RankContainer
 {
-    margin-bottom: 70px;
-}
-
-.AspectRatio4x3 #RankContainer
-{
     margin-bottom: 80px;
 }
 
 .IsPlatformMobile.AspectRatio21x9 #RankContainer
 {
     margin-bottom: 30px;
+    margin-right: safe-area-inset-right;
 }
 
 .IsPlatformMobile.AspectRatio16x9 #RankContainer
 {
     margin-bottom: 20px;
+}
+
+.IsPlatformPC #ForegroundContainer #RankContainer
+{
+	width: 420px;
 }
 
 #ForegroundContainer #RankNumeral
@@ -1050,7 +1098,7 @@ DACRankIcon {
 .NameContainer {
 	flow-children: down;
 	vertical-align: top;
-    margin-top: 25px;
+    margin-top: 20px;
     /* margin-left: 20px; */
     width: fit-children;
 }
@@ -1072,6 +1120,14 @@ DACRankIcon {
 	text-shadow: 1px 2px 0px 2.0 #00000066;
 }
 
+#PlayerRankProgressBar {
+    width: 460px;
+    height: 25px;
+    horizontal-align: center;
+    opacity-mask: url("s2r://panorama/images/dashboard/progress_bar_mask_psd.vtex");
+    visibility: collapse;
+}
+
 #PlayerLeaderboardPosition {
 	visibility: collapse;
 	font-size: 22px;
@@ -1085,6 +1141,7 @@ DACRankIcon {
 
 .MajorRank9 #PlayerLeaderboardPosition {
 	visibility: visible;
+		margin-top: -8px;
 }
 
 .MajorRank9 #PlayerRank {
@@ -1154,7 +1211,7 @@ DACRankIcon {
 }
 
 #Layer5 {
-    width: 1296px;
+    width: 1100px;
     height: 920px;
     margin-left: 150px;
     margin-bottom: 25px;
@@ -1163,21 +1220,21 @@ DACRankIcon {
 }
 
 .IsPlatformMobile #Layer5 {
-    width: 1296px;
+    width: 1100px;
     height: 920px;
-    margin-right: 40px;
+    margin-right: 600px;
     margin-bottom: 25px;
     vertical-align: bottom;
     horizontal-align: center;
 }
 
 .AspectRatio16x10 #Layer5  {
-    width: 1600px;
-    height: 1090px;
-    margin-right: -100px;
-    margin-bottom: 0px;
+    width: 1100px;
+    height: 920px;
+    margin-left: 150px;
+    margin-bottom: 50px;
     vertical-align: bottom;
-    horizontal-align: right;
+    horizontal-align: left;
 }
 
 #Layer6 {
@@ -1330,3 +1387,145 @@ DACRankIcon {
     }
 }
 
+.AttemptingLogin .ConnectingContainer
+{
+    visibility: visible;
+}
+
+.ConnectingContainer
+{
+    width: 100%;
+    height: 100%;
+    visibility: collapse;
+}
+
+#ConnectingDesc
+{
+    margin-top: 25%;
+    horizontal-align: center;
+    flow-children: down;
+}
+
+#SteamLogoThrobber
+{
+    width: 200px;
+    height: 200px;
+    horizontal-align: center;
+}
+
+#ConnectingLabel
+{
+    font-size: 60px;
+    color: uiLightGrey;
+    text-align: center;
+    margin-top: 64px;
+}
+
+@keyframes
+
+'Throbber'
+{
+    0%
+
+{
+    transform: rotateZ( 360deg );
+}
+
+50%
+{
+    transform: rotateZ( 180deg );
+}
+
+100%
+{
+    transform: rotateZ( 0deg );
+}
+
+}
+
+#CancelLoginButton
+{
+    width: 50%;
+    height: 20%;
+    vertical-align: bottom;
+    horizontal-align: center;
+    visibility: collapse;
+}
+
+.SteamLogoAnimated
+{
+    width: 100%;
+    height: 100%;
+}
+
+
+#radial3
+{
+    background-image: url("s2r://panorama/images/dashboard/steamlogo_radiallines_psd.vtex");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    animation-name: radiallines;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-direction: reverse;
+    margin: 3px;
+}
+
+#radialMask
+{
+    width: 100%;
+    height: 100%;
+    opacity-mask: url("s2r://panorama/images/dashboard/steamlogo_mask_psd.vtex");
+}
+
+#steamlogothrobber_bg
+{
+    background-image: url("s2r://panorama/images/dashboard/steamlogo_bg_psd.vtex");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    animation-name: steamlogopulse;
+    animation-duration: 2.0s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes
+
+'radiallines'
+{
+    0%
+
+{
+    pre-transform-rotate2d: 0deg;
+}
+
+100%
+{
+    pre-transform-rotate2d: 360deg;
+}
+
+}
+
+@keyframes
+
+'steamlogopulse'
+{
+    0%
+
+{
+    opacity: .3;
+}
+
+50%
+{
+    opacity: 1;
+}
+
+to
+{
+    opacity: .3;
+}
+}

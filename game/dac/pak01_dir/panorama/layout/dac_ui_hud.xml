@@ -2,6 +2,7 @@
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
 		<include src="s2r://panorama/styles/dac_ui_hud.vcss_c" />
 		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
 		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
@@ -162,6 +163,7 @@
 			<Panel id="BoardFlipButton" onactivate="DACToggleFlipBoard()" />
 			<Panel id="PlayerStateContainer">
 				<Panel class="HeaderPlayerInfo LeftRightFlow">
+					<Label class="BPLevel SelectedPlayerLevel" text="{d:selected_player_event_level}" id="PlayerBPLevelGraphLevel" />	
 					<Label class="HeaderPlayerName" id="PlayerNameContainer" text="{g:dac_player_slot_persona:b:gameStatePlayerSlot}" html="true" />
 				</Panel>
 				<Panel>
@@ -202,11 +204,10 @@
 			</Panel>
 
 			<DACUIShop/>
-			<Panel id="HamburgerButton" onactivate="DACShowMenuButtons()" />
+			<Panel id="HamburgerButton" onactivate="DACShowMenuButtons(); PlaySoundEffect( 'DAC_UI.InGame_SettingsOpen' )" />
 			<Panel class="BatteryIndicator">
 				<ProgressBar value="1" max="1" id="BatteryStatus" />
 			</Panel>
-			<DACUIZoo id="Zoo"/>
 			<Panel id="ErrorMsg">
 				<Label text="{s:error_message}"/>
 			</Panel>
@@ -235,7 +236,7 @@
 				<Panel id="HideScoreboardButton" onactivate="DACHideScoreboard()" />
 			</Panel>
 			<DACSellUnitBar id="SellUnitBar"/>
-
+			
 			<Panel class="CornerButtons" hittest="false">
 				<Panel class="PlayPauseContainer">
 					<Panel class="PauseButton" onactivate="DACTogglePauseGame()" />
@@ -304,138 +305,36 @@
 			</Panel>
 		</Panel>
 
+		<DACUIZoo id="Zoo"/>
+
 		<!-- Chrome that draws over everything -->
 		<Panel id="MenuButtons" hittest="true">
 			<Panel class="MenuButtonContainer PopupPanel">
 				<Panel class="MenuLogo" />
-				<Button class="MenuButton BevelButton" onactivate="DACHideMenuButtons()">
+				<Button class="MenuButton BevelButton" onactivate="DACHideMenuButtons(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 					<Label text="#DAC_InGame_MenuCancel"></Label>
 				</Button>
-				<Button class="MenuButton BevelButton" onactivate="DACShowHeropediaPopup();">
+				<Button class="MenuButton BevelButton" onactivate="DACShowHeropediaPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 					<Label text="#DAC_InGame_Heropedia"></Label>
 				</Button>
-				<Button class="MenuButton BevelButton SettingsButton" onactivate="DACShowSettingsPopup();">
+				<Button class="MenuButton BevelButton SettingsButton" onactivate="DACShowSettingsPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 					<Label text="#DAC_InGame_ShowSettings"></Label>
 				</Button>
 				<Button id="ZooButton" class="MenuButton BevelButton" onactivate="DACShowHudZoo(); DACHideMenuButtons()">
 					<Label text="#DAC_InGame_Zoo"></Label>
 				</Button>
-				<Button class="MenuButton BevelButton" onactivate="DACReturnToDashboard( false )">
+				<Button class="MenuButton BevelButton" onactivate="DACReturnToDashboard( false ); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 					<Label text="#DAC_InGame_ReturnToMainMenu"></Label>
 				</Button>
 			</Panel>
 		</Panel>
 
 		<!-- Make sure these are at the bottom to get the z-order right -->
-		<Panel id="DeadOverlayPanel" onactivate="">
-			<Panel class="OverlayContainer">
-				<Panel class="PlaceContainer">
-					<Label class="PlaceTitle" text="#DAC_InGame_UserDiedPlace"/>
-					<Label class="PlaceQuote" text="{s:result_quote}"/>
-				</Panel>
-				<Panel class="StatsContainer">
-					<Panel id="RoundsWon" class="StatsSubContainer">
-						<Label class="BigStat" text="{d:rounds_won}" />
-						<Label class="StatDescription tilt-left" text="#DAC_EndGame_RoundsWon" />
-					</Panel>
-					<Panel id="EndGameDamageDealt" class="StatsSubContainer">
-						<Label class="BigStat" text="{d:damage_dealt}" />
-						<Label class="StatDescription tilt-right" text="#DAC_EndGame_DamageDealt" />
-					</Panel>
-					<Panel id="GoldEarned" class="StatsSubContainer">
-						<Label class="BigStat" text="{d:gold_earned}" />
-						<Label class="StatDescription tilt-left" text="#DAC_EndGame_GoldEarned" />
-					</Panel>
-									<!-- <Panel class="StatsSubContainer">
-						<Label class="BigStat" text="{d:rounds_lost}" />
-						<Label class="StatDescription" text="#DAC_EndGame_RoundsLost" />
-					</Panel> -->
-				</Panel>
-				<Panel class="SynergyContainer">
-					<Label class="FinalCrewTitle tilt-right" text="#DAC_FinalCrew_Title"/>
-					<Panel id="DeadHeroSynergies" class="final-synergies">
-						<!-- Code generated -->
-					</Panel>
-					<Panel id="DeadHeroRoster" class="HeroRoster">
-						<!-- Code generated -->
-					</Panel>
 
-				</Panel>
-			</Panel>
-			<Panel class="ButtonContainer">
-				<!-- removing end game stats for now
-					<Button class="BevelButton" onactivate="DACShowEndGameStats()">
-						<Label text="#DAC_InGame_ShowStats" />
-					</Button>
-					-->
-				<Button id="PlayButton" class="HomeButton" onactivate="DACStartNewMatch()">
-					<Label text="#DAC_DBHome_Mobile_Play"/>
-				</Button>
-				<Panel id="MainMenuButton" class="PostGameButtons">
-					<Button class="GlassButton" onactivate="DACDismissDeathPanel()">
-						<Label class="" text="#DAC_InGame_KeepWatching" />
-					</Button>
-					<Button class="GlassButton" onactivate="DACReturnToDashboard( true )">
-						<Label class="" text="#DAC_InGame_ReturnToMainMenu" />
-					</Button>
-				</Panel>
-			</Panel>
-		</Panel>
-		<Panel id="WinOverlayPanel" onactivate="">
-			<Panel class="OverlayContainer">
-				<Panel class="radial-gradient" />
-				<Panel class="PlaceContainer">
-					<Label class="PlaceTitle" html="true" text="#DAC_EndGame_Win"/>
-					<Label class="PlaceQuote" text="{s:result_quote}"/>
-				</Panel>
-				<Panel class="StatsContainer">
-					<Panel class="StatsSubContainer">
-						<Label class="BigStat" text="{d:rounds_won}" />
-						<Label class="StatDescription tilt-left" text="#DAC_EndGame_RoundsWon" />
-					</Panel>
-					<Panel class="StatsSubContainer">
-						<Label class="BigStat" text="{d:damage_dealt}" />
-						<Label class="StatDescription tilt-right" text="#DAC_EndGame_DamageDealt" />
-					</Panel>
-					<Panel class="StatsSubContainer">
-						<Label class="BigStat" text="{d:gold_earned}" />
-						<Label class="StatDescription tilt-left" text="#DAC_EndGame_GoldEarned" />
-					</Panel>
-					<!-- <Panel class="StatsSubContainer">
-						<Label class="BigStat" text="{d:rounds_lost}" />
-						<Label class="StatDescription" text="#DAC_EndGame_RoundsLost" />
-					</Panel> -->
-				</Panel>
-				<Panel class="SynergyContainer">
-					<Label class="FinalCrewTitle tilt-right" text="#DAC_FinalCrew_Title"/>
-					<Panel id="WinHeroSynergies" class="final-synergies">
+		<TextEntry id="Chat" oninputsubmit="DACChatTextSubmitted()" maxchars="1024" setacceptsfocus="true" />
 
-					</Panel>
-					<Panel id="WinHeroRoster" class="HeroRoster">
-					</Panel>
-
-				</Panel>
-			</Panel>
-			<Panel class="ButtonContainer">
-				<!-- removing end game stats for now
-					<Button class="BevelButton" onactivate="DACShowEndGameStats()">
-						<Label text="#DAC_InGame_ShowStats" />
-					</Button>
-					-->
-				<Button id="PlayButton" class="HomeButton" onactivate="DACStartNewMatch()">
-					<Label text="#DAC_DBHome_Mobile_Play"/>
-				</Button>
-				<Panel id="MainMenuButton" class="PostGameButtons">
-					<Button class="GlassButton" onactivate="DACReturnToDashboard( true )">
-						<Label class="t" text="#DAC_InGame_ReturnToMainMenu" />
-					</Button>
-				</Panel>
-			</Panel>
-		</Panel>
 		<Panel class="SafeArea" hittest="false">
-			
 			<DACChatWheel />
-			<DACPostGameStats id="PostGameStats"/>
 			<ToastManager id="ToastManager" hittest="false" toastduration="5.0s" maxtoastsvisible="3" />
 			<DACContextMenuManager id="ContextMenuManager" />
 			<DACTooltipManager id="TooltipManager" hittest="false" />
@@ -444,5 +343,7 @@
 		<Panel id="WaitingForPlayers">
 			<Label text="#DAC_Hud_WaitingForPlayers"/>
 		</Panel>
+
+		<Panel class="GameOverFadeOutPanel" />
 	</DACUIHud>
 </root>

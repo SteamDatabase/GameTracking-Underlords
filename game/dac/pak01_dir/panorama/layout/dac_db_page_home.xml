@@ -2,18 +2,16 @@
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_home.vcss_c" />
-  </styles>
-	<snippets>
-		
+	</styles>
+	<snippets>	
 	</snippets>
 	
 	<DACHomePage hittest="false" class="DashboardPage">
 
 		<Panel id="BetaBackground">
 			<Image id="Layer6" src="s2r://panorama/images/dashboard/background/flattened-bg_jpg.vtex" />
-			<Image id="Layer5" src="s2r://panorama/images/dashboard/heroes-beta-sil_png.vtex" />
+			<Image id="Layer5" src="s2r://panorama/images/dashboard/underlords-v2_png.vtex" />
 		</Panel>
-
 
 		<Panel id="ForegroundContainer">
 
@@ -23,7 +21,8 @@
 			</Panel>
 
 			<Panel id="ButtonContainer">
-				<Button id="PlayButton" class="HomeButton" onactivate="DACMatchTypeSelect()">
+				<Label text="#dac_settings_ios_muted" id ="HomeIOSMuted" />
+				<Button id="PlayButton" class="HomeButton" onactivate="DACMatchTypeSelect(); PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' );" onmouseover="PlaySoundEffect('DAC_UI.MainMenu_PlayHover')">
 					<Label text="#DAC_DBHome_Mobile_Play"/>
 				</Button>
 				<Button id="ReconnectButton" class="ReconnectButton" onactivate="DACReconnectLobby()">
@@ -43,7 +42,7 @@
 			</Panel>
 			
 			<Panel class="SafeArea" hittest="false">
-				<Panel id="SocialPanelButton" onactivate="DACToggleSocialPanel()">
+				<Panel id="SocialPanelButton" onactivate="DACToggleSocialPanel(); PlaySoundEffect('DAC_UI.MainMenu_SocialActivate')" onmouseover="PlaySoundEffect(DAC_UI.MainMenu_SocialHover')">
 					<Panel class="SocialViolatorList">
 						<Panel class="SocialViolator PartyInvitesViolator">
 							<Panel class="InviteIcon"/>
@@ -57,11 +56,14 @@
 			<Panel id="SafeArea" hittest="false">
 			</Panel>
 
+			<DACControlBattlePass id="BattlePassOverview" />
+			
 			<Panel class="RankIndicator DefaultHidden" id="RankContainer">
 				<DACRankIcon id="RankIcon" iconstyle="standalone" />
 				<Panel class="NameContainer">
 					<Label id="PlayerName" html="true" text="{g:dac_persona:b:player_accountid}" />
 					<Label id="PlayerRank" html="true"  text="#DAC_LevelUp_Rank_New" />
+					<ProgressBar id="PlayerRankProgressBar" />
 					<Label id="PlayerLeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
 				</Panel>
 			</Panel>
@@ -92,12 +94,29 @@
 	          </Panel>
 	        </Panel>
 
-					<Panel id="SocialPanelHeader">
+          <Panel class="ConnectingContainer">
+            <Panel id="ConnectingDesc">
+              <Panel id="SteamLogoThrobber">
+                <Panel id="steamlogothrobber_bg" class="SteamLogoAnimated"/>
+                <Panel id="radialMask" class="SteamLogoAnimated">
+                  <Panel id="radial3" class="SteamLogoAnimated"/>
+                </Panel>
+              </Panel>
+              <Panel id="ConnectingLabel">
+                <Label text="#DAC_SteamLogIn_Connecting"/>
+              </Panel>
+            </Panel>
+            <Button class="PopupButton LoginButton" id="CancelLoginButton" onactivate="DACCancelSteamLogin()">
+              <Label text="#Cancel" />
+            </Button>
+          </Panel>
+
+          <Panel id="SocialPanelHeader">
 						<Button class="SocialButtonClose" onactivate="DACToggleSocialPanel()" />
-						<Button id="SocialButtonFriends" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Friends' )">
+						<Button id="SocialButtonFriends" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Friends' ); PlaySoundEffect('DAC_UI.SocialMenu_Activate')">
 							<Label class="SocialTabTitle" text="#DAC_Social_FriendsTab"/>
 						</Button>
-						<Button id="SocialButtonParty" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Party' )">
+						<Button id="SocialButtonParty" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Party' ); PlaySoundEffect('DAC_UI.SocialMenu_Activate')">
 							<Label class="SocialTabTitle" text="#DAC_Social_PartyTab"/>
 							<Panel class="SocialViolatorList">
 							<Panel class="SocialViolator PartyInvitesViolator">

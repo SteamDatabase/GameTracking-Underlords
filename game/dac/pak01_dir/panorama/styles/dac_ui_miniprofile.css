@@ -1,4 +1,4 @@
-	@import url("file://{resources}/styles/battle_pass/current_battlepass.css");
+@import url("file://{resources}/styles/battle_pass/current_battlepass.css");
 
 DACMiniProfile {
 	overflow: noclip;
@@ -23,6 +23,7 @@ DACMiniProfile {
 
 #PlayerProfile {
 	horizontal-align: center;
+	overflow: noclip;
 }
 
 #PlayerAvatar {
@@ -196,7 +197,7 @@ DACParticleScenePanel {
 }
 
 .HeaderPlayerName {
-	margin-top: -4px;
+	margin-top: 8px;
 	color: #767cb1;
 	text-shadow: 0px 0px 0px 2.0 #000;
 	font-size: 28px;
@@ -208,6 +209,7 @@ DACParticleScenePanel {
 	font-size: 30px;
 	font-weight: bold;
 	text-overflow: shrink;
+	z-index: 10;
 
 	visibility:collapse;
 }
@@ -410,17 +412,17 @@ DACRoundOverScreen #MiniProfile .HeaderPlayerName
 
 #RankIcon
 {
-	margin: 0px 0 0 5px;
+	margin: 40px 0 0 5px;
 	width: 225px;
 	height: 446.25px;
 }
 
 #PlayerProfileAvatarOverlay
 {
-	
-     margin: 0px 0 0 5px;
-	 width: 225px;
-	 height: 236px;
+	overflow: noclip;
+    margin: 0px 0 0 5px;
+	width: 225px;
+	height: 236px;
 }
 
 .BotPlayer #PlayerProfileAvatarOverlay
@@ -434,7 +436,8 @@ DACRoundOverScreen #MiniProfile .HeaderPlayerName
 }
 
 .NeutralRound #RankIcon,
-.BotPlayer #RankIcon
+.BotPlayer #RankIcon,
+.HideRank #RankIcon
 {
     visibility: collapse;
 }
@@ -476,4 +479,78 @@ DACRoundOverScreen #MiniProfile .HeaderPlayerName
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: 6;
 	animation-name: HeadShake;
+}
+
+.MuteButton
+{
+	width:50px;
+	height:50px;
+	horizontal-align:right;
+	visibility:collapse;
+}
+
+.Muted .MuteButton
+{
+	background-color: red;
+}
+
+.Unmuted .MuteButton
+{
+	background-color: green;
+}
+
+.ViewingFlippableBoard #PlayerStateContainer .MuteButton
+{
+	visibility: collapse;
+}
+
+.PlayerProfileAvatarVignette
+{
+	background-image: url("s2r://panorama/images/mini_profile/mini_profile_avatar_vignette_psd.vtex");
+	background-size: cover;	
+	z-index: -11;
+	width: 100%;
+	height: 100%;
+}
+
+.PlayerProfileAvatarBorder
+{
+	background-image: url("s2r://panorama/images/mini_profile/mini_profile_avatar_border_psd.vtex");
+	background-size: cover;	
+
+	width: 350px;
+	height: 350px;
+	margin-left: -62px;
+	margin-top: -62px;
+	z-index: -10;
+}
+
+
+
+// Rewards Tab Profile
+
+DACRewardsPage #StatusXP,
+DACRewardsPage #StatusHP,
+DACRewardsPage #PlayerEXPContainer,
+DACRewardsPage #ButtonBuyEXP,
+DACRewardsPage #PlayerAvatar,
+DACRewardsPage #PlayerProfileAvatarOverlay 
+{
+	visibility: collapse;
+}
+
+
+DACRewardsPage #RankIcon
+{
+	margin-top: -100px;
+}
+
+.IntroProfileContainerRow DACMiniProfile
+{
+	width:350px;
+}
+
+.IntroProfileContainerRow #PlayerNameContainer
+{
+	horizontal-align: center;
 }

@@ -3,14 +3,19 @@
 	Title: %s
 	You must construct it with ORDERED_CONSTRUCT macro in the dependency resolution function.
        Sum (ms)            Avg Time/Frame (ms)     Avg Time/Call (ms)
+    %s %d: proc %d (group %u:%u)
+  %02d: %u:0x%llx
   %10.3f %9.2f      %10.3f %6.2f      %10.3f %6.2f   %8d %6.2f
   %10.3f %9.2f      %8d
+  %2d - proc %2d (grp %u:%u / phy %d / cor %d / smt %d): max freq %llu
   %52.52s%12d%12.3f%12.3f%7.2f%12.3f%7.2f%12.3f%12.3f%12.3f%12.3f
+  %s slot %d combined mask %u:0x%llx
   ---------- ---------      --------
   ---------- ---------      ---------- ------      ---------- ------   -------- ------
   ---------------------------------------------------- ----------- ----------- ----------- ------ ----------- ------ ----------- ----------- ----------- -----------
   Scope                                                      Calls Calls/Frame  Time+Child    Pct        Time    Pct   Avg/Frame    Avg/Call Avg-NoChild        Peak
  (DISABLED)
+ (forced)
  (including user space up to 63 bits)
  Avg Time/Frame (ms)
  [A\A]A^]
@@ -215,6 +220,7 @@ $[A\]
 -debug_exitprocess
 -debugbreak
 -dedicated
+-disable_affinity_preferences
 -emaildumps
 -etwprofile
 -force_battery_level
@@ -280,6 +286,9 @@ $[A\]
 /proc/self/statm
 /proc/version
 /sys/devices/system/clocksource/clocksource0/current_clocksource
+/sys/devices/system/cpu/cpu%u/cpufreq/cpuinfo_max_freq
+/sys/devices/system/cpu/cpu%u/topology/core_id
+/sys/devices/system/cpu/cpu%u/topology/physical_package_id
 /t,I9
 /t2D8
 /tmp/.steam-sem-names
@@ -321,9 +330,8 @@ $[A\]
 8[A\A]A^A_]
 8[A\A]]
 8[A\Hc
-95U1"
-95~'"
-9=;1"
+95%<"
+9=R<"
 9CTestCase
 9IMemAlloc
 9ITestCase
@@ -333,7 +341,6 @@ $[A\]
 :>	Q>>
 :bD/b
 ;*3$"
-;=w\$
 <	upH
 <$.t 
 <$.t H
@@ -372,6 +379,7 @@ AUATL
 AUATS
 AUATS1
 AUATSH
+AUATSHc
 AVAUA
 AVAUATA
 AVAUATI
@@ -397,12 +405,14 @@ AWAVAUE1
 AWAVAUI
 AWAVAUL
 AWAVAULc
+AWAVAUM
 AWAVE
 AWAVI
 AWAVL
 AWAVM
 AYAZE
 A\A]A^A_]
+A\A]A^A_]H
 A\A]A^]
 A\A]A^]H
 A\A]]
@@ -412,6 +422,20 @@ A]A^]
 A^A_]
 AbortMessage({
 AddRef
+Affinity preferences: %d logical processors, limiting to %d
+Affinity preferences: %d speeds, preference split at sort index %d
+Affinity preferences: '%s' thread assigned to all-procs mask %u:0x%llx
+Affinity preferences: '%s' thread assigned to proc mask %u:0x%llx (index %d)%s, next proc mask %u:0x%llx (index %d)
+Affinity preferences: all-procs gather crossed group boundary
+Affinity preferences: disabled (%u physical procs, %u logical)
+Affinity preferences: explicitly disabled
+Affinity preferences: no logical processor speed variation
+Affinity preferences: no logical processor split fit
+Affinity preferences: no per-logical-processor information
+Affinity preferences: no preferences, skipping assignment
+Affinity preferences: no-pref all-procs does not set affinity
+Affinity preferences: only one logical processor
+Affinity preferences: turned off for internal reason
 AllocTag
 AllocateEvent
 Always Ignore
@@ -551,6 +575,7 @@ GLIBC_2.3.4
 GLIBC_2.4
 GLIBC_2.7
 GLIBC_2.8
+GLIBC_2.9
 General
 Generic_
 GenuineIntel
@@ -567,12 +592,14 @@ GetLocalHostname
 GetModuleNameFromAddress
 GetNameFromOSType
 GetOSDetailString
+GetPerfSortedLogicalProcessors
 GetPlatformName
 GetReplacePtr
 GetSymbolNameFromAddress
 GetThreadedLoadLibraryFunc
 GetUnitTest
 GetWin32ConsoleCursorColumnIndex
+H9=Ys%
 H9C r$L
 H9P s
 H9w8v
@@ -648,6 +675,10 @@ Linux 3.10
 Linux 3.2
 Linux 3.5
 Linux 3.6
+Linux 4.0
+Linux 4.18
+Linux 4.5
+Linux 5.0
 LoggingSystem_AddTagToChannel
 LoggingSystem_CurrentStateIndex
 LoggingSystem_EnableBackdoorLoggingListeners
@@ -685,6 +716,9 @@ LoggingSystem_UnregisterLoggingListener
 Mac OS
 MacOS 10.10
 MacOS 10.11
+MacOS 10.12
+MacOS 10.13
+MacOS 10.14
 MacOS 10.4
 MacOS 10.5
 MacOS 10.5.8
@@ -724,6 +758,7 @@ Networking
 No samples
 NoteAlloc
 OS memory stats:
+OS type: %s (%d)
 OS: %s
 OSTypesAreCompatible
 Ordered constructor wrapped type has no default constructor.
@@ -1207,9 +1242,12 @@ ThreadIsProcessActive
 ThreadIsProcessIdActive
 ThreadJoin
 ThreadMultiWait
+ThreadMultiWaitObjectSetCreate
+ThreadMultiWaitObjectSetDestroy
 ThreadNanoSleep
 ThreadScopeChangeEventHandler_ThreadID
 ThreadSetAffinity
+ThreadSetAffinityPreference
 ThreadSetDebugNameS2
 ThreadSetPriority
 ThreadSetProcessPriority
@@ -1668,6 +1706,7 @@ _Z27V_UnicodeCaseStringInStringPKcS0_i25EStringConvertErrorPolicy
 _Z27V_UnicodeCaseStringInStringPKtS0_i25EStringConvertErrorPolicy
 _Z27V_UnicodeCaseStringInStringPKwS0_i25EStringConvertErrorPolicy
 _Z30LoggingSystem_IsChannelEnabledi18LoggingVerbosity_t
+_Z30ThreadMultiWaitObjectSetCreatePK6pollfdPK22ThreadMultiWaitExtra_ti
 _Z6ConMsgPKcz
 _Z6DevMsgPKcz
 _Z9V_wcsistrPKwS0_
@@ -2157,6 +2196,9 @@ dlerror
 dlopen
 dlsym
 eV5( 
+epoll_create1
+epoll_ctl
+epoll_wait
 error
 eventfd
 execlp
@@ -2210,6 +2252,7 @@ gmtime_r
 hA\A]A^A_]
 h[A\A]A^A_]
 h[A\A]]
+higher
 ignored_assertions.txt
 int:transient:1
 isspace
@@ -2228,6 +2271,7 @@ libtier0.so.dbg
 linux
 localtime_r
 logging.cpp
+lower
 m?H5p?
 macos
 malloc
@@ -2245,6 +2289,7 @@ nanosleep
 nexttoken
 no affinity...
 noicon
+nopref-all
 notify-send
 open(%s) failed
 p?&quot;

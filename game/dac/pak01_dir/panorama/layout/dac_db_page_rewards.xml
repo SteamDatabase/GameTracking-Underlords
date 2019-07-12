@@ -2,58 +2,116 @@
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_rewards.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_page_home.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
 	</styles>
 	<snippets>
-    <snippet name="Reward">
-      <Panel class="RewardLineItem" >
-        <Panel id="RewardLineItemImageFree" class="RewardLineItemImage RewardLineItemImageFree">
-        </Panel>
-        <Panel class="RewardLineItemSeparator"/>
-        <Panel id="RewardLineItemImageBP" class="RewardLineItemImage RewardLineItemImageBP">
-        </Panel>
-        <Button class="RewardLineItemClaimButton">
-          <Label text="{d:reward_level}"/>
-        </Button>
-        <Button class="RewardLineItemEquipButton">
-          <Label class="ItemNotEquipped" text="Equip"/>
-          <Label class="ItemEquipped" text="Equipped"/>
-        </Button>
-      </Panel>
-    </snippet>
+		<snippet name="Reward">
+			<Panel class="RewardLineItem" >
+				<Panel id="MainRewardPanel" class="RewardLineItemImage" />
+				<Panel id="RewardLineItemPathIcon" />
+				<Button id="RewardLineItemClaimButton">
+					<Label text="#DAC_Rewards_Level"/>
+				</Button>
+			</Panel>
+		</snippet>
+
+		<snippet name="EmptyReward">
+			<Panel class="RewardLineItem EmptyReward" >
+				<Panel id="MainRewardPanel" class="RewardLineItemImage" onmouseover="PlaySoundEffect('DAC_UI.ProtoPass_RankHover')" />
+				<Panel id="RewardLineItemPathIcon" />
+				<Button id="RewardLineItemClaimButton">
+					<Label text="#DAC_Rewards_Level"/>
+				</Button>
+			</Panel>
+		</snippet>
+
+		<snippet name="DailyChallenge">
+			<Panel class="DailyChallenge" >
+				<Label text="{s:challenge_text}" />
+				<ProgressBar value="0" max="1" id="ChallengeProgress" />
+			</Panel>
+		</snippet>
+		
+		<snippet name="RewardLevel5">
+			<Panel class="RewardLineItem" >
+				<Panel id="MainRewardPanel" class="RewardLineItemImage">
+					<Label class="ComingSoonViolator" text="#DAC_ComingSoon"/>	
+				</Panel>
+				<Panel id="RewardLineItemPathIcon" />
+				<Button id="RewardLineItemClaimButton">
+					<Label text="#DAC_Rewards_Level"/>
+				</Button>
+			</Panel>
+		</snippet>
 	</snippets>
 	
 	<DACRewardsPage hittest="false" class="DashboardPage">
-    <Panel id="TopRow">
-      <Panel id="BattlePassProgress">
-        <Panel id="PlayerBPLevelContainer">
-          <CircularProgressBar value="500" max="1000" id="PlayerBPLevelGraph" />
-          <Label text="0" id="PlayerBPLevelGraphLevel" />
-        </Panel>
-        <Label class="BattlePassCurrentLevelProgress" text="#DAC_Rewards_BPCurrentLevelProgress"/>
-      </Panel>
-      <Panel id="BattlePassUpsell">
-        <Panel class="UpsellLabelContainer">
-          <Label class="UpsellTitle" text="#DAC_Rewards_BuyBattlePassTitle"/>
-          <Label class="UpsellDesc"  text="#DAC_Rewards_BuyBattlePassDesc"/>
-        </Panel>
-      </Panel>
-    </Panel>
-    <Panel id="BottomRow">
-      <Panel id="RewardLineContainer">
-        <Button id="ScrollLeft" onactivate="ScrollPrevious()">
-        </Button>
-        <Panel id="FreeBPPanels">
-          <Panel id="FreePanel">
-            <Label text="#DAC_Rewards_Free"/>
-          </Panel>
-          <Panel id="BPPanel"/>
-        </Panel>
-        <DelayLoadList itemheight="550px" itemwidth="240px" id="RewardLine">
+		<Panel id="ProtopassOverlay" />
+		<Panel id="BattlePassImage" />
+<!--		<Panel id="ProtopassContainer">-->
+		<Panel id="BottomRow">
+			<!--			<Label class="RewardLabel" text="#DAC_Rewards_Rewards"/>-->
+			<Panel id="RewardLineContainer">
+				<!-- <Button id="ScrollLeft" onactivate="ScrollPrevious()"/> -->
+				<ProgressBar value="0" max="1" id="MainProgress" />
+				<DelayLoadList itemheight="350px" itemwidth="304px" spacersize="0px" spacerperiod="1" id="RewardLine">
+				</DelayLoadList >
 
-        </DelayLoadList >
-        <Button id="ScrollRight" onactivate="ScrollNext()">
-        </Button>
-      </Panel>
-    </Panel>
+				<!-- <Button id="ScrollRight" onactivate="ScrollNext()"/> -->
+			</Panel>
+		</Panel>
+		<Panel id="TopRow" hittest="false">
+
+			<Panel class="RewardsInfo">
+  		    <Label class="Header"/>
+          <Label class="SectionType" text="#DAC_Rewards_Rewards"/>
+			    <Panel class="RewardsDesc">      
+			        <Label class="Intro" text="#DAC_Rewards_Intro"/>
+			        <Label class="Description" text="#DAC_Rewards_Description"/>
+			 	  </Panel>         
+			</Panel>
+ 
+			<Panel id="BattlePassProgressContainer">
+<!--				<Label class="BattlePassTitle PlayerLevelTitle" text="#DAC_Rewards_Player_Level_Label" />-->
+				<Panel id="BattlePassProgress">
+					<Panel id="PlayerBPBackgroundTop" />
+					<ProgressBar value="0" max="1" id="PlayerProgress" />
+					<Panel class="BPBottomRow">
+						<Panel id="PlayerBPBackgroundBottom" />
+						<Panel class="BPLevelProgressContainer">
+							<Label class="BattlePassCurrentLevelProgress" text="#DAC_Rewards_BPCurrentLevelProgress"/>
+
+							<Label class="BPXPLabel" text="#DAC_BP_XP" />
+						</Panel>
+					</Panel>
+				</Panel>
+				<Panel id="PlayerBPLevel">
+					<Label class="BPLevel" text="{d:current_level}" id="PlayerBPLevelGraphLevel" />
+				</Panel>
+				<!--				<Label html="true" text="#DAC_Rewards_Level_Label" id="PlayerBPLevelGraphLevelLabel" />-->
+				<!--				<Panel id="BPLevelOverview">-->
+				<!--					<ProgressBar value="0" max="1" id="PlayerProgress" />-->
+				<!--					<Panel id="PlayerBPLevelLabelBG" >-->
+				<!--						<Label html="true" text="#DAC_Rewards_Player_Level" id="PlayerBPLevelGraphLevel" />-->
+				<!--					</Panel>-->
+
+				<!--				</Panel>-->
+				<!--				<Label class="BattlePassCurrentLevelProgress" text="#DAC_Rewards_BPCurrentLevelProgress"/>-->
+			</Panel>
+
+
+			<Panel class="DailyQuests" hittest="false">
+				<DACControlBattlePass id="BattlePassOverview" />
+<!--				<Label class="BattlePassTitle" text="#DAC_BattlePassTitle" />-->
+<!--				<Panel id="QuestContainer">-->
+<!--					<Panel id="QuestItemContainer">-->
+<!--					</Panel>-->
+<!--				</Panel>-->
+			</Panel>
+
+		</Panel>
+
+<!--		</Panel>-->
 	</DACRewardsPage>
 </root>

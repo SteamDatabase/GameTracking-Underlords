@@ -68,6 +68,10 @@ DACUIMain.InGame
     ui-scale: 80%;
 }
 
+.Page_DACPagePostGame #MainMenuContainer
+{
+	visibility: collapse;
+}
 
 @define toastExitDuration: 0.3s;
 
@@ -346,21 +350,32 @@ DACUIMain.InGame
 #PatchNotesViolator
 {
 	visibility: collapse;
-	transform: rotateZ(-3deg);
-	margin-top: 110px;
-	font-size: 22px;
-	background-color: #000000;
-	color: #ffffff;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	font-weight: bold;
-	padding: 2px;
-	padding-top: 4px;
+
+	width: 35px;
+	height: 35px;
+
+	margin-top: 58px;
+	margin-right: 10px;
 	
-	overflow: squish;
-	text-overflow: shrink;
-	text-align: center;
+	background-image: url("s2r://panorama/images/dashboard/patch_notes_violator_psd.vtex");
+	background-size: 100%;
+
+	horizontal-align: right;
+}
+
+.IsPlatformMobile #PatchNotesViolator
+{
+	margin-top: 68px;
+	margin-right: 20px;
+}
+
+#Exclamation
+{
+	font-size: 25px;
+	font-weight: black;
+	color: black;
 	horizontal-align: center;
+
 }
 
 .NewSteamAnnouncement #PatchNotesViolator
@@ -384,9 +399,25 @@ DACUIMain.InGame
 
 #BattlePassButtonContainer
 {
-    visibility: collapse;
     x: 360px;
 }
+
+.EventActive #BattlePassButtonContainer
+{
+	visibility: visible;
+}
+
+#LoadoutButtonContainer
+{
+    x: 540px;
+    visibility: collapse;
+}
+
+.EventActive #LoadoutButtonContainer
+{
+	visibility: visible;
+}
+
 
 #AchievementsButtonContainer
 {
@@ -400,10 +431,7 @@ DACUIMain.InGame
     x: 720px;
 }
 
-#SettingsMenuButtonContainer
-{
-    x: 360px;
-}
+
 
 #ZooButtonContainer
 {
@@ -411,25 +439,34 @@ DACUIMain.InGame
     x: 1080px;
 }
 
-#QuitButtonContainer
-{
-    vertical-align: top;
-    horizontal-align: left;
-    border: 0px;
-    background-color: none;
-}
 
-#QuitButton
+#PlayButton #PlayButtonParticle,
+#HeropediaButton #HeropediaButtonParticle,
+#BattlePassButton #BattlePassButtonParticle,
+#LoadoutButton #LoadoutButtonParticle,
+#SettingsMenuButton #SettingsMenuButtonParticle 
 {
-    //background-image: url("s2r://panorama/images/dashboard/quit_psd.vtex");
+	height: 100%;
+	width: 100%;
+	z-index: -100;
+	visibility: collapse;
 }
 
 .PlayContainer #PlayButtonContainer,
-.HeropediaContainer #HeropediaButtonContainer,
-.SettingsMenuContainer #SettingsMenuButtonContainer
+.HeropediaContainer #HeropediaButtonContainer
 {
 	/*brightness: 3.0;*/
 }
+
+.PlayContainer #PlayButton #PlayButtonParticle,
+.HeropediaContainer #HeropediaButton #HeropediaButtonParticle,
+.BattlePassContainer #BattlePassButton #BattlePassButtonParticle,
+.LoadoutButtonContainer #LoadoutButton #LoadoutButtonParticle
+{
+	visibility: visible;
+	opacity: .20;
+}
+
 
 #PlayButton
 {
@@ -443,8 +480,7 @@ DACUIMain.InGame
 }
 
 .PlayContainer #PlayButton:hover,
-.HeropediaContainer #HeropediaButton:hover,
-.SettingsMenuContainer #SettingsMenuButton:hover
+.HeropediaContainer #HeropediaButton:hover
 {
 	opacity: 1;
 }
@@ -486,6 +522,12 @@ DACUIMain.InGame
     animation-timing-function: linear;
 }
 
+#PlayButton:hover,
+#SettingsMenuButton:hover,
+#HeropediaButton:hover
+{
+}
+
 @keyframes
 
 'LightGlowPulse'
@@ -493,12 +535,12 @@ DACUIMain.InGame
 
 0%
 {
-    brightness: 1.0;
+    brightness: .8;
 }
 
 12%
 {
-    brightness: 1.4;
+    brightness: 1.2;
 }
 
 25%
@@ -508,17 +550,17 @@ DACUIMain.InGame
 
 50%
 {
-    brightness: 1.545;
+    brightness: 1.3;
 }
 
 80%
 {
-    brightness: 1.0;
+    brightness: .75;
 }
 
 95%
 {
-    brightness: 1.55;
+    brightness: 1.15;
 }
 
 100%
@@ -527,10 +569,6 @@ DACUIMain.InGame
 }
 }
 
-#BattlePassButton 
-{
-    background-image: url("s2r://panorama/images/dashboard/battlepassbutton_png.vtex");
-}
 
 #AchievementsButton 
 {
@@ -542,9 +580,10 @@ DACUIMain.InGame
     background-image: url("s2r://panorama/images/dashboard/profilebutton_png.vtex");
 }
 
-#SettingsMenuButton 
+
+#BattlePassButton 
 {
-    background-image: url("s2r://panorama/images/dashboard/top_btn_settings_psd.vtex");
+    background-image: url("s2r://panorama/images/dashboard/top_btn_battlepass_psd.vtex");
 	background-size: 100%;
 	height: 131px;
 	width: 200px;
@@ -553,20 +592,28 @@ DACUIMain.InGame
 	transition-duration: .1s;
 }
 
-.SettingsMenuContainer #SettingsMenuButton
+.BattlePassContainer #BattlePassButton 
 {
-	background-image: url("s2r://panorama/images/dashboard/top_btn_settings_active_psd.vtex");
+    background-image: url("s2r://panorama/images/dashboard/top_btn_battlepass_active_psd.vtex");
+}
+
+#LoadoutButton 
+{
+    background-image: url("s2r://panorama/images/dashboard/top_btn_loadout_psd.vtex");
+	background-size: 100%;
+	height: 131px;
+	width: 200px;
 	
 	transition-property: background-image;
-	transition-duration: .3s;
-	
-    animation-name: LightGlowPulse;
-    animation-duration: 4.0s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-	
-	
+	transition-duration: .1s;
 }
+
+.LoadoutButtonContainer #LoadoutButton 
+{
+    background-image: url("s2r://panorama/images/dashboard/top_btn_loadout_active_psd.vtex");
+}
+
+
 
 #ZooButton
 {
@@ -578,19 +625,34 @@ DACUIMain.InGame
 	visibility: visible;
 }
 
-.GCStatusVisible #QuitButtonContainer
+.GCStatusVisible .SystemButtons
 {
     margin-top: 30px;
+}
+
+//System Buttons
+
+.SystemButtons
+{
+	width: fit-children;
+	height: fit-children;
+	vertical-align: top;
+	horizontal-align: right;
+	flow-children: right;
+
+	margin-right: safe-area-inset-right;
+}
+
+.Page_DACPagePostGame .SystemButtons,
+.Page_DACPagePostGame .FeedbackPanel
+{
+	visibility: collapse;
 }
 
 #QuitButtonContainer
 {
     vertical-align: top;
     horizontal-align: right;
-    margin-right: 24px;
-    margin-top: 28px;
-    flow-children: right;
-    //border: 2px solid red;
 }
 
 .IsPlatformPC #QuitButtonContainer
@@ -599,49 +661,100 @@ DACUIMain.InGame
     //ui-scale: 80%;
 }
 
-
-.QuitButton
+#QuitButton
 {
-    width: 64px;
-    height: 64px;
-    horizontal-align: center;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-image: url("s2r://panorama/images/dashboard/quit_psd.vtex");
-    transition-property: wash-color;
-    transition-duration: 0.2s;
-    opacity: .7;
-    //wash-color: #908caa;    
-    visibility: visible;
-    border: 2px solid #00000001;
+	opacity: 0.6;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-image: url("s2r://panorama/images/dashboard/icon_quit_psd.vtex");
+
+	height: 50px;
+	width: 50px;
+	margin-top: 30px;
+	margin-right: 50px;
+
+	transition-property: brightness;
+	transition-duration: 0.2s;
 }
 
-.QuitButton:hover
+#QuitButton:hover,
+#SettingsMenuButton:hover,
+#PatchNotesButton:hover
 {
-    wash-color: #9086c388;
+	opacity: 1.0;
 }
 
-
+.PatchNotesContainer #PatchNotesButton,
+.SettingsMenuContainer #SettingsMenuButton
+{
+	wash-color: #ffd461;
+	opacity: 1.0;
+}
 
 #TempQuitLogin
 {
-    background-image: url("s2r://panorama/images/dashboard/steam_logo_png.vtex");
+	background-image: url("s2r://panorama/images/dashboard/steam_logo_png.vtex");
 }
 
 .IsPlatformMobile #QuitButton
 {
-    visibility: collapse;
+	visibility: collapse;
 }
 
+#SettingsMenuButton 
+{
+	opacity: 0.6;
+
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-image: url("s2r://panorama/images/dashboard/icon_settings_psd.vtex");
+
+	height: 50px;
+	width: 50px;
+	margin-top: 30px;
+	margin-right: 20px;
+
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+#PatchNotesButton 
+{
+	opacity: 0.6;
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-image: url("s2r://panorama/images/dashboard/icon_patch_notes_psd.vtex");
+
+	height: 50px;
+	width: 50px;
+	margin-top: 30px;
+	margin-right: 20px;
+
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+.IsPlatformMobile #SettingsMenuButton,
+.IsPlatformMobile #PatchNotesButton
+{
+	ui-scale: 130%;
+	margin-right: 32px;
+}
+
+.AspectRatio21x9.IsPlatformMobile #SettingsMenuButton
+{
+	margin-right: 20px;
+}
 
 .FeedbackPanel
 {
-    vertical-align: top;
-    horizontal-align: right;
-    margin-right: 150px;
-    margin-top: 36px;
-    flow-children: right;
+	vertical-align: top;
+	horizontal-align: right;
+	margin: 30px 30px 0px 0px;
+	flow-children: right;
 }
 
 .IsPlatformPC .FeedbackPanel
@@ -657,7 +770,7 @@ DACUIMain.InGame
     vertical-align: center;
     //margin-left: 60px;
     margin-top: 6px;
-    color: #ffffff88;
+    color: #8588a0;
     //color: gradient( linear, 100% 0%, 0% 0%, from( #a7e8e3 ), to( #fff ) );
     text-transform: uppercase;
     text-shadow: 0px 0px 0px 2.0 black;
@@ -667,6 +780,7 @@ DACUIMain.InGame
 #SubmitFeedbackButton Label
 {
     font-size: 24px;
+    color: #8588a0;
 }
 
 #SubmitFeedbackButton
@@ -677,8 +791,8 @@ DACUIMain.InGame
     margin-left: 10px;
     opacity: .75;
     width: fit-children;
-    padding: 0px 20px 0px 20px;
-    border: 2px solid #555555;
+    padding: 0px 15px 0px 20px;
+    border: 2px solid #555555aa;
 		background-image: none;
 		background-color: #11111188;
 		transition-property: background-color;
@@ -686,12 +800,7 @@ DACUIMain.InGame
 
 #SubmitFeedbackButton:hover
 {
-	background-color: #333333cc;
-}
-
-.IsPlatformMobile .FeedbackPanel
-{
-	margin-right: 100px;
+	background-color: #33333333;
 }
 
 #IntroScreen

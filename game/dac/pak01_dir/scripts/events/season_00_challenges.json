@@ -1,0 +1,819 @@
+{
+	"challenge_lists":
+	{
+
+		"daily_challenge_list":
+		{
+			"entries":
+			[
+				{
+					"challenge": "dodge_attacks",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "dodge_attacks",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "dodge_attacks",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "crit_attacks",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "crit_attacks",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "crit_attacks",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "earn_gold",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "earn_gold",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "earn_gold",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "deal_magic_damage",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "deal_magic_damage",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "deal_magic_damage",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "lifesteal_attacks",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "lifesteal_attacks",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "lifesteal_attacks",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "cast_spells",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "cast_spells",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "cast_spells",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "kill_units",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "kill_units",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "kill_units",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "summon_units",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "summon_units",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "summon_units",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "combine_3_stars",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "combine_3_stars",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "combine_3_stars",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "heal_units",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "heal_units",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "heal_units",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "acquire_global_items",
+					"config": 1,
+					"weight": 2.0
+				},
+				{
+					"challenge": "acquire_global_items",
+					"config": 2,
+					"weight": 4.0
+				},
+				{
+					"challenge": "acquire_global_items",
+					"config": 3,
+					"weight": 1.0
+				},
+				{
+					"challenge": "combine_2_stars",
+					"config": 1,
+					"weight": 3.0
+				},
+				{
+					"challenge": "combine_2_stars",
+					"config": 2,
+					"weight": 6.0
+				},
+				{
+					"challenge": "combine_2_stars",
+					"config": 3,
+					"weight": 1.0
+				}
+			]
+		}
+
+	},
+	"challenges":
+	{
+
+		"dodge_attacks":
+		{
+			"id": 5,
+			"event":
+			{
+				"event_name": "attack_dodge",
+				"condition":
+				{
+					"player":
+					{
+						"=": "local"
+					}
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 100
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 200
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 400
+				}
+			],
+			"locstring": "#DAC_Challenge_DodgeAttacks"
+		},
+		"crit_attacks":
+		{
+			"id": 6,
+			"event":
+			{
+				"event_name": "attack_crit",
+				"count_instances": true,
+				"condition":
+				{
+					"source_player":
+					{
+						"=": "local"
+					}
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 100
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 200
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 400
+				}
+			],
+			"locstring": "#DAC_Challenge_CritAttacks"
+		},
+		"earn_gold":
+		{
+			"id": 7,
+			"event":
+			{
+				"event_name": "gold_gained",
+				"condition":
+				{
+					"concept":
+					{
+						"!=": "sell_unit"
+					}
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 150
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 300
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 600
+				}
+			],
+			"locstring": "#DAC_Challenge_EarnGold"
+		},
+		"deal_magic_damage":
+		{
+			"id": 8,
+			"event":
+			{
+				"event_name": "magic_damage_dealt",
+				"condition":
+				{
+					"source_player":
+					{
+						"=": "local"
+					}
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 50000
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 100000
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 200000
+				}
+			],
+			"locstring": "#DAC_Challenge_DealMagicDamage"
+		},
+		"lifesteal_attacks":
+		{
+			"id": 9,
+			"event":
+			{
+				"event_name": "lifesteal",
+				"condition":
+				{
+					"source_player":
+					{
+						"=": "local"
+					}
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 2000
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 4000
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 8000
+				}
+			],
+			"locstring": "#DAC_Challenge_LifestealAttacks"
+		},
+		"cast_spells":
+		{
+			"id": 10,
+			"event":
+			{
+				"event_name": "cast_spells",
+				"condition":
+				{
+					"source_player":
+					{
+						"=": "local"
+					}
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 200
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 400
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 800
+				}
+			],
+			"locstring": "#DAC_Challenge_CastSpells"
+		},
+		"kill_units":
+		{
+			"id": 11,
+			"event":
+			{
+				"event_name": "unit_killed",
+				"condition":
+				{
+					"operator": "AND",
+					"operands":
+					[
+						{
+							"source_player":
+							{
+								"=": "local"
+							}
+						},
+						{
+							"player":
+							{
+								"!=": "local"
+							}
+						}
+					]
+
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 200
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 400
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 800
+				}
+			],
+			"locstring": "#DAC_Challenge_KillUnits"
+		},
+		"summon_units":
+		{
+			"id": 12,
+			"event":
+			{
+				"event_name": "unit_summoned",
+				"condition":
+				{
+
+					"player":
+					{
+						"=": "local"
+					}
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 50
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 100
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 200
+				}
+			],
+			"locstring": "#DAC_Challenge_SummonUnits"
+		},
+		"combine_3_stars":
+		{
+			"id": 13,
+			"event":
+			{
+				"event_name": "combine_unit",
+				"condition":
+				{
+					"rank":
+					{
+						"=": 3
+					}
+
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 2
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 4
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 8
+				}
+			],
+			"locstring": "#DAC_Challenge_Combine3Stars"
+		},
+		"heal_units":
+		{
+			"id": 14,
+			"event":
+			{
+				"event_name": "heal_unit",
+				"condition":
+				{
+					"operator": "AND",
+					"operands":
+					[
+						{
+							"source_player":
+							{
+								"=": "local"
+							}
+						},
+						{
+							"player":
+							{
+								"=": "local"
+							}
+						}
+					]
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 50000
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 100000
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 200000
+				}
+			],
+			"locstring": "#DAC_Challenge_HealUnits"
+		},
+		"acquire_global_items": {
+			"id": 15,
+			"event": {
+				"event_name": "acquire_item",
+				"condition": {
+					"item_type": {
+						"=": "global"
+					}
+
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 4
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 8
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 16
+				}
+			],
+			"locstring": "#DAC_Challenge_AcquireGlobalItems"
+		},
+		"combine_2_stars":
+		{
+			"id": 16,
+			"event":
+			{
+				"event_name": "combine_unit",
+				"condition":
+				{
+					"rank":
+					{
+						"=": 2
+					}
+
+				}
+			},
+			"goals":
+			[
+				{
+					"goal": "$threshold",
+					"reward":
+					{
+						"currency_grants":
+						[
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs":
+			[
+				{
+					"id": 1,
+					"reward": 250,
+					"threshold": 15
+				},
+				{
+					"id": 2,
+					"reward": 500,
+					"threshold": 30
+				},
+				{
+					"id": 3,
+					"reward": 1000,
+					"threshold": 60
+				}
+			],
+			"locstring": "#DAC_Challenge_Combine2Stars"
+		}
+	}
+}

@@ -1,5 +1,6 @@
 	"Emit continuously" and "Emit noise" no longer support "scale emission to used control points".
 	"Position from control points" had a max control point added to it.
+	%4d -  %s
 	D9Fl
 	Flags: 
 	You must construct it with ORDERED_CONSTRUCT macro in the dependency resolution function.
@@ -22,6 +23,8 @@
  t]Hc
 !	@m_Gravity
 !4G(H
+!4G(L
+!4G(M
 !m_bNeedsSort
 "%s" 
 "%s" = "%s"
@@ -113,10 +116,9 @@ $[A\]
 ([A\A]]
 (\$ D
 (\$`A
-(^@ATSD
 (d$PA
 (l$ A
-(o@Hc=)
+(o@Hc=I
 (t$ E
 (|$@D
 )D$ A
@@ -126,15 +128,16 @@ $[A\]
 )L$ A
 )WPfE
 )y@t?
-)|$ I
 *** Turn on -particle_perf!
 *** Unable to open profile file!
 *ZN18CNewParticleEffect12StopEmissionEbbbbEUlvE_
++Hc5hOA
 +S$Hc
 +m_flValue
 +s$Hc
 , parent: 
 ,>u"u?
+----------------------------
 -0.9629629
 -1 for all asleep, 1 for all awake
 -10 -10 -10
@@ -543,6 +546,7 @@ $[A\]
 30C_OP_RemapCPVisibilityToVector
 30C_OP_RepeatedTriggerChildGroup
 30C_OP_ScreenForceFromPlayerView
+30C_OP_SelectivelyEnableChildren
 31C_INIT_InitialRepulsionVelocity
 31C_INIT_InitialSequenceFromModel
 31C_INIT_RandomNamedModelBodyPart
@@ -801,6 +805,7 @@ $[A\]
 32CParticleFunctionDefinitionTypedI30C_OP_RemapCPVisibilityToVectorE
 32CParticleFunctionDefinitionTypedI30C_OP_RepeatedTriggerChildGroupE
 32CParticleFunctionDefinitionTypedI30C_OP_ScreenForceFromPlayerViewE
+32CParticleFunctionDefinitionTypedI30C_OP_SelectivelyEnableChildrenE
 32CParticleFunctionDefinitionTypedI31C_INIT_InitialRepulsionVelocityE
 32CParticleFunctionDefinitionTypedI31C_INIT_InitialSequenceFromModelE
 32CParticleFunctionDefinitionTypedI31C_INIT_RandomNamedModelBodyPartE
@@ -930,7 +935,7 @@ $[A\]
 39C_OP_RemapControlPointDirectionToVector
 39C_OP_RemapDistanceToLineSegmentToScalar
 39C_OP_RemapDistanceToLineSegmentToVector
-3Hc5y
+3Hc5	>A
 3L?Zb%
 4$A\]
 4$HcE
@@ -957,7 +962,6 @@ $[A\]
 6\? ]
 7IConVar
 8CFmtStrNILi256ELb0EE
-8Hc5EJ@
 8[A\A]A^A_]
 8[A\A]]
 9-		H
@@ -969,8 +973,9 @@ $[A\]
 ;*3$"
 ;0t:H
 ;2t,H
-;5s7C
+;5m@:
 ;B0}F
+;BX|'1
 ;Fl|	
 ;G tu+G$L
 ;P@}l
@@ -978,7 +983,6 @@ $[A\]
 ;X(}OH
 ;XX}7H
 ;d15H
-;d15I
 ;d15L
 ;f;8A
 ;m_Children.m_pHead: [%p]
@@ -1049,7 +1053,8 @@ A A9Cl
 A minimum on particle simulation time, particle simulation happening more frequently than this will lerp.
 A t!L
 A#V\H
-A(Hc5
+A#|$TH
+A(Hc5[E7
 A+D$$H
 A+E$A
 A+E$H
@@ -1076,6 +1081,7 @@ A9\$X
 A9\$l
 A9\$l~.A
 A9\$p
+A;D$X}
 A;F`}
 A;G A
 A;G`}
@@ -1743,6 +1749,7 @@ C_OP_RestartAfterDuration
 C_OP_RopeSpringConstraint
 C_OP_RotateVector
 C_OP_ScreenForceFromPlayerView
+C_OP_SelectivelyEnableChildren
 C_OP_SequenceFromModel
 C_OP_SetAttributeToScalarExpression
 C_OP_SetCPOrientationToDirection
@@ -1875,7 +1882,6 @@ Cycle Scalar
 Cycle or diamond double-reference to '%s'
 Cycle time
 D#j\H
-D$ Ic
 D$ to
 D$(E1
 D$(H9
@@ -1887,12 +1893,10 @@ D$PH9
 D$XH9
 D$`H9
 D$hH9
-D$lE1
 D$pH9
 D+c$Mc
 D+k$Mc
 D+s$Mc
-D95LxD
 D9C ~JMc
 D9k D
 D9{l~JHc
@@ -1967,6 +1971,7 @@ E9el~
 E9el~\K
 E9gPI
 E9l$l
+E9l$p
 E9t$(D
 E9t$l
 E;&}SI
@@ -2029,6 +2034,7 @@ F D9kl
 F"5PH
 F;t  t
 F@AXAY
+F@^AX
 F@_AX
 FATAL ERROR: unable to register all schema data: %s
 FCVAR_NEVER_AS_STRING
@@ -2084,6 +2090,7 @@ FillAttr
 FilterFrom
 FindClosestMatchingRegion
 First control point to set
+First/Oldest Particle
 Fit Lifetime
 Fixed "Inherit Attribute from Parent Particles" not keeping parent particles in sync with children.
 Fixed Rate
@@ -2152,6 +2159,7 @@ H90t0A
 H98t`H
 H;0t!
 H=vpcf
+H@Hc5
 HAT	K 
 HAT	KAT	KAT	KAT	K 
 HBm_influenceFlags
@@ -2166,23 +2174,38 @@ H[A\A]A^A_]
 H[A\A]]
 HammerMapLoader001
 Has Collision; 
-Hc5!<;
-Hc5"	E
-Hc5#yE
-Hc5'x@
-Hc58G;
-Hc5<X;
-Hc5J/;
-Hc5QJ1
-Hc5\/;
-Hc5et@
-Hc5i-@
-Hc5m"7
-Hc5|YE
-Hc5|m;
+Hc5!q;
+Hc5"r1
+Hc5"sA
+Hc5.b;
+Hc5261
+Hc58MA
+Hc5B(A
+Hc5Em4
+Hc5Iw@
+Hc5MaF
+Hc5O-D
+Hc5V27
+Hc5VME
+Hc5YGA
+Hc5_c;
+Hc5af;
+Hc5e]F
+Hc5f%;
+Hc5h.A
+Hc5j@A
+Hc5r37
+Hc5wgA
+Hc5xq;
+Hc5{4A
+Hc5|w@
+Hc5}ME
 Hc8Hc
-Hc= {<
-Hc=.;A
+Hc=/#A
+Hc=0"@
+Hc=FUA
+Hc=GX;
+Hc=Q`A
 Hc@pD
 Hc@pH
 HcA I
@@ -2265,6 +2288,7 @@ InputSystemVersion001
 InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
+Instance Count:
 Intentionally vague touch behavior for %p
 Invalid Color Control Point
 Invalid compressed buffer size
@@ -2298,26 +2322,28 @@ LOG_GENERAL
 LOS Failure Scalar
 LOS Failure Scale
 LOS collision group
+Last/Newest Particle
 Lc"D;b
 Lc#D;c
-Lc%/(A
-Lc%51E
-Lc%Mm;
-Lc%R`E
+Lc%4D;
+Lc%j;A
 Lc&E)
 Lc'D;g
 Lc'E)
 Lc)D;i
 Lc*D;j
 Lc+D;k
-Lc-ypE
+Lc-1<A
 Lc.D;n
 Lc.E)
 Lc/E)
 Lc2D;r
 Lc3D;s
-Lc5+(A
-Lc5@BE
+Lc5F[F
+Lc5j<A
+Lc='[F
+Lc=PaF
+Lc=k]F
 LccHD;cXD
 Lck(E;o
 Length; 
@@ -2484,6 +2510,7 @@ N&B:H
 N24CFieldPathHuffmanEncoder12InternalNodeE
 N24CFieldPathHuffmanEncoder5INodeE
 N24CFieldPathHuffmanEncoder8LeafNodeE
+N@Hc5
 NETWORK_FIELD_CHANGED_ARRAY_WITH_VALUE
 NETWORK_FIELD_CHANGED_NO_VALUE
 NETWORK_FIELD_CHANGED_NO_VALUE_NO_CONTEXT
@@ -2805,6 +2832,7 @@ PropertyEditorSystem_001
 PrototypeFeatureID
 Pull towards control point
 Q"u.H
+Q@Hc5
 QAngle
 Quadrilaterals
 QuarterSizeAttrWithBoxFilter
@@ -2840,6 +2868,7 @@ Random Direction scale
 Random force
 RandomFloat
 RandomSeed
+Reduce rope popping on decay
 Ref Counted Pointer
 Refraction
 RegisterAllModuleData
@@ -3025,6 +3054,7 @@ Screenspace Player-View Force
 Second Control point to set
 Second Sequence Number / Alpha Window Threshold
 Segment Break
+Selectively Enable Children
 Sequence Number
 Sequence from control point
 Sequence random
@@ -3165,6 +3195,7 @@ Twist amount (-1..1)
 Twist around axis
 Two Bone
 Two KV3 format GUIDs with the same human-friendly name ('%s')
+UIcL$@Ic
 UNUSED
 UPDATE_STRING_TOKEN_DATABASE
 UUUUUUUUH
@@ -3339,6 +3370,7 @@ X Dimension Count
 X Dimension Spacing
 X axis scaling scalar field
 X offset of center point
+XHc5CS;
 XIcL$
 XY velocity only
 X[A\A]A^A_]
@@ -3999,6 +4031,7 @@ kill particle on collision
 kill unused
 kv3format_manager.cpp
 l @(knN_p
+l$lA9
 l=!attributes
 last_sniff
 latency CP
@@ -4368,6 +4401,7 @@ m_bPerParticleTR
 m_bPerVertexLighting
 m_bPlaceAlongPath
 m_bPlayEndCap
+m_bPlayEndcapOnStop
 m_bPosition
 m_bPrevPosition
 m_bProjectCharacter
@@ -4393,6 +4427,7 @@ m_bReverseOrder
 m_bReverseZBuffering
 m_bRightEye
 m_bRigid
+m_bRopeDecay
 m_bRopes
 m_bRopesZOnly
 m_bRotation
@@ -5493,6 +5528,7 @@ materials/particle/base_sprite.vtex
 materialsystem2
 matrix3x4_t
 matrix3x4a_t
+max # of children to enable (-1 for max particle count)
 max column/particle index to affect
 max constraint passes
 max coords
@@ -5806,6 +5842,7 @@ placement_mode
 plane normal
 plane point
 play end cap effect
+play endcap when children are removed
 play when emission ends
 play_endcap
 point list
@@ -6299,6 +6336,7 @@ vr_carry_type
 vsnap
 vtexH
 vtexL
+w@Hc=
 wait for children to finish
 walkspeed
 warp amount
@@ -6330,10 +6368,10 @@ x/Lc"D;b
 x3Lc"D;b
 x;Lc"E1
 x@HcO
+xCHc5$/@
 x[A\A]A^A_]
 x[A\A]]
 x`Lc"D;b
-xaLc+D;k
 xdLc"D;b
 xeLc+D;k
 xjLc"D;b
@@ -6345,8 +6383,8 @@ yaw_end
 yaw_start
 z'u%H
 z0u.D
+z5u3H
 z:KEZ
-z@u>L
 zPuNH
 z`u^D
 zmukE
@@ -6355,6 +6393,7 @@ zmukE
 {}()':
 {}[]()=&, 	
 {}[]=, 	
+|$0E;|$@
 |$@E1
 }!Ic_
 }(LcU

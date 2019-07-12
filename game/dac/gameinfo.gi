@@ -198,4 +198,9 @@
 	{
 		"DisableAnimationScript" "1"
 	}
+
+	Localize
+	{
+		"DuplicateTokensAssert" "1"
+	}
 }

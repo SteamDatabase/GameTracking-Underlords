@@ -233,9 +233,9 @@
  D;t$
  Driver %s (vendorid %x, deviceid %x DXSupport Level %d)
  E9l$\
- H;=&
- H;=8
- H;=w
+ H;=E
+ H;=Knm
+ H;=t
  H;D$PH
  H;D$`H
  NETWORK_DISCONNECT_CLIENT_NO_MAP
@@ -1202,7 +1202,6 @@ $woL)
 -nobreakpad
 -nodedicatedconsole
 -nodev
--noexecheck
 -nohltv
 -nolod
 -nominidumps
@@ -1296,6 +1295,7 @@ $woL)
 ../public/tier1/utlsortvector.h
 ../public/tier2/fieldpath.h
 ..\content
+..\src\shaders\
 .>N^n~
 .@TvJI
 .@Tz%u#
@@ -1395,13 +1395,13 @@ $woL)
 /dev/null
 /game/
 /materials/
-/softlinks/
 0 - no auto-resize
 0 - top-left
 0 <= i
 00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
 0027015
 0027020
+00:27:33
 0123456789ABCDEFOut of Memory
 0123456789abcdef
 0: Force z prepass off. 1: Force on. -1: Don't force
@@ -2007,7 +2007,6 @@ $woL)
 2$.CGameInfo.CDotaGameInfo.CPlayerInfo
 2).CGameInfo.CDotaGameInfo.CHeroSelectEvent
 200000
-20:07:21
 20CAsyncTrackingConvar
 20CBoundedCvar_CmdRate
 20CCLCMsg_ClientInfo_t
@@ -2379,6 +2378,7 @@ $woL)
 8D;`8
 8E;f8
 8E;n8
+8H;={mm
 8NETWORK_DISCONNECT_LOCALPROBLEM_HOSTEDSERVERPRIMARYRELAY
 8P(s!H
 8PHtJ
@@ -2434,6 +2434,7 @@ $woL)
 ;2t)H
 ;2|EH
 ;3}:A
+;5IRv
 ;:~`H
 ;;D$H
 ;BX|'1
@@ -2568,7 +2569,7 @@ $woL)
 @P</t
 @Pt=H
 @STEAMUGC_INTERFACE_VERSION012
-@Xt`H
+@XtzH
 @[A\A]A^]
 @[A\]
 @[]A\
@@ -2952,7 +2953,6 @@ AppSystemDict: Error in Init() of interface '%s'!
 AppSystemDict: Interface '%s' (tier %d) depends on interface '%s' (tier %d) but is in a lower tier!
 Application
 Application "
-Application .exe "%s"
 Application built with libpng-%.20s but running with %.20s
 Application transferred too few scanlines
 Application transferred too many scanlines
@@ -4418,6 +4418,7 @@ D%s*.%s
 D)d$DL
 D)l$HL
 D+#Mc
+D+%;Zv
 D+C$H
 D+K@D
 D+c$E
@@ -4447,8 +4448,8 @@ D9t$H
 D9t$LfE
 D9|$ 
 D;!ttHc
-D;%FTq
-D;%]YJ
+D;%6^q
+D;%m[J
 D;(tPH
 D;+}N
 D;a D
@@ -5367,7 +5368,6 @@ GLIBC_2.3
 GLIBC_2.3.4
 GLIBC_2.4
 Game Time %s, Mod "%s", Map "%s"
-Game base directory "%s" doesn't match root dir "%s"
 Game cannot launch without explicit commandline flag: %s
 Game indicated network version %d is incompatible.
 Game info file does not specify a steam app id!
@@ -5501,7 +5501,7 @@ H	P0H
 H	p(]
 H	w(UH
 H!w(H
-H+5aHo
+H+5yLo
 H+C D
 H+C(H
 H+C(I
@@ -5528,91 +5528,93 @@ H;0t.H
 H;0t7H
 H;2t=H
 H;3t?H
-H;5	y
-H;5 h
-H;5$tf
-H;59@
-H;59r
-H;5I*e
-H;5_\
-H;=	*s
-H;= >s
-H;= Cs
-H;=":w
-H;="Ae
-H;="Cv
-H;="Vw
-H;="jx
-H;="lq
-H;=#0x
-H;=$-e
-H;=%{h
-H;=&>h
-H;='.
-H;='1s
-H;=(!
-H;=)(s
-H;=)-s
-H;=)/
-H;=,Eh
-H;=,^
-H;=.Fs
-H;=/qh
-H;=0:s
-H;=2Aw
-H;=2Jv
-H;=2ox
-H;=3<
-H;=4%s
-H;=76s
-H;=7Gl
-H;=8 
-H;=9Ph
-H;=:Dh
-H;==qq
-H;=?pq
-H;=@As
-H;=BQv
-H;=CLm
-H;=D<s
-H;=E'h
-H;=G!l
-H;=G2s
-H;=GB
-H;=HZh
+H;5 l
+H;5!y
+H;50f
+H;51Y
+H;58h
+H;5Lvf
+H;5Q@
+H;5Qr
+H;5q,e
+H;5w\
+H;= #
+H;= of
+H;=!(f
+H;=!Sh
+H;="Pl
+H;=#R
+H;=&@m
+H;=(=s
+H;=(Gs
+H;=*rx
+H;=.(s
+H;=/9s
+H;=/nl
+H;=0"
+H;=0Ms
+H;=0]h
+H;=1,s
+H;=11s
+H;=2z
+H;=4-e
+H;=7Ln
+H;=8Bs
+H;=9-s
+H;=:	f
+H;=:ow
+H;==Hh
+H;=?.
+H;=@!
+H;=A/
+H;=D?h
+H;=D^
+H;=Emf
+H;=H>s
+H;=HEs
+H;=HJs
 H;=I+s
-H;=M-e
-H;=OSn
-H;=Oth
-H;=P;s
-H;=Q%s
-H;=R.
-H;=U$n
-H;=W7s
-H;=Zhf
-H;=[mf
-H;=\<h
-H;=`?s
-H;=`Ds
-H;=b<
-H;=bKh
-H;=bcx
-H;=eYi
-H;=g3s
-H;=i)s
-H;=i7e
-H;=iLh
-H;=p<s
-H;=rhx
-H;=trh
-H;=uFs
-H;=v}
-H;=wI
-H;=x+
-H;=xE
-H;=xd
-H;=|9
-H;=}.
+H;=J4v
+H;=JCe
+H;=JNh
+H;=Jvw
+H;=K<
+H;=L/e
+H;=NXs
+H;=O:s
+H;=P 
+H;=Q/s
+H;=QOh
+H;=SGh
+H;=T$s
+H;=Xsq
+H;=Zbv
+H;=Zfx
+H;=Z}w
+H;=\Ls
+H;=\uh
+H;=_6s
+H;=_B
+H;=e2s
+H;=h?s
+H;=hCs
+H;=hHs
+H;=j.
+H;=jhw
+H;=jiv
+H;=jkx
+H;=l;x
+H;=o;s
+H;=q-s
+H;=q2s
+H;=t3s
+H;=u/e
+H;=wWn
+H;=z<
+H;=zpq
+H;=zpv
+H;=zpx
+H;=}(n
 H;C(H
 H;X@tuH
 H;Z@tSH9
@@ -5652,8 +5654,8 @@ Has Collision;
 HasField
 HasGameUI
 HasModAppSystems
-Hc5F<~
-Hc5^>~
+Hc5FA~
+Hc5^C~
 Hc@pH
 HcA H
 HcA`;Ap
@@ -5827,7 +5829,6 @@ If set, server only simulates entities on even numbered ticks.
 If set, whenever a game ends, if the total memory used by the server is greater than this # of megabytes, the server will exit.
 If the clock offset is less than this amount (in milliseconds), then no clock correction is applied.
 If true when log when a query is blocked (can cause very large log files)
-If you have special characters in your install path this may be confusing the game.
 IgnoreScheme
 Ignoring P2PSessionRequest_t from %s
 Ignoring attempt to set cHRM RGB triangle with zero area
@@ -6017,7 +6018,7 @@ JSType
 Javanese
 Jc<2D
 Jh#B\H
-Jul 11 2019
+Jul 18 2019
 Jumping to %s
 Jumping to random tick %d (%.2f min)
 JustInTime Resource Spawn Group
@@ -6201,7 +6202,6 @@ L9(t2L
 L90t*H
 L9|$HJ
 L; tY
-L;-e(s
 L;8t(H
 L;d$@L
 L;kPr
@@ -6254,7 +6254,7 @@ LayeredGameRoot
 LayoutFileChanged
 Lc D;`
 Lc#D;c
-Lc%TYJ
+Lc%d[J
 Lc'E)
 Lc(D;h
 Lc)D;i
@@ -7184,6 +7184,7 @@ Plat_GetDefaultMonitorIndex
 Plat_GetDesktopBounds
 Plat_GetDesktopResolution
 Plat_GetEnv
+Plat_GetGameDirectory
 Plat_GetLocalTime
 Plat_GetMemPageSize
 Plat_GetMiniDumpErrorString
@@ -7239,6 +7240,7 @@ Plat_SetCurrentFrame
 Plat_SetDefaultMonitorIndex
 Plat_SetDesktopNotifyIconPath
 Plat_SetFullscreenMinimizeOnFocusLoss
+Plat_SetGameDirectories
 Plat_SetVirtualReserveWarnLimit
 Plat_SetWatchdogHandlerFunction
 Plat_SetWindowIcon
@@ -7249,7 +7251,6 @@ Plat_ShutdownCOM
 Plat_TickDiffMilliSec
 Plat_TickDiffMilliSecF
 Plat_TicksAfterMilliSecs
-Plat_TranslateSymbolicLinks
 Plat_UUIDFromString
 Plat_UUIDToString
 Plat_UnloadModule
@@ -8024,7 +8025,7 @@ SetHibernating(true)
 SetInt32
 SetInt64
 SetIntAttr
-SetModPath
+SetModGameSubdir
 SetParentSpawnGroup
 SetProgress
 SetRepeatedBool
@@ -9230,8 +9231,6 @@ Z~A+E
 \d$ f
 \g is not followed by a braced, angle-bracketed, or quoted name/number or by a plain number
 \k is not followed by a braced, angle-bracketed, or quoted name
-\softlinks\
-\src\shaders\
 \ufE1
 \x%02x
 ] is an invalid data character in JavaScript compatibility mode
@@ -10717,7 +10716,6 @@ invert_orientation
 ioctl
 ipX@B
 ipaddress
-is in an unsupported path for game "%s"!
 is running without a known mod!
 is unreliable memory or other hardware.  The 1007 assertion
 is_ambient
@@ -12044,34 +12042,37 @@ runevent
 runspeed
 s E9u
 s H;5
-s H;5Xu
+s H;5,
+s H;50
+s H;58
+s H;5@
+s H;5pu
 s off
 s(H;5
-s(H;58
-s(H;5E
+s(H;5]
+s(H;5`
 s(H;s
 s0H;5
-s0H;50
-s0H;5}
+s0H;5(s
+s0H;5H
 s0[A\H
 s0[A\]
 s1_mapname
 s8H;5
-s8H;5@
-s8H;5@s
+s8H;58
+s8H;5X
+s8H;5Xs
 s@H;5
-s@H;5)
-s@H;5x
-s@H;5xs
+s@H;50tf
+s@H;5A
 s@[A\]H
 sAmTb
 sHH;5
-sHH;57
-sHH;5Et
-sHH;5P
+sHH;5]t
+sHH;5_
+sHH;5x
 sMA9|$ 
 sPH;5
-sPH;5zt
 sX[A\A]A^A_]
 s_EntComponentInfo
 s`D;spD
@@ -12517,9 +12518,10 @@ t HcK8
 t Hcw
 t [A\A]A^]
 t!IcT$
+t![A\A]A^]
 t"< @
 t"L;%
-t"L;%a
+t"L;%)
 t"Mc7E;w
 t"[A\]
 t#IcD$
@@ -12554,7 +12556,7 @@ t%HcM
 t%~_=
 t&Ic]8A;]H
 t&L;%
-t&L;%0
+t&L;%X
 t'Hcu
 t'IcA
 t'Ic\$0A;\$@
@@ -12562,12 +12564,12 @@ t'[A\]
 t(<)u
 t(D9m
 t(D;%
-t(D;=Wcq
+t(D;=
 t(HcK 
 t)D;=
 t)HcE
-t*D9%	po
-t*D;%
+t*D9%
+t*D;%qvo
 t*Ic\$
 t+Mc,$E;l$
 t+Mce
@@ -12667,6 +12669,7 @@ t;~OU
 t<Hcs 
 t=[A\]
 t>Mcv
+t@;5%
 tAHcC
 tALcc
 tC[A\A]A^]
@@ -12680,7 +12683,7 @@ tK~%E1
 tLD;e
 tL[A\A]A^]
 tQI;<$uKI
-tR;5U
+tR;5e
 tRNS chunk has out-of-range samples for bit_depth
 tS[A\A]A^]
 tTHcu
@@ -13223,7 +13226,8 @@ x	A9]
 x "%f"
 x ;s|~
 x H;=
-x H;=,Qh
+x H;=R
+x H;=j
 x&;B`}!H
 x&;F`}!H
 x([A\A]A^]
@@ -13251,7 +13255,7 @@ xuidReserve
 x|LcG
 x|LcO
 y "%f"
-y H;=
+y H;=\
 yaw_end
 yaw_start
 you_hear_them
@@ -13275,7 +13279,7 @@ z~u|f
 {%%%d.%ds} %%%d.%ds: %%-%d.%ds %%-%d.%ds: %%%d.%ds %%%d.%ds %%%d.%ds %%%d.%ds [%%-%d.%ds bits]
 {%s}cfg/%s
 {(t*A9
-{8H;=
+{8H;=B
 {8[A\H
 {8t2I
 {<u+LcK
@@ -13329,17 +13333,15 @@ z~u|f
 }cHcU
 }};C\
 ~ H;=
-~ H;=bjm
-~ H;=~
+~ H;=V
+~ H;=r
 ~ t1A
 ~)H;7I
 ~.E9~Hu
 ~/D;s@t_H
 ~0;s H
-~0H;=
 ~7;w$
 ~8;w$
-~8H;=
 ~9;w$
 ~>HcE
 ~CServerChangelevelState with non empty m_Clients!!!

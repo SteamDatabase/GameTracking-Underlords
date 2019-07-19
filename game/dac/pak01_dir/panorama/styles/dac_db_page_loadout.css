@@ -15,7 +15,19 @@ DACLoadoutPage
 {
     width:100%;
     height:100%;
-		background-color: #060606cc;
+	background-color: #060606cc;
+}
+
+.IsPlatformMobile .PreviewBanner,
+.IsPlatformMobile .LoadoutMaps,
+.IsPlatformMobile .LoadoutFlags,
+.IsPlatformMobile .LoadoutStandards,
+.IsPlatformMobile .LoadoutTeleports,
+.IsPlatformMobile .LoadoutFireworks,
+.IsPlatformMobile .LoadoutStreaks,
+.IsPlatformMobile .LoadoutYos
+{
+    box-shadow: none;
 }
 
 #TopRow
@@ -104,19 +116,34 @@ DACLoadoutPage
 {
     height: 750px;
     width: 550px;
-    margin-left: 10px;
-    margin-right: 10px;
     background-image: url("s2r://panorama/images/dashboard/loadout_section_bg_psd.vtex");
     background-size: 100%;
     box-shadow: fill 0px 0px 24px #000000cc;
-    flow-children: down;
-    //background-position: 50% 50%;
-    //background-repeat: repeat-x;
 }
 
-.Left
+
+.LoadoutContainer.Left
 {
-	   background-image: url("s2r://panorama/images/dashboard/loadout_section_bg_left_psd.vtex");
+    width: 1075px;
+    background-image: url("s2r://panorama/images/dashboard/loadout_section_bg_left_psd.vtex");
+    flow-children: right;
+    margin-right: 25px;
+}
+
+.LoadoutContainer.Right
+{
+    flow-children: down;
+}
+
+.LeftSide
+{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+.RightSide
+{
+    flow-children: down;
 }
 
 .Right
@@ -126,38 +153,173 @@ DACLoadoutPage
 
 .LoadoutDetail
 {
-    border: 2px solid #00000022;
+    border: 3px solid #66666620;
+    //border-top: 4px solid #444;
+    //border-right: 4px solid #333;
+    //border-bottom: 4px solid #222;
+    //border-left: 4px solid #222;
+    transition-property: border, brightness, transform;
+    transition-duration: .2s;
+    background-color: gradient (linear, 0% 100%, 60% 0%, from(#000000), to(#00000020));
+    brightness: 1.0;
 }
+
+.LoadoutDetail:hover
+{
+    border: 3px solid #8D60C6;
+    //border: 3px solid gold;
+    //transform: translateY(-2px);
+    brightness: 1.5;
+    /*background-color: #00000090;*/
+    background-color: gradient (linear, 0% 100%, 100% 0%, from(#000000), to(#140a2770));
+}
+
+.ImageDetail
+{
+    transition-property: transform;
+    transition-duration: .2s;
+    horizontal-align: right;
+    margin-right: 40px;
+}
+
+
+.LoadoutDetail:hover .ImageDetail
+{
+    transform: translateY(-8px);
+}
+
+
+.LoadoutDetail:hover .LoadoutLabel
+{
+    color: #ffffff;
+    background-color: #8D60C6;
+
+    /*background-color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );*/
+
+}
+
+
+
 
 .LoadoutLabel
 {
-    horizontal-align: center;
-    vertical-align: center;
-    font-size: 36px;
-    font-weight: black;
+    horizontal-align: right;
+    /*margin-right: 25px;*/
+    /*margin-top: 25px;*/
+    vertical-align: top;
+    font-size: 16px;
+    font-weight: bold;
     text-transform: uppercase;
-    color: #666666aa;
+    color: #ffffff30;
+    letter-spacing: 2px;
+    transition-property: color, transform;
+    transition-duration: .2s;
+    background-color: #292D2E;
+    padding: 5px 10px 2px 15px;
 }
 
-.LoadoutBanners
+#EquippedItemName {
+    horizontal-align: left;
+    vertical-align: bottom;
+    margin-bottom: 20px;
+    flow-children: down;
+    margin-left: 30px;
+    width: 280px;
+    /*border: 1px solid yellow;*/
+    /*height: fit-content;*/
+}
+
+.EquippedText
+{
+    horizontal-align: left;
+    /*margin-right: 25px;*/
+    vertical-align: bottom;
+    font-size: 30px;
+    line-height: 32px;
+    font-weight: bold;
+    color: #ffffffaa;
+    text-overflow: shrink;
+    transition-property: transform;
+    transition-duration: .2s;
+
+}
+
+.EquippedLabel {
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #8D60C6;
+    width: 220px;
+    height: 20px;
+    horizontal-align: left;
+    font-weight: bold;
+    letter-spacing: 1px;
+    //text-align: right;
+
+}
+
+.PreviewBanner
 {
     width: 500px;
     height: 700px;
-    horizontal-align: center;
-    vertical-align: center;
-    //background-color: #000000aa;
     background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );
     box-shadow: inset #000000cc 0px 1px 14px 0px;
+    horizontal-align: center;
+    margin-top: 25px;
+	  background-image: url("s2r://panorama/images/battle_pass/bp0/items/map_00_banner_bg_psd.vtex");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
 }
+
+.MapDAC_Item_Map0 .PreviewBanner
+{
+	  background-image: url("s2r://panorama/images/battle_pass/bp0/items/map_00_banner_bg_psd.vtex");
+}
+
+.MapDAC_Item_Map1 .PreviewBanner
+{
+	  background-image: url("s2r://panorama/images/battle_pass/bp0/items/map_01_banner_bg_psd.vtex");
+}
+
+.LoadoutContainerBannerOptions
+{
+    width: 500px;
+    height: 210px;
+    margin-top: 25px;
+    horizontal-align: center;
+    flow-children: right;
+}
+
+.LoadoutStandards,
+.LoadoutFlags
+{
+    width: 500px;
+    height: 220px;
+    horizontal-align: center;
+    margin-top: 25px;
+    /*background-color: #000000aa;*/
+    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
+    //background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #55555588 ), to( #33333333 ) );
+    box-shadow: inset #000000cc 0px 1px 14px 0px;
+    background-position: center;
+    background-size: contain;
+}
+
+.LoadoutStandards
+{
+    height: 210px;
+}
+
 
 .LoadoutMaps
 {
     width: 500px;
-    height: 700px;
+    height: 220px;
     margin-top: 25px;
     horizontal-align: center;
-    background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );
+    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
     box-shadow: inset #000000cc 0px 1px 14px 0px;
+    background-position: center;
 }
 
 .LoadoutTitles
@@ -166,52 +328,134 @@ DACLoadoutPage
     height: 175px;
     margin-top: 25px;
     horizontal-align: center;
-    background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );
+    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
     box-shadow: inset #000000cc 0px 1px 14px 0px;
 }
 
 .LoadoutFireworks
 {
     width: 500px;
-    height: 240px;
+    height: 220px;
     margin-top: 25px;
     horizontal-align: center;
-    background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );
+    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
     box-shadow: inset #000000cc 0px 1px 14px 0px;
 }
 
 .LoadoutTeleports
 {
     width: 500px;
-    height: 235px;
+    height: 220px;
     margin-top: 25px;
     horizontal-align: center;
-    background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );
+    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
     box-shadow: inset #000000cc 0px 1px 14px 0px;
 }
 
 .LoadoutContainerBottom
 {
     width: 500px;
-    height: 175px;
+    height: 210px;
     margin-top: 25px;
     horizontal-align: center;
+    flow-children: right;
+}
+
+.BottomContainer
+{
     flow-children: right;
 }
 
 .LoadoutYos
 {
     width: 235px;
-    height: 175px;
-    background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );
+    height: 210px;
+    horizontal-align: center;
+    margin-top: 25px;
+    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
     box-shadow: inset #000000cc 0px 1px 14px 0px;
-    margin-right: 25px;
+    background-size: 50% 75%;
+    background-position: 0%;
+    margin-left: 25px;
 }
 
 .LoadoutStreaks
 {
-    width: 240px;
-    height: 175px;
-    background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );
+    width: 235px;
+    height: 210px;
+    horizontal-align: center;
+    margin-top: 25px;
+    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
     box-shadow: inset #000000cc 0px 1px 14px 0px;
+    margin-left: 25px;
+}
+
+#BannerSceneView
+{
+    width: 100%;
+    height: 100%;
+}
+
+.MapImage
+{
+    width: 200px;
+    height: 200px;
+    vertical-align: center;
+}
+
+.FlagBaseImage,
+.FlagShapeImage
+{
+    width: 190px;
+    height: 190px;
+    vertical-align: bottom;
+}
+
+.TeleportImage
+{
+    width: 200px;
+    height: 200px;
+    vertical-align: top;
+}
+
+.FireworksImage
+{
+    width: 200px;
+    height: 200px;
+    /*vertical-align: bottom;*/
+}
+
+
+.YoImage,
+.StreakImage
+{
+    width: 150px;
+    height: 150px;
+    margin-right: 0px;
+}
+
+.YoImage
+{
+    margin-top: 5px;
+}
+
+.StreakImage
+{
+    margin-top: -5px;
+    margin-right: -5px;
+}
+
+.StreakImage,
+.YoImage
+{
+    vertical-align: top;
+    /*horizontal-align: center;*/
+    //margin-right: 10px;
+}
+
+
+
+.LoadoutYos .EquippedText,
+.LoadoutStreaks .EquippedText {
+    font-size: 26px;
 }

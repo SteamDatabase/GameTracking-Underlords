@@ -33,7 +33,6 @@ PopupBotDifficulty
     ui-scale: 80%;
 }
 
-
 .Title
 {
 
@@ -84,6 +83,7 @@ PopupBotDifficulty
 .DifficultyPanel
 {
     width: 300px;
+	margin-top: 10px;
     height: 100%;
     margin-right: 10px;
     //background-color: gradient( linear, 0% 0%, 100% 0%, from( #0000ff ), to( #0000b6 ) );
@@ -97,6 +97,12 @@ PopupBotDifficulty
     brightness:1.8;
 }
 .DifficultyPanel.Disabled
+{
+	saturation:0;
+	brightness:0.5;
+}
+
+.DifficultyPanel.Disabled #Proto
 {
 	saturation:0;
 	brightness:0.5;
@@ -119,6 +125,7 @@ PopupBotDifficulty
     opacity-mask: url("s2r://panorama/images/masks/portrait_scratch_psd.vtex") 1;
 }
 
+
 .BotName
 {
     horizontal-align: center;
@@ -136,14 +143,15 @@ PopupBotDifficulty
     //color: gradient( linear, 100% 0%, 0% 0%, from( #a7e8e3 ), to( #fff ) );
     text-transform: uppercase;
     /*text-shadow: 0px 0px 0px 2 black;*/
+    box-shadow: 0px 0px 3px #000000;
 }
 
 .BotDesc
 {
     horizontal-align: center;
     //color: uiLightGrey;
-    color: #dedede;
-    font-size: 28px;
+    color: #a7a8b2;
+    font-size: 25px;
     font-weight: light;
     padding: 0px 15px 0px 15px;
     text-align: center;
@@ -154,7 +162,7 @@ PopupBotDifficulty
 
 .IsPlatformPC .BotDesc
 {
-    font-size: 28px;
+    font-size: 24px;
 }
 
 
@@ -172,6 +180,39 @@ PopupBotDifficulty
     margin-bottom: 20px;
 }
 
+
+.Line
+{
+    margin-right: 22px;
+	margin-left: 16px;
+    width: 1px;
+    height: 410px;
+	background-color: grey;
+	opacity: 0.4;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.Shield
+{
+    width: 65px;
+	height: 80px;
+	margin-top: -388px;
+	margin-right: 2px;
+	horizontal-align: right;
+	vertical-align: top;
+	background-image: url("s2r://panorama/images/hud/proto_tag_png.vtex");
+	transform: rotateZ(5deg) translateY(0px);
+	background-size: 100%;
+}
+
+ToggleButton#PlayPausedButton.Activated:active:selected .DifficultyPanel#Proto
+{
+	background-color: red;
+}
+
+
 #NoBots {
     visibility: collapse;
 }
@@ -179,18 +220,45 @@ PopupBotDifficulty
 .ShowNoBots #NoBots {
     visibility: visible;
 }
+.ShowNoBots #Separator
+{
+	visibility: collapse;
+}
 
+.ShowNoBots #Challenging{
+	visibility:collapse;
+}
 .ShowNoBots #PlayPausedButton,
 .ShowNoBots #PlayOurServers
 {
 	visibility: collapse;
 }
+.PlayAtOwnPace #Proto
+{
+	brightness:0.5;
+	saturation:0;
+}
 
-#Easy .BotImage { background-image: url("s2r://panorama/images/hud/solomatch_easy_psd.vtex"); }
+#Easy .BotImage
+{
+	background-image: url("s2r://panorama/images/hud/solomatch_easy_psd.vtex");
+}
 #Medium .BotImage{ background-image: url("s2r://panorama/images/hud/solomatch_medium_psd.vtex"); }
 #Hard .BotImage{ background-image: url("s2r://panorama/images/hud/solomatch_challenging_psd.vtex"); }
 #Challenging .BotImage{ background-image: url("s2r://panorama/images/hud/solomatch_hardcore_psd.vtex"); }
 #NoBots .BotImage{ background-image: url("s2r://panorama/images/hud/solomatch_nobots_psd.vtex"); }
+#Proto .BotImage{ background-image: url("s2r://panorama/images/hud/solomatch_proto_psd.vtex"); }
+
+.PlayAtOwnPace #Proto {
+	saturation:0;
+	brightness:0.08;
+}
+
+#Proto
+{
+	transition-property: brightness, saturation;
+	transition-duration: 0.2s;
+}
 
 #ContinueButton
 {
@@ -258,7 +326,16 @@ PopupBotDifficulty
     transform: rotateZ(-4deg) translateY(-40px);
 }
 
+.ProtoLabel {
+    transform: rotateZ(4deg) translateY(-40px);
+}
+
 .BotNotes
 {
 	color: #a7a8b2;
+}
+
+ToggleButton:disabled .BotNotes
+{
+	color: #333333;
 }

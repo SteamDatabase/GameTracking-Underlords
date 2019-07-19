@@ -1,7 +1,11 @@
 DACEquipControl
 {
-	width:1000px;
-	height:300px;
+	//width:1000px;
+	width: fit-children;
+	max-width: 2000px;
+	min-width: 800px;
+	padding: 0px 50px;
+	height:360px;
 	
 	vertical-align: center;
 	horizontal-align: center;
@@ -11,36 +15,135 @@ DACEquipControl
 #EquippableItemContainer
 {
 	flow-children: right;
+	horizontal-align: center;
+	//margin-top: 50px;
 }
+
 
 
 .EquippableItem
 {
 	margin-right: 10px;
 	margin-left: 10px;
-	width: 200px;
-	height: 200px;
+	width: 270px;
+	height: 360px;
+	border: 3px solid #88888800;
+	opacity: 1;
+	brightness: .8;
 
-	background-color: yellow;
+	transition-property: brightness, background-color, border;
+	transition-duration: .2s;
+	background-position: top;
+	background-size: 80%;
+	flow-children: none;
+}
+
+.EquippableItem:hover,
+.EquippableItem:active
+{
+	brightness: 1.2;
+	border: 3px solid #88888822;
+}
+
+.CurrentlyEquipped.EquippableItem
+{
+	brightness: 1.2;
+    background-color: gradient( radial, 50% 40%, 0% 0%, 50% 35%, from( #44444488 ), to( #22222222 ) );
+    border: 3px solid #8D60C6;
 }
 
 .EquipText
 {
-	font-size: 30px;
-	width: 100%;
+	//text-transform: uppercase;
+	padding-top: 3px;
+	text-align: center;
+	font-size: 28px;
+    text-overflow: shrink;
+	font-weight: semi-bold;
+    color: #eeeeee;
+    margin-top: 255px;
+    //margin-bottom: 0px;
+
+    vertical-align: center;
+    horizontal-align: center;
 }
 
 #EquipButton
 {
-	vertical-align: bottom;
-	background-color: red;
+	//vertical-align: bottom;
 	width: 100%;
-	height: 50px;
-	font-size: 30px;
+	height: 100%;
+	transition-property: border, background-color;
+	transition-duration: .2s;
 }
 
 .EquipLabel
 {
-	font-size: 20px;
-	color: white;
+	text-transform: uppercase;
+	padding-top: 3px;
+	text-align: center;
+	font-size: 28px;
+    text-overflow: shrink;
+	font-weight: black;
+	letter-spacing: 4px;
+    color: #555;
+
+    vertical-align: top;
+    horizontal-align: center;
+
+	transition-property: opacity;
+	transition-duration: .2s;
+	opacity: 0;
+}
+
+#EquipButton:hover
+{
+	//border: 3px solid #aaa;
+	//background-color: #666;
+}
+
+#EquipButton:hover .EquipLabel
+{
+	//opacity: 1;
+	//color: #eeeeee;
+}
+
+.CurrentlyEquipped #EquipButton
+{
+	background-color: #00000000;
+	border: 3px solid #00000000;
+}
+
+.EquippedLabel
+{
+    font-size: 18px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-align: right;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: #8D60C6;
+    padding: 5px 7px;
+    margin: -3px -3px 0px 0px;
+
+    vertical-align: top;
+    horizontal-align: right;
+    visibility: collapse;
+}
+
+.CurrentlyEquipped .EquipLabel
+{
+	visibility: collapse;
+}
+
+.CurrentlyEquipped .EquippedLabel
+{
+	visibility: visible;
+}
+
+
+
+.CurrentlyEquipped .EquipLabel
+{
+	color: #666;
 }

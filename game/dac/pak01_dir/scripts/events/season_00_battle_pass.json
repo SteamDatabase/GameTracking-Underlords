@@ -1,27 +1,37 @@
 {
-    "1": {
-        "name": "S0 Event",
-        "points_per_level": 1000,
-        "max_level": 60,
-        "active_start_time": "2019-07-04 00:00:00",
-        "active_end_time": "2019-12-15 00:00:00",
-        "claim_end_time": "2019-12-18 00:00:00",
-        "default_event_points": 0,
-        "challenges_file": "scripts/events/season_00_challenges.json",
-        "currencies": [
-            {
-                "name":  "event_points",
-                "id": 0,
+	"1": {
+		"name": "S0 Event",
+		"points_per_level": 1000,
+		"max_level": 60,
+		"active_start_time": "2019-07-04 00:00:00",
+		"active_end_time": "2019-12-15 00:00:00",
+		"claim_end_time": "2019-12-18 00:00:00",
+		"default_event_points": 0,
+		"challenges_file": "scripts/events/season_00_challenges.json",
+		"currencies": [
+			{
+				"name":  "event_points",
+				"id": 0,
 				"level_points": [ 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3250, 3500, 3750, 4000, 4250, 4500, 4750, 5000, 5250, 5500, 5750, 6000, 6250 ]
-            }
-        ],
+			}
+		],
         "match_rewards": [
             {
-                "min_place": 7,
+                "min_place": 8,
                 "max_place": 8,
                 "currencies": [
                     {
-                        "amount": 10,
+                        "amount": 50,
+                        "currency": "event_points"
+                    }
+                ]
+            },
+            {
+                "min_place": 7,
+                "max_place": 7,
+                "currencies": [
+                    {
+                        "amount": 60,
                         "currency": "event_points"
                     }
                 ]
@@ -31,7 +41,7 @@
                 "max_place": 6,
                 "currencies": [
                     {
-                        "amount": 20,
+                        "amount": 70,
                         "currency": "event_points"
                     }
                 ]
@@ -42,7 +52,7 @@
                 "max_place": 5,
                 "currencies": [
                     {
-                        "amount": 30,
+                        "amount": 80,
                         "currency": "event_points"
                     }
                 ]
@@ -53,7 +63,7 @@
                 "max_place": 4,
                 "currencies": [
                     {
-                        "amount": 50,
+                        "amount": 90,
                         "currency": "event_points"
                     }
                 ]
@@ -64,7 +74,7 @@
                 "max_place": 3,
                 "currencies": [
                     {
-                        "amount": 60,
+                        "amount": 100,
                         "currency": "event_points"
                     }
                 ]
@@ -75,7 +85,7 @@
                 "max_place": 2,
                 "currencies": [
                     {
-                        "amount": 80,
+                        "amount": 120,
                         "currency": "event_points"
                     }
                 ]
@@ -86,7 +96,7 @@
                 "max_place": 1,
                 "currencies": [
                     {
-                        "amount": 120,
+                        "amount": 150,
                         "currency": "event_points"
                     }
                 ]
@@ -94,142 +104,61 @@
             }
         ],
 
-        "challenge_slots":
-        [
-            {
-                "name": "Daily Challenge 1",
-                "id": 1,
-                "challenge_list": "daily_challenge_list",
-                "reroll_cooldown": 82800,
-                "activate_on_roll": true,
-                "prevent_duplicate_challenges": true
-            },
-            {
-                "name": "Daily Challenge 2",
-                "id": 2,
-                "challenge_list": "daily_challenge_list",
-                "reroll_cooldown": 82800,
-                "activate_on_roll": true,
-                "prevent_duplicate_challenges": true
-            }
-        ],
+		"challenge_slots":
+		[
+			{
+				"name": "Daily Challenge 1",
+				"id": 1,
+				"challenge_list": "daily_challenge_list",
+				"reroll_cooldown": 82800,
+				"activate_on_roll": true,
+				"prevent_duplicate_challenges": true
+			},
+			{
+				"name": "Daily Challenge 2",
+				"id": 2,
+				"challenge_list": "daily_challenge_list",
+				"reroll_cooldown": 82800,
+				"activate_on_roll": true,
+				"prevent_duplicate_challenges": true
+			}
+		],
 		
-        "claims": [
-            {
-                "name": "Auto Grant",
-                "id": 100,
-                "max_claims": 1,
-                "client_auto_claim" : true,
-                "rewards": {
-                    "challenge_grants" : 
-                    [
-                        {
-                            "slot" : "Daily Challenge 1",
-                            "activate" : true,
-                        },
-                        {
-                            "slot" : "Daily Challenge 2",
-                            "activate" : true,
-                        }
-                    ]
-                    
-                },
-                "criteria": []
-            }
-        ],
-        "virtual_item_unlocks": [
-            {
-                "equip_slot": "flag_base",
-                "item_def":"S0 Flag Base 1",
-                "priority": 0,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency" : "event_points",
-                        "value": 1
-                    }
-                ]
-            },
-            {
-                "equip_slot": "flag_base",
-                "item_def": "S0 Flag Base 2",
-                "priority": 1,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 4
-                    }
-                ]
-            },
-            {
-                "equip_slot": "flag_base",
-                "item_def": "S0 Flag Base 3",
-                "priority": 2,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 9
-                    }
-                ]
-            },
+		"claims": [
 			{
-				"equip_slot": "flag_base",
-				"item_def": "S0 Flag Base 4",
-				"priority": 3,
-				"criteria": [
-					{
-						"type": "currency_level",
-						"currency": "event_points",
-						"value": 14
-					}
-				]
-			},
-			{
-				"equip_slot": "flag_base",
-				"item_def": "S0 Flag Base 5",
-				"priority": 4,
-				"criteria": [
-					{
-						"type": "currency_level",
-						"currency": "event_points",
-						"value": 19
-					}
-				]
-			},
-			{
-				"equip_slot": "flag_base",
-				"item_def": "S0 Flag Base 6",
-				"priority": 5,
-				"criteria": [
-					{
-						"type": "currency_level",
-						"currency": "event_points",
-						"value": 24
-					}
-				]
+				"name": "Auto Grant",
+				"id": 100,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"challenge_grants" : 
+					[
+						{
+							"slot" : "Daily Challenge 1",
+							"activate" : true,
+						},
+						{
+							"slot" : "Daily Challenge 2",
+							"activate" : true,
+						}
+					]
+					
+				},
+				"criteria": []
 			},
 			{
 				"dev_comment": "yo",
-
-				"equip_slot": "yo",
-				"item_def": "S0 Yo 3",
-				"priority": 1,
-				"criteria": [
-					{
-						"type": "currency_level",
-						"currency": "event_points",
-						"value": 1
-					}
-				]
-			},
-			{
-				"dev_comment": "ow",
-
-				"equip_slot": "yo",
-				"item_def": "S0 Yo 4",
-				"priority": 2,
+				"name" : "S0 Yo 4",
+				"id": 2,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Yo 4"
+						}
+					]
+				},
 				"criteria": [
 					{
 						"type": "currency_level",
@@ -239,11 +168,18 @@
 				]
 			},
 			{
-				"dev_comment": "oi",
-
-				"equip_slot": "yo",
-				"item_def": "S0 Yo 1",
-				"priority": 3,
+				"dev_comment": "yo",
+				"name" : "S0 Yo 1",
+				"id": 3,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Yo 1"
+						}
+					]
+				},
 				"criteria": [
 					{
 						"type": "currency_level",
@@ -253,11 +189,18 @@
 				]
 			},
 			{
-				"dev_comment": "hot",
-
-				"equip_slot": "yo",
-				"item_def": "S0 Yo 2",
-				"priority": 4,
+				"dev_comment": "yo",
+				"name" : "S0 Yo 2",
+				"id": 4,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Yo 2"
+						}
+					]
+				},
 				"criteria": [
 					{
 						"type": "currency_level",
@@ -265,44 +208,119 @@
 						"value": 20
 					}
 				]
-			},
+			},		
 			{
-				"dev_comment": "flames",
-
-				"equip_slot": "kill_streak",
-				"item_def": "S0 Kill Steak Effect 1",
-				"priority": 1,
+				"name" : "S0 Flag Base 2",
+				"id": 11,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Flag Base 2"
+						}
+					]
+				},
 				"criteria": [
 					{
 						"type": "currency_level",
 						"currency": "event_points",
-						"value": 13
+						"value": 4
 					}
 				]
 			},
 			{
-				"dev_comment": "arcade",
-
-				"equip_slot": "kill_streak",
-				"item_def": "S0 Kill Steak Effect 2",
-				"priority": 2,
+				"name" : "S0 Flag Base 3",
+				"id": 12,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Flag Base 3"
+						}
+					]
+				},
 				"criteria": [
 					{
 						"type": "currency_level",
 						"currency": "event_points",
-						"value": 25
+						"value": 9
 					}
 				]
 			},
-
-
-
 			{
-				"dev_comment": "spotlight",
-
-				"equip_slot": "fireworks",
-				"item_def": "S0 Fireworks Effect 2",
-				"priority": 1,
+				"name" : "S0 Flag Base 4",
+				"id": 13,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Flag Base 4"
+						}
+					]
+				},
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 14
+					}
+				]
+			},
+			{
+				"name" : "S0 Flag Base 5",
+				"id": 14,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Flag Base 5"
+						}
+					]
+				},
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 19
+					}
+				]
+			},
+			{
+				"name" : "S0 Flag Base 6",
+				"id": 15,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Flag Base 6"
+						}
+					]
+				},
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 24
+					}
+				]
+			},			
+			{
+				"name" : "S0 Fireworks Effect 2",
+				"id": 20,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Fireworks Effect 2"
+						}
+					]
+				},
 				"criteria": [
 					{
 						"type": "currency_level",
@@ -312,11 +330,17 @@
 				]
 			},
 			{
-				"dev_comment": "hearts",
-
-				"equip_slot": "fireworks",
-				"item_def": "S0 Fireworks Effect 1",
-				"priority": 2,
+				"name" : "S0 Fireworks Effect 1",
+				"id": 21,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Fireworks Effect 1"
+						}
+					]
+				},
 				"criteria": [
 					{
 						"type": "currency_level",
@@ -324,129 +348,159 @@
 						"value": 18
 					}
 				]
-			},
-
-
-
-            {
-                "equip_slot": "profile_ring",
-                "item_def": "S0 Profile Ring 1",
-                "priority": 1,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 6
-                    }
-                ]
-            },
-            {
-                "equip_slot": "profile_ring",
-                "item_def": "S0 Profile Ring 2",
-                "priority": 2,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 11
-                    }
-                ]
-            },
-            {
-                "equip_slot": "profile_ring",
-                "item_def": "S0 Profile Ring 3",
-                "priority": 3,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 16
-                    }
-                ]
-            },
-            {
-                "equip_slot": "profile_ring",
-                "item_def": "S0 Profile Ring 4",
-                "priority": 4,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 21
-                    }
-                ]
-            },
-
-
-            {
-                "equip_slot": "flag_shape",
-                "item_def": "S0 Flag Shape 1",
-                "priority": 1,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 2
-                    }
-                ]
-            },
-            {
-                "equip_slot": "flag_shape",
-                "item_def": "S0 Flag Shape 2",
-                "priority": 2,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 7
-                    }
-                ]
-            },
-            {
-                "equip_slot": "flag_shape",
-                "item_def": "S0 Flag Shape 3",
-                "priority": 3,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 12
-                    }
-                ]
-            },
-            {
-                "equip_slot": "flag_shape",
-                "item_def": "S0 Flag Shape 4",
-                "priority": 4,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 17
-                    }
-                ]
-            },
-            {
-                "equip_slot": "flag_shape",
-                "item_def": "S0 Flag Shape 5",
-                "priority": 5,
-                "criteria": [
-                    {
-                        "type": "currency_level",
-                        "currency": "event_points",
-                        "value": 22
-                    }
-                ]
-            },
-
-
-
+			},			
 			{
-				"dev_comment": "barrel",
-
-				"equip_slot": "teleport",
-				"item_def": "S0 Teleport Effect 2",
-				"priority": 1,
+				"name" : "S0 Kill Steak Effect 1",
+				"id": 22,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Kill Steak Effect 1"
+						}
+					]
+				},
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 13
+					}
+				]
+			},
+			{
+				"name" : "S0 Kill Steak Effect 2",
+				"id": 23,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Kill Steak Effect 2"
+						}
+					]
+				},
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 25
+					}
+				]
+			},
+			{
+				"name" : "S0 Flag Shape 1",
+				"id": 30,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Flag Shape 1"
+						}
+					]
+				},
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 2
+					}
+				]
+			},
+			{
+				"name" : "S0 Flag Shape 2",
+				"id": 31,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Flag Shape 2"
+						}
+					]
+				},
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 7
+					}
+				]
+			},
+			{
+				"name" : "S0 Flag Shape 3",
+				"id": 32,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Flag Shape 3"
+						}
+					]
+				},
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 12
+					}
+				]
+			},
+			{
+				"name" : "S0 Flag Shape 4",
+				"id": 33,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Flag Shape 4"
+						}
+					]
+				},
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 17
+					}
+				]
+			},
+			{
+				"name" : "S0 Flag Shape 5",
+				"id": 34,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Flag Shape 5"
+						}
+					]
+				},
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 22
+					}
+				]
+			},
+			{
+				"name" : "S0 Teleport Effect 2",
+				"id": 40,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Teleport Effect 2"
+						}
+					]
+				},
 				"criteria": [
 					{
 						"type": "currency_level",
@@ -456,11 +510,17 @@
 				]
 			},
 			{
-				"dev_comment": "vines",
-
-				"equip_slot": "teleport",
-				"item_def": "S0 Teleport Effect 1",
-				"priority": 2,
+				"name" : "S0 Teleport Effect 1",
+				"id": 41,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Teleport Effect 1"
+						}
+					]
+				},
 				"criteria": [
 					{
 						"type": "currency_level",
@@ -469,13 +529,18 @@
 					}
 				]
 			},
-
-
-
 			{
-				"equip_slot": "map",
-				"item_def": "S0 Map 1",
-				"priority": 1,
+				"name" : "S0 Map 1",
+				"id": 50,
+				"max_claims": 1,
+				"client_auto_claim" : true,
+				"rewards": {
+					"virtual_grant_items":[
+						{
+							"name": "S0 Map 1"
+						}
+					]
+				},
 				"criteria": [
 					{
 						"type": "currency_level",
@@ -484,7 +549,56 @@
 					}
 				]
 			}
-
-        ]
-    }
+		],
+		"virtual_item_unlocks": [
+			{
+				"equip_slot": "profile_ring",
+				"item_def": "S0 Profile Ring 1",
+				"priority": 1,
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 6
+					}
+				]
+			},
+			{
+				"equip_slot": "profile_ring",
+				"item_def": "S0 Profile Ring 2",
+				"priority": 2,
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 11
+					}
+				]
+			},
+			{
+				"equip_slot": "profile_ring",
+				"item_def": "S0 Profile Ring 3",
+				"priority": 3,
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 16
+					}
+				]
+			},
+			{
+				"equip_slot": "profile_ring",
+				"item_def": "S0 Profile Ring 4",
+				"priority": 4,
+				"criteria": [
+					{
+						"type": "currency_level",
+						"currency": "event_points",
+						"value": 21
+					}
+				]
+			}
+		]
+	}
 }

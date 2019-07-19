@@ -424,6 +424,7 @@ DACUIHud.GameOverFadeOut
 	
 	transition-duration: 0.25s;
 	transition-property: height;
+	transition-duration: 0s;
 }
 
 #SynergyIcons DACSynergyIcon.Appear
@@ -433,41 +434,16 @@ DACUIHud.GameOverFadeOut
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: 1;
 
-	height: 95px;
-}
+	animation-duration: 0s;
 
-#SynergyIcons DACSynergyIcon.AppearInstantly
-{
-	opacity: 1;
 	height: 95px;
-	min-height: 95px;
-	transition-duration: 0.01s;
-	animation-name: none;
-	animation-duration: 0.0s;
-}
-
-#SynergyIcons DACSynergyIcon.FadeOut
-{
-	animation-name: SynergyIconFadeOut;
-	animation-duration: 0.25s;
-	animation-timing-function: ease-in-out;
-	animation-iteration-count: 1;
-	height: 95px;
-}
-
-#SynergyIcons DACSynergyIcon.FadeOut.FadeOutShrink
-{	
-	opacity: 0;
-	height: 0px;
 }
 
 .LowVisualQuality #SynergyIcons DACSynergyIcon,
-.LowVisualQuality #SynergyIcons DACSynergyIcon.Appear,
-.LowVisualQuality #SynergyIcons DACSynergyIcon.AppearInstantly,
-.LowVisualQuality #SynergyIcons DACSynergyIcon.FadeOut 
+.LowVisualQuality #SynergyIcons DACSynergyIcon.Appear
 {
-    transition-duration: 0s;
-    animation-duration: 0s;
+	transition-duration: 0s;
+	animation-duration: 0s;
 }
 
 .SynergyIconTutorial
@@ -1598,15 +1574,40 @@ Label.ChoiceItem_Description
 {
 	width: 60px;
 	height: 40px;
-	background-image: url("s2r://panorama/images/hud/battery_icon_png.vtex");
+	background-image: url("s2r://panorama/images/hud/battery_icon_100_png.vtex");
 	background-size: 100%;
 	horizontal-align: right;
 	vertical-align: top;
 	margin-top: 85px;
 	margin-right: 10px;
-	opacity: .5;
 	visibility: collapse;
 }
+
+.Battery100 .BatteryIndicator
+{
+	background-image: url("s2r://panorama/images/hud/battery_icon_100_png.vtex");
+}
+
+.Battery75 .BatteryIndicator
+{
+	background-image: url("s2r://panorama/images/hud/battery_icon_75_png.vtex");
+}
+
+.Battery50 .BatteryIndicator
+{
+	background-image: url("s2r://panorama/images/hud/battery_icon_50_png.vtex");
+}
+
+.Battery25 .BatteryIndicator
+{
+	background-image: url("s2r://panorama/images/hud/battery_icon_25_png.vtex");
+}
+
+.Battery5 .BatteryIndicator
+{
+	background-image: url("s2r://panorama/images/hud/battery_icon_05_png.vtex");
+}
+
 
 .AspectRatio21x9 .BatteryIndicator
 {
@@ -1629,7 +1630,6 @@ Label.ChoiceItem_Description
 	height: 24px;
 	margin-right: 2px;
 	margin-top: 1px;
-	border-radius: 2px;
 	horizontal-align: center;
 	vertical-align: center;
 }
@@ -2162,10 +2162,20 @@ DropDown Label
 	visibility: visible;
 }
 
-#TooltipManager, #ContextMenuManager, #DashboardPopupManager
+#TooltipManager, #ContextMenuManager, #PopupManager
 {
 	width: 100%;
 	height: 100%;
+}
+
+#PopupManager 
+{
+    visibility: collapse;
+}
+
+#PopupManager.HaveActivePopups
+{
+    visibility: visible;
 }
 
 .ItemChoice0 #ItemChoiceRewardPicker_Choice_0,
@@ -3448,3 +3458,23 @@ DACScoreboard {
 {
 	opacity: 1;
 }
+
+.SpectateFadePanel
+{
+	width: 100%;
+	height: 100%;
+
+	opacity: 0;
+	background-color: black;
+
+	transition-duration: 0.0s;
+	transition-property: opacity;
+}
+
+.SpectateTransition .SpectateFadePanel
+{
+	opacity: 1;
+	transition-duration: 0.2s;
+	transition-property: opacity;
+}
+

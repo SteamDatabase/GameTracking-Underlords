@@ -435,7 +435,6 @@ $zYuWA
 -dotatestmodels
 -fpexcept
 -game
--noexecheck
 -novpk
 -publiccontent
 -showasserts
@@ -458,6 +457,7 @@ $zYuWA
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
 ..\content
+..\src\shaders\
 .CMsgQAngle
 .CMsgVector
 .CMsg_CVars"
@@ -503,7 +503,6 @@ $zYuWA
 .text
 /content/
 /game/
-/softlinks/
 0 <= i
 00000000-0000-0000-0000-000000000000
 00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
@@ -667,7 +666,7 @@ $zYuWA
 ;0tWD
 ;BX|'1
 ;G tu+G$L
-;Hc5KfC
+;Hc5{fC
 <	t$1
 <	t9w
 <	ubUH
@@ -900,7 +899,6 @@ AnimationSystemUtils_001
 AnimationSystem_001
 Annotation
 Application "
-Application .exe "%s"
 Application unable to load gameinfo.gi file from directory "%s"!
 ApplicationInfo
 AssertMsg_ConditionFailed
@@ -1572,7 +1570,7 @@ Failed to assign bool literal value
 Failed to convert KV3 to string; error: %s
 Failed to convert introspected block: %s
 Failed to determine base game directory from %s
-Failed to map from %s to game-path
+Failed to map from %s to content-path
 Failed to open file
 Failed to open file: %s
 False
@@ -1640,7 +1638,6 @@ GLIBC_2.3
 GLIBC_2.3.4
 GLIBC_2.4
 Game System %s is defined twice!
-Game base directory "%s" doesn't match root dir "%s"
 GameModelInfoClient001
 GameModelInfoServer001
 GameResourceServiceClientV001
@@ -1686,12 +1683,15 @@ Groups are not supported in proto3 syntax.
 H	p(]
 H!w(H
 H;*twH
-H;=#VA
-H;=/9A
-H;=1:A
-H;=:CA
-H;=R.A
-H;=Z9A
+H;5 |A
+H;=3QA
+H;=4aA
+H;=6:A
+H;=;CA
+H;=SVA
+H;=_9A
+H;=a:A
+H;=jCA
 H=vmdlu
 HBm_influenceFlags
 HELPER_BONE
@@ -1702,6 +1702,7 @@ HammerMapLoader001
 HangWatchdog_IndicateActivity
 Has Collision; 
 HasField
+Hc5;iC
 Hc@$H
 HcC H
 HcG$H
@@ -1732,7 +1733,6 @@ INVALID_CPPTYPE
 IQuickTime001
 IcD$81
 IdempotencyLevel
-If you have special characters in your install path this may be confusing the game.
 Illegal jstype for int64, uint64, sint64, fixed64 or sfixed64 field: 
 Import 
 Import "
@@ -2061,6 +2061,7 @@ Plat_GetCurrentDirectory
 Plat_GetDefaultMonitorIndex
 Plat_GetDesktopBounds
 Plat_GetEnv
+Plat_GetGameDirectory
 Plat_GetLocalTime
 Plat_GetModuleFilename
 Plat_GetModuleInterfaceFactory
@@ -2080,10 +2081,10 @@ Plat_MessageBox
 Plat_Printf
 Plat_RelativeTicks
 Plat_SetActiveWindow
+Plat_SetGameDirectories
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_ShutdownCOM
 Plat_TickDiffMilliSecF
-Plat_TranslateSymbolicLinks
 Plat_UUIDFromString
 Plat_UUIDToString
 Plat_UnloadModule
@@ -2380,7 +2381,6 @@ V_PrettifyMem
 V_RemoveDotSlashes
 V_SetErrno
 V_StrTrim
-V_StripFilename
 V_StripTrailingSlash
 V_UTF16ToUTF8
 V_UTF32ToUTF8
@@ -2487,8 +2487,6 @@ ZYtyH
 [packed = true] can only be specified for repeated primitive fields.
 \%03o
 \U%08x
-\softlinks\
-\src\shaders\
 \x%02x
 ^IcL$ Ic
 _ITM_deregisterTMCloneTable
@@ -2699,7 +2697,6 @@ __oldschema_object_name
 __printf_chk
 __pthread_key_create
 __stack_chk_fail
-__strcpy_chk
 __temp_unserialization_member__
 __tls_get_addr
 __xstat64
@@ -2923,7 +2920,6 @@ int32
 int64
 internal error in map key sorting
 invert_orientation
-is in an unsupported path for game "%s"!
 is running without a known mod!
 is_background_map
 is_debris
@@ -3495,18 +3491,17 @@ runleft
 runright
 runspeed
 s H;5
+s H;51
 s off
-s(H;5
+s(H;5(sA
+s(H;5@
 s0H;5
-s0H;5(sA
-s0H;5H
+s0H;5XsA
+s0H;5x
 s1_mapname
 s8H;5
-s8H;5X
-s8H;5XsA
 s@H;5
 sHH;5
-sHH;5]tA
 sPH;5
 savegamefilename
 savegamename

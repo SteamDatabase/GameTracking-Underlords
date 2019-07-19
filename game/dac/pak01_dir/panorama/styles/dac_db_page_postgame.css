@@ -220,29 +220,20 @@ DACPagePostGame
 
 .PlaceContainer
 {
-	animation-name: PlacePanelIn;
+	opacity: 0;
+	pre-transform-scale2d: 3;
+	pre-transform-rotate2d: 20deg;
+
+	transition-property: opacity, pre-transform-scale2d, pre-transform-rotate2d;
+	transition-delay: 0.7s;
+	transition-duration: 0.5s;
 }
 
-@keyframes 'PlacePanelIn'
+.TitleAnimate .PlaceContainer
 {
-	0%
-	{
-		opacity: 0;
-		pre-transform-scale2d: 3;
-		pre-transform-rotate2d: 20deg;
-	}
-	60%
-	{
-		opacity: 0;
-		pre-transform-scale2d: 3;
-		pre-transform-rotate2d: 20deg;
-	}
-	100%
-	{
-		opacity: 1;
-		pre-transform-scale2d: 1;
-		pre-transform-rotate2d: 0deg;
-	}
+	opacity: 1;
+	pre-transform-scale2d: 1;
+	pre-transform-rotate2d: 0deg;
 }
 
 @keyframes 'PlacePanelInFlip'
@@ -472,11 +463,8 @@ DACPagePostGame
 	width: 100%;
 	flow-children: down;
 	padding-bottom: 20px;
-		
-	animation-duration: 1.2s;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in;
 }
+
 .BigStat
 {
 	font-size: 84px;

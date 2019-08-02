@@ -2,10 +2,11 @@
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_home.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
 	</styles>
 	<snippets>	
 	</snippets>
-	
+
 	<DACHomePage hittest="false" class="DashboardPage">
 
 		<Panel id="BetaBackground">
@@ -40,6 +41,10 @@
 				</Button>
 
 			</Panel>
+
+			<Button id="UnderlordsButton"  onactivate="DACSelectDashboardButton('UnderlordsContainer'); DACShowUnderlordsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+				<Label text="#DAC_Home_Underlords"/>
+			</Button>
 			
 			<Panel class="SafeArea" hittest="false">
 				<Panel id="SocialPanelButton" onactivate="DACToggleSocialPanel(); PlaySoundEffect('DAC_UI.MainMenu_SocialActivate')" onmouseover="PlaySoundEffect(DAC_UI.MainMenu_SocialHover')">
@@ -60,12 +65,17 @@
 			
 			<Panel class="RankIndicator DefaultHidden" id="RankContainer">
 				<DACRankIcon id="RankIcon" iconstyle="standalone" />
-				<Panel class="NameContainer">
-					<Label id="PlayerName" html="true" text="{g:dac_persona:b:player_accountid}" />
-					<Label id="PlayerRank" html="true"  text="#DAC_LevelUp_Rank_New" />
-					<ProgressBar id="PlayerRankProgressBar" />
-					<Label id="PlayerLeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
-				</Panel>
+				<Panel class="RankHoverContainer">
+					<Panel class="NameContainer">
+						<Label id="PlayerName" html="true" text="{g:dac_persona:b:player_accountid}" />
+						<Label id="PlayerRank" html="true"  text="#DAC_LevelUp_Rank_New" />
+					</Panel>
+					<Panel class="PlayerRankScoreContainer">
+						<Label id="PlayerRankScore" html="true" text="#DACRankPoints" />
+						<ProgressBar id="PlayerRankProgressBar" />
+						<Label id="PlayerLeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
+					</Panel>
+				</Panel>	
 			</Panel>
 
 			<Panel id="SocialPanel" hittest="false">

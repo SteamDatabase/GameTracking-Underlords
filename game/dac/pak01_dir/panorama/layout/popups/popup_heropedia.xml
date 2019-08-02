@@ -13,7 +13,7 @@
 	<Panel class="PopupPanel Hidden" popupbackground="blur" onactivate="UIPopupButtonClicked( close )">
     
     <Panel class="Header">
-			<Label text="#DAC_Heropedia" />
+			<Label id="SeasonInfo" text="#DAC_Heropedia" />
 			
       <Panel class="TabList">
         <Button id="HeroTabButton" onactivate="HeropediaPopupShowHeroesPage();">
@@ -25,8 +25,12 @@
         <Button id="ItemTabButton" onactivate="HeropediaPopupShowItemsPage();">
           <Label id="ItemsTabLabel" text="#DAC_InGame_Tab_Items"/>
         </Button>
-      </Panel>
 
+        <Button id="CreepsTabButton" onactivate="HeropediaPopupShowCreepsPage();">
+          <Label id="CreepsTabLabel" text="#DAC_InGame_Tab_Creeps"/>
+        </Button>
+
+      </Panel>
       <Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
 		</Panel>
     
@@ -35,20 +39,22 @@
       <DACHeropediaHeroesPage id="HeroPanel" class="HeropediaHeroPanelContainer"/>
       <DACHeropediaSynergiesPage id="SynergyPanel" class="HeropediaHeroPanelContainer"/>
       <DACHeropediaItemsPage id="ItemPanel" class="HeropediaHeroPanelContainer"/>
+      <DACHeropediaCreepsPage id="CreepsPanel" class="HeropediaHeroPanelContainer"/>
 
 			<Panel class="Filters">
         <!--switch toggles-->
-        <Panel id="TogglePanel" class="FlowRight">
+        <Panel id="TogglePanel">
           <ToggleButton id="ToggleOwnedHeroes" class="CheckBox RightGap" selected="true" text="#DAC_Heropedia_OwnedUnits" onactivate="OnHeropediaToggleOwnedHeroes()"/>
           <ToggleButton id="ToggleOwnedItems" class="CheckBox RightGap" text="#DAC_Heropedia_OwnedItems" onactivate="OnHeropediaToggleOwnedItems()"/>
         </Panel>
         <!--end switch toggles-->
-        <Button class="ResetButton FlowRight" onactivate="OnHeropediaButtonResetPressed()">
+        <!--<Button class="ResetButton FlowRight" onactivate="OnHeropediaButtonResetPressed()">
           <Image class="ResetButtonImage"/>
           <Label text="#DAC_Heropedia_Reset"/>
-        </Button>
+        </Button>-->
       </Panel>
 
 		</Panel>
+
 	</Panel>
 </root>

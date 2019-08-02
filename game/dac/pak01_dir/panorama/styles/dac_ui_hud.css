@@ -217,9 +217,16 @@ DACUIHud.GameOverFadeOut
 
 .IsPlatformPC #PlayerStateContainer
 {
+    ui-scale: 60%;
+    margin-top: 20px;
+    margin-left: 205px;
+}
+
+.IsPlatformMobile #PlayerStateContainer
+{
     ui-scale: 80%;
-    margin-top: 40px;
-    margin-left: 200px;
+    margin-top: 20px;
+    margin-left: 205px;
 }
 
 
@@ -509,7 +516,7 @@ DACUIHud.GameOverFadeOut
 	min-width: 100px;
 }
 
-#DPSTab, #SynergyTab, #ItemsTab
+#DPSTab, #SynergyTab, #ItemsTab, #UnderlordTab
 {
 	height: 100%;
 	width: fit-children;
@@ -521,7 +528,8 @@ DACUIHud.GameOverFadeOut
 
 .LowVisualQuality #DPSTab,
 .LowVisualQuality #SynergyTab,
-.LowVisualQuality #ItemsTab
+.LowVisualQuality #ItemsTab,
+.LowVisualQuality #UnderlordTab
 {
 	transition-property: none;
 	transition-duration: 0s;
@@ -529,20 +537,29 @@ DACUIHud.GameOverFadeOut
 
 .TabPageSynergy #SynergyTab,
 .TabPageDPS #DPSTab,
-.TabPageItems #ItemsTab
+.TabPageItems #ItemsTab,
+.TabPageUnderlord #UnderlordTab 
 {
 	opacity: 1;
 }
 
 #DPSTab > DACDPSChart,
-#ItemsTab > DACInventory
+#ItemsTab > DACInventory,
 {
 	vertical-align: middle;
 	horizontal-align: right;
 }
 
+#UnderlordTab > DACUnderlordTree
+{
+	vertical-align: middle;
+	horizontal-align: middle;
+}
+
+
 #SynergyTab,
-#ItemsTab
+#ItemsTab,
+#UnderlordTab
 {
 	padding-top: 180px;
 	padding-bottom: 220px;
@@ -551,8 +568,15 @@ DACUIHud.GameOverFadeOut
 	transition-duration: 0.2s;
 }
 
+#UnderlordTab
+{
+	padding-top: 140px;
+	padding-bottom: 180px;
+}
+
 .IsPlatformPC.ShopVisible #SynergyTab,
-.IsPlatformPC.ShopVisible #ItemsTab
+.IsPlatformPC.ShopVisible #ItemsTab,
+.IsPlatformPC.ShopVisible #UnderlordTab
 {
 	padding-top: 380px;
 }
@@ -560,6 +584,12 @@ DACUIHud.GameOverFadeOut
 #ItemsTab
 {
 	padding-right: 20px;
+}
+
+.BuildRel #UnderlordTab,
+.BuildRel .TabButtonBackerUnderlord
+{
+	visibility: collapse;
 }
 
 #TabContainer
@@ -579,7 +609,7 @@ DACUIHud.GameOverFadeOut
 {
 	visibility: collapse;
 
-	padding-top: 2px;
+	padding-top: 4px;
 	margin: 17px 0 0 22px;
 	width: 38px;
 	height: 38px;
@@ -659,11 +689,11 @@ DACUIHud.GameOverFadeOut
 	border-bottom: 4px solid #00000055;
 }
 
-.DPSActive #DPS,
-.DamageDealtActive #DamageDealt, 
-.DamageTakenActive #DamageTaken, 
-.HealingDoneActive #HealingDone, 
-.KillsActive #Kills
+.TabPageDPS .DPSActive #DPS,
+.TabPageDPS .DamageDealtActive #DamageDealt, 
+.TabPageDPS .DamageTakenActive #DamageTaken, 
+.TabPageDPS .HealingDoneActive #HealingDone, 
+.TabPageDPS .KillsActive #Kills
 {
 	visibility:visible;
 }
@@ -1450,7 +1480,7 @@ Label.ChoiceItem_Description
 	height: 44px;
 	text-overflow: shrink;
 	horizontal-align: right;
-	margin-top: 14px;
+	margin-top: 24px;
 	font-size: 30px;
 	font-weight: thin;
 	color: #a2a4d0;
@@ -1677,7 +1707,8 @@ Label.ChoiceItem_Description
 
 .TabButtonBackerSynergies,
 .TabButtonBackerDPS,
-.TabButtonBackerItems
+.TabButtonBackerItems,
+.TabButtonBackerUnderlord
 {
 	width: 80px;
 	height: 172px;
@@ -1751,6 +1782,24 @@ Label.ChoiceItem_Description
 
 .TabPageItems .TabButtonBackerItems
 {
+	background-image: url("s2r://panorama/images/hud/right_tab_backer_alt_2_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-color: gradient(linear, 0% 0%, 100% 0%, from( #2b2448 ), to(#00000088));
+}
+
+.UnderlordTabButton {
+	background-image: url("s2r://panorama/images/hud/right_tab_icon_underlord_psd.vtex");
+	background-size: 80px 100px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.TabPageUnderlord .UnderlordTabButton {
+	background-image: url("s2r://panorama/images/hud/right_tab_icon_underlord_on_psd.vtex");
+}
+
+.TabPageUnderlord .TabButtonBackerUnderlord {
 	background-image: url("s2r://panorama/images/hud/right_tab_backer_alt_2_psd.vtex");
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -2847,7 +2896,7 @@ DACHUDRankDisplay .HUDRankDisplay
 
 .AspectRatio4x3 #BenchBG
 {
-	background-position: 50% -32px;
+	background-position: 50% ;
 	background-size: 2300px 200px;
 }
 
@@ -3001,7 +3050,7 @@ DACHUDRankDisplay .HUDRankDisplay
 	opacity: 0;
 }
 
-.SellUnitVisible #PlayerLeaderboardContainer
+.ScoreboardHidden.SellUnitVisible #PlayerLeaderboardContainer
 {
 	opacity: 0;
 }
@@ -3294,12 +3343,14 @@ DACHUDRankDisplay .HUDRankDisplay
 DACScoreboard {
 	position: -1920px 0 0;
 	opacity: 0;
+	visibility: collapse;
 	transition-property: position, opacity;
 	transition-duration: 100ms;
 }
 
 .ScoreboardVisible DACScoreboard {
 	position: 0px 0px 0px;
+	visibility: visible;
 	opacity: 1;
 }
 
@@ -3315,12 +3366,12 @@ DACScoreboard {
 }
 
 #ShowScoreboardButton,
-#HideScoreboardButton
+#HideScoreboardButton,
+#ShowBattlePassProgress,
+#HideBattlePassProgress
 {
 	width: 60px;
 	height: 60px;
-	margin-top: 48px;
-	margin-left: 48px;
 	background-image: url("s2r://panorama/images/hud/scoreboard_icon_psd.vtex");
 	background-size: 100%;
 	transition-property: brightness;
@@ -3328,14 +3379,39 @@ DACScoreboard {
 	brightness: .7;
 }
 
+#ShowBattlePassProgress,
+#HideBattlePassProgress
+{
+	background-image: url("s2r://panorama/images/hud/challenge_progress_icon_psd.vtex");
+	visibility:collapse;
+}
+
+.IsBattlePassGame #ShowBattlePassProgress,
+.IsBattlePassGame#HideBattlePassProgress
+{
+	visibility:visible;
+}
+
 
 .IsPlatformMobile.AspectRatio4x3 #ShowScoreboardButton,
-.IsPlatformMobile.AspectRatio4x3 #HideScoreboardButton
+.IsPlatformMobile.AspectRatio4x3 #HideScoreboardButton,
+.IsPlatformMobile.AspectRatio4x3 #ShowBattlePassProgress,
+.IsPlatformMobile.AspectRatio4x3 #HideBattlePassProgress
 {
 	width: 90px;
 	height: 90px;
-	margin-left: 37px;
-	margin-top: 100px;
+}
+
+.HudToggleContainer
+{
+	flow-children: down;
+}
+
+.IsPlatformPC .HudToggleContainer
+{
+	margin-top: 12px;
+	margin-left: 20px;
+	flow-children: right;
 }
 
 .HudToggleContainer,
@@ -3343,12 +3419,16 @@ DACScoreboard {
 {
 	horizontal-align: left;
 	vertical-align: top;
+
+	margin-left:37px;
+	margin-top: 24px;
 }
 
 .IsPlatformMobile .HudToggleContainer
 {
 	horizontal-align: right;
 	vertical-align: bottom;
+	margin-bottom: 20px;
 }
 
 .IsPlatformMobile #ShowScoreboardButton,
@@ -3356,23 +3436,38 @@ DACScoreboard {
 {
 	width: 80px;
 	height: 80px;
-	margin: 0px 0px 175px 0px;
+	margin: 0px 0px 0px 0px;
 }
 
+.IsPlatformMobile #ShowBattlePassProgress,
+.IsPlatformMobile #HideBattlePassProgress
+{
+	width: 80px;
+	height: 80px;
+	margin: 0px 0px 0px 0px;
+}
+
+
 .IsPlatformMobile.ShopVisible #ShowScoreboardButton,
-.IsPlatformMobile.ShopVisible #HideScoreboardButton
+.IsPlatformMobile.ShopVisible #HideScoreboardButton,
+.IsPlatformMobile.ShopVisible #ShowBattlePassProgress,
+.IsPlatformMobile.ShopVisible #HideBattlePassProgress
 {
 	visibility: collapse;
 }
 
 .EGameState_Intro #ShowScoreboardButton,
-.EGameState_Intro #HideScoreboardButton
+.EGameState_Intro #HideScoreboardButton,
+.EGameState_Intro #ShowBattlePassProgress,
+.EGameState_Intro #HideBattlePassProgress
 {
 	visibility: collapse;
 }
 
 #ShowScoreboardButton:hover,
-#HideScoreboardButton:hover
+#HideScoreboardButton:hover,
+#ShowBattlePassProgress:hover,
+#HideBattlePassProgress:hover
 {
 	brightness: 2.5;
 }
@@ -3386,16 +3481,19 @@ DACScoreboard {
 	visibility: collapse;
 }
 
-.ScoreboardVisible #ShowScoreboardButton {
+.ScoreboardVisible #ShowScoreboardButton
+{
 	visibility: collapse;
 }
 
-.ScoreboardVisible #HideScoreboardButton {
+.ScoreboardVisible #HideScoreboardButton
+{
 	visibility: visible;
 }
 
 
-.ScoreboardVisible .PlayerLeaderboardBackground {
+.ScoreboardVisible .PlayerLeaderboardBackground
+{
 	width: 100%;
 	overflow: clip scroll;
 }
@@ -3408,27 +3506,77 @@ DACScoreboard {
 #ShowScoreboardButton, #HideScoreboardButton {
 	font-size: 25px;
 	color: #fff;
+	margin-left: 32px;
 }
 
+.IsBattlePassGame #ShowScoreboardButton,
+.IsBattlePassGame #HideScoreboardButton
+{
+		margin-left: 0px;
+}
 //.ScoreboardVisible
 
+#BattlePassProgressBG
+{
+	visibility:collapse;
+	width: 100%;
+	height: 100%;
+	background-color: #000000F0;
+}
+
+.HUD_BattlePassProgressVisible #BattlePassProgressBG
+{
+	visibility: visible;
+}
+
+#HideBattlePassProgress
+{
+	visibility: collapse;
+}
+
+.HUD_BattlePassProgressVisible #HideBattlePassProgress
+{
+	visibility: visible;
+}
+
+.HUD_BattlePassProgressVisible #ShowBattlePassProgress
+{
+	visibility: collapse;
+}
+
+.BattlePassContainer
+{
+	visibility: collapse;
+
+	horizontal-align: center;
+}
+
+.HUD_BattlePassProgressVisible .BattlePassContainer
+{
+	visibility: visible;
+}
 
 .ShowChat #Chat {
 	visibility: visible;
 }
 
-.IsPlatformMobile.ShowChat #Chat
-{
-	visibility:collapse;
-}
-
 #Chat
 {
-	width:100%;
+	width: 60%;
 	horizontal-align: center;
 	vertical-align:bottom;
-	margin-bottom: 500px;
+	margin-bottom: 120px;
+	margin-left: 40px;
+	margin-right: 40px;
 	visibility:collapse;
+    padding: 5px;
+	text-transform: none;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #111c ), to( #222c ) );
+}
+
+.IsPlatformMobile #Chat
+{
+	margin-bottom: 500px;
 }
 
 .SelectedPlayerLevel

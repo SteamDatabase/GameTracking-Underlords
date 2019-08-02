@@ -47,18 +47,23 @@ DACPatchNotesPage {
 	padding: safe-area-inset-top safe-area-inset-right safe-area-inset-bottom safe-area-inset-left;
 }
 
-#PatchNotesOuterContainer
+#PatchNotesScrollContainer
 {
 	width: 1280px;
-	height: fit-children;
+	overflow: clip scroll;
 	flow-children: down;
+	horizontal-align: center;
 	font-size: 24px;
 	color: #9395a6;
 	line-height: 36px;
 	font-family: Radiance, k_alwaysFontNames;
-	padding-right: 36px;
-	padding-top: 40px;
-	horizontal-align: center;
+
+	padding-bottom: 300px;
+}
+
+#SectionTitleArea
+{
+	padding-bottom: 40px;
 }
 
 #LoadingIndicator
@@ -80,14 +85,6 @@ DACPatchNotesPage {
 	text-shadow: 0px 1px 0px 3.0 #000;
 }
 
-#PatchNotesScrollContainer
-{
-	overflow: clip scroll;
-	flow-children: down;
-	padding-bottom: 300px;
-	horizontal-align: center;
-}
-
 .PatchContainer
 {
 	width: 1280px;
@@ -102,6 +99,12 @@ DACPatchNotesPage {
 	background-color: #161a1b;
 	padding: 30px 40px 40px 40px;
 	margin-bottom: 60px;
+}
+
+.PatchContainer .Patch.HiddenOverride
+{
+    background-color: #091828;
+    border: 1px solid #3E366A;
 }
 
 .PatchContainer .PatchDate Label
@@ -136,6 +139,11 @@ Label.ProbablyUnlocalizedText
 	font-weight: black;
 	padding-top: 3px;
 	padding-bottom: 10px;
+}
+
+.PatchContainer .PatchTitle Label i
+{
+	color: #9193a3;
 }
 
 .PatchNote_Root

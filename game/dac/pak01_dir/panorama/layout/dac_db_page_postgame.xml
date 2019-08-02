@@ -16,103 +16,130 @@
 	</snippets>
 
 	<DACPagePostGame onactivate="" class="DashboardPage" >
+    <Panel id="TopBarPlaceContainer">
+    	<!--<Label id="TopBarPlaceValue" text="{d:place_value}"/>-->
+      <Label id="TopBarPlaceText" text="#DAC_InGame_UserDiedPlace"/>
+    </Panel>
+    <Panel class="PostGameTopBar">
+      <Button class="TopBarButton" id="TopBarProgressButton" onactivate="DACPostGameShowSeasonProgressPage()">
+        <Label class="" text="#DAC_PostGame_Progress" />
+      </Button>
+      <Button class="TopBarButton" id="TopBarStatsButton" onactivate="DACPostGameShowStatsPage()">
+        <Label class="" text="#DAC_PostGame_Stats" />
+      </Button>
+      <Button class="TopBarButton" id="TopBarScoreboardButton" onactivate="DACPostGameShowScoreboardPage()">
+        <Label class="" text="#DAC_PostGame_Scoreboard" />
+      </Button>
+    </Panel>
 
-		<Panel id="StatsPage" class="OverlayContainer">
-			<Panel class="PlaceContainer">
-				<Label class="PlaceTitle" text="#DAC_InGame_UserDiedPlace"/>
-				<Label class="PlaceQuote" text="{s:result_quote}"/>
-			</Panel>
+    <Panel id="PageContainer">
+      <Panel id="ScrollingPage">
+        <Panel id="SeasonProgressPage" class="OverlayContainer">
+          <Panel class="PlaceContainer">
+            <Label class="PlaceTitle" text="#DAC_InGame_UserDiedPlace"/>
+            <Label class="PlaceQuote" text="{s:result_quote}"/>
+          </Panel>
+          <Panel id="SeasonProgressContainer">
+            <Panel class="BrushBg" />
+             <Panel id="NextRewardContainer">
+                <Panel id="NextRewardImageContainer">
+                  <Panel id="NextRewardBg" />
+                  <Panel id="NextRewardImage" />
+                </Panel>
+             </Panel>
+             <Label id="NextRewardDesc" text="#DAC_PostGame_NextLevelReward"/>
+            <Panel class="ProgressBar">
+              <ParticleProgressBar id="SeasonLevelProgress" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar_complete.vpcf" />
+              <Panel id="LevelContainer">
+                <Label id="SeasonLevelHeader" text="#DAC_BPLevelHeader"/>
+                <Label id="SeasonLevelNum" class="Tier_Default_Bg" text="{i:current_season_level}"/>
+              </Panel>
+              <Panel id="LevelDescriptionContainer">
+                <Label id="LevelPointCounts" text="#DAC_PostGame_LevelPointCount"/>
+              </Panel>
+            </Panel>
+          </Panel>
 
-			<Panel class="StatsContainer">
-				<Panel id="RoundsWon" class="StatsSubContainer">
-					<Label class="BigStat" text="{d:rounds_won}" />
-					<Label class="StatDescription tilt-left" text="#DAC_EndGame_RoundsWon" />
-				</Panel>
-				<Panel id="EndGameDamageDealt" class="StatsSubContainer">
-					<Label class="BigStat" text="{d:damage_dealt}" />
-					<Label class="StatDescription tilt-right" text="#DAC_EndGame_DamageDealt" />
-				</Panel>
-				<Panel id="GoldEarned" class="StatsSubContainer">
-					<Label class="BigStat" text="{d:gold_earned}" />
-					<Label class="StatDescription tilt-left" text="#DAC_EndGame_GoldEarned" />
-				</Panel>
-			</Panel>
+          <Panel id="ChallengeAndRankContainer">
+            <DACControlBattlePass id="BattlePassOverview" class="PostGameBPControl" />
 
-			<Panel class="StatsMainRow">
+            <Panel class="RankIndicator" id="RankContainer">
+              <DACRankIcon id="RankIcon" iconstyle="standalone" />
+              <Panel class="NameContainer">
+                <Label id="PlayerRank" html="true"  text="#DAC_LevelUp_Rank_New" />
+                <Panel id="PlayerScoreContainer">
+                  <Label id="PlayerRankScore" html="true" text="#DACRankPoints" />
+                  <Label id="PlayerRankScoreDelta" html="true" text="( {s:player_level_score_delta} )" />
+                </Panel>
+								<ProgressBar id="PlayerRankProgressBar" />	
+                <Label id="PlayerLeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
+              </Panel>
+            </Panel>
+          </Panel>
+        </Panel>
 
-				<Panel class="SynergiesColumn StatsColumn">
-					<Label class="FinalCrewTitle tilt-right" text="#DAC_PostGame_Alliances_Title"/>
+        <Panel id="StatsPage" class="OverlayContainer">
+			    <Panel class="PlaceContainer">
+            <Label class="PlaceTitle" text="#DAC_InGame_UserDiedPlace"/>
+            <Label class="PlaceQuote" text="{s:result_quote}"/>
+          </Panel>
+			    <Panel class="StatsContainer">
+				    <Panel id="RoundsWon" class="StatsSubContainer">
+					    <Label class="BigStat" text="{d:rounds_won}" />
+					    <Label class="StatDescription tilt-left" text="#DAC_EndGame_RoundsWon" />
+				    </Panel>
+				    <Panel id="EndGameDamageDealt" class="StatsSubContainer">
+					    <Label class="BigStat" text="{d:damage_dealt}" />
+					    <Label class="StatDescription tilt-right" text="#DAC_EndGame_DamageDealt" />
+				    </Panel>
+				    <Panel id="GoldEarned" class="StatsSubContainer">
+					    <Label class="BigStat" text="{d:gold_earned}" />
+					    <Label class="StatDescription tilt-left" text="#DAC_EndGame_GoldEarned" />
+				    </Panel>
+			    </Panel>
+
+			    <Panel class="StatsMainRow">
+
+				    <Panel class="SynergiesColumn StatsColumn">
+					    <Label class="FinalCrewTitle tilt-right" text="#DAC_PostGame_Alliances_Title"/>
 				
-					<Panel id="SynergiesContainer">
-						<!-- Code generated -->
-					</Panel>
-				</Panel>
+					    <Panel id="SynergiesContainer">
+						    <!-- Code generated -->
+					    </Panel>
+				    </Panel>
 
-				<Panel class="HeroesColumn StatsColumn">
-					<Label class="FinalCrewTitle tilt-left" text="#DAC_FinalCrew_Title"/>
+				    <Panel class="HeroesColumn StatsColumn">
+					    <Label class="FinalCrewTitle tilt-left" text="#DAC_FinalCrew_Title"/>
 
-					<Panel id="HeroesContainer" class="HeroRoster">
-						<!-- Code generated -->
-					</Panel>
-				</Panel>
+					    <Panel id="HeroesContainer" class="HeroRoster">
+						    <!-- Code generated -->
+					    </Panel>
+				    </Panel>
 
-				<Panel class="ItemsColumn StatsColumn">
-					<Label class="FinalCrewTitle tilt-right" text="#DAC_PostGame_GlobalItems_Title"/>
+				    <Panel class="ItemsColumn StatsColumn">
+					    <Label class="FinalCrewTitle tilt-right" text="#DAC_PostGame_GlobalItems_Title"/>
 
-					<Panel id="ItemsContainer">
-						<!-- Code generated -->
-					</Panel>
+					    <Panel id="ItemsContainer">
+						    <!-- Code generated -->
+					    </Panel>
 
-					<Label class="NoGlobalItemsLabel" text="#DAC_PostGame_NoGlobalItems" />
-				</Panel>
-			</Panel>
-		</Panel>
+					    <Label class="NoGlobalItemsLabel" text="#DAC_PostGame_NoGlobalItems" />
+				    </Panel>
+			    </Panel>
+		    </Panel>
 
-		<Panel id="ScoreboardPage" class="OverlayContainer">
-			<Label class="PlaceTitle" text="#DAC_PostGame_Scoreboard_Title"/>
-			<DACPostGameScoreboard id="Scoreboard" />
-		</Panel>
+        <Panel id="ScoreboardPage" class="OverlayContainer">
+			    <Label class="PlaceTitle" text="#DAC_PostGame_Scoreboard_Title"/>
+			    <DACPostGameScoreboard id="Scoreboard" />
+		    </Panel>
+      </Panel>
+    </Panel>
     
-		<Panel id="SeasonProgressPage" class="OverlayContainer">
-			<Panel class="SeasonProgressHeaderContainer">
-				<Panel id="SeasonTitleImage"/>
-				<Label id="SeasonQuote" class="PlaceQuote" text="#DAC_PostGame_BP_Subheader"/>
-			</Panel>
-			<Label id="SeasonDesc" html="true" text="#DAC_PostGame_BP_Desc"/>
-			<Panel id="SeasonProgressContainer">
-				<Panel class="BrushBg" />
-				<Panel class="ProgressBar">
-					<ProgressBar value="0" max="1" id="SeasonLevelProgress" />
-					<Panel id="LevelContainer">
-						<Label id="SeasonLevelHeader" text="#DAC_BPLevelHeader"/>
-						<Label id="SeasonLevelNum" class="Tier_Default_Bg" text="{i:current_season_level}"/>
-					</Panel>
-					<Panel id="LevelDescriptionContainer">
-						<Label id="LevelPointCounts" text="#DAC_PostGame_LevelPointCount"/>
-						<Label id="NextRewardDesc" text="#DAC_PostGame_NextLevelReward"/>
-					</Panel>
-					<Panel id="NextRewardContainer">
-						<Panel id="NextRewardImageContainer">
-							<Panel id="NextRewardBg" />
-							<Panel id="NextRewardImage" />
-						</Panel>
-					</Panel>
-				</Panel>
-			</Panel>
-		</Panel>
-
 		<Panel class="ButtonContainer">
 			<Button id="ReturnToGameButton" class="GlassButton" onactivate="DACPostGameReturnToGame()">
 				<Label class="" text="#DAC_InGame_KeepWatching" />
 			</Button>
 
-			<Button class="GlassButton" id="ScoreboardButton" onactivate="DACPostGameShowScoreboardPage()">
-				<Label class="" text="#DAC_PostGame_Scoreboard" />
-			</Button>
-
-			<Button class="GlassButton" id="StatsButton" onactivate="DACPostGameShowStatsPage()">
-				<Label class="" text="#DAC_PostGame_Stats" />
-			</Button>
 
 			<Button class="GlassButton" id="MainMenuButton" onactivate="DACPostGameMainMenu()">
 				<Label class="" text="#DAC_InGame_ReturnToMainMenu" />

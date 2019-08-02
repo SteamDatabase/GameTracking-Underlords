@@ -1,5 +1,4 @@
 																																																																																																				
-	ARAPE
 	CODE_SIZE
 	CannotBeNetworked        = %s
 	Category Mask            = %08X
@@ -1100,7 +1099,6 @@ AddToTail
 AddToTailGetPtr
 AddUInt32
 AddUInt64
-After sending last chunk of split packet payload, wait at least this many msecs after last activity before giving up
 AllocInternal
 Already saw decimal point or exponent; can't have another one.
 AnimGraphEditorUtils001
@@ -1667,6 +1665,7 @@ DetermineFieldSerializerGroup
 DevMsg
 Direct UDP connect
 Disassociating NetChan %s (%s) from Steam Net Connection handle #%u
+Disconnecting netchan because of excessive CPU usage /+/ %dms, %d, current message type: '%s'
 Display info about a message (by classname or id)
 Division or mod by zero: dividend.hi=
 Don't bother compressing packets below this size.
@@ -1689,7 +1688,6 @@ E;gX}<I
 E;l$ 
 E;l$$
 E;|$(fD
-E=$jE
 E@Icw
 EHA;EX
 EHHcE
@@ -1929,30 +1927,30 @@ H9J(t
 H9Q(H
 H9Q(t
 H;*twH
-H;50>J
-H;51KJ
-H;5@8J
-H;5A+J
-H;5H:J
-H;5QTL
-H;5XzJ
-H;5aDJ
-H;5aaJ
-H;5asJ
-H;5l\L
-H;=	~L
-H;=(lL
-H;=2}L
-H;=3uL
-H;=4~L
-H;=>jL
-H;=BnI
-H;=QkL
-H;=SlL
-H;=]}L
-H;=^uL
-H;=`?K
-H;=|kL
+H;5 PL
+H;5 `L
+H;5)0J
+H;50BJ
+H;58AL
+H;58kJ
+H;59%J
+H;5X>J
+H;5YKJ
+H;5h8J
+H;5i+J
+H;5p:J
+H;5yTL
+H;=%lL
+H;=0uL
+H;=1~L
+H;=PlL
+H;=Z}L
+H;=[uL
+H;=\~L
+H;=fjL
+H;=jnI
+H;=ykL
+H;={lL
 H;r(H
 H[A\A]A^A_]
 H[A\A]]
@@ -2009,15 +2007,14 @@ IcE01
 IcF(J
 IcG A
 IcL$(Hc
+IcL$@
 IcO H
 IcT$$A
 IcU09
 IcV(J
 IdempotencyLevel
-If a splitpacket has more than this many fragments, use the reliable/ack based protocol
 If set, only net_showmsg spew for data inbound on this socket name e.g. client, server, etc.
 If unable to bind to initial port, how many more to try binding.
-If we get a completed splitpacket requesting acks, send the final 'success' ack this many times
 Illegal jstype for int64, uint64, sint64, fixed64 or sfixed64 field: 
 Import 
 Import "
@@ -2248,6 +2245,7 @@ Need space between number and identifier.
 Net graph %s
 Net packet timing values don't make sense.  Send time=%llu, Recv time=%llu, Now=%llu, Peer delay=%d
 Net status for host %s:
+NetChan %s ProcessMessages has taken more than %dms to process %d messages.  (Current message type: '%s')
 NetChannel '%s':
 NetMessage '%s' still using auto-assigned, has to generate id from name CUtlStringToken hashcode = %d
 NetMessageConnectionClosed
@@ -2341,12 +2339,13 @@ Plat_GetEnv
 Plat_GetLocalTime
 Plat_GetOSType
 Plat_IsHighDPI
-Plat_IsInDebugSessionRaw
+Plat_IsInDebugSession
 Plat_IsInTestMode
 Plat_MSTime
 Plat_RelativeTicks
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_TickDiffMilliSecF
+Plat_USTime
 Player
 PlusFour
 PlusThree
@@ -2366,6 +2365,7 @@ PrefetchType
 Print detailed network statistics for each network connection
 Procedural
 ProceduralData_%s_%d
+ProcessMessages
 ProcessOverride encountered unknown directive NetworkOverrideType_t(%d)
 ProcessPacketSNP %s:%s packet %i at %i
 PropertyEditorSystem_001
@@ -2489,7 +2489,8 @@ STEAMMUSIC_INTERFACE_VERSION001
 STEAMPARENTALSETTINGS_INTERFACE_VERSION001
 STEAMREMOTESTORAGE_INTERFACE_VERSION014
 STEAMSCREENSHOTS_INTERFACE_VERSION003
-STEAMUGC_INTERFACE_VERSION012
+STEAMTV_INTERFACE_V001
+STEAMUGC_INTERFACE_VERSION013
 STEAMUSERSTATS_INTERFACE_VERSION011
 STEAMVIDEO_INTERFACE_V002
 STRING
@@ -2589,7 +2590,7 @@ SteamAPI_RegisterCallback
 SteamAPI_UnregisterCallResult
 SteamAPI_UnregisterCallback
 SteamAudio001
-SteamClient018
+SteamClient019
 SteamController007
 SteamDatagram Network Configuration
 SteamDatagramClient_Init failed.  %s
@@ -2754,7 +2755,6 @@ VScript
 VScriptDbg
 VScriptManager010
 VStringTokenSystem001
-VWSPH
 V_FixDoubleSlashes
 V_FixSlashes
 V_GetErrno
@@ -2832,8 +2832,8 @@ VisBuilder_001
 VoiceDataFormat_t
 W u)H
 WARNING
+WVSPH
 WXHcL
-Wait this many msecs before checking whether to send resend requests.
 Warning
 Warning parsing text-format 
 Warning:  %s = '%s' is infinite, clamping value.
@@ -3504,10 +3504,6 @@ net_showudp
 net_showudp_remoteonly
 net_spewcounts
 net_spewserializer
-net_splitpacket_minimum_ack_rtt_msecs
-net_splitpacket_require_acks_threshold
-net_splitpacket_resend_time_msecs
-net_splitpacket_success_ack_count
 net_status
 net_table_name
 net_usesocketsforloopback
@@ -3654,24 +3650,23 @@ resource_type
 rnd_down
 rnd_up
 s H;5
-s H;5!\L
-s H;5<xJ
-s H;5@kJ
+s H;5(DL
+s H;5I\L
+s H;5dxJ
+s H;5hkJ
 s(H;5
-s(H;50DL
-s(H;5mkJ
+s(H;5@8L
+s(H;5XDL
 s0H;5
-s0H;5H8L
-s0H;5hEL
+s0H;50
+s0H;5p8L
 s1Hc@
 s1_mapname
 s8H;5
-s8H;5x8L
-s8H;5xFL
+s8H;5,4L
 s@H;5
-s@H;5QlJ
+s@H;5ylJ
 sHH;5
-sHH;5}9L
 sPH;5
 sample_rate
 savegamefilename
@@ -3804,12 +3799,11 @@ t$8H9
 t$H;h
 t$HcU
 t$HcW
-t%D;-
+t%D;-d
 t%Hcs8
 t&IcN
-t';5(
+t';5H
 t(D9-
-t);=bB+
 t.HcC H
 t.HcC(H
 t.HcK8H
@@ -4010,7 +4004,7 @@ ziugH
 |$(E1
 |$0E;|$@
 |$hIc_
-}!A;GTw
+}#A;D$Tw
 }%fD9
 }%fD;
 }+A9GTr%

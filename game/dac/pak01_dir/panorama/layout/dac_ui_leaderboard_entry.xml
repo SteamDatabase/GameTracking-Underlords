@@ -18,10 +18,13 @@
 		<Panel class="PlayerLeaderboard" hittest="true" onmouseover="PlaySoundEffect( 'DAC_UI.AvatarRollover' );">
 			<Panel class="LeftConnector"/>
 			<DACPlayerAvatar id="LeaderboardAvatar" />
+			<Panel class="CloneIcon" />
 			<Image class="LeaderboardBackground" src="s2r://panorama/images/leaderboard/background_panel_psd.vtex" hittest="false" />
 			<Image class="LeaderboardSelfIndicator" src="s2r://panorama/images/leaderboard/self_glow_psd.vtex" hittest="false" />			
 			<Panel id="LeaderBoardBackgroundStrip"/>
 			
+
+
 			<Panel class="StatsContainer TopBottomFlow">
 				<Panel id="GoldStat" class="LeftRightFlow">
 					<Label id="LeaderboardGold" text="{d:leaderboard_Gold}" />
@@ -34,15 +37,22 @@
 			</Panel>
 			<Image class="LeaderboardDisconnectedIndicator" src="s2r://panorama/images/leaderboard/disconnected_glow_psd.vtex" hittest="false" />
 			<Label id="LeaderboardLevel" text="{d:leaderboard_Level}" />
+
+			<DACParticleScenePanel class="PlayerVictory" hittest="false" startActive="true" particleName="econ/s0/particles/battlepass/s0_battlepass_level_bar.vpcf" fov="-100" />	
+			
 			<Panel class="LeaderboardBelow LeftRightFlow">
 				<Image class="MobileIcon" src="s2r://panorama/images/leaderboard/icon_mobile_psd.vtex" hittest="false" />
 				<Label text="{g:dac_player_slot_persona:b:leaderboard_Slot}" html="true"/>
-				<Panel class="LeaderboardIndicator">
-					
-				</Panel>
+				<Panel class="LeaderboardIndicator" />
 			</Panel>
+	
 			<Image class="LeaderboardDefeatedIndicator" src="s2r://panorama/images/leaderboard/defeated_glow_psd.vtex" hittest="false" />
 
+			<Panel class="LeaderboardChatMessage" >
+				<Panel class="LeaderboardChatMessageTail" />
+				<Label class="LeaderboardChatText" text="{s:chat_msg}" />
+				<Panel class="LeaderboardChatMuteButton" onactivate="DACLeaderboardEntryMuteClicked()" />
+			</Panel>
 
 		</Panel>
 

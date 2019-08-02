@@ -1,0 +1,183 @@
+DACUnderlordTree 
+{
+	flow-children: up;
+	vertical-align: center;
+
+	width: 400px;
+	height: 1300px;
+}
+
+.PassiveTalent
+{
+	width: 120px;
+	height: 120px;
+	border: 2px solid #6CFF27;
+	border-radius: 6px;
+
+	horizontal-align: center;
+}
+
+.ConnectorLineUp 
+{
+	width: 3px;
+	height: 12px;
+	background-color: #6CFF27;
+	horizontal-align: center;
+	margin-bottom: -1px;
+}
+
+.UnderlordTreeOption 
+{
+	flow-children: right;
+	horizontal-align: center;
+}
+
+#TalentOptions
+{
+	horizontal-align: center;
+	flow-children: up;
+}
+
+.TalentOptionRow
+{
+	flow-children: right;
+	horizontal-align: center;
+}
+
+.TalentOptionContainer
+{
+	width: 80px;
+	height: 80px;
+	margin-top: -20px;
+
+	vertical-align: center;
+}
+
+.TalentOption
+{
+	width: 70px;
+	height: 70px;
+	border: 2px solid #6CFF27;
+	border-radius: 6px;
+	horizontal-align: center;
+	vertical-align: center;
+
+	transition-property: transform, saturation, brightness, constrast;
+	transition-duration: 0.05s, 0.2s, 0.2s, 0.2s;
+	transition-timing-function: ease-in-out, ease-in-out, ease-in, ease-in;
+}
+
+.TalentOptionRow:not(.Inactive) .TalentOption:not(.Decided):hover
+{
+	transform: scaleX( 1.05 ) scaleY( 1.05 );
+}
+
+.TalentOption.Rejected
+{
+	brightness: 0.05;
+	saturation: 0.0;
+	contrast: 1.01;
+}
+
+@keyframes 'selection-bounce'
+{
+	0%
+	{
+		transform: scaleX( 1.0 ) scaleY( 1.0 );
+	}
+	
+	50%
+	{
+		transform: scaleX( 1.1 ) scaleY( 1.1 );
+	}
+	
+	100%
+	{
+		transform: scaleX( 1.0 ) scaleY( 1.0 );
+	}
+}
+
+.TalentOption.AcceptedAnim
+{
+	animation-name: selection-bounce;
+	animation-duration: 0.2s;
+	animation-delay: 0.0s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+}
+
+.TalentOptionContainer.Left
+{
+	margin-right: 40px;
+}
+
+.TalentOptionContainer.Right
+{
+	margin-left: 40px;
+}
+
+.LevelSection
+{
+	flow-children: up;
+	vertical-align: center;
+}
+
+.Connector
+{
+	width: 3px;
+	height: 40px;
+	background-color: #6CFF27;
+	horizontal-align: center;
+	margin-left: -0.5px;
+	margin-top: -1px;
+	margin-bottom: -1px;
+
+	transition-property: saturation, brightness;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+}
+
+.Connector.Hidden
+{
+	opacity: 0;
+}
+
+.LevelCircle
+{
+	width: 60px;
+	height: 60px;
+	border: 2px solid #6CFF27;
+	border-radius: 30px;
+	background-color: black;
+
+	transition-property: saturation, brightness;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+
+}
+
+.LevelValue 
+{
+	font-size: 36px;
+	color: #6CFF27;
+	horizontal-align: center;
+	vertical-align: center;
+	text-align: center;
+	font-weight: bold;
+	margin-top: 1px;
+	margin-right: 2px;
+
+	transition-property: saturation, brightness;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+}
+
+.Inactive .LevelCircle,
+.Inactive .LevelValue,
+.Inactive .TalentOption,
+.Inactive .Connector
+{
+	saturation: 0.2;
+	brightness: 0.3;
+}

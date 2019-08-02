@@ -2,7 +2,8 @@
 
 .IsPlatformPC .PopupPanel.SwitchHeroes,
 .IsPlatformPC .PopupPanel.SwitchSynergies,
-.IsPlatformPC .PopupPanel.SwitchItems
+.IsPlatformPC .PopupPanel.SwitchItems,
+.IsPlatformPC .PopupPanel.SwitchCreeps
 {
     ui-scale: 80%;
     width: 80%;
@@ -23,39 +24,58 @@
 
 .Header {
     padding-left: 5%;
-    padding-right: 10px;
+    padding-right: 5%;
     /*background-color: gradient( linear, 0% 0%, 0% 100%, from( #00000060 ), to( #000 ) );*/
     width: 100%;
     height: 100px;
     flow-children: right;
+    height: fit-children;
 }
 
-.Header Label {
-    color: white;
-    font-size: 60px;
-    margin-top: 4px;
-    font-weight: bold;
+
+#SeasonInfo {
+    color: #000000;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-right: 40px;
+    background-color: white;
+    transform: rotateZ(-3deg);
     text-transform: uppercase;
     vertical-align: middle;
     letter-spacing: 2px;
-    text-shadow: 2px 3px 0px 3.0 #101010;
+    padding: 14px;
+    box-shadow: 0px 0px 3px #ffffff;
+    overflow: clip scroll;
 }
+
+.Header Label {
+    color: blue;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-right: 20px;
+    font-weight: black;
+    text-transform: uppercase;
+    vertical-align: middle;
+    letter-spacing: 3px;
+    overflow: clip scroll;
+}
+
+
 
 .Header .CloseButton {
     horizontal-align: right;
     vertical-align: middle;
-    margin: 10px;
-    width: 72px;
-    height: 72px;
+    width: 74px;
+    height: 74px;
     background-image: url("s2r://panorama/images/hud/close-button_png.vtex");
     background-size: cover;
     background-repeat: no-repeat;
     transition-property: opacity;
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
+    transition-duration: 0.1s;
     opacity: 1.0;
     wash-color: transparent;
 }
+
 
 
 .Header .CloseButton {
@@ -83,36 +103,28 @@
     .Body Label
     {
 	    color: white;
-	    font-size: 30px;
+	    font-size: 28px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
     }
-
-    .Body .Filters {
-        width: 100%;
-        height: 100px;
-        /*background-color: gradient( linear, 0% 0%, 0% 100%, from( #000 ), to( #00000000 ) );*/
-        flow-children: right;
-        padding: 0px 10px 10px 5%;
-        ui-scale: 140%;
-        brightness: .7;
-    }
-        
-        .Body .Filters .DropDownMenu {
-            height: 55px;
-            width: 240px;
-        }
 
         .Body .Filters Label {
             text-transform: uppercase;
-            font-weight: semi-bold;
-            vertical-align: middle;
+            font-weight: bold;
+            horizontal-align: right;
         }
 
         .Body .Filters .RightGap {
-            margin-right: 40px;
+            margin-right: 100px;
+            margin-left: 66%;
+            margin-top: 26%;
+            padding: 20px;
+            background-color: #141919;
         }
 
+
         .Body .Filters .ResetButtonImage {
-            width: 55px;
+            width: 15px;
             height: 55px;
             vertical-align: middle;
             background-image: url("s2r://panorama/images/shop/reroll_button_psd.vtex");
@@ -127,11 +139,20 @@
                 brightness: 2.0;
             }
 
-#ToggleOwnedHeroes, 
-#ToggleOwnedItems {
+#ToggleOwnedHeroes, {
     vertical-align: top;
+    horizontal-align: right;
     visibility: collapse;
 }
+
+
+#ToggleOwnedItems {
+    vertical-align: top;
+    horizontal-align: right;
+    visibility: collapse;
+}
+
+
 
 .SwitchHeroes #ToggleOwnedHeroes,
 .SwitchItems #ToggleOwnedItems {
@@ -140,59 +161,56 @@
 
 
 .HeropediaHeroPanelContainer {
-    width: 90%;
+    width: 100%;
     height: 100%;
     margin-left: 5%;
+    margin-top: 0%;
+    margin-bottom: 2%;
     /*overflow: clip scroll;*/
     /*flow-children: down;*/
 }
 
 
 
-#HeroPanel, #ItemPanel, #SynergyPanel {
+#HeroPanel, #ItemPanel, #SynergyPanel, #CreepsPanel{
     visibility: collapse;
 }
 
 .SwitchSynergies #SynergyPanel,
 .SwitchHeroes #HeroPanel,
-.SwitchItems #ItemPanel {
+.SwitchItems #ItemPanel,
+.SwitchCreeps #CreepsPanel {
     visibility: visible;
 }
 
 .TabList{
-    margin-left: 50px;
-    horizontal-align: left;
+    height: fit-children;
+    horizontal-align: middle;
+    vertical-align: center;
     flow-children: right;
+    padding: 2px;
+    margin-left: 30px;
 }
 
 .TabList Button {
     height: 80px;
-    width: 300px;
-    margin-top: 6px;
-    margin-right: 20px;
-    padding: 0 20px 0 20px;
+    width: 320px;
+    padding: 5px 0px 15px 20px;
     background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: -8px 0;
-    background-color: #000000cc;
+    background-color: #181818;
     /*background-color: gradient(linear, 100% 100%, 0% 10%, from( #a15216aa ), color-stop( 0.125, #995b17aa ), color-stop( 0.4, #ae7d17aa ), color-stop( 0.85, #a24c15aa ), to( #ae7d17aa ));*/
-    border-top: 2px solid #ffffffcc;
-    border-left: 2px solid #ffffffcc;
-    border-right: 2px solid #ffffffcc;
-    border-bottom: 2px solid #ffffffcc;
     brightness: 1;
 }
 
     .TabList Button:hover {
-        brightness: 1.5;
+        background-color: #79480e;
     }
 
 .TabList Label {
     color: #fff;
     vertical-align: middle;
     horizontal-align: center;
-    font-size: 40px;
-    font-style: italic;
+    font-size: 26px;
     font-weight: semi-bold;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -205,14 +223,16 @@
 
 .SwitchSynergies #SynergyTabButton,
 .SwitchHeroes #HeroTabButton,
-.SwitchItems #ItemTabButton {
-    background-color: #ff6511;
+.SwitchItems #ItemTabButton,
+.SwitchCreeps #CreepsTabButton  {
+    background-color: #d07c18;
     box-shadow: fill #00000050 0px 0px 10px 8px;
     brightness: 1;
 }
 
     .SwitchSynergies #SynergyTabButton Label,
     .SwitchHeroes #HeroTabButton Label,
-    .SwitchItems #ItemTabButton Label {
+    .SwitchItems #ItemTabButton Label, 
+    .SwitchCreeps #CreepsTabButton Label{
         brightness: 1;
     }

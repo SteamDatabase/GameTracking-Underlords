@@ -97,6 +97,7 @@ $[A\]
 %s| Project: '%s' Binary: '%s'
 %s| SizeOf: %d
 %s| Virtual: %s; Abstract: %s; TrivialConstr: %s; TrivialDestr: %s
+&Hc=x
 &YA1D
 &YA1H
 &YA1L
@@ -118,7 +119,7 @@ $[A\]
 (\$`A
 (d$PA
 (l$ A
-(o@Hc=I
+(o@Hc=	
 (t$ E
 (|$@D
 )D$ A
@@ -126,12 +127,15 @@ $[A\]
 )F [A\]
 )K H;
 )L$ A
+)O09M
 )WPfE
+)_ 9M
+)g09M
 )y@t?
 *** Turn on -particle_perf!
 *** Unable to open profile file!
 *ZN18CNewParticleEffect12StopEmissionEbbbbEUlvE_
-+Hc5hOA
++Hc5H
 +S$Hc
 +m_flValue
 +s$Hc
@@ -160,6 +164,7 @@ $[A\]
 .125 .125 .125
 .25 .25 .25
 .5 .5 .5
+.D$Pw
 .G4v%
 .GPsaI
 .K,zZuX
@@ -304,6 +309,7 @@ $[A\]
 18C_OP_BasicMovement
 18C_OP_BoxConstraint
 18C_OP_FadeOutSimple
+18C_OP_QuantizeFloat
 18C_OP_RenderSprites
 18C_OP_SetCPtoVector
 18C_OP_VelocityDecay
@@ -336,6 +342,7 @@ $[A\]
 20C_INIT_CreateFromCPs
 20C_INIT_CreateOnModel
 20C_INIT_CreationNoise
+20C_INIT_QuantizeFloat
 20C_INIT_RandomYawFlip
 20C_OP_CPVelocityForce
 20C_OP_LagCompensation
@@ -627,6 +634,7 @@ $[A\]
 32CParticleFunctionDefinitionTypedI18C_OP_BasicMovementE
 32CParticleFunctionDefinitionTypedI18C_OP_BoxConstraintE
 32CParticleFunctionDefinitionTypedI18C_OP_FadeOutSimpleE
+32CParticleFunctionDefinitionTypedI18C_OP_QuantizeFloatE
 32CParticleFunctionDefinitionTypedI18C_OP_RenderSpritesE
 32CParticleFunctionDefinitionTypedI18C_OP_SetCPtoVectorE
 32CParticleFunctionDefinitionTypedI18C_OP_VelocityDecayE
@@ -644,6 +652,7 @@ $[A\]
 32CParticleFunctionDefinitionTypedI20C_INIT_CreateFromCPsE
 32CParticleFunctionDefinitionTypedI20C_INIT_CreateOnModelE
 32CParticleFunctionDefinitionTypedI20C_INIT_CreationNoiseE
+32CParticleFunctionDefinitionTypedI20C_INIT_QuantizeFloatE
 32CParticleFunctionDefinitionTypedI20C_INIT_RandomYawFlipE
 32CParticleFunctionDefinitionTypedI20C_OP_CPVelocityForceE
 32CParticleFunctionDefinitionTypedI20C_OP_LagCompensationE
@@ -935,7 +944,6 @@ $[A\]
 39C_OP_RemapControlPointDirectionToVector
 39C_OP_RemapDistanceToLineSegmentToScalar
 39C_OP_RemapDistanceToLineSegmentToVector
-3Hc5	>A
 3L?Zb%
 4$A\]
 4$HcE
@@ -973,7 +981,6 @@ $[A\]
 ;*3$"
 ;0t:H
 ;2t,H
-;5m@:
 ;B0}F
 ;BX|'1
 ;Fl|	
@@ -997,7 +1004,7 @@ $[A\]
 <	ubUH
 <!-- kv3 encoding:%s:version{%s} format:%s:version{%s} -->
 <!-- schH
-<"m_bParticleFeathering
+<"m_bFitCycleToLifetime
 <&t&H
 <+tZH
 <7t#1
@@ -1054,7 +1061,7 @@ A minimum on particle simulation time, particle simulation happening more freque
 A t!L
 A#V\H
 A#|$TH
-A(Hc5[E7
+A(Hc5k
 A+D$$H
 A+E$A
 A+E$H
@@ -1165,7 +1172,6 @@ AVAUATSL
 AVAUATS~
 AVAUD
 AVAUE1
-AVAUH
 AVAUI
 AVAUL
 AVAULc
@@ -1197,6 +1203,7 @@ AWAVL
 AWAVLc
 AWAVM
 AXAYE
+AXAYH
 AYAZu
 AZA[H
 A\A]A^A_]
@@ -1206,7 +1213,6 @@ A\A]H
 A\A]]
 A\A]]L
 A]A^]
-A^A_H
 A^A_]
 Acceleration
 Add + Self Illum
@@ -1521,6 +1527,7 @@ C_INIT_PositionOffsetToCP
 C_INIT_PositionPlaceOnGround
 C_INIT_PositionWarp
 C_INIT_PositionWarpScalar
+C_INIT_QuantizeFloat
 C_INIT_RadiusFromCPObject
 C_INIT_RandomAlpha
 C_INIT_RandomAlphaWindowThreshold
@@ -1674,6 +1681,7 @@ C_OP_PlaneCull
 C_OP_PlayEndCapWhenFinished
 C_OP_PointVectorAtNextParticle
 C_OP_PositionLock
+C_OP_QuantizeFloat
 C_OP_RadiusDecay
 C_OP_RampCPLinearRandom
 C_OP_RampScalarLinear
@@ -2092,6 +2100,7 @@ FindClosestMatchingRegion
 First control point to set
 First/Oldest Particle
 Fit Lifetime
+Fixed "Animation Type" in Sprite Renderer not working for non-particle normal alignment types.
 Fixed "Inherit Attribute from Parent Particles" not keeping parent particles in sync with children.
 Fixed Rate
 Fixed bugs in "Position along path sequential" where it could incorrectly create too many particles at the last control point. Also fixed issues with control points specified in backward order in that operator as well as "Movement lock to saved position along path".
@@ -2174,38 +2183,36 @@ H[A\A]A^A_]
 H[A\A]]
 HammerMapLoader001
 Has Collision; 
-Hc5!q;
-Hc5"r1
-Hc5"sA
-Hc5.b;
-Hc5261
-Hc58MA
-Hc5B(A
-Hc5Em4
-Hc5Iw@
-Hc5MaF
-Hc5O-D
-Hc5V27
-Hc5VME
-Hc5YGA
-Hc5_c;
-Hc5af;
-Hc5e]F
-Hc5f%;
-Hc5h.A
-Hc5j@A
-Hc5r37
-Hc5wgA
-Hc5xq;
-Hc5{4A
-Hc5|w@
-Hc5}ME
+Hc5':A
+Hc51?1
+Hc52%A
+Hc57,<
+Hc59$7
+Hc5A 1
+Hc5A0<
+Hc5Bd=
+Hc5Qz1
+Hc5SSF
+Hc5Yv3
+Hc5b{A
+Hc5e>:
+Hc5nbF
+Hc5q.<
+Hc5v.C
 Hc8Hc
-Hc=/#A
-Hc=0"@
-Hc=FUA
-Hc=GX;
-Hc=Q`A
+Hc= *=
+Hc='PA
+Hc=0{A
+Hc=<QA
+Hc=>	B
+Hc=>2<
+Hc=Eu3
+Hc=TPA
+Hc=XG3
+Hc=aF7
+Hc=hf3
+Hc=qzA
+Hc=yv@
 Hc@pD
 Hc@pH
 HcA I
@@ -2316,6 +2323,7 @@ KeyValuesSystem
 Kill Particle
 L$pE1
 L9`xt8H
+L;5X`A
 L>m_nMinCol
 LIFE_DURATION
 LOG_GENERAL
@@ -2325,25 +2333,23 @@ LOS collision group
 Last/Newest Particle
 Lc"D;b
 Lc#D;c
-Lc%4D;
-Lc%j;A
 Lc&E)
 Lc'D;g
 Lc'E)
 Lc)D;i
 Lc*D;j
 Lc+D;k
-Lc-1<A
+Lc-:72
+Lc-NZF
 Lc.D;n
 Lc.E)
 Lc/E)
 Lc2D;r
 Lc3D;s
-Lc5F[F
-Lc5j<A
-Lc='[F
-Lc=PaF
-Lc=k]F
+Lc5:{F
+Lc5?"2
+Lc5mh:
+Lc=qY:
 LccHD;cXD
 Lck(E;o
 Length; 
@@ -2783,7 +2789,7 @@ Plat_GetModuleFilename
 Plat_GetOSType
 Plat_GetThreadIndex
 Plat_IsHighDPI
-Plat_IsInDebugSessionRaw
+Plat_IsInDebugSession
 Plat_MSTime
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_UUIDFromString
@@ -2835,6 +2841,7 @@ Q"u.H
 Q@Hc5
 QAngle
 Quadrilaterals
+Quantize Float
 QuarterSizeAttrWithBoxFilter
 Quaternion
 QueuedLoaderVersion001
@@ -2933,6 +2940,7 @@ Remap speed to scalar
 Remap vector to CP
 Remap velocity to vector
 RemapValClamped( 
+RemoveBoneAndChildren
 Render Callback
 Render Flatten Grass
 Render Status Effect
@@ -2959,6 +2967,7 @@ Render tonemap controller
 RenderDevice003
 RenderDeviceMgr001
 RenderHardwareConfig002
+RenderMeshFile
 RenderPrimitiveType_t
 RenderService_001
 RenderSkeletonBone_t
@@ -3253,6 +3262,7 @@ VProfService_001
 VR_001
 VRenderDeviceSetupV001
 VSInputSignature
+VSNAPFile
 VScript
 VScriptDbg
 VScriptManager010
@@ -3370,7 +3380,7 @@ X Dimension Count
 X Dimension Spacing
 X axis scaling scalar field
 X offset of center point
-XHc5CS;
+XHc53
 XIcL$
 XY velocity only
 X[A\A]A^A_]
@@ -3402,7 +3412,6 @@ ZN18CNewParticleEffect7RestartEvEUlvE_
 [0XZH
 [A\A]
 [A\A]A^A_]
-[A\A]A^A_]A
 [A\A]A^]
 [A\A]A^]H
 [A\A]H
@@ -3516,6 +3525,7 @@ __temp_unserialization_member__
 _edata
 _fini
 _procedural_particle_snapshot.vsnap
+_pu>H
 _px9E
 _test_conversion_counter
 `[A\A]A^]
@@ -3602,6 +3612,8 @@ blockLOS
 body part
 body_type
 bodygroup field
+bone_name
+bone_names
 bouncecolor
 bounding box max
 bounding box min
@@ -4012,6 +4024,7 @@ internal error in particle system MapParticleOrientationIndexToShaderCombo()
 interploation distance tolerance cp
 interpolation rate
 interpolation scale
+interval to snap to
 intraframe zoom amount for sequence 0
 intraframe zoom amount for sequence 1
 invalid_bone
@@ -4305,7 +4318,6 @@ m_bEndCap
 m_bEvenDistribution
 m_bExplosions
 m_bFireOnEmissionEnd
-m_bFitCycleToLifetime
 m_bFitToModelSize
 m_bFlipBasedOnYaw
 m_bFlipHorizontal
@@ -4395,6 +4407,7 @@ m_bOrientZ
 m_bOriginalModel
 m_bOutline
 m_bOverrideTranslucentMaterials
+m_bParticleFeathering
 m_bParticles
 m_bPerParticle
 m_bPerParticleTR
@@ -4470,6 +4483,7 @@ m_bSkin
 m_bSkipRenderingOnMobile
 m_bSoftEdges
 m_bSubFrame
+m_bSuppressStopSoundEvent
 m_bSuppressTint
 m_bSynchronizeParticles
 m_bTintByFOW
@@ -5518,6 +5532,7 @@ manual time placement field
 manual_animation_frame
 mapbuilder.nodraw
 mapbuilder.occluder
+master_morph_weight
 material override
 material variable
 material variables
@@ -5635,6 +5650,8 @@ modeldoc21
 modeldoc22
 modeldoc23
 modeldoc24
+modeldoc25
+modeldoc26
 modeldoc3
 modeldoc4
 modeldoc5
@@ -6148,6 +6165,7 @@ strlen
 sub frame interpolation
 submodel field
 suppress
+suppress stop event
 suppress tinting of the model
 surface_prop
 t	E;1
@@ -6174,7 +6192,7 @@ t@Mcf
 t@~gLcm
 tH<&tD]
 tJHcC
-tQHc=
+tQHc=ay@
 tZD;kl}TMc
 tangent
 tangentu_signv
@@ -6231,7 +6249,7 @@ turn_rate
 twist axis
 tz[A\A]A^]
 u#H;]
-u5Hc=
+u5Hc="
 u6[A\A]A^]
 uniform speed
 unknown
@@ -6322,6 +6340,8 @@ vpcf19
 vpcf2
 vpcf20
 vpcf21
+vpcf22
+vpcf23
 vpcf3
 vpcf4
 vpcf5
@@ -6336,7 +6356,7 @@ vr_carry_type
 vsnap
 vtexH
 vtexL
-w@Hc=
+w@Hc=m
 wait for children to finish
 walkspeed
 warp amount
@@ -6368,7 +6388,7 @@ x/Lc"D;b
 x3Lc"D;b
 x;Lc"E1
 x@HcO
-xCHc5$/@
+xCHc5
 x[A\A]A^A_]
 x[A\A]]
 x`Lc"D;b
@@ -6387,6 +6407,7 @@ z5u3H
 z:KEZ
 zPuNH
 z`u^D
+zfudH
 zmukE
 {SP_H
 {YIN?

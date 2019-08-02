@@ -1,0 +1,22 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_achievement_panel.vcss_c" />
+	</styles>
+
+	<DACAchievementPanel>
+		<Label class="AchievementProgressBoxTitle" text="{s:challengeDesc}"/>
+		<ProgressBar id="AchievementProgressBar" value="0" class="AchievementProgressBar"/>
+		<Panel class="AchievementProgressLabelsRow">
+			<Panel id="DailyChallengeClaimButtonContainer">
+				<Button class="DailyChallengeClaimButton" onactivate="DACClaimAchievement()"/>
+				<DACParticleScenePanel class="DailyChallengeClaimFX" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="econ/s0/particles/battlepass/s0_battlepass_claim_reward_idle.vpcf" fov="-200" />
+				<DACParticleScenePanel id="ClaimActivateFX" class="DailyChallengeClaimFX" hittest="false" startActive="false" cameraLeft="0" cameraUp="0" particleName="econ/s0/particles/battlepass/s0_battlepass_claim_reward.vpcf" fov="-200" />						
+			</Panel>
+			<Label class="AchievementClaim" id="RerollClaimableText" text="#DAC_Challenge_Claimable"/>
+			<Label class="AchievementProgressCounter" text="#DAC_AchievementProgress"/>
+			<Panel class="AchievementProgressTier"/>
+			<Label class="AchievementProgressReward" text="#DAC_AchievementReward"/>
+		</Panel>
+	</DACAchievementPanel>
+</root>

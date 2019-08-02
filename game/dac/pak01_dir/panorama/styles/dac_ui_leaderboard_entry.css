@@ -34,6 +34,7 @@ DACLeaderboardEntry {
 	margin-top: 20px;
 	transition-property: position;
 	transition-duration: 500ms;
+	overflow: noclip;
 }
 
 .LeaderboardBackground {
@@ -50,9 +51,26 @@ DACLeaderboardEntry {
 	wash-color: #8af;
 }
 
+.IsSelf .PlayerLeaderboard,
+.IsSelf .LeaderboardBackground
+{
+	//width: 215px;
+}
+
+.ScoreboardHidden .InCombat .IsDead
+{
+	visibility: collapse;
+}
+
+.ScoreboardHidden .InCombat .IsDead.IsLoss.IsFinished
+{
+	visibility: visible;
+}
+
 .LeaderboardBelow {
 	margin-top: 70px;
-	width: 145px;
+	//width: 145px;
+	width: 200px;
 	font-size: 28px;
 	margin-left: 2px;
 	color: #8588a0;
@@ -77,61 +95,108 @@ DACLeaderboardEntry {
 	color: white;
 }
 
-.IsDead .LeaderboardBelow {
+.IsDead .LeaderboardBelow 
+{
 	color: rgb(141, 80, 80);
 }
 
-	.LeaderboardBelow Label {
-		padding: 5px;
-		padding-top: 18px;
-		padding-left: 0px;
-		text-overflow: clip;
-		white-space: nowrap;
-		width: 100%;
-		opacity-mask: url("s2r://panorama/images/leaderboard/name_mask_psd.vtex");
-	}
+.LeaderboardBelow Label {
+	padding: 5px;
+	padding-top: 18px;
+	padding-left: 0px;
+	text-overflow: clip;
+	white-space: nowrap;
+	width: 100%;
+	opacity-mask: url("s2r://panorama/images/leaderboard/name_mask_psd.vtex");
 
-	.LeaderboardBelow .MobileIcon {
-		margin-top: 22px;
-		margin-right: 6px;
-		width: 14px;
-		height: 22px;
-		wash-color: #8588a0;
-		visibility: collapse;
-	}
+	transition-property: color;
+	transition-duration: .2s;
+}
 
-	.IsSelf .LeaderboardBelow .MobileIcon {
-		wash-color: white;
-	}
+.LeaderboardBelow .MobileIcon {
+	margin-top: 22px;
+	margin-right: 6px;
+	width: 14px;
+	height: 22px;
+	wash-color: #8588a0;
+	visibility: collapse;
+}
 
-	.IsDead .LeaderboardBelow .MobileIcon {
-		wash-color: rgb(141, 80, 80);
-	}
+.IsSelf .LeaderboardBelow .MobileIcon {
+	wash-color: white;
+}
 
-	.IsMobile .LeaderboardBelow .MobileIcon {
-		visibility: visible;
-	}
+.IsDead .LeaderboardBelow .MobileIcon {
+	wash-color: rgb(141, 80, 80);
+}
 
-    .IsPlatformMobile .LeaderboardBelow Label,
-	.LowVisualQuality .LeaderboardBelow Label 
-    {
-		text-shadow: 0px 0px 0px 2.0 #000;
-        opacity-mask: none;
-	}
+.IsMobile .LeaderboardBelow .MobileIcon {
+	visibility: visible;
+}
+
+.IsPlatformMobile .LeaderboardBelow Label,
+.LowVisualQuality .LeaderboardBelow Label 
+{
+	text-shadow: 0px 0px 0px 2.0 #000;
+    opacity-mask: none;
+}
 
     
 
 .IsFinished .LeaderboardBelow Label,
 .IsOpponent .LeaderboardBelow Label 
 {
-	max-width:115px;
+	//max-width:115px;
+	// turning off checks and Xs
+}
 
+.IsFinished .LeaderboardBelow Label 
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from(#3ed93b), to(#99d3a0));
+}
+
+.IsDead.IsFinished .LeaderboardBelow Label 
+{
+	color: rgb(141, 80, 80);
+	//wash-color: rgb(141, 80, 80);
+}
+
+.PlayerVictory
+{
+	// victory particles
+	height: 40px;
+	width: 200px;
+	margin-left: -85px;
+	margin-top: 85px;
+	opacity: 0;
+	transform: rotateZ(180deg);
+	visibility: collapse;
+}
+
+.ScoreboardHidden .InCombat .IsHomeGame .PlayerVictory
+{
+	margin-top: -25px;
+}
+
+.ScoreboardHidden .InCombat .IsAwayGame .PlayerVictory
+{
+	margin-top: 85px;
+}
+
+.IsFinished.IsVictory .PlayerVictory
+{
+	visibility: visible;
+}
+
+.IsFinished.IsLoss .LeaderboardBelow Label 
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from(#e81010), to(#d74545));
 }
 
 .IsMobile.IsFinished .LeaderboardBelow Label,
 .IsMobile.IsOpponent .LeaderboardBelow Label 
 {
-	max-width: 95px;
+	//max-width: 95px;
 }
 
 .BattlepassRank {
@@ -202,7 +267,7 @@ DACLeaderboardEntry {
 	font-size: 24px;
 	vertical-align: center;
 	margin-right: -2px;
-	margin-bottom: 7px;
+	margin-bottom: 5px;
 	background-image: url("s2r://panorama/images/hud/dac_profile_level_leaderboard_bg_psd.vtex");
 	//background-size: 50px;
 	background-size: 100%;
@@ -265,11 +330,10 @@ DACLeaderboardEntry {
 	border: 2px solid rgb(127, 178, 255);
 }
 
-
-
+/*
 .IsFinished .LeaderboardIndicator {
-	opacity: 1;
-	visibility: visible;
+	//opacity: 1;
+	//visibility: visible;
 }
 
 .IsVictory.IsFinished .LeaderboardIndicator {
@@ -283,7 +347,7 @@ DACLeaderboardEntry {
 .IsDead.IsFinished .LeaderboardIndicator {
 	visibility: collapse;
 }
-
+*/
 
 .LeaderboardIndicator {
 	visibility: collapse;
@@ -352,6 +416,7 @@ DACLeaderboardEntry {
 
 .IsDead.IsDisconnected .LeaderboardDisconnectedIndicator {
 	margin-left: -42px;
+	visibility: collapse;
 }
 
 #LeaderboardHealthBar {
@@ -472,20 +537,11 @@ DACLeaderboardEntry {
 	z-index: 2;
 }
 
-.LeaderboardTargetIndicator {
-	opacity: 0;
-	transition-property: opacity;
-	transition-duration: 300ms;
-	width: 230px;
-	height: 72px;
-	margin-top: 32px;
 
-	animation-duration: .81s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
 
-.IsAwayGame .LeaderboardTargetIndicator {
+/*
+.IsAwayGame .LeaderboardTargetIndicator 
+{
 	opacity: 1;
 	animation-name: none;
 	background-color: transparent;
@@ -509,18 +565,7 @@ DACLeaderboardEntry {
 }
 
 
-.LeaderboardTargetIndicator Image {
-	vertical-align: middle;
-	horizontal-align: right;
-	margin-right: 15px;
-	animation-name: Fighting;
-	animation-duration: .81s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-	width: 42px;
-	height: 42px;
-	margin-bottom: 12px;
-}
+
 
 .IsOpponent.IsAwayGame .LeaderboardTargetIndicator Image
 {
@@ -528,13 +573,8 @@ DACLeaderboardEntry {
 	margin-right: 10px;
 }
 
-.LeaderboardTargetIndicator .DefendIcon
-{
-	animation-name: Defending;
-	margin-top: 10px;
-	margin-right: 20px;
-}
 
+*/
 
 .LowVisualQuality .LeaderboardTargetIndicator,
 .LowVisualQuality .LeaderboardTargetIndicator Image
@@ -599,4 +639,294 @@ DACLeaderboardEntry {
 	height: 82px;
 	margin-top: 6px;
 	background-color: black;
+}
+
+.LeaderboardChatMessage
+{
+	margin-left: 152px;
+	padding-left: 12px;
+	max-width: 1500px;
+	height: fit-children;
+	max-height: 300px;
+	opacity: 0.0;
+    /*flow-children: right;*/
+}
+
+.ShowChatMessage .LeaderboardChatMessage
+{
+	visibility: visible;
+	transition-property: opacity;
+	transition-duration: 500ms;
+	opacity: 1.0;
+}
+
+.LowVisualQuality .ShowChatMessage .LeaderboardChatMessage 
+{
+    transition-property: none;
+	transition-duration: 0s;
+}
+
+.LeaderboardChatText
+{
+	font-size: 28px;
+	color: white;
+    font-weight: semi-bold;
+	background-color: #333333;
+    border-radius: 15px;
+	margin-left: 15px;
+	max-width: 300px;
+	min-height: 60px;
+	max-height: 140px;
+	
+	text-overflow: ellipsis;
+	vertical-align: center;
+	padding: 20px 30px;
+}
+
+
+
+.LeaderboardChatMessageTail {
+	vertical-align: bottom;
+
+	background-image: url("s2r://panorama/images/leaderboard/chat_tail_png.vtex");
+	background-repeat: no-repeat;
+	background-size: 80% 80%;
+	background-position: 50% 50%;
+	margin-bottom: 12px;
+	margin-left: 2px;
+
+
+	width:  25px;
+	height: 25px;
+}
+
+.LeaderboardChatMuteButton
+{
+	width: 32px;
+	height: 32px;
+	vertical-align: center;
+	margin-right: -10px;
+    background-color: #ff4346;
+    border-radius: 30px;
+	horizontal-align: left;
+    border: 3px solid #ff4346;
+
+	background-image: url("s2r://panorama/images/control_icons/mute_png.vtex");
+	background-repeat: no-repeat;
+	background-size: 80% 80%;
+	background-position: 50% 50%;
+	wash-color: #ffffff;
+    margin-top: -30px;
+
+    //turn this off until we turn on chat
+    visibility: collapse;
+}
+
+.LeaderboardChatMuteButton:hover
+{
+	wash-color: #ff4346;
+    background-color: #ffffff;
+}
+
+
+.ScoreboardHidden.HasPlayerOpponent .InCombat .IsAwayGame .PlayerLeaderboard
+{
+	margin-top: -20px;
+}
+
+.ScoreboardHidden.HasPlayerOpponent .InCombat .IsHomeGame .LeaderboardBelow
+{
+	margin-top: -47px;
+}
+
+.ScoreboardHidden.HasPlayerOpponent .InCombat .IsAwayGame #ParticleBG,
+.ScoreboardHidden.HasPlayerOpponent .InCombat .IsAwayGame #ParticleFG
+{
+	margin-top: -90px;
+}
+
+
+.IsSelf .LeaderboardChatMuteButton
+{
+	visibility: collapse;
+}
+
+// CLONE BITS
+
+.IsClone
+{
+    visibility: collapse;
+}
+
+.ScoreboardHidden .IsClone.CloneIsVisible
+{
+    visibility: visible;
+}
+
+.IsClone.CloneIsVisible #ParticleBG,
+.IsClone.CloneIsVisible #ParticleFG,
+.IsClone.CloneIsVisible .StatsContainer
+{
+	visibility: collapse;
+}
+
+.IsClone.CloneIsVisible #LeaderboardAvatar
+{
+	//opacity: 1;
+	//wash-color: #00aeffff;
+	visibility: collapse;
+}
+
+.IsClone.CloneIsVisible #LeaderboardAvatar #AvatarFG
+{
+	//opacity: 1;
+	//wash-color: #00aeffff;
+	//visibility: collapse;
+}
+
+.IsClone .LeaderboardBelow
+{
+	color: #009cff88;
+	//color: #666;
+}
+
+.CloneIcon
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_clone_psd.vtex");
+	background-size: 60% 90%;
+	background-repeat: no-repeat;
+	background-position: 65%;
+	opacity: .8;
+	height: 86px;
+	width: 150px;
+	//background-color: #009cffaa;
+	background-color: #444;
+	
+	horizontal-align: right;
+	
+	margin-top: 4px;
+	margin-right: 24px;
+
+	border-radius: 10px;
+
+	visibility: collapse;
+
+}
+
+.IsClone .CloneIcon
+{
+	visibility: visible;
+}
+
+// Target Indicator
+
+
+.LeaderboardTargetIndicator {
+	opacity: 1;
+	transition-property: opacity;
+	transition-duration: 300ms;
+	width: 235px;
+	height: 190px;
+	margin-top: -50px;
+	wash-color: #ccc;
+
+	animation-duration: .81s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+.ScoreboardVisible .LeaderboardTargetIndicator
+{
+	visibility: collapse;
+}
+
+.ScoreboardHidden.HasPlayerOpponent .InCombat .IsSelected .LeaderboardTargetIndicator,
+.ScoreboardHidden.HasPlayerOpponent .InCombat .IsOpponent .LeaderboardTargetIndicator
+{
+	//opacity: 1;
+}
+
+.IsDead .LeaderboardTargetIndicator
+{
+	//opacity: 0;
+}
+
+.LeaderboardTargetIndicator Image 
+{
+	vertical-align: middle;
+	horizontal-align: right;
+	animation-duration: .81s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	width: 42px;
+	height: 42px;
+	margin-bottom: 12px;
+}
+
+.LeaderboardTargetIndicator .SwordIcon
+{
+	margin-right: 5px;
+	animation-name: Fighting;
+	vertical-align: top;
+	//visibility: collapse;
+	opacity: 0;
+
+	transition-property: opacity;
+	transition-duration: .2s;
+}
+
+
+.LeaderboardTargetIndicator .DefendIcon
+{
+	margin-right: 15px;
+	animation-name: Defending;
+	vertical-align: bottom;
+	//visibility: collapse;
+	opacity: 0;
+
+	transition-property: opacity;
+	transition-duration: .2s;
+}
+
+
+.IsSelected.IsHomeGame .DefendIcon,
+.IsSelected.IsAwayGame .SwordIcon,
+.IsOpponent.IsHomeGame .DefendIcon,
+.IsOpponent.IsAwayGame .SwordIcon
+{
+	//visibility: visible;
+}
+
+.IsHomeGame .DefendIcon,
+.IsAwayGame .SwordIcon
+{
+	visibility: visible;
+	opacity: 1;
+}
+
+.IsAwayGame .DefendIcon,
+.IsHomeGame .SwordIcon
+{
+	//shouldn't need this, but...
+	visibility: collapse;
+}
+
+
+.IsSelected .LeaderboardTargetIndicator
+.IsOpponent .LeaderboardTargetIndicator
+{
+	//visibility: visible;
+}
+
+.IsClone .DefendIcon,
+.IsClone .SwordIcon
+{
+	wash-color: #00aeffff;
+	opacity: .85;
+}
+
+.IsFinished .DefendIcon,
+.IsFinished .SwordIcon
+{
+	opacity: 0;
 }

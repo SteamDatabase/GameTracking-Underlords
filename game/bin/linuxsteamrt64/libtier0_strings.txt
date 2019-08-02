@@ -7,7 +7,7 @@
   %02d: %u:0x%llx
   %10.3f %9.2f      %10.3f %6.2f      %10.3f %6.2f   %8d %6.2f
   %10.3f %9.2f      %8d
-  %2d - proc %2d (grp %u:%u / phy %d / cor %d / smt %d): max freq %llu
+  %2u - proc %2u (grp %u:%-2u / phy %u / cor %u / smt %u): max freq %llu
   %52.52s%12d%12.3f%12.3f%7.2f%12.3f%7.2f%12.3f%12.3f%12.3f%12.3f
   %s slot %d combined mask %u:0x%llx
   ---------- ---------      --------
@@ -76,6 +76,7 @@ $[A\]
 %s: invalid nOldChars %d (string %d)
 %s: invalid nStart %d (string %d)
 %s: invalid pointer byte count
+%s: requested conversion of %d chars
 %s: string format requested %d chars
 %s: string length overflows (is %d, adding %d)
 %s: unable to find %s in '%s'
@@ -325,14 +326,48 @@ $[A\]
 28CStdMemAlloc_Data_StackStatsI24MemoryAllocationHeader_tI9MemConfigILb0ELb0E27RuntimeAdditionalPropertiesEELb0EE
 28CallStackStatStructDescFuncs
 29CDefaultLoggingResponsePolicy
+31IForceSignalNumberIntoCallStack
+3[A\@
+7CSignalILi0EE
+7CSignalILi10EE
+7CSignalILi11EE
+7CSignalILi12EE
+7CSignalILi13EE
+7CSignalILi14EE
+7CSignalILi15EE
+7CSignalILi16EE
+7CSignalILi17EE
+7CSignalILi18EE
+7CSignalILi19EE
+7CSignalILi1EE
+7CSignalILi20EE
+7CSignalILi21EE
+7CSignalILi22EE
+7CSignalILi23EE
+7CSignalILi24EE
+7CSignalILi25EE
+7CSignalILi26EE
+7CSignalILi27EE
+7CSignalILi28EE
+7CSignalILi29EE
+7CSignalILi2EE
+7CSignalILi30EE
+7CSignalILi31EE
+7CSignalILi3EE
+7CSignalILi4EE
+7CSignalILi5EE
+7CSignalILi6EE
+7CSignalILi7EE
+7CSignalILi8EE
+7CSignalILi9EE
 7CThread
 8/t+H
 8[A\A]A^A_]
 8[A\A]]
 8[A\Hc
-95~,"
-9=/7"
-9=k6"
+95~B"
+9=/M"
+9=kL"
 9CTestCase
 9IMemAlloc
 9ITestCase
@@ -405,7 +440,6 @@ AWAVAUD
 AWAVAUE1
 AWAVAUI
 AWAVAUL
-AWAVAULc
 AWAVAUM
 AWAVE
 AWAVI
@@ -472,6 +506,7 @@ BlibSDL2-2.0.so.0
 Break
 BroadcastAssertionMiniDumpContext_t
 BuiltDebug
+C%[A\A]
 C0A9D$
 C8[A\]
 CDynamicFunction: Loading library '%s' (%p)
@@ -533,8 +568,6 @@ DeveloperConsole
 DeveloperVerbose
 DkEF]
 DoAssertDialog: invalid Assert response returned from dialog/vxconsole - breaking to debugger
-E=FF$
-E=KH$
 ENABLE_ASSERT_DIALOG_PRINT
 ERROR: Alloc exceeded allocation limit /+/ %llu > %llu
 ERROR: HangWatchdogInternal_BeginScope() - Hang watchdog not implemented for this platform!
@@ -550,12 +583,14 @@ EnGiQ
 EnsureAddedCapacity
 EnsureCapacity
 Error reading args file
+Exit Process
 Exiting due to logging LR_ABORT request.
 Expr: %s
 F*?mmps
 FAIL: !IsEmpty()
 FAIL: !Validate()
 FAIL: Not all items popped
+Fatal Error
 File: %s
 FileSystem
 FlushBuffer
@@ -610,7 +645,6 @@ H9z v
 H;B v
 H;G H
 H;J v
-H;Q tVL
 H;w0s
 H>*SL>
 HEAP WARNING: memory block at %p is unexpectedly allocated
@@ -665,6 +699,7 @@ L;z H
 LOADING
 LOG_GENERAL
 LS6 	
+Launch Debugger
 LccpE9
 LengthOfMatchingPaths
 Line: %i
@@ -879,8 +914,7 @@ Plat_IsConsoleApplication
 Plat_IsDirectory
 Plat_IsFile
 Plat_IsHighDPI
-Plat_IsInBenchmarkMode
-Plat_IsInDebugSessionRaw
+Plat_IsInDebugSession
 Plat_IsInHeadlessMode
 Plat_IsInTestMode
 Plat_IsModuleLoaded
@@ -926,7 +960,6 @@ Plat_ScreenToWindowCoords
 Plat_SecTickDiff
 Plat_SecTickDiffF
 Plat_SetActiveWindow
-Plat_SetBenchmarkMode
 Plat_SetClipboardText
 Plat_SetCpuTimeIsReliable
 Plat_SetCurrentDirectory
@@ -1291,6 +1324,7 @@ Unable to create semaphore, error %d
 Unable to determine CPU Frequency
 Unable to load SDL2
 Unaccounted
+UnicodeCaseConvert
 UnitTestCount
 UnitTestInstallTestCase
 Unknown
@@ -1582,7 +1616,6 @@ Windows NT
 Windows Vista
 Windows XP
 Working set: %s
-XA\A]A^A_]
 XS&Y+
 X[A\A]A^A_]
 X]{ivZ
@@ -1787,6 +1820,7 @@ _ZN13CBufferString16MakeRelativePathEPKcS1_
 _ZN13CBufferString16RemoveDotSlashesEc
 _ZN13CBufferString16RemoveToFileBaseEv
 _ZN13CBufferString18StripTrailingSlashEv
+_ZN13CBufferString18UnicodeCaseConvertEi25EStringConvertErrorPolicy
 _ZN13CBufferString19EnsureAddedCapacityEiPPcbb
 _ZN13CBufferString19EnsureTrailingSlashEc
 _ZN13CBufferString20ExtractFileExtensionEPKc
@@ -2174,8 +2208,9 @@ __xstat64
 _edata
 _exit
 _fini
-_m[-)
+_m[-(
 `=hG=
+`A\A]A^A_]
 a?y#c?sIe?
 aco-nz
 alarm
@@ -2256,7 +2291,6 @@ getrlimit64
 getrusage
 gettimeofday
 gmtime_r
-hA\A]A^A_]
 h[A\A]A^A_]
 h[A\A]]
 higher
@@ -2377,7 +2411,7 @@ t H;0u
 t$0E1
 t$@H9
 t/<.u
-t/H;=X
+t/H;=
 t1L;M
 tE</tA<\u
 tQ[A\A]A^]

@@ -9,6 +9,13 @@ DACControlBattlePass
 	margin-top: 172px;
 }
 
+
+.ProgressBarParticle {
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
 .IsPlatformPC DACControlBattlePass
 {
 	margin-top: 246px;	
@@ -16,7 +23,8 @@ DACControlBattlePass
 
 .EventActive DACControlBattlePass,
 .NeedsGC DACControlBattlePass,
-.NeedsSteamLogin DACControlBattlePass
+.NeedsSteamLogin DACControlBattlePass,
+.HUD_BattlePassProgressVisible DACControlBattlePass
 {
 	visibility: visible;
 }
@@ -62,7 +70,7 @@ DACRewardsPage #SectionTitleArea {
 	text-transform: uppercase;
 	//background-color: white;
 	background-color: gradient ( linear, 0% 0%, 0% 100%, from(#fbe792), to(#fdf4af));
-	padding: 5px 10px 0px 10px;
+	padding: 0px 10px 0px 10px;
 	box-shadow: 0px 0px 3px #fdf4af;
 	transform: rotatez(-3deg);
 	z-index: 20;
@@ -359,7 +367,7 @@ DACRewardsPage #QuestLevelContainer
 	font-weight: semi-bold;
 	text-transform: uppercase;
 	text-shadow: 1px 2px 0px 2.0 #00000066;
-	margin-top: 68px;
+	margin-top: 74px;
 	horizontal-align: left;
 	z-index: 20;
 	visibility: collapse;
@@ -411,9 +419,7 @@ DACRewardsPage #QuestLevelContainer
 	font-size: 24px;
 	font-weight: bold;
 	text-transform: uppercase;
-	//horizontal-align: center;
 	vertical-align: center;
-	margin-top: 4px;
 	letter-spacing: 1px;
 	text-align: right;
 
@@ -457,7 +463,7 @@ DACRewardsPage #QuestLevelContainer
 
 .ProgressRemaining
 {
-	margin-top: 68px;
+	margin-top: 74px;
 	font-size: 20px;
 	color: #8D60C6;
 	//color: gradient (linear, 0% 100%, 0% 0%, from(#8D60C6), to(#8D60C6));
@@ -480,37 +486,80 @@ DACRewardsPage #QuestLevelContainer
 	vertical-align: center;
 }
 
-
+.ProgressBars
+{
+	//flow-children: none;
+	width: 100%;
+	overflow: noclip;
+	background-color:#000;
+	padding: 2px;
+	width: 464px;
+	horizontal-align: center;
+	margin-top: 6px;
+}
 
 #PlayerProgress,
-#ChallengeProgress
+.DailyChallengeProgressBar
 {
-	width: 460px;
+	
 	height: 24px;
-	horizontal-align: center;
+	width: 460px;
+	
 	//opacity-mask: url("s2r://panorama/images/dashboard/progress_bar_mask_psd.vtex");
 	//visibility: collapse;
 }
 
+.PlayerProgressContainer {
+	margin-top: 10px;
+	padding: 2px;
+	background-color: #000;
+	width: 420px;
+
+	horizontal-align: right;
+	margin-right: 18px;
+}
 
 #PlayerProgress
 {
-	margin-top: 10px;
+	
 	background-color: #0e101b;
-	border: 2px solid black;
+	
 	width: 416px;
-	horizontal-align: right;
-	margin-right: 20px;
+	
+}
+
+ParticleProgressBar {
+	overflow: noclip;
+	flow-children: none;
 }
 
 #ChallengeProgress
 {
-	vertical-align: bottom;
-	margin-bottom: 40px;
+
+}
+
+.DailyChallengeProgressBar
+{
+	vertical-align: top;
+	
 	background-color: #0e101b;
-	border: 2px solid black;
-	height: 12px;
+	
+	height: 10px;
 	//visibility: collapse;
+}
+
+.DailyChallengeProgressBar .ProgressBarParticle {
+	height: 10px;
+	overflow: noclip;
+	opacity: .6;
+	
+}
+
+#PlayerProgress .ProgressBarParticle {
+	height: 24px;
+	opacity: .15;
+	overflow: noclip;
+	
 }
 
 #PlayerProgress_Left
@@ -535,10 +584,75 @@ DACRewardsPage #QuestLevelContainer
 	border-right: 1px solid #8d60c6;
 }
 
+#InGameChallengeProgress_Left
+{
+	transition-property: width;
+	transition-duration: .5s;
+	transition-timing-function: ease-out;
+	border-top: 1px solid #7b54ad;
+	border-bottom: 1px solid #522848;
+	border-right: 1px solid #8d60c6;
+	border-left: 1px solid #522848;
+
+	background-color: #806d99;
+}
+
+#PlayerRankProgressBar 
+{
+    width: 200px;
+    height: 14px;
+		//overflow: noclip;
+		background-color: #1e2027;
+		border: 2px solid #000000;
+		width: 464px;
+		horizontal-align: center;
+		margin-top: 28px;
+}
+
+#PlayerRankProgressBar_Left
+{
+	//background-color: gradient (linear, 0% 0%, 100% 0%, from(#402c5a), to(#8D60C6));
+	transition-property: width;
+	transition-duration: .5s;
+	transition-timing-function: ease-out;
+	border-top: 1px solid #ffffff22;
+	border-bottom: 1px solid #00000033;
+	border-right: 1px solid #ffffff22;
+}
+
+.MinorRank1 #PlayerRankProgressBar_Left
+{
+	background-color: gradient( linear, 0% 110%, 0% 0%, from( #3b9208 ), to( #65f013 ) );
+}
+
+.MinorRank2 #PlayerRankProgressBar_Left
+{
+	background-color: gradient( linear, 0% 110%, 0% 0%, from( #0c6583 ), to( #14b4eb ) );
+}
+
+.MinorRank3 #PlayerRankProgressBar_Left
+{
+	background-color: gradient( linear, 0% 110%, 0% 0%, from( #991115 ), to( #fb262e ) );
+}
+
+.MinorRank4 #PlayerRankProgressBar_Left
+{
+    background-color: gradient( linear, 0% 110%, 0% 0%, from( #6a1e88 ), to( #c151ec ) );
+}
+
+.MinorRank5 #PlayerRankProgressBar_Left
+{
+    background-color: gradient( linear, 0% 110%, 0% 0%, from( #9b6714 ), to( #f8ad33 ) );
+}
+
+
 #PlayerProgress_Right,
+#InGameChallengeProgress_Right,
 #ChallengeProgress_Right
+#PlayerRankProgressBar_Right
 {
 	//background-color: #0e101b;
+	opacity: 0.001;
 }
 
 #QuestItemContainer
@@ -628,6 +742,11 @@ DACRewardsPage #QuestLevelContainer
 }
 
 DACRewardsPage #RewardsAboutButton {
+	visibility: collapse;
+}
+
+.HUD_BattlePassProgressVisible #RewardsAboutButton
+{
 	visibility: collapse;
 }
 
@@ -767,6 +886,69 @@ DACRewardsPage #RewardsAboutButton {
 	background-color: #00000088;
 }
 
+.RerollContainer
+{
+	flow-children: right;
+}
+
+.HUD_BattlePassProgressVisible .RerollContainer
+{
+	visibility: collapse;
+}
+
+.InGameProgressLegend
+{
+	height: 50px;
+	width: 100%;
+
+	visibility: collapse;
+}
+
+.HUD_BattlePassProgressVisible .InGameProgressLegend
+{
+	visibility: visible;
+	flow-children: right;
+}
+
+.InGameProgressColorSwatch
+{
+	height: 15px;
+	width: 40px;
+	vertical-align: center;
+
+	margin-left: 10px;
+	margin-bottom: 5px;
+	
+	border-top: 1px solid #7b54ad;
+	border-bottom: 1px solid #522848;
+	border-right: 1px solid #8d60c6;
+	border-left: 1px solid #522848;
+
+	background-color: #806d99;
+}
+
+#InGameChallengeProgress
+{
+	visibility: collapse;
+}
+
+.HUD_BattlePassProgressVisible #InGameChallengeProgress
+{
+	visibility: visible;
+}
+
+.InGameProgressLegendDesc
+{
+	color: #8588a0;
+	font-size: 24px;
+	text-shadow: 1px 2px 0px 2.0 #00000066;
+	margin-left: 22px;
+	font-weight: semi-bold;
+	vertical-align: center;
+	margin-top: 0px;
+	width: 460px;
+	text-overflow: shrink;
+}
 
 .RewardBackground
 {
@@ -833,18 +1015,20 @@ DACRewardsPage #ErrorContainer {
 	text-overflow: shrink;
 }
 
-#ConnectToSteamContainer
+#ConnectToSteamContainer,
+#ReconnectToSteamContainer
 {
 	flow-children: down;
 }
 
 #GCErrorContainer,
-#ConnectToSteamContainer
+#ConnectToSteamContainer,
+#ReconnectToSteamContainer
 {
 	visibility: collapse;
 }
 
-.NeedsGC.HasEventData #ErrorContainer
+.NeedsGC #QuestLevelContainer
 {
 	visibility: collapse;
 }
@@ -855,16 +1039,21 @@ DACRewardsPage #ErrorContainer {
 	visibility: visible;
 }
 
-.NeedsGC.HasEventData #ErrorContainer,
 .HasEventData #ConnectToSteamContainer,
 .NeedsGC.NeedsSteamLogin #GCErrorContainer
 {
 	visibility: collapse;
 }
 
-.NeedsSteamLogin #ConnectToSteamContainer
+.NeedsSteamLogin #ConnectToSteamContainer,
+.NeedsSteamLogin.HasCredential #ReconnectToSteamContainer
 {
 	visibility: visible;
+}
+
+.NeedsSteamLogin.HasCredential #ConnectToSteamContainer
+{
+	visibility: collapse;
 }
 
 .NeedsGC #GCErrorContainer
@@ -877,4 +1066,10 @@ DACRewardsPage #ErrorContainer {
 #ErrorContent
 {
 	flow-children: down;
+}
+
+.PostGameBPControl #BattlePassProgress,
+.PostGameBPControl #PlayerBPLevel
+{
+    visibility: collapse;
 }

@@ -15,7 +15,11 @@
 
 				<Panel id="BattlePassProgress">
 					<Panel id="PlayerBPBackgroundTop" />
-					<ProgressBar value="0" max="1" id="PlayerProgress" />
+
+					<Panel class="PlayerProgressContainer">
+						<ParticleProgressBar id="PlayerProgress" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar_complete.vpcf" />
+					</Panel>
+					
 					<Panel class="BPBottomRow">
 						<Panel id="PlayerBPBackgroundBottom" />
 						<Panel class="BPLevelProgressContainer">
@@ -29,6 +33,10 @@
 					<Label class="BPLevelText" text="#DAC_BPLevelHeader" />
 					<Label class="BPLevel" text="{d:current_level}" id="PlayerBPLevelGraphLevel" />
 				</Panel>
+				<Panel class="InGameProgressLegend">
+					<Panel class="InGameProgressColorSwatch"/>
+					<Label class="InGameProgressLegendDesc" text="#DAC_BPInGameProgressLegend" />
+				</Panel>
 			</Panel>
 			<Panel id="ErrorContainer">
 				<Panel id="ConnectToSteamContainer">
@@ -36,6 +44,14 @@
 					<Label class="ConnectToSteamText" text="#DAC_BattlePass_ConnectConvert" />
 					<Button class="PopupButton LoginButton" id="SteamLoginButton" onactivate="DACSteamLogin()">
 						<Label text="#DAC_SteamAccountLogin" />
+					</Button>
+				</Panel>
+
+				<Panel id="ReconnectToSteamContainer">
+					<Label class="ErrorTitle" text="#DAC_Rewards_Sell" />
+					<Label class="ConnectToSteamText" text="#DAC_BattlePass_ReconnectConvert" />
+					<Button class="PopupButton LoginButton" id="SteamReconnectButton" onactivate="DACSteamReconnect()">
+						<Label text="#DAC_Home_Reconnect" />
 					</Button>
 				</Panel>
 

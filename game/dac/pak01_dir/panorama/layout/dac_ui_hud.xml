@@ -134,8 +134,12 @@
 						<DACParticleScenePanel id="ItemTabTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
 					</Button>
 				</Panel>
-			</Panel>
-		</Panel>
+        <Panel class="TabButtonBackerUnderlord">
+          <Button class="TabButton UnderlordTabButton" onactivate="DACShowUnderlordTab(); PlaySoundEffect( 'DAC_UI.SelectBattleInfo' )" onmouseover="PlaySoundEffect( 'DAC_UI.RolloverBattleInfo' )">
+          </Button>
+        </Panel>
+      </Panel>
+    </Panel>
 
 		<Panel class="SafeArea" hittest="false">
 
@@ -157,7 +161,11 @@
 					<DACInventory />
 				</Panel>
 
-			</Panel>
+        <Panel id="UnderlordTab" hittest="false">
+          <DACUnderlordTree />
+        </Panel>
+
+      </Panel>
 		
 			<DACSynergyPanel id="SynergyPanel" />
 
@@ -225,6 +233,7 @@
 			
 		</Panel>
 		<Panel id="ScoreboardBG" onactivate="DACHideScoreboard()" />
+		<Panel id="BattlePassProgressBG" onactivate="DACHideBattlePassProgress()" />
 		<Panel class="SafeArea" hittest="false">
 
 			<Panel class="PlayerLeaderboardBackground">
@@ -234,7 +243,14 @@
 			<Panel class="HudToggleContainer">
 				<Panel id="ShowScoreboardButton" onactivate="DACShowScoreboard()" />
 				<Panel id="HideScoreboardButton" onactivate="DACHideScoreboard()" />
+				<Panel id="ShowBattlePassProgress" onactivate="DACShowBattlePassProgress()" />
+				<Panel id="HideBattlePassProgress" onactivate="DACHideBattlePassProgress()" />
 			</Panel>
+
+			<Panel class="BattlePassContainer">
+				<DACControlBattlePass id="BattlePassOverview" updateingame="true"/>
+			</Panel>
+
 			<DACSellUnitBar id="SellUnitBar"/>
 			
 			<Panel class="CornerButtons" hittest="false">

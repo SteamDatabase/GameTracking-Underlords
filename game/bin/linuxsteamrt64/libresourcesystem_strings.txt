@@ -399,7 +399,9 @@ CResourceString
 CResourceSystem Init
 CResourceSystem PreShutdown()
 CResourceSystem Shutdown
+CResourceSystem::BlockingFinishAllCurrentlyLoadingManifests is blocking
 CResourceSystem::FindOrCreateProceduralResource: Passed in an empty name for a procedural resource!
+CResourceSystem::ForceSynchronizationAndBlockUntilManifestLoaded blocked for %.3f ms on %s
 CSolveIKChainAnimNode
 CStrongHandle
 CStrongHandleCopyable
@@ -485,6 +487,8 @@ C_OP_RemapBoundingVolumetoCP
 C_OP_RemapCPtoCP
 C_OP_RemapModelVolumetoCP
 C_OP_RenderModels
+C_OP_RenderSprites
+C_OP_RenderTrails
 C_OP_RepeatedTriggerChildGroup
 C_OP_SetCPOrientationToPointAtCP
 C_OP_SetControlPointFieldToWater
@@ -520,6 +524,7 @@ ConfigurationSystem_001
 ConnectInterfaces
 CreateInterface
 Cycle or diamond double-reference to '%s'
+D#%PW%
 D#j\H
 D$ B;
 D$ Hc
@@ -842,7 +847,7 @@ Plat_ExitProcess
 Plat_FloatTime
 Plat_GetEnv
 Plat_GetModuleFilename
-Plat_IsInDebugSessionRaw
+Plat_IsInDebugSession
 Plat_MicroSecTickDiff
 Plat_RelativeTicks
 Plat_ShouldCollectMiniDumpsForFatalErrors
@@ -872,14 +877,17 @@ RegisterConfigValue: Unknown error constructing config value "%s"!
 RegisterFormatConversion
 RegisterStringToken
 Release
+RemoveBoneAndChildren
 RenderDevice003
 RenderDeviceMgr001
 RenderHardwareConfig002
+RenderMeshFile
 RenderService_001
 RenderSystemSurface001
 RenderUtils_001
 Reporting references for leak tracker error: "%s"
 Reporting references for resource "%s":
+Resource "%s" was explicitly loaded with a blocking load.
 Resource "%s" was not precached and could not be loaded by a just in time blocking load.
 Resource "%s" was not precached but was loaded by a just in time blocking load.
 Resource Leak Breakdown
@@ -997,6 +1005,7 @@ VProcessUtils002
 VProfService_001
 VR_001
 VRenderDeviceSetupV001
+VSNAPFile
 VScript
 VScriptDbg
 VScriptManager010
@@ -1064,6 +1073,7 @@ WARNING: Trying to deallocate a resource after the type manager was uninstalled!
 WARNING: Trying to deallocate a resource with no associated resource type! ("%s")
 WARNING: resource '%s' is an unrecognized resource type!
 Warning:  %s = '%s' is infinite, clamping value.
+WeightList
 WorkshopSetup001
 WorldRendererBuilderMgr001
 WorldRendererMgr001
@@ -1202,6 +1212,8 @@ binary_lz4
 blendamount
 blockLOS
 body_type
+bone_name
+bone_names
 bouncecolor
 break_create_joint_revolute
 break_uniform_burst
@@ -1409,6 +1421,8 @@ m_flOpStrengthMinScale
 m_flOutput0
 m_flOutput1
 m_flPrecomputedMaxRange
+m_flRadiusScale
+m_flRadiusTaper
 m_flRandomMax
 m_flRandomMin
 m_flScalePerParentParticle
@@ -1459,6 +1473,7 @@ m_vMaxBounds
 m_vMinBounds
 m_vecUp
 malloc
+master_morph_weight
 material
 mathlib.cpp
 mathlib_extended
@@ -1491,6 +1506,8 @@ modeldoc21
 modeldoc22
 modeldoc23
 modeldoc24
+modeldoc25
+modeldoc26
 modeldoc3
 modeldoc4
 modeldoc5
@@ -1640,6 +1657,8 @@ vpcf19
 vpcf2
 vpcf20
 vpcf21
+vpcf22
+vpcf23
 vpcf3
 vpcf4
 vpcf5
@@ -1663,6 +1682,7 @@ vwrld
 x	;F`
 x@HcO
 x[A\A]A^A_]
+x[A\A]]
 x|LcG
 yaw_end
 yaw_start

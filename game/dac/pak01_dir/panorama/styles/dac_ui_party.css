@@ -310,7 +310,7 @@ DACParty {
     border: 2px solid #ffffff22;
 		min-width: 192px;
 		min-height: 52px;
-		padding: 0px 10px -4px 10px;
+		padding: 0px 10px 0px 10px;
 		margin: 0px 20px 12px 20px;
 		transition-property: background-color, wash-color, brightness;
 		transition-delay: 0.0s;
@@ -349,12 +349,12 @@ DACParty {
 {
 	height: 100px;
 }
-	
-.CanPartyMM .MatchButton,
-.CanPartyPrivate .MatchButton
-{
-		saturation: 1;
-	  wash-color: none;
+
+.CanPartyMM #PartyMatchMaking,
+.CanPartyPrivate #PartyPrivateMatch,
+.CanPartyMMRanked #PartyMatchMakingRanked {
+    saturation: 1;
+    wash-color: none;
 }
 
 .IsPlatformMobile .PartyButton {
@@ -429,10 +429,8 @@ DACParty {
     margin-top: 12px;
 }
 
-.CanPartyMM #NoPartyMMReason {
-    visibility: collapse;
-}
-
+.CanPartyMM #NoPartyMMReason,
+.CanPartyMMRanked #NoPartyMMRankedReason,
 .CanPartyPrivate #NoPartyPrivateReason {
     visibility: collapse;
 }
@@ -441,7 +439,9 @@ DACParty {
 
 }
 
-.CanPartyMM #PartyMatchMaking:hover, .CanPartyPrivate #PartyPrivateMatch:hover {
+.CanPartyMM #PartyMatchMaking:hover,
+.CanPartyMMRanked #PartyMatchMakingRanked:hover,
+.CanPartyPrivate #PartyPrivateMatch:hover {
     brightness: 1.3;
 }
 
@@ -460,18 +460,23 @@ DACParty {
 	background-image: url("s2r://panorama/images/dashboard/btn_find_match_psd.vtex");
 }
 
+.CanPartyMMRanked #PartyMatchMakingRanked {
+    background-image: url("s2r://panorama/images/dashboard/btn_find_match_psd.vtex");
+}
+
 .CanPartyPrivate #PartyPrivateMatch
 {
 	background-image: url("s2r://panorama/images/dashboard/btn_private_match_psd.vtex");
 }
 
-.CanPartyMM #PartyMatchMaking, .CanPartyPrivate #PartyPrivateMatch 
-{
-    border-top: 4px solid #f8e0b6aa; 
+.CanPartyMM #PartyMatchMaking,
+.CanPartyMMRanked #PartyMatchMakingRanked,
+.CanPartyPrivate #PartyPrivateMatch {
+    border-top: 4px solid #f8e0b6aa;
     border-right: 4px solid #7a370faa;
     border-bottom: 4px solid #62290baa;
     border-left: 4px solid #f8d253cc;
- }
+}
 
 .ShowPartyCode #PartyCodeVisible,
 #PartyCodeHidden {

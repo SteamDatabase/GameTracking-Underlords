@@ -102,7 +102,12 @@
 		],
 		"slow_attack_speed": 50,
 		"slow_chance": 25,
-		"color": "0 128 128"
+		"color": "0 128 128",
+
+		"precache":
+		[
+			"particles/gameplay/synergy/primordial/primordial_slow.vpcf"
+		]
 	},
 
 	"Elf":
@@ -123,7 +128,7 @@
 			{
 				"id": 20010,
 				"unitcount": 9,
-				"affects_all_allies_with_keyword": true
+				"affects_all_allied_units": true
 			}
 		],
 		"evasion_bonus":
@@ -376,14 +381,16 @@
 			400,
 			500
 		],
+		"blind_duration": 2,
+		"blind_chance": 50,
+		"mana_gain_reduction": 50,
 		"color": "153 50 204"
 	},
 
 	"DemonHunter":
 	{
 		"type": "Class",
-		"levels":
-		[
+		"levels": [
 			{
 				"id": 20030,
 				"affects_all_enemies_with_keyword": true,
@@ -395,9 +402,19 @@
 			{
 				"id": 20031,
 				"unitcount": 2,
+				"cumulative": true,
 				"affects_all_allies_with_keyword": true,
 				"special_keyword": "demon",
 				"modifier_name": "demonhunter_demon_buff"
+			},
+			{
+				"id": 20068,
+				"unitcount": 1,
+				"cumulative": true,
+				"hidden": true,
+				"affects_all_allies_with_keyword": true,
+				"special_keyword": "demonhunter",
+				"modifier_name": "demonhunter_demon_self_buff"
 			}
 		],
 		"damage_bonus_pct":
@@ -405,6 +422,7 @@
 			0,
 			50
 		],
+		"demon_damage_bonus_pct": 30,
 		"color": "139 0 139"
 	},
 
@@ -574,14 +592,15 @@
 			{
 				"id": 20043,
 				"unitcount": 3,
-				"affects_all_enemy_units": true
+				"affects_all_allies_with_keyword": true
 			}
 		],
 		"base_modifiers":
 		[
 			"modifier_bonus_mana_per_hit"
 		],
-		"mana_dampen": -200,
+		"hops": 4,
+		"percent_chance": 17,
 		"color": "52 159 100"
 	},
 
@@ -621,7 +640,7 @@
 			80,
 			130
 		],
-		"duration": 3,
+		"duration": 2,
 		"color": "228 110 213"
 	},
 
@@ -814,5 +833,128 @@
 		[
 			"particles/gameplay/synergy/demon/demon_buff.vpcf"
 		]
+	},
+	"Primordial":
+	{
+		"type": "Race",
+		"levels":
+		[
+			{
+				"id": 20059,
+				"unitcount": 2,
+				"affects_all_allies_with_keyword": true
+			},
+			{
+				"id": 20060,
+				"unitcount": 4,
+				"affects_all_allies_with_keyword": true
+
+			}
+		],
+		"rank":
+		[
+			1,
+			2
+		],
+		"amount":
+		[
+			1,
+			1
+		],
+		"color": "0 128 128"
+	},
+	"Brawny":
+	{
+		"type": "Race",
+		"levels":
+		[
+			{
+				"id": 20061,
+				"unitcount": 2,
+				"affects_all_allies_with_keyword": true
+			},
+			{
+				"id": 20062,
+				"unitcount": 4,
+				"affects_all_allies_with_keyword": true
+			}
+		],
+		"hp_bonus":
+		[
+			30,
+			60
+		],
+		"color": "166 27 27",
+		"precache":
+		[
+			"particles/items/orc_brutality/orc_brutality.vpcf"
+		]
+	},
+	"Inventor":
+	{
+		"type": "Class",
+		"levels":
+		[
+			{
+				"id": 20063,
+				"unitcount": 2,
+				"affects_all_allies_with_keyword": true
+			},
+			{
+				"id": 20064,
+				"unitcount": 4,
+				"affects_all_allies_with_keyword": true
+			}
+		],
+		"damage_hp_pct":
+		[
+			15,
+			30
+		],
+		"color": "251 142 20",
+
+		"precache":
+		[
+			"particles/units/heroes/hero_techies/techies_remote_mines_detonate.vpcf"
+		]
+	},
+	"Savage":
+	{
+		"type": "Race",
+		"levels":
+		[
+			{
+				"id": 20065,
+				"unitcount": 2,
+				"affects_all_allied_units": true
+			},
+			{
+				"id": 20066,
+				"unitcount": 4,
+				"affects_all_allied_units": true
+			},
+			{
+				"id": 20067,
+				"unitcount": 6,
+				"affects_all_allied_units": true
+			}
+		],
+		"dot_damage":
+		[
+			5,
+			10,
+			15
+		],
+		"dot_duration":
+		[
+			3.0,
+			3.0,
+			3.0
+		],
+		"precache":
+		[
+			"particles/generic_gameplay/generic_bleed.vpcf"
+		],
+		"color": "178 65 26"
 	}
 }

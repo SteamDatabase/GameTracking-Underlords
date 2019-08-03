@@ -412,6 +412,8 @@
  EPlayerConnectionState_Connected
  EPlayerOrder_AssignEquipmentItem
  GCConnectionStatus_GC_GOING_DOWN
+ H;=&	
+ H;=v
  M9l$
  M9l$hu
  NETWORK_DISCONNECT_CLIENT_NO_MAP
@@ -592,6 +594,7 @@
 !m_bNeedsSort
 !m_pGameMode
 !matching_subscription_def_indexes
+!pPlayer->HasSignedOut()
 !player
 !sePm0
 !self
@@ -705,7 +708,7 @@
 "CMsgGCToGCFlushSteamInventoryCache
 "CMsgGCToGCPerformManualOpCompleted
 "CMsgGCToServerAddSpectatorResponse
-"CMsgServerToGCAbandonMatchResponse"
+"CMsgServerToGCAbandonMatchResponse"4
 "CMsgServerToGCMatchSignoutResponse
 "CNETMsg_SpawnGroup_SetCreationTick
 "CWorkshop_GetContributors_Response
@@ -1602,10 +1605,10 @@ $zjuh
 (%g %g %g %g)
 (%g %g %g)
 (%g %g)
-(%piP
 (*%s*), 
-(-Cqz
 (0x%08X)'??'
+(5.fw
+(=&cs
 (ACTIVE)
 (CCommunity_GetClanAnnouncements_Response
 (CMsgClientToGCCreateStaticRecipeResponse
@@ -1714,7 +1717,6 @@ $zjuh
 )`>s0
 )b%g?o
 )k WH
-)k WI
 )k_ECustomGameInstallStatus_FailedCanceled
 )k_EGCMsgInitiateTradeResponse_NotLoggedIn
 )k_EMsgClientToGCDevEventOperationResponse
@@ -2011,15 +2013,13 @@ $zjuh
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
 .%0*llu
-.%Ck0
+.%Sk0
 .%llu
 .(z!u
 .*z!u
-.-'?k
-.-)!,
-.-3JR
-.-o",
-.-qdi
+.-7Bk
+.-9!,
+.-CJR
 ...<truncated>...
 ../../public/entity2/concreteentitylist.h
 ../../public/entity2/entitycomponent.h
@@ -2044,7 +2044,8 @@ $zjuh
 ../public/tier1/utlsortvector.h
 ../public/tier2/fieldpath.h
 .2z[uYA
-.5/-/
+.5+b;
+.5?-/
 .8z%u#
 .>()09
 .@(vi
@@ -5742,7 +5743,6 @@ $zjuh
 59CMsgGCToGCGrantAccountRolledItems_Item_AdditionalAuditEntry
 59CProtoItemSocket_AssetModifier_DESERIALIZE_FROM_STRING_ONLY
 59cWH
-59cWI
 5CBeam
 5CItem
 5CPath
@@ -5880,6 +5880,7 @@ $zjuh
 90tTH
 92tQA
 95*P>
+95Z!o
 98N*>
 99w(|&H
 9A8:@
@@ -5974,7 +5975,6 @@ $zjuh
 ;2t)H
 ;2t,H
 ;2tfA
-;5z%o
 ;9t4H
 ;BXtC
 ;BXtOH
@@ -5982,8 +5982,7 @@ $zjuh
 ;CProtoItemSocket_AssetModifier_DESERIALIZE_FROM_STRING_ONLY
 ;G tu+G$L
 ;GAME_PARTICLE_MANAGER_EVENT_CHANGE_CONTROL_POINT_ATTACHMENT
-;Hc5;
-;Hc5v
+;Hc5&
 ;I9<$uY
 ;J0t%1
 ;Q tH
@@ -6309,7 +6308,6 @@ $zjuh
 @:2t%H
 @:2t(H
 @:2t-H
-@:2tDH9
 @:3t'H
 @:3t(H
 @:3t0H
@@ -8100,6 +8098,7 @@ AUATS
 AUATS1
 AUATS@
 AUATSD
+AUATSE
 AUATSH
 AUATSHc
 AUATSI
@@ -10062,7 +10061,7 @@ CMsgServerToGCAbandonMatch
 CMsgServerToGCEnterMatchmaking
 CMsgServerToGCIdlePing
 CMsgServerToGCMatchSignout
-CMsgServerToGCTestConnection"G
+CMsgServerToGCTestConnection
 CMsgServerUseItem
 CMsgServerWelcomeDAC
 CMsgSetItemPositions
@@ -10769,7 +10768,7 @@ C_OP_SetSingleControlPointPosition
 C_OP_StopAfterCPDuration
 C_OP_TwistAroundAxis
 C`A9G
-C`IcKXI
+C`HcKXH
 Ca[A\A]A^]
 Cache
 CalcAnimationState
@@ -11303,7 +11302,7 @@ D7	_Hc
 D8sUt
 D9"t=Lc
 D9#tyHcC
-D9-^;o
+D9%#6o
 D9;t3I
 D9C ~JMc
 D9HxtmI
@@ -11324,7 +11323,6 @@ D9s ~`H
 D9s8~`H
 D9x$|EH
 D9~ u
-D:	t0H
 D:gTt
 D:jIH
 D; t)I
@@ -11332,19 +11330,21 @@ D; tMH
 D; }VH
 D;!ttHc
 D;$2tWL
-D;%k:
-D;%n[
-D;%y>o
-D;%|/
+D;%	:o
+D;%,'
+D;%3(
+D;%R5
 D;'t3H
 D;'tXH
 D;)ts
 D;.tLH
 D;1Lc
 D;3t 
+D;5'?
 D;8tQH
 D;9tlA
 D;;}5D
+D;=c~
 D;B`}
 D;C(I
 D;CxD
@@ -11746,6 +11746,9 @@ Draws the 2D skybox
 Draws the attachments of the entity
 Draws the axis of the entity origin
 Draws the skeleton of the entity
+DropDisconnectedPlayers
+DropDisconnectedPlayers: Killing PlayerSlot %u: Killing for Disconnect Time
+DropDisconnectedPlayers: Killing PlayerSlot %u: Queued Kill for Left Lobby
 Dump all global entities/states
 Dump all response_rules.txt and rules (requires restart)
 Dump game events to console (1=client only, 2=all).
@@ -11827,6 +11830,7 @@ E0HcE
 E0L;`
 E0L;p
 E0toI
+E8!t,I9
 E9&~|I
 E9(t)I
 E9,$H
@@ -11870,6 +11874,7 @@ E;eh}NI
 E;f(A
 E;fx|
 E;fx}4L
+E;g@|
 E;gL|
 E;gL|%I
 E;g`|
@@ -11882,8 +11887,6 @@ E;l$0D
 E;l$0|
 E;l$8}QI
 E;l$<
-E;l$@
-E;l$@|
 E;l$L|#I
 E;l$X|
 E;l$X}AI
@@ -13398,183 +13401,147 @@ H;0t0H
 H;0tCH
 H;0teH
 H;2t_A
-H;5 T
-H;5!)
-H;5!-
 H;5!8
-H;5!a
-H;5(5
-H;5(V
-H;5,&
-H;5,(
-H;5,M
-H;50N
-H;51 
-H;51A
-H;58M
-H;58P
-H;58Q
-H;5<@
-H;5AB
-H;5AI
-H;5AO
-H;5Al
-H;5H%
-H;5HX
-H;5HZ
-H;5P.
-H;5PY
-H;5Q$
-H;5Q(
-H;5QA
-H;5QY
-H;5QZ
-H;5Qw
-H;5U~
-H;5\1
-H;5`!
-H;5`B
-H;5a 
-H;5a&
-H;5a-
-H;5a1
-H;5a6
-H;5lG
-H;5oh
-H;5pB
-H;5q+
-H;5qL
-H;5wD
-H;5x7
-H;5xe
-H;5xu
-H;5|"
+H;5!Y
+H;5'Q
+H;5(<
+H;5(D
+H;5(r
+H;5,/
+H;518
+H;584
+H;58@
+H;5@c
+H;5Aa
+H;5H7
+H;5PW
+H;5Q=
+H;5Xf
+H;5Xi
+H;5\Z
+H;5\^
+H;5`X
+H;5a0
+H;5a@
+H;5aV
+H;5al
+H;5dW
+H;5o7
+H;5p^
+H;5q-
+H;5qM
+H;5x6
+H;5xV
 H;7t"
 H;8tmH
 H;9u#
-H;= 6
-H;= Z
-H;= vS
-H;="4
-H;="R
-H;="Y
-H;="c
-H;="k
-H;="q
-H;=#K
-H;=$f
-H;=$g
-H;=%h
-H;=&q
+H;=	f
+H;= H
+H;= oS
+H;="B
+H;="J
+H;="j
+H;=#<
+H;=#D
+H;=%Z
+H;=%s
+H;=&C
+H;=(I
+H;=(T
 H;=(m
-H;=(z
-H;=+'
-H;=+K
-H;=,K
-H;=.Y
-H;=.Z
-H;=.\
-H;=0rS
-H;=2x
-H;=4I
-H;=6d
-H;=7t
-H;=81
-H;=8l
-H;=8y
-H;=8~
-H;=:>
-H;=;[
-H;=<=
-H;=<q
-H;=?X
-H;=@T
-H;=@wS
-H;=B4
-H;=CL
-H;=Cu
-H;=E~
-H;=F|
-H;=G=
-H;=HZ
-H;=Hk
-H;=Hx
-H;=H}
-H;=I!
-H;=I}
-H;=J0
-H;=J>
-H;=Ju
-H;=K6
-H;=KX
-H;=Kr
-H;=ON
-H;=Ph
-H;=PsS
-H;=Qq
-H;=R-
-H;=RF
-H;=RQ
-H;=Rd
-H;=S*
-H;=T:
-H;=Tt
-H;=VK
-H;=Vb
-H;=WZ
-H;=Wd
-H;=Xj
-H;=Xw
-H;=X|
-H;=YY
-H;=\9
-H;=]~
-H;=^0
-H;=_C
-H;=_n
-H;=aI
-H;=bC
-H;=bI
-H;=bK
-H;=bt
-H;=bu
-H;=cM
-H;=f`
-H;=h=
-H;=h>
-H;=hH
-H;=hT
-H;=hi
-H;=hv
-H;=h{
-H;=i:
-H;=l>
-H;=lt
-H;=nH
-H;=ow
-H;=ptS
-H;=q|
-H;=r=
-H;=rP
-H;=s/
-H;=s7
-H;=uf
-H;=v6
-H;=vr
-H;=wM
-H;=x<
-H;=xG
-H;=xh
-H;=xu
-H;=xz
-H;=yN
-H;=zp
-H;={W
-H;={h
-H;={z
-H;=|0
-H;=|>
-H;=|q
+H;=(u
+H;=)[
+H;=*}
+H;=+u
+H;=,~
+H;=0N
+H;=0T
+H;=0g
+H;=0k
+H;=0kS
+H;=1X
+H;=1u
+H;=2>
+H;=2I
+H;=2q
+H;=3[
+H;=70
+H;=8H
+H;=8S
+H;=8t
+H;=9l
+H;=;\
+H;=;w
+H;=?7
+H;=?:
+H;=?]
+H;=?{
+H;=@pS
+H;=A}
+H;=BC
+H;=BP
+H;=EV
+H;=Fm
+H;=GK
+H;=Gn
+H;=HG
+H;=HR
+H;=Hs
+H;=IX
+H;=K}
+H;=OD
+H;=OH
+H;=OP
+H;=OS
+H;=PlS
+H;=Q4
+H;=QC
+H;=R;
+H;=RH
+H;=Rr
+H;=SE
+H;=TJ
+H;=U}
+H;=VB
+H;=Vu
+H;=Wf
+H;=XF
+H;=XQ
+H;=Yg
+H;=Zm
+H;=\N
+H;=\X
+H;=\\
+H;=^N
+H;=^T
+H;=^n
+H;=_Q
+H;=_W
+H;=_v
+H;=`.R
+H;=b0
+H;=by
+H;=cV
+H;=ci
+H;=eT
+H;=hE
+H;=hL
+H;=hP
+H;=l}
+H;=mm
+H;=pmS
+H;=pq
+H;=rc
+H;=rn
+H;=uNz
+H;=wH
+H;=wZ
+H;=wv
+H;=zS
+H;={X
+H;=|	R
+H;=|C
+H;=~H
 H;CPw<I
 H;G t
 H;IXu
@@ -13604,6 +13571,7 @@ HB@T	J
 HDR Color Scale: %0.3f
 HELPER_BONE
 HEY! Leaving modifier think with a locked modifier manager!
+HH;=M
 HHHc@@H
 HHcFpH
 HIERARCHY_ABSORIGIN
@@ -13675,7 +13643,6 @@ HasTag
 HaticsType_Default
 HaticsType_None
 Have Entity say string, and teamOnly or not
-Hc5%z
 Hc@ H
 Hc@$H
 Hc@0A
@@ -14910,7 +14877,6 @@ L9(A
 L: %.2f deg
 L; t9H
 L;"t!f.
-L;%=_
 L;(txH
 L;0t!A
 L;0t?H9
@@ -14971,8 +14937,7 @@ Lc#D;c
 Lc#Hc
 Lc#Mc
 Lc#fA
-Lc%b:
-Lc%e[
+Lc%I5
 Lc&D;f
 Lc&E)
 Lc'D;g
@@ -14980,6 +14945,7 @@ Lc'E)
 Lc(D;h
 Lc)D;i
 Lc+D;k
+Lc-<.w
 Lc.D;n
 Lc.E)
 Lc/D;o
@@ -14991,9 +14957,8 @@ Lc:D;z
 Lc;A9
 Lc;D;{
 Lc;E9
+Lc=Z~
 Lc?E)
-LcC H
-LcC J
 LcC$D
 LcC0D;C@I
 LcG$H
@@ -15002,7 +14967,6 @@ Lcc D;c0
 Lcc D;c0t2H
 Lcc(D;c8
 Lcc0D;c@D
-Lcc@D;cPD
 LccHD;cX
 LccHD;cXA
 LccHD;cXD
@@ -16187,6 +16151,7 @@ OnSteamServersDisconnected(result=%u)
 OnUpdateOBB
 OnUpdateSolidFlags
 OnUpdateSolidType
+OnUserLeftLobby: Queuing kill of PlayerSlot %u
 OnViewModelEffectsChanged
 OnWeaponChanged
 Oneof must have at least one field.
@@ -16306,7 +16271,6 @@ PF_TYPE_CONTROL_POINT_COMPONENT
 PF_TYPE_LITERAL
 PF_TYPE_PARTICLE_AGE_NORMALIZED
 PF_TYPE_RANDOM_UNIFORM
-PH;=u
 PHA9]H
 PHD9m
 PHE9e
@@ -17025,6 +16989,7 @@ Rule @%p : %s , %dc, %dr
 Rule file isn't whitelisted.
 Rule is disabled.
 Run time-of-day command
+RunGameStateMachine_Combat
 RunScriptCode
 RunScriptFile
 RunTimeOfDayCommand
@@ -19263,6 +19228,7 @@ WriteEHandle to slot %d for entity %d:%s
 WriteToBuffer Message %s is not initialized! Probably missing required fields!
 Writes the selected set to disk for merging into another mesh via nav_merge_mesh.
 WxH;2t*H
+X-W|4
 X0Hc@(L
 X4[A\]
 X=2v?
@@ -19303,7 +19269,8 @@ XboxSystemInterface001
 Xo0fA
 XtHc@pH
 X|~lA
-Y-8s3
+Y%?t3
+Y-Ms3
 Y@server_cvar
 YAxis
 YD$(A
@@ -21142,7 +21109,6 @@ delta_from
 demo.proto
 demo.proto"
 demo_file_stamp
-demon_damage_bonus_pct
 demon_hunters_steal_demon
 demorestart
 density
@@ -21733,7 +21699,6 @@ fA;0tiA
 fA;G6
 fA;L$R
 fAttackTimeRemaining
-fD9%pS
 fD9cnr
 fD9s>r
 fD; t
@@ -24586,6 +24551,7 @@ m_bProcessProcs
 m_bProvidedByAura
 m_bPurgedDestroy
 m_bPushDirIsLocal
+m_bQueuedKillForLeftLobby
 m_bRandomAnimator
 m_bRandomizeCycle
 m_bRangedAttack
@@ -28481,8 +28447,14 @@ pMessage
 pModelName
 pName
 pOwner
+pPlayer->m_fDisconnectedTime <= flCurrGameTime
+pPlayer->m_fDisconnectedTime > 0.0f
 pPlayerSlotPair->first == INVALID_PLAYER_SLOT || pPlayerSlotPair->second == INVALID_PLAYER_SLOT
+pPlayerState->m_pOpponentPlayerState
+pPlayerState->m_pOpponentPlayerState->m_eCombatType == k_EDACCombatType_MirrorSource
+pPlayerState->m_pOpponentPlayerState->m_pOpponentPlayerState == pPlayerState
 pSequenceName
+pSrcCombat
 pValue
 pWorldObject
 pX;qX~
@@ -29507,39 +29479,32 @@ runspeed
 rxD;wx
 s D;0
 s H;5
-s H;5!
-s H;5!G
-s H;5(
-s H;5,
-s H;50
-s H;51
-s H;51"
+s H;5 2
+s H;5 B
+s H;5 j
+s H;50f
 s H;5<
-s H;5@
-s H;5AK
+s H;5A
+s H;5A#
+s H;5Ad
+s H;5L
 s H;5Q
-s H;5QN
-s H;5a
-s H;5d2
-s H;5hM
-s H;5hQ
-s H;5p%
-s H;5p5
-s H;5p]
-s H;5qO
-s H;5qS
+s H;5Q~
+s H;5X
+s H;5`
+s H;5p
+s H;5pW
+s H;5p^
+s H;5q_
+s H;5t
 s off
 s$[A\]
 s(D;s8D
 s(H;5
-s(H;5 
-s(H;58
-s(H;5@
-s(H;5Q
-s(H;5]
-s(H;5e
-s(H;5l
-s(H;5q
+s(H;54=
+s(H;5@\
+s(H;5HZ
+s(H;5`f
 s([A\A]A^]
 s(t.H
 s)~+@
@@ -29549,48 +29514,40 @@ s.daH
 s/glow.vH
 s/spriteH
 s0H;5
-s0H;5(
-s0H;5/
-s0H;588
-s0H;5D
-s0H;5\
-s0H;5\C
-s0H;5\I
-s0H;5l
-s0H;5l#
-s0H;5p'
-s0H;5q
+s0H;5 4
+s0H;5@
+s0H;5E
+s0H;5K$
+s0H;5T
+s0H;5X
+s0H;5xZ
 s1_mapname
 s69F~
 s7>Ip
 s8D;kP
 s8H;5
-s8H;51
-s8H;5h
-s8H;5h8
+s8H;5 
+s8H;54V
+s8H;5}
 s8Lcm
 s?Hc@
-s@H;50N
-s@H;50\
-s@H;5<
-s@H;5A
-s@H;5L9
+s@H;5
 sGlaiveInfo
 sHH;5
-sHH;5E]
-sHH;5x
+sHH;5? 
+sHH;5OJ
+sHH;5X'
+sHH;5h:
 sIHcB
 sLockedSentence
 sLockedSound
 sLuQH
 sMA9|$ 
 sPH;5
-sPH;52O
+sPH;5hI
 sUnlockedSentence
 sUnlockedSound
 sXH;5
-sXH;58
-sXH;5X}
 sZHc@
 s_Default
 s_EntComponentInfo
@@ -29606,8 +29563,8 @@ s_nWatchTransmitEntity
 s_vecAllNPCS
 s_vecThinkers
 s`H;5
-s`H;50
-s`H;5p
+s`H;58
+s`H;5T	
 sale_price
 sample_duration_ms
 sample_msg
@@ -29756,6 +29713,7 @@ section_number
 select_high
 select_low
 self_bonus
+self_damage_bonus_pct
 self_dmg_pct
 sellObsolete
 sell_unit
@@ -29811,6 +29769,9 @@ server_public_ip_addr
 server_search_key
 server_sessions
 server_shutdown
+server_signout_backoff_max
+server_signout_backoff_min
+server_signout_backoff_scale_s
 server_spawn
 server_state
 server_steam_id
@@ -29846,7 +29807,8 @@ setpos_player
 setting m_SimulationState[%d].m_flSimulationTime=%f
 sfixed32
 sfixed64
-shH;5
+shH;5@
+shH;5h
 shMcuX
 shadow_control
 shadow_fiend_requiem
@@ -30063,6 +30025,7 @@ source_player
 source_player_slot
 source_reference_id
 spH;5
+spH;5L
 space shuttle
 spark_shower
 spawnGroupType
@@ -30521,12 +30484,14 @@ t!IcN
 t!L;}
 t";2}
 t"H;=
+t"H;=K
 t"HcK 
 t"HcS
 t"L;%
-t"L;%	
-t"L;%Y
-t"L;%Yb
+t"L;%	o
+t"L;%I
+t"L;%Yp
+t"L;%i
 t"L;e
 t"L;u
 t#IcD$
@@ -30574,10 +30539,10 @@ t%Icv
 t%L;}
 t%Lc;D;{
 t%[A\]
-t&;5_
 t&L;%
-t&L;%(e
-t&L;%8
+t&L;%(
+t&L;%8o
+t&L;%x
 t'A;\$
 t'D;8u
 t'H;=
@@ -30585,6 +30550,7 @@ t'I9r
 t'Ic]
 t'Ic_
 t'Icu
+t'Lcc@D;cPD
 t'Lc}
 t'[A\]
 t(D9m
@@ -30597,7 +30563,7 @@ t*9C
 t*D:=
 t+Ic\$
 t,D9m
-t,D:%[
+t,D:%
 t,Hc6H
 t,Hcp
 t,Ic:H
@@ -30605,8 +30571,8 @@ t-L9p
 t-[A\A]]
 t-rex
 t.D:%
-t.D:-F
-t.D;=
+t.D:-
+t.D;=mS
 t.H9P
 t.H;w(t8H;w0tBH;w8tLH;w@t
 t.HcC H
@@ -30821,7 +30787,6 @@ tLf;w2
 tNMc/E;o
 tN[A\A]A^]
 tP[A\A]A^]
-tR;55%o
 tRIcE
 tTD;x
 tTIcF
@@ -30914,6 +30879,7 @@ test_dispatcheffect
 test_entity_blocker
 test_existing_item
 test_occlusion
+test_payload
 test_restoreonnewmodel
 texcoord
 texframeindex
@@ -30971,7 +30937,6 @@ tk[A\A]A^]
 tkrYU
 tlIcD$
 tlrJA
-tm;5v%o
 tmHcO
 tnHcM
 tnHcU
@@ -31112,8 +31077,6 @@ type_field
 type_id
 type_instances
 type_value
-tz;5n%o
-t{95r%o
 t{UE1
 t{riU
 t}HcSH
@@ -31724,6 +31687,7 @@ wxAUL
 x	;B`
 x	;F`
 x H;=
+x";=O
 x#Hcw
 x#Mcn
 x$HcSh;Sx
@@ -31735,13 +31699,13 @@ x([A\]
 x*;XZ
 x+A9T$h~$H
 x0;wH}+Hc
-x0H;=zI
+x0H;=
 x2A;T$
 x7Hcw
 x8"tq
-x8H;=2I
+x8H;=RT
+x:;=|
 x:Hcw
-x;;=<
 x@)AXAY
 x@HcO
 xBHcO
@@ -31894,9 +31858,10 @@ z{uyI
 z}u{fA
 { D;{0
 { H;=
-{ H;="
-{ H;=Y
-{ H;=b
+{ H;= Nz
+{ H;=2
+{ H;=i
+{ H;=r
 { []H
 { t6H
 {%d,%d,%d}
@@ -31997,7 +31962,7 @@ z}u{fA
 }/fA9L$nr'O
 }0E;}@
 }0E;}@A
-}0H;=p&
+}0H;=
 }2'@+P
 }2UHc
 }3UHc
@@ -32036,7 +32001,7 @@ z}u{fA
 ~&IcW A;W0
 ~(};Hc
 ~)H;7I
-~)H;=\$
+~)H;=
 ~*;Ah
 ~*fE;g
 ~+Hcu

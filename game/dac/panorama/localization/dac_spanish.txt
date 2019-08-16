@@ -33,7 +33,9 @@
 	"DAC_MatchTypeNameRankedLocked1"					"Juega {i:games_needed_to_unlock_ranked} partida casual para desbloquearlo"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Juega {i:games_needed_to_unlock_ranked} partidas casuales para desbloquearlo"
 	"DAC_MatchTypeName1"								"Solo/Bots"
+	"DAC_MatchTypeName1_Party"							"Sala privada"
 	"DAC_MatchTypeName2"								"Tutorial"
+	"DAC_DBHome_Play_Party"								"Partida de grupo"
 	"DAC_ComingSoon"									"Próximamente"
 
 	"DAC_DBHome_Mobile_Play"							"Jugar"
@@ -559,7 +561,7 @@
 	"dac_item_maelstrom_lore"							"Nadie puede controlar el clima... pero ciertamente puedes darle un pequeño empujón. <i>&#8213;Zenok, perista de Agujablanca</i>"
 	
 	"dac_item_refresher_orb"							"Orbe Revigorizante"
-	"dac_item_refresher_orb_desc"						"Actualiza todos los tiempos de recarga y restaura 50 de maná después de usar una habilidad. (Una vez por batalla)"
+	"dac_item_refresher_orb_desc"						"Después de lanzar una habilidad, actualiza todos los tiempos de recarga y restaura {d:mana_restored} de maná al héroe que lo lleva. Además, reduce el tiempo de recarga restante un {d:ally_cooldown_multiplier}% y restaura {d:ally_mana_restored} de maná a los aliados situados a {d:refresh_radius} casilla. (Una vez por batalla)"
 	"dac_item_refresher_orb_lore"						"He visto que esto cambia el resultado de una gran batalla. <i>&#8213;Zenok, perista de Agujablanca</i>"
 	
 	"dac_item_heart_of_tarrasque"						"Corazón de Tarasca"
@@ -1055,7 +1057,7 @@
 	"dac_dev_hero_2_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} )"
 	"dac_dev_hero_3_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} {s:synergy_3} )"
 
-	"dac_dev_item"					"{s:item_name} ({s:item_type})"
+	"dac_dev_item"					"{s:item_name} {s:item_type}"
 	"dac_dev_item_offensive"		"Ofensivo"
 	"dac_dev_item_defensive"		"Defensivo"
 	"dac_dev_item_support"			"Soporte"
@@ -1063,6 +1065,8 @@
 	"dac_dev_item_global"			"Global"
 	"dac_dev_item_alliance"			"Alianza"
 	"dac_dev_item_type"				"Tipo de objeto"
+
+	"dac_dev_item_menu_global"		"( Global )"
 
 	"dac_chart_type_dps"			"DPS"
 	"dac_chart_type_damagedealt"	"Daño infligido"
@@ -1248,6 +1252,7 @@
 	"DAC_Chat_BadRun"			"¡Ten piedad!"
 
 	"DAC_BotDifficulty_Title"	"PARTIDA EN SOLITARIO"
+	"DAC_PartyBotDifficulty_Title"	"SALA PRIVADA"
 	"DAC_BotDifficulty_Desc"    "Elige la dificultad de los bots"
 	"DAC_BotDifficultyName0"	"Fácil"
 	"DAC_BotDifficultyName1"	"Intermedia"
@@ -1540,10 +1545,13 @@
 	"dac_settings_camera_pitch"					"Inclinación de la cámara (predeterminada: 65)"
 	"dac_settings_camera_distance"				"Distancia de la cámara (predeterminada: 860)"
 
-	"dac_settings_ui_mode"						"Modo de interfaz"
-	"dac_settings_ui_config_mobile"				"Móvil"
-	"dac_settings_ui_config_pc"					"PC"
-	
+	"dac_settings_layout_mode"					"Presentación de la interfaz"
+	"dac_settings_layout_config_mobile"			"Pantalla pequeña"
+	"dac_settings_layout_config_pc"				"Pantalla grande"
+	"dac_settings_input_mode"					"Modo de entrada"
+	"dac_settings_input_config_touch"			"Táctil"
+	"dac_settings_input_config_cursor"			"Cursor"
+
 	"dac_settings_steam"						"Steam"
 	"dac_settings_synergies_hide_partial"		"Ocultar alianzas parciales durante el combate"
 	"dac_settings_enable_haptics"				"Habilitar respuesta háptica"
@@ -1682,6 +1690,7 @@
 	"DAC_LookingForMatch_Desc"					"Buscando jugadores"
 
 	"DAC_SelectMatchType_Title"					"Selecciona un modo"
+	"DAC_PartySelectMatchType_Title"			"Partida de grupo"
 	"DOTA_Select_Description"                   "¿Cómo te gustaría jugar?"
 
 	"DAC_FirstGameTutorial_Title"				"Partida de tutorial"
@@ -1726,16 +1735,16 @@
 	"DAC_Combat_Result_Lose_LocalPlayerOpponent" "Tu ejército ha derrotado a <span class='PlayerName'>{g:dac_player_slot_persona:b:player_slot}</span> (<span class='CombatDamage'>{d:damage_taken} de daño</span>)"
 
 	"dac_hotkey_sell_desc"							"Vender la unidad seleccionada."
-	"dac_hotkey_tobench_desc"						"Enviar una unidad a un espacio libre en el banquillo."
+	"dac_hotkey_tobench_desc"						"Enviar unidad a un espacio libre del banquillo."
 	"dac_hotkey_scoreboard_desc"					"Mostrar las puntuaciones."
 	"dac_hotkey_reroll_desc"						"Renovar las opciones de unidad de la tienda."
 	"dac_hotkey_levelup_desc"						"Comprar 4 de EXP por 5 de oro."
 	"dac_hotkey_shop_desc"							"Abrir la tienda."
 	"dac_hotkey_home_desc"							"Seleccionar y ver tu tablero."
-	"dac_hotkey_enemies_up_desc"					"Ir hacia arriba por los tableros de los rivales."
-	"dac_hotkey_enemies_down_desc"					"Ir hacia abajo por los tableros de los rivales."
-	"dac_hotkey_tabs_up_desc"						"Ir hacia arriba en las pestañas DPS, Objetos y Alianzas."
-	"dac_hotkey_tabs_down_desc"						"Ir hacia abajo en las pestañas DPS, Objetos y Alianzas."
+	"dac_hotkey_enemies_up_desc"					"Subir por los tableros de los rivales."
+	"dac_hotkey_enemies_down_desc"					"Bajar por los tableros de los rivales."
+	"dac_hotkey_tabs_up_desc"						"Subir en las pestañas DPS, Objetos y Alianzas."
+	"dac_hotkey_tabs_down_desc"						"Bajar en las pestañas DPS, Objetos y Alianzas."
 	"dac_hotkey_alliances_tab"						"Ver la pestaña de alianzas."
 	"dac_hotkey_dps_tab"							"Ver la pestaña de DPS."
 	"dac_hotkey_items_tab"							"Ver la pestaña de objetos."
@@ -1747,7 +1756,7 @@
 	"dac_hotkey_buy5_desc"							"Comprar la quinta unidad u objeto de la tienda."
 	"dac_hotkey_lock_desc"							"Bloquear la tienda para no renovarla al inicio de la siguiente ronda."
 	"dac_hotkey_opponent_board_desc"				"Ver el tablero del rival actual."
-	"dac_hotkey_away_board_desc"					"Ver el tablero del jugador que lucha contra tu ejército."
+	"dac_hotkey_away_board_desc"					"Ver tablero del rival luchando con tu ejército."
 	"dac_hotkey_chat_desc"							"Alternar chat"
 
 	"DAC_Tutorial_Intro_Title"						"Ey, muchacho."
@@ -1923,4 +1932,28 @@
 	"DAC_AchievementTitle_Missing" 					"Falta el título"
 	"DAC_AchievementDesc_Missing" 					"Falta la descripción"
 
+	"ECanMatchMake_Friendly_0"				"Válido"
+	"ECanMatchMake_Friendly_1"				"No todos los jugadores están listos"
+	"ECanMatchMake_Friendly_2"				"Faltan jugadores"
+	"ECanMatchMake_Friendly_3"				"Demasiados espectadores"
+	"ECanMatchMake_Friendly_4"				"Versiones no válidas"
+	"ECanMatchMake_Friendly_5"				"Versiones incompatibles"
+	"ECanMatchMake_Friendly_6"				"No todos los jugadores han desbloqueado el modo clasificatorio"
+	"ECanMatchMake_Friendly_7"				"Los grupos no pueden hacer cola para este tipo de partida"
+
+	"dac_zoo_page1"			"Page 1"
+	"dac_zoo_page2"			"Buttons"
+	"dac_zoo_page3"			"Page 3"
+	"dac_zoo_page4"			"Page 4"
+	"dac_zoo_page5"			"Map Scroll"
+	"dac_zoo_page_divider"	"/"
+
+	"dac_zoo_page5_title"	"This is where the Map will be"
+
+	"dac_zoo_temptext"			"Lorem ipsum"
+	"dac_zoo_temptextlong"		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	"dac_zoo_textheader"		"TextHeader"	
+	"dac_zoo_texttitle"			"TextTitle"	
+	"dac_zoo_textsubtitle"		"TextSubTitle"	
+	
 }

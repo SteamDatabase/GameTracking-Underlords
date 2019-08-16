@@ -2,10 +2,12 @@ DACEquipControl
 {
 	//width:1000px;
 	width: fit-children;
-	max-width: 2000px;
+	max-width: 2200px;
 	min-width: 800px;
 	padding: 0px 50px;
-	height:360px;
+	min-height:360px;
+	max-height: 720px;
+	height: fit-children;
 	
 	vertical-align: center;
 	horizontal-align: center;
@@ -14,9 +16,11 @@ DACEquipControl
 
 #EquippableItemContainer
 {
-	flow-children: right;
+	//flow-children: right;
+	flow-children: right-wrap;
 	horizontal-align: center;
 	//margin-top: 50px;
+
 }
 
 
@@ -30,6 +34,7 @@ DACEquipControl
 	border: 3px solid #88888800;
 	opacity: 1;
 	brightness: .8;
+	//width: fill-parent-flow(0.1);
 
 	transition-property: brightness, background-color, border;
 	transition-duration: .2s;
@@ -37,6 +42,13 @@ DACEquipControl
 	background-size: 80%;
 	flow-children: none;
 }
+
+.IsLayoutSmallScreen DACEquipControl
+{
+	// this lets all the sigils fit in the equip panel
+	ui-scale: 80%;
+}
+
 
 .EquippableItem:hover,
 .EquippableItem:active

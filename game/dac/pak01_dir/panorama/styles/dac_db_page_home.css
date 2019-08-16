@@ -38,14 +38,14 @@ DACHomePage
 
 #UnderlordsButton
 {
-	width: 200px;
-	height: 50px;
-	vertical-align: center;
-    margin-left: 200px;
-    margin-top: 600px;
+	width: 300px;
+	height: 80px;
+    horizontal-align: center;
+    vertical-align: bottom;
+    margin-bottom: 100px;
 
 	background-color: black;
-	border: 1px solid #A495CF;
+    border: 2px solid textDark;
 }
 
 .BuildRel #UnderlordsButton
@@ -61,7 +61,7 @@ DACHomePage
 	text-align: center;
 	font-weight: bold;
 	font-size: 32px;
-	margin-top: 4px;
+    text-transform: uppercase;
 }
 
 #UnderlordsButton:hover
@@ -153,6 +153,24 @@ DACHomePage
 .CanReconnect #PlayButton
 {
     visibility: collapse;
+}
+
+#LobbyPlayButtonText {
+	visibility: collapse;
+
+	font-size: 40px;
+	letter-spacing: 4px;
+    vertical-align: bottom;
+    horizontal-align: right;
+    margin-bottom: -30px;
+    margin-right: -35px;
+    transform: rotateZ(-6deg);
+    width: fit-children;
+    
+}
+
+.HasParty #LobbyPlayButtonText {
+	visibility: visible;
 }
 
 .CanLocalHost #LocalHost,
@@ -339,6 +357,10 @@ DACHomePage
 	
 }
 
+.PlayButtonContainer {
+	overflow: noclip;
+}
+
 .Language_schinese .HomeButton Label,
 .Language_tchinese .HomeButton Label,
 .Language_koreana .HomeButton Label,
@@ -509,9 +531,12 @@ DACHomePage
     margin-left: 5%;
     margin-bottom: 10%;
     flow-children: down;
+
+	overflow: noclip;
+
 }
 
-.IsPlatformPC #ButtonContainer
+.IsLayoutLargeScreen #ButtonContainer
 {
     margin-bottom: 70px;
     //ui-scale: 70%;
@@ -529,7 +554,7 @@ DACHomePage
 }
 
 
-.IsPlatformPC #LogoArea
+.IsLayoutLargeScreen #LogoArea
 {
     //width: 400px;
     width: fit-children;
@@ -568,7 +593,7 @@ DACHomePage
     text-overflow: shrink;
 }
 
-.IsPlatformPC #EarlyAccessLabel
+.IsLayoutLargeScreen #EarlyAccessLabel
 {
     padding: 5px 5px;
 }
@@ -583,7 +608,7 @@ DACHomePage
     font-size: 22px;
 }
 
-.IsPlatformMobile #EarlyAccessLabel
+.IsLayoutSmallScreen #EarlyAccessLabel
 {
     visibility: collapse;
 }
@@ -626,14 +651,14 @@ DACHomePage
 }
 
 
-.NeedsSteamLogin.IsPlatformMobile #SocialPanelButton
+.NeedsSteamLogin.IsLayoutSmallScreen #SocialPanelButton
 {
       background-image: url("s2r://panorama/images/dashboard/steam_logo_png.vtex");
       width: 100px;
       height: 100px;
 }
 
-.IsPlatformMobile #SocialPanelButton
+.IsLayoutSmallScreen #SocialPanelButton
 {
     ui-scale: 130%;
 }
@@ -653,7 +678,7 @@ DACHomePage
 {
 	width: 100%;
 	height: 100%;
-	background-color: #000000ee;
+	background-color: #000000bb;
 	opacity: 0.0001;
 	transition-property: opacity;
 	transition-duration: 0.2s;
@@ -667,7 +692,7 @@ DACHomePage
     height: 100%;
     flow-children: down;
 
-    background-color: #222222ef;
+    background-color: #222222fa;
     background-repeat: no-repeat;
     box-shadow: #000000 0px 0px 15px;
     padding: safe-area-inset-top 0 safe-area-inset-bottom safe-area-inset-left;
@@ -675,9 +700,21 @@ DACHomePage
     transition-property: transform;
     transition-duration: 0.2s;
     border-right: 2px solid #ffffff03;
+    border-bottom: 2px solid #ffffff03;
 }
 
-.IsPlatformMobile #SocialPanelContents
+.HasParty .ShowSocialParty #SocialPanelContents
+{
+    background-color: none;
+    background-color: #222222fa;
+    padding-bottom: 20px;
+    background-color: gradient( linear, 25% 100%, 100% 25%, from( #22222200 ), to( #222222fa ) );
+    box-shadow: #000000 0px 0px 0px;
+    //height: fit-children;
+    height: 75%;
+}
+
+.IsLayoutSmallScreen #SocialPanelContents
 {
 		transform: translateX( -600px );
 }
@@ -694,7 +731,7 @@ DACHomePage
 	visibility: visible;
 }
 
-.IsPlatformMobile #SocialPanelContents 
+.IsLayoutSmallScreen #SocialPanelContents 
 {
     width: 600px;
     height: 100%;
@@ -715,7 +752,7 @@ DACHomePage
 
 .ShowSocialPanel .HomeButton 
 {
-	opacity: 0;
+	//opacity: 0;
 }
 
 
@@ -726,7 +763,7 @@ DACHomePage
 		margin: 20px 20px 10px 20px;
 }
 
-.IsPlatformMobile #SocialPanelHeader {
+.IsLayoutSmallScreen #SocialPanelHeader {
     height: 100px;
     margin-bottom: 20px;
 }
@@ -761,7 +798,7 @@ DACHomePage
 	margin-left: 6px;
 }
 
-.IsPlatformMobile .SocialTabButton {
+.IsLayoutSmallScreen .SocialTabButton {
     //width: 35%;
     height: 100%;
 }
@@ -793,7 +830,7 @@ DACHomePage
     transition-duration: .2s;
 }*/
 
-.IsPlatformMobile .SocialTabTitle 
+.IsLayoutSmallScreen .SocialTabTitle 
 {
     font-size: 40px;
 }
@@ -833,7 +870,7 @@ DACHomePage
     opacity: 1;
 }
 
-.IsPlatformMobile .SocialButtonClose
+.IsLayoutSmallScreen .SocialButtonClose
 {
     width: 30px;
     height: 40px;
@@ -894,7 +931,7 @@ DACHomePage
     flow-children: down;
 }
 
-.IsPlatformMobile .SocialViolatorList {
+.IsLayoutSmallScreen .SocialViolatorList {
     width: 40px;
     margin: 0px;
 }
@@ -912,7 +949,7 @@ DACHomePage
     background-size: 100% 100%;
 }
 
-.IsPlatformMobile .SocialViolator {
+.IsLayoutSmallScreen .SocialViolator {
     width: 40px;
     height: 40px;
     visibility: collapse;
@@ -955,6 +992,9 @@ DACHomePage
 {
     background-image: url("s2r://panorama/images/dashboard/icon_party_not_ready_psd.vtex");
     visibility: visible;
+    animation-name: PulseAnim;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
 }
 
 #SteamLoginRequired
@@ -1145,18 +1185,18 @@ DACRankIcon {
     margin-bottom: 80px;
 }
 
-.IsPlatformMobile.AspectRatio21x9 #RankContainer
+.IsLayoutSmallScreen.AspectRatio21x9 #RankContainer
 {
     margin-bottom: 30px;
     margin-right: safe-area-inset-right;
 }
 
-.IsPlatformMobile.AspectRatio16x9 #RankContainer
+.IsLayoutSmallScreen.AspectRatio16x9 #RankContainer
 {
     margin-bottom: 20px;
 }
 
-.IsPlatformPC #ForegroundContainer #RankContainer
+.IsLayoutLargeScreen #ForegroundContainer #RankContainer
 {
 	width: 450px;
 }
@@ -1320,7 +1360,7 @@ DACRankIcon {
     horizontal-align: left;
 }
 
-.IsPlatformMobile #Layer5 {
+.IsLayoutSmallScreen #Layer5 {
     width: 1100px;
     height: 920px;
     margin-right: 600px;

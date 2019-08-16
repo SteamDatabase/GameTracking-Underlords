@@ -33,7 +33,9 @@
 	"DAC_MatchTypeNameRankedLocked1"					"Play {i:games_needed_to_unlock_ranked} casual game to unlock"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Play {i:games_needed_to_unlock_ranked} casual games to unlock"
 	"DAC_MatchTypeName1"								"Solo / Bot"
+	"DAC_MatchTypeName1_Party"							"Private Lobby"
 	"DAC_MatchTypeName2"								"Tutorial"
+	"DAC_DBHome_Play_Party"								"Party Match"
 	"DAC_ComingSoon"									"Coming Soon"
 
 	"DAC_DBHome_Mobile_Play"							"Play"
@@ -559,7 +561,7 @@
 	"dac_item_maelstrom_lore"							"No one can control the weather... but you can certainly give it a little nudge. - <i>Zenok, White Spire Fence</i>"
 	
 	"dac_item_refresher_orb"							"Refresher Orb"
-	"dac_item_refresher_orb_desc"						"Refresh all cooldowns and restore 50 mana after casting an ability. (once per battle)"
+	"dac_item_refresher_orb_desc"						"After casting an ability, refresh all cooldowns and restore {d:mana_restored} mana to equipped hero. Additionally reduce remaining cooldown time by {d:ally_cooldown_multiplier}% and restore {d:ally_mana_restored} mana to allies {d:refresh_radius} cell away. (once per battle)"
 	"dac_item_refresher_orb_lore"						"I've seen this change the outcome of many a battle. - <i>Zenok, White Spire Fence</i>"
 	
 	"dac_item_heart_of_tarrasque"						"Heart of Tarrasque"
@@ -1055,7 +1057,7 @@
 	"dac_dev_hero_2_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} )"
 	"dac_dev_hero_3_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} {s:synergy_3} )"
 
-	"dac_dev_item"					"{s:item_name} ( {s:item_type} )"
+	"dac_dev_item"					"{s:item_name} {s:item_type}"
 	"dac_dev_item_offensive"		"Offensive"
 	"dac_dev_item_defensive"		"Defensive"
 	"dac_dev_item_support"			"Support"
@@ -1063,6 +1065,8 @@
 	"dac_dev_item_global"			"Global"
 	"dac_dev_item_alliance"			"Alliance"
 	"dac_dev_item_type"				"Item Type"
+
+	"dac_dev_item_menu_global"		"( Global )"
 
 	"dac_chart_type_dps"			"DPS"
 	"dac_chart_type_damagedealt"	"Damage"
@@ -1147,9 +1151,9 @@
 	"DAC_Synergy_Desc_Beast_2"		"Allies gain +{s:damage_pct}% Attack Damage"
 	"DAC_Synergy_Desc_Beast_3"		"Allies gain +{s:damage_pct}% Attack Damage"
 
-	"DAC_Synergy_Desc_Savage_1"		"Allied Savage units apply a stackable {s:dot_damage} damage/s bleed on attack for {s:dot_duration}. Duration refreshes each attack."
-	"DAC_Synergy_Desc_Savage_2"		"Allied Savage units apply a stackable {s:dot_damage} damage/s bleed on attack for {s:dot_duration}. Duration refreshes each attack."
-	"DAC_Synergy_Desc_Savage_3"		"Allied Savage units apply a stackable {s:dot_damage} damage/s bleed on attack for {s:dot_duration}. Duration refreshes each attack."
+	"DAC_Synergy_Desc_Savage_1"		"Allied Savage units apply a stackable {s:dot_damage} damage/s bleed on attack for {s:dot_duration} seconds. Duration refreshes each attack."
+	"DAC_Synergy_Desc_Savage_2"		"Allied Savage units apply a stackable {s:dot_damage} damage/s bleed on attack for {s:dot_duration} seconds. Duration refreshes each attack."
+	"DAC_Synergy_Desc_Savage_3"		"Allied Savage units apply a stackable {s:dot_damage} damage/s bleed on attack for {s:dot_duration} seconds. Duration refreshes each attack."
 
 	"DAC_Synergy_Desc_Demon_1"		"All Demon units gain +{s:damage_bonus_pct}% Pure Damage. Active when you have only one type of Demon unit on the board"
 
@@ -1248,6 +1252,7 @@
 	"DAC_Chat_BadRun"			"Have mercy!"
 
 	"DAC_BotDifficulty_Title"	"SOLO MATCH"
+	"DAC_PartyBotDifficulty_Title"	"PRIVATE LOBBY"
 	"DAC_BotDifficulty_Desc"    "Select Bot Difficulty"
 	"DAC_BotDifficultyName0"	"Easy"
 	"DAC_BotDifficultyName1"	"Medium"
@@ -1540,10 +1545,13 @@
 	"dac_settings_camera_pitch"					"Camera Pitch  (Default: 65)"
 	"dac_settings_camera_distance"				"Camera Distance  (Default: 860)"
 
-	"dac_settings_ui_mode"						"Interface Mode"
-	"dac_settings_ui_config_mobile"				"Mobile"
-	"dac_settings_ui_config_pc"					"PC"
-	
+	"dac_settings_layout_mode"					"Interface Layout"
+	"dac_settings_layout_config_mobile"			"Small Screen"
+	"dac_settings_layout_config_pc"				"Large Screen"
+	"dac_settings_input_mode"					"Input Mode"
+	"dac_settings_input_config_touch"			"Touch"
+	"dac_settings_input_config_cursor"			"Cursor"
+
 	"dac_settings_steam"						"Steam"
 	"dac_settings_synergies_hide_partial"		"Hide partial Alliances during combat."
 	"dac_settings_enable_haptics"				"Enable haptics"
@@ -1682,6 +1690,7 @@
 	"DAC_LookingForMatch_Desc"					"Looking for Players"
 
 	"DAC_SelectMatchType_Title"					"Select Mode"
+	"DAC_PartySelectMatchType_Title"			"Party Match"
 	"DOTA_Select_Description"                   "How would you like to play?"
 
 	"DAC_FirstGameTutorial_Title"				"Tutorial Match"
@@ -1923,4 +1932,28 @@
 	"DAC_AchievementTitle_Missing" 					"Missing Title"
 	"DAC_AchievementDesc_Missing" 					"Missing Description"
 
+	"ECanMatchMake_Friendly_0"				"Valid"
+	"ECanMatchMake_Friendly_1"				"Not all players are ready"
+	"ECanMatchMake_Friendly_2"				"Too few players"
+	"ECanMatchMake_Friendly_3"				"Too many spectators"
+	"ECanMatchMake_Friendly_4"				"Invalid versions"
+	"ECanMatchMake_Friendly_5"				"Version mismatch"
+	"ECanMatchMake_Friendly_6"				"Not all players have unlocked Ranked"
+	"ECanMatchMake_Friendly_7"				"Parties cannot queue for this match type"
+
+	"dac_zoo_page1"			"Page 1"
+	"dac_zoo_page2"			"Buttons"
+	"dac_zoo_page3"			"Page 3"
+	"dac_zoo_page4"			"Page 4"
+	"dac_zoo_page5"			"Map Scroll"
+	"dac_zoo_page_divider"	"/"
+
+	"dac_zoo_page5_title"	"This is where the Map will be"
+
+	"dac_zoo_temptext"			"Lorem ipsum"
+	"dac_zoo_temptextlong"		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	"dac_zoo_textheader"		"TextHeader"	
+	"dac_zoo_texttitle"			"TextTitle"	
+	"dac_zoo_textsubtitle"		"TextSubTitle"	
+	
 }

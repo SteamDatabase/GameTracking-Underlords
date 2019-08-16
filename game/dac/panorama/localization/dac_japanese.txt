@@ -33,7 +33,9 @@
 	"DAC_MatchTypeNameRankedLocked1"					"カジュアルゲームを{i:games_needed_to_unlock_ranked}回プレイしてアンロック"
 	"DAC_MatchTypeNameRankedLockedPlural"				"カジュアルゲームを{i:games_needed_to_unlock_ranked}回プレイしてアンロック"
 	"DAC_MatchTypeName1"								"ソロ／AI"
+	"DAC_MatchTypeName1_Party"							"プライベートロビー"
 	"DAC_MatchTypeName2"								"チュートリアル"
+	"DAC_DBHome_Play_Party"								"パーティマッチ"
 	"DAC_ComingSoon"									"近日登場"
 
 	"DAC_DBHome_Mobile_Play"							"プレイ"
@@ -559,7 +561,7 @@
 	"dac_item_maelstrom_lore"							"誰にも天候を変えることはできないが…ちょっと小突いてやることならできる。— <i>ゼノク、ホワイトスパイアの闇商人</i>"
 	
 	"dac_item_refresher_orb"							"リフレッシュオーブ"
-	"dac_item_refresher_orb_desc"						"アビリティを使用後、すべてのクールダウンをリフレッシュし、50マナを回復する（1回のバトルにつき1度）"
+	"dac_item_refresher_orb_desc"						"アビリティを使用後、装備したヒーローのすべてのクールダウンをリフレッシュし、マナを{d:mana_restored}回復する。さらに、 {d:refresh_radius}マス以内の味方の残りのクールダウン時間を{d:ally_cooldown_multiplier}%削減し、マナを{d:ally_mana_restored}回復する（1回のバトルにつき1度）"
 	"dac_item_refresher_orb_lore"						"これのおかげで勝敗が変わった戦いを多く見てきた。— <i>ゼノク、ホワイトスパイアの闇商人</i>"
 	
 	"dac_item_heart_of_tarrasque"						"タラスクの心臓"
@@ -1055,7 +1057,7 @@
 	"dac_dev_hero_2_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} )"
 	"dac_dev_hero_3_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} {s:synergy_3} )"
 
-	"dac_dev_item"					"{s:item_name} ( {s:item_type} )"
+	"dac_dev_item"					"{s:item_name} {s:item_type}"
 	"dac_dev_item_offensive"		"攻撃"
 	"dac_dev_item_defensive"		"防御"
 	"dac_dev_item_support"			"サポート"
@@ -1063,6 +1065,8 @@
 	"dac_dev_item_global"			"グローバル"
 	"dac_dev_item_alliance"			"アライアンス"
 	"dac_dev_item_type"				"アイテムタイプ"
+
+	"dac_dev_item_menu_global"		"（グローバル）"
 
 	"dac_chart_type_dps"			"ダメージ／秒"
 	"dac_chart_type_damagedealt"	"与ダメージ／攻撃"
@@ -1147,9 +1151,9 @@
 	"DAC_Synergy_Desc_Beast_2"		"味方の攻撃力+{s:damage_pct}%"
 	"DAC_Synergy_Desc_Beast_3"		"味方の攻撃力+{s:damage_pct}%"
 
-	"DAC_Synergy_Desc_Savage_1"		"味方の野性ユニットは、攻撃時に毎秒{s:dot_damage}ダメージのスタック可能な出血効果を{s:dot_duration}秒間発揮する。効果持続時間は攻撃するたびにリフレッシュする"
-	"DAC_Synergy_Desc_Savage_2"		"味方の野性ユニットは、攻撃時に毎秒{s:dot_damage}ダメージのスタック可能な出血効果を{s:dot_duration}秒間発揮する。効果持続時間は攻撃するたびにリフレッシュする"
-	"DAC_Synergy_Desc_Savage_3"		"味方の野性ユニットは、攻撃時に毎秒{s:dot_damage}ダメージのスタック可能な出血効果を{s:dot_duration}秒間発揮する。効果持続時間は攻撃するたびにリフレッシュする"
+	"DAC_Synergy_Desc_Savage_1"		"味方の野性ユニットは、攻撃時に毎秒{s:dot_damage}ダメージのスタック可能な出血効果を{s:dot_duration}秒間与える。効果持続時間は攻撃するたびにリフレッシュされる"
+	"DAC_Synergy_Desc_Savage_2"		"味方の野性ユニットは、攻撃時に毎秒{s:dot_damage}ダメージのスタック可能な出血効果を{s:dot_duration}秒間与える。効果持続時間は攻撃するたびにリフレッシュされる"
+	"DAC_Synergy_Desc_Savage_3"		"味方の野性ユニットは、攻撃時に毎秒{s:dot_damage}ダメージのスタック可能な出血効果を{s:dot_duration}秒間与える。効果持続時間は攻撃するたびにリフレッシュされる"
 
 	"DAC_Synergy_Desc_Demon_1"		"全悪魔ユニットのピュアダメージ+{s:damage_bonus_pct}%。ボードに悪魔ユニットが1種類だけ存在する時にアクティブ"
 
@@ -1248,6 +1252,7 @@
 	"DAC_Chat_BadRun"			"お手柔らかに！"
 
 	"DAC_BotDifficulty_Title"	"ソロマッチ"
+	"DAC_PartyBotDifficulty_Title"	"プライベートロビー"
 	"DAC_BotDifficulty_Desc"    "ボットの難易度を選択"
 	"DAC_BotDifficultyName0"	"初級"
 	"DAC_BotDifficultyName1"	"中級"
@@ -1540,10 +1545,13 @@
 	"dac_settings_camera_pitch"					"カメラピッチ角度（デフォルト：65）"
 	"dac_settings_camera_distance"				"カメラ距離（デフォルト：860）"
 
-	"dac_settings_ui_mode"						"インターフェイスモード"
-	"dac_settings_ui_config_mobile"				"モバイル"
-	"dac_settings_ui_config_pc"					"PC"
-	
+	"dac_settings_layout_mode"					"インターフェイスレイアウト"
+	"dac_settings_layout_config_mobile"			"小画面"
+	"dac_settings_layout_config_pc"				"大画面"
+	"dac_settings_input_mode"					"入力モード"
+	"dac_settings_input_config_touch"			"タッチ"
+	"dac_settings_input_config_cursor"			"カーソル"
+
 	"dac_settings_steam"						"Steam"
 	"dac_settings_synergies_hide_partial"		"戦闘中、不完全なアライアンスを表示しない"
 	"dac_settings_enable_haptics"				"ハプティクスを有効化"
@@ -1682,6 +1690,7 @@
 	"DAC_LookingForMatch_Desc"					"プレイヤーを探しています"
 
 	"DAC_SelectMatchType_Title"					"モードを選択"
+	"DAC_PartySelectMatchType_Title"			"パーティマッチ"
 	"DOTA_Select_Description"                   "どのモードでプレイしますか？"
 
 	"DAC_FirstGameTutorial_Title"				"チュートリアルマッチ"
@@ -1923,4 +1932,28 @@
 	"DAC_AchievementTitle_Missing" 					"タイトルがありません"
 	"DAC_AchievementDesc_Missing" 					"説明がありません"
 
+	"ECanMatchMake_Friendly_0"				"有効"
+	"ECanMatchMake_Friendly_1"				"準備ができていないプレイヤーがいます"
+	"ECanMatchMake_Friendly_2"				"プレイヤーが少なすぎます"
+	"ECanMatchMake_Friendly_3"				"観戦者が多すぎます"
+	"ECanMatchMake_Friendly_4"				"無効なバージョン"
+	"ECanMatchMake_Friendly_5"				"バージョンが一致しません"
+	"ECanMatchMake_Friendly_6"				"ランクマッチをアンロックしていないプレイヤーがいます"
+	"ECanMatchMake_Friendly_7"				"パーティはこのマッチタイプではキューに入れません"
+
+	"dac_zoo_page1"			"Page 1"
+	"dac_zoo_page2"			"Buttons"
+	"dac_zoo_page3"			"Page 3"
+	"dac_zoo_page4"			"Page 4"
+	"dac_zoo_page5"			"Map Scroll"
+	"dac_zoo_page_divider"	"/"
+
+	"dac_zoo_page5_title"	"This is where the Map will be"
+
+	"dac_zoo_temptext"			"Lorem ipsum"
+	"dac_zoo_temptextlong"		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	"dac_zoo_textheader"		"TextHeader"	
+	"dac_zoo_texttitle"			"TextTitle"	
+	"dac_zoo_textsubtitle"		"TextSubTitle"	
+	
 }

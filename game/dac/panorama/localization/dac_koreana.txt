@@ -33,7 +33,9 @@
 	"DAC_MatchTypeNameRankedLocked1"					"캐주얼 게임 {i:games_needed_to_unlock_ranked}회 플레이 시 해제"
 	"DAC_MatchTypeNameRankedLockedPlural"				"캐주얼 게임 {i:games_needed_to_unlock_ranked}회 플레이 시 해제"
 	"DAC_MatchTypeName1"								"개별 / 봇"
+	"DAC_MatchTypeName1_Party"							"비공개 로비"
 	"DAC_MatchTypeName2"								"튜토리얼"
+	"DAC_DBHome_Play_Party"								"파티 매치"
 	"DAC_ComingSoon"									"곧 공개됩니다"
 
 	"DAC_DBHome_Mobile_Play"							"플레이"
@@ -559,7 +561,7 @@
 	"dac_item_maelstrom_lore"							"날씨를 조종할 수 있는 사람은 없지만... 분명히 살짝 시도는 해볼 수 있지. - <i>하얀 첨탑 장물아비 제녹</i>"
 	
 	"dac_item_refresher_orb"							"재생의 구슬"
-	"dac_item_refresher_orb_desc"						"능력을 시전한 후 모든 쿨다운을 초기화하고 마나 50 회복 (전투당 1회)"
+	"dac_item_refresher_orb_desc"						"능력을 시전한 후, 모든 쿨다운을 초기화하고 장착한 영웅의 마나 {d:mana_restored} 회복. 추가로, 남은 쿨다운 시간이{d:ally_cooldown_multiplier}% 감소하고 {d:refresh_radius}칸 거리에 있는 아군의 마나 {d:ally_mana_restored} 회복(전투당 1회)"
 	"dac_item_refresher_orb_lore"						"이것 때문에 전투 결과가 뒤집어지는 걸 여러 번 봤지. - <i>하얀 첨탑 장물아비 제녹</i>"
 	
 	"dac_item_heart_of_tarrasque"						"타라스크의 심장"
@@ -1055,7 +1057,7 @@
 	"dac_dev_hero_2_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} )"
 	"dac_dev_hero_3_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} {s:synergy_3} )"
 
-	"dac_dev_item"					"{s:item_name} ( {s:item_type} )"
+	"dac_dev_item"					"{s:item_name} {s:item_type}"
 	"dac_dev_item_offensive"		"공격"
 	"dac_dev_item_defensive"		"수비"
 	"dac_dev_item_support"			"지원"
@@ -1063,6 +1065,8 @@
 	"dac_dev_item_global"			"공용"
 	"dac_dev_item_alliance"			"동맹"
 	"dac_dev_item_type"				"아이템 유형"
+
+	"dac_dev_item_menu_global"		"( 공용 )"
 
 	"dac_chart_type_dps"			"초당 피해"
 	"dac_chart_type_damagedealt"	"준 피해"
@@ -1248,6 +1252,7 @@
 	"DAC_Chat_BadRun"			"자비 좀 베푸세요!"
 
 	"DAC_BotDifficulty_Title"	"개별 매치"
+	"DAC_PartyBotDifficulty_Title"	"비공개 로비"
 	"DAC_BotDifficulty_Desc"    "봇 난이도 선택"
 	"DAC_BotDifficultyName0"	"쉬움"
 	"DAC_BotDifficultyName1"	"보통"
@@ -1540,10 +1545,13 @@
 	"dac_settings_camera_pitch"					"카메라 상하 각도(기본: 65)"
 	"dac_settings_camera_distance"				"카메라 거리(기본: 860)"
 
-	"dac_settings_ui_mode"						"인터페이스 모드"
-	"dac_settings_ui_config_mobile"				"모바일"
-	"dac_settings_ui_config_pc"					"PC"
-	
+	"dac_settings_layout_mode"					"인터페이스 배치"
+	"dac_settings_layout_config_mobile"			"작은 화면"
+	"dac_settings_layout_config_pc"				"큰 화면"
+	"dac_settings_input_mode"					"입력 모드"
+	"dac_settings_input_config_touch"			"터치"
+	"dac_settings_input_config_cursor"			"커서"
+
 	"dac_settings_steam"						"Steam"
 	"dac_settings_synergies_hide_partial"		"전투 중 부분 동맹 효과를 감춥니다."
 	"dac_settings_enable_haptics"				"햅틱 활성화"
@@ -1682,6 +1690,7 @@
 	"DAC_LookingForMatch_Desc"					"다른 플레이어를 찾는 중"
 
 	"DAC_SelectMatchType_Title"					"모드 선택"
+	"DAC_PartySelectMatchType_Title"			"파티 매치"
 	"DOTA_Select_Description"                   "무엇을 플레이하시겠어요?"
 
 	"DAC_FirstGameTutorial_Title"				"튜토리얼 매치"
@@ -1923,4 +1932,28 @@
 	"DAC_AchievementTitle_Missing" 					"칭호 없음"
 	"DAC_AchievementDesc_Missing" 					"설명 없음"
 
+	"ECanMatchMake_Friendly_0"				"유효"
+	"ECanMatchMake_Friendly_1"				"준비되지 않은 플레이어 있음"
+	"ECanMatchMake_Friendly_2"				"플레이어 부족"
+	"ECanMatchMake_Friendly_3"				"관전자 수 초과"
+	"ECanMatchMake_Friendly_4"				"유효하지 않은 버전"
+	"ECanMatchMake_Friendly_5"				"버전 불일치"
+	"ECanMatchMake_Friendly_6"				"랭크를 해제하지 않은 플레이어 있음"
+	"ECanMatchMake_Friendly_7"				"파티로는 이 매치 유형의 대기열에 입장할 수 없음"
+
+	"dac_zoo_page1"			"Page 1"
+	"dac_zoo_page2"			"Buttons"
+	"dac_zoo_page3"			"Page 3"
+	"dac_zoo_page4"			"Page 4"
+	"dac_zoo_page5"			"Map Scroll"
+	"dac_zoo_page_divider"	"/"
+
+	"dac_zoo_page5_title"	"This is where the Map will be"
+
+	"dac_zoo_temptext"			"Lorem ipsum"
+	"dac_zoo_temptextlong"		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	"dac_zoo_textheader"		"TextHeader"	
+	"dac_zoo_texttitle"			"TextTitle"	
+	"dac_zoo_textsubtitle"		"TextSubTitle"	
+	
 }

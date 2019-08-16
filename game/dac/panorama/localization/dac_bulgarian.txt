@@ -33,7 +33,9 @@
 	"DAC_MatchTypeNameRankedLocked1"					"Изиграйте {i:games_needed_to_unlock_ranked} неангажиращ мач, за да отключите"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Изиграйте {i:games_needed_to_unlock_ranked} неангажиращи мача, за да отключите"
 	"DAC_MatchTypeName1"								"Самостоятелно с ботове"
+	"DAC_MatchTypeName1_Party"							"Лично лоби"
 	"DAC_MatchTypeName2"								"Обучение"
+	"DAC_DBHome_Play_Party"								"Мач с екип"
 	"DAC_ComingSoon"									"Очаквайте скоро"
 
 	"DAC_DBHome_Mobile_Play"							"Пускане"
@@ -559,7 +561,7 @@
 	"dac_item_maelstrom_lore"							"Никой не може да контролира атмосферните условия… Но определено можете малко да ги побутнете. — <i>Зенок, покрай оградата на Белия Шпил</i>"
 	
 	"dac_item_refresher_orb"							"Опресняващо кълбо"
-	"dac_item_refresher_orb_desc"						"Опреснява всички времена за изчакване и възстановява 50 мана след изпълняване на умение. (по веднъж за битка)"
+	"dac_item_refresher_orb_desc"						"След изпълняване на умение, опреснява всички времена за изчакване и възстановява {d:mana_restored} мана на екипирания герой. Освен това намалява оставащото време за изчакване с {d:ally_cooldown_multiplier}% и възстановява {d:ally_mana_restored} мана за съюзниците на разстояние {d:refresh_radius} клетка. (по веднъж за битка)"
 	"dac_item_refresher_orb_lore"						"Виждал съм това да променя изхода от много битки. — <i>Зенок, покрай оградата на Белия Шпил</i>"
 	
 	"dac_item_heart_of_tarrasque"						"Сърцето на Тарраск"
@@ -1055,7 +1057,7 @@
 	"dac_dev_hero_2_keywords"		"{s:hero_name} ({s:synergy_1} {s:synergy_2})"
 	"dac_dev_hero_3_keywords"		"{s:hero_name} ({s:synergy_1} {s:synergy_2} {s:synergy_3})"
 
-	"dac_dev_item"					"{s:item_name} ({s:item_type})"
+	"dac_dev_item"					"{s:item_name} {s:item_type}"
 	"dac_dev_item_offensive"		"Офанзивен"
 	"dac_dev_item_defensive"		"Отбранителен"
 	"dac_dev_item_support"			"Поддържащ"
@@ -1063,6 +1065,8 @@
 	"dac_dev_item_global"			"Глобален"
 	"dac_dev_item_alliance"			"Съюз"
 	"dac_dev_item_type"				"Тип артикул"
+
+	"dac_dev_item_menu_global"		"(Глобални)"
 
 	"dac_chart_type_dps"			"Щети в сек."
 	"dac_chart_type_damagedealt"	"Щети"
@@ -1147,9 +1151,9 @@
 	"DAC_Synergy_Desc_Beast_2"		"Съюзниците придобиват +{s:damage_pct}% щети на атака"
 	"DAC_Synergy_Desc_Beast_3"		"Съюзниците придобиват +{s:damage_pct}% щети на атака"
 
-	"DAC_Synergy_Desc_Savage_1"		"Съюзническите свирепи единици прилагат натрупващо се кървене с {s:dot_damage} щети/сек. на атака за {s:dot_duration}. Времетраенето се опреснява с всяка атака."
-	"DAC_Synergy_Desc_Savage_2"		"Съюзническите свирепи единици прилагат натрупващо се кървене с {s:dot_damage} щети/сек. на атака за {s:dot_duration}. Времетраенето се опреснява с всяка атака."
-	"DAC_Synergy_Desc_Savage_3"		"Съюзническите свирепи единици прилагат натрупващо се кървене с {s:dot_damage} щети/сек. на атака за {s:dot_duration}. Времетраенето се опреснява с всяка атака."
+	"DAC_Synergy_Desc_Savage_1"		"Съюзническите свирепи единици прилагат натрупващо се кървене с {s:dot_damage} щети/сек. на атака за {s:dot_duration} секунди. Времетраенето се опреснява с всяка атака."
+	"DAC_Synergy_Desc_Savage_2"		"Съюзническите свирепи единици прилагат натрупващо се кървене с {s:dot_damage} щети/сек. на атака за {s:dot_duration} секунди. Времетраенето се опреснява с всяка атака."
+	"DAC_Synergy_Desc_Savage_3"		"Съюзническите свирепи единици прилагат натрупващо се кървене с {s:dot_damage} щети/сек. на атака за {s:dot_duration} секунди. Времетраенето се опреснява с всяка атака."
 
 	"DAC_Synergy_Desc_Demon_1"		"Всички демонични единици придобиват +{s:damage_bonus_pct}% същински щети. Активно, когато разполагате само с един тип демонична единица на арената."
 
@@ -1248,6 +1252,7 @@
 	"DAC_Chat_BadRun"			"Имайте милост!"
 
 	"DAC_BotDifficulty_Title"	"САМОСТОЯТЕЛЕН МАЧ"
+	"DAC_PartyBotDifficulty_Title"	"ЛИЧНО ЛОБИ"
 	"DAC_BotDifficulty_Desc"    "Избиране на трудност за ботовете"
 	"DAC_BotDifficultyName0"	"Лесни"
 	"DAC_BotDifficultyName1"	"Средни"
@@ -1540,10 +1545,13 @@
 	"dac_settings_camera_pitch"					"Наклон на камерата (по подразбиране: 65)"
 	"dac_settings_camera_distance"				"Разстояние на камерата (по подразбиране: 860)"
 
-	"dac_settings_ui_mode"						"Интерфейсен режим"
-	"dac_settings_ui_config_mobile"				"Мобилен"
-	"dac_settings_ui_config_pc"					"Компютърен"
-	
+	"dac_settings_layout_mode"					"Разположение на интерфейса"
+	"dac_settings_layout_config_mobile"			"Малък екран"
+	"dac_settings_layout_config_pc"				"Голям екран"
+	"dac_settings_input_mode"					"Режим за въвеждане"
+	"dac_settings_input_config_touch"			"Допир"
+	"dac_settings_input_config_cursor"			"Курсор"
+
 	"dac_settings_steam"						"Steam"
 	"dac_settings_synergies_hide_partial"		"Скриване на частичните съюзи по време на сражения."
 	"dac_settings_enable_haptics"				"Вкл. на осезателността"
@@ -1682,6 +1690,7 @@
 	"DAC_LookingForMatch_Desc"					"Търсене за играчи"
 
 	"DAC_SelectMatchType_Title"					"Избиране на режим"
+	"DAC_PartySelectMatchType_Title"			"Мач с екип"
 	"DOTA_Select_Description"                   "Как бихте искали да играете?"
 
 	"DAC_FirstGameTutorial_Title"				"Обучителен мач"
@@ -1923,4 +1932,28 @@
 	"DAC_AchievementTitle_Missing" 					"Липсващо заглавие"
 	"DAC_AchievementDesc_Missing" 					"Липсващо описание"
 
+	"ECanMatchMake_Friendly_0"				"Валидно"
+	"ECanMatchMake_Friendly_1"				"Не всички играчи са готови"
+	"ECanMatchMake_Friendly_2"				"Прекалено малко играчи"
+	"ECanMatchMake_Friendly_3"				"Прекалено много наблюдатели"
+	"ECanMatchMake_Friendly_4"				"Невалидни версии"
+	"ECanMatchMake_Friendly_5"				"Разминаване на версии"
+	"ECanMatchMake_Friendly_6"				"Не всички играчи са отключили търсенето на мачове с класиране"
+	"ECanMatchMake_Friendly_7"				"Екипите не могат да се вреждат в опашката за този тип"
+
+	"dac_zoo_page1"			"Страница 1"
+	"dac_zoo_page2"			"Бутони"
+	"dac_zoo_page3"			"Страница 3"
+	"dac_zoo_page4"			"Страница 4"
+	"dac_zoo_page5"			"Скролиране на картата"
+	"dac_zoo_page_divider"	"/"
+
+	"dac_zoo_page5_title"	"Това е мястото, където ще бъде картата"
+
+	"dac_zoo_temptext"			"Lorem ipsum"
+	"dac_zoo_temptextlong"		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	"dac_zoo_textheader"		"TextHeader"	
+	"dac_zoo_texttitle"			"TextTitle"	
+	"dac_zoo_textsubtitle"		"TextSubTitle"	
+	
 }

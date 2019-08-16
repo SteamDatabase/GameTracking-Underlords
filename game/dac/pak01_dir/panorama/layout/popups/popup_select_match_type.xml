@@ -8,29 +8,36 @@
 
   <PopupSelectMatchType class="PopupPanel" popupbackground="blur">
     <Panel class="Contents">
-			<Label class="Title" text="#DAC_SelectMatchType_Title" />
-            <Label class="SubTitle" text="#DOTA_Select_Description" />
+			<Label class="TextTitle SoloMatchTitle" text="#DAC_SelectMatchType_Title" />
+      <Label class="TextTitle PartyMatchTitle" text="#DAC_PartySelectMatchType_Title" />
+      <Label class="TextSubTitle SelectModeSubTitle" text="#DOTA_Select_Description" />
 
       <Panel id="MatchTypeContainer">
 				<Panel id="Tutorial" class="MatchTypePanel" onactivate="DACSelectMatchTypeSelected(2); PlaySoundEffect( 'DAC_UI.PlayMenu_Activate' );" onmouseover="PlaySoundEffect('DAC_UI.PlayMenu_Hover')">
 					<Panel class="MatchTypeImage"/>
-					<Label class="MatchName TutorialLabel" text="#DAC_MatchTypeName2"/>
+					<Label class="TextSubTitle TutorialLabel" text="#DAC_MatchTypeName2"/>
 				</Panel>
 				<Panel id="Bots" class="MatchTypePanel " onactivate="DACSelectMatchTypeSelected(1); PlaySoundEffect( 'DAC_UI.PlayMenu_Activate' );" onmouseover="PlaySoundEffect('DAC_UI.PlayMenu_Hover')">
 					<Panel class="MatchTypeImage"/>
-					<Label class="MatchName BotsLabel" text="#DAC_MatchTypeName1"/>
+					<Label class="TextSubTitle BotsLabel" text="#DAC_MatchTypeName1"/>
+				</Panel>
+				<Panel id="Private" class="MatchTypePanel " onactivate="DACSelectMatchTypeSelected(4); PlaySoundEffect( 'DAC_UI.PlayMenu_Activate' );" onmouseover="PlaySoundEffect('DAC_UI.PlayMenu_Hover')">
+					<Panel class="MatchTypeImage"/>
+					<Label class="TextSubTitle BotsLabel" text="#DAC_MatchTypeName1_Party"/>
+					<Label id="PrivateLockedLabel" class="MultiplayerLabel" text="#DAC_MatchTypeNameRankedLocked1"/>
 				</Panel>
 				<Panel id="Casual" class="Multiplayer MatchTypePanel" onactivate="DACSelectMatchTypeSelected(0); PlaySoundEffect( 'DAC_UI.PlayMenu_Activate' );" onmouseover="PlaySoundEffect('DAC_UI.PlayMenu_Hover')">
           <Panel class="MatchTypeImage"/>
-          <Label class="MatchName MultiplayerLabel" text="#DAC_MatchTypeName0"/>
+          <Label class="TextSubTitle MultiplayerLabel" text="#DAC_MatchTypeName0"/>
+					<Label id="CasualLockedLabel" class="MultiplayerLabel" text="#DAC_MatchTypeNameRankedLocked1"/>
         </Panel>
 				<Panel id="Ranked" class="Multiplayer MatchTypePanel" onactivate="DACSelectMatchTypeSelected(3); PlaySoundEffect( 'DAC_UI.PlayMenu_Activate' );" onmouseover="PlaySoundEffect('DAC_UI.PlayMenu_Hover')"> 
 					<Panel class="MatchTypeImage"/>
-					<Label class="MatchName MultiplayerLabel" text="#DAC_MatchTypeNameRanked"/>
+					<Label class="TextSubTitle MultiplayerLabel" text="#DAC_MatchTypeNameRanked"/>
 					<Label id="RankedLockedLabel" class="MultiplayerLabel" text="#DAC_MatchTypeNameRankedLocked1"/>
 				</Panel>
 			</Panel>
-      <Button id="ContinueButton" class="BevelButton ModeSelectCancelButton" onactivate="UIPopupButtonClicked(); PlaySoundEffect( 'DAC_UI.PlayMenu_Cancel' );">
+      <Button id="ContinueButton" class="SimpleButton ModeSelectCancelButton" onactivate="UIPopupButtonClicked(); PlaySoundEffect( 'DAC_UI.PlayMenu_Cancel' );">
         <Label text="#Cancel"/>
       </Button>
     </Panel>

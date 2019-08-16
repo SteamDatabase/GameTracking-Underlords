@@ -76,7 +76,7 @@ DACUISettingsPanel.Hidden {
     vertical-align: middle;
 }
 
-.IsPlatformMobile .SettingsTabSeparator {
+.IsLayoutSmallScreen .SettingsTabSeparator {
     font-size: 48px;
 }
 
@@ -192,19 +192,19 @@ DACUISettingsPanel Label {
     color: #d07c18;
 }
 
-.IsPlatformMobile .SettingsNavBarButton {
+.IsLayoutSmallScreen .SettingsNavBarButton {
     height: 80px;
 }
 
-.IsPlatformMobile .SettingsNavBarButton Label {
-    font-size: 48px;
+.IsLayoutSmallScreen .SettingsNavBarButton Label {
+    font-size: 44px;
 }
 
-.IsPlatformMobile #SettingsNavBar {
+.IsLayoutSmallScreen #SettingsNavBar {
     height: 9%;
 }
 
-.IsPlatformMobile .SettingsSecondaryPanel {
+.IsLayoutSmallScreen .SettingsSecondaryPanel {
     margin-top: 90px;
 }
 
@@ -306,7 +306,7 @@ DACUISettingsPanel Label {
     /* padding: 0px 16px 0px 16px; */
 }
 
-.IsPlatformMobile .SettingsSection
+.IsLayoutSmallScreen .SettingsSection
 {
     overflow: squish scroll;
     padding-top: 10px;
@@ -844,7 +844,7 @@ DACUISettingsPanel Label {
     margin-bottom: 12px;
 }
 
-.IsPlatformMobile #GameOptionsSection .SectionHeaderLine
+.IsLayoutSmallScreen #GameOptionsSection .SectionHeaderLine
 {
     margin-top: 10px;
     margin-bottom: 20px;
@@ -871,7 +871,7 @@ DACSettingsCheckbox {
     background-color: none;
     height: 40px;
     //width: 50%;
-    margin: -4px;
+    margin: 4px;
 
     transition-property: opacity;
     transition-duration: .2s;
@@ -1824,7 +1824,7 @@ DropDown {
     margin-top: 24px;
 }
 
-.IsPlatformMobile #RenderQuality {
+.IsLayoutSmallScreen #RenderQuality {
     margin-top: 6px;
 }
 
@@ -1833,7 +1833,7 @@ DropDown {
     visibility: collapse;
 }
 
-.IsPlatformMobile #BatterySaver
+.IsLayoutSmallScreen #BatterySaver
 {
     visibility: visible;
 }
@@ -1876,7 +1876,7 @@ DropDown {
 
 }
 
-.IsPlatformMobile #VideoSliderLabels {
+.IsLayoutSmallScreen #VideoSliderLabels {
     margin-bottom: 4px;
 }
 
@@ -2801,57 +2801,57 @@ DACSettingsEnum .EnumButton {
 	margin-bottom: 4px;
 }
 
-.IsPlatformMobile #ResolutionSettingsColumn {
+.IsLayoutSmallScreen #ResolutionSettingsColumn {
     visibility: collapse;
 }
 
-.IsPlatformMobile #RenderingSettingsColumn.SettingsDualColumn {
+.IsLayoutSmallScreen #RenderingSettingsColumn.SettingsDualColumn {
     ui-scale: 190%;
     width: 100%;
 }
 
-.IsPlatformMobile .pconly {
+.IsLayoutSmallScreen .pconly {
     visibility: collapse;
 }
 
-.IsPlatformMobile .OptionsCheckBox Label {
+.IsLayoutSmallScreen .OptionsCheckBox Label {
     font-size: 24px;
 }
 
-.IsPlatformMobile .OptionsCheckBox {
+.IsLayoutSmallScreen .OptionsCheckBox {
     padding-top: 6px;
     padding-bottom: 6px;
 }
 
-.IsPlatformMobile #VideoSliderLabels {
+.IsLayoutSmallScreen #VideoSliderLabels {
     font-size: 16px;
 }
 
-.IsPlatformMobile Slider {
+.IsLayoutSmallScreen Slider {
     margin-bottom: 10px;
 }
 
-.IsPlatformMobile .advancedvideo {
+.IsLayoutSmallScreen .advancedvideo {
     width: 33%;
     margin-bottom: 12px;
 }
 
-.IsPlatformMobile #AudioSettingColumn {
+.IsLayoutSmallScreen #AudioSettingColumn {
     visibility: collapse;
 }
 
-.IsPlatformMobile #VolumeSettingsColumn.SettingsDualColumn,
-.IsPlatformMobile #GameSettingsColumn.SettingsDualColumn,
+.IsLayoutSmallScreen #VolumeSettingsColumn.SettingsDualColumn,
+.IsLayoutSmallScreen #GameSettingsColumn.SettingsDualColumn,
 {
     ui-scale: 170%;
     width: 100%;
 }
 
-.IsPlatformMobile #AudioDefaultsButton {
+.IsLayoutSmallScreen #AudioDefaultsButton {
     margin-top: 0px;
 }
 
-.IsPlatformMobile .ButtonBevel Label {
+.IsLayoutSmallScreen .ButtonBevel Label {
     font-size: 18px;
 }
 
@@ -2923,26 +2923,25 @@ Label.HotkeyDesc
     font-size: 18px;
 }
 
-.IsPlatformMobile .HotkeySettingsSection,
-.IsPlatformMobile #HotkeysTabButton
+.IsLayoutSmallScreen .HotkeySettingsSection,
+.IsLayoutSmallScreen #HotkeysTabButton
 {
     visibility: collapse;
 }
 
-.IsPlatformPC .HapticCheckbox
+.IsLayoutLargeScreen .HapticCheckbox
 {
     visibility: collapse;
 }
 
-.IsPlatformPC .SteamFeatures
+.IsLayoutLargeScreen .SteamFeatures
 {
     visibility: collapse;
 }
 
 #PrivacyPolicy
 {
-    margin-left: 4px;
-    margin-right: 14px;
+    margin: 8px;
     padding: 4px;
     min-height: 24px;
     min-width: 0px;
@@ -2954,3 +2953,33 @@ Label.HotkeyDesc
     font-size: 16px;
 }
 
+#SettingsNavBar .CloseButton
+{
+    horizontal-align: right;
+    vertical-align: middle;
+    width: 74px;
+    height: 74px;
+    background-image: url("s2r://panorama/images/hud/close-button_png.vtex");
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition-property: opacity;
+    transition-duration: 0.1s;
+    opacity: 1.0;
+    wash-color: transparent;
+    visibility: collapse;
+}
+#SettingsNavBar .CloseButton:hover
+{
+    opacity: 2.0;
+}
+
+#SettingsNavBar .CloseButton:active
+{
+    opacity: 1.5;
+    sound: "ui_settings_out_multi";
+}
+
+.PopupPanel #SettingsNavBar .CloseButton
+{
+    visibility: visible;
+}

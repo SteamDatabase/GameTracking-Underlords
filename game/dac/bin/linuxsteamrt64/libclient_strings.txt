@@ -470,7 +470,6 @@
  Failed to pack %s
  Failed to unpack %s - Code %d
  GCConnectionStatus_GC_GOING_DOWN
- H;=6
  H;D$PH
  H;D$`H
  M9l$
@@ -628,6 +627,7 @@
 !EPlayerConnectionState_Connecting
 !FieldRequiresSpecialHandling( td )
 !ITestScriptMgr
+!InCombatPreview()
 !NETWORK_DISCONNECT_HLTVRESTRICTED
 !NETWORK_DISCONNECT_INTERNAL_ERROR
 !NETWORK_DISCONNECT_LOOPDEACTIVATE
@@ -667,6 +667,7 @@
 !m_boolPunchThroughPixels
 !m_boolTransparent
 !m_hCloth2
+!m_pCombatSimulation
 !matching_subscription_def_indexes
 !player
 !sePm0
@@ -1237,6 +1238,7 @@
 #Debugger_StyleFileLink
 #DeliverGift
 #E9t$Lu
+#ECanMatchMake_Friendly_%i
 #EPlayerConnectionState_Disconnected
 #EPlayerOrder_SelectItemRewardChoice
 #Econ_Additional_Crate_Drop
@@ -1464,8 +1466,7 @@
 #dac_dev_hero_2_keywords
 #dac_dev_hero_3_keywords
 #dac_dev_item
-#dac_dev_item_equipment
-#dac_dev_item_global
+#dac_dev_item_menu_global
 #dac_hero_rank%d
 #dac_hero_rank1
 #dac_hero_type_%s
@@ -1566,7 +1567,7 @@ $CMsgServerToGCUpdateLobbyServerState
 $CPublishedFile_GetUserFiles_Response
 $CWorkshop_AddSpecialPayment_Response"W
 $CWorkshop_GetSpecialPayments_Request
-$D;-Je
+$D;-Js
 $D;3|
 $DT<I
 $E;D$
@@ -2223,8 +2224,8 @@ $z0u.A
 (.CPlayer_SetCommunityPreferences_Request
 (.CPlayer_SetPerFriendPreferences_Request
 (0x%08X)'??'
-(=M<#
-(=ZnT
+(=MG#
+(=jvT
 (?R or (?[+-]digits must be followed by )
 (ACTIVE)
 (A^A_]
@@ -2424,7 +2425,7 @@ $z0u.A
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17InternalFindMatchE13EDACMatchMode26CSODACParty_EBotDifficultyEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17InviteUserToPartyEjEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17RejectPartyInviteE9PartyID_tEUlvE_EE
-*N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController20LoginToSteamCallbackE7EResultEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController20StartPrivateBotLobbyE26CSODACParty_EBotDifficultyEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController21SetPartyBotDifficultyE26CSODACParty_EBotDifficultyEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController22InternalFindPartyMatchE13EDACMatchModeEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_UI_PartyMember33OnPartyMemberReportInvalidVersionEvEUlvE_EE
@@ -2461,7 +2462,6 @@ $z0u.A
 *ZN12C_EnvCubemap9PreRenderE16CSplitScreenSlotEUlvE_
 *ZN13CDACCS_Combat17HandleCombatEndedEvEUliP9C_DAC_NPCE_
 *ZN15C_EnvTimeOfDay29PreRenderE16CSplitScreenSlotEUlvE_
-*ZN16CDAC_UI_VSScreen10PlayVOLineEvEUliP9C_DAC_NPCE_
 *ZN18CDAC_UI_Tooltip_XP6UpdateEvEUlPK10KeyValues3E_
 *ZN18CNewParticleEffect10SetDormantEbEUlvE_
 *ZN18CNewParticleEffect12StopEmissionEbbbbEUlvE_
@@ -2620,7 +2620,6 @@ $z0u.A
 ,$E;l$
 ,$E;o
 ,$LccHA
-,$Mce
 ,$Mcl$
 ,$[A\A]A^]
 ,$tZI
@@ -2826,12 +2825,16 @@ $z0u.A
 -zoom
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
-.%!\O
+.%(UV
 .%0*llu
-.%sSR
+.%1^O
+.%CVR
+.%Ja{
+.%h&f
+.%~kX
 .(Optional) Set of tags for the published file.
-.-FSx
-.-mRx
+.-gWa
+.-v1P
 ...<truncated>...
 ../../public/appframework/tier1app.h
 ../../public/appframework/tier2app.h
@@ -2866,9 +2869,10 @@ $z0u.A
 ..\content
 ..\src\shaders\
 .3333
-.5|'P
-.=f'P
-.=wDM
+.5-Zx
+.5<1P
+.=&1P
+.=yLQ
 .>()09
 .@ zUuS
 .@(z,u*H
@@ -2895,7 +2899,7 @@ $z0u.A
 .CDemoStringTables.items_t
 .CDemoStringTables.table_t
 .CDz u
-.CDzXuVH
+.CDzWuUH
 .CDzoumH
 .CEntityMsg"
 .CEntityMsg"T
@@ -3036,7 +3040,7 @@ $z0u.A
 .CSVCMsg_SendTable.sendprop_t
 .CSVCMsg_Sounds.sounddata_t
 .CSVCMsg_UserMessage"
-.CTwBA
+.CTw?A
 .CUserMessageShake
 .CUserMessageVGUIMenu.Keys
 .CUserMsg_ParticleManagerH
@@ -3108,7 +3112,7 @@ $z0u.A
 .KTz>u<
 .KXz6u4
 .K`z&u$
-.L$|v=
+.L$|w
 .M;UU
 .NETWORK_DISCONNECT_REQUEST_HOSTSTATE_HLTVRELAY
 .PARTICLE_MESSAGE
@@ -3283,7 +3287,6 @@ $z0u.A
 0D;#}qM
 0E;.|
 0GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW
-0H;=M
 0IcD$
 0Marks latest announcement timestamp read by user
 0NETWORK_DISCONNECT_REJECT_SERVERCDKEYAUTHINVALID
@@ -6478,6 +6481,7 @@ $z0u.A
 98N*>
 99w(|&H
 9<t	]
+9=^[W
 9@8:u
 9C Y^
 9C t=H
@@ -6632,7 +6636,7 @@ $z0u.A
 ;0tXD
 ;2t)H
 ;2t,H
-;5Jko
+;5Izo
 ;7};UI
 ;8tkH
 ;9t2H
@@ -6652,7 +6656,7 @@ $z0u.A
 ;GPttK
 ;GTtO
 ;H9:t#
-;Hc59
+;Hc5^
 ;I9<$uY
 ;L$D|*
 ;Q tH
@@ -6660,8 +6664,10 @@ $z0u.A
 ;Sp~'
 ;T$X|I
 ;WD|2H
+;X0t*H
 ;Xp}\H
 ;Xp}v
+;Y0tdH9
 ;[A\]
 ;[A\]H
 ;_(t0I
@@ -6917,6 +6923,7 @@ $z0u.A
 ?:|o_I
 ?;9Cq
 ?;? +S'
+?;KB	y
 ?<-?p
 ?<83U
 ?=((E+7
@@ -7040,13 +7047,13 @@ $z0u.A
 @-oyrn
 @/5B?S
 @0!!!P
-@09B0
 @09C,t?
 @0A;@@
 @0H;E
 @0HcE
 @0bDG
 @2l9<)8
+@49B4
 @4A\]
 @8/N|
 @89B8]
@@ -7082,7 +7089,7 @@ $z0u.A
 @C_RopeKeyframe
 @DP5z5@
 @Gr}H
-@H;=`
+@H;=0
 @HH;E
 @HI;FH
 @Lcg(I
@@ -7277,6 +7284,7 @@ A9V M
 A9V t
 A9V0u
 A9VDt	A
+A9\$ 
 A9\$ t=
 A9\$(
 A9\$,|4L
@@ -7331,8 +7339,8 @@ A;\$ H
 A;\$$
 A;\$(M
 A;\$0H
-A;\$0t
 A;\$0tI
+A;\$4t
 A;\$8
 A;\$8|
 A;\$x|
@@ -8891,6 +8899,7 @@ ATSLcg0H
 ATSfA
 ATSt$@
 ATSt=H
+ATStA
 ATStRA
 ATSt_H
 ATSxGHc
@@ -8949,7 +8958,7 @@ AVAUATH
 AVAUATI
 AVAUATL
 AVAUATLc
-AVAUATLc%
+AVAUATLc%/.
 AVAUATM
 AVAUATS
 AVAUATS9G$H
@@ -9725,8 +9734,6 @@ C,xUH
 C-side of entity framework
 C./c_baseentity.h
 C.[A\A]A^]
-C0A9D$0
-C0A9D$0}
 C0HcS(H
 C0IcT$(H
 C0[A\A]A^]
@@ -9734,6 +9741,8 @@ C0[A\]
 C0t(H
 C1[A\A]A^]
 C333333
+C4A9D$4
+C4A9D$4}
 C4D+C0E
 C4[A\]
 C4tuH
@@ -11431,6 +11440,8 @@ CWorld
 CWristBone
 CXXABI_1.3
 CXXABI_1.3.3
+CX[A\A]A^]
+CX[A\]
 CXtUH
 C\f;E
 C_AI_BaseNPC
@@ -11696,7 +11707,7 @@ C_ViewmodelWeapon
 C_World
 C_fogplayerparams_t
 C`D98~qH
-C`H;=
+C`H;=F%
 C`[A\A]A^]
 C`[A\]
 C`f;E
@@ -11806,6 +11817,8 @@ CarouselNavIncrementSelectedIndex
 CarouselNavSetSelectedIndex
 CarouselTitle
 Castle Controller
+CasualIsLocked
+CasualLockedLabel
 Catmull-Rom
 Catmull-Rom (Norm X)
 Catmull-Rom (Norm)
@@ -12397,12 +12410,12 @@ D24X8_SHADOW
 D7	_Hc
 D70A9
 D8cUt
-D8hlt
+D8hpt
 D9#v%H
 D9.t%H
-D93ts
 D96t,H
 D9;t3I
+D9=u+u
 D9C ~JMc
 D9D$4B
 D9D$4H
@@ -12410,9 +12423,9 @@ D9G8u
 D9XXD
 D9` t"H
 D9` ~
+D9c H
 D9c ~<H
 D9c ~jH
-D9c(H
 D9c,t
 D9c8u
 D9c@}SM
@@ -12436,14 +12449,15 @@ D; tMH
 D;!ttHc
 D;"tIH
 D;$2tWL
-D;%*s
+D;%S_
+D;%z1
 D;'t3H
 D;'tXH
-D;-Vu
 D;.tLH
 D;0}zH
 D;1Lc
 D;3t 
+D;3t{
 D;3})M
 D;3}5
 D;8tQH
@@ -12452,16 +12466,14 @@ D;F`u
 D;K D
 D;K H
 D;` |
-D;a0t[H9
-D;a0u
 D;c D
 D;c tlH
 D;c u
 D;c |
 D;c(D
 D;c(|
+D;c0D
 D;c0}BH
-D;c8D
 D;c8}yH
 D;c@|
 D;cXD
@@ -12587,7 +12599,8 @@ DACEvaluateEndGame
 DACEventDataUpdated
 DACEventVirtualItemUnlocked
 DACFindOpponentStateChanged
-DACForceMobileUIChanged
+DACForceMobileLayoutChanged
+DACForceTouchInputChanged
 DACFriend
 DACFriendCategoryClicked
 DACFriendCodeClicked
@@ -12610,7 +12623,6 @@ DACHUDItemDisplay
 DACHUDLoseInput
 DACHUDRankDisplay
 DACHealthbars
-DACHeroDropdownChanged
 DACHeroTooltip
 DACHeropediaCreepsPage
 DACHeropediaHeroesByNamePage
@@ -12851,6 +12863,7 @@ DACSetPauseMode
 DACSetPlayerMuteStatus
 DACSetVSync
 DACSetVideoDefaults
+DACSetZooPage
 DACSettingsChanged
 DACSettingsCheckbox
 DACSettingsEnum
@@ -12944,8 +12957,8 @@ DACSwipePanel
 DACSwitchToDashboard
 DACSwitchToGame
 DACSynergyCapsule
-DACSynergyClick
 DACSynergyIcon
+DACSynergyIconActivate
 DACSynergyIconHideTooltip
 DACSynergyIconShowTooltip
 DACSynergyPanel
@@ -13319,6 +13332,9 @@ DetachFromParent
 Detected video config level %d
 Dev Challenge Op
 DevConsole
+DevItemImage
+DevItemListLabel
+DevItemOption
 DevMsg
 DevUniverse
 DevWarning
@@ -13618,6 +13634,7 @@ E0toI
 E3\$@x&D
 E3\$Px
 E49C4
+E8A9E u
 E9&~,I
 E9&~2M
 E9.t.A
@@ -13719,7 +13736,6 @@ E;|$8r
 E;}(t(I
 E;}X}4Ic
 E;~8}n
-E@A9E(u
 EAction
 EActionType
 EAddGem
@@ -15360,201 +15376,203 @@ H;0t*A
 H;0t+A
 H;0t0H
 H;0t\H
-H;5 <
-H;5(+
-H;5/R
-H;55j
-H;58!
-H;5@u
-H;5ES
-H;5H=
-H;5Ha
-H;5L5
-H;5Q(
-H;5XJ
-H;5`c
-H;5aD
-H;5aM
-H;5h-
-H;5ly
-H;5qY
-H;5rj
-H;5xm
-H;5|C
+H;5!q
+H;5!z
+H;5(Z
+H;5<p
+H;5?~
+H;5AD
+H;5AV
+H;5Ab
+H;5H`
+H;5L-
+H;5LO
+H;5Xl
+H;5\E
+H;5\W
+H;5aJ
+H;5a`
+H;5ho
+H;5q?
+H;5qu
+H;5yx
 H;7t"
 H;9u#
-H;=	+
-H;=	6`
-H;=	_
-H;= F
-H;= ~
-H;=!2
-H;="4
-H;="@
-H;="E
-H;="N
-H;="S
-H;="f
-H;=#!
-H;=#4
-H;=#6
-H;=#9
-H;=$X
-H;=$Y
-H;=$Z
-H;=$e
-H;=&:
-H;=&n
-H;='>
-H;='F
-H;='U
-H;='h
-H;=(7
-H;=(F
-H;=(K
-H;=(L
-H;=(Z
-H;=(g
-H;=({
-H;=)f
-H;=/$
-H;=0#
-H;=08
-H;=0w
-H;=1I
-H;=24
-H;=2Q
-H;=2X
-H;=34
-H;=3<
-H;=3B
-H;=5)
-H;=86
-H;=8=
-H;=8K
-H;=8Y
-H;=8f
-H;=8z
-H;=;I
-H;=;w
-H;=<0
-H;=<W
-H;=?u
-H;=@m
-H;=AF
-H;=Ao
-H;=B8
-H;=B=
-H;=B]
-H;=Bc
-H;=C5
-H;=C7
-H;=DN
-H;=DO
-H;=Ee
-H;=GE
-H;=GY
-H;=Gl
-H;=Gy
-H;=H5
-H;=HA
-H;=HJ
-H;=HX
-H;=Hd
-H;=I3
-H;=IF
-H;=I`
-H;=I}
+H;=	Q
+H;=	s
+H;= &`
+H;= 0
+H;="V
+H;="b
+H;="e
+H;="g
+H;="|
+H;=#-
+H;=#5
+H;=%6
+H;=&1
+H;=&^
+H;='t
+H;=(>
+H;=(H
+H;=(^
+H;=(s
+H;=)/
+H;=)P
+H;=*:
+H;=*y
+H;=,0
+H;=.	
+H;=/K
+H;=/j
+H;=0+`
+H;=12
+H;=1\
+H;=2d
+H;=2j
+H;=2|
+H;=3P
+H;=3S
+H;=3T
+H;=3_
+H;=3c
+H;=3q
+H;=3v
+H;=4V
+H;=6(
+H;=6,
+H;=6r
+H;=8:
+H;=8]
+H;=8n
+H;=8o
+H;=8r
+H;=8y
+H;=96
+H;=<F
+H;==6
+H;=?0
+H;=?2
+H;=?8
+H;=?`
+H;=@'`
+H;=@1
+H;=@2
+H;=@k
+H;=B(
+H;=B-
+H;=Bf
+H;=B~
+H;=C6
+H;=C_
+H;=Ch
+H;=F"
+H;=FE
+H;=Fb
+H;=Fg
+H;=GP
+H;=G|
+H;=H\
+H;=Hq
+H;=Hx
+H;=I0
+H;=IU
+H;=K_
 H;=K~
-H;=L/
-H;=L2
-H;=LI
-H;=L]
-H;=Lr
-H;=M)
-H;=NM
-H;=O.
-H;=O4
-H;=P$
-H;=P:
-H;=PA
-H;=Pg
-H;=R(
-H;=RF
-H;=RU
-H;=R_
-H;=Rh
-H;=S:
-H;=SC
-H;=SH
-H;=T\
-H;=T]
-H;=T^
-H;=Tn
-H;=W(
-H;=W5
-H;=WO
-H;=X4
-H;=X8
-H;=XI
-H;=XW
-H;=XY
-H;=Xc
-H;=YQ
-H;=ZF
-H;=\O
-H;=\}
-H;=](
-H;=_5
-H;=`Y
-H;=b$
-H;=c8
-H;=gR
-H;=h3
-H;=hH
-H;=hV
-H;=hX
-H;=hr
-H;=la
-H;=mX
-H;=nm
-H;=nu
-H;=o=
-H;=p%
-H;=pe
-H;=r6
-H;=rQ
-H;=rY
-H;=r\
-H;=r^
-H;=rl
-H;=rv
-H;=s&
-H;=sD
-H;=sI
-H;=tg
-H;=th
-H;=ti
-H;=t}
-H;=vE
-H;=vN
-H;=vy
-H;=v~
-H;=w9
-H;=wA
-H;=wQ
-H;=x2
-H;=xA
-H;=xG
-H;=xU
-H;=xW
-H;=xq
-H;=y@
-H;=yu
-H;=zY
-H;={:
-H;={P
-H;=}/
+H;=Ls
+H;=MT
+H;=MZ
+H;=Nm
+H;=OC
+H;=OU
+H;=Ob
+H;=P,`
+H;=P?
+H;=QS
+H;=R	
+H;=RO
+H;=Rr
+H;=Rt
+H;=Ru
+H;=S`
+H;=Sc
+H;=Sd
+H;=Sr
+H;=Sw
+H;=Wc
+H;=XM
+H;=X[
+H;=Xp
+H;=Xw
+H;=X{
+H;=X~
+H;=[/
+H;=[\
+H;=\,
+H;=\2
+H;=\:
+H;=],
+H;=]1
+H;=_R
+H;=`(`
+H;=`2
+H;=`;
+H;=`o
+H;=a(
+H;=b6
+H;=bU
+H;=b^
+H;=bq
+H;=c"
+H;=c7
+H;=cI
+H;=c`
+H;=ck
+H;=eE
+H;=er
+H;=f_
+H;=go
+H;=g{
+H;=g}
+H;=hL
+H;=hZ
+H;=hk
+H;=ho
+H;=hv
+H;=h}
+H;=h~
+H;=iH
+H;=iL
+H;=i`
+H;=m"
+H;=mD
+H;=mb
+H;=o2
+H;=oE
+H;=pr
+H;=qY
+H;=qg
+H;=r&
+H;=rP
+H;=rc
+H;=r|
+H;=sa
+H;=se
+H;=ss
+H;=sx
+H;=t(
+H;=vC
+H;=w	
+H;=wG
+H;=wM
+H;=x?
+H;=xK
+H;=xn
+H;=xu
+H;=x|
+H;=x}
+H;={U
+H;=|.
 H;C(t
 H;CPw<I
 H;G tOH
@@ -15708,6 +15726,7 @@ HasLoseStreak
 HasNoBenchUnits
 HasNoUnits
 HasOverflowMembers
+HasParty
 HasPartyInvites
 HasPlayerOpponent
 HasProfileRingItem
@@ -15724,7 +15743,7 @@ HasWinStreak
 HaticsType_Default
 HaticsType_None
 HaveActivePopups
-Hc5	F
+Hc5iu
 Hc@ H
 Hc@$H
 Hc@(E1
@@ -15774,6 +15793,7 @@ HcCHA
 HcCHH
 HcCP1
 HcCPH
+HcCPL
 HcCPM
 HcC`;Cdt4H
 HcCdA
@@ -15845,7 +15865,6 @@ HcS8;S<
 HcS8H
 HcSHL
 HcSPH
-HcSPL
 HcS`H
 HcSlH
 HcSxH
@@ -16119,8 +16138,8 @@ IcE$H
 IcE$Lct
 IcE(H
 IcE(I
+IcE8H
 IcE8I
-IcE8L
 IcEPI
 IcEhA;Ex
 IcEhI
@@ -16132,8 +16151,8 @@ IcF$LcL
 IcF,1
 IcF81
 IcF8A9
+IcF8H
 IcF8I
-IcFPI
 IcFPM
 IcFX9
 IcFx1
@@ -16148,6 +16167,7 @@ IcG8A9
 IcG8L
 IcGPA;G`
 IcGPH
+IcGPI
 IcGX9
 IcGh1
 IcGhA;Gx
@@ -16196,6 +16216,7 @@ IcT$8H
 IcT$8I
 IcT$@
 IcT$@A
+IcT$DH
 IcT$HI
 IcT$\H
 IcT$`I
@@ -16206,7 +16227,6 @@ IcU(L
 IcU0A;U4
 IcU0I
 IcU8H
-IcUDH
 IcUHI
 IcUxI
 IcV(E1
@@ -16558,6 +16578,8 @@ IsFinished
 IsHomeGame
 IsInvite
 IsKeyValueUsed
+IsLayoutLargeScreen
+IsLayoutSmallScreen
 IsLeftMember
 IsLoss
 IsMarkedForDeletion
@@ -16643,6 +16665,7 @@ ItemTest_CreateTestItemSet:  %s
 ItemTest_CreateTestItemSet:  ignored, item set %s already exists
 ItemTest_CreateTestItemSet:  ignored, test item set %s already exists
 ItemTier
+ItemTier%d
 ItemType
 ItemTypeAlliance
 ItemTypeDescKillEaterAlt
@@ -16768,8 +16791,8 @@ L9kHv
 L9|$HJ
 L: %.2f deg
 L;"t!f.
-L;%]g
-L;%w0
+L;%7]
+L;-A~
 L;0t!A
 L;0t?H9
 L;0t[A
@@ -16862,6 +16885,9 @@ LayoutPositionType_e
 Lc"D;b
 Lc#D;c
 Lc#fA
+Lc%	Q
+Lc%ZR
+Lc%q1
 Lc&D;f
 Lc&E)
 Lc'D;g
@@ -16891,9 +16917,9 @@ Lc[dA
 Lc`XD;`h
 Lcc D;c0I
 Lcc D;c0t2H
+Lcc I
 Lcc(D;c8D
 Lcc(D;c8ZYD
-Lcc(I
 Lcc0D;c@D
 Lcc8E;e
 Lcc8L
@@ -17059,7 +17085,6 @@ Logged off of Steam, set GC connection state to NO_STEAM
 Logged on to Steam, set GC connection state to GC_GOING_DOWN
 Logged on to Steam, set GC connection state to NO_SESSION
 Logged on to Steam, set GC connection state to STEAM_GOING_DOWN
-LoggedInElsewhereModal
 LoggingSystem_AddTagToChannel
 LoggingSystem_CurrentStateIndex
 LoggingSystem_GetChannel
@@ -18215,6 +18240,7 @@ OnGlowColorChanged
 OnHeropediaButtonResetPressed
 OnHeropediaToggleOwnedHeroes
 OnHeropediaToggleOwnedItems
+OnInCombatPreviewChanged
 OnInterpolationAmountChanged
 OnInterpolationFrameChanged
 OnLatchInterpolatedVariables
@@ -18506,6 +18532,7 @@ PadBackButtonUp
 Page %d
 Page%d
 Page0
+Page1
 PageDown
 PageManager
 PageManagerActivatedPage
@@ -18752,6 +18779,7 @@ PlayIndicator
 PlayPausedButton
 PlaySoundEffectIfPanelEnabled
 PlaySoundFromParticleEffectName played sound event "%s" from "%s" at time %f
+PlayVOLine
 PlaybackControls
 PlaybackProgress
 PlaybackSpeed
@@ -18900,6 +18928,7 @@ PrecacheDACClientInput_client
 PrecacheDACClientSimulation_client
 PrecacheDACGameRules_client
 PrecacheDACHUD_client
+PrecacheDACPostGame_client
 PrecacheDACShop_client
 PrecacheEffectBloodSpray_client
 PrecacheEffectBubbleTrail_client
@@ -18951,6 +18980,8 @@ PrintLinkedConsoleMessage
 Prints current volume of radius sounds
 Prints info about decals currently in the scene
 Priority changed from 
+PrivateIsLocked
+PrivateLockedLabel
 Probably failed to set object type (%d) on the server/client.
 ProbablyUnlocalizedText
 Process
@@ -19939,7 +19970,8 @@ Set Angular Velocity for VPHYS or normal object, from a vector of the axis of ro
 Set Integer Attribute
 Set Party Role
 Set Ready
-Set UI mode (0 = mobile, 1 = PC )
+Set UI Input Mode ( 0 = touch, 1 = cursor )
+Set UI Layout Mode ( 0 = mobile, 1 = PC )
 Set a think function on this entity.
 Set developer message level.
 Set focus to this panel.
@@ -20222,6 +20254,7 @@ Simple Cubic
 SimpleContextMenu
 Simplified_Chinese
 Simulate: %6.3f [ms]
+SimulateCombat
 Simulated
 Simulated GC communications failure is active.
 Simulated GC communications failure is not active.
@@ -21332,6 +21365,7 @@ UnitRankSwitch
 UnitShopBG%d
 UnitShopContainer
 UnitTestCycleOverlayRenderType
+UnitTier
 UnitToBenchBinder
 Unit_%d
 UnitsShop
@@ -21765,7 +21799,6 @@ W(H92tOA
 W(H;2t'H
 W(t>H
 W,:V,u
-W-G2R
 W0;V0H
 W0A;_H
 W3|Uxa
@@ -21941,9 +21974,8 @@ X0Hc@(L
 X360_DST16
 X360_DST24
 X360_DST24F
-X5<m\
+X5\p\
 X=2v?
-X=~@#
 X@tZH
 XD$ A
 XD$8A
@@ -21973,11 +22005,11 @@ X\$LM
 X\V@%
 X^'@d
 XboxSystemInterface001
-Y%<h#
-Y%B1U
-Y%Rj#
-Y%W6x
+Y%"5U
+Y%<s#
+Y%Ru#
 Y(Optional) Starting index to begin enumeration at. Defaults to the beginning of the list."Z
+Y5rVG
 YD$(A
 YD$DH
 YFPL9
@@ -22128,8 +22160,8 @@ Z}uU
 \$PASE
 \$PHc
 \$`Ic
-\%%tQ
 \%03o
+\-m=R
 \C not allowed in lookbehind assertion
 \C8E1
 \IcL$
@@ -22667,9 +22699,11 @@ _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/dac_clientcore.cp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/dac_clientinput.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/dac_healthbars.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/dac_network_client.cpp
+_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_db_page_postgame.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_hud.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_inventory.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_shop.cpp
+_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_vs_screen.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/renderingpipeline_dac_portrait.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac_viewrender.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../econ/tool_items/custom_texture_cache.cpp
@@ -24355,7 +24389,8 @@ dac_test_prop_animation
 dac_test_prop_animation: requires activity to trigger.
 dac_toggle_chat
 dac_toggle_scoreboard
-dac_ui_mode
+dac_ui_input_mode
+dac_ui_layout_mode
 dac_underlord
 dac_unitchatwheel_dead_zone_radius
 dac_unitchatwheel_outer_radius
@@ -24592,6 +24627,7 @@ disable_party_code
 disable_style_selector
 disableactivatepause
 disabled by parent
+disabledoubleclick
 disableifoutofrange
 disablenav
 disallowed Unicode code point (>= 0xd800 && <= 0xdfff)
@@ -24599,7 +24635,6 @@ disconnect_time
 disconnect_timer
 disconnected_time
 disconnections
-dismissed_combat_round
 displacements
 displayName
 displayWindow
@@ -25978,7 +26013,7 @@ hungarian
 hurt_me
 hurt_them
 h|D;-
-h|D;-.;
+h|D;-cF
 i < length_
 i >= 0
 i t!H
@@ -26206,6 +26241,7 @@ inventory_icon
 inventory_token
 inventory_updated
 invert_orientation
+invertminscalecalc
 invisible
 invite_account_id
 invite_sent
@@ -26497,7 +26533,6 @@ justify_horizontal
 justify_vertical
 k D;(
 k D;(~
-k t	E
 k!s4L
 k0D;(~
 k0D;k@A
@@ -29985,6 +30020,7 @@ maximumDistanceFromLine
 maxlogexposure
 maxmana
 maxpips
+maxscale
 maxspeedfactor
 maxtoastbehavior
 maxtoastsvisible
@@ -30090,6 +30126,8 @@ mmnnmmnnnmmnn
 mmr_leaderboard
 mmr_level_partial_progress
 mmr_level_score
+mmr_level_score_max_gain
+mmr_level_score_max_loss
 moccasin
 mod_enable
 model
@@ -30400,23 +30438,20 @@ numeric
 numericpassword
 numperpage
 numsegments
-o ATI
 o ATL
 o ATSH
 o$ATL
 o$ATSH
-o%	7)
-o%)9)
-o%8B)
-o%I;)
-o%OD)
-o%_=)
-o%y4)
+o%	B)
+o%)D)
+o%8M)
+o%IF)
+o%OO)
+o%_H)
+o%y?)
 o(ATL
 o(ATSH
 o*Ral
-o-U{>
-o-_|>
 o0ATL
 o0E;o@
 o8ATL
@@ -30653,6 +30688,7 @@ pHY^t,L
 pH_AXt,L
 pIcD$
 pMessage
+pPlayerState && pOpponentState
 pWorldObject
 pXfA9
 p[A\A]A^A_]
@@ -30874,6 +30910,20 @@ particles/ui/end_of_round/victory/eor_victory.vpcf
 particles/ui/end_of_round/victory/eor_victory_hero.vpcf
 particles/ui/end_of_round/victory/eor_victory_proj.vpcf
 particles/ui/items/generic/ui_item_assign.vpcf
+particles/ui/postgame/rank_down%d.vpcf
+particles/ui/postgame/rank_down.vpcf
+particles/ui/postgame/rank_down1.vpcf
+particles/ui/postgame/rank_down2.vpcf
+particles/ui/postgame/rank_down3.vpcf
+particles/ui/postgame/rank_down4.vpcf
+particles/ui/postgame/rank_down5.vpcf
+particles/ui/postgame/rank_up%d.vpcf
+particles/ui/postgame/rank_up.vpcf
+particles/ui/postgame/rank_up1.vpcf
+particles/ui/postgame/rank_up2.vpcf
+particles/ui/postgame/rank_up3.vpcf
+particles/ui/postgame/rank_up4.vpcf
+particles/ui/postgame/rank_up5.vpcf
 particles/ui/selection/board_placement.vpcf
 particles/ui/selection/board_placement_hover.vpcf
 particles/ui/selection/board_placement_overfill.vpcf
@@ -31868,31 +31918,35 @@ rumble
 runcommand:%04d,tick:%u
 russian
 s H;5
-s H;5 5
+s H;5 X
 s H;5!
-s H;5!y
-s H;51
-s H;5<
+s H;5(
+s H;50
+s H;50N
+s H;54
 s H;5@
-s H;5Aq
-s H;5Q
-s H;5Q*
-s H;5X
-s H;5`+
-s H;5a
+s H;5A
+s H;5A^
+s H;5D
+s H;5PZ
+s H;5Pj
+s H;5d
 s H;5h
-s H;5p!
-s H;5pu
-s H;5tv
+s H;5q
+s H;5|
+s H;5|w
 s off
 s(AUH
 s(E9&t-A
 s(H;5
-s(H;5 
-s(H;5(@
-s(H;58
-s(H;5m
-s(H;5q
+s(H;5-	
+s(H;50
+s(H;51
+s(H;5P
+s(H;5Q
+s(H;5d
+s(H;5e
+s(H;5l
 s(t.H
 s)Hc@
 s)~+@
@@ -31900,46 +31954,50 @@ s,+s(
 s/glow.vH
 s/spriteH
 s0H;5
-s0H;5(
 s0H;5,
 s0H;58
-s0H;5X
-s0H;5X@
-s0H;5\x
-s0H;5l
-s0H;5xf
+s0H;5O"
+s0H;5e	
+s0H;5l7
+s0H;5p;
+s0H;5q
 s1_mapname
 s2r://
 s69F~
 s7>Ip
 s8D;kP
 s8H;5
-s8H;5Q
+s8H;5(
+s8H;5@
+s8H;5A
+s8H;5Hm
 s8H;5h
 s8Lcm
 s@+dev_simulate_gcdown
 s@9C@
 s@H9sHv
 s@H;5
-s@H;50^
-s@H;5<
-s@H;5Q
-s@H;5lA
+s@H;5,n
+s@H;5`
 s@HcR
 sHH;5
-sHH;5O
-sHH;5_'
-sHH;5d^
-sHH;5m
-sHH;5x~
+sHH;5$
+sHH;5-
+sHH;58
+sHH;5XC
+sHH;5oH
+sHH;5u
 sIHcB
 sIf true, then files must have all the tags specified.  If false, then must have at least one of the tags specified.
 sMA9|$ 
 sPH;5
-sPH;5h
-sPH;5x&
+sPH;5(%
+sPH;58S
+sPH;5H
+sPH;5b
 sXH;5
-sXH;58
+sXH;5!%
+sXH;5x
 sZHc@
 sZtTH
 s_EntComponentInfo
@@ -31956,7 +32014,9 @@ s_kDynamicValuesArraySize
 s_nLatchPermissions
 s_nWatchTransmitEntity
 s`H;5
-s`H;5(i
+s`H;5@
+s`H;5p
+s`H;5t
 saddlebrown
 safe-area-inset-bottom
 safe-area-inset-left
@@ -32202,8 +32262,7 @@ severity
 sfixed32
 sfixed64
 shH;5
-shH;5Xi
-shH;5mh
+shH;5-
 shMcuX
 shadowcascadecount
 shadowcascadedistance%d
@@ -32371,6 +32430,7 @@ soid_id
 solid 
 sortPriority
 sortmethod
+sortname
 sos_debug_emit
 sound-out
 sound/combined/%s/%s%s.wav
@@ -32417,7 +32477,7 @@ source_folder
 source_player_slot
 source_reference_id
 spH;5
-spH;5=i
+spH;5H
 space
 space shuttle
 spacerperiod
@@ -32665,6 +32725,7 @@ stretch-to-fit-y-preserve-aspect
 stretchx
 stretchy
 strftime
+strictclamptranslation
 strikeout
 string
 string differs (net %s pred %s)
@@ -32821,7 +32882,8 @@ svgstrokewidth
 swedish
 swift_prefix
 sxH;5
-sxH;5ui
+sxH;55
+sxH;5x
 sxt!H
 symbol
 symbols
@@ -32859,17 +32921,15 @@ t!IcE
 t!IcN 
 t";2}
 t"D;1H
-t"H;=k
-t"H;={u
+t"H;=+
+t"H;=;
 t"HcS
 t"L;%
-t"L;%Hp
-t"L;%I
-t"L;%YH
-t"L;%yj
+t"L;%	
+t"L;%9
 t#;:u
-t#HcK 
 t#IcD$
+t#Lce
 t#[A\A]A^]
 t#[A\]
 t$	E1
@@ -32914,22 +32974,23 @@ t$`H9
 t$hH9
 t$pH9
 t$pvufA
+t%;5&A
 t%HcC0A
 t%HcSx
 t%Icv 
 t%L;}
 t%Lc;D;{
 t&L;%
-t&L;%(
-t&L;%Hm
-t&L;%V
-t&L;%x
+t&L;%8
+t&L;%Hu
+t&L;%h
 t&Lcc
 t'A9\$H
 t'A;\$
 t'H;=
 t'Ic_
 t'Lc#D;c
+t'Lce
 t(<)u
 t(D9m
 t(D;%
@@ -32940,10 +33001,9 @@ t)@:5
 t)D;-
 t)HcE
 t)IcD$8
-t)Lcu
 t)Mc<$E;|$
 t)[A\]
-t*D:=!'
+t*D:=
 t*HcHPH
 t*HcJPH
 t*Mc<$E;|$
@@ -32958,7 +33018,7 @@ t-[A\A]A^]
 t-[A\A]]
 t-rex
 t.D9=
-t.D:%}
+t.D:%
 t.H9P
 t.HcC H
 t.HcC(H
@@ -33145,6 +33205,7 @@ t;[A\]
 t=[A\]
 t>M.F9
 t>[A\]
+t@;5Ezo
 t@Ic_
 t@L;}
 t@Lc#D;c
@@ -33361,7 +33422,6 @@ tkHcS8
 tkrYU
 tlIcD$
 tm#C,
-tm;5Fko
 tmHcO
 tm~zL
 tnHcM
@@ -33523,9 +33583,7 @@ type_field
 type_id
 type_instances
 type_value
-tz;5>ko
 tzHcVPH
-t{95Bko
 t{E;l$
 t{UE1
 t{riU
@@ -33598,7 +33656,7 @@ uPHcA
 uQ[A\]
 uR[A\]
 uSA	\$
-uSH;5{F
+uSH;5{T
 uS[A\]
 uV[A\]
 uW[A\]
@@ -34395,14 +34453,14 @@ x	;CH
 x	;F`
 x	IcE H9
 x = %i, y = %i, w = %i h = %i text %s
-x H;=Zf
+x H;=zq
 x axis
 x#Hcw
 x$E9|$$
 x$HcSh;Sx
 x("tU
 x(9~(@
-x(H;=
+x(H;=5q
 x*;XZ
 x+A9T$h~$H
 x,E9|$,
@@ -34410,7 +34468,7 @@ x09~0t@@
 x0;wH}+Hc
 x0H;=
 x0tNH
-x2D;%(9
+x2D;%(G
 x2t#I
 x49~4
 x4A9WH~.H
@@ -34577,9 +34635,9 @@ zyuwI
 z|uzf
 z}u{L
 { H;=
-{ H;=2
-{ H;=Il
-{ H;=r
+{ H;=B
+{ H;=Y
+{ H;=y|
 { t9I
 { t:I
 { u7H
@@ -34733,7 +34791,7 @@ z}u{L
 ~ A\A]A^A_]
 ~ XZH
 ~!HcE
-~"D;%
+~"D;%&8
 ~$D9e
 ~(};Hc
 ~)H;7I

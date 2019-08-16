@@ -33,7 +33,9 @@
 	"DAC_MatchTypeNameRankedLocked1"					"Для розблокування потрібно зіграти ще кілька звичайних матчів: {i:games_needed_to_unlock_ranked}"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Для розблокування потрібно зіграти ще кілька звичайних матчів: {i:games_needed_to_unlock_ranked}"
 	"DAC_MatchTypeName1"								"Самітна гра"
+	"DAC_MatchTypeName1_Party"							"Приватне лобі"
 	"DAC_MatchTypeName2"								"Навчання"
+	"DAC_DBHome_Play_Party"								"Груповий матч"
 	"DAC_ComingSoon"									"Незабаром"
 
 	"DAC_DBHome_Mobile_Play"							"Грати"
@@ -559,7 +561,7 @@
 	"dac_item_maelstrom_lore"							"Ніхто не може контролювати погоду… але її можна легенько підштовхнути. — <i>Зенок, скупник краденого з Білого Шпиля</i>"
 	
 	"dac_item_refresher_orb"							"Сфера відновлення"
-	"dac_item_refresher_orb_desc"						"Оновлює всі зарядки та відновлює 50 мани після застосування здібності (один раз за бій)."
+	"dac_item_refresher_orb_desc"						"Після чаклування здібності оновлює герою всі зарядки та відновлює {d:mana_restored}. Додатково всім союзникам у радіусі {d:refresh_radius} зменшує час зарядки на {d:ally_cooldown_multiplier}% і відновлює {d:ally_mana_restored} мани (один раз за бій)."
 	"dac_item_refresher_orb_lore"						"Не раз бачив, як ця штука змінює хід бою. — <i>Зенок, скупник краденого з Білого Шпиля</i>"
 	
 	"dac_item_heart_of_tarrasque"						"Серце Тараска"
@@ -1055,7 +1057,7 @@
 	"dac_dev_hero_2_keywords"		"{s:hero_name} ({s:synergy_1} {s:synergy_2})"
 	"dac_dev_hero_3_keywords"		"{s:hero_name} ({s:synergy_1} {s:synergy_2} {s:synergy_3})"
 
-	"dac_dev_item"					"{s:item_name} ({s:item_type})"
+	"dac_dev_item"					"{s:item_name} {s:item_type}"
 	"dac_dev_item_offensive"		"Наступ"
 	"dac_dev_item_defensive"		"Захист"
 	"dac_dev_item_support"			"Підтримка"
@@ -1063,6 +1065,8 @@
 	"dac_dev_item_global"			"Глобальний"
 	"dac_dev_item_alliance"			"Альянс"
 	"dac_dev_item_type"				"Тип предмета"
+
+	"dac_dev_item_menu_global"		"( Global )"
 
 	"dac_chart_type_dps"			"Шкода за секунду"
 	"dac_chart_type_damagedealt"	"Шкода"
@@ -1147,9 +1151,9 @@
 	"DAC_Synergy_Desc_Beast_2"		"Союзники отримують +{s:damage_pct}% до шкоди від атак."
 	"DAC_Synergy_Desc_Beast_3"		"Союзники отримують +{s:damage_pct}% до шкоди від атак."
 
-	"DAC_Synergy_Desc_Savage_1"		"Атаки диких завдають щосекунди {s:dot_damage} шкоди від кровотечі протягом {s:dot_duration} с. Цей ефект накопичується. Тривалість скидається з кожною атакою."
-	"DAC_Synergy_Desc_Savage_2"		"Атаки диких завдають щосекунди {s:dot_damage} шкоди від кровотечі протягом {s:dot_duration} с. Цей ефект накопичується. Тривалість скидається з кожною атакою."
-	"DAC_Synergy_Desc_Savage_3"		"Атаки диких завдають щосекунди {s:dot_damage} шкоди від кровотечі протягом {s:dot_duration} с. Цей ефект накопичується. Тривалість скидається з кожною атакою."
+	"DAC_Synergy_Desc_Savage_1"		"Атаки диких завдають щосекунди {s:dot_damage} шкоди від кровотечі протягом {s:dot_duration} с. Тривалість скидається з кожною атакою."
+	"DAC_Synergy_Desc_Savage_2"		"Атаки диких завдають щосекунди {s:dot_damage} шкоди від кровотечі протягом {s:dot_duration} с. Тривалість скидається з кожною атакою."
+	"DAC_Synergy_Desc_Savage_3"		"Атаки диких завдають щосекунди {s:dot_damage} шкоди від кровотечі протягом {s:dot_duration} с. Тривалість скидається з кожною атакою."
 
 	"DAC_Synergy_Desc_Demon_1"		"Усі демони отримують +{s:damage_bonus_pct}% до абсолютної шкоди. Діє, коли на полі є лише один тип демонів."
 
@@ -1248,6 +1252,7 @@
 	"DAC_Chat_BadRun"			"Майте милосердя!"
 
 	"DAC_BotDifficulty_Title"	"САМІТНА ГРА"
+	"DAC_PartyBotDifficulty_Title"	"ПРИВАТНЕ ЛОБІ"
 	"DAC_BotDifficulty_Desc"    "Оберіть складність ботів"
 	"DAC_BotDifficultyName0"	"Легкі"
 	"DAC_BotDifficultyName1"	"Середні"
@@ -1540,10 +1545,13 @@
 	"dac_settings_camera_pitch"					"Кут камери (стандартно: 65)"
 	"dac_settings_camera_distance"				"Відстань камери (стандартно: 860)"
 
-	"dac_settings_ui_mode"						"Режим інтерфейсу"
-	"dac_settings_ui_config_mobile"				"Мобільний"
-	"dac_settings_ui_config_pc"					"Комп’ютер"
-	
+	"dac_settings_layout_mode"					"Interface Layout"
+	"dac_settings_layout_config_mobile"			"Маленький екран"
+	"dac_settings_layout_config_pc"				"Великий екран"
+	"dac_settings_input_mode"					"Режим введення"
+	"dac_settings_input_config_touch"			"Дотик"
+	"dac_settings_input_config_cursor"			"Вказівник"
+
 	"dac_settings_steam"						"Steam"
 	"dac_settings_synergies_hide_partial"		"Приховувати неповні альянси під час бою."
 	"dac_settings_enable_haptics"				"Увімкнути вібровідклик"
@@ -1682,6 +1690,7 @@
 	"DAC_LookingForMatch_Desc"					"Пошук гравців"
 
 	"DAC_SelectMatchType_Title"					"Вибір режиму"
+	"DAC_PartySelectMatchType_Title"			"Груповий матч"
 	"DOTA_Select_Description"                   "Як ви хочете зіграти?"
 
 	"DAC_FirstGameTutorial_Title"				"Навчальний матч"
@@ -1923,4 +1932,28 @@
 	"DAC_AchievementTitle_Missing" 					"Заголовок відсутній"
 	"DAC_AchievementDesc_Missing" 					"Опис відсутній"
 
+	"ECanMatchMake_Friendly_0"				"Дійсно"
+	"ECanMatchMake_Friendly_1"				"Не всі гравці готові"
+	"ECanMatchMake_Friendly_2"				"Замало гравців"
+	"ECanMatchMake_Friendly_3"				"Забагато глядачів"
+	"ECanMatchMake_Friendly_4"				"Хибні версії"
+	"ECanMatchMake_Friendly_5"				"Версії не збігаються"
+	"ECanMatchMake_Friendly_6"				"Не всі гравці розблокували рейтинговий режим"
+	"ECanMatchMake_Friendly_7"				"Групи не можуть шукати подібні матчі"
+
+	"dac_zoo_page1"			"Page 1"
+	"dac_zoo_page2"			"Buttons"
+	"dac_zoo_page3"			"Page 3"
+	"dac_zoo_page4"			"Page 4"
+	"dac_zoo_page5"			"Map Scroll"
+	"dac_zoo_page_divider"	"/"
+
+	"dac_zoo_page5_title"	"This is where the Map will be"
+
+	"dac_zoo_temptext"			"Lorem ipsum"
+	"dac_zoo_temptextlong"		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	"dac_zoo_textheader"		"TextHeader"	
+	"dac_zoo_texttitle"			"TextTitle"	
+	"dac_zoo_textsubtitle"		"TextSubTitle"	
+	
 }

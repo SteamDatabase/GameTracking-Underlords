@@ -301,19 +301,26 @@
               <Panel id="SteamOfflineSettingsSection">
                 <DACSettingsCheckbox convar="dac_force_panorama_login" text="#dac_settings_use_panorama_login" />
               </Panel>
-
+              <Button id="PrivacyPolicy" class="ButtonBevel" onactivate="ExternalBrowserGoToURL( 'https://store.steampowered.com/privacy_agreement/' )" >
+                <Label text="#dac_Privacy_Policy" />
+              </Button>
               <DACSettingsCheckbox class="SteamFeatures" convar="dac_invisible_mode" text="#DAC_InvisibleMode" />
 
               <Panel class="SectionHeaderLine"/>
               <Label text="#dac_settings_options" class="SectionHeader" />
               <!-- <Panel class="SectionHeaderLine"/> -->
                <Panel class="TopBottomFlow">
-                  <Label class="SubTitle" text="#dac_settings_ui_mode" />
-                  <DACSettingsEnumDropDown id="UIModeConfig" convar="dac_ui_mode">
-                    <Label text="#dac_settings_ui_config_mobile" id="mobile"  value="0" />
-                    <Label text="#dac_settings_ui_config_pc" id="pc"   value="1" />
+                  <Label class="SubTitle" text="#dac_settings_layout_mode" />
+                  <DACSettingsEnumDropDown id="UILayoutConfig" convar="dac_ui_layout_mode">
+                    <Label text="#dac_settings_layout_config_mobile" id="mobile"  value="0" />
+                    <Label text="#dac_settings_layout_config_pc" id="pc"   value="1" />
                   </DACSettingsEnumDropDown>
-                </Panel>
+                 <Label class="SubTitle" text="#dac_settings_input_mode" />
+                 <DACSettingsEnumDropDown id="UIModeConfig" convar="dac_ui_input_mode">
+                   <Label text="#dac_settings_input_config_touch" id="mobile"  value="0" />
+                   <Label text="#dac_settings_input_config_cursor" id="pc"   value="1" />
+                 </DACSettingsEnumDropDown>
+               </Panel>
               <DACSettingsCheckbox class="GameSettingsPadding" id="BatterySaver" convar="battery_saver" text="#dac_settings_battery_saver" onactivate="DACToggleBatterySaver()" />
               <DACSettingsCheckbox class="GameSettingsPadding" convar="dac_synergies_hide_partial_in_combat" text="#dac_settings_synergies_hide_partial" />
               <DACSettingsCheckbox class="GameSettingsPadding ChatSettings" convar="dac_chat_allow_custom_messages" text="#dac_settings_chat_allow_custom_messages" />
@@ -386,6 +393,9 @@
 			</RadioButton>
 			<Label class="SettingsTabSeparator"	text="/" />
       -->
+      <RadioButton id="GameTabButton" class="SettingsNavBarButton" group="SettingsTopMenu" onactivate="DACSetActiveTab( 6 ); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsTabActivate' )" >
+        <Label text="#dac_settings_game" />
+      </RadioButton>
       <RadioButton id="VideoTabButton" class="SettingsNavBarButton" group="SettingsTopMenu" onactivate="DACSetActiveTab( 2 ); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsTabActivate' )" >
         <Label text="#dac_settings_video" />
       </RadioButton>
@@ -394,19 +404,14 @@
         <Label text="#dac_settings_audio" />
       </RadioButton>
       <!-- <Label id="GameTabSeparator" class="SettingsTabSeparator" text="/" /> -->
-      <RadioButton id="GameTabButton" class="SettingsNavBarButton" group="SettingsTopMenu" onactivate="DACSetActiveTab( 6 ); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsTabActivate' )" >
-        <Label text="#dac_settings_game" />
-      </RadioButton>
       <RadioButton id="LanguageTabButton" class="SettingsNavBarButton" group="SettingsTopMenu" onactivate="DACSetActiveTab( 7 ); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsTabActivate' )" >
         <Label text="#dac_settings_tab_language" />
       </RadioButton>
       <RadioButton id="HotkeysTabButton" class="SettingsNavBarButton" group="SettingsTopMenu" onactivate="DACSetActiveTab( 0 ); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsTabActivate' )">
         <Label text="#dac_settings_hotkeys" />
       </RadioButton>
-       <Panel class="SettingsTabFiller" />
-      <Button id="PrivacyPolicy" class="ButtonBevel" onactivate="ExternalBrowserGoToURL( 'https://store.steampowered.com/privacy_agreement/' )" >
-        <Label text="#dac_Privacy_Policy" />
-      </Button>
+
+      <Panel class="SettingsTabFiller" />
 
 			<RadioButton id="BuildVersion" class="SettingsNavBarButton" group="SettingsTopMenu" onactivate="DACSetActiveTab( 5 ); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsTabActivate' )" >
 				<Label text="#dac_settings_build_version" />
@@ -414,6 +419,7 @@
       <RadioButton id="AboutTabButton" class="SettingsNavBarButton" group="SettingsTopMenu" onactivate="DACSetActiveTab( 4 ); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsTabActivate' )" >
         <Label text="#dac_settings_about" />
       </RadioButton>
+      <Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
 
     </Panel>
 

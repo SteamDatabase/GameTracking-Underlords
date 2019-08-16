@@ -33,7 +33,9 @@
 	"DAC_MatchTypeNameRankedLocked1"					"Chơi {i:games_needed_to_unlock_ranked} trận thông thường để mở khóa"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Chơi {i:games_needed_to_unlock_ranked} trận thông thường để mở khóa"
 	"DAC_MatchTypeName1"								"Đơn / Máy"
+	"DAC_MatchTypeName1_Party"							"Phòng riêng"
 	"DAC_MatchTypeName2"								"Hướng dẫn"
+	"DAC_DBHome_Play_Party"								"Trận đấu nhóm"
 	"DAC_ComingSoon"									"Sắp ra mắt"
 
 	"DAC_DBHome_Mobile_Play"							"Chơi"
@@ -559,7 +561,7 @@
 	"dac_item_maelstrom_lore"							"Không ai có thể hô phong hoán vũ... nhưng lập đàn cầu mưa thì chắc là được. - <i>Zenok, Gian thương vùng White Spire</i>"
 	
 	"dac_item_refresher_orb"							"Ngọc Hồi Chiêu"
-	"dac_item_refresher_orb_desc"						"Sau khi dùng một kỹ năng, kích hoạt sẽ xóa toàn bộ thời gian hồi chiêu và hồi phục 50 mana. (một lần mỗi hiệp)"
+	"dac_item_refresher_orb_desc"						"Sau khi dùng một kỹ năng, lập tức xóa toàn bộ thời gian hồi chiêu và hồi phục {d:mana_restored} mana cho tướng được trang bị. Thêm vào đó, giảm thời gian hồi chiêu còn lại trên đồng minh trong phạm vi {d:refresh_radius} ô đi {d:ally_cooldown_multiplier}% và hồi {d:ally_mana_restored} mana cho họ. (một lần mỗi hiệp)"
 	"dac_item_refresher_orb_lore"						"Tui từng thấy món này xoay chuyển cục diện nhiều trận chiến. - <i>Zenok, Gian thương vùng White Spire</i>"
 	
 	"dac_item_heart_of_tarrasque"						"Trái Tim Tarrasque"
@@ -1055,7 +1057,7 @@
 	"dac_dev_hero_2_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} )"
 	"dac_dev_hero_3_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} {s:synergy_3} )"
 
-	"dac_dev_item"					"{s:item_name} ( {s:item_type} )"
+	"dac_dev_item"					"{s:item_name} {s:item_type}"
 	"dac_dev_item_offensive"		"Công"
 	"dac_dev_item_defensive"		"Thủ"
 	"dac_dev_item_support"			"Hỗ trợ"
@@ -1063,6 +1065,8 @@
 	"dac_dev_item_global"			"Chung"
 	"dac_dev_item_alliance"			"Liên minh"
 	"dac_dev_item_type"				"Loại vật phẩm"
+
+	"dac_dev_item_menu_global"		"( Chung )"
 
 	"dac_chart_type_dps"			"DPS"
 	"dac_chart_type_damagedealt"	"Sát thương gây ra"
@@ -1248,6 +1252,7 @@
 	"DAC_Chat_BadRun"			"Xin đại ca tha mạng!"
 
 	"DAC_BotDifficulty_Title"	"TRẬN ĐẤU ĐƠN"
+	"DAC_PartyBotDifficulty_Title"	"TRẬN ĐẤU RIÊNG"
 	"DAC_BotDifficulty_Desc"    "Chọn độ khó máy"
 	"DAC_BotDifficultyName0"	"Dễ"
 	"DAC_BotDifficultyName1"	"Thường"
@@ -1540,10 +1545,13 @@
 	"dac_settings_camera_pitch"					"Góc camera (Mặc định: 65)"
 	"dac_settings_camera_distance"				"Khoảng cách camera (Mặc định: 860)"
 
-	"dac_settings_ui_mode"						"Chế độ giao diện"
-	"dac_settings_ui_config_mobile"				"Điện thoại"
-	"dac_settings_ui_config_pc"					"Máy tính (PC)"
-	
+	"dac_settings_layout_mode"					"Thiết kế giao diện"
+	"dac_settings_layout_config_mobile"			"Màn hình nhỏ"
+	"dac_settings_layout_config_pc"				"Màn hình lớn"
+	"dac_settings_input_mode"					"Chế độ đầu vào"
+	"dac_settings_input_config_touch"			"Chạm"
+	"dac_settings_input_config_cursor"			"Con trỏ"
+
 	"dac_settings_steam"						"Steam"
 	"dac_settings_synergies_hide_partial"		"Ẩn Liên Minh chưa hoàn thiện khi giao chiến."
 	"dac_settings_enable_haptics"				"Bật/tắt rung phản hồi"
@@ -1682,6 +1690,7 @@
 	"DAC_LookingForMatch_Desc"					"Tìm người cùng chơi"
 
 	"DAC_SelectMatchType_Title"					"Chọn chế độ"
+	"DAC_PartySelectMatchType_Title"			"Trận đấu nhóm"
 	"DOTA_Select_Description"                   "Bạn muốn chơi thế nào?"
 
 	"DAC_FirstGameTutorial_Title"				"Trận đấu tập"
@@ -1923,4 +1932,28 @@
 	"DAC_AchievementTitle_Missing" 					"Thiếu tên gọi"
 	"DAC_AchievementDesc_Missing" 					"Thiếu mô tả"
 
+	"ECanMatchMake_Friendly_0"				"Hợp lệ"
+	"ECanMatchMake_Friendly_1"				"Người chơi chưa sẵn sàng hết"
+	"ECanMatchMake_Friendly_2"				"Quá ít người chơi"
+	"ECanMatchMake_Friendly_3"				"Quá nhiều khán giả"
+	"ECanMatchMake_Friendly_4"				"Phiên bản không hợp lệ"
+	"ECanMatchMake_Friendly_5"				"Phiên bản sai lệch"
+	"ECanMatchMake_Friendly_6"				"Có người chơi chưa mở khóa Đấu xếp hạng"
+	"ECanMatchMake_Friendly_7"				"Nhóm không thể tìm trận ở chế độ đấu này"
+
+	"dac_zoo_page1"			"Trang 1"
+	"dac_zoo_page2"			"Buttons"
+	"dac_zoo_page3"			"Trang 3"
+	"dac_zoo_page4"			"Trang 4"
+	"dac_zoo_page5"			"Map Scroll"
+	"dac_zoo_page_divider"	"/"
+
+	"dac_zoo_page5_title"	"This is where the Map will be"
+
+	"dac_zoo_temptext"			"Lorem ipsum"
+	"dac_zoo_temptextlong"		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	"dac_zoo_textheader"		"TextHeader"	
+	"dac_zoo_texttitle"			"TextTitle"	
+	"dac_zoo_textsubtitle"		"TextSubTitle"	
+	
 }

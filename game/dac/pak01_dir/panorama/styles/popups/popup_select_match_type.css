@@ -29,35 +29,31 @@ PopupSelectMatchType
 	vertical-align: center;
 }
 
-.Title
+#PopupSelectMatchType .TextTitle
 {
-	margin-top: 20px;
-	horizontal-align: center;
-	color: uiLightGrey;
-	font-size: 80px;
-	font-weight: black;
-	color: black;
-	text-transform: uppercase;
 	transform: rotatez(-2deg);
-	background-color: #ffffff;
-	padding: 0px 30px 0px;
+	margin-top: 25px;
+	horizontal-align: center;
 	margin-bottom: 30px;
-	box-shadow: 0px 0px 3px #ffffff;
 }
 
-.SubTitle
+.SoloMatchTitle,
+.HasParty .PartyMatchTitle
 {
-	horizontal-align: center;
-	color: #ffffff;
-	font-size: 30px;
-	font-weight: bold;
-	text-transform: uppercase;
+	visibility: visible;
+}
+
+.PartyMatchTitle,
+.HasParty .SoloMatchTitle
+{
+	visibility: collapse;
+}
+
+#PopupSelectMatchType .TextSubTitle.SelectModeSubTitle
+{
 	transform: rotatez(-2deg);
-	background-color: #000000;
-	padding: 0px 30px;
-	letter-spacing: 2px;
+	horizontal-align: center;
 	margin-top: -38px;
-	box-shadow: 0px 0px 3px #000000;
 }
 
 #MatchTypeContainer
@@ -156,19 +152,31 @@ PopupSelectMatchType
 	/*text-shadow: 0px 0px 0px 2 black;*/
 }
 
-.TutorialLabel {
-	transform: rotateZ(4deg) translateY(-50px);
+#MatchTypeContainer .TextSubTitle
+{
+	text-align: center;
+	width: 100%;
+	margin-top: 10px;
+	height: 90px;
 }
 
-.BotsLabel {
+.TutorialLabel 
+{
+	transform: rotateZ(3deg) translateY(-50px);
+}
+
+.BotsLabel 
+{
 	transform: rotateZ(-3deg) translateY(-50px);
 }
 
-.MultiplayerLabel {
-	transform: rotateZ(-4deg) translateY(-50px);
+.MultiplayerLabel 
+{
+	transform: rotateZ(-3deg) translateY(-50px);
 }
 
-#Ranked .MultiplayerLabel {
+#Ranked .MultiplayerLabel 
+{
 	transform: rotateZ(2deg) translateY(-50px);
 }
 
@@ -177,11 +185,27 @@ PopupSelectMatchType
 	//brightness: 1;
 }
 
+.InParty #Tutorial {
+	visibility: collapse;
+}
+
+.InParty #Bots {
+	visibility: collapse;
+}
+
+#Private {
+	visibility: collapse;
+}
+
+.InParty #Private {
+	visibility: visible;
+}
+
 
 .ModeSelectCancelButton
 {
-	width: 300px;
-	height: 80px;
+	//width: 300px;
+	//height: 80px;
 }
 
 
@@ -189,6 +213,7 @@ PopupSelectMatchType
 #Casual .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_multiplayer_psd.vtex"); }
 #Ranked .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_ranked_locked_psd.vtex"); }
 #Bots .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_botmatch_psd.vtex"); }
+#Private .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_botmatch_psd.vtex"); }
 #Tutorial .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_tutorial_psd.vtex"); }
 
 .RankedIsLocked #Ranked .MatchTypeImage
@@ -203,8 +228,30 @@ PopupSelectMatchType
     brightness: 1;
 }
 
+.CasualIsLocked #Casual .MatchTypeImage
+{
+    saturation: .5;
+    opacity: .3;
+}
 
-#RankedLockedLabel
+.CasualIsLocked #Casual .MatchTypeImage:hover
+{
+    brightness: 1;
+}
+
+.PrivateIsLocked #Private .MatchTypeImage
+{
+    saturation: .5;
+    opacity: .3;
+}
+
+.PrivateIsLocked #Private .MatchTypeImage:hover
+{
+    brightness: 1;
+}
+
+
+#RankedLockedLabel, #CasualLockedLabel, #PrivateLockedLabel
 {
 	visibility: collapse;
 	color: #8588a0;
@@ -213,13 +260,24 @@ PopupSelectMatchType
 	font-size: 28px;
 	text-align: center;
 	horizontal-align: center;
-	margin-top: 4px;
+	margin-top: -250px;
+	background-color: #000;
 	width: 330px;
 	line-height: 28px;
 	margin-bottom: 20px;
-	padding-bottom: 20px;
+	padding: 10px 15px;
 }
 .RankedIsLocked #RankedLockedLabel
+{
+	visibility: visible;
+}
+
+.CasualIsLocked #CasualLockedLabel
+{
+	visibility: visible;
+}
+
+.PrivateIsLocked #PrivateLockedLabel
 {
 	visibility: visible;
 }
@@ -237,14 +295,15 @@ PopupSelectMatchType
 #ContinueButton
 {
 	horizontal-align: center;
-	border: 2px solid #555555;
-	background-color: #111111;
-	background-image: none;
+    margin-top: 25px;
+    //border: 2px solid #555555;
+	//background-color: #111111;
+	//background-image: none;
 }
 
 #ContinueButton Label {
-	horizontal-align: center;
-	font-size: 32px;
+	//horizontal-align: center;
+	//font-size: 32px;
 	//margin-bottom: 4px;
-	font-weight: black;
+	//font-weight: black;
 }

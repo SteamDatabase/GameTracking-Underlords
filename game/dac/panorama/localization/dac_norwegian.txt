@@ -33,7 +33,9 @@
 	"DAC_MatchTypeNameRankedLocked1"					"Spill {i:games_needed_to_unlock_ranked} avslappet kamp for å låse opp"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Spill {i:games_needed_to_unlock_ranked} avslappede kamper for å låse opp"
 	"DAC_MatchTypeName1"								"Solo / bot"
+	"DAC_MatchTypeName1_Party"							"Privat lobby"
 	"DAC_MatchTypeName2"								"Opplæring"
+	"DAC_DBHome_Play_Party"								"Gruppekamp"
 	"DAC_ComingSoon"									"Kommer snart"
 
 	"DAC_DBHome_Mobile_Play"							"Spill"
@@ -559,7 +561,7 @@
 	"dac_item_maelstrom_lore"							"Ingen kan styre været... men du kan alltids gi det en dytt i riktig retning. – <i>Zenok, våpenhandler i Kvitspiret</i>"
 	
 	"dac_item_refresher_orb"							"Repetisjonskule"
-	"dac_item_refresher_orb_desc"						"Nullstiller alle nedkjølinger og gjenoppretter 50 mana etter at en evne brukes. (én gang per runde)"
+	"dac_item_refresher_orb_desc"						"Etter at en evne brukes, nullstilles alle nedkjølinger og {d:mana_restored} mana gjenopprettes for den utrustede helten. Gjenværende nedkjøling reduseres med {d:ally_cooldown_multiplier}% og {d:ally_mana_restored} mana gjenopprettes også for allierte {d:refresh_radius} rute unna. (én gang per runde)"
 	"dac_item_refresher_orb_lore"						"Jeg har sett denne endre utfallet av mang en kamp. – <i>Zenok, våpenhandler i Kvitspiret</i>"
 	
 	"dac_item_heart_of_tarrasque"						"Tarrasques hjerte"
@@ -587,7 +589,7 @@
 	"dac_item_arcane_boots_lore"						"Vær en ressurs for de allierte. – <i>Zenok, våpenhandler i Kvitspiret</i>"
 	
 	"dac_item_daedalus"									"Daidalos"
-	"dac_item_daedalus_desc"							"+{d:attack_damage} angrepsskade.{d:bonus_damage_chance}% sjanse for kritiske treff som gjør {d:bonus_damage_multiplier}% skade."
+	"dac_item_daedalus_desc"							"+{d:attack_damage} angrepsskade. {d:bonus_damage_chance}% sjanse for kritiske treff som gjør {d:bonus_damage_multiplier}% skade."
 	"dac_item_daedalus_lore"							"Lorlin Lasan har lånt dette våpenet ved flere anledninger. – <i>Zenok, våpenhandler i Kvitspiret</i>"
 	
 	"dac_item_radiance"									"Stråleglans"
@@ -1055,14 +1057,16 @@
 	"dac_dev_hero_2_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} )"
 	"dac_dev_hero_3_keywords"		"{s:hero_name} ( {s:synergy_1} {s:synergy_2} {s:synergy_3} )"
 
-	"dac_dev_item"					"{s:item_name} ( {s:item_type} )"
+	"dac_dev_item"					"{s:item_name} {s:item_type}"
 	"dac_dev_item_offensive"		"Offensiv"
 	"dac_dev_item_defensive"		"Defensiv"
 	"dac_dev_item_support"			"Støtte"
-	"dac_dev_item_equipment"		"Utrustning"
+	"dac_dev_item_equipment"		"Utstyr"
 	"dac_dev_item_global"			"Global"
 	"dac_dev_item_alliance"			"Allianse"
 	"dac_dev_item_type"				"Gjenstandstype"
+
+	"dac_dev_item_menu_global"		"( Global )"
 
 	"dac_chart_type_dps"			"Skade per sekund"
 	"dac_chart_type_damagedealt"	"Skade"
@@ -1248,6 +1252,7 @@
 	"DAC_Chat_BadRun"			"Vis nåde!"
 
 	"DAC_BotDifficulty_Title"	"SOLOKAMP"
+	"DAC_PartyBotDifficulty_Title"	"PRIVAT LOBBY"
 	"DAC_BotDifficulty_Desc"    "Velg vanskelighetsgrad"
 	"DAC_BotDifficultyName0"	"Lett"
 	"DAC_BotDifficultyName1"	"Middels"
@@ -1540,10 +1545,13 @@
 	"dac_settings_camera_pitch"					"Kameravinkel (standard: 65)"
 	"dac_settings_camera_distance"				"Kameraavstand (standard: 860)"
 
-	"dac_settings_ui_mode"						"Grensesnitt"
-	"dac_settings_ui_config_mobile"				"Mobil"
-	"dac_settings_ui_config_pc"					"PC"
-	
+	"dac_settings_layout_mode"					"Grensesnittoppsett"
+	"dac_settings_layout_config_mobile"			"Liten skjerm"
+	"dac_settings_layout_config_pc"				"Stor skjerm"
+	"dac_settings_input_mode"					"Inndatamodus"
+	"dac_settings_input_config_touch"			"Berøring"
+	"dac_settings_input_config_cursor"			"Markør"
+
 	"dac_settings_steam"						"Steam"
 	"dac_settings_synergies_hide_partial"		"Skjul delvise allianser under striden."
 	"dac_settings_enable_haptics"				"Slå på haptikk"
@@ -1682,6 +1690,7 @@
 	"DAC_LookingForMatch_Desc"					"Søker etter spillere"
 
 	"DAC_SelectMatchType_Title"					"Velg modus"
+	"DAC_PartySelectMatchType_Title"			"Gruppekamp"
 	"DOTA_Select_Description"                   "Hvordan vil du spille?"
 
 	"DAC_FirstGameTutorial_Title"				"Treningskamp"
@@ -1923,4 +1932,28 @@
 	"DAC_AchievementTitle_Missing" 					"Manglende tittel"
 	"DAC_AchievementDesc_Missing" 					"Manglende beskrivelse"
 
+	"ECanMatchMake_Friendly_0"				"Gyldig"
+	"ECanMatchMake_Friendly_1"				"Ikke alle spillerne er klare"
+	"ECanMatchMake_Friendly_2"				"For få spillere"
+	"ECanMatchMake_Friendly_3"				"For mange tilskuere"
+	"ECanMatchMake_Friendly_4"				"Ugyldige versjoner"
+	"ECanMatchMake_Friendly_5"				"Versjonskonflikt"
+	"ECanMatchMake_Friendly_6"				"Ikke alle spillerne har låst opp rangerte kamper"
+	"ECanMatchMake_Friendly_7"				"Grupper kan ikke spille denne modusen"
+
+	"dac_zoo_page1"			"Page 1"
+	"dac_zoo_page2"			"Buttons"
+	"dac_zoo_page3"			"Page 3"
+	"dac_zoo_page4"			"Page 4"
+	"dac_zoo_page5"			"Map Scroll"
+	"dac_zoo_page_divider"	"/"
+
+	"dac_zoo_page5_title"	"This is where the Map will be"
+
+	"dac_zoo_temptext"			"Lorem ipsum"
+	"dac_zoo_temptextlong"		"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+	"dac_zoo_textheader"		"TextHeader"	
+	"dac_zoo_texttitle"			"TextTitle"	
+	"dac_zoo_textsubtitle"		"TextSubTitle"	
+	
 }

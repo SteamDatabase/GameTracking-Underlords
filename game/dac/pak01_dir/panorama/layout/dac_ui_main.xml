@@ -11,9 +11,6 @@
 		<PageManager id="PageManager" />
 
 		<Panel id="MainMenuContainer" hittest="false">
-			<Panel id="ZooButtonContainer" class="MainMenuButtonContainer">
-				<Button id="ZooButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('ZooContainer'); DACShowZooPage();" onmouseover="DACHighlightDashboardButton('ZooButtonContainer')" onmouseout="DACUnhighlightDashboardButton('ZooButtonContainer')"/>
-			</Panel>
 			<Panel id="PlayButtonContainer" class="MainMenuButtonContainer">
 				<Button id="PlayButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" onmouseover="DACHighlightDashboardButton('PlayButtonContainer')" onmouseout="DACUnhighlightDashboardButton('PlayButtonContainer')">
 					<DACParticleScenePanel class="ParticleOverlay" id="PlayButtonParticle" hittest="false" startActive="true" particleName="particles/world_environmental_fx/candle_flame_medium_nl.vpcf" cameraUp="3.5" fov="-30" />
@@ -48,22 +45,22 @@
 		</Panel>
 
 		<Panel class="SystemButtons">
+			<Button id="ZooButton" onactivate="DACSelectDashboardButton('ZooContainer'); DACShowZooPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsActivate' );" />
 			<Panel class="FeedbackPanel">
 				<Label class="SubmitFeedbackIntro" text="#DAC_Home_SubmitFeedbackIntro" />
-				<Button id="SubmitFeedbackButton" class="HomeButton BevelButton" onactivate="ExternalBrowserGoToFeedback(); PlaySoundEffect( 'DAC_UI.MainMenu_SubmitFeedback' );">
+				<Button id="SubmitFeedbackButton" class="SimpleButton" onactivate="ExternalBrowserGoToFeedback(); PlaySoundEffect( 'DAC_UI.MainMenu_SubmitFeedback' );">
 					<Label text="#DAC_Home_SubmitFeedback"/>
 				</Button>
 			</Panel>
 			<Panel id="PatchNotesButtonContainer">
-				<Button id="PatchNotesButton" class="PatchNotesButton" onactivate="DACSelectDashboardButton('PatchNotesContainer'); DACShowPatchNotesPage();" />
+				<Button id="PatchNotesButton" class="GradientButton PatchNotesButton" onactivate="DACSelectDashboardButton('PatchNotesContainer'); DACShowPatchNotesPage();" />
 				<Panel id="PatchNotesViolator" hittest="false" />
 			</Panel>
 			<Panel id="SettingsMenuButtonContainer">
-				<Button id="SettingsMenuButton" onactivate="DACSelectDashboardButton('SettingsMenuContainer'); DACShowSettingsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsActivate' );" onmouseover="DACHighlightDashboardButton('SettingsMenuButtonContainer')" onmouseout="DACUnhighlightDashboardButton('SettingsMenuButtonContainer')">
-				</Button>
+				<Button id="SettingsMenuButton" class="GradientButton" onactivate="DACSelectDashboardButton('SettingsMenuContainer'); DACShowSettingsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsActivate' );" onmouseover="DACHighlightDashboardButton('SettingsMenuButtonContainer')" onmouseout="DACUnhighlightDashboardButton('SettingsMenuButtonContainer')" />
 			</Panel>
 			<Panel id="QuitButtonContainer">
-				<Button id="QuitButton" class="QuitButton" onactivate="DACQuitApp()"/>
+				<Button id="QuitButton" class="QuitButton GradientButton" onactivate="DACQuitApp()"/>
 			</Panel>
 		</Panel>
 

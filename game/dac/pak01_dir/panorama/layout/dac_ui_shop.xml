@@ -136,15 +136,24 @@
 						<Label class="FreeRerollLabel" text="#DAC_InGame_FreeReroll" />
 					</Button>
 					<Button class="ShopButton" id="LevelUp" onactivate="DACBuyEXP()" onmouseover="DACShopShowXPTooltip()" onmouseout="DACShopHideXPTooltip()">
+						
+
+							
+
 						<Panel id="PlayerEXPContainer" onactivate="DACBuyEXP()">
+							<CircularProgressBar value="0.5" id="PlayerEXPGraphPreview" min="0" />
 							<CircularProgressBar value="0.5" id="PlayerEXPGraph" min="0" />
 							<Label text="{i:playerStateLevel}" id="PlayerEXPGraphLevel" />
 							<DACParticleScenePanel id="PlayerEXPTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
 						</Panel>
+
+					
+						
+
 						<Label text="#DAC_InGame_PlayerXP" id="StatusXP" />
 						<Panel class="GoldValueContainer">
 							<Panel class="PlusMinus"/>
-							<Label class="CostLabel" text="5" />
+							<Label class="CostLabel" text="{d:dac_level_up_cost}" />
 						</Panel>
 					</Button>
 				</Panel>

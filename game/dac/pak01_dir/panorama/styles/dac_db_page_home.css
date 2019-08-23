@@ -167,12 +167,41 @@ DACHomePage
     margin-right: -35px;
     transform: rotateZ(-6deg);
     width: fit-children;
-    
 }
 
-.HasParty #LobbyPlayButtonText {
+#LobbySearchingButtonText {
+    visibility: collapse;
+
+    font-size: 40px;
+    letter-spacing: 4px;
+    vertical-align: bottom;
+    horizontal-align: right;
+    margin-bottom: -30px;
+    margin-right: -35px;
+    transform: rotateZ(-6deg);
+    width: fit-children;
+
+    animation-name: findingmatchpulse;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.HasParty #LobbyPlayButtonText 
+{
 	visibility: visible;
 }
+
+.LookingForMatch.HasParty #LobbyPlayButtonText 
+{
+    visibility: collapse;
+}
+
+.LookingForMatch.HasParty #LobbySearchingButtonText 
+{
+    visibility: visible;
+}
+
 
 .CanLocalHost #LocalHost,
 .CanMM #StartMM,
@@ -1671,5 +1700,26 @@ DACRankIcon {
 to
 {
     opacity: .3;
+}
+}
+
+@keyframes
+
+'findingmatchpulse'
+{
+    0%
+
+{
+    color: #ffffff66;
+}
+
+50%
+{
+    color: #ffffffff;
+}
+
+to
+{
+    color: #ffffff66;
 }
 }

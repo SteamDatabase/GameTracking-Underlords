@@ -133,6 +133,30 @@ DACMiniProfile {
 	}
 }
 
+@keyframes 'DACMatchIntroFadeInAndOutMMR'
+{
+	0%
+	{
+		opacity: 0; 
+		pre-transform-scale2d: 0.8;
+	}
+	10%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: 1;
+	}
+	90%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: 1;
+	}
+	100%
+	{
+		opacity: 0; 
+		pre-transform-scale2d: 0.8;
+	}
+}
+
 .Appear {
 	opacity: 0;
 	transform: translateX(-2000px);
@@ -146,4 +170,54 @@ DACMiniProfile {
 .HiddenForTutorial
 {
     visibility: collapse;
+}
+
+.IntroMMRChangeContainer
+{
+    vertical-align: bottom;
+    horizontal-align: middle;
+    margin-bottom: 100px;
+    flow-children: down;
+    visibility: collapse;
+    padding: 20px;
+    background-color: #222;
+
+    opacity: 0;
+	animation-name: DACMatchIntroFadeInAndOutMMR;
+    animation-delay: 1.75s;
+    animation-duration: 4s;
+
+	//animation-delay: 0s;
+    //animation-duration: 6s;
+
+    animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+}
+
+.HasMMRChangeData .IntroMMRChangeContainer
+{
+    visibility:visible;
+}
+
+.IntroMMRChangeContainer Label
+{
+    horizontal-align: center;
+    font-size: 28px;
+    //background-color: none;
+    //margin-bottom: 5px;
+}
+
+#MMRChangePrediction
+{
+	font-size: 45px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background-color: none;
+	box-shadow: none;
+}
+
+#MMRChangePartyMembersIgnored
+{
+	font-size: 24px;
+	color: textDark;
 }

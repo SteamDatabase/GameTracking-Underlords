@@ -1147,6 +1147,7 @@ DACSynergyIcon.HiddenInactive
 	ui-scale: 100%;
 }
 
+
 #PlayerEXPGraph
 {
 	width: 100%;
@@ -1162,6 +1163,39 @@ DACSynergyIcon.HiddenInactive
 	height: 100%;
 	transition-property: clip;
 	transition-duration: 200ms;
+	
+}
+
+#PlayerEXPContainer
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_bg_png.vtex");
+	background-size: 100%;
+	width: 118px;
+	height: 118px;
+	horizontal-align: center;
+	vertical-align: center;
+
+	ui-scale: 100%;
+}
+
+
+#PlayerEXPGraphPreview
+{
+	width: 100%;
+	height: 100%;
+	horizontal-align: center;
+}
+
+#PlayerEXPGraphPreview_FG
+{
+	brightness: 0.2;
+	hue-rotation: -15deg;
+	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_fg_png.vtex");
+	background-size: 100%;
+	width: 100%;
+	height: 100%;
+	transition-property: clip, pre-transform-rotate2d, brightness ;
+	transition-duration: 150ms;
 }
 
 
@@ -1176,6 +1210,43 @@ DACSynergyIcon.HiddenInactive
 	margin-top: 6px;
 }
 
+#PlayerEXPGraphLevel.LevelUpFlashText
+{
+	animation-name: LevelUpFlashTextAnimation;
+	animation-duration: 1.5s;
+	animation-timing-function: ease-out;
+}
+
+@keyframes 'LevelUpFlashTextAnimation'
+{
+	0%
+	{
+		color: #ffffffff;		
+		text-shadow: 0px 0px 0px 0.0 #f7b461ff;
+		pre-transform-scale2d: 1.1;
+	}
+
+	5%
+	{
+		color: #f7b461ff;
+		text-shadow: 0px 0px 0px 2.0 #ffffff10;
+		pre-transform-scale2d: 1.2;
+	}
+
+	50%
+	{
+		color: #f7b461ff;
+		text-shadow: 0px 0px 0px 1.0 #ffffffff;
+	}
+
+	100%
+	{
+		color: #f7b461ff;
+		text-shadow: 0px 0px 0px 0.0 #000000ff;		
+		pre-transform-scale2d: 1.0;
+	}
+}
+
 .PlayerIsMaxLevel #StatusXP
 {
 	visibility: collapse;
@@ -1184,6 +1255,32 @@ DACSynergyIcon.HiddenInactive
 .PlayerIsMaxLevel #LevelUp .CostLabel
 {
 	visibility: collapse;
+}
+
+
+@keyframes 'PressButtonAnim'
+{
+	0%
+	{
+		pre-transform-scale2d: 0.9;
+	}
+
+	5%
+	{
+		pre-transform-scale2d: 0.85;
+	}
+
+	100%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+}
+
+.ShopButton.PressButtonAnim 
+{
+	animation-name: PressButtonAnim;
+	animation-duration: 0.25s;
+	animation-timing-function: ease-out;
 }
 
 #PoolCount

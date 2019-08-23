@@ -234,8 +234,10 @@
  D;t$
  Driver %s (vendorid %x, deviceid %x DXSupport Level %d)
  E9l$\
- H;=(
- H;=g&t
+ H;= 
+ H;=K
+ H;=_<t
+ H;=u
  H;D$PH
  H;D$`H
  NETWORK_DISCONNECT_CLIENT_NO_MAP
@@ -453,7 +455,6 @@
 ##GameUI_Disconnect_ReliableOverflow
 ##GameUI_Disconnect_SnapshotOverflow
 #3CScs
-#5%%v
 #<GAME_ROOT
 #AppFramework_InvalidLocalFiles
 #AppFramework_OutOfMemory
@@ -611,6 +612,7 @@ $0option $1;
 $0rpc $1($4.$2) returns ($5.$3)
 $4DTdt
 $@%s_vr.vcfg
+$@0J 
 $A;D$
 $A;T$
 $A;\$
@@ -648,7 +650,7 @@ $woL)
 %-40s %-12s %-12s %-12s %-12s %-12s
 %.15lf
 %.2f GB
-%02i/%02i/%04i - %02i:%02i:%02i
+%02i/%02i %02i:%02i:%02i 
 %03i:  %s (%s):   
 %128.128s : %8d bits (%8.3f bytes)
 %2.2f
@@ -1042,7 +1044,9 @@ $woL)
 *NETWORK_DISCONNECT_LOOP_LEVELLOAD_ACTIVATE
 *NETWORK_DISCONNECT_REJECT_INVALIDKEYLENGTH
 *NETWORK_DISCONNECT_STRINGTABLEMSG_OVERFLOW
+*NSt6thread5_ImplISt12_Bind_simpleIFZN15CThreadedLogger18OpenAndStartThreadEPKcEUlPS2_E_S5_EEEE
 *St19_Sp_counted_deleterIPhZN3Etc13EncodeMipmapsEPfjjNS1_5Image6FormatENS1_11ErrorMetricEfjjjjPNS1_8RawImageEPibEUlS0_E_SaIiELN9__gnu_cxx12_Lock_policyE2EE
+*St23_Sp_counted_ptr_inplaceINSt6thread5_ImplISt12_Bind_simpleIFZN15CThreadedLogger18OpenAndStartThreadEPKcEUlPS3_E_S6_EEEESaISA_ELN9__gnu_cxx12_Lock_policyE2EE
 *ZN29CMaterialSystem2AppSystemDict19SetupMaterialSystemEvEUlvE_
 *ZN3Etc13EncodeMipmapsEPfjjNS_5Image6FormatENS_11ErrorMetricEfjjjjPNS_8RawImageEPibEUlPhE_
 +++ %s: 
@@ -1145,13 +1149,14 @@ $woL)
 -clientonly
 -comment
 -con_logfile
--con_timestamp
--conclearlog
 -condebug
 -conrotate
 -console
 -consoleapp
 -consolelog
+-consolelog_append
+-consolelog_notimestamp
+-consolelog_rotate
 -contentroot
 -coop_fullscreen
 -curtimeasserts
@@ -1412,7 +1417,6 @@ $woL)
 0<	wD
 0=Off, 1=Surface Wireframe, 2=Transparent Wireframe
 0D;{@}mA
-0H;=gwm
 0NETWORK_DISCONNECT_REJECT_SERVERCDKEYAUTHINVALID
 0[A\A]A^A_]
 0[A\A]A^]
@@ -1684,6 +1688,7 @@ $woL)
 15CSmallTextEntry
 15CStringProperty
 15CTextMessageMgr
+15CThreadedLogger
 15CTier0AppSystemI11IEngineVGuiE
 15CTier0AppSystemI11IXboxSystemE
 15CTier0AppSystemI12IApplicationE
@@ -1984,6 +1989,7 @@ $woL)
 19CSchemaRegistration
 19CServerRemoteAccess
 19CSplitScreenService
+19CThreadedFileLogger
 19CTier1AppSystemDict
 19CTier2AppSystemDict
 19CVConCommandMessage
@@ -2072,7 +2078,6 @@ $woL)
 21IUGCAddonPathResolver
 21IVConCommDataReceived
 21NetMessagePacketStart
-22:59:39
 22C2S_CONNECTION_Message
 22CActivateMainMenuPanel
 22CBaseActionPauseDialog
@@ -2106,6 +2111,7 @@ $woL)
 22IToolsResourceListener
 22IUserInfoChangeService
 22SerializedNetAddress_t
+23:53:46
 23CBaseGameUIInputHandler
 23CBoundedCvar_UpdateRate
 23CCLCMsg_LoadingProgress
@@ -2382,6 +2388,7 @@ $woL)
 8D;`8
 8D;s8
 8E;f8
+8H;={
 8NETWORK_DISCONNECT_LOCALPROBLEM_HOSTEDSERVERPRIMARYRELAY
 8P(s!H
 8PHtJ
@@ -2394,7 +2401,6 @@ $woL)
 9.1.15
 90t(H
 92tHA
-95_qK
 9A\~;H
 9CBlackBox
 9CCallbackI13CSteam3Client17LowBatteryPower_tLb0EE
@@ -2438,6 +2444,7 @@ $woL)
 ;2t)H
 ;2|EH
 ;3}:A
+;5	pv
 ;:~`H
 ;;D$H
 ;BX|'1
@@ -3002,7 +3009,7 @@ Attribute counts between meshes is inconsistent
 Au9H9
 AudioLanguage
 AudioSubLanguage
-Aug 14 2019
+Aug 22 2019
 AuthenticAMD
 Auto Update - any changes apply instantly.
 AutoResize
@@ -3898,6 +3905,8 @@ CStrongHandle
 CTSQueue corruption
 CT[A\]
 CTelemetryService
+CThreadedFileLogger
+CThreadedStdoutLogger
 CTier2AppSystemDict::LoadStartupManifestGroup
 CTiltTwistConstraint
 CToolService
@@ -4452,7 +4461,7 @@ D9t$H
 D9t$LfE
 D9|$ 
 D;!ttHc
-D;%Vgq
+D;%fsq
 D;(tPH
 D;+}N
 D;a D
@@ -4592,6 +4601,7 @@ DestStructType_t::BaseClass
 Destroy
 DestroyAllEntitiesToolEvent"
 DestroyEntityToolEvent
+Detected log rotation.  Closing and reopening log
 Determines which files can be downloaded from the server (all, none, nosounds)
 DevMsg
 Devanagari
@@ -4730,7 +4740,6 @@ E;|$8r
 ED$HI
 ED$XI
 EDemoCommands
-EH!s4
 EIA8G
 ENGINE2
 ENTITY_DORMANT
@@ -5349,8 +5358,8 @@ G<IcG
 GAMEBIN
 GAMECONSOLE
 GAME_RESOURCE_MANIFEST_HANDLE_INVALID
+GCC: (SteamRT 5.4.0-7.really.6+steamrt1.2+srt2) 5.4.1 20160803
 GCC: (Ubuntu 4.8.4-1ubuntu15~12.04+steamrt1+srt2) 4.8.4
-GCC: (Ubuntu 5.4.0-7.really.6+steamrt1.1+srt1) 5.4.1 20160803
 GCC: (crosstool-NG 1.17.0) 4.6.3
 GHCEH
 GLIBCXX_3.4
@@ -5360,6 +5369,7 @@ GLIBCXX_3.4.14
 GLIBCXX_3.4.15
 GLIBCXX_3.4.19
 GLIBCXX_3.4.20
+GLIBCXX_3.4.21
 GLIBCXX_3.4.5
 GLIBCXX_3.4.9
 GLIBC_2.11
@@ -5503,7 +5513,6 @@ H	P0H
 H	p(]
 H	w(UH
 H!w(H
-H+59Vo
 H+C D
 H+C(H
 H+C(I
@@ -5530,89 +5539,100 @@ H;0t.H
 H;0t7H
 H;2t=H
 H;3t?H
-H;54R
-H;5Ik
-H;5PK
-H;5P}
-H;5Y`
-H;5xy
-H;= &
-H;= 5
-H;="I
-H;="Xx
-H;=$3s
-H;=$Fh
-H;=%Oh
-H;=%vm
-H;=(Os
-H;=*Tv
-H;=*qf
-H;=+vf
-H;=/@s
-H;=0%
-H;=04
-H;=1#h
-H;=19s
-H;=1@e
-H;=1Vh
-H;=2$s
-H;=2Uh
-H;=3Ax
-H;=4Js
-H;=8Is
-H;=93s
-H;=:Rw
-H;=:[v
-H;=;"t
-H;=;Nh
-H;=?Es
-H;=@3
-H;=@a
-H;=C<
-H;=D|h
-H;=H h
-H;=HMs
-H;=HRs
-H;=JYw
-H;=Jbv
-H;=Juw
-H;=Jvf
-H;=OAs
-H;=P2
-H;=Q7s
-H;=Qol
-H;=XJs
-H;=Xqf
-H;=Z)n
-H;=Z`w
-H;=Ztx
-H;=]Ts
-H;=` h
-H;=`1
-H;=dZh
-H;=d\i
-H;=hFs
-H;=hPs
-H;=jKw
-H;=jgw
-H;=jyx
-H;=n1s
-H;=n<
-H;=oBs
-H;=p0
-H;=pVs
-H;=q5s
-H;=q:s
-H;=s[h
-H;=tK
-H;=u0h
-H;=w3e
-H;=xKs
-H;=z%h
-H;=zJe
-H;=znw
-H;=z~x
-H;={_
+H;5!De
+H;5Xg
+H;5am
+H;= C
+H;=!Os
+H;="jl
+H;=#&s
+H;=%,s
+H;=%Ge
+H;=&Zm
+H;='fn
+H;=(_s
+H;=)Is
+H;=)^h
+H;=*:s
+H;=*S
+H;=*hw
+H;=*qv
+H;=+Wx
+H;=,`s
+H;=.Xh
+H;=/"f
+H;=/5
+H;=/[s
+H;=0B
+H;=1Qe
+H;=3	
+H;=3's
+H;=38t
+H;=43
+H;=44
+H;=45
+H;=8cs
+H;=8hs
+H;=:a
+H;=:ow
+H;=:xv
+H;=>1
+H;=?Ws
+H;=?n
+H;=@A
+H;=@P
+H;=@j
+H;=AMs
+H;=Ajh
+H;=D^
+H;=G)s
+H;=H`s
+H;=Jvw
+H;=Mjs
+H;=Msi
+H;=P#f
+H;=P-f
+H;=P@
+H;=PO
+H;=US
+H;=X\s
+H;=Xfs
+H;=Z$w
+H;=Z5
+H;=Zaw
+H;=Z}w
+H;=^Gs
+H;=_Xs
+H;=`,f
+H;=`?
+H;=`N
+H;=`ls
+H;=`th
+H;=aKs
+H;=aPs
+H;=d7
+H;=d8
+H;=d9
+H;=dVh
+H;=gqn
+H;=has
+H;=mBn
+H;=m_h
+H;=n%s
+H;=o2
+H;=p+f
+H;=p>
+H;=pM
+H;=q3h
+H;=qfh
+H;=t(e
+H;=wDe
+H;=x]s
+H;=xds
+H;=xis
+H;=yLs
+H;=z[e
+H;=zeh
 H;C(H
 H;X@tuH
 H;Z@tSH9
@@ -5652,7 +5672,7 @@ Has Collision;
 HasField
 HasGameUI
 HasModAppSystems
-Hc5>L~
+Hc5.b~
 Hc@pH
 HcA H
 HcA`;Ap
@@ -6198,7 +6218,7 @@ L9(t2L
 L90t*H
 L9|$HJ
 L; tY
-L;-U6s
+L;-MLs
 L;8t(H
 L;d$@L
 L;kPr
@@ -9115,6 +9135,7 @@ Writing memory stats to file memstats.txt
 Writing zero-length unknown chunk
 Wrong JPEG library version: library is %d, caller expects %d
 Wrote vis errors to %s
+X$B	3?L
 X360_DST16
 X360_DST24
 X360_DST24F
@@ -9158,7 +9179,6 @@ Z~A+E
 [ no resource file associated with dialog ]
 [%02d:%02d:%02.3f]: %s
 [%d] Changing player name to Steam name '%s'
-[%s] 
 [%s] %s
 [%s] applying key '%s', has changed from '%s' to '%s'
 [:<:]]
@@ -9296,6 +9316,7 @@ _ZN10CVProfNode9ResetPeakEv
 _ZN12CThreadEvent3SetEv
 _ZN12CThreadEventC1Eb
 _ZN12CThreadFiberC1Em
+_ZN12CThreadMutex7TryLockEv
 _ZN13CBufferString10ExtendPathEPKcc
 _ZN13CBufferString10FixSlashesEc
 _ZN13CBufferString10RelinquishENS_19EAllocationOption_tE
@@ -9345,6 +9366,7 @@ _ZN17CThreadSpinRWLock10UnlockReadEv
 _ZN17CThreadSpinRWLock11LockForReadEv
 _ZN17CThreadSpinRWLock11UnlockWriteEv
 _ZN17CThreadSpinRWLock16SpinLockForWriteEy
+_ZN17CThreadSyncObject4WaitEj
 _ZN17CThreadSyncObject8WaitImplEj
 _ZN17CThreadSyncObjectD2Ev
 _ZN21CThreadMultiWaitEvent3SetEv
@@ -9469,6 +9491,7 @@ _ZNSt15__exception_ptr13exception_ptr4swapERS0_
 _ZNSt15__exception_ptr13exception_ptrC1ERKS0_
 _ZNSt15__exception_ptr13exception_ptrD1Ev
 _ZNSt15__exception_ptreqERKNS_13exception_ptrES2_
+_ZNSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE10_M_destroyEv
 _ZNSt18condition_variable10notify_allEv
 _ZNSt18condition_variable4waitERSt11unique_lockISt5mutexE
 _ZNSt18condition_variableC1Ev
@@ -9479,6 +9502,7 @@ _ZNSt6chrono3_V212steady_clock3nowEv
 _ZNSt6localeC1Ev
 _ZNSt6localeD1Ev
 _ZNSt6thread15_M_start_threadESt10shared_ptrINS_10_Impl_baseEE
+_ZNSt6thread15_M_start_threadESt10shared_ptrINS_10_Impl_baseEEPFvvE
 _ZNSt6thread4joinEv
 _ZNSt6vectorIS_ImSaImEESaIS1_EE19_M_emplace_back_auxIIRKS1_EEEvDpOT_
 _ZNSt6vectorIS_ImSaImEESaIS1_EE19_M_emplace_back_auxIJRKS1_EEEvDpOT_
@@ -9527,17 +9551,25 @@ _ZStplIcSt11char_traitsIcESaIcEESbIT_T0_T1_EOS6_S7_
 _ZTI17CThreadSyncObject
 _ZTINSt13__future_base11_State_baseE
 _ZTINSt13__future_base12_Result_baseE
+_ZTINSt6thread10_Impl_baseE
 _ZTISs
+_ZTISt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE
+_ZTISt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE
 _ZTISt9exception
 _ZTIc
 _ZTIh
+_ZTSNSt6thread10_Impl_baseE
 _ZTSSs
+_ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE
+_ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE
+_ZTSSt19_Sp_make_shared_tag
 _ZTTSt18basic_stringstreamIcSt11char_traitsIcESaIcEE
 _ZTVN10__cxxabiv117__class_type_infoE
 _ZTVN10__cxxabiv119__pointer_type_infoE
 _ZTVN10__cxxabiv120__si_class_type_infoE
 _ZTVN10__cxxabiv121__vmi_class_type_infoE
 _ZTVNSt13__future_base11_State_baseE
+_ZTVNSt6thread10_Impl_baseE
 _ZTVSt15basic_streambufIcSt11char_traitsIcEE
 _ZTVSt15basic_stringbufIcSt11char_traitsIcESaIcEE
 _ZTVSt18basic_stringstreamIcSt11char_traitsIcESaIcEE
@@ -10360,6 +10392,7 @@ fields
 fields_index
 file error
 filename
+fileno
 filesize
 filesizeint
 filesystem_stdio
@@ -11829,6 +11862,7 @@ protocol
 proxies
 ptestbed
 pthread_cancel
+pthread_create
 pthread_mutex_destroy
 pthread_mutex_init
 pthread_mutex_lock
@@ -11838,6 +11872,7 @@ pthread_mutex_unlock:
 pthread_mutexattr_init
 pthread_mutexattr_settype
 pthread_once
+pthread_sigmask
 ptr( 0x%p )
 ptr_ != __null
 ptry < &a_phalf->m_atry[DifferentialTrys::Half::MAX_TRYS]
@@ -12055,34 +12090,32 @@ runevent
 runspeed
 s E9u
 s H;5
-s H;5 
-s H;58
-s H;5P
-s H;5Y
-s H;5i e
+s H;50
+s H;5X
+s H;5a
+s H;5p
+s H;5q1e
 s off
 s(H;5
-s(H;5P
-s(H;5h
 s(H;s
 s0H;5
-s0H;5(?
-s0H;5PC
-s0H;5`yf
+s0H;5U
+s0H;5h
+s0H;5|
 s0[A\H
 s0[A\]
 s1_mapname
 s8H;5
-s8H;5%
-s8H;5<|
 s@H;5
+s@H;5P
 s@[A\]H
 sAmTb
 sHH;5
-sHH;5 
+sHH;5(
+sHH;5e
 sMA9|$ 
-sPH;5
-sPH;5P
+sPH;5R
+sPH;5X
 sX[A\A]A^A_]
 s_EntComponentInfo
 s`D;spD
@@ -12214,6 +12247,7 @@ showmainmenu
 shutdown
 sigaddset
 sigemptyset
+sigfillset
 signedPayload
 signon
 signon_state
@@ -12533,7 +12567,7 @@ t!IcT$
 t![A\A]A^]
 t"< @
 t"L;%
-t"L;%1
+t"L;%9/f
 t"Mc7E;w
 t"[A\]
 t#IcD$
@@ -12550,7 +12584,7 @@ t$<	t
 t$@Ic^0A;^@
 t$@L9
 t$D9k
-t$D;-S
+t$D;-C
 t$H;h
 t$HH9
 t$HcK 
@@ -12568,25 +12602,25 @@ t%HcM
 t%~_=
 t&Ic]8A;]H
 t&L;%
-t&L;%`
+t&L;%h/f
 t'Hcu
 t'IcA
 t'Ic\$0A;\$@
 t'[A\]
 t(<)u
 t(D9m
-t(D;%w
+t(D;%
 t(D;=
 t(HcK 
 t)D;=
 t)HcE
 t*D9%
-t*D;%Q
+t*D;%
 t*Ic\$
 t+Mc,$E;l$
 t+Mce
 t,D9m
-t,D;%
+t,D;%;
 t,H;;u'
 t,IcD$
 t-LcC
@@ -12681,6 +12715,7 @@ t;~OU
 t<Hcs 
 t=[A\]
 t>Mcv
+t@;55
 tAHcC
 tALcc
 tC[A\A]A^]
@@ -12694,6 +12729,7 @@ tK~%E1
 tLD;e
 tL[A\A]A^]
 tQI;<$uKI
+tR;5u
 tRNS chunk has out-of-range samples for bit_depth
 tS[A\A]A^]
 tTHcu
@@ -12770,7 +12806,6 @@ titlebardisabledfgcolor_override
 titlebarfgcolor_override
 titletextinsetX
 titletextinsetY
-tm;56
 toL;f
 toggle: Cannot toggle value "%s"!
 toggle: Toggled "%s" to %d
@@ -12860,9 +12895,7 @@ type() == TYPE_LENGTH_DELIMITED
 type() == TYPE_VARINT
 type.googleapis.com/
 type.googleprod.com/
-tz;5.
 tzset
-t{952
 u	[A\A]A^]
 u	[A\]
 u ARD
@@ -13219,7 +13252,6 @@ wcscmp
 wcscpy
 wcslen
 weak_dependency
-whUHc
 when you were using some program which uses libbzip2 as a
 whitelist.cfg
 width,
@@ -13241,7 +13273,7 @@ x	A9]
 x "%f"
 x ;s|~
 x H;=
-x H;=o
+x H;=Dkh
 x&;B`}!H
 x&;F`}!H
 x([A\A]A^]
@@ -13293,7 +13325,7 @@ z~u|f
 {%%%d.%ds} %%%d.%ds: %%-%d.%ds %%-%d.%ds: %%%d.%ds %%%d.%ds %%%d.%ds %%%d.%ds %%%d.%ds [%%-%d.%ds bits]
 {%s}cfg/%s
 {(t*A9
-{8H;=j
+{8H;=b"q
 {8[A\H
 {8t2I
 {<u+LcK
@@ -13306,7 +13338,7 @@ z~u|f
 {}[]()=&, 	
 {}[]=, 	
 |$ H9
-|$ H;=GIm
+|$ H;=
 |$ H;}
 |$(Hc
 |$0E1
@@ -13323,10 +13355,9 @@ z~u|f
 |^IcF
 |fIcG
 } H;=
-} H;=4
 } fD9{"r
 }!A;GTw
-}#f;=]
+}#f;=
 }$A;]
 }$f;w&w
 }%fA;\$&
@@ -13348,7 +13379,6 @@ z~u|f
 }cHcU
 }};C\
 ~ H;=
-~ H;=.
 ~ t1A
 ~)H;7I
 ~.E9~Hu
@@ -13360,7 +13390,7 @@ z~u|f
 ~>HcE
 ~CServerChangelevelState with non empty m_Clients!!!
 ~Ef;w
-~HH;=g
+~HH;=
 ~Ht	H
 ~I;w$
 ~IHcK

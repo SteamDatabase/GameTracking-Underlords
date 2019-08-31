@@ -4,16 +4,6 @@
 		<include src="s2r://panorama/styles/dac_db_page_postgame.vcss_c" />
 	</styles>
 
-	<snippets>
-		<snippet name="HeroIcon">
-			<Panel class="HeroIconPanel" onactivate="DACShowHeroPopup(1)">
-				<Label class="HeroRank" text="{s:rank}"/>
-				<Image id="HeroImage"/>
-			</Panel>
-		</snippet>
-
-
-	</snippets>
 
 	<DACPagePostGame onactivate="" class="DashboardPage" >
     <Panel id="TopBarPlaceContainer">
@@ -78,57 +68,9 @@
           </Panel>
         </Panel>
 
-        <Panel id="StatsPage" class="OverlayContainer">
-			    <Panel class="PlaceContainer">
-            <Label class="PlaceTitle" text="#DAC_InGame_UserDiedPlace"/>
-            <Label class="PlaceQuote" text="{s:result_quote}"/>
-          </Panel>
-			    <Panel class="StatsContainer">
-				    <Panel id="RoundsWon" class="StatsSubContainer">
-					    <Label class="BigStat" text="{d:rounds_won}" />
-					    <Label class="StatDescription tilt-left" text="#DAC_EndGame_RoundsWon" />
-				    </Panel>
-				    <Panel id="EndGameDamageDealt" class="StatsSubContainer">
-					    <Label class="BigStat" text="{d:damage_dealt}" />
-					    <Label class="StatDescription tilt-right" text="#DAC_EndGame_DamageDealt" />
-				    </Panel>
-				    <Panel id="GoldEarned" class="StatsSubContainer">
-					    <Label class="BigStat" text="{d:gold_earned}" />
-					    <Label class="StatDescription tilt-left" text="#DAC_EndGame_GoldEarned" />
-				    </Panel>
-			    </Panel>
+				<DACPostGameStatsOverview  id="StatsPage" class="OverlayContainer" />
 
-			    <Panel class="StatsMainRow">
-
-				    <Panel class="SynergiesColumn StatsColumn">
-					    <Label class="FinalCrewTitle tilt-right" text="#DAC_PostGame_Alliances_Title"/>
-				
-					    <Panel id="SynergiesContainer">
-						    <!-- Code generated -->
-					    </Panel>
-				    </Panel>
-
-				    <Panel class="HeroesColumn StatsColumn">
-					    <Label class="FinalCrewTitle tilt-left" text="#DAC_FinalCrew_Title"/>
-
-					    <Panel id="HeroesContainer" class="HeroRoster">
-						    <!-- Code generated -->
-					    </Panel>
-				    </Panel>
-
-				    <Panel class="ItemsColumn StatsColumn">
-					    <Label class="FinalCrewTitle tilt-right" text="#DAC_PostGame_GlobalItems_Title"/>
-
-					    <Panel id="ItemsContainer">
-						    <!-- Code generated -->
-					    </Panel>
-
-					    <Label class="NoGlobalItemsLabel" text="#DAC_PostGame_NoGlobalItems" />
-				    </Panel>
-			    </Panel>
-		    </Panel>
-
-        <Panel id="ScoreboardPage" class="OverlayContainer">
+				<Panel id="ScoreboardPage" class="OverlayContainer">
 			    <Label class="PlaceTitle" text="#DAC_PostGame_Scoreboard_Title"/>
 			    <DACPostGameScoreboard id="Scoreboard" />
 		    </Panel>

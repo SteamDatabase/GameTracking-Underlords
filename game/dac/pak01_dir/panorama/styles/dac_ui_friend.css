@@ -189,7 +189,7 @@ DACFriend.CurrentUser #FriendImage
 {
 	width: 48px;
 	height: 48px;
-	border: 2px solid #64b158;
+	border: 5px solid #64b158;
 	box-shadow: #76b06d22 -5px -5px 10px 10px;
 }
 DACFriend.CurrentUser #FriendDetails
@@ -197,6 +197,55 @@ DACFriend.CurrentUser #FriendDetails
 	flow-children: down;
 	margin-left: 10px;
 }
+
+DACFriend.SoloFriend #FriendAddButton
+{
+	width: 30px;
+	height: 30px;
+	margin-right: 5px;
+	horizontal-align: right;
+	/*background-color: gradient( linear, 0% 100%, 0% 0%, from( #3E4B51 ), to( #5C9C68 ) );*/
+	wash-color: #5e5e5e;
+	border: 1px solid #8d8d8d;
+	border-radius: 3px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/control_icons/plus_png.vtex");
+	background-size: 60% 60%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+
+DACFriend.SoloFriend:hover #FriendAddButton
+{
+	width: 30px;
+	height: 30px;
+	margin-right: 5px;
+	horizontal-align: right;
+	background-color: gradient( linear, 0% 100%, 0% 0%, from( #3E4B51 ), to( #5C9C68 ) );
+	wash-color: #ABEAA8;
+	border-radius: 3px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/control_icons/plus_png.vtex");
+	background-size: 60% 60%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+}
+
+
+#SocialBodyParty #FriendAddButton {
+	visibility: collapse;
+}
+
+PopupPartyInviteFriend #FriendAddButton {
+	visibility: collapse;
+}
+
+#FriendsOffline #FriendAddButton,
+#FriendsSentInvite #FriendAddButton,
+.InSameParty #FriendAddButton {
+	visibility: collapse;
+}
+
 
 DACFriend.CurrentUser #FriendName Label .PersonaName
 {
@@ -258,10 +307,10 @@ DACFriend.SoloFriend
 
 DACFriend.SoloFriend #FriendImage
 {
-	width: 40px;
-	height: 40px;
+	width: 45px;
+	height: 45px;
 	margin-top: 3px;
-	box-shadow: inset #000000 0px 0px 5px 0px;
+	box-shadow: #00000030 0px 0px 15px;
 }
 
 .IsLayoutSmallScreen DACFriend.SoloFriend #FriendImage
@@ -353,7 +402,7 @@ DACFriend.SoloFriend #PartyWithFriendButton
 	transition-duration: 0.35s;
 }
 
-/*
+
 #FriendsPlayingDAC DACFriend.SoloFriend:hover,
 #FriendsPending DACFriend.SoloFriend:hover {
     background-color: #1e2428;
@@ -366,23 +415,23 @@ DACFriend.SoloFriend #PartyWithFriendButton
 
 #FriendsOnline DACFriend.SoloFriend:hover
 {
-	background-color: black;
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #1D2228 ), to( #21272E ) );
 }
 
 #FriendsOpenParties DACFriend.SoloFriend:hover
 {
-	background-color: #273132;
+	background-color: #4f505230;
 }
 
 #FriendsOffline DACFriend.SoloFriend:hover
 {
-	background-color: #1b2023;
-}*/
-
-DACFriend:hover
-{
-	background-color: #ffffff03;
+	background-color: #4f505230;
 }
+
+/*DACFriend:hover*/
+/*{*/
+/*	background-color: #ffffff03;*/
+/*}*/
 
 
 .PlayingOrOpenPartyCategory DACFriend.SoloFriend:hover #PartyWithFriendButton
@@ -487,7 +536,7 @@ DACFriend.ShowInviteInProgress #PartyWithFriendButton
 
 DACFriend.SoloFriend #FriendName Label
 {
-	font-weight: bold;
+	/*font-weight: bold;*/
 	color: white;
 	font-size: 20px;
 	vertical-align: middle;
@@ -501,6 +550,11 @@ DACFriend.SoloFriend #FriendName Label
 .FriendsPlayingDAC DACFriend.SoloFriend #FriendName Label
 {
 	color: #e3ffc2;
+}
+
+.FriendsPlayingDAC DACFriend.InSameParty #FriendName Label
+{
+	color: #f1eaff;
 }
 
 .FriendsOnline DACFriend.SoloFriend #FriendName Label
@@ -532,6 +586,16 @@ DACFriend.SoloFriend #FriendName Label
 	//max-width: 183px;
 	max-width: 270px;
 	color: #4c91ac;
+}
+
+.FriendsPlayingDAC DACFriend.InSameParty #FriendRichPresence Label
+{
+	margin-top: 24px;
+	font-size: 16px;
+	letter-spacing: 0px;
+	//max-width: 183px;
+	max-width: 270px;
+	color: #9777ad;
 }
 
 
@@ -571,6 +635,14 @@ DACFriend.EditMode #FriendRichPresence Label
 {
 	font-size: 14px;
 	margin-top: 2px;
+}
+
+#InPartyGroup DACFriend #FriendRichPresence Label {
+	color: #9777ad;
+}
+
+#InPartyGroup .IsInvite DACFriend #FriendRichPresence Label {
+	color: #666666;
 }
 
 

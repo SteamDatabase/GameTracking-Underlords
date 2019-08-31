@@ -63,9 +63,18 @@
 					<Image id="HeroIcon"/>
 					<!-- <Panel class="HeroTier" text="{i:UnitCost}"> -->
 					<Panel id="CostContainer">
-						<Label id="CostNumber" text="#DAC_Hero_Unit_Cost" />
+						<Label id="CostNumber" text="{s:tier_label}" />
 					</Panel>
 					<DACSynergyCapsule id="SynergyCapsule" class="SynergyCapsule" />
+					<Panel id ="HighRollerContainer">
+						<Panel id="HighRollerIcon">
+							<DACParticleScenePanel class="ParticleOverlay" id="HighRollerIconEffect" hittest="false" startActive="true" particleName="particles/ui/highroller_icon.vpcf" cameraUp="5.5" fov="-30" />
+						</Panel>
+						<Panel id="HighRollerRightContainer">
+							<Label class="HighRollerTitle" text="{s:legendary_title}" />
+							<Label class="HighRollerDesc" text="{s:legendary_desc}" html="true"/>
+						</Panel>
+					</Panel>
 					<Panel id ="ButtonsContainer">
 						<Label id ="UnitAbilityButton" text="#DAC_Hero_Unit_Ability" onactivate="HeroPopupShowAbility()"></Label>
 						<Label id ="UnitStatsButton" text="#DAC_Hero_Unit_Stats" onactivate="HeroPopupShowStats()"></Label>

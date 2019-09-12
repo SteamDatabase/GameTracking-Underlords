@@ -97,7 +97,7 @@ $[A\]
 %s| Project: '%s' Binary: '%s'
 %s| SizeOf: %d
 %s| Virtual: %s; Abstract: %s; TrivialConstr: %s; TrivialDestr: %s
-&Hc=x
+&Hc=xJB
 &YA1D
 &YA1H
 &YA1L
@@ -119,23 +119,20 @@ $[A\]
 (\$`A
 (d$PA
 (l$ A
-(o@Hc=	
+(o@Hc=
 (t$ E
 (|$@D
 )D$ A
 )D$ H
-)F [A\]
 )K H;
 )L$ A
 )O09M
 )WPfE
-)_ 9M
-)g09M
 )y@t?
 *** Turn on -particle_perf!
 *** Unable to open profile file!
 *ZN18CNewParticleEffect12StopEmissionEbbbbEUlvE_
-+Hc5H
++Hc5HBB
 +S$Hc
 +m_flValue
 +s$Hc
@@ -207,7 +204,7 @@ $[A\]
 0[A^]
 0t`A8
 1 0 0
-1 1 1 1
+1 1 1
 1 1000
 1.85185185
 10 10 10
@@ -237,6 +234,7 @@ $[A\]
 13IBaseSequence
 14CBaseAppSystemI18IParticleSystemMgrE
 14CEmptySequence
+14C_INIT_InitVec
 14C_OP_ModelCull
 14C_OP_PlaneCull
 14C_OP_WindForce
@@ -421,6 +419,7 @@ $[A\]
 24CParticleFunctionEmitter
 24C_INIT_AddVectorToVector
 24C_INIT_CreatePhyllotaxis
+24C_INIT_InitVecCollection
 24C_INIT_MoveBetweenPoints
 24C_INIT_RandomTrailLength
 24C_OP_ConstrainLineLength
@@ -576,6 +575,7 @@ $[A\]
 32CParticleFunctionDefinitionTypedI12C_OP_SpinYawE
 32CParticleFunctionDefinitionTypedI13C_OP_CallbackE
 32CParticleFunctionDefinitionTypedI13C_OP_SetFloatE
+32CParticleFunctionDefinitionTypedI14C_INIT_InitVecE
 32CParticleFunctionDefinitionTypedI14C_OP_ModelCullE
 32CParticleFunctionDefinitionTypedI14C_OP_PlaneCullE
 32CParticleFunctionDefinitionTypedI14C_OP_WindForceE
@@ -719,6 +719,7 @@ $[A\]
 32CParticleFunctionDefinitionTypedI23C_OP_SetFloatCollectionE
 32CParticleFunctionDefinitionTypedI24C_INIT_AddVectorToVectorE
 32CParticleFunctionDefinitionTypedI24C_INIT_CreatePhyllotaxisE
+32CParticleFunctionDefinitionTypedI24C_INIT_InitVecCollectionE
 32CParticleFunctionDefinitionTypedI24C_INIT_MoveBetweenPointsE
 32CParticleFunctionDefinitionTypedI24C_INIT_RandomTrailLengthE
 32CParticleFunctionDefinitionTypedI24C_OP_ConstrainLineLengthE
@@ -966,6 +967,7 @@ $[A\]
 5t~BC
 6ConVar
 6H92t%H
+6IcG$f
 6WQEL
 6\? ]
 7IConVar
@@ -981,22 +983,23 @@ $[A\]
 ;*3$"
 ;0t:H
 ;2t,H
+;5s|D
 ;B0}F
 ;BX|'1
 ;Fl|	
 ;G tu+G$L
 ;P@}l
+;VectorAligned
 ;X(}HH
 ;X(}OH
 ;XX}7H
 ;d15H
 ;d15L
 ;f;8A
-;m_Children.m_pHead: [%p]
 ;m_nInControlPointNumber
 ;wp|	]
 <	t$1
-<	t0H
+<	t7UH
 <	t9w
 <	t<UH
 <	tYH
@@ -1004,7 +1007,7 @@ $[A\]
 <	ubUH
 <!-- kv3 encoding:%s:version{%s} format:%s:version{%s} -->
 <!-- schH
-<"m_bFitCycleToLifetime
+<"m_bParticleFeathering
 <&t&H
 <+tZH
 <7t#1
@@ -1061,7 +1064,8 @@ A minimum on particle simulation time, particle simulation happening more freque
 A t!L
 A#V\H
 A#|$TH
-A(Hc5k
+A(Hc5
+A(Hc=
 A+D$$H
 A+E$A
 A+E$H
@@ -1338,9 +1342,9 @@ BenchmarkService001
 BentNormalData
 BinaryProperties_GetValue
 BlendList
-Blight has _fifty_percent_distance of %f but no zero_percent_distance
 Blobulator
 BlurFilterType_t
+Bm_flPosition
 BodyGroup
 BodyGroupChoice
 Bone Indices
@@ -1373,6 +1377,7 @@ CBoneConstraintBase
 CBoneConstraintPoseSpaceBone
 CBoneConstraintPoseSpaceMorph
 CCParticleObjectDesc
+CColorGradientSchemaWrapper
 CCommand::Tokenize: Encountered command which overflows the argument buffer.. Clamped!
 CCommand::Tokenize: Encountered command which overflows the tokenizer buffer.. Skipping!
 CConstraintSlave
@@ -1509,6 +1514,8 @@ C_INIT_InitFromCPSnapshot: framerate unknown initializing PREV_XYZ! Defaulting t
 C_INIT_InitFromParentKilled
 C_INIT_InitFromParentKilled: Unsupported attribute data type! (%d)
 C_INIT_InitSkinnedPositionFromCPSnapshot
+C_INIT_InitVec
+C_INIT_InitVecCollection
 C_INIT_InitialRepulsionVelocity
 C_INIT_InitialSequenceFromModel
 C_INIT_InitialVelocityFromHitbox
@@ -1896,10 +1903,9 @@ D$(H9
 D$0H9
 D$7@I
 D$@H9
-D$DH9
+D$HH9
 D$PH9
 D$XH9
-D$`H9
 D$hH9
 D$pH9
 D+c$Mc
@@ -1929,7 +1935,6 @@ DETAIL_2_COMBO_MOD2X
 DETAIL_2_COMBO_MUL
 DETAIL_2_COMBO_OFF
 DETAIL_2_COMBO_UNINITIALIZED
-DHcKXIc
 D_DETAIL_2
 Darken
 DebugTextureInfo001
@@ -2046,7 +2051,7 @@ F@^AX
 F@_AX
 FATAL ERROR: unable to register all schema data: %s
 FCVAR_NEVER_AS_STRING
-FDtDE
+FHtLE
 FIXME:A particle control point is trying to use an invalid slot %d! Only 64 are available. Ignoring for now, but a crash may happen later if this system is used.
 FORCE_SCALE
 FT&TH
@@ -2126,7 +2131,6 @@ G0+GH
 G8t%H
 G<@tY
 GCC: (SteamRT 5.4.0-7.really.6+steamrt1.2+srt2) 5.4.1 20160803
-GDt`D
 GLIBCXX_3.4
 GLIBCXX_3.4.14
 GLIBC_2.14
@@ -2168,7 +2172,7 @@ H90t0A
 H98t`H
 H;0t!
 H=vpcf
-H@Hc5
+H@Hc5f
 HAT	K 
 HAT	KAT	KAT	KAT	K 
 HBm_influenceFlags
@@ -2183,42 +2187,40 @@ H[A\A]A^A_]
 H[A\A]]
 HammerMapLoader001
 Has Collision; 
-Hc5':A
-Hc51?1
-Hc52%A
-Hc57,<
-Hc59$7
-Hc5A 1
-Hc5A0<
-Hc5Bd=
-Hc5Qz1
-Hc5SSF
-Hc5Yv3
-Hc5b{A
-Hc5e>:
-Hc5nbF
-Hc5q.<
-Hc5v.C
+Hc5!I<
+Hc5.:<
+Hc51u1
+Hc59:B
+Hc5<j<
+Hc5AV1
+Hc5BQ2
+Hc5J3B
+Hc5R"2
+Hc5_;<
+Hc5a><
+Hc5e45
+Hc5k5B
+Hc5ri2
+Hc5rnB
+Hc5ugA
+Hc5vNF
+Hc5xI<
+Hc5|Z<
 Hc8Hc
-Hc= *=
-Hc='PA
-Hc=0{A
-Hc=<QA
-Hc=>	B
-Hc=>2<
-Hc=Eu3
-Hc=TPA
-Hc=XG3
-Hc=aF7
-Hc=hf3
-Hc=qzA
-Hc=yv@
+Hc=&HB
+Hc=3Z<
+Hc=5s7
+Hc=>sB
+Hc=G0<
+Hc=Ot7
+Hc=sBB
+Hc=t3B
+Hc={DB
 Hc@pD
 Hc@pH
-HcA I
+HcA$I
 HcA<L
 HcK`Ic
-HcKpIc
 HcP ;P$
 HcP,H
 HcP0t
@@ -2257,10 +2259,10 @@ IParticleSystemDefinition
 IQuickTime001
 IcD$,H
 IcE$f
+IcE,f
 IcE<f
-IcE@f
+IcEDf
 IcF 1
-IcF f
 IcF(f
 IcF,f
 IcF<f
@@ -2284,6 +2286,8 @@ Init Collection: FAILED due to invalid particle system definition '%s'.
 Init Float
 Init Status Effect
 Init System-Wide Float
+Init System-Wide Vec
+Init Vec
 Init from CP snapshot
 Init from killed parent particle
 Init vector attribute from a list of values
@@ -2323,7 +2327,6 @@ KeyValuesSystem
 Kill Particle
 L$pE1
 L9`xt8H
-L;5X`A
 L>m_nMinCol
 LIFE_DURATION
 LOG_GENERAL
@@ -2333,23 +2336,24 @@ LOS collision group
 Last/Newest Particle
 Lc"D;b
 Lc#D;c
+Lc%%zF
+Lc%<"G
+Lc%J.B
 Lc&E)
 Lc'D;g
 Lc'E)
 Lc)D;i
 Lc*D;j
 Lc+D;k
-Lc-:72
-Lc-NZF
+Lc-ks=
 Lc.D;n
 Lc.E)
 Lc/E)
 Lc2D;r
 Lc3D;s
-Lc5:{F
-Lc5?"2
-Lc5mh:
-Lc=qY:
+Lc52cG
+Lc5J/B
+Lc=MH4
 LccHD;cXD
 Lck(E;o
 Length; 
@@ -2670,6 +2674,10 @@ PF_BIAS_TYPE_EXPONENTIAL
 PF_BIAS_TYPE_GAIN
 PF_BIAS_TYPE_INVALID
 PF_BIAS_TYPE_STANDARD
+PF_INPUT_MODE_CLAMPED
+PF_INPUT_MODE_COUNT
+PF_INPUT_MODE_INVALID
+PF_INPUT_MODE_LOOPED
 PF_MAP_TYPE_COUNT
 PF_MAP_TYPE_CURVE
 PF_MAP_TYPE_DIRECT
@@ -2708,9 +2716,11 @@ PVEC_TYPE_CP_RELATIVE_POSITION
 PVEC_TYPE_CP_VALUE
 PVEC_TYPE_FLOAT_COMPONENTS
 PVEC_TYPE_FLOAT_INTERP_CLAMPED
+PVEC_TYPE_FLOAT_INTERP_GRADIENT
 PVEC_TYPE_FLOAT_INTERP_OPEN
 PVEC_TYPE_INVALID
 PVEC_TYPE_LITERAL
+PVEC_TYPE_LITERAL_COLOR
 PVEC_TYPE_PARTICLE_VECTOR
 P[A\A]A^]
 PanoramaTextServices001
@@ -2740,6 +2750,7 @@ ParticleControlPointDriver_t
 ParticleDepthFeatheringMode_t
 ParticleFalloffFunction_t
 ParticleFloatBiasType_t
+ParticleFloatInputMode_t
 ParticleFloatMapType_t
 ParticleFloatRandomMode_t
 ParticleFloatType_t
@@ -3337,7 +3348,6 @@ Vector component random
 Vector random
 Vector2D
 Vector4D
-VectorAligned
 Velocity Control Point
 Velocity away from hitbox random
 Velocity from normal random
@@ -3380,7 +3390,7 @@ X Dimension Count
 X Dimension Spacing
 X axis scaling scalar field
 X offset of center point
-XHc53
+XHc5C+<
 XIcL$
 XY velocity only
 X[A\A]A^A_]
@@ -3400,6 +3410,7 @@ YPPt%
 Y\$@A
 Yaw; 
 Yd$@A
+Yt$pA
 Yt$pD
 Y|$Pt
 Y|$`A
@@ -3423,10 +3434,12 @@ ZN18CNewParticleEffect7RestartEvEUlvE_
 [A\]H	
 [IcL$
 [IcuHI
+\$!E1
 \$xt.
 ]D$0E
 ]\$0E
 ]d$0A
+]|$0A
 ^ E9el
 ^IcL$ Ic
 ^L$hA
@@ -3543,7 +3556,6 @@ alpha field
 alpha max
 alpha min
 alpha random exponent
-alpha scale
 alpha2
 also set ouput to previous particle
 amount of bounce
@@ -3678,7 +3690,6 @@ color blend type
 color fade
 color fade max
 color fade min
-color scale
 color tint
 color warp texture (3d)
 color1
@@ -3968,6 +3979,7 @@ golden angle (is 137.508)
 gravity
 group emission times for new particles
 group id
+hHc5$
 h[A\A]A^A_]
 h[A\A]]
 half-lambert normals
@@ -4102,6 +4114,7 @@ light 4 type 0=point 1=spot
 light amplification amount
 light bias
 light cookie string
+light has _fifty_percent_distance of %f but no zero_percent_distance
 light per vertex
 light radius multiplier
 light start falloff
@@ -4145,6 +4158,7 @@ m_CenterOffset
 m_ChainData
 m_ChildRef
 m_Children
+m_Children.m_pHead: [%p]
 m_CollisionGroupName
 m_Color
 m_ColorFade
@@ -4182,6 +4196,7 @@ m_ForceGenerators
 m_Frequency
 m_FrequencyMax
 m_FrequencyMin
+m_Gradient
 m_HitBoxSets
 m_HitBoxes
 m_HitboxSetName
@@ -4210,6 +4225,7 @@ m_LightZeroDist1
 m_LightZeroDist2
 m_LightZeroDist3
 m_LightZeroDist4
+m_LiteralColor
 m_LocalCoordinateSystemSpeedMax
 m_LocalCoordinateSystemSpeedMin
 m_MaterialVars
@@ -4241,6 +4257,7 @@ m_SolverType
 m_SourceFilename
 m_StackName
 m_StartingForce
+m_Stops
 m_TargetSettingSource
 m_TargetSource
 m_Theta
@@ -4318,6 +4335,7 @@ m_bEndCap
 m_bEvenDistribution
 m_bExplosions
 m_bFireOnEmissionEnd
+m_bFitCycleToLifetime
 m_bFitToModelSize
 m_bFlipBasedOnYaw
 m_bFlipHorizontal
@@ -4407,7 +4425,6 @@ m_bOrientZ
 m_bOriginalModel
 m_bOutline
 m_bOverrideTranslucentMaterials
-m_bParticleFeathering
 m_bParticles
 m_bPerParticle
 m_bPerParticleTR
@@ -4942,6 +4959,7 @@ m_flStartValue
 m_flStopSimulationAfterTime
 m_flStopSpeed
 m_flStrength
+m_flTailAlphaScale
 m_flTessScale
 m_flTextureScrollRate
 m_flTextureSize
@@ -5176,6 +5194,7 @@ m_nInputControlPoint
 m_nInputField
 m_nInputMax
 m_nInputMin
+m_nInputMode
 m_nInstanceCount
 m_nLOD
 m_nLatencyCP
@@ -5472,6 +5491,7 @@ m_vecCPOffset2
 m_vecCPOffset3
 m_vecCPOffset4
 m_vecCenter
+m_vecColorScale
 m_vecComponentScale
 m_vecCpOffset
 m_vecDefaultValue
@@ -5511,6 +5531,7 @@ m_vecRotation
 m_vecRotationB
 m_vecScale
 m_vecSize
+m_vecTailColorScale
 m_vecTestDir
 m_vecTestNormal
 m_vecTraceDir
@@ -5661,6 +5682,7 @@ modeldoc8
 modeldoc9
 motion vectors texture
 multiplayer_break
+n=x`F
 nTries < 10000000
 name, total time, max time, avg sim time, total instances, max instances,total frames, max particles used, allocated particles, total render time, max render time, avg render time, number of intersection tests, number of actual traces
 nav_attribute_avoid
@@ -5896,6 +5918,8 @@ pthread_mutex_lock
 pthread_mutex_unlock
 pthread_mutexattr_init
 pthread_mutexattr_settype
+pvec_color_black
+pvec_color_white
 qIcO0Ic
 qmMiL
 rXD:H
@@ -6187,12 +6211,13 @@ t8UE1
 t:[A\]
 t;[A\A]]
 t;~aLc
+t<[A\]
 t=[A\]
 t@Mcf
 t@~gLcm
 tH<&tD]
 tJHcC
-tQHc=ay@
+tQHc=1
 tZD;kl}TMc
 tangent
 tangentu_signv
@@ -6238,7 +6263,8 @@ trace direction override
 trace offset
 trace recycle tolerance
 trace update rate
-trail end tint factor
+trail end alpha scale
+trail end color scale
 trail_length
 travel time
 travel time scale field
@@ -6342,6 +6368,7 @@ vpcf20
 vpcf21
 vpcf22
 vpcf23
+vpcf24
 vpcf3
 vpcf4
 vpcf5
@@ -6356,7 +6383,7 @@ vr_carry_type
 vsnap
 vtexH
 vtexL
-w@Hc=m
+w@Hc=
 wait for children to finish
 walkspeed
 warp amount
@@ -6380,7 +6407,7 @@ x'Lc"D;b
 x(Lc"D;b
 x(Lc*D;j
 x(Lc+D;k
-x+Lc*D;j
+x+Lc3D;s
 x,Lc"D;b
 x,Lc*D;j
 x,Lc+D;k
@@ -6388,7 +6415,7 @@ x/Lc"D;b
 x3Lc"D;b
 x;Lc"E1
 x@HcO
-xCHc5
+xCHc5d
 x[A\A]A^A_]
 x[A\A]]
 x`Lc"D;b
@@ -6424,6 +6451,8 @@ zmukE
 ~*91t&H
 ~+Hcu
 ~0E;~@A
+~0Hc53g5
+~0Hc5u`5
 ~7;w$
 ~CHcG
 ~IHcK

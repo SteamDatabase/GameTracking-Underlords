@@ -442,7 +442,7 @@
 		"manaCost": 100,
 		"slow_duration": 2.5,
 		"slow_value": -65,
-		"jump_range": 4,
+		"jump_range": 2,
 		"jumps": [ 6, 9, 12 ],
 		"animationlength": 1.5,
 		"damage": [ 200, 300, 400 ],
@@ -619,6 +619,13 @@
 			"particles/units/heroes/hero_templar_assassin/templar_assassin_refraction.vpcf",
 			"particles/units/heroes/hero_templar_assassin/templar_assassin_refract_hit.vpcf"
 		]
+	},
+	"templar_assassin_meld": {
+		"maxLevel": 3,
+		"armor_debuff_duration": 5,
+		"armor_debuff": [ 2, 4, 6 ],
+		"damage": [ 50, 100, 150 ],
+		"damageType": "#DAC_InGame_DamageType_Magical"
 	},
 	"enigma_midnight_pulse": {
 		"maxLevel": 3,
@@ -1082,10 +1089,13 @@
 		"cooldown": [ 6, 6, 6 ],
 		"manaCost": 100,
 		"animationlength": 1.16,
-		"damage_tick": [ 50, 100, 150 ],
-		"heal_tick": [ 50, 125, 175 ],
+		"damage_tick": [ 75, 150, 300 ],
+		"heal_tick": [ 75, 150, 300 ],
 		"ally_health_pct": 50,
 		"duration": 3,
+		"burst_pct": 0.75,
+		"burst_tooltip": [ 168, 337, 675],
+		"hot_tooltip": [ 56, 112, 225],
 		"damageType": "#DAC_InGame_DamageType_Magical",
 		"precache": [
 			"particles/units/heroes/hero_warlock/warlock_shadow_word_debuff.vpcf",
@@ -1097,7 +1107,8 @@
 		"maxLevel": 3,
 		"self_dmg_pct": 7,
 		"heal_pct": 35,
-		"attack_speed_per_missing_pct": 5,
+		"min_health_pct": 20,
+		"attack_speed_bonus_max": 500,
 
 		"precache": [
 			"particles/units/heroes/hero_bloodseeker/bloodseeker_bloodrage.vpcf"
@@ -1157,21 +1168,21 @@
 	"healing_ward_healing_aura": {
 		"maxLevel": 1,
 		"health_regen": 20,
-		"heal_range" : 1,
+		"heal_range": 1,
 		"precache": [
 			"particles/gameplay/synergy/druids/druid_death_heal.vpcf"
 		]
 	},
-	"tombstone_raise_zombies" : {
-		"maxLevel" : 1,
-		"range" : 2,
-		"precache" : [
+	"tombstone_raise_zombies": {
+		"maxLevel": 1,
+		"range" : 1,
+		"precache": [
 			"particles/items/tombstone/tombstone_zombie_spawn.vpcf"
 		]
 	},
-	"barricade_aura" : {
-		"maxLevel" : 1,
-		"range" : 1
+	"barricade_aura": {
+		"maxLevel": 1,
+		"range": 1
 	},
 	"target_dummy_taunt": {
 		"maxLevel": 1,
@@ -1196,7 +1207,7 @@
 		"maxLevel": 3,
 		"hidden": true
 	},
-	"lich_mage_bonus":	{
+	"lich_mage_bonus": {
 		"bonus_mana_percent": 15,
 		"hidden": true
 	},
@@ -1213,10 +1224,10 @@
 	"troll_warlord_troll_bonus": {
 		"maxLevel": 3,
 		"bash_percent": 5,
-		"bash_duration" : 0.25,
+		"bash_duration": 0.25,
 		"hidden": true
 	},
-	"disruptor_warlock_bonus" : {
+	"disruptor_warlock_bonus": {
 		"maxLevel": 3,
 		"hidden": true
 	}

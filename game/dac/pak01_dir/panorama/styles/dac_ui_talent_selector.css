@@ -20,11 +20,16 @@ DACTalentBrowser
 	transition-timing-function: ease-in-out;
 }
 
+.IsLayoutSmallScreen DACTalentSelector,
+.IsLayoutSmallScreen DACTalentBrowser
+{
+	padding: 100px 0px;
+}
+
 DACTalentBrowser
 {
 	background-color: gradient( radial, 50% 50%, 0% 0%, 70% 70%, from( #000000ee ), to( #000000 ) );
 }
-
 
 DACTalentSelector.HasUnselectedTalent,
 DACTalentBrowser.ShowTalentBrowser,
@@ -94,236 +99,33 @@ DACTalentBrowser.ShowTalentBrowser,
 
 #TalentOptions
 {
+	width: 1360px;
 	height: fill-parent-flow( 1.0 );
 
 	padding-top: 40px;
 	horizontal-align: center;
 
 	flow-children: right;
+	overflow: scroll clip;
 }
 
-#TalentOptions .TalentOption
+#TalentOptions .TalentRoundContainer
 {
-	width: 300px;
-	height: 460px;
-
-	margin: 0px 20px;
-
-	border-radius: 12px;
-
-	flow-children: down;
-
-	transition-property: transform;
-	transition-duration: 0.1s;
-	transition-timing-function: ease-in-out;
+	width: 1360px;
 }
 
-#TalentOptions .TalentOption.NeedsPrereq .ImageDimmer,
-#TalentOptions .TalentOption.NeedsPrereq .BottomSection,
-#TalentOptions .TalentOption.NeedsPrereq #AbilityContainer,
-#TalentOptions .TalentOption.Unavailable .ImageDimmer,
-#TalentOptions .TalentOption.Unavailable .BottomSection,
-#TalentOptions .TalentOption.Unavailable #AbilityContainer
+#TalentOptions .TalentRoundContainerInner
 {
-	saturation: 0.0;
-	brightness: 0.2;
-}
-
-.CanSelect #TalentOptions .TalentOption:not(.NeedsPrereq):hover
-{
-	transform: scaleX( 1.05 ) scaleY( 1.05 );
-}
-
-#TalentOptions .TalentOption .ImageDimmer
-{
-	width: 100%;
-	height: 100%;
-}
-
-#TalentOptions .TalentOption .ImageContainer
-{
-	width: 100%;
-	height: width-percentage( 100% );
-
-}
-
-#TalentOptions .TalentOption .TalentImage
-{
-	width: 100%;
-	height: 100%;
-}
-
-#TalentOptions .TalentOption .Prereq
-{
-	vertical-align: center;
-	horizontal-align: center;
-
-	text-align: center;
-
-	width: 100%;
-
-	font-size: 40px;
-	color: white;
-
-	text-transform: uppercase;
-	font-weight: bold;
-
-	padding: 0px 10px;
-
-	visibility: collapse;
-}
-
-#TalentOptions .TalentOption.NeedsPrereq .Prereq
-{
-	visibility: visible;
-}
-
-#TalentOptions .TalentOption .Locked
-{
-	vertical-align: center;
-	horizontal-align: center;
-
-	text-align: center;
-
-	width: 100%;
-
-	font-size: 40px;
-	color: white;
-
-	text-transform: uppercase;
-	font-weight: bold;
-
-	padding: 0px 10px;
-	padding-bottom: 50px;
-
-	visibility: collapse;
-}
-
-#TalentOptions .TalentOption.Unavailable .Locked,
-#TalentOptions .TalentOption.Unavailable #UnlockCondition,
-#TalentOptions .TalentOption.Unavailable.UnavailableGeneric #UnlockConditionGeneric
-{
-	visibility: visible;
-}
-
-#TalentOptions .TalentOption #UnlockCondition,
-#TalentOptions .TalentOption #UnlockConditionGeneric
-{
-	vertical-align: center;
-	horizontal-align: center;
-
-	text-align: center;
-
-	width: 100%;
-
-	font-size: 20px;
-	color: white;
-
-	text-transform: uppercase;
-	font-weight: bold;
-
-	padding: 0px 10px;
-	padding-top: 70px;
-
-	visibility: collapse;
-}
-
-
-#TalentOptions .TalentOption #AbilityContainer
-{
-	horizontal-align: left;
-	vertical-align: bottom;
-	background-color: #000000aa;
-	background-color: gradient(linear, 10% 0%, 100% 0%, from( #000000 ), to(#00000000));
-	width: 100%;
-
-
 	flow-children: right;
+	horizontal-align: center;
 }
 
-#TalentOptions .TalentOption .Ability
+.AspectRatio21x9 #TalentOptions .TalentRoundContainer
 {
-	color: white;
-	font-size: 18px;
-	font-weight: semi-bold;
-
-	//text-shadow: 0px 0px 0px 2.0 #000;
-
-	vertical-align: middle;
+	width: 2520px;
 }
 
-#TalentOptions .TalentOption.NoParent #AbilityContainer
+#TalentOptions #HorizontalScrollBar
 {
-	visibility: collapse;
+	opacity: 0;
 }
-
-
-#TalentOptions .TalentOption #AbilityImage
-{
-	width: 45px;
-	height: 45px;
-	margin-right: 8px;
-}
-
-#TalentOptions .TalentOption .BottomSection
-{
-	width: 100%;
-	height: fill-parent-flow( 1.0 );
-
-	background-color: black;
-
-	flow-children: down;
-}
-
-#TalentOptions .TalentOption .BottomSection .TalentName
-{
-	width: 100%;
-	font-size: 24px;
-	color: #DDD;
-	font-weight: bold;
-	font-family: Ravenhook;
-	text-align: center;
-	line-height: 22px;
-	
-
-	margin-top: 10px;
-
-	text-transform: uppercase;
-	letter-spacing: 2px;
-}
-
-#TalentOptions .TalentOption .BottomSection .TalentDescription
-{
-	font-size: 18px;
-	padding: 0px 10px;
-	color: #999;
-	line-height: 22px;
-	padding: 0px 16px;
-	text-align: center;
-}
-
-#TalentOptions .TalentOption .BottomSection .TalentDescription .PerLevel
-{
-	color: #b9902e;
-	font-weight: semi-bold;
-}
-
-#TalentOptions  .TalentOption {
-	brightness: 0.8;
-	transform: rotateZ(-3deg);
-
-	transition-property: pre-transform-scale2d, brightness, transform;
-	transition-duration: 0.1s;
-	//transition-timing-function: ease;
-}
-
-#TalentOptions  .TalentOption:hover {
-	pre-transform-scale2d: 1.10;
-	brightness: 1.5;
-	transform: rotateZ(0deg);
-
-	transition-property: pre-transform-scale2d, brightness, transform;
-	transition-duration: 0.1s;
-	//transition-timing-function: ease;
-}
-

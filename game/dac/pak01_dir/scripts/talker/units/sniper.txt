@@ -1,0 +1,149 @@
+// sniper - Hero
+criterion "Issniper" "classname" "sniper" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response sniper_recruit_1
+{
+	speak "sniper_recruit" noscene 
+}
+
+Rule sniper_recruit_1_rule
+{
+	criteria Issniper ConceptRecruit UnitRank1
+	response sniper_recruit_1
+}
+
+
+Response sniper_recruit_2
+{
+	speak "sniper_upgrade" noscene 
+}
+
+Rule sniper_recruit_2_rule
+{
+	criteria Issniper ConceptRecruit UnitRank2
+	response sniper_recruit_2
+}
+
+
+Response sniper_recruit_3
+{
+	speak "sniper_final_upgrade" noscene 
+}
+
+Rule sniper_recruit_3_rule
+{
+	criteria Issniper ConceptRecruit UnitRank3
+	response sniper_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response sniper_start_round
+{
+	speak "sniper_start_round" noscene 
+}
+
+Rule sniper_start_round_rule
+{
+	criteria Issniper ConceptRoundStart 
+	response sniper_start_round
+}
+
+
+Response sniper_start_round_lost_last_round
+{
+	speak "sniper_start_round_lost_last_round" noscene 
+}
+
+Rule sniper_start_round_lost_last_round_rule
+{
+	criteria Issniper ConceptRoundStart LostLastGame
+	response sniper_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response sniper_flawless_victory
+{
+	speak "sniper_flawless_victory" noscene 
+}
+
+Rule sniper_flawless_victory_rule
+{
+	criteria Issniper ConceptRoundEnd Result_WinFlawless
+	response sniper_flawless_victory
+}
+
+
+Response sniper_decisive_victory
+{
+	speak "sniper_decisive_victory" noscene 
+}
+
+Rule sniper_decisive_victory_rule
+{
+	criteria Issniper ConceptRoundEnd Result_WinDecisive
+	response sniper_decisive_victory
+}
+
+Response sniper_narrow_victory
+{
+	speak "sniper_narrow_victory" noscene 
+}
+
+Rule sniper_narrow_victory_rule
+{
+	criteria Issniper ConceptRoundEnd Result_WinNarrow
+	response sniper_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response sniper_flawless_defeat
+{
+	speak "sniper_flawless_defeat" noscene 
+}
+
+Rule sniper_flawless_defeat_rule
+{
+	criteria Issniper ConceptRoundEnd Result_LoseFlawless
+	response sniper_flawless_defeat
+}
+
+
+Response sniper_decisive_defeat
+{
+	speak "sniper_decisive_defeat" noscene 
+}
+
+Rule sniper_decisive_defeat_rule
+{
+	criteria Issniper ConceptRoundEnd Result_LoseDecisive
+	response sniper_decisive_defeat
+}
+
+Response sniper_narrow_defeat
+{
+	speak "sniper_narrow_defeat" noscene 
+}
+
+Rule sniper_narrow_defeat_rule
+{
+	criteria Issniper ConceptRoundEnd Result_LoseNarrow
+	response sniper_narrow_defeat
+}

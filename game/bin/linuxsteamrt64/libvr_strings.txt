@@ -99,6 +99,8 @@ $[A\]
 %i "%s"
 %i %i %i %i
 %s "%s"
+%s (Color)
+%s (Material)
 %s * %s
 %s + %s
 %s - %s
@@ -109,6 +111,8 @@ $[A\]
 %s: string format requested %d chars
 %s_%s_%u
 %s_%u.vmdl
+%s_color
+%s_matgrp
 %u,%u,%f,%f,%f,%f,%i
 &YA1D
 &YA1H
@@ -132,13 +136,15 @@ $[A\]
 *** Eye %d: %dx%d area RenderTarget( %f, %f ) Scale( %f, %f )
 *D$ A
 *D$Tf
-*SdA9
+*SdD9
 *St19_Sp_counted_deleterIPhZN3Etc13EncodeMipmapsEPfjjNS1_5Image6FormatENS1_11ErrorMetricEfjjjjPNS1_8RawImageEPibEUlS0_E_SaIiELN9__gnu_cxx12_Lock_policyE2EE
 *ZN3Etc13EncodeMipmapsEPfjjNS_5Image6FormatENS_11ErrorMetricEfjjjjPNS_8RawImageEPibEUlPhE_
 , VR_CONTROLLER_INPUT_JOYSTICK
 , VR_CONTROLLER_INPUT_TRACKPAD
 , VR_CONTROLLER_INPUT_TRIGGER 
+, channels = 
 , controller %d, input %2d
+, height = 
 , m_bIsPressed = %d, m_bIsTouched = %d, analog( %f, %f )
 , name = %-10s
 , openVrEvent.eventAgeSeconds = %f
@@ -173,7 +179,6 @@ $[A\]
 -width
 . Pixels per eye after stencil mask: 
 . Renderer now requires 
-.-!#*
 ../public/ordered_constructor.h
 ../public/tier0/tslist.h
 ../public/tier1/utlblockmemory.h
@@ -315,7 +320,6 @@ $[A\]
 >;9t9H
 >UPDATE_STRING_TOKEN_DATABASE
 >utlbuffer.cpp
-?formats.cpp
 @/data/source2_main/src/thirdparty/etc2comp/EtcLib/Etc/EtcImage.cpp
 @9[cU
 @@/data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcBlock4x4.cpp
@@ -325,10 +329,12 @@ $[A\]
 @[A\]
 @[]A\
 @mathlib.cpp
+@spawn
 @tB[A\]
 @v,UH
 A#|$TH
 A+E$A
+A8E(u
 A;D$X}
 A;EP|(
 A;N so
@@ -407,7 +413,6 @@ AVAUATA
 AVAUATE
 AVAUATE1
 AVAUATI
-AVAUATL
 AVAUATLc
 AVAUATS
 AVAUATSH
@@ -450,7 +455,6 @@ A\A]A^]
 A\A]]
 A\A]]L
 A]A^]
-Abaselayer
 Acquired overlay %s has unsupported API type: %d
 Acquired overlay %s texture failed to be shared.
 Acquired overlay %s texture isn't available. (yet)
@@ -459,6 +463,7 @@ AddRef
 Adding animation group resource in replace animations: %s
 AllocInternal
 Allocating %s bytes for perf test data
+Am_flPosition
 Angle; 
 AnimAddLayer
 AnimAlign
@@ -568,6 +573,10 @@ CL$(9
 CMaterialDrawDescriptor
 CMemAllocSystemInitialize
 CMesh Cannot create packed input layout, because the bone indices are out of range (0x%X)
+CModelConfig
+CModelConfigElement
+CModelConfigElement_UserPick
+CModelConfigList
 CMorphConstraint
 COLORCORRECTION_VERSION_1
 COrientConstraint
@@ -696,7 +705,10 @@ C_OP_SetSingleControlPointPosition
 C_OP_StopAfterCPDuration
 C_OP_TwistAroundAxis
 Cables
-Cannot reconstruct lineOffset table.
+Cannot read a file 
+Cannot read file 
+Cannot reconstruct lineOffset table in DecodeEXRImage.
+Cannot write a file
 Checker.
 Cht7Lc{pD;
 Clip Space Bounds Left Eye  (L/R/T/B): 
@@ -710,6 +722,7 @@ CommandProcedure
 CommandProcedureList
 ConVar(%s) defined with infinite float value (%s)
 ConVarRef %s doesn't point to an existing ConVar
+ConfigAttachedModel
 ConfigurationSystem_001
 ConnectInterfaces
 Connected to SteamVR compositor!
@@ -740,11 +753,11 @@ D$ E1
 D$ H9E
 D$(9D$
 D$(D;u
+D$(H9
 D$(fH
 D$(t=H
 D$0;D$(
 D$0E1
-D$0H9
 D$89D$D
 D$89D$H
 D$8;D$,
@@ -771,6 +784,8 @@ D24X8_SHADOW
 D9k D
 D9l$(
 D9t$LfE
+D:h(I
+D;:teH
 D;c D
 D;g D
 D;g0D
@@ -779,6 +794,7 @@ D;x<s
 D;|$$
 DXT1_ONEBITALPHA
 DXT5_NM
+Data size too short
 DebugTextureInfo001
 Decompression failure
 Default
@@ -788,6 +804,7 @@ Dominate(
 DotaCardGameClient_001
 Driver high = 0x%x, low = 0x%x
 Dump the left-hand controller render data to an OBJ + TGA files
+DynamicConfigList
 Dynamically adjust vr_fidelity_level based on current performance
 E9T$H
 E9gPI
@@ -798,9 +815,10 @@ ERROR! CVr::CreateWarpMaterialAndTexture() called with an invalid g_pRenderDevic
 ERROR! CVr::CreateWarpMaterialAndTexture() called with an invalid g_pResourceSystem!
 ERROR! Cannot load VrStartup resource manifest!
 EXPORTSYSTEM_INTERFACE_VERSION_001
-EXRHeader is not initialized.
+EXRHeader variable is not initialized.
 EarlyInit_Tier0
 EconItemToolModel_001
+EditorDynamicConfig
 EmptyAnim
 Encountered bad skin weights, summing to %g (1.0 expected) at position %.3f %.3f %.3f
 Encountered unknown VrInputError_t value.
@@ -840,23 +858,29 @@ FATAL ERROR: unable to register all schema data: %s
 FCVAR_NEVER_AS_STRING
 FOV Left Eye  (L/R/T/B): 
 FOV Right Eye (L/R/T/B): 
-FXE;Fh
 F_ALPHA_TEST
 F_MORPH_SUPPORTED
 F_TRANSLUCENT
 Failed to SetOverlayFromFile %s: %s
+Failed to compute channel layout.
 Failed to convert introspected block: %s
 Failed to create VR loading overlay: %s
 Failed to create VR overlay: %s
 Failed to destroy VR overlay: %s
 Failed to hide VR overlay: %s
+Failed to parse EXR version
+Failed to parse attribute
+Failed to parse channel info
 Failed to parse channel info.
 Failed to query overlay flag - error %s
+Failed to read attribute.
 Failed to release overlay view - error %s
 Failed to show VR overlay: %s
 Failed to write obj to '%s'
 Failed to write tga to '%s'
 FeetSettings
+File size is zero : 
+File size too short 
 FillAttr
 FilterFrom
 FindClosestMatchingRegion
@@ -904,6 +928,7 @@ GLIBC_2.3
 GLIBC_2.3.4
 GLIBC_2.4
 GPU: 
+GXE;Gh
 GameResourceServiceClientV001
 GameResourceServiceServerV001
 GameStartup
@@ -938,6 +963,7 @@ HMD Manufacturer:
 HMD Model: 
 HMD Position: %.2f, %.2f, %.2f
 HMD Serial Number: 
+HTC VIVE
 H[A\A]A^A_]
 H[A\A]]
 H[]A\A]A^A_
@@ -950,7 +976,6 @@ HcCXI
 HcCXL
 HcD$pH
 HcGpUH
-HcKxIc
 HcSPH
 HcSXH
 Hcs@H
@@ -977,11 +1002,12 @@ IVROverlay_019
 IVRRenderModels_006
 IVRSystem_019
 IcF A;F0
-IcFh1
 IcFhA;Fx
+IcGh1
 If you don't have a VR device, you can run with -vrdebug to see vr rendering as a side-by-side stereo render.
 Ignore Always
 Ignore Once
+Image data size is zero or too large: width = 
 Infinite Joint Weights encountered: Skinning will not work! (At position %.3f %.3f %.3f)
 InfoForResourceTypeCAnimData
 InputService_001
@@ -990,21 +1016,47 @@ InputSystemVersion001
 InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
+Insufficient data length.
+Insufficient data size for attributes.
+Insufficient data size in offset table.
+Insufficient data size.
+Insufficient header/data size.
 Intentionally vague touch behavior for %p
 Internal inconsistency between the layout format and attribute is detected.
-Invalid argument.
+Invalid EXR header.
+Invalid `part number' in EXR header chunks.
+Invalid argument for DecodeEXRImage().
+Invalid argument for LoadDeepEXR
+Invalid argument for LoadEXR()
+Invalid argument for LoadEXRFromMemory
+Invalid argument for LoadEXRImageFromFile
+Invalid argument for LoadEXRImageFromMemory
+Invalid argument for LoadEXRMultipartImageFromFile
+Invalid argument for LoadEXRMultipartImageFromMemory()
+Invalid argument for ParseEXRHeaderFromFile
+Invalid argument for ParseEXRMultipartHeaderFromFile()
+Invalid argument for ParseEXRMultipartHeaderFromMemory
+Invalid argument for SaveEXRImageToFile
+Invalid argument for SaveEXRImageToMemory
+Invalid argument. `memory` or `exr_header` argument is null in ParseEXRHeaderFromMemory()
+Invalid channels format
 Invalid data for member '%s'
-Invalid data height value.
-Invalid data window value.
+Invalid data found when decoding pixels.
+Invalid data height value
+Invalid data width or data height: 
+Invalid data width value
 Invalid data.
 Invalid header
 Invalid input layout field format %d for joint indices
+Invalid magic number
 Invalid member name '%s'
-Invalid offset size.
-Invalid offset value.
+Invalid offset size in EXR header chunks.
+Invalid offset value in DecodeEXRImage.
 Invalid request for mesh %d in model %s with %d entry remapping start table
 Invalid request for mesh %d in model %s with no remapping table
 Invalid request for mesh %d in model %s with no remapping table starts
+Invalid tile size x : 
+Invalid tile size y : 
 Inverse Multi Quadratic
 Invert Axes; 
 JIGGLE_BONE
@@ -1040,12 +1092,9 @@ LINEAR_RGBA8888
 LOG_GENERAL
 Launching %s
 Lc)D;i
-Lc-k]*
 Lc/E)
 Lc3D;s
-Lc=Am*
 LccHD;cXD
-LcghD;gx
 Length; 
 LightingBasis
 LightmapUV
@@ -1059,6 +1108,7 @@ LoadEXRImageFromMemory failed! Error message: %s
 LoadFromInMemoryEXR( %s ) failed.
 LoadKV3ObjectInPlace error: %s
 Loading action manifest from depot.
+Loading multipart or DeepImage is not supported  in LoadEXR() API
 Localize_001
 LoggingSystem_IsChannelEnabled
 LoggingSystem_Log
@@ -1073,6 +1123,7 @@ MESH_DRAW_FLAGS_DRAW_LAST
 MESH_DRAW_FLAGS_IS_OCCLUDER
 MESH_DRAW_FLAGS_NONE
 MIN INCREASE vr_fidelity_level %d. Last frames = %.2fms, %.2fms, %.2fms < %.2f
+MODEL_CONFIG_ATTACHMENT_COUNT
 MODEL_PROCESSING_SCRIPT_INTERFACE_001
 MODEL_PROCESSING_SERVICES_INTERFACE_001
 MapListService_001
@@ -1099,6 +1150,7 @@ Missing file '%s'
 Model %s missing bone and flex counts (%d < %d), init %d
 Model conversion: %d conversions in %.3fsec (%.3fms each)
 ModelCompile/UseShadowFastPathHeuristic
+ModelConfigAttachmentType_t
 ModelDocUtils001
 Move offset convars in direction you are looking
 MovementSettings
@@ -1151,13 +1203,13 @@ Non-windows platforms don't support loading of PNG images
 Non-windows platforms don't support loading of TIFF images
 Normalize3ComponentVectorInAttributes
 Normalized3x3SobelEdgeFilterFrom
-NpC9D
 ORIENT
 Oculus Rift S
 Only DXT1/DXT5 online texture compression supported.
 OpenVR event vr::VREvent_InputFocusCaptured
 OpenVR event vr::VREvent_InputFocusReleased
 Ordered constructor wrapped type has no default constructor.
+Output memory size is zero
 Output:  
 Overall FOV (H/V): 
 PA;^X|
@@ -1232,9 +1284,15 @@ Please add a MovementSettings node to the model in ModelDoc
 Please add a Skeletal Input Settings node to the model in ModelDoc
 PosXYZ
 PostProcessingSystem_001
+PreviewAttachmentModel
+PreviewBoneAttachedModel
+PreviewBoneMergedModel
+PreviewPreset
+PreviewPresetList
 Print model load-time conversion info
 PropWorldOrigin
 PropertyEditorSystem_001
+QpA9D
 QuarterSizeAttrWithBoxFilter
 QueuedLoaderVersion001
 Quintic
@@ -1322,6 +1380,11 @@ SerializedEntitiesVersion001
 ServerUploadGameStats001
 Set to 1 when you want frames to be captured by the SteamVR perf test.
 SetAssertionCallback
+SetOverlayTexture: invalid overlay %d
+SetOverlayTransform failed: %s
+SetOverlayTransform: invalid overlay %d
+SetOverlayWidth: invalid overlay %d
+SetOverlayWidthInMeters failed: %s
 Simulated
 Sin( %s )
 SkeletonBoneBounds_t
@@ -1419,7 +1482,11 @@ Unrecognized flag name '%s'
 Unrecognized resource version (%d): %s
 Unrecognized type '%d'
 Unsupported ETC image format %d.
+Unsupported component value : 
+Unsupported compression format
+Unsupported compression type : 
 Unsupported text encoding id.
+Unsupported version or scanline
 UpperEyelid( 
 Use: vr_dump_render_model <obj_filename> <tga_filename>
 UserInfoChangeService_001
@@ -1631,13 +1698,12 @@ XD$LH
 XL$HH
 XLc'H
 XT$DH
-XZw E
 X[A\A]A^A_]
 X[A\A]]
 X[]A\A]A^A_
 X\$LM
 Yaw; 
-ZFP compression is not supported in this build.
+ZFP compression is not supported in this build
 ZFP compression is not supported.
 [ Broadcasting from within VR; note taking skipped. ]
 [A\A]A^A_]
@@ -1734,17 +1800,21 @@ _ZNKSt5ctypeIcE13_M_widen_initEv
 _ZNKSt5ctypeIcE8do_widenEc
 _ZNSo3putEc
 _ZNSo5flushEv
+_ZNSolsEi
 _ZNSs12_S_constructIPcEES0_T_S1_RKSaIcESt20forward_iterator_tag
 _ZNSs4_Rep10_M_destroyERKSaIcE
 _ZNSs4_Rep20_S_empty_rep_storageE
 _ZNSs4_Rep9_S_createEmmRKSaIcE
 _ZNSs4swapERSs
+_ZNSs6appendEPKcm
 _ZNSs6appendERKSs
 _ZNSs6assignEPKcm
 _ZNSs6assignERKSs
+_ZNSs6insertEmPKcm
 _ZNSsC1EPKcRKSaIcE
 _ZNSsC1EPKcmRKSaIcE
 _ZNSsC1ERKSs
+_ZNSspLEPKc
 _ZNSt13__future_base11_State_baseD2Ev
 _ZNSt13__future_base12_Result_baseC2Ev
 _ZNSt13__future_base12_Result_baseD2Ev
@@ -1762,6 +1832,7 @@ _ZNSt6thread15_M_start_threadESt10shared_ptrINS_10_Impl_baseEE
 _ZNSt6thread4joinEv
 _ZNSt6vectorIS_ImSaImEESaIS1_EE19_M_emplace_back_auxIIRKS1_EEEvDpOT_
 _ZNSt6vectorIS_ImSaImEESaIS1_EE19_M_emplace_back_auxIJRKS1_EEEvDpOT_
+_ZNSt6vectorIfSaIfEE17_M_default_appendEm
 _ZNSt6vectorIhSaIhEE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPhS1_EEEEvS6_T_S7_St20forward_iterator_tag
 _ZNSt6vectorIhSaIhEE15_M_range_insertIPKhEEvN9__gnu_cxx17__normal_iteratorIPhS1_EET_S9_St20forward_iterator_tag
 _ZNSt6vectorIhSaIhEE15_M_range_insertIPcEEvN9__gnu_cxx17__normal_iteratorIPhS1_EET_S8_St20forward_iterator_tag
@@ -1769,6 +1840,8 @@ _ZNSt6vectorIhSaIhEE17_M_default_appendEm
 _ZNSt6vectorIhSaIhEE6insertIN9__gnu_cxx17__normal_iteratorIPhS1_EEvEES6_NS4_IPKhS1_EET_SA_
 _ZNSt6vectorIhSaIhEEC1EmRKS0_
 _ZNSt6vectorIhSaIhEEC2EmRKS0_
+_ZNSt6vectorItSaItEEC1EmRKS0_
+_ZNSt6vectorItSaItEEC2EmRKS0_
 _ZNSt8ios_base4InitC1Ev
 _ZNSt8ios_base4InitD1Ev
 _ZNSt8ios_baseC2Ev
@@ -1839,6 +1912,7 @@ _test_conversion_counter
 ` HcG
 `[A\]
 `chunkCount' attribute is not found in the header.
+`fread' error. file may be corrupted.
 a_fDecodedAlpha >= 0.0f
 a_uiMultithreadingStride > 0
 a_uiRadius <= MAX_RADIUS
@@ -1855,10 +1929,13 @@ anim_name_b
 animgraph0
 archive
 atan2
+attach_point
 attachment
 attachment_offset
+attachment_type
 auto_unragdoll_duration
 bUpdate
+baselayer
 basic_string::_S_construct null not valid
 before solve err=%f
 bentnormal
@@ -1872,9 +1949,11 @@ blendindices
 blendweight
 blendweights
 blockLOS
+body_groups
 body_type
 bone_name
 bone_names
+bonemerge
 box2i
 break_create_joint_revolute
 break_uniform_burst
@@ -1909,6 +1988,7 @@ collision_group
 collision_prop
 composite
 compression
+config_state
 configvalue.cpp
 control_point
 control_points_list
@@ -1921,7 +2001,12 @@ d$(;l$<
 dH34%(
 dH3<%(
 data error
+data height too large.
+data width or data height is negative.
+data width too large.
 dataWindow
+data_height = 
+data_with or data_height too large. data_width: 
 default
 dir=%d %d %d, err=%f
 displayWindow
@@ -1960,6 +2045,7 @@ fWeightSumRight > 0.0f
 fWeightSumTop > 0.0f
 faceMergeAngle
 false
+fclose
 fff?fff?fff?fff?
 ffff.
 fffff.
@@ -1972,23 +2058,28 @@ float Etc::Block4x4Encoding::CalcPixelError(Etc::ColorFloatRGBA, float, Etc::Col
 float Etc::Block4x4Encoding::GetError()
 floatbitmap.cpp
 floatbitmap.cpp(140): Unknown gamma type "%s"!
-floatbitmap.cpp(2455): Error calling TGALoader::GetInfo( %s )
-floatbitmap.cpp(2466): Error loading %s
-floatbitmap.cpp(2489): Error! Unknown file type for %s
-floatbitmap.cpp(2508): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
+floatbitmap.cpp(2463): Error calling TGALoader::GetInfo( %s )
+floatbitmap.cpp(2474): Error loading %s
+floatbitmap.cpp(2497): Error! Unknown file type for %s
+floatbitmap.cpp(2516): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
 floatbitmap.cpp(324): Conversion not supported yet!
 floatbitmap.cpp(424): Conversion not supported yet!
 floatbitmap.cpp(887): Unsupported color format "%s", skipping!
 floor
 floorf
+fopen64
 force
-format
+formats.cpp
 fprintf
 fputc
 frame
 fread
+fread() error on 
 frexp
 friction
+fseek
+ftell
+fwrite
 g cMesh
 g default
 g_Mathlib_GammaToLinearByteTable
@@ -2054,6 +2145,7 @@ knuckles
 knuckles_ev1
 kv3format_manager.cpp
 l$ v=
+l$(Lc
 l$0D9
 l$4D9
 last_sniff
@@ -2082,46 +2174,62 @@ loop_in_action
 looping
 lowprecisionuv
 lowprecisionuv1
+m_AttachmentName
+m_AttachmentType
 m_Bone
 m_ChainData
 m_Children
+m_Choices
 m_Color
 m_ColorScale
 m_ConeAxis
 m_ConeCutoff
+m_ConfigName
+m_Configs
 m_ControlRigData
 m_CullDataIndex
 m_DefaultSolverSettings
 m_DefaultTargetSettings
+m_ElementName
+m_Elements
 m_Emitters
 m_EndEffectorBone
 m_EndEffectorTargetBone
+m_EntityClass
 m_ForceGenerators
+m_Gradient
+m_GroupName
 m_HitBoxSets
 m_HitBoxes
 m_IKChains
 m_IkChain
 m_IkChains
 m_Initializers
+m_InstanceName
 m_JointConstraintPairs
 m_JointName
 m_Joints
 m_LiteralColor
+m_MaterialGroupName
 m_Name
+m_NestedElements
 m_Operators
 m_PreEmissionOperators
 m_Renderers
 m_SolverSettingSource
 m_SolverType
 m_SourceFilename
+m_Stops
 m_TargetSettingSource
 m_TargetSource
+m_aAngOffset
 m_ankleBoneName
 m_attachments
 m_bApplyMinForce
 m_bCacheAttempted
 m_bCacheOk
 m_bCanBatchWithDynamicShaderConstants
+m_bClamp
 m_bDisableChild
 m_bDisableOperator
 m_bDoBonesOrientAlongPositiveX
@@ -2135,6 +2243,8 @@ m_bHasBakedLightingFromLightMap
 m_bHasBakedLightingFromVertexStream
 m_bHasCullingData
 m_bHasPerInstanceBakedLightingData
+m_bHideMaterialGroupInTools
+m_bHideRenderColorInTools
 m_bIgnoreRotation
 m_bInfluenceRootTransform
 m_bInitFromKilledParentParticles
@@ -2153,11 +2263,14 @@ m_bScaleInitialRange
 m_bScaleInitialValue
 m_bScalePerParticle
 m_bSelected
+m_bTopLevel
 m_bTrailBias
 m_bTranslationOnly
 m_bUseCompressedNormalTangent
 m_bUseHighestEndCP
 m_bUseShadowFastPath
+m_bUserSpecifiedColor
+m_bUserSpecifiedMaterialGroup
 m_bVisible
 m_bbox
 m_boneArray
@@ -2187,6 +2300,7 @@ m_fForceAmountMin
 m_fLifespanScaleExp
 m_fingers
 m_flBiasParameter
+m_flBindPoseDirectionMS
 m_flClusterCooldown
 m_flClusterCooldownMax
 m_flClusterCooldownMin
@@ -2195,12 +2309,14 @@ m_flClusterRefireTimeMax
 m_flClusterRefireTimeMin
 m_flClusterSize
 m_flDistance
+m_flDuration
 m_flEmissionDuration
 m_flEmissionScale
 m_flEmitRate
 m_flFalloff
 m_flFingerScaleRatio
 m_flFingerWeight
+m_flFootLength
 m_flInitFromKilledParentParticles
 m_flInput0
 m_flInput1
@@ -2237,6 +2353,7 @@ m_flags
 m_floatAttributes
 m_floatParams
 m_hBuffer
+m_hModel
 m_hSnapshot
 m_hingeAxis
 m_hitboxsets
@@ -2273,10 +2390,13 @@ m_nBoneHash
 m_nBoneIndex
 m_nBoneNameHash
 m_nBoneWeightCount
+m_nCP
+m_nCPField
 m_nChainIndex
 m_nChainInvIndex
 m_nChainType
 m_nChannelElements
+m_nChoice
 m_nClusterSizeMax
 m_nClusterSizeMin
 m_nControlPoint
@@ -2411,6 +2531,7 @@ malloc
 mapbuilder.nodraw
 mapbuilder.occluder
 master_morph_weight
+material_group
 materials/dev/steamvr_controller_base.vmat
 materials/dev/vr_stencil.vmat
 materials/dev/vr_warp.vmat
@@ -2431,9 +2552,11 @@ mesh_calculate_curvature_smooth_pass_count
 mesh_calculate_curvature_smooth_weight
 meshes
 min_angle
+min_gpu_memory
 model.cpp
 model_default_preview_sequence_name
 model_dump_convert_info
+model_name
 modeldoc0
 modeldoc1
 modeldoc10
@@ -2454,6 +2577,7 @@ modeldoc23
 modeldoc24
 modeldoc25
 modeldoc26
+modeldoc27
 modeldoc3
 modeldoc4
 modeldoc5
@@ -2531,6 +2655,8 @@ radius0
 radius1
 realloc
 recenter_on_parent_bone
+relative_angles
+relative_origin
 remapping vertex %d[w%d] invalid: %d->%d >= %d
 remapping vertex %d[w%d] invalid: %d->? >= %d
 resource
@@ -2575,6 +2701,7 @@ strcpy
 strdup
 stream end
 stream error
+string
 strlen
 strtol
 sub%dx%d.tga
@@ -2607,7 +2734,6 @@ turn_rate
 u<Ic\$
 uAL;%
 uKH9G8L
-uN[A\]
 uiTransparentPixels < PIXELS
 unable to load mesh "%s"
 unknown
@@ -2615,6 +2741,7 @@ unsigned int Etc::Image::IterateThroughWorstBlocks(unsigned int, unsigned int, u
 unspecified
 useMotionDamping
 useSmoothPaths
+use_additional_offset
 usemtl initialShadingGroup
 utlstring.cpp
 v %.6g, %.6g, %.6g
@@ -2627,7 +2754,6 @@ vector::_M_default_append
 vector::_M_emplace_back_aux
 vector::_M_range_check: __n (which is %zu) >= this->size() (which is %zu)
 vector::_M_range_insert
-version
 version error
 virtual void Etc::Block4x4Encoding_ETC1::PerformIteration(float)
 virtual void Etc::Block4x4Encoding_ETC1::SetEncodingBits()
@@ -2647,6 +2773,7 @@ virtual void Etc::Block4x4Encoding_RGBA8::PerformIteration(float)
 virtual void Etc::Block4x4Encoding_RGBA8_Opaque::PerformIteration(float)
 virtual void Etc::Block4x4Encoding_RGBA8_Transparent::PerformIteration(float)
 vive_controller
+vive_cosmos_controller
 vmdlkeys0
 vmdlkeys1
 vmdlkeys2
@@ -2693,6 +2820,7 @@ vpcf21
 vpcf22
 vpcf23
 vpcf24
+vpcf25
 vpcf3
 vpcf4
 vpcf5
@@ -2701,19 +2829,19 @@ vpcf7
 vpcf8
 vpcf9
 vr.cpp
-vr.cpp(4704): ERROR! Unknown controller axis type %d!
-vr.cpp(5815): VR - Destroying old VB for Stenciling!
-vr.cpp(5860): VR - Error! VB handle is invalid in CVrStencilRenderer!
-vr.cpp(6004): VR - Destroying old VB for SubviewStenciling!
-vr.cpp(6346): VR - Error! VB handle is invalid in CVrSubviewStencilRenderer!
-vr.cpp(6527): VR - Destroying old IB for warping!
-vr.cpp(6605): VR - Error! VB handle is invalid in CVrWarpRenderer!
-vr.cpp(6614): VR - Error! IB handle is invalid in CVrWarpRenderer!
-vr.cpp(6764): VR - Destroying old VB for reconstruction eye %d!
-vr.cpp(6771): VR - Destroying old IB for reconstruction eye %d!
-vr.cpp(6792): VR - Destroying old IB for reconstruction!
-vr.cpp(6932): VR - Error! VB handle is invalid in CVrReconstructionRenderer!
-vr.cpp(6941): VR - Error! IB handle is invalid in CVrReconstructionRenderer!
+vr.cpp(4733): ERROR! Unknown controller axis type %d!
+vr.cpp(5844): VR - Destroying old VB for Stenciling!
+vr.cpp(5889): VR - Error! VB handle is invalid in CVrStencilRenderer!
+vr.cpp(6033): VR - Destroying old VB for SubviewStenciling!
+vr.cpp(6375): VR - Error! VB handle is invalid in CVrSubviewStencilRenderer!
+vr.cpp(6556): VR - Destroying old IB for warping!
+vr.cpp(6634): VR - Error! VB handle is invalid in CVrWarpRenderer!
+vr.cpp(6643): VR - Error! IB handle is invalid in CVrWarpRenderer!
+vr.cpp(6793): VR - Destroying old VB for reconstruction eye %d!
+vr.cpp(6800): VR - Destroying old IB for reconstruction eye %d!
+vr.cpp(6821): VR - Destroying old IB for reconstruction!
+vr.cpp(6961): VR - Error! VB handle is invalid in CVrReconstructionRenderer!
+vr.cpp(6970): VR - Error! IB handle is invalid in CVrReconstructionRenderer!
 vr_author_refpt vrfly_refpt_pos vrfly_refpt_ang anchor models/dev/gordon_at_desk.vmdl
 vr_black_level_clamp
 vr_carry_type
@@ -2834,5 +2962,6 @@ z%u#D
 }cHcU
 ~)H;7I
 ~7;w$
-~>HcE
+~;HcE
+~RD9,
 ~j?5^

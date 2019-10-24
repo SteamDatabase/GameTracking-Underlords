@@ -37,12 +37,16 @@ $[A\]
 %f %f %f %f
 %i %i %i %i
 %ls [wstring, len = %d]
+%s (Color)
+%s (Material)
 %s (mat_fullbright: %d)
 %s * %s
 %s + %s
 %s - %s
 %s / %s
 %s: string format requested %d chars
+%s_color
+%s_matgrp
 &YA1D
 &YA1H
 &YA1L
@@ -85,7 +89,6 @@ $[A\]
 .shstrtab
 .text
 0=Off, 1=DebugWireframe, 2=DebugSolidBlink
-0[A\A]A^]
 0[A\]
 0x%016llX
 1 1 1
@@ -145,6 +148,7 @@ $[A\]
 3DSkybox Translucent Forward
 3DSkyboxForward
 3DSkyboxLightBinnerVr
+41CVrClearQuadOverdrawVisualizationTextures
 42CTemplateSceneViewFactory_RenderVRMonitors
 5t~BC
 6ConVar
@@ -176,10 +180,10 @@ $[A\]
 <}\vL
 >;9t9H
 ?postprocess
-?root
 @[A\A]A^]
 @[A\]
 @mathlib.cpp
+@spawn
 A;\$ 
 A;](|
 A;_p|
@@ -257,8 +261,10 @@ AWAVE1
 AWAVH
 AWAVI
 AWAVL
+AWAVM
 AXAYu
 AZA[u
+A[A]H
 A\A]A^A_]
 A\A]A^A_]L
 A\A]A^]
@@ -268,8 +274,10 @@ AddRef
 After3DGeo
 AfterTranslucent3D
 AlbedoOrReflectivity
+Am_flPosition
 Ambient Occlusion Proxies
 Ambient Occlusion Proxies Downsample Depth
+Ambient Occlusion Proxies: Texture Barrier
 AmbientOcclusionDepth
 Angle; 
 AnimAddLayer
@@ -370,6 +378,10 @@ CHitBoxSetList
 CL$(9
 CMaterialDrawDescriptor
 CMemAllocSystemInitialize
+CModelConfig
+CModelConfigElement
+CModelConfigElement_UserPick
+CModelConfigList
 CMorphConstraint
 COLORCORRECTION_VERSION_1
 CONTENT
@@ -489,6 +501,7 @@ Clear Color Depth Stencil
 Clear Depth Stencil
 ClearHdrBackBuffer
 ClearOutputDepth
+ClearQuadCoverage
 ClothShapeCapsule
 ClothShapeList
 ClothShapeSphere
@@ -498,6 +511,7 @@ CommandProcedure
 CommandProcedureList
 ConVar(%s) defined with infinite float value (%s)
 ConVarRef %s doesn't point to an existing ConVar
+ConfigAttachedModel
 ConfigurationSystem_001
 ConnectInterfaces
 CopyHDRBackBuffer
@@ -508,7 +522,7 @@ CreatePerViewConstantBuffer
 Cubic
 CustomClearColor
 D#j\H
-D$0H9
+D$(H9
 D$PPE
 D$TPA
 D15S1
@@ -548,6 +562,7 @@ DownsampleDepth
 Dynamic Decals
 Dynamic Opaque Forward
 DynamicAmbientOcclusion
+DynamicConfigList
 DynamicGBuffer
 E9gPI
 E9t$(D
@@ -558,6 +573,7 @@ ERROR: Specified path %s could not be made content-relative
 EXPORTSYSTEM_INTERFACE_VERSION_001
 EarlyInit_Tier0
 EconItemToolModel_001
+EditorDynamicConfig
 EffectsOpaque
 EffectsTranslucent
 EmissiveGBuffer
@@ -602,6 +618,8 @@ FogVolumeBackfaces
 FontManager_001
 FormatV
 ForwardLightSetup
+FreezeFrameCapture
+FreezeFrameDraw
 FvP12CSceneObjectE
 G<@tY
 GBufferAlbedo
@@ -639,7 +657,6 @@ H	P0H
 H	p(]
 H	p0H
 H!w(H
-H=vtex
 HBm_influenceFlags
 HDRBloom
 HDRColorBuffer
@@ -739,6 +756,7 @@ MDefaultString
 MESH_DRAW_FLAGS_DRAW_LAST
 MESH_DRAW_FLAGS_IS_OCCLUDER
 MESH_DRAW_FLAGS_NONE
+MODEL_CONFIG_ATTACHMENT_COUNT
 MODEL_PROCESSING_SCRIPT_INTERFACE_001
 MODEL_PROCESSING_SERVICES_INTERFACE_001
 MSAA Resolve
@@ -764,6 +782,7 @@ Min( %s, %s )
 Missing file '%s'
 Model %s missing bone and flex counts (%d < %d), init %d
 ModelCompile/UseShadowFastPathHeuristic
+ModelConfigAttachmentType_t
 ModelDocUtils001
 MovementSettings
 N&B:A
@@ -873,12 +892,16 @@ PostProcessManifest
 PostProcessPipeline
 PostProcessing
 PostProcessingSystem_001
-PpD9u f
 PrevFrameHDRBuffer
 Preview L
+PreviewAttachmentModel
+PreviewBoneAttachedModel
+PreviewBoneMergedModel
+PreviewPreset
+PreviewPresetList
 PropWorldOrigin
 PropertyEditorSystem_001
-QZw..
+PxD9u f
 QuarterRes
 QuarterResDepth
 QuarterResEffectsColor
@@ -911,6 +934,7 @@ RGBX555
 RGBX8888
 ROTATION
 RandomFloat
+RandomInt
 RandomSeed
 ReflectionTemplate
 ReflexSightsLayer
@@ -1203,6 +1227,7 @@ ViewModelForward
 ViewModelGBuffer
 ViewModelTranslucent
 VisBuilder_001
+VisualizeQuads
 VolumetricFog
 VolumetricFogManifest
 VrQuadLayout
@@ -1230,6 +1255,7 @@ X360_DST16
 X360_DST24
 X360_DST24F
 XZ[A\]
+X[A\A]A^A_]
 X[A\A]]
 Yaw; 
 [A\A]A^A_]
@@ -1339,8 +1365,10 @@ anim_name_b
 animgraph0
 aps.H
 archive
+attach_point
 attachment
 attachment_offset
+attachment_type
 auto_unragdoll_duration
 bUpdate
 baselayer
@@ -1354,9 +1382,11 @@ blendindices
 blendweight
 blendweights
 blockLOS
+body_groups
 body_type
 bone_name
 bone_names
+bonemerge
 borrow
 break_create_joint_revolute
 break_uniform_burst
@@ -1382,8 +1412,8 @@ cloth_collision_layer3
 cloth_enable
 collision_group
 collision_prop
-color
 composite
+config_state
 configvalue.cpp
 control_point
 create_particle
@@ -1480,46 +1510,62 @@ loop_in_action
 looping
 lowprecisionuv
 lowprecisionuv1
+m_AttachmentName
+m_AttachmentType
 m_Bone
 m_ChainData
 m_Children
+m_Choices
 m_Color
 m_ColorScale
 m_ConeAxis
 m_ConeCutoff
+m_ConfigName
+m_Configs
 m_ControlRigData
 m_CullDataIndex
 m_DefaultSolverSettings
 m_DefaultTargetSettings
+m_ElementName
+m_Elements
 m_Emitters
 m_EndEffectorBone
 m_EndEffectorTargetBone
+m_EntityClass
 m_ForceGenerators
+m_Gradient
+m_GroupName
 m_HitBoxSets
 m_HitBoxes
 m_IKChains
 m_IkChain
 m_IkChains
 m_Initializers
+m_InstanceName
 m_JointConstraintPairs
 m_JointName
 m_Joints
 m_LiteralColor
+m_MaterialGroupName
 m_Name
+m_NestedElements
 m_Operators
 m_PreEmissionOperators
 m_Renderers
 m_SolverSettingSource
 m_SolverType
 m_SourceFilename
+m_Stops
 m_TargetSettingSource
 m_TargetSource
+m_aAngOffset
 m_ankleBoneName
 m_attachments
 m_bApplyMinForce
 m_bCacheAttempted
 m_bCacheOk
 m_bCanBatchWithDynamicShaderConstants
+m_bClamp
 m_bDisableChild
 m_bDisableOperator
 m_bDoBonesOrientAlongPositiveX
@@ -1533,6 +1579,8 @@ m_bHasBakedLightingFromLightMap
 m_bHasBakedLightingFromVertexStream
 m_bHasCullingData
 m_bHasPerInstanceBakedLightingData
+m_bHideMaterialGroupInTools
+m_bHideRenderColorInTools
 m_bIgnoreRotation
 m_bInfluenceRootTransform
 m_bInitFromKilledParentParticles
@@ -1551,11 +1599,14 @@ m_bScaleInitialRange
 m_bScaleInitialValue
 m_bScalePerParticle
 m_bSelected
+m_bTopLevel
 m_bTrailBias
 m_bTranslationOnly
 m_bUseCompressedNormalTangent
 m_bUseHighestEndCP
 m_bUseShadowFastPath
+m_bUserSpecifiedColor
+m_bUserSpecifiedMaterialGroup
 m_bVisible
 m_bbox
 m_boneArray
@@ -1582,6 +1633,7 @@ m_fForceAmountMin
 m_fLifespanScaleExp
 m_fingers
 m_flBiasParameter
+m_flBindPoseDirectionMS
 m_flClusterCooldown
 m_flClusterCooldownMax
 m_flClusterCooldownMin
@@ -1590,12 +1642,14 @@ m_flClusterRefireTimeMax
 m_flClusterRefireTimeMin
 m_flClusterSize
 m_flDistance
+m_flDuration
 m_flEmissionDuration
 m_flEmissionScale
 m_flEmitRate
 m_flFalloff
 m_flFingerScaleRatio
 m_flFingerWeight
+m_flFootLength
 m_flInitFromKilledParentParticles
 m_flInput0
 m_flInput1
@@ -1632,6 +1686,7 @@ m_flags
 m_floatAttributes
 m_floatParams
 m_hBuffer
+m_hModel
 m_hSnapshot
 m_hingeAxis
 m_hitboxsets
@@ -1663,10 +1718,13 @@ m_nBoneHash
 m_nBoneIndex
 m_nBoneNameHash
 m_nBoneWeightCount
+m_nCP
+m_nCPField
 m_nChainIndex
 m_nChainInvIndex
 m_nChainType
 m_nChannelElements
+m_nChoice
 m_nClusterSizeMax
 m_nClusterSizeMin
 m_nControlPoint
@@ -1795,6 +1853,7 @@ malloc
 mapbuilder.nodraw
 mapbuilder.occluder
 master_morph_weight
+material_group
 materials/deferred_fog/fog_apply.vmat
 materials/deferred_fog/ground_fog_accumulate.vmat
 materials/deferred_lights/ssao_strong.vmat
@@ -1812,6 +1871,7 @@ materials/dev/retina_burn_capture.vmat
 materials/dev/screenspacereflectionblur.vmat
 materials/dev/screenspacereflections.vmat
 materials/dev/visualize_depth.vmat
+materials/dev/visualize_quad_overdraw.vmat
 materials/error.vmat
 materials/rendertargetops/bilateral_blur_horz.vmat
 materials/rendertargetops/bilateral_blur_vert.vmat
@@ -1834,6 +1894,7 @@ meshes
 min_angle
 model.cpp
 model_default_preview_sequence_name
+model_name
 modeldoc0
 modeldoc1
 modeldoc10
@@ -1854,6 +1915,7 @@ modeldoc23
 modeldoc24
 modeldoc25
 modeldoc26
+modeldoc27
 modeldoc3
 modeldoc4
 modeldoc5
@@ -1904,7 +1966,10 @@ pthread_mutex_unlock
 pthread_mutexattr_init
 pthread_mutexattr_settype
 ptr( 0x%p )
+quad_coverage.vtex
+quad_coverage_lock.vtex
 r_bloom_compute
+r_cubemap_debug_colors
 r_deferred_cubemap_diffuse
 r_deferred_debugvis
 r_dither_scale
@@ -1920,6 +1985,7 @@ r_post_colorcorrection
 r_post_film_grain
 r_post_fxaa
 r_post_vignette
+r_render_to_cubemap_debug
 r_showdebugoverlays
 r_showsceneobjectbounds
 r_ssao
@@ -1935,6 +2001,8 @@ radius0
 radius1
 recenter_on_parent_bone
 reflex_sights_back_buffer
+relative_angles
+relative_origin
 remapping vertex %d[w%d] invalid: %d->%d >= %d
 remapping vertex %d[w%d] invalid: %d->? >= %d
 renderingpipeline_vr.cpp
@@ -1954,7 +2022,6 @@ s are ouH
 s off
 sc_ground_fog_depth
 sc_ground_fog_top
-sc_use_fullsort_for_opaque
 scenesystem
 schema
 schemabindings.cpp
@@ -2009,6 +2076,7 @@ unspecified
 update
 useMotionDamping
 useSmoothPaths
+use_additional_offset
 usemtl initialShadingGroup
 utlstring.cpp
 v %g %g %g
@@ -2038,6 +2106,7 @@ vpcf21
 vpcf22
 vpcf23
 vpcf24
+vpcf25
 vpcf3
 vpcf4
 vpcf5
@@ -2048,6 +2117,7 @@ vpcf9
 vr_aoproxy_debug
 vr_aoproxy_enable
 vr_carry_type
+vr_cubemap_normalization
 vr_custom_msaa_resolve
 vr_decal_debug
 vr_depth_prepass
@@ -2058,6 +2128,8 @@ vr_enable_tonemapping
 vr_enable_translucent_screen_space
 vr_enable_volume_fog
 vr_expand_cull_frustum
+vr_fullsort_depth_prepass
+vr_postprocess_enable
 vr_readonly_depth_stencil_enable
 vr_render_decals
 vr_render_dynamic_objects
@@ -2065,11 +2137,11 @@ vr_render_opaque
 vr_render_opaque_notzprepassed
 vr_render_overlays
 vr_render_refaction
-vr_render_to_cubemap_debug
 vr_render_translucent
 vr_shadows_debug
 vr_stencil_debug
 vr_stencil_hidden_pixels
+vr_use_fullsort_for_opaque
 vr_use_invalid_bubble
 vr_warp
 vr_warp_debug

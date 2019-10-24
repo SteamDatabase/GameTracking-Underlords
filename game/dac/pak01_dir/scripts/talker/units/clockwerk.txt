@@ -1,0 +1,149 @@
+// clockwerk - Hero
+criterion "Isclockwerk" "classname" "clockwerk" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response clockwerk_recruit_1
+{
+	speak "clockwerk_recruit" noscene 
+}
+
+Rule clockwerk_recruit_1_rule
+{
+	criteria Isclockwerk ConceptRecruit UnitRank1
+	response clockwerk_recruit_1
+}
+
+
+Response clockwerk_recruit_2
+{
+	speak "clockwerk_upgrade" noscene 
+}
+
+Rule clockwerk_recruit_2_rule
+{
+	criteria Isclockwerk ConceptRecruit UnitRank2
+	response clockwerk_recruit_2
+}
+
+
+Response clockwerk_recruit_3
+{
+	speak "clockwerk_final_upgrade" noscene 
+}
+
+Rule clockwerk_recruit_3_rule
+{
+	criteria Isclockwerk ConceptRecruit UnitRank3
+	response clockwerk_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response clockwerk_start_round
+{
+	speak "clockwerk_start_round" noscene 
+}
+
+Rule clockwerk_start_round_rule
+{
+	criteria Isclockwerk ConceptRoundStart 
+	response clockwerk_start_round
+}
+
+
+Response clockwerk_start_round_lost_last_round
+{
+	speak "clockwerk_start_round_lost_last_round" noscene 
+}
+
+Rule clockwerk_start_round_lost_last_round_rule
+{
+	criteria Isclockwerk ConceptRoundStart LostLastGame
+	response clockwerk_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response clockwerk_flawless_victory
+{
+	speak "clockwerk_flawless_victory" noscene 
+}
+
+Rule clockwerk_flawless_victory_rule
+{
+	criteria Isclockwerk ConceptRoundEnd Result_WinFlawless
+	response clockwerk_flawless_victory
+}
+
+
+Response clockwerk_decisive_victory
+{
+	speak "clockwerk_decisive_victory" noscene 
+}
+
+Rule clockwerk_decisive_victory_rule
+{
+	criteria Isclockwerk ConceptRoundEnd Result_WinDecisive
+	response clockwerk_decisive_victory
+}
+
+Response clockwerk_narrow_victory
+{
+	speak "clockwerk_narrow_victory" noscene 
+}
+
+Rule clockwerk_narrow_victory_rule
+{
+	criteria Isclockwerk ConceptRoundEnd Result_WinNarrow
+	response clockwerk_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response clockwerk_flawless_defeat
+{
+	speak "clockwerk_flawless_defeat" noscene 
+}
+
+Rule clockwerk_flawless_defeat_rule
+{
+	criteria Isclockwerk ConceptRoundEnd Result_LoseFlawless
+	response clockwerk_flawless_defeat
+}
+
+
+Response clockwerk_decisive_defeat
+{
+	speak "clockwerk_decisive_defeat" noscene 
+}
+
+Rule clockwerk_decisive_defeat_rule
+{
+	criteria Isclockwerk ConceptRoundEnd Result_LoseDecisive
+	response clockwerk_decisive_defeat
+}
+
+Response clockwerk_narrow_defeat
+{
+	speak "clockwerk_narrow_defeat" noscene 
+}
+
+Rule clockwerk_narrow_defeat_rule
+{
+	criteria Isclockwerk ConceptRoundEnd Result_LoseNarrow
+	response clockwerk_narrow_defeat
+}

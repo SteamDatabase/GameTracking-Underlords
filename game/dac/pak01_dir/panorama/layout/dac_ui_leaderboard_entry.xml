@@ -2,59 +2,117 @@
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_notifications.vcss_c" />
 		<include src="s2r://panorama/styles/dac_ui_leaderboard_entry.vcss_c" />
 	</styles>
 
 	<DACLeaderboardEntry>
-		
+			
 		<Panel class="LeaderboardTargetIndicator">
+			<Panel class="CombatLeaderboardBackground" hittest="false" />
 			<Image class="DefendIcon" src="s2r://panorama/images/leaderboard/icon_defend_psd.vtex" hittest="false" />
 			<Image class="SwordIcon" src="s2r://panorama/images/leaderboard/icon_vs_psd.vtex" hittest="false" />
 		</Panel>
-
 		<DACParticleScenePanel id="ParticleBG" hittest="false" startActive="true" particleName="" fov="-450" cameraDist="400" cameraLeft="-160" cameraUp="-12"  />
 		<DACParticleScenePanel id="ParticleFG" hittest="false" startActive="true" particleName="" fov="-500" cameraDist="400" cameraLeft="-400" cameraUp="-15" />
+		<Panel class="PlayerLeaderboard" id="HitBox" hittest="true" onmouseover="PlaySoundEffect( 'DAC_UI.AvatarRollover' );">
+			<Panel class="PlayerAvatarGroup">
+					
+					<Panel id="LeaderboardAvatarGroup">
+						<DACPlayerAvatar id="LeaderboardAvatar"/>
+
+						<Panel id="LeaderboardHilight"/>
+						<Panel id="LeaderboardSpectate"/>
+
+						<Image class="MobileIcon" src="s2r://panorama/images/leaderboard/icon_mobile_psd.vtex" hittest="false" />
+					</Panel> 
+
+					<Panel id="PlayerLevelContainer">
+						<Panel class="PlayerLevelBG" />
+						<Label class="PlayerLevel" text="{d:leaderboard_Level}" />
+					</Panel>
+
+				<Image class="LeaderboardDisconnectedIndicator" src="s2r://panorama/images/leaderboard/disconnected_glow_psd.vtex" hittest="false" />
+				<Image class="CloneIcon" src="s2r://panorama/images/hud/dac_profile_avatar_clone_psd.vtex" hittest="false" /> 
+			</Panel>
 		
-		<Panel class="PlayerLeaderboard" hittest="true" onmouseover="PlaySoundEffect( 'DAC_UI.AvatarRollover' );">
-			<Panel class="LeftConnector"/>
-			<DACPlayerAvatar id="LeaderboardAvatar" />
-			<Panel class="CloneIcon" />
-			<Image class="LeaderboardBackground" src="s2r://panorama/images/leaderboard/background_panel_psd.vtex" hittest="false" />
-			<Image class="LeaderboardSelfIndicator" src="s2r://panorama/images/leaderboard/self_glow_psd.vtex" hittest="false" />			
-			<Panel id="LeaderBoardBackgroundStrip"/>
-			
-
-
-			<Panel class="StatsContainer TopBottomFlow">
-				<Panel id="GoldStat" class="LeftRightFlow">
-					<Label id="LeaderboardGold" text="{d:leaderboard_Gold}" />
-					<Image class="GoldIcon" src="s2r://panorama/images/leaderboard/icon_gold_psd.vtex" hittest="false" />	
+			<Label class="PlayerName" text="{g:dac_player_slot_persona:b:leaderboard_Slot}" html="true" />
+			<!-- <Label class="PlayerLevel" text="{d:leaderboard_Level}" />
+			<Panel class="PlayerLevelIcon" /> -->
+			<Panel id="PlayerInfo">
+				<Panel id="GoldRow">
+					<Label class="PlayerGold" text="{d:leaderboard_Gold}" />
+					<Panel class="PlayerGoldIcon" />
 				</Panel>
-				<Panel class="HealthContainer LeftRightFlow" >
-					<Label id="LeaderboardHealth" text="{d:leaderboard_Health}" />
-					<Panel class="HealthIcon" src="s2r://panorama/images/leaderboard/icon_health_psd.vtex" hittest="false" />
+				<Panel id="HealthRow">
+					<Label class="PlayerHealth" text="{d:leaderboard_Health}" />
+					<Panel class="PlayerHealthIcon" />
 				</Panel>
 			</Panel>
-			<Image class="LeaderboardDisconnectedIndicator" src="s2r://panorama/images/leaderboard/disconnected_glow_psd.vtex" hittest="false" />
-			<Label id="LeaderboardLevel" text="{d:leaderboard_Level}" />
+		</Panel>
 
+	
+
+<!-- 	OLD STYLE FAT LEADERBOARD
+		<Panel class="PlayerLeaderboard" id="HitBox" hittest="true" onmouseover="PlaySoundEffect( 'DAC_UI.AvatarRollover' );">
+			
+			<Panel class="LeaderboardBackgroundGroup">
+				<Image class="LeaderboardBackground"/>
+				<Panel class="LeaderboardLevelAndAegisGroup TopBottomFlow">
+					<Panel id="LeaderboardCircle"  hittest="false">
+						<Label id="LeaderboardLevel" text="{d:leaderboard_Level}" hittest="false" />
+					</Panel>
+					<Image class="AegisIconLeaderboard"  hittest="false"/>
+				</Panel>
+			</Panel>
+
+			<Panel class="LeaderboardForeground LeftRightFlow" hittest="false">
+
+				<Panel class="PlayerAvatarGroup">
+					<DACParticleScenePanel id="ParticleBG" hittest="false" startActive="true" particleName="" fov="-450" cameraDist="400" cameraLeft="-160" cameraUp="-12"  />	
+						<Panel id="LeaderboardAvatarGroup">
+							<DACPlayerAvatar id="LeaderboardAvatar"/>
+							<Panel id="LeaderboardHilight"/>
+							<Panel id="LeaderboardSpectate"/>
+						</Panel>
+					<DACParticleScenePanel id="ParticleFG" hittest="false" startActive="true" particleName="" fov="-500" cameraDist="400" cameraLeft="-400" cameraUp="-15" />
+					<Image class="LeaderboardDisconnectedIndicator" src="s2r://panorama/images/leaderboard/disconnected_glow_psd.vtex" hittest="false" />
+					<Image class="CloneIcon" src="s2r://panorama/images/hud/dac_profile_avatar_clone_psd.vtex" hittest="false" /> 
+				</Panel>
+			
+				<Panel class="StatsContainer TopBottomFlow">
+					<Panel id="GoldStat" class="LeftRightFlow">
+						<Label id="LeaderboardGold" text="{d:leaderboard_Gold}" />
+						<Panel class="GoldIcon" hittest="false" />	
+						<Label id="LeaderboardGoldRoundDelta" text="+{d:leaderboard_gold_delta}"  />
+					</Panel>
+ 
+					<Panel class="HealthContainer LeftRightFlow" >
+						<Label id="LeaderboardHealth" text="{d:leaderboard_Health}" />
+						<Panel class="HealthIcon" hittest="false" />
+						<Label id="LeaderboardHealthDelta" text="{s:health_delta}"/>
+					</Panel>
+				</Panel>
+			</Panel>
+			
 			<DACParticleScenePanel class="PlayerVictory" hittest="false" startActive="true" particleName="econ/s0/particles/battlepass/s0_battlepass_level_bar.vpcf" fov="-100" />	
 			
-			<Panel class="LeaderboardBelow LeftRightFlow">
+			<Panel class="LeaderboardName LeftRightFlow">
 				<Image class="MobileIcon" src="s2r://panorama/images/leaderboard/icon_mobile_psd.vtex" hittest="false" />
 				<Label text="{g:dac_player_slot_persona:b:leaderboard_Slot}" html="true"/>
 				<Panel class="LeaderboardIndicator" />
 			</Panel>
-	
-			<Image class="LeaderboardDefeatedIndicator" src="s2r://panorama/images/leaderboard/defeated_glow_psd.vtex" hittest="false" />
+			
+		</Panel>
 
-			<Panel class="LeaderboardChatMessage" >
+		 -->
+
+		<Panel class="LeaderboardChatMessage" id="ChatMessage" >
 				<Panel class="LeaderboardChatMessageTail" />
 				<Label class="LeaderboardChatText" text="{s:chat_msg}" />
 				<Panel class="LeaderboardChatMuteButton" onactivate="DACLeaderboardEntryMuteClicked()" />
 			</Panel>
-
-		</Panel>
+		<DACNotificationContainer id="EventNotificationContainer" class="LeaderboardNotification" />
 
 	</DACLeaderboardEntry>
 </root>

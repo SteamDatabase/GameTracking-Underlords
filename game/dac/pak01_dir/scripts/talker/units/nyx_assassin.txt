@@ -1,0 +1,149 @@
+// nyx_assassin - Hero
+criterion "Isnyx_assassin" "classname" "nyx_assassin" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response nyx_assassin_recruit_1
+{
+	speak "nyx_assassin_recruit" noscene 
+}
+
+Rule nyx_assassin_recruit_1_rule
+{
+	criteria Isnyx_assassin ConceptRecruit UnitRank1
+	response nyx_assassin_recruit_1
+}
+
+
+Response nyx_assassin_recruit_2
+{
+	speak "nyx_assassin_upgrade" noscene 
+}
+
+Rule nyx_assassin_recruit_2_rule
+{
+	criteria Isnyx_assassin ConceptRecruit UnitRank2
+	response nyx_assassin_recruit_2
+}
+
+
+Response nyx_assassin_recruit_3
+{
+	speak "nyx_assassin_final_upgrade" noscene 
+}
+
+Rule nyx_assassin_recruit_3_rule
+{
+	criteria Isnyx_assassin ConceptRecruit UnitRank3
+	response nyx_assassin_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response nyx_assassin_start_round
+{
+	speak "nyx_assassin_start_round" noscene 
+}
+
+Rule nyx_assassin_start_round_rule
+{
+	criteria Isnyx_assassin ConceptRoundStart 
+	response nyx_assassin_start_round
+}
+
+
+Response nyx_assassin_start_round_lost_last_round
+{
+	speak "nyx_assassin_start_round_lost_last_round" noscene 
+}
+
+Rule nyx_assassin_start_round_lost_last_round_rule
+{
+	criteria Isnyx_assassin ConceptRoundStart LostLastGame
+	response nyx_assassin_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response nyx_assassin_flawless_victory
+{
+	speak "nyx_assassin_flawless_victory" noscene 
+}
+
+Rule nyx_assassin_flawless_victory_rule
+{
+	criteria Isnyx_assassin ConceptRoundEnd Result_WinFlawless
+	response nyx_assassin_flawless_victory
+}
+
+
+Response nyx_assassin_decisive_victory
+{
+	speak "nyx_assassin_decisive_victory" noscene 
+}
+
+Rule nyx_assassin_decisive_victory_rule
+{
+	criteria Isnyx_assassin ConceptRoundEnd Result_WinDecisive
+	response nyx_assassin_decisive_victory
+}
+
+Response nyx_assassin_narrow_victory
+{
+	speak "nyx_assassin_narrow_victory" noscene 
+}
+
+Rule nyx_assassin_narrow_victory_rule
+{
+	criteria Isnyx_assassin ConceptRoundEnd Result_WinNarrow
+	response nyx_assassin_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response nyx_assassin_flawless_defeat
+{
+	speak "nyx_assassin_flawless_defeat" noscene 
+}
+
+Rule nyx_assassin_flawless_defeat_rule
+{
+	criteria Isnyx_assassin ConceptRoundEnd Result_LoseFlawless
+	response nyx_assassin_flawless_defeat
+}
+
+
+Response nyx_assassin_decisive_defeat
+{
+	speak "nyx_assassin_decisive_defeat" noscene 
+}
+
+Rule nyx_assassin_decisive_defeat_rule
+{
+	criteria Isnyx_assassin ConceptRoundEnd Result_LoseDecisive
+	response nyx_assassin_decisive_defeat
+}
+
+Response nyx_assassin_narrow_defeat
+{
+	speak "nyx_assassin_narrow_defeat" noscene 
+}
+
+Rule nyx_assassin_narrow_defeat_rule
+{
+	criteria Isnyx_assassin ConceptRoundEnd Result_LoseNarrow
+	response nyx_assassin_narrow_defeat
+}

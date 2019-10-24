@@ -1,15 +1,12 @@
 <root>
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_loadout.vcss_c" />
 	</styles>
 	
 	<DACLoadoutPage hittest="false" class="DashboardPage">
 		<Panel class="Dimmer"/>
-		<Panel id="TopRow">
-			<Label class="PageTitleLabel" text="#DAC_Loadout" />
-			<Label class="PageDescription" text="#DAC_Loadout_ComingSoon_Desc" />
-		</Panel>
 		<Panel id="BottomRow">
 			<Panel class="LoadoutContainer Left">
 				<Panel class="LeftSide">
@@ -45,7 +42,6 @@
 							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
 							<Label class="EquippedText" text="{s:reward_name}"/>
 						</Panel>
-
 					</Panel>
 				</Panel>
 			</Panel>
@@ -102,6 +98,10 @@
 				</Panel>
 			</Panel>
 		</Panel>
-
+		<Panel class="DashboardHeader">
+			<Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
+			<Label class="PageTitle DistressedFont" text="#DAC_Loadout"/>
+			<!--<Label class="PageSubtitle" text="#DAC_AchievementsSubtitle"/>-->
+		</Panel>
 	</DACLoadoutPage>
 </root>

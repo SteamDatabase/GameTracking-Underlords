@@ -1,0 +1,1232 @@
+DACLeaderboardDuos {
+	
+	//height: 100%;
+	height: fit-children;
+	transition-property: opacity;
+	transition-duration: .1s;
+	opacity: 1;
+	visibility: collapse;
+	margin-top: 20px;
+}
+
+.IsLayoutSmallScreen DACLeaderboardDuos {
+	ui-scale: 110%;
+	margin-top: 0px;
+}
+
+.GameMode_Duos DACLeaderboardDuos 
+{
+	visibility: visible;
+}
+
+DACLeaderboardEntry, .TeamHeaderContainer {
+	transition-property: position;
+	transition-duration: .1s;
+	transition-timing-function: ease-in-out;
+	width: 240px;
+	height: 45px;
+	overflow: noclip;
+	//margin: 1px 0px;
+}
+
+.TeamHeaderContainer.IsOpen,
+.TeamHeaderContainer.IsAwayGame,
+.TeamHeaderContainer.IsHomeGame,
+.TeamHeaderContainer.IsFinished {
+	height: 30px;
+	margin-bottom: 0px;
+}
+
+
+
+
+.TeamHeaderContainer.IsOpen #EventNotificationContainer {
+	visibility: collapse;
+}
+
+.HasPlayerOpponent.ScoreboardHidden.InCombat .IsAwayGame
+{
+	margin-bottom: 5px;
+}
+
+/* Selection/Visibility styles */
+DACLeaderboardEntry, 
+.ScoreboardHidden DACLeaderboardDuos .IsClone {
+	visibility: collapse;
+}
+
+DACLeaderboardEntry.IsOpen, 
+.ScoreboardHidden.HasPlayerOpponent .IsClone.CloneIsVisible {
+	visibility: visible;
+}
+
+DACLeaderboardDuos DACLeaderboardEntry
+{
+	transition-property: height;
+	//transition-duration: .1s;
+	transition-timing-function: ease-in-out;	
+	height: 0px;
+	//visibility: collapse;
+}
+
+DACLeaderboardDuos DACLeaderboardEntry.IsOpen
+{
+	height: 60px;
+	width: 300px;
+	//visibility: visible;
+	margin-left: 15px;
+}
+
+
+.IsClone {
+	visibility: collapse;
+}
+
+.HasPlayerOpponent .IsClone {
+	visibility: visible;
+}
+
+
+#GameMode_Duos 
+{
+	visibility: visible;
+}
+
+#PlayerLeaderboardContainer {
+	flow-children: down;
+	vertical-align: top;
+	overflow: noclip;
+	//margin-top: 70px;
+	min-height: 450px;
+
+	transition-property: margin-top, transform;
+	transition-duration: 3s;
+}
+
+.GameMode_Duos.ShopVisible #PlayerLeaderboardContainer
+{
+	//margin-top: 440px;
+}
+
+.GameMode_Duos.ShopVisible.IsDragging #PlayerLeaderboardContainer,
+.GameMode_Duos.ShopVisible.UnitSelected #PlayerLeaderboardContainer
+{
+	//margin-top: 0px;
+	//opacity: 0;
+}
+
+
+.UnitSelected DACLeaderboardDuos.Combat,
+.IsDragging DACLeaderboardDuos.Combat
+{
+	opacity: 1;
+}
+
+
+
+
+.UnitSelected .Combat #PlayerLeaderboardContainerCombat, 
+.UnitSelected .Combat #PlayerLeaderboardContainerCombat #EventNotificationContainer 
+{
+	visibility: collapse;
+}
+
+
+.TeamSection {
+	flow-children: none;
+	margin-bottom: 0px;
+}
+
+.Combat .TeamSection
+{
+	flow-children: down;
+	margin-bottom: 10px;
+}
+
+.TeamHeader.IsClone {
+	opacity: 0.3;
+	background-color: cornflowerblue;
+}
+
+.TeamHeader.IsDead, .IsDead .TeamHeader {
+	wash-color: #AA3333ff;
+	opacity: 1;
+	saturation: 0;
+}
+
+.InCombat .IsDead {
+	visibility: collapse;
+}
+
+.IsClone {
+	wash-color: #456699ff;
+	opacity: 1;
+	saturation: 0;
+}
+
+DACLeaderboardEntry {
+	ui-scale: 75%;
+}
+
+
+.TeamHeader {
+	width: 240px;
+	//width: 300px;
+
+	color: #000;
+	text-transform: uppercase;
+	padding: 1px 0px;
+	//height: 80px;
+	//margin-left: 10px;
+	height: 100%;
+
+	saturation: .9;
+	brightness: .8;
+
+	transition-property: brightness;
+	transition-duration: .2s;	
+}
+
+.LowVisualQuality .TeamHeader
+{
+	saturation: 1;
+	brightness: 1;
+}
+
+.TeamHeader:hover
+{
+	brightness: 1.3;
+}
+
+.Combat .TeamHeader
+{
+	//height: 40px;
+}
+
+.Combat .TeamVSTop
+{
+	height: 80px;
+	//width: 275px;
+	width: 320px;
+	flow-children: none;
+}
+
+.Combat .TeamVSTop .TeamHeader.Away
+{
+	margin-top: 38px;
+}
+
+.Combat .TeamVSTop .TeamHeader
+{
+	//width: 220px;
+	//width: 275px;
+}
+
+.TeamHeader.Away {
+}
+
+#HealthRow {
+	width: fit-children;
+	horizontal-align: right;
+	margin-right: 10px;
+}
+
+#TeamHealth {
+	color: #a2ff92;
+	vertical-align: center;
+	horizontal-align: right;
+	text-shadow: 0px 0px 0px 3.0 #000;
+	font-weight: bold;
+	//font-size:24px;
+	//margin-right: 10px;
+
+	font-size: 18px;
+	margin-right: 15px;
+	horizontal-align: right;
+	text-align: right;
+
+}
+
+.PlayerHealthIcon
+{
+	width: 12px;
+	height: 12px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex");
+	background-size: contain;
+	margin-top: 3px;
+	margin-left: -3px;
+	horizontal-align: right;
+}
+/*
+.Combat #TeamHealth
+{
+	font-size: 18px;
+	margin-right: 5px;
+}
+*/
+.HealthMid #TeamHealth
+{
+	color: #fff66e;
+}
+
+.HealthLow #TeamHealth
+{
+	color: #ff6123;
+}	
+
+.HealthMid .PlayerHealthIcon
+{
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_mid_psd.vtex");
+}
+
+.HealthLow .PlayerHealthIcon
+{
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_low_psd.vtex");
+}	
+
+/*
+.TeamName {
+	width: fill-parent-flow(1);
+	font-size: 21px;
+	width: 150px;
+	text-shadow: 0px 0px 0px 3.0 #000;
+	margin-left: 8px;
+	padding-left: 8px;
+	color: white;
+	vertical-align: center;
+}*/
+
+.TeamAvatars {
+	width: 85px;
+	height: 100%;
+	flow-children: right;
+	visibility: visible;
+}
+
+.IsOpen .TeamAvatars,
+.IsAwayGame .TeamAvatars,
+.IsHomeGame .TeamAvatars,
+.IsFinished .TeamAvatars
+ {
+	visibility: collapse;
+}
+
+
+.Teammate {
+	width: 40px;
+	height: 40px;
+	background-color: yellow;
+}
+
+.TeammateOne {
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_4_0_png.vtex");
+	background-size: 100% 100%;
+}
+
+.TeammateTwo {
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_4_0_png.vtex");
+	background-size: 100% 100%;
+}
+
+.TeamName
+{
+	font-size: 13px;
+	//width: 220px;
+	//text-shadow: 0px 0px 0px 3.0 #000;
+	//padding-left: 8px;
+	color: white;
+	vertical-align: center;
+	text-transform: uppercase;
+	font-weight: semi-bold;
+	letter-spacing: 1px;
+	margin-right: 10px;
+	//margin-top: 1px;
+	margin-bottom: -2px;
+	text-align: right;
+	horizontal-align: right;
+	text-overflow: shrink;
+	max-width: 150px;
+	max-height: 30px;
+}
+
+.IsOpen .TeamName {
+	horizontal-align: left;
+	text-align: left;
+	margin-left: 20px;
+	padding-left: 7px;
+}
+
+
+.IsAwayGame .TeamName,
+.IsHomeGame .TeamName,
+.IsFinished .TeamName {
+	horizontal-align: left;
+	text-align: left;
+	margin-left: 20px;
+	padding-left: 7px;
+}
+
+.MyTeam  {
+	//border: 3px solid white;
+	//brightness: 1.5;
+	//border-top: 2px solid #ffffff88;
+	//border-right: 2px solid #ffffff44;
+	//border-bottom: 2px solid #ffffffaa;
+}
+
+.TeamInfo {
+	vertical-align: center;
+	//flow-children: right;
+	flow-children: down;
+	width: 150px;
+	horizontal-align: right;
+}
+
+.IsOpen .TeamInfo,
+.IsAwayGame .TeamInfo,
+.IsHomeGame .TeamInfo,
+.IsFinished .TeamInfo {
+	flow-children: right;
+	width: 100%;
+}
+
+.TeamMembers {
+	//margin-top: 65px;
+	//margin-left: 25px;
+
+	margin-top: 40px;
+	margin-left: 15px;
+
+	visibility: collapse;
+	flow-children: down;
+	//opacity: 0;
+	height: 0px;
+	transition-property: height;
+	transition-duration: .15s;
+	overflow: clip;
+
+
+}
+
+
+.Combat .TeamMembers {
+	margin-top: 0px;
+	margin-bottom: 5px;
+	transition-duration: 0s;
+}
+
+
+.TeamVsRow {
+	flow-children: none;
+	padding: 3px;
+	width: 250px;
+	margin-bottom: 0px;
+	//margin-top: 3px;
+
+   	background-image: url("s2r://panorama/images/leaderboard/minimal_background_panel01_psd.vtex");
+   	background-size: 70% 100%;
+   	background-repeat: no-repeat;
+
+   	height: 50px;
+
+	font-size: 15px;
+	color: #fff;
+
+	transition-property: brightness;
+	transition-duration: .2s;
+}
+
+.TeamVsRow:hover
+{
+	brightness: 1.5;
+}
+
+.TeamVsRow .PlayerName {
+	width: fit-children;
+	max-width: 150px;
+	//height: 20px;
+	vertical-align: top;
+	horizontal-align: left;
+	//margin-left: 5px;
+}
+
+.PlayerHomeRow,
+.PlayerAwayRow
+{
+	flow-children: none;
+	width: 165px;
+}
+
+.PlayerHomeRow
+{
+	margin-top: 3px;
+}
+
+.PlayerAwayRow
+{
+	margin-top: 24px;
+}
+
+.TeamVsRow .PlayerLevel,
+.TeamVsRow .PlayerGold
+{
+	font-size: 14px;
+	horizontal-align: right;
+	margin-top: -2px;
+	width: 24px;
+	text-align: right;
+}
+
+.TeamVsRow .PlayerGold
+{
+	margin-right: 7px;
+}
+
+.TeamVsRow .PlayerLevel
+{
+	margin-right: 38px;
+}
+
+.PlayerLevelIcon
+{
+	width: 12px;
+	height: 12px;
+	opacity: .75;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/player_level_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	horizontal-align: right;
+	margin-right: 31px;
+	margin-bottom: 1px;
+}
+
+.LowVisualQuality .PlayerLevelIcon
+{
+	opacity: 1;
+}
+
+.PlayerGoldIcon
+{
+	width: 8px;
+	height: 8px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/icon_gold_bevel_psd.vtex");
+	background-size: contain;
+	margin-right: 2px;
+	margin-bottom: 1px;
+	horizontal-align: right;
+}
+
+#PlayerInfo {
+	min-width: 40px;
+}
+
+.PlayerVs { 
+	font-weight: black;
+	font-size: 12px;
+	//color: #de5151;
+	color: #aaa;
+	text-align: center;
+	vertical-align: top;
+	horizontal-align: right;
+	margin-right: 100px;
+	//margin: 0px 5px 2px 3px;
+	visibility: collapse;
+}
+
+.SpectatingIcon
+{
+	height: 35px;
+	width: 35px;
+	background-image: url("s2r://panorama/images/hud/dac_profile_spectate_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	horizontal-align: right;
+	vertical-align: center;
+	margin-right: 35px;
+	//visibility: collapse;
+	opacity: 0;
+
+	transition-property: opacity;
+	transition-duration: .2s;
+
+}
+
+.Viewing .SpectatingIcon
+{
+	opacity: 1;
+	//visibility: visible;
+}
+
+.TeamVsRow.Viewing
+{
+	brightness: 2.0;
+}
+
+.TeamPreview {
+	visibility: collapse;
+	flow-children: right;
+}
+
+.PlayerPreview {
+	flow-children: right;
+	width: fill-parent-flow(1);
+}
+
+.PlayerSep {
+	width: 2px;
+	height: 100%;
+	margin: 2px 2px;
+	background-color: #000;
+}
+
+.PlayerGold {
+	font-size: 22px;
+	text-shadow: 0px 0px 0px 3.0 #000;
+	color: gold;
+	padding: 2px 5px;
+	text-overflow: shrink;
+}
+
+.PlayerLevel {
+	//margin-left: -17px;
+	//margin-bottom: 3px;
+	
+	background-color: #CDD2F3;
+	width: 17px;
+	text-align: center;
+	color: #292952;
+	font-size: 14px;
+	font-weight: bold;
+	vertical-align: bottom;
+	border-radius: 30px;
+	box-shadow: 0 0 0 1.0 #000;
+	text-overflow: shrink;
+	horizontal-align: right;
+
+}
+
+.LowVisualQuality .PlayerLevel
+{
+	border-radius: 0px;
+}
+
+.PlayerLevelBG {
+	width: 81px;
+	height: 40px;
+	vertical-align: bottom;
+	horizontal-align: right;
+
+	background-image: url("s2r://panorama/images/leaderboard/levelcontainer_png.vtex");
+	background-size: 40% 80%;
+	background-position: right bottom;
+	background-repeat: no-repeat;
+}
+
+.PlayerAvatarGroup .PlayerLevel {
+	
+	color: #3E4586;
+	font-size: 18px;
+	vertical-align: bottom;
+	horizontal-align: right;
+	margin-right: 6px;
+}
+
+.IsOpen #PlayerLevelContainer,
+.IsAwayGame #PlayerLevelContainer,
+.IsHomeGame #PlayerLevelContainer,
+.IsFinished #PlayerLevelContainer {
+	visibility: collapse;
+}
+
+.Selected .TeamMembers {
+	visibility: visible;
+	//opacity: 1;
+	height: 100px;
+}
+
+.Combat .TeamMembers
+{
+	transition-property: height;
+	transition-duration: .2s;
+	visibility: visible;
+	height: 0px;
+	margin: 0px;
+	margin-left: 8px;
+	width: 260px;
+}
+
+.Combat .Selected .TeamMembers
+{
+	height: 100px;
+	margin: 0px;
+	margin-left: 8px;
+	margin-top: 0px;
+}
+
+.Selected .TeamPreview {
+	visibility: collapse;
+}
+
+
+.TeamBacking
+{
+	width: 20px;
+	height: 40px;
+
+	border-left: 0px;
+	brightness: .5;
+	opacity: .5;
+
+	transition-property: height;
+	transition-duration: .15s;
+}
+
+.Selected .TeamBacking
+{
+	height: 130px;
+	//vertical-align: bottom;
+}
+
+/* Teams */
+
+.Combat .DuosTeam_0.TeamHeader,
+.Combat .DuosTeam_1.TeamHeader,
+.Combat .DuosTeam_2.TeamHeader,
+.Combat .DuosTeam_3.TeamHeader,
+.Combat .DuosTeam_4.TeamHeader,
+.Combat .DuosTeam_5.TeamHeader,
+.Combat .DuosTeam_6.TeamHeader,
+.Combat .DuosTeam_7.TeamHeader
+{
+	background-size: 100% 100%;
+	background-position: 0% 0%;
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_png.vtex");
+}
+
+.DuosTeam_0 .TeamHeader,
+.DuosTeam_1 .TeamHeader,
+.DuosTeam_2 .TeamHeader,
+.DuosTeam_3 .TeamHeader,
+.DuosTeam_4 .TeamHeader,
+.DuosTeam_5 .TeamHeader,
+.DuosTeam_6 .TeamHeader,
+.DuosTeam_7 .TeamHeader
+{
+	background-size: contain;
+	background-size: 100% 100%;
+	background-position: 100% 0%;
+	//wash-color: #b2da42;
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_png.vtex");
+}
+
+.MyTeam .TeamHeader {
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_png.vtex");
+}
+
+DACLeaderboardEntry #PlayerSlot_2 .MyTeam {
+	margin-top: -2px;
+}
+
+.Combat .Selected .TeamHeader
+{
+	brightness: 2.0;
+}
+
+.DuosTeam_0 .TeamHeader,
+.DuosTeam_0.TeamHeader
+{
+	//background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_0_png.vtex");
+	//background-color: gradient(linear, 0% 50%, 100% 100%, from( #b2da42ff ), to( #b2da4200 ));
+	//background-color: black;
+	//background-image: url("s2r://panorama/images/leaderboard/duos_header_00_psd.vtex");
+}
+
+.DuosTeam_0 .TeamBacking
+{
+	//background-color: gradient(linear, 0% 50%, 100% 100%, from( #b2da42ff ), to( #b2da4200 ));
+	//background-color: gradient(linear, 0% 0%, 0% 100%, from( black ), to( #00000000 ));		
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_0_png.vtex");
+	background-size: 100% 100%;
+	brightness: 1.2;
+}
+
+
+.DuosTeam_1 .TeamHeader,
+.DuosTeam_1.TeamHeader
+{
+	//background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_1_png.vtex");
+	//background-image: url("s2r://panorama/images/leaderboard/duos_header_01_psd.vtex");
+	//background-color: black;
+}
+
+.DuosTeam_1 .TeamBacking
+{
+	background-color: gradient(linear, 0% 50%, 100% 100%, from( #ffee78ff ), to( #ffee7800 ));
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_1_png.vtex");
+	background-size: 100% 100%;
+	brightness: 1.2;
+}
+
+
+.DuosTeam_2 .TeamHeader,
+.DuosTeam_2.TeamHeader
+{
+	//background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_2_png.vtex");
+	//background-color: black;
+	//background-image: url("s2r://panorama/images/leaderboard/duos_header_02_psd.vtex");
+}
+
+.DuosTeam_2 .TeamBacking
+{
+	background-color: gradient(linear, 0% 50%, 100% 100%, from( #957bf2ff ), to( #957bf200 ));
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_2_png.vtex");
+	background-size: 100% 100%;
+	brightness: 1.2;
+}
+
+
+.DuosTeam_3 .TeamHeader,
+.DuosTeam_3.TeamHeader
+{
+	//background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_3_png.vtex");
+	//background-color: black;
+	//background-image: url("s2r://panorama/images/leaderboard/duos_header_03_psd.vtex");
+}
+
+.DuosTeam_3 .TeamBacking
+{
+	background-color: gradient(linear, 0% 50%, 100% 100%, from( #f0581fff ), to( #f0581f00 ));
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_3_png.vtex");
+	background-size: 100% 100%;
+	brightness: 1.2;
+}
+
+
+.DuosTeam_4 .TeamHeader,
+.DuosTeam_4.TeamHeader
+{
+	//background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_4_png.vtex");
+	//background-color: black;
+	//background-image: url("s2r://panorama/images/leaderboard/duos_header_04_psd.vtex");
+}
+
+.DuosTeam_4 .TeamBacking
+{
+	background-color: gradient(linear, 0% 50%, 100% 100%, from( #fef9afff ), to( #fef9af00 ));
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_4_png.vtex");
+	background-size: 100% 100%;
+	brightness: 1.2;
+}
+
+
+.DuosTeam_5 .TeamHeader,
+.DuosTeam_5.TeamHeader
+{
+	//background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_5_png.vtex");
+	//background-color: black;
+	//background-image: url("s2r://panorama/images/leaderboard/duos_header_05_psd.vtex");
+}
+
+.DuosTeam_5 .TeamBacking
+{
+	background-color: gradient(linear, 0% 50%, 100% 100%, from( #8bc1faff ), to( #8bc1fa00 ));
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_5_png.vtex");
+	background-size: 100% 100%;
+	brightness: 1.2;
+}
+
+
+.DuosTeam_6 .TeamHeader,
+.DuosTeam_6.TeamHeader
+{
+	//background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_6_png.vtex");
+	//background-color: black;
+	//background-image: url("s2r://panorama/images/leaderboard/duos_header_06_psd.vtex");
+}
+
+.DuosTeam_6 .TeamBacking
+{
+	background-color: gradient(linear, 0% 50%, 100% 100%, from( #ff8faeff ), to( #ff8fae00 ));
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_6_png.vtex");
+	background-size: 100% 100%;
+	brightness: 1.2;
+}
+
+
+.DuosTeam_7 .TeamHeader,
+.DuosTeam_7.TeamHeader
+{
+	//background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_7_png.vtex");
+	//background-color: black;
+	//background-image: url("s2r://panorama/images/leaderboard/duos_header_07_psd.vtex");
+}
+
+.DuosTeam_7 .TeamBacking
+{
+	background-color: gradient(linear, 0% 50%, 100% 100%, from( #fdbf5aff ), to( #fdbf5a00 ));
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_7_png.vtex");
+	background-size: 100% 100%;
+	brightness: 1.2;
+}
+
+.LowVisualQuality .TeamBacking
+{
+	opacity: 1;
+	brightness: 1;
+}
+
+.IsFinished .IsVictory.PlayerName
+{
+	color: #99d3a0;
+}
+
+.IsFinished .IsLoss.PlayerName
+{
+	color: #d74545;
+}
+
+.MyTeamIndicator
+{
+	height: 70px;
+	width: 3px;
+	margin-top: 4px;
+	margin-left: -3px;
+	background-color: white;
+	visibility: collapse;
+}
+
+.MyTeam .MyTeamIndicator
+{
+	visibility: visible;
+}
+
+
+/* Combat icon */
+
+.IconColumn
+{
+	height: 70px;
+	width: 70px;
+	horizontal-align: right;
+	margin-right: 5px;
+}
+
+.InCombatIcon {
+	ui-scale: 40%;
+	width: 50%;
+	height: 50%;
+	horizontal-align: right;
+	vertical-align: center;
+	margin-bottom: 3px;
+}
+.InCombatIcon .SwordIcon
+{
+	//margin-right: 5px;
+	animation-name: Fighting;
+	margin-top: 20px;
+}
+
+.InCombatIcon Image {
+	animation-duration: .81s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+
+.InCombatIcon .DefendIcon
+{
+	margin-right: 15px;
+	animation-name: Defending;
+	margin-top: 20px;
+}
+
+.IsFinished .DefendIcon,
+.IsFinished .SwordIcon
+{
+	visibility: collapse;
+}
+
+.IsClone .DefendIcon,
+.IsClone .SwordIcon
+{
+	wash-color: #00aeffff;
+	opacity: .85;
+}
+
+
+
+@keyframes 'Fighting'
+{
+	0%
+	{
+		transform: translateX(10px) translateY(5px);
+	}
+	15%
+	{
+		transform: translateX(-15px) translateY(-5px) rotateZ(-55deg);
+	}	
+	100%
+	{
+		transform: translateX(10px) translateY(5px);
+	}
+}
+
+
+@keyframes 'Defending'
+{
+	0%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+	15%
+	{
+		pre-transform-scale2d: 1.1;
+	}	
+	100%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+}
+
+
+
+
+
+
+
+
+
+//old
+
+/*
+.DuosTeam_0 .TeamBacking,
+.Combat .DuosTeam_0.TeamHeader
+{
+	//background-color: #86892a;
+	//background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_0_png.vtex");
+	//background-size: cover;
+}
+
+
+.DuosTeam_1 .TeamBacking,
+.Combat .DuosTeam_1.TeamHeader
+{
+	//background-color: #af8641;
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_1_png.vtex");
+	background-size: cover;
+}
+
+
+.DuosTeam_2 .TeamBacking,
+.Combat .DuosTeam_2.TeamHeader
+{
+	//background-color: #4d4b8a;
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_2_png.vtex");
+	background-size: cover;
+}
+
+
+.DuosTeam_3 .TeamBacking,
+.Combat .DuosTeam_3.TeamHeader
+{
+	//background-color: #7f201d;
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_3_png.vtex");
+	background-size: cover;
+}
+
+
+.DuosTeam_4 .TeamBacking,
+.Combat .DuosTeam_4.TeamHeader
+{
+	//background-color: #696045;
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_4_png.vtex");
+	background-size: cover;
+}
+
+
+.DuosTeam_5 .TeamBacking,
+.Combat .DuosTeam_5.TeamHeader
+{
+	//background-color: #4969a8;
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_5_png.vtex");
+	background-size: cover;
+}
+
+
+.DuosTeam_6 .TeamBacking,
+.Combat .DuosTeam_6.TeamHeader
+{
+	//background-color: #9b4a75;
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_6_png.vtex");
+	background-size: cover;
+}
+
+
+.DuosTeam_7 .TeamBacking,
+.Combat .DuosTeam_7.TeamHeader
+{
+	//background-color: #93451f;
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_7_png.vtex");
+	background-size: cover;
+}
+*/
+
+#EventNotificationContainer {
+	
+	height: 0.001px;
+}
+
+.CombinedNotifications, .DuosNotifications {
+	ui-scale: 70%;
+	margin-left: 130px;
+}
+
+.Selected .CombinedNotifications {
+	visibility: collapse;
+}
+
+.Viewing {
+	//border-left: 2px solid cornflowerblue;
+}
+
+/* Target indicator */
+
+
+@keyframes 'LeaderboardTargetIndicatorFighting'
+{
+	0%
+	{
+		background-color: gradient(linear, 0% 0%, 100% 0%, from( #91339300 ), color-stop( .68, #b93f19 ), to(rgba(255, 94, 0, 0.281)));
+	}
+	20%
+	{
+		background-color: gradient(linear, 0% 0%, 100% 0%, from( #91339300 ), color-stop( .68, #ffe692 ), to(rgb(223, 108, 32)));
+	}	
+	100%
+	{
+		background-color: gradient(linear, 0% 0%, 100% 0%, from( #91339300 ), color-stop( .68, #b93f19 ), to(rgba(255, 94, 0, 0.281)));
+	}
+}
+
+
+.LeaderboardTargetIndicator {
+	opacity: 0.9;
+	transition-property: opacity;
+	transition-duration: 100ms;
+	
+	width: 350px;//expanded so that clashing sword and shield are visible
+	height: 75px;
+	margin-top: 14px;//offset to line up with child stuff
+	wash-color: #ccc;//
+
+	animation-duration: .81s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+
+	visibility: collapse;
+	margin-left : -15px;
+}
+
+/* todo
+.IsCombatSelected .LeaderboardTargetIndicator
+{
+	brightness: 3;
+	margin-left : -1px;
+}
+*/
+
+.PlayerLeaderboard:hover .LeaderboardTargetIndicator
+{
+	brightness: 2;
+	margin-left: -18px;
+}
+
+/* todo
+.IsCombatSelected .PlayerLeaderboard:hover .LeaderboardTargetIndicator
+{
+	brightness: 4;
+	margin-left : -1px;
+}
+*/
+
+
+.LeaderboardTargetIndicator Image 
+{
+	vertical-align: middle;
+	horizontal-align: right;
+	animation-duration: .81s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	width: 42px;
+	height: 42px;
+	margin-bottom: 12px;
+	overflow: noclip;
+
+}
+
+
+.LeaderboardTargetIndicator .SwordIcon
+{
+	margin-right: 5px;
+	animation-name: Fighting;
+	
+}
+
+
+.LeaderboardTargetIndicator .DefendIcon
+{
+	margin-right: 15px;
+	animation-name: Defending;
+	margin-top: 20px;
+}
+
+.ScoreboardHidden.InCombat .IsHomeGame .LeaderboardTargetIndicator
+{
+	margin-top: -10px;
+	ui-scale: 100%;
+	width: 300px;
+	margin-left: 0px;
+}
+
+.ScoreboardHidden.InCombat .IsAwayGame .LeaderboardTargetIndicator
+{
+	visibility: collapse;
+}
+
+.ScoreboardHidden.InCombat .IsDead .LeaderboardTargetIndicator
+{
+	visibility: collapse;
+}
+
+.ScoreboardHidden.InCombat .LeaderboardTargetIndicator
+{
+	ui-scale: 50%;
+	margin-top: 0px;
+	margin-left: 95px;
+
+	visibility: visible;
+}
+
+
+.ScoreboardHidden.InCombat .IsOpen .LeaderboardTargetIndicator {
+	visibility: collapse;
+}
+
+.ScoreboardVisible .LeaderboardTargetIndicator
+{
+	visibility: collapse;
+}
+
+/* Victory/loss states */
+
+.IsFinished.IsLoss .TeamName
+{
+	color: #d74545;
+}
+.IsFinished.IsVictory .TeamName
+{
+	color: #99d3a0;
+}

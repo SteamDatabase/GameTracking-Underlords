@@ -1,0 +1,149 @@
+// sandking - Hero
+criterion "Issandking" "classname" "sandking" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response sandking_recruit_1
+{
+	speak "sandking_recruit" noscene 
+}
+
+Rule sandking_recruit_1_rule
+{
+	criteria Issandking ConceptRecruit UnitRank1
+	response sandking_recruit_1
+}
+
+
+Response sandking_recruit_2
+{
+	speak "sandking_upgrade" noscene 
+}
+
+Rule sandking_recruit_2_rule
+{
+	criteria Issandking ConceptRecruit UnitRank2
+	response sandking_recruit_2
+}
+
+
+Response sandking_recruit_3
+{
+	speak "sandking_final_upgrade" noscene 
+}
+
+Rule sandking_recruit_3_rule
+{
+	criteria Issandking ConceptRecruit UnitRank3
+	response sandking_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response sandking_start_round
+{
+	speak "sandking_start_round" noscene 
+}
+
+Rule sandking_start_round_rule
+{
+	criteria Issandking ConceptRoundStart 
+	response sandking_start_round
+}
+
+
+Response sandking_start_round_lost_last_round
+{
+	speak "sandking_start_round_lost_last_round" noscene 
+}
+
+Rule sandking_start_round_lost_last_round_rule
+{
+	criteria Issandking ConceptRoundStart LostLastGame
+	response sandking_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response sandking_flawless_victory
+{
+	speak "sandking_flawless_victory" noscene 
+}
+
+Rule sandking_flawless_victory_rule
+{
+	criteria Issandking ConceptRoundEnd Result_WinFlawless
+	response sandking_flawless_victory
+}
+
+
+Response sandking_decisive_victory
+{
+	speak "sandking_decisive_victory" noscene 
+}
+
+Rule sandking_decisive_victory_rule
+{
+	criteria Issandking ConceptRoundEnd Result_WinDecisive
+	response sandking_decisive_victory
+}
+
+Response sandking_narrow_victory
+{
+	speak "sandking_narrow_victory" noscene 
+}
+
+Rule sandking_narrow_victory_rule
+{
+	criteria Issandking ConceptRoundEnd Result_WinNarrow
+	response sandking_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response sandking_flawless_defeat
+{
+	speak "sandking_flawless_defeat" noscene 
+}
+
+Rule sandking_flawless_defeat_rule
+{
+	criteria Issandking ConceptRoundEnd Result_LoseFlawless
+	response sandking_flawless_defeat
+}
+
+
+Response sandking_decisive_defeat
+{
+	speak "sandking_decisive_defeat" noscene 
+}
+
+Rule sandking_decisive_defeat_rule
+{
+	criteria Issandking ConceptRoundEnd Result_LoseDecisive
+	response sandking_decisive_defeat
+}
+
+Response sandking_narrow_defeat
+{
+	speak "sandking_narrow_defeat" noscene 
+}
+
+Rule sandking_narrow_defeat_rule
+{
+	criteria Issandking ConceptRoundEnd Result_LoseNarrow
+	response sandking_narrow_defeat
+}

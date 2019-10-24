@@ -1,0 +1,427 @@
+DACChallengeWorldMap
+{
+	width: 100%;
+	height: 100%;
+	background-color: #0000;
+}
+
+#Scene
+{
+	width: 100%;
+	height: 100%;
+}
+
+.DevButtonContainer
+{
+	flow-children: right;
+	vertical-align: bottom;
+}
+
+.SimpleButton
+{
+	padding: 5px;
+	height: 50px;
+	min-width: 150px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: #444;
+}
+
+//================
+// Region Buttons
+
+.RegionButtonContainer
+{
+	width: 100%;
+	height: 100%;
+
+	flow-children: right-wrap;
+
+	visibility: collapse;
+}
+
+.InOverview .RegionButtonContainer
+{
+	visibility: visible;
+}
+
+.InOverview .OverviewButton
+{
+	visibility: collapse;
+}
+
+.ClaimMode .ClaimModeButton
+{
+	border: 2px solid red;
+}
+
+.RegionButton
+{
+	width: 50%;
+	height: 50%;
+	padding: 30px;
+}
+
+.RegionTitle
+{
+	font-size: 40px;
+	font-weight: black;
+	color: black;
+	background-color: white;
+	box-shadow: 0px 0px 3px #ffffff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding: 0px 30px;
+	transform: rotateZ(2deg);
+
+	margin-top: 130px;
+
+	horizontal-align: center;
+}
+
+.RegionImage
+{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	border: 6px solid #aaa;
+	background-size: 100%;
+	background-repeat: no-repeat;
+
+	horizontal-align: center;
+	vertical-align: center;
+
+	background-color: black;
+}
+
+.RegionButton:hover .RegionImage
+{
+	border: 6px solid white;
+}
+
+.Region1 .RegionImage
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_1_0_png.vtex");
+}
+
+.Region2 .RegionImage
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_2_0_png.vtex");
+}
+
+.Region3 .RegionImage
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_3_0_png.vtex");
+}
+
+.Region4 .RegionImage
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_4_0_png.vtex");
+}
+
+.ActiveRegionLabel
+{
+	color: white;
+	font-size: 28px;
+	visibility: collapse;
+	background-color: black;
+	padding: 5px;
+
+	horizontal-align: center;
+	margin-top: 240px;
+}
+
+.ActiveUnderlord_1 .ActiveRegion1,
+.ActiveUnderlord_2 .ActiveRegion2,
+.ActiveUnderlord_3 .ActiveRegion3,
+.ActiveUnderlord_4 .ActiveRegion4
+{
+	visibility: visible;
+}
+
+// Locked Premium claim - we haven't purchased the battle pass to get access to this claim node
+.LockedPremiumClaimPopup
+{
+	visibility: collapse;
+
+	flow-children: down;
+}
+
+.LockedPremiumClaimPopupVisible .LockedPremiumClaimPopup
+{
+	visibility: visible;
+}
+
+.TooltipDest
+{
+	height: 100px;
+	width: 100px;
+	//border: 1px solid red;
+	horizontal-align: center;
+	vertical-align: center;	
+
+	tooltip-body-position: 0% 50%;
+}
+
+#ClaimTooltipDest
+{
+	tooltip-body-position: 0% 50%;
+}
+
+#ChallengeTooltipDest
+{
+	tooltip-body-position: 50% 0%;
+	tooltip-position: top;
+}
+
+.UnderlordPortrait
+{
+	horizontal-align: center;
+	vertical-align: bottom;
+	width: 300px;
+	height: 160px;
+
+	margin-bottom: 35px;
+
+	opacity: 0;
+
+	transition-property: opacity;
+	transition-duration: 0.4s;
+
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.UnderlordPortrait1
+{	
+	background-image: url("s2r://panorama/images/challenge_map/underlords/underlord_1_psd.vtex");
+}
+
+.UnderlordPortrait2
+{	
+	background-image: url("s2r://panorama/images/challenge_map/underlords/underlord_2_psd.vtex");
+}
+
+.UnderlordPortrait3
+{	
+	background-image: url("s2r://panorama/images/challenge_map/underlords/underlord_3_psd.vtex");
+}
+
+.UnderlordPortrait4
+{	
+	background-image: url("s2r://panorama/images/challenge_map/underlords/underlord_4_psd.vtex");
+}
+
+.ActiveRegion1 .UnderlordPortrait1,
+.ActiveRegion2 .UnderlordPortrait2,
+.ActiveRegion3 .UnderlordPortrait3,
+.ActiveRegion4 .UnderlordPortrait4
+{
+	opacity: 1;
+}
+
+.InOverview .UnderlordPortrait,
+.ActiveRegion0 .UnderlordPortrait
+{
+	opacity: 0;
+}
+
+.HeaderLabels
+{
+	horizontal-align: center;
+
+	flow-children: down;
+
+	background-color: #161318;
+
+	min-width: 700px;
+
+	opacity: 1;
+	transition-property: opacity;
+	transition-duration: 0.4s;
+}
+
+.RegionTitleHeader
+{
+	font-size: 40px;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding: 0px 30px;
+
+	horizontal-align: center;
+}
+
+.InOverview .HeaderLabels,
+.ActiveRegion0 .HeaderLabels
+{
+	opacity: 0;
+}
+
+.ActiveRegion0 .RegionTitleHeader
+{
+	visibility: collapse;
+}
+
+.ActiveRegion1 .RegionTitleHeader
+{
+	color: #e4a07b;
+}
+
+.ActiveRegion2 .RegionTitleHeader
+{
+	color: #6c90c4;
+}
+
+.ActiveRegion3 .RegionTitleHeader
+{
+	color: #dfc467;
+}
+
+.ActiveRegion4 .RegionTitleHeader
+{
+	color: #7bc3a6;
+}
+
+.CrawlTitle
+{
+	color: white;
+	font-size: 28px;
+	horizontal-align: center;
+}
+
+.AreaLabels
+{
+	horizontal-align: center;
+	vertical-align: bottom;
+	flow-children: up;
+	opacity: 1;
+
+	padding: 5px;
+	padding-top: 3px;
+
+	transition-property: opacity;
+	transition-duration: 0.4s;
+
+	overflow: noclip;
+
+	background-color: #161318;
+}
+
+.InOverview .AreaLabels
+{
+	opacity: 0;
+}
+
+.AreaChallengeCount
+{
+	color: white;
+	font-size: 24px;
+	horizontal-align: center;
+	text-transform: uppercase;
+}
+
+.Legend
+{
+	width: 500px;
+	flow-children: down;
+	border: 1px solid #c4beb4;
+	margin: 5px;
+}
+
+.InOverview .Legend
+{
+	visibility: collapse;
+}
+
+.LegendToggle
+{
+	width: 100%;
+	background-color: #161318;
+	padding-left: 5px;
+}
+
+.LegendToggle Label
+{
+	color: #c4beb4;
+	font-size: 28px;
+}
+
+.LegendToggle .LegendTitle
+{
+	horizontal-align: center;
+	vertical-align: center;
+	color: white;
+}
+
+.LeftArrow
+{
+	horizontal-align: left;
+}
+
+.RightArrow
+{
+	horizontal-align: right;
+}
+
+.LegendExpanded .ArrowUp
+{
+	visibility: collapse;
+}
+
+.ArrowDown
+{
+	visibility: collapse;
+}
+
+.LegendExpanded .ArrowDown
+{
+	visibility: visible;
+}
+
+.LegendContents
+{
+	width: 100%;
+	height: fit-children;
+	flow-children: down;
+
+	background-color: #c4beb4;
+	border: 2px solid #161318;
+
+	visibility: collapse;
+	padding: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.LegendContents Label
+{
+	font-size: 28px;
+	color: #161318;
+}
+
+.LegendItems
+{
+	flow-children: down;
+	padding: 30px;
+}
+
+.LegendItems Label
+{
+	text-transform: uppercase;
+	color: #161318;
+}
+
+.LegendContents .LegendSubtitle
+{
+	text-transform: uppercase;
+	font-size: 20px;
+	width: 100%;
+	text-align: center;
+}
+
+.LegendExpanded .LegendContents
+{
+	visibility: visible;
+}
+

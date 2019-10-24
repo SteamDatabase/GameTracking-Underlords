@@ -1,0 +1,58 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_leaderboard.vcss_c" />
+		
+	</styles>
+
+	<snippets>
+		<snippet name="CombatSection">
+			<Panel class="CombatContainer">
+				<Panel class="CombatSection">
+					<Panel class="ViewBar" />
+					<Panel class="PlayerColumn">
+						<Panel id="player_home" class="PlayerRow PlayerHome">
+							<Label class="PlayerName" text="{g:dac_player_slot_persona:b:player_home_slot}" html="true"/>
+							<Label class="PlayerLevel" text="{d:player_home_level}" />
+							<Panel class="PlayerLevelIcon" />
+							<Label class="PlayerGold" text="{d:player_home_gold}" />
+							<Panel class="PlayerGoldIcon" />
+							<Label class="PlayerHealth" text="{d:player_home_health}" />
+							<Panel class="PlayerHealthIcon" />
+						</Panel>
+
+						<Panel id="player_away" class="PlayerRow PlayerHome">
+							<Label class="PlayerName" text="{g:dac_player_slot_persona:b:player_away_slot}" html="true"/>
+							<Label class="PlayerLevel" text="{d:player_away_level}" />
+							<Panel class="PlayerLevelIcon" />
+							<Label class="PlayerGold" text="{d:player_away_gold}" />
+							<Panel class="PlayerGoldIcon" />
+							<Label class="PlayerHealth" text="{d:player_away_health}" />
+							<Panel class="PlayerHealthIcon" />
+						</Panel>
+					</Panel>
+					<Panel class="IconColumn">
+						<Panel class="InCombatIcon">
+							<Image class="DefendIcon" src="s2r://panorama/images/leaderboard/icon_defend_psd.vtex" hittest="false" />
+							<Image class="SwordIcon" src="s2r://panorama/images/leaderboard/icon_vs_psd.vtex" hittest="false" />
+						</Panel>
+					</Panel>
+				</Panel>
+
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<DACLeaderboard >
+
+		<Panel id="PlayerLeaderboardContainer" />
+		<Panel id="PlayerLeaderboardContainerCombat">
+
+			<Label class="CombatLabel" text="#DAC_leaderboard_Combat_Header" html="true"/>
+			<Panel id="PlayerLeaderboardContainerCombatEntries" />
+			
+		</Panel>
+	
+	</DACLeaderboard>
+</root>

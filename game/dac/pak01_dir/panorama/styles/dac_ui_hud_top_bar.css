@@ -1,0 +1,281 @@
+DACUIHudTopBar {
+	width: 100%;
+	height: fit-children;
+	visibility: visible;
+	opacity: 1.0;
+
+	
+
+	horizontal-align: center;
+
+	transition-property: opacity, transform, position, margin-top;
+	transition-duration: 0.26s;	
+
+	padding-bottom: 10px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen.HighResolutionDisplay DACUIHudTopBar
+{
+	padding-right: 180px;
+}
+
+.LowVisualQuality DACUIHudTopBar
+{
+	transition-duration: 0.0s;
+}
+
+
+#TimerContainer
+{
+	width: 100%;
+	horizontal-align: center;
+	vertical-align: top;
+	height: 28px;
+	//background-color: #000000dd;
+	margin-top: 0px;
+	padding: 4px;
+
+	opacity: 0.01;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+.LowVisualQuality #TimerContainer
+{
+	transition-duration: 0s;
+}
+
+.IsCombatIntroRunning #TimerContainer
+{
+	opacity: 1;
+}
+
+.TimerVisible #TimerContainer
+{
+	opacity: 1;
+}
+
+#TimerBar
+{
+	height: 100%;
+	horizontal-align: center;
+	background-color: gradient(linear, 0% 0%, 100% 0%, from(#970a00), color-stop (.5, #EE2222), to(#970a00));
+	//background-color: gradient(linear, 0% 0%, 50% 0%, from(rgba(255,244,244,1)), color-stop (.5, #EE2222), to(#970a00));
+	//background-color: gradient(linear, 0%, rgba(255,244,244,1) 15%, rgba(9,107,121,1) 60%, rgba(255,0,0,1) 100%);
+	//transition-delay: 0.5s;//this is weird
+	transition-property: width;
+	transition-duration: 0.35s;
+	//transition-timing-function: ease-in;  
+	border: 4px solid #000e;
+}
+
+.TimerHide #TimerContainer
+{
+	visibility: collapse;
+}
+
+#TimerBar.ThreeTwoOneGo
+{
+	//animation-delay: 0.5s;
+	animation-name: CountDownFlash;
+	animation-duration: 1s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: 1;//just do one flash at a time since game time can be paused
+}
+
+@keyframes 'CountDownFlash'
+{
+	0%
+	{
+		background-color: gradient(linear, 0% 0%, 100% 0%, from(#fff), color-stop (.5, #fff), to(#fff));
+
+	}
+	100%
+	{
+		background-color: gradient(linear, 0% 0%, 100% 0%, from(#970a00), color-stop (.5, #EE2222), to(#970a00));
+	}
+}
+
+
+
+.GameStatePanelClock
+{
+
+	width: fit-children;
+	horizontal-align: center;
+	transition-property: transform;
+	transition-duration: 0.26s;
+}
+
+.HiddenForTutorial_Timer #TimerContainer
+{
+	visibility: collapse;
+}
+
+.IsCombatIntroRunning .GameStatePanelClock,
+.ERoundState_Combat .GameStatePanelClock
+{
+	transform: translateY( -150px );
+}
+
+.ERoundState_Combat .AfterMyCombat .GameStatePanelClock
+{
+	transform: translateY( 0px );
+}
+
+#NextRoundLabel
+{
+	visibility: collapse;
+}
+
+.ERoundState_RoundOver #NextRoundLabel,
+.ERoundState_Combat .AfterMyCombat:not(.NeutralCombat) #NextRoundLabel
+{
+	visibility: visible;
+}
+
+.ERoundState_Combat .AfterMyCombat:not(.NeutralCombat) #RoundNum,
+.ERoundState_Combat .AfterMyCombat:not(.NeutralCombat) #RoundPhase,
+.ERoundState_RoundOver #RoundPhase,
+.ERoundState_RoundOver #RoundNum
+{
+	visibility: collapse;
+}
+
+.TutorialCutscene DACUIHudTopBar
+{
+	opacity: 0;
+}
+
+.EGameState_Intro DACUIHudTopBar
+{
+	opacity: 0;
+	transform: translateY( -150px );
+}
+
+.IsLayoutLargeScreen DACUIHudTopBar
+{
+    ui-scale: 75%;
+}
+
+.IsLayoutSmallScreen DACUIHudTopBar
+{
+    ui-scale: 66%;
+}
+
+.HideGameStatePanel DACUIHudTopBar
+{
+	visibility: collapse;
+}
+
+.RoundPhaseText {
+	font-size: 24px;
+	font-weight: bold;
+	padding: 4px, 0px 4px 0px;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 0px 3.0 #000;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #c0daf4 ), to(#ffffff));
+}
+
+.LowVisualQuality .RoundPhaseText {
+	text-shadow: 0px 1px 0px 2.0 #000;
+}
+
+.Language_schinese .RoundPhaseText,
+.Language_tchinese .RoundPhaseText,
+.Language_koreana .RoundPhaseText,
+.Language_japanese .RoundPhaseText,
+.Language_russian .RoundPhaseText
+{
+	font-size: 20px;
+}
+
+#RoundHeaderContainer
+{
+	padding-top: 12px;
+	margin-top: -16px;
+	width: fit-children;
+	height: fit-children;
+	flow-children: right;
+	horizontal-align: center;
+}
+
+#RoundHeaderPauseIndicator
+{
+	horizontal-align: center;
+	color: #ffffff;
+	font-size: 28px;
+	max-height: 37px;
+	font-weight: black;
+	text-transform: uppercase;
+	transform: rotatez( -3deg );
+	background-color: #000000;
+	padding: 3px 14px 2px 16px;
+	letter-spacing: 2px;
+	box-shadow: 0px 0px 2px #000000;
+	margin-top: 110px;
+	opacity: 0.0;
+	text-overflow: shrink;
+	overflow: noclip; // because it has rotation	
+}
+
+
+.LowVisualQuality .IsPaused #RoundHeaderPauseIndicator,
+.LowVisualQuality #RoundHeaderPauseIndicator
+{
+	box-shadow: none;
+	transition-property: none;
+	transition-duration: 0.5s;
+	transform: none;
+}
+
+.IsPaused #RoundHeaderPauseIndicator
+{
+	opacity: 1.0;
+	transition-property: opacity;
+	transition-duration: 0.1s;
+}
+
+.HeaderRoundTime
+{
+	padding-top: 8px;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#ffffff));
+	text-shadow: 0px 1px 0px 3.0 #000;
+	font-size: 105px;
+	font-family: radianceM;
+	letter-spacing: 0px;
+	text-align: center;
+	width: 130px;
+	height: 130px;
+	animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	transition-duration: 0.25s;
+	transition-timing-function: ease-out;
+	transition-property: color, text-shadow;
+		
+	text-transform: uppercase;
+	font-weight: bold;
+
+}
+
+#HeaderRoundTimeContainer
+{
+	flow-children: none;
+}
+
+@keyframes 'TimerAnim'
+{
+	0%
+	{
+		color: #f00;
+		text-shadow: 0px 0px 0px 4.0 #000;
+
+	}
+	100%
+	{
+		text-shadow: 0px 0px 0px 2.0 #000;
+		color: gradient(linear, 0% 0%, 0% 100%, from( #bbd1ff ), to(#fff));
+	}
+}
+
+

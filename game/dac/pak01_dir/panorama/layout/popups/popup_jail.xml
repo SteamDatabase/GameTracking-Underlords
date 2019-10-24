@@ -1,0 +1,58 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_jail.vcss_c" />
+	</styles>
+	
+	<snippets>
+		<snippet name="HeroSnippet">
+			<Panel class="HeroCell">
+				<Panel id="HeroIcon"  class="HeroIcon">
+					<Panel class="CellBars"/>
+				</Panel>
+				<Panel class="HeroInfo">
+					<Label id="HeroName" class="HeroName" text="{s:hero_name}"/>
+					<Panel class="SynergyCapsuleContainer">
+						<DACSynergyCapsule id="SynergyCapsulePC"/>
+		        		<DACSynergyCapsule id="SynergyCapsuleMobile" notooltip="1"/>
+		        	</Panel>
+		        	<Label class="Crime" text="{s:crime}"/>
+		        </Panel>
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<Panel class="PopupPanel Hidden" popupbackground="blur" onactivate="UIPopupButtonClicked( close )">
+
+
+		<Panel class="JailPoster" />
+
+		<Panel class="JailPosterContents">
+
+			<Label class="Title" text="#DAC_Jail_Title"/>
+			<Countdown id="ReleaseFromJail">
+				<Label class="Description" text="#DAC_Jail_Page_Release_From_Jail_Message"/>
+			</Countdown>
+
+			<Panel class="Body">
+				<Panel id="JailContainer" />
+			</Panel> 
+
+			<Panel class="Footer">
+				<Label class="FooterLabel" text="#DAC_Jail_Desc" />
+			</Panel>
+
+		</Panel>
+
+		<Panel class="RickySez">
+			<Label class="RickySezLabel1" text="#RickySezLabel1" />
+			<Label class="RickySezLabel2" text="#RickySezLabel2" />
+			<Panel class="RickySezImage" />
+		</Panel>
+
+		<Panel id="BackButton" />
+
+	</Panel>
+</root>

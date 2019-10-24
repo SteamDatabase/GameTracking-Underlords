@@ -1,0 +1,149 @@
+// Tidehunter - Hero
+criterion "Istidehunter" "classname" "tidehunter" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response tidehunter_recruit_1
+{
+	speak "tidehunter_recruit" noscene 
+}
+
+Rule tidehunter_recruit_1_rule
+{
+	criteria Istidehunter ConceptRecruit UnitRank1
+	response tidehunter_recruit_1
+}
+
+
+Response tidehunter_recruit_2
+{
+	speak "tidehunter_upgrade" noscene 
+}
+
+Rule tidehunter_recruit_2_rule
+{
+	criteria Istidehunter ConceptRecruit UnitRank2
+	response tidehunter_recruit_2
+}
+
+
+Response tidehunter_recruit_3
+{
+	speak "tidehunter_final_upgrade" noscene 
+}
+
+Rule tidehunter_recruit_3_rule
+{
+	criteria Istidehunter ConceptRecruit UnitRank3
+	response tidehunter_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response tidehunter_start_round
+{
+	speak "tidehunter_start_round" noscene 
+}
+
+Rule tidehunter_start_round_rule
+{
+	criteria Istidehunter ConceptRoundStart 
+	response tidehunter_start_round
+}
+
+
+Response tidehunter_start_round_lost_last_round
+{
+	speak "tidehunter_start_round_lost_last_round" noscene 
+}
+
+Rule tidehunter_start_round_lost_last_round_rule
+{
+	criteria Istidehunter ConceptRoundStart LostLastGame
+	response tidehunter_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response tidehunter_flawless_victory
+{
+	speak "tidehunter_flawless_victory" noscene 
+}
+
+Rule tidehunter_flawless_victory_rule
+{
+	criteria Istidehunter ConceptRoundEnd Result_WinFlawless
+	response tidehunter_flawless_victory
+}
+
+
+Response tidehunter_decisive_victory
+{
+	speak "tidehunter_decisive_victory" noscene 
+}
+
+Rule tidehunter_decisive_victory_rule
+{
+	criteria Istidehunter ConceptRoundEnd Result_WinDecisive
+	response tidehunter_decisive_victory
+}
+
+Response tidehunter_narrow_victory
+{
+	speak "tidehunter_narrow_victory" noscene 
+}
+
+Rule tidehunter_narrow_victory_rule
+{
+	criteria Istidehunter ConceptRoundEnd Result_WinNarrow
+	response tidehunter_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response tidehunter_flawless_defeat
+{
+	speak "tidehunter_flawless_defeat" noscene 
+}
+
+Rule tidehunter_flawless_defeat_rule
+{
+	criteria Istidehunter ConceptRoundEnd Result_LoseFlawless
+	response tidehunter_flawless_defeat
+}
+
+
+Response tidehunter_decisive_defeat
+{
+	speak "tidehunter_decisive_defeat" noscene 
+}
+
+Rule tidehunter_decisive_defeat_rule
+{
+	criteria Istidehunter ConceptRoundEnd Result_LoseDecisive
+	response tidehunter_decisive_defeat
+}
+
+Response tidehunter_narrow_defeat
+{
+	speak "tidehunter_narrow_defeat" noscene 
+}
+
+Rule tidehunter_narrow_defeat_rule
+{
+	criteria Istidehunter ConceptRoundEnd Result_LoseNarrow
+	response tidehunter_narrow_defeat
+}

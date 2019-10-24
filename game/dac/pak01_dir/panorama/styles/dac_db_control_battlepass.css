@@ -3,22 +3,14 @@
 DACControlBattlePass 
 {
 	flow-children: down;
-	//padding-top: 180px;
 	visibility: collapse;
-	horizontal-align: right;
-	margin-top: 172px;
+	horizontal-align: left;
 }
-
 
 .ProgressBarParticle {
 	width: 100%;
 	height: 100%;
 	z-index: 2;
-}
-
-.IsLayoutLargeScreen DACControlBattlePass
-{
-	margin-top: 246px;	
 }
 
 .EventActive DACControlBattlePass,
@@ -29,32 +21,25 @@ DACControlBattlePass
 	visibility: visible;
 }
 
-.AspectRatio4x3.IsLayoutSmallScreen DACControlBattlePass
-{
-		margin-top: 400px;
-}
-
-.IsLayoutSmallScreen DACControlBattlePass 
-{
-	ui-scale: 120%;
-}
-
 #SectionTitleArea
 {
 	width: 520px;
-	padding-top: 20px;
-	padding-bottom: 40px;
-	margin-bottom: -48px;
 	z-index: 20;
 	visibility: collapse;
 	horizontal-align: right;
-	margin-right: safe-area-inset-right;
+	vertical-align: center;
 }
 
 .HasEventData #SectionTitleArea
 {
 	visibility: visible;
 }
+
+.HideSectionTitle #SectionTitleArea
+{
+	visibility: collapse;
+}
+
 
 DACRewardsPage #SectionTitleArea {
 	margin-right: 0px;
@@ -64,19 +49,11 @@ DACRewardsPage #SectionTitleArea {
 
 .BattlePassTitle
 {
-	color: black;
-	font-size: 30px;
-	height: 36px;
+	font-size: 32px;
 	font-weight: black;
+	color: textDark;
 	text-transform: uppercase;
-	//background-color: white;
-	background-color: gradient ( linear, 0% 0%, 0% 100%, from(#fbe792), to(#fdf4af));
-	padding: 0px 10px 0px 10px;
-	box-shadow: 0px 0px 3px #fdf4af;
-	transform: rotatez(-3deg);
-	z-index: 20;
-	margin-bottom: 28px;
-	text-overflow: shrink;
+	margin-bottom: 12px;
 }
 
 .IsLayoutSmallScreen DACRewardsPage .BattlePassTitle {
@@ -193,9 +170,7 @@ DACRewardsPage #SectionTitleArea {
 	color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
 	font-size: 16px;
 	font-weight: black;
-	//background-color: black;
-	//padding: 0px 9px;
-	margin: 5px 18px 0px 4px;
+	margin: 6px 0px 0px 4px;
 	vertical-align: center;
 	text-overflow: shrink;
 
@@ -205,7 +180,7 @@ DACRewardsPage #SectionTitleArea {
 
 #BattlePassProgress
 {
-	width: 500px;
+	width: 520px;
 	horizontal-align: right;
 	flow-children: none;
 	padding-top: 8px;
@@ -213,28 +188,74 @@ DACRewardsPage #SectionTitleArea {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: left top;	
-	
-	//border-bottom: 2px solid #13141bdd;
-	//border-top: 2px solid #bfb3e610;
-	//border-left: 2px solid #6f688633;
 	background-color: #3b3e4f66;
-	/* overflow: noclip; */
 
-	box-shadow: fill 0px 0px 24px #000000cc;
 	z-index: 10;
 	brightness: 1.4;
 	visibility: collapse;
-
-	margin-right: safe-area-inset-right;
 }
+
+/*Styling for home screen - needs to be cleaned up as design is finalized */
+
+DACControlBattlePass.OnDACHomePage
+{
+    ui-scale: 75%;
+    margin-top: 76px;
+    horizontal-align: left;
+}
+
+.OnDACHomePage #BattlePassProgress
+{
+    background-image: none;
+    background-color: none;
+    box-shadow: none;
+    padding-top: 0px;
+    width: 504px;
+}
+
+.OnDACHomePage #PlayerBPLevel
+{
+    margin-left: -24px;
+}
+
+.OnDACHomePage .BPLevelProgressContainer
+{
+    horizontal-align: left;
+    margin-left: 64px;
+}
+
+.OnDACHomePage .PlayerProgressContainer
+{
+    margin-top: 2px;
+}
+
+.OnDACHomePage .BattlePassCurrentLevelProgress
+{
+    color: #948b62;
+    text-shadow: none;
+    font-size: 32px;
+    font-weight: black;
+    margin-top: -4px;
+}
+
+.OnDACHomePage .BPXPLabel
+{
+    color: #948b62;
+    text-shadow: none;
+    font-size: 32px;
+    margin-top: -4px;
+}
+
+/*End home styling*/
 
 .HasEventData #BattlePassProgress
 {
 	visibility: visible;
 }
 
-DACRewardsPage #BattlePassProgress {
-	margin-right: 0px;
+.OnRewardsPage #BattlePassProgress
+{
+    margin-right: 0px;
 }
 
 #PlayerBPBackgroundTop
@@ -280,7 +301,7 @@ DACRewardsPage #BattlePassProgress {
 
 DACDailyChallenge
 {
-	margin-right: safe-area-inset-right;
+
 }
 
 DACRewardsPage DACDailyChallenge
@@ -291,63 +312,43 @@ DACRewardsPage DACDailyChallenge
 #QuestLevelContainer
 {
 	flow-children: down;
-	horizontal-align: right;
 }
 
-DACRewardsPage #QuestLevelContainer
+#MainNav #QuestLevelContainer
 {
-	margin-top: 50px;
-	//margin-left: 20px;
+    margin-left: safe-area-inset-left;
 }
 
-#QuestItemContainer
-{
-	horizontal-align: right;
-	visibility: collapse;
-	visibility: visible;
-}
-
-.HasEventData #QuestItemContainer,
-{
-	visibility: visible;
-}
 
 .DailyChallenge
 {
 	flow-children: none;
-	height: 160px;
-	//background-color: red;
+	height: 172px;
 	background-image: url("s2r://panorama/images/dashboard/challenge_bg_01_psd.vtex");
-	//height: fit-children;
-	//height: 120px;
 	padding: 0px 0px 0px 0px;
 	horizontal-align: right;
-	//border-bottom: 2px solid #13141b;
-	//border-top: 2px solid #bfb3e605;
-	//border-left: 2px solid #6f688633;
 	margin-bottom: 0px;
 	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 .ChallengeSlot2 .DailyChallenge
 {
-		background-image: url("s2r://panorama/images/dashboard/challenge_bg_02_psd.vtex");
+	background-image: url("s2r://panorama/images/dashboard/challenge_bg_02_psd.vtex");
 }
 
 .Claimed .DailyChallenge
 {
-	//background-position: top;
-	//background-repeat: no-repeat;
-	//background-color: gradient(linear, 0% 0%, 0% 100%, from( #f7c241 ), to(#f7c24100));
-	//background-color: gradient( radial, 50% 0%, 0% 0%, 65% 35%, from( #31395933 ), to( #10121d11 ) );
 }
 
 .DailyChallengeContainer
 {
 	flow-children: down;
-	width: 500px;
-	height: 160px;
+	width: 520px;
+	height: 172px;
 }
+
+
 
 
 //treatment when challenge is complete and reward is claimed
@@ -385,9 +386,9 @@ DACRewardsPage #QuestLevelContainer
 	visibility: visible;
 }
 
-.DailyChallengeRewardContainer
+.DailyChallengeRewardContainer,
+.ChallengeRewardContainer
 {
-	//flow-children: right;
 	horizontal-align: right;
 	vertical-align: center;
 	height: 100%;
@@ -395,6 +396,21 @@ DACRewardsPage #QuestLevelContainer
 	flow-children: right;
 	padding-top: 3px;
 	text-align: right;
+	margin-right: 20px;
+}
+
+.ChallengeRewardContainer
+{
+	height: fit-children;
+	vertical-align: top;
+	margin-top: 74px;
+	padding-top: 0px;
+	visibility: collapse;
+}
+
+#ChallengeList DACDailyChallenge .ChallengeRewardContainer
+{
+	visibility: visible;
 }
 
 .RewardIcon
@@ -416,7 +432,8 @@ DACRewardsPage #QuestLevelContainer
 }
 
 .DailyChallengeReward,
-.DailyChallengeRewardPlacement
+.DailyChallengeRewardPlacement,
+.ChallengeReward
 {
 	color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
 	font-size: 24px;
@@ -609,7 +626,6 @@ ParticleProgressBar {
 		border: 2px solid #000000;
 		width: 240px;
 		horizontal-align: center;
-		margin-top: 28px;
 		horizontal-align: left;
 }
 
@@ -661,15 +677,11 @@ ParticleProgressBar {
 
 #QuestItemContainer
 {
-	flow-children: down;
-	//background-image: url("s2r://panorama/images/dashboard/challenge_bg_psd.vtex");
-	background-size: 100%;
-	background-position: top;
-	margin-top: -22px;
-	//background-color: gradient (linear, 0% 0%, 0% 100%, from(#160f6898 ), to(transparent));
-	box-shadow: fill 0px 0px 24px #000000cc;
-	//box-shadow: fill 10px 0px 24px black;
-	visibility: collapse;
+    flow-children: down;
+    background-size: 100%;
+    background-position: top;
+    horizontal-align: right;
+    visibility: collapse;
 }
 
 .HasEventData #QuestItemContainer
@@ -677,6 +689,10 @@ ParticleProgressBar {
 	visibility: visible;
 }
 
+.HideQuests #QuestItemContainer
+{
+	visibility: collapse;
+}
 
 #BattlePassProgress
 {
@@ -694,8 +710,8 @@ ParticleProgressBar {
 .DailyChallengeRerollButton
 {
 	visibility: visible;
-	width: 52px;
-	height: 52px;
+	width: 60px;
+	height: 60px;
 
 	background-image: url("s2r://panorama/images/shop/reroll_button_psd.vtex");
 	background-size: 100%;
@@ -707,7 +723,7 @@ ParticleProgressBar {
 	
 	vertical-align: center;
 	margin-left: 12px;
-	margin-top: 1px;
+	margin-top: 4px;
 
 	opacity: .2;
 }
@@ -718,12 +734,11 @@ ParticleProgressBar {
 	brightness: 1.0;
 }
 
-.RerollAvailable .DailyChallengeRerollButton:hover
+.RerollAvailable .RerollContainer:hover .DailyChallengeRerollButton,
+.RerollAvailable .RerollContainer:hover .RerollLabel
 {
 	brightness: 1.5;
 }
-
-
 
 #RewardsAboutButton
 {
@@ -733,11 +748,10 @@ ParticleProgressBar {
 	vertical-align: top;	
 	background-image: url("s2r://panorama/images/shop/shop_info_icon_psd.vtex");
 	background-size: 100%;
-	margin-top: -10px;
-	margin-right: 16px;
 
 	transition-property: brightness;
 	transition-duration: .2s;
+	visibility: collapse;
 }
 
 #RewardsAboutButton:hover
@@ -749,7 +763,8 @@ DACRewardsPage #RewardsAboutButton {
 	visibility: collapse;
 }
 
-.HUD_BattlePassProgressVisible #RewardsAboutButton
+.HUD_BattlePassProgressVisible #RewardsAboutButton,
+.MenuButtonsVisible #RewardsAboutButton
 {
 	visibility: collapse;
 }
@@ -779,28 +794,38 @@ DACRewardsPage #RewardsAboutButton {
 	flow-children: right;
 }
 
-#RerollAvailableText,
-#RerollClaimableText,
+#RerollAtText
+{
+	margin-left: 20px;
+	visibility: visible;
+}
+
+.ClaimContainer,
+.RerollContainer
+{
+	visibility: collapse;
+}
+
 .RerollAvailable #RerollAtText,
 .Claimable #RerollAtText
 {
 	visibility: collapse;
 }
 
-.RerollAvailable #RerollAvailableText
+.RerollAvailable.CanReroll .RerollContainer
 {
 	visibility: visible;
 }
 
-.Claimable #RerollAvailableText,
-.Claimable.RerollAvailable #RerollAvailableText
+.Claimable .RerollContainer
 {
 	visibility: collapse;
 }
 
-.Claimable #RerollClaimableText
+.Claimable .ClaimContainer
 {
 	visibility: visible;
+	vertical-align: center;
 }
 
 .DailyChallengeClaimButton
@@ -819,36 +844,47 @@ DACRewardsPage #RewardsAboutButton {
 
 .DailyChallengeClaimFX
 {
-	width: 65px;
-	height: 65px;
-	margin-left: -10px;
-	margin-top: -10px;
+	width: 100%;
+	height: 126%;
+	margin-left: -2px;
+	margin-top: -2px;
 }
 
 #DailyChallengeClaimButtonContainer
 {
-	margin-left: 16px;
+	margin-left: 20px;
 	visibility: collapse;
 	overflow: noclip;
-}
-
-.Claimable #DailyChallengeClaimButtonContainer
-{
+	background-color: gradient( linear, 0% 90%, 0% 0%, from( #836218 ), to( #4a370e) );
+	height: 40px;
+	border: 2px solid #fbbc2e ;
+	text-overflow: shrink;
 	visibility: visible;
 	opacity: 1.0;
+	vertical-align: center;
 }
 
-
-.DailyChallengeClaimButton:hover
+.ClaimContainer:hover .DailyChallengeClaimButton,
+.ClaimContainer:hover .RerollLabel
 {
 	brightness: 1.5;
 }
 
+#ChallengeList DACDailyChallenge
+{
+	height: 120px;
+}
 
-.Claimable .DailyChallengeRerollButton
+#ChallengeList DACDailyChallenge .LowerContainer
 {
 	visibility: collapse;
 }
+
+#ChallengeList .DailyChallengeContainer
+{
+	height: 80px;
+}
+
 
 .RerollLabel
 {
@@ -860,13 +896,13 @@ DACRewardsPage #RewardsAboutButton {
 	vertical-align: center;
 	letter-spacing: 1px;
 	margin-left: 4px;
-	margin-top: 3px;
+	margin-top: 4px;
 
 	transition-property: brightness;
 	transition-duration: .2s;
 }
 
-.PlatformIsMobile .RerollLabel
+.IsPlatformMobile .RerollLabel
 {
 	font-size: 22px;
 }
@@ -874,7 +910,10 @@ DACRewardsPage #RewardsAboutButton {
 #RerollClaimableText
 {
 	color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
-	margin-left: -2px;
+	font-weight: black;
+	font-size: 24px;
+	padding: 2px 20px 2px 20px;
+	margin: 0px;
 }
 
 .UpperContainer
@@ -888,17 +927,19 @@ DACRewardsPage #RewardsAboutButton {
 {
 	vertical-align: bottom;
 	width: 100%;
-	height: 56px;
+	height: 68px;
 	flow-children: right;
 	background-color: #00000088;
 }
 
-.RerollContainer
+.RerollContainer,
+.ClaimContainer
 {
 	flow-children: right;
 }
 
-.HUD_BattlePassProgressVisible .RerollContainer
+.HUD_BattlePassProgressVisible .RerollContainer,
+.HUD_BattlePassProgressVisible .ClaimContainer
 {
 	visibility: collapse;
 }
@@ -972,16 +1013,16 @@ DACRewardsPage #RewardsAboutButton {
 	padding-top: 20px;
 	padding-bottom: 30px;
 	flow-children: down;
-	background-image: url("s2r://panorama/images/dashboard/challenge_bg_psd.vtex");
+	//background-image: url("s2r://panorama/images/dashboard/challenge_bg_psd.vtex");
 	background-size: 100%;
 	background-position: top;
 	margin-top: -24px;
-	background-color: gradient (linear, 0% 0%, 0% 100%, from(#160f6898 ), to(transparent));
-	box-shadow: 0px 0px 100px #00000090;
 
 	visibility: collapse;
 	width: 500px;
-	horizontal-align: right;
+	//horizontal-align: right;
+	padding-left: safe-area-inset-left;
+
 }
 
 
@@ -1078,5 +1119,20 @@ DACRewardsPage #ErrorContainer {
 .PostGameBPControl #BattlePassProgress,
 .PostGameBPControl #PlayerBPLevel
 {
-    visibility: collapse;
+	visibility: collapse;
+}
+
+.SectionTitle
+{
+	font-size: 32px;
+	font-weight: black;
+	color: textDark;
+	text-transform: uppercase;
+	margin-bottom: 12px;
+}
+
+#PreMatchContainer #RankIcon
+{
+	ui-scale: 80%;
+	margin-top: 32px;
 }

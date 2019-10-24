@@ -1,0 +1,149 @@
+// broodmother - Hero
+criterion "Isbroodmother" "classname" "broodmother" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response broodmother_recruit_1
+{
+	speak "broodmother_recruit" noscene 
+}
+
+Rule broodmother_recruit_1_rule
+{
+	criteria Isbroodmother ConceptRecruit UnitRank1
+	response broodmother_recruit_1
+}
+
+
+Response broodmother_recruit_2
+{
+	speak "broodmother_upgrade" noscene 
+}
+
+Rule broodmother_recruit_2_rule
+{
+	criteria Isbroodmother ConceptRecruit UnitRank2
+	response broodmother_recruit_2
+}
+
+
+Response broodmother_recruit_3
+{
+	speak "broodmother_final_upgrade" noscene 
+}
+
+Rule broodmother_recruit_3_rule
+{
+	criteria Isbroodmother ConceptRecruit UnitRank3
+	response broodmother_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response broodmother_start_round
+{
+	speak "broodmother_start_round" noscene 
+}
+
+Rule broodmother_start_round_rule
+{
+	criteria Isbroodmother ConceptRoundStart 
+	response broodmother_start_round
+}
+
+
+Response broodmother_start_round_lost_last_round
+{
+	speak "broodmother_start_round_lost_last_round" noscene 
+}
+
+Rule broodmother_start_round_lost_last_round_rule
+{
+	criteria Isbroodmother ConceptRoundStart LostLastGame
+	response broodmother_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response broodmother_flawless_victory
+{
+	speak "broodmother_flawless_victory" noscene 
+}
+
+Rule broodmother_flawless_victory_rule
+{
+	criteria Isbroodmother ConceptRoundEnd Result_WinFlawless
+	response broodmother_flawless_victory
+}
+
+
+Response broodmother_decisive_victory
+{
+	speak "broodmother_decisive_victory" noscene 
+}
+
+Rule broodmother_decisive_victory_rule
+{
+	criteria Isbroodmother ConceptRoundEnd Result_WinDecisive
+	response broodmother_decisive_victory
+}
+
+Response broodmother_narrow_victory
+{
+	speak "broodmother_narrow_victory" noscene 
+}
+
+Rule broodmother_narrow_victory_rule
+{
+	criteria Isbroodmother ConceptRoundEnd Result_WinNarrow
+	response broodmother_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response broodmother_flawless_defeat
+{
+	speak "broodmother_flawless_defeat" noscene 
+}
+
+Rule broodmother_flawless_defeat_rule
+{
+	criteria Isbroodmother ConceptRoundEnd Result_LoseFlawless
+	response broodmother_flawless_defeat
+}
+
+
+Response broodmother_decisive_defeat
+{
+	speak "broodmother_decisive_defeat" noscene 
+}
+
+Rule broodmother_decisive_defeat_rule
+{
+	criteria Isbroodmother ConceptRoundEnd Result_LoseDecisive
+	response broodmother_decisive_defeat
+}
+
+Response broodmother_narrow_defeat
+{
+	speak "broodmother_narrow_defeat" noscene 
+}
+
+Rule broodmother_narrow_defeat_rule
+{
+	criteria Isbroodmother ConceptRoundEnd Result_LoseNarrow
+	response broodmother_narrow_defeat
+}

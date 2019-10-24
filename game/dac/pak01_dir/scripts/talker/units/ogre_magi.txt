@@ -1,0 +1,149 @@
+// Ogre Magi - Hero
+criterion "Isogre_magi" "classname" "ogre_magi" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response ogre_magi_recruit_1
+{
+	speak "ogre_magi_recruit" noscene 
+}
+
+Rule ogre_magi_recruit_1_rule
+{
+	criteria Isogre_magi ConceptRecruit UnitRank1
+	response ogre_magi_recruit_1
+}
+
+
+Response ogre_magi_recruit_2
+{
+	speak "ogre_magi_upgrade" noscene 
+}
+
+Rule ogre_magi_recruit_2_rule
+{
+	criteria Isogre_magi ConceptRecruit UnitRank2
+	response ogre_magi_recruit_2
+}
+
+
+Response ogre_magi_recruit_3
+{
+	speak "ogre_magi_final_upgrade" noscene 
+}
+
+Rule ogre_magi_recruit_3_rule
+{
+	criteria Isogre_magi ConceptRecruit UnitRank3
+	response ogre_magi_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response ogre_magi_start_round
+{
+	speak "ogre_magi_start_round" noscene 
+}
+
+Rule ogre_magi_start_round_rule
+{
+	criteria Isogre_magi ConceptRoundStart 
+	response ogre_magi_start_round
+}
+
+
+Response ogre_magi_start_round_lost_last_round
+{
+	speak "ogre_magi_start_round_lost_last_round" noscene 
+}
+
+Rule ogre_magi_start_round_lost_last_round_rule
+{
+	criteria Isogre_magi ConceptRoundStart LostLastGame
+	response ogre_magi_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response ogre_magi_flawless_victory
+{
+	speak "ogre_magi_flawless_victory" noscene 
+}
+
+Rule ogre_magi_flawless_victory_rule
+{
+	criteria Isogre_magi ConceptRoundEnd Result_WinFlawless
+	response ogre_magi_flawless_victory
+}
+
+
+Response ogre_magi_decisive_victory
+{
+	speak "ogre_magi_decisive_victory" noscene 
+}
+
+Rule ogre_magi_decisive_victory_rule
+{
+	criteria Isogre_magi ConceptRoundEnd Result_WinDecisive
+	response ogre_magi_decisive_victory
+}
+
+Response ogre_magi_narrow_victory
+{
+	speak "ogre_magi_narrow_victory" noscene 
+}
+
+Rule ogre_magi_narrow_victory_rule
+{
+	criteria Isogre_magi ConceptRoundEnd Result_WinNarrow
+	response ogre_magi_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response ogre_magi_flawless_defeat
+{
+	speak "ogre_magi_flawless_defeat" noscene 
+}
+
+Rule ogre_magi_flawless_defeat_rule
+{
+	criteria Isogre_magi ConceptRoundEnd Result_LoseFlawless
+	response ogre_magi_flawless_defeat
+}
+
+
+Response ogre_magi_decisive_defeat
+{
+	speak "ogre_magi_decisive_defeat" noscene 
+}
+
+Rule ogre_magi_decisive_defeat_rule
+{
+	criteria Isogre_magi ConceptRoundEnd Result_LoseDecisive
+	response ogre_magi_decisive_defeat
+}
+
+Response ogre_magi_narrow_defeat
+{
+	speak "ogre_magi_narrow_defeat" noscene 
+}
+
+Rule ogre_magi_narrow_defeat_rule
+{
+	criteria Isogre_magi ConceptRoundEnd Result_LoseNarrow
+	response ogre_magi_narrow_defeat
+}

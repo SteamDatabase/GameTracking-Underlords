@@ -1,0 +1,149 @@
+// treant_protector - Hero
+criterion "Istreant_protector" "classname" "treant_protector" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response treant_protector_recruit_1
+{
+	speak "treant_protector_recruit" noscene 
+}
+
+Rule treant_protector_recruit_1_rule
+{
+	criteria Istreant_protector ConceptRecruit UnitRank1
+	response treant_protector_recruit_1
+}
+
+
+Response treant_protector_recruit_2
+{
+	speak "treant_protector_upgrade" noscene 
+}
+
+Rule treant_protector_recruit_2_rule
+{
+	criteria Istreant_protector ConceptRecruit UnitRank2
+	response treant_protector_recruit_2
+}
+
+
+Response treant_protector_recruit_3
+{
+	speak "treant_protector_final_upgrade" noscene 
+}
+
+Rule treant_protector_recruit_3_rule
+{
+	criteria Istreant_protector ConceptRecruit UnitRank3
+	response treant_protector_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response treant_protector_start_round
+{
+	speak "treant_protector_start_round" noscene 
+}
+
+Rule treant_protector_start_round_rule
+{
+	criteria Istreant_protector ConceptRoundStart 
+	response treant_protector_start_round
+}
+
+
+Response treant_protector_start_round_lost_last_round
+{
+	speak "treant_protector_start_round_lost_last_round" noscene 
+}
+
+Rule treant_protector_start_round_lost_last_round_rule
+{
+	criteria Istreant_protector ConceptRoundStart LostLastGame
+	response treant_protector_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response treant_protector_flawless_victory
+{
+	speak "treant_protector_flawless_victory" noscene 
+}
+
+Rule treant_protector_flawless_victory_rule
+{
+	criteria Istreant_protector ConceptRoundEnd Result_WinFlawless
+	response treant_protector_flawless_victory
+}
+
+
+Response treant_protector_decisive_victory
+{
+	speak "treant_protector_decisive_victory" noscene 
+}
+
+Rule treant_protector_decisive_victory_rule
+{
+	criteria Istreant_protector ConceptRoundEnd Result_WinDecisive
+	response treant_protector_decisive_victory
+}
+
+Response treant_protector_narrow_victory
+{
+	speak "treant_protector_narrow_victory" noscene 
+}
+
+Rule treant_protector_narrow_victory_rule
+{
+	criteria Istreant_protector ConceptRoundEnd Result_WinNarrow
+	response treant_protector_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response treant_protector_flawless_defeat
+{
+	speak "treant_protector_flawless_defeat" noscene 
+}
+
+Rule treant_protector_flawless_defeat_rule
+{
+	criteria Istreant_protector ConceptRoundEnd Result_LoseFlawless
+	response treant_protector_flawless_defeat
+}
+
+
+Response treant_protector_decisive_defeat
+{
+	speak "treant_protector_decisive_defeat" noscene 
+}
+
+Rule treant_protector_decisive_defeat_rule
+{
+	criteria Istreant_protector ConceptRoundEnd Result_LoseDecisive
+	response treant_protector_decisive_defeat
+}
+
+Response treant_protector_narrow_defeat
+{
+	speak "treant_protector_narrow_defeat" noscene 
+}
+
+Rule treant_protector_narrow_defeat_rule
+{
+	criteria Istreant_protector ConceptRoundEnd Result_LoseNarrow
+	response treant_protector_narrow_defeat
+}

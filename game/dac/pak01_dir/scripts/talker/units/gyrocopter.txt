@@ -1,0 +1,149 @@
+// Gyrocopter - Hero
+criterion "Isgyrocopter" "classname" "gyrocopter" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response gyrocopter_recruit_1
+{
+	speak "gyrocopter_recruit" noscene 
+}
+
+Rule gyrocopter_recruit_1_rule
+{
+	criteria Isgyrocopter ConceptRecruit UnitRank1
+	response gyrocopter_recruit_1
+}
+
+
+Response gyrocopter_recruit_2
+{
+	speak "gyrocopter_upgrade" noscene 
+}
+
+Rule gyrocopter_recruit_2_rule
+{
+	criteria Isgyrocopter ConceptRecruit UnitRank2
+	response gyrocopter_recruit_2
+}
+
+
+Response gyrocopter_recruit_3
+{
+	speak "gyrocopter_final_upgrade" noscene 
+}
+
+Rule gyrocopter_recruit_3_rule
+{
+	criteria Isgyrocopter ConceptRecruit UnitRank3
+	response gyrocopter_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response gyrocopter_start_round
+{
+	speak "gyrocopter_start_round" noscene 
+}
+
+Rule gyrocopter_start_round_rule
+{
+	criteria Isgyrocopter ConceptRoundStart 
+	response gyrocopter_start_round
+}
+
+
+Response gyrocopter_start_round_lost_last_round
+{
+	speak "gyrocopter_start_round_lost_last_round" noscene 
+}
+
+Rule gyrocopter_start_round_lost_last_round_rule
+{
+	criteria Isgyrocopter ConceptRoundStart LostLastGame
+	response gyrocopter_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response gyrocopter_flawless_victory
+{
+	speak "gyrocopter_flawless_victory" noscene 
+}
+
+Rule gyrocopter_flawless_victory_rule
+{
+	criteria Isgyrocopter ConceptRoundEnd Result_WinFlawless
+	response gyrocopter_flawless_victory
+}
+
+
+Response gyrocopter_decisive_victory
+{
+	speak "gyrocopter_decisive_victory" noscene 
+}
+
+Rule gyrocopter_decisive_victory_rule
+{
+	criteria Isgyrocopter ConceptRoundEnd Result_WinDecisive
+	response gyrocopter_decisive_victory
+}
+
+Response gyrocopter_narrow_victory
+{
+	speak "gyrocopter_narrow_victory" noscene 
+}
+
+Rule gyrocopter_narrow_victory_rule
+{
+	criteria Isgyrocopter ConceptRoundEnd Result_WinNarrow
+	response gyrocopter_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response gyrocopter_flawless_defeat
+{
+	speak "gyrocopter_flawless_defeat" noscene 
+}
+
+Rule gyrocopter_flawless_defeat_rule
+{
+	criteria Isgyrocopter ConceptRoundEnd Result_LoseFlawless
+	response gyrocopter_flawless_defeat
+}
+
+
+Response gyrocopter_decisive_defeat
+{
+	speak "gyrocopter_decisive_defeat" noscene 
+}
+
+Rule gyrocopter_decisive_defeat_rule
+{
+	criteria Isgyrocopter ConceptRoundEnd Result_LoseDecisive
+	response gyrocopter_decisive_defeat
+}
+
+Response gyrocopter_narrow_defeat
+{
+	speak "gyrocopter_narrow_defeat" noscene 
+}
+
+Rule gyrocopter_narrow_defeat_rule
+{
+	criteria Isgyrocopter ConceptRoundEnd Result_LoseNarrow
+	response gyrocopter_narrow_defeat
+}

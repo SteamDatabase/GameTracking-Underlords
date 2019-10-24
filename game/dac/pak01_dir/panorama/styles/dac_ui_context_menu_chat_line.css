@@ -1,83 +1,181 @@
 /* styles for the player context menu */
-#Contents.PlayerMenuContents 
+#Contents.CombatChatOptionsPanel 
 {
     width: 500px;
     flow-children: down;
 	box-shadow: fill #000000ee -4px 4px 12px 8px;
 }
 
-.ChatItem9
-{
-	visibility: collapse;
-    //turn this custom chat option off until we turn on chat
-}
-
 #MenuOptionsContainer
 {
 	width: 100%;
+	flow-children: right;
 }
 
-#MenuOptionsPanel
+.ChatHeaderContainer
+{
+	flow-children: right;
+}
+
+.ChatHeader
+{
+	color: #eee;
+	font-family: Ravenhook, Radiance;
+	font-size: 32px;
+	width: 475px;
+	//background-color: red;
+	text-align: center;
+	margin-bottom: 10px;
+	margin-top: 0px;
+
+	visibility: collapse;
+}
+
+.IsPlatformMobile .ChatHeader
+{
+	margin-bottom: 0px;
+	margin-top: 5px;	
+}
+
+#DuosChatHeader
+{
+	color: #83c831;
+}
+
+.GameMode_Duos #DuosChatHeader,
+.RoundState_Preparing #PrepChatHeader,
+.RoundState_Combat #CombatChatHeader
+{
+	visibility: visible;
+}
+
+.RoundState_Combat.TauntCooldown #CombatChatHeader
+{
+	visibility: collapse;
+}
+
+.RoundState_Combat.TauntCooldown #CombatChatHeaderCooldown
+{
+	visibility: visible;
+	opacity: .5;
+}
+
+
+.ChatMenu
 {
 	flow-children: down;
-	width: 100%;
+	width: fill-parent-flow(1);
 
-	transform: TranslateY(-100% );
+	//transform: TranslateY(-100% );
+	transform: TranslateY(0% );
 	opacity: 0;
 
 	transition-property: transform, opacity;
 	transition-duration: 0.35s;
 	transition-timing-function: ease-in-out;
+
+	visibility: collapse;
 }
 
-.EntranceAnimation #MenuOptionsPanel
+.RoundState_Preparing #PreparationChatOptionsPanel
+{
+	visibility: visible;
+}
+
+.RoundState_Combat #CombatChatOptionsPanel
+{
+	visibility: visible;
+}
+
+.GameMode_Duos #DuosChatOptionsPanel
+{
+	visibility: visible;
+}
+
+.DuosMessageButtonHeader
+{
+	margin-left: 480px;
+}
+
+.TauntCooldown #CombatChatOptionsPanel
+{
+	opacity: .1;
+}
+
+/*
+#PreparationChatOptionsPanel
+{
+	visibility: collapse;//test
+}
+*/
+
+.EntranceAnimation .ChatMenu
 {
 	transform: TranslateY(0% );
 	opacity: 1;
 }
 
 /* Don't animate the options appearing if the menu is on the top */
-.BottomArrowVisible #MenuOptionsPanel
+
+.BottomArrowVisible .ChatMenu
 {
 	transition-duration: 0.0s;
 }
 
-#MenuOptionsPanel Button
+#MenuOptionsContainer Button,
 {
-	padding: 5px 4px 4px 4px;
-	margin-top: 6px;
+	padding: 3px 4px 2px 4px;
+	//margin-top: 6px;
+	//margin-bottom: 6px;
 	margin-bottom: 6px;
+
+	margin-left: 6px;
+	margin-right: 6px;
 	horizontal-align: center;
 	width: 100%;
 	border: 1px solid #ffffff22;
-	background-color: #00000000;
+	background-color: #00221100;
 	transition-property: background-color;
 	transition-duration: .2s;
+
+	min-height: 40px;
+	max-height: 80px;
 }
 
-.IsLayoutSmallScreen #MenuOptionsPanel Button
+.IsLayoutSmallScreen  #MenuOptionsContainer Button,
 {
 	//padding: 20px 8px 19px 8px;
 	margin-top: 8px;
-	margin-bottom: 8px;
+	margin-bottom: 0px;
 	horizontal-align: center;
 	width: 100%;
 	border: 2px solid #ffffff22;
 }
 
-#MenuOptionsPanel Button Label
+#MenuOptionsContainer Button Label,
 {
     text-align: center;
+    //text-align: left;
     horizontal-align: center;
     color: #ffffffaa;
     padding: 10px 0px 10px 0px;
-    font-size: 20px;
+    //font-size: 20px;
+    font-size: 18px;
     text-overflow: shrink;
     font-weight: semi-bold;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	transition-property: color;
 	transition-duration: .2s;
+
+}
+
+.TauntCooldown #MenuOptionsContainer #CombatChatOptionsPanel Button {
+	//opacity: 0.2;
+}
+
+.TauntCooldown #MenuOptionsContainer #CombatChatOptionsPanel Button:hover {
+	//background-color: none;
 }
 
 .IsLayoutSmallScreen #MenuOptionsPanel Button Label
@@ -85,28 +183,28 @@
     font-size: 28px;	
 }
 
-#MenuOptionsPanel Button:hover
+#MenuOptionsContainer Button:hover
 {
 	background-color: #00000075;
 	transition-property: background-color;
 	transition-duration: .1s;
 }
 
-#MenuOptionsPanel Button:active
+#MenuOptionsContainer Button:active
 {
 	background-color: #000000cc;
 	transition-property: background-color;
 	transition-duration: .1s;
 }
 
-#MenuOptionsPanel Button:hover Label
+#MenuOptionsContainer Button:hover Label
 {
 	color: #ffffffdd;
 	transition-property: color;
 	transition-duration: .1s;
 }
 
-#MenuOptionsPanel Button:active Label
+#MenuOptionsContainer Button:active Label
 {
 	color: #ffffff;
 	transition-property: color;
@@ -114,7 +212,7 @@
 }
 
 /* Custom styling for player context menu (with a profile card at the top) */
-DACContextMenuPlayer #Contents
+.PlayerMenuContents
 {
     background-color: transparent;
     padding: 0px;
@@ -122,4 +220,14 @@ DACContextMenuPlayer #Contents
     box-shadow: none;
 	margin-right: 0px;
 	margin-top: 0px;
+	flow-children: down;
 }
+
+#ChatLineContextMenu .PlayerMenuContents
+{
+	//height: 600px;
+	height: fit-children;
+	//vertical-align: top;
+}
+
+

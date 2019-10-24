@@ -17,29 +17,40 @@
 						<ParticleProgressBar id="InGameChallengeProgress" class="DailyChallengeProgressBar" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar_complete.vpcf" fov="-200" />
 						<ParticleProgressBar id="ChallengeProgress" class="DailyChallengeProgressBar" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar_complete.vpcf" fov="-200" />
 					</Panel>
+
+				
 				</Panel>
 				<Panel class="LowerContainer">
-					<Panel class="RerollContainer">
-						<Button class="DailyChallengeRerollButton" onactivate="DACDailyChallengeReroll()"/>
-						<Panel id="DailyChallengeClaimButtonContainer">
-							<Button class="DailyChallengeClaimButton" onactivate="DACDailyChallengeClaim()"/>
-							<DACParticleScenePanel class="DailyChallengeClaimFX" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="econ/s0/particles/battlepass/s0_battlepass_claim_reward_idle.vpcf" fov="-200" />
-							<DACParticleScenePanel id="ClaimActivateFX" class="DailyChallengeClaimFX" hittest="false" startActive="false" cameraLeft="0" cameraUp="0" particleName="econ/s0/particles/battlepass/s0_battlepass_claim_reward.vpcf" fov="-200" />						
-						</Panel>
-						<Label class="RerollLabel" id="RerollAtText" text="#DAC_Challenge_RerollAt"/>
+					<Label class="RerollLabel" id="RerollAtText" text="#DAC_Challenge_RerollAt"/>
+
+					<Panel class="RerollContainer" onactivate="DACDailyChallengeReroll()">
+						<Button class="DailyChallengeRerollButton" />
 						<Label class="RerollLabel" id="RerollAvailableText" text="#DAC_Challenge_RerollAvailableAt"/>
-						<Label class="RerollLabel" id="RerollClaimableText" text="#DAC_Challenge_Claimable"/>
 					</Panel>
+
+					<Panel class="ClaimContainer" onactivate="DACDailyChallengeClaim()">
+						<Panel id="DailyChallengeClaimButtonContainer">
+							<Label class="RerollLabel" id="RerollClaimableText" text="#DAC_Challenge_Claimable"/>
+							<DACParticleScenePanel class="DailyChallengeClaimFX" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="econ/s0/particles/battlepass/s0_battlepass_claim_reward_rect_idle.vpcf" fov="-200" />
+							<DACParticleScenePanel id="ClaimActivateFX" class="DailyChallengeClaimFX" hittest="false" startActive="false" cameraLeft="0" cameraUp="0" particleName="econ/s0/particles/battlepass/s0_battlepass_claim_rect_reward.vpcf" fov="-200" />						
+						</Panel>
+					</Panel>
+
 					<Panel class="RewardBackground">
 						<Panel class="DailyChallengeRewardContainer">
 							<Label class="DailyChallengeReward" text="{d:challenge_reward_amount}" />
 							<Label class="BPXPLabel" text="#DAC_BP_XP" />
 						</Panel>
-					</Panel>		
-				</Panel>		
+					</Panel>
+				</Panel>
 			</Panel>
 			<Label class="ProgressRemaining" text="{d:challenge_progress} / {d:challenge_max_progress}"/>
 			<Label class="DailyChallengeComplete" text="#DAC_Challenge_ChallengeComplete" />
+
+			<Panel class="ChallengeRewardContainer">
+				<Label class="ChallengeReward" text="{d:challenge_reward_amount}" />
+				<Label class="BPXPLabel" text="#DAC_BP_XP" />
+			</Panel>
 		</Panel>
 	</DACDailyChallenge>
 </root>

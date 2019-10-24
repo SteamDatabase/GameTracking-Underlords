@@ -1,0 +1,112 @@
+DACBannerPaintin
+{	
+	vertical-align: top;
+	horizontal-align: center;
+	margin-top: 300px;
+	opacity: 1;
+	transform: rotateZ(-2.5deg);
+}
+
+DACRoundOverScreen.ShowVictory DACBannerPaintin #Headline Label
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffc400 ), to(#fffdd7));
+	padding: 10px 38px 18px;
+}
+
+
+.BannerPaintin_BG Label {
+	opacity: 0;
+	transition-property: opacity;
+	transition-delay: 0.1s;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
+	opacity-mask: url("s2r://panorama/images/masks/noise_mask_psd.vtex") 1;
+}
+
+.BannerPaintout .BannerPaintin_BG Label {
+	
+}
+
+.ShowBannerPaintin .BannerPaintin_BG Label {
+	opacity: 1;
+}
+
+@keyframes 'FadeInBannerLabels'
+{
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.BannerPaintin_BG {
+	width: 2500px;
+	horizontal-align: center;
+}
+
+DACBannerPaintin AnimatedImageStrip {
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	wash-color: #39b0d325;
+	-s2-mix-blend-mode: multiply;
+}
+
+#Headline, #Subhead {
+	horizontal-align: center;
+}
+
+#Subhead {
+	margin-top: 145px;
+	visibility: collapse;
+}
+.WithSubhead #Subhead {
+	visibility: visible;
+}
+
+#Headline Label
+{
+	z-index: 20;
+	font-size: 140px;
+	line-height: 120px;
+	font-weight: black;
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 3px;
+	horizontal-align: center;
+	padding: 10px 80px 18px;
+	width: fit-children;
+}
+
+#Subhead Label
+{
+	z-index: 5;
+	font-size: 60px;
+	line-height: 52px;
+	font-weight: bold;
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+	letter-spacing: 4px;
+	padding: 9px 40px 30px;
+	horizontal-align: center;
+}
+
+.IsDragging DACBannerPaintin
+{
+	visibility: collapse;
+}
+
+.IsPlatformPC DACBannerPaintin
+{
+	ui-scale: 70%;
+	padding: 10%;
+}
+
+.IsPlatformMobile DACBannerPaintin
+{
+		ui-scale: 80%;	
+}

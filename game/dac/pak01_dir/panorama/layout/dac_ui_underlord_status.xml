@@ -1,0 +1,141 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_underlord_status.vcss_c" />
+	</styles>
+	<snippets>
+
+	</snippets>
+
+	<DACUnderlordStatus hittest="false">
+		<DACUnderlordScenePanel id="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" usePortraitData="true" glowsize="0" fov="50" cameraUp="155" cameraLeft="10" cameraDistance="120" hittest="false"/>
+		
+		<Panel id="SideItems" hittest="false">
+			<DACHudPlayerIcons id="PlayerIcons" hittest="true" />
+
+			<Panel id="UnderlordItems" hittest="false">
+				<Panel id="ChatButton" hittest="true" onactivate="DACShowChatLineContextMenu()" />
+
+				<Panel id="TalentsButton" hittest="true" onactivate="DACShowUnderlordTalentSelector()">
+					<Image id="TalentSelectPulse" />				
+					<Image id="TalentSelectIcon" />
+				</Panel>
+				
+				<Panel id="UnderlordParticle" hittest="false" >
+					<DACParticleScenePanel id="UnderlordSmokeParticle" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/underlord_smoke.vpcf" fov="-200" />
+				</Panel>
+				
+				<Panel class="BottomSection" hittest="false">
+					<Panel class="Info" hittest="false">
+
+						<Panel class="InfoBlock">
+							<Panel id="DuosTeamName" hittestchildren="false">
+								<Label text="{s:duos_team_name}" />
+							</Panel>
+
+							<Panel class="NameContainer" hittestchildren="false">
+								<Label class="HeaderPlayerName" id="PlayerName" text="{g:dac_player_slot_persona:b:player_slot}" html="true" />
+							</Panel>
+
+							<Panel class="DetailsContainer" hittestchildren="false">
+								<Panel class="CornerStatusLevel">
+									<Label text="{i:playerStateLevel}" id="StatusLevel" />
+									<Panel class="PlayerLevelIcon" />
+								</Panel>
+								<Panel class="CornerStatusGold">
+									<Label text="{i:playerStateGold}" id="StatusGold" />
+									<Panel class="PlayerGoldIcon" />
+								</Panel>
+								<Panel class="CornerStatusHealth">
+									<Label text="{i:playerStateHP}" id="StatusHP"  />
+									<Panel class="PlayerHealthIcon" />
+								</Panel>
+								<Panel class="CornerStatusHype">
+									<Label text="{i:playerStateHype}/100" id="StatusHype"  />
+								</Panel>
+								<!-- 
+									<Panel class="Units">
+										<Label text="{i:playerStateUnitsDeployed} / {i:playerStateUnitsDeployable}" id="StatusUnits" />
+									</Panel> 
+								-->
+							</Panel>
+						</Panel>
+					</Panel>
+
+					<Panel id="AbilitySection">
+						<Panel id="TalentAbility1" class="TalentAbility Large">
+							<Panel class="TalentAbilityImageContainer">
+								<Image id="TalentAbilityImage"/>
+								<Image id="CooldownOverlay" hittest="false" />
+							</Panel>
+							<Panel class="PipContainer">
+								<Panel id="Pip1" class="Pip"/>
+								<Panel id="Pip2" class="Pip"/>
+								<Panel id="Pip3" class="Pip"/>
+								<Panel id="Pip4" class="Pip"/>
+							</Panel>
+						</Panel>
+						<Panel class="RightSection">
+							<Panel id="HypeBarBackground">
+								<Panel id="HypeSegment1" class="HypeSegment">
+									<Panel id="HypeSegmentActive1" class="HypeSegmentActive">
+										<Panel id="ProgressPip1" class="ProgressPip"/>
+									</Panel>
+								</Panel>
+								<Panel id="HypeSegment2" class="HypeSegment">
+									<Panel id="HypeSegmentActive2" class="HypeSegmentActive">
+										<Panel id="ProgressPip2" class="ProgressPip"/>
+									</Panel>
+								</Panel>
+								<Panel id="HypeSegment3" class="HypeSegment">
+									<Panel id="HypeSegmentActive3" class="HypeSegmentActive">
+										<Panel id="ProgressPip3" class="ProgressPip"/>
+									</Panel>
+								</Panel>
+							</Panel>
+							<Panel class="OtherAbilities">
+								<Panel id="TalentAbility2" class="TalentAbility">
+									<Panel class="TalentAbilityImageContainer">
+										<Image id="TalentAbilityImage"/>
+										<Image id="CooldownOverlay" hittest="false" />
+									</Panel>
+									<Panel class="PipContainer">
+										<Panel id="Pip1" class="Pip"/>
+										<Panel id="Pip2" class="Pip"/>
+										<Panel id="Pip3" class="Pip"/>
+										<Panel id="Pip4" class="Pip"/>
+									</Panel>
+								</Panel>
+								<Panel id="TalentAbility3" class="TalentAbility">
+									<Panel class="TalentAbilityImageContainer">
+										<Image id="TalentAbilityImage"/>
+										<Image id="CooldownOverlay" hittest="false" />
+									</Panel>
+									<Panel class="PipContainer">
+										<Panel id="Pip1" class="Pip"/>
+										<Panel id="Pip2" class="Pip"/>
+										<Panel id="Pip3" class="Pip"/>
+										<Panel id="Pip4" class="Pip"/>
+									</Panel>
+								</Panel>
+								<Panel id="TalentAbility4" class="TalentAbility">
+									<Panel class="TalentAbilityImageContainer">
+										<Image id="TalentAbilityImage"/>
+										<Image id="CooldownOverlay" hittest="false" />
+									</Panel>
+									<Panel class="PipContainer">
+										<Panel id="Pip1" class="Pip"/>
+										<Panel id="Pip2" class="Pip"/>
+										<Panel id="Pip3" class="Pip"/>
+										<Panel id="Pip4" class="Pip"/>
+									</Panel>
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+				</Panel>
+			</Panel>
+		</Panel>
+	</DACUnderlordStatus>
+</root>

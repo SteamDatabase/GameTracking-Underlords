@@ -10,16 +10,6 @@ DACHeropediaPage {
 	background-repeat: no-repeat;
 }
 
-.Dimmer {
-	width: 100%;
-	height: 100%;
-	flow-children: down;
-	background-color: #060606F8;
-	transition-property: background-color;
-	transition-duration: 0.3s;
-	transition-timing-function: ease-in-out;
-}
-
 #HeropediaContainer {
 	width: 100%;
 	height: 100%;
@@ -29,11 +19,6 @@ DACHeropediaPage {
 	background-repeat: no-repeat;
 }
 
-.IsLayoutLargeScreen #HeropediaContainer
-{
-	background-size: 80%;
-}
-
 .HeropediaBody
 {
 	width: 100%;
@@ -41,10 +26,12 @@ DACHeropediaPage {
 	flow-children: right;
 	height: 100%;
 	vertical-align: bottom;
-	padding: safe-area-inset-top safe-area-inset-right safe-area-inset-bottom safe-area-inset-left;
 }
 
-.HeroesTabContainer {}
+.AspectRatio21x9.IsLayoutSmallScreen .HeropediaBody
+{
+	padding: safe-area-inset-top safe-area-inset-right safe-area-inset-bottom safe-area-inset-left;
+}
 
 #TitleImage
 {
@@ -61,15 +48,6 @@ DACHeropediaPage {
 		visibility: collapse;
 }
 
-.HeropediaTabBackground
-{
-	height: 100%;
-	width: 517px;
-	
-	background-image: url("s2r://panorama/images/heropedia/nav-bg_png.vtex");
-	background-size: 100%;
-}
-
 .AspectRatio21x9.IsLayoutSmallScreen .HeropediaTabBackground
 {
 	width: 644px;
@@ -79,9 +57,7 @@ DACHeropediaPage {
 {
 	width: 540px;
 	height: 100%;
-	padding-top: 0px;
-	background-size: 100%;
-	opacity-mask: url("s2r://panorama/images/masks/heropedia-nav_psd.vtex") 1;
+	margin-top: 180px;
 }
 
 .IsLayoutLargeScreen .HeropediaTabButtons
@@ -104,6 +80,7 @@ DACHeropediaPage {
 .HeropediaTabButtons .TabList {
 	width: 100%;
 	margin-top: 10px;
+	margin-right: 20px;
 	flow-children: down;
 }
 
@@ -131,7 +108,8 @@ DACHeropediaPage {
 	height: fit-children;
 }
 
-.HeropediaTabButtons Button {
+.HeropediaTabButtons Button 
+{
 	height: 110px;
 	width: 100%;
 	margin-bottom: 20px;
@@ -145,13 +123,14 @@ DACHeropediaPage {
 	transition-duration: 0.2s;
 }
 
-.HeropediaTabButtons Button:hover {
-	background-color: #79480e;
+.HeropediaTabButtons Button:hover Label
+{
+	//brightness: 1.2;
 }
 
 
 .HeropediaTabButtons Label {
-	color: #fff;
+	color: textBrighter;
 	vertical-align: middle;
 	horizontal-align: left;
 	font-size: 36px;
@@ -177,29 +156,34 @@ DACHeropediaPage {
 	visibility: visible;
 }
 
+.HowToPlayContainer #HowToPlayContainer,
 .SeasonButtonContainer #SeasonButtonContainer,
 .HeroesButtonContainer #HeroesButtonContainer,
 .ItemsButtonContainer #ItemsButtonContainer,
 .SynergiesButtonContainer #SynergiesButtonContainer,
 .CreepsButtonContainer #CreepsButtonContainer,
 .PatchNotesButtonContainer #PatchNotesButtonContainer,
-.RulesButtonContainer #RulesButtonContainer {
-	/*background-image: url("s2r://panorama/images/hud/right_tab_backer_psd.vtex");*/
-	background-size: 110% 100%;
+.RulesButtonContainer #RulesButtonContainer 
+{
+	background-size: 100%;
 	background-repeat: no-repeat;
-	background-position: -8px 0;
-	background-color: #d07c18;
+	background-image: url("s2r://panorama/images/dashboard/rulebook_nav_01_psd.vtex"); 
 	brightness: 1;
-	/*opacity-mask: url("s2r://panorama/images/masks/portrait_scratch_psd.vtex") 1;*/
+	transition-property: brightness, background-image;
+	transition-duration: 0.2s;
 }
 
+.HowToPlayContainer #HowToPlayContainer Label,
 .SeasonButtonContainer #SeasonButtonContainer Label,
 .HeroesButtonContainer #HeroesButtonContainer Label,
 .ItemsButtonContainer #ItemsButtonContainer Label,
 .CreepsButtonContainer #CreepsButtonContainer Label,
-.RulesButtonContainer #RulesButtonContainer Label {
-	/*color: gradient( linear, 100% 0%, 0% 0%, from( #aaf), to( #fff ) );*/
-	brightness: 1;
+.RulesButtonContainer #RulesButtonContainer Label,
+.SynergiesButtonContainer #SynergiesButtonContainer Label
+{
+	brightness: 1.4;
+	transition-property: brightness, background-image;
+	transition-duration: 0.2s;
 }
 
 .HeroesButtonContainer .Disabled {
@@ -242,6 +226,7 @@ DACHeropediaPage {
 	visibility: collapse;
 }
 
+.HowToPlayTabContainer #HowToPlayTabContainer,
 .SeasonTabContainer #SeasonTabContainer,
 .HeroesTabContainer #HeroesTabContainer,
 .ItemsTabContainer #ItemsTabContainer,

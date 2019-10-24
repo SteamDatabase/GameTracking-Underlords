@@ -26,12 +26,13 @@
               <DACSettingsKeyBinder id="ShopLockBinder" text="#dac_hotkey_lock_desc" bind="ShopLock"/>
               <DACSettingsKeyBinder id="ShopLevelUpBinder" text="#dac_hotkey_levelup_desc" bind="ShopLevelUp"/>
               <DACSettingsKeyBinder id="UnitToBenchBinder" text="#dac_hotkey_tobench_desc" bind="UnitToBench"/>
+              <DACSettingsKeyBinder id="SendUnitBinder" text="#dac_hotkey_send_desc" bind="SendUnit"/>
             </Panel>
           </Panel>
           <Panel id="hotkeycolumn2" class="SettingsDualColumn HotkeySettingsColumn">
             <Panel class="SettingsSection HotkeySettingsSection">
-              <DACSettingsKeyBinder id="ScrollTabsUpBinder" text="#dac_hotkey_tabs_up_desc" bind="ScrollTabsUp"/>
-              <DACSettingsKeyBinder id="ScrollTabsDownBinder" text="#dac_hotkey_tabs_down_desc" bind="ScrollTabsDown"/>
+              <DACSettingsKeyBinder id="ScrollCameraUpBinder" text="#dac_hotkey_scroll_camera_up_desc" bind="ScrollCameraUp"/> 
+              <DACSettingsKeyBinder id="ScrollCameraDownBinder" text="#dac_hotkey_scroll_camera_down_desc" bind="ScrollCameraDown"/> 
               <DACSettingsKeyBinder id="TabAlliancesBinder" text="#dac_hotkey_alliances_tab" bind="TabAlliances"/>
               <DACSettingsKeyBinder id="TabDPSBinder" text="#dac_hotkey_dps_tab" bind="TabDPS"/>
               <DACSettingsKeyBinder id="TabItemsBinder" text="#dac_hotkey_items_tab" bind="TabItems"/>
@@ -42,6 +43,7 @@
 							<DACSettingsKeyBinder id="ViewAwayBinder" text="#dac_hotkey_away_board_desc" bind="ViewAway"/>
               <DACSettingsKeyBinder id="ScoreboardBinder" text="#dac_hotkey_scoreboard_desc" bind="Scoreboard"/>
               <DACSettingsKeyBinder id="ChatBinder" text="#dac_hotkey_chat_desc" bind="Chat"/> 
+               
             </Panel>
           </Panel>
         </Panel>
@@ -143,6 +145,7 @@
                     <DACSettingsCheckbox class="pconly" convar="r_dota_fxaa" text="#dac_settings_antialiasing" />
                     <DACSettingsCheckbox id="WaterToggle" class="pconly" convar="dota_cheap_water" invert="true" text="#dac_settings_waterquality" />
                     <ToggleButton class="CheckBox pconly" id="VSyncToggle" text="#dac_settings_vsync"	onactivate="DACSetVSync();" />
+                    <DACSettingsCheckbox class="pconly" convar="r_depth_of_field" text="#dac_settings_tilt_shift" />
                     <DACSettingsCheckbox id="TreeWindToggle" class="pconly" convar="r_dota_allow_wind_on_trees" text="#dac_settings_tree_wind" />
                   </Panel>
                   <Panel id="MobileVideoThirdColumn" class="advancedvideo">
@@ -224,8 +227,6 @@
                     <Label text="#dac_settings_5speakers"	id="fivespeakers"	value="5" />
                     <Label text="#dac_settings_7speakers"	id="sevenspeakers" value="7" />
                   </DACSettingsEnumDropDown>
-                  <DACSettingsEnum text="Speaker Config" id="SpeakerConfig" convar="speaker_config">
-                  </DACSettingsEnum>
                 </Panel>
               </Panel>
 
@@ -290,23 +291,8 @@
 
             <Panel id="GameOptionsSection" class="SettingsSection">
 
-              <Label text="#dac_settings_steam" class="SectionHeader SteamFeatures" />
-              <Panel id="SteamSettingsSection">
-                <Panel id="SteamLogo" />
-                <Button id="LogoutButton" class="ButtonBevel SteamFeatures" onactivate="DACSteamLogout()">
-                  <Label text="#DAC_SteamLogOut"/>
-                </Button>
-              </Panel>
 
-              <Panel id="SteamOfflineSettingsSection">
-                <DACSettingsCheckbox convar="dac_force_panorama_login" text="#dac_settings_use_panorama_login" />
-              </Panel>
-              <Button id="PrivacyPolicy" class="ButtonBevel" onactivate="ExternalBrowserGoToURL( 'https://store.steampowered.com/privacy_agreement/' )" >
-                <Label text="#dac_Privacy_Policy" />
-              </Button>
-              <DACSettingsCheckbox class="SteamFeatures" convar="dac_invisible_mode" text="#DAC_InvisibleMode" />
 
-              <Panel class="SectionHeaderLine"/>
               <Label text="#dac_settings_options" class="SectionHeader" />
               <!-- <Panel class="SectionHeaderLine"/> -->
                <Panel class="TopBottomFlow">
@@ -321,15 +307,38 @@
                    <Label text="#dac_settings_input_config_cursor" id="pc"   value="1" />
                  </DACSettingsEnumDropDown>
                </Panel>
-             <DACSettingsCheckbox class="GameSettingsPadding" convar="dac_synergies_hide_partial_in_combat" text="#dac_settings_synergies_hide_partial" />
-              <DACSettingsCheckbox class="GameSettingsPadding ChatSettings" convar="dac_chat_allow_custom_messages" text="#dac_settings_chat_allow_custom_messages" />
-              <DACSettingsCheckbox class="GameSettingsPadding ChatSettings" id="EnableChatFilter" convar="dac_chat_filter_custom_messages" text="#dac_settings_chat_filter_custom_messages" />
-              <DACSettingsCheckbox class="GameSettingsPadding" convar="dac_auto_deploy_units" id="AutoDeployUnitsToggle" text="#dac_settings_auto_deploy_units"	onactivate="DACSetAutoDeploy();" />
-              <DACSettingsCheckbox class="GameSettingsPadding HapticCheckbox" convar="dac_tap_move" text="#dac_settings_tap_move" />
-              <DACSettingsCheckbox class="GameSettingsPadding HapticCheckbox" convar="dac_haptic_rumble_enable" text="#dac_settings_enable_haptics" />
-      			  <DACSettingsSlider id="dac_gameplay_camera_distance" class="GameSettingsPadding" convar="dac_gameplay_camera_new_distance" min="600" max="950" percentage="false" text="#dac_settings_camera_distance" />
-      			  <DACSettingsSlider id="dac_gameplay_camera_pitch" class="GameSettingsPadding" convar="dac_gameplay_camera_new_pitch" min="40" max="90" percentage="false" text="#dac_settings_camera_pitch" />
-            </Panel>
+               <DACSettingsCheckbox class="GameSettingsPadding" convar="dac_synergies_hide_partial_during_combat" text="#dac_settings_synergies_hide_partial" />
+               <DACSettingsCheckbox id="LowViolenceCheckbox" class="GameSettingsPadding" text="#dac_settings_low_violence" onactivate="DACSetLowViolence();" />
+               <DACSettingsCheckbox class="GameSettingsPadding ChatSettings" convar="dac_chat_allow_custom_messages" text="#dac_settings_chat_allow_custom_messages" />
+               <DACSettingsCheckbox class="GameSettingsPadding ChatSettings" id="EnableChatFilter" convar="dac_chat_filter_custom_messages" text="#dac_settings_chat_filter_custom_messages" />
+               <DACSettingsCheckbox class="GameSettingsPadding" convar="dac_auto_deploy_units" id="AutoDeployUnitsToggle" text="#dac_settings_auto_deploy_units"	onactivate="DACSetAutoDeploy();" />
+               <DACSettingsCheckbox class="GameSettingsPadding HapticCheckbox" convar="dac_tap_move" text="#dac_settings_tap_move" />
+               <DACSettingsCheckbox class="GameSettingsPadding HapticCheckbox" convar="dac_haptic_rumble_enable" text="#dac_settings_enable_haptics" />
+                
+                <Label text="#dac_settings_steam" class="SectionHeader PaddingTop" />
+                <Panel id="SteamSettingsSection">
+                    <Panel id="SteamLogo" />
+                    <Button id="LogoutButton" class="ButtonBevel SteamFeatures" onactivate="DACSteamLogout()">
+                        <Label text="#DAC_SteamLogOut"/>
+                    </Button>
+                </Panel>
+
+                <Panel id="SteamOfflineSettingsSection">
+                    <DACSettingsCheckbox convar="dac_force_panorama_login" text="#dac_settings_use_panorama_login" />
+                </Panel>
+                <Button id="PrivacyPolicy" class="ButtonBevel" onactivate="ExternalBrowserGoToURL( 'https://store.steampowered.com/privacy_agreement/' )" >
+                    <Label text="#dac_Privacy_Policy" />
+                </Button>
+                <DACSettingsCheckbox class="SteamFeatures" convar="dac_invisible_mode" text="#DAC_InvisibleMode" />
+                
+                <Label text="#dac_settings_feedback" class="SectionHeader PaddingTop" />
+                <Panel class="FeedbackPanel">
+                  <Button id="FeedbackButton" class="ButtonBevel" onactivate="ExternalBrowserGoToFeedback(); PlaySoundEffect( 'DAC_UI.MainMenu_SubmitFeedback' );">
+                      <Label text="#dac_settings_submitfeedback"/>
+                    </Button>
+                </Panel>
+                
+      			 </Panel>
 
             <Panel class="SettingsSection HotkeySettingsSection">
               

@@ -1,0 +1,149 @@
+// weaver - Hero
+criterion "Isweaver" "classname" "weaver" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response weaver_recruit_1
+{
+	speak "weaver_recruit" noscene 
+}
+
+Rule weaver_recruit_1_rule
+{
+	criteria Isweaver ConceptRecruit UnitRank1
+	response weaver_recruit_1
+}
+
+
+Response weaver_recruit_2
+{
+	speak "weaver_upgrade" noscene 
+}
+
+Rule weaver_recruit_2_rule
+{
+	criteria Isweaver ConceptRecruit UnitRank2
+	response weaver_recruit_2
+}
+
+
+Response weaver_recruit_3
+{
+	speak "weaver_final_upgrade" noscene 
+}
+
+Rule weaver_recruit_3_rule
+{
+	criteria Isweaver ConceptRecruit UnitRank3
+	response weaver_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response weaver_start_round
+{
+	speak "weaver_start_round" noscene 
+}
+
+Rule weaver_start_round_rule
+{
+	criteria Isweaver ConceptRoundStart 
+	response weaver_start_round
+}
+
+
+Response weaver_start_round_lost_last_round
+{
+	speak "weaver_start_round_lost_last_round" noscene 
+}
+
+Rule weaver_start_round_lost_last_round_rule
+{
+	criteria Isweaver ConceptRoundStart LostLastGame
+	response weaver_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response weaver_flawless_victory
+{
+	speak "weaver_flawless_victory" noscene 
+}
+
+Rule weaver_flawless_victory_rule
+{
+	criteria Isweaver ConceptRoundEnd Result_WinFlawless
+	response weaver_flawless_victory
+}
+
+
+Response weaver_decisive_victory
+{
+	speak "weaver_decisive_victory" noscene 
+}
+
+Rule weaver_decisive_victory_rule
+{
+	criteria Isweaver ConceptRoundEnd Result_WinDecisive
+	response weaver_decisive_victory
+}
+
+Response weaver_narrow_victory
+{
+	speak "weaver_narrow_victory" noscene 
+}
+
+Rule weaver_narrow_victory_rule
+{
+	criteria Isweaver ConceptRoundEnd Result_WinNarrow
+	response weaver_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response weaver_flawless_defeat
+{
+	speak "weaver_flawless_defeat" noscene 
+}
+
+Rule weaver_flawless_defeat_rule
+{
+	criteria Isweaver ConceptRoundEnd Result_LoseFlawless
+	response weaver_flawless_defeat
+}
+
+
+Response weaver_decisive_defeat
+{
+	speak "weaver_decisive_defeat" noscene 
+}
+
+Rule weaver_decisive_defeat_rule
+{
+	criteria Isweaver ConceptRoundEnd Result_LoseDecisive
+	response weaver_decisive_defeat
+}
+
+Response weaver_narrow_defeat
+{
+	speak "weaver_narrow_defeat" noscene 
+}
+
+Rule weaver_narrow_defeat_rule
+{
+	criteria Isweaver ConceptRoundEnd Result_LoseNarrow
+	response weaver_narrow_defeat
+}

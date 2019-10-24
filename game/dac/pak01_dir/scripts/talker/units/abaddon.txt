@@ -1,0 +1,149 @@
+// Abaddon - Hero
+criterion "Isabaddon" "classname" "abaddon" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response abaddon_recruit_1
+{
+	speak "abaddon_recruit" noscene 
+}
+
+Rule abaddon_recruit_1_rule
+{
+	criteria Isabaddon ConceptRecruit UnitRank1
+	response abaddon_recruit_1
+}
+
+
+Response abaddon_recruit_2
+{
+	speak "abaddon_upgrade" noscene 
+}
+
+Rule abaddon_recruit_2_rule
+{
+	criteria Isabaddon ConceptRecruit UnitRank2
+	response abaddon_recruit_2
+}
+
+
+Response abaddon_recruit_3
+{
+	speak "abaddon_final_upgrade" noscene 
+}
+
+Rule abaddon_recruit_3_rule
+{
+	criteria Isabaddon ConceptRecruit UnitRank3
+	response abaddon_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response abaddon_start_round
+{
+	speak "abaddon_start_round" noscene 
+}
+
+Rule abaddon_start_round_rule
+{
+	criteria Isabaddon ConceptRoundStart 
+	response abaddon_start_round
+}
+
+
+Response abaddon_start_round_lost_last_round
+{
+	speak "abaddon_start_round_lost_last_round" noscene 
+}
+
+Rule abaddon_start_round_lost_last_round_rule
+{
+	criteria Isabaddon ConceptRoundStart LostLastGame
+	response abaddon_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response abaddon_flawless_victory
+{
+	speak "abaddon_flawless_victory" noscene 
+}
+
+Rule abaddon_flawless_victory_rule
+{
+	criteria Isabaddon ConceptRoundEnd Result_WinFlawless
+	response abaddon_flawless_victory
+}
+
+
+Response abaddon_decisive_victory
+{
+	speak "abaddon_decisive_victory" noscene 
+}
+
+Rule abaddon_decisive_victory_rule
+{
+	criteria Isabaddon ConceptRoundEnd Result_WinDecisive
+	response abaddon_decisive_victory
+}
+
+Response abaddon_narrow_victory
+{
+	speak "abaddon_narrow_victory" noscene 
+}
+
+Rule abaddon_narrow_victory_rule
+{
+	criteria Isabaddon ConceptRoundEnd Result_WinNarrow
+	response abaddon_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response abaddon_flawless_defeat
+{
+	speak "abaddon_flawless_defeat" noscene 
+}
+
+Rule abaddon_flawless_defeat_rule
+{
+	criteria Isabaddon ConceptRoundEnd Result_LoseFlawless
+	response abaddon_flawless_defeat
+}
+
+
+Response abaddon_decisive_defeat
+{
+	speak "abaddon_decisive_defeat" noscene 
+}
+
+Rule abaddon_decisive_defeat_rule
+{
+	criteria Isabaddon ConceptRoundEnd Result_LoseDecisive
+	response abaddon_decisive_defeat
+}
+
+Response abaddon_narrow_defeat
+{
+	speak "abaddon_narrow_defeat" noscene 
+}
+
+Rule abaddon_narrow_defeat_rule
+{
+	criteria Isabaddon ConceptRoundEnd Result_LoseNarrow
+	response abaddon_narrow_defeat
+}

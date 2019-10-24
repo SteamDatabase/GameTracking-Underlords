@@ -1,0 +1,149 @@
+// Alchemist - Hero
+criterion "Isalchemist" "classname" "alchemist" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response alchemist_recruit_1
+{
+	speak "alchemist_recruit" noscene 
+}
+
+Rule alchemist_recruit_1_rule
+{
+	criteria Isalchemist ConceptRecruit UnitRank1
+	response alchemist_recruit_1
+}
+
+
+Response alchemist_recruit_2
+{
+	speak "alchemist_upgrade" noscene 
+}
+
+Rule alchemist_recruit_2_rule
+{
+	criteria Isalchemist ConceptRecruit UnitRank2
+	response alchemist_recruit_2
+}
+
+
+Response alchemist_recruit_3
+{
+	speak "alchemist_final_upgrade" noscene 
+}
+
+Rule alchemist_recruit_3_rule
+{
+	criteria Isalchemist ConceptRecruit UnitRank3
+	response alchemist_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response alchemist_start_round
+{
+	speak "alchemist_start_round" noscene 
+}
+
+Rule alchemist_start_round_rule
+{
+	criteria Isalchemist ConceptRoundStart 
+	response alchemist_start_round
+}
+
+
+Response alchemist_start_round_lost_last_round
+{
+	speak "alchemist_start_round_lost_last_round" noscene 
+}
+
+Rule alchemist_start_round_lost_last_round_rule
+{
+	criteria Isalchemist ConceptRoundStart LostLastGame
+	response alchemist_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response alchemist_flawless_victory
+{
+	speak "alchemist_flawless_victory" noscene 
+}
+
+Rule alchemist_flawless_victory_rule
+{
+	criteria Isalchemist ConceptRoundEnd Result_WinFlawless
+	response alchemist_flawless_victory
+}
+
+
+Response alchemist_decisive_victory
+{
+	speak "alchemist_decisive_victory" noscene 
+}
+
+Rule alchemist_decisive_victory_rule
+{
+	criteria Isalchemist ConceptRoundEnd Result_WinDecisive
+	response alchemist_decisive_victory
+}
+
+Response alchemist_narrow_victory
+{
+	speak "alchemist_narrow_victory" noscene 
+}
+
+Rule alchemist_narrow_victory_rule
+{
+	criteria Isalchemist ConceptRoundEnd Result_WinNarrow
+	response alchemist_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response alchemist_flawless_defeat
+{
+	speak "alchemist_flawless_defeat" noscene 
+}
+
+Rule alchemist_flawless_defeat_rule
+{
+	criteria Isalchemist ConceptRoundEnd Result_LoseFlawless
+	response alchemist_flawless_defeat
+}
+
+
+Response alchemist_decisive_defeat
+{
+	speak "alchemist_decisive_defeat" noscene 
+}
+
+Rule alchemist_decisive_defeat_rule
+{
+	criteria Isalchemist ConceptRoundEnd Result_LoseDecisive
+	response alchemist_decisive_defeat
+}
+
+Response alchemist_narrow_defeat
+{
+	speak "alchemist_narrow_defeat" noscene 
+}
+
+Rule alchemist_narrow_defeat_rule
+{
+	criteria Isalchemist ConceptRoundEnd Result_LoseNarrow
+	response alchemist_narrow_defeat
+}

@@ -1,0 +1,99 @@
+<root>
+
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_challenge_map.vcss_c" />
+	</styles>
+
+	<snippets>
+		<snippet name="ChallengeNode">
+			<Panel class="ChallengeNode">
+				<Label text="{s:nodeID}" />
+			</Panel>
+		</snippet>
+		<snippet name="ChallengeEdge">
+			<Panel class="ChallengeEdge">
+				<Label text="{s:edgeID} ( {s:sourceNode} - {s:targetNode} )" />
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<DACChallengeMap>
+
+		<DragZoom id="OverviewContainer" class="MapContainer" disableScrollFlick="1" extrazoomout="1.0" maxscale="1.0" invertminscalecalc="1" disabledoubleclick="1" strictclamptranslation="1">
+			<Panel class="OverviewMap">
+				<Panel class="RegionButton Anessix" onactivate="DACChallengeMapSelectRegion(1);" >
+					<Panel class="RegionImage" />
+					<Label class="RegionTitle" text="#dac_region_1_title" />
+					<Label class="RegionProgress TextSubTitle" text="#dac_challenge_map_progress_1" />
+				</Panel>
+
+				<Panel class="RegionButton Jull" onactivate="DACChallengeMapSelectRegion(2);">
+					<Panel class="RegionImage" />
+					<Label class="RegionTitle" text="#dac_region_2_title" />
+					<Label class="RegionProgress TextSubTitle" text="#dac_challenge_map_progress_2" />
+				</Panel>
+
+				<Panel class="RegionButton Enno" onactivate="DACChallengeMapSelectRegion(3);">
+					<Panel class="RegionImage" />
+					<Label class="RegionTitle" text="#dac_region_3_title" />
+					<Label class="RegionProgress TextSubTitle" text="#dac_challenge_map_progress_3" />
+				</Panel>
+
+				<Panel class="RegionButton Hobgen" onactivate="DACChallengeMapSelectRegion(4);">
+					<Panel class="RegionImage" />
+					<Label class="RegionTitle" text="#dac_region_4_title" />
+					<Label class="RegionProgress TextSubTitle" text="#dac_challenge_map_progress_4" />
+				</Panel>
+			</Panel>
+		</DragZoom>
+
+		<DragZoom id="RegionContainer" class="MapContainer" disableScrollFlick="1" extrazoomout="1.0" maxscale="1.0" invertminscalecalc="1" disabledoubleclick="0" strictclamptranslation="1">
+			<Panel class="RegionMap">
+				<Label class="WhereAmI" text="#dac_dev_active_region" />
+				<UICanvas id="ChallengeEdges" class="edges" />
+				<Panel class="nodes" id="ChallengeNodes">
+				</Panel>
+			</Panel>
+		</DragZoom>
+		
+		<!-- <Button id="Reload" onactivate="DACChallengeMapUpdate();" /> -->
+
+		<Button id="GoBackButton" onactivate="DACChallengeMapReturnToOverview();" />
+
+		<Panel class="ChallengePopup">
+			<Label class="TextBody" text="#dac_map_challenge_details" />
+
+			<!-- <Label class="TextBody" text="{s:challengeTitle}" /> -->
+
+			<Label class="TextBody DailyChallengeDesc" text="{s:challengeDesc}" />
+
+			<Label class="TextBody" text="{d:challengeProgress} / {d:challengeMaxProgress}" />
+
+			<Button class="CompleteButton SimpleButton" onactivate="DACChallengeMapCompleteSelectedChallenge()">
+				<Label text="#dac_challenge_map_dev_complete_challenge" />
+			</Button>
+
+			<Button class="ClaimButton SimpleButton" onactivate="DACChallengeMapClaimChallenge()">
+				<Label text="#dac_challenge_map_claim_challenge" />
+			</Button>
+
+			<Button class="CloseButton SimpleButton" onactivate="DACChallengeMapHideChallengePopup()">
+				<Label text="#OK" />
+			</Button>
+		</Panel>
+
+		<Panel class="ClaimPopup">
+			<Label class="TextBody" text="#dac_map_claim_details" />
+
+			<Button class="ClaimButton SimpleButton" onactivate="DACChallengeMapClaimNode()">
+				<Label text="#dac_challenge_map_claim_node" />
+			</Button>
+
+			<Button class="CloseButton SimpleButton" onactivate="DACChallengeMapHideClaimPopup()">
+				<Label text="#OK" />
+			</Button>
+		</Panel>
+	</DACChallengeMap>
+</root>

@@ -1,0 +1,149 @@
+// shadow_shaman - Hero
+criterion "Isshadow_shaman" "classname" "shadow_shaman" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response shadow_shaman_recruit_1
+{
+	speak "shadow_shaman_recruit" noscene 
+}
+
+Rule shadow_shaman_recruit_1_rule
+{
+	criteria Isshadow_shaman ConceptRecruit UnitRank1
+	response shadow_shaman_recruit_1
+}
+
+
+Response shadow_shaman_recruit_2
+{
+	speak "shadow_shaman_upgrade" noscene 
+}
+
+Rule shadow_shaman_recruit_2_rule
+{
+	criteria Isshadow_shaman ConceptRecruit UnitRank2
+	response shadow_shaman_recruit_2
+}
+
+
+Response shadow_shaman_recruit_3
+{
+	speak "shadow_shaman_final_upgrade" noscene 
+}
+
+Rule shadow_shaman_recruit_3_rule
+{
+	criteria Isshadow_shaman ConceptRecruit UnitRank3
+	response shadow_shaman_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response shadow_shaman_start_round
+{
+	speak "shadow_shaman_start_round" noscene 
+}
+
+Rule shadow_shaman_start_round_rule
+{
+	criteria Isshadow_shaman ConceptRoundStart 
+	response shadow_shaman_start_round
+}
+
+
+Response shadow_shaman_start_round_lost_last_round
+{
+	speak "shadow_shaman_start_round_lost_last_round" noscene 
+}
+
+Rule shadow_shaman_start_round_lost_last_round_rule
+{
+	criteria Isshadow_shaman ConceptRoundStart LostLastGame
+	response shadow_shaman_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response shadow_shaman_flawless_victory
+{
+	speak "shadow_shaman_flawless_victory" noscene 
+}
+
+Rule shadow_shaman_flawless_victory_rule
+{
+	criteria Isshadow_shaman ConceptRoundEnd Result_WinFlawless
+	response shadow_shaman_flawless_victory
+}
+
+
+Response shadow_shaman_decisive_victory
+{
+	speak "shadow_shaman_decisive_victory" noscene 
+}
+
+Rule shadow_shaman_decisive_victory_rule
+{
+	criteria Isshadow_shaman ConceptRoundEnd Result_WinDecisive
+	response shadow_shaman_decisive_victory
+}
+
+Response shadow_shaman_narrow_victory
+{
+	speak "shadow_shaman_narrow_victory" noscene 
+}
+
+Rule shadow_shaman_narrow_victory_rule
+{
+	criteria Isshadow_shaman ConceptRoundEnd Result_WinNarrow
+	response shadow_shaman_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response shadow_shaman_flawless_defeat
+{
+	speak "shadow_shaman_flawless_defeat" noscene 
+}
+
+Rule shadow_shaman_flawless_defeat_rule
+{
+	criteria Isshadow_shaman ConceptRoundEnd Result_LoseFlawless
+	response shadow_shaman_flawless_defeat
+}
+
+
+Response shadow_shaman_decisive_defeat
+{
+	speak "shadow_shaman_decisive_defeat" noscene 
+}
+
+Rule shadow_shaman_decisive_defeat_rule
+{
+	criteria Isshadow_shaman ConceptRoundEnd Result_LoseDecisive
+	response shadow_shaman_decisive_defeat
+}
+
+Response shadow_shaman_narrow_defeat
+{
+	speak "shadow_shaman_narrow_defeat" noscene 
+}
+
+Rule shadow_shaman_narrow_defeat_rule
+{
+	criteria Isshadow_shaman ConceptRoundEnd Result_LoseNarrow
+	response shadow_shaman_narrow_defeat
+}

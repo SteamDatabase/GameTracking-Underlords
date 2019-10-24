@@ -1,33 +1,30 @@
 DACInventoryItem
 {
-	width: 55px;
-	height: 55px;
+	width: 64px;
+	height: 64px;
 
 	visibility: collapse;
 
-	margin-top: 5px;
-	margin-bottom: 5px;
-
 	ui-scale: 100%;
+
+	margin: 8px 8px 8px 8px;
 
 	overflow: noclip;
 }
 
+
+
 /* Mobile styles */
 .IsLayoutSmallScreen DACInventoryItem
 {
-	width: 108px;
-	height: 108px;
+	width: 80px;
+	height: 80px;
+	margin: 12px;
 }
 
 .AspectRatio21x9.IsLayoutSmallScreen DACInventoryItem
 {
 	ui-scale: 120%;
-}
-
-.ScoreboardVisible.IsLayoutSmallScreen.AspectRatio21x9 DACInventoryItem
-{
-	ui-scale: 50%;
 }
 
 .Slot_Equipment,
@@ -51,13 +48,47 @@ DACInventoryItem
 {
 	width: 100%;
 	height: 100%;
+	flow-children:right;
+}
+
+#OffensiveGem,
+#DefensiveGem,
+#SupportGem
+{
+	visibility:collapse;
+	background-size: 100%;
+	width: 33%;
+	height: 33%;
+	vertical-align: bottom;
+	margin-bottom: -4px;
+}
+
+.OffensiveEquipped #OffensiveGem,
+.DefensiveEquipped #DefensiveGem,
+.SupportEquipped #SupportGem
+{
+	visibility:visible;
+}
+
+#DefensiveGem
+{
+	background-image: url("s2r://panorama/images/items/gem_defensive_small_psd.vtex");
+}
+
+#OffensiveGem
+{
+	background-image: url("s2r://panorama/images/items/gem_offensive_small_psd.vtex");
+}
+
+#SupportGem
+{
+	background-image: url("s2r://panorama/images/items/gem_support_small_psd.vtex");
 }
 
 #ParticleScenePanel
 {
 	width: 150%;
 	height: 150%;
-
 	horizontal-align: center;
 	vertical-align: center;
 }
@@ -124,7 +155,9 @@ DACInventoryItem
 	visibility: visible;
 }
 
-.Slot_Equipment.IsAssigned .UnitAssignBG {
+.Slot_Equipment.IsGem .UnitAssignBG,
+.Slot_Equipment.IsAssigned .UnitAssignBG 
+{
 	visibility: collapse;
 }
 
@@ -179,7 +212,7 @@ DACInventoryItem
 	}
 }
 
-.UnassignedBackground,
+.LocalPlayerSelected .UnassignedBackground,
 .BenchBackground
 {
 	width: 100%;
@@ -199,6 +232,7 @@ DACInventoryItem
 	background-repeat: no-repeat;	
 }
 
+.IsGem .UnassignedBackground,
 .IsAssigned .UnassignedBackground
 {
 	visibility: collapse;

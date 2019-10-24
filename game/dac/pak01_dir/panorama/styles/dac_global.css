@@ -1,7 +1,7 @@
 // TEXT COLORS
 
 @define textBrightest: #ffffff;
-@define textBrighter: #ddd;
+@define textBrighter: #cddadd;
 @define textBright: #C6DCFE;
 @define textDefault: #acb4ce;
 @define textDark: #73758a;
@@ -81,6 +81,16 @@ Label.MonoFont, TextEntry.MonoFont
 Label.CondensedFont, TextEntry.CondensedFont
 {
 	font-stretch: condensed;
+}
+
+.DistressedFont
+{
+	font-family: Radiance Black Distressed, k_alwaysFontNames;
+}
+
+.HeadlineFont
+{
+	font-family: Ravenhook, k_alwaysFontNames;
 }
 
 /* ------------------------------------------------------------------------- */
@@ -227,7 +237,7 @@ HTMLVerticalScrollBar.MouseDown .ScrollThumb,
 
 .DashboardPage {
 	opacity: 0.0;
-	pre-transform-scale2d: 0.975;
+	pre-transform-scale2d: 1.1;
 	wash-color: #63b5af;
 	transition-property: opacity, pre-transform-scale2d, wash-color;
 	transition-duration: 0.32s;
@@ -1173,35 +1183,6 @@ SimpleContextMenu .ContextMenuBody Button:disabled Label
 .MinorRank5 .MinorRankIcon { background-image: url("s2r://panorama/images/rank_icons/minor_rank5_psd.vtex"); }
 
 
-//for camera dragging so you can see what you're doing
-
-//.CameraAdjusting PopupManager
-
-.CameraAdjusting .LocalPlayerBoard #DimBackground,
-.CameraAdjusting .LocalPlayerBoard #BlurBackground,
-.CameraAdjusting .LocalPlayerBoard #SettingsNavBar,
-.CameraAdjusting .LocalPlayerBoard .SectionHeader,
-.CameraAdjusting .LocalPlayerBoard #GameOptionsSection .TopBottomFlow,
-.CameraAdjusting .LocalPlayerBoard .CheckBox
-{
-	opacity: 0;
-}
-
-.CameraAdjusting .LocalPlayerBoard .SettingsSecondaryPanel
-{
-	background-color: #00000000;
-}
-
-.CameraAdjusting .LocalPlayerBoard DACSettingsSlider Label
-{
-	color: white;
-}
-
-.CameraAdjusting .LocalPlayerBoard #MenuButtons
-{
-	opacity: 0;
-}
-
 .TooltipItalic
 {
 	font-style: italic;
@@ -1300,9 +1281,8 @@ SimpleContextMenu .ContextMenuBody Button:disabled Label
 .TextBody
 {
 	font-size: 28px;
-    line-height: 36px;
-    font-weight: normal;
-	text-overflow: shrink;
+	line-height: 36px;
+	font-weight: normal;
 
 	color: textDark;
 }
@@ -1317,6 +1297,78 @@ SimpleContextMenu .ContextMenuBody Button:disabled Label
 	text-overflow: shrink;
 }
 
+/* ------------------------------------------------------------------------- */
+/*  DASHBOARD HEADER STYLE                                                   */
+/* ------------------------------------------------------------------------- */
+
+.DashboardHeader
+{
+	flow-children: none;
+	height: 128px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen .DashboardHeader
+{
+	margin-left: safe-area-inset-left;
+}
+
+#BackButton
+{
+	vertical-align: top;
+	horizontal-align: left;
+	width: 64px;
+	height: 64px;
+	margin: 40px 0px 0px 40px;
+	background-image: url("s2r://panorama/images/dashboard/icon_back_arrow_psd.vtex");
+	background-size: 100%;
+	background-position: 50% 60%;
+	background-repeat: no-repeat;
+	wash-color: textDefault;
+	opacity: 0.6;
+}
+
+.IsLayoutSmallScreen #BackButton
+{
+	margin: 32px 0px 0px 32px;
+	width: 80px;
+	height: 80px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #BackButton
+{
+	margin-left: 0px;
+}
+
+.Page_DACHomePage #BackButton, .Page_DACPagePostGame #BackButton
+{
+	visibility: collapse;
+}
+
+.PageTitle
+{
+    font-size: 64px;
+    font-weight: black;
+    color: textDefault;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+	margin-left: 136px;
+	margin-top: 32px;
+}
+
+.PageSubtitle 
+{
+    color: textDefault;
+    font-size: 24px;
+	text-shadow: 1px 1px 0px #000000;
+	font-weight: semi-bold;
+    margin-left: 138px;
+	margin-top: 100px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen .PageTitleLabel
+{
+	margin-left: safe-area-inset-left;
+}
 
 /* ------------------------------------------------------------------------- */
 /*  BUTTON STYLES                                                            */
@@ -1662,4 +1714,105 @@ PopupManager .PopupPanel #DimBackground {
     {
         brightness: 1;
     }
+}
+
+/* Ugly and hacky, but this should work */
+#DACMapChallengeTooltip.TooltipContainer.LeftArrowVisible #LeftArrow,
+#DACMapClaimTooltip.TooltipContainer.LeftArrowVisible #LeftArrow,
+#DACMapPremiumClaimTooltip.TooltipContainer.LeftArrowVisible #LeftArrow
+{
+	visibility: collapse;
+}
+
+/* ------------------------------------------------------------------------- */
+/*  DACCarousel
+/* ------------------------------------------------------------------------- */
+DACCarousel
+{
+    width: 300px;
+    height: 100px;
+    flow-children: none;
+    background-image: url("s2r://panorama/images/dashboard/underlords_button_01_psd.vtex");
+	background-size: 100% 100%;
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+DACCarousel Label
+{
+	font-size: 40px;
+	line-height: 40px;
+    font-weight: black;
+    letter-spacing: 1px;
+    color: textBrighter;
+    text-transform: uppercase;
+    text-overflow: shrink;
+    text-align: center;
+}
+
+DACCarousel .DACCarouselButton
+{
+    width: 60px;
+    height: 100%;
+	background-size: 50%;
+	background-repeat: no-repeat;
+	wash-color: textDark;
+	horizontal-align: center;
+	background-position: center;
+
+	transition-duration: 0.2s;
+	transition-property: wash-color;
+}
+
+DACCarousel.Disabled .DACCarouselButton
+{
+	visibility: collapse;
+}
+
+DACCarousel .DACCarouselButton:hover
+{
+	wash-color: textBrighter;
+}
+
+DACCarousel .DACCarouselButton:active
+{	
+	transform: translateY(2px);
+}
+
+#LeftButton
+{
+	background-image: url("s2r://panorama/images/dashboard/arrow_left_underlord_psd.vtex");
+	horizontal-align: left;
+	margin-left: 8px;
+}
+#RightButton
+{
+    background-image: url("s2r://panorama/images/dashboard/arrow_right_underlord_psd.vtex");
+	horizontal-align: right;
+	margin-right: 8px;
+}
+
+DACCarousel #Carousel
+{
+    width: 258px;
+	height: 100%;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+DACCarousel .OptionPanel
+{
+    width: 100%;
+    text-align: center;
+    opacity: 0.0;
+    transition-property: opacity, position;
+	transition-duration: 0.2s;
+	horizontal-align: center;
+	vertical-align: center;
+	text-overflow: shrink;
+}
+
+DACCarousel .OptionPanel.Focused
+{
+    opacity: 1.0;
 }

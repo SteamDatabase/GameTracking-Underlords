@@ -1,6 +1,7 @@
 <root>
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_rewards.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_home.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
@@ -66,7 +67,6 @@
 
 			<Panel class="RewardsInfo">
   		    <Label class="Header"/>
-          <Label class="SectionType" text="#DAC_Rewards_Rewards"/>
 			    <Panel class="RewardsDesc">      
 			        <Label class="Intro" text="#DAC_Rewards_Intro"/>
 			        <Label class="Description" text="#DAC_Rewards_Description"/>
@@ -74,7 +74,6 @@
 			</Panel>
  
 			<Panel id="BattlePassProgressContainer">
-<!--				<Label class="BattlePassTitle PlayerLevelTitle" text="#DAC_Rewards_Player_Level_Label" />-->
 				<Panel id="BattlePassProgress">
 					<Panel id="PlayerBPBackgroundTop" />
 					<Panel class="PlayerProgressContainer">
@@ -92,29 +91,17 @@
 				<Panel id="PlayerBPLevel">
 					<Label class="BPLevel" text="{d:current_level}" id="PlayerBPLevelGraphLevel" />
 				</Panel>
-				<!--				<Label html="true" text="#DAC_Rewards_Level_Label" id="PlayerBPLevelGraphLevelLabel" />-->
-				<!--				<Panel id="BPLevelOverview">-->
-				<!--					<ProgressBar value="0" max="1" id="PlayerProgress" />-->
-				<!--					<Panel id="PlayerBPLevelLabelBG" >-->
-				<!--						<Label html="true" text="#DAC_Rewards_Player_Level" id="PlayerBPLevelGraphLevel" />-->
-				<!--					</Panel>-->
-
-				<!--				</Panel>-->
-				<!--				<Label class="BattlePassCurrentLevelProgress" text="#DAC_Rewards_BPCurrentLevelProgress"/>-->
 			</Panel>
 
 
 			<Panel class="DailyQuests" hittest="false">
-				<DACControlBattlePass id="BattlePassOverview" />
-<!--				<Label class="BattlePassTitle" text="#DAC_BattlePassTitle" />-->
-<!--				<Panel id="QuestContainer">-->
-<!--					<Panel id="QuestItemContainer">-->
-<!--					</Panel>-->
-<!--				</Panel>-->
+				<DACControlBattlePass id="BattlePassOverview" class="OnRewardsPage"/>
 			</Panel>
-
 		</Panel>
-
-<!--		</Panel>-->
+		<Panel class="DashboardHeader">
+            <Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
+            <!--<Label class="PageTitle DistressedFont" text="#DAC_InGame_Heropedia"/>
+            <Label class="PageSubtitle" text="#DAC_Season_Subhead"/>-->
+        </Panel>
 	</DACRewardsPage>
 </root>

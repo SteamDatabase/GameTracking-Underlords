@@ -1,0 +1,149 @@
+// medusa - Hero
+criterion "Ismedusa" "classname" "medusa" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response medusa_recruit_1
+{
+	speak "medusa_recruit" noscene 
+}
+
+Rule medusa_recruit_1_rule
+{
+	criteria Ismedusa ConceptRecruit UnitRank1
+	response medusa_recruit_1
+}
+
+
+Response medusa_recruit_2
+{
+	speak "medusa_upgrade" noscene 
+}
+
+Rule medusa_recruit_2_rule
+{
+	criteria Ismedusa ConceptRecruit UnitRank2
+	response medusa_recruit_2
+}
+
+
+Response medusa_recruit_3
+{
+	speak "medusa_final_upgrade" noscene 
+}
+
+Rule medusa_recruit_3_rule
+{
+	criteria Ismedusa ConceptRecruit UnitRank3
+	response medusa_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response medusa_start_round
+{
+	speak "medusa_start_round" noscene 
+}
+
+Rule medusa_start_round_rule
+{
+	criteria Ismedusa ConceptRoundStart 
+	response medusa_start_round
+}
+
+
+Response medusa_start_round_lost_last_round
+{
+	speak "medusa_start_round_lost_last_round" noscene 
+}
+
+Rule medusa_start_round_lost_last_round_rule
+{
+	criteria Ismedusa ConceptRoundStart LostLastGame
+	response medusa_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response medusa_flawless_victory
+{
+	speak "medusa_flawless_victory" noscene 
+}
+
+Rule medusa_flawless_victory_rule
+{
+	criteria Ismedusa ConceptRoundEnd Result_WinFlawless
+	response medusa_flawless_victory
+}
+
+
+Response medusa_decisive_victory
+{
+	speak "medusa_decisive_victory" noscene 
+}
+
+Rule medusa_decisive_victory_rule
+{
+	criteria Ismedusa ConceptRoundEnd Result_WinDecisive
+	response medusa_decisive_victory
+}
+
+Response medusa_narrow_victory
+{
+	speak "medusa_narrow_victory" noscene 
+}
+
+Rule medusa_narrow_victory_rule
+{
+	criteria Ismedusa ConceptRoundEnd Result_WinNarrow
+	response medusa_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response medusa_flawless_defeat
+{
+	speak "medusa_flawless_defeat" noscene 
+}
+
+Rule medusa_flawless_defeat_rule
+{
+	criteria Ismedusa ConceptRoundEnd Result_LoseFlawless
+	response medusa_flawless_defeat
+}
+
+
+Response medusa_decisive_defeat
+{
+	speak "medusa_decisive_defeat" noscene 
+}
+
+Rule medusa_decisive_defeat_rule
+{
+	criteria Ismedusa ConceptRoundEnd Result_LoseDecisive
+	response medusa_decisive_defeat
+}
+
+Response medusa_narrow_defeat
+{
+	speak "medusa_narrow_defeat" noscene 
+}
+
+Rule medusa_narrow_defeat_rule
+{
+	criteria Ismedusa ConceptRoundEnd Result_LoseNarrow
+	response medusa_narrow_defeat
+}

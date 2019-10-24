@@ -25,7 +25,6 @@
  failed to dlopen %s error=%s
 "></img>
 "E:#uIA
-#[A\A]A^]
 $ORIGIN
 $[A\A]A^]
 $[A\]
@@ -224,6 +223,7 @@ $[A\]
 -disable_affinity_preferences
 -emaildumps
 -etwprofile
+-export:RunWithAlternateStack-export:JmpToAlternateStack
 -force_battery_level
 -force_battery_level_battery
 -force_dpi
@@ -233,6 +233,7 @@ $[A\]
 -inset_right
 -inset_top
 -mpi_worker
+-no_assert_dialog
 -noassert
 -noautoargs
 -nocustomermachine
@@ -365,9 +366,8 @@ $[A\]
 8[A\A]A^A_]
 8[A\A]]
 8[A\Hc
-95NB"
-95UL"
-9=;L"
+95%M"
+9=RM"
 9CTestCase
 9IMemAlloc
 9ITestCase
@@ -406,7 +406,6 @@ A9D$\
 A>}?E>
 ATSA9
 ATSHc
-ATSfH
 ATSt 
 ATStpH
 AUATA
@@ -446,6 +445,7 @@ AWAVI
 AWAVL
 AWAVM
 AYAZE
+AYAZH
 A\A]A^A_]
 A\A]A^A_]H
 A\A]A^]
@@ -509,6 +509,7 @@ BuiltDebug
 C%[A\A]
 C0A9D$
 C8[A\]
+C8u>E
 CDynamicFunction: Loading library '%s' (%p)
 CDynamicFunction: Lookup of '%s' in '%s': %p
 CLoggingSystem::AllocTag overflowed!
@@ -568,6 +569,7 @@ DeveloperConsole
 DeveloperVerbose
 DkEF]
 DoAssertDialog: invalid Assert response returned from dialog/vxconsole - breaking to debugger
+E5I~$
 ENABLE_ASSERT_DIALOG_PRINT
 ERROR: Alloc exceeded allocation limit /+/ %llu > %llu
 ERROR: HangWatchdogInternal_BeginScope() - Hang watchdog not implemented for this platform!
@@ -756,6 +758,8 @@ MacOS 10.11
 MacOS 10.12
 MacOS 10.13
 MacOS 10.14
+MacOS 10.15
+MacOS 10.16
 MacOS 10.4
 MacOS 10.5
 MacOS 10.5.8
@@ -905,6 +909,15 @@ Plat_GetWindowSafeAreaInsets
 Plat_GlobalMemoryStatus
 Plat_HasClipboardText
 Plat_HasDefaultMonitorIndexChanged
+Plat_HookSpecialThread
+Plat_IAPConsumePurchase
+Plat_IAPGetPricingAsync
+Plat_IAPPurchaseSku
+Plat_IAPQueryExistingPurchases
+Plat_IAPSetHandler
+Plat_IAPUpdateConsumedStatus
+Plat_IAPUpdatePricing
+Plat_IAPUpdatePurchaseStatus
 Plat_IgnoreContentAsserts
 Plat_InitializeCOM
 Plat_InstallControlCHandler
@@ -1138,7 +1151,9 @@ SDL_NewAudioStream
 SDL_NumJoysticks
 SDL_OpenAudioDevice
 SDL_PauseAudioDevice
+SDL_PeepEvents
 SDL_PollEvent
+SDL_PumpEvents
 SDL_QueueAudio
 SDL_Quit
 SDL_QuitSubSystem
@@ -1318,6 +1333,8 @@ TracerPid:
 TranslateStackInfo
 UCS-2
 UHcG\H
+USAWAVAUATH
+USAWAVAUH
 UTF-8
 Unable to create event, error %d
 Unable to create semaphore, error %d
@@ -1466,8 +1483,6 @@ V_fseeki64
 V_ftell
 V_ftelli64
 V_fwrite
-V_get_crt_longjmp_fn
-V_get_crt_setjmp_fn
 V_hypot
 V_isbreakablewspace
 V_isbreakablewspace32
@@ -1919,6 +1934,10 @@ _ZN17CThreadSpinRWLock11UnlockWriteEv
 _ZN17CThreadSpinRWLock16SpinLockForWriteEy
 _ZN17CThreadSpinRWLock23UnlockRead_LockForWriteEv
 _ZN17CThreadSpinRWLock23UnlockWrite_LockForReadEv
+_ZN17CThreadSwapTarget14OwnerThreadRunEv
+_ZN17CThreadSwapTarget18ReleaseOwnerThreadEv
+_ZN17CThreadSwapTargetC1Ev
+_ZN17CThreadSwapTargetC2Ev
 _ZN17CThreadSyncObject13AssertUseableEv
 _ZN17CThreadSyncObject14SaveNameToFileEPKc
 _ZN17CThreadSyncObject15WaitForMultipleEiPPS_bj
@@ -1940,6 +1959,10 @@ _ZN17CThreadSyncObjectC1Ev
 _ZN17CThreadSyncObjectC2Ev
 _ZN17CThreadSyncObjectD1Ev
 _ZN17CThreadSyncObjectD2Ev
+_ZN18CThreadSwapContextC1EP17CThreadSwapTarget
+_ZN18CThreadSwapContextC2EP17CThreadSwapTarget
+_ZN18CThreadSwapContextD1Ev
+_ZN18CThreadSwapContextD2Ev
 _ZN21CThreadMultiWaitEvent3SetEv
 _ZN21CThreadMultiWaitEvent5ResetEv
 _ZN21CThreadMultiWaitEventC1Eb
@@ -1972,6 +1995,8 @@ _ZN23CEventRWLock_DebuggableILb1EE22AllocOrFreeReadLockMemEPNS0_17TrackedReadLoc
 _ZN24BasicStatStructFieldDesc13DescribeFieldEPhm
 _ZN24CDeferredCallStackMarker6InsertEv
 _ZN24CDeferredCallStackMarker6RemoveEv
+_ZN24StackContext_StartData_t20ReplaceReturnContextEP23JmpBuf_AlternateStack_t
+_ZN24StackContext_StartData_t27UnlinkFromLongJumpHierarchyEv
 _ZN25CCallStackMarker_ThisLineC1Eb
 _ZN25CCallStackMarker_ThisLineC2Eb
 _ZN25CRecursionCallStackMarkerC1Eb
@@ -2110,6 +2135,7 @@ _ZNK16CMiniDumpComment17GetCurrentPointerEv
 _ZNK16CMiniDumpComment22GetAvailableBufferSizeEv
 _ZNK16CThreadFullMutex9IsCreatorEv
 _ZNK17CThreadLocalScope18IsLocalThreadScopeEv
+_ZNK17CThreadSwapTarget15IsCurrentThreadEv
 _ZNK17CThreadSyncObjectntEv
 _ZNK20CCallStackMarkerBase35TestMarkerAgainstCapturedStackIndexEPKPKvii
 _ZNK22CVirtualMemorySnapshot24GetLargestUnmappedRegionEPyS0_y
@@ -2199,7 +2225,6 @@ __printf_chk
 __snprintf_chk
 __sprintf_chk
 __stack_chk_fail
-__strcpy_chk
 __tls_get_addr
 __vfprintf_chk
 __vsnprintf_chk
@@ -2235,6 +2260,8 @@ dlclose
 dlerror
 dlopen
 dlsym
+e(A\A]A^A_[]
+e0A]A^A_[]
 eV5( 
 epoll_create1
 epoll_ctl
@@ -2254,6 +2281,7 @@ forced dump
 freopen64
 fseeko64
 ftello64
+gA-HQR
 g_Mathlib_GammaToLinearByteTable
 g_Mathlib_SinCosTable
 g_Tier1_BitWriteMasks
@@ -2410,6 +2438,7 @@ t	[A\]
 t H;0u
 t$0E1
 t$@H9
+t+<,u
 t/<.u
 t/H;=
 t1L;M
@@ -2425,6 +2454,8 @@ tier0
 tier0_strtools.cpp
 timestamped.log
 tlD;sptfI
+tp<,u
+tq<,u
 u	[A\]
 uG[A\]
 uname -mrsv

@@ -1,0 +1,149 @@
+// Arc Warden - Hero
+criterion "Isarc_warden" "classname" "arc_warden" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response arc_warden_recruit_1
+{
+	speak "arc_warden_recruit" noscene 
+}
+
+Rule arc_warden_recruit_1_rule
+{
+	criteria Isarc_warden ConceptRecruit UnitRank1
+	response arc_warden_recruit_1
+}
+
+
+Response arc_warden_recruit_2
+{
+	speak "arc_warden_upgrade" noscene 
+}
+
+Rule arc_warden_recruit_2_rule
+{
+	criteria Isarc_warden ConceptRecruit UnitRank2
+	response arc_warden_recruit_2
+}
+
+
+Response arc_warden_recruit_3
+{
+	speak "arc_warden_final_upgrade" noscene 
+}
+
+Rule arc_warden_recruit_3_rule
+{
+	criteria Isarc_warden ConceptRecruit UnitRank3
+	response arc_warden_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response arc_warden_start_round
+{
+	speak "arc_warden_start_round" noscene 
+}
+
+Rule arc_warden_start_round_rule
+{
+	criteria Isarc_warden ConceptRoundStart 
+	response arc_warden_start_round
+}
+
+
+Response arc_warden_start_round_lost_last_round
+{
+	speak "arc_warden_start_round_lost_last_round" noscene 
+}
+
+Rule arc_warden_start_round_lost_last_round_rule
+{
+	criteria Isarc_warden ConceptRoundStart LostLastGame
+	response arc_warden_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response arc_warden_flawless_victory
+{
+	speak "arc_warden_flawless_victory" noscene 
+}
+
+Rule arc_warden_flawless_victory_rule
+{
+	criteria Isarc_warden ConceptRoundEnd Result_WinFlawless
+	response arc_warden_flawless_victory
+}
+
+
+Response arc_warden_decisive_victory
+{
+	speak "arc_warden_decisive_victory" noscene 
+}
+
+Rule arc_warden_decisive_victory_rule
+{
+	criteria Isarc_warden ConceptRoundEnd Result_WinDecisive
+	response arc_warden_decisive_victory
+}
+
+Response arc_warden_narrow_victory
+{
+	speak "arc_warden_narrow_victory" noscene 
+}
+
+Rule arc_warden_narrow_victory_rule
+{
+	criteria Isarc_warden ConceptRoundEnd Result_WinNarrow
+	response arc_warden_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response arc_warden_flawless_defeat
+{
+	speak "arc_warden_flawless_defeat" noscene 
+}
+
+Rule arc_warden_flawless_defeat_rule
+{
+	criteria Isarc_warden ConceptRoundEnd Result_LoseFlawless
+	response arc_warden_flawless_defeat
+}
+
+
+Response arc_warden_decisive_defeat
+{
+	speak "arc_warden_decisive_defeat" noscene 
+}
+
+Rule arc_warden_decisive_defeat_rule
+{
+	criteria Isarc_warden ConceptRoundEnd Result_LoseDecisive
+	response arc_warden_decisive_defeat
+}
+
+Response arc_warden_narrow_defeat
+{
+	speak "arc_warden_narrow_defeat" noscene 
+}
+
+Rule arc_warden_narrow_defeat_rule
+{
+	criteria Isarc_warden ConceptRoundEnd Result_LoseNarrow
+	response arc_warden_narrow_defeat
+}

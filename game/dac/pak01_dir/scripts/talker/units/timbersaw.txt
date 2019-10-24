@@ -1,0 +1,149 @@
+// Timbersaw - Hero
+criterion "Istimbersaw" "classname" "timbersaw" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response timbersaw_recruit_1
+{
+	speak "timbersaw_recruit" noscene 
+}
+
+Rule timbersaw_recruit_1_rule
+{
+	criteria Istimbersaw ConceptRecruit UnitRank1
+	response timbersaw_recruit_1
+}
+
+
+Response timbersaw_recruit_2
+{
+	speak "timbersaw_upgrade" noscene 
+}
+
+Rule timbersaw_recruit_2_rule
+{
+	criteria Istimbersaw ConceptRecruit UnitRank2
+	response timbersaw_recruit_2
+}
+
+
+Response timbersaw_recruit_3
+{
+	speak "timbersaw_final_upgrade" noscene 
+}
+
+Rule timbersaw_recruit_3_rule
+{
+	criteria Istimbersaw ConceptRecruit UnitRank3
+	response timbersaw_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response timbersaw_start_round
+{
+	speak "timbersaw_start_round" noscene 
+}
+
+Rule timbersaw_start_round_rule
+{
+	criteria Istimbersaw ConceptRoundStart 
+	response timbersaw_start_round
+}
+
+
+Response timbersaw_start_round_lost_last_round
+{
+	speak "timbersaw_start_round_lost_last_round" noscene 
+}
+
+Rule timbersaw_start_round_lost_last_round_rule
+{
+	criteria Istimbersaw ConceptRoundStart LostLastGame
+	response timbersaw_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response timbersaw_flawless_victory
+{
+	speak "timbersaw_flawless_victory" noscene 
+}
+
+Rule timbersaw_flawless_victory_rule
+{
+	criteria Istimbersaw ConceptRoundEnd Result_WinFlawless
+	response timbersaw_flawless_victory
+}
+
+
+Response timbersaw_decisive_victory
+{
+	speak "timbersaw_decisive_victory" noscene 
+}
+
+Rule timbersaw_decisive_victory_rule
+{
+	criteria Istimbersaw ConceptRoundEnd Result_WinDecisive
+	response timbersaw_decisive_victory
+}
+
+Response timbersaw_narrow_victory
+{
+	speak "timbersaw_narrow_victory" noscene 
+}
+
+Rule timbersaw_narrow_victory_rule
+{
+	criteria Istimbersaw ConceptRoundEnd Result_WinNarrow
+	response timbersaw_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response timbersaw_flawless_defeat
+{
+	speak "timbersaw_flawless_defeat" noscene 
+}
+
+Rule timbersaw_flawless_defeat_rule
+{
+	criteria Istimbersaw ConceptRoundEnd Result_LoseFlawless
+	response timbersaw_flawless_defeat
+}
+
+
+Response timbersaw_decisive_defeat
+{
+	speak "timbersaw_decisive_defeat" noscene 
+}
+
+Rule timbersaw_decisive_defeat_rule
+{
+	criteria Istimbersaw ConceptRoundEnd Result_LoseDecisive
+	response timbersaw_decisive_defeat
+}
+
+Response timbersaw_narrow_defeat
+{
+	speak "timbersaw_narrow_defeat" noscene 
+}
+
+Rule timbersaw_narrow_defeat_rule
+{
+	criteria Istimbersaw ConceptRoundEnd Result_LoseNarrow
+	response timbersaw_narrow_defeat
+}

@@ -2,8 +2,37 @@
 	<styles>
 		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_zoo.vcss_c" />
+        <include src="s2r://panorama/styles/dac_ui_zoo.vcss_c" />
 	</styles>
+
+	<snippets>
+		<snippet name="ItemBlock">
+			<Panel class="ItemBlock">
+				<Panel class="ItemHeaderRow">
+					<Panel class="ItemTypeIcon ItemTypeIconOffensive" />
+					<Panel class="ItemTypeIcon ItemTypeIconDefensive" />
+					<Panel class="ItemTypeIcon ItemTypeIconSupport" />
+					<Panel class="ItemTypeIcon ItemTypeIconGlobal" />
+					<Label class="ItemName" text="{s:item_name}" />
+				</Panel>
+				<Panel class="LeftRightFlow">
+					<Panel id="ItemImage" />
+					<Label class="ItemDescription" text="{s:item_description}" html="true"/>
+				</Panel>
+				<Label class="ItemTier" text="#DAC_InGame_ItemTier" />
+				<Button id="GiveButton" >
+					<Label text="Give" />
+				</Button>
+			</Panel>
+		</snippet>
+	</snippets>
+
 	<DACZooPage class="DashboardPage">
+
+		<Panel class="DashboardHeader">
+			<Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
+			<Label class="PageTitle DistressedFont" text="#DAC_Zoo"/>
+		</Panel>
 
 		<Panel class="TopNav">
 			<Label class="PageButton PageButton1 TextButton" text="#dac_zoo_page1" onactivate="DACSetZooPage('Page1')" allowtextselection="false"/>
@@ -15,6 +44,8 @@
 			<Label class="PageButton PageButton4 TextButton" text="#dac_zoo_page4" onactivate="DACSetZooPage('Page4')" allowtextselection="false"/>
 			<Label class="NavDivider" text="#dac_zoo_page_divider" />
 			<Label class="PageButton PageButton5 TextButton" text="#dac_zoo_page5" onactivate="DACSetZooPage('Page5')" allowtextselection="false"/>
+			<Label class="NavDivider" text="#dac_zoo_page_divider" />
+			<Label class="PageButton PageButton6 TextButton" text="#dac_zoo_page6" onactivate="DACSetZooPage('Page6')" allowtextselection="false"/>
 		</Panel>
 
 		<Panel class="ZooPage1 ZooPage">
@@ -94,16 +125,173 @@
 		</Panel>
 
 		<Panel class="ZooPage3 ZooPage">
+
+
+				<Panel class="ZooRowContainer TopBottomFlow">
+					<Panel class="ZooSynergies">
+						<DACSynergyCapsule keyword1="1" keyword2="3" keyword3="22" />
+						<DACSynergyCapsule keyword1="1" keyword2="3" />
+
+						<DACSynergyIcon iconstyle="circle" keyword="1" />
+
+						<DACSynergyIcon iconstyle="leftcapsule" keyword="20" />
+					</Panel>
+
+					<Panel class="ZooSynergies">
+						<DACSynergyIcon iconstyle="levels" keyword="2" levels="3" segmentsperlevel="1" unitcount="0" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="2" levels="3" segmentsperlevel="1" unitcount="1" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="2" levels="3" segmentsperlevel="1" unitcount="2" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="2" levels="3" segmentsperlevel="1" unitcount="3" highlightnextunit="1"/>
+					</Panel>
+
+					<Panel class="ZooSynergies">
+						<DACSynergyIcon iconstyle="levels" keyword="4" levels="3" segmentsperlevel="2" unitcount="0" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="4" levels="3" segmentsperlevel="2" unitcount="1" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="4" levels="3" segmentsperlevel="2" unitcount="2" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="4" levels="3" segmentsperlevel="2" unitcount="3" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="4" levels="3" segmentsperlevel="2" unitcount="4" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="4" levels="3" segmentsperlevel="2" unitcount="5" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="4" levels="3" segmentsperlevel="2" unitcount="6" highlightnextunit="1"/>
+					</Panel>
+					<Panel class="ZooSynergies">
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="0" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="1" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="2" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="3" highlightnextunit="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="4" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="5" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="6" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="7" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="8" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="9" highlightnextunit="0"/>
+					</Panel>
+
+					<Panel class="ZooSynergies">
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="0" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="1" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="2" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="3" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="4" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="5" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="6" highlightnextunit="0"/>
+					</Panel>
+
+					<Panel class="ZooSynergies">
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="0" benchunitcount="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="1" benchunitcount="2"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="2" benchunitcount="3"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="3" benchunitcount="4"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="4" benchunitcount="5"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="5" highlightnextunit="0"/>
+						<DACSynergyIcon iconstyle="levels" keyword="1" levels="3" segmentsperlevel="2" unitcount="6" highlightnextunit="0"/>
+					</Panel>
+
+					<Panel class="ZooSynergies">
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="0" benchunitcount="1"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="0" benchunitcount="2"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="0" benchunitcount="3"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="0" benchunitcount="4"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="0" benchunitcount="5"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="0" benchunitcount="6"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="0" benchunitcount="7"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="0" benchunitcount="8"/>
+						<DACSynergyIcon iconstyle="levels" keyword="24" levels="3" segmentsperlevel="3" unitcount="0" benchunitcount="9"/>
+					</Panel>
+
+					<Panel class="ZooSynergies">
+						<DACSynergyIcon iconstyle="levels" keyword="1" />
+						<DACSynergyIcon iconstyle="levels" keyword="2" />
+						<DACSynergyIcon iconstyle="levels" keyword="3" />
+						<DACSynergyIcon iconstyle="levels" keyword="4" />
+						<DACSynergyIcon iconstyle="levels" keyword="5" />
+						<DACSynergyIcon iconstyle="levels" keyword="6" />
+						<DACSynergyIcon iconstyle="levels" keyword="7" />
+						<DACSynergyIcon iconstyle="levels" keyword="8" />
+						<DACSynergyIcon iconstyle="levels" keyword="9" />
+						<DACSynergyIcon iconstyle="levels" keyword="10" />
+						<DACSynergyIcon iconstyle="levels" keyword="11" />
+						<DACSynergyIcon iconstyle="levels" keyword="12" />
+						<DACSynergyIcon iconstyle="levels" keyword="13" />
+						<DACSynergyIcon iconstyle="levels" keyword="14" />
+						<DACSynergyIcon iconstyle="levels" keyword="15" />
+						<DACSynergyIcon iconstyle="levels" keyword="16" />
+						<DACSynergyIcon iconstyle="levels" keyword="17" />
+						<DACSynergyIcon iconstyle="levels" keyword="18" />
+						<DACSynergyIcon iconstyle="levels" keyword="19" />
+						<DACSynergyIcon iconstyle="levels" keyword="20" />
+						<DACSynergyIcon iconstyle="levels" keyword="21" />
+						<DACSynergyIcon iconstyle="levels" keyword="22" />
+						<DACSynergyIcon iconstyle="levels" keyword="23" />
+						<DACSynergyIcon iconstyle="levels" keyword="24" />
+					</Panel>
+
+					<Panel class="ZooSynergies">
+						<DACSynergyIcon iconstyle="circle" keyword="35" />
+						<DACSynergyIcon iconstyle="circle" keyword="2" />
+						<DACSynergyIcon iconstyle="circle" keyword="3" />
+						<DACSynergyIcon iconstyle="circle" keyword="4" />
+						<DACSynergyIcon iconstyle="circle" keyword="33" />
+						<DACSynergyIcon iconstyle="circle" keyword="6" />
+						<DACSynergyIcon iconstyle="circle" keyword="7" />
+						<DACSynergyIcon iconstyle="circle" keyword="8" />
+						<DACSynergyIcon iconstyle="circle" keyword="9" />
+						<DACSynergyIcon iconstyle="circle" keyword="10" />
+						<DACSynergyIcon iconstyle="circle" keyword="34" />
+						<DACSynergyIcon iconstyle="circle" keyword="12" />
+						<DACSynergyIcon iconstyle="circle" keyword="13" />
+						<DACSynergyIcon iconstyle="circle" keyword="15" />
+						<DACSynergyIcon iconstyle="circle" keyword="16" />
+						<DACSynergyIcon iconstyle="circle" keyword="17" />
+						<DACSynergyIcon iconstyle="circle" keyword="18" />
+						<DACSynergyIcon iconstyle="circle" keyword="19" />
+						<DACSynergyIcon iconstyle="circle" keyword="20" />
+						<DACSynergyIcon iconstyle="circle" keyword="36" />
+						<DACSynergyIcon iconstyle="circle" keyword="22" />
+						<DACSynergyIcon iconstyle="circle" keyword="23" />
+						<DACSynergyIcon iconstyle="circle" keyword="24" />
+						<DACSynergyIcon iconstyle="circle" keyword="33" />
+
+						<DACSynergyIcon iconstyle="circle" keyword="37" />
+						<DACSynergyIcon iconstyle="circle" keyword="38" />
+						<DACSynergyIcon iconstyle="circle" keyword="39" />
+						<DACSynergyIcon iconstyle="circle" keyword="40" />
+						<DACSynergyIcon iconstyle="circle" keyword="41" />
+						<DACSynergyIcon iconstyle="circle" keyword="42" />
+						<DACSynergyIcon iconstyle="circle" keyword="43" />
+						<DACSynergyIcon iconstyle="circle" keyword="44" />
+						<DACSynergyIcon iconstyle="circle" keyword="45" />
+						<DACSynergyIcon iconstyle="circle" keyword="46" />
+						<DACSynergyIcon iconstyle="circle" keyword="47" />
+						<DACSynergyIcon iconstyle="circle" keyword="48" />
+						<DACSynergyIcon iconstyle="circle" keyword="49" />
+						<DACSynergyIcon iconstyle="circle" keyword="50" />
+					</Panel>
+
+					<Panel class="ZooSynergies">
+						<DACSynergyIcon class="SynergyDisabled" iconstyle="leftcapsule" keyword="1" levels="1" segmentsperlevel="1" unitcount="1"/>
+					</Panel>
+
+				</Panel>
+
+
+
+
 		</Panel>
 
 		<Panel class="ZooPage4 ZooPage">
+			<Panel class="ZooColumn">
+				<Button class="SimpleButton" onactivate="DACShowSeason0IntroPopup()">
+					<Label text="#dac_zoo_season_0_popup" />
+				</Button>
+			</Panel>
 		</Panel>
 
 		<Panel class="ZooPage5 ZooPage">
+			<DACChallengeMap id="ChallengeMap" />
+		</Panel>
 
-			<DragZoom class="MapContainer" disableScrollFlick="1" extrazoomout="1.0" maxscale="1.0" invertminscalecalc="1" disabledoubleclick="1" strictclamptranslation="1">
-				<Panel id="Contents" class="Map" />
-			</DragZoom>
+		<Panel class="ZooPage6 ZooPage">
+			<DACChallengeWorldMap id="ChallengeWorldMap" />
 		</Panel>
 
 	</DACZooPage>

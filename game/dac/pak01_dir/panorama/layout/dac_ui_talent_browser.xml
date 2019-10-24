@@ -1,0 +1,42 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_talent_selector.vcss_c" />
+	</styles>
+	<snippets>
+		<snippet name="TalentOption">
+			<Panel class="TalentOption">
+				<Panel class="ImageContainer">
+					<Panel class="ImageDimmer">
+						<Image class="TalentImage" id="TalentImage" scaling="stretch-to-fit-y-preserve-aspect" />
+					</Panel>
+					<Label class="Prereq" text="#DAC_Underlord_Talent_NeedsPrereq"/>
+					<Label class="Locked" text="#DAC_Underlord_Talent_Locked"/>
+					<Label id="UnlockCondition"/>
+					<Label id="UnlockConditionGeneric"/>
+					<Panel id="AbilityContainer">
+						<Image id="AbilityImage" scaling="stretch-to-fit-y-preserve-aspect"/>
+						<Label class="Ability" text="{s:talent_ability}"/>
+					</Panel>
+				</Panel>
+				<Panel class="BottomSection">
+					<Label class="TalentName" text="{s:talent_name}"/>
+					<Label class="TalentDescription" text="{s:talent_description}" html="true"/>
+				</Panel>
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<DACTalentBrowser onactivate="DACTalentBrowserClick()">
+		<Panel class="HeaderSection" onactivate="DACTalentBrowserEatClick()">
+			<Panel  class="Arrow ArrowLeft" onactivate="DACTalentBrowserChangeRound(-1)"/>
+			<Label class="HeaderText" text="{s:talent_header}"/>
+			<Panel  class="Arrow ArrowRight" onactivate="DACTalentBrowserChangeRound(1)"/>
+		</Panel>
+		<Panel id="TalentOptions" hittest="true">
+			<!-- TalentOption snippets -->
+		</Panel>
+
+	</DACTalentBrowser>
+</root>

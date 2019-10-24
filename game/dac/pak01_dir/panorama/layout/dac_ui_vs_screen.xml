@@ -9,28 +9,97 @@
 	</snippets>
 
 	<DACVSScreen>
-		<DACMiniProfile id="VSMiniProfile"/>
+<!-- Player Opponent -->
+    <Panel id="PlayerContainer" class="VSContainer">
+      <Panel id="PlayerMiniProfileContainer">
+        <Panel class="VSOpponentContainer VSInfoContainer">
+     		  <DACMiniProfile id="VSMiniProfileOpponent" class="VSMiniProfile" showname="true"/>
+          <Panel id="OpponentSynergies" />
+        </Panel>
+        <Panel class="LargeCombatIcon"/>
+        <Panel class="VSLocalPlayerContainer VSInfoContainer">
+          <DACMiniProfile id="VSMiniProfileLocalPlayer" class="VSMiniProfile" showname="true"/>
+          <Panel id="LocalPlayerSynergies" />
+        </Panel>
+    </Panel>
+		  <Panel id ="NextOpponentContainer">			 
+			  <Panel id="WinLossRecord">
+				  <Label id="FirstEncounterText"		class="WinLossText" text="#DAC_InGame_VsOpponentFirstEncounter" html="true"/>
+				  <Label id="WinLossHeader"			class="WinLossText" text="#DAC_InGame_VsOpponentRecordTitle" html="true"/>
+				  <Label id="WinLossRecordText"		class="WinLossText" text="#DAC_InGame_VsOpponentRecordWinLoss"/>
+				  <Label id="WinLossDrawRecordText"	class="WinLossText" text="#DAC_InGame_VsOpponentRecordWinLossDraw"/>
+			  </Panel>
 
-		<Panel id="NeutralRoundImage"/>
-		
-		<Panel id ="NextOpponentContainer">
-			<Panel id="PlayerOpponent">
-				<Label class="VSPersona" text="{g:dac_player_slot_persona:opponent_player_slot}" html="true"/>
-			</Panel>
-			<Panel id="NeutralOpponent">
-				<Label class="VSPersona" text="{s:neutral_wave_name}" html="true"/>
-				<Label class="LootRound" text="#DAC_InGame_LootRound"/>
-			</Panel>
-								
-			<Panel id="WinLossRecord">
-				<Label id="FirstEncounterText"		class="WinLossText" text="#DAC_InGame_VsOpponentFirstEncounter" html="true"/>
-				<Label id="WinLossHeader"			class="WinLossText" text="#DAC_InGame_VsOpponentRecordTitle" html="true"/>
-				<Label id="WinLossRecordText"		class="WinLossText" text="#DAC_InGame_VsOpponentRecordWinLoss"/>
-				<Label id="WinLossDrawRecordText"	class="WinLossText" text="#DAC_InGame_VsOpponentRecordWinLossDraw"/>
-			</Panel>
-			<Panel id="OpponentSynergies" />
-		
-		</Panel>
-		
-	</DACVSScreen>
+      </Panel>
+    </Panel>
+
+<!-- Neutral Opponent -->
+    <Panel id="NeutralContainer" class="VSContainer">
+      <Panel id="NeutralRoundImage"/>
+
+      <Panel id ="NextOpponentContainer">
+        <Panel id="NeutralOpponent">
+          <Label class="VSPersona" text="{s:neutral_wave_name}" html="true"/>
+          <Label class="LootRound" text="#DAC_InGame_LootRound"/>
+        </Panel>
+      </Panel>
+    </Panel>
+
+<!-- Duos -->
+    <Panel id="DuosContainer" class="VSContainer">
+      <Panel id="DuosDataContainer">
+        <Panel id="TeamInfoContainer">
+          <Panel id="HomeTeamInfo" class="TeamInfoPanel">
+            <Label id="HomeTeamName" class="IntroTeamName TextSubTitle"/>
+            <Panel class="TeamHealthPanel">
+              <Label id="HomeTeamHealth" class="IntroTeamName TextSubTitle" text="{i:home_health}"/>
+              <Panel class="HeartIcon" />
+              <Label id="HomeTeamDamage" class="DamageResult" text="{i:duos_team_damage}"/>
+            </Panel>
+          </Panel>
+          <Panel id="TeamRecordsContainer">
+            <Label id="VS" text="#DAC_VS"/>
+            <Label id="TeamRecordsLabel" text="{i:home_wins} - {i:draws} - {i:away_wins}"/>
+          </Panel>
+          <Panel id="AwayTeamInfo" class="TeamInfoPanel">
+            <Label id="AwayTeamName" class="IntroTeamName TextSubTitle"/>
+            <Panel class="TeamHealthPanel">
+              <Label id="AwayTeamHealth" class="IntroTeamName TextSubTitle" text="{i:away_health}"/>
+              <Panel class="HeartIcon" />
+              <Label id="AwayTeamDamage" class="DamageResult" text="{i:duos_team_damage}"/>
+            </Panel>
+          </Panel>
+        </Panel>
+        <Panel id="Combat0Container" class="CombatContainer">
+          <Panel id="HomeCombatant0" class="CombatantContainer">
+            <DACMiniProfile id="HomeCombatantProfile0" class="IntroProfilePlayerSlot InvalidPlayer" showparticles="false" showname="true"/>
+            <Label id="LocalDamage" class="PlayerDamageResult" text="{d:damage_result}"/>
+          </Panel>
+          <Panel id="TopDuosCombatIcon" class="CombatIcon"/>
+          <Panel id="AwayCombatant0" class="CombatantContainer">
+            <DACMiniProfile id="AwayCombatantProfile0" class="IntroProfilePlayerSlot InvalidPlayer" showparticles="false" showname="true"/>
+            <Label id="OpponentDamage" class="PlayerDamageResult" text="{d:damage_result}"/>
+          </Panel>
+        </Panel>
+        <Panel id="Combat1Container" class="CombatContainer">
+          <Panel id="HomeCombatant1" class="CombatantContainer">
+            <DACMiniProfile id="HomeCombatantProfile1" class="IntroProfilePlayerSlot InvalidPlayer" showparticles="false" showname="true"/>
+            <Label id="TeammateDamage" class="PlayerDamageResult" text="{d:teammate_damage_result}"/>
+          </Panel>
+          <Panel id="BottomDuosCombatIcon" class="CombatIcon"/>
+          <Panel id="AwayCombatant1" class="CombatantContainer">
+            <DACMiniProfile id="AwayCombatantProfile1" class="IntroProfilePlayerSlot InvalidPlayer" showparticles="false" showname="true"/>
+            <Label id="TeammateOpponentDamage" class="PlayerDamageResult" text="{d:teammate_damage_result}"/>
+          </Panel>
+        </Panel>
+      </Panel>
+      <Panel id="HomeHeadshots" class="HeadshotsContainer">
+
+      </Panel>
+      <Panel id="AwayHeadshot" class="HeadshotsContainer">
+
+      </Panel>
+    </Panel>
+
+  </DACVSScreen>
 </root>

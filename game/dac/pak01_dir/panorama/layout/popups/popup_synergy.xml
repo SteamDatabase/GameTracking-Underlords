@@ -2,26 +2,34 @@
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/popups/popup_synergy.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 	</styles>
 
-	<DACSynergyPanel>
-		<Panel class="Header">
-			<DACSynergyIcon id="icon" iconstyle="levels" keyword="1" notooltip="1" />
-			<Label class="HeaderText" text="#DAC_UI_Popup_Synergy_Header" />
+	<snippets>
+		<snippet name="HeroSnippet">
+			<Panel class="UnitContainer">
+				<Image id="HeroImage" />
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<DACPopupSynergy onactivate="UIPopupButtonClicked( close )" hittest="true">
+		<Panel id="PopupBody">
+			<Panel id="LeftArrow" />
+			<Panel id="Contents" class="SynergyContents">
+				<Panel class="Header">
+					<DACSynergyIcon id="icon" iconstyle="levels" keyword="1" notooltip="1" />
+					<Label class="HeaderText" text="{s:synergy_name}" />
+					<Panel id="HeroesContainer" />
+				</Panel>
+				<Panel class="Body">
+					<Panel id="LevelRow" class="LevelRow">
+						<Label id="LevelDescription" class="LevelDescription" html="true" />
+					</Panel>
+				</Panel>
+			</Panel>
+			<Panel id="RightArrow" />
 		</Panel>
-		<Panel class="Body">
-			<Panel id="LevelRow1" class="LevelRow">
-				<Panel class="LevelIcon" />
-				<Label id="LevelDescription1" class="LevelDescription" />
-			</Panel>
-			<Panel id="LevelRow2" class="LevelRow">
-				<Panel class="LevelIcon" />
-				<Label id="LevelDescription2" class="LevelDescription" />
-			</Panel>
-			<Panel id="LevelRow3" class="LevelRow">
-				<Panel class="LevelIcon" />
-				<Label id="LevelDescription3" class="LevelDescription" />
-			</Panel>
-		</Panel>
-	</DACSynergyPanel>
+		<Panel class="CloseOverlay" onactivate="UIPopupButtonClicked( close )" hittest="true" />
+	</DACPopupSynergy>
 </root>

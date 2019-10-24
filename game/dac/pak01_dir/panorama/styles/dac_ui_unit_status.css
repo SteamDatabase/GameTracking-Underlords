@@ -4,22 +4,45 @@ DACUnitStatus {
 	flow-children: down;
 }
 
+.UnitStatsDetails
+{
+	width: 220px;
+	padding: 0px;
+	horizontal-align: center;
+	height: fit-children;
+	max-height: 120px;
+	overflow: clip scroll;
+	flow-children: down;
+}
 
+.IsLayoutSmallScreen .UnitStatsDetails
+{
+	max-height: 245px;
+	width: 300px;
+	overflow: clip scroll;
+}
 
 .HeaderPlayerName
 {
+	horizontal-align: center;
+	vertical-align: bottom;
 	text-align: center;
-	height: 40px;
+	margin-top: -2px;
 	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
 	text-shadow: 0px 1px 0px 3.0 #000;
-	font-size: 30px;
+	font-size: 20px;
 	font-weight: bold;
 	text-overflow: shrink;
 	width: fit-children;
-	max-width: 200px;
-	
+	max-width: 200px;	
 	text-transform: uppercase;
 	text-shadow: 0px 1px 0px 2.0 #000;
+}
+
+.IsLayoutSmallScreen .HeaderPlayerName
+{
+	font-size: 28px;
+	width: 300px;
 }
 
 .LowVisualQuality .HeaderPlayerName {
@@ -66,85 +89,59 @@ DACUnitStatus {
 	padding: 0px 12px 0px 12px;
 }
 
+
 #PlayerProfile
 {
-	background-image: url("s2r://panorama/images/hud/unit_inspect_portrait_bevel_psd.vtex");
-	background-size: cover;
-	width: 240px;
-	height: 240px;
+	//background-image: url("s2r://panorama/images/hud/unit_inspect_portrait_bevel_psd.vtex");
+	//background-size: cover;
+	//width: 200px;
+	flow-children: none;
+	width: 100%;
+	height: 120px;
 }
 
 
 #PlayerAvatar {
-	background-image: url("s2r://panorama/images/hud/unit_inspect_portrait_bevel_psd.vtex");
+	//background-image: url("s2r://panorama/images/hud/unit_inspect_portrait_bevel_psd.vtex");
 	background-size: cover;
-	width: 240px;
-	height: 240px;
-}
-
-#PlayerEXPGraph_FG {
-	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_fg_png.vtex");
-	background-size: cover;
-	transition-property: clip;
-	transition-duration: 200ms;
-}
-
-#HealthBar {
-	width: 88%;
-	height: 88%;
-	opacity: 0;
-	margin-top: 1.5%;
-	margin-left: 2.3%;
-}
-
-#HealthBar_FG {
-	background-image: url("s2r://panorama/images/hud/health_ring_psd.vtex");
-	width: 100%;
+	width: 220px;
 	height: 100%;
-	background-size: cover;
-	transition-property: clip;
-	transition-duration: 200ms;
+	horizontal-align: center;
+	flow-children: none;
 }
 
-#AbilityCooldown
+.IsLayoutSmallScreen #PlayerProfile,
+.IsLayoutSmallScreen #PlayerAvatar
 {
-	width: 100%;
-	height: 16px;
-	vertical-align: bottom;
-	margin-left: 10px;
-	margin-right: 10px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-
-	background-color: #222;
-
-	visibility: collapse;
+	width: 280px;
+	height: 200px;
+	horizontal-align: center;
 }
 
-.ERoundState_Combat .UnitIsAlive.AbilityInCooldown #AbilityCooldown
+.IsUnderlord #PlayerProfile
 {
-	visibility: visible;
-}
-
-ProgressBar .ProgressBarLeft
-{
-	background-color: #ddd;
-	height: 12px;
+	// can do a bigger profile image for underlords here, but will need an edit to the scene panel 
 }
 
 .HPLabel
 {
 	width: 100%;
 	color: #a2ff92;
-	font-size: 38px;
+	font-size: 22px;
 	text-align: center;
 	font-weight: bold;
-	margin-top: 188px;
 	text-overflow: shrink;
+	vertical-align: bottom;
 	horizontal-align: center;
 	
 	text-shadow: 0px 0px 0px 3.0 #000;
 }
+
+.IsLayoutSmallScreen .HPLabel
+{
+	font-size: 28px;
+}
+
 .ERoundState_Combat #StatusHP
 {
 	visibility: collapse;
@@ -170,11 +167,23 @@ ProgressBar .ProgressBarLeft
 	height: 100%;
 }
 
+.Cost1 #UnitPortraitView
+{
+	border-top: 2px solid #66666644;
+	border-left: 2px solid #66666622;
+	border-right: 2px solid #66666622;	
+	background-color: gradient(linear, 0% 100%, 0% 0%, from(#333), to(#4442));
+	border-bottom: 2px solid #66666622;	
+	//background-image: url("s2r://panorama/images/shop/cost1_background_psd.vtex");
+}
+
+
 .Cost2 #UnitPortraitView
 {
 	border-top: 2px solid #62df8144;
 	border-left: 2px solid #62df8122;
 	border-right: 2px solid #62df8122;
+	border-bottom: 2px solid #62df8122;
 	background-color: gradient(linear, 0% 100%, 0% 0%, from(#28813F), to(#4442));
 }
 
@@ -183,6 +192,7 @@ ProgressBar .ProgressBarLeft
 	border-top: 2px solid #829cf044;
 	border-left: 2px solid #829cf022;
 	border-right: 2px solid #829cf022;
+	border-bottom: 2px solid #829cf022;
 	background-color: gradient(linear, 0% 100%, 0% 0%, from(#233368), to(#4442));
 }
 
@@ -191,6 +201,7 @@ ProgressBar .ProgressBarLeft
 	border-top: 2px solid #ef87f344;
 	border-left: 2px solid #ef87f322;
 	border-right: 2px solid #ef87f322;
+	border-bottom: 2px solid #ef87f322;
 	background-color: gradient(linear, 0% 100%, 0% 0%, from(#733a75), to(#4442));
 }
 
@@ -199,6 +210,7 @@ ProgressBar .ProgressBarLeft
 	border-top: 2px solid #806d41;
 	border-left: 2px solid #78663d;
 	border-right: 2px solid #78663d;
+	border-bottom: 2px solid #78663d;
 	background-color: gradient(linear, 0% 100%, 0% 0%, from(#99834e), to(#4442));
 }
 
@@ -207,29 +219,162 @@ ProgressBar .ProgressBarLeft
 	background-image: url("s2r://panorama/images/shop/cost1_background_psd.vtex");
 	background-size: cover;
 	width: 240px;
-	height: 240px;
-	box-shadow: #000000bb 0px 0px 22px;
+	//height: 240px;
+	//box-shadow: #000000bb 0px 0px 22px;
 }
 
+#SelectUnitItem {
+	visibility: collapse;
+	//width: 80px;
+	//height: 80px;
+	width: 50px;
+	height: 50px;
+	margin-right: 15px;
+	margin-top: 5px;
+
+	horizontal-align: right;
+	vertical-align: top;
+}
+
+.IsLayoutSmallScreen #SelectUnitItem
+{
+	width: 80px;
+	height: 80px;
+	margin-right: 5px;
+}
+
+#SelectUnitItem.ContainsItem {
+	visibility: visible;
+}
+
+
+.SynergyContainer {
+	//margin-top: 5px;
+	width: 100%;
+	vertical-align: center;
+	
+	ui-scale: 50%;
+}
+
+.IsLayoutSmallScreen .SynergyContainer
+{
+	ui-scale: 80%;
+}
+
+#SynergyCapsule {
+	horizontal-align: center;
+}
+
+#SelectUnitStats {
+	background-color: #00000090;
+	background-image: url("s2r://panorama/images/hud/unit_inspect_bg_psd.vtex");
+	background-repeat: no-repeat;
+	background-position: top;
+	box-shadow: #000000bb 0px 0px 22px;
+	//padding: 4px 2px 20px 2px;
+	width: 100%;
+}
+
+#SelectUnitStatsTint
+{
+	background-color: red;
+	width: 100%;
+} 
+
+.Stat {
+	color: #8588a0;
+	font-size: 16px;
+	text-shadow: 0px 1px 0px 3.0 #000;
+	width: 100%;
+	text-align: center;
+	//margin-left: 10px;
+}
+
+
+.Bonus {
+	color: #28d500;
+}
+
+.NegBonus {
+	color: red;
+}
+
+.DuelBonusDamageStat
+{
+	visibility: collapse;
+}
+
+.HasDuelBonusDamage .DuelBonusDamageStat
+{
+	visibility: visible;
+}
+
+.BrawnyKillsStat {
+    visibility: collapse;
+}
+
+.HasBrawnyKills .BrawnyKillsStat {
+    visibility: visible;
+}
+
+.IsLayoutSmallScreen .Stat
+{
+	font-size: 28px;
+}
+
+
+#SelectUnitStats .Count {
+	color: #fff;
+}
+
+
 .RankLabel {
-	font-size: 26px;
+	font-size: 18px;
 	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
 	text-shadow: 0px 0px 0px 3.0 #000;
 	text-align: left;
-	//width: 100px;
 	visibility: collapse;
-	margin-top: 2px;
-	//margin-top: 130px;
 	text-overflow: clip;
 	horizontal-align: center;
 }
+
+.IsLayoutSmallScreen .RankLabel
+{
+	font-size: 21px;
+}
+
+.UnderlordIcon
+{
+	width: 35px;
+	height: 25px;
+	margin: 6px;
+	horizontal-align: center;
+	background-image: url("s2r://panorama/images/hud/underlord_icon_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	visibility: collapse;
+}
+
+.IsUnderlord .UnderlordIcon
+{
+	visibility: visible;
+}
+
+#SelectedUnitContainer .UnderlordIcon
+{
+	margin-top: 5px;
+	margin-bottom: 0px;
+}
+
 
 .UnitNameContainer
 {
 	flow-children: down;
 	width: 100%;
+	width: fit-children;
+	height: fit-children;
 	horizontal-align: center;
-	margin-bottom: 6px;
+	//margin-top: 8px;
 }
 
 .LowVisualQuality .RankLabel {
@@ -258,27 +403,49 @@ ProgressBar .ProgressBarLeft
 	color: rank3Color;
 }
 
-#AbilitySnippetContainer
+.AbilityRow
 {
+	width: fit-children;
+	height: fit-children;
 	flow-children: right;
 	horizontal-align: center;
 }
 
+#AbilitySnippetContainer
+{
+	flow-children: right;
+	horizontal-align: center;
+	vertical-align: center;
+	overflow: scroll;
+	width: fit-children;
+	height: fit-children;
+	margin-top: 5px;
+	ui-scale: 70%;
+
+	//height: 20px;
+}
+
+.IsLayoutSmallScreen #AbilitySnippetContainer
+{
+	ui-scale: 100%;
+}
+
 .AbilityContainer
 {
-	width: 120px;
-	height: 120px;
 	margin: 2px 0 6px 0;
-	horizontal-align: center;
 	box-shadow: #000000bb 0px 0px 12px;
 	background-image: url("s2r://panorama/images/hud/ability_icon_bevel_psd.vtex");
 	background-size: 100%;
+
+	horizontal-align: center;
+	width: 60px;
+	height: 60px;
 }
 
 .TwoAbilities .AbilityContainer
 {
-	width: 80px;
-	height: 80px;
+	//width: 80px;
+	//height: 80px;
 	margin-left: 4px;
 	margin-right: 4px;
 }
@@ -291,68 +458,17 @@ ProgressBar .ProgressBarLeft
 
 #AbilityBevel
 {
-	width: 120px;
-	height: 120px;
+	width: 80px;
+	height: 80px;
 	horizontal-align: center;
 	background-image: url("s2r://panorama/images/hud/ability_icon_bevel_psd.vtex");
 	background-size: 100%;
 }
 
-.SynergyContainer {
-	margin: 0px 0px 0px 0px;
-	width: 100%;
-	
-	ui-scale: 80%;
-}
-
-#SynergyCapsule {
-	horizontal-align: center;
-}
-
-#SelectUnitStats {
-	background-color: #00000090;
-	background-image: url("s2r://panorama/images/hud/unit_inspect_bg_psd.vtex");
-	background-repeat: no-repeat;
-	background-position: top;
-	box-shadow: #000000bb 0px 0px 22px;
-	padding: 4px 2px 20px 2px;
-	width: 100%;
-}
-
-#SelectUnitStatsTint
+.IsLayoutSmallScreen #AbilityBevel
 {
-	background-color: red;
-	width: 100%;
-} 
-
-.Stat {
-	color: #8588a0;
-	font-size: 24px;
-	text-shadow: 0px 1px 0px 3.0 #000;
-	width: 100%;
-	text-align: center;
-}
-
-.IsLayoutSmallScreen .Stat
-{
-	font-size: 28px;
-}
-
-
-#SelectUnitStats .Count {
-	color: #fff;
-}
-
-#SelectUnitItem {
-	visibility: collapse;
-	width: 80px;
-	height: 80px;	
-	margin: 4px;
-	horizontal-align: center;
-}
-
-#SelectUnitItem.ContainsItem {
-	visibility: visible;
+	width: 100px;
+	height: 100px;
 }
 
 #HighRollerContainer
@@ -361,10 +477,11 @@ ProgressBar .ProgressBarLeft
 	background-image: url("s2r://panorama/images/heroes/spellicons/highroller_psd.vtex");
 	background-repeat: no-repeat;
 	background-position: center;
-	width: 120px;
-	height: 120px;
-	margin: 2px 0 12px 0;
-	horizontal-align: center;
+	width: 60px;
+	height: 60px;
+	//margin: 2px 0 12px 0;
+	margin-left: 10px;
+	vertical-align: center;
 	box-shadow: #000000bb 0px 0px 12px;
 	background-size: 100%;
 }
@@ -379,4 +496,59 @@ ProgressBar .ProgressBarLeft
 .Cost5 #HighRollerContainer
 {
 	visibility: visible;
+}
+
+
+#AbilityCooldown
+{
+	width: 100%;
+	height: 5px;
+	vertical-align: bottom;
+	margin-left: 10px;
+	margin-right: 10px;
+
+	background-color: #222;
+
+	//background-color: red;
+	visibility: collapse;
+}
+
+.ERoundState_Combat .UnitIsAlive.AbilityInCooldown #AbilityCooldown
+{
+	visibility: visible;
+}
+
+ProgressBar .ProgressBarLeft
+{
+	background-color: #ddd;
+	height: 12px;
+}
+
+
+
+//olden
+
+#PlayerEXPGraph_FG {
+	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_fg_png.vtex");
+	background-size: cover;
+	transition-property: clip;
+	transition-duration: 200ms;
+}
+
+#HealthBar {
+	width: 33%;
+	height: 30%;
+	opacity: 0;
+
+	vertical-align: top;
+	horizontal-align: right;
+}
+
+#HealthBar_FG {
+	background-image: url("s2r://panorama/images/hud/health_ring_psd.vtex");
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	transition-property: clip;
+	transition-duration: 200ms;
 }

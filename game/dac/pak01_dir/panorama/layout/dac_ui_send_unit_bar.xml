@@ -1,0 +1,33 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_sell_unit_bar.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_send_unit_bar.vcss_c" />
+	</styles>
+
+  <DACSendUnitBar>
+  	<Panel id="SendButtonContainer" onactivate="DACSendUnit()" 
+			onmouseover="DACHoverSendUnitButton( true ) DACHoverSendUnitBar( true )" 
+			onmouseout="DACHoverSendUnitButton( false ) DACHoverSendUnitBar( false )"
+			class="UnitBarButtonContainer">
+      <Panel id="SendUnitIcon"/>
+      <Label class="SendLabel" text="#duos_sendlabel" />
+      <Panel id="SendUnitInfo">
+	      <Label class="BenchLabel" text="#duos_benchlabel" />
+	      <Label class="BenchUnitCount" text="{d:teammate_bench_count} / 8" />      
+		  <Panel id="SendUnitPlayer">
+		  	<Panel id="SendUnitAvatarBG" />
+		  	<Panel id="SendUnitAvatar" />
+		  	<Panel id="SendUnitPlus" />
+		  </Panel>
+		  <Label class="BenchFullLabel" text="#dac_full_bench" />
+		  <Label class="CantAffordLabel" text="#dac_cant_afford_send" />		  
+	      <Panel id="GoldValueContainer">
+	        <Panel id="PlusMinus"/>
+	        <Label id="UnitCost" text="{i:sell_unit_value}"/>
+	      </Panel>
+		</Panel>
+	</Panel>
+	</DACSendUnitBar>
+</root>

@@ -24,6 +24,8 @@ DACSynergyIcon.Levels_3
 	width: 190px;
 }
 
+
+
 .SynergyNullified
 {
 	width: 108px;
@@ -145,7 +147,7 @@ DACSynergyIcon.Nullified .SynergyNullified
 	width: 108px;
 	height: 108px;
 	background-size: 62.5% 62.5%;
-	background-size: 50% 50%;
+//	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	horizontal-align: left;
@@ -358,19 +360,16 @@ DACSynergyIcon.Nullified .SynergyNullified
 
 .Segment1
 {
-	margin-left: 72px;
 	margin-left: 78px;
 }
 
 .Segment2
 {
-	margin-left: 94px;
 	margin-left: 96px;
 }
 
 .Segment3
 {
-	margin-left: 116px;
 	margin-left: 114px;
 }
 
@@ -398,6 +397,12 @@ DACSynergyIcon.Nullified .SynergyNullified
 	background-image: url("s2r://panorama/images/synergyicons/empty_synergy_pip_full_bar_psd.vtex");
 }
 
+.SegmentsPerLevel_1 .Segment.SegmentLocked
+{
+	background-image: url("s2r://panorama/images/synergyicons/empty_synergy_pip_full_bar_locked_psd.vtex");
+	opacity: 0.7;
+}
+
 .SegmentsPerLevel_1 .Segment.SegmentFillBorder
 {
 	background-image:url("s2r://panorama/images/synergyicons/empty_synergy_pip_full_bar_border_psd.vtex");
@@ -421,6 +426,13 @@ DACSynergyIcon.Nullified .SynergyNullified
 	background-image: url("s2r://panorama/images/synergyicons/empty_synergy_pip_half_bar_border_psd.vtex");
 	opacity: .4; 
 }
+
+.SegmentsPerLevel_2 .Segment.SegmentLocked
+{
+	background-image: url("s2r://panorama/images/synergyicons/empty_synergy_pip_half_bar_locked_psd.vtex");
+	opacity: 0.7;
+}
+
 
 .SegmentsPerLevel_2 .Segment.SegmentBGBorderPop
 {
@@ -453,6 +465,12 @@ DACSynergyIcon.Nullified .SynergyNullified
 	opacity: .4; 
 }
 
+.SegmentsPerLevel_3 .Segment.SegmentLocked
+{
+	background-image: url("s2r://panorama/images/synergyicons/empty_synergy_pip_third_bar_locked_psd.vtex");
+	opacity: 0.7;
+}
+
 .SegmentsPerLevel_3 .Segment.SegmentBGBorderPop
 {
 	background-image: url("s2r://panorama/images/synergyicons/empty_synergy_pip_third_bar_border_pop_psd.vtex");
@@ -471,6 +489,13 @@ DACSynergyIcon.Nullified .SynergyNullified
 {
 	background-image: url("s2r://panorama/images/synergyicons/empty_synergy_pip_third_bar_border_pop_psd.vtex");
 	//wash-color: #645887;
+}
+
+DACSynergyIcon.Level1Locked .Segment1.SegmentLocked,
+DACSynergyIcon.Level2Locked .Segment2.SegmentLocked,
+DACSynergyIcon.Level3Locked .Segment3.SegmentLocked
+{
+	visibility: visible;
 }
 
 DACSynergyIcon.Levels_1 .Segment1.SegmentBG,
@@ -1318,4 +1343,121 @@ DACSynergyIcon.SynergyDisabled .SynergyBGBorder,
 	{
 		opacity: 0;
 	}
+}
+
+#SelectUnitStats DACSynergyIcon
+{
+	width: 100px;
+	height: 100px;
+}
+
+.ShowSynergiesCondensed .Segment
+{
+	width: 22px;
+	background-size: 220% 100%;
+	visibility: collapse;
+}
+
+.ShowSynergiesCondensed .Segment1
+{
+	margin-left: 0px;
+}
+
+.ShowSynergiesCondensed .Segment2
+{
+	margin-left: 18px;
+}
+
+.ShowSynergiesCondensed .Segment3
+{
+	margin-left: 36px;
+}
+
+.ShowSynergiesCondensed .SynergyIcon,
+.ShowSynergiesCondensed .SynergyBG,
+.ShowSynergiesCondensed .SynergyBGBorderPop,
+.ShowSynergiesCondensed .SynergyBGBorder,
+.ShowSynergiesCondensed #SynergyCounter,
+.ShowSynergiesCondensed .Segment.SegmentBGBorderPop
+{
+	visibility: collapse;
+	visibility: visible;
+	width: 0;
+	transition-duration: 0s;
+}
+
+.ShowSynergiesCondensed #SynergyCounter,
+.ShowSynergiesCondensed .Segment.SegmentBGBorderPop
+{
+	transition-property: position;
+	transition-duration: .1s;
+}
+
+.SynergyIcon,
+.SynergyBG,
+.SynergyBGBorderPop,
+.SynergyBGBorder
+{
+	transition-property: width, position;
+	transition-duration: .1s, .1s;
+}
+
+.LowVisualQuality .SynergyIcon,
+.LowVisualQuality .SynergyBG,
+.LowVisualQuality .SynergyBGBorderPop,
+.LowVisualQuality .SynergyBGBorder,
+.LowVisualQuality #SynergyCounter,
+.LowVisualQuality .Segment.SegmentBGBorderPop,
+.LowVisualQuality .ShowSynergiesCondensed .SynergyIcon,
+.LowVisualQuality .ShowSynergiesCondensed .SynergyBG,
+.LowVisualQuality .ShowSynergiesCondensed .SynergyBGBorderPop,
+.LowVisualQuality .ShowSynergiesCondensed .SynergyBGBorder,
+.LowVisualQuality .ShowSynergiesCondensed #SynergyCounter,
+.LowVisualQuality .ShowSynergiesCondensed .Segment.SegmentBGBorderPop
+{
+	transition-property: none;
+}
+
+
+.ShowSynergiesCondensed #SynergyIcons DACSynergyIcon
+{
+	width: fit-children;
+}
+
+.ShowSynergiesCondensed DACSynergyIcon.LevelsWithAnyFilled_0 .Segment1,
+.ShowSynergiesCondensed DACSynergyIcon.LevelsWithAnyFilled_0 .Segment2,
+.ShowSynergiesCondensed DACSynergyIcon.LevelsWithAnyFilled_0 .Segment3,
+.ShowSynergiesCondensed DACSynergyIcon.LevelsWithAnyFilled_1 .Segment2,
+.ShowSynergiesCondensed DACSynergyIcon.LevelsWithAnyFilled_1 .Segment3,
+.ShowSynergiesCondensed DACSynergyIcon.LevelsWithAnyFilled_2 .Segment3
+{
+	visibility: collapse;
+}
+
+// For VS interstitial
+
+
+.VSInfoContainer #SynergyIcons DACSynergyIcon
+{
+	width: fit-children;
+}
+
+.VSInfoContainer DACSynergyIcon.LevelsWithAnyFilled_0 .Segment1,
+.VSInfoContainer DACSynergyIcon.LevelsWithAnyFilled_0 .Segment2,
+.VSInfoContainer DACSynergyIcon.LevelsWithAnyFilled_0 .Segment3,
+.VSInfoContainer DACSynergyIcon.LevelsWithAnyFilled_1 .Segment1,
+.VSInfoContainer DACSynergyIcon.LevelsWithAnyFilled_1 .Segment2,
+.VSInfoContainer DACSynergyIcon.LevelsWithAnyFilled_1 .Segment3,
+.VSInfoContainer DACSynergyIcon.LevelsWithAnyFilled_2 .Segment1,
+.VSInfoContainer DACSynergyIcon.LevelsWithAnyFilled_2 .Segment2,
+.VSInfoContainer DACSynergyIcon.LevelsWithAnyFilled_2 .Segment3
+{
+	visibility: collapse;
+}
+
+.VSInfoContainer DACSynergyIcon,
+.VSInfoContainer DACSynergyIcon,
+.VSInfoContainer DACSynergyIcon,
+{
+	width: 108px;
 }

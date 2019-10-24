@@ -1,0 +1,149 @@
+// kunkka - Hero
+criterion "Iskunkka" "classname" "kunkka" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response kunkka_recruit_1
+{
+	speak "kunkka_recruit" noscene 
+}
+
+Rule kunkka_recruit_1_rule
+{
+	criteria Iskunkka ConceptRecruit UnitRank1
+	response kunkka_recruit_1
+}
+
+
+Response kunkka_recruit_2
+{
+	speak "kunkka_upgrade" noscene 
+}
+
+Rule kunkka_recruit_2_rule
+{
+	criteria Iskunkka ConceptRecruit UnitRank2
+	response kunkka_recruit_2
+}
+
+
+Response kunkka_recruit_3
+{
+	speak "kunkka_final_upgrade" noscene 
+}
+
+Rule kunkka_recruit_3_rule
+{
+	criteria Iskunkka ConceptRecruit UnitRank3
+	response kunkka_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response kunkka_start_round
+{
+	speak "kunkka_start_round" noscene 
+}
+
+Rule kunkka_start_round_rule
+{
+	criteria Iskunkka ConceptRoundStart 
+	response kunkka_start_round
+}
+
+
+Response kunkka_start_round_lost_last_round
+{
+	speak "kunkka_start_round_lost_last_round" noscene 
+}
+
+Rule kunkka_start_round_lost_last_round_rule
+{
+	criteria Iskunkka ConceptRoundStart LostLastGame
+	response kunkka_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response kunkka_flawless_victory
+{
+	speak "kunkka_flawless_victory" noscene 
+}
+
+Rule kunkka_flawless_victory_rule
+{
+	criteria Iskunkka ConceptRoundEnd Result_WinFlawless
+	response kunkka_flawless_victory
+}
+
+
+Response kunkka_decisive_victory
+{
+	speak "kunkka_decisive_victory" noscene 
+}
+
+Rule kunkka_decisive_victory_rule
+{
+	criteria Iskunkka ConceptRoundEnd Result_WinDecisive
+	response kunkka_decisive_victory
+}
+
+Response kunkka_narrow_victory
+{
+	speak "kunkka_narrow_victory" noscene 
+}
+
+Rule kunkka_narrow_victory_rule
+{
+	criteria Iskunkka ConceptRoundEnd Result_WinNarrow
+	response kunkka_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response kunkka_flawless_defeat
+{
+	speak "kunkka_flawless_defeat" noscene 
+}
+
+Rule kunkka_flawless_defeat_rule
+{
+	criteria Iskunkka ConceptRoundEnd Result_LoseFlawless
+	response kunkka_flawless_defeat
+}
+
+
+Response kunkka_decisive_defeat
+{
+	speak "kunkka_decisive_defeat" noscene 
+}
+
+Rule kunkka_decisive_defeat_rule
+{
+	criteria Iskunkka ConceptRoundEnd Result_LoseDecisive
+	response kunkka_decisive_defeat
+}
+
+Response kunkka_narrow_defeat
+{
+	speak "kunkka_narrow_defeat" noscene 
+}
+
+Rule kunkka_narrow_defeat_rule
+{
+	criteria Iskunkka ConceptRoundEnd Result_LoseNarrow
+	response kunkka_narrow_defeat
+}

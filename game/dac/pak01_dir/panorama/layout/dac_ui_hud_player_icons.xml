@@ -1,0 +1,95 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_hud_player_icons.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_hud.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+	</styles>
+
+	<snippets>
+		<snippet name="HeroItemSlot">
+			<Panel class="HUDItem">
+				<Image id="ItemImage" />
+				<Panel class="Unavailable" />
+			</Panel>
+		</snippet>
+
+		<snippet name="Talent">
+			<Panel class="TalentContainer">
+				<Image id="TalentImage" class="TalentImage"/>
+			</Panel>
+		</snippet>
+		
+		<snippet name="SelectTalent">
+			<Panel class="TalentContainer">
+				<Image id="TalentImageBG" class="SelectTalentImageBG" />				
+				<Image id="TalentImage" class="SelectTalentImage"/>
+			</Panel>
+		</snippet>		
+
+		<snippet name="TalentInfoButton">
+			<Panel class="TalentInfoButton" onactivate="DACShowUnderlordTalentSelector()">
+				<Image class="InfoButtonBG" />
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<DACHudPlayerIcons hittest="false" acceptsfocus="false">
+		<Panel class="IconsPanel">
+			<Panel id="BattleStatsSection" class="IconSection BattleStatsParent">
+			
+					<Panel id="BattleStats" class="IconTab IconList DamageDealtActive">
+						<DACDPSChart id="DamageDealt" chart="damagedealt" />
+						<DACDPSChart id="DPS" chart="dps" />
+						<DACDPSChart id="DamageTaken" chart="damagetaken" />
+						<DACDPSChart id="HealingDone" chart="healingdone" />
+						<DACDPSChart id="Kills" chart="kills" />
+						<DACDPSChart id="DisableDone" chart="disabledone" />
+					</Panel>
+					
+				</Panel>
+			<Panel id="SynergiesSection" class="IconSection"> 
+			<Panel class="TopDivider" hittest="false" />
+				<Panel class="IconTab">
+				
+					<Panel id="SynergyIcons" class="IconList" hittest="false" />
+				</Panel>
+				<!-- correct button will be shown based on css -->
+				<Panel class="LocalPlayer ToggleSectionButton Synergies" onactivate="DACShowSynergiesTab()">
+					<Panel class="ToggleIcon Items" />
+					<Label class="SidebarLabel" text="#DAC_InGame_Tab_Synergies" />
+				</Panel>
+			</Panel>		
+			<Panel id="ItemsSection" class="IconSection">
+			<Panel class="TopDivider" hittest="false" />
+				<Panel class="IconTab">
+				
+					<DACInventory id="Items" class="IconList" hittest="false" />
+				</Panel>
+				<!-- correct button will be shown based on css -->
+				<Panel onactivate="DACShowItemsTab()" class="LocalPlayer ToggleSectionButton Items">
+					<Panel class="ToggleIcon Items" />
+					<Label class="SidebarLabel" text="#DAC_InGame_Tab_Items" />
+				</Panel>
+			</Panel>
+
+		
+		</Panel>
+		<Panel id="IconsMobileContainer">
+			<Panel id="IconsMobileSelector">
+				<Panel class="LocalPlayer ToggleSectionButton Synergies" onactivate="DACShowSynergiesTab()" >
+					<Label class="SidebarLabel" text="#DAC_InGame_Tab_Synergies" />
+				</Panel>
+				<Panel class="LocalPlayer ToggleSectionButton Items" onactivate="DACShowItemsTab()">
+					<Label class="SidebarLabel" text="#DAC_InGame_Tab_Items" />
+				</Panel>
+				<Panel class="LocalPlayer ToggleSectionButton BattleStats" onactivate="DACShowBattleStatsTab()">
+					<Label class="SidebarLabel" text="#DAC_InGame_Tab_DamageShort" />
+				</Panel>
+			</Panel>
+		</Panel>
+	</DACHudPlayerIcons>
+</root>

@@ -1,0 +1,394 @@
+DACChallengeMap
+{
+	border: 13px solid purple;
+}
+
+//======= Dev Buttons ========
+
+#Reload
+{
+	vertical-align: top;
+	horizontal-align: left;
+	width: 100px;
+	height: 100px;
+
+	background-image: url("s2r://panorama/images/items/refresher_orb_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+#Reload:hover
+{
+	brightness: 1.3;
+}
+
+#GoBackButton
+{
+	vertical-align: top;
+	horizontal-align: left;
+	width: 50px;
+	height: 50px;
+
+	margin-left: 10px;
+	margin-top: 10px;
+
+	background-image: url("s2r://panorama/images/items/dagon_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+
+	visibility: collapse;
+}
+
+#GoBackButton:hover
+{
+	brightness: 1.3;
+}
+
+.ZoomToRegion #GoBackButton
+{
+	visibility: visible;
+}
+
+//=======
+
+DragZoom
+{
+	flow-children: down;
+}
+
+#DragZoomContentPanel
+{
+	vertical-align: middle;
+	horizontal-align: middle;
+	overflow: noclip;
+	z-index: 1;
+	transition-property: transform, position;
+	transition-delay: 0.0s;
+	transition-timing-function: ease-in-out;
+}
+
+.nodes,
+.edges
+{
+	margin: 5%;
+	width: 90%;
+	height: 90%;
+}
+
+.nodes
+{
+	overflow: noclip;
+}
+
+.node
+{
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	border: 5px solid white;
+}
+
+.ChallengeNode
+{
+	width: 30px;
+	height: 30px;
+	//border-radius: 50%;
+	background-color: blue;
+	transform: translateX(-15px) translateY(-15px);
+	overflow: noclip;
+}
+
+.ChallengeNode.Premium
+{
+	background-color: hotpink;
+}
+
+.ChallengeNode.Claimable
+{
+	border: 2px solid yellow;
+}
+
+.ChallengeNode.Claimed
+{
+	background-color: grey;
+}
+
+.ChallengeEdge
+{
+	width: 20px;
+	height: 20px;
+	background-color: green;
+	transform: translateX(-10px) translateY(-10px);
+	overflow: noclip;
+}
+
+.ChallengeEdge.ContainsChallenge
+{
+	border: 1px solid white;
+}
+
+.ChallengeEdge.ContainsChallenge.Claimable
+{
+	border: 1px solid gold;
+}
+
+.ChallengeEdge.ContainsChallenge.Claimed
+{
+	border-width: 0px;
+	background-color: grey;
+}
+
+
+.ChallengeNode Label,
+.ChallengeEdge Label
+{
+	visibility: collapse;
+}
+
+.ChallengeNode:hover Label,
+.ChallengeEdge:hover Label
+{
+	visibility: visible;
+	font-size: 20px;
+	color: white;
+}
+
+#node1
+{
+	margin-left: 1100px;
+	margin-top: 800px;
+}
+
+#node2
+{
+	margin-left: 640px;
+	margin-top: 400px;
+}
+
+#node3
+{
+	margin-left: 170px;
+	margin-top: 650px;
+}
+
+#node4
+{
+	margin-left: 210px;
+	margin-top: 120px;
+}
+
+.RegionContainer .node
+{
+	border: 5px solid blue;
+}
+
+.MapContainer
+{
+	width: 100%;
+	height: 100%;
+
+	transition-property: opacity;
+	transition-duration: 0.5s;
+}
+
+#OverviewContainer
+{
+	opacity: 1;
+}
+
+#RegionContainer
+{
+	opacity: 0;
+}
+
+.ZoomToRegion #OverviewContainer
+{
+	opacity: 0;
+}
+
+.ZoomToRegion #RegionContainer
+{
+	opacity: 1;
+}
+
+.OverviewMap
+{
+	width: 3000px;
+	height: 1080px;
+
+	background-image: url("s2r://panorama/images/map/sample_map_psd.vtex");
+	background-size: 50%;
+}
+
+.RegionMap
+{
+	width: 3000px;
+	height: 1080px;
+
+	background-image: url("s2r://panorama/images/map/sample_map_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+
+//================
+// Region Buttons
+
+.RegionButton
+{
+	width: fit-children;
+	height: fit-children;
+	padding: 30px;
+}
+
+.RegionButton.Anessix
+{
+	margin-left: 800px;
+	margin-top: 100px;
+}
+
+.RegionButton.Jull
+{
+	margin-left: 700px;
+	margin-top: 650px;
+}
+
+.RegionButton.Enno
+{
+	margin-left: 1600px;
+	margin-top: 150px;
+}
+
+.RegionButton.Hobgen
+{
+	margin-left: 1700px;
+	margin-top: 700px;
+}
+
+.RegionImage
+{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	border: 6px solid #aaa;
+	background-size: 100%;
+	background-repeat: no-repeat;
+
+	horizontal-align: center;
+}
+
+.RegionButton:hover .RegionImage
+{
+	border: 6px solid white;
+}
+
+.Anessix .RegionImage
+{
+	background-image: url("s2r://panorama/images/heroes/portraits/npc_dota_hero_drow_ranger_png.vtex");
+}
+
+.Jull .RegionImage
+{
+	background-image: url("s2r://panorama/images/heroes/portraits/npc_dota_hero_templar_assassin_png.vtex");
+}
+
+.Enno .RegionImage
+{
+	background-image: url("s2r://panorama/images/heroes/portraits/npc_dota_hero_alchemist_png.vtex");
+}
+
+.Hobgen .RegionImage
+{
+	background-image: url("s2r://panorama/images/heroes/portraits/npc_dota_hero_antimage_png.vtex");
+}
+
+.WhereAmI,
+.RegionMap Label
+{
+	color: white;
+	font-size: 50px;
+	horizontal-align: center;
+}
+
+.RegionTitle
+{
+	font-size: 40px;
+	font-weight: black;
+	color: black;
+	background-color: white;
+	box-shadow: 0px 0px 3px #ffffff;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	padding: 0px 30px;
+	transform: rotateZ(2deg);
+
+	margin-top: 130px;
+
+	horizontal-align: center;
+}
+
+.RegionProgress
+{
+	horizontal-align: center;
+	margin-top: 170px;
+	transform: rotateZ(2deg);
+}
+
+.ChallengePopup
+{
+	visibility: collapse;
+}
+
+.ChallengePopupVisible .ChallengePopup
+{
+	visibility: visible;
+	width: 600px;
+	height: 600px;
+	background-color: #000D;
+	horizontal-align: center;
+	vertical-align: center;
+
+	padding: 10px;
+
+	flow-children: down;
+}
+
+.ChallengePopup .ClaimButton
+{
+	visibility: collapse;
+}
+
+.SelectedChallengeCompleted .ChallengePopup .CompleteButton
+{
+	visibility: collapse;
+}
+
+.SelectedChallengeClaimable .ChallengePopup .ClaimButton
+{
+	visibility: visible;
+} 
+
+.ClaimPopup
+{
+	visibility: collapse;
+}
+
+.ClaimPopupVisible .ClaimPopup
+{
+	visibility: visible;
+	width: 600px;
+	height: 600px;
+	background-color: #000D;
+	horizontal-align: center;
+	vertical-align: center;
+
+	padding: 10px;
+
+	flow-children: down;
+}
+
+.ChallengePopup .CloseButton,
+.ClaimPopup .CloseButton
+{
+	vertical-align: bottom;
+	horizontal-align: center;
+}

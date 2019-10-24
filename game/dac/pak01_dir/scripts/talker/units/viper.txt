@@ -1,0 +1,149 @@
+// viper - Hero
+criterion "Isviper" "classname" "viper" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response viper_recruit_1
+{
+	speak "viper_recruit" noscene 
+}
+
+Rule viper_recruit_1_rule
+{
+	criteria Isviper ConceptRecruit UnitRank1
+	response viper_recruit_1
+}
+
+
+Response viper_recruit_2
+{
+	speak "viper_upgrade" noscene 
+}
+
+Rule viper_recruit_2_rule
+{
+	criteria Isviper ConceptRecruit UnitRank2
+	response viper_recruit_2
+}
+
+
+Response viper_recruit_3
+{
+	speak "viper_final_upgrade" noscene 
+}
+
+Rule viper_recruit_3_rule
+{
+	criteria Isviper ConceptRecruit UnitRank3
+	response viper_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response viper_start_round
+{
+	speak "viper_start_round" noscene 
+}
+
+Rule viper_start_round_rule
+{
+	criteria Isviper ConceptRoundStart 
+	response viper_start_round
+}
+
+
+Response viper_start_round_lost_last_round
+{
+	speak "viper_start_round_lost_last_round" noscene 
+}
+
+Rule viper_start_round_lost_last_round_rule
+{
+	criteria Isviper ConceptRoundStart LostLastGame
+	response viper_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response viper_flawless_victory
+{
+	speak "viper_flawless_victory" noscene 
+}
+
+Rule viper_flawless_victory_rule
+{
+	criteria Isviper ConceptRoundEnd Result_WinFlawless
+	response viper_flawless_victory
+}
+
+
+Response viper_decisive_victory
+{
+	speak "viper_decisive_victory" noscene 
+}
+
+Rule viper_decisive_victory_rule
+{
+	criteria Isviper ConceptRoundEnd Result_WinDecisive
+	response viper_decisive_victory
+}
+
+Response viper_narrow_victory
+{
+	speak "viper_narrow_victory" noscene 
+}
+
+Rule viper_narrow_victory_rule
+{
+	criteria Isviper ConceptRoundEnd Result_WinNarrow
+	response viper_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response viper_flawless_defeat
+{
+	speak "viper_flawless_defeat" noscene 
+}
+
+Rule viper_flawless_defeat_rule
+{
+	criteria Isviper ConceptRoundEnd Result_LoseFlawless
+	response viper_flawless_defeat
+}
+
+
+Response viper_decisive_defeat
+{
+	speak "viper_decisive_defeat" noscene 
+}
+
+Rule viper_decisive_defeat_rule
+{
+	criteria Isviper ConceptRoundEnd Result_LoseDecisive
+	response viper_decisive_defeat
+}
+
+Response viper_narrow_defeat
+{
+	speak "viper_narrow_defeat" noscene 
+}
+
+Rule viper_narrow_defeat_rule
+{
+	criteria Isviper ConceptRoundEnd Result_LoseNarrow
+	response viper_narrow_defeat
+}

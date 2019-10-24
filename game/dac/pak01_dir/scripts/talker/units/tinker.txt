@@ -1,0 +1,149 @@
+// Tinker - Hero
+criterion "Istinker" "classname" "tinker" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response tinker_recruit_1
+{
+	speak "tinker_recruit" noscene 
+}
+
+Rule tinker_recruit_1_rule
+{
+	criteria Istinker ConceptRecruit UnitRank1
+	response tinker_recruit_1
+}
+
+
+Response tinker_recruit_2
+{
+	speak "tinker_upgrade" noscene 
+}
+
+Rule tinker_recruit_2_rule
+{
+	criteria Istinker ConceptRecruit UnitRank2
+	response tinker_recruit_2
+}
+
+
+Response tinker_recruit_3
+{
+	speak "tinker_final_upgrade" noscene 
+}
+
+Rule tinker_recruit_3_rule
+{
+	criteria Istinker ConceptRecruit UnitRank3
+	response tinker_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response tinker_start_round
+{
+	speak "tinker_start_round" noscene 
+}
+
+Rule tinker_start_round_rule
+{
+	criteria Istinker ConceptRoundStart 
+	response tinker_start_round
+}
+
+
+Response tinker_start_round_lost_last_round
+{
+	speak "tinker_start_round_lost_last_round" noscene 
+}
+
+Rule tinker_start_round_lost_last_round_rule
+{
+	criteria Istinker ConceptRoundStart LostLastGame
+	response tinker_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response tinker_flawless_victory
+{
+	speak "tinker_flawless_victory" noscene 
+}
+
+Rule tinker_flawless_victory_rule
+{
+	criteria Istinker ConceptRoundEnd Result_WinFlawless
+	response tinker_flawless_victory
+}
+
+
+Response tinker_decisive_victory
+{
+	speak "tinker_decisive_victory" noscene 
+}
+
+Rule tinker_decisive_victory_rule
+{
+	criteria Istinker ConceptRoundEnd Result_WinDecisive
+	response tinker_decisive_victory
+}
+
+Response tinker_narrow_victory
+{
+	speak "tinker_narrow_victory" noscene 
+}
+
+Rule tinker_narrow_victory_rule
+{
+	criteria Istinker ConceptRoundEnd Result_WinNarrow
+	response tinker_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response tinker_flawless_defeat
+{
+	speak "tinker_flawless_defeat" noscene 
+}
+
+Rule tinker_flawless_defeat_rule
+{
+	criteria Istinker ConceptRoundEnd Result_LoseFlawless
+	response tinker_flawless_defeat
+}
+
+
+Response tinker_decisive_defeat
+{
+	speak "tinker_decisive_defeat" noscene 
+}
+
+Rule tinker_decisive_defeat_rule
+{
+	criteria Istinker ConceptRoundEnd Result_LoseDecisive
+	response tinker_decisive_defeat
+}
+
+Response tinker_narrow_defeat
+{
+	speak "tinker_narrow_defeat" noscene 
+}
+
+Rule tinker_narrow_defeat_rule
+{
+	criteria Istinker ConceptRoundEnd Result_LoseNarrow
+	response tinker_narrow_defeat
+}

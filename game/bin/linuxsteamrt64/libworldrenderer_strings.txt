@@ -81,6 +81,8 @@ $[A\]
 %i %i %i %i
 %ls [wstring, len = %d]
 %s  '%s' --> '%s' : %s (%s) [delay=%.2f;times=%d;type=%d]
+%s (Color)
+%s (Material)
 %s * %s
 %s + %s
 %s - %s
@@ -105,6 +107,8 @@ $[A\]
 %s== World '%s' Entity Lump '%s': %d entities ==
 %sEntity %d (%s '%s'):
 %sI/O Connections:
+%s_color
+%s_matgrp
 %s|  % 2d: %s [Offset: %d]
 %s|  % 2d: [% 3d] %-12s %s
 %s| AlignOf: %d
@@ -123,7 +127,6 @@ $[A\]
 (HcWP
 (None)
 ([A\A]A^A_]
-([A\A]A^]
 ([A\A]]
 ([A\]
 ([]A\A]
@@ -146,6 +149,8 @@ $[A\]
 +m_nValue
 +s$Hc
 +y$Hc
+, channels = 
+, height = 
 , parent: 
 --%s is at refcount %d
 ----End Script Dump
@@ -206,7 +211,7 @@ $[A\]
 00000000-0000-0000-0000-000000000000
 0AWAVI
 0D;8t+
-0IcD$
+0[A\A]A^]
 0[A\]
 0[A^]
 0[]A\A]A^
@@ -357,6 +362,7 @@ $[A\]
 9C@~}H
 9CTt@A
 9ISequence
+9rXt#H
 ;*3$"
 ;0tWD
 ;A }4H
@@ -409,7 +415,6 @@ $[A\]
 =_modelbuilder_phys_%i.vphys
 >;9t9H
 ?DXT5
-?N24CFieldPathHuffmanEncoder5INodeE
 ?Trailing Data
 @/data/source2_main/src/thirdparty/etc2comp/EtcLib/Etc/EtcImage.cpp
 @<<NULL ENTITY LUMP>>
@@ -422,6 +427,7 @@ $[A\]
 @[]A\
 @fD;|
 @mathlib.cpp
+@spawn
 @tBE+
 @tB[A\]
 A#V\H
@@ -755,7 +761,13 @@ CJobH
 CL$(9
 CMaterialDrawDescriptor
 CMemAllocSystemInitialize
+CModelConfig
+CModelConfigElement
+CModelConfigElement_UserPick
+CModelConfigList
 CMorphConstraint
+CMotionTransform
+CMotionTransform-world
 CNativeOutputs
 CNetworkFieldScratchData.m_MemoryStacks[ %d ]
 CNetworkFieldScratchData.m_MemoryStacks[ 0 ]
@@ -920,8 +932,11 @@ Cannot deallocate abstract class
 Cannot deduce for class
 Cannot destruct abstract class
 Cannot force non-networkable entity index %d
-Cannot reconstruct lineOffset table.
+Cannot read a file 
+Cannot read file 
+Cannot reconstruct lineOffset table in DecodeEXRImage.
 Cannot register same format from/to a KV3 conversion (from '%s' to '%s')
+Cannot write a file
 ChangeAccessorFieldPathIndex_t
 ChangeCallbackOnChange
 ChangeCallbackOnChangeOrCreate
@@ -939,6 +954,7 @@ CompressAndUploadGrassTextureJob
 ConVar(%s) defined with infinite float value (%s)
 ConVarRef %s doesn't point to an existing ConVar
 ConcreteEntityList:  approaching limit, allocating entity chuck %d/%d for ents [%d -> %d]
+ConfigAttachedModel
 ConfigurationSystem_001
 ConnectInterfaces
 ConnectOutput
@@ -959,6 +975,7 @@ D$ H9
 D$ H9E
 D$(9D$
 D$(D;u
+D$(H9
 D$(M9
 D$(fH
 D$(t=H
@@ -984,7 +1001,6 @@ D$X;D$L
 D$`9D$T
 D$hHc
 D$pE1
-D$p[A\]
 D)d$DL
 D)l$HL
 D+c$Mc
@@ -996,7 +1012,7 @@ D24FS8
 D24X4S4
 D24X8
 D24X8_SHADOW
-D8c0t>
+D8c0f
 D8k`t
 D9C ~JMc
 D9`Tu
@@ -1005,6 +1021,7 @@ D9k D
 D9l$(
 D9t$LfE
 D;	}VL
+D;%~[-
 D;b`|
 D;c D
 D;q(t%I
@@ -1015,6 +1032,7 @@ DATAL
 DO$mH
 DXT1_ONEBITALPHA
 DXT5_NM
+Data size too short
 DebugTextureInfo001
 Decompression failure
 Default
@@ -1042,6 +1060,7 @@ Double-register of KV3 conversion (from '%s' to '%s')
 Double-save to Member '%s'
 Dump all of the worlds that we know about
 Dump the contents of an entity lump
+DynamicConfigList
 DynamicCubeMapTexture_EncodeOnly.vtex
 DynamicCubeMapTexture_FlipMipEncode.vtex
 E A+E
@@ -1078,11 +1097,12 @@ ERROR: Schema registration error - class '%s' is not marked as MModuleLocalTypeS
 ERROR: Schema registration error - class '%s' is not marked as MModuleLocalTypeScope but derives from locally-scoped class '%s'
 ERROR: Specified full path %s does not lie under the mod search path!)
 ERROR: Specified path %s could not be made content-relative
-EXJc< H
+EXHc<
 EXPORTSYSTEM_INTERFACE_VERSION_001
-EXRHeader is not initialized.
+EXRHeader variable is not initialized.
 EarlyInit_Tier0
 EconItemToolModel_001
+EditorDynamicConfig
 EmptyAnim
 Encountered bad enum value "%s" for type %s, entity "%s" field "%s"!
 Encountered unknown entity i/o target type!
@@ -1154,6 +1174,8 @@ FCVAR_NEVER_AS_STRING
 FIELD_BOOLEAN
 FIELD_CHARACTER
 FIELD_CLASSPTR
+FIELD_CMOTIONTRANSFORM
+FIELD_CMOTIONTRANSFORM_WORLDSPACE
 FIELD_COLOR32
 FIELD_CSTRING
 FIELD_CTRANSFORM
@@ -1246,16 +1268,24 @@ F_TRANSLUCENT
 Failed to allocate an instance of a class
 Failed to assign bool literal value
 Failed to call CBaseIntrospectedToKV3TypeManager::Init
+Failed to compute channel layout.
 Failed to convert KV3 to string; error: %s
 Failed to convert introspected block: %s
+Failed to get material pointer for world node draw call. (material name: %s)
 Failed to include script "%s"
 Failed to load geometry for level %s
 Failed to mount world vpk file %s, file could not be found.
+Failed to parse EXR version
+Failed to parse attribute
+Failed to parse channel info
 Failed to parse channel info.
+Failed to read attribute.
 Failed to transfer KV3 data for resource '%s' - %s
 FeetSettings
 Field "%s" of class "%s" cannot be unserialized yet (lacking array support)!
 Field %s::%s cannot have sub-keyfields since it is an atomic type!
+File size is zero : 
+File size too short 
 FillAttr
 FilterFrom
 FindClosestMatchingRegion
@@ -1358,8 +1388,6 @@ H;*twH
 H;0t*H
 H;0t:H
 H;\$ u
-H=vmatu
-H=vvis
 HELPER_BONE
 HMaterial
 HModel
@@ -1379,7 +1407,6 @@ HcD$pH
 HcE0L
 HcK@Ic
 HcKXIc
-HcKxIc
 HcS$D
 HcSPH
 HcW$H
@@ -1405,10 +1432,10 @@ IcGh1
 IcG|I
 IcO(I
 IcOPI
-IcT$8
 Ic] A;]0
 Ic]8A;]H
 Ic_XA;_htoI
+Image data size is zero or too large: width = 
 IncludeScript stack overflow
 InfoForResourceTypeCAnimData
 InfoForResourceTypeCEntityLump
@@ -1427,21 +1454,47 @@ InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallClasses
 InstallSchemaBindings
+Insufficient data length.
+Insufficient data size for attributes.
+Insufficient data size in offset table.
+Insufficient data size.
+Insufficient header/data size.
 Intentionally vague touch behavior for %p
-Invalid argument.
+Invalid EXR header.
+Invalid `part number' in EXR header chunks.
+Invalid argument for DecodeEXRImage().
+Invalid argument for LoadDeepEXR
+Invalid argument for LoadEXR()
+Invalid argument for LoadEXRFromMemory
+Invalid argument for LoadEXRImageFromFile
+Invalid argument for LoadEXRImageFromMemory
+Invalid argument for LoadEXRMultipartImageFromFile
+Invalid argument for LoadEXRMultipartImageFromMemory()
+Invalid argument for ParseEXRHeaderFromFile
+Invalid argument for ParseEXRMultipartHeaderFromFile()
+Invalid argument for ParseEXRMultipartHeaderFromMemory
+Invalid argument for SaveEXRImageToFile
+Invalid argument for SaveEXRImageToMemory
+Invalid argument. `memory` or `exr_header` argument is null in ParseEXRHeaderFromMemory()
+Invalid channels format
 Invalid compressed buffer size
 Invalid conversion : CString '%s' to bool
 Invalid data for member '%s'
-Invalid data height value.
-Invalid data window value.
+Invalid data found when decoding pixels.
+Invalid data height value
+Invalid data width or data height: 
+Invalid data width value
 Invalid data.
 Invalid header
+Invalid magic number
 Invalid member name '%s'
-Invalid offset size.
-Invalid offset value.
+Invalid offset size in EXR header chunks.
+Invalid offset value in DecodeEXRImage.
 Invalid request for mesh %d in model %s with %d entry remapping start table
 Invalid request for mesh %d in model %s with no remapping table
 Invalid request for mesh %d in model %s with no remapping table starts
+Invalid tile size x : 
+Invalid tile size y : 
 Inverse Multi Quadratic
 Invert Axes; 
 IsKeyValueUsed
@@ -1480,7 +1533,6 @@ Lc/E)
 Lc3D;s
 Lc7E)
 LccHD;cXD
-LcghD;gx
 LchXH
 Lck0D;k@D
 Length; 
@@ -1500,6 +1552,7 @@ LoadEXRImageFromMemory failed! Error message: %s
 LoadFromInMemoryEXR( %s ) failed.
 LoadKV3ObjectInPlace error: %s
 Loaded List:
+Loading multipart or DeepImage is not supported  in LoadEXR() API
 Localize_001
 LoggingSystem_IsChannelEnabled
 LoggingSystem_Log
@@ -1529,6 +1582,7 @@ MNetworkSerializeAs
 MNetworkSerializer
 MNetworkUserGroup
 MNetworkVarNames
+MODEL_CONFIG_ATTACHMENT_COUNT
 MODEL_PROCESSING_SCRIPT_INTERFACE_001
 MODEL_PROCESSING_SERVICES_INTERFACE_001
 MResourceTypeForInfoType
@@ -1549,7 +1603,7 @@ Max( %s, %s )
 MaxNetworkableEntities
 MaxNonNetworkableEntities
 MbP?+
-Mc|$HE;y
+Mc~HE;y
 MemAlloc_AllocFunc
 MemAlloc_FreeFunc
 MeshDrawPrimitiveFlags_t
@@ -1561,6 +1615,7 @@ Missing file '%s'
 Model %s missing bone and flex counts (%d < %d), init %d
 Model conversion: %d conversions in %.3fsec (%.3fms each)
 ModelCompile/UseShadowFastPathHeuristic
+ModelConfigAttachmentType_t
 ModelDocUtils001
 MountWorldVPK() ++%s is at refcount %d
 MovementSettings
@@ -1571,6 +1626,7 @@ Multiple registration of class %s
 N&B:A
 N&B:H
 N24CFieldPathHuffmanEncoder12InternalNodeE
+N24CFieldPathHuffmanEncoder5INodeE
 N24CFieldPathHuffmanEncoder8LeafNodeE
 N37CTypesafeIntrospectedToKV3TypeManagerILy431366240118E11WorldNode_tE26IKV3ResourceAllocatorUtilsE
 N37CTypesafeIntrospectedToKV3TypeManagerILy431366240118E11WorldNode_tE28IKV3ResourceDeallocatorUtilsE
@@ -1679,6 +1735,7 @@ ORIENT
 ObjectTypeFlags_t
 Only DXT1/DXT5 online texture compression supported.
 Ordered constructor wrapped type has no default constructor.
+Output memory size is zero
 Output unserialization of entities on map load. 0 - off, 1 - client/server, 2 - server, 3 - client
 P HcA
 P IcD$
@@ -1763,6 +1820,11 @@ PosXYZ
 PostProcessingSystem_001
 PpMcw@E;wPtNI
 Precaches a specific resource
+PreviewAttachmentModel
+PreviewBoneAttachedModel
+PreviewBoneMergedModel
+PreviewPreset
+PreviewPresetList
 Print model load-time conversion info
 PropWorldOrigin
 PropertyEditorSystem_001
@@ -1975,10 +2037,14 @@ Unserialize
 UnserializeKeys
 Unsupported ETC image format %d.
 Unsupported Grass File Version. Expected %d. Found %d
+Unsupported component value : 
+Unsupported compression format
+Unsupported compression type : 
 Unsupported field type %s (%d) for conversion from old KeyValues, field %s
 Unsupported field type for entity attribute, field %s
 Unsupported number of values found in grass tile. Expected %d. Found %d
 Unsupported text encoding id.
+Unsupported version or scanline
 UpperEyelid( 
 Usage: %s <world_name> <layer_name> <visible>
 Usage: %s <world_name> <lump_name>
@@ -2155,7 +2221,7 @@ X\$LM
 Y>t$7?*
 YIcL$
 Yaw; 
-ZFP compression is not supported in this build.
+ZFP compression is not supported in this build
 ZFP compression is not supported.
 ZN37CTypesafeIntrospectedToKV3TypeManagerILy431366240118E11WorldNode_tE15AllocateAndLoadER23CKV3TransferLoadContextPK21ResourceBindingBase_tP29IRD_RegisterResourceDataUtilsE15CAllocatorUtils
 ZN37CTypesafeIntrospectedToKV3TypeManagerILy431366240118E11WorldNode_tE24DeallocateDestroyCleanupEPvP25IResourceDeallocatorUtilsE17CDeallocatorUtils
@@ -2257,17 +2323,21 @@ _ZNKSt5ctypeIcE13_M_widen_initEv
 _ZNKSt5ctypeIcE8do_widenEc
 _ZNSo3putEc
 _ZNSo5flushEv
+_ZNSolsEi
 _ZNSs12_S_constructIPcEES0_T_S1_RKSaIcESt20forward_iterator_tag
 _ZNSs4_Rep10_M_destroyERKSaIcE
 _ZNSs4_Rep20_S_empty_rep_storageE
 _ZNSs4_Rep9_S_createEmmRKSaIcE
 _ZNSs4swapERSs
+_ZNSs6appendEPKcm
 _ZNSs6appendERKSs
 _ZNSs6assignEPKcm
 _ZNSs6assignERKSs
+_ZNSs6insertEmPKcm
 _ZNSsC1EPKcRKSaIcE
 _ZNSsC1EPKcmRKSaIcE
 _ZNSsC1ERKSs
+_ZNSspLEPKc
 _ZNSt13__future_base11_State_baseD2Ev
 _ZNSt13__future_base12_Result_baseC2Ev
 _ZNSt13__future_base12_Result_baseD2Ev
@@ -2285,6 +2355,7 @@ _ZNSt6thread15_M_start_threadESt10shared_ptrINS_10_Impl_baseEE
 _ZNSt6thread4joinEv
 _ZNSt6vectorIS_ImSaImEESaIS1_EE19_M_emplace_back_auxIIRKS1_EEEvDpOT_
 _ZNSt6vectorIS_ImSaImEESaIS1_EE19_M_emplace_back_auxIJRKS1_EEEvDpOT_
+_ZNSt6vectorIfSaIfEE17_M_default_appendEm
 _ZNSt6vectorIhSaIhEE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPhS1_EEEEvS6_T_S7_St20forward_iterator_tag
 _ZNSt6vectorIhSaIhEE15_M_range_insertIPKhEEvN9__gnu_cxx17__normal_iteratorIPhS1_EET_S9_St20forward_iterator_tag
 _ZNSt6vectorIhSaIhEE15_M_range_insertIPcEEvN9__gnu_cxx17__normal_iteratorIPhS1_EET_S8_St20forward_iterator_tag
@@ -2292,6 +2363,8 @@ _ZNSt6vectorIhSaIhEE17_M_default_appendEm
 _ZNSt6vectorIhSaIhEE6insertIN9__gnu_cxx17__normal_iteratorIPhS1_EEvEES6_NS4_IPKhS1_EET_SA_
 _ZNSt6vectorIhSaIhEEC1EmRKS0_
 _ZNSt6vectorIhSaIhEEC2EmRKS0_
+_ZNSt6vectorItSaItEEC1EmRKS0_
+_ZNSt6vectorItSaItEEC2EmRKS0_
 _ZNSt8ios_base4InitC1Ev
 _ZNSt8ios_base4InitD1Ev
 _ZNSt8ios_baseC2Ev
@@ -2367,6 +2440,7 @@ _test_conversion_counter
 `[A\A]A^A_]
 `[A\]
 `chunkCount' attribute is not found in the header.
+`fread' error. file may be corrupted.
 a_fDecodedAlpha >= 0.0f
 a_uiMultithreadingStride > 0
 a_uiRadius <= MAX_RADIUS
@@ -2382,8 +2456,10 @@ anim_name_a
 anim_name_b
 animgraph0
 archive
+attach_point
 attachment
 attachment_offset
+attachment_type
 attrib
 auto_unragdoll_duration
 bUpdate
@@ -2400,9 +2476,11 @@ blendindices
 blendweight
 blendweights
 blockLOS
+body_groups
 body_type
 bone_name
 bone_names
+bonemerge
 boolean
 borrow
 box2i
@@ -2440,9 +2518,9 @@ cloth_collision_layer3
 cloth_enable
 collision_group
 collision_prop
-color
 composite
 compression
+config_state
 configvalue.cpp
 control_point
 control_points_list
@@ -2457,7 +2535,12 @@ dH34%(
 dH3<%(
 dIcD$
 data error
+data height too large.
+data width or data height is negative.
+data width too large.
 dataWindow
+data_height = 
+data_with or data_height too large. data_width: 
 default
 delete
 developer
@@ -2520,6 +2603,7 @@ fWeightSumRight > 0.0f
 fWeightSumTop > 0.0f
 faceMergeAngle
 false
+fclose
 fff?fff?fff?fff?
 ffff.
 fffff.
@@ -2536,25 +2620,29 @@ float32-quantized
 float64
 floatbitmap.cpp
 floatbitmap.cpp(140): Unknown gamma type "%s"!
-floatbitmap.cpp(2455): Error calling TGALoader::GetInfo( %s )
-floatbitmap.cpp(2466): Error loading %s
-floatbitmap.cpp(2489): Error! Unknown file type for %s
-floatbitmap.cpp(2508): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
+floatbitmap.cpp(2463): Error calling TGALoader::GetInfo( %s )
+floatbitmap.cpp(2474): Error loading %s
+floatbitmap.cpp(2497): Error! Unknown file type for %s
+floatbitmap.cpp(2516): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
 floatbitmap.cpp(324): Conversion not supported yet!
 floatbitmap.cpp(424): Conversion not supported yet!
 floatbitmap.cpp(887): Unsupported color format "%s", skipping!
 floor
 floorf
 fltx4
+fopen64
 force
-format
 formats.cpp
 fprintf
 fputc
 frame
 fread
+fread() error on 
 frexp
 friction
+fseek
+ftell
+fwrite
 g cMesh
 g default
 g?33s?
@@ -2655,36 +2743,49 @@ loop_in_action
 looping
 lowprecisionuv
 lowprecisionuv1
+m_AttachmentName
+m_AttachmentType
 m_Bone
 m_CScriptComponent
 m_ChainData
 m_ChildNodeIndices
 m_Children
+m_Choices
 m_Color
 m_ColorScale
 m_ConeAxis
 m_ConeCutoff
+m_ConfigName
+m_Configs
 m_ControlRigData
 m_CullDataIndex
 m_DefaultSolverSettings
 m_DefaultTargetSettings
+m_ElementName
+m_Elements
 m_Emitters
 m_EndEffectorBone
 m_EndEffectorTargetBone
+m_EntityClass
 m_Flags
 m_ForceGenerators
 m_Format
+m_Gradient
+m_GroupName
 m_HitBoxSets
 m_HitBoxes
 m_IKChains
 m_IkChain
 m_IkChains
 m_Initializers
+m_InstanceName
 m_JointConstraintPairs
 m_JointName
 m_Joints
 m_LiteralColor
+m_MaterialGroupName
 m_Name
+m_NestedElements
 m_Operators
 m_PathIndex
 m_PerVertexLightingDataPlainRGBM
@@ -2693,10 +2794,12 @@ m_Renderers
 m_SolverSettingSource
 m_SolverType
 m_SourceFilename
+m_Stops
 m_TargetSettingSource
 m_TargetSource
 m_Value
 m_VisClusterMemberBits
+m_aAngOffset
 m_ankleBoneName
 m_attachments
 m_bApplyMinForce
@@ -2704,6 +2807,7 @@ m_bBuildBakedLighting
 m_bCacheAttempted
 m_bCacheOk
 m_bCanBatchWithDynamicShaderConstants
+m_bClamp
 m_bDisableChild
 m_bDisableOperator
 m_bDoBonesOrientAlongPositiveX
@@ -2719,6 +2823,8 @@ m_bHasBakedLightingFromVertexStream
 m_bHasCullingData
 m_bHasLightmaps
 m_bHasPerInstanceBakedLightingData
+m_bHideMaterialGroupInTools
+m_bHideRenderColorInTools
 m_bIgnoreRotation
 m_bInfluenceRootTransform
 m_bInitFromKilledParentParticles
@@ -2739,11 +2845,14 @@ m_bScaleInitialRange
 m_bScaleInitialValue
 m_bScalePerParticle
 m_bSelected
+m_bTopLevel
 m_bTrailBias
 m_bTranslationOnly
 m_bUseCompressedNormalTangent
 m_bUseHighestEndCP
 m_bUseShadowFastPath
+m_bUserSpecifiedColor
+m_bUserSpecifiedMaterialGroup
 m_bVisible
 m_bWrapInAtlas
 m_bbox
@@ -2791,6 +2900,7 @@ m_fForceAmountMin
 m_fLifespanScaleExp
 m_fingers
 m_flBiasParameter
+m_flBindPoseDirectionMS
 m_flClusterCooldown
 m_flClusterCooldownMax
 m_flClusterCooldownMin
@@ -2801,6 +2911,7 @@ m_flClusterSize
 m_flDelay
 m_flDepth
 m_flDistance
+m_flDuration
 m_flEmissionDuration
 m_flEmissionScale
 m_flEmitRate
@@ -2810,6 +2921,7 @@ m_flFalloff
 m_flFingerScaleRatio
 m_flFingerWeight
 m_flFireTime
+m_flFootLength
 m_flGridSize
 m_flGutterSize
 m_flHalfScreenWidth
@@ -2835,6 +2947,7 @@ m_flOpStrengthMaxScale
 m_flOpStrengthMinScale
 m_flOutput0
 m_flOutput1
+m_flPosition
 m_flRadius
 m_flRadiusScale
 m_flRadiusTaper
@@ -2864,6 +2977,7 @@ m_hBuffer
 m_hCaller
 m_hEntTarget
 m_hEntity
+m_hModel
 m_hSnapshot
 m_hTarget
 m_hingeAxis
@@ -2917,10 +3031,13 @@ m_nBoneHash
 m_nBoneIndex
 m_nBoneNameHash
 m_nBoneWeightCount
+m_nCP
+m_nCPField
 m_nChainIndex
 m_nChainInvIndex
 m_nChainType
 m_nChannelElements
+m_nChoice
 m_nClusterSizeMax
 m_nClusterSizeMin
 m_nCompressedAtlasSize
@@ -3148,6 +3265,7 @@ maps/%s/world_environmentmaps.vwenvmap
 maps/%s/world_visibility.vvis
 maps\%s.vpk
 master_morph_weight
+material_group
 materials/dev/convolve_environment_map.vmat
 materials/error.vmat
 materials/grass/grasstile.vmat
@@ -3176,6 +3294,7 @@ min_angle
 model.cpp
 model_default_preview_sequence_name
 model_dump_convert_info
+model_name
 modeldoc0
 modeldoc1
 modeldoc10
@@ -3196,6 +3315,7 @@ modeldoc23
 modeldoc24
 modeldoc25
 modeldoc26
+modeldoc27
 modeldoc3
 modeldoc4
 modeldoc5
@@ -3215,7 +3335,6 @@ notconnected
 notify
 numsegments
 o`ATA
-o`ATI
 origin_max_delta
 origin_relative
 out of memory
@@ -3290,6 +3409,8 @@ radius0
 radius1
 realloc
 recenter_on_parent_bone
+relative_angles
+relative_origin
 remapping vertex %d[w%d] invalid: %d->%d >= %d
 remapping vertex %d[w%d] invalid: %d->? >= %d
 resourcehandle
@@ -3401,6 +3522,7 @@ up[A\A]A^]
 update
 useMotionDamping
 useSmoothPaths
+use_additional_offset
 usemtl initialShadingGroup
 utlstring.cpp
 utlstringtoken
@@ -3427,7 +3549,6 @@ vector::_M_emplace_back_aux
 vector::_M_range_check: __n (which is %zu) >= this->size() (which is %zu)
 vector::_M_range_insert
 vents
-version
 version error
 virtual void Etc::Block4x4Encoding_ETC1::PerformIteration(float)
 virtual void Etc::Block4x4Encoding_ETC1::SetEncodingBits()
@@ -3447,6 +3568,7 @@ virtual void Etc::Block4x4Encoding_RGBA8::PerformIteration(float)
 virtual void Etc::Block4x4Encoding_RGBA8_Opaque::PerformIteration(float)
 virtual void Etc::Block4x4Encoding_RGBA8_Transparent::PerformIteration(float)
 vmatH
+vmatL
 vmatu
 vmdlH
 vmdlkeys0
@@ -3496,6 +3618,7 @@ vpcf21
 vpcf22
 vpcf23
 vpcf24
+vpcf25
 vpcf3
 vpcf4
 vpcf5
@@ -3508,6 +3631,7 @@ vsnap
 vtexA
 vtexH
 vvisH
+vvisL
 vwnod
 vwrld
 w@AUI
@@ -3544,19 +3668,18 @@ z:KEZ
 |$4A)
 |9TD8
 } A\A]A^]
-}!fE;
 }"f;C
-}>f;C
-}@f;C
+}"fE;
+}Cf;C
 }cHcU
 ~)H;7I
 ~,Lcu
 ~0E;~@A
 ~7;w$
-~>HcE
+~;HcE
+~=f;C
 ~@A\A]A^]
 ~CHcG
 ~FHcu
 ~FLcm
 ~IHcK
-~\fA;F

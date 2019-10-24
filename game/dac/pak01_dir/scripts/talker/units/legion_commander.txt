@@ -1,0 +1,149 @@
+// legion_commander - Hero
+criterion "Islegion_commander" "classname" "legion_commander" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response legion_commander_recruit_1
+{
+	speak "legion_commander_recruit" noscene 
+}
+
+Rule legion_commander_recruit_1_rule
+{
+	criteria Islegion_commander ConceptRecruit UnitRank1
+	response legion_commander_recruit_1
+}
+
+
+Response legion_commander_recruit_2
+{
+	speak "legion_commander_upgrade" noscene 
+}
+
+Rule legion_commander_recruit_2_rule
+{
+	criteria Islegion_commander ConceptRecruit UnitRank2
+	response legion_commander_recruit_2
+}
+
+
+Response legion_commander_recruit_3
+{
+	speak "legion_commander_final_upgrade" noscene 
+}
+
+Rule legion_commander_recruit_3_rule
+{
+	criteria Islegion_commander ConceptRecruit UnitRank3
+	response legion_commander_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response legion_commander_start_round
+{
+	speak "legion_commander_start_round" noscene 
+}
+
+Rule legion_commander_start_round_rule
+{
+	criteria Islegion_commander ConceptRoundStart 
+	response legion_commander_start_round
+}
+
+
+Response legion_commander_start_round_lost_last_round
+{
+	speak "legion_commander_start_round_lost_last_round" noscene 
+}
+
+Rule legion_commander_start_round_lost_last_round_rule
+{
+	criteria Islegion_commander ConceptRoundStart LostLastGame
+	response legion_commander_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response legion_commander_flawless_victory
+{
+	speak "legion_commander_flawless_victory" noscene 
+}
+
+Rule legion_commander_flawless_victory_rule
+{
+	criteria Islegion_commander ConceptRoundEnd Result_WinFlawless
+	response legion_commander_flawless_victory
+}
+
+
+Response legion_commander_decisive_victory
+{
+	speak "legion_commander_decisive_victory" noscene 
+}
+
+Rule legion_commander_decisive_victory_rule
+{
+	criteria Islegion_commander ConceptRoundEnd Result_WinDecisive
+	response legion_commander_decisive_victory
+}
+
+Response legion_commander_narrow_victory
+{
+	speak "legion_commander_narrow_victory" noscene 
+}
+
+Rule legion_commander_narrow_victory_rule
+{
+	criteria Islegion_commander ConceptRoundEnd Result_WinNarrow
+	response legion_commander_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response legion_commander_flawless_defeat
+{
+	speak "legion_commander_flawless_defeat" noscene 
+}
+
+Rule legion_commander_flawless_defeat_rule
+{
+	criteria Islegion_commander ConceptRoundEnd Result_LoseFlawless
+	response legion_commander_flawless_defeat
+}
+
+
+Response legion_commander_decisive_defeat
+{
+	speak "legion_commander_decisive_defeat" noscene 
+}
+
+Rule legion_commander_decisive_defeat_rule
+{
+	criteria Islegion_commander ConceptRoundEnd Result_LoseDecisive
+	response legion_commander_decisive_defeat
+}
+
+Response legion_commander_narrow_defeat
+{
+	speak "legion_commander_narrow_defeat" noscene 
+}
+
+Rule legion_commander_narrow_defeat_rule
+{
+	criteria Islegion_commander ConceptRoundEnd Result_LoseNarrow
+	response legion_commander_narrow_defeat
+}

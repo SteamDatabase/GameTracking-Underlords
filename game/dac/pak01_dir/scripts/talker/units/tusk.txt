@@ -1,0 +1,149 @@
+// tusk - Hero
+criterion "Istusk" "classname" "tusk" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response tusk_recruit_1
+{
+	speak "tusk_recruit" noscene 
+}
+
+Rule tusk_recruit_1_rule
+{
+	criteria Istusk ConceptRecruit UnitRank1
+	response tusk_recruit_1
+}
+
+
+Response tusk_recruit_2
+{
+	speak "tusk_upgrade" noscene 
+}
+
+Rule tusk_recruit_2_rule
+{
+	criteria Istusk ConceptRecruit UnitRank2
+	response tusk_recruit_2
+}
+
+
+Response tusk_recruit_3
+{
+	speak "tusk_final_upgrade" noscene 
+}
+
+Rule tusk_recruit_3_rule
+{
+	criteria Istusk ConceptRecruit UnitRank3
+	response tusk_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response tusk_start_round
+{
+	speak "tusk_start_round" noscene 
+}
+
+Rule tusk_start_round_rule
+{
+	criteria Istusk ConceptRoundStart 
+	response tusk_start_round
+}
+
+
+Response tusk_start_round_lost_last_round
+{
+	speak "tusk_start_round_lost_last_round" noscene 
+}
+
+Rule tusk_start_round_lost_last_round_rule
+{
+	criteria Istusk ConceptRoundStart LostLastGame
+	response tusk_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response tusk_flawless_victory
+{
+	speak "tusk_flawless_victory" noscene 
+}
+
+Rule tusk_flawless_victory_rule
+{
+	criteria Istusk ConceptRoundEnd Result_WinFlawless
+	response tusk_flawless_victory
+}
+
+
+Response tusk_decisive_victory
+{
+	speak "tusk_decisive_victory" noscene 
+}
+
+Rule tusk_decisive_victory_rule
+{
+	criteria Istusk ConceptRoundEnd Result_WinDecisive
+	response tusk_decisive_victory
+}
+
+Response tusk_narrow_victory
+{
+	speak "tusk_narrow_victory" noscene 
+}
+
+Rule tusk_narrow_victory_rule
+{
+	criteria Istusk ConceptRoundEnd Result_WinNarrow
+	response tusk_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response tusk_flawless_defeat
+{
+	speak "tusk_flawless_defeat" noscene 
+}
+
+Rule tusk_flawless_defeat_rule
+{
+	criteria Istusk ConceptRoundEnd Result_LoseFlawless
+	response tusk_flawless_defeat
+}
+
+
+Response tusk_decisive_defeat
+{
+	speak "tusk_decisive_defeat" noscene 
+}
+
+Rule tusk_decisive_defeat_rule
+{
+	criteria Istusk ConceptRoundEnd Result_LoseDecisive
+	response tusk_decisive_defeat
+}
+
+Response tusk_narrow_defeat
+{
+	speak "tusk_narrow_defeat" noscene 
+}
+
+Rule tusk_narrow_defeat_rule
+{
+	criteria Istusk ConceptRoundEnd Result_LoseNarrow
+	response tusk_narrow_defeat
+}

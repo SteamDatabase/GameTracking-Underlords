@@ -1,11 +1,12 @@
 DACScoreboard {
 	flow-children: down;
-	vertical-align: center;
-	margin-bottom: 26px;
+	vertical-align: top;
+	margin-top: 45px;
 	ui-scale: 80%; /* Matches scale value of scoreboard in PC mode */
 	
-	overflow: scroll;
+	overflow: scroll scroll;
 	width: 100%;
+	max-height: 100%;
 	
 	//background-color: #2c2a32;
 }
@@ -18,7 +19,8 @@ DACScoreboard {
 }
 
 .IsLayoutSmallScreen DACScoreboard {
-	ui-scale: 100%;
+	margin-top: 35px;
+	ui-scale: 90%;
 }
 
 .IsLayoutSmallScreen.AspectRatio16x9 DACScoreboard {
@@ -31,7 +33,7 @@ DACScoreboard {
 }
 
 .IsLayoutSmallScreen.AspectRatio21x9 DACScoreboard {
-	ui-scale: 100%;
+	ui-scale: 90%;
 	margin-bottom: 0px;
 	//max-width: 1920px;
 }
@@ -93,8 +95,8 @@ DACScoreboard {
 }
 
 .IsLayoutSmallScreen.AspectRatio21x9 #Header{
-	padding-left: 0px;
-	margin-left: -60px;
+	padding-left: 62px;
+	//margin-left: -60px;
 }
 
 #ScoreboardEntryContainer {
@@ -105,4 +107,11 @@ DACScoreboard {
 .MatchModeSoloBot #RankHeader, .MatchModeCasual #RankHeader {
 	width: 0;
 	opacity: 0;
+}
+
+.GameMode_Duos DACScoreboard,
+.GameMode_Duos.ScoreboardVisible #ScoreboardBG
+{
+	// hiding scoreboard for Duos for the time being
+	visibility: collapse;
 }

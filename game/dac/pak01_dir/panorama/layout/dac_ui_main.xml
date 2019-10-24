@@ -8,7 +8,9 @@
 	</snippets>
 
 	<DACUIMain hittest="false">
-		<PageManager id="PageManager" />
+    <DACScenePanel id="UnderlordPortrait" shadowslopescaledepthbias="10.0" map="dac_bc_underlord" forcehighlod="true" rendershadows="true" renderdeferred="false" cleardepth="true" camera="cam_underlord_portrait" glowsize="0" hittest="false" squarepixels="true" />
+
+    <PageManager id="PageManager" />
 
 		<Panel id="MainMenuContainer" hittest="false">
 			<Panel id="PlayButtonContainer" class="MainMenuButtonContainer">
@@ -46,25 +48,20 @@
 		</Panel>
 
 		<Panel class="SystemButtons">
-			<Button id="ZooButton" onactivate="DACSelectDashboardButton('ZooContainer'); DACShowZooPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsActivate' );" />
-			<Panel class="FeedbackPanel">
-				<Label class="SubmitFeedbackIntro" text="#DAC_Home_SubmitFeedbackIntro" />
-				<Button id="SubmitFeedbackButton" class="SimpleButton" onactivate="ExternalBrowserGoToFeedback(); PlaySoundEffect( 'DAC_UI.MainMenu_SubmitFeedback' );">
-					<Label text="#DAC_Home_SubmitFeedback"/>
-				</Button>
-			</Panel>
+			<Panel id="GameLogo" />
+      		<Panel id="JailButtonContainer" onactivate="DACShowBannedHeroes() PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )" />
 			<Panel id="PatchNotesButtonContainer">
-				<Button id="PatchNotesButton" class="GradientButton PatchNotesButton" onactivate="DACSelectDashboardButton('PatchNotesContainer'); DACShowPatchNotesPage();" />
+				<Button id="PatchNotesButton" class="PatchNotesButton" onactivate="DACSelectDashboardButton('PatchNotesContainer'); DACShowPatchNotesPage();" />
 				<Panel id="PatchNotesViolator" hittest="false" />
 			</Panel>
 			<Panel id="SettingsMenuButtonContainer">
-				<Button id="SettingsMenuButton" class="GradientButton" onactivate="DACSelectDashboardButton('SettingsMenuContainer'); DACShowSettingsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsActivate' );" onmouseover="DACHighlightDashboardButton('SettingsMenuButtonContainer')" onmouseout="DACUnhighlightDashboardButton('SettingsMenuButtonContainer')" />
+				<Button id="SettingsMenuButton" class="" onactivate="DACShowSettingsPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )" onmouseover="DACHighlightDashboardButton('SettingsMenuButtonContainer')" onmouseout="DACUnhighlightDashboardButton('SettingsMenuButtonContainer')" />
 			</Panel>
 			<Panel id="QuitButtonContainer">
-				<Button id="QuitButton" class="QuitButton GradientButton" onactivate="DACQuitApp()"/>
+				<Button id="QuitButton" class="QuitButton" onactivate="DACQuitApp()"/>
 			</Panel>
 		</Panel>
-
+		<Button id="ZooButton" onactivate="DACSelectDashboardButton('ZooContainer'); DACShowZooPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsActivate' );" />
 
 
 		<DropDown id="HudModeDropdown">

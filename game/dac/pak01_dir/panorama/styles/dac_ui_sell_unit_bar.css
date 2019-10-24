@@ -1,130 +1,288 @@
-DACSellUnitBar
+.UnitDropBar
 {
-    width: 185px;
-    height: 100%;
-    background-image: url("s2r://panorama/images/leaderboard/leader_board_backer_psd.vtex");
-    background-size: 100%;
-    //position: 0px 0px 0px;
-    opacity: 0;
+	width: 100%;
+	height: 100%;
+	//background-image: url("s2r://panorama/images/leaderboard/leader_board_backer_psd.vtex");
+	background-size: 100%;
+	visibility: collapse;
 	
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #00000088 ), to(#000000dd));
+	//background-color: gradient(linear, 0% 0%, 100% 0%, from( #00000088 ), to(#000000dd));
 	
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000 ), to(#000000));
-	box-shadow: #000000 0px 0px 15px;
+	//background-color: gradient(linear, 0% 0%, 100% 0%, from( #000000 ), to(#000000));
+	//box-shadow: #000000 0px 0px 15px;
 
-    transition-property: opacity, brightness, position, background-image;
-    transition-duration: 0.2s;
-    transition-timing-function: ease-in;
+	transition-property: brightness, background-image;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+
+	margin-bottom: 20px;
 }
 
-.IsLayoutLargeScreen DACSellUnitBar
+.GameMode_Duos .UnitDropBar
 {
-    ui-scale: 80%;
+	width: 50%;
+	vertical-align: bottom;
 }
 
-.DraggingUnit DACSellUnitBar
+.GameMode_Duos.UnitSelected.SellUnitVisible .UnitDropBar
 {
-    //background-image: url("s2r://panorama/images/hud/sell_unit_panel_bg_on_psd.vtex");
+	visibility: visible;
 }
 
-.ScoreboardHidden.SellUnitVisible DACSellUnitBar
+.UnderlordSelected.GameMode_Duos .UnitDropBar
 {
-    position: 0px 0px 0px;
-    opacity: 1;
+	visibility: collapse;
 }
 
-DACSellUnitBar.Hovered #SellButtonContainer
+.GameMode_Duos.DraggingShopUnit #SellUnitBar
 {
-	background-image: url("s2r://panorama/images/hud/sell_unit_button_dragging_psd.vtex");
+	wash-color: #777;
+    visibility: visible;
 }
 
-#SellButtonContainer
+.SellUnitVisible #SellUnitBar
 {
-    width: 150px;
-    height: 500px;
-    horizontal-align: center;
-    vertical-align: center;
-    background-image: url("s2r://panorama/images/hud/sell_unit_button_psd.vtex");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50% 50%;
+	vertical-align: top;
+	visibility: visible;
 }
 
-#SellButtonContainer
+.InCombat.SelectedUnitOnBoard #SellUnitBar
 {
-	transition-property: background-image;
+	visibility: collapse;
+}
+
+#SendButtonContainer
+{
+	//flow-children: down;
+}
+
+.UnitBarButtonContainer
+{
+	height: 100%;
+	width: 100%;
+	horizontal-align: center;
+	vertical-align: center;
+
+	transition-property: background-color, background-image, brightness;
 	transition-duration: .2s;
+
+	border-top: 2px solid #716f7e88;
+	border-left: 2px solid #41396133;
+	border-right: 2px solid #413961aa;
+	border-bottom: 2px solid #8a7bc1aa;
+	background-color: gradient(linear, 0% 100%, 0% 0%, from(#45455c88), to(#1a1a1d88));
+
+	//background-image: url("s2r://panorama/images/hud/sell_unit_button_psd.vtex");
+	//background-repeat: no-repeat;
+	//background-size: 96% 112%;
+	//background-position: 50% 50%;
 }
 
-.DraggingUnit #SellButtonContainer
+.GameMode_Duos .UnitBarButtonContainer
 {
-    //ackground-image: url("s2r://panorama/images/hud/sell_unit_button_dragging_psd.vtex");
+	height: 92%;
+	width: 95%;
+}
+
+.SellUnitVisible .Hovered #SellButtonContainer.UnitBarButtonContainer,
+.CanSendUnit.Hovered #SendButtonContainer.UnitBarButtonContainer
+{
+	//background-image: url("s2r://panorama/images/hud/sell_unit_button_dragging_psd.vtex");
+	//background-color: #888888;
+	brightness: 1.8;
 }
 
 #SellUnitIcon
 {
-    width: 130px;
-    height: 190px;
-    horizontal-align: center;
-    margin-top: 126px;
-    background-image: url("s2r://panorama/images/hud/sell_unit_icon_psd.vtex");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50% 50%;
-	transition-property: background-image;
+	//width: 120px;
+	//height: 130px;
+	width: 110px;
+	height: 110px;
+	horizontal-align: center;
+	margin-top: -5px;
+	background-image: url("s2r://panorama/images/hud/sell_unit_icon_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
+	transition-property: background-image, wash-color, brightness;
 	transition-duration: .2s;
+}
+
+.IsLayoutSmallScreen #SellUnitIcon
+{
+    width: 175px;
+    height: 175px;
+    margin-top: 12px; 
+}
+
+
+.GameMode_Duos.IsLayoutSmallScreen #SellUnitIcon
+{
+    width: 150px;
+    height: 150px;
+    margin-top: 12px; 
+}
+
+
+.GameMode_Duos #SellUnitIcon
+{
+	margin-top: -2px;
+	width: 120px;
+	height: 90px;	
+}
+
+.GameMode_Duos.InCombat #SellUnitIcon
+{
+    background-image: none;
+}
+
+.IsLayoutSmallScreen.GameMode_Duos.InCombat #SellUnitIcon
+{
+	background-image: url("s2r://panorama/images/hud/sell_unit_icon_psd.vtex");
 }
 
 .LowVisualQuality DACSellUnitBar,
 .LowVisualQuality #SellButtonContainer,
 .LowVisualQuality #SellUnitIcon
 {
-    transition-duration: 0.0s;
+	transition-duration: 0.0s;
 }
 
-DACSellUnitBar.Hovered #SellUnitIcon
+.UnitDropBar.Hovered #SellUnitIcon
 {
-    background-image: url("s2r://panorama/images/hud/sell_unit_icon_on_psd.vtex");
+	//background-image: url("s2r://panorama/images/hud/sell_unit_icon_on_psd.vtex");
 }
 
-.DraggingUnit #SellUnitIcon
+
+
+.CanSendUnit #SendButtonContainer
 {
-    //background-image: url("s2r://panorama/images/hud/sell_unit_icon_on_psd.vtex");
+	wash-color: #00000000;
 }
+
+.SellLabel
+{
+    horizontal-align: center;
+    vertical-align: bottom;
+    font-weight: bold;
+    font-size: 24px;
+
+    color: gradient(linear, 0% 0%, 0% 100%, from( #ffec87 ), to(#ffd700));    
+    visibility: visible;
+    text-transform: uppercase;
+    //margin-bottom: 78px;
+    margin-bottom: 73px;
+}
+
+.IsLayoutSmallScreen .SellLabel,
+.IsLayoutSmallScreen.InCombat .SellLabel,
+.GameMode_Duos.IsLayoutSmallScreen .SellLabel,
+.GameMode_Duos.IsLayoutSmallScreen.InCombat .SellLabel
+{
+    font-size: 32px;
+    //margin-bottom: 125px;
+    margin-bottom: 115px;
+}
+
+
+.GameMode_Duos .SellLabel
+{
+   font-size: 21px;
+   margin-bottom: 65px;
+}
+
+.GameMode_Duos.InCombat .SellLabel
+{
+    margin-bottom: 55px;
+}
+
 
 #GoldValueContainer
 {
-    width: 100px;
-    height: 90px;
-    horizontal-align: center;
-    margin-top: 300px;
-    margin-left: 3px;
+	width: 80px;
+	height: 65px;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 5px;
 
-    background-image: url("s2r://panorama/images/hud/dac_shop_button_psd.vtex");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50% 50%;
+	background-image: url("s2r://panorama/images/hud/dac_shop_button_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
+
+	visibility: collapse;
+}
+
+.IsLayoutSmallScreen #GoldValueContainer,
+.GameMode_Duos.IsLayoutSmallScreen #GoldValueContainer,
+.InCombat.GameMode_Duos.IsLayoutSmallScreen #GoldValueContainer,
+{
+	width: 105px;
+	height: 85px;
+	margin-bottom: 15px;
+}
+
+.GameMode_Duos #GoldValueContainer
+{
+	width: 70px;
+	height: 55px;
+}
+
+.GameMode_Duos.InCombat #GoldValueContainer
+{
+	width: 70px;
+	height: 55px;
+	margin-bottom: 0px;
+}
+
+#SellUnitBar #GoldValueContainer
+{
+	visibility: visible;
 }
 
 #UnitCost
 {
-    width: 100%;
-    text-align: center;
-    padding-right: 4px;
-    margin-top: 13px;
-    color: gradient(linear, 0% 0%, 0% 100%, from(#973c00), to(#906030));
-    font-size: 40px;
-    font-weight: bold;
+	width: 100%;
+	text-align: center;
+	padding-right: 4px;
+	margin-top: 7px;
+	font-size: 32px;
+	font-weight: bold;
+	color: gradient(linear, 0% 0%, 0% 100%, from(#973c00), to(#906030));
+}
+
+.IsLayoutSmallScreen #UnitCost,
+.GameMode_Duos.IsLayoutSmallScreen #UnitCost,
+.InCombat.GameMode_Duos.IsLayoutSmallScreen #PlusMinus
+{
+	font-size: 36px;
+	margin-top: 15px;
+}
+
+.GameMode_Duos #UnitCost
+{
+	padding-right: 4px;
+	margin-top: 7px;
+	font-size: 28px;
 }
 
 #PlusMinus
 {
-    wash-color: #FFDE6D88;
-	width: 28px;
-    height: 28px;
-    margin-top: 24px;
-    background-image: url("s2r://panorama/images/hud/sell_unit_plus_psd.vtex");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: 50% 50%;
+	wash-color: #FFDE6D88;
+	width: 24px;
+	height: 24px;
+	margin-top: 13px;
+	background-image: url("s2r://panorama/images/hud/sell_unit_plus_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
+}
+
+.IsLayoutSmallScreen #PlusMinus,
+.GameMode_Duos.IsLayoutSmallScreen #PlusMinus,
+.InCombat.GameMode_Duos.IsLayoutSmallScreen #PlusMinus
+{
+	margin-top: 20px;
+	width: 30px;
+	height: 30px;
 }

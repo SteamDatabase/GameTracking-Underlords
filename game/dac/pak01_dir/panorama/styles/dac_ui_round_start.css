@@ -6,7 +6,18 @@ DACRoundStart
 	vertical-align: center;
 	horizontal-align: center;
 
-	opacity: 0; 
+	visibility: collapse;
+}
+
+DACRoundStart.Visible
+{
+	visibility: visible;
+}
+
+.ShopVisible DACRoundStart
+{
+	vertical-align: bottom;
+	ui-scale: 70%;
 }
 
 .IsDragging DACRoundStart
@@ -34,6 +45,11 @@ DACRoundStart
 	flow-children: down;
 }
 
+.IsLayoutLargeScreen .NextRound_BG
+{
+	margin-top: -100px;
+}
+
 @keyframes 'NextRoundAnim'
 {
 	from
@@ -46,7 +62,7 @@ DACRoundStart
 	4%
 	{
 		opacity: 1; 
-		pre-transform-scale2d: 1.25;
+		pre-transform-scale2d: 1.1;
 		wash-color: white;
 	}
 	
@@ -65,7 +81,7 @@ DACRoundStart
 	{
 		opacity: 1; 
 		wash-color: white;
-		pre-transform-scale2d: 1.25;
+		pre-transform-scale2d: 1.1;
 	}
 	to
 	{
@@ -75,10 +91,9 @@ DACRoundStart
 	}
 }
 
-DACRoundStart.FadeNextRound
+.FadeNextRound .NextRound_GoldInfo
 {
-	opacity: 0.001;
-		
+	opacity: 1;
 	animation-name: NextRoundAnim;
 	animation-delay: 0.0s;
 	animation-duration: 5.0s;
@@ -208,12 +223,31 @@ DACRoundStart.FadeNextRound
 	height: 0px;
 }
 
+.ShowOffensiveGem .BreakdownFreeOffensiveGemLabel
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #AA0000 ), to(#ffe287));
+}
+
+.ShowDefensiveGem .BreakdownFreeDefensiveGemLabel
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #00FF00 ), to(#ffe287));
+}
+
+.ShowSupportGem .BreakdownFreeSupportGemLabel
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #00FF00 ), to(#ffe287));
+}
+
+
 .ShowInterest .BreakdownInterestLabel,
 .ShowStreak .BreakdownStreakLabel,
 .ShowItems .BreakdownItemsLabel,
 .ShowVictoryGold .BreakdownVictoryLabel,
 .ShowRoundGold .BreakdownRoundGoldLabel,
-.ShowFreeReroll .BreakdownFreeRerollLabel
+.ShowFreeReroll .BreakdownFreeRerollLabel,
+.ShowOffensiveGem .BreakdownFreeOffensiveGemLabel,
+.ShowDefensiveGem .BreakdownFreeDefensiveGemLabel,
+.ShowSupportGem .BreakdownFreeSupportGemLabel
 {
 	height: 40px;
 	opacity: 1.0;

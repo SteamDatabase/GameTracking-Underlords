@@ -1,0 +1,149 @@
+// beastmaster - Hero
+criterion "Isbeastmaster" "classname" "beastmaster" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response beastmaster_recruit_1
+{
+	speak "beastmaster_recruit" noscene 
+}
+
+Rule beastmaster_recruit_1_rule
+{
+	criteria Isbeastmaster ConceptRecruit UnitRank1
+	response beastmaster_recruit_1
+}
+
+
+Response beastmaster_recruit_2
+{
+	speak "beastmaster_upgrade" noscene 
+}
+
+Rule beastmaster_recruit_2_rule
+{
+	criteria Isbeastmaster ConceptRecruit UnitRank2
+	response beastmaster_recruit_2
+}
+
+
+Response beastmaster_recruit_3
+{
+	speak "beastmaster_final_upgrade" noscene 
+}
+
+Rule beastmaster_recruit_3_rule
+{
+	criteria Isbeastmaster ConceptRecruit UnitRank3
+	response beastmaster_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response beastmaster_start_round
+{
+	speak "beastmaster_start_round" noscene 
+}
+
+Rule beastmaster_start_round_rule
+{
+	criteria Isbeastmaster ConceptRoundStart 
+	response beastmaster_start_round
+}
+
+
+Response beastmaster_start_round_lost_last_round
+{
+	speak "beastmaster_start_round_lost_last_round" noscene 
+}
+
+Rule beastmaster_start_round_lost_last_round_rule
+{
+	criteria Isbeastmaster ConceptRoundStart LostLastGame
+	response beastmaster_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response beastmaster_flawless_victory
+{
+	speak "beastmaster_flawless_victory" noscene 
+}
+
+Rule beastmaster_flawless_victory_rule
+{
+	criteria Isbeastmaster ConceptRoundEnd Result_WinFlawless
+	response beastmaster_flawless_victory
+}
+
+
+Response beastmaster_decisive_victory
+{
+	speak "beastmaster_decisive_victory" noscene 
+}
+
+Rule beastmaster_decisive_victory_rule
+{
+	criteria Isbeastmaster ConceptRoundEnd Result_WinDecisive
+	response beastmaster_decisive_victory
+}
+
+Response beastmaster_narrow_victory
+{
+	speak "beastmaster_narrow_victory" noscene 
+}
+
+Rule beastmaster_narrow_victory_rule
+{
+	criteria Isbeastmaster ConceptRoundEnd Result_WinNarrow
+	response beastmaster_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response beastmaster_flawless_defeat
+{
+	speak "beastmaster_flawless_defeat" noscene 
+}
+
+Rule beastmaster_flawless_defeat_rule
+{
+	criteria Isbeastmaster ConceptRoundEnd Result_LoseFlawless
+	response beastmaster_flawless_defeat
+}
+
+
+Response beastmaster_decisive_defeat
+{
+	speak "beastmaster_decisive_defeat" noscene 
+}
+
+Rule beastmaster_decisive_defeat_rule
+{
+	criteria Isbeastmaster ConceptRoundEnd Result_LoseDecisive
+	response beastmaster_decisive_defeat
+}
+
+Response beastmaster_narrow_defeat
+{
+	speak "beastmaster_narrow_defeat" noscene 
+}
+
+Rule beastmaster_narrow_defeat_rule
+{
+	criteria Isbeastmaster ConceptRoundEnd Result_LoseNarrow
+	response beastmaster_narrow_defeat
+}

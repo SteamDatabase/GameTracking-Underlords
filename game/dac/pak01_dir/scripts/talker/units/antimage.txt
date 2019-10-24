@@ -1,0 +1,149 @@
+// Antimage - Hero
+criterion "Isantimage" "classname" "antimage" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response antimage_recruit_1
+{
+	speak "antimage_recruit" noscene 
+}
+
+Rule antimage_recruit_1_rule
+{
+	criteria Isantimage ConceptRecruit UnitRank1
+	response antimage_recruit_1
+}
+
+
+Response antimage_recruit_2
+{
+	speak "antimage_upgrade" noscene 
+}
+
+Rule antimage_recruit_2_rule
+{
+	criteria Isantimage ConceptRecruit UnitRank2
+	response antimage_recruit_2
+}
+
+
+Response antimage_recruit_3
+{
+	speak "antimage_final_upgrade" noscene 
+}
+
+Rule antimage_recruit_3_rule
+{
+	criteria Isantimage ConceptRecruit UnitRank3
+	response antimage_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response antimage_start_round
+{
+	speak "antimage_start_round" noscene 
+}
+
+Rule antimage_start_round_rule
+{
+	criteria Isantimage ConceptRoundStart 
+	response antimage_start_round
+}
+
+
+Response antimage_start_round_lost_last_round
+{
+	speak "antimage_start_round_lost_last_round" noscene 
+}
+
+Rule antimage_start_round_lost_last_round_rule
+{
+	criteria Isantimage ConceptRoundStart LostLastGame
+	response antimage_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response antimage_flawless_victory
+{
+	speak "antimage_flawless_victory" noscene 
+}
+
+Rule antimage_flawless_victory_rule
+{
+	criteria Isantimage ConceptRoundEnd Result_WinFlawless
+	response antimage_flawless_victory
+}
+
+
+Response antimage_decisive_victory
+{
+	speak "antimage_decisive_victory" noscene 
+}
+
+Rule antimage_decisive_victory_rule
+{
+	criteria Isantimage ConceptRoundEnd Result_WinDecisive
+	response antimage_decisive_victory
+}
+
+Response antimage_narrow_victory
+{
+	speak "antimage_narrow_victory" noscene 
+}
+
+Rule antimage_narrow_victory_rule
+{
+	criteria Isantimage ConceptRoundEnd Result_WinNarrow
+	response antimage_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response antimage_flawless_defeat
+{
+	speak "antimage_flawless_defeat" noscene 
+}
+
+Rule antimage_flawless_defeat_rule
+{
+	criteria Isantimage ConceptRoundEnd Result_LoseFlawless
+	response antimage_flawless_defeat
+}
+
+
+Response antimage_decisive_defeat
+{
+	speak "antimage_decisive_defeat" noscene 
+}
+
+Rule antimage_decisive_defeat_rule
+{
+	criteria Isantimage ConceptRoundEnd Result_LoseDecisive
+	response antimage_decisive_defeat
+}
+
+Response antimage_narrow_defeat
+{
+	speak "antimage_narrow_defeat" noscene 
+}
+
+Rule antimage_narrow_defeat_rule
+{
+	criteria Isantimage ConceptRoundEnd Result_LoseNarrow
+	response antimage_narrow_defeat
+}

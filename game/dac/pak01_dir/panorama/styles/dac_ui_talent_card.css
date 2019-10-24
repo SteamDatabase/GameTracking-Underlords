@@ -1,0 +1,223 @@
+
+
+DACTalentCard
+{
+	width: 300px;
+	height: 460px;
+
+	margin: 0px 20px;
+
+	border-radius: 12px;
+
+	flow-children: down;
+
+	transition-property: transform;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
+}
+
+DACTalentCard.NeedsPrereq .ImageDimmer,
+DACTalentCard.NeedsPrereq #AbilityContainer,
+DACTalentCard.Unavailable .ImageDimmer,
+DACTalentCard.Unavailable #AbilityContainer
+{
+	saturation: 0.0;
+	brightness: 0.2;
+}
+
+DACTalentCard.NeedsPrereq .BottomSection,
+DACTalentCard.Unavailable .BottomSection
+{
+	saturation: 0.5;
+	brightness: 0.6;
+}
+
+DACTalentCard:not(.NotSelectable):hover
+{
+	transform: scaleX( 1.05 ) scaleY( 1.05 );
+}
+
+DACTalentCard .ImageDimmer
+{
+	width: 100%;
+	height: 100%;
+}
+
+DACTalentCard .ImageContainer
+{
+	width: 100%;
+	height: width-percentage( 100% );
+
+}
+
+DACTalentCard .TalentImage
+{
+	width: 100%;
+	height: 100%;
+}
+
+DACTalentCard .Prereq
+{
+	vertical-align: center;
+	horizontal-align: center;
+
+	text-align: center;
+
+	width: 100%;
+
+	font-size: 40px;
+	color: white;
+
+	text-transform: uppercase;
+	font-weight: bold;
+
+	padding: 0px 10px;
+
+	visibility: collapse;
+}
+
+DACTalentCard.NeedsPrereq .Prereq
+{
+	visibility: visible;
+}
+
+
+DACTalentCard.Unavailable  {
+	brightness: 0.5;
+}
+
+DACTalentCard .Locked
+{
+	vertical-align: center;
+	horizontal-align: center;
+
+	text-align: center;
+
+	width: 100%;
+
+	font-size: 46px;
+	color: white;
+
+	text-transform: uppercase;
+	font-weight: black;
+	letter-spacing: 2px;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#C6DCFE));
+
+	padding: 0px 10px;
+	padding-bottom: 50px;
+	text-overflow: shrink;
+	font-family: 'Ravenhook';
+	brightness: 1;
+
+	visibility: collapse;
+}
+
+DACTalentCard.Unavailable .Locked,
+DACTalentCard.Unavailable:not(.UnavailableGeneric) #UnlockCondition,
+DACTalentCard.Unavailable.UnavailableGeneric #UnlockConditionGeneric
+{
+	visibility: visible;
+}
+
+DACTalentCard #UnlockCondition,
+DACTalentCard #UnlockConditionGeneric
+{
+	vertical-align: center;
+	horizontal-align: center;
+
+	text-align: center;
+
+	width: 100%;
+
+	font-size: 20px;
+	color: white;
+
+	//text-transform: uppercase;
+	font-weight: semi-bold;
+
+	padding: 0px 10px;
+	padding-top: 70px;
+	brightness: 1;
+
+	visibility: collapse;
+}
+
+
+DACTalentCard #AbilityContainer
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+	background-color: #000000aa;
+	background-color: gradient(linear, 10% 0%, 100% 0%, from( #000000 ), to(#00000000));
+	width: 100%;
+
+
+	flow-children: right;
+}
+
+DACTalentCard .Ability
+{
+	color: white;
+	font-size: 18px;
+	font-weight: semi-bold;
+
+	//text-shadow: 0px 0px 0px 2.0 #000;
+
+	vertical-align: middle;
+}
+
+DACTalentCard.NoParent #AbilityContainer
+{
+	visibility: collapse;
+}
+
+
+DACTalentCard #AbilityImage
+{
+	width: 45px;
+	height: 45px;
+	margin-right: 8px;
+}
+
+DACTalentCard .BottomSection
+{
+	width: 100%;
+	height: fill-parent-flow( 1.0 );
+
+	background-color: black;
+
+	flow-children: down;
+}
+
+DACTalentCard .BottomSection .TalentName
+{
+	width: 100%;
+	font-size: 24px;
+	color: #DDD;
+	font-weight: bold;
+	font-family: Ravenhook;
+	text-align: center;
+	line-height: 22px;
+	
+
+	margin-top: 10px;
+
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+DACTalentCard .BottomSection .TalentDescription
+{
+	font-size: 18px;
+	padding: 0px 10px;
+	color: #999;
+	line-height: 22px;
+	padding: 0px 16px;
+	text-align: center;
+}
+
+DACTalentCard .BottomSection .TalentDescription .PerLevel
+{
+	color: #b9902e;
+	font-weight: semi-bold;
+}

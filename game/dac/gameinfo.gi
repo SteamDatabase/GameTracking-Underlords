@@ -34,8 +34,11 @@
 		//
 		SearchPaths
 		{
-			Game				dac_desktop [!$MOBILE && !$MOBILE_RSRC && !$BUILDALLSHADERS_RUN && !$CONTENTBUILDER_RUN && !$VMPI_GAMEINFO]
-			Game				dac_mobile [$MOBILE || $MOBILE_RSRC]
+			// These are optional low-violence paths. They will only get mounted if you're in a low-violence mode.
+			Game_LowViolence	dac_lv
+
+			Game_NonTools		dac_desktop [!$MOBILE && !$MOBILE_RSRC && !$BUILDALLSHADERS_RUN && !$CONTENTBUILDER_RUN && !$VMPI_GAMEINFO]
+			Game_NonTools		dac_mobile [$MOBILE || $MOBILE_RSRC]
 			Game				dac
 			Game				core
 			Mod					dac
@@ -162,9 +165,11 @@
 
 	RenderSystem
 	{
+		"VulkanUseTransformConstantBuffer"	"1" [$ANDROID] // Snapdragon driver punts to immediate mode when we use vertex texture fetch, so use UBO to store transform data.
 		"VulkanUseStreamingTextureManager"	"1"
 		"VulkanUseSecondaryCommandBuffers"	"1" // Use secondary command buffers for more efficiency on tiled based renderers. Desktop too to limit configurations.
 		"VulkanOnly"						"1"	[ $LINUX || $OSX ] // No OpenGL or D3D9/11 fallback on Linux or OSX, only Vulkan is supported.
+		"VulkanUseExternalSubpassDependency"	"1"	// Required synchronization for ARM Mali GPUs
 		"SheetCacheTextureRows"				"1024"
 		"SheetCacheTextureCols"				"128"
 	}
@@ -173,18 +178,16 @@
 	{
 		"NoSunLightManager" "1"
 		"TransformTextureRowCount" "64"		[$MOBILE]
-		"CMTAtlasWidth" "64"
-		"CMTAtlasHeight" "64"
-		"CMTAtlasChunkSize" "64"
+		"CMTAtlasWidthMobile" "512"
+		"CMTAtlasHeightMobile" "512"	
+		"CMTAtlasChunkSizeMobile" "128"
+		"CMTAtlasWidth" "512"
+		"CMTAtlasHeight" "512"
+		"CMTAtlasChunkSize" "128"
 		"DrawParticleChildrenSeparateFromParents" "1"
 		"SkipLoadingRenderingPipelines" "1"
 		"MaxAutoPartitions" "8"				[!$MOBILE]
 		"MaxAutoPartitions" "6"				[$MOBILE]
-	}
-
-	MeshSystem
-	{
-		"DoNotLoadMorphsOnMobile" "1"		[$MOBILE]
 	}
 
 	SoundSystem

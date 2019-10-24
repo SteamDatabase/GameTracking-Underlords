@@ -1,0 +1,149 @@
+// pudge - Hero
+criterion "Ispudge" "classname" "pudge" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response pudge_recruit_1
+{
+	speak "pudge_recruit" noscene 
+}
+
+Rule pudge_recruit_1_rule
+{
+	criteria Ispudge ConceptRecruit UnitRank1
+	response pudge_recruit_1
+}
+
+
+Response pudge_recruit_2
+{
+	speak "pudge_upgrade" noscene 
+}
+
+Rule pudge_recruit_2_rule
+{
+	criteria Ispudge ConceptRecruit UnitRank2
+	response pudge_recruit_2
+}
+
+
+Response pudge_recruit_3
+{
+	speak "pudge_final_upgrade" noscene 
+}
+
+Rule pudge_recruit_3_rule
+{
+	criteria Ispudge ConceptRecruit UnitRank3
+	response pudge_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response pudge_start_round
+{
+	speak "pudge_start_round" noscene 
+}
+
+Rule pudge_start_round_rule
+{
+	criteria Ispudge ConceptRoundStart 
+	response pudge_start_round
+}
+
+
+Response pudge_start_round_lost_last_round
+{
+	speak "pudge_start_round_lost_last_round" noscene 
+}
+
+Rule pudge_start_round_lost_last_round_rule
+{
+	criteria Ispudge ConceptRoundStart LostLastGame
+	response pudge_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response pudge_flawless_victory
+{
+	speak "pudge_flawless_victory" noscene 
+}
+
+Rule pudge_flawless_victory_rule
+{
+	criteria Ispudge ConceptRoundEnd Result_WinFlawless
+	response pudge_flawless_victory
+}
+
+
+Response pudge_decisive_victory
+{
+	speak "pudge_decisive_victory" noscene 
+}
+
+Rule pudge_decisive_victory_rule
+{
+	criteria Ispudge ConceptRoundEnd Result_WinDecisive
+	response pudge_decisive_victory
+}
+
+Response pudge_narrow_victory
+{
+	speak "pudge_narrow_victory" noscene 
+}
+
+Rule pudge_narrow_victory_rule
+{
+	criteria Ispudge ConceptRoundEnd Result_WinNarrow
+	response pudge_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response pudge_flawless_defeat
+{
+	speak "pudge_flawless_defeat" noscene 
+}
+
+Rule pudge_flawless_defeat_rule
+{
+	criteria Ispudge ConceptRoundEnd Result_LoseFlawless
+	response pudge_flawless_defeat
+}
+
+
+Response pudge_decisive_defeat
+{
+	speak "pudge_decisive_defeat" noscene 
+}
+
+Rule pudge_decisive_defeat_rule
+{
+	criteria Ispudge ConceptRoundEnd Result_LoseDecisive
+	response pudge_decisive_defeat
+}
+
+Response pudge_narrow_defeat
+{
+	speak "pudge_narrow_defeat" noscene 
+}
+
+Rule pudge_narrow_defeat_rule
+{
+	criteria Ispudge ConceptRoundEnd Result_LoseNarrow
+	response pudge_narrow_defeat
+}

@@ -7,13 +7,7 @@
 //		up to 32 sound mixers
 //		all strings are limited to 31 characters!
 
-// NOTE2: at runtime, you can display the classname of the sound source by
-// setting snd_showclassname 1 in the console.
 
-// NOTE3: main character dialog during critical scenes is ducked using a separate code path which, when
-// active, temporarilly disables mixer ducking (prevent double ducking).  
-// Lower priority sounds are ducked by higher priority sounds, if "is ducked" is enabled. 
-// Only sounds with "causes ducking" enabled can cause a lower priority sound to be ducked.
 
 "MixGroups"
 {
@@ -23,14 +17,17 @@
 //	group name				name substring		substring	chan			sndlvl_min	sndlvl_max	priority Is Ducked	Ducking	Percent	 Threshold
 //  ---------				------------------	---------	-----------		----------	----------	-------- --------	-------	-------	 ---------
 	
-	"Music"					"music/"			""			""				""			""			"45"		"0"		"0"		"100"	"40"
+	"Music"					"/music/"			""			""				""			""			"45"		"0"		"0"		"100"	"40"
+	"Stingers"				"/stingers"			""			""				""			""			"45"		"0"		"0"		"100"	"40"
 	"UI"					"ui/"				""			""				""			""			"50"		"0"		"0"		"90"	"90"
-	"UberAbilities"			"placeholder"			""			""				""			""			"50"		"0"		"0"		"90"	"60"
+	"Underlords"			"underlords/"		""			""				""			""			"50"		"0"		"0"		"90"	"60"
+	"UberAbilities"			"placeholder"		""			""				""			""			"50"		"0"		"0"		"90"	"60"
 	"Abilities"				"heroes/"			""			""				""			""			"50"		"0"		"0"		"90"	"60"
 	"BaseAttacks"			"/weapons"			""			""				""			""			"50"		"0"		"0"		"90"	"60"
 	"Items"					"/items/"			""			""				""			""			"50"		"0"		"0"		"90"	"60"	
-	"Creeps"				"creeps"			""			""				""			""			"40"		"0"		"0"		"80"	"90" 
-	"VO"					"placeholder"					""			""				""			""			"50"		"0"		"0"		"90"	"90"
+	"Creeps"				"creeps"			""			""				""			""			"40"		"0"		"0"		"80"	"90"
+	"VO_underlords"			"/vo/underlords/"	""			""				""			""			"50"		"0"		"0"		"90"	"90" 
+	"VO"					"placeholder"		""			""				""			""			"50"		"0"		"0"		"90"	"90"
 	"Ambient"				"environment"		""			""				""			""			"50"		"0"		"0"		"90"	"90"
 
 	"All"					""					""			""				"1"			""			"30"		"0"		"0"		"80"	"40"
@@ -55,28 +52,37 @@
 	//  --------				---------
 		
 		"Music"					"0.66"
+		"Stingers"				"0.5"
 		"UI"					"0.33"
-		"UberAbilities"			"0.66"		
-		"Abilities"				"0.66"
-		"BaseAttacks"			"1.0"
-		"Items"					"0.66"
-		"Creeps"				"0.66"
-		"VO"					"0.5"
+		"Underlords"			"0.5"
+		"UberAbilities"			"0.4"		
+		"Abilities"				"0.4"
+		"BaseAttacks"			"0.75"
+		"Items"					"0.5"
+		"Creeps"				"0.75"
+		"VO_underlords"			"0.66"
+		"VO"					"0.33"
 		"Ambient"				"0.33"
 		
-		"All"					"0.5"
+		"All"					"0.4"
 	}
 }
 
 "MixLayers"
 {
+	"Underlords"
+ 	{
+ 		//grp,			vol, lvl, dsp, solo, mute
+		"Underlords"	1.0  1.0  1.0  0.1   0.0
+ 		"UberAbilities"	0.7  1.0  1.0  0.0   0.0
+		"Abilities"		0.7  1.0  1.0  0.0   0.0
+		"All"			0.5  1.0  1.0  0.0   0.0
+ 	}
 	"UberAbilities"
  	{
- 		//grp,		vol, lvl, dsp, solo, mute
- 		"Ambient"	0.7  1.0  1.0  0.0   0.0
+ 		//grp,			vol, lvl, dsp, solo, mute
 		"BaseAttacks"	0.5  1.0  1.0  0.0   0.0
 		"Abilities"		0.8  1.0  1.0  0.0   0.0
-		"Music"		0.8  1.0  1.0  0.0   0.0
 		"All"		0.5  1.0  1.0  0.0   0.0
  	}
 	"Abilities"
@@ -84,8 +90,26 @@
  		//grp,		vol, lvl, dsp, solo, mute
  		"Ambient"	0.7  1.0  1.0  0.0   0.0
 		"BaseAttacks"	0.5  1.0  1.0  0.0   0.0
-		"Music"		0.8  1.0  1.0  0.0   0.0
 		"All"		0.5  1.0  1.0  0.0   0.0
+ 	}
+	"VO_underlords"
+ 	{
+ 		//grp,			vol, lvl, dsp, solo, mute
+ 		"Underlords"	0.8  1.0  1.0  0.0   0.0
+		"BaseAttacks"	0.75  1.0  1.0  0.0   0.0
+		"Abilities"		0.8  1.0  1.0  0.0   0.0
+		"Music"		0.7  1.0  1.0  0.0   0.0
+		"VO"		0.5  1.0  1.0  0.0   0.0
+ 	}
+	"VO_heroes"
+ 	{
+ 		//grp,		vol, lvl, dsp, solo, mute
+ 		"Music"		0.7  1.0  1.0  0.0   0.0
+ 	}
+	"Stingers"
+ 	{
+ 		//grp,		vol, lvl, dsp, solo, mute
+		"Music"		0.0  1.0  1.0  0.0   0.0
  	}
 }
 
@@ -93,8 +117,11 @@
 {
  // layer,				grp-trgger,		thrshld,   amnt,  attack, decay
  
+  "Underlords"			"Underlords"		"0.1"		"1.0"   "0.3"   "0.1"
   "UberAbilities"		"UberAbilities"		"0.1"		"1.0"   "0.1"   "0.3"
-  "Abilities"			"Abilities"		"0.1"		"1.0"   "0.1"   "0.3"
+  "VO_underlords"		"VO_underlords"		"0.1"		"1.0"   "0.1"   "0.3"
+  "VO_heroes"			"VO"				"0.1"		"1.0"   "0.1"   "0.3"
+  "Stingers"			"Stingers"			"0.1"		"1.0"   "0.1"   "0.3"
  
 }
 

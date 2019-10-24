@@ -1,0 +1,149 @@
+// omniknight - Hero
+criterion "Isomniknight" "classname" "omniknight" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response omniknight_recruit_1
+{
+	speak "omniknight_recruit" noscene 
+}
+
+Rule omniknight_recruit_1_rule
+{
+	criteria Isomniknight ConceptRecruit UnitRank1
+	response omniknight_recruit_1
+}
+
+
+Response omniknight_recruit_2
+{
+	speak "omniknight_upgrade" noscene 
+}
+
+Rule omniknight_recruit_2_rule
+{
+	criteria Isomniknight ConceptRecruit UnitRank2
+	response omniknight_recruit_2
+}
+
+
+Response omniknight_recruit_3
+{
+	speak "omniknight_final_upgrade" noscene 
+}
+
+Rule omniknight_recruit_3_rule
+{
+	criteria Isomniknight ConceptRecruit UnitRank3
+	response omniknight_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response omniknight_start_round
+{
+	speak "omniknight_start_round" noscene 
+}
+
+Rule omniknight_start_round_rule
+{
+	criteria Isomniknight ConceptRoundStart 
+	response omniknight_start_round
+}
+
+
+Response omniknight_start_round_lost_last_round
+{
+	speak "omniknight_start_round_lost_last_round" noscene 
+}
+
+Rule omniknight_start_round_lost_last_round_rule
+{
+	criteria Isomniknight ConceptRoundStart LostLastGame
+	response omniknight_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response omniknight_flawless_victory
+{
+	speak "omniknight_flawless_victory" noscene 
+}
+
+Rule omniknight_flawless_victory_rule
+{
+	criteria Isomniknight ConceptRoundEnd Result_WinFlawless
+	response omniknight_flawless_victory
+}
+
+
+Response omniknight_decisive_victory
+{
+	speak "omniknight_decisive_victory" noscene 
+}
+
+Rule omniknight_decisive_victory_rule
+{
+	criteria Isomniknight ConceptRoundEnd Result_WinDecisive
+	response omniknight_decisive_victory
+}
+
+Response omniknight_narrow_victory
+{
+	speak "omniknight_narrow_victory" noscene 
+}
+
+Rule omniknight_narrow_victory_rule
+{
+	criteria Isomniknight ConceptRoundEnd Result_WinNarrow
+	response omniknight_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response omniknight_flawless_defeat
+{
+	speak "omniknight_flawless_defeat" noscene 
+}
+
+Rule omniknight_flawless_defeat_rule
+{
+	criteria Isomniknight ConceptRoundEnd Result_LoseFlawless
+	response omniknight_flawless_defeat
+}
+
+
+Response omniknight_decisive_defeat
+{
+	speak "omniknight_decisive_defeat" noscene 
+}
+
+Rule omniknight_decisive_defeat_rule
+{
+	criteria Isomniknight ConceptRoundEnd Result_LoseDecisive
+	response omniknight_decisive_defeat
+}
+
+Response omniknight_narrow_defeat
+{
+	speak "omniknight_narrow_defeat" noscene 
+}
+
+Rule omniknight_narrow_defeat_rule
+{
+	criteria Isomniknight ConceptRoundEnd Result_LoseNarrow
+	response omniknight_narrow_defeat
+}

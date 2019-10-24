@@ -1,0 +1,149 @@
+// bloodseeker - Hero
+criterion "Isbloodseeker" "classname" "bloodseeker" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response bloodseeker_recruit_1
+{
+	speak "bloodseeker_recruit" noscene 
+}
+
+Rule bloodseeker_recruit_1_rule
+{
+	criteria Isbloodseeker ConceptRecruit UnitRank1
+	response bloodseeker_recruit_1
+}
+
+
+Response bloodseeker_recruit_2
+{
+	speak "bloodseeker_upgrade" noscene 
+}
+
+Rule bloodseeker_recruit_2_rule
+{
+	criteria Isbloodseeker ConceptRecruit UnitRank2
+	response bloodseeker_recruit_2
+}
+
+
+Response bloodseeker_recruit_3
+{
+	speak "bloodseeker_final_upgrade" noscene 
+}
+
+Rule bloodseeker_recruit_3_rule
+{
+	criteria Isbloodseeker ConceptRecruit UnitRank3
+	response bloodseeker_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response bloodseeker_start_round
+{
+	speak "bloodseeker_start_round" noscene 
+}
+
+Rule bloodseeker_start_round_rule
+{
+	criteria Isbloodseeker ConceptRoundStart 
+	response bloodseeker_start_round
+}
+
+
+Response bloodseeker_start_round_lost_last_round
+{
+	speak "bloodseeker_start_round_lost_last_round" noscene 
+}
+
+Rule bloodseeker_start_round_lost_last_round_rule
+{
+	criteria Isbloodseeker ConceptRoundStart LostLastGame
+	response bloodseeker_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response bloodseeker_flawless_victory
+{
+	speak "bloodseeker_flawless_victory" noscene 
+}
+
+Rule bloodseeker_flawless_victory_rule
+{
+	criteria Isbloodseeker ConceptRoundEnd Result_WinFlawless
+	response bloodseeker_flawless_victory
+}
+
+
+Response bloodseeker_decisive_victory
+{
+	speak "bloodseeker_decisive_victory" noscene 
+}
+
+Rule bloodseeker_decisive_victory_rule
+{
+	criteria Isbloodseeker ConceptRoundEnd Result_WinDecisive
+	response bloodseeker_decisive_victory
+}
+
+Response bloodseeker_narrow_victory
+{
+	speak "bloodseeker_narrow_victory" noscene 
+}
+
+Rule bloodseeker_narrow_victory_rule
+{
+	criteria Isbloodseeker ConceptRoundEnd Result_WinNarrow
+	response bloodseeker_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response bloodseeker_flawless_defeat
+{
+	speak "bloodseeker_flawless_defeat" noscene 
+}
+
+Rule bloodseeker_flawless_defeat_rule
+{
+	criteria Isbloodseeker ConceptRoundEnd Result_LoseFlawless
+	response bloodseeker_flawless_defeat
+}
+
+
+Response bloodseeker_decisive_defeat
+{
+	speak "bloodseeker_decisive_defeat" noscene 
+}
+
+Rule bloodseeker_decisive_defeat_rule
+{
+	criteria Isbloodseeker ConceptRoundEnd Result_LoseDecisive
+	response bloodseeker_decisive_defeat
+}
+
+Response bloodseeker_narrow_defeat
+{
+	speak "bloodseeker_narrow_defeat" noscene 
+}
+
+Rule bloodseeker_narrow_defeat_rule
+{
+	criteria Isbloodseeker ConceptRoundEnd Result_LoseNarrow
+	response bloodseeker_narrow_defeat
+}

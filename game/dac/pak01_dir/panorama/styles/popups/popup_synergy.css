@@ -1,472 +1,275 @@
-DACSynergyPanel
+DACPopupSynergy
 {
-	width: 100%;
-	min-height: 100px;
-	vertical-align: top;
-	margin-top: 0px;
-	horizontal-align: center;
-
-	flow-children: down;
-
-	background-image: url("s2r://panorama/images/hud/mobile_popup_takeover_psd.vtex");
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: bottom;
-	
-	transition-property: opacity;
-	transition-duration: 0.2s;
-	opacity: 0;
-
-	padding-left: 210px;
-
-	padding-bottom: 20px;
-
-	margin-right: 80px;
+	width: fit-children;
+	height: fit-children;
 }
 
-DACSynergyPanel.Visible
+#PopupBody
 {
-	opacity: 1;
+	//width: 100%;
+	//height: 100%;
+
+	flow-children: right;
+}
+
+.SynergyContents
+{
+	ui-scale: 130%;
+
+	vertical-align: center;
+	horizontal-align: center;
+
+	width: 600px;
+	flow-children: down;
+	padding: 0px;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #2d2d2dfc ), to( #000000fc ) );
+	background-color: gradient( linear, 0% 0%, 0% 80%, from( #2d2d2ddd ), to( #00000075));
+	background-image: url("s2r://panorama/images/hud/popup_background_glass_psd.vtex");
+	background-size: 100%;
+	background-position: center;
+	background-repeat: repeat;
+	
+	border-top: 4px solid #afcae250;
+	border-right: 4px solid #a196ff50;
+	border-bottom: 4px solid #44428add;
+	border-left: 4px solid #6e9bc250;
+
+	box-shadow: fill #000000cc -8px 0px 2px 16px;
+}
+
+.CloseOverlay
+{
+	width: 100%;
+	height: 100%;
+
+	visibility: visible;
+}
+
+.CloseButton {
+    horizontal-align: right;
+    vertical-align: middle;
+    width: 72px;
+    height: 72px;
+    margin-right: 0px;
+    background-image: url("s2r://panorama/images/hud/close-button_png.vtex");
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition-property: brightness;
+    transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+	brightness: 1.0;
+}
+
+.CloseButton:hover
+{
+	brightness: 1.7;
+}
+
+.CloseButton:active
+{
+	brightness: 1.7;
 }
 
 .Header
 {
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000 ), to( #00000075 ) );
 	width: 100%;
+	padding: 12px;
+	height: 100px;
+
 	flow-children: right;
+
+	overflow: noclip;
+}
+
+DACSynergyIcon
+{
+	ui-scale: 60%;
+	vertical-align: center;
+}
+
+.HeaderText
+{
+	color: #C3C3C3;
+	font-size: 30px;
+	font-weight: bold;
+	line-height: 20px;
+	text-transform: uppercase;
+
+	vertical-align: center;
+	text-shadow: 0px 4px 0px 3.0 #00000035;
+	letter-spacing: 1px;
 }
 
 .Body
 {
 	visibility: visible;
 	height: fit-children;
-}
-
-.HeaderText
-{
-	color: white;
-	font-size: 60px;
-
-	margin-top: 12px;
-
-	font-weight: bold;
-	text-transform: uppercase;
-	text-shadow: 0px 1px 0px 3.0 #000;
-
-	vertical-align: center;
-}
-
-DACSynergyIcon
-{
-	ui-scale: 100%;
-}
-
-.Body
-{
 	width: 100%;
 	padding: 15px;
+	padding-top: 5px;
 	flow-children: down;
-	margin-top: 10px;
-
-	margin-right: 270px;
 }
 
 .Body Label
 {
 	color: white;
-	font-size: 30px;
+	font-size: 16px;
 }
 
 .LevelRow
 {
-	margin-left: 20px;
-	margin-right: 20px;
+	margin-left: 10px;
+	margin-right: 10px;
 	width: fit-children;
 	height: fit-children;
 	horizontal-align: left;
+}
 
-	flow-children: right;
+.Body .LevelNumber
+{
+	font-family: radiance;
+	font-weight: bold;
+	font-size: 36px;
+	color: #C3C3C3;
+	
+	text-shadow: 0px 2px 0px 3.0 #00000035;
+
+
+	vertical-align: top;
 }
 
 .Body .LevelDescription
 {
-	font-size: 36px;
+	font-family: radiance;
+	font-size: 24px;
+	color: #C3C3C3;
 
-	margin-left: 20px;
 	line-height: 30px;
 
-	height: 80px;
-
 	white-space: normal;
-
-	color: #9f9fa5;
 }
 
-.LevelRow.Active .LevelDescription
+.LevelNumber
+{
+	visibility: collapse;
+}
+
+#HeroesContainer {
+	flow-children: down-wrap;
+	vertical-align: center;
+	//horizontal-align: right;
+	//horizontal-align: center;
+	padding-left: 20px;
+	//margin-right: 40px;
+	height: 83px;
+	width: fill-parent-flow(1);
+	//width: fit-children;
+
+	//background-color: red;
+}
+
+.UnitContainer {
+	visibility: visible;
+	padding: 3px 3px;
+	
+}
+
+#HeroImage
+{
+	wash-color: #ddd;
+	padding: 0px 3px 1px 3px;
+}
+
+.OnBench #HeroImage {
+	border-bottom: 2px solid #ad95dacc;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ad95da00 ), to( #ad95da22 ) );
+	wash-color: white;
+}
+
+.OnBoard #HeroImage {
+	border-bottom: 2px solid #55cd0e;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #55cd0e00 ), to( #55cd0e44 ) );
+	wash-color: white;
+}
+
+@keyframes 'GoldPulse'
+{
+	0%
+	{
+		opacity: 1;
+	}
+
+	50%
+	{
+		opacity: 0.6;
+	}
+
+	100%
+	{
+		opacity: 1;
+	}
+}
+
+.inactiveLevel
+{
+	color: #eee;
+}
+
+.activeLevel
 {
 	color: gold;
 }
 
-.Body .HasUnitsLabel,
-.Body .HasUnitLabel
+.UnitContainer.Disabled{
+	saturation:0;
+	opacity:0.2;	
+}
+
+#LeftArrow,
+#RightArrow
 {
-	color: white;
-	font-size: 28px;
+	ui-scale: 130%;
+
+    // Closely matches the actual image file contents, with a slightly
+    //   smaller width so that it overlaps the body correctly.
+    width: 36px;
+    height: 36px;
+
+    margin-top: 4px;
+    margin-bottom: 4px;
+	margin-right: 4px;
+
 	visibility: collapse;
-	horizontal-align: center;	
-	text-transform: uppercase;
-}
-
-.Body .HasBenchUnitsLabel,
-.Body .HasBenchUnitLabel
-{
-	font-size: 28px;
-	color: #999;
-	visibility: collapse;
-	horizontal-align: center;
-	text-transform: uppercase;
-}
-
-.HasUnits .HasUnitsLabel,
-.HasUnit .HasUnitLabel,
-.HasBenchUnits .HasBenchUnitsLabel,
-.HasBenchUnit .HasBenchUnitLabel
-{
-	visibility: collapse;
-}
-
-.LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_1_1_psd.vtex");
-
-	margin-top: -5px;
-	width: 60px;
-	height: 60px;
-	background-size: 100%;
-	background-repeat: no-repeat;
-}
-
-#LevelRow2 .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_1_2_psd.vtex");
-}
-
-#LevelRow3 .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_1_3_psd.vtex");
-}
-
-.SegmentsPerLevel_2 #LevelRow1 .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_2_1_psd.vtex");
-}
-
-.SegmentsPerLevel_2 #LevelRow2 .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_2_2_psd.vtex");
-}
-
-.SegmentsPerLevel_2 #LevelRow3 .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_2_3_psd.vtex");
-}
-
-.SegmentsPerLevel_3 #LevelRow1 .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_3_1_psd.vtex");
-}
-
-.SegmentsPerLevel_3 #LevelRow2 .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_3_2_psd.vtex");
-}
-
-.SegmentsPerLevel_3 #LevelRow3 .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_3_3_psd.vtex");
-}
-
-// and versions for the active .LevelRow
-
-#LevelRow1.Active .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_1_1_glow_psd.vtex");
-}
-
-#LevelRow2.Active .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_1_2_glow_psd.vtex");
-}
-
-#LevelRow3.Active .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_1_3_glow_psd.vtex");
-}
-
-.SegmentsPerLevel_2 #LevelRow1.Active .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_2_1_glow_psd.vtex");
-}
-
-.SegmentsPerLevel_2 #LevelRow2.Active .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_2_2_glow_psd.vtex");
-}
-
-.SegmentsPerLevel_2 #LevelRow3.Active .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_2_3_glow_psd.vtex");
-}
-
-.SegmentsPerLevel_3 #LevelRow1.Active .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_3_1_glow_psd.vtex");
-}
-
-.SegmentsPerLevel_3 #LevelRow2.Active .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_3_2_glow_psd.vtex");
-}
-
-.SegmentsPerLevel_3 #LevelRow3.Active .LevelIcon
-{
-	background-image: url("s2r://panorama/images/hud/synergy_column_3_3_glow_psd.vtex");
-}
-
-//=====
-
-.Beast .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( beastColor ), to( beastColorBright ) );
-}
-
-.Demon .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( demonColor ), to( demonColorBright ) );
-}
-
-.Dragon .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( dragonColor ), to( dragonColorBright ) );
-}
-
-.Dwarf .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( dwarfColor ), to( dwarfColorBright ) );
-}
-
-.Element .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( elementColor ), to( elementColorBright ) );
-}
-
-.Elf .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( elfColor ), to( elfColorBright ) );
-}
-
-.Goblin .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( goblinColor ), to( goblinColorBright ) );
-}
-
-.Human .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( humanColor ), to( humanColorBright ) );
-}
-
-.Naga .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( nagaColor ), to( nagaColorBright ) );
-}
-
-.Ogre .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( ogreColor ), to( ogreColorBright ) );
-}
-
-.Orc .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( orcColor ), to( orcColorBright ) );
-}
 
-.Troll .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( trollColor ), to( trollColorBright ) );
-}
-
-.Undead .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( undeadColor ), to( undeadColorBright ) );
-}
-
-.Assassin .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( assassinColor ), to( assassinColorBright ) );
-}
-
-.DemonHunter .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( demonhunterColor ), to( demonhunterColorBright ) );
-}
-
-.Druid .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( druidColor ), to( druidColorBright ) );
-}
-
-.Hunter .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( warriorColor ), to( warriorColorBright ) );
-}
-
-.Knight .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( knightColor ), to( knightColorBright ) );
-}
-
-.Mage .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( mageColor ), to( mageColorBright ) );
-}
-
-.Mech .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( mechColor ), to( mechColorBright ) );
-}
-
-.Shaman .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( shamanColor ), to( shamanColorBright ) );
-}
-
-.Warlock .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( warlockColor ), to( warlockColorBright ) );
-}
-
-.Warrior .HeaderText
-{
-	color: gradient( linear, 0% 0%, 0% 100%, from( warriorColor ), to( warriorColorBright ) );
-}
-
-//=====
-
-.Beast .LevelIcon
-{
-	wash-color: beastColor;
-}
-
-.Demon .LevelIcon
-{
-	wash-color: demonColor;
-}
-
-.Dragon .LevelIcon
-{
-	wash-color: dragonColor;
-}
-
-.Dwarf .LevelIcon
-{
-	wash-color: dwarfColor;
-}
-
-.Element .LevelIcon
-{
-	wash-color: elementColor;
-}
-
-.Elf .LevelIcon
-{
-	wash-color: elfColor;
-}
-
-.Goblin .LevelIcon
-{
-	wash-color: goblinColor;
-}
-
-.Human .LevelIcon
-{
-	wash-color: humanColor;
-}
-
-.Naga .LevelIcon
-{
-	wash-color: nagaColor;
-}
-
-.Ogre .LevelIcon
-{
-	wash-color: ogreColor;
-}
-
-.Orc .LevelIcon
-{
-	wash-color: orcColor;
-}
-
-.Troll .LevelIcon
-{
-	wash-color: trollColor;
-}
-
-.Undead .LevelIcon
-{
-	wash-color: undeadColor;
-}
-
-.Satyr .LevelIcon
-{
-	wash-color: satyrColor;
-}
-
-.Assassin .LevelIcon
-{
-	wash-color: assassinColor;
-}
-
-.DemonHunter .LevelIcon
-{
-	wash-color: demonhunterColor;
-}
-
-.Druid .LevelIcon
-{
-	wash-color: druidColor;
-}
-
-.Hunter .LevelIcon
-{
-	wash-color: hunterColor;
-}
-
-.Knight .LevelIcon
-{
-	wash-color: knightColor;
-}
-
-.Mage .LevelIcon
-{
-	wash-color: mageColor;
-}
-
-.Mech .LevelIcon
-{
-	wash-color: mechColor;
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+	background-size: contain;
+    
+   /* The arrows sit at a higher z-index than the body of the tooltip.
+      This is so that the arrow can overlap on top of the border to
+      give it a more seamless look */
+    z-index: 1;	
 }
 
-.Shaman .LevelIcon
+#LeftArrow
 {
-	wash-color: shamanColor;
+	background-image: url("s2r://panorama/images/hud/tooltip_arrow_left_png.vtex");
+	wash-color: #61738a;
+	margin-right: -6px;
 }
 
-.Warlock .LevelIcon
+#RightArrow
 {
-	wash-color: warlockColor;
+	background-image: url("s2r://panorama/images/hud/tooltip_arrow_right_png.vtex");
+	wash-color: #7871a9;
+	margin-left: 0px;
 }
 
-.Warrior .LevelIcon
+.RightArrowVisible #RightArrow,
+.LeftArrowVisible #LeftArrow
 {
-	wash-color: warriorColor;
+	visibility: visible;
 }

@@ -1,0 +1,149 @@
+// lone_druid - Hero
+criterion "Islone_druid" "classname" "lone_druid" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response lone_druid_recruit_1
+{
+	speak "lone_druid_recruit" noscene 
+}
+
+Rule lone_druid_recruit_1_rule
+{
+	criteria Islone_druid ConceptRecruit UnitRank1
+	response lone_druid_recruit_1
+}
+
+
+Response lone_druid_recruit_2
+{
+	speak "lone_druid_upgrade" noscene 
+}
+
+Rule lone_druid_recruit_2_rule
+{
+	criteria Islone_druid ConceptRecruit UnitRank2
+	response lone_druid_recruit_2
+}
+
+
+Response lone_druid_recruit_3
+{
+	speak "lone_druid_final_upgrade" noscene 
+}
+
+Rule lone_druid_recruit_3_rule
+{
+	criteria Islone_druid ConceptRecruit UnitRank3
+	response lone_druid_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response lone_druid_start_round
+{
+	speak "lone_druid_start_round" noscene 
+}
+
+Rule lone_druid_start_round_rule
+{
+	criteria Islone_druid ConceptRoundStart 
+	response lone_druid_start_round
+}
+
+
+Response lone_druid_start_round_lost_last_round
+{
+	speak "lone_druid_start_round_lost_last_round" noscene 
+}
+
+Rule lone_druid_start_round_lost_last_round_rule
+{
+	criteria Islone_druid ConceptRoundStart LostLastGame
+	response lone_druid_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response lone_druid_flawless_victory
+{
+	speak "lone_druid_flawless_victory" noscene 
+}
+
+Rule lone_druid_flawless_victory_rule
+{
+	criteria Islone_druid ConceptRoundEnd Result_WinFlawless
+	response lone_druid_flawless_victory
+}
+
+
+Response lone_druid_decisive_victory
+{
+	speak "lone_druid_decisive_victory" noscene 
+}
+
+Rule lone_druid_decisive_victory_rule
+{
+	criteria Islone_druid ConceptRoundEnd Result_WinDecisive
+	response lone_druid_decisive_victory
+}
+
+Response lone_druid_narrow_victory
+{
+	speak "lone_druid_narrow_victory" noscene 
+}
+
+Rule lone_druid_narrow_victory_rule
+{
+	criteria Islone_druid ConceptRoundEnd Result_WinNarrow
+	response lone_druid_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response lone_druid_flawless_defeat
+{
+	speak "lone_druid_flawless_defeat" noscene 
+}
+
+Rule lone_druid_flawless_defeat_rule
+{
+	criteria Islone_druid ConceptRoundEnd Result_LoseFlawless
+	response lone_druid_flawless_defeat
+}
+
+
+Response lone_druid_decisive_defeat
+{
+	speak "lone_druid_decisive_defeat" noscene 
+}
+
+Rule lone_druid_decisive_defeat_rule
+{
+	criteria Islone_druid ConceptRoundEnd Result_LoseDecisive
+	response lone_druid_decisive_defeat
+}
+
+Response lone_druid_narrow_defeat
+{
+	speak "lone_druid_narrow_defeat" noscene 
+}
+
+Rule lone_druid_narrow_defeat_rule
+{
+	criteria Islone_druid ConceptRoundEnd Result_LoseNarrow
+	response lone_druid_narrow_defeat
+}

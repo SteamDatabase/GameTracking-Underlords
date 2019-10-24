@@ -1,0 +1,149 @@
+// Venomancer - Hero
+criterion "Isvenomancer" "classname" "venomancer" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response venomancer_recruit_1
+{
+	speak "venomancer_recruit" noscene 
+}
+
+Rule venomancer_recruit_1_rule
+{
+	criteria Isvenomancer ConceptRecruit UnitRank1
+	response venomancer_recruit_1
+}
+
+
+Response venomancer_recruit_2
+{
+	speak "venomancer_upgrade" noscene 
+}
+
+Rule venomancer_recruit_2_rule
+{
+	criteria Isvenomancer ConceptRecruit UnitRank2
+	response venomancer_recruit_2
+}
+
+
+Response venomancer_recruit_3
+{
+	speak "venomancer_final_upgrade" noscene 
+}
+
+Rule venomancer_recruit_3_rule
+{
+	criteria Isvenomancer ConceptRecruit UnitRank3
+	response venomancer_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response venomancer_start_round
+{
+	speak "venomancer_start_round" noscene 
+}
+
+Rule venomancer_start_round_rule
+{
+	criteria Isvenomancer ConceptRoundStart 
+	response venomancer_start_round
+}
+
+
+Response venomancer_start_round_lost_last_round
+{
+	speak "venomancer_start_round_lost_last_round" noscene 
+}
+
+Rule venomancer_start_round_lost_last_round_rule
+{
+	criteria Isvenomancer ConceptRoundStart LostLastGame
+	response venomancer_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response venomancer_flawless_victory
+{
+	speak "venomancer_flawless_victory" noscene 
+}
+
+Rule venomancer_flawless_victory_rule
+{
+	criteria Isvenomancer ConceptRoundEnd Result_WinFlawless
+	response venomancer_flawless_victory
+}
+
+
+Response venomancer_decisive_victory
+{
+	speak "venomancer_decisive_victory" noscene 
+}
+
+Rule venomancer_decisive_victory_rule
+{
+	criteria Isvenomancer ConceptRoundEnd Result_WinDecisive
+	response venomancer_decisive_victory
+}
+
+Response venomancer_narrow_victory
+{
+	speak "venomancer_narrow_victory" noscene 
+}
+
+Rule venomancer_narrow_victory_rule
+{
+	criteria Isvenomancer ConceptRoundEnd Result_WinNarrow
+	response venomancer_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response venomancer_flawless_defeat
+{
+	speak "venomancer_flawless_defeat" noscene 
+}
+
+Rule venomancer_flawless_defeat_rule
+{
+	criteria Isvenomancer ConceptRoundEnd Result_LoseFlawless
+	response venomancer_flawless_defeat
+}
+
+
+Response venomancer_decisive_defeat
+{
+	speak "venomancer_decisive_defeat" noscene 
+}
+
+Rule venomancer_decisive_defeat_rule
+{
+	criteria Isvenomancer ConceptRoundEnd Result_LoseDecisive
+	response venomancer_decisive_defeat
+}
+
+Response venomancer_narrow_defeat
+{
+	speak "venomancer_narrow_defeat" noscene 
+}
+
+Rule venomancer_narrow_defeat_rule
+{
+	criteria Isvenomancer ConceptRoundEnd Result_LoseNarrow
+	response venomancer_narrow_defeat
+}

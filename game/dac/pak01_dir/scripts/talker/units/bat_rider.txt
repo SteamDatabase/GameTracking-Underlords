@@ -1,0 +1,149 @@
+// Bat Rider - Hero
+criterion "Isbat_rider" "classname" "bat_rider" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response bat_rider_recruit_1
+{
+	speak "bat_rider_recruit" noscene 
+}
+
+Rule bat_rider_recruit_1_rule
+{
+	criteria Isbat_rider ConceptRecruit UnitRank1
+	response bat_rider_recruit_1
+}
+
+
+Response bat_rider_recruit_2
+{
+	speak "bat_rider_upgrade" noscene 
+}
+
+Rule bat_rider_recruit_2_rule
+{
+	criteria Isbat_rider ConceptRecruit UnitRank2
+	response bat_rider_recruit_2
+}
+
+
+Response bat_rider_recruit_3
+{
+	speak "bat_rider_final_upgrade" noscene 
+}
+
+Rule bat_rider_recruit_3_rule
+{
+	criteria Isbat_rider ConceptRecruit UnitRank3
+	response bat_rider_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response bat_rider_start_round
+{
+	speak "bat_rider_start_round" noscene 
+}
+
+Rule bat_rider_start_round_rule
+{
+	criteria Isbat_rider ConceptRoundStart 
+	response bat_rider_start_round
+}
+
+
+Response bat_rider_start_round_lost_last_round
+{
+	speak "bat_rider_start_round_lost_last_round" noscene 
+}
+
+Rule bat_rider_start_round_lost_last_round_rule
+{
+	criteria Isbat_rider ConceptRoundStart LostLastGame
+	response bat_rider_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response bat_rider_flawless_victory
+{
+	speak "bat_rider_flawless_victory" noscene 
+}
+
+Rule bat_rider_flawless_victory_rule
+{
+	criteria Isbat_rider ConceptRoundEnd Result_WinFlawless
+	response bat_rider_flawless_victory
+}
+
+
+Response bat_rider_decisive_victory
+{
+	speak "bat_rider_decisive_victory" noscene 
+}
+
+Rule bat_rider_decisive_victory_rule
+{
+	criteria Isbat_rider ConceptRoundEnd Result_WinDecisive
+	response bat_rider_decisive_victory
+}
+
+Response bat_rider_narrow_victory
+{
+	speak "bat_rider_narrow_victory" noscene 
+}
+
+Rule bat_rider_narrow_victory_rule
+{
+	criteria Isbat_rider ConceptRoundEnd Result_WinNarrow
+	response bat_rider_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response bat_rider_flawless_defeat
+{
+	speak "bat_rider_flawless_defeat" noscene 
+}
+
+Rule bat_rider_flawless_defeat_rule
+{
+	criteria Isbat_rider ConceptRoundEnd Result_LoseFlawless
+	response bat_rider_flawless_defeat
+}
+
+
+Response bat_rider_decisive_defeat
+{
+	speak "bat_rider_decisive_defeat" noscene 
+}
+
+Rule bat_rider_decisive_defeat_rule
+{
+	criteria Isbat_rider ConceptRoundEnd Result_LoseDecisive
+	response bat_rider_decisive_defeat
+}
+
+Response bat_rider_narrow_defeat
+{
+	speak "bat_rider_narrow_defeat" noscene 
+}
+
+Rule bat_rider_narrow_defeat_rule
+{
+	criteria Isbat_rider ConceptRoundEnd Result_LoseNarrow
+	response bat_rider_narrow_defeat
+}

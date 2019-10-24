@@ -1,0 +1,149 @@
+// troll_warlord - Hero
+criterion "Istroll_warlord" "classname" "troll_warlord" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response troll_warlord_recruit_1
+{
+	speak "troll_warlord_recruit" noscene 
+}
+
+Rule troll_warlord_recruit_1_rule
+{
+	criteria Istroll_warlord ConceptRecruit UnitRank1
+	response troll_warlord_recruit_1
+}
+
+
+Response troll_warlord_recruit_2
+{
+	speak "troll_warlord_upgrade" noscene 
+}
+
+Rule troll_warlord_recruit_2_rule
+{
+	criteria Istroll_warlord ConceptRecruit UnitRank2
+	response troll_warlord_recruit_2
+}
+
+
+Response troll_warlord_recruit_3
+{
+	speak "troll_warlord_final_upgrade" noscene 
+}
+
+Rule troll_warlord_recruit_3_rule
+{
+	criteria Istroll_warlord ConceptRecruit UnitRank3
+	response troll_warlord_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response troll_warlord_start_round
+{
+	speak "troll_warlord_start_round" noscene 
+}
+
+Rule troll_warlord_start_round_rule
+{
+	criteria Istroll_warlord ConceptRoundStart 
+	response troll_warlord_start_round
+}
+
+
+Response troll_warlord_start_round_lost_last_round
+{
+	speak "troll_warlord_start_round_lost_last_round" noscene 
+}
+
+Rule troll_warlord_start_round_lost_last_round_rule
+{
+	criteria Istroll_warlord ConceptRoundStart LostLastGame
+	response troll_warlord_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response troll_warlord_flawless_victory
+{
+	speak "troll_warlord_flawless_victory" noscene 
+}
+
+Rule troll_warlord_flawless_victory_rule
+{
+	criteria Istroll_warlord ConceptRoundEnd Result_WinFlawless
+	response troll_warlord_flawless_victory
+}
+
+
+Response troll_warlord_decisive_victory
+{
+	speak "troll_warlord_decisive_victory" noscene 
+}
+
+Rule troll_warlord_decisive_victory_rule
+{
+	criteria Istroll_warlord ConceptRoundEnd Result_WinDecisive
+	response troll_warlord_decisive_victory
+}
+
+Response troll_warlord_narrow_victory
+{
+	speak "troll_warlord_narrow_victory" noscene 
+}
+
+Rule troll_warlord_narrow_victory_rule
+{
+	criteria Istroll_warlord ConceptRoundEnd Result_WinNarrow
+	response troll_warlord_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response troll_warlord_flawless_defeat
+{
+	speak "troll_warlord_flawless_defeat" noscene 
+}
+
+Rule troll_warlord_flawless_defeat_rule
+{
+	criteria Istroll_warlord ConceptRoundEnd Result_LoseFlawless
+	response troll_warlord_flawless_defeat
+}
+
+
+Response troll_warlord_decisive_defeat
+{
+	speak "troll_warlord_decisive_defeat" noscene 
+}
+
+Rule troll_warlord_decisive_defeat_rule
+{
+	criteria Istroll_warlord ConceptRoundEnd Result_LoseDecisive
+	response troll_warlord_decisive_defeat
+}
+
+Response troll_warlord_narrow_defeat
+{
+	speak "troll_warlord_narrow_defeat" noscene 
+}
+
+Rule troll_warlord_narrow_defeat_rule
+{
+	criteria Istroll_warlord ConceptRoundEnd Result_LoseNarrow
+	response troll_warlord_narrow_defeat
+}

@@ -7,12 +7,26 @@ PopupSelectMatchType
 	sound: "DCG_Progression.Ranked_Tier_01";
 }
 
-.PopupPanel {
+.PopupPanel 
+{
 	background-color: none;
 	border: 0px;
 	width: 100%;
 	height: 100%;
 	flow-children: none;
+	padding: 0px;
+	background-color: gradient( linear, 0% 100%, 0% 0%, from( #2e3a4566 ), to( #2e3a4511 ) );
+}
+
+.IsLayoutLargeScreen .PopupPanel
+{
+	ui-scale: 100%;
+}
+
+#PopupFog
+{
+	width: 100%;
+	height: 100%;
 }
 
 #EffectsPanel
@@ -26,12 +40,25 @@ PopupSelectMatchType
 	width: 100%;
 	height: fit-children;
 	flow-children: down;
-	vertical-align: center;
+	margin-top: 72px;
 }
+
+.IsLayoutSmallScreen .Contents
+{
+	ui-scale: 110%;
+	margin-top: 32px;
+}
+
+.AspectRatio4x3 .Contents
+{
+	ui-scale: 110%;
+	margin-top: 220px;
+}
+
 
 #PopupSelectMatchType .TextTitle
 {
-	transform: rotatez(-2deg);
+	//transform: rotatez(-2deg);
 	margin-top: 25px;
 	horizontal-align: center;
 	margin-bottom: 30px;
@@ -51,56 +78,50 @@ PopupSelectMatchType
 
 #PopupSelectMatchType .TextSubTitle.SelectModeSubTitle
 {
-	transform: rotatez(-2deg);
 	horizontal-align: center;
 	margin-top: -38px;
 }
 
+.ButtonContainer
+{
+	flow-children: right;
+}
+
 #MatchTypeContainer
 {
-	margin-top: 50px;
 	width: fit-children;
-	//height: fit-children;
-	height: 330px;
-	flow-children: right;
+	height: fit-children;
+	flow-children: down;
 	horizontal-align: center;
 }
 
 .MatchTypePanel
 {
-	width: 300px;
-	height: 100%;
-	margin: 0px 30px;
-	//background-color: gradient( linear, 0% 0%, 100% 0%, from( #0000ff ), to( #0000b6 ) );
+	width: 440px;
+	height: fit-children;
+	margin: 0px 24px;
 	flow-children: down;
 	transition-property: brightness;
 	transition-duration: .2s;
 	overflow: noclip;
-	margin-bottom: -40px;
-	padding-bottom: -40px;
-
 }
-
-.MatchTypeImage:hover
-{
-	brightness:1.8;
-}
-
-/*.MatchTypePanel:hover .MatchTypeImage {*/
-	/*ui-scale: 108%;*/
-/*}*/
 
 .MatchTypeImage
 {
-	margin-top: 15px;
-	width: 250px;
-	height: 250px;
+	width: 100%;
+	height: 100%;
 	horizontal-align: center;
 	background-size: contain;
 	background-repeat: no-repeat;
-	opacity-mask: url("s2r://panorama/images/masks/portrait_scratch_psd.vtex") 1;
     transition-property: brightness;
     transition-duration: .2s;
+}
+
+.DuoPartyState_ExcessBuddies #DuosSelectRegion .MatchTypeImage,
+.DuoPartyState_NeedsBuddy #DuosSelectRegion .MatchTypeImage,
+.DuoPartyState_NoParty #DuosSelectRegion .MatchTypeImage
+{
+	opacity: 1;
 }
 
 .MatchName
@@ -137,7 +158,8 @@ PopupSelectMatchType
 	vertical-align: center;
 	color: white;
 	background-color: #c60505;
-	width: 100%;
+	//width: 100%;
+	width: 300px;
 	font-size: 32px;
 	margin-top: 10px;
 	letter-spacing: 3px;
@@ -152,32 +174,82 @@ PopupSelectMatchType
 	/*text-shadow: 0px 0px 0px 2 black;*/
 }
 
-#MatchTypeContainer .TextSubTitle
+.PlayModeTitle
 {
-	text-align: center;
+    text-align: center;
 	width: 100%;
-	margin-top: 10px;
-	height: 90px;
+	height: 72px;
+	font-size: 56px;
+	color: textBrighter;
+	margin-top: 432px;
+	text-overflow: shrink;
+	padding: 0px 12px;
+}
+
+.MatchTypeDesc
+{
+	color: textDark;
+	font-weight: normal;
+	font-size: 24px;
+	line-height: 28px;
+	horizontal-align: center;
+	width: 100%;
+	text-transform: uppercase;
+	font-weight: black;
+	text-align: center;
+	margin: 504px 40px 0px 40px;
+}
+
+.DuoPartyState_Ready #Duos .MatchTypeDesc,
+.InParty .BattleType .MatchTypeDesc
+{
+	visibility: collapse;
+}
+
+// Bot match descriptions
+
+.TypeBots,
+.TypeResume,
+.TypeDuosBots,
+.TypeFreestyle
+{
+	visibility: collapse;
+}
+
+.Bots .TypeBots,
+.DuosBots .TypeDuosBots,
+.Freestyle .TypeFreestyle
+{
+	visibility: visible;
+}
+
+.PlayTitle
+{
+	color: textDefault;
+	font-size: 60px;
+	text-transform: uppercase;
+	font-weight: black;
+	vertical-align: center;
 }
 
 .TutorialLabel 
 {
-	transform: rotateZ(3deg) translateY(-50px);
+	//transform: rotateZ(3deg) translateY(-50px);
 }
 
 .BotsLabel 
 {
-	transform: rotateZ(-3deg) translateY(-50px);
+	//transform: rotateZ(-3deg) translateY(-50px);
 }
 
-.MultiplayerLabel 
+.BattleTypeLabel
 {
-	transform: rotateZ(-3deg) translateY(-50px);
+    //transform: rotateZ(-3deg) translateY(-50px);
 }
 
-#Ranked .MultiplayerLabel 
+#Ranked .BattleTypeLabel
 {
-	transform: rotateZ(2deg) translateY(-50px);
+    //transform: rotateZ(2deg) translateY(-50px);
 }
 
 #Tutorial:hover
@@ -208,14 +280,6 @@ PopupSelectMatchType
 	//height: 80px;
 }
 
-
-
-#Casual .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_multiplayer_psd.vtex"); }
-#Ranked .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_ranked_locked_psd.vtex"); }
-#Bots .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_botmatch_psd.vtex"); }
-#Private .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_botmatch_psd.vtex"); }
-#Tutorial .MatchTypeImage{ background-image: url("s2r://panorama/images/hud/selectmode_tutorial_psd.vtex"); }
-
 .RankedIsLocked #Ranked .MatchTypeImage
 {
 	background-image: url("s2r://panorama/images/hud/selectmode_ranked_locked_psd.vtex");
@@ -228,13 +292,13 @@ PopupSelectMatchType
     brightness: 1;
 }
 
-.CasualIsLocked #Casual .MatchTypeImage
+.CasualIsLocked #BattleType .MatchTypeImage
 {
     saturation: .5;
     opacity: .3;
 }
 
-.CasualIsLocked #Casual .MatchTypeImage:hover
+.CasualIsLocked #BattleType .MatchTypeImage:hover
 {
     brightness: 1;
 }
@@ -250,55 +314,80 @@ PopupSelectMatchType
     brightness: 1;
 }
 
-
-#RankedLockedLabel, #CasualLockedLabel, #PrivateLockedLabel
+#RankedLockedLabel, #CasualLockedLabel, #PrivateLockedLabel, #DuosLockedLabel, #PrivateDuosLockedLabel, #ResumeInfoContainer, #ResumeInfoDesc, #ResumeTimestamp
 {
-	visibility: collapse;
-	color: #8588a0;
+    visibility: collapse;
+    color: textDark;
+    font-size: 24px;
+    line-height: 28px;
+    horizontal-align: center;
+	width: 100%;
 	text-transform: uppercase;
 	font-weight: black;
-	font-size: 28px;
 	text-align: center;
-	horizontal-align: center;
-	margin-top: -250px;
-	background-color: #000;
-	width: 330px;
-	line-height: 28px;
-	margin-bottom: 20px;
-	padding: 10px 15px;
+	margin: 20px 40px 0px 40px;
 }
-.RankedIsLocked #RankedLockedLabel
+
+#ResumeInfoDesc, #ResumeTimestamp
 {
+	margin: 0px 0px 0px 0px;
 	visibility: visible;
 }
 
-.CasualIsLocked #CasualLockedLabel
+.RankedIsLocked.SoloRankedSelected #RankedLockedLabel,
+.CasualIsLocked.SoloCasualSelected #CasualLockedLabel,
+.PrivateIsLocked #PrivateLockedLabel,
+.DuoPartyState_ExcessBuddies #DuosLockedLabel,
+.DuoPartyState_NeedsBuddy #DuosLockedLabel,
+.DuoPartyState_NoParty #DuosLockedLabel,
+.Duos.DuoPartyState_NeedsBuddy #PrivateDuosLockedLabel,
 {
-	visibility: visible;
+    visibility: visible;
 }
 
-.PrivateIsLocked #PrivateLockedLabel
+.NotConnectedToGC #MultiPlayerSelectRegion,
+.NotConnectedToGC #DuosSelectRegion,
 {
-	visibility: visible;
+    brightness: .2;
+    pre-transform-scale2d: 1.0;
 }
 
-.NotConnectedToGC .Multiplayer .MatchTypeImage,
+.NotConnectedToGC #Battlepass,
+.NotConnectedToGC #BattleTypeCarousel,
+.NotConnectedToGC #DuosMatchTypeCarousel,
+.NotConnectedToGC #DuosAboutButton
 {
-	brightness: .2;
+    visibility: collapse;
+}
+.LoginRequired
+{
+    width: 100%;
+    color: darkred;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    horizontal-align: center;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: black;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    visibility: collapse;
+}
+.NotConnectedToGC .LoginRequired
+{
+    visibility: visible;
 }
 
-.NotConnectedToGC .Multiplayer .MatchName.MultiplayerLabel
-{
-	opacity: .2;
-}
 
 #ContinueButton
 {
-	horizontal-align: center;
+    horizontal-align: center;
     margin-top: 25px;
     //border: 2px solid #555555;
-	//background-color: #111111;
-	//background-image: none;
+    //background-color: #111111;
+    //background-image: none;
 }
 
 #ContinueButton Label {
@@ -306,4 +395,202 @@ PopupSelectMatchType
 	//font-size: 32px;
 	//margin-bottom: 4px;
 	//font-weight: black;
+}
+
+.DuosAbout
+{
+	flow-children: right;
+	width: 300px;
+	height: 60px;
+	padding-left: 20px;
+	padding-right: 10px;
+	//background-color: red;
+	horizontal-align: center;
+	background-color: #333;
+	margin-top: 20px;
+
+	transition-property: background-color;
+	transition-duration: .2s;
+}
+
+.DuosAbout:hover
+{
+	background-color: #444;
+}
+
+
+
+.DuosAboutLabel
+{
+	font-size: 24px;
+	color: white;
+	font-weight: normal;
+	vertical-align: center;
+}
+
+#DuosAboutButton
+{
+	width: 60px;
+	height: 60px;
+	background-image: url("s2r://panorama/images/shop/shop_info_icon_psd.vtex");
+	background-size: 100%;
+	transition-property: brightness;
+	transition-duration: .2s;
+	vertical-align: center;
+	horizontal-align: right;
+	margin-top: -80px;
+	margin-right: 12px;
+}
+
+#DuosAboutButton:hover
+{
+	brightness: 1.8;
+}
+
+.TypeSelectRegion
+{
+	horizontal-align: center;
+	width: 100%;
+	height: 600px;
+	transition-duration: .15s;
+	transition-property: pre-transform-scale2d, brightness;
+}
+
+.TypeSelectRegion:hover
+{
+	pre-transform-scale2d: 1.02;
+	brightness: 1.5;
+}
+
+
+#Bots .MatchTypeImage
+{
+	background-image: url("s2r://panorama/images/dashboard/play/button_bots_psd.vtex");
+}
+
+#BattleType .MatchTypeImage
+{
+    background-image: url("s2r://panorama/images/dashboard/play/button_multiplayer_psd.vtex");
+}
+
+#Duos .MatchTypeImage
+{
+	background-image: url("s2r://panorama/images/dashboard/play/button_duos_psd.vtex");
+}
+
+#Private .MatchTypeImage
+{
+	background-image: url("s2r://panorama/images/dashboard/play/button_private_psd.vtex");
+}
+
+.TitleContainer
+{
+ flow-children: right;
+ margin-bottom: 12px;
+}
+
+#MatchTypeContainer #BackButton
+{
+	visibility: visible;
+	margin: 0px 16px 0px 20px;
+}
+
+DACCarousel #Resume,
+{
+    visibility: collapse;
+}
+.ResumeAvailable DACCarousel #Resume,
+{
+    visibility: visible;
+}
+
+#BotDifficultyContainer
+{
+    height: fit-children;
+    width: 100%;
+	flow-children: down;
+	margin-top: -12px;
+	vertical-align: top;
+}
+
+#MatchTypeContainer DACCarousel#PrivateMatchBotDifficultyCarousel
+{
+	margin-top: 4px;
+}
+
+.ResumeAvailable.ResumeSelected #BotDifficultyContainer,
+.Freestyle #BotDifficultyContainer
+{
+	visibility:collapse;
+    opacity:0;
+}
+.ResumeAvailable.ResumeSelected #ResumeFindButton,
+.ResumeAvailable.ResumeSelected #ResumeInfoContainer
+{
+    visibility: visible;
+}
+
+#MatchTypeContainer DACCarousel
+{
+    width: 440px;
+    margin-top: 16px;
+}
+
+#ResumeInfoContainer
+{
+    flow-children: down;
+	visibility: collapse;
+	margin: 0px;
+}
+
+.FindMatchButton
+{
+    width: 370px;
+    height: 72px;
+    margin-top: 20px;
+    horizontal-align: center;
+    vertical-align: bottom;
+    margin-bottom: 20px;
+    background-color: #348746;
+    visibility: collapse;
+}
+
+.FindMatchButtonButton
+{
+	width: 370px;
+    height: 72px;
+    horizontal-align: center;
+    vertical-align: bottom;
+    margin-bottom: 12px;
+	visibility: collapse;
+}
+
+.FindMatchButtonButton Label
+{
+	text-transform: uppercase;
+	font-size: 40px;
+    font-weight: black;
+    horizontal-align: center;
+    text-overflow: shrink;
+	padding: 0px 16px 0px 16px;
+	color: gradient( linear, 0% 0%, 0% 100%, from( #348746 ), to( #7ab470 ) ); 
+}
+
+.InParty #PartyBattleFindButton,
+.InParty #PrivateFindButton,
+.DuoPartyState_Ready #PartyDuosFindButton
+{
+    visibility: visible;
+}
+
+.FindMatchButton Label
+{
+    color: white;
+    font-size: 40px;
+    font-weight: black;
+    vertical-align: center;
+    horizontal-align: center;
+    text-overflow: shrink;
+    padding: 0px 16px 0px 16px;
+    text-transform: uppercase;
 }

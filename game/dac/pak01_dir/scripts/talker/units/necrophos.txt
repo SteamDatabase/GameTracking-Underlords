@@ -1,0 +1,149 @@
+// necrophos - Hero
+criterion "Isnecrophos" "classname" "necrophos" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response necrophos_recruit_1
+{
+	speak "necrophos_recruit" noscene 
+}
+
+Rule necrophos_recruit_1_rule
+{
+	criteria Isnecrophos ConceptRecruit UnitRank1
+	response necrophos_recruit_1
+}
+
+
+Response necrophos_recruit_2
+{
+	speak "necrophos_upgrade" noscene 
+}
+
+Rule necrophos_recruit_2_rule
+{
+	criteria Isnecrophos ConceptRecruit UnitRank2
+	response necrophos_recruit_2
+}
+
+
+Response necrophos_recruit_3
+{
+	speak "necrophos_final_upgrade" noscene 
+}
+
+Rule necrophos_recruit_3_rule
+{
+	criteria Isnecrophos ConceptRecruit UnitRank3
+	response necrophos_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response necrophos_start_round
+{
+	speak "necrophos_start_round" noscene 
+}
+
+Rule necrophos_start_round_rule
+{
+	criteria Isnecrophos ConceptRoundStart 
+	response necrophos_start_round
+}
+
+
+Response necrophos_start_round_lost_last_round
+{
+	speak "necrophos_start_round_lost_last_round" noscene 
+}
+
+Rule necrophos_start_round_lost_last_round_rule
+{
+	criteria Isnecrophos ConceptRoundStart LostLastGame
+	response necrophos_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response necrophos_flawless_victory
+{
+	speak "necrophos_flawless_victory" noscene 
+}
+
+Rule necrophos_flawless_victory_rule
+{
+	criteria Isnecrophos ConceptRoundEnd Result_WinFlawless
+	response necrophos_flawless_victory
+}
+
+
+Response necrophos_decisive_victory
+{
+	speak "necrophos_decisive_victory" noscene 
+}
+
+Rule necrophos_decisive_victory_rule
+{
+	criteria Isnecrophos ConceptRoundEnd Result_WinDecisive
+	response necrophos_decisive_victory
+}
+
+Response necrophos_narrow_victory
+{
+	speak "necrophos_narrow_victory" noscene 
+}
+
+Rule necrophos_narrow_victory_rule
+{
+	criteria Isnecrophos ConceptRoundEnd Result_WinNarrow
+	response necrophos_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response necrophos_flawless_defeat
+{
+	speak "necrophos_flawless_defeat" noscene 
+}
+
+Rule necrophos_flawless_defeat_rule
+{
+	criteria Isnecrophos ConceptRoundEnd Result_LoseFlawless
+	response necrophos_flawless_defeat
+}
+
+
+Response necrophos_decisive_defeat
+{
+	speak "necrophos_decisive_defeat" noscene 
+}
+
+Rule necrophos_decisive_defeat_rule
+{
+	criteria Isnecrophos ConceptRoundEnd Result_LoseDecisive
+	response necrophos_decisive_defeat
+}
+
+Response necrophos_narrow_defeat
+{
+	speak "necrophos_narrow_defeat" noscene 
+}
+
+Rule necrophos_narrow_defeat_rule
+{
+	criteria Isnecrophos ConceptRoundEnd Result_LoseNarrow
+	response necrophos_narrow_defeat
+}

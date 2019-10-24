@@ -1,8 +1,9 @@
+@import url("file://{resources}/styles/battle_pass/current_battlepass.css");
+
 DACVSScreen
 {
 	width:100%;
 	height:100%;
-	flow-children: down;
 	//background-color: red;
 	background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, from( #000000ee), to( #00000000 ) );
 	visibility: collapse;
@@ -11,12 +12,71 @@ DACVSScreen
 	transition-timing-function: ease-in-out;
 	opacity: 0; 
 	padding-top: 15%;
+
+    // TESTING
+    //visibility: visible;	
+    //opacity: 1;
+}
+
+.VSContainer
+{
+    width: 100%;
+    height: 100%;
+    flow-children: down;
+    visibility: collapse;
+	vertical-align: bottom;	    
+	margin-top: 0px;
+
+	transition-property: margin-top;
+	transition-duration: .2s;
+}
+
+.GameMode_Duos.IsLayoutSmallScreen #VSScreen,
+.GameMode_Duos.IsLayoutSmallScreen DACRoundOverScreen
+{
+	ui-scale: 75%;
+}
+
+
+.ShopVisible .VSContainer
+{
+	margin-top: 250px;
+	ui-scale: 75%;
+}
+
+.ShopVisible #RoundOverVSScreen
+{
+	//margin-top: 0px;
+	//ui-scale: 120%;
+	margin-top: 150px;
+	ui-scale: 75%;
+}
+
+.GameMode_Duos.IsLayoutSmallScreen.ShopVisible #RoundOverVSScreen
+{
+	margin-top: 50px;
+	ui-scale: 100%;
+}
+
+
+
+.PlayerOpponent #PlayerContainer,
+.NeutralOpponent #NeutralContainer,
+.DuosOpponent #DuosContainer,
+{
+    visibility: visible;
 }
 
 .IsLayoutLargeScreen DACVSScreen
 {
-    ui-scale: 80%;
-    margin-top: 100px;
+    ui-scale: 90%;
+    margin-top: 200px;
+}
+
+.IsLayoutLargeScreen.GameMode_Duos DACVSScreen
+{
+    ui-scale: 75%;
+    margin-top: 50px;
 }
 
 .IsDragging DACVSScreen
@@ -69,7 +129,7 @@ DACVSScreen.AnimateInAndOut
 {
 	animation-name: DACVSScreenAnimateInAndOut;
 	animation-delay: 0.0s;
-	animation-duration: 4.6s;
+	animation-duration: 5s;
 	animation-iteration-count: 1;
 	animation-timing-function: ease-in;
 }
@@ -87,10 +147,43 @@ DACVSScreen.Display
 	opacity: 1; 
 }
 
-#VSMiniProfile
+#PlayerMiniProfileContainer
+{
+	horizontal-align: center;
+	flow-children:right;
+}
+
+.VSMiniProfile
 {
 	//margin-top: 200px;
-	horizontal-align: center;
+	horizontal-align: center;	
+	//margin: 0px 40px 0px 40px;
+}
+
+.VSInfoContainer
+{
+	//margin-top: 200px;
+	horizontal-align: center;	
+	//margin: 0px 40px 0px 40px;
+	flow-children: down;
+	//width: 100px;
+	//height: 100px;
+}
+
+
+.VSOpponentContainer
+{
+	transform: rotatez(-3deg);
+}
+
+.VSLocalPlayerContainer
+{
+	transform: rotatez(2deg);
+}
+
+.NextOpponentVSLabel
+{
+	margin-right: 50px;
 }
 
 .VSPersona
@@ -98,14 +191,33 @@ DACVSScreen.Display
 	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
 	text-shadow: 0px 1px 0px 3.0 #000;
 	font-weight: bold;
-	font-size: 80px;
-	vertical-align: top;
+	//font-size: 32px;
+	font-size: 48px;
+	//vertical-align: top;
+	margin-top: 20px;
+	margin-left: 10px;
+	vertical-align: center;
+}
+
+.GameMode_Duos .VSPersona
+{
+	font-size: 40px;
+	vertical-align: center;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+#NeutralOpponent .VSPersona
+{
 	horizontal-align: center;
 }
 
-.NeutralRound 
+#NeutralContainer
 {
-	visibility: collapse;
+	margin-bottom: 320px;
+	height: fit-children;
+	horizontal-align: center;
+	vertical-align: bottom;
 }
 
 #NeutralRoundImage
@@ -115,19 +227,19 @@ DACVSScreen.Display
     background-image: url("s2r://panorama/images/hud/neutral_round1_vs_png.vtex");
 	background-size: cover;
 	margin-bottom: -220px;
-	margin-top: -290px;
+	margin-top: -200px;
 
 	horizontal-align: center;
 
 	visibility: collapse;
 }
 
-.NeutralRound #NeutralRoundImage
+.NeutralOpponent #NeutralRoundImage
 {
 	visibility: visible;
 }
 
-.NeutralRound .VSPersona
+.NeutralOpponent .VSPersona
 {
 	text-transform: uppercase;
 }
@@ -145,13 +257,14 @@ DACVSScreen.Display
 }
 
 
-.NeutralRound #NextOpponentContainer
+.NeutralOpponent #NextOpponentContainer
 {
 	background-image: none;
+	horizontal-align: center;
 }
 
 #NextOpponentContainer {
-	width: 1300px;
+	width: 1800px;
 	height: fit-children;
 	horizontal-align: center;
 	flow-children: down;
@@ -161,7 +274,9 @@ DACVSScreen.Display
 	background-repeat: no-repeat;
 }
 
-#OpponentSynergies {
+#OpponentSynergies,
+#LocalPlayerSynergies
+{
 	width: fit-children;
 	height: fit-children;
 	background-color: gradient( radial, 50% 50%, 0% 0%, 50% 50%, from( #000000ee), to( #00000000 ) );
@@ -169,18 +284,21 @@ DACVSScreen.Display
 	flow-children: right-wrap;
 }
 
+
 #PlayerOpponent
 {
 	horizontal-align: center;
 	visibility: visible;
+	flow-children: right;
 }
+
 #NeutralOpponent {
 	horizontal-align: center;
 	visibility: collapse;
 }
 
-.NeutralRound #PlayerOpponent,
-.NeutralRound #OpponentSynergies {
+.NeutralOpponent #PlayerOpponent,
+.NeutralOpponent #OpponentSynergies {
 	visibility: collapse;
 }
 
@@ -189,7 +307,7 @@ DACSynergyIcon
 	ui-scale: 80%;
 }
 
-.NeutralRound #NeutralOpponent
+.NeutralOpponent #NeutralOpponent
 {
 	visibility: visible;
 }
@@ -199,7 +317,15 @@ DACSynergyIcon
 	flow-children: down;
 	horizontal-align: center;
 	height: 120px;
-	margin-top: 8px;
+	margin-top: 50px;
+}
+
+#WinLossRecordText
+{
+	font-family: Ravenhook, Radiance;
+	font-size: 48px;
+	//color: #e1e1e1;
+	//brightness: 1.5;
 }
 
 .WinLossText
@@ -210,6 +336,7 @@ DACSynergyIcon
 	text-shadow: 0px 1px 0px 3.0 #000;
 	color: #b0b4d4;
 	//color: gradient(linear, 0% 0%, 0% 100%, from( #c0daf4 ), to(#ffffff));
+
 }
 
 .LowVisualQuality .WinLossText 
@@ -218,7 +345,7 @@ DACSynergyIcon
 }
 
 
-.NeutralRound #WinLossRecord
+.NeutralOpponent #WinLossRecord
 {
 	visibility: collapse;
 }
@@ -259,4 +386,492 @@ DACSynergyIcon
 .FirstEncounter #WinLossDrawRecordText
 {
 	visibility: collapse;
+}
+
+//DUOS
+
+#DuosDataContainer
+{
+    width: 1400px;
+    height: fit-children;
+
+    horizontal-align: center;
+    //vertical-align: center;
+    //margin-top: 175px;
+    
+    flow-children: down;
+}
+
+.GameMode_Duos #FightResultAnimation
+{
+	visibility: collapse;
+}
+
+#TeamInfoContainer
+{
+    //width: 100%;
+    width: fit-children;
+    height: 200px;
+    flow-children: right;
+    horizontal-align: center;
+}
+
+#VS
+{
+	visibility: collapse;
+}
+
+.TeamInfoPanel
+{
+    width: 500px;
+    //width: 500px;
+    //height: 100%;
+    height: fit-children;
+    flow-children: down;
+    //background-color: black;
+    //background-color: red;
+
+}
+
+.IntroTeamName
+{
+    width: 100%;
+    height: 70px;
+    //font-size: 50px;
+    font-size: 65px;
+    text-align: center;
+    margin-top: 15px;
+    background-color: none;
+    box-shadow: none;
+   	text-shadow: 0px 1px 0px 3.0 #000;
+   	font-family: Ravenhook, Radiance;
+}
+
+#HomeTeamName,
+#AwayTeamName
+{
+	font-family: Ravenhook, Radiance;
+	letter-spacing: 2px;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #84abd9 ), to(#FFFFFF));
+	text-overflow: shrink;
+	text-shadow: 0px 0px 0px 3.0 #000;
+}
+
+#AwayTeamName
+{
+	//color: gradient(linear, 0% 0%, 0% 100%, from( #ff5539 ), to(#ffddcd));
+}
+
+#HomeTeamHealth,
+#AwayTeamHealth
+{
+	//font-family: Radiance;
+}
+
+.TeamHealthPanel
+{
+	width: fit-children;
+	height: fit-children;
+	//width: 50px;
+	flow-children: right;
+	//background-color: red;
+	horizontal-align: center;
+}
+
+.VSPersonaColumn
+{
+	flow-children: down;
+	vertical-align: center;
+}
+
+.CombatIcon
+{
+	width: 70px;
+	height: 70px;
+	margin-left: 55px;
+	margin-right: 55px;
+	horizontal-align: center;
+	//vertical-align: top;
+	//margin-top: 30px;
+	vertical-align: center;
+    background-image: url("s2r://panorama/images/hud/combat_icon_psd.vtex");	
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.LargeCombatIcon
+{
+	width: 70px;
+	height: 70px;
+	ui-scale:150%;
+	margin-left: 55px;
+	margin-right: 55px;
+	horizontal-align: center;
+	vertical-align: center;
+    background-image: url("s2r://panorama/images/hud/combat_icon_psd.vtex");	
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.TeamName1
+{
+    color: #bcdf30;
+}
+.TeamName2
+{
+    color: #fee368;
+}
+.TeamName3
+{
+    color: #8d75ec;
+}
+.TeamName4
+{
+    color: #e74f24;
+}
+.TeamName5
+{
+    color: #bcdf30;
+}
+.TeamName6
+{
+    color: #fee368;
+}
+.TeamName7
+{
+    color: #8d75ec;
+}
+.TeamName8
+{
+    color: #e74f24;
+}
+
+#TeamRecordsContainer
+{
+    //width: 100px;
+    width: 50px;
+    height: 100%;
+}
+#TeamRecordsLabel
+{
+    visibility: collapse;
+}
+
+.CombatContainer
+{
+    width: 100%;
+    height: 350px;
+    flow-children: right;
+    margin-bottom: 20px;
+}
+
+.GameMode_Duos .CombatContainer
+{
+    width: 100%;
+    height: 450px;
+    flow-children: right;
+    margin-bottom: 20px;
+}
+
+DACRoundOverScreen .CombatContainer
+{
+    //width: fit-children;
+    //horizontal-align: center;
+    margin-left: 50px;
+}
+
+
+.CombatantContainer
+{
+    width: 600px;
+    height: 450px;
+    overflow:noclip;
+    flow-children: none;
+
+    //horizontal-align: center;
+}
+
+DACRoundOverScreen .CombatantContainer
+{
+	ui-scale: 90%;
+	height: 350px;
+}
+
+DACRoundOverScreen .DashboardProfile
+{
+	ui-scale: 70%;
+}
+
+.ShopVisible DACRoundOverScreen .CombatContainer
+{
+	//height: 220px;
+}
+
+
+.ShopVisible DACRoundOverScreen .CombatantContainer
+{
+	//ui-scale: 60%;
+}
+
+
+#HomeCombatant0,
+#HomeCombatant1
+{
+	flow-children: left;
+}
+
+#HomeCombatant0 .PlayerDamageResult,
+#HomeCombatant1 .PlayerDamageResult
+{
+	margin-left: 20px;
+}
+
+#AwayCombatant0,
+#AwayCombatant1
+{
+	flow-children: right;
+}
+
+#AwayCombatant0 .PlayerDamageResult,
+#AwayCombatant1 .PlayerDamageResult
+{
+	margin-right: 20px;
+}
+
+.DamageResult
+{
+	font-weight: bold;
+	font-size: 50px;
+	vertical-align: center;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	text-shadow: 0px 1px 0px 3.0 #000;
+	color: #ff6123;
+
+	font-family: ravenhook, radiance;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ff715a ), to(#ff4e31));
+	//color: #ff4e31;
+	visibility: collapse;
+}
+
+.PlayerDamageResult
+{
+	font-weight: bold;
+	font-size: 30px;
+	text-shadow: 0px 1px 0px 3.0 #000;
+	horizontal-align: center;
+	//margin-top: 100px;
+	margin-top: 150px;
+	color: #ff6123;
+
+	font-family: ravenhook, radiance;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ff5539 ), to(#cb2c12));
+	ui-scale:200%;
+	visibility: collapse;
+}
+
+.HeartIcon
+{
+	width: 30px;
+	height: 30px;
+    background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex");	
+    background-repeat: no-repeat;
+    background-size: contain;
+    vertical-align: center;
+    margin-bottom: 5px;
+    brightness: 2.0;
+}
+
+#AwayTeamHealth,
+#HomeTeamHealth
+{
+	width: fit-children;
+	background-color: none;
+	margin-top: 0px;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #81cd74 ), to(#b1feaa));
+	font-size: 60px;
+	text-shadow: 0px 0px 0px 3.0 #000;
+	margin-bottom: 10px;
+	padding-right: 0px;
+}
+
+.ShowDraw .DamageResult,
+.ShowVictory .DamageResult,
+.ShowDefeat .DamageResult,
+.ShowDraw .PlayerDamageResult,
+.ShowVictory .PlayerDamageResult,
+.ShowDefeat .PlayerDamageResult
+{
+	visibility: visible;
+}
+
+.ShowDraw .DamageResult,
+.ShowVictory #HomeTeamDamage,
+.ShowDefeat #AwayTeamDamage
+{
+    visibility: collapse;
+}
+
+.LocalVictory #LocalDamage,
+.LocalDefeat #OpponentDamage,
+.TeammateVictory #TeammateDamage,
+.TeammateDefeat #TeammateOpponentDamage
+{
+    visibility: collapse;
+}
+
+#LocalDamage,
+#OpponentDamage,
+#TeammateDamage,
+#TeammateOpponentDamage,
+{
+	opacity:0;
+}
+
+#TopDuosCombatIcon, #BottomDuosCombatIcon
+{
+	opacity:0;
+}
+
+
+.AnimateInAndOut #LocalDamage
+{
+	animation-name:IntroAppearAnimCombatIcon;
+	animation-iteration-count: 1;
+	animation-duration: 5s;
+	animation-delay: 1.0s;
+}
+.AnimateInAndOut #OpponentDamage
+{
+	animation-name:IntroAppearAnimCombatIcon;
+	animation-iteration-count: 1;
+	animation-duration: 5s;
+	animation-delay: 1.0s;
+}
+.AnimateInAndOut #TeammateDamage
+{
+	animation-name:IntroAppearAnimCombatIcon;
+	animation-iteration-count: 1;
+	animation-duration: 5s;
+	animation-delay: 1.75s;
+}
+.AnimateInAndOut #TeammateOpponentDamage
+{
+	animation-name:IntroAppearAnimCombatIcon;
+	animation-iteration-count: 1;
+	animation-duration: 5s;
+	animation-delay: 1.75s;
+}
+
+.AnimateInAndOut #TopDuosCombatIcon
+{
+	animation-delay: .75s;	
+	animation-name: IntroAppearAnimCombatIcon;	
+	animation-duration: 5s;
+	animation-iteration-count: 1;
+}
+
+.AnimateInAndOut #BottomDuosCombatIcon
+{
+	animation-delay: 1.5s;	
+	animation-name: IntroAppearAnimCombatIcon;	
+	animation-duration: 5s;
+	animation-iteration-count: 1;
+}
+
+.IntroProfilePlayerSlot
+{
+	ui-scale: 70%;	
+	opacity:0;
+}
+
+.GameMode_Duos .IntroProfilePlayerSlot
+{
+	ui-scale: 90%;	
+	opacity:0;
+}
+
+.AnimateInAndOut .IntroProfilePlayerSlot
+{	
+	animation-duration: 5s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;		
+	transform:translateX(-50px);
+}
+
+.AnimateInAndOut #HomeCombatantProfile0
+{
+	transform: rotatez(-3deg);
+	animation-delay: .75s;	
+	animation-name: IntroAppearAnimTopLeft;	
+}
+.AnimateInAndOut #AwayCombatantProfile0
+{	 
+	transform: rotatez(3deg);
+	animation-name: IntroAppearAnimTopRight;
+	animation-delay: .75s;
+}
+.AnimateInAndOut #HomeCombatantProfile1
+{ 
+	transform: rotatez(-2deg);
+	animation-name: IntroAppearAnimBottomLeft;
+	animation-delay: 1.5s;
+}
+.AnimateInAndOut #AwayCombatantProfile1
+{
+	transform: rotatez(4deg);
+	animation-name: IntroAppearAnimBottomRight;	
+	animation-delay: 1.5s;
+}
+
+
+@keyframes 'IntroAppearAnimCombatIcon'
+{
+	0% {
+		opacity: 0;
+		pre-transform-scale2d: 1.3;
+	}
+	2% {
+		opacity: 1;
+		pre-transform-scale2d: 1.0;		
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes 'IntroAppearAnimTopLeft'
+{
+	0% 	{ opacity: 0; transform:translateX(-100px) rotatez(-3deg); }
+	2% { opacity: 1; transform:translateX(0px) rotatez(-3deg); }
+	100% { opacity: 1; }
+}
+
+@keyframes 'IntroAppearAnimTopRight'
+{
+	0% { opacity: 0; transform:translateX(100px) rotatez(3deg); }
+	1% { opacity: 1; transform:translateX(0px) rotatez(3deg); }
+	100% { opacity: 1; }
+}
+
+@keyframes 'IntroAppearAnimBottomLeft'
+{
+	0% { opacity: 0; transform:translateX(-100px) rotatez(-2deg); }
+	2% { opacity: 1; transform:translateX(0px) rotatez(-2deg); }
+	100% { opacity: 1; }
+}
+
+@keyframes 'IntroAppearAnimBottomRight'
+{
+	0% { opacity: 0; transform:translateX(100px) rotatez(4deg); }
+	2% { opacity: 1; transform:translateX(0px) rotatez(4deg); }
+	100% { opacity: 1; }
+}
+
+.CombatIcon
+{
+    //width: 180px;
+    //height: 200px;
+    //margin-left: 20px;
+    //margin-right: 20px;
 }

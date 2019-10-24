@@ -1,0 +1,149 @@
+// disruptor - Hero
+criterion "Isdisruptor" "classname" "disruptor" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response disruptor_recruit_1
+{
+	speak "disruptor_recruit" noscene 
+}
+
+Rule disruptor_recruit_1_rule
+{
+	criteria Isdisruptor ConceptRecruit UnitRank1
+	response disruptor_recruit_1
+}
+
+
+Response disruptor_recruit_2
+{
+	speak "disruptor_upgrade" noscene 
+}
+
+Rule disruptor_recruit_2_rule
+{
+	criteria Isdisruptor ConceptRecruit UnitRank2
+	response disruptor_recruit_2
+}
+
+
+Response disruptor_recruit_3
+{
+	speak "disruptor_final_upgrade" noscene 
+}
+
+Rule disruptor_recruit_3_rule
+{
+	criteria Isdisruptor ConceptRecruit UnitRank3
+	response disruptor_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response disruptor_start_round
+{
+	speak "disruptor_start_round" noscene 
+}
+
+Rule disruptor_start_round_rule
+{
+	criteria Isdisruptor ConceptRoundStart 
+	response disruptor_start_round
+}
+
+
+Response disruptor_start_round_lost_last_round
+{
+	speak "disruptor_start_round_lost_last_round" noscene 
+}
+
+Rule disruptor_start_round_lost_last_round_rule
+{
+	criteria Isdisruptor ConceptRoundStart LostLastGame
+	response disruptor_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response disruptor_flawless_victory
+{
+	speak "disruptor_flawless_victory" noscene 
+}
+
+Rule disruptor_flawless_victory_rule
+{
+	criteria Isdisruptor ConceptRoundEnd Result_WinFlawless
+	response disruptor_flawless_victory
+}
+
+
+Response disruptor_decisive_victory
+{
+	speak "disruptor_decisive_victory" noscene 
+}
+
+Rule disruptor_decisive_victory_rule
+{
+	criteria Isdisruptor ConceptRoundEnd Result_WinDecisive
+	response disruptor_decisive_victory
+}
+
+Response disruptor_narrow_victory
+{
+	speak "disruptor_narrow_victory" noscene 
+}
+
+Rule disruptor_narrow_victory_rule
+{
+	criteria Isdisruptor ConceptRoundEnd Result_WinNarrow
+	response disruptor_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response disruptor_flawless_defeat
+{
+	speak "disruptor_flawless_defeat" noscene 
+}
+
+Rule disruptor_flawless_defeat_rule
+{
+	criteria Isdisruptor ConceptRoundEnd Result_LoseFlawless
+	response disruptor_flawless_defeat
+}
+
+
+Response disruptor_decisive_defeat
+{
+	speak "disruptor_decisive_defeat" noscene 
+}
+
+Rule disruptor_decisive_defeat_rule
+{
+	criteria Isdisruptor ConceptRoundEnd Result_LoseDecisive
+	response disruptor_decisive_defeat
+}
+
+Response disruptor_narrow_defeat
+{
+	speak "disruptor_narrow_defeat" noscene 
+}
+
+Rule disruptor_narrow_defeat_rule
+{
+	criteria Isdisruptor ConceptRoundEnd Result_LoseNarrow
+	response disruptor_narrow_defeat
+}

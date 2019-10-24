@@ -68,7 +68,6 @@
  <b>not<H
  <font cL
  <font color="red">Query</font>(
- ADyn 
  CollGroup=%d;
  CollideH
  E9t$
@@ -122,6 +121,7 @@
  with collision disabled. Do Not Collide.
  with collision enabled
  z1u/H9
+ {%.3f,%.3f,%.3f}
  {%d,%d,%d}
 !m_bNeedsSort
 "%s" 
@@ -151,8 +151,6 @@ $A9\$
 $A;D$
 $A;T$
 $A;\$
-$D9hp
-$HcPpH
 $I#D$
 $I#\$
 $IcEpf
@@ -193,10 +191,13 @@ $zUuSA
 %s ( 1 << %u )
 %s (%d)
 %s (%s %s 0)
+%s (Color)
+%s (Material)
 %s * %s
 %s + %s
 %s - %s
 %s / %s
+%s F=%d V=%d hE=%d
 %s [%d]
 %s [%u valid / %u bones]
 %s a1 :{r=%.1f,a=%.1f}
@@ -211,6 +212,8 @@ $zUuSA
 %s: string format requested %d chars
 %s:%s needs base %s:%s to be registered
 %s_%d
+%s_color
+%s_matgrp
 %srel rotation {%.2f,%.2f,%.2f,%.2f}
 %s|  % 2d: %s [Offset: %d]
 %s|  % 2d: [% 3d] %-12s %s
@@ -233,7 +236,7 @@ $zUuSA
 (A\A]A^A_]
 (E9g 
 (E;4$
-(E;l$p
+(E;l$h
 (HcCPA9
 (HcWP
 (Hitbox)
@@ -245,19 +248,19 @@ $zUuSA
 (NPUH
 (None)
 (Start in Solid)
-(V0Hc
 ([A\A]A^A_]
 ([A\A]]
 ([A\]
-(job %d): %s ticks per alloc
-)6A9\$p
+(]0Hc
+(j0f.
+)9Hcp
 )B I9
 )B fD
 )C`[A\A]A^]
 )D$ H
 )D$`H
 *%d %s
-*D9{p
+*D9{h
 *HcP8H
 *xNIH
 +Always Notify on Touch Found or Lost
@@ -303,12 +306,15 @@ $zUuSA
 -validate
 -with flH
 . Do NotH
+.%>%/
+.%_7'
 ../public/ordered_constructor.h
 ../public/tier0/tslist.h
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
 ../public/tier1/utlsortvector.h
+.=1Y-
 .AUndefined
 .CRnPrismaticJoint
 .KTwC
@@ -350,7 +356,6 @@ $zUuSA
 0AUATSH
 0E9l$
 0E;g8
-0E;wP
 0HcG4
 0[A\A]A^]
 0[A\]
@@ -385,10 +390,11 @@ $zUuSA
 17CResourceStreamVM
 18CBreakLegacyParser
 19CBoneConstraintBase
+19CModelConfigElement
 19CSchemaRegistration
 1D;G 
 1DBlend
-2019-07-19 17:37:30.216000
+2019-10-15 12:10:35.970000
 20CPostConnectCallback
 20CRefCountServiceBaseILb1E6CRefMTE
 20CResourceStreamFixed
@@ -447,7 +453,9 @@ $zUuSA
 27CSchemaUtlVectorManipulatorI10CUtlVectorI9CFlexRule10CUtlMemoryIS1_iEES1_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIN28CBoneConstraintPoseSpaceBone7Input_tE10CUtlMemoryIS2_iEES2_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIN29CBoneConstraintPoseSpaceMorph7Input_tE10CUtlMemoryIS2_iEES2_E
+27CSchemaUtlVectorManipulatorI10CUtlVectorIP12CModelConfig10CUtlMemoryIS2_iEES2_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIP15CBaseConstraint10CUtlMemoryIS2_iEES2_E
+27CSchemaUtlVectorManipulatorI10CUtlVectorIP19CModelConfigElement10CUtlMemoryIS2_iEES2_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIP22CPhysSurfaceProperties10CUtlMemoryIS2_iEES2_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIf10CUtlMemoryIfiEEfE
 27CSchemaUtlVectorManipulatorI10CUtlVectorIh10CUtlMemoryIhiEEhE
@@ -458,18 +466,26 @@ $zUuSA
 27CSchemaUtlVectorManipulatorI10CUtlVectorIy10CUtlMemoryIyiEEyE
 27CSchemaUtlVectorManipulatorI23CUtlVectorFixedGrowableI16CSceneObjectDataLm1EES1_E
 28CBoneConstraintPoseSpaceBone
+28CModelConfigElement_UserPick
 28CSchemaRegistration_modellib
 28ISchemaCollectionManipulator
 29CBoneConstraintPoseSpaceMorph
-2D9{p
+2D9{h
+2E9|$h
 2Way_0( %s )
 2Way_1( %s )
 2_BONE_IK
+30CModelConfigElement_RandomPick
+31CModelConfigElement_RandomColor
 320000
+32CModelConfigElement_SetBodygroup
 33333333H
 33333333H)
 333?SoftbodyProcessor
 33CBaseIntrospectedToKV3TypeManager
+33CModelConfigElement_AttachedModel
+34CModelConfigElement_SetRenderColor
+36CModelConfigElement_SetMaterialGroup
 3[A\]
 3phys_sphere_cast_version
 4$A\]
@@ -505,8 +521,9 @@ $zUuSA
 99ccff;"L
 9B@~&H
 9ISequence
-9Kp~BI
-9meshUtilsKeyValues
+9Kh~BI
+9P@~uH
+9Source Hull
 9w(UH
 9{H~9L
 :3px;fonH
@@ -523,7 +540,6 @@ $zUuSA
 ;BX|'1
 ;G tu+G$L
 ;S`s/H
-;Wprw
 ;[A\]
 ;[A\]H
 ;m_flFrequency
@@ -532,13 +548,14 @@ $zUuSA
 ;wp|	]
 <	t$1
 <	t.<
+<	t8<
 <	t9w
-<	t@<
 <	ubUH
 < FLT_EPSILON
 <!-- kv3 encoding:%s:version{%s} format:%s:version{%s} -->
 <!-- schH
 <"C_OP_RemapSpeedtoCP
+<$D9wh
 <$E;|$
 <&t&H
 <(HcGH
@@ -571,7 +588,6 @@ $zUuSA
 <NO EXPRESSION>
 <No schemasystem>
 <RAUI
-<RE;2
 <Trace Result
 <Xt%1
 <b>Not</H
@@ -581,6 +597,7 @@ $zUuSA
 <div align=center style="padding:3px;font-size:15px;text-align:center;background-color:#ff9966;">
 <font color="blue">%s</font>
 <font color="red">"%s"(%d)</font>, <font color="blue">"%s"(%d)</font> 
+<font color="red">Face is connected to itself, cannot dissolve</font>
 <li> - because <font color="red">Query</font> interacts with %u <font color="blue">shape</font>'s layer%s: 
 <li> - because shape interacts with %u <font color="red">Query</font>'s layer%s: 
 <no failure reason set>
@@ -645,6 +662,7 @@ $zUuSA
 <tr><td>SurfaceProp</td><td>%s</td></tr>
 <unknown>
 =m_influenceFlags
+=meshUtilsKeyValues
 > -FLT_EPSILON
 > ObjectH
 > ToH
@@ -654,21 +672,21 @@ $zUuSA
 >;9t9H
 ><b>Has<H
 ><b>No</H
+>Dyn 
 >Keyframed
 >NO</b> H
 >RjyA
 >Should H
->femodel
 >mempool.cpp
 >not</b>H
 ?%d: 
+?(job %d): %s ticks per alloc
 ?A^A_]
 ?MESH_DRAW_FLAGS_NONE
 ?Primal
 ?Trailing Data
-?VScript
+?[A\]
 ?c%d m%d pt%d
-?phys_soft_contacts_enabled
 ?unsupported?
 ?~tEH
 @ %.2f, %.2f, %.2f
@@ -689,13 +707,15 @@ $zUuSA
 @(lag
 @(lideH
 @(lidefD
+@/@ttH
+@/@t~H
 @0</p>H
 @0ableH
 @0odief
 @2f3A2f
+@@Failed to load body %p
 @AVAUATSH
 @D9C 
-@Failed to load body %p
 @HIcV
 @HcB$H
 @HcBXH
@@ -711,9 +731,11 @@ $zUuSA
 @[A\]
 @mathlib.cpp
 @physics_debug_draw
+@spawn
 @tBE+
 @tB[A\]
 @u'fA
+@uoHc
 A#V\H
 A#|$TH
 A+D$ 
@@ -728,6 +750,7 @@ A+E$A
 A+E$H
 A+E$I
 A+F$H
+A+F$I
 A+G$H
 A+G$I
 A+L$@
@@ -737,6 +760,7 @@ A+P$Hc
 A+T$$
 A+T$$Hc
 A+U$Hc
+A+V$Hc
 A+W$Hc
 A+]$Hc
 A+p$Hc
@@ -744,31 +768,33 @@ A+u$A+~$D
 A.[A\A]A^A_]
 A3T$ 
 A99~]A
+A9B\u
 A9D$8
 A9D$8w
 A9D$dH
 A9E t
 A9EXH
+A9E\u
 A9E`H
 A9F@H
 A9FXH
 A9GXH
 A9T$0v
 A9T$0w?H
-A9Wpw
+A9Whw
 A9\$(
 A9\$@
 A9\$d
 A9\$hI
-A9\$pv6I
-A9\$pw
+A9\$hv6I
+A9\$hw
 A9\$x
-A9]tw
+A9]lw
 A9^(v
 A9^0vI
 A9^0w
 A9_@~oI
-A9wpw
+A9whw
 A:D$:
 A;D$X}
 A;F`}
@@ -781,16 +807,13 @@ A;G`}
 A;Gp|
 A;L$H}
 A;T$ |
-A;V@|
 A;\$ 
 A;\$(tMI
 A;\$8
 A;\$P
-A;\$p
 A;]8|
 A;]8}2I
 A;]@|
-A;]h|
 A;^(|
 A;^(}6M
 A;^@|
@@ -841,9 +864,11 @@ ANIMATION_TYPE_FIXED_RATE
 API Call Stack
 API Calls
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
+AQAPWL
 ARAQAPWL
 ARAQARH
 ARAQL
+ARAQM
 ARHPH
 ARHP]H
 ASARAQAPWH
@@ -928,8 +953,7 @@ AWAVL
 AWAVLc
 AWAVM
 AYAZA
-AYAZH
-AYA[I
+AZA[H
 AZA[z
 A\A]A^A_]
 A\A]A^A_]L
@@ -990,8 +1014,10 @@ AnimLinearDelta
 AnimOffset
 AnimProxy
 AnimSmoothLoop
+AnimSourceNodes
 AnimSpace
 AnimStartLoop
+AnimStateTime
 AnimSubtract
 AnimVRFinger_t
 AnimVRHand_Left
@@ -1032,7 +1058,7 @@ Awake
 AxialEdgeCount
 B  0x%08X %s,
 B(9sL
-B(9st
+B(9sl
 B(9s|
 B(A9w
 B0Lc.D;n
@@ -1073,6 +1099,7 @@ BentNormalData
 Bh}hH
 BinaryProperties_GetValue
 BlendList
+Bm_flPosition
 Bodies: %d (%d)
 Body #%d
 BodyBuildMass
@@ -1107,7 +1134,6 @@ C$x$H
 C( M9
 C(0M9
 C(9C D
-C(9C rHH
 C(D9e
 C([A\]
 C(t!E
@@ -1121,9 +1147,9 @@ C2[A\]
 C4[A\]
 C8IcT$LH
 C8[A\]
+C<[A\]
 C@Hc2H
 C@HcS8H
-C@[A\A]A^]H
 C@t%1
 CAimConstraint
 CAnimBone
@@ -1148,6 +1174,7 @@ CBroadphase
 CBroadphaseProxyData
 CBroadphaseProxyNode
 CBufferString
+CColorGradient
 CCommand::Tokenize: Encountered command which overflows the argument buffer.. Clamped!
 CCommand::Tokenize: Encountered command which overflows the tokenizer buffer.. Skipping!
 CConnHierarchy
@@ -1198,6 +1225,16 @@ CL 2131667
 CL$(9
 CMaterialDrawDescriptor
 CMemAllocSystemInitialize
+CModelConfig
+CModelConfigElement
+CModelConfigElement_AttachedModel
+CModelConfigElement_RandomColor
+CModelConfigElement_RandomPick
+CModelConfigElement_SetBodygroup
+CModelConfigElement_SetMaterialGroup
+CModelConfigElement_SetRenderColor
+CModelConfigElement_UserPick
+CModelConfigList
 CMorphBundleData
 CMorphConstraint
 CMorphData
@@ -1346,12 +1383,15 @@ CResourceArray< float > FeModelRefl_t::m_NodeInvMassesArray
 CResourceArray< float > FeMorphLayerRefl_t::m_GoalDamping
 CResourceArray< float > FeMorphLayerRefl_t::m_GoalStrength
 CResourceArray< float > FeMorphLayerRefl_t::m_Gravity
+CResourceArray< float > RnSoftbodyRefl_t::m_SavedSimStates
+CResourceArray< int16 > FeModelRefl_t::m_NodeAnimSource
 CResourceArray< matrix3x4_t > RnSoftbodyRefl_t::m_ColliderTransformsArray
 CResourceArray< matrix3x4_t > RnSoftbodyRefl_t::m_ParticlesArray
 CResourceArray< uint16 > ConnHierarchyRefl_t::m_ParentsArray
 CResourceArray< uint16 > ConnHierarchyRefl_t::m_ParentsEndArray
 CResourceArray< uint16 > ConnMatrixFillRefl_t::m_ColFillArray
 CResourceArray< uint16 > ConnMatrixFillRefl_t::m_RopeEndsArray
+CResourceArray< uint16 > FeModelRefl_t::m_AnimSourceNodes
 CResourceArray< uint16 > FeModelRefl_t::m_FreeNodesArray
 CResourceArray< uint16 > FeModelRefl_t::m_RopesArray
 CResourceArray< uint16 > FeModelRefl_t::m_SourceElemsArray
@@ -1647,7 +1687,7 @@ CollisioA
 CollisioH
 Collision enabled
 Collision filtering: Acquiring unregistered name '%s'
-Collision filtering: Cannot allocate name '%s'
+Collision filtering: Cannot allocate name '%s' already used %d names
 Collision group pair flags=0. Do not collide.
 CollisionAttributes
 CollisionEvents
@@ -1663,6 +1703,7 @@ ConVar(%s) defined with infinite float value (%s)
 ConVarRef %s doesn't point to an existing ConVar
 Conditionally Solid, no common intraction layers
 ConditionallySolid
+ConfigAttachedModel
 ConfigurationSystem_001
 ConnHierarchyRefl_t
 ConnMatrixFillRefl_t
@@ -1683,7 +1724,7 @@ Could not create phys debug IB for %d elements
 Could not create phys debug VB for %d elements
 Could not lock phys debug IB for %d elements
 Could not lock phys debug VB for %d elements
-Could not pre-acquire name '%s'
+Could not pre-acquire name '%s' %d names already used.
 Counter reset
 CovMatrix3
 Create Flags
@@ -1695,7 +1736,6 @@ Currently allocated agg data: {
 Cycle or diamond double-reference to '%s'
 C|333?
 D#j\H
-D$ D9
 D$ E1
 D$ H9
 D$(H9
@@ -1711,13 +1751,15 @@ D$(t}
 D$(t~
 D$,D9
 D$,up
+D$/@H
+D$/@I
 D$0D9
 D$0H9
 D$0L;m
 D$0L;u
 D$2A9
 D$4H9
-D$8A\]
+D$8A\]H
 D$8E1
 D$8H9
 D$@E1
@@ -1746,29 +1788,25 @@ D+k$Mc
 D+s$Mc
 D2$Hc
 D6DHc
-D9%dv>
-D9='m>
 D9C ~JMc
 D9c(D
-D9cpw
 D9k D
 D9k(E
 D9k@vmD
 D9k@~RH
 D9kDvm1
-D9kpH
+D9khH
+D9rhv
 D9s8D
 D9x0Lc
 D9x0Lce
-D9{tw
+D9{lw
 D;`@}6H
 D;b tA
 D;c D
 D;c8|
 D;c@|
 D;cP|
-D;cpH
-D;cps
 D;g(E
 D;h t5
 D;hX|
@@ -1780,7 +1818,9 @@ D;s8M
 D;s8|
 D;x@}?H
 D;{$|
+D;{hD
 DATAL
+DHcK(Ic
 DISCRETE_SIM
 Damping %.2f linear, %.2f angular
 DampingMultiplier
@@ -1793,6 +1833,7 @@ DebugIndex
 DebugOverlay
 DebugPayload
 DebugSelection
+DebugSerial
 DebugShapeSerial
 DebugStart( %d );
 DebugTextureInfo001
@@ -1821,6 +1862,7 @@ DirtyFlags
 DisableGroundCollision
 DispatchEntityIO
 Display physics-based 'jiggle bone' debugging information
+Dissolved edge
 Dominate(
 Dop26_t
 DotaCardGameClient_001
@@ -1830,6 +1872,7 @@ DualHull
 Dumping Rubikon internal state
 Dynamic 
 Dynamic-only 
+DynamicConfigList
 E A+E
 E#f\H
 E+G$H
@@ -1839,7 +1882,6 @@ E+O$Mc
 E+n$Mc
 E+u$Mc
 E+}$Mc
-E8XZt
 E9D$H
 E9ePD
 E9g8~2I
@@ -1857,11 +1899,11 @@ E9o@~tI
 E9t$ 
 E9t$(D
 E9t$@
-E9t$pvuD
+E9t$hvuD
 E9wx~>IcGtI
 E9|$ 
 E9|$@
-E9|$p
+E9|$h
 E;&}SI
 E;'}cI
 E;KX}	
@@ -1890,6 +1932,8 @@ EXPORTSYSTEM_INTERFACE_VERSION_001
 EarlyComputeNodeBaseCount
 EarlyInit_Tier0
 EconItemToolModel_001
+EditorDynamicConfig
+EhIcUdH
 EmptyAnim
 EnableWorldShapeCollision
 EndTouchEvents
@@ -1923,7 +1967,7 @@ Expected value or ']'
 ExtraFlags
 F A+F
 F$HcS@H
-F(D9{p
+F(D9{h
 F(I+F H
 F0L;}
 F4f9G4H
@@ -1959,6 +2003,9 @@ FUSION_ENABLED
 F_ALPHA_TEST
 F_MORPH_SUPPORTED
 F_TRANSLUCENT
+Face %d
+Face Fit
+Face Reprojection
 Failed to allocate an instance of a class
 Failed to allocate an instance of class '%s'
 Failed to assign bool literal value
@@ -2061,6 +2108,7 @@ G2fA3@2f
 G8H;0t0H
 G8UE1
 G8UH+G0H
+G8XZt
 G8t%H
 G<@teI
 G@HcW8H
@@ -2074,7 +2122,6 @@ GLIBC_2.14
 GLIBC_2.2.5
 GLIBC_2.3.4
 GLIBC_2.4
-GXUHc
 G`H;E
 GameResourceServiceClientV001
 GameResourceServiceServerV001
@@ -2100,8 +2147,9 @@ H!C`H
 H!w(H
 H#C`I
 H(t}A
+H0D9+
 H0wHH
-H6IcO
+H6IcN
 H9GPt
 H9qHu
 H::J6uS
@@ -2120,24 +2168,25 @@ H;q`t
 H;rPt
 HELPER_BONE
 HMDAvatar
-HPE9|$p
 H[A\A]A^A_]
 H[A\A]]
+H`A8L$ t&
 HammerMapLoader001
 HandAttachment
 Has Collision; 
 HasOverrideAttributes
 Hc@0H
 Hc@0L
+Hc@XI
 HcAXH
 HcAxD
 HcB(HcR@H
 HcB,H
 HcBHH
-HcC$H
 HcC$I
 HcC(1
 HcC(I
+HcC4=
 HcC81
 HcC<I
 HcC@1
@@ -2155,6 +2204,7 @@ HcC\I
 HcC`1
 HcCdI
 HcCh1
+HcChA9
 HcChH
 HcClI
 HcCp1
@@ -2168,9 +2218,11 @@ HcFXL
 HcF`L
 HcFpI
 HcG A
+HcG H
 HcG$H
 HcG0L
 HcG4=
+HcG4D
 HcG@M
 HcGPH
 HcG`9
@@ -2186,8 +2238,9 @@ HcKXIc
 HcK`H
 HcKpD
 HcKpH
-HcKxIc
+HcO H
 HcO$H
+HcPhH
 HcQ(9
 HcS H
 HcS L
@@ -2199,9 +2252,10 @@ HcS\H
 HcSpH
 HcV UH
 HcW M
-HcW$H
 HcWpH
+Hc[@O
 Hcs@H
+Hcv@H
 HelpSystem_001
 HierarchicalBitVectorRefl_t
 HierarchicalBitVectorRefl_t BroadphaseRefl_t::m_MoveBuffer
@@ -2251,7 +2305,7 @@ Ic@<IcP@9
 IcB A
 IcB L
 IcD$ 
-IcD$ L
+IcD$ H
 IcD$(9
 IcD$0H
 IcD$0I
@@ -2271,11 +2325,11 @@ IcFXL
 IcFhA9
 IcG$A
 IcG81
-IcL$ I
-IcL$ f
+IcL$ Ic
 IcL$(Ic
 IcL$0Ic
 IcL$@Ic
+IcL$HIc
 IcL$PIc
 IcL$XIc
 IcL$`Ic
@@ -2289,6 +2343,7 @@ IcO(Ic
 IcO,H
 IcP$I
 IcQ@L
+IcT$$I
 IcT$0H
 IcT$0L
 IcT$`9
@@ -2296,17 +2351,16 @@ IcUXD9
 IcV@D9
 IcV@M
 IcVXI
-IcVdD
 IcW@H
 IcW@L
-IcWpH
-IcWtL
+IcWhH
+IcW|L
 Ic\$ A9
 Ic\$0A;\$@tMI
 Ic\$HA;\$XtMI
 Ic\$Hf
 Ic\$PA;\$`
-Ic\$PA;\$`A
+Ic\$Pf
 Ic]`A;]ptMI
 Ic|$0H
 Ic|$@
@@ -2388,6 +2442,7 @@ JOINT_STATE_DEACTIVATED
 JOINT_STATE_LIMIT_ENABLED
 JOINT_STATE_LINEAR_CONSTRAINT_DISABLED
 JOINT_STATE_MOTOR_ENABLED
+Jc4)H
 Jc<?I
 Jh#B\H
 JiggleBoneCount
@@ -2403,15 +2458,17 @@ K HcQ0;Q@
 K(HcP
 K(IcV
 K8HcE
+KN24CFieldPathHuffmanEncoder5INodeE
 KTu6L
 KV3 load transfer failed: %s
+K`HcCXI
 KeepInBounds
 KelagerBend %d 
 KelagerBendCount
 KeyValueCache001
 KeyValuesSystem
 Keyframed-Only 
-Kvb phys
+Kmaterial_group
 L$ E1
 L$ I9
 L$8Hc
@@ -2450,14 +2507,13 @@ Lc3D;s
 Lc7D)
 Lc7E)
 Lc8D;x
+Lc:D;z
 Lc;D;{
 LcO E
-Lc_ E
 Lc`XE;e
 LccHD;cXD
 LccHD;cXI
 LccHD;cXu
-LcchD;cxI
 Lcg H
 Lcg0A
 Lcg0D;g@D
@@ -2466,8 +2522,7 @@ Lck4H
 Lck@D;kPD
 LckPD9k`D
 LckPD;k`D
-LckPD;k`E
-LckpD
+LckhD
 Lco E
 Lc{8E
 Left Hand
@@ -2492,8 +2547,6 @@ LoadPhysicsDebugMaterials
 LoadSurfaceProperties
 Local anchors: {%g,%g,%g}, {%g,%g,%g}
 LocalInertiaInv
-LocalP1
-LocalP2
 Localize_001
 Locked
 LoggingSystem_IsChannelEnabled
@@ -2534,6 +2587,11 @@ MODEL_BONE_FLEX_INVALID
 MODEL_BONE_FLEX_TX
 MODEL_BONE_FLEX_TY
 MODEL_BONE_FLEX_TZ
+MODEL_CONFIG_ATTACHMENT_BONEMERGE
+MODEL_CONFIG_ATTACHMENT_BONE_OR_ATTACHMENT
+MODEL_CONFIG_ATTACHMENT_COUNT
+MODEL_CONFIG_ATTACHMENT_INVALID
+MODEL_CONFIG_ATTACHMENT_ROOT_RELATIVE
 MODEL_PROCESSING_SCRIPT_INTERFACE_001
 MODEL_PROCESSING_SERVICES_INTERFACE_001
 MORPH_BUNDLE_TYPE_COUNT
@@ -2547,6 +2605,7 @@ MORPH_FLEXCONTROLLER_REMAP_PASSTHRU
 MOUSE_JOINT
 MPropertyFriendlyName
 MPropertySuppressField
+ManifoldPointRefl_t
 ManifoldPoint_t
 Manifold_t
 Manifolds
@@ -2590,10 +2649,14 @@ Mce@E
 McnXH
 Mct$8E
 McuHE;uXD
+Mcw I
+Mc~ H
 Md5 Hash: %02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x
 MemAlloc_AllocFunc
 MemAlloc_FreeFunc
 Memory used in Rubikon: %s bytes / %s 4K pages = %.1f%%
+Merge Faces
+Merged face
 Mesh %d verts %d tris %g diameter
 Mesh Shape[%d]
 Mesh%d.obj
@@ -2615,6 +2678,7 @@ Min( %s, %s )
 MinMotionRadius
 MinPositionIterations
 MinVelocityIterations
+Missing animation bone %s. It is needed to drive cloth.
 Missing field %s (name hash 0x%X)
 Missing file '%s'
 Model %s missing bone and flex counts (%d < %d), init %d
@@ -2622,6 +2686,7 @@ ModelBoneFlexComponent_t
 ModelBoneFlexDriverControl_t
 ModelBoneFlexDriver_t
 ModelCompile/UseShadowFastPathHeuristic
+ModelConfigAttachmentType_t
 ModelDocUtils001
 ModelScale
 ModelSkeletonData_t
@@ -2663,7 +2728,6 @@ N&B:A
 N&B:H
 N(AUH
 N24CFieldPathHuffmanEncoder12InternalNodeE
-N24CFieldPathHuffmanEncoder5INodeE
 N24CFieldPathHuffmanEncoder8LeafNodeE
 N2f9N,
 N</b></tH
@@ -2686,6 +2750,7 @@ NO Hit ray from {%g,%g,%g} delta {%g,%g,%g}
 NULL_JOINT
 NWay( 
 NXu`A
+N`IcVXM
 NameIndex:AcquireName( %x ) without name string
 NameIndex:PreacquireName( %x ) without name string
 NameIndexRefl_t
@@ -2707,6 +2772,9 @@ NetworkSystemVersion001
 New Hull id %llx local %p->%p
 NewNode
 Newline in string literal
+Next edge after queue update
+Next edge before queue update
+Next edge error %.1f inch, collapse angle %.1f deg
 NextFreeIndex
 Nku*A
 No Buffer
@@ -2722,6 +2790,7 @@ No matchA
 No matching exclude flags
 No valid format conversion from '%s' to '%s'
 Node %d
+NodeAnimSource
 NodePool
 Nodes:
 Non-Collideable 
@@ -2747,7 +2816,6 @@ OFF<i></H
 OH91t`H
 OHATSH
 ORIENT
-OXHcv4
 Object Set Mask
 Object: %s
 OldFeEdge_t
@@ -2756,7 +2824,6 @@ One of tL
 One of the collision groups is Conditionally Solid - No interaction allowed
 Ordered constructor wrapped type has no default constructor.
 Out of %d unit test hulls, %d failed to build, %d were ultra-thin
-OverPredict
 Overlap in reporting by type: %.1f%%, %s unique pointers / %s total = %.1f
 OverrideCollisionGroup
 OverrideInteractsAs
@@ -2769,7 +2836,6 @@ P A3V
 P A3W
 P D;c8|
 P HcA
-P(A;Wp
 P(Lc#D;c
 P([A\]
 P,[A\]
@@ -2791,7 +2857,6 @@ PF_TYPE_CONTROL_POINT_COMPONENT
 PF_TYPE_LITERAL
 PF_TYPE_PARTICLE_AGE_NORMALIZED
 PF_TYPE_RANDOM_UNIFORM
-PHIcO
 PHYSICS_DEBUG_MATERIAL_CLOTH
 PHYSICS_DEBUG_MATERIAL_COUNT
 PHYSICS_DEBUG_MATERIAL_NODEPTHTEST
@@ -2830,6 +2895,8 @@ PXE9f8
 PXE9~
 P[A\A]A^A_]
 P[A\A]A^]
+P[A\]
+P`Hc@XH
 Pair Flags (%d) include INTERSECTION_PAIR_TRIGGER.
 PairBuffer
 PairCount
@@ -2952,7 +3019,11 @@ PreacquireMask
 PrepareContacts
 PrepareJoints
 Prevent jiggle bones from pointing directly away from their target in case of numerical instability.
-Previews the effect of local-space freezing on all cloth in game. This is for debugging only, we may remove it.
+PreviewAttachmentModel
+PreviewBoneAttachedModel
+PreviewBoneMergedModel
+PreviewPreset
+PreviewPresetList
 ProcessUpdaterStatusChanges
 Project
 Projectile
@@ -2962,8 +3033,10 @@ Proxies: %d
 ProxyCount
 PullKinematicTransformsWorker
 PullKinematicTransformsWorker_PerWorld_Deprecated
+PushBack
 PushDynamicTransformsWorker
 Q"u.H
+Q(teA
 Q(tfA
 Q2f3Q2f
 QAngle
@@ -2985,7 +3058,6 @@ Query and shape in hierarchy id=%d
 QueryBounds
 QueuedLoaderVersion001
 Quintic
-R(;Wp
 RESLH
 RESLL
 RESOURCE_TYPE_PHYSICSDATA_INTERNAL
@@ -3052,6 +3124,7 @@ RN_DRAW_SOFTBODIES
 RN_DRAW_SOFTBODY_ANIM_BASES
 RN_DRAW_SOFTBODY_BASES
 RN_DRAW_SOFTBODY_COLLISION
+RN_DRAW_SOFTBODY_EDGES
 RN_DRAW_SOFTBODY_FIELDS
 RN_DRAW_SOFTBODY_INDICES
 RN_DRAW_SOFTBODY_NODE_NAMES
@@ -3264,6 +3337,7 @@ RnSoftbodyCapsule_t
 RnSoftbodyDebugAttrChannel_t
 RnSoftbodyDescRefl_t
 RnSoftbodyDrawLayers_t
+RnSoftbodyFloatAttrCommands_t
 RnSoftbodyFloatAttrModifierTypes_t
 RnSoftbodyParticle_t
 RnSoftbodyRefl_t
@@ -3299,7 +3373,8 @@ Rubikon Release non-SIMD
 Rubikon%s
 S HcB
 S HcS
-S,xBH
+S(9S r`H
+S(L9u
 S8H+S0D
 S@HcE
 S@HcM
@@ -3317,6 +3392,8 @@ SHAPE_UNKNOWN
 SHc7H
 SOFTBODY_ANIM_SPACE_LOCAL
 SOFTBODY_ANIM_SPACE_WORLD
+SOFTBODY_ATTR_COMMAND_GROUND_OFFSET
+SOFTBODY_ATTR_COMMAND_STIFFEN
 SOFTBODY_ATTR_COUNT
 SOFTBODY_ATTR_GROUND_OFFSET
 SOFTBODY_ATTR_POS_ATTRACTION_BIAS
@@ -3358,6 +3435,7 @@ SOFTBODY_SIM_EXPERIMENTAL_1
 SOFTBODY_SIM_EXPERIMENTAL_2
 SOFTBODY_SIM_EXPERIMENTAL_3
 SOFTBODY_SIM_EXPERIMENTAL_4
+SOFTBODY_SIM_INTERLACE_COLLISION_WITH_RELAXATION
 SOFTBODY_SIM_LINEARIZATION_GUARD
 SOFTBODY_SIM_MULTIGRID
 SOFTBODY_SIM_RELAXATION
@@ -3377,6 +3455,7 @@ STATE_UNKNOWN
 SYMLH
 Same body
 Satisfy
+SavedSimStates
 Saving snapshots starting from Frame %u into '%s'
 Scale(%g,%g,%g)
 SceneSystem_002
@@ -3390,7 +3469,6 @@ See CL 2131667. Two non-dynamic bodies with Resolve must never collide or report
 See CL 2H
 Self Collisions
 Self-Collision: <font color = "red">%s</font>, <font color = "blue">%s</font>
-Separation
 SequenceMarkup
 SequenceMarkupList
 SerializedEntitiesVersion001
@@ -3400,6 +3478,7 @@ Set to 1 to reload resources and reconstruct physics of entities on the fly. May
 Set up debug-draw of physics internal state
 SetMask H
 SetTotalMass(%g): Invalid argument
+ShA9T$
 Shadow Controller Slots
 ShadowControllersInternalFinalize
 ShadowControllersInternalPrepare
@@ -3411,6 +3490,7 @@ Should we try to straighten two faces connected to this edge? (tangent)
 ShouldCoH
 ShouldCollide tests passed
 SimFlags
+SimStateDisplay
 SimdAnimStrayRadiusCount
 SimdFitMatrixCount
 SimdNodeBaseCount
@@ -3456,6 +3536,7 @@ SoundOpSystem001
 SoundOpSystemEdit001
 SoundService_001
 SoundSystem001
+Source Hull F=%d V=%d hE=%d
 Source Quad %d
 Source Tri %d
 Source2Client002
@@ -3471,7 +3552,6 @@ Source2Host001
 Source2Server001
 Source2ServerSerializers002
 SourceElemsCount
-SpA9T$
 Sphere Shape[%d]
 Sphere r=%g
 SphereRigidCount
@@ -3493,7 +3573,6 @@ Stats
 StatsService_001
 SteamAudio001
 Step: %6.3f [ms] (%6.3f [ms])
-StepUnderRelax
 StepsSimulated
 Stopping saving snapshots at Frame %u into '%s'
 StreamToPhysicsDebugger: Stream started
@@ -3515,19 +3594,21 @@ T$ L9
 T$ LcC E
 T$ M9
 T$(9Z ~
-T$(Hc
 T$(L9u
 T$0H9
 T$4fE
 T$8H9
+T$8Ic
 T$@Mc
 T$PE1
 T$XD9
 T$XH9
 T$pA\A]]
-T%.,+
-T5cR+
+T57".
 T7$Hc
+T=,!.
+T=?!.
+T=d!.
 TILT_TWIST
 TIcL$
 TOI: Count
@@ -3655,6 +3736,7 @@ Used Layers:
 UserData
 UserInfoChangeService_001
 Using 16-bit blend indices
+V A9N
 V D9W t
 V$[A\]
 V68P6t
@@ -3677,6 +3759,7 @@ VGUI_System010
 VGUI_ivgui008
 VHI+V@H
 VHcC(1
+VIcD$
 VMDLLIB001
 VMaterialSystem2_001
 VMatrix
@@ -3693,6 +3776,7 @@ VPHYSICS_MOTION_TYPE_INVALID
 VPHYSICS_MOTION_TYPE_KEYFRAMED
 VPHYSICS_MOTION_TYPE_STATIC
 VPHc<0
+VPIcFHI
 VPhysX Interface ResourceMgr v0.1
 VPhysXAggregateData_t
 VPhysXAggregateData_t::FLAG_IGNORE_SCALE
@@ -3737,6 +3821,7 @@ VR_001
 VRenderDeviceSetupV001
 VSInputSignature
 VSNAPFile
+VScript
 VScriptDbg
 VScriptManager010
 VStringTokenSystem001
@@ -3814,6 +3899,8 @@ V_vsnprintfWarnTrunc
 V_wcstod
 V_wcstoi64
 VaPrintf
+Vector ManifoldPointRefl_t::m_vLocalP1
+Vector ManifoldPointRefl_t::m_vLocalP2
 Vector RecordedForceRefl_t::m_vForce
 Vector RecordedForceRefl_t::m_vForcePoint
 Vector RecordedHitboxDescRefl_t::m_vMax
@@ -3879,9 +3966,8 @@ VertexUVPosColorNormalAndTangent_t
 VisBuilder_001
 Visited: Nodes/Tris/Mesh
 W u)H
-W5&8+
-W5s-+
-W=C8+
+W-K#.
+W=3#.
 W@H;2t'H
 WARNING: Failed to convert introspected block for file: %s
 WARNING: Invalid resource version (%d): %s
@@ -3906,9 +3992,12 @@ WorldDebugPayloadContainer_t
 WorldRendererBuilderMgr001
 WorldRendererMgr001
 Wrong alignment %d
-X(A;\$ps
-X-z*;
+X%$<<
+X(A;\$hs
+X-Ji=
 X2:jH
+X5di=
+X=li=
 XForm1
 XForm2
 XIcL$
@@ -3920,13 +4009,20 @@ X[A\A]A^A_]
 X[A\A]]
 X[A\fH
 Xd$lD
-Y-R-+
-Y5+,+
+Y%4j-
+Y%oQ'
+Y-&X/
+Y5nQ'
+Y5{j-
+Y@TfA
 Y@serialize2_v%d.inl
 YCLfA
+YD$|M
 YGLfA
 YL$dA
 Yaw; 
+YhTsqH
+ZD$HL
 [ %d ]
 [ %d empty ]
 [ %d total, %d empty ]
@@ -3963,16 +4059,21 @@ Yaw;
 [in %.2f] VSets(0x%X) -> %.2f @ %.2f
 \$ [A\A]A^]
 \$ [A\]
-\$8E1
+\$0E1
 \$8fA
 \$HIcD$@I
 \>$Hc
+\W$Ic
+\[$Ic
+\s$fA
 ]IcD$
 ]P[A\A]A^]
+^D$pL
 ^IcL$ Ic
 ^IcOXIc
 ^P[A\A]A^]
 ^_t]f
+^`IcVXH
 _HHcG@L
 _ITM_deregisterTMCloneTable
 _ITM_registerTMCloneTable
@@ -4067,6 +4168,7 @@ __temp_unserialization_member__
 _edata
 _fini
 _test_conversion_counter
+`@E;'H
 `[A\A]A^]
 `[A\]
 abled onH
@@ -4086,7 +4188,9 @@ anim_name_b
 animgraph0
 archive
 at's expH
+attach_point
 attachment_offset
+attachment_type
 attraction %.2f force %.2f
 audioHardMinVelocity
 audiohardnessfactor
@@ -4113,8 +4217,8 @@ bFrozen
 bFrozenInLocalSpace
 bGoalAttractionSimplified
 bIsContinuousEnabled
-bIsDynamicVsDynamicContinuousEnabled
 bIsLimitEnabled
+bIsSpeculativeEnabled
 bIsSwingLimitEnabled
 bIsTwistLimitEnabled
 bLc#D;c
@@ -4148,9 +4252,12 @@ blue">blH
 blue">boH
 bodies wH
 bodies</H
+body_groups
 body_type
 bone_name
 bone_names
+bonemerge
+bool ManifoldPointRefl_t::m_bNew
 bool PhysSurfacePropertiesRefl_t::m_bHidden
 bool RecordedTraceResultRefl_t::m_bStartInSolid
 bool RnBodyRefl_t::m_bAutoSleeping
@@ -4158,7 +4265,7 @@ bool RnBodyRefl_t::m_bDragEnabled
 bool RnBodyRefl_t::m_bEnabled
 bool RnBodyRefl_t::m_bGravityDisabled
 bool RnBodyRefl_t::m_bIsContinuousEnabled
-bool RnBodyRefl_t::m_bIsDynamicVsDynamicContinuousEnabled
+bool RnBodyRefl_t::m_bIsSpeculativeEnabled
 bool RnBodyRefl_t::m_bSleeping
 bool RnConicalJointRefl_t::m_bIsSwingLimitEnabled
 bool RnConicalJointRefl_t::m_bIsTwistLimitEnabled
@@ -4200,6 +4307,7 @@ c8D;cHD
 cHE;o
 cIcD$H1
 cLc#D;c
+cPHcCHI
 cable
 calloc
 cancp
@@ -4223,14 +4331,13 @@ client
 clientcmd_can_execute
 cloth_airdrag
 cloth_airdrag_override
-cloth_all_frozen
+cloth_approximate_collide
 cloth_batch
 cloth_collide
 cloth_collision_layer0
 cloth_collision_layer1
 cloth_collision_layer2
 cloth_collision_layer3
-cloth_compatibility
 cloth_damping_bias
 cloth_damping_multiplier
 cloth_debug
@@ -4241,8 +4348,11 @@ cloth_expquadairdrag
 cloth_ground_offset
 cloth_ground_plane_thickness
 cloth_guard_threshold
+cloth_interpolation_strategy
 cloth_iteration_multiplier
 cloth_legacy_stretch_force
+cloth_legacy_support
+cloth_max_ticks_per_frame
 cloth_node_debug_axis_length
 cloth_node_velocity_limit
 cloth_quad_smooth_iterations
@@ -4250,10 +4360,12 @@ cloth_quad_smooth_rate
 cloth_quadairdrag
 cloth_quasistatic_iters
 cloth_reload_immediately
+cloth_resim_after
 cloth_rod_smooth_iterations
 cloth_rod_smooth_rate
 cloth_simulate
 cloth_step
+cloth_step_variability
 cloth_watch
 cloth_wind
 cloth_wind_pitch
@@ -4266,6 +4378,7 @@ collision_group_override
 collision_prop
 color
 composite
+config_state
 configvalue.cpp
 contact_indices
 contact_manifolds
@@ -4342,8 +4455,8 @@ explosive_damage
 explosive_radius
 e|+Lc#D;c
 f %d %d %d
-f3A"f
-f3V"f
+f3C"f
+f3S"f
 f3Y"f
 f3Z2f
 f3{2f
@@ -4355,19 +4468,19 @@ f4Weight0
 f4Weights
 f;0t_fD
 fA3@"f
+fA3B"f
 fA3B2f
 fA3C2f
 fA3D$
 fA3D$"f
 fA3E"f
-fA3F"f
 fA3G"f
 fA3L$
 fA3W2f
-fA9D$
+fA3t$
+fA9T$
 fA;D$
 fA;G0
-fA;S*
 fD3J"fA
 fD3Q"fA
 fD3X"fA
@@ -4379,6 +4492,7 @@ fademaxdist
 fademindist
 fadetime
 false
+femodel
 ff9966;">Can <b>Not</b> Collide: same body</div><span>Both shapes belong to the same body %d <i>%s</i>. Do not collide.</span>
 ff9966;">Can <b>Not</b> Collide: same shape</div><span>Hm, it's the same shape, it cannot collide with itself</span>
 ff9966;"H
@@ -4416,6 +4530,7 @@ flWeight[]
 flWorldFriction
 float
 float FeModelOverlayRefl_t::m_flScale
+float ManifoldPointRefl_t::m_flImpulse
 float PhysSurfacePropertiesAudioRefl_t::m_flStaticImpactVolume
 float PhysSurfacePropertiesAudioRefl_t::m_hardThreshold
 float PhysSurfacePropertiesAudioRefl_t::m_hardVelocityThreshold
@@ -4498,6 +4613,7 @@ float RnRevoluteJointRefl_t::m_flMotorTargetAngle
 float RnRevoluteJointRefl_t::m_flMotorTargetVelocity
 float RnRevoluteJointRefl_t::m_flUpperLimitLambda
 float RnShadowControllerRefl_t::m_flTime
+float RnSoftbodyRefl_t::m_flAnimStateTime
 float RnSoftbodyRefl_t::m_flClothScale
 float RnSoftbodyRefl_t::m_flDampingMultiplier
 float RnSoftbodyRefl_t::m_flExpAirDrag
@@ -4506,10 +4622,8 @@ float RnSoftbodyRefl_t::m_flExpRodAirDrag
 float RnSoftbodyRefl_t::m_flGravityScale
 float RnSoftbodyRefl_t::m_flLastTimestep
 float RnSoftbodyRefl_t::m_flModelScale
-float RnSoftbodyRefl_t::m_flOverPredict
 float RnSoftbodyRefl_t::m_flQuadVelocitySmoothRate
 float RnSoftbodyRefl_t::m_flRodVelocitySmoothRate
-float RnSoftbodyRefl_t::m_flStepUnderRelax
 float RnSoftbodyRefl_t::m_flSurfaceStretch
 float RnSoftbodyRefl_t::m_flVelAirDrag
 float RnSoftbodyRefl_t::m_flVelQuadAirDrag
@@ -4598,6 +4712,7 @@ h4M+e
 hSblendindices
 h[A\A]A^A_]
 h[A\A]]
+halfEdges %d,%d faces %d,%d angle %.1f deg.
 handindex
 have a TH
 he colliH
@@ -4636,6 +4751,7 @@ in_vehicle
 inconsisH
 inertia_boxes
 ing exclH
+int ManifoldPointRefl_t::m_nTriangle
 int PhysSurfacePropertiesRefl_t::m_nBaseIndex
 int PhysSurfacePropertiesRefl_t::m_nIndex
 int RecordedHitboxCastRefl_t::nRecordedTraceIndex
@@ -4649,8 +4765,8 @@ int RnContactRefl_t::m_nContactIndexInWorld
 int RnContactRefl_t::m_nFlags
 int RnDebugNameRefl_t::m_nDebugIndex
 int RnDynamicTreeRefl_t::m_nProxyCount
-int RnSoftbodyRefl_t::m_nDebugIndex
 int RnSoftbodyRefl_t::m_nDebugSelection
+int RnSoftbodyRefl_t::m_nDebugSerial
 int RnSoftbodyRefl_t::m_nIndexInWorld
 int RnWorldRefl_t::m_nDelayedDeleteBodiesReady
 int RnWorldRefl_t::m_nDelayedDeleteContactsReady
@@ -4676,6 +4792,7 @@ int8 RnBodyRefl_t::m_nMassPriority
 int8 RnContactRefl_t::m_nMassPriorityShift
 int8 RnSoftbodyRefl_t::m_nDebugDrawTreeBeginLevel
 int8 RnSoftbodyRefl_t::m_nDebugDrawTreeEndLevel
+int8 RnSoftbodyRefl_t::m_nSimStateDisplay
 int8 RnSolverJointRefl_t::m_nMassPriorityShift
 interactAs
 interactAs 
@@ -4709,14 +4826,14 @@ k0D;k@
 k@_aA
 k@_aH
 kXE;g
-k`~PH
+k`~lH
 keyframed_bodies
 khHcSp
 kv3format_manager.cpp
 l$0E;l$@D
 l$0fE
 l$4E9
-l$4t.D
+l$4t8D
 l$xE1
 l><tt><tH
 ladder
@@ -4751,13 +4868,17 @@ lowprecisionuv1
 luded asH
 lve mustH
 m_AnimStrayRadii
+m_AttachmentName
+m_AttachmentType
 m_AxialEdges
+m_BodyGroupsHiddenInTools
 m_Bone
 m_BoxRigids
 m_Capsule
 m_Capsules
 m_ChainData
 m_Children
+m_Choices
 m_CollisionAttributeIndices
 m_CollisionGroup
 m_CollisionGroupString
@@ -4767,6 +4888,8 @@ m_Color
 m_ColorScale
 m_ConeAxis
 m_ConeCutoff
+m_ConfigName
+m_Configs
 m_ControlRigData
 m_CtrlHash
 m_CtrlName
@@ -4780,9 +4903,12 @@ m_DefaultTargetSettings
 m_DynNodeFriction
 m_DynNodeVertexSet
 m_Edges
+m_ElementName
+m_Elements
 m_Emitters
 m_EndEffectorBone
 m_EndEffectorTargetBone
+m_EntityClass
 m_ExtParts
 m_Faces
 m_FitMatrices
@@ -4799,7 +4925,9 @@ m_FreeNodes
 m_GoalDampedSpringIntegrators
 m_GoalDamping
 m_GoalStrength
+m_Gradient
 m_Gravity
+m_GroupName
 m_HitBoxSets
 m_HitBoxes
 m_Hull
@@ -4809,6 +4937,7 @@ m_IkChains
 m_InitPos
 m_InitPose
 m_Initializers
+m_InstanceName
 m_InteractAs
 m_InteractAsStrings
 m_InteractExclude
@@ -4829,11 +4958,13 @@ m_LocalInertiaInv.c2
 m_LocalInertiaInv.c3
 m_LocalRotation
 m_MassProperties
+m_MaterialGroupName
 m_Materials
 m_Mesh
 m_MorphLayers
 m_MorphSetData
 m_Name
+m_NestedElements
 m_NodeBases
 m_NodeCollisionRadii
 m_NodeIntegrator
@@ -4868,6 +4999,7 @@ m_Sphere
 m_SphereRigids
 m_SpringIntegrator
 m_Springs
+m_Stops
 m_SwingLimit
 m_TaperedCapsuleRigids
 m_TaperedCapsuleStretches
@@ -4884,16 +5016,19 @@ m_VertexSetNames
 m_Vertices
 m_WorldCollisionNodes
 m_WorldCollisionParams
+m_aAngOffset
 m_anchor
 m_ankleBoneName
 m_attachments
 m_audioParams
 m_audioSounds
 m_axes
+m_bAdditive
 m_bApplyMinForce
 m_bCacheAttempted
 m_bCacheOk
 m_bCanBatchWithDynamicShaderConstants
+m_bClamp
 m_bDisableChild
 m_bDisableOperator
 m_bDoBonesOrientAlongPositiveX
@@ -4918,6 +5053,8 @@ m_bHasCullingData
 m_bHasPerInstanceBakedLightingData
 m_bHasShadowController
 m_bHidden
+m_bHideMaterialGroupInTools
+m_bHideRenderColorInTools
 m_bIgnoreRotation
 m_bInfluenceRootTransform
 m_bInitFromKilledParentParticles
@@ -4940,12 +5077,15 @@ m_bScaleInitialValue
 m_bScalePerParticle
 m_bSelected
 m_bSleeping
+m_bTopLevel
 m_bTrailBias
 m_bTranslationOnly
 m_bUseBlockSolver
 m_bUseCompressedNormalTangent
 m_bUseHighestEndCP
 m_bUseShadowFastPath
+m_bUserSpecifiedColor
+m_bUserSpecifiedMaterialGroup
 m_bVisible
 m_baseNameHash
 m_bbox
@@ -5031,6 +5171,7 @@ m_flBaseMinUp
 m_flBaseStiffness
 m_flBaseUpFriction
 m_flBiasParameter
+m_flBindPoseDirectionMS
 m_flClusterCooldown
 m_flClusterCooldownMax
 m_flClusterCooldownMin
@@ -5052,12 +5193,14 @@ m_flDefaultVelQuadAirDrag
 m_flDefaultVelRodAirDrag
 m_flDefaultVolumetricSolveAmount
 m_flDistance
+m_flDuration
 m_flEmissionDuration
 m_flEmissionScale
 m_flEmitRate
 m_flFalloff
 m_flFingerScaleRatio
 m_flFingerWeight
+m_flFootLength
 m_flFriction
 m_flGameMass
 m_flGravityScale
@@ -5136,11 +5279,13 @@ m_flRandomMin
 m_flReferenceMass
 m_flRestLength
 m_flRodVelocitySmoothRate
+m_flRotationOffset
 m_flScalePerParentParticle
 m_flSkinWidth
 m_flSphereRadius
 m_flSplayMaxAngle
 m_flSplayMinAngle
+m_flStanceDirectionOffsetMS
 m_flStartTime
 m_flStartTimeMax
 m_flStaticImpactVolume
@@ -5182,6 +5327,7 @@ m_goalAngularVelocity
 m_goalOrientation
 m_goalPosition
 m_hBuffer
+m_hModel
 m_hSnapshot
 m_hardThreshold
 m_hardVelocityThreshold
@@ -5246,6 +5392,8 @@ m_nBoneIndex
 m_nBoneNameHash
 m_nBoneWeightCount
 m_nBoxRigidIndex
+m_nCP
+m_nCPField
 m_nCallbackFlags
 m_nChainIndex
 m_nChainInvIndex
@@ -5253,6 +5401,7 @@ m_nChainType
 m_nChannelElements
 m_nChild
 m_nChildren
+m_nChoice
 m_nClusterSizeMax
 m_nClusterSizeMin
 m_nCollisionAttribute
@@ -5415,6 +5564,7 @@ m_pKelagerBends
 m_pLegacyStretchForce
 m_pLocalForce
 m_pLocalRotation
+m_pModelConfigList
 m_pName
 m_pNodeBases
 m_pNodeIntegrator
@@ -5582,6 +5732,7 @@ m_vLocalOrigin1
 m_vLocalOrigin2
 m_vMassCenterOverride
 m_vMaxBounds
+m_vMidpointPositionMS
 m_vMinBounds
 m_vMotorTargetVelocity
 m_vNormal
@@ -5592,7 +5743,6 @@ m_vPoint0
 m_vPoint1
 m_vPosition
 m_vSplayHingeAxis
-m_vStanceDirectionMS
 m_vStancePositionMS
 m_vTintColor
 m_vTipOffset
@@ -5653,6 +5803,7 @@ mmon intH
 mmon layH
 model.cpp
 model_default_preview_sequence_name
+model_name
 modeldoc0
 modeldoc1
 modeldoc10
@@ -5673,6 +5824,7 @@ modeldoc23
 modeldoc24
 modeldoc25
 modeldoc26
+modeldoc27
 modeldoc3
 modeldoc4
 modeldoc5
@@ -5751,7 +5903,7 @@ other
 oundL
 oundM
 overlay
-p(E9t$pvPD
+p(E9t$hvMD
 p[A\A]A^]
 p[A\]
 pair flaH
@@ -5761,7 +5913,6 @@ parts[%d]={
 passable_door
 passbullets
 pervertexlighting
-phHcHdI
 phys2_contact_debug_draw_size
 phys2_debug_broadphase
 phys_build_bounds
@@ -5774,7 +5925,6 @@ phys_old_contact_draw
 phys_position_iterations
 phys_reload_immediately
 phys_res
-phys_soft_contacts_max_mass_ratio
 phys_step_threaded
 phys_validate
 phys_velocity_iterations
@@ -5800,6 +5950,8 @@ position
 positionH
 posxyz
 pre-wrapH
+preMerge face 0
+preMerge face 1
 preferred_carryangles
 prop_data
 props
@@ -5841,6 +5993,8 @@ recenter_on_parent_bone
 recorded_forces
 recorded_raycasts
 red">QueH
+relative_angles
+relative_origin
 relaxed %.1f < %.1f
 remapping vertex %d[w%d] invalid: %d->%d >= %d
 remapping vertex %d[w%d] invalid: %d->? >= %d
@@ -5848,6 +6002,7 @@ resource
 resourcestream.cpp
 resourcesystem
 return Cast%s();
+rhHcJdI
 rigger fH
 rnd_down
 rnd_up
@@ -5947,6 +6102,7 @@ surfaceproperties/surfaceproperties.vsurf
 s}HcE
 t	[A\]
 t L9m
+t!L;m
 t";2}
 t";KPs
 t";qPs
@@ -5955,6 +6111,7 @@ t$	H9
 t$ D;k
 t$$D;k
 t$(D;k
+t$(E1
 t$,D;k
 t$.D;k
 t$.E9
@@ -5964,6 +6121,7 @@ t$2D;k
 t$2fA
 t$4D;k
 t$8D;k
+t$8E;t$H
 t$9H9
 t$@D;k
 t$HD;k
@@ -6001,6 +6159,7 @@ t-A;O(s'H
 t-E;GPs'L
 t-as oveH
 t-size:1H
+t.IcE A;E0
 t.Mc.E;n
 t.[A\]
 t/;w(t2;w8t=1
@@ -6012,7 +6171,6 @@ t0E;G(s*L
 t0IcE
 t1;W(s,H
 t1A;u`s+H
-t1D;O`s+O
 t1Mco
 t1Mco0E;o@N
 t1McoHE;oXN
@@ -6025,9 +6183,9 @@ t3HcR
 t3HcS
 t3[A\]
 t4D;G`s.H
+t4D;G`s.L
 t4E;u`s.L
 t4[A\A]]
-t5D;@`s/L
 t5[A\]
 t6D;[`s0L
 t6[A\A]]
@@ -6036,17 +6194,17 @@ t9A;L$`s2I
 t:$Hc
 t:[A\]
 t;HcB
+t;HcG H
 t<HcE
 t=[A\]
 t>HcB
 t?HcB
 t?[A\A]A^]
-t@HcW H
+tCD8s
 tCH;E
 tC[A\A]A^]
-tDD8k
 tEHcG
-tGHcW H
+tGHcO H
 tH<&tD]
 tI3A0
 tJHcC
@@ -6054,7 +6212,6 @@ tLc#D;c
 tMLce
 tN;OPsIH
 tS;zPsNH
-tSHcW H
 tS[A\A]]
 tU;W(sPH
 tV;s`sQH
@@ -6063,7 +6220,6 @@ t^~4<
 taHcC
 tangent
 tangentu_signv
-tcHcW H
 teleportclip
 tent</foH
 teracts-H
@@ -6079,6 +6235,7 @@ transparent %d
 trigger
 turn_rate
 tyHcW
+u HcE
 u%[A\]
 uNHcs
 uXM;u`L
@@ -6167,6 +6324,7 @@ uint32 FeModelRefl_t::m_nRigidColliderPriorityCount
 uint32 FeModelRefl_t::m_nSourceElemsCount
 uint32 FeModelRefl_t::m_nStaticNodeFlags
 uint32 FeMorphLayerRefl_t::m_nNameHash
+uint32 ManifoldPointRefl_t::m_nID
 uint32 NameIndexRefl_t::m_nNextFreeIndex
 uint32 PhysSurfacePropertiesRefl_t::m_baseNameHash
 uint32 PhysSurfacePropertiesRefl_t::m_nameHash
@@ -6230,6 +6388,7 @@ urL#B
 us: therH
 useMotionDamping
 useSmoothPaths
+use_additional_offset
 usemtl initialShadingGroup
 utlbuffer.cpp
 utlstring.cpp
@@ -6260,6 +6419,8 @@ vImplicitLinearVelocity
 vLinearImpulse
 vLinearLambda
 vLinearVelocityAtTickStart
+vLocalP1
+vLocalP2
 vLocalR1
 vLocalR2
 vMassCenter
@@ -6277,8 +6438,11 @@ vTargetPosition
 vTorqueAccum
 vWindDesc
 vanmgrph
+vb phys
 vehicle_clip
+vjLc+D
 vmatL
+vmdlH
 vmdlkeys0
 vmdlkeys1
 vmdlkeys2
@@ -6301,6 +6465,7 @@ vpcf21
 vpcf22
 vpcf23
 vpcf24
+vpcf25
 vpcf3
 vpcf4
 vpcf5
@@ -6338,20 +6503,18 @@ vsurf
 vxAUATSH
 w AUI
 w(AUATI
+w.Lcw A
 w.[A\]
-w/HcO 
 w0AUA
-w0HcO 
 wIcL$
 w\AUI
-w`Lc_ A
 wakeup
 walkspeed
 water
 ways</b>H
+wcLco A
 wcscmp
 wcslen
-wdLco A
 weapon
 ween theH
 weights: [%.2f, %.2f, %.2f]
@@ -6367,26 +6530,30 @@ wnI;\$
 worldGeometry
 wpAUE1
 wpAUI
-wtIcG 
+wrIcF 
 x	;F`
 x%IcU
+x(E;|$hr
+x(tnH
+x(ttH
 x)Lc.D;n
 x:f9x8
+x@E;<$|tH
 x@HcO
 xNHcO
+xXf9xVD
 x[A\A]A^A_]
 x[A\A]]
+y$xBH
 yaw_end
 yaw_start
 z#u!H
 z:KEZ
-z=u;A
 zCuAH
 zIcD$
-zbu`H
+z]u[H
 { HcU
 { [A\]
-{%.3f,%.3f,%.3f}
 {%.3f,%.3f,%.3f}, {%.3f,%.3f,%.3f}
 {(M;{0
 {0[A\]
@@ -6398,6 +6565,7 @@ zbu`H
 {}[]()=&, 	
 {}[]=, 	
 |$ A9
+|$ D9
 |$(A9
 |$(E1
 |$0A9
@@ -6412,26 +6580,26 @@ zbu`H
 |$HA9
 |$HE1
 |$PA9
-|$PfA
 |$XHc
 |$`A9
 |$hA9
+|$hE1
 |$pA9
 |)A9\$0
 |<t1I
 |IcL$
 |tHcE
-|}HcK(Ic
 }!HcC8;CHt4
 }$A;]
 }8Ict$@IcL$<
 }CIc_
 }HA]A^]
-~!D9}
+~'D9}
 ~(HcS8H
 ~)H;7I
 ~)Hcu
 ~)IcU
+~*Lc#D;c
 ~+Hcu
 ~+Lc}
 ~/Hcu
@@ -6450,3 +6618,4 @@ zbu`H
 ~Hull id %llx local %p
 ~IHcK
 ~Yf;w
+~xAUATE1

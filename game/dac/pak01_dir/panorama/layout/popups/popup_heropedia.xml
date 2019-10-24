@@ -16,6 +16,10 @@
 			<Label id="SeasonInfo" text="#DAC_Heropedia" />
 			
       <Panel class="TabList">
+        <Button id="HowToPlayTabButton" onactivate="HeropediaPopupShowHowToPlayPage();">
+          <Label id="HowToPlayTabLabel" text="#DAC_InGame_HowToPlay"/>
+        </Button>
+
         <Button id="HeroTabButton" onactivate="HeropediaPopupShowHeroesPage();">
           <Label id="HeroesTabLabel" text="#DAC_InGame_Tab_Heroes"/>
         </Button>
@@ -30,16 +34,21 @@
           <Label id="CreepsTabLabel" text="#DAC_InGame_Tab_Creeps"/>
         </Button>
 
+         <Button id="SeasonButtonContainer" onactivate="HeropediaPopupShowSeasonPage();">
+            <Label class="SeasonTabLabel PC" text="#DAC_Season"/>
+            <Label class="SeasonTabLabel Mobile" text="#DAC_Season_Mobile"/>
+         </Button>
       </Panel>
       <Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
 		</Panel>
     
     <Panel class="Body">
-
+      <DACHeropediaHowToPlayPage id="HowToPlayPanel" class="HeropediaHeroPanelContainer"/>
       <DACHeropediaHeroesPage id="HeroPanel" class="HeropediaHeroPanelContainer"/>
       <DACHeropediaSynergiesPage id="SynergyPanel" class="HeropediaHeroPanelContainer"/>
       <DACHeropediaItemsPage id="ItemPanel" class="HeropediaHeroPanelContainer"/>
       <DACHeropediaCreepsPage id="CreepsPanel" class="HeropediaHeroPanelContainer"/>
+      <DACHeropediaSeasonPage id="SeasonPanel" class="HeropediaHeroPanelContainer"/>
 
 			<Panel class="Filters">
         <!--switch toggles-->

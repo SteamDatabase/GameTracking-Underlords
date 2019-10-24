@@ -2,169 +2,405 @@
 
 #MatchIntro {
     width: 100%;
-	height: 100%;
-    visibility: collapse;
-}
+    height: 100%;
+   	opacity:0;
+} 
 
-.EGameState_Intro.ERoundState_Ready #MatchIntro {
-    visibility: visible;
-}
-
-.IntroProfileContainer
-{
-    vertical-align: middle;
-	horizontal-align: middle;
-    
-	flow-children: down;
-	overflow: noclip;
-}
-
-.IntroProfileContainerRow
-{
-	margin-bottom: 64px;
-	flow-children: right;
-	overflow: noclip;
-}
-
-.IsLayoutLargeScreen .IntroProfileContainerRow
-{
-	ui-scale: 70%;
-	margin-top: 170px;
-}
-
-.IsLayoutSmallScreen .IntroProfileContainerRow
-{
-	ui-scale: 80%;
-}
-
-DACMiniProfile {
-	ui-scale: 80%;
-	opacity: 0;
-}
-
-
-/*@keyframes 'DACMatchIntroFadeInAndOut'
-{
-	from
-	{
-		opacity: 1; 
-		transform: translateX(0px) rotateY(5deg);
-	}
-		
-	40%
-	{
-		opacity: 1; 
-		transform: translateX(0px) rotateY(0deg);
-	}
-	80%
-	{
-		opacity: 1; 
-		transform: translateX(0px) rotateY(0deg);
-	}
-	95%
-	{
-		opacity: 0; 
-	}
-	to
-	{
-		opacity: 0; 
-		transform: translateX(-30%) rotateY(45deg);
-	}
-}*/
-
-
-.FadeInAndOut
-{
-	opacity: 0; 
-	pre-transform-scale2d: 0.9;
-	animation-name: DACMatchIntroFadeInAndOut;
+#MatchIntro.PlayIntroAnim
+{	
+	animation-name: DACMatchIntroRootAnim;
     animation-delay: 0.0s;
-    animation-duration: 7.51s;
-    animation-iteration-count: 1;
-	animation-timing-function: ease-in-out;
+    animation-duration: 9s;
+    animation-iteration-count: 1;    
+	animation-timing-function: ease-out;	
+	opacity:1;
+	visibility: visible;
+	transition-property: opacity;
+	transition-duration:.5s;
+	transition-timing-function: ease-out;
+}
+
+#MatchIntro.PlayOutroAnim
+{	
+	animation-name: DACMatchOutroRootAnim;
+    animation-delay: 0.0s;
+    animation-duration: 9s;
+    animation-iteration-count: 1;    
+	animation-timing-function: ease-out;	
+	opacity:1;
+	visibility: visible;
+	transition-property: opacity;
+	transition-duration:.5s;
+	transition-timing-function: ease-out;
+}
+
+.GameMode_Duos #MatchIntro.PlayIntroAnim
+{
+	animation-name: DACMatchIntroDuosRootAnim;
 }
 
 
-@keyframes 'DACMatchIntroFadeInAndOut'
+@keyframes 'DACMatchIntroRootAnim'
 {
 	0%
 	{
-		opacity: 0; 
-		pre-transform-scale2d: 0.9;
-	}
-	30%
+		opacity:1;
+		transform: translateX(200px) translateY(420px);
+		pre-transform-scale2d: 2;
+	}	
+	48%
 	{
-		opacity: 1; 
+		opacity:1;
+		transform: translateX(200px) translateY(420px);
+		pre-transform-scale2d: 2;
+	}	
+	50%
+	{
+		opacity:1;
+		transform: translateZ(0px);
 		pre-transform-scale2d: 1;
 	}
-	70%
+	94%
 	{
-		opacity: 1; 
-		pre-transform-scale2d: 1;
+		opacity: 1;
 	}
-	100%
+	100%	
 	{
-		opacity: 0; 
-		pre-transform-scale2d: 0.9;
+		opacity: 1;
 	}
 }
 
+@keyframes 'DACMatchOutroRootAnim'
+{
+	0%
+	{
+		opacity:0;
+		transform: translateX(200px) translateY(420px);
+		pre-transform-scale2d: 2;
+	}	
+	10%
+	{
+		opacity:1;
+		transform: translateX(200px) translateY(420px);
+		pre-transform-scale2d: 2;
+	}	
+	48%
+	{
+		opacity:1;
+		transform: translateX(200px) translateY(420px);
+		pre-transform-scale2d: 2;
+	}	
+	50%
+	{
+		opacity:1;
+		transform: translateZ(0px);
+		pre-transform-scale2d: 1;
+	}
+	94%
+	{
+		opacity: 1;
+	}
+	100%	
+	{
+		opacity: 1;
+	}
+}
+
+@keyframes 'DACMatchIntroDuosRootAnim'
+{
+	0%
+	{
+		opacity:1;
+		transform: translateX(450px) translateY(420px);
+		pre-transform-scale2d: 2.5;
+	}	
+	48%
+	{
+		opacity:1;
+		transform: translateX(450px) translateY(420px);
+		pre-transform-scale2d: 2.5;
+	}	
+	50%
+	{
+		opacity:1;		
+		transform: translateX(0px) translateY(0px);
+		pre-transform-scale2d: 1;
+	}
+	94%
+	{
+		opacity: 1;
+	}
+	100%	
+	{
+		opacity: 1;
+	}
+}
+
+
+
+.SoloProfileContainer, .DuosProfileContainer
+{
+	horizontal-align: middle;
+	vertical-align: middle;	
+	overflow: noclip;	  
+}
+
+.DuosProfileContainer
+{
+	ui-scale:80%;
+}
+
+.IntroProfileContainerRows
+{
+	flow-children: down;		
+}
+
+.IntroProfileContainerRow
+{	
+	flow-children: right;
+	overflow: noclip;	
+}
+
+.GameMode_Duos .IsLayoutLargeScreen .IntroProfileContainerRows
+{
+	margin-top: 20px;
+	ui-scale: 70%;
+}
+
+
+.IntroRoot
+{
+	width:100%;
+	height:100%;
+	background-color:black;
+}
+
+#IntroBG
+{	
+	width:100%;
+	height:100%;
+	background-image: url("s2r://panorama/images/post_game/poster_brick_wall_psd.vtex");	
+	background-size:100%;
+}
+
+.GameMode_Duos .IntroProfileContainerRow DACMiniProfile
+{
+	//width:350px;
+	width: 450px;
+}
+
+.IntroProfilePlayerSlot
+{	
+	opacity: 0;	
+}
+
+.LowVisualQuality .IntroProfilePlayerSlot
+{
+    opacity: 1;
+	transform: translateX(0px);
+	animation-name: none;
+	animation-delay: 0.0s;
+	animation-duration: 0s;
+}
+
+.IntroTeamNameRow1,
+.IntroTeamNameRow2
+{
+	flow-children: right;
+	horizontal-align: center;
+	//vertical-align: center;
+	//margin-top: -100px;
+	//margin-top: 100px;
+	width: fit-children;
+	height: fit-children;
+	width: 100%;
+	height: 60px;
+
+	margin-top: 20px;
+	margin-bottom: 10px;
+	visibility: collapse;
+	vertical-align: bottom;
+}
+
+.GameMode_Duos .IntroProfilePlayerSlot
+{
+	margin: 0px;
+	//ui-scale: 80%;
+	ui-scale: 70%;
+}
+
+#MatchIntro.PlayOutroAnim .IntroTeamName,
+#MatchIntro.PlayIntroAnim .IntroTeamName
+{
+	animation-name: IntroAppearAnim;
+    animation-duration: 9s;	
+    animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+}
+
+.IntroTeamName
+{
+	width: 475px;
+	height: 60px;
+	//margin-right: 58px;
+	//margin-left: 10px;
+	//margin-right: 15px;
+	text-align: center;
+	opacity: 0;
+	pre-transform-scale2d: .5;
+}
+
+#TeamName1,
+#TeamName2,
+#TeamName3,
+#TeamName4,
+#TeamName5,
+#TeamName6,
+#TeamName7,
+#TeamName8
+{
+	font-size: 50px;
+	border: 0px;
+	box-shadow: 0px 0px 0px black;	
+}
+
+#TeamName1,
+#TeamName2,
+#TeamName3,
+#TeamName5,
+#TeamName6,
+#TeamName7
+{
+	margin-right: 100px;
+}
+
+
+
+#TeamName1
+{
+	color: #b2da42;
+    animation-delay: 1.4s;
+}
+
+#TeamName2
+{
+	color: #ffee78;
+    animation-delay: 4.4s;
+}
+
+#TeamName3
+{
+	color: #957bf2;
+    animation-delay: 4.43s;
+}
+
+#TeamName4
+{
+	color: #f0581f;
+    animation-delay: 4.32s;
+}
+
+#TeamName5
+{
+	color: #fef9af;
+    animation-delay: 4.41s;
+}
+
+#TeamName6
+{
+	color: #8bc1fa;
+    animation-delay: 4.34s;
+}
+
+#TeamName7
+{
+	color: #ff8fae;
+    animation-delay: 4.34s;
+}
+
+#TeamName8
+{
+	color: #fdbf5a;
+    animation-delay: 4.35s;
+}
+
+// Individual profile anim
 @keyframes 'IntroAppearAnim' {
 	from
 	{
 		opacity: 0;
-		transform: translateX(800px);
+		pre-transform-scale2d: 3.0;
 	}
-	7% {
-		opacity: 1;
-		transform: translateX(0px);
-	}
-	60% {
-		opacity: 1;
-		transform: translateX(0px);
-	}
-	73% {
+	0% {
 		opacity: 0;
-		transform: translateZ(-800px);
+		pre-transform-scale2d: 3.0;
+	}
+	1% {
+		opacity: 1;
+		pre-transform-scale2d: 3.0;
+	}
+	1.5% {
+		opacity: 1;
+		pre-transform-scale2d: .95;
+	}		
+	97%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: .95;
+	}
+	100%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: .95;
 	}
 	to {
-		opacity: 0;
-		transform: translateZ(-2000px);
+		opacity: 1;
+		pre-transform-scale2d: .95;
 	}
 }
 
-@keyframes 'DACMatchIntroFadeInAndOutMMR'
+// Root container anim
+@keyframes 'DACMatchIntroFadeInAndOutTeams'
 {
 	0%
 	{
 		opacity: 0; 
-		pre-transform-scale2d: 0.8;
+		pre-transform-scale2d: 0.5;
 	}
 	10%
 	{
 		opacity: 1; 
 		pre-transform-scale2d: 1;
 	}
-	90%
+	90%	
 	{
 		opacity: 1; 
 		pre-transform-scale2d: 1;
+		ui-scale: 100%;
 	}
 	100%
 	{
 		opacity: 0; 
-		pre-transform-scale2d: 0.8;
+		pre-transform-scale2d: 0.5;
 	}
 }
 
-.Appear {
-	opacity: 0;
-	transform: translateX(-2000px);
-	animation-name: IntroAppearAnim;
-	animation-delay: 0.0s;
-	animation-duration: 6s;
+DACMiniProfile.InvalidPlayer
+{
+	visibility: collapse;
+}
+
+DACMiniProfile.Appear {	
+	animation-name: IntroAppearAnim;	
+	animation-duration: 9s;	
 	animation-iteration-count: 1;
-	animation-timing-function: ease-in-out;
+	animation-timing-function: ease-out;
+}
+
+.HoldMatchIntro DACMiniProfile.Appear
+{
+	opacity: 1;	
+	animation-name: none;
 }
 
 .HiddenForTutorial
@@ -172,52 +408,81 @@ DACMiniProfile {
     visibility: collapse;
 }
 
-.IntroMMRChangeContainer
+.GameMode_Duos .IntroProfilePlayerSlot
 {
-    vertical-align: bottom;
-    horizontal-align: middle;
-    margin-bottom: 100px;
-    flow-children: down;
-    visibility: collapse;
-    padding: 20px;
-    background-color: #222;
-
-    opacity: 0;
-	animation-name: DACMatchIntroFadeInAndOutMMR;
-    animation-delay: 1.75s;
-    animation-duration: 4s;
-
-	//animation-delay: 0s;
-    //animation-duration: 6s;
-
-    animation-iteration-count: 1;
-	animation-timing-function: ease-out;
+	margin: 0px;
+	//ui-scale: 80%;
+	ui-scale: 70%;
 }
 
-.HasMMRChangeData .IntroMMRChangeContainer
+.GameMode_Duos #IntroProfilePlayerSlot0,
+.GameMode_Duos #IntroProfilePlayerSlot2,
+.GameMode_Duos #IntroProfilePlayerSlot4,
+.GameMode_Duos #IntroProfilePlayerSlot6,
+.GameMode_Duos #IntroProfilePlayerSlot8,
+.GameMode_Duos #IntroProfilePlayerSlot10,
+.GameMode_Duos #IntroProfilePlayerSlot12,
+.GameMode_Duos #IntroProfilePlayerSlot14
 {
-    visibility:visible;
+	//margin-left: 100px;
+	margin-right: 0px;
+	margin-right: -75px;
 }
 
-.IntroMMRChangeContainer Label
+.GameMode_Duos .IntroTeamNameRow1,
+.GameMode_Duos .IntroTeamNameRow2
 {
-    horizontal-align: center;
-    font-size: 28px;
-    //background-color: none;
-    //margin-bottom: 5px;
+	visibility: visible;
 }
 
-#MMRChangePrediction
-{
-	font-size: 45px;
-	padding-top: 10px;
-	padding-bottom: 10px;
-	background-color: none;
-	box-shadow: none;
-}
+.GameMode_Duos #IntroProfilePlayerSlot0 { transform: rotatez(0deg); }
+.GameMode_Duos #IntroProfilePlayerSlot1 { transform: rotatez(-3deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot2 { transform: rotatez(2deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot3 { transform: rotatez(5deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot4 { transform: rotatez(2deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot5 { transform: rotatez(1deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot6 { transform: rotatez(0deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot7 { transform: rotatez(-3deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot8 { transform: rotatez(2deg); }
+.GameMode_Duos #IntroProfilePlayerSlot9 { transform: rotatez(1deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot10 { transform: rotatez(0deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot11 { transform: rotatez(-4deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot12 { transform: rotatez(-2deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot13 { transform: rotatez(3deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot14 { transform: rotatez(1deg);  }
+.GameMode_Duos #IntroProfilePlayerSlot15 { transform: rotatez(4deg);  }
 
-#MMRChangePartyMembersIgnored
-{
-	font-size: 24px;
-	color: textDark;
-}
+.GameMode_Duos #IntroProfilePlayerSlot0.Appear { animation-delay: 1.4s; }
+.GameMode_Duos #IntroProfilePlayerSlot1.Appear { animation-delay: 1.4s;  }
+.GameMode_Duos #IntroProfilePlayerSlot2.Appear { animation-delay: 4.40s;  }
+.GameMode_Duos #IntroProfilePlayerSlot3.Appear { animation-delay: 4.32s;  }
+.GameMode_Duos #IntroProfilePlayerSlot4.Appear { animation-delay: 4.22s;  }
+.GameMode_Duos #IntroProfilePlayerSlot5.Appear { animation-delay: 4.29s;  }
+.GameMode_Duos #IntroProfilePlayerSlot6.Appear { animation-delay: 4.23s;  }
+.GameMode_Duos #IntroProfilePlayerSlot7.Appear { animation-delay: 4.21s;  }
+.GameMode_Duos #IntroProfilePlayerSlot8.Appear { animation-delay: 4.23s; }
+.GameMode_Duos #IntroProfilePlayerSlot9.Appear { animation-delay: 4.23s;  }
+.GameMode_Duos #IntroProfilePlayerSlot10.Appear { animation-delay: 4.40s;  }
+.GameMode_Duos #IntroProfilePlayerSlot11.Appear { animation-delay: 4.32s;  }
+.GameMode_Duos #IntroProfilePlayerSlot12.Appear { animation-delay: 4.22s;  }
+.GameMode_Duos #IntroProfilePlayerSlot13.Appear { animation-delay: 4.29s;  }
+.GameMode_Duos #IntroProfilePlayerSlot14.Appear { animation-delay: 4.23s;  }
+.GameMode_Duos #IntroProfilePlayerSlot15.Appear { animation-delay: 4.21s;  }
+
+.SoloProfileContainer #IntroProfilePlayerSlot0.Appear { animation-delay: 1.4s; }
+.SoloProfileContainer #IntroProfilePlayerSlot1.Appear { animation-delay: 4.23s;  }
+.SoloProfileContainer #IntroProfilePlayerSlot2.Appear { animation-delay: 4.40s;  }
+.SoloProfileContainer #IntroProfilePlayerSlot3.Appear { animation-delay: 4.32s;  }
+.SoloProfileContainer #IntroProfilePlayerSlot4.Appear { animation-delay: 4.22s;  }
+.SoloProfileContainer #IntroProfilePlayerSlot5.Appear { animation-delay: 4.29s;  }
+.SoloProfileContainer #IntroProfilePlayerSlot6.Appear { animation-delay: 4.23s;  }
+.SoloProfileContainer #IntroProfilePlayerSlot7.Appear { animation-delay: 4.21s;  }
+
+.SoloProfileContainer #IntroProfilePlayerSlot0 { transform: translateY(40px) translateX(-25px) rotatez(0deg); pre-transform-scale2d: .95;}
+.SoloProfileContainer #IntroProfilePlayerSlot1 { transform: translateY(60px) translateX(-35px) rotatez(0deg); pre-transform-scale2d: .95;}
+.SoloProfileContainer #IntroProfilePlayerSlot2 { transform: translateY(15px) translateX(-20px) rotatez(0deg); pre-transform-scale2d: .95;}
+.SoloProfileContainer #IntroProfilePlayerSlot3 { transform: translateY(35px) translateX(-5px) rotatez(0deg); pre-transform-scale2d: .95;}
+.SoloProfileContainer #IntroProfilePlayerSlot4 { transform: translateY(25px) translateX(-10px) rotatez(4.5deg); pre-transform-scale2d: .95;}
+.SoloProfileContainer #IntroProfilePlayerSlot5 { transform: translateY(10px) translateX(-5px) rotatez(0deg); pre-transform-scale2d: .95;}
+.SoloProfileContainer #IntroProfilePlayerSlot6 { transform: translateY(-25px) translateX(-15px) rotatez(0deg); pre-transform-scale2d: .95;}
+.SoloProfileContainer #IntroProfilePlayerSlot7 { transform: translateY(5px) translateX(-30px) rotatez(0deg); pre-transform-scale2d: .95;}

@@ -3,6 +3,9 @@ DACScoreboardEntry
 {
 	flow-children: right;
 	background-color: #352d3e55;
+
+	transition-property: position;
+	transition-duration: 360ms;
 }
 
 DACScoreboardEntry.Odd 
@@ -19,18 +22,20 @@ DACScoreboardEntry.Self
 
 /* Columns */
 
-.HeaderSpacer
-{
-	width: 210px;
-}
 
-.IsLayoutSmallScreen.AspectRatio16x9 .HeaderSpacer
-.IsLayoutSmallScreen.AspectRatio21x9 .HeaderSpacer{
-	width: 290px;
-}
 
 .Column {
 	height: 130px;
+}
+
+#NameHeader {
+	width: 235px;
+	text-align: center;
+}
+
+.Column.Name {
+	width: 220px;
+	margin-left: 15px;
 }
 
 #RankHeader {
@@ -40,19 +45,20 @@ DACScoreboardEntry.Self
 
 .Column.Rank {
 	width: 100px;
-	margin-left: 210px;
+	
 }
 
 .IsLayoutSmallScreen .Column.Rank {
-	margin-left: 275px;
+	//margin-left: 275px;
+	margin-left: 63px;
 }
 
 .IsLayoutSmallScreen.AspectRatio4x3 .Column.Rank {
-	margin-left: 210px;
+	
 }
 
 .IsLayoutSmallScreen.AspectRatio21x9 .Column.Rank {
-	margin-left: 150px;
+	
 }
 
 .MatchModeSoloBot .Column.Rank, .MatchModeCasual .Column.Rank {
@@ -114,7 +120,7 @@ DACScoreboardEntry.Self
 .MaxUnits5 #RosterHeader,
 .MaxUnits5 .Column.Roster,
 .MaxUnits6 #RosterHeader,
-.MaxUnits6 .Column.Roster
+.MaxUnits6 .Column.Roster,
 {
 	width: 400px;
 }
@@ -200,6 +206,59 @@ DACScoreboardEntry.Self
 	width: 510px;
 }
 
+/* Talents */
+#TalentContainer
+{ 
+	flow-children: right-wrap;
+}
+
+#TalentHeader {
+	width: 260px;
+	background-color: #00000055;
+	text-align: center;
+}
+
+.Column.Talent {
+	width: 260px;
+	padding-top: 5px;
+	padding-left: 5px;
+	background-color: #00000044;
+}
+
+.Column.Talent Image {
+	width: 50px;
+	height: 50px;
+	margin: 5px;
+	
+}
+
+
+.TalentItems0 #TalentHeader,
+.TalentItems0 .Column.Talent,
+.TalentItems1 #TalentHeader,
+.TalentItems1 .Column.Talent,
+.TalentItems2 #TalentHeader,
+.TalentItems2 .Column.Talent,
+.TalentItems3 #TalentHeader,
+.TalentItems3 .Column.Talent,
+.TalentItems4 #TalentHeader,
+.TalentItems4 .Column.Talent,
+.TalentItems5 #TalentHeader,
+.TalentItems5 .Column.Talent,
+.TalentItems6 #TalentHeader,
+.TalentItems6 .Column.Talent
+{
+	width: 200px;
+}
+
+.TalentItems7 #TalentHeader,
+.TalentItems7 .Column.Talent,
+.TalentItems8 #TalentHeader,
+.TalentItems8 .Column.Talent
+{
+	width: 260px;
+}
+
 #GlobalHeader {
 	width: 260px;
 	background-color: #00000055;
@@ -210,7 +269,7 @@ DACScoreboardEntry.Self
 	width: 260px;
 	padding-top: 5px;
 	padding-left: 5px;
-	background-color: #00000044;
+	
 }
 
 .GlobalItems0 #GlobalHeader,
@@ -248,7 +307,7 @@ DACScoreboardEntry.Self
 .Column.Bench {
 	width: 260px;
 	//width: 1000px;
-	//background-color: #00000044;
+	background-color: #00000055;
 }
 
 /* Rank icon */
@@ -360,6 +419,11 @@ DACScoreboardEntry.Self
 	ui-scale: 50%;
 }
 
+.Roster DACInventoryItem
+{
+	margin: 0px 0px 0px 0px;
+}
+
 .RosterUnit
 {
 	margin: 15px 10px -5px 10px;
@@ -452,4 +516,102 @@ DACSynergyIcon {
 /* Bench */
 #BenchContainer {
 	flow-children: right-wrap;
+}
+
+/* Player state styles (DACLeaderboardEntry) */
+.Column.Name {
+	flow-children: down;
+}
+
+.StatsContainer {
+	flow-children: down;
+	vertical-align: middle;
+}
+
+.AvatarContainer {
+	flow-children: right;
+}
+
+#PlayerAvatar {
+	margin: 5px;
+	margin-right: 10px;
+	width: 80px;
+	height: 80px;
+	vertical-align: middle;
+}
+
+.PlayerHP, .PlayerLevel, .PlayerGold {
+	font-size: 25px;
+	//font-weight: bold;
+	margin-left: 25px;
+
+	text-shadow: 0px 0px 0px 3.0 #000000;
+	font-family: Ravenhook;
+}
+
+.PlayerHP {
+	color: #a2ff92;
+}
+
+.HealthMid .PlayerHP
+{
+	color: #fff66e;
+}
+
+.HealthLow .PlayerHP
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #81cd74 ), to(#b1feaa));
+}	
+
+.PlayerLevel {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #8db0f4 ), to(#aad8de));
+}
+
+.PlayerGold
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ecb00e ), to(#f7e062));
+}
+
+
+.PlayerLevelIcon
+{
+	width: 20px;
+	height: 20px;
+	opacity: 1;
+	margin-left: 0px;
+	margin-top: 1px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/player_level_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.PlayerHealthIcon
+{
+	width: 20px;
+	height: 20px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex");
+	background-size: contain;
+	margin-top: 10px;
+	background-repeat: no-repeat;
+	//horizontal-align: right;
+}
+
+.PlayerGoldIcon
+{
+	width: 20px;
+	height: 20px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/icon_gold_bevel_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-top: 3px;
+}
+
+.NameLabel {
+	color: #fff;
+	font-size: 28px;
+		text-shadow: 0px 0px 0px 3.0 #000000;
+	
 }

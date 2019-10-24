@@ -1,0 +1,149 @@
+// slark - Hero
+criterion "Isslark" "classname" "slark" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response slark_recruit_1
+{
+	speak "slark_recruit" noscene 
+}
+
+Rule slark_recruit_1_rule
+{
+	criteria Isslark ConceptRecruit UnitRank1
+	response slark_recruit_1
+}
+
+
+Response slark_recruit_2
+{
+	speak "slark_upgrade" noscene 
+}
+
+Rule slark_recruit_2_rule
+{
+	criteria Isslark ConceptRecruit UnitRank2
+	response slark_recruit_2
+}
+
+
+Response slark_recruit_3
+{
+	speak "slark_final_upgrade" noscene 
+}
+
+Rule slark_recruit_3_rule
+{
+	criteria Isslark ConceptRecruit UnitRank3
+	response slark_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response slark_start_round
+{
+	speak "slark_start_round" noscene 
+}
+
+Rule slark_start_round_rule
+{
+	criteria Isslark ConceptRoundStart 
+	response slark_start_round
+}
+
+
+Response slark_start_round_lost_last_round
+{
+	speak "slark_start_round_lost_last_round" noscene 
+}
+
+Rule slark_start_round_lost_last_round_rule
+{
+	criteria Isslark ConceptRoundStart LostLastGame
+	response slark_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response slark_flawless_victory
+{
+	speak "slark_flawless_victory" noscene 
+}
+
+Rule slark_flawless_victory_rule
+{
+	criteria Isslark ConceptRoundEnd Result_WinFlawless
+	response slark_flawless_victory
+}
+
+
+Response slark_decisive_victory
+{
+	speak "slark_decisive_victory" noscene 
+}
+
+Rule slark_decisive_victory_rule
+{
+	criteria Isslark ConceptRoundEnd Result_WinDecisive
+	response slark_decisive_victory
+}
+
+Response slark_narrow_victory
+{
+	speak "slark_narrow_victory" noscene 
+}
+
+Rule slark_narrow_victory_rule
+{
+	criteria Isslark ConceptRoundEnd Result_WinNarrow
+	response slark_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response slark_flawless_defeat
+{
+	speak "slark_flawless_defeat" noscene 
+}
+
+Rule slark_flawless_defeat_rule
+{
+	criteria Isslark ConceptRoundEnd Result_LoseFlawless
+	response slark_flawless_defeat
+}
+
+
+Response slark_decisive_defeat
+{
+	speak "slark_decisive_defeat" noscene 
+}
+
+Rule slark_decisive_defeat_rule
+{
+	criteria Isslark ConceptRoundEnd Result_LoseDecisive
+	response slark_decisive_defeat
+}
+
+Response slark_narrow_defeat
+{
+	speak "slark_narrow_defeat" noscene 
+}
+
+Rule slark_narrow_defeat_rule
+{
+	criteria Isslark ConceptRoundEnd Result_LoseNarrow
+	response slark_narrow_defeat
+}

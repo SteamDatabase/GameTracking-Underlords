@@ -1,0 +1,149 @@
+// Tiny - Hero
+criterion "Istiny" "classname" "tiny" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response tiny_recruit_1
+{
+	speak "tiny_recruit" noscene 
+}
+
+Rule tiny_recruit_1_rule
+{
+	criteria Istiny ConceptRecruit UnitRank1
+	response tiny_recruit_1
+}
+
+
+Response tiny_recruit_2
+{
+	speak "tiny_upgrade" noscene 
+}
+
+Rule tiny_recruit_2_rule
+{
+	criteria Istiny ConceptRecruit UnitRank2
+	response tiny_recruit_2
+}
+
+
+Response tiny_recruit_3
+{
+	speak "tiny_final_upgrade" noscene 
+}
+
+Rule tiny_recruit_3_rule
+{
+	criteria Istiny ConceptRecruit UnitRank3
+	response tiny_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response tiny_start_round
+{
+	speak "tiny_start_round" noscene 
+}
+
+Rule tiny_start_round_rule
+{
+	criteria Istiny ConceptRoundStart 
+	response tiny_start_round
+}
+
+
+Response tiny_start_round_lost_last_round
+{
+	speak "tiny_start_round_lost_last_round" noscene 
+}
+
+Rule tiny_start_round_lost_last_round_rule
+{
+	criteria Istiny ConceptRoundStart LostLastGame
+	response tiny_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response tiny_flawless_victory
+{
+	speak "tiny_flawless_victory" noscene 
+}
+
+Rule tiny_flawless_victory_rule
+{
+	criteria Istiny ConceptRoundEnd Result_WinFlawless
+	response tiny_flawless_victory
+}
+
+
+Response tiny_decisive_victory
+{
+	speak "tiny_decisive_victory" noscene 
+}
+
+Rule tiny_decisive_victory_rule
+{
+	criteria Istiny ConceptRoundEnd Result_WinDecisive
+	response tiny_decisive_victory
+}
+
+Response tiny_narrow_victory
+{
+	speak "tiny_narrow_victory" noscene 
+}
+
+Rule tiny_narrow_victory_rule
+{
+	criteria Istiny ConceptRoundEnd Result_WinNarrow
+	response tiny_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response tiny_flawless_defeat
+{
+	speak "tiny_flawless_defeat" noscene 
+}
+
+Rule tiny_flawless_defeat_rule
+{
+	criteria Istiny ConceptRoundEnd Result_LoseFlawless
+	response tiny_flawless_defeat
+}
+
+
+Response tiny_decisive_defeat
+{
+	speak "tiny_decisive_defeat" noscene 
+}
+
+Rule tiny_decisive_defeat_rule
+{
+	criteria Istiny ConceptRoundEnd Result_LoseDecisive
+	response tiny_decisive_defeat
+}
+
+Response tiny_narrow_defeat
+{
+	speak "tiny_narrow_defeat" noscene 
+}
+
+Rule tiny_narrow_defeat_rule
+{
+	criteria Istiny ConceptRoundEnd Result_LoseNarrow
+	response tiny_narrow_defeat
+}

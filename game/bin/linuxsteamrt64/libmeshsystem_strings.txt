@@ -34,6 +34,8 @@ $[A\]
 %f %f %f
 %f %f %f %f %f %f %f %f %f
 %i %i %i %i
+%s (Color)
+%s (Material)
 %s * %s
 %s + %s
 %s - %s
@@ -44,6 +46,8 @@ $[A\]
 %s: %s
 %s: string format requested %d chars
 %s:%s needs base %s:%s to be registered
+%s_color
+%s_matgrp
 %s|  % 2d: %s [Offset: %d]
 %s|  % 2d: [% 3d] %-12s %s
 %s| AlignOf: %d
@@ -54,6 +58,7 @@ $[A\]
 %s| Virtual: %s; Abstract: %s; TrivialConstr: %s; TrivialDestr: %s
 &YA1D
 &YA1H
+&YA1I
 &YA1L
 ' D]7
 '":|;
@@ -164,6 +169,7 @@ $[A\]
 18CMorphSetManagerV0
 18CRenderMeshManager
 19CBoneConstraintBase
+19CModelConfigElement
 19CSchemaRegistration
 1D;G 
 1DBlend
@@ -227,7 +233,9 @@ $[A\]
 27CSchemaUtlVectorManipulatorI10CUtlVectorI9CFlexRule10CUtlMemoryIS1_iEES1_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIN28CBoneConstraintPoseSpaceBone7Input_tE10CUtlMemoryIS2_iEES2_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIN29CBoneConstraintPoseSpaceMorph7Input_tE10CUtlMemoryIS2_iEES2_E
+27CSchemaUtlVectorManipulatorI10CUtlVectorIP12CModelConfig10CUtlMemoryIS2_iEES2_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIP15CBaseConstraint10CUtlMemoryIS2_iEES2_E
+27CSchemaUtlVectorManipulatorI10CUtlVectorIP19CModelConfigElement10CUtlMemoryIS2_iEES2_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIP22CPhysSurfaceProperties10CUtlMemoryIS2_iEES2_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIf10CUtlMemoryIfiEEfE
 27CSchemaUtlVectorManipulatorI10CUtlVectorIh10CUtlMemoryIhiEEhE
@@ -238,17 +246,24 @@ $[A\]
 27CSchemaUtlVectorManipulatorI10CUtlVectorIy10CUtlMemoryIyiEEyE
 27CSchemaUtlVectorManipulatorI23CUtlVectorFixedGrowableI16CSceneObjectDataLm1EES1_E
 28CBoneConstraintPoseSpaceBone
+28CModelConfigElement_UserPick
 28CSchemaRegistration_modellib
 28ISchemaCollectionManipulator
 29CBoneConstraintPoseSpaceMorph
 2Way_0( %s )
 2Way_1( %s )
 2_BONE_IK
+30CModelConfigElement_RandomPick
 30CSchemaRegistration_meshsystem
+31CModelConfigElement_RandomColor
+32CModelConfigElement_SetBodygroup
 33333333H
 33CBaseIntrospectedToKV3TypeManager
+33CModelConfigElement_AttachedModel
 34CKV3Transfer_ResourceLoadInterface
+34CModelConfigElement_SetRenderColor
 34IKV3TransferInterface_ResourceLoad
+36CModelConfigElement_SetMaterialGroup
 37CTypesafeIntrospectedToKV3TypeManagerILy1818520950E15PermModelData_tE
 37CTypesafeIntrospectedToKV3TypeManagerILy440006569334E13CMorphSetDataE
 3[A\]
@@ -256,7 +271,7 @@ $[A\]
 46CInputLayoutRegistration_g_hSkeletonMeshLayout
 4@HcE
 4RAUI
-4[f9D
+4[f;D
 4xtpI
 5t~BC
 6CModel
@@ -303,12 +318,14 @@ $[A\]
 ?MeshUtils001
 ?Trailing Data
 ?bodygroup_driven_morph_list
-?formats.cpp
+@/@ttH
+@/@t~H
 @<NO EXPRESSION>
 @A  0x%08X %s,
 @[A\A]A^]
 @[A\]
 @mathlib.cpp
+@spawn
 @tBE+
 @tB[A\]
 A	E L;u
@@ -551,6 +568,7 @@ C([A\]
 C1[A\A]A^]
 C4[A\]
 C8[A\]
+C<[A\]
 CAimConstraint
 CAnimBone
 CAnimCycle
@@ -571,6 +589,7 @@ CBoneConstraintPoseSpaceBone::Input_t
 CBoneConstraintPoseSpaceMorph
 CBoneConstraintPoseSpaceMorph::Input_t
 CBufferString
+CColorGradient
 CCommand::Tokenize: Encountered command which overflows the argument buffer.. Clamped!
 CCommand::Tokenize: Encountered command which overflows the tokenizer buffer.. Skipping!
 CConstraintSlave
@@ -603,6 +622,16 @@ CL$(9
 CMaterialDrawDescriptor
 CMemAllocSystemInitialize
 CMesh Cannot create packed input layout, because the bone indices are out of range (0x%X)
+CModelConfig
+CModelConfigElement
+CModelConfigElement_AttachedModel
+CModelConfigElement_RandomColor
+CModelConfigElement_RandomPick
+CModelConfigElement_SetBodygroup
+CModelConfigElement_SetMaterialGroup
+CModelConfigElement_SetRenderColor
+CModelConfigElement_UserPick
+CModelConfigList
 CMorphBundleData
 CMorphConstraint
 CMorphData
@@ -757,6 +786,7 @@ CommandProcedure
 CommandProcedureList
 ConVar(%s) defined with infinite float value (%s)
 ConVarRef %s doesn't point to an existing ConVar
+ConfigAttachedModel
 ConfigurationSystem_001
 ConnectInterfaces
 Control block error for '%s': %s
@@ -771,7 +801,10 @@ C|[A\]H
 D#j\H
 D$ H9
 D$(D;u
+D$(H9
 D$(L9
+D$/@H
+D$/@I
 D$0H9
 D$0L;m
 D$0L;u
@@ -808,6 +841,7 @@ DevMsg
 Dominate(
 DotaCardGameClient_001
 Double-register of KV3 conversion (from '%s' to '%s')
+DynamicConfigList
 E A+E
 E oOH
 E+O$Mc
@@ -830,8 +864,10 @@ ERROR: Schema registration error - class '%s' is not marked as MModuleLocalTypeS
 ERROR: Specified full path %s does not lie under the mod search path!)
 ERROR: Specified path %s could not be made content-relative
 EXPORTSYSTEM_INTERFACE_VERSION_001
+E`A;Ep
 EarlyInit_Tier0
 EconItemToolModel_001
+EditorDynamicConfig
 EmptyAnim
 Encountered bad skin weights, summing to %g (1.0 expected) at position %.3f %.3f %.3f
 EngineServiceMgr001
@@ -866,6 +902,8 @@ FHL;}
 FIELD_BOOLEAN
 FIELD_CHARACTER
 FIELD_CLASSPTR
+FIELD_CMOTIONTRANSFORM
+FIELD_CMOTIONTRANSFORM_WORLDSPACE
 FIELD_COLOR32
 FIELD_CSTRING
 FIELD_CTRANSFORM
@@ -1030,7 +1068,6 @@ GLIBC_2.2.5
 GLIBC_2.3.4
 GLIBC_2.4
 GTLcE
-G`A;Gp
 G`H;E
 GameResourceServiceClientV001
 GameResourceServiceServerV001
@@ -1045,11 +1082,10 @@ GetEyePosition() Can't get pstudiohdr ptr!
 GetResourceManifestCount
 GetResourceManifests
 Gg_hSkeletonMeshLayout
-GpUHc
 H	p(]
 H	w(UH
 H!w(H
-H;pXt>L
+H;pXt6L
 H=vmat
 H=vmdl
 H=vmdlu
@@ -1090,7 +1126,6 @@ HelpSystem_001
 HookUpConfigValue
 HostStateMgr001
 Hp~=D
-I	Y(I
 IKChain
 IKChainOld
 IKData
@@ -1110,16 +1145,18 @@ IcE0H
 IcF01
 IcFXL
 IcG$A
+IcL$HIc
 IcL$hIc
 IcO0Ic
 IcT$0L
+IcU`A;Up
 IcV@M
 IcVXI
 IcW@H
-IcW`A;Wp
-IcWtL
+IcW|L
 Ic\$(A;\$8tNI
 Ic\$Hf
+Ic\$Pf
 Ic^8A;^H
 Ic^PA;^`
 Identity
@@ -1171,6 +1208,8 @@ KV3 load transfer failed for mesh '%s': %s
 KV3 load transfer failed: %s
 KeyValueCache001
 KeyValuesSystem
+Kmaterial_group
+L	{(H
 L$ I9
 L$(D;m
 L;&t[H
@@ -1240,6 +1279,11 @@ MODEL_BONE_FLEX_INVALID
 MODEL_BONE_FLEX_TX
 MODEL_BONE_FLEX_TY
 MODEL_BONE_FLEX_TZ
+MODEL_CONFIG_ATTACHMENT_BONEMERGE
+MODEL_CONFIG_ATTACHMENT_BONE_OR_ATTACHMENT
+MODEL_CONFIG_ATTACHMENT_COUNT
+MODEL_CONFIG_ATTACHMENT_INVALID
+MODEL_CONFIG_ATTACHMENT_ROOT_RELATIVE
 MODEL_PROCESSING_SCRIPT_INTERFACE_001
 MODEL_PROCESSING_SERVICES_INTERFACE_001
 MORPH_BUNDLE_TYPE_COUNT
@@ -1287,6 +1331,7 @@ ModelBoneFlexComponent_t
 ModelBoneFlexDriverControl_t
 ModelBoneFlexDriver_t
 ModelCompile/UseShadowFastPathHeuristic
+ModelConfigAttachmentType_t
 ModelDocUtils001
 ModelSkeletonData_t
 ModelSkeletonData_t::BLEND_PREALIGNED
@@ -1454,6 +1499,11 @@ Please add a MovementSettings node to the model in ModelDoc
 Please add a Skeletal Input Settings node to the model in ModelDoc
 PosXYZ
 PostProcessingSystem_001
+PreviewAttachmentModel
+PreviewBoneAttachedModel
+PreviewBoneMergedModel
+PreviewPreset
+PreviewPresetList
 Print model load-time conversion info
 ProjectedDecal
 ProjectedDecalSceneObjectDesc
@@ -1559,6 +1609,7 @@ T$ H9
 T$ LcC E
 T$0H9
 T$8H9
+T$8Ic
 TILT_TWIST
 TIcL$
 TestFormatA
@@ -1632,6 +1683,7 @@ VMeshError
 VModelError
 VNewAsyncFileSystem001
 VP4003
+VPIcFHI
 VPhysX Interface ResourceMgr v0.1
 VPhysXAggregateData_t
 VPhysXAggregateData_t::FLAG_IGNORE_SCALE
@@ -1761,6 +1813,7 @@ WorldRendererBuilderMgr001
 WorldRendererMgr001
 X2:jH
 XHcG(
+XIcL$
 XIcL$8Ic
 X[A\A]A^A_]
 X[A\A]]
@@ -1778,6 +1831,7 @@ ZN37CTypesafeIntrospectedToKV3TypeManagerILy440006569334E13CMorphSetDataE24Deall
 [A\A]]
 [A\A^]
 [A\]H
+\$0E1
 \$`Ic
 ^IcL$ Ic
 ^IcOPIc
@@ -1885,7 +1939,9 @@ anim_name_b
 animationsystem
 animgraph0
 archive
+attach_point
 attachment_offset
+attachment_type
 attenuation0
 attenuation1
 attenuation2
@@ -1912,11 +1968,13 @@ blendindices
 blendweight
 blendweights
 blockLOS
+body_groups
 body_type
 bodygroup_choice
 bodygroup_name
 bone_name
 bone_names
+bonemerge
 bouncecolor
 break_create_joint_revolute
 break_list
@@ -1928,6 +1986,7 @@ bulletimpact
 burstRandomize
 burst_randomize
 burst_scale
+cPHcCHI
 cable
 cables_list
 calloc
@@ -1950,6 +2009,7 @@ collision_group_override
 collision_prop
 color
 composite
+config_state
 configvalue.cpp
 control_point
 control_points_list
@@ -2040,6 +2100,7 @@ fog_lighting
 fogcontributionstrength
 force
 format
+formats.cpp
 frame
 g cMesh
 g default
@@ -2108,10 +2169,13 @@ lowprecisionuv1
 lr?vI
 lr?vJ
 m_AnimStrayRadii
+m_AttachmentName
+m_AttachmentType
 m_Attenuation0
 m_Attenuation1
 m_Attenuation2
 m_AxialEdges
+m_BodyGroupsHiddenInTools
 m_Bone
 m_BounceColor
 m_Bounds
@@ -2120,6 +2184,7 @@ m_Capsule
 m_Capsules
 m_ChainData
 m_Children
+m_Choices
 m_CollisionAttributeIndices
 m_CollisionGroup
 m_CollisionGroupString
@@ -2129,6 +2194,8 @@ m_Color
 m_ColorScale
 m_ConeAxis
 m_ConeCutoff
+m_ConfigName
+m_Configs
 m_ControlRigData
 m_CtrlHash
 m_CtrlName
@@ -2142,9 +2209,12 @@ m_DefaultTargetSettings
 m_DynNodeFriction
 m_DynNodeVertexSet
 m_Edges
+m_ElementName
+m_Elements
 m_Emitters
 m_EndEffectorBone
 m_EndEffectorTargetBone
+m_EntityClass
 m_ExtParts
 m_Faces
 m_Falloff
@@ -2162,7 +2232,9 @@ m_FreeNodes
 m_GoalDampedSpringIntegrators
 m_GoalDamping
 m_GoalStrength
+m_Gradient
 m_Gravity
+m_GroupName
 m_HitBoxSets
 m_HitBoxes
 m_Hull
@@ -2172,6 +2244,7 @@ m_IkChains
 m_InitPos
 m_InitPose
 m_Initializers
+m_InstanceName
 m_InteractAs
 m_InteractAsStrings
 m_InteractExclude
@@ -2189,11 +2262,13 @@ m_LiteralColor
 m_LocalForce
 m_LocalRotation
 m_MassProperties
+m_MaterialGroupName
 m_Materials
 m_Mesh
 m_MorphLayers
 m_MorphSetData
 m_Name
+m_NestedElements
 m_NodeBases
 m_NodeCollisionRadii
 m_NodeIntegrator
@@ -2231,6 +2306,7 @@ m_Sphere
 m_SphereRigids
 m_SpringIntegrator
 m_Springs
+m_Stops
 m_SwingLimit
 m_TaperedCapsuleRigids
 m_TaperedCapsuleStretches
@@ -2249,17 +2325,20 @@ m_VertexSetNames
 m_Vertices
 m_WorldCollisionNodes
 m_WorldCollisionParams
+m_aAngOffset
 m_anchor
 m_ankleBoneName
 m_attachments
 m_audioParams
 m_audioSounds
 m_axes
+m_bAdditive
 m_bApplyMinForce
 m_bCacheAttempted
 m_bCacheOk
 m_bCanBatchWithDynamicShaderConstants
 m_bCastShadows
+m_bClamp
 m_bDisableChild
 m_bDisableOperator
 m_bDoBonesOrientAlongPositiveX
@@ -2280,6 +2359,8 @@ m_bHasBakedLightingFromVertexStream
 m_bHasCullingData
 m_bHasPerInstanceBakedLightingData
 m_bHidden
+m_bHideMaterialGroupInTools
+m_bHideRenderColorInTools
 m_bIgnoreRotation
 m_bInfluenceRootTransform
 m_bInitFromKilledParentParticles
@@ -2301,11 +2382,14 @@ m_bScaleInitialRange
 m_bScaleInitialValue
 m_bScalePerParticle
 m_bSelected
+m_bTopLevel
 m_bTrailBias
 m_bTranslationOnly
 m_bUseCompressedNormalTangent
 m_bUseHighestEndCP
 m_bUseShadowFastPath
+m_bUserSpecifiedColor
+m_bUserSpecifiedMaterialGroup
 m_bUsesIndexedBakedLighting
 m_bVisible
 m_baseNameHash
@@ -2390,6 +2474,7 @@ m_flBaseMinUp
 m_flBaseStiffness
 m_flBaseUpFriction
 m_flBiasParameter
+m_flBindPoseDirectionMS
 m_flClusterCooldown
 m_flClusterCooldownMax
 m_flClusterCooldownMin
@@ -2408,6 +2493,7 @@ m_flDefaultVelAirDrag
 m_flDefaultVelQuadAirDrag
 m_flDefaultVelRodAirDrag
 m_flDistance
+m_flDuration
 m_flEmissionDuration
 m_flEmissionScale
 m_flEmitRate
@@ -2415,6 +2501,7 @@ m_flFalloff
 m_flFingerScaleRatio
 m_flFingerWeight
 m_flFogContributionStength
+m_flFootLength
 m_flInertiaScale
 m_flInitFromKilledParentParticles
 m_flInput0
@@ -2461,6 +2548,7 @@ m_flPitchBounce
 m_flPitchDamping
 m_flPitchFriction
 m_flPitchStiffness
+m_flPosition
 m_flPrecomputedMaxRange
 m_flProgression
 m_flQuadVelocitySmoothRate
@@ -2473,12 +2561,14 @@ m_flRadiusTaper
 m_flRandomMax
 m_flRandomMin
 m_flRodVelocitySmoothRate
+m_flRotationOffset
 m_flScalePerParentParticle
 m_flShadowCascadeDistance
 m_flSkinWidth
 m_flSphereRadius
 m_flSplayMaxAngle
 m_flSplayMinAngle
+m_flStanceDirectionOffsetMS
 m_flStartTime
 m_flStartTimeMax
 m_flStaticImpactVolume
@@ -2517,6 +2607,7 @@ m_goalAngularVelocity
 m_goalOrientation
 m_goalPosition
 m_hBuffer
+m_hModel
 m_hSnapshot
 m_hardThreshold
 m_hardVelocityThreshold
@@ -2581,12 +2672,15 @@ m_nBoneIndex
 m_nBoneNameHash
 m_nBoneWeightCount
 m_nBoxRigidIndex
+m_nCP
+m_nCPField
 m_nChainIndex
 m_nChainInvIndex
 m_nChainType
 m_nChannelElements
 m_nChild
 m_nChildren
+m_nChoice
 m_nClusterSizeMax
 m_nClusterSizeMin
 m_nCollisionAttribute
@@ -2712,6 +2806,7 @@ m_outputWeightList
 m_pBody
 m_pD3DSemanticName
 m_pFeModel
+m_pModelConfigList
 m_pName
 m_pParent
 m_pSemantic
@@ -2834,6 +2929,7 @@ m_vLiteralValue
 m_vMassCenterOverride
 m_vMax
 m_vMaxBounds
+m_vMidpointPositionMS
 m_vMin
 m_vMinBounds
 m_vNormal
@@ -2843,7 +2939,6 @@ m_vOrthographicAreas
 m_vPoint0
 m_vPoint1
 m_vSplayHingeAxis
-m_vStanceDirectionMS
 m_vStancePositionMS
 m_vTintColor
 m_vTipOffset
@@ -2897,6 +2992,7 @@ min_angle
 model.cpp
 model_default_preview_sequence_name
 model_dump_convert_info
+model_name
 modeldoc0
 modeldoc1
 modeldoc10
@@ -2917,6 +3013,7 @@ modeldoc23
 modeldoc24
 modeldoc25
 modeldoc26
+modeldoc27
 modeldoc3
 modeldoc4
 modeldoc5
@@ -3005,6 +3102,8 @@ radius0
 radius1
 ragdoll
 recenter_on_parent_bone
+relative_angles
+relative_origin
 remapping vertex %d[w%d] invalid: %d->%d >= %d
 remapping vertex %d[w%d] invalid: %d->? >= %d
 renderdiffuse
@@ -3061,12 +3160,17 @@ suppress
 surfacePropertyName
 surface_prop
 t	[A\]
+t L9m
+t!L;m
 t";2}
 t#IcF
+t$(E1
+t$8E;t$H
 t$HcW
 t(L; u
 t)HcE
 t+D;{
+t.IcE A;E0
 t/;w(t2;w8t=1
 t6[A\A]]
 t8UE1
@@ -3085,12 +3189,14 @@ tolower
 turn_rate
 txHcW
 tyHcW
+u HcE
 uIcL$
 unable to load mesh "%s"
 unknown activity %d on for activity model %s!
 unspecified
 useMotionDamping
 useSmoothPaths
+use_additional_offset
 usemtl initialShadingGroup
 utlbuffer.cpp
 utlstring.cpp
@@ -3102,7 +3208,7 @@ vSize
 vagrp
 vanmgrph
 vanmgrphATL
-vanmgrphH9
+vanmgrphL
 vb phys
 vbib_block
 version
@@ -3132,6 +3238,7 @@ vpcf21
 vpcf22
 vpcf23
 vpcf24
+vpcf25
 vpcf3
 vpcf4
 vpcf5
@@ -3152,6 +3259,8 @@ wcslen
 wxL;6t
 x	;F`
 x%IcU
+x(tnH
+x(ttH
 x)Lc.D;n
 x@HcO
 xNHcO

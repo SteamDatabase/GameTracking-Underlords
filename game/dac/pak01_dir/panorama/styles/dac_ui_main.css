@@ -286,6 +286,9 @@ DACUIMain.InGame
 	vertical-align: top;
 	horizontal-align: center;
 	flow-children: right;
+
+	//Season 1
+	visibility: collapse;
 }
 .MainMenuButtonContainer 
 {
@@ -501,45 +504,42 @@ DACUIMain.InGame
 {
 }
 
-@keyframes
-
-'LightGlowPulse'
+@keyframes 'LightGlowPulse'
 {
+	0%
+	{
+		brightness: .8;
+	}
 
-0%
-{
-	brightness: .8;
-}
+	12%
+	{
+		brightness: 1.2;
+	}
 
-12%
-{
-	brightness: 1.2;
-}
+	25%
+	{
+		brightness: 1.0;
+	}
 
-25%
-{
-	brightness: 1.0;
-}
+	50%
+	{
+		brightness: 1.3;
+	}
 
-50%
-{
-	brightness: 1.3;
-}
+	80%
+	{
+		brightness: .75;
+	}
 
-80%
-{
-	brightness: .75;
-}
+	95%
+	{
+		brightness: 1.15;
+	}
 
-95%
-{
-	brightness: 1.15;
-}
-
-100%
-{
-	brightness: 1.0;
-}
+	100%
+	{
+		brightness: 1.0;
+	}
 }
 
 
@@ -653,12 +653,14 @@ DACUIMain.InGame
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
-	background-image: url("s2r://panorama/images/dashboard/icon_power_png.vtex");
+	background-image: url("s2r://panorama/images/dashboard/icon_quit_psd.vtex");
+	opacity: 0.6;
 
 	height: 50px;
 	width: 50px;
-	margin-top: 30px;
-	margin-right: 50px;
+	margin-top: 40px;
+	margin-right: 40px;
+	wash-color: textDefault;
 }
 
 .PatchNotesContainer #PatchNotesButton,
@@ -689,12 +691,14 @@ DACUIMain.InGame
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
-	background-image: url("s2r://panorama/images/dashboard/icon_settings_png.vtex");
+	background-image: url("s2r://panorama/images/dashboard/icon_settings_psd.vtex");
+	opacity: 0.6;
 
 	height: 50px;
 	width: 50px;
-	margin-top: 30px;
+	margin-top: 40px;
 	margin-right: 20px;
+	wash-color: textDefault;
 }
 
 #PatchNotesButton 
@@ -702,30 +706,35 @@ DACUIMain.InGame
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
-	background-image: url("s2r://panorama/images/dashboard/icon_updates_png.vtex");
+	background-image: url("s2r://panorama/images/dashboard/icon_updates_psd.vtex");
+	opacity: 0.6;
 
 	height: 50px;
 	width: 50px;
-	margin-top: 30px;
+	margin-top: 40px;
 	margin-right: 20px;
+	wash-color: textDefault;
 }
 
 #ZooButton 
 {
-	opacity: 0.6;
+	opacity: 0.4;
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-image: url("s2r://panorama/images/dashboard/icon_zoo_psd.vtex");
+	margin-left: 212px;
+	margin-bottom: 6px;
 
-	height: 50px;
-	width: 50px;
-	margin-top: 30px;
+	height: 40px;
+	width: 40px;
 
 	transition-property: opacity;
 	transition-duration: 0.2s;
 
 	visibility: collapse;
+	wash-color: textDefault;
+	vertical-align: bottom;
 }
 
 .BetaUniverse #ZooButton
@@ -733,10 +742,26 @@ DACUIMain.InGame
 	visibility: visible;
 }
 
+#JailButtonContainer
+{
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-image: url("s2r://panorama/images/dashboard/icon_jail_psd.vtex");
+	opacity: 0.6;
+
+	height: 50px;
+	width: 50px;
+	margin-top: 40px;
+	margin-right: 20px;
+	wash-color: textDefault;
+}
+
 .IsLayoutSmallScreen #QuitButton,
 .IsLayoutSmallScreen #SettingsMenuButton,
 .IsLayoutSmallScreen #PatchNotesButton,
-.IsLayoutSmallScreen #ZooButton
+.IsLayoutSmallScreen #ZooButton,
+.IsLayoutSmallScreen #JailButtonContainer
 {
 	ui-scale: 130%;
 	margin-right: 20px;
@@ -751,8 +776,32 @@ DACUIMain.InGame
 {
 	vertical-align: top;
 	horizontal-align: right;
-	margin: 30px 30px 0px 0px;
+	margin: 40px 30px 0px 0px;
 	flow-children: right;
+}
+
+#GameLogo
+{
+	width: 320px;
+	background-image: url("s2r://panorama/images/dashboard/underlords_logo_psd.vtex");
+	height: 70px;
+	background-size: 100%;
+	margin-top: 24px;
+	margin-right: 20px;
+	wash-color: #d2e8e5;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+.Page_DACHomePage #GameLogo
+{
+	opacity: 1;
+}
+
+.IsLayoutSmallScreen #GameLogo
+{
+	ui-scale: 130%;
 }
 
 .IsLayoutLargeScreen .FeedbackPanel
@@ -830,3 +879,27 @@ DACUIMain.InGame
 	transition-property: opacity;
 	transition-duration: 0.5s;
 }
+
+#UnderlordPortrait
+{
+    horizontal-align: right;
+    vertical-align: bottom;
+    /*width: 878px;*/
+    /*height: 878px;*/
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    /*transform: translateX(100px) translateY(52px);*/
+    transition-property: width,height,transform;
+    transition-duration: 300ms;
+    transition-timing-function: ease-in-out;
+}
+
+.LowVisualQuality #UnderlordPortrait
+{
+    width: 50%;
+    height: 50%;
+
+    transform: ScaleX(2) ScaleY(2) translateX(-400px) translateY(-252px);
+}
+

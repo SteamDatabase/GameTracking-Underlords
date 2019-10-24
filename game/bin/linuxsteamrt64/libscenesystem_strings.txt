@@ -59,18 +59,12 @@
 	val_float
 	val_short
 	worldname
-      %s %d:
-      Dir %d:
-      Point %d:
     Actual    : 
     Expected  : 
     Field type: 
    %d initial materials (%d initial depth-only), %d copy material changes
    %d material Vfx evals, %d material Vfx rule checks
    %d material computes, %d full material sets, %d similar sets, %d texture-only sets
-   Directional: %d
-   Point: %d
-   Spot & Ortho: %d
   0x%08X %s,
   Actual   : 
   Comment started here.
@@ -104,20 +98,15 @@
  CNETMsg_SpawnGroup_LoadCompleted
  CSVCMsg_GameSessionConfiguration
  Can't back up over more bytes than were returned by the last call to Next().
- Cast Shadows %dx%d.
- Color: %d %d %d.
  DebugLevel:
  NETWORK_DISCONNECT_CLIENT_NO_MAP
  NETWORK_DISCONNECT_REJECT_BANNED
  NETWORK_DISCONNECT_SNAPSHOTERROR
  NETWORK_DISCONNECT_STEAM_DROPPED
- No Specular.
  Outdent() without matching Indent().
  Parameter to BackUp() can't be negative.
- Range: %d.
  ReadToken overflow
  Render %d specific objects
- Render Specular.
  Render world : %s
  Someone needed to call WaitForRenderingToComplete()!!!!!
  Submit clear screen for layer 
@@ -149,6 +138,7 @@
  of the Protocol Buffer runtime library, which is not compatible with the installed version (
  rows of transform texture
  t2HcC0H
+ t3IcL$pH
  tMv+@
  t]Hc
  trying to move layer %s after unfound layer %s
@@ -298,7 +288,6 @@
 #%s/UpdatePerViewConstantBuffers
 #%s/UpdatePerViewConstantBuffers%d
 #= RU
-#=61S
 #GameUI_ClientConsistencyFail
 #GameUI_ClientDifferentMap
 #GameUI_ClientNoMap
@@ -426,8 +415,11 @@ $[A\]
 %d=%s:  pos[ %8.3f %8.3f %8.3f ] ang[ %8.3f %8.3f %8.3f ]
 %dx%dTriStrippedVB
 %f %f %f %f
+%f is before m_SimulationState[%d].m_flSimulationTime %f
 %i %i %i %i
 %ls [wstring, len = %d]
+%s (Color)
+%s (Material)
 %s * %s
 %s + %s
 %s - %s
@@ -440,6 +432,8 @@ $[A\]
 %s allocation count overflow( %llu >= %llu )
 %s: string format requested %d chars
 %s_%s
+%s_color
+%s_matgrp
 &#GameUI_Disconnect_InvalidMessageError
 &#GameUI_Disconnect_NoPeerGroupHandlers
 &#GameUI_Disconnect_PureServer_Mismatch
@@ -457,6 +451,7 @@ $[A\]
 &YA1D
 &YA1H
 &YA1L
+&YA1f
 ' D]7
 '":|;
 '#GameUI_Disconnect_BadSpectatorPassword
@@ -480,7 +475,6 @@ $[A\]
 (A;L$x
 (CPL;
 (D$PH
-(GPSH
 (HcWP
 (L$`H
 (MSAA)
@@ -502,7 +496,6 @@ $[A\]
 (dump)
 (dump3d)
 (index =
-(l$ D
 (merge 
 )", which is not defined. The innermost scope is searched first in name resolution. Consider using a leading '.'(i.e., "(.
 )#GameUI_Disconnect_PureServer_ClientExtra
@@ -516,7 +509,6 @@ $[A\]
 )NETWORK_DISCONNECT_PURESERVER_CLIENTEXTRA
 )NETWORK_DISCONNECT_REQUEST_HOSTSTATE_IDLE
 )PPfA
-)T$PfA
 *#GameUI_Disconnect_LocalProblem_ManyRelays
 *>mathlib.cpp
 *NETWORK_DISCONNECT_CLIENT_CONSISTENCY_FAIL
@@ -529,6 +521,7 @@ $[A\]
 *ZN14CLightBinnerVr27AddLightProbeVolumesForViewEP10CSceneViewyyEUlP28CSceneLightProbeVolumeObjectE_
 *ZN14CLightBinnerVr40ShadowSetup_AllocateDumbShadowsForLightsEP10CSceneViewP11ISceneLayerRK8CFrustumyyiEUlP25CSceneLightObjectInternalE_
 *ZN26CBindlessFastPathPartition21EnsureEnvironmentMapsEvEUlP18CEnvMapSceneObjectE_
+*ZN32CBindlessFastPathSceneObjectDesc35EnsureLightProbeVolumeDescriptorSetEvEUlP28CSceneLightProbeVolumeObjectE_
 *\$4f
 *d$0f
 +++ %s: 
@@ -543,7 +536,9 @@ $[A\]
 +y north
 +z up
 ,	ATI
+, channels = 
 , from: 
+, height = 
 , lo=
 , not just within "
 , parent: 
@@ -579,6 +574,7 @@ $[A\]
 -z down
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
+.%^0,
 ...<truncated>...
 ../public/ordered_constructor.h
 ../public/scenesystem/sceneobject.h(2827): Material %s cannot render in mode %s but is being asked to
@@ -601,7 +597,6 @@ $[A\]
 .G z;u9
 .G$z.u,
 .G(z!u
-.K,zZuX
 .M;UU
 .NETWORK_DISCONNECT_REQUEST_HOSTSTATE_HLTVRELAY
 .PLACEHOLDER_VALUE
@@ -782,12 +777,10 @@ $[A\]
 23ISceneViewDebugOverlays
 24COccluderSceneObjectDesc
 24CSVCMsgList_UserMessages
-24CSpotLightObjectDescCsgo
 24CVConCommandMessageScene
 24IProceduralLayerRenderer
 25CConCommandMemberAccessorI12CSceneSystemE
 25CNETMsg_SpawnGroup_Unload
-25CPointLightObjectDescCsgo
 25CSceneLightObjectInternal
 25CSplatLightsLayerRenderer
 26CAnimatableSceneObjectDesc
@@ -818,6 +811,7 @@ $[A\]
 2_BONE_IK
 30CProjectedDecalSceneObjectDesc
 30CSVCMsgList_GameEvents_event_t
+30ISceneLightProbeVolumeListener
 31CBlitTextureToRenderTargetLayer
 31CSchemaRegistration_scenesystem
 32CBindlessFastPathSceneObjectDesc
@@ -833,7 +827,6 @@ $[A\]
 35CInputLayoutRegistration_sm_hLayout
 37CCopySkyLightingPixelsProceduralLayer
 38IMaxSwapChainDimensionsChangedListener
-4$AQA
 4$A\]
 4$[A\]
 4096.0f
@@ -861,7 +854,7 @@ $[A\]
 8[A\A]A^A_]
 8[A\A]]
 8[]A\A]A^A_
-8uqIc
+8utIc
 9.1.15
 9A8:@
 9A9:u
@@ -895,6 +888,7 @@ $[A\]
 < uEH
 <!-- kv3 encoding:%s:version{%s} format:%s:version{%s} -->
 <"C_OP_RemapSpeedtoCP
+<$Lccx
 <$u,H
 <+tZH
 <-urH
@@ -935,7 +929,6 @@ $[A\]
 <i>Not using PerViewConstantBuffer_t</i>
 <i>PerViewConstantBuffer_t</i>
 <i>Procedural Layer</i>
-<lC.'
 <no failure reason set>
 <none>
 <null>
@@ -1047,7 +1040,6 @@ $[A\]
 <tr><td><b>m_viewConstantBufferData.m_vFogColor</b></td><td>[%.3f %.3f %.3f]</td></tr>
 <tr><td><b>m_viewConstantBufferData.m_vInvProjRow3</b></td><td>[%.3f %.3f %.3f %.3f]</td></tr>
 <unknown>
-=%f is before m_SimulationState[%d].m_flSimulationTime %f
 =ValveBiped.
 >+inf
 >;9t9H
@@ -1059,7 +1051,6 @@ $[A\]
 >fff>fff>fff>fff>
 ?-x west
 ?456789:;<=
-?Linear
 ?sm_hLayout
 @ tZA
 @$A;L$x
@@ -1074,7 +1065,9 @@ $[A\]
 @P</t
 @[A\A]A^]
 @[A\]
+@spawn
 @tB[A\]
+@xAT@
 A	^hA
 A file with this name is already in the pool.
 A protocol message was rejected because it was too big (more than 
@@ -1100,7 +1093,6 @@ A;@0}I
 A;D$P
 A;D$X}
 A;G A
-A;T$0
 A;\$ 
 A;_@|
 A;_@}4L
@@ -1203,7 +1195,7 @@ AVAUATS
 AVAUATSD
 AVAUATSH
 AVAUATSL
-AVAUATSLcg@H
+AVAUATSLcgHH
 AVAUATS~
 AVAUB
 AVAUD
@@ -1216,6 +1208,7 @@ AVAUM
 AWAVA
 AWAVAUA
 AWAVAUATA
+AWAVAUATE
 AWAVAUATE1
 AWAVAUATH
 AWAVAUATI
@@ -1243,18 +1236,19 @@ AWAVLc
 AWAVM
 AWAVMc
 AWAVN
+AWAVfI
 AXAYH
 AXAYf
 AXAYu
 AYAZH
 AYAZM
 AYAZu
-AZA[H
 A[A^H
 A\A]A^A_]
 A\A]A^A_]L
 A\A]A^]
 A\A]H
+A\A]I
 A\A]]
 A\A]]H
 A\A]]L
@@ -1385,7 +1379,6 @@ BreakCommand
 BreakPieceEmbedded
 BreakPieceExternal
 Byte size calculation and serialization were inconsistent.  This may indicate a bug in protocol buffers or it may be caused by concurrent modification of 
-C ~2H
 C$ t"L
 C$ t0L
 C$x$H
@@ -1676,6 +1669,10 @@ CMTatlastexture_.vtex
 CMaterialDrawDescriptor
 CMemAllocSystemInitialize
 CMeshBuilderSceneObjectDesc
+CModelConfig
+CModelConfigElement
+CModelConfigElement_UserPick
+CModelConfigList
 CMorphConstraint
 CMsgPlayerInfo
 CMsgQAngle
@@ -1710,13 +1707,11 @@ CParentConstraint
 CParticleSystemDefinition
 CPointConstraint
 CPointLightObjectDesc
-CPointLightObjectDescCsgo
 CPointLightObjectDescVr
 CProjectedDecalSceneObjectDesc
 CRenderBufferBinding
 CRenderMesh
 CRenderSkeleton
-CSGO_LIGHT_BIN.vtex
 CSOAContainer::SetAttributeType - ERROR, trying to change type of previously-defined attribute %d!
 CSSDSEndFrameViewInfo
 CSSDSMsg_EndFrame
@@ -1757,7 +1752,6 @@ CSisterResourceBlockLoader::BlockingLoadResourceFileData: Trying to load an ille
 CSkyBoxObjectDesc
 CSolveIKChainAnimNode
 CSpotLightObjectDesc
-CSpotLightObjectDescCsgo
 CSpotLightObjectDescVr
 CStrongHandle
 CSunLightManager
@@ -1884,9 +1878,12 @@ Cannot allocate buffer larger than kint32max for
 Cannot call BuildFile on a DescriptorPool that uses a DescriptorDatabase.  You must instead find a way to get your file into the underlying database.
 Cannot copy json_name to a proto of a different size.
 Cannot get here
+Cannot read a file 
+Cannot read file 
 Cannot resolve to the same render targets as in the previous layer!
 Cannot save KV3 text to a non-text buffer!
 Cannot save as KV3_FORMAT_LOAD_WITH_NO_UPCONVERSION.
+Cannot write a file
 ChangeCallbackOnChange
 ChangeCallbackOnChangeOrCreate
 ChangeObjectPartition
@@ -1917,6 +1914,7 @@ ComputeLayerInfo
 ConVar(%s) defined with infinite float value (%s)
 ConVarRef %s doesn't point to an existing ConVar
 Conditional Error: %s
+ConfigAttachedModel
 ConfigurationSystem_001
 ConnectInterfaces
 ConvertGammaToLinear
@@ -1932,20 +1930,20 @@ Couldn't parse default value "
 Courier New
 CreateInterface
 CreatePerViewLightingConstantBuffer
-CsgoLightCookieSettings
 CubeMapDebugColors
 Cubic
 C|X[]
+D#-vaS
 D#O\H
 D#`$H
 D#j\H
 D$ E1
 D$ H9E
 D$"E1
+D$$E1
 D$(H9
 D$(fD
-D$0H9
-D$2 I
+D$0E1
 D$7@t
 D$8I9
 D$@E1
@@ -1953,9 +1951,9 @@ D$@H9
 D$@I9
 D$@IcD$@
 D$@Mc
+D$@u	I
 D$HH9
 D$HfA
-D$JHcE
 D$JfA
 D$W@I
 D$XH9
@@ -1977,15 +1975,14 @@ D2HH
 D333?
 D9k D
 D9w@u
-D9{h~
 D;!ttHc
+D;` D
 D;a(D
 D;c D
-D;f(D
-D;gPtaH
+D;gXtaH
 D;i(D
+D;j(D
 D;q(t/I
-D;s(D
 D;{(D
 DATA_LOSS
 DEADLINE_EXCEEDED
@@ -1993,6 +1990,7 @@ DEFAULT_WRITE_PATH
 DIcW@
 DXT1_ONEBITALPHA
 DXT5_NM
+Data size too short
 Debug
 DebugInfoLayerRenderBuffers
 DebugInfoLayerRenderColorizeSplits
@@ -2033,30 +2031,30 @@ DrawSpotLightShadow
 Dump a list of the objects in a sceneworld (Usage: sc_dumpworld <world_index>)
 Dump debug info
 Dump the objects in a sceneworld into a 3d geoview buffer (Usage: sc_dumpworld3d <world_index>)
+DynamicConfigList
 E H9E0txH
 E(ATL
 E(A]L
 E([A\A]A^]
 E+D$ 
-E8A;EH
+E2 t9H
 E9/~GI
 E9gPI
-E9gh~hI
 E9t$(D
 E;l$(A
 E;l$(tvI
 E;t$0A
-E;w(D
 E;|$(D
 EHAVP
 ENetworkDisconnectionReason
 ERROR
 EXPORTSYSTEM_INTERFACE_VERSION_001
-EXRHeader is not initialized.
 EarlyInit_Tier0
 EconItemToolModel_001
+EditorDynamicConfig
 EmptyAnim
 Enable display of console messages on screen. 1 = Enabled, 0 = Disabled, -1 = Enabled if vgui is not present
+EncodeRGBM
 End-of-file inside block comment.
 Engine2
 Engine2/RenderingPipeline/OpaqueFade
@@ -2131,7 +2129,6 @@ Extensions of MessageSets must be optional messages.
 Extensions to non-lite types can only be declared in non-lite files.  Note that you cannot extend a non-lite type to contain a lite type, but the reverse is allowed.
 F t2SH
 F t5SH
-F2 t9H
 F49G4
 FAILED_PRECONDITION
 FATAL
@@ -2144,7 +2141,10 @@ F_MORPH_SUPPORTED
 F_TRANSLUCENT
 Failed to allocate space for morph!
 Failed to convert introspected block: %s
-Failed to parse channel info.
+Failed to parse EXR version
+Failed to parse attribute
+Failed to parse channel info
+Failed to read attribute.
 Failed to save unsupported class
 False
 FastHexToBuffer() wants non-negative integers, not 
@@ -2178,6 +2178,8 @@ File already exists in database:
 File appears to be in generated pool but wasn't registered: 
 File is already registered: 
 File recursively imports itself: 
+File size is zero : 
+File size too short 
 FileDescriptorProto
 FileDescriptorSet
 FileOptions
@@ -2213,7 +2215,6 @@ G H;p
 G U9G
 G channel not found
 G channel not found!
-G t/H
 G0AQE1
 G8I;G@
 G8I;G@r
@@ -2302,27 +2303,25 @@ H90t4
 H91tz
 H;*twH
 H;0t#H
-H;5Q6W
-H;5l>W
-H;=(NW
-H;=(~W
-H;=*UW
-H;=+^W
-H;=,VW
-H;=6yW
-H;=>LW
-H;=QMW
-H;=SNW
-H;=UUW
-H;=UhP
-H;=V^W
-H;=gzW
-H;=|MW
+H;5X8W
+H;5XHW
+H;8t$H
+H;=%XW
+H;=&aW
+H;=7}W
+H;=PXW
+H;=QaW
+H;=b}W
+H;=z`W
+H;={XW
+H;=|aW
+H;q u
 H@McA
 HELPER_BONE
 HIGHDPI
 HW Does not support occlusion queries!
 H[A\A]A^A_]
+H[A\A]A^]
 H[A\A]]
 Hammer/UsesBakedLighting
 HammerMapLoader001
@@ -2337,8 +2336,8 @@ HcC`L
 HcCxL
 HcG0t
 HcKHIc
-HcP@t	;PP
 HcS$D
+HcS@t	;SP
 HcSHL
 HcSPH
 HcSX1
@@ -2347,6 +2346,7 @@ HcSp1
 HcV$UH
 HcW$H
 HcWpH
+HcX(;X8
 Hcs@H
 Hcy D
 HelpSystem_001
@@ -2379,17 +2379,13 @@ IcD$@A;D$PHc
 IcE f
 IcE$f
 IcE(f
-IcEHA;EX
-IcE`A;Ep
 IcExA;
 IcF@t
-IcFHI
-IcF`I
+IcFHL
+IcF`L
 IcFxH
+IcHXIc
 IcL$(Ic
-IcM`Ic
-IcT$ 1
-IcT$ A;T$0
 IcT$@H
 IcU@t
 IcUHI
@@ -2415,24 +2411,26 @@ InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 InstallTemplateViewFactory
 InstanceID
+Insufficient data length.
+Insufficient data size.
 Integer out of range (
 Intentionally vague touch behavior for %p
 Interpreting non ascii codepoint %d.
-Invalid argument.
+Invalid EXR header.
+Invalid channels format
 Invalid control characters encountered in text.
 Invalid data for member '%s'
-Invalid data height value.
-Invalid data window value.
+Invalid data height value
+Invalid data width value
 Invalid data.
 Invalid escape sequence in string literal.
 Invalid file descriptor data passed to EncodedDescriptorDatabase::Add().
 Invalid float number: 
 Invalid header
 Invalid key for map field.
+Invalid magic number
 Invalid member name '%s'
 Invalid message set extension.
-Invalid offset size.
-Invalid offset value.
 Invalid proto descriptor for file "
 Invalid public dependency index.
 Invalid request for mesh %d in model %s with %d entry remapping start table
@@ -2440,6 +2438,8 @@ Invalid request for mesh %d in model %s with no remapping table
 Invalid request for mesh %d in model %s with no remapping table starts
 Invalid strings::Substitute() format string: "
 Invalid symbol name: 
+Invalid tile size x : 
+Invalid tile size y : 
 Invalid value for boolean field "
 Invalid weak dependency index.
 Invalid wire type for CPPTYPE_INT32: 
@@ -2475,14 +2475,17 @@ KeyValues::RecursiveSaveToFile: TODO, missing code for TYPE_COLOR.
 KeyValues::SaveToFile: couldn't open file "%s" in path "%s".
 KeyValuesSystem
 L$ H9
-L$ Hc
 L$8IcD$@
 L$hfA
 L$kH;
 L9'tK
 L9A(u
+L9G u
+L9O(u
 L; t4
 L; tD
+L;%!FR
+L;%@CR
 L;2ta
 LABEL_OPTIONAL
 LABEL_REPEATED
@@ -2505,7 +2508,6 @@ LITE_RUNTIME
 LOD Level: %d Draw Calls: %d Triangles: %d
 LOG_GENERAL
 LOWVIOLENCE
-LPVQuadVB
 Label
 Layer Plane
 Layer Specific:
@@ -2518,9 +2520,7 @@ Lc.E)
 Lc/E)
 Lc3D;s
 Lc7E)
-Lc;D;{
 LccHD;cXD
-LccxE
 Lcg H
 LchpH
 Lck8D;kHu
@@ -2542,6 +2542,7 @@ Line %d at "%s": %s
 Line %d col %d: 
 Line %d: %s
 Line %d: Invalid value "%s"
+Linear
 List all the active sceneworlds
 List the object class names known by scenesystem
 LoadEXRImageFromMemory failed! Error message: %s
@@ -2564,7 +2565,6 @@ Low level command to set the flags byte associated with an object class. sc_SetC
 LowerEyelid( 
 LrwcE
 M0AWH
-M;A u
 MATCHFRAMEWORK_001
 MDIcE@
 MDefaultString
@@ -2580,6 +2580,7 @@ MNetworkPriority
 MNetworkRemoveAll
 MNetworkSerializer
 MNetworkUserGroup
+MODEL_CONFIG_ATTACHMENT_COUNT
 MODEL_PROCESSING_SCRIPT_INTERFACE_001
 MODEL_PROCESSING_SERVICES_INTERFACE_001
 MapKey::GetBoolValue
@@ -2611,23 +2612,19 @@ MaterialParamTexture_t
 MaterialParamVector_t
 MaterialParam_t
 MaterialResourceData_t
-MaterialSystem
-MaterialSystem2
 MaterialUtils_001
 MathLib_Init
 Max( %s, %s )
 MbP?+
 Mc#Ic
-Mc&E;f
 Mcf0E;f@
 McfHE;fXD
 Mcf`E;fpD
-McuPE;u`
-Mcw0E;w@D
-McwHE;wXD
-McwxE;
+MchHE;hX
+Mco`E;opD
+McoxE;
 Mc|$xA
-Mc~`E;~p
+Mc}0E;}@
 MemAlloc_AllocFunc
 MemAlloc_FreeFunc
 MeshBuilderObject
@@ -2655,6 +2652,7 @@ Missing file '%s'
 Missing name.
 Model %s missing bone and flex counts (%d < %d), init %d
 ModelCompile/UseShadowFastPathHeuristic
+ModelConfigAttachmentType_t
 ModelDocUtils001
 Monitor
 Monitor View
@@ -2743,7 +2741,6 @@ NewNode
 Newline in string literal
 Nh#F\H
 No Buffer
-No Diffuse.
 No default value
 No field named "uninterpreted_option" in the Options proto.
 Non-primitive types can't be packed.
@@ -2811,8 +2808,8 @@ Option must not use reserved name "uninterpreted_option".
 Options could not be fully parsed using the proto descriptors compiled into this binary. Missing required fields: 
 Ordered constructor wrapped type has no default constructor.
 Original
-Ortho
 OrthoLight
+Output memory size is zero
 Override of %i partitions specified, scene system using %i partitions
 Override. Old default was 3.0
 Override. Old default was 45.
@@ -2914,6 +2911,11 @@ Position4D
 PostProcessVertexLayout
 PostProcessingSystem_001
 Prepass
+PreviewAttachmentModel
+PreviewBoneAttachedModel
+PreviewBoneMergedModel
+PreviewPreset
+PreviewPresetList
 Primitives drawn: 
 Prints out the overall extra data allocation counts
 ProjectedDecalSceneObjectDesc
@@ -3006,7 +3008,6 @@ RenderDevice003
 RenderDeviceMgr001
 RenderHardwareConfig002
 RenderMeshFile
-RenderModes
 RenderPrimitiveType_t
 RenderService_001
 RenderSkeletonBone_t
@@ -3060,7 +3061,6 @@ SceneSystem/CMTAtlasChunkSize
 SceneSystem/CMTAtlasHeight
 SceneSystem/CMTAtlasWidth
 SceneSystem/CharacterDecals
-SceneSystem/CsgoLightBinner
 SceneSystem/CubemapFog
 SceneSystem/DisableShadowFullSort
 SceneSystem/DynamicSkyLighting
@@ -3129,7 +3129,6 @@ SetUInt64
 SetupLightingForViewVr
 ShF;d*
 Shadowed spot lights in view: %d
-Shadowed spot lights require more than the allocated %dx%d shadow map! Some will be removed!
 Should not reach here.
 Show light priority values. 1 = normal lights, 2 = cached lights.
 Show occluder
@@ -3204,9 +3203,8 @@ SunShadow%u
 SunShadowClear
 Symbol name "
 Syntax Error at offset: %d
-T$ H9
-T$0H9
-T$:fA
+T$(H9
+T$`Mc
 T$jHc
 T$pH9
 T: %7.3f
@@ -3262,7 +3260,6 @@ TonemapManifest
 TonemappingVRForward
 Tonemapping_UseAlphaChannelForAutoExposure
 Tonemapping_UseLogLuminance
-Too many point(%d) + spot(%d) + dir(%d) lights found! CLightBinnerCsgo supports %d active point + spot + dir lights!
 Too many shadowed spot lights in the scene!  Some will be removed!
 ToolFramework2_002
 ToolGameSimulationDispatcher_001
@@ -3270,7 +3267,6 @@ ToolGameSimulationSystem_001
 ToolSceneNodeFactory_001
 ToolScriptManager001
 ToolService_001
-Total Lights: %d
 Trailing Data
 Translucent
 TranslucentScreenSpace
@@ -3285,11 +3281,10 @@ Trying to concatenate meshes with incompatible attribute sets!
 Two Bone
 Type appears to be in generated pool but wasn't 
 Type is already registered: 
-U(t2H
 U0A\H
 U;wPH
 UIcL$@Ic
-UIcNpIc
+UIcM@Ic
 UNAUTHENTICATED
 UNAVAILABLE
 UNIMPLEMENTED
@@ -3367,6 +3362,7 @@ VPhysics2_Handle_Interface_001
 VPhysics2_Interface_001
 VProcessUtils002
 VProfService_001
+VR.}:
 VR_001
 VRenderDeviceSetupV001
 VSInputSignature
@@ -3482,6 +3478,7 @@ Volume Cull
 VolumetricFogManifest
 VrLightCookieSettings
 W u)H
+W59t"
 W8H;Q
 WARNING
 WARNING: Directional lights not supported by the light binner!
@@ -3499,6 +3496,9 @@ Wireframe3DLayout
 WorkshopSetup001
 World Filter
 WorldRenderer/EnvironmentMapColorSpace
+WorldRenderer/LightProbeVolumeAlgorithm
+WorldRenderer/LightProbeVolumeColorSpace
+WorldRenderer/LightProbeVolumeUncompressedFormat
 WorldRendererBuilderMgr001
 WorldRendererMgr001
 X$Ic@ E
@@ -3506,16 +3506,14 @@ X360_DST16
 X360_DST24
 X360_DST24F
 XIcL$
+XZ~aM
 X[A\A]A^A_]
 X[A\A]]
 X[]A\A]A^A_
-Y5:s(
 Yaw; 
-Z Render Diffuse.
 Z89Y8
+ZLPVQuadVB
 ZYtyH
-ZY~YM
-Z\$$M
 Z\9Y\
 [A\A]
 [A\A]A^A_]
@@ -3541,8 +3539,11 @@ Z\9Y\
 ] AUH
 ] A^]
 ](A]H
+]0t,H
+]@A;]P
 ^ H9_Hu
 ^(H9_Pt
+^5M4!
 ^8f9_Xu
 ^:f9_Zu
 ^@H9_`u
@@ -3551,7 +3552,7 @@ Z\9Y\
 ^IcO@Ic
 _BoundTexture%d
 _BoundTextureSrgb%d
-_HcKPIc
+_HcKXIc
 _ITM_deregisterTMCloneTable
 _ITM_registerTMCloneTable
 _Jv_RegisterClasses
@@ -3699,6 +3700,7 @@ _ZNSs6appendERKSsmm
 _ZNSs6appendEmc
 _ZNSs6assignEPKcm
 _ZNSs6assignERKSs
+_ZNSs6insertEmPKcm
 _ZNSs6insertEmmc
 _ZNSs6resizeEm
 _ZNSs7replaceEN9__gnu_cxx17__normal_iteratorIPcSsEES2_NS0_IPKcSsEES5_
@@ -3741,6 +3743,7 @@ _ZNSt6thread15_M_start_threadESt10shared_ptrINS_10_Impl_baseEE
 _ZNSt6thread4joinEv
 _ZNSt6vectorIS_ImSaImEESaIS1_EE19_M_emplace_back_auxIIRKS1_EEEvDpOT_
 _ZNSt6vectorIS_ImSaImEESaIS1_EE19_M_emplace_back_auxIJRKS1_EEEvDpOT_
+_ZNSt6vectorIfSaIfEE17_M_default_appendEm
 _ZNSt6vectorIhSaIhEE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPhS1_EEEEvS6_T_S7_St20forward_iterator_tag
 _ZNSt6vectorIhSaIhEE15_M_range_insertIPKhEEvN9__gnu_cxx17__normal_iteratorIPhS1_EET_S9_St20forward_iterator_tag
 _ZNSt6vectorIhSaIhEE15_M_range_insertIPcEEvN9__gnu_cxx17__normal_iteratorIPhS1_EET_S8_St20forward_iterator_tag
@@ -3750,6 +3753,8 @@ _ZNSt6vectorIhSaIhEEC1EmRKS0_
 _ZNSt6vectorIhSaIhEEC2EmRKS0_
 _ZNSt6vectorIiSaIiEE19_M_emplace_back_auxIIRKiEEEvDpOT_
 _ZNSt6vectorIiSaIiEE19_M_emplace_back_auxIJRKiEEEvDpOT_
+_ZNSt6vectorItSaItEEC1EmRKS0_
+_ZNSt6vectorItSaItEEC2EmRKS0_
 _ZNSt8ios_base4InitC1Ev
 _ZNSt8ios_base4InitD1Ev
 _ZNSt8ios_baseC2Ev
@@ -3867,8 +3872,10 @@ animgraph0
 annotation
 archive
 array_ != __null
+attach_point
 attachment
 attachment_offset
+attachment_type
 attenuation0
 attenuation1
 attenuation2
@@ -3897,10 +3904,12 @@ blendindices
 blendweight
 blendweights
 blockLOS
+body_groups
 body_type
 bodygroup
 bone_name
 bone_names
+bonemerge
 borrow
 bouncecolor
 box2i
@@ -3916,7 +3925,7 @@ burst_scale
 bytes
 bytes. 
 c@[A\A]A^]
-cXD;chD
+c`D;cpD
 cable
 calloc
 can't reach here.
@@ -3935,7 +3944,6 @@ chunkCount
 client
 client_streaming
 clientcmd_can_execute
-close
 close() failed: 
 cloth_collide
 cloth_collision_layer0
@@ -3949,14 +3957,12 @@ color
 colorTarget
 command
 compression
+config_state
 configvalue.cpp
 control_point
 convars
 create_particle
 creationsequence
-csgo_dump_lights
-csgo_enable_lights
-csgo_shadow_depthDS.vtex
 csharp_namespace
 csm_bias_override_0
 csm_bias_override_1
@@ -3983,7 +3989,10 @@ cvars
 dH34%(
 dH3<%(
 data error
+data height too large.
+data width too large.
 dataWindow
+data_height = 
 debugoverlay_draw_current
 debugoverlay_ignore_source
 debugoverlay_show_text_outline
@@ -4051,6 +4060,7 @@ falloff
 false
 false"
 fastshadowlayout
+fclose
 fff?H
 fff?fff?fff?fff?
 ffff.
@@ -4069,10 +4079,10 @@ float
 float( %f )
 floatbitmap.cpp
 floatbitmap.cpp(140): Unknown gamma type "%s"!
-floatbitmap.cpp(2455): Error calling TGALoader::GetInfo( %s )
-floatbitmap.cpp(2466): Error loading %s
-floatbitmap.cpp(2489): Error! Unknown file type for %s
-floatbitmap.cpp(2508): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
+floatbitmap.cpp(2463): Error calling TGALoader::GetInfo( %s )
+floatbitmap.cpp(2474): Error loading %s
+floatbitmap.cpp(2497): Error! Unknown file type for %s
+floatbitmap.cpp(2516): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
 floatbitmap.cpp(324): Conversion not supported yet!
 floatbitmap.cpp(424): Conversion not supported yet!
 floatbitmap.cpp(887): Unsupported color format "%s", skipping!
@@ -4086,19 +4096,22 @@ fog_lighting_clipmap_%d.vtex
 fog_noise_texture.vtex
 fog_override
 fogcontributionstrength
+fopen64
 force
-format
 formats.cpp
 fprintf
 fputc
 frame
 fread
+fread() error on 
 frexp
 friction
+fseek
+ftell
+fwrite
 g cMesh
 g default
 g0E;g@A
-gIcG 1
 g_Mathlib_GammaToLinearByteTable
 g_Tier1_BitWriteMasks
 g_Tier1_CRC32Table
@@ -4182,10 +4195,10 @@ k(HcS0
 k@_aA
 k@_aH
 kAnZZAnZZAnZZAnZZ
-kS@4H
 key_t
 khHcSp
 kv3format_manager.cpp
+l$(E1
 l$0L9
 label
 label: %s
@@ -4198,6 +4211,7 @@ len >= 0
 len >= input_len
 length
 length_ >= n
+leveltransition
 libc.so.6
 libm.so.6
 libpthread.so.0
@@ -4228,6 +4242,8 @@ looping
 lowprecisionuv
 lowprecisionuv1
 lseek
+m_AttachmentName
+m_AttachmentType
 m_Attenuation0
 m_Attenuation1
 m_Attenuation2
@@ -4235,32 +4251,43 @@ m_Bone
 m_BounceColor
 m_ChainData
 m_Children
+m_Choices
 m_Color
 m_ColorScale
 m_ConeAxis
 m_ConeCutoff
+m_ConfigName
+m_Configs
 m_ControlRigData
 m_CullDataIndex
 m_DecodeDump
 m_DefaultSolverSettings
 m_DefaultTargetSettings
+m_ElementName
+m_Elements
 m_Emitters
 m_EndEffectorBone
 m_EndEffectorTargetBone
+m_EntityClass
 m_Falloff
 m_ForceGenerators
+m_Gradient
+m_GroupName
 m_HitBoxSets
 m_HitBoxes
 m_IKChains
 m_IkChain
 m_IkChains
 m_Initializers
+m_InstanceName
 m_JointConstraintPairs
 m_JointName
 m_Joints
 m_LayerName
 m_LiteralColor
+m_MaterialGroupName
 m_Name
+m_NestedElements
 m_Operators
 m_Phi
 m_PreEmissionOperators
@@ -4271,6 +4298,7 @@ m_SnapshotType
 m_SolverSettingSource
 m_SolverType
 m_SourceFilename
+m_Stops
 m_TargetSettingSource
 m_TargetSource
 m_Targets
@@ -4278,6 +4306,7 @@ m_TextureId
 m_Theta
 m_ViewName
 m_Views
+m_aAngOffset
 m_ankleBoneName
 m_attachments
 m_bApplyMinForce
@@ -4286,6 +4315,7 @@ m_bCacheAttempted
 m_bCacheOk
 m_bCanBatchWithDynamicShaderConstants
 m_bCastShadows
+m_bClamp
 m_bDisableChild
 m_bDisableOperator
 m_bDoBonesOrientAlongPositiveX
@@ -4300,6 +4330,8 @@ m_bHasBakedLightingFromVertexStream
 m_bHasCullingData
 m_bHasDecodeDump
 m_bHasPerInstanceBakedLightingData
+m_bHideMaterialGroupInTools
+m_bHideRenderColorInTools
 m_bIgnoreRotation
 m_bInfluenceRootTransform
 m_bInitFromKilledParentParticles
@@ -4307,6 +4339,7 @@ m_bInverse
 m_bIsAttachment
 m_bIsNotMatchedToMaterial
 m_bIsOccluder
+m_bLightingOriginIsInWorldSpace
 m_bLocalSpace
 m_bOffsetExistingPos
 m_bOnlyDrawInFastShadowPath
@@ -4320,11 +4353,14 @@ m_bScaleInitialRange
 m_bScaleInitialValue
 m_bScalePerParticle
 m_bSelected
+m_bTopLevel
 m_bTrailBias
 m_bTranslationOnly
 m_bUseCompressedNormalTangent
 m_bUseHighestEndCP
 m_bUseShadowFastPath
+m_bUserSpecifiedColor
+m_bUserSpecifiedMaterialGroup
 m_bUsesIndexedBakedLighting
 m_bVisible
 m_bbox
@@ -4358,6 +4394,7 @@ m_fLifespanScaleExp
 m_fingers
 m_flBakeLightIndexScale
 m_flBiasParameter
+m_flBindPoseDirectionMS
 m_flClusterCooldown
 m_flClusterCooldownMax
 m_flClusterCooldownMin
@@ -4367,6 +4404,7 @@ m_flClusterRefireTimeMin
 m_flClusterSize
 m_flDepthSortBias
 m_flDistance
+m_flDuration
 m_flEmissionDuration
 m_flEmissionScale
 m_flEmitRate
@@ -4376,6 +4414,7 @@ m_flFarCullDistanceSquared
 m_flFingerScaleRatio
 m_flFingerWeight
 m_flFogContributionStength
+m_flFootLength
 m_flInitFromKilledParentParticles
 m_flInput0
 m_flInput1
@@ -4395,6 +4434,7 @@ m_flOpStrengthMaxScale
 m_flOpStrengthMinScale
 m_flOutput0
 m_flOutput1
+m_flPosition
 m_flPrecomputedMaxRange
 m_flRadius
 m_flRadiusScale
@@ -4421,6 +4461,7 @@ m_flexControllers
 m_floatAttributes
 m_floatParams
 m_hBuffer
+m_hModel
 m_hSnapshot
 m_hingeAxis
 m_hitboxsets
@@ -4460,10 +4501,13 @@ m_nBoneIndex
 m_nBoneNameHash
 m_nBoneWeightCount
 m_nBoundsType
+m_nCP
+m_nCPField
 m_nChainIndex
 m_nChainInvIndex
 m_nChainType
 m_nChannelElements
+m_nChoice
 m_nClusterSizeMax
 m_nClusterSizeMin
 m_nControlPoint
@@ -4671,6 +4715,7 @@ mat_tonemap_force_rate
 mat_tonemap_force_scale
 mat_tonemap_force_use_alpha
 mat_tonemap_uncap_exposure
+material_group
 materials/deferred_lights/irradiancevolume.vmat
 materials/deferred_lights/pointlight.vmat
 materials/deferred_lights/spotlight.vmat
@@ -4740,6 +4785,7 @@ min_angle
 min_client_limit
 model.cpp
 model_default_preview_sequence_name
+model_name
 modeldoc0
 modeldoc1
 modeldoc10
@@ -4760,6 +4806,7 @@ modeldoc23
 modeldoc24
 modeldoc25
 modeldoc26
+modeldoc27
 modeldoc3
 modeldoc4
 modeldoc5
@@ -4810,6 +4857,7 @@ numsegments
 nxnstripped
 o ATE1
 o@ATI
+oIc@ 1
 objc_class_prefix
 occlusionproxyvb
 oneof_decl
@@ -4933,6 +4981,8 @@ realloc
 reason
 recenter_on_parent_bone
 registered: 
+relative_angles
+relative_origin
 remapping vertex %d[w%d] invalid: %d->%d >= %d
 remapping vertex %d[w%d] invalid: %d->? >= %d
 renderdiffuse
@@ -4967,22 +5017,20 @@ rt_lpvPongG.vtex
 rt_lpvPongR.vtex
 runspeed
 s H;5
-s H;5!>W
 s off
 s(APL
 s(H;5
-s(H;50&W
+s(H;5@,W
 s0H;5
-s0H;5H
-s0H;5h'W
+s0H;5H W
+s0H;5x-W
 s1_mapname
 s8H;5
-s8H;5x
-s8H;5x(W
+s8H;5x W
 s@H;5
 s@I9t$@u
 sHH;5
-sHH;5}
+sHH;5}!W
 sPH;5
 s_flSizeCullBloatScale
 savegamefilename
@@ -5068,8 +5116,8 @@ scenesysCone
 scenesysDodecahedron
 scenesystem
 scenesystem.cpp
-scenesystem.cpp(6275): Expecting 1 renderable pass for material "%s" but found %d!
-scenesystem.cpp(7502): Waited 500 ms for jobs to complete. Attempt to drain windows message queue. Jobs in queue = %d
+scenesystem.cpp(6255): Expecting 1 renderable pass for material "%s" but found %d!
+scenesystem.cpp(7488): Waited 500 ms for jobs to complete. Attempt to drain windows message queue. Jobs in queue = %d
 scenesystemdebug
 sceneview.cpp
 sceneviewdebugoverlays.cpp
@@ -5194,30 +5242,29 @@ t$8H9
 t$H;h
 t%L;}
 t)HcE
-t,E;~
 t-~)H
 t.HcC(H
 t.HcK8H
 t.L;m
 t/D9k
 t/HcG
+t/[A\]
 t0HcG H
-t1HcKlH
 t2HcC,H
 t2HcG
 t2HcG H
 t2HcO
 t3HcG$H
-t3HcKtH
 t4HcG
 t4[A\A]]
+t5D;y
 t5HcG H
+t5IcL$lH
 t6[A\A]]
 t7HcO H
 t8IcD$0H
-t9[A\]
 t<H90u
-t=D;$
+t=D;,
 t=[A\]
 tC[A\A]A^]
 tJHcC
@@ -5245,7 +5292,6 @@ tkrYU
 tl[A\A]A^]
 tmMc}
 tonemap.cpp: g_pRenderDevice->CreateQueryObject( RENDER_QUERY_OCCLUSION ) failed!
-tpD;c
 trailing_comments
 transformtexture_.vtex
 trunc
@@ -5267,13 +5313,11 @@ u64( %lld = 0x%llX )
 uAL;%
 uDIcE@
 uE[A\]
-uHtZA
 uO[A\]
 uR[A\]
-uSA	\$
 u]A	\$
-u`tZA
 ubH9}
+udA	\$
 uiH9u
 uint32
 uint64
@@ -5287,6 +5331,7 @@ usHcC`L
 usHcCxL
 useMotionDamping
 useSmoothPaths
+use_additional_offset
 usemtl initialShadingGroup
 userid
 usermsgs
@@ -5316,7 +5361,6 @@ vector::_M_fill_insert
 vector::_M_insert_aux
 vector::_M_range_insert
 vector::reserve
-version
 version error
 vertexbuffer
 vmax > 0
@@ -5334,6 +5378,8 @@ volume_fog_dither_scale
 volume_fog_enable_jitter
 volume_fog_enable_stereo
 volume_fog_enlarge_frusta
+volume_fog_fade_in_end
+volume_fog_fade_in_start
 volume_fog_show_volumes
 volume_fog_single_pass
 volume_fog_view_culling_enabled
@@ -5355,6 +5401,7 @@ vpcf21
 vpcf22
 vpcf23
 vpcf24
+vpcf25
 vpcf3
 vpcf4
 vpcf5
@@ -5364,6 +5411,8 @@ vpcf8
 vpcf9
 vr_allow_time_sliced_shadow_map_rendering
 vr_carry_type
+vr_cubemap_normalization_max
+vr_cubemap_normalization_roughness_begin
 vr_dump_lights
 vr_enable_cached_lights
 vr_enable_lights
@@ -5397,7 +5446,6 @@ with a type that does not implement MergeFrom. This is unsafe;
 world_offset_angle
 world_offset_pos
 worldgroupid
-write
 wrong submessage type
 x	;B`
 x	;F`
@@ -5415,18 +5463,18 @@ yaw_end
 yaw_start
 z&u$H
 z7u5f
-z<u:I
 z@tmD
-z@u>H
-zFuDE
-zIuGD
+z@u>I
+zCuAH
+zJuHE
+zLuJD
 zPuNLc
 z[uYH
 z[uYM
-zkuiH
+zpunH
 zwuu1
 {YIN?
-{[xYH
+{[xYL
 {[xY{[xY{[xY{[xYCLightObjectDesc
 {}()':
 {}[]()=&, 	
@@ -5436,7 +5484,6 @@ zwuu1
 ~!I;0t`1
 ~)H;7I
 ~-L;`H
-~.L96
 ~/Hcu
 ~1Lc}
 ~7;w$

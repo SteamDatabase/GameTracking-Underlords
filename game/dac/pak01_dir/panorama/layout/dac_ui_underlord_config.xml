@@ -3,42 +3,97 @@
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 		<include src="s2r://panorama/styles/dac_ui_hud.vcss_c" />
-		<include src="s2r://panorama/styles/dac_ui_underlord_config.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_underlord.vcss_c" />
 	</styles>
+	
+	<snippets>
+		<snippet name="AbilitySnippet">
+			<Panel class="AbilityBlock">
+				<Image id="AbilityIcon" scaling="stretch-to-fit-preserve-aspect" />
+				<Panel class="AbilityInfo">
+					<Label class="AbilityName" text="{s:ability_name}" />
+					<Label class="AbilityDesc" text="{s:ability_description}" html="true" />
+				</Panel>
+			</Panel>
+		</snippet>
+	</snippets>
 
 	<DACUnderlordConfig>
 
-    <Panel id="UnderlordContainer">
-      <Panel class="BioSection">
-        <Label id="Name"/>
-        <Label id="Subtitle"/>
-        <Label id="DescriptionHeader"/>
-        <Label id="Description"/>
-      </Panel>
+		<Panel id="UnderlordContainer">
+			<Panel id="BioSection">
+				<Label id="Name" class="DistressedFont"/>
+				<Label id="Subtitle" class="DistressedFont"/>
+				<Panel id="TabSection">
+					<Panel id="TabBackground"/>
+					<Panel id="TabLabels">
+						<Label id="TabAbilities" class="TabLabel DistressedFont" text="#DAC_Underlord_Tab_Abilities" onactivate="DACUnderlordTabSelect(1)" allowtextselection="false"/>
+						<Label id="TabCombat" class="TabLabel DistressedFont" text="#dac_settings_about" onactivate="DACUnderlordTabSelect(0)" allowtextselection="false"/>
+					</Panel>
+				</Panel>
+			
+			
 
-      <DACUnderlordConfigLevelProgress class="LevelProgress"/>
+				<Panel id="TabOptions">
+					<Panel id="AbilityContents" class="TabSection">
+						<Panel id="AbilityList">
+							<!-- filled with AbilitySnippet -->
+						</Panel>
+					</Panel>
+					<Panel id="CombatContents" class="TabSection">
+						<Label id="Oneliner"/>
 
-      <Button class="SelectButton" onactivate="DACUnderlordActivate()">
-        <Label text="#DAC_Underlord_Select"/>
-      </Button>
+						<Panel id="TalentsButton" onactivate="DACUnderlordConfigBrowseTalents()">
+							<Label text="#DAC_Underlord_TalentsShow"/>
+						</Panel>
 
-      <Panel class="SelectedUnderlordPanel">
-        <Label text="#DAC_Underlord_Selected"/>
-      </Panel>
-      
-      <Image id="Portrait" scaling="stretch-to-fit-preserve-aspect"/>
-    </Panel>
+						<Panel id="UnderlordsMonologue">
+							<Panel id="PlayButtonContainer">
+								<Button id="UnderlordsMonologueButton" onactivate="DACUnderlordPlayMonologue()">
+									<Panel id="PlayButtonIcon" />
+									<Label id="PlayButtonLabel" text="#DAC_DBHome_Mobile_PlayAudio" html="true"/>
+								</Button>
+							</Panel>
+							<Label id="Description" html="true"/>
+							
+						</Panel>
+						
 
-    <Button id="Previous" class="NavigationButton" onactivate="DACUnderlordsViewChange(-1)">
-      <Label id="PreviousUnderlord"/>"
-      <Panel class="Arrow Left"/>
-    </Button>
+					
 
-    <Button id="Next" class="NavigationButton" onactivate="DACUnderlordsViewChange(1)">
-      <Label id="NextUnderlord"/>"
-      <Panel class="Arrow Right"/>
-    </Button>
+					</Panel>
 
-  </DACUnderlordConfig>
+				
+				</Panel>
+			</Panel>
+
+			<Panel class="DashboardHeader">
+				<Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
+			</Panel>
+
+		
+
+			<Panel class="UnderlordSelectContainer">
+				<Panel class="UnderlordSelectTopContainer">
+					<Panel class="UnderlordSelectBackground"/>
+					<Panel class="UnderlordSelectTop">
+						<Button id="LeftUnderlordArrow" class="UnderlordArrow ArrowLeft" onactivate="DACUnderlordsViewChange(-1)"/>
+						<Panel class="UnderlordButton" onactivate="DACUnderlordActivate()">
+							<Label id="UnderlordName" class="DistressedFont" html="true" text="#DAC_Underlord_Selected_Select"/>
+							<Label id="UnderlordSelected" class="DistressedFont" html="true" text="#DAC_Underlord_Selected_Page"/>
+						</Panel>
+						<Button id="RightUnderlordArrow" class="UnderlordArrow" onactivate="DACUnderlordsViewChange(1)"/>
+					</Panel>
+				</Panel>
+				<Panel class="UnderlordSelectBottomContainer">
+					<Label class="TalentsUnlockedNumbers" text="#DAC_Reward_Item_TalentCount"/>
+					<Label class="TalentsUnlocked" text="#DAC_Reward_Item_TalentUnlockedLabel"/>
+				</Panel>
+			</Panel>
+		</Panel>
+
+		<DACTalentBrowser id="TalentBrowser"/>
+
+	</DACUnderlordConfig>
 
 </root>

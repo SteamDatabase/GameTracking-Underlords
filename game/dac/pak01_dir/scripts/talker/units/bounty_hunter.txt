@@ -1,0 +1,149 @@
+// bounty_hunter - Hero
+criterion "Isbounty_hunter" "classname" "bounty_hunter" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response bounty_hunter_recruit_1
+{
+	speak "bounty_hunter_recruit" noscene 
+}
+
+Rule bounty_hunter_recruit_1_rule
+{
+	criteria Isbounty_hunter ConceptRecruit UnitRank1
+	response bounty_hunter_recruit_1
+}
+
+
+Response bounty_hunter_recruit_2
+{
+	speak "bounty_hunter_upgrade" noscene 
+}
+
+Rule bounty_hunter_recruit_2_rule
+{
+	criteria Isbounty_hunter ConceptRecruit UnitRank2
+	response bounty_hunter_recruit_2
+}
+
+
+Response bounty_hunter_recruit_3
+{
+	speak "bounty_hunter_final_upgrade" noscene 
+}
+
+Rule bounty_hunter_recruit_3_rule
+{
+	criteria Isbounty_hunter ConceptRecruit UnitRank3
+	response bounty_hunter_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response bounty_hunter_start_round
+{
+	speak "bounty_hunter_start_round" noscene 
+}
+
+Rule bounty_hunter_start_round_rule
+{
+	criteria Isbounty_hunter ConceptRoundStart 
+	response bounty_hunter_start_round
+}
+
+
+Response bounty_hunter_start_round_lost_last_round
+{
+	speak "bounty_hunter_start_round_lost_last_round" noscene 
+}
+
+Rule bounty_hunter_start_round_lost_last_round_rule
+{
+	criteria Isbounty_hunter ConceptRoundStart LostLastGame
+	response bounty_hunter_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response bounty_hunter_flawless_victory
+{
+	speak "bounty_hunter_flawless_victory" noscene 
+}
+
+Rule bounty_hunter_flawless_victory_rule
+{
+	criteria Isbounty_hunter ConceptRoundEnd Result_WinFlawless
+	response bounty_hunter_flawless_victory
+}
+
+
+Response bounty_hunter_decisive_victory
+{
+	speak "bounty_hunter_decisive_victory" noscene 
+}
+
+Rule bounty_hunter_decisive_victory_rule
+{
+	criteria Isbounty_hunter ConceptRoundEnd Result_WinDecisive
+	response bounty_hunter_decisive_victory
+}
+
+Response bounty_hunter_narrow_victory
+{
+	speak "bounty_hunter_narrow_victory" noscene 
+}
+
+Rule bounty_hunter_narrow_victory_rule
+{
+	criteria Isbounty_hunter ConceptRoundEnd Result_WinNarrow
+	response bounty_hunter_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response bounty_hunter_flawless_defeat
+{
+	speak "bounty_hunter_flawless_defeat" noscene 
+}
+
+Rule bounty_hunter_flawless_defeat_rule
+{
+	criteria Isbounty_hunter ConceptRoundEnd Result_LoseFlawless
+	response bounty_hunter_flawless_defeat
+}
+
+
+Response bounty_hunter_decisive_defeat
+{
+	speak "bounty_hunter_decisive_defeat" noscene 
+}
+
+Rule bounty_hunter_decisive_defeat_rule
+{
+	criteria Isbounty_hunter ConceptRoundEnd Result_LoseDecisive
+	response bounty_hunter_decisive_defeat
+}
+
+Response bounty_hunter_narrow_defeat
+{
+	speak "bounty_hunter_narrow_defeat" noscene 
+}
+
+Rule bounty_hunter_narrow_defeat_rule
+{
+	criteria Isbounty_hunter ConceptRoundEnd Result_LoseNarrow
+	response bounty_hunter_narrow_defeat
+}

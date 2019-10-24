@@ -7,30 +7,29 @@
 
 	<snippets>
 
-		<snippet name="AbilitySnippet">
-			<Panel class="AbilityContainer">
-				<Image src="s2r://panorama/images/heroes/spellicons/empty_png.vtex" />
-				<Image id="UnitAbility" />
+		<snippet name="DragUnitTooltipSnippet">
+			<Panel class="DragUnitTooltipContainer" hittest="false">
+				<Panel class="GoldValueCoin" hittest="false">
+					<Panel class="PlusMinus"/>
+					<Label class="CostLabel" text="{d:purchase_cost}" />
+				</Panel>
 			</Panel>
 		</snippet>
 
 		<snippet name="ShopEntry">
 			<Button class="ShopEntry">
-				<Panel id="InfoRow">
-					<Label class="HeroName" text="{s:UnitName}" />
-					<Panel id="AbilitySnippetContainer">
-						<!-- dynamic content -->
-					</Panel>
+				<Panel class="BenchSlotPanel">
+					<DACScenePanel class="BenchSlotEmptyFX" hittest="false" map="scenes/bench" camera="cam_main" particleonly="true" renderdeferred="false" loadmaponmobile="false"/>
+					<Panel class="BenchSlotShadow" hittest="false" />
+					<Panel class="BenchSlotHighlight" hittest="false" />
 				</Panel>
-				<Panel id="InfoRowMinimal" hittest="false" hittestchildren="false">
+				<Panel id="InfoRow" hittest="false" hittestchildren="false">
 					<Label class="HeroName" text="{s:UnitName}" />
 				</Panel>
-				<Panel id="HeroCardRow">
-					<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" renderbatched="true" usePortraitData="true" />
-					<DACUnitScenePanel id="SceneViewMinimal" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" renderbatched="true" usePortraitData="false" usePortraitCamera="false" usePortraitLighting="false" unitYaw="-90" cameraDistance="400" cameraOrthographicSize="275" />
-					<DACParticleScenePanel class="ParticleOverlay" id="HoverParticle" hittest="false" startActive="false" particleName="particles/ui/shop/ui_shop_hero_hover2.vpcf"  fov="-900" />
-					<DACParticleScenePanel class="ParticleOverlay" id="CombineParticle" hittest="false" startActive="false" particleName="particles/ui/shop/ui_shop_hero_combine_preview2.vpcf"  fov="-900" />
-					
+				<Panel id="HeroCardRow" hittest="true">
+					<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" renderbatch="shop" usePortraitData="false" usePortraitCamera="false" usePortraitLighting="false" unitYaw="-90" cameraDistance="400" cameraOrthographicSize="275" />
+					<DACParticleScenePanel class="ParticleOverlay" id="HoverParticle" hittest="false" startActive="false" particleName="particles/ui/shop/ui_shop_hero_hover2.vpcf" fov="-900" />
+
 					<Panel id="UnitHeader" class="LeftRightFlow">
 						<Panel class="CostContainer">
 							<Label id="CostNumber" text="{i:UnitCost}" />
@@ -49,7 +48,7 @@
 		</snippet>
 		<snippet name="OwnedUnitEntry">
 			<Button class="OwnedUnitEntry">
-				<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" renderbatched="true" usePortraitData="true" />
+				<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" renderbatch="shop" usePortraitData="true" />
 				<Panel id="ContentBG" class="TopBottomFlow">
 					<Label text="{s:UnitName}" />
 					<Label text="#DAC_InGame_Rank" />
@@ -66,107 +65,68 @@
 				</Panel>
 			</Panel>
 		</snippet>
+			<snippet name="LevelBarCostIncrementGap">
+			<Panel class="LevelBarCostIncrementGap">
+				<Panel class="LevelBarCostGap"/>
+			</Panel>
+		</snippet>
 	</snippets>
 
-	<DACUIShop hittest="false" >
-		<Panel id="UnitShopContainer" hittest="true" onactivate="DACCloseShop()">
+	<DACUIShop hittest="false">
+		<Panel id="UnitShopHitTestBG" hittest="true" onactivate="DACCloseShop()" />
+		<Panel id="UnitShopContainer" hittest="false">
 			<Panel id="TimerContainer">
 				<Panel id="TimerBar" />
 			</Panel>
-
 			<Panel id="MainRow" hittest="false">
-				<Panel class="ButtonGutter">
-
-					<Button class="ShopButton" id="OddsShop">
-						<Panel id="OddsButton" onactivate="DACShowHeroOddsPopup()"/>
-					</Button>
-
-					<Button class="ShopButton" id="LibraryShop">
-						<Panel id="LibraryButton" onactivate="DACShowHeropediaPopup()"/>		<!-- DACShopToggleMinimal() -->
-					</Button>
-
-					<Button class="ShopButton" id="LockShop" onactivate="DACLockShop( true )">
-						<Panel id="LockButton" />
-					</Button>
-
-					<Button class="ShopButton" id="UnlockShop" onactivate="DACLockShop( false )">
-						<Panel id="UnlockButton" />
-					</Button>
-				</Panel>
+			
 				<Panel id="ShopContainer" onactivate="">
 					<Panel id="UnitsShopBG" class="LeftRightFlow">
 						<Panel id="UnitShopBG1" class="UnitShopBGItem">
 							<Panel class="UnderfootImage"/>
-							<Panel class="CombineHighlight"/>
 						</Panel>
 						<Panel id="UnitShopBG2" class="UnitShopBGItem">
 							<Panel class="UnderfootImage"/>
-							<Panel class="CombineHighlight"/>
 						</Panel>
 						<Panel id="UnitShopBG3" class="UnitShopBGItem">
 							<Panel class="UnderfootImage"/>
-							<Panel class="CombineHighlight"/>
 						</Panel>
 						<Panel id="UnitShopBG4" class="UnitShopBGItem">
 							<Panel class="UnderfootImage"/>
-							<Panel class="CombineHighlight"/>
 						</Panel>
 						<Panel id="UnitShopBG5" class="UnitShopBGItem">
 							<Panel class="UnderfootImage"/>
-							<Panel class="CombineHighlight"/>
 						</Panel>
 					</Panel>
-					<Panel id="UnitsShop" class="LeftRightFlow">
-					</Panel>
+					<Panel id="UnitsShop" class="LeftRightFlow" />
 					<Panel id="UnitsShopLockLayer" hittest="false" class="LeftRightFlow">
-						<Panel class="UnitShopFGItem" hittest="false" ><Panel class="HeroLock" hittest="false" /></Panel>
-						<Panel class="UnitShopFGItem" hittest="false" ><Panel class="HeroLock" hittest="false" /></Panel>
-						<Panel class="UnitShopFGItem" hittest="false" ><Panel class="HeroLock" hittest="false" /></Panel>
-						<Panel class="UnitShopFGItem" hittest="false" ><Panel class="HeroLock" hittest="false" /></Panel>
-						<Panel class="UnitShopFGItem" hittest="false" ><Panel class="HeroLock" hittest="false" /></Panel>
+						<Panel class="UnitShopFGItem" hittest="false">
+							<Panel class="HeroLock" hittest="false" />
+						</Panel>
+						<Panel class="UnitShopFGItem" hittest="false">
+							<Panel class="HeroLock" hittest="false" />
+						</Panel>
+						<Panel class="UnitShopFGItem" hittest="false">
+							<Panel class="HeroLock" hittest="false" />
+						</Panel>
+						<Panel class="UnitShopFGItem" hittest="false">
+							<Panel class="HeroLock" hittest="false" />
+						</Panel>
+						<Panel class="UnitShopFGItem" hittest="false">
+							<Panel class="HeroLock" hittest="false" />
+						</Panel>
 					</Panel>
-				</Panel>
-				<Panel class="ButtonGutter">
-					<Button class="ShopButton" id="RerollShop" onactivate="DACRerollShop()">
-						<Panel id="RerollButton" />
-						<Panel class="GoldValueContainer">
-							<Panel class="PlusMinus"/>
-							<Label class="CostLabel" text="{d:reroll_cost}" />
-						</Panel>
-						<Label class="FreeRerollLabel" text="#DAC_InGame_FreeReroll" />
-					</Button>
-					<Button class="ShopButton" id="LevelUp" onactivate="DACBuyEXP()" onmouseover="DACShopShowXPTooltip()" onmouseout="DACShopHideXPTooltip()">
-						
-
-							
-
-						<Panel id="PlayerEXPContainer" onactivate="DACBuyEXP()">
-							<CircularProgressBar value="0.5" id="PlayerEXPGraphPreview" min="0" />
-							<CircularProgressBar value="0.5" id="PlayerEXPGraph" min="0" />
-							<Label text="{i:playerStateLevel}" id="PlayerEXPGraphLevel" />
-							<DACParticleScenePanel id="PlayerEXPTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
-						</Panel>
-
-					
-						
-
-						<Label text="#DAC_InGame_PlayerXP" id="StatusXP" />
-						<Panel class="GoldValueContainer">
-							<Panel class="PlusMinus"/>
-							<Label class="CostLabel" text="{d:dac_level_up_cost}" />
-						</Panel>
-					</Button>
 				</Panel>
 			</Panel>
-				
+
 			<Panel class="SynergyHelpersContainer" id="SynergyHelpers" onactivate="">
 				<Panel class="SynergyHelper" id="SynergyHelperSlot0">
 					<Panel class="SynergyHelperIcons" id="SynergyHelperIcons0" />
 				</Panel>
-				<Panel class="SynergyHelper" id="SynergyHelperSlot1" >
+				<Panel class="SynergyHelper" id="SynergyHelperSlot1">
 					<Panel class="SynergyHelperIcons" id="SynergyHelperIcons1" />
 				</Panel>
-				<Panel class="SynergyHelper" id="SynergyHelperSlot2" >
+				<Panel class="SynergyHelper" id="SynergyHelperSlot2">
 					<Panel class="SynergyHelperIcons" id="SynergyHelperIcons2" />
 				</Panel>
 				<Panel class="SynergyHelper" id="SynergyHelperSlot3">
@@ -176,6 +136,80 @@
 					<Panel class="SynergyHelperIcons" id="SynergyHelperIcons4" />
 				</Panel>
 			</Panel>
+
+			<Panel class="SynergyHelpersContainer" id="TeammateSynergyHelpers">
+				<Panel class="TeammateInfoIcon" />
+				<Panel class="TeammateSynergyHelper" id="TeammateSynergyHelperSlot0">
+					<Panel class="SynergyHelperIcons" id="TeammateSynergyHelperIcons0" />
+				</Panel>
+				<Panel class="TeammateSynergyHelper" id="TeammateSynergyHelperSlot1">
+					<Panel class="SynergyHelperIcons" id="TeammateSynergyHelperIcons1" />
+				</Panel>
+				<Panel class="TeammateSynergyHelper" id="TeammateSynergyHelperSlot2">
+					<Panel class="SynergyHelperIcons" id="TeammateSynergyHelperIcons2" />
+				</Panel>
+				<Panel class="TeammateSynergyHelper" id="TeammateSynergyHelperSlot3">
+					<Panel class="SynergyHelperIcons" id="TeammateSynergyHelperIcons3" />
+				</Panel>
+				<Panel class="TeammateSynergyHelper" id="TeammateSynergyHelperSlot4">
+					<Panel class="SynergyHelperIcons" id="TeammateSynergyHelperIcons4" />
+				</Panel>
+				<Panel class="SendGoldPanel" id="Send1" onactivate="DACSendGold(1)">
+					<Label class="SendGoldAmount" text="1" />
+				</Panel>
+			</Panel>
+		</Panel>	
+
+		<Panel class="ButtonGutter ButtonGutterLeft">
+
+			<Button class="ShopButton" id="LockShop" onactivate="DACLockShop( true )">
+				<Panel id="LockButton" />
+			</Button>
+
+			<Button class="ShopButton" id="UnlockShop" onactivate="DACLockShop( false )">
+				<Panel id="UnlockButton" />
+			</Button>
+
+			<Button class="ShopButton" id="OddsShop">
+				<Panel id="OddsButton" onactivate="DACShowHeroOddsPopup()"/>
+			</Button>
+
+			<Button class="ShopButton" id="LibraryShop">
+<!-- 				<Panel id="LibraryButton" onactivate="DACShowHeropediaPopup()"/> -->
+				<Panel id="LibraryButton" onactivate="DACIngameShowJail(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )"/>
+			</Button>
+
 		</Panel>
+
+		<Panel class="ButtonGutter ButtonGutterRight">
+
+			<Button class="ShopButton" id="RerollShop" onactivate="DACRerollShop()">
+				<Panel id="RerollButton" />
+				<Panel class="GoldValueContainer">
+					<Panel class="GoldValueCoin"/>
+					<Panel class="PlusMinus"/>
+					<Label class="CostLabel" text="{d:reroll_cost}" />
+				</Panel>
+				<Label class="FreeRerollLabel HeadlineFont" text="#DAC_InGame_FreeReroll"  />
+			</Button>
+
+			<Button class="ShopButton" id="LevelUp" onactivate="DACBuyEXP()" onmouseover="DACShopShowXPTooltip()" onmouseout="DACShopHideXPTooltip()">
+				<Panel id="PlayerEXPContainer" onactivate="DACBuyEXP()">
+					<CircularProgressBar value="0.5" id="PlayerEXPGraphPreview" min="0" />
+					<Panel id="PlayerXPDividers"/>
+					<CircularProgressBar value="0.5" id="PlayerEXPGraph" min="0" />
+					<Label text="{i:playerStateLevel}" id="PlayerEXPGraphLevel" />
+					<DACParticleScenePanel id="PlayerEXPTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
+				</Panel>
+				<Label text="#DAC_InGame_PlayerXP" id="StatusXP" />
+				<Panel class="GoldValueContainer">
+					<Panel class="GoldValueCoin"/>
+					<Panel class="PlusMinus"/>
+					<Label class="CostLabel" text="{d:dac_level_up_cost}" />
+				</Panel>
+			</Button>
+
+		</Panel>
+
 	</DACUIShop>
 </root>

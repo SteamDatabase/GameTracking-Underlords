@@ -5,11 +5,58 @@
 	</styles>
 
 	<DACContextMenuChatLine class="PlayerMenuContents">
+		<Panel class="ChatHeaderContainer">
+			<Label class="ChatHeader" id="CombatChatHeader" text="#DAC_ChatHeader_Combat" />
+			<Label class="ChatHeader" id="CombatChatHeaderCooldown" text="#DAC_ChatHeader_Combat_Cooldown" />
 
+			<Label class="ChatHeader" id="PrepChatHeader" text="#DAC_ChatHeader_Prep" />
+			<Label class="ChatHeader" id="DuosChatHeader" text="#DAC_ChatHeader_Duos" />
+		</Panel>
 		<Panel id="MenuOptionsContainer">
-			<Panel id="MenuOptionsPanel">
+			<Panel id="CombatChatOptionsPanel" class="ChatMenu">
 				<!-- Added dynamically -->
 			</Panel>
+
+			<Panel id="PreparationChatOptionsPanel" class="ChatMenu">
+				<!-- Added dynamically -->
+			</Panel>
+			
+			<Panel id="DuosChatOptionsPanel" class="ChatMenu"> 
+				<Button id="DuoMessageWant" class="DuosMessageButton" onactivate="DACCreateDuosMessage( 1001 )">
+					<Label text="#DAC_Duos_Msg_Looking_For"/>
+				</Button>
+
+				<Button id="DuoMessageSendGold" class="DuosMessageButton" onactivate="DACCreateDuosMessage( 1010 )">
+					<Label text="#DAC_Duos_Msg_Send_Me_Gold"/>
+				</Button>
+
+				<Button id="DuoMessageNoLongerWant" class="DuosMessageButton" onactivate="DACCreateDuosMessage( 1009 )">
+					<Label text="#DAC_Duos_Msg_I_No_Longer_Want"/>
+				</Button>
+
+				<Button id="DuoMessageDoNotWant" class="DuosMessageButton" onactivate="DACCreateDuosMessage( 1002 )">
+					<Label text="#DAC_Duos_Msg_Do_You_Want"/>
+				</Button> 
+	<!--
+				<Button id="DuoMessageYes" class="DuosMessageButton" onactivate="DACCreateDuosMessage( 1003 )">
+					<Label text="#DAC_Duos_Msg_Yes_I_Want"/>
+				</Button>
+				<Button id="DuoMessageNo" class="DuosMessageButton" onactivate="DACCreateDuosMessage( 1004 )">
+					<Label text="#DAC_Duos_Msg_I_Do_Not_Want"/>
+				</Button>
+	-->
+				<Button id="DuoMessageClearSpace" class="DuosMessageButton" onactivate="DACCreateDuosMessage( 1005 )">
+					<Label text="#DAC_Duos_Msg_Free_Bench_Space_For"/>
+				</Button>
+
+				<Button id="DuoMessageThanks" class="DuosMessageButton" onactivate="DACCreateDuosMessage( 1006 )">
+					<Label text="#DAC_Duos_Msg_Thanks"/>
+				</Button>
+			
+
+			</Panel>
 		</Panel>
+		
+
 	</DACContextMenuChatLine>
 </root>

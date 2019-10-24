@@ -5,13 +5,17 @@
 		<include src="s2r://panorama/styles/dac_ui_sell_unit_bar.vcss_c" />
 	</styles>
 
-  <DACSellUnitBar>
-		<Panel id="SellButtonContainer" onactivate="DACSellUnit()" onmouseover="DACHoverSellUnitBar( true )" onmouseout="DACHoverSellUnitBar( false )">
-		  <Panel id="SellUnitIcon"/>
+  <DACSellUnitBar >
+	<Panel id="SellButtonContainer" onactivate="DACSellUnit()" 
+		onmouseover="DACHoverSellUnitButton( true ) DACHoverSellUnitBar( true )" 
+		onmouseout="DACHoverSellUnitButton( false ) DACHoverSellUnitBar( false )"
+			class="UnitBarButtonContainer">
+	  <Panel id="SellUnitIcon"/>
+      <Label class="SellLabel" text="#button_selllabel" />
       <Panel id="GoldValueContainer">
         <Panel id="PlusMinus"/>
         <Label id="UnitCost" text="{i:sell_unit_value}"/>
       </Panel>
-		</Panel>
+	</Panel>
 	</DACSellUnitBar>
 </root>

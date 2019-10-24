@@ -1,0 +1,149 @@
+// witchdoctor - Hero
+criterion "Iswitch_doctor" "classname" "witch_doctor" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response witchdoctor_recruit_1
+{
+	speak "witchdoctor_recruit" noscene 
+}
+
+Rule witchdoctor_recruit_1_rule
+{
+	criteria Iswitch_doctor ConceptRecruit UnitRank1
+	response witchdoctor_recruit_1
+}
+
+
+Response witchdoctor_recruit_2
+{
+	speak "witchdoctor_upgrade" noscene 
+}
+
+Rule witchdoctor_recruit_2_rule
+{
+	criteria Iswitch_doctor ConceptRecruit UnitRank2
+	response witchdoctor_recruit_2
+}
+
+
+Response witchdoctor_recruit_3
+{
+	speak "witchdoctor_final_upgrade" noscene 
+}
+
+Rule witchdoctor_recruit_3_rule
+{
+	criteria Iswitch_doctor ConceptRecruit UnitRank3
+	response witchdoctor_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response witchdoctor_start_round
+{
+	speak "witchdoctor_start_round" noscene 
+}
+
+Rule witchdoctor_start_round_rule
+{
+	criteria Iswitch_doctor ConceptRoundStart 
+	response witchdoctor_start_round
+}
+
+
+Response witchdoctor_start_round_lost_last_round
+{
+	speak "witchdoctor_start_round_lost_last_round" noscene 
+}
+
+Rule witchdoctor_start_round_lost_last_round_rule
+{
+	criteria Iswitch_doctor ConceptRoundStart LostLastGame
+	response witchdoctor_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response witchdoctor_flawless_victory
+{
+	speak "witchdoctor_flawless_victory" noscene 
+}
+
+Rule witchdoctor_flawless_victory_rule
+{
+	criteria Iswitch_doctor ConceptRoundEnd Result_WinFlawless
+	response witchdoctor_flawless_victory
+}
+
+
+Response witchdoctor_decisive_victory
+{
+	speak "witchdoctor_decisive_victory" noscene 
+}
+
+Rule witchdoctor_decisive_victory_rule
+{
+	criteria Iswitch_doctor ConceptRoundEnd Result_WinDecisive
+	response witchdoctor_decisive_victory
+}
+
+Response witchdoctor_narrow_victory
+{
+	speak "witchdoctor_narrow_victory" noscene 
+}
+
+Rule witchdoctor_narrow_victory_rule
+{
+	criteria Iswitch_doctor ConceptRoundEnd Result_WinNarrow
+	response witchdoctor_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response witchdoctor_flawless_defeat
+{
+	speak "witchdoctor_flawless_defeat" noscene 
+}
+
+Rule witchdoctor_flawless_defeat_rule
+{
+	criteria Iswitch_doctor ConceptRoundEnd Result_LoseFlawless
+	response witchdoctor_flawless_defeat
+}
+
+
+Response witchdoctor_decisive_defeat
+{
+	speak "witchdoctor_decisive_defeat" noscene 
+}
+
+Rule witchdoctor_decisive_defeat_rule
+{
+	criteria Iswitch_doctor ConceptRoundEnd Result_LoseDecisive
+	response witchdoctor_decisive_defeat
+}
+
+Response witchdoctor_narrow_defeat
+{
+	speak "witchdoctor_narrow_defeat" noscene 
+}
+
+Rule witchdoctor_narrow_defeat_rule
+{
+	criteria Iswitch_doctor ConceptRoundEnd Result_LoseNarrow
+	response witchdoctor_narrow_defeat
+}

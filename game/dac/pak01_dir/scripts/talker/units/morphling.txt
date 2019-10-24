@@ -1,0 +1,149 @@
+// morphling - Hero
+criterion "Ismorphling" "classname" "morphling" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response morphling_recruit_1
+{
+	speak "morphling_recruit" noscene 
+}
+
+Rule morphling_recruit_1_rule
+{
+	criteria Ismorphling ConceptRecruit UnitRank1
+	response morphling_recruit_1
+}
+
+
+Response morphling_recruit_2
+{
+	speak "morphling_upgrade" noscene 
+}
+
+Rule morphling_recruit_2_rule
+{
+	criteria Ismorphling ConceptRecruit UnitRank2
+	response morphling_recruit_2
+}
+
+
+Response morphling_recruit_3
+{
+	speak "morphling_final_upgrade" noscene 
+}
+
+Rule morphling_recruit_3_rule
+{
+	criteria Ismorphling ConceptRecruit UnitRank3
+	response morphling_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response morphling_start_round
+{
+	speak "morphling_start_round" noscene 
+}
+
+Rule morphling_start_round_rule
+{
+	criteria Ismorphling ConceptRoundStart 
+	response morphling_start_round
+}
+
+
+Response morphling_start_round_lost_last_round
+{
+	speak "morphling_start_round_lost_last_round" noscene 
+}
+
+Rule morphling_start_round_lost_last_round_rule
+{
+	criteria Ismorphling ConceptRoundStart LostLastGame
+	response morphling_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response morphling_flawless_victory
+{
+	speak "morphling_flawless_victory" noscene 
+}
+
+Rule morphling_flawless_victory_rule
+{
+	criteria Ismorphling ConceptRoundEnd Result_WinFlawless
+	response morphling_flawless_victory
+}
+
+
+Response morphling_decisive_victory
+{
+	speak "morphling_decisive_victory" noscene 
+}
+
+Rule morphling_decisive_victory_rule
+{
+	criteria Ismorphling ConceptRoundEnd Result_WinDecisive
+	response morphling_decisive_victory
+}
+
+Response morphling_narrow_victory
+{
+	speak "morphling_narrow_victory" noscene 
+}
+
+Rule morphling_narrow_victory_rule
+{
+	criteria Ismorphling ConceptRoundEnd Result_WinNarrow
+	response morphling_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response morphling_flawless_defeat
+{
+	speak "morphling_flawless_defeat" noscene 
+}
+
+Rule morphling_flawless_defeat_rule
+{
+	criteria Ismorphling ConceptRoundEnd Result_LoseFlawless
+	response morphling_flawless_defeat
+}
+
+
+Response morphling_decisive_defeat
+{
+	speak "morphling_decisive_defeat" noscene 
+}
+
+Rule morphling_decisive_defeat_rule
+{
+	criteria Ismorphling ConceptRoundEnd Result_LoseDecisive
+	response morphling_decisive_defeat
+}
+
+Response morphling_narrow_defeat
+{
+	speak "morphling_narrow_defeat" noscene 
+}
+
+Rule morphling_narrow_defeat_rule
+{
+	criteria Ismorphling ConceptRoundEnd Result_LoseNarrow
+	response morphling_narrow_defeat
+}

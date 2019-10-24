@@ -11,6 +11,8 @@ DACItemSelect
 	transition-duration: .24s;
 	transition-timing-function: ease-in-out;
 	visibility: collapse;
+
+	/* HIDE */
 }
 
 .IsLayoutLargeScreen DACItemSelect
@@ -82,7 +84,6 @@ DACItemSelect.CollapseItemChoices
 	transition-property: opacity, transform;
 	transition-duration: .24s;
 	transition-timing-function: ease-in-out;
-	flow-children: down;
 }
 
 .LowVisualQuality DACItemSelect,
@@ -232,75 +233,89 @@ DACItemSelect.CollapseItemChoices .ItemSelectTextContainer
 #ItemChoicesContainer
 {
 	horizontal-align: center;
-	flow-children: down;
+	flow-children: right;
 	margin-top: 16px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #ItemChoicesContainer {
+	ui-scale: 115%;
 }
 
 .ItemChoice
 {
-	background-image: url("s2r://panorama/images/hud/itemselect_01_png.vtex");
 	background-size: 100%;
+	//background-color: black;
 	background-position: center;
 	background-repeat: no-repeat;
 	height: fit-children;
-	width: 1000px;
-	margin-top: 15px;
-	padding-top: 22px;
-	padding-bottom: 12px;
-	padding-right: 64px;
+	width: 420px;
+	padding-bottom: 10px;
+	overflow: noclip;
+	transform: translateY( 0px );
+	margin: 25px 20px 0px 20px;
+	border-radius: 10px;
+	brightness: 1;
+
+	transition-property: transform, brightness;
+	transition-duration: 0.1s;
 }
 
 .ItemChoice:not(.Unavailable):hover
 {
-	brightness: 2;
+	brightness: 1.5;
+	overflow: noclip;
+	transform: translateY( -10px );
+
+	
+	transition-property: transform, brightness;
+	transition-duration: 0.1s;
+	
 }
 
 #ItemChoiceRewardPicker_Choice_0 
 {
-	background-image: url("s2r://panorama/images/hud/itemselect_01_psd.vtex"); 
+	//background-image: url("s2r://panorama/images/hud/itemselect_01_psd.vtex"); 
 }
 
 #ItemChoiceRewardPicker_Choice_0.ItemChoice.Unavailable
 {
-	background-image: url("s2r://panorama/images/hud/itemselect_01_broken_psd.vtex"); 
+	//background-image: url("s2r://panorama/images/hud/itemselect_01_broken_psd.vtex"); 
 }
 
 #ItemChoiceRewardPicker_Choice_1 
 {
-	background-image: url("s2r://panorama/images/hud/itemselect_02_psd.vtex"); 
-	margin-top: 16px;
+	//background-image: url("s2r://panorama/images/hud/itemselect_02_psd.vtex"); 
 }
 #ItemChoiceRewardPicker_Choice_1.ItemChoice.Unavailable
 {
-	background-image: url("s2r://panorama/images/hud/itemselect_02_broken_psd.vtex"); 
+	//background-image: url("s2r://panorama/images/hud/itemselect_02_broken_psd.vtex"); 
 }
 
 #ItemChoiceRewardPicker_Choice_2 
 {
-	background-image: url("s2r://panorama/images/hud/itemselect_03_psd.vtex"); 
-	margin-top: -5px;
+	//background-image: url("s2r://panorama/images/hud/itemselect_03_psd.vtex"); 
 }
 
 #ItemChoiceRewardPicker_Choice_2.ItemChoice.Unavailable
 {
-	background-image: url("s2r://panorama/images/hud/itemselect_03_broken_psd.vtex"); 
+	//background-image: url("s2r://panorama/images/hud/itemselect_03_broken_psd.vtex"); 
 }
 
 #ItemChoiceRewardPicker_Choice_3 
 {
-	background-image: url("s2r://panorama/images/hud/itemselect_01_psd.vtex"); 
+	//background-image: url("s2r://panorama/images/hud/itemselect_01_psd.vtex"); 
 }
 
 #ItemChoiceRewardPicker_Choice_3.ItemChoice.Unavailable
 {
-	background-image: url("s2r://panorama/images/hud/itemselect_01_broken_psd.vtex"); 
+	//background-image: url("s2r://panorama/images/hud/itemselect_01_broken_psd.vtex"); 
 }
 
 
 .ItemChoiceContents
 {
 	width: 100%;
-	height: fit-children;
+	flow-children: none;
 }
 
 .Unavailable .ItemName,
@@ -310,34 +325,95 @@ DACItemSelect.CollapseItemChoices .ItemSelectTextContainer
 	saturation: 0;
 }
 
+.ItemDetails {
+	background-color: #000000;
+	width: 100%;
+	margin-top: 15px;
+	padding: 25px 30px;
+	height: fit-children;
+	min-height: 150px;
+}
+
 .ItemName
 {
 	text-transform: uppercase;
 	color: #ffffff;
-	font-size: 40px;
-	font-weight: bold;
+	font-size: 33px;
+	font-weight: black;
+	text-overflow: shrink;
+	letter-spacing: 1px;
 	text-shadow: 0px 1px 0px 3.0 #000000aa;
 	text-align: center;
-	horizontal-align: left;
-	margin-left: 152px;
-	height: 100px;
+	horizontal-align: center;
+	//height: 45px;
+	text-align: center;
 }
+
+
+.Tier1 .ItemName {
+	color: gradient( linear, 0% 0%, 0% 100%, from( #dedede ), to( #888888) );
+}
+
+.Tier2 .ItemName {
+	color: gradient( linear, 0% 0%, 0% 100%, from( #94c67b ), to( #32CD2F) );
+}
+
+.Tier3 .ItemName {
+	color: gradient( linear, 0% 0%, 0% 100%, from( #57baf3 ), to( #056BF7) );
+}
+
+.Tier4 .ItemName {
+	color: gradient( linear, 0% 0%, 0% 100%, from( #eb7cea ), to( #BD05F7) );
+}
+
+.Tier5 .ItemName {
+	color: gradient( linear, 0% 0%, 0% 100%, from( #ecde7f ), to( #F7C105) );
+}
+
 
 .ItemDescContainer
 {
 	flow-children: down;
+	width: 100%;
+	background-color: #111111;
+	padding-top: 80px;
+	margin-top: 60px;
+	border-radius: 20px;
 
-	margin-top: 44px;
-	margin-left: 152px;
+}
+
+.Tier1 .ItemDescContainer {
+	background-color: gradient(linear, 0% 100%, 0% 0%, from( #585858 ), to(#222222));
+}
+
+.Tier2 .ItemDescContainer {
+	background-color: gradient(linear, 0% 100%, 0% 0%, from( #405C32 ), to(#222222));
+}
+
+.Tier3 .ItemDescContainer {
+	background-color: gradient(linear, 0% 100%, 0% 0%, from( #365299 ), to(#222222));
+}
+
+.Tier4 .ItemDescContainer {
+	background-color: gradient(linear, 0% 100%, 0% 0%, from( #743479 ), to(#222222));
+}
+
+.Tier5 .ItemDescContainer {
+	background-color: gradient(linear, 0% 100%, 0% 0%, from( #766E26 ), to(#222222));
 }
 
 .ItemDescription
 {
 	color: #d0f5e7;
-	font-size: 28px;
-	text-shadow: 0px 1px 0px 3.0 #000000aa;
-	font-weight: bold;
-	horizontal-align: left;
+	font-size: 25px;
+	horizontal-align: center;
+	text-align: center;
+	//font-weight: semi-bold;
+	line-height: 30px;
+	//white-space: normal;
+	height: 100%;
+	//vertical-align: middle;
+	text-overflow: shrink;
 }
 
 .ItemSynergyCountText
@@ -363,8 +439,9 @@ DACItemSelect.CollapseItemChoices .ItemSelectTextContainer
 
 .ItemContainer
 {
-	horizontal-align: left;
-	height: 150px;
+	horizontal-align: center;
+	height: 130px;
+	vertical-align: top;
 }
 
 
@@ -466,6 +543,7 @@ DACItemSelect.CollapseItemChoices .ItemSelectTextContainer
 {
 	height: 16px;
 	horizontal-align: center;
+	vertical-align: bottom;
 	background-color: #EE2222;
 	transition-property: width;
 	transition-duration: 1s;
@@ -477,7 +555,7 @@ DACItemSelect.CollapseItemChoices .ItemSelectTextContainer
 .CanFastForward #TimerBar
 {
 	visibility: collapse;
-    opacity: 0;
+	opacity: 0;
 }
 
 #ItemSelectFlow
@@ -500,7 +578,7 @@ DACItemSelect.CollapseItemChoices .ItemSelectTextContainer
 {
 	flow-children: right;
 	horizontal-align: center;
-	height: 100%;
+	//height: 100%;
 }
 
 .ItemTier,
@@ -513,11 +591,9 @@ DACItemSelect.CollapseItemChoices .ItemSelectTextContainer
 	font-weight: bold;
 	text-align: center;
 	vertical-align: bottom;
-	margin-bottom: -6px;
-	background-color: black;
-	padding: 0 10px;
-	padding-top: 14px;
-	z-index: 0;
+	margin-bottom: 0px;
+	//background-color: black;
+	padding: 5px 10px;
 }
 
 .Tier1 .ItemTier

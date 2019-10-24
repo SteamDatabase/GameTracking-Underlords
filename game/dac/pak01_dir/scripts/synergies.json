@@ -37,12 +37,12 @@
 			{
 				"id": 20003,
 				"unitcount": 1,
-				"requires_exact_number": true,
 				"affects_all_allies_with_keyword": true
 			}
 		],
-		"damage_bonus_pct": 50,
-		"color": "222 33 33",
+		"bonus_pct_per_demon": 50,
+		"silence_duration": 4,
+		"color": "158 29 116",
 
 		"precache":
 		[
@@ -126,11 +126,21 @@
 				"affects_all_allies_with_keyword": true
 			}
 		],
-		"evasion_bonus":
+		"evasion_bonus": 100,
+		"attack_speed": 35,
+		"proc_chance":
 		[
-			25,
-			50
+			10,
+			20
 		],
+		"buff_duration": 3,
+
+
+		"precache":
+		[
+			"particles/units/heroes/hero_windrunner/windrunner_windrun.vpcf"
+		],
+
 		"color": "95 151 208"
 	},
 
@@ -161,6 +171,13 @@
 		"hp_regen_disadvantage": 8,
 		"color": "184 199 44",
 
+		"alliance_eligible":
+		[
+			"#DAC_Synergy_Tooltip_Goblin_0",
+			"#DAC_Synergy_Tooltip_Goblin_1",
+			"#DAC_Synergy_Tooltip_Goblin_2"
+		],
+
 		"precache":
 		[
 			"particles/gameplay/synergy/scrappy/scrappy_buff_lvl1.vpcf",
@@ -176,26 +193,25 @@
 			{
 				"id": 20013,
 				"unitcount": 2,
-				"affects_all_allies_with_keyword": true
+				"affects_all_allied_units": true
 			},
 			{
 				"id": 20014,
 				"unitcount": 4,
-				"affects_all_allies_with_keyword": true
+				"affects_all_allied_units": true
 			},
 			{
 				"id": 20015,
 				"unitcount": 6,
-				"affects_all_allies_with_keyword": true
+				"affects_all_allied_units": true
 			}
 		],
-		"stun_chance":
+		"mana_regen":
 		[
-			20,
-			44,
-			66
+			4,
+			7,
+			10
 		],
-		"stun_duration": 4.0,
 		"color": "2 200 156"
 	},
 
@@ -238,7 +254,7 @@
 		[
 			125
 		],
-		"color": "85 107 47",
+		"color": "150 31 28",
 		"appliesToItems": true
 	},
 
@@ -260,8 +276,8 @@
 		],
 		"hp_bonus":
 		[
-			200,
-			500
+			400,
+			1000
 		],
 		"color": "166 27 27"
 	},
@@ -327,7 +343,7 @@
 			10,
 			15
 		],
-		"color": "79 213 101",
+		"color": "127 160 154",
 		"appliesToItems": true
 	},
 
@@ -377,41 +393,43 @@
 		],
 		"duration": 3.0,
 		"blind_duration": 2,
-		"blind_chance": 50,
+		"blind_cha  nce": 50,
 		"mana_gain_reduction": 50,
-		"color": "153 50 204"
+		"color": "90 61 104"
 	},
 
 	"DemonHunter":
 	{
 		"type": "Class",
-		"levels": [
+		"levels":
+		[
 			{
 				"id": 20030,
-				"affects_all_enemies_with_keyword": true,
-				"special_keyword": "demon",
-				"cumulative": true,
-				"modifier_name": "demonhunter_disable_demons",
-				"unitcount": 1
+				"unitcount": 1,
+				"affects_all_allies_with_keyword": true
 			},
 			{
 				"id": 20031,
 				"unitcount": 2,
-				"cumulative": true,
-				"affects_all_allies_with_keyword": true,
-				"special_keyword": [
-					"demon",
-					"demonhunter"
-				],
-				"modifier_name": "demonhunter_demon_buff"
+				"affects_all_allies_with_keyword": true
 			}
 		],
-		"damage_bonus_pct":
+		"crit_bonus":
 		[
-			0,
-			50
+			200,
+			400
 		],
-		"color": "139 0 139"
+		"target_demon_distance":
+		[
+			2,
+			2
+		],
+		"color": "139 0 139",
+
+		"precache":
+		[
+			"particles/units/heroes/hero_keeper_of_the_light/keeper_of_the_light_illuminate_impact.vpcf"
+		]
 	},
 
 	"Druid":
@@ -431,7 +449,12 @@
 			}
 
 		],
-		"color": "34 139 34"
+		"target_count":
+		[
+			1,
+			2
+		],
+		"color": "46 99 64"
 	},
 
 	"Hunter":
@@ -582,15 +605,24 @@
 				"id": 20043,
 				"unitcount": 2,
 				"affects_all_allies_with_keyword": true
-			}
+			},
+			{
+				"id": 20086,
+				"unitcount": 4,
+				"affects_all_allies_with_keyword": true
+			},
 		],
 		"base_modifiers":
 		[
 			"modifier_bonus_mana_per_hit"
 		],
-		"hops": 4,
+		"hops": 
+		[
+			2,
+			4
+		],
 		"percent_chance": 17,
-		"color": "52 159 100"
+		"color": "108 152 91"
 	},
 
 	"Warlock":
@@ -669,7 +701,7 @@
 		],
 		"armor_bonus":
 		[
-			20
+			30
 		],
 		"color": "28 103 180"
 	},
@@ -690,7 +722,7 @@
 		],
 		"crit_bonus":
 		[
-			300
+			400
 		],
 		"color": "153 50 204"
 	},
@@ -707,7 +739,7 @@
 		],
 		"enrage_bonus_pct":
 		[
-			500
+			1000
 		],
 		"color": "85 107 47"
 	},
@@ -722,10 +754,9 @@
 				"affects_all_allies_with_keyword": true
 			}
 		],
-		"evasion_bonus":
-		[
-			75
-		],
+		"evasion_bonus": 100,
+		"proc_chance": 15,
+		"buff_duration": 5,
 		"color": "95 151 208"
 	},
 	"MegaWarlock":
@@ -785,11 +816,11 @@
 		],
 		"attack_speed_bonus_trolls":
 		[
-			50
+			100
 		],
 		"attack_speed_bonus_others":
 		[
-			50
+			100
 		],
 		"color": "158 110 74",
 
@@ -831,21 +862,33 @@
 				"id": 20060,
 				"unitcount": 4,
 				"affects_all_allies_with_keyword": true
-
+			},
+			{
+				"id": 20081,
+				"unitcount": 6,
+				"affects_all_allies_with_keyword": true
 			}
 		],
 		"rank":
 		[
 			1,
-			2
+			2,
+			3
 		],
 		"amount":
 		[
 			1,
+			1,
 			1
 		],
 		"unitID": 87,
-		"color": "0 128 128"
+		"color": "0 128 128",
+
+		"precache": 
+		[
+			"particles/units/heroes/hero_enigma/enigma_malefice.vpcf",
+			"particles/status_fx/status_effect_enigma_malefice.vpcf"
+		]
 	},
 	"Brawny":
 	{
@@ -865,8 +908,8 @@
 		],
 		"hp_bonus":
 		[
-			30,
-			60
+			15,
+			30
 		],
 		"color": "166 27 27",
 		"precache":
@@ -892,8 +935,18 @@
 		],
 		"damage_hp_pct":
 		[
-			15,
-			30
+			10,
+			20
+		],
+		"min_delay":
+		[
+			0.2,
+			0.2
+		],
+		"max_delay":
+		[
+			0.75,
+			0.75
 		],
 		"color": "251 142 20",
 
@@ -930,5 +983,106 @@
 			25
 		],
 		"color": "178 65 26"
+	},
+
+	"Insect":
+	{
+		"type": "Race",
+		"levels":
+		[
+			{
+				"id": 20068,
+				"unitcount": 3,
+				"affects_random_ally_with_keyword": true
+			}
+		],
+
+		"insect_unit_id": 102,
+		"num_insects":
+		[
+			12
+		],
+		"miss_chance": 30,
+		"miss_chance_duration": 0.5,
+
+		"color": "89 111 132"
+	},
+
+	"Champion":
+	{
+		"type": "Class",
+		"levels":
+		[
+			{
+				"id": 20082,
+				"unitcount": 1
+			}
+		],
+		"color": "172 137 224"
+	},
+
+	"Wisp":
+	{
+		"type": "Race",
+		"levels":
+		[
+			{
+				"id": 20083,
+				"unitcount": 1
+			}
+		],
+		"color": "242 242 242"
+	},
+	"Brutal":
+	{
+		"type": "Class",
+		"levels":
+		[
+			{
+				"id": 20084,
+				"unitcount": 2,
+				"affects_all_allies_with_keyword": true
+			},
+			{
+				"id": 20085,
+				"unitcount": 4,
+				"affects_all_allies_with_keyword": true
+			}
+		],
+		"damage_reduction":
+		[
+			15,
+			40
+		],
+		"debuff_duration":3,
+		"initial_damage": 
+		[
+			50,
+			100
+		],
+
+		"precache":
+		[
+			"particles/units/heroes/hero_nevermore/nevermore_base_attack_impact.vpcf"
+		],
+		
+		"color": "139 119 101"
+	},
+	"Healer":
+	{
+		"type": "Class",
+		"levels":
+		[
+			{
+				"id": 20084,
+				"unitcount": 3,
+				"affects_all_allied_units": true
+			}
+		],
+		"heal_bonus":
+		[
+			30
+		],
+		"color": "79 213 101"
 	}
 }

@@ -1,0 +1,149 @@
+// juggernaut - Hero
+criterion "Isjuggernaut" "classname" "juggernaut" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response juggernaut_recruit_1
+{
+	speak "juggernaut_recruit" noscene 
+}
+
+Rule juggernaut_recruit_1_rule
+{
+	criteria Isjuggernaut ConceptRecruit UnitRank1
+	response juggernaut_recruit_1
+}
+
+
+Response juggernaut_recruit_2
+{
+	speak "juggernaut_upgrade" noscene 
+}
+
+Rule juggernaut_recruit_2_rule
+{
+	criteria Isjuggernaut ConceptRecruit UnitRank2
+	response juggernaut_recruit_2
+}
+
+
+Response juggernaut_recruit_3
+{
+	speak "juggernaut_final_upgrade" noscene 
+}
+
+Rule juggernaut_recruit_3_rule
+{
+	criteria Isjuggernaut ConceptRecruit UnitRank3
+	response juggernaut_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response juggernaut_start_round
+{
+	speak "juggernaut_start_round" noscene 
+}
+
+Rule juggernaut_start_round_rule
+{
+	criteria Isjuggernaut ConceptRoundStart 
+	response juggernaut_start_round
+}
+
+
+Response juggernaut_start_round_lost_last_round
+{
+	speak "juggernaut_start_round_lost_last_round" noscene 
+}
+
+Rule juggernaut_start_round_lost_last_round_rule
+{
+	criteria Isjuggernaut ConceptRoundStart LostLastGame
+	response juggernaut_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response juggernaut_flawless_victory
+{
+	speak "juggernaut_flawless_victory" noscene 
+}
+
+Rule juggernaut_flawless_victory_rule
+{
+	criteria Isjuggernaut ConceptRoundEnd Result_WinFlawless
+	response juggernaut_flawless_victory
+}
+
+
+Response juggernaut_decisive_victory
+{
+	speak "juggernaut_decisive_victory" noscene 
+}
+
+Rule juggernaut_decisive_victory_rule
+{
+	criteria Isjuggernaut ConceptRoundEnd Result_WinDecisive
+	response juggernaut_decisive_victory
+}
+
+Response juggernaut_narrow_victory
+{
+	speak "juggernaut_narrow_victory" noscene 
+}
+
+Rule juggernaut_narrow_victory_rule
+{
+	criteria Isjuggernaut ConceptRoundEnd Result_WinNarrow
+	response juggernaut_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response juggernaut_flawless_defeat
+{
+	speak "juggernaut_flawless_defeat" noscene 
+}
+
+Rule juggernaut_flawless_defeat_rule
+{
+	criteria Isjuggernaut ConceptRoundEnd Result_LoseFlawless
+	response juggernaut_flawless_defeat
+}
+
+
+Response juggernaut_decisive_defeat
+{
+	speak "juggernaut_decisive_defeat" noscene 
+}
+
+Rule juggernaut_decisive_defeat_rule
+{
+	criteria Isjuggernaut ConceptRoundEnd Result_LoseDecisive
+	response juggernaut_decisive_defeat
+}
+
+Response juggernaut_narrow_defeat
+{
+	speak "juggernaut_narrow_defeat" noscene 
+}
+
+Rule juggernaut_narrow_defeat_rule
+{
+	criteria Isjuggernaut ConceptRoundEnd Result_LoseNarrow
+	response juggernaut_narrow_defeat
+}

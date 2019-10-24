@@ -1,0 +1,149 @@
+// Razor - Hero
+criterion "Israzor" "classname" "razor" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response razor_recruit_1
+{
+	speak "razor_recruit" noscene 
+}
+
+Rule razor_recruit_1_rule
+{
+	criteria Israzor ConceptRecruit UnitRank1
+	response razor_recruit_1
+}
+
+
+Response razor_recruit_2
+{
+	speak "razor_upgrade" noscene 
+}
+
+Rule razor_recruit_2_rule
+{
+	criteria Israzor ConceptRecruit UnitRank2
+	response razor_recruit_2
+}
+
+
+Response razor_recruit_3
+{
+	speak "razor_final_upgrade" noscene 
+}
+
+Rule razor_recruit_3_rule
+{
+	criteria Israzor ConceptRecruit UnitRank3
+	response razor_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response razor_start_round
+{
+	speak "razor_start_round" noscene 
+}
+
+Rule razor_start_round_rule
+{
+	criteria Israzor ConceptRoundStart 
+	response razor_start_round
+}
+
+
+Response razor_start_round_lost_last_round
+{
+	speak "razor_start_round_lost_last_round" noscene 
+}
+
+Rule razor_start_round_lost_last_round_rule
+{
+	criteria Israzor ConceptRoundStart LostLastGame
+	response razor_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response razor_flawless_victory
+{
+	speak "razor_flawless_victory" noscene 
+}
+
+Rule razor_flawless_victory_rule
+{
+	criteria Israzor ConceptRoundEnd Result_WinFlawless
+	response razor_flawless_victory
+}
+
+
+Response razor_decisive_victory
+{
+	speak "razor_decisive_victory" noscene 
+}
+
+Rule razor_decisive_victory_rule
+{
+	criteria Israzor ConceptRoundEnd Result_WinDecisive
+	response razor_decisive_victory
+}
+
+Response razor_narrow_victory
+{
+	speak "razor_narrow_victory" noscene 
+}
+
+Rule razor_narrow_victory_rule
+{
+	criteria Israzor ConceptRoundEnd Result_WinNarrow
+	response razor_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response razor_flawless_defeat
+{
+	speak "razor_flawless_defeat" noscene 
+}
+
+Rule razor_flawless_defeat_rule
+{
+	criteria Israzor ConceptRoundEnd Result_LoseFlawless
+	response razor_flawless_defeat
+}
+
+
+Response razor_decisive_defeat
+{
+	speak "razor_decisive_defeat" noscene 
+}
+
+Rule razor_decisive_defeat_rule
+{
+	criteria Israzor ConceptRoundEnd Result_LoseDecisive
+	response razor_decisive_defeat
+}
+
+Response razor_narrow_defeat
+{
+	speak "razor_narrow_defeat" noscene 
+}
+
+Rule razor_narrow_defeat_rule
+{
+	criteria Israzor ConceptRoundEnd Result_LoseNarrow
+	response razor_narrow_defeat
+}

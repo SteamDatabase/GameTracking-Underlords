@@ -21,46 +21,54 @@
 			<Label class="Rank1Label RankLabel" text="★" />
 			<Label class="Rank2Label RankLabel" text="★★" />
 			<Label class="Rank3Label RankLabel" text="★★★" />
+			<Panel class="UnderlordIcon" />
 			<Label class="HeaderPlayerName" id="PlayerNameContainer" text="{s:selectedUnitName}" html="true" />
 		</Panel>
-		
+
+
+
 		<Panel id="PlayerProfile">
+
 				<Panel id="PlayerFlag" />
-
 				<Panel id="PlayerAvatar">
-					<DACUnitScenePanel id="UnitPortraitView" map="scenes/shop" camera="cam_main" renderdeferred="false" usePortraitData="true" cameraUp="0" cameraLeft="0" cameraDistance="300"/>
+<!-- 					<DACUnitScenePanel id="UnitPortraitView" map="scenes/shop" camera="cam_main" renderdeferred="false" usePortraitData="true" cameraUp="0" cameraLeft="0" cameraDistance="300"/> -->
+					<DACUnitScenePanel id="UnitPortraitView" map="scenes/shop" camera="cam_main" renderdeferred="false" usePortraitData="true" cameraUp="0" cameraLeft="0" cameraDistance="1000" glowsize="0.01" />
 					<CircularProgressBar id="HealthBar" max="100" min="0" />
-					<Panel class="TextContainer"/>
+					<Panel class="TextContainer" />
+					<Label text="{i:selectedUnitHP}" id="StatusHP" class="HPLabel" />
+					<Label text="{i:selectedUnitHP} / {i:selectedUnitMaxHP}" id="StatusHPInCombat" class="HPLabel" />
 				</Panel>
-
-				<Label text="{i:selectedUnitHP}" id="StatusHP" class="HPLabel" />
-				<Label text="{i:selectedUnitHP} / {i:selectedUnitMaxHP}" id="StatusHPInCombat" class="HPLabel" />
+				<Panel id="SelectUnitItem" />
 
 				<Panel id="PlayerProfileAvatarOverlay"/>
 		</Panel>
 
-		<Panel id="SelectUnitStats" class="TopBottomFlow">
-			<Panel class="SynergyContainer">
-				<DACSynergyCapsule id="SynergyCapsule" />
-			</Panel>
-			<Panel id="HighRollerContainer" onmouseover="DACUnitShowLegendaryTooltip()" onmouseout="DACUnitHideLegendaryTooltip()" onactivate="DACUnitActivateLegendaryPopup()">
-						<DACParticleScenePanel class="ParticleOverlay" id="HighRollerIconEffect" hittest="false" startActive="true" particleName="particles/ui/highroller_icon.vpcf" cameraUp="5.5" fov="-30" />
-			</Panel>
-			<Panel id="AbilitySnippetContainer">
-				<!--dynamic content-->
-			</Panel>
-			<ProgressBar id="AbilityCooldown" />
+		<Panel class="SynergyContainer">
+			<DACSynergyCapsule id="SynergyCapsule" />
+		</Panel>
+
+
+		<Panel class="UnitStatsDetails">
 			<Label class="Stat" text="#DAC_InGame_UnitDamage_Query" html="true" />
 			<Label class="Stat" text="#DAC_InGame_AttackSpeed_Query" html="true" />
 			<Label class="Stat" text="#DAC_InGame_UnitDPS_Query" html="true" />
 			<Label class="Stat" text="#DAC_InGame_UnitArmor_Query" html="true" />
 			<Label class="Stat" text="#DAC_InGame_KillCount_Query" html="true" />
-			<Label class="Stat" text="#DAC_InGame_KillStreak_Query" html="true" />
-
-			<Panel id="SelectUnitItem" />
-
+      <Label class="Stat BrawnyKillsStat" text="#DAC_InGame_BrawnyKillCount_Query" html="true" />
+			<Label class="Stat DuelBonusDamageStat" text="#DAC_InGame_DuelBonusDamage_Query" html="true" />
 		</Panel>
 
+		<Panel class="AbilityRow">
+			<Panel id="AbilitySnippetContainer">
+				<!--dynamic content-->
+			</Panel>
+
+			<Panel id="HighRollerContainer" onmouseover="DACUnitShowLegendaryTooltip()" onmouseout="DACUnitHideLegendaryTooltip()" onactivate="DACUnitActivateLegendaryPopup()">
+					<DACParticleScenePanel class="ParticleOverlay" id="HighRollerIconEffect" hittest="false" startActive="true" particleName="particles/ui/highroller_icon.vpcf" cameraUp="5.5" fov="-30" />
+			</Panel>
+		</Panel>
+
+		<ProgressBar id="AbilityCooldown" />
 
 	</DACUnitStatus>
 </root>

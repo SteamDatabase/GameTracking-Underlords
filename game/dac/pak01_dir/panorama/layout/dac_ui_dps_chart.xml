@@ -3,6 +3,7 @@
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 		<include src="s2r://panorama/styles/dac_ui_dps_chart.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_hud.vcss_c" />
 	</styles>
 	<snippets>
 		<snippet name="DPSRow">
@@ -10,10 +11,10 @@
 				<Panel id="HeroIcon"></Panel>
 				<Panel class="BarContainer">
 					<Panel id="DPSBarContainer">
-            <Panel id="PhysicalDmgBar"/>
-            <Panel id="MagicalDmgBar"/>
-            <Panel id="PureDmgBar"/>
-          </Panel>
+						<Panel id="PhysicalDmgBar"/>
+						<Panel id="MagicalDmgBar"/>
+						<Panel id="PureDmgBar"/>
+					</Panel>
 					<Panel class="DPSOverlay LeftRightFlow">
 						<Label class="NameLabel" text="{s:unit_name}" />
 						<Label class="StarIcon OneStar" text="★"/>
@@ -22,15 +23,41 @@
 						<Panel class="NumberSpacer"/>
 						<Label class="NumberOutput" text=" {s:dps}" />						
 					</Panel>
-					
 				</Panel>
 			</Panel>
-		</snippet>
-				
+		</snippet>		
 	</snippets>
 
 	<DACDPSChart>
-    <Label class="ChartType" text="{s:chart_type}"/>
+		<Panel id="BattleStatsBody">
+			<Panel class="DPSChartContainer">
+				<Panel class="" onmouseover="DACDPSChartMouseOver();" onmouseout="DACDPSChartMouseOut();" id="DPSChartContainerPlayer">
+					<!-- code generated-->
+				</Panel>
+				<Panel class="" onmouseover="DACDPSChartMouseOver();" onmouseout="DACDPSChartMouseOut();" id="DPSChartContainerEnemy">
+					<!-- code generated-->
+				</Panel>
+			</Panel>
+			<Panel class="DPSChartContainer" id="DPSChartContainerDummy">
+				<!-- This keeps the Battle Stats box the appropriate platform-specific width it should be before it contains any content, instead of it shrinking down -->
+				<Panel class="DPSRow Dummy">
+					<Panel id="HeroIcon" />
+					<Panel class="BarContainer" />
+				</Panel>
+			</Panel>
+			<Panel id="PipsContainer">
+				<Panel id="DamageDealtPip" class="Pip" onactivate="DACDPSBarSet(0)"/>
+				<Panel id="DPSPip" class="Pip" onactivate="DACDPSBarSet(1)"/>
+				<Panel id="DamageTakenPip" class="Pip" onactivate="DACDPSBarSet(2)"/>
+				<Panel id="HealingDonePip" class="Pip" onactivate="DACDPSBarSet(3)"/>
+				<Panel id="KillsPip" class="Pip" onactivate="DACDPSBarSet(4)"/>
+				<Panel id="DisableDonePip" class="Pip" onactivate="DACDPSBarSet(5)"/>
+			</Panel>
+		</Panel>
+		<Panel id="BattleStatsType" class="BattleStatsHeader">
+			<Label class="ChartType" text="{s:chart_type}"/>
+			<Panel class="ChartNextButton" />
+		</Panel>
 		<Panel class="ButtonHolder">
 			<Button id="PlayerButton" onactivate="DACDPSShowPlayer()">
 				<Label text="#DAC_DPSChart_You"/>
@@ -39,20 +66,5 @@
 				<Label text="#DAC_DPSChart_Enemy"/>
 			</Button>
 		</Panel>
-		<Panel id="DPSCharts">
-			<Panel id="DPSChartContainer">
-				<!-- code generated-->
-			</Panel>
-			<Panel id="DPSChartContainerEnemy">
-				<!-- code generated-->
-			</Panel>
-		</Panel>
-    <Panel id="PipsContainer">
-      <Panel id="DamageDealtPip" class="Pip" onactivate="DACDPSBarSet(0)"/>
-      <Panel id="DPSPip" class="Pip" onactivate="DACDPSBarSet(1)"/>
-      <Panel id="DamageTakenPip" class="Pip" onactivate="DACDPSBarSet(2)"/>
-      <Panel id="HealingDonePip" class="Pip" onactivate="DACDPSBarSet(3)"/>
-      <Panel id="KillsPip" class="Pip" onactivate="DACDPSBarSet(4)"/>
-    </Panel>
 	</DACDPSChart>
 </root>

@@ -1,0 +1,149 @@
+// Lycan - Hero
+criterion "Islycan" "classname" "lycan" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response lycan_recruit_1
+{
+	speak "lycan_recruit" noscene 
+}
+
+Rule lycan_recruit_1_rule
+{
+	criteria Islycan ConceptRecruit UnitRank1
+	response lycan_recruit_1
+}
+
+
+Response lycan_recruit_2
+{
+	speak "lycan_upgrade" noscene 
+}
+
+Rule lycan_recruit_2_rule
+{
+	criteria Islycan ConceptRecruit UnitRank2
+	response lycan_recruit_2
+}
+
+
+Response lycan_recruit_3
+{
+	speak "lycan_final_upgrade" noscene 
+}
+
+Rule lycan_recruit_3_rule
+{
+	criteria Islycan ConceptRecruit UnitRank3
+	response lycan_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response lycan_start_round
+{
+	speak "lycan_start_round" noscene 
+}
+
+Rule lycan_start_round_rule
+{
+	criteria Islycan ConceptRoundStart 
+	response lycan_start_round
+}
+
+
+Response lycan_start_round_lost_last_round
+{
+	speak "lycan_start_round_lost_last_round" noscene 
+}
+
+Rule lycan_start_round_lost_last_round_rule
+{
+	criteria Islycan ConceptRoundStart LostLastGame
+	response lycan_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response lycan_flawless_victory
+{
+	speak "lycan_flawless_victory" noscene 
+}
+
+Rule lycan_flawless_victory_rule
+{
+	criteria Islycan ConceptRoundEnd Result_WinFlawless
+	response lycan_flawless_victory
+}
+
+
+Response lycan_decisive_victory
+{
+	speak "lycan_decisive_victory" noscene 
+}
+
+Rule lycan_decisive_victory_rule
+{
+	criteria Islycan ConceptRoundEnd Result_WinDecisive
+	response lycan_decisive_victory
+}
+
+Response lycan_narrow_victory
+{
+	speak "lycan_narrow_victory" noscene 
+}
+
+Rule lycan_narrow_victory_rule
+{
+	criteria Islycan ConceptRoundEnd Result_WinNarrow
+	response lycan_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response lycan_flawless_defeat
+{
+	speak "lycan_flawless_defeat" noscene 
+}
+
+Rule lycan_flawless_defeat_rule
+{
+	criteria Islycan ConceptRoundEnd Result_LoseFlawless
+	response lycan_flawless_defeat
+}
+
+
+Response lycan_decisive_defeat
+{
+	speak "lycan_decisive_defeat" noscene 
+}
+
+Rule lycan_decisive_defeat_rule
+{
+	criteria Islycan ConceptRoundEnd Result_LoseDecisive
+	response lycan_decisive_defeat
+}
+
+Response lycan_narrow_defeat
+{
+	speak "lycan_narrow_defeat" noscene 
+}
+
+Rule lycan_narrow_defeat_rule
+{
+	criteria Islycan ConceptRoundEnd Result_LoseNarrow
+	response lycan_narrow_defeat
+}

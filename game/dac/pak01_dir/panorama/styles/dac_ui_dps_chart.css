@@ -1,52 +1,197 @@
 
-DACDPSChart {
-	//min-width: 318px;
-	min-width: 368px;
-	padding: 8px 0px;
-	flow-children:down;
+DACDPSChart
+{
+	opacity: 0;
+	//transform: translateX(1000px);
+	//transition-property: transform;
+	//transition-duration: 0.15s;
+
+	width: 470px;
+	//width: 300px;
+}
+.LowVisualQuality DACDPSChart
+{
+	transition-property: none;
 }
 
-.IsLayoutLargeScreen DACDPSChart {
-	ui-scale: 80%;
+.IsLayoutSmallScreen DACDPSChart
+{
+	ui-scale: 75%;
+	width: 420px;
+	background-color: #000000cc;
+	padding: 20px;
+	border-radius: 8px;
+	//border: 2px solid black;
 }
 
-.DPSRow {
+.DPSActive DACDPSChart#DPS
+{
+	opacity: 1;
+	//transform: translateX(0px);
+}
+.DamageDealtActive DACDPSChart#DamageDealt
+{
+	opacity: 1;
+	//transform: translateX(0px);
+}
+.DamageTakenActive DACDPSChart#DamageTaken
+{
+	opacity: 1;
+	//transform: translateX(0px);
+}
+.HealingDoneActive DACDPSChart#HealingDone
+{
+	opacity: 1;
+	//transform: translateX(0px);
+}
+.KillsActive DACDPSChart#Kills
+{
+	opacity: 1;
+	//transform: translateX(0px);
+}
+.DisableDoneActive DACDPSChart#DisableDone {
+    opacity: 1;
+    //transform: translateX(0px);
+}
+
+#BattleStatsBody,
+.BattleStatsHeader
+{
+	//background-image: url("s2r://panorama/images/hud/stats_background_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	//background-color: #000000de;
+	//border-bottom: 4px solid #00000055;
+	opacity-mask: url("s2r://panorama/images/masks/bottom_fade_with_scroll_psd.vtex");
+	//background-color: red;
+}
+#BattleStatsBody
+{
+	//box-shadow: #000000bb 0px 0px 22px;
+	//flow-children: down;
+}
+
+.BattleStatsHeader
+{
+	height: 40px;
+	width: 100%;
+}
+
+.ChartTypeOld
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
+	text-shadow: 0px 1px 0px 3.0 #000;
+	font-size: 27px;
+	font-weight: bold;
+	text-transform: uppercase;
+	//horizontal-align: center;
+	vertical-align: center;
+	width: 100%;
+	height: 100%;
+	padding-top: 4px;
+	//text-align: center;
+	horizontal-align: left;
+	opacity: 1;
+}
+
+.ChartType
+{
+	font-size: 28px;
+	//font-size: 24px;
+	text-transform: uppercase;
+	margin-right: 40px;
+	margin-top: 0px;
+	//color: gradient( linear, 0% 0%, 0% 100%, from( #605979 ), to( #48425F ) );
+	//color: gradient( linear, 0% 0%, 0% 100%, from( #aaaaaa ), to( #888888 ) );
+	color: gradient(linear, 0% 0%, 0% 100%, from( #7e8bab ), to(#a9b6d5) );
+	text-shadow: 0px 0px 0px 3.0 #000;
+	font-weight: black;
+	letter-spacing: 2px;
+	//text-shadow: 0px 0px 0px 3 #000000;
+	vertical-align: middle;
+	horizontal-align: left;
+	//brightness: 3;
+}
+
+.DPSRow
+{
 	height: 36px;
 	margin-bottom: 8px;
 	margin-right: 8px;
 	flow-children: right;
-	transition-property:position;
-	transition-duration:0.2s;
+	transition-property: position;
+	transition-duration: 0.2s;
 }
 
-.LowVisualQuality .DPSRow {
+.DPSRow:hover
+{
+	brightness: 1.2;
+}
+
+.LowVisualQuality .DPSRow
+{
 	transition-property: none;
 	transition-duration: 0s;
 }
 
-.TeamNumber2 {
-	//wash-color: #BBFFBB;
-}
-
-.TeamNumber3
-{
-	//wash-color:#FFBBBB;
-}
 .BarContainer {
-	//width: 250px;
-	width: 300px;
 	height: 200px;
+	width: 372px;
+	// if you change width here, also change max-width in:
+	// .IsLayoutSmallScreen .DPSOverlay .NameLabel
+	// and width in:
+	// .IsLayoutSmallScreen .BarContainer	
 }
 
 .IsLayoutSmallScreen .BarContainer {
-	width: 250px;
+	width: 320px;
+	// if you change width here, you may also need to change width in:
+	// .BarContainer
+	// and max-width in:
+	// .IsLayoutSmallScreen .DPSOverlay .NameLabel
 }
 
-#HeroIcon {
+.DPSOverlay .NameLabel
+{
+	max-width: 185px;
+	text-overflow: ellipsis;
+}
+
+.IsLayoutSmallScreen .DPSOverlay .NameLabel
+{
+	font-size: 24px;
+	vertical-align:middle;
+	text-overflow:ellipsis;
+	max-width: 230px;
+	// If you change max-width here, you may also need to change width in:
+	// .BarContainer
+	// and
+	// .IsLayoutSmallScreen .BarContainer
+}
+
+DACDPSChart VerticalScrollBar
+{
+	//todo
+}
+
+#HeroIcon
+{
 	width: 36px;
 	height: 36px;
 	margin-right: 5px;
 	margin-top: 6px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	brightness: 2;
+}
+
+.IsUnderlord #HeroIcon 
+{
+	width: 42px;
+	height: 42px;
+	margin-top: -2px;
+	margin-right: -2px;
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -59,22 +204,25 @@ DACDPSChart {
 	transition-duration: 1s;
 	flow-children: right;
 }
-#PhysicalDmgBar {
+
+#PhysicalDmgBar
+{
 	height: 100%;
 	background-image: url("s2r://panorama/images/hud/dps_physical_damage_bar_psd.vtex");
-	//background-size: 250px 6px;
-	background-size: 300px 6px;
+	background-size: 100% 6px;
 	background-repeat: no-repeat;
 	background-position: bottom;
 	transition-property: width;
 	transition-duration: 1s;
 	width: 100%;
 	margin-bottom: 2px;
+	brightness: 2;
 }
-#MagicalDmgBar {
+
+#MagicalDmgBar
+{
 	height: 100%;
 	background-image: url("s2r://panorama/images/hud/dps_magical_damage_bar_psd.vtex");
-	//background-size: 250px 6px;
 	background-size: 300px 6px;
 	background-repeat: no-repeat;
 	background-position: bottom;
@@ -82,11 +230,13 @@ DACDPSChart {
 	transition-duration: 1s;
 	width: 100%;
 	margin-bottom: 2px;
+	brightness: 2;
 }
-#PureDmgBar {
+
+#PureDmgBar
+{
 	height: 100%;
 	background-image: url("s2r://panorama/images/hud/dps_pure_damage_bar_psd.vtex");
-	//background-size: 250px 6px;
 	background-size: 300px 6px;
 	background-repeat: no-repeat;
 	background-position: bottom;
@@ -94,6 +244,7 @@ DACDPSChart {
 	transition-duration: 1s;
 	width: 100%;
 	margin-bottom: 2px;
+	brightness: 2;
 }
 
 .TeamNumber3 #PhysicalDmgBar {
@@ -110,19 +261,12 @@ DACDPSChart {
 
 .DPSOverlay Label
 {
-	color: #8588a0;
+	color: #dfe6f9;
 	//color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
 	text-shadow: 0px 0px 0px 2.0 #000;
 	font-size: 22px;
 	margin-top: 1px;
 	text-overflow: shrink;
-}
-
-.DPSOverlay .NameLabel {
-	max-width: 185px;
-	text-overflow: ellipsis;
-	
-	//margin-left: 8px;
 }
 
 .DPSOverlay .NumberOutput
@@ -139,23 +283,42 @@ DACDPSChart {
 	height: 100%;
 }
 
-#DPSChartContainer {
-	transition-property: opacity;
-	transition-duration: 0.2s;
-}
-
-#DPSChartContainerEnemy
+.DPSChartContainer
 {
-	transition-property: opacity;
-	transition-duration: 0.2s;
+	overflow: clip scroll;
+	padding-bottom: 0px;
+	margin-bottom: 0px;
+	opacity: 1;
+	visibility: visible;
+
+	//margin-top: 50px;
+	margin-top: 100px;
+	//padding-top: 110px;
+	padding-top: 10px;
+	height: 193px;
+	width: 450px;
+	//border-bottom: 3px solid #11111188;
+
+	//background-color: #00000066;
 }
 
-.LowVisualQuality #DPSChartContainer, .LowVisualQuality #DPSChartContainerEnemy {
-	transition-property: none;
-	transition-duration: 0s;
+#DPSChartContainerDummy.DPSChartContainer
+{
+	height: 0px;
 }
 
-.DPSOverlay .StarIcon {
+.IsLayoutSmallScreen .DPSChartContainer
+{
+	max-height: 315px;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen .DPSChartContainer
+{
+	max-height: 620px; 
+}
+
+.DPSOverlay .StarIcon
+{
 	visibility: collapse;
 	letter-spacing: -3px;
 	text-overflow: clip;
@@ -165,76 +328,79 @@ DACDPSChart {
 	font-size: 20px;
 }
 
-.DPSRow.OneStar .OneStar {
+.DPSRow.OneStar .OneStar
+{
 	visibility: visible;
 	color: rank1Color;
 }
-
-.DPSRow.TwoStar .TwoStar {
+.DPSRow.TwoStar .TwoStar
+{
 	visibility: visible;
 	color: rank2Color;
 }
-
-.DPSRow.ThreeStar .ThreeStar {
+.DPSRow.ThreeStar .ThreeStar
+{
 	visibility: visible;
 	color: rank3Color;
 }
 
+.DPSRow.IsUnderlord .OneStar
+{
+	visibility: collapse;
+}
+.DPSRow.IsUnderlord .TwoStar
+{
+	visibility: collapse;
+}
+.DPSRow.IsUnderlord .ThreeStar
+{
+	visibility: collapse;
+}
+
 /* Mobile sizing */
 
-.IsLayoutSmallScreen .DPSRow {
+.IsLayoutSmallScreen .DPSRow
+{
 	height: 40px;
 }
 
-.IsLayoutSmallScreen .DPSOverlay Label {
-	font-size: 24px;
-	vertical-align:middle;
-	text-overflow:ellipsis;
-	width: 120px;
-}
-
-.IsLayoutSmallScreen #HeroIcon {
+.IsLayoutSmallScreen #HeroIcon
+{
 	width: 40px;
 	height: 40px;
 	margin-right: 2px;
-
 }
 
 .IsLayoutSmallScreen .StarIcon
 {
-	vertical-align:middle;
+	//vertical-align:middle;
 }
-.IsLayoutSmallScreen .NameLabel {
-	visibility: collapse;
-}
-
-.IsLayoutSmallScreen .DPSOverlay .StarIcon {
-	margin-left: 0px;
-	font-size: 22px;
-	margin-top: 1px;
-}
-
-.ChartType
+.IsLayoutSmallScreen .NameLabel
 {
-  horizontal-align:center;
-  color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
-	text-shadow: 0px 1px 0px 3.0 #000;
-	font-size: 24px;
-	margin-bottom: 8px;
-	font-weight: bold;
-	text-transform: uppercase;
+	//visibility: collapse;
+}
+
+.IsLayoutSmallScreen .DPSOverlay .StarIcon
+{
+	//margin-left: 0px;
+	font-size: 22px;
+	//margin-top: 1px;
 }
 
 #PipsContainer
 {
 	margin-top:12px;
 	margin-bottom:4px;
+	vertical-align: bottom;
 	height:20px;
-	
 	flow-children:right;
 	horizontal-align:center;
+	//horizontal-align: right;
+	//width: 100%;
+	//background-color: #000000aa;
 }
-.Pip {
+.Pip
+{
 	width: 16px;
 	height: 16px;
 	background-image: url("s2r://panorama/images/hud/stats_pip_off_psd.vtex");
@@ -248,33 +414,33 @@ DACDPSChart {
 {
 	background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
 }
-
 #DamageDealt #DamageDealtPip 
 {
 	background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
 }
-
 #HealingDone #HealingDonePip 
 {
 	background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
 }
-
 #DPS #DPSPip
 {
 	background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
 }
-
 #Kills #KillsPip {
 	background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
+}
+#DisableDone #DisableDonePip {
+    background-image: url("s2r://panorama/images/hud/stats_pip_on_psd.vtex");
 }
 
 .ButtonHolder
 {
 	width:100%;
-	height:62px;
+	height:50px;
 	flow-children:right;
-	margin-bottom: 20px;
 	background-color: #000000dd;
+	//margin-top: 244px;
+	margin-top: 50px;
 }
 
 .ButtonHolder Button
@@ -282,12 +448,10 @@ DACDPSChart {
 	width:50%;
 	height:100%;
 	background-image: url("s2r://panorama/images/hud/dps_tab_off_psd.vtex");
-	background-size: cover;
+	background-size: 100% 100%;
 	background-position: top;
 	background-repeat: no-repeat;
 	background-color: gradient(linear, 0% 0%, 100% 0%, from( #2b2448 ), to(#00000088));
-	transition-property: background-image, brightness;
-	transition-duration: 0.2s;
 }
 .ButtonHolder Label
 {
@@ -296,30 +460,29 @@ DACDPSChart {
 	color: #8588a0;
 	text-shadow: 0px 1px 0px 3.0 #000;
 	font-size: 24px;
-	
 	font-weight: bold;
 	text-transform: uppercase;
 	vertical-align:middle;
 	height:25px;
 }
 
-.ShowPlayer #PlayerButton 
+.ShowPlayerBattleStats #PlayerButton 
 {
 	background-image: url("s2r://panorama/images/hud/dps_tab_on_left_psd.vtex");
 	brightness: 1.2;
 }
 
-.ShowEnemy #EnemyButton
+.ShowEnemyBattleStats #EnemyButton
 {
 	background-image: url("s2r://panorama/images/hud/dps_tab_on_right_psd.vtex");
 	brightness: 1.2;
 }
 
-.ShowPlayer #PlayerButton Label, .ShowEnemy #EnemyButton Label
+.ShowPlayerBattleStats #PlayerButton Label, .ShowEnemyBattleStats #EnemyButton Label
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#d9e5fd));
 }
-.ShowPlayer #EnemyButton, .ShowEnemy #PlayerButton
+.ShowPlayerBattleStats #EnemyButton, .ShowEnemyBattleStats #PlayerButton
 {
 	brightness: 0.5;
 }
@@ -334,18 +497,92 @@ DACDPSChart {
 	margin-left: 1px;
 }
 
-.ShowPlayer #DPSChartContainerEnemy
-{
-	opacity:0;
-}
+//TESTING NEW DESIGN MERGING PLAYER AND ENEMY STATS
 
-.ShowEnemy #DPSChartContainer
+
+.ShowPlayerBattleStats #DPSChartContainerEnemy,
+.ShowEnemyBattleStats #DPSChartContainerPlayer
 {
-	opacity:0;
+	//opacity: 0;
+	//visibility: collapse;
 }
 
 #DPSCharts
 {
 	padding: 0px 8px 0px 8px;
 	width: 100%;
+}
+
+.DPSChartContainer
+{
+	flow-children: down;
+	width: fit-children;
+	padding-right: 15px;
+}
+
+#DPSChartContainerEnemy .DPSOverlay Label
+{
+	color: #ffb99a;
+}
+#DPSChartContainerEnemy .DPSOverlay .NumberOutput
+{
+	color: #ffb99a;
+}
+#DPSChartContainerEnemy
+{
+	border-top: 3px solid #cdd2f333;
+	padding-top: 10px;
+	margin-top: 6px;
+}
+
+.ButtonHolder
+{
+	visibility: collapse;
+}
+.DPSChartContainer
+{
+	margin-top: 50px;
+	max-height: 250px;
+	height: fit-children;
+	
+}
+
+#PipsContainer
+{
+	visibility: collapse;
+}
+
+#BattleStatsType 
+{
+	flow-children: right;
+}
+
+.ChartType
+{
+	margin-right: 10px;
+}
+.ChartNextButton
+{
+	background-image: url("s2r://panorama/images/hud/dps_next_arrow_psd.vtex");
+	height: 24px;
+	width: 24px;
+	vertical-align: middle;
+	background-size: cover;
+	margin-top: 3px;
+
+}
+.ChartNextButton:hover
+{
+	brightness: 1.5;
+}
+
+.IsLayoutLargeScreen DACDPSChart VerticalScrollBar
+{
+	opacity: 0;
+	
+}
+
+.IsLayoutLargeScreen DACDPSChart .DPSChartContainer:hover VerticalScrollBar
+{
+	opacity: 1;
 }

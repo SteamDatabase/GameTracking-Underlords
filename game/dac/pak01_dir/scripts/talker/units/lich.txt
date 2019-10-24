@@ -1,0 +1,149 @@
+// lich - Hero
+criterion "Islich" "classname" "lich" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response lich_recruit_1
+{
+	speak "lich_recruit" noscene 
+}
+
+Rule lich_recruit_1_rule
+{
+	criteria Islich ConceptRecruit UnitRank1
+	response lich_recruit_1
+}
+
+
+Response lich_recruit_2
+{
+	speak "lich_upgrade" noscene 
+}
+
+Rule lich_recruit_2_rule
+{
+	criteria Islich ConceptRecruit UnitRank2
+	response lich_recruit_2
+}
+
+
+Response lich_recruit_3
+{
+	speak "lich_final_upgrade" noscene 
+}
+
+Rule lich_recruit_3_rule
+{
+	criteria Islich ConceptRecruit UnitRank3
+	response lich_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response lich_start_round
+{
+	speak "lich_start_round" noscene 
+}
+
+Rule lich_start_round_rule
+{
+	criteria Islich ConceptRoundStart 
+	response lich_start_round
+}
+
+
+Response lich_start_round_lost_last_round
+{
+	speak "lich_start_round_lost_last_round" noscene 
+}
+
+Rule lich_start_round_lost_last_round_rule
+{
+	criteria Islich ConceptRoundStart LostLastGame
+	response lich_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response lich_flawless_victory
+{
+	speak "lich_flawless_victory" noscene 
+}
+
+Rule lich_flawless_victory_rule
+{
+	criteria Islich ConceptRoundEnd Result_WinFlawless
+	response lich_flawless_victory
+}
+
+
+Response lich_decisive_victory
+{
+	speak "lich_decisive_victory" noscene 
+}
+
+Rule lich_decisive_victory_rule
+{
+	criteria Islich ConceptRoundEnd Result_WinDecisive
+	response lich_decisive_victory
+}
+
+Response lich_narrow_victory
+{
+	speak "lich_narrow_victory" noscene 
+}
+
+Rule lich_narrow_victory_rule
+{
+	criteria Islich ConceptRoundEnd Result_WinNarrow
+	response lich_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response lich_flawless_defeat
+{
+	speak "lich_flawless_defeat" noscene 
+}
+
+Rule lich_flawless_defeat_rule
+{
+	criteria Islich ConceptRoundEnd Result_LoseFlawless
+	response lich_flawless_defeat
+}
+
+
+Response lich_decisive_defeat
+{
+	speak "lich_decisive_defeat" noscene 
+}
+
+Rule lich_decisive_defeat_rule
+{
+	criteria Islich ConceptRoundEnd Result_LoseDecisive
+	response lich_decisive_defeat
+}
+
+Response lich_narrow_defeat
+{
+	speak "lich_narrow_defeat" noscene 
+}
+
+Rule lich_narrow_defeat_rule
+{
+	criteria Islich ConceptRoundEnd Result_LoseNarrow
+	response lich_narrow_defeat
+}

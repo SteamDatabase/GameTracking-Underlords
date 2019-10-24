@@ -1,0 +1,149 @@
+// Chaos Knight - Hero
+criterion "Ischaos_knight" "classname" "chaos_knight" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response chaos_knight_recruit_1
+{
+	speak "chaos_knight_recruit" noscene 
+}
+
+Rule chaos_knight_recruit_1_rule
+{
+	criteria Ischaos_knight ConceptRecruit UnitRank1
+	response chaos_knight_recruit_1
+}
+
+
+Response chaos_knight_recruit_2
+{
+	speak "chaos_knight_upgrade" noscene 
+}
+
+Rule chaos_knight_recruit_2_rule
+{
+	criteria Ischaos_knight ConceptRecruit UnitRank2
+	response chaos_knight_recruit_2
+}
+
+
+Response chaos_knight_recruit_3
+{
+	speak "chaos_knight_final_upgrade" noscene 
+}
+
+Rule chaos_knight_recruit_3_rule
+{
+	criteria Ischaos_knight ConceptRecruit UnitRank3
+	response chaos_knight_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response chaos_knight_start_round
+{
+	speak "chaos_knight_start_round" noscene 
+}
+
+Rule chaos_knight_start_round_rule
+{
+	criteria Ischaos_knight ConceptRoundStart 
+	response chaos_knight_start_round
+}
+
+
+Response chaos_knight_start_round_lost_last_round
+{
+	speak "chaos_knight_start_round_lost_last_round" noscene 
+}
+
+Rule chaos_knight_start_round_lost_last_round_rule
+{
+	criteria Ischaos_knight ConceptRoundStart LostLastGame
+	response chaos_knight_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response chaos_knight_flawless_victory
+{
+	speak "chaos_knight_flawless_victory" noscene 
+}
+
+Rule chaos_knight_flawless_victory_rule
+{
+	criteria Ischaos_knight ConceptRoundEnd Result_WinFlawless
+	response chaos_knight_flawless_victory
+}
+
+
+Response chaos_knight_decisive_victory
+{
+	speak "chaos_knight_decisive_victory" noscene 
+}
+
+Rule chaos_knight_decisive_victory_rule
+{
+	criteria Ischaos_knight ConceptRoundEnd Result_WinDecisive
+	response chaos_knight_decisive_victory
+}
+
+Response chaos_knight_narrow_victory
+{
+	speak "chaos_knight_narrow_victory" noscene 
+}
+
+Rule chaos_knight_narrow_victory_rule
+{
+	criteria Ischaos_knight ConceptRoundEnd Result_WinNarrow
+	response chaos_knight_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response chaos_knight_flawless_defeat
+{
+	speak "chaos_knight_flawless_defeat" noscene 
+}
+
+Rule chaos_knight_flawless_defeat_rule
+{
+	criteria Ischaos_knight ConceptRoundEnd Result_LoseFlawless
+	response chaos_knight_flawless_defeat
+}
+
+
+Response chaos_knight_decisive_defeat
+{
+	speak "chaos_knight_decisive_defeat" noscene 
+}
+
+Rule chaos_knight_decisive_defeat_rule
+{
+	criteria Ischaos_knight ConceptRoundEnd Result_LoseDecisive
+	response chaos_knight_decisive_defeat
+}
+
+Response chaos_knight_narrow_defeat
+{
+	speak "chaos_knight_narrow_defeat" noscene 
+}
+
+Rule chaos_knight_narrow_defeat_rule
+{
+	criteria Ischaos_knight ConceptRoundEnd Result_LoseNarrow
+	response chaos_knight_narrow_defeat
+}

@@ -1,7 +1,9 @@
 
 DACLeaderboardEntry {
 	overflow: noclip;
-	height: 130px;
+	//height: 130px;
+	height: 60px;
+	width: 380px;
 }
 
 .AspectRatio21x9.IsLayoutSmallScreen DACLeaderboardEntry
@@ -23,97 +25,563 @@ DACLeaderboardEntry {
 	visibility: visible;
 }
 
-#PostGameStats .PlayerLeaderboard
+#PostGameStats
 {
 	margin-top:10px;
 }
 
-.PlayerLeaderboard {
-	width: 170px;
-	height: 130px;
-	margin-top: 20px;
-	transition-property: position;
-	transition-duration: 500ms;
-	overflow: noclip;
-}
+/* COMMENTING OLD FAT LEADERBOARD STYLE
 
-.LeaderboardBackground {
-	width: 170px;
-	height: 117px;
-}
-
-.IsDead .LeaderboardBackground {
-	margin-left: -42px;
-	wash-color: #f88;
-}
-
-.IsSelf .LeaderboardBackground {
-	wash-color: #8af;
-}
-
-.IsSelf .PlayerLeaderboard,
-.IsSelf .LeaderboardBackground
+.PlayerLeaderboard 
 {
-	//width: 215px;
+	width: 235px;
+	height: 130px;
+	margin-top: 15px;  //helps line up with scoreboard
+	transition-property: position;
+	transition-duration: 100ms;
+	overflow: noclip;
+}*/
+
+.ScoreboardVisible .PlayerLeaderboard 
+{
+	//margin-top: 15px;
 }
 
-.ScoreboardHidden .InCombat .IsDead
+.HasPlayerOpponent .InCombat .PlayerLeaderboard 
+{
+	margin-top: -5px;
+}
+
+.HasPlayerOpponent .InCombat .IsAwayGame .PlayerLeaderboard 
+{
+	margin-top: -15px;
+}
+
+
+
+.LeaderboardBackgroundGroup 
+{	
+	width: 100%;
+	height: 100%;
+
+	transition-property: brightness, margin-left;
+	transition-duration: 200ms; 
+	transition-timing-function: ease-out;
+	margin-left: -15px;
+}
+
+.HasPlayerOpponent .IsCombat .LeaderboardBackground
 {
 	visibility: collapse;
 }
 
-.ScoreboardHidden .InCombat .IsDead.IsLoss.IsFinished
+.IsSelected .LeaderboardBackground 
+{
+	brightness: 3.0;
+	transition-property: brightness;
+	transition-duration: .2s; 
+}
+
+.IsSelected .PlayerLeaderboard:hover .LeaderboardBackground 
+{
+	brightness: 4.0;
+	transition-property: brightness;
+	transition-duration: .2s; 
+}
+
+.PlayerLeaderboard:hover .LeaderboardBackground 
+{
+	brightness: 2.0;
+	transition-property: brightness;
+	transition-duration: .2s; 
+}
+
+.LowVisualQuality .IsSelected .LeaderboardBackground 
+{
+	brightness: 1.0;
+}
+
+.LeaderboardBackground 
+{	
+	opacity: 1.0;
+	width: 100%;
+	height: 100%;
+	background-size: 100%, 100%;
+}
+
+.LeaderboardLevelAndAegisGroup 
+{	
+	width: 100%;
+	height: 100%;
+}
+
+
+#Leaderboard_1 .LeaderboardBackground 
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel01_psd.vtex"); 
+}
+#Leaderboard_2 .LeaderboardBackground 
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel02_psd.vtex"); 
+}
+#Leaderboard_3 .LeaderboardBackground 
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel03_psd.vtex"); 
+}
+#Leaderboard_4 .LeaderboardBackground 
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel04_psd.vtex"); 
+}
+#Leaderboard_5 .LeaderboardBackground 
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel05_psd.vtex"); 
+}
+#Leaderboard_6 .LeaderboardBackground 
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel06_psd.vtex"); 
+}
+#Leaderboard_7 .LeaderboardBackground 
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel07_psd.vtex"); 
+}
+#Leaderboard_8 .LeaderboardBackground 
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel08_psd.vtex"); 
+}
+
+//FOR DUOS
+.GameMode_Duos #PlayerSlot_1 .LeaderboardBackground, 
+.GameMode_Duos #PlayerSlot_9 .LeaderboardBackground
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel01_psd.vtex"); 
+}
+.GameMode_Duos #PlayerSlot_2 .LeaderboardBackground, 
+.GameMode_Duos #PlayerSlot_10 .LeaderboardBackground
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel02_psd.vtex"); 
+}
+.GameMode_Duos #PlayerSlot_3 .LeaderboardBackground, 
+.GameMode_Duos #PlayerSlot_11 .LeaderboardBackground
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel03_psd.vtex"); 
+}
+.GameMode_Duos #PlayerSlot_4 .LeaderboardBackground, 
+.GameMode_Duos #PlayerSlot_12 .LeaderboardBackground
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel04_psd.vtex"); 
+}
+.GameMode_Duos #PlayerSlot_5 .LeaderboardBackground, 
+.GameMode_Duos #PlayerSlot_13 .LeaderboardBackground
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel05_psd.vtex"); 
+}
+.GameMode_Duos #PlayerSlot_6 .LeaderboardBackground, 
+.GameMode_Duos #PlayerSlot_14 .LeaderboardBackground
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel06_psd.vtex"); 
+}
+.GameMode_Duos #PlayerSlot_7 .LeaderboardBackground, 
+.GameMode_Duos #PlayerSlot_15 .LeaderboardBackground 
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel07_psd.vtex"); 
+}
+.GameMode_Duos #PlayerSlot_8 .LeaderboardBackground, 
+.GameMode_Duos #PlayerSlot_16 .LeaderboardBackground
+{ 
+	background-image: url("s2r://panorama/images/leaderboard/background_panel08_psd.vtex"); 
+}
+
+.LeaderboardForeground
+{
+	width: 100%;
+	height: 100%;
+	margin-left: 6px;
+	margin-top: 12px;
+}
+
+.PlayerAvatarGroup
+{
+	width: 90px;
+	height: 90px;
+	//margin-left: -5px;
+	//margin-top: -5px;
+	horizontal-align: left;
+	vertical-align: top;
+	overflow: noclip;
+	opacity-mask: url("s2r://panorama/images/hud/dac_profile_rounded_corner_mask_psd.vtex");	
+}
+
+
+.HasPlayerOpponent.InCombat .IsAwayGame
+{
+	margin-bottom: 10px;
+}
+
+.HasPlayerOpponent.InCombat .LeaderboardBackground
+{
+	visibility: collapse;
+}
+
+//slightly hacky: reusing some graphics.
+/*
+.ScoreboardHidden.HasPlayerOpponent .InCombat .IsSelected .LeaderboardBackground
+{
+
+	margin-top: 2px;
+	background-size: 75%;
+	background-repeat: no-repeat;
+	visibility: visible;
+}*/
+
+.HasPlayerOpponent .InCombat #ParticleBG,
+.HasPlayerOpponent .InCombat #ParticleFG
+{
+	visibility: collapse;
+}
+
+
+
+.IsDead .PlayerLeaderboard:hover .LeaderboardBackground,
+.IsDead .LeaderboardBackground {
+	margin-left: -42px;	
+}
+
+#PlayerLeaderboardContainer .IsSelf .LeaderboardBackground {
+	background-image: url("s2r://panorama/images/leaderboard/background_panel_glow_psd.vtex");
+
+
+	animation-name: SelfThrobAnim;
+	animation-timing-function: ease-in-out;
+	animation-duration: 3.0s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes 'SelfThrobAnim'
+{
+	0%
+	{
+		opacity: 0.6;
+	//	color:  white; 
+	}
+	50%
+	{
+		opacity: 1;
+		//color:  #dddddd; 
+	}
+	100%
+	{
+		opacity: 0.6;
+		//color:  white; 
+	}
+}
+.InCombat .IsDead
+{
+	visibility: collapse;
+}
+
+.InCombat .IsDead.IsLoss.IsFinished
 {
 	visibility: visible;
 }
 
-.LeaderboardBelow {
-	margin-top: 70px;
+.LeaderboardName 
+{
+	margin-top: 75px;
 	//width: 145px;
 	width: 200px;
-	font-size: 28px;
+	font-size: 24px;
+	font-weight: light;
 	margin-left: 2px;
 	color: #8588a0;
+	transition-property: brightness, color;
+	transition-duration: .2s;
 }
 
-.PlayerLeaderboard:hover .LeaderboardBelow
+.PlayerLeaderboard:hover .LeaderboardName
 {
-	color: #bec1d6;
+	color: #cacde4;
+	brightness: 2.0;
+	transition-property: brightness, color;
+	transition-duration: .2s;
 }
 
-.PlayerLeaderboard:hover .LeaderboardBelow
+#LeaderboardAvatarGroup {
+	height: 100%;
+	width: 100%;
+} 
+
+#LeaderboardAvatar {
+	saturation: 1.0;
+	height: 100%;
+	width: 100%;
+	//margin-left: 5px;
+	//margin-top: 5px;
+	transition-property: brightness, border, saturation;
+	transition-duration: .1s;
+	opacity-mask: url("s2r://panorama/images/hud/dac_profile_rounded_corner_right_mask_psd.vtex");
+}
+
+.LowVisualQuality .PlayerAvatarGroup,
+.LowVisualQuality #LeaderboardAvatar
 {
-	color: #bec1d6;
+	transition-property: none;
+	transition-duration: 0s;
+	opacity-mask: none;
 }
 
-.AspectRatio21x9.IsLayoutSmallScreen .LeaderboardBelow {
-	margin-top: 64px;
+#LeaderboardHilight {
+	height: 100%;
+	width: 100%;
+	background-size: 100%;
+	background-image: url("s2r://panorama/images/hud/dac_profile_hilight_psd.vtex");
+	visibility: collapse;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: .25s;
 }
 
-.IsSelf .PlayerLeaderboard:hover .LeaderboardBelow,
-.IsSelf .LeaderboardBelow {
-	color: white;
+#LeaderboardSpectate {
+	height: 100%;
+	width: 100%;
+	//width: 30px;
+	//height: 30px;
+	//margin-left: 3px;
+	//vertical-align: center;
+	background-size: 100%;
+	background-image: url("s2r://panorama/images/hud/dac_profile_spectate_psd.vtex");
+	visibility: collapse;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: .25s;
 }
 
-.IsDead .LeaderboardBelow 
+.PlayerLeaderboard:hover #LeaderboardHilight
 {
-	color: rgb(141, 80, 80);
+	visibility: visible;
+	opacity: .5;
+	transition-property: opacity;
+	transition-duration: .25s;
 }
 
-.LeaderboardBelow Label {
+.PlayerLeaderboard:hover #LeaderboardSpectate
+{
+	visibility: visible;
+	opacity: .5;
+	transition-property: opacity;
+	transition-duration: .25s;
+}
+
+.IsSelf .PlayerLeaderboard #LeaderboardHilight
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_isself_psd.vtex");
+	visibility: visible;
+	opacity: .4;
+	animation-duration: 1.5s;
+	animation-timing-function: ease-out;
+	animation-name: SelfOpacityThrob;//temp
+	animation-iteration-count: infinite;
+}
+
+.LowVisualQuality .HealthLow #LeaderboardHealth,
+.LowVisualQuality .IsSelf .PlayerLeaderboard #LeaderboardHilight,
+.LowVisualQuality #PlayerLeaderboardContainer .IsSelf .LeaderboardBackground
+{
+	animation-name: none;	
+}
+
+.IsSelf .PlayerLeaderboard #LeaderboardHilight,
+.LowVisualQuality #LeaderboardHilight
+{
+	transition-property: none;
+	transition-duration: 0s;
+	opacity: 1;
+}
+
+@keyframes 'SelfOpacityThrob'
+{
+	0%
+	{
+	opacity: .1;
+	}
+
+
+	50%
+	{
+	opacity: 0.4;
+	}
+	
+	100%
+	{
+	opacity: .1;
+	}
+}
+
+.IsSelf .PlayerLeaderboard:hover #LeaderboardHilight
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_isself_psd.vtex");
+	opacity: .5;
+}
+
+.IsSelf .PlayerLeaderboard:hover #LeaderboardSpectate
+{
+	//visibility: collapse;
+}
+
+.IsSelf.IsSelected #LeaderboardHilight
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_isself_psd.vtex");
+	animation-name: none;
+}
+
+.IsSelf.IsSelected .PlayerLeaderboard:hover #LeaderboardHilight
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_isself_psd.vtex");
+	opacity: 1;
+}
+
+.IsSelected .PlayerLeaderboard:hover #LeaderboardHilight
+{
+	opacity: 1;
+}
+
+.IsSelf.IsSelected #LeaderboardSpectate
+{
+	//visibility: collapse;
+	wash-color: white;
+}
+
+.IsSelected #LeaderboardHilight
+{
+	visibility: visible;
+	opacity: 1;
+	transition-property: opacity;
+	transition-duration: .25s;
+}
+
+.IsSelected #LeaderboardSpectate
+{
+	visibility: visible;
+	transition-property: opacity;
+	transition-duration: .25s;
+	opacity: 1;
+
+//	pre-transform-scale2d: .6;
+//	transform: translateY(28px) translateX(-20px);
+//	animation-duration: 1s;
+//	animation-timing-function: ease-out;
+//	animation-name: SpectateEyeDuck;
+//	animation-iteration-count: 1;
+
+}
+
+.IsSelected .PlayerLeaderboard:hover #LeaderboardSpectate
+{
+	visibility: visible;
+	transition-property: opacity;
+	transition-duration: .25s;
+	opacity: 1;
+}
+
+.IsSelf.IsSelected .PlayerLeaderboard:hover #LeaderboardSpectate
+{
+	visibility: collapse;
+}
+
+/*
+.IsSelected .PlayerLeaderboard:hover #LeaderboardSpectate
+{
+	opacity: 0;
+}
+
+
+@keyframes 'SpectateEyeDuck'
+{
+	0%
+	{
+	opacity: 1;
+	pre-transform-scale2d: 1.0;
+	transform: translateY(0px) translateX(0px);
+	}
+
+
+	33%
+	{
+	opacity: .5;
+	pre-transform-scale2d: .6;
+	transform: translateY(28px) translateX(-20px);
+	}
+	
+	100%
+	{
+	opacity: 0;
+	pre-transform-scale2d: .6;
+	transform: translateY(28px) translateX(-20px);
+	}
+
+}
+*/
+
+.IsDead #LeaderboardAvatar {
+	saturation: 0;
+	//brightness: 1;
+	//contrast: 3;
+	contrast: 1.5;
+	wash-color: #b64040;
+}
+
+.IsDead .PlayerName
+{
+	color: #b64040;
+}
+
+.IsDead.IsFinished .PlayerName Label 
+{
+	color: #b64040;
+}
+
+.IsDead .PlayerLevel,
+.IsDead .PlayerLevelIcon,
+.IsDead .PlayerGold,
+.IsDead .PlayerGoldIcon,
+.IsDead .PlayerHealth,
+.IsDead .PlayerHealthIcon
+{
+	visibility: collapse;
+}
+
+.IsDead .PlayerLeaderboard
+{
+	width: 200px;
+}
+
+.LeaderboardName Label {
 	padding: 5px;
 	padding-top: 18px;
-	padding-left: 0px;
+	padding-left: 4px;
 	text-overflow: clip;
 	white-space: nowrap;
 	width: 100%;
 	opacity-mask: url("s2r://panorama/images/leaderboard/name_mask_psd.vtex");
 
+	color: #8588a0;
 	transition-property: color;
 	transition-duration: .2s;
+	brightness: 1.0;
+//text-shadow: 0px 0px 0px 3.0 #000;
 }
 
-.LeaderboardBelow .MobileIcon {
+
+//hmm?
+.AspectRatio21x9.IsLayoutSmallScreen .LeaderboardName {
+	margin-top: 64px;
+}
+
+.IsSelf .LeaderboardName Label
+{
+	color: white;
+}
+
+/*.LeaderboardName .MobileIcon {
 	margin-top: 22px;
 	margin-right: 6px;
 	width: 14px;
@@ -122,20 +590,21 @@ DACLeaderboardEntry {
 	visibility: collapse;
 }
 
-.IsSelf .LeaderboardBelow .MobileIcon {
+.IsSelf .LeaderboardName .MobileIcon {
 	wash-color: white;
 }
 
-.IsDead .LeaderboardBelow .MobileIcon {
+.IsDead .LeaderboardName .MobileIcon {
 	wash-color: rgb(141, 80, 80);
 }
 
-.IsMobile .LeaderboardBelow .MobileIcon {
-	visibility: visible;
-}
 
-.IsLayoutSmallScreen .LeaderboardBelow Label,
-.LowVisualQuality .LeaderboardBelow Label 
+.IsMobile .LeaderboardName .MobileIcon {
+	visibility: visible;
+}*/
+
+.IsLayoutSmallScreen .LeaderboardName Label,
+.LowVisualQuality .LeaderboardName Label 
 {
 	text-shadow: 0px 0px 0px 2.0 #000;
     opacity-mask: none;
@@ -143,23 +612,16 @@ DACLeaderboardEntry {
 
     
 
-.IsFinished .LeaderboardBelow Label,
-.IsOpponent .LeaderboardBelow Label 
+.IsFinished .LeaderboardName Label,
+.IsOpponent .LeaderboardName Label 
 {
 	//max-width:115px;
 	// turning off checks and Xs
 }
 
-.IsFinished .LeaderboardBelow Label 
-{
-	color: gradient(linear, 0% 0%, 0% 100%, from(#3ed93b), to(#99d3a0));
-}
 
-.IsDead.IsFinished .LeaderboardBelow Label 
-{
-	color: rgb(141, 80, 80);
-	//wash-color: rgb(141, 80, 80);
-}
+
+
 
 .PlayerVictory
 {
@@ -173,12 +635,12 @@ DACLeaderboardEntry {
 	visibility: collapse;
 }
 
-.ScoreboardHidden .InCombat .IsHomeGame .PlayerVictory
+.InCombat .IsHomeGame .PlayerVictory
 {
 	margin-top: -25px;
 }
 
-.ScoreboardHidden .InCombat .IsAwayGame .PlayerVictory
+.InCombat .IsAwayGame .PlayerVictory
 {
 	margin-top: 85px;
 }
@@ -188,13 +650,17 @@ DACLeaderboardEntry {
 	visibility: visible;
 }
 
-.IsFinished.IsLoss .LeaderboardBelow Label 
+.IsFinished.IsLoss .PlayerName
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from(#e81010), to(#d74545));
+	color: #d74545;
+}
+.IsFinished.IsVictory .PlayerName
+{
+	color: #99d3a0;
 }
 
-.IsMobile.IsFinished .LeaderboardBelow Label,
-.IsMobile.IsOpponent .LeaderboardBelow Label 
+.IsMobile.IsFinished .LeaderboardName Label,
+.IsMobile.IsOpponent .LeaderboardName Label 
 {
 	//max-width: 95px;
 }
@@ -212,9 +678,8 @@ DACLeaderboardEntry {
 }
 
 #GoldStat {
-	margin-top: 12px;
-	margin-bottom: -10px;
-	margin-left: 3px;
+	margin-top: 4px;	
+	margin-left: 4px;
 }
 
 .IsDead #GoldStat {
@@ -222,10 +687,13 @@ DACLeaderboardEntry {
 }
 
 .GoldIcon {
-	width: 16px;
-	height: 16px;
-	margin-top: -3px;
-	//margin-right: 4px;
+	background-image: url("s2r://panorama/images/leaderboard/icon_gold_psd.vtex");
+	background-size: 100%, 100%;
+	width: 11px;
+	height: 11px;
+	vertical-align: center;
+	margin-left: 2px;
+	margin-bottom: 2px;
 }
 
 .HealthIcon {
@@ -237,9 +705,404 @@ DACLeaderboardEntry {
 
 #LeaderboardHealth {
 	color: #a2ff92;
-	font-size: 38px;
-	font-weight: bold;
+	font-size: 45px;
 	margin-top: 0px;
+}
+
+#LeaderboardHealthDelta {
+	color: #E21F0200;
+	text-shadow: 0px 0px 0px 1.0 #00000000;
+	font-size: 24px;
+	font-weight: bold;
+	vertical-align: top;
+	margin-left: -5px;
+	font-style: italic;
+	
+	transition-property: color, text-shadow;
+	transition-duration: 1.5s, 1.5s;
+	transition-timing-function: ease-in-out, ease-in-out;
+
+	pre-transform-scale2d: 1.0;
+	overflow: noclip;
+}
+
+
+
+.OnLeaderboardHealthDelta #LeaderboardHealthDelta {
+	transition-property: none;
+	color: #E21F02FF;
+	text-shadow: 0px 0px 0px 1.0 #000000ff;
+
+	animation-duration: 1s;
+	animation-timing-function: ease-out;
+	animation-name: HealthDeltaFlash;
+	animation-iteration-count: 1;
+}
+
+.AegisUsed.OnLeaderboardHealthThrob #LeaderboardHealthDelta {
+	opacity: 0;
+	transition-property: none;
+	color: #555F;
+	text-shadow: 0px 0px 0px 1.0 #000000ff;
+	animation-name: none;
+}
+
+//Intro
+@keyframes 'HealthDeltaFlash'
+{
+	0%
+	{
+		color: #E21F0200;
+		text-shadow: 0px 0px 0px 3.0 #EF220000;
+		pre-transform-scale2d: 2.0;
+		transform: translateX(50px);
+	}
+
+	24%
+	{
+		color: #E21F02FF;
+		text-shadow: 0px 0px 0px 1.0 #EF2200ff;
+		pre-transform-scale2d: 0.8;
+		transform: translateX(0px);
+	}
+	25%
+	{
+		color: #FFFFFFFF;
+		text-shadow: 0px 0px 0px 1.0 #EF2200ff;
+		pre-transform-scale2d: 0.8;
+		transform: translateX(0px);
+	}
+
+	35%
+	{
+		color: #E21F02FF;
+		text-shadow: 0px 0px 0px 1.0 #FFFFFFFF;
+		pre-transform-scale2d: 1.0;
+		transform: translateX(0px);
+	}
+
+	100%
+	{
+		text-shadow: 0px 0px 0px 1.0 #000000ff;
+		transform: translateX(0px);
+	}
+
+}
+
+.OnLeaderboardHealthDelta .PlayerLeaderboard
+{
+	animation-duration: 0.5s;
+	animation-timing-function: ease-out;
+	animation-name: HealthDeltaSlam;
+	animation-iteration-count: 1;
+}
+
+//Intro
+@keyframes 'HealthDeltaSlam'
+{
+	0%
+	{
+		pre-transform-scale2d: 1.0;
+		transform: translateX(0px);
+	}
+
+	46%
+	{
+		pre-transform-scale2d: 1.0;
+		transform: translateX(0px);
+	}
+	48%
+	{
+		pre-transform-scale2d: 0.8;
+		transform: translateX(-20px);
+	}
+
+	70%
+	{
+		pre-transform-scale2d: 1.01;
+		transform: translateX(0px);
+	}
+
+	100%
+	{
+		pre-transform-scale2d: 1.0;	
+		transform: translateX(0px);
+	}
+
+}
+
+.OnLeaderboardHealthThrob #LeaderboardHealthDelta {
+	
+	transition-property: none;
+	color: #E21F02FF;
+	text-shadow: 0px 0px 0px 1.0 #000000ff;
+
+	animation-duration: 2.24s;
+	animation-timing-function: linear;
+	animation-name: HealthDeltaThrob;
+	animation-iteration-count: infinite;
+}
+
+
+
+//Two throbs
+//Three
+@keyframes 'HealthDeltaThrob'
+{
+	0%
+	{
+		pre-transform-scale2d: 1.0;
+		text-shadow: 0px 0px 0px 1.0 #000000ff;
+	}
+
+	8.33333%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+		13%
+		{
+			
+			pre-transform-scale2d: 1.0;
+		}
+
+			16.6666%
+			{
+				
+				pre-transform-scale2d: 1.1;
+			}
+
+		19%
+		{
+			
+			pre-transform-scale2d: 1.0;
+		}
+
+	25%
+	{
+		
+		pre-transform-scale2d: 1.0;
+	}
+
+		30%
+		{
+			
+			pre-transform-scale2d: 1.0;
+		}
+
+				33.333%
+				{
+					
+					pre-transform-scale2d: 1.2;
+				}
+
+		36%
+		{
+			
+			pre-transform-scale2d: 1.0;
+		}
+
+	41.666%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+	//blip
+	50%
+	{
+		pre-transform-scale2d: 1.0;
+		text-shadow: 0px 0px 0px 2.0 #73000b60;
+	}
+
+	58.33%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+
+		63%
+		{
+			pre-transform-scale2d: 1.0;		
+		}
+
+			66.666%
+			{
+				pre-transform-scale2d: 1.1;	
+			}
+
+		69%
+		{
+			pre-transform-scale2d: 1;	
+		}
+
+	
+	75%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+		80%
+		{
+			pre-transform-scale2d: 1.0;
+		}
+
+				83.333%
+				{
+					pre-transform-scale2d: 1.2;
+				}
+
+		88%
+		{
+			pre-transform-scale2d: 1.0;
+		}
+
+	91.666%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+	100%
+	{
+		pre-transform-scale2d: 1.0;
+		text-shadow: 0px 0px 0px 1.0 #000000ff;
+	}
+	//blip
+}
+
+.AegisUsed.OnLeaderboardHealthDelta #LeaderboardHealthDelta {
+	
+	transition-property: none;
+	opacity: 1;
+	color: #E21F02FF;
+	text-shadow: 0px 0px 0px 3.0 #000000ff;
+
+	animation-duration: 1.0s;
+	animation-timing-function: ease-out;
+	animation-name: HealthDeltaBlockedByAegisAnim;
+	animation-iteration-count: 1;
+}
+
+@keyframes 'HealthDeltaBlockedByAegisAnim'
+{
+	0%
+	{
+		color: #E21F0200;
+		text-shadow: 0px 0px 0px 3.0 #EF220000;
+		pre-transform-scale2d: 2.0;
+		transform: translateX(50px) ;
+	}
+
+	24%
+	{
+		color: #E21F02FF;
+		text-shadow: 0px 0px 0px 3.0 #EF2200ff;
+		pre-transform-scale2d: 0.8;
+		transform: translateX(0px) ;
+	}
+	25%
+	{
+		color: #FFFFFFFF;
+		text-shadow: 0px 0px 0px 3.0 #EF2200ff;
+		pre-transform-scale2d: 0.8;
+		transform: translateX(0px);
+	}
+
+	35%
+	{
+		color: #555f;
+		text-shadow: 0px 0px 0px 3.0 #FFFF;
+		pre-transform-scale2d: 1.0;
+		transform: translateX(25px) ;
+	}
+
+	100%
+	{
+		text-shadow: 0px 0px 0px 3.0 #FFFF;
+		color: #555f;
+		transform: translateX(50px) ;
+		opacity: 0;
+		
+	}
+}
+
+.AegisIconLeaderboard 
+{
+	opacity : 0.0;
+
+	transition-property: opacity;
+	transition-duration: 200ms;
+
+	horizontal-align: right;
+	vertical-align: top;
+	font-size: 24px;
+	margin-right: 12px;
+	margin-top: 4px;
+	border-radius: 50%;
+	border: 1px solid #a00;
+	background-color: #000000cc;
+	background-image: url("s2r://panorama/images/items/prevent_next_death_psd.vtex");
+	background-size: 100%;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	padding-top: 0px;
+	padding-right: 0px;
+	text-shadow: 0px 0px 0px 0.0 #000000ff;
+}
+
+.AegisUsed.OnLeaderboardHealthDelta .AegisIconLeaderboard
+{	
+	opacity : 1.0;
+	pre-transform-scale2d: 1.0;
+	
+	animation-duration: 1.0s;
+	animation-timing-function: ease-out;
+	animation-name: AegisDefendAnim;
+	animation-iteration-count: 1;	
+	transition-property: none;
+}
+
+@keyframes 'AegisDefendAnim'
+{
+
+	0% 
+	{
+		brightness: 1;
+		pre-transform-scale2d: 1.0;
+		opacity: 0;
+	}
+
+	15% 
+	{
+		opacity: 1;
+		brightness: 1;
+		pre-transform-scale2d: 0.0;
+	}
+
+	25% 
+	{
+		brightness: 2;
+		pre-transform-scale2d: 1.4;
+	}
+
+	100%
+	{
+		brightness: 1;
+		pre-transform-scale2d: 1.0;
+	}
+}
+
+.AegisUsed.OnLeaderboardHealthThrob .AegisIconLeaderboard  
+{
+	opacity : 1.0;
+	pre-transform-scale2d: 1.0;
+
+	animation-duration: 2.24s;
+	animation-timing-function: linear;
+	animation-name: HealthDeltaThrob;
+	animation-iteration-count: infinite;
+
+	transition-property: none;
 }
 
 .IsDead #LeaderboardHealth {
@@ -247,39 +1110,128 @@ DACLeaderboardEntry {
 }
 
 #LeaderboardGold {
+	color: #e6a83b;
+}
+
+#LeaderboardGoldRoundDelta {
+	color: #ffd10400;
+	vertical-align: top;
+	text-align: left;
+	text-shadow: 0px 0px 0px 3.0 #00000000;
+	transition-property: color, text-shadow;
+	transition-duration: 1.5s;
+	transition-timing-function: ease-in-out, ease-in-out;
+	
+}
+
+.OnLeaderboardShowGoldDelta #LeaderboardGoldRoundDelta {
 	color: #ffd1048e;
+	text-shadow: 0px 0px 0px 1.0 #000000ff;
+	animation-duration: 0.85s;
+	animation-timing-function: ease-out;
+	animation-name: GoldDeltaFlash;
+	animation-iteration-count: 1;
+
+	transition-property: none;
+
 }
 
-.IsSelf #LeaderboardGold {
-	color: #ffd104;
+.OnLeaderboardShowGoldDelta.IsSelf #LeaderboardGoldRoundDelta {
+	color: #ffd104ff;
+}
+
+@keyframes 'GoldDeltaFlash'
+{
+	0%
+	{
+		text-shadow: 0px 0px 0px 1.0 #FFFFFFFF;
+		color: #FFFFFFFF;
+		pre-transform-scale2d: 1.8;
+	}
+
+	12%
+	{
+		color: #FFFFFFFF;
+		text-shadow: 0px 0px 0px 3.0 #FFFFFFFF;
+		pre-transform-scale2d: 1.0;
+	}
+
+	25%
+	{
+		color: #FFFFFFFF;
+		text-shadow: 0px 0px 0px 1.0 #ffd1048e;
+		pre-transform-scale2d: 1.0;
+	}
+
+	100%
+	{
+		color: #ffd1048e;
+		text-shadow: 0px 0px 0px 1.0 #0000;
+		pre-transform-scale2d: 1.0;
+	}
+
 }
 
 
-#LeaderBoardBackgroundStrip {
-	width: 120px;
-	height: 77px;
-	margin-top: 8px;
-}
 
-#LeaderboardLevel {
-	color: #f7b461;
+
+#LeaderboardCircle {
+	margin-right: 12px;
+	margin-top: 14px;
 	horizontal-align: right;
-	font-size: 24px;
-	vertical-align: center;
-	margin-right: -2px;
-	margin-bottom: 5px;
-	background-image: url("s2r://panorama/images/hud/dac_profile_level_leaderboard_bg_psd.vtex");
-	//background-size: 50px;
-	background-size: 100%;
-	width: 49px;
-	height: 49px;
-	text-align: center;
-	padding-top: 9px;
-	padding-right: 6px;
+	vertical-align: top;
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_level_psd.vtex");
+	background-size: 100%, 100%;
+	width: 32px;
+	height: 32px;
 }
 
-.IsDead #LeaderboardLevel {
-	margin-right: 48px;
+.PlayerLevel {
+	transition-property: brightness;
+	transition-duration: .2s;
+}
+
+
+.LevelUpFlash .PlayerLevel
+{
+	animation-name: LevelUpFlashText;
+	animation-duration: 1.25s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+}
+
+@keyframes 'LevelUpFlashText'
+{
+	0%
+	{
+		color: #6d94e3ff;
+		text-shadow: 0px 0px 0px 0.0 #6d94e3ff;
+		pre-transform-scale2d: 1.1;
+	}
+
+	5%
+	{
+		color: #ffffffff;
+		text-shadow: 0px 0px 0px 2.0 #ffffff10;
+		pre-transform-scale2d: 1.2;
+	}
+
+	30%
+	{
+		color: #ffffffff;
+		text-shadow: 0px 0px 0px 1.0 #6d94e3ff;
+	}
+
+	100%
+	{
+		color: #6d94e3ff;
+		text-shadow: 0px 0px 0px 0.0 #000000ff;		
+		pre-transform-scale2d: 1.0;
+	}
+}
+
+.IsDead .PlayerLevel {
+	//margin-right: 48px;
 	wash-color: #a00;
 }
 
@@ -288,47 +1240,6 @@ DACLeaderboardEntry {
 	horizontal-align: right;
 }
 
-#LeaderboardAvatar {
-	margin: 5px 0 0 36px;
-	height: 86px;
-	width: 110px;
-	background-color: pink;
-	
-	horizontal-align: right;
-	
-	margin-top: 4px;
-	margin-right: 24px;
-}
-
-.IsDead #LeaderboardAvatar {
-	horizontal-align: left;
-	margin-left: 0px;
-	width: 104px;
-	saturation: 0;
-	wash-color: #900;
-}
-
-.IsSelf #LeaderBoardBackgroundStrip {
-	width: 48px;
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #ffffff44 ), color-stop( .15, #ffffff55 ),to( rgba(255, 255, 255, 0) ) );	
-	border-left: 4px solid white;
-}
-
-.IsSelf.IsSelected #LeaderBoardBackgroundStrip {
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #cae7ffec ), color-stop( .15, #e2efff94 ),to( rgba(255, 255, 255, 0) ) );	
-	border-left: 4px solid white;
-}
-
-.IsSelected #LeaderBoardBackgroundStrip {
-	border-left: 4px solid #3da8ff;
-	width: 48px;
-
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #3da8ff ), color-stop( .15, #4973ff94 ),to( rgba(255, 255, 255, 0) ) );
-}
-
-.IsSelf #LeaderboardAvatar {
-	border: 2px solid rgb(127, 178, 255);
-}
 
 /*
 .IsFinished .LeaderboardIndicator {
@@ -363,59 +1274,54 @@ DACLeaderboardEntry {
 	background-position: center;
 }
 
-.LeaderboardSelfIndicator {
-	visibility: collapse;
-	width: 129.75px;
-	height: 83.25px;
-	margin: 5px 0 0 19px;
-}
-
-.IsSelf .LeaderboardSelfIndicator {
-	/*visibility: visible;*/
-}
-
-.LeaderboardDefeatedIndicator {
-	opacity: 0;
-	width: 143px;
-	height: 87px;
-	margin: 3px 0 0 8px;
-	transition-property: opacity;
-	transition-duration: 500ms;
-	
-}
-
 .LeaderboardDisconnectedIndicator {
 	opacity: 0;
-	width: 143px;
-	height: 87px;
-	margin: 3px 0 0 8px;
+	width: 110%;
+	height: 110%;
+	
 	transition-property: opacity;
-	transition-duration: 500ms;
+	transition-duration: 150ms;	
 }
 
 .HealthContainer {
 	opacity: 1;
 	transition-property: opacity;
 	transition-duration: 500ms;
-	margin-top: 4px;
+	 
+	overflow: noclip;
 }
 
 .HasDamage .HealthContainer {
 	opacity: 1;
 }
 
-
-
-.IsDead .LeaderboardDefeatedIndicator {
-	/*opacity: 1;*/
+.IsDisconnected .LeaderboardDisconnectedIndicator {
+	animation-name: OpacityThrob;
+	animation-duration: 2s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
 }
 
-.IsDisconnected .LeaderboardDisconnectedIndicator {
-	opacity: 1;
+
+@keyframes 'OpacityThrob'
+{
+	0%
+	{
+		opacity: 0.2;
+	}
+
+	50%
+	{
+		opacity: 1;
+	}
+
+	100%
+	{
+		opacity: 0.2;
+	}
 }
 
 .IsDead.IsDisconnected .LeaderboardDisconnectedIndicator {
-	margin-left: -42px;
 	visibility: collapse;
 }
 
@@ -451,7 +1357,6 @@ DACLeaderboardEntry {
 }
 
 .HealthIcon {
-	background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex");
 }
 
 .IsDead .HealthIcon {
@@ -459,7 +1364,6 @@ DACLeaderboardEntry {
 }
 
 .HealthMid .HealthIcon {
-	background-image: url("s2r://panorama/images/leaderboard/icon_health_mid_psd.vtex");
 }
 
 .HealthMid #LeaderboardHealth {
@@ -474,12 +1378,17 @@ DACLeaderboardEntry {
 	/*background-image: url("s2r://panorama/images/leaderboard/health_bar_yellow_empty_psd.vtex");*/
 }
 
-.HealthLow .HealthIcon {
+/*.HealthLow .HealthIcon {
 	background-image: url("s2r://panorama/images/leaderboard/icon_health_low_psd.vtex");
-}
+}*/
 
-.HealthLow #LeaderboardHealth {
+.HealthLow .PlayerHealth {
 	color: #ff6123;
+
+	animation-duration: 2.24s;
+	animation-timing-function: linear;
+	animation-name: HealthDeltaThrob;
+	animation-iteration-count: infinite;
 }
 
 .HealthLow #LeaderboardHealthBar_Left {
@@ -493,7 +1402,10 @@ DACLeaderboardEntry {
 
 
 .StatsContainer {
-	margin: 0px 0 0 8px;
+	horizontal-align: left;
+	vertical-align: top;
+	margin-left: 8px;
+	
 }
 
 .StatsContainer > Panel {
@@ -508,14 +1420,19 @@ DACLeaderboardEntry {
 
 .StatsContainer Label {
 	font-size: 24px;
-	text-shadow: 0px 0px 0px 3.0 #000;
+//text-shadow: 0px 0px 0px 3 #000;
 	color: #fff;
 	text-align: left;
 	/*width: 25px;*/
 	width: fit-children;
 	min-width: 15px;
-	font-family: RadianceM;
-	
+	font-family: Radiance;
+//	font-family: RadianceM;
+}
+
+#LeaderboardGold
+{
+ 	text-align: left;
 }
 
 .LowVisualQuality .StatsContainer Label {
@@ -528,15 +1445,28 @@ DACLeaderboardEntry {
 }
 
 #ParticleBG, #ParticleFG {
-	width: 250px;
-	height: 250px;
-	margin-top: -50px;
+	width: 100%;
+	height: 100%;	
 }
 
 #ParticleFG {
 	z-index: 2;
 }
 
+#ParticleBG,
+#ParticleFG {
+	height: 165px;
+	width: 480px;
+	margin-top: -46px;
+}
+
+
+.GameMode_Duos #ParticleBG,
+.GameMode_Duos #ParticleFG {
+	height: 165px;
+	width: 505px;
+	margin-top: -46px;
+}
 
 
 /*
@@ -635,28 +1565,26 @@ DACLeaderboardEntry {
 
 .LeftConnector 
 {
-	width: 14px;
-	height: 82px;
-	margin-top: 6px;
-	background-color: black;
+	
 }
 
+//todo: this doesn't line up correctly on dead leaderboard entries.
 .LeaderboardChatMessage
 {
-	margin-left: 152px;
-	padding-left: 12px;
 	max-width: 1500px;
 	height: fit-children;
 	max-height: 300px;
 	opacity: 0.0;
-    /*flow-children: right;*/
+	
+	margin-bottom: 350px;
+	margin-left: 100px;
+	
+	transition-property: opacity;
+	transition-duration: 500ms;
 }
 
 .ShowChatMessage .LeaderboardChatMessage
 {
-	visibility: visible;
-	transition-property: opacity;
-	transition-duration: 500ms;
 	opacity: 1.0;
 }
 
@@ -682,8 +1610,6 @@ DACLeaderboardEntry {
 	vertical-align: center;
 	padding: 20px 30px;
 }
-
-
 
 .LeaderboardChatMessageTail {
 	vertical-align: bottom;
@@ -729,22 +1655,6 @@ DACLeaderboardEntry {
 }
 
 
-.ScoreboardHidden.HasPlayerOpponent .InCombat .IsAwayGame .PlayerLeaderboard
-{
-	margin-top: -20px;
-}
-
-.ScoreboardHidden.HasPlayerOpponent .InCombat .IsHomeGame .LeaderboardBelow
-{
-	margin-top: -47px;
-}
-
-.ScoreboardHidden.HasPlayerOpponent .InCombat .IsAwayGame #ParticleBG,
-.ScoreboardHidden.HasPlayerOpponent .InCombat .IsAwayGame #ParticleFG
-{
-	margin-top: -90px;
-}
-
 
 .IsSelf .LeaderboardChatMuteButton
 {
@@ -758,7 +1668,7 @@ DACLeaderboardEntry {
     visibility: collapse;
 }
 
-.ScoreboardHidden .IsClone.CloneIsVisible
+ .IsClone.CloneIsVisible
 {
     visibility: visible;
 }
@@ -772,43 +1682,99 @@ DACLeaderboardEntry {
 
 .IsClone.CloneIsVisible #LeaderboardAvatar
 {
-	//opacity: 1;
-	//wash-color: #00aeffff;
-	visibility: collapse;
+	saturation: 0.0;
+	
+	contrast: 2;
+	brightness: 1.6;
+	wash-color: #456699ff;
+	animation-name: GhostlyThrob;
+	animation-timing-function: ease-in-out;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+
+	transition-property: opacity;
+	transition-timing-function: ease-in-out;
+	transition-duration: 0.1s;
+}
+
+.IsClone .PlayerLevel,
+.IsClone .PlayerLevelIcon,
+.IsClone .PlayerGold,
+.IsClone .PlayerGoldIcon,
+.IsClone .PlayerHealth,
+.IsClone .PlayerHealthIcon
+{
+	wash-color: #456699ff;
+	opacity: 1;
+	saturation: 0;
+}
+
+.IsClone .PlayerName
+{
+	color: #6587bb;
+}
+
+.IsDisconnected #LeaderboardAvatar
+{
+	saturation: 0;
+	brightness: 0.5;
+}
+
+.IsDisconnected .PlayerName
+{
+	opacity: .35;
+	saturation: 0;
+}
+
+.IsDisconnected .PlayerLevel,
+.IsDisconnected .PlayerLevelIcon,
+.IsDisconnected .PlayerGold,
+.IsDisconnected .PlayerGoldIcon,
+.IsDisconnected .PlayerHealth,
+.IsDisconnected .PlayerHealthIcon
+{
+	opacity: .15;
+	saturation: 0;
+}
+
+
+@keyframes 'GhostlyThrob'
+{
+	0%
+	{
+		opacity: 0.6;
+	}
+
+	50%
+	{
+		opacity: 0.3;
+	}
+
+	100%
+	{
+		opacity: 0.6;
+	}
 }
 
 .IsClone.CloneIsVisible #LeaderboardAvatar #AvatarFG
 {
-	//opacity: 1;
+	opacity: 1;
 	//wash-color: #00aeffff;
 	//visibility: collapse;
 }
 
-.IsClone .LeaderboardBelow
+.IsClone .LeaderboardName
 {
 	color: #009cff88;
-	//color: #666;
 }
 
 .CloneIcon
 {
-	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_clone_psd.vtex");
-	background-size: 60% 90%;
-	background-repeat: no-repeat;
-	background-position: 65%;
-	opacity: .8;
-	height: 86px;
-	width: 150px;
-	//background-color: #009cffaa;
-	background-color: #444;
-	
-	horizontal-align: right;
-	
-	margin-top: 4px;
-	margin-right: 24px;
-
-	border-radius: 10px;
-
+	//saturation: 0;
+	wash-color: #00aeffff;
+	opacity: .2;
+	height: 100%;
+	width: 100%;
 	visibility: collapse;
 
 }
@@ -820,8 +1786,7 @@ DACLeaderboardEntry {
 
 .IsDead.IsClone .CloneIcon 
 {
-	margin-left: -42px;
-	horizontal-align: left;
+	opacity: 0.5;
 	wash-color: #f88;
 }
 
@@ -830,34 +1795,45 @@ DACLeaderboardEntry {
 
 
 .LeaderboardTargetIndicator {
-	opacity: 1;
+	opacity: 0.9;
 	transition-property: opacity;
-	transition-duration: 300ms;
-	width: 235px;
-	height: 190px;
-	margin-top: -50px;
-	wash-color: #ccc;
+	transition-duration: 100ms;
+	
+	width: 360px;//expanded so that clashing sword and shield are visible
+	height: 75px;
+	margin-top: 17px;//offset to line up with child stuff
+	wash-color: #ccc;//
 
 	animation-duration: .81s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
-}
 
-.ScoreboardVisible .LeaderboardTargetIndicator
-{
 	visibility: collapse;
+	margin-left : -15px;
 }
 
-.ScoreboardHidden.HasPlayerOpponent .InCombat .IsSelected .LeaderboardTargetIndicator,
-.ScoreboardHidden.HasPlayerOpponent .InCombat .IsOpponent .LeaderboardTargetIndicator
+/* todo
+.IsCombatSelected .LeaderboardTargetIndicator
 {
-	//opacity: 1;
+	brightness: 3;
+	margin-left : -1px;
+}
+*/
+
+.PlayerLeaderboard:hover .LeaderboardTargetIndicator
+{
+	brightness: 2;
+	margin-left: -18px;
 }
 
-.IsDead .LeaderboardTargetIndicator
+/* todo
+.IsCombatSelected .PlayerLeaderboard:hover .LeaderboardTargetIndicator
 {
-	//opacity: 0;
+	brightness: 4;
+	margin-left : -1px;
 }
+*/
+
 
 .LeaderboardTargetIndicator Image 
 {
@@ -869,18 +1845,29 @@ DACLeaderboardEntry {
 	width: 42px;
 	height: 42px;
 	margin-bottom: 12px;
+	overflow: noclip;
+	//visibility: collapse;
 }
+
+
+.CombatLeaderboardBackground 
+{
+	width: 235px;
+	height: 260px;
+	margin-right: 55px;//pulled back so that we align with the other things
+	
+	vertical-align: top;
+
+	transition-property: brightness;
+	transition-duration: .2s;
+}
+
 
 .LeaderboardTargetIndicator .SwordIcon
 {
 	margin-right: 5px;
 	animation-name: Fighting;
-	vertical-align: top;
-	//visibility: collapse;
-	opacity: 0;
-
-	transition-property: opacity;
-	transition-duration: .2s;
+	
 }
 
 
@@ -888,21 +1875,50 @@ DACLeaderboardEntry {
 {
 	margin-right: 15px;
 	animation-name: Defending;
-	vertical-align: bottom;
-	//visibility: collapse;
-	opacity: 0;
+	margin-top: 20px;
+}
 
-	transition-property: opacity;
-	transition-duration: .2s;
+.InCombat .IsHomeGame .LeaderboardTargetIndicator
+{
+	margin-top: 20px;
+	ui-scale: 100%;
+	margin-left: 0px;
+}
+
+.GameMode_Duos.InCombat .IsHomeGame .LeaderboardTargetIndicator {
+	width: 370px;
+}
+
+.InCombat .IsAwayGame .LeaderboardTargetIndicator
+{
+	visibility: collapse;
+}
+
+.InCombat .LeaderboardTargetIndicator
+{
+	ui-scale: 80%;
+	margin-top: 0px;
+	margin-left: 60px;
+
+	visibility: visible;
 }
 
 
+
+
+.IsFinished .DefendIcon,
+.IsFinished .SwordIcon
+{
+	visibility: collapse;
+}
+
+/*
 .IsSelected.IsHomeGame .DefendIcon,
 .IsSelected.IsAwayGame .SwordIcon,
 .IsOpponent.IsHomeGame .DefendIcon,
 .IsOpponent.IsAwayGame .SwordIcon
 {
-	//visibility: visible;
+	visibility: visible;
 }
 
 .IsHomeGame .DefendIcon,
@@ -918,13 +1934,7 @@ DACLeaderboardEntry {
 	//shouldn't need this, but...
 	visibility: collapse;
 }
-
-
-.IsSelected .LeaderboardTargetIndicator
-.IsOpponent .LeaderboardTargetIndicator
-{
-	//visibility: visible;
-}
+*/
 
 .IsClone .DefendIcon,
 .IsClone .SwordIcon
@@ -932,9 +1942,537 @@ DACLeaderboardEntry {
 	wash-color: #00aeffff;
 	opacity: .85;
 }
-
+/*
 .IsFinished .DefendIcon,
 .IsFinished .SwordIcon
 {
 	opacity: 0;
 }
+*/
+
+.LeaderboardNotification
+{
+	margin-left: 295px;
+	max-width: 1500px;
+	height: fit-children;
+	height: 60px; 
+
+	//margin-top: 20px;
+
+	z-index: 2;
+
+	
+    /*flow-children: right;*/
+}
+
+
+.LowVisualQuality .ShowNotification .LeaderboardNotification 
+{
+    transition-property: none;
+	transition-duration: 0s;
+}
+
+.LeaderboardNotification .NotificationItem {
+	height: 92px;
+	margin: 0px 10;
+	padding: 5px 15px;
+}
+
+.IsPlatformPC .NotificationItem {
+	width: 400px;
+}
+
+.LeaderboardNotification DACParticleScenePanel {
+	width: 1000px;
+	height: 1000px;
+	overflow: noclip;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+.LeaderboardNotification .TextContainer {
+	flow-children: right;
+	vertical-align: middle;
+	width: fill-parent-flow(1);
+}
+
+.LeaderboardNotification .TextContainer Label {
+	width: fill-parent-flow(1);
+}
+
+.DuosMessageContents.TextContainer Label
+{
+    width: fit-children;
+}
+
+.LeaderboardNotification .ChatMessageContents
+{
+    vertical-align: middle;
+}
+
+.NotificationItemContainer {
+	visibility: collapse;
+}
+
+.NotificationItemContainer.Appear {
+	visibility: visible;
+}
+
+.NotificationItem Label {
+	font-size: 20px;
+}
+
+.NotificationItem .DuosMessageLabel 
+{
+	font-size: 28px;
+	color: textBrightest;
+	margin-left: 15px;
+}
+
+.NotificationItem .DuosMessageType
+{
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 16px;
+	//color: #ccc;
+	color: textAccent;
+	margin-right: 15px;
+	margin-left: 10px;
+	visibility: collapse;
+}
+
+#DuosMessage_UnitIcon
+{
+    vertical-align: center;
+    margin-left: 8px;
+    ui-scale: 120%;
+    brightness: 1.2;
+}
+
+#DuosMessage_AllianceIcon
+{
+	width: 70px;
+	height: 70px;
+}
+
+#ResponseContainer
+{
+    height: 100%;
+    width: 60px;
+    horizontal-align: right;
+    flow-children: down;
+    visibility: collapse;
+}
+.ShowResponseOptions #ResponseContainer
+{
+    visibility: visible;
+}
+
+.ResponsePanel
+{
+    height: 50%;
+    width: 100%;
+}
+#ThumbsUp
+{
+    background-image: url("s2r://panorama/images/hud/thumbs_up_psd.vtex");
+}
+#ThumbsDown
+{
+    background-image: url("s2r://panorama/images/hud/thumbs_down_psd.vtex");
+}
+
+// DUOS
+
+.GameMode_Duos .HealthContainer
+{
+	visibility: collapse;
+}
+
+.GameMode_Duos #GoldStat
+{
+	margin-top: 35px;
+	ui-scale: 160%;
+}
+
+.GameMode_Duos .GoldIcon
+{
+	margin-top: 3px;
+	ui-scale: 80%;
+}
+
+//---------------------------------------------------
+// NEW STYLES FOR MINI LEADERBOARD IN PREPARE PHASE
+//---------------------------------------------------
+
+
+
+.PlayerLeaderboard 
+{
+	width: 286px;
+	//height: 130px;
+	min-height: 60px;
+	//margin-top: 15px;  //helps line up with scoreboard
+	transition-property: position, brightness;
+	transition-duration: 100ms;
+	overflow: noclip;
+
+	//background-color: black;
+}
+
+.LowVisualQuality .PlayerLeaderboard
+{
+	transition-duration: 0s;
+}
+
+.IsSelected .PlayerLeaderboard
+{
+	//brightness: 3.0;
+}
+
+.PlayerLeaderboard:hover
+{
+	brightness: 2.0;
+}
+
+.PlayerLeaderboard .PlayerAvatarGroup
+{
+	//visibility: collapse;
+	height: 60px;
+	width: 60px;
+	//vertical-align: center;
+}
+
+.PlayerLeaderboard
+{
+	flow-children: right;
+}
+
+.PlayerName 
+{
+	text-shadow: 0px 0px 0px 1.0 #00000000;
+	font-size: 20px;
+	font-weight: light;
+	vertical-align: middle;
+	color: #dedede;
+	width: 130px;
+	text-overflow: ellipsis;
+	margin-left: 10px;
+	line-height: 22px;
+	margin-top: 1px;
+}
+
+.GameMode_Duos .PlayerName {
+	width: 160px;
+}
+
+.PlayerAvatarGroup #PlayerLevelContainer {
+	width: 100%;
+	height: 100%;
+}
+
+.IsDead #PlayerLevelContainer {
+	visibility: collapse;
+}
+
+.PlayerLevelBG {
+	width: 40px;
+	height: 40px;
+	vertical-align: bottom;
+	horizontal-align: right;
+
+	background-image: url("s2r://panorama/images/leaderboard/levelcontainer_png.vtex");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.PlayerAvatarGroup .PlayerLevel {
+	
+	color: #3E4586;
+	font-size: 18px;
+	vertical-align: bottom;
+	horizontal-align: right;
+	margin-right: 5px;
+	text-overflow: shrink;
+	max-width: 13px;
+	
+}
+
+#PlayerInfo {
+	flow-children: down;
+	horizontal-align: right;
+	min-width: 75px;
+}
+
+#GoldRow,
+#HealthRow {
+	flow-children: right;
+	horizontal-align: right;
+}
+
+#GoldRow {
+	margin-top: 3px;
+	margin-bottom: -3px;
+}
+
+.GameMode_Duos #HealthRow {
+	visibility: collapse;
+}
+
+
+
+.PlayerLevel,
+.PlayerHealth,
+.PlayerGold
+{
+	font-size: 25px;
+	font-weight: bold;
+	margin-left: 15px;
+}
+
+
+.GameMode_Duos .PlayerGold {
+	margin-left: 0px;
+	text-align: left;
+	
+}
+
+.PlayerLevel
+{
+	text-shadow: 0px 0px 0px 1.0 #00000000;
+	color: #93b7fe;
+	vertical-align: center;
+	width: 24px;
+	text-align: right;
+	margin-left: 0px;
+
+	text-overflow: shrink;
+}
+
+
+.PlayerHealth {
+	text-shadow: 0px 0px 0px 1.0 #00000000;
+
+	text-align: right;
+	padding-right: 4px;
+	color: #a2ff92;
+	//color: gradient( linear, 0% 0%, 0% 100%, from( #a2ff92 ), to( #52af43 ) );
+	vertical-align: middle;
+	letter-spacing: 1px;
+	text-shadow: 0px 0px 3 #000000;
+}
+
+.HealthMid .PlayerHealth
+{
+	color: #fff66e;
+}
+
+.HealthLow .PlayerHealth
+{
+	color: #ff6123;
+}	
+
+.PlayerGold {
+	text-shadow: 0px 0px 0px 1.0 #00000000;
+	//width: 32px;
+	font-size: 18px;
+	text-align: right;
+	text-overflow: shrink;
+	padding-right: 6px;
+	color: gold;
+	//color: gradient( linear, 0% 0%, 0% 100%, from( #FBF8E2 ), to( #B1AC77 ) );
+	vertical-align: middle;
+	letter-spacing: 1px;
+	font-weight: semi-bold;
+	text-shadow: 0px 0px 3 #000000;
+
+}
+
+.GameMode_Duos #PlayerInfo {
+	vertical-align: middle;
+	horizontal-align: right;
+	min-width: 58px;
+	margin-top: -3px;
+}
+
+.GameMode_Duos .PlayerGold
+{
+	margin-left: 5px;
+}
+
+.PlayerLevelIcon
+{
+	width: 18px;
+	height: 18px;
+	opacity: .75;
+	margin-left: 0px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/player_level_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.LowVisualQuality .PlayerLevelIcon
+{
+	opacity: 1;
+}
+
+.PlayerHealthIcon
+{
+	width: 17px;
+	height: 17px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex");
+	background-size: contain;
+	margin-top: 2px;
+	margin-left: -3px;
+}
+
+.HealthMid .PlayerHealthIcon
+{
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_mid_psd.vtex");
+}
+
+.HealthLow .PlayerHealthIcon
+{
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_low_psd.vtex");
+}	
+
+.PlayerGoldIcon
+{
+	width: 12px;
+	height: 12px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/icon_gold_bevel_psd.vtex");
+	background-size: contain;
+	margin-top: 0px;
+	margin-left: -4px;
+	margin-right: 2px;
+}
+
+
+.MobileIcon 
+{
+	margin-left: 5px;
+	margin-top: 5px;
+	horizontal-align: left;
+	vertical-align: top;
+
+	width: 10px;
+	height: 18px;
+	wash-color: #ffffff;
+	visibility: collapse;
+}
+
+/* .IsSelf .MobileIcon {
+	wash-color: white;
+} */
+
+.IsSelected .MobileIcon {
+	visibility: collapse;
+}
+
+.IsDead .MobileIcon {
+	wash-color: rgb(141, 80, 80);
+}
+
+
+.IsMobile .MobileIcon {
+	visibility: visible;
+}
+
+.IsMobile .IsSelected .MobileIcon
+{
+	visibility: collapse;
+}
+
+.IsMobile .PlayerName
+{
+	//width: 98px;
+	//width: 108px;
+	//margin-left: 25px;
+}
+
+//DUOS
+
+.GameMode_Duos .PlayerLeaderboard
+{
+	width: 300px;
+}
+
+.GameMode_Duos .PlayerLeaderboard .PlayerHealth,
+.GameMode_Duos .PlayerLeaderboard .PlayerHealthIcon
+{
+	visibility: collapse;
+}
+
+
+//------------------------------------------
+// NEW BACKGROUNDS
+//------------------------------------------
+
+.PlayerLeaderboard
+{
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_png.vtex");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+
+.MyTeam .PlayerLeaderboard {
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_png.vtex");
+}
+
+.IsSelf .PlayerName
+{
+	color: #ffffff;
+	font-weight: normal;
+}
+
+.IsDead .PlayerLeaderboard {
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_dead_psd.vtex");
+}
+
+.IsSelected .PlayerLeaderboard {
+	brightness: 2;
+}
+
+.IsSelf .PlayerLeaderboard {
+	//brightness: 2.0;
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_png.vtex");
+}
+
+.LowVisualQuality .IsSelf .PlayerLeaderboard {
+	brightness: 1;
+}
+
+/* #Leaderboard_1 .PlayerLeaderboard{
+	background-image: url("s2r://panorama/images/leaderboard/minimal_background_panel01_psd.vtex");
+}
+
+#Leaderboard_2 .PlayerLeaderboard{
+	background-image: url("s2r://panorama/images/leaderboard/minimal_background_panel02_psd.vtex");
+}
+
+#Leaderboard_3 .PlayerLeaderboard{
+	background-image: url("s2r://panorama/images/leaderboard/minimal_background_panel03_psd.vtex");
+}
+
+#Leaderboard_4 .PlayerLeaderboard{
+	background-image: url("s2r://panorama/images/leaderboard/minimal_background_panel04_psd.vtex");
+}
+
+#Leaderboard_5 .PlayerLeaderboard{
+	background-image: url("s2r://panorama/images/leaderboard/minimal_background_panel05_psd.vtex");
+}
+
+#Leaderboard_6 .PlayerLeaderboard{
+	background-image: url("s2r://panorama/images/leaderboard/minimal_background_panel06_psd.vtex");
+}
+
+#Leaderboard_7 .PlayerLeaderboard{
+	background-image: url("s2r://panorama/images/leaderboard/minimal_background_panel07_psd.vtex");
+}
+
+#Leaderboard_8 .PlayerLeaderboard{
+	background-image: url("s2r://panorama/images/leaderboard/minimal_background_panel08_psd.vtex");
+} */

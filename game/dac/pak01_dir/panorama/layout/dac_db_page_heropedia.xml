@@ -1,49 +1,55 @@
 <root>
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_heropedia.vcss_c" />
 	</styles>
 	<snippets>
 	</snippets>
 
 	<DACHeropediaPage hittest="false" class="DashboardPage">
-		<Panel class="Dimmer">
-			<Panel id="HeropediaContainer">
-				<Panel class="HeropediaTabBackground" />
-				<Panel class="HeropediaBody">
-					<Panel class="HeropediaTabButtons">
-						<Panel class="TabList">
-							<Panel id="TitleImage"/>
-							<Label id="TabTitle" text="#DAC_InGame_Heropedia" />
-							<Button id="SeasonButtonContainer" onactivate="DACShowHeropediaSeasonPage(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' )">
-								<Label class="SeasonTabLabel PC" text="#DAC_Season"/>
-								<Label class="SeasonTabLabel Mobile" text="#DAC_Season_Mobile"/>
-							</Button>
+		<Panel id="HeropediaContainer">
+			<Panel class="HeropediaBody">
+				<Panel class="HeropediaTabButtons">
+					<Panel class="TabList">
+						<Button id="HowToPlayContainer" onactivate="DACShowHeropediaHowToPlay(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' )">
+							<Label class="SeasonTabLabel" text="#DAC_InGame_HowToPlay"/>
+						</Button>
 
-							<Button id="HeroesButtonContainer" onactivate="DACShowHeropediaHeroesPage(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' )">
-								<Label id="HeroesTabLabel" text="#DAC_InGame_Tab_Heroes"/>
-							</Button>
-							<Button id="SynergiesButtonContainer" onactivate="DACShowHeropediaSynergiesPage(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' );">
-								<Label id="SynergiesTabLabel" text="#DAC_InGame_Tab_Synergies"/>
-							</Button>
-							<Button id="ItemsButtonContainer" onactivate="DACShowHeropediaItemsPage(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' )">
-								<Label id="ItemsTabLabel" text="#DAC_InGame_Tab_Items"/>
-							</Button>
-							<Button id="CreepsButtonContainer" onactivate="DACShowHeropediaCreepsPage(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' )">
-								<Label id="CreepsTabLabel" text="#DAC_InGame_Tab_LootRounds"/>
-							</Button>
-						</Panel>
-					</Panel>
+						<Button id="HeroesButtonContainer" onactivate="DACShowHeropediaHeroesPage(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' )">
+							<Label id="HeroesTabLabel" text="#DAC_InGame_Tab_Heroes"/>
+						</Button>
+						<Button id="SynergiesButtonContainer" onactivate="DACShowHeropediaSynergiesPage(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' );">
+							<Label id="SynergiesTabLabel" text="#DAC_InGame_Tab_Synergies"/>
+						</Button>
+						<Button id="ItemsButtonContainer" onactivate="DACShowHeropediaItemsPage(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' )">
+							<Label id="ItemsTabLabel" text="#DAC_InGame_Tab_Items"/>
+						</Button>
+						<Button id="CreepsButtonContainer" onactivate="DACShowHeropediaCreepsPage(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' )">
+							<Label id="CreepsTabLabel" text="#DAC_InGame_Tab_LootRounds"/>
+						</Button>
 
-					<Panel class="HeropediaTabPanels">
-						<DACHeropediaSeasonPage id="SeasonTabContainer" class="TabPageContainerNoScroll" hittest="true" />
-						<DACHeropediaHeroesPage id="HeroesTabContainer" class="TabPageContainerNoScroll" hittest="true" />
-						<DACHeropediaItemsPage id="ItemsTabContainer" class="TabPageContainerNoScroll" hittest="true" />
-						<DACHeropediaSynergiesPage id="SynergiesTabContainer" class="TabPageContainerNoScroll" hittest="true" />
-						<DACHeropediaCreepsPage id="CreepsTabContainer" class="TabPageContainerNoScroll" hittest="true" />
+						<Button id="SeasonButtonContainer" onactivate="DACShowHeropediaSeasonPage(); PlaySoundEffect( 'DAC_UI.SeasonInfo_TabActivate' )">
+							<Label class="SeasonTabLabel PC" text="#DAC_Season"/>
+							<Label class="SeasonTabLabel Mobile" text="#DAC_Season_Mobile"/>
+						</Button>
 					</Panel>
 				</Panel>
+
+				<Panel class="HeropediaTabPanels">
+					<DACHeropediaHowToPlayPage id="HowToPlayTabContainer" class="TabPageContainerNoScroll" hittest="true" />
+					<DACHeropediaSeasonPage id="SeasonTabContainer" class="TabPageContainerNoScroll" hittest="true" />
+					<DACHeropediaHeroesPage id="HeroesTabContainer" class="TabPageContainerNoScroll" hittest="true" />
+					<DACHeropediaItemsPage id="ItemsTabContainer" class="TabPageContainerNoScroll" hittest="true" />
+					<DACHeropediaSynergiesPage id="SynergiesTabContainer" class="TabPageContainerNoScroll" hittest="true" />
+					<DACHeropediaCreepsPage id="CreepsTabContainer" class="TabPageContainerNoScroll" hittest="true" />
+				</Panel>
 			</Panel>
+			<Panel class="DashboardHeader">
+            	<Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
+                <Label class="PageTitle DistressedFont" text="#DAC_InGame_Heropedia"/>
+                <Label class="PageSubtitle" text="#DAC_Season_Subhead"/>
+            </Panel>
 		</Panel>
 	</DACHeropediaPage>
 </root>

@@ -1,0 +1,149 @@
+// Terrorblade - Hero
+criterion "Isterrorblade" "classname" "terrorblade" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response terrorblade_recruit_1
+{
+	speak "terrorblade_recruit" noscene 
+}
+
+Rule terrorblade_recruit_1_rule
+{
+	criteria Isterrorblade ConceptRecruit UnitRank1
+	response terrorblade_recruit_1
+}
+
+
+Response terrorblade_recruit_2
+{
+	speak "terrorblade_upgrade" noscene 
+}
+
+Rule terrorblade_recruit_2_rule
+{
+	criteria Isterrorblade ConceptRecruit UnitRank2
+	response terrorblade_recruit_2
+}
+
+
+Response terrorblade_recruit_3
+{
+	speak "terrorblade_final_upgrade" noscene 
+}
+
+Rule terrorblade_recruit_3_rule
+{
+	criteria Isterrorblade ConceptRecruit UnitRank3
+	response terrorblade_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response terrorblade_start_round
+{
+	speak "terrorblade_start_round" noscene 
+}
+
+Rule terrorblade_start_round_rule
+{
+	criteria Isterrorblade ConceptRoundStart 
+	response terrorblade_start_round
+}
+
+
+Response terrorblade_start_round_lost_last_round
+{
+	speak "terrorblade_start_round_lost_last_round" noscene 
+}
+
+Rule terrorblade_start_round_lost_last_round_rule
+{
+	criteria Isterrorblade ConceptRoundStart LostLastGame
+	response terrorblade_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response terrorblade_flawless_victory
+{
+	speak "terrorblade_flawless_victory" noscene 
+}
+
+Rule terrorblade_flawless_victory_rule
+{
+	criteria Isterrorblade ConceptRoundEnd Result_WinFlawless
+	response terrorblade_flawless_victory
+}
+
+
+Response terrorblade_decisive_victory
+{
+	speak "terrorblade_decisive_victory" noscene 
+}
+
+Rule terrorblade_decisive_victory_rule
+{
+	criteria Isterrorblade ConceptRoundEnd Result_WinDecisive
+	response terrorblade_decisive_victory
+}
+
+Response terrorblade_narrow_victory
+{
+	speak "terrorblade_narrow_victory" noscene 
+}
+
+Rule terrorblade_narrow_victory_rule
+{
+	criteria Isterrorblade ConceptRoundEnd Result_WinNarrow
+	response terrorblade_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response terrorblade_flawless_defeat
+{
+	speak "terrorblade_flawless_defeat" noscene 
+}
+
+Rule terrorblade_flawless_defeat_rule
+{
+	criteria Isterrorblade ConceptRoundEnd Result_LoseFlawless
+	response terrorblade_flawless_defeat
+}
+
+
+Response terrorblade_decisive_defeat
+{
+	speak "terrorblade_decisive_defeat" noscene 
+}
+
+Rule terrorblade_decisive_defeat_rule
+{
+	criteria Isterrorblade ConceptRoundEnd Result_LoseDecisive
+	response terrorblade_decisive_defeat
+}
+
+Response terrorblade_narrow_defeat
+{
+	speak "terrorblade_narrow_defeat" noscene 
+}
+
+Rule terrorblade_narrow_defeat_rule
+{
+	criteria Isterrorblade ConceptRoundEnd Result_LoseNarrow
+	response terrorblade_narrow_defeat
+}

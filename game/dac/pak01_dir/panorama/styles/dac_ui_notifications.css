@@ -14,13 +14,20 @@ DACNotifications
 .IsLayoutLargeScreen DACNotifications
 {
 	ui-scale: 80%;
-	width: 1200px;
 }
 
-.IsLayoutSmallScreen DACNotifications
-{
-	width: 1000px;
-	margin-right: 130px;
+
+
+.AegisIcon {
+	visibility: collapse;
+	width: 40px;
+	height: 40px;
+	vertical-align: center;
+	margin-left: 25px;
+}
+
+.AegisUsed .AegisIcon {
+	visibility: visible;
 }
 
 #NotificationsContainer
@@ -82,22 +89,42 @@ Button Label
 	margin-top: 4px;
 }
 
-.NotificationItem
-{
-	horizontal-align: center;
-	width: 100%;
-	background-color: #222222ee;
-
+.NotificationItem {
+	
 	height: 60px;
-	margin-bottom: 5px;
-	padding: 5px;
-	padding-right: 95px;
-	padding-left: 95px;
-	flow-children: right;
-	border-radius: 2px;
+	//margin-right: 40px; 
+	margin-right: 0px;
+	//border-radius: 2px;
 	transition-property: opacity;
 	transition-duration: 0.2s;
 	opacity: 0;
+}
+
+.NotificationItem.CombatResult {
+	background-color: none;
+}
+
+.NotificationItem.CombatResult #NotificationLabel {
+	color: #fff;
+	font-size: 28px;
+}
+
+.DuosMessage.NotificationItem
+{
+	//background-color: #222222fb;
+	//border-right: 6px solid textAccent;
+	//background-color: white;
+	background-color: none;
+
+	//temp for playtest
+	//ui-scale: 110%;
+	//margin-bottom: 10px;
+
+}
+
+.Combat .DuosMessage.NotificationItem
+{
+	//ui-scale: 120%;
 }
 
 .NotificationItem.NoRightFlow
@@ -107,37 +134,35 @@ Button Label
 	padding-right: 0px;
 }
 
-.IsLayoutLargeScreen .NotificationItem
-{
-	width: 1100px;
-}
-
-
-.IsLayoutSmallScreen .NotificationItem
-{
-	width: 1000px;
-	background-color: gradient( linear, 0% 0%, 100% 0%, from( #11111100 ), color-stop( 0.1, #111111ee ), color-stop( .9, #111111ee ), to( #11111100 ) );
-}
-
 
 .NotificationItem.LocalPlayer
 {	
 	background-color: #111111dd;	
 }
 
-.IsLayoutSmallScreen .NotificationItem.LocalPlayer
-{	
-	background-color: gradient( linear, 0% 0%, 100% 0%, from( #11111100 ), color-stop( 0.1, #111111ee ), color-stop( .9, #111111ee ), to( #11111100 ) );
-}
-
 .Appear .NotificationItem {
 	opacity: 1;
+	transition-duration: 0.5s;
+}
+
+
+.ShopVisible .Appear .NotificationItem {
+	opacity: 0.1;
+}
+
+
+.Appear.NotificationItemContainer {
+	transition-duration: 0.5s;
+}
+
+.FadeOut.NotificationItemContainer {
+	width: 0.01px;
 }
 
 .FadeOut .NotificationItem
 {
-	transition-duration: 0.5s;
 	opacity: 0;
+	width:fit-children;
 }
 
 .LowVisualQuality .NotificationItem
@@ -160,7 +185,7 @@ Button Label
 	color: #a8acca;
 	vertical-align: center;
 
-	margin-top: 5px;
+	//margin-top: 5px;
 }
 
 .IsLayoutSmallScreen .NotificationItem Label
@@ -223,12 +248,6 @@ Button Label
 	font-weight: bold;
 }
 
-.KnockedOut
-{
-	color: #ff4e31;
-	font-weight: bold;
-}
-
 .CombatDamage
 {
 	color: #ff4e31;
@@ -242,26 +261,12 @@ Button Label
 
 .NotificationItem .ChatMessageLabel
 {
-	color: #8588a0;
-	font-size: 24px;
-	margin-top: -6px;
+	//color: #8588a0;
+	//font-size: 24px;
+	//margin-top: -6px;
+	font-size: 21px;
 }
 
-.NotificationItem.PlayerEliminated,
-.NotificationItem.CombatLose,
-.NotificationItem.CombatLoseAway
-{
-	background-color: #5b1124cc;
-}
-
-.IsLayoutSmallScreen .NotificationItem.PlayerEliminated
-{
-	background-color: gradient( linear, 0% 0%, 100% 0%, from( #5b112400 ), color-stop( 0.1, #720b26 ), color-stop( .9, #720b26 ), to( #5b112400 ) );
-
-	animation-name: RedFadeInEliminated;
-	animation-duration: 1.3s;
-	animation-iteration-count: infinite;
-}
 
 @keyframes 'RedFadeInEliminated'
 {
@@ -325,6 +330,12 @@ Button Label
 		
 }
 
+.NotificationItem.WinStreak,
+.NotificationItem.WinStreakComplete {
+	margin-left: 30px;
+	margin-right: 30px;
+}
+
 @keyframes 'BlueFadeIn'
 {
 	0%
@@ -340,9 +351,13 @@ Button Label
 
 #UpvoteContainer
 {
+	margin-right: -10px;
+	margin-top: -20px;
 	horizontal-align: right;
 	flow-children: right;
-	margin: 2px;
+	ui-scale: 90%;
+	//margin: 2px;
+	
 	height: 100%;
 	width: fit-children;
 }
@@ -353,6 +368,7 @@ Button Label
 	height: 100%;
 
 	opacity: 0.07;
+	saturation: 0;
 
 	background-size: 35px 35px;
 	background-repeat: no-repeat;
@@ -362,6 +378,11 @@ Button Label
 
 .HasUpvoted #UpvoteButton
 {
+	opacity: 1.;
+	saturation: 1.;
+}
+
+.FadeOut #UpvoteButton {
 	visibility: collapse;
 }
 
@@ -384,7 +405,7 @@ Button Label
 	flow-children: right;
 }
 
-DACParticleScenePanel {
+DACNotifications DACParticleScenePanel {
 	width: 2000px;
 	height: 2000px;
 	overflow: noclip;
@@ -395,8 +416,7 @@ DACParticleScenePanel {
 .NotificationItemContainer {
 	overflow: noclip;
 	flow-children: none;	
-
-}
+}	
 
 .ParticleContainer {
 	height: 100%;
@@ -453,4 +473,153 @@ DACParticleScenePanel {
 
 .StreakLevel4 .NotificationItem.WinStreakComplete {
     background-color: gradient( linear, 0% 0%, 100% 0%, from( #875c1e00 ), color-stop( 0.2, #875c1eee ), color-stop( .8, #875c1eee ), to( #875c1e00 ) );
+}
+
+/* Level up */
+.NotificationItem.LevelUp Label {
+	background-color: #000;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), to( #b2b7db ) );
+	border: 2px solid #2f2f7e;
+	border-radius: 12px;
+	padding: 13px 15px;
+	color: #4242b4;
+	font-size: 20px;
+	text-shadow: none;
+	font-weight: black;
+	text-transform: uppercase;
+	font-family: 'Ravenhook';
+	text-shadow: 1px 1px 0px #fff;
+}
+
+.NotificationItem.LevelUp #NotificationLabel {
+	color: #fff;
+}
+
+/* Hero combine */
+
+.NotificationItem.HeroCombine {
+	vertical-align: middle;
+}
+
+.NotificationItem.HeroCombine .TextContainer {
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #e1e1e1 ), to( #6f6f6f ) );
+	border: 3px solid #999999;
+	border-radius: 15px;
+	padding: 5px 15px;
+	font-size: 20px;	
+}
+
+.NotificationItem.HeroCombine Label {
+	color: #dddddd;
+	text-shadow: 0px 0px 2 #000000;
+	font-size: 20px;
+	margin-top: -4px;
+	margin-left: 5px;
+	vertical-align: middle;
+
+}
+
+.NotificationItem #HeroImage {
+	width: 40px;
+	height: 40px;
+	vertical-align: center;
+}
+
+.Combine3 .NotificationItem.HeroCombine .TextContainer {
+	border-color: #ded39e;
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #f7ec9f ), to( #cbac0d ) );
+}
+
+.Combine3 .NotificationItem.HeroCombine Label {
+	color: #f1d20a;
+	text-shadow: 0px 0px 2 #000000;
+	vertical-align: middle;
+}
+
+/* Chat messages */
+.NotificationItem.ChatMessage Label {
+	background-color: #1983CF;
+	border-radius: 7px;
+	padding: 13px 15px;
+	font-size: 20px;
+	color: #fff;
+}
+
+/* Item acquire */
+.NotificationItem.AcquiredItem .TextContainer, .NotificationItem.ItemChangedOwner .TextContainer {
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #dadada ), to( #e0e0e0 ) );
+	border: 2px solid #ececec;
+	border-radius: 15px;
+	padding: 20px 15px 11px 35px;
+	font-size: 28px;	
+	margin-left: 18px;
+}
+
+.NotificationItem.AcquiredItem Label, .NotificationItem.ItemChangedOwner Label {
+	color: #292929;
+	text-shadow: 0px 0px 0px 0 #000;
+	font-size: 20px;
+	font-weight: semi-bold;
+	margin-top: -10px;
+}
+
+.NotificationItem #ItemIcon {
+	width: 50px;
+	height: 50px;
+	vertical-align: center;
+	border: 2px solid #e8e8e8;
+	border-radius: 25px;
+	
+}
+
+
+/* Elimintated */
+.NotificationItem.PlayerEliminated Label {
+	background-color: #ae483a;
+	border: 2px solid #d27970;
+	border-radius: 7px;
+	padding: 13px 15px;
+	color: #fff;
+	font-size: 20px;
+}
+
+.NotificationItem.PlayerEliminated #NotificationLabel {
+	color: #dedede;
+}
+
+.KnockedOut
+{
+	color: #fff;
+	font-weight: bold;
+	font-size: 20px;
+}
+
+/* Earned Gold */
+.NotificationItem.EarnGold .GoldBg {
+	border: 2px solid #f8efb1;
+	background-color: #f1d20a;
+	color: #7f6b02;
+	border-radius: 20px;
+	width: 40px;
+	height: 40px;
+}
+
+.NotificationItem.EarnGold .GoldBg Label
+{
+	font-size: 20px;
+	color: #836f02;
+	text-align: center;
+	width: 46px;
+	text-shadow: none;
+	font-weight: bold;
+	vertical-align: middle;
+	horizontal-align: center;
+}
+
+.NotificationItem.EarnGold Label
+{
+	font-size: 32px;
+	font-weight: bold;
+	color: #f1d20a;
+	margin-right: 2px;
 }

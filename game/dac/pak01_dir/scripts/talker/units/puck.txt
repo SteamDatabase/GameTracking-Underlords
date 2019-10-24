@@ -1,0 +1,149 @@
+// puck - Hero
+criterion "Ispuck" "classname" "puck" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response puck_recruit_1
+{
+	speak "puck_recruit" noscene 
+}
+
+Rule puck_recruit_1_rule
+{
+	criteria Ispuck ConceptRecruit UnitRank1
+	response puck_recruit_1
+}
+
+
+Response puck_recruit_2
+{
+	speak "puck_upgrade" noscene 
+}
+
+Rule puck_recruit_2_rule
+{
+	criteria Ispuck ConceptRecruit UnitRank2
+	response puck_recruit_2
+}
+
+
+Response puck_recruit_3
+{
+	speak "puck_final_upgrade" noscene 
+}
+
+Rule puck_recruit_3_rule
+{
+	criteria Ispuck ConceptRecruit UnitRank3
+	response puck_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response puck_start_round
+{
+	speak "puck_start_round" noscene 
+}
+
+Rule puck_start_round_rule
+{
+	criteria Ispuck ConceptRoundStart 
+	response puck_start_round
+}
+
+
+Response puck_start_round_lost_last_round
+{
+	speak "puck_start_round_lost_last_round" noscene 
+}
+
+Rule puck_start_round_lost_last_round_rule
+{
+	criteria Ispuck ConceptRoundStart LostLastGame
+	response puck_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response puck_flawless_victory
+{
+	speak "puck_flawless_victory" noscene 
+}
+
+Rule puck_flawless_victory_rule
+{
+	criteria Ispuck ConceptRoundEnd Result_WinFlawless
+	response puck_flawless_victory
+}
+
+
+Response puck_decisive_victory
+{
+	speak "puck_decisive_victory" noscene 
+}
+
+Rule puck_decisive_victory_rule
+{
+	criteria Ispuck ConceptRoundEnd Result_WinDecisive
+	response puck_decisive_victory
+}
+
+Response puck_narrow_victory
+{
+	speak "puck_narrow_victory" noscene 
+}
+
+Rule puck_narrow_victory_rule
+{
+	criteria Ispuck ConceptRoundEnd Result_WinNarrow
+	response puck_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response puck_flawless_defeat
+{
+	speak "puck_flawless_defeat" noscene 
+}
+
+Rule puck_flawless_defeat_rule
+{
+	criteria Ispuck ConceptRoundEnd Result_LoseFlawless
+	response puck_flawless_defeat
+}
+
+
+Response puck_decisive_defeat
+{
+	speak "puck_decisive_defeat" noscene 
+}
+
+Rule puck_decisive_defeat_rule
+{
+	criteria Ispuck ConceptRoundEnd Result_LoseDecisive
+	response puck_decisive_defeat
+}
+
+Response puck_narrow_defeat
+{
+	speak "puck_narrow_defeat" noscene 
+}
+
+Rule puck_narrow_defeat_rule
+{
+	criteria Ispuck ConceptRoundEnd Result_LoseNarrow
+	response puck_narrow_defeat
+}

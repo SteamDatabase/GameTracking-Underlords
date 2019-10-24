@@ -1,0 +1,149 @@
+// enigma - Hero
+criterion "Isenigma" "classname" "enigma" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response enigma_recruit_1
+{
+	speak "enigma_recruit" noscene 
+}
+
+Rule enigma_recruit_1_rule
+{
+	criteria Isenigma ConceptRecruit UnitRank1
+	response enigma_recruit_1
+}
+
+
+Response enigma_recruit_2
+{
+	speak "enigma_upgrade" noscene 
+}
+
+Rule enigma_recruit_2_rule
+{
+	criteria Isenigma ConceptRecruit UnitRank2
+	response enigma_recruit_2
+}
+
+
+Response enigma_recruit_3
+{
+	speak "enigma_final_upgrade" noscene 
+}
+
+Rule enigma_recruit_3_rule
+{
+	criteria Isenigma ConceptRecruit UnitRank3
+	response enigma_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response enigma_start_round
+{
+	speak "enigma_start_round" noscene 
+}
+
+Rule enigma_start_round_rule
+{
+	criteria Isenigma ConceptRoundStart 
+	response enigma_start_round
+}
+
+
+Response enigma_start_round_lost_last_round
+{
+	speak "enigma_start_round_lost_last_round" noscene 
+}
+
+Rule enigma_start_round_lost_last_round_rule
+{
+	criteria Isenigma ConceptRoundStart LostLastGame
+	response enigma_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response enigma_flawless_victory
+{
+	speak "enigma_flawless_victory" noscene 
+}
+
+Rule enigma_flawless_victory_rule
+{
+	criteria Isenigma ConceptRoundEnd Result_WinFlawless
+	response enigma_flawless_victory
+}
+
+
+Response enigma_decisive_victory
+{
+	speak "enigma_decisive_victory" noscene 
+}
+
+Rule enigma_decisive_victory_rule
+{
+	criteria Isenigma ConceptRoundEnd Result_WinDecisive
+	response enigma_decisive_victory
+}
+
+Response enigma_narrow_victory
+{
+	speak "enigma_narrow_victory" noscene 
+}
+
+Rule enigma_narrow_victory_rule
+{
+	criteria Isenigma ConceptRoundEnd Result_WinNarrow
+	response enigma_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response enigma_flawless_defeat
+{
+	speak "enigma_flawless_defeat" noscene 
+}
+
+Rule enigma_flawless_defeat_rule
+{
+	criteria Isenigma ConceptRoundEnd Result_LoseFlawless
+	response enigma_flawless_defeat
+}
+
+
+Response enigma_decisive_defeat
+{
+	speak "enigma_decisive_defeat" noscene 
+}
+
+Rule enigma_decisive_defeat_rule
+{
+	criteria Isenigma ConceptRoundEnd Result_LoseDecisive
+	response enigma_decisive_defeat
+}
+
+Response enigma_narrow_defeat
+{
+	speak "enigma_narrow_defeat" noscene 
+}
+
+Rule enigma_narrow_defeat_rule
+{
+	criteria Isenigma ConceptRoundEnd Result_LoseNarrow
+	response enigma_narrow_defeat
+}

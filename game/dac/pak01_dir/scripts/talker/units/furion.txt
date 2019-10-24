@@ -1,0 +1,149 @@
+// Nature's Prophet - Hero
+criterion "Isfurion" "classname" "furion" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response furion_recruit_1
+{
+	speak "furion_recruit" noscene 
+}
+
+Rule furion_recruit_1_rule
+{
+	criteria Isfurion ConceptRecruit UnitRank1
+	response furion_recruit_1
+}
+
+
+Response furion_recruit_2
+{
+	speak "furion_upgrade" noscene 
+}
+
+Rule furion_recruit_2_rule
+{
+	criteria Isfurion ConceptRecruit UnitRank2
+	response furion_recruit_2
+}
+
+
+Response furion_recruit_3
+{
+	speak "furion_final_upgrade" noscene 
+}
+
+Rule furion_recruit_3_rule
+{
+	criteria Isfurion ConceptRecruit UnitRank3
+	response furion_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response furion_start_round
+{
+	speak "furion_start_round" noscene 
+}
+
+Rule furion_start_round_rule
+{
+	criteria Isfurion ConceptRoundStart 
+	response furion_start_round
+}
+
+
+Response furion_start_round_lost_last_round
+{
+	speak "furion_start_round_lost_last_round" noscene 
+}
+
+Rule furion_start_round_lost_last_round_rule
+{
+	criteria Isfurion ConceptRoundStart LostLastGame
+	response furion_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response furion_flawless_victory
+{
+	speak "furion_flawless_victory" noscene 
+}
+
+Rule furion_flawless_victory_rule
+{
+	criteria Isfurion ConceptRoundEnd Result_WinFlawless
+	response furion_flawless_victory
+}
+
+
+Response furion_decisive_victory
+{
+	speak "furion_decisive_victory" noscene 
+}
+
+Rule furion_decisive_victory_rule
+{
+	criteria Isfurion ConceptRoundEnd Result_WinDecisive
+	response furion_decisive_victory
+}
+
+Response furion_narrow_victory
+{
+	speak "furion_narrow_victory" noscene 
+}
+
+Rule furion_narrow_victory_rule
+{
+	criteria Isfurion ConceptRoundEnd Result_WinNarrow
+	response furion_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response furion_flawless_defeat
+{
+	speak "furion_flawless_defeat" noscene 
+}
+
+Rule furion_flawless_defeat_rule
+{
+	criteria Isfurion ConceptRoundEnd Result_LoseFlawless
+	response furion_flawless_defeat
+}
+
+
+Response furion_decisive_defeat
+{
+	speak "furion_decisive_defeat" noscene 
+}
+
+Rule furion_decisive_defeat_rule
+{
+	criteria Isfurion ConceptRoundEnd Result_LoseDecisive
+	response furion_decisive_defeat
+}
+
+Response furion_narrow_defeat
+{
+	speak "furion_narrow_defeat" noscene 
+}
+
+Rule furion_narrow_defeat_rule
+{
+	criteria Isfurion ConceptRoundEnd Result_LoseNarrow
+	response furion_narrow_defeat
+}

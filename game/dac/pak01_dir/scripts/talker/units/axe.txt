@@ -1,0 +1,149 @@
+// axe - Hero
+criterion "Isaxe" "classname" "axe" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response axe_recruit_1
+{
+	speak "axe_recruit" noscene 
+}
+
+Rule axe_recruit_1_rule
+{
+	criteria Isaxe ConceptRecruit UnitRank1
+	response axe_recruit_1
+}
+
+
+Response axe_recruit_2
+{
+	speak "axe_upgrade" noscene 
+}
+
+Rule axe_recruit_2_rule
+{
+	criteria Isaxe ConceptRecruit UnitRank2
+	response axe_recruit_2
+}
+
+
+Response axe_recruit_3
+{
+	speak "axe_final_upgrade" noscene 
+}
+
+Rule axe_recruit_3_rule
+{
+	criteria Isaxe ConceptRecruit UnitRank3
+	response axe_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response axe_start_round
+{
+	speak "axe_start_round" noscene 
+}
+
+Rule axe_start_round_rule
+{
+	criteria Isaxe ConceptRoundStart 
+	response axe_start_round
+}
+
+
+Response axe_start_round_lost_last_round
+{
+	speak "axe_start_round_lost_last_round" noscene 
+}
+
+Rule axe_start_round_lost_last_round_rule
+{
+	criteria Isaxe ConceptRoundStart LostLastGame
+	response axe_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response axe_flawless_victory
+{
+	speak "axe_flawless_victory" noscene 
+}
+
+Rule axe_flawless_victory_rule
+{
+	criteria Isaxe ConceptRoundEnd Result_WinFlawless
+	response axe_flawless_victory
+}
+
+
+Response axe_decisive_victory
+{
+	speak "axe_decisive_victory" noscene 
+}
+
+Rule axe_decisive_victory_rule
+{
+	criteria Isaxe ConceptRoundEnd Result_WinDecisive
+	response axe_decisive_victory
+}
+
+Response axe_narrow_victory
+{
+	speak "axe_narrow_victory" noscene 
+}
+
+Rule axe_narrow_victory_rule
+{
+	criteria Isaxe ConceptRoundEnd Result_WinNarrow
+	response axe_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response axe_flawless_defeat
+{
+	speak "axe_flawless_defeat" noscene 
+}
+
+Rule axe_flawless_defeat_rule
+{
+	criteria Isaxe ConceptRoundEnd Result_LoseFlawless
+	response axe_flawless_defeat
+}
+
+
+Response axe_decisive_defeat
+{
+	speak "axe_decisive_defeat" noscene 
+}
+
+Rule axe_decisive_defeat_rule
+{
+	criteria Isaxe ConceptRoundEnd Result_LoseDecisive
+	response axe_decisive_defeat
+}
+
+Response axe_narrow_defeat
+{
+	speak "axe_narrow_defeat" noscene 
+}
+
+Rule axe_narrow_defeat_rule
+{
+	criteria Isaxe ConceptRoundEnd Result_LoseNarrow
+	response axe_narrow_defeat
+}

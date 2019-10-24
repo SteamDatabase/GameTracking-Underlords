@@ -1,37 +1,32 @@
 DACUIShop
 {
-	width: 100%;
+	width: 1200px;
 	height: fit-children;
-}
-
-DACUIShop.Minimal
-{
-	margin-left: 60px;
-	margin-right: 60px;
-}
-
-#UnitShopContainer {
 	horizontal-align: center;
-	background-color: #00000088;
-	background-color: gradient(linear, 0% 0%, 0% 100%, from(#00000088), color-stop( .65, #000000bb), color-stop( .8, #00000000), to(#00000000));
-	flow-children: down;
-	height: fit-children;
-	width: 100%;
+
 	transition-property: opacity, position, transform;
 	transition-duration: 0.2s;
-	transition-timing-function: ease-in-out;
+	transition-timing-function: ease-out;
 	opacity: 0; 
-	transform: translateX( 1921px );
+	transform: translateY( -600px );	
 }
 
-
-#UnitShopContainer.Visible {
+.IsLayoutSmallScreen DACUIShop
+{
+	width: 1400px;
+}
+DACUIShop.Visible
+{
 	opacity: 1;
-	visibility: visible;
 	position: 0 0 0;
-	transform: translateX( 0px );
+	transform: translateY( 0px );
 }
 
+.LowVisualQuality DACUIShop
+{
+	transition-property: none;
+	transition-duration: 0.0s;
+}
 
 #BorderContainer
 {
@@ -138,31 +133,6 @@ DACUIShop.Minimal
 	margin-top: -2px;
 }
 
-.Cost1 #CostNumber 
-{
-	color: gradient(linear, 0% 0%, 0% 100%, from(#dedbca), to(#fdfcf8));
-}
-
-.Cost2 #CostNumber 
-{
-	color: gradient(linear, 0% 0%, 0% 100%, from(#81fc9e), to(#d2ffdd));
-}
-
-.Cost3 #CostNumber 
-{
-	color: gradient(linear, 0% 0%, 0% 100%, from(#81defc), to(#e3f8ff));
-}
-
-.Cost4 #CostNumber 
-{
-	color: gradient(linear, 0% 0%, 0% 100%, from(#ff9afe), to(#ffdfff));
-}
-
-.Cost5 #CostNumber 
-{
-	color: gradient(linear, 0% 0%, 0% 100%, from( #f8d37f ), to(#f8ecd2));
-}
-
 #BottomFade
 {
 	width: 100%;
@@ -197,12 +167,6 @@ DACUIShop.Minimal
 }
 
 
-
-.LowVisualQuality #UnitShopContainer {
-	transition-property: none;
-	transition-duration: 0.0s;
-}
-
 #BuyOptionsPanel {
 	opacity: 0;
 
@@ -224,7 +188,7 @@ DACUIShop.Minimal
 }
 
 
-#BuyOptionsPanel.Visible {
+.Visible #BuyOptionsPanel {
 	opacity: 1;
 }
 
@@ -234,59 +198,12 @@ DACUIShop.Minimal
 
 .ShopEntry:hover {
 	z-index: 2;
+	transform: scale3d( 1.2, 1.2, 1 );
+	
 }
 
-.CombineHighlight
+#BuyUnit Label 
 {
-	width: 100%;
-	height: 100%;
-	background-color: #00000000;
-}
-
-.CanCombine .CombineHighlight {
-	animation-name: CombineAnim;
-	animation-duration: 1.2s;
-	animation-iteration-count:infinite;
-}
-
-@keyframes 'CombineAnim'
-{
-	0%
-	{
-		background-color: #eadd9a00;
-	}
-	50%
-	{
-		background-color: #eadd9a22;
-	}	
-	100%
-	{
-		background-color: #eadd9a00;
-	}
-}
-
-@keyframes 'IlluminateAnim' {
-	0%
-
-{
-	background-color: #d3473d;
-}
-
-50% {
-	background-color: #961c13;
-}
-
-100% {
-	background-color: #d3473d;
-}
-
-}
-
-
-
-#BuyUnit Label {
-	//margin-top: 15px;
-	//margin-left: 18px;
 	text-transform: uppercase;
 	width: 205px;
 	height: 70px;
@@ -294,30 +211,23 @@ DACUIShop.Minimal
 	vertical-align: bottom;
 	horizontal-align: middle;
 	line-height: 26px;
-	//text-overflow: shrink;
 	color: #f3efd9;
 	font-size: 60px;
 	text-shadow: 0px 0px 0px 3.0 #000;
 	visibility: collapse;
 }
 
-.LowVisualQuality #BuyUnit Label {
+.LowVisualQuality #BuyUnit Label 
+{
 	text-shadow: 0px 0px 0px 2.0 #000;
 }
 
-.ShowBuyUnitLabel #BuyUnit{
+.ShowBuyUnitLabel #BuyUnit
+{
 	visibility: visible;
 }
 
-#UnitHeader Label {
-	text-shadow: 0px 0px 0px 3.0 #000;
-}
-
-.LowVisualQuality #UnitHeader Label {
-	text-shadow: 0px 0px 0px 2.0 #000;
-}
-
-.Minimal #UnitHeader Label
+#UnitHeader Label
 {
 	text-shadow: 0px 0px 0px #000;
 }
@@ -341,23 +251,29 @@ DACUIShop.Minimal
 	horizontal-align: center;
 }
 
-.RoundInfo > Label {
+.RoundInfo > Label
+{
 	font-size: 42px;
-	margin: 10px 10px;
-	
+	margin: 10px 10px;	
 }
 
-#TimerContainer {
-	width: 100%;
+#TimerContainer
+{
+	width: 800px;
 	horizontal-align: center;
+	vertical-align: top;
 	height: 28px;
 	background-color: #000000dd;
-	margin-top: 142px;
+	margin-top: 0px;
 	padding: 4px;
 
 	opacity: 0.01;
 	transition-property: opacity;
 	transition-duration: 0.2s;
+
+	// remove this
+	opacity: 1;
+	visibility: collapse;//Moved clock to ui_top_bar
 }
 
 .LowVisualQuality #TimerContainer
@@ -370,17 +286,16 @@ DACUIShop.Minimal
 	opacity: 1;
 }
 
-#TimerBar {
+#TimerBar
+{
 	height: 100%;
 	horizontal-align: center;
-	background-color: #EE2222;
 	background-color: gradient(linear, 0% 0%, 100% 0%, from(#970a00), color-stop (.5, #EE2222), to(#970a00));
 	transition-property: width;
 	transition-duration: 1s;
 	transition-timing-function: linear;
 	border: 4px solid #000e;
 }
-
 
 .TimerHide #TimerBar
 {
@@ -389,24 +304,20 @@ DACUIShop.Minimal
 
 #MainRow
 {
-	flow-children: right;
-	height: 600px;
+	width: fit-children;
+	height: fit-children;
 	horizontal-align: center;
-	background-color: #1b1c1d;
 	z-index: 2;
+	background-color: #0000;
+	
+	flow-children: right;
+
+	margin-top: 70px;
 }
 
-#UnitsShop {
+#UnitsShop
+{
 	width: 100%;
-}
-
-.ButtonGutter {
-	flow-children: down;
-	width: 140px;
-	margin-right: 8px;
-
-	padding-top: 8px;
-	padding-bottom: 8px;
 }
 
 .CostLabel
@@ -422,21 +333,27 @@ DACUIShop.Minimal
 	margin-right: 2px;
 }
 
-.ShopEntry {
-	//background-color: black;
+.ShopEntry
+{
 	font-size: 30px;
 	color: #fff;
-	width: 320px;
-	height: 600px;
-	opacity: 1;
-	transition-property: opacity;
-	transition-duration: 0.3s;
 	transition-timing-function: ease-in;
-	padding: 8px 4px 8px 4px;
-	padding: 16px 8px 16px 8px;
-}
 
-.ShopEntry.CannotAfford {	
+	transition-property: transform, opacity;
+	transition-duration: 0s;
+	transform: translateY(-500px);
+	opacity: 0;
+
+	width: fill-parent-flow(1);
+	height: 280px;
+	padding: 0px;
+
+	margin-left: 10px;
+	margin-right: 10px;
+
+	//Note to next person. This won't work because characters don't align to center.
+	//horizontal-align: center;
+	//width: fill-parent-flow(1);
 }
 
 .ShopEntry.CannotAfford #WashLayer
@@ -447,52 +364,55 @@ DACUIShop.Minimal
 	height: 100%;
 }
 
-.Minimal .UnitShopBGItem.CannotAfford .UnderfootImage 
-{
-	/*background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_5_psd.vtex");
-	wash-color: #700;*/
-}
-
-.Minimal .ShopEntry.CannotAfford .CostContainer
+.ShopEntry.CannotAfford .CostContainer
 {
 	wash-color: #614a48;
 }
 
-.CannotAffordLevelUp #LevelUp .GoldValueContainer,
-.CannotAffordReroll #RerollShop .GoldValueContainer
+.CannotAffordLevelUp #LevelUp .GoldValueCoin,
+.CannotAffordReroll #RerollShop .GoldValueCoin
 {
 	wash-color: #614a48;
 }
 
 .CannotAffordLevelUp #LevelUp .CostLabel,
 .CannotAffordReroll #RerollShop .CostLabel,
-.Minimal .ShopEntry.CannotAfford #CostNumber
+.ShopEntry.CannotAfford #CostNumber
 {
 	color: black;
 }
 
-
-.ShopEntry.Purchased {
+.ShopEntry.Purchased
+{
 	opacity: 0;
 }
 
+.ShopEntry.Loaded
+{
+	transform: translateY(0px);
+	transition-duration: 0s;
+	transition-delay: 0s;
+	opacity: 1;
+}
 
-.TypeLabel {
+.ShopEntry.Loaded.Purchased
+{
+	opacity: 0;
+}
+
+.TypeLabel
+{
 	text-shadow: 0px 0px 0px 3.0 #000;
 	margin: 0 5px;
 }
 
-.LowVisualQuality .TypeLabel {
+.LowVisualQuality .TypeLabel
+{
 	text-shadow: 0px 0px 0px 2.0 #000;
 }
 
-.MyUnits {
-	flow-children: right;
-}
-
-.OwnedUnitEntry {
-	
-	
+.OwnedUnitEntry
+{
 	height: fill-parent-flow(1);
 	background-color: #211c21;
 	border: 1px solid black;
@@ -505,20 +425,23 @@ DACUIShop.Minimal
 	transition-timing-function: ease-in;
 }
 
-.OwnedSectionLabel {
+.OwnedSectionLabel
+{
 	width: 60px;
 	height: fill-parent-flow(1);
 	background-color: grey;
 }
 
-.OwnedSectionLabel > Label {
+.OwnedSectionLabel > Label
+{
 	transform: translateX(20px) rotateZ( 90deg );
 	font-size: 20px;
 	color: #fff;
 	text-overflow: clip;
 }
 
-#Synergies {
+#Synergies
+{
 	width: fit-children;
 	horizontal-align: center;
 	flow-children: down;
@@ -557,68 +480,27 @@ DACSynergyIcon.HiddenInactive
 	visibility: collapse;
 }
 
-.Minimal #ContentBG
-{
-	margin-bottom: -4px;
-}
-
 #ContentBG
 {
 	vertical-align: bottom;
 	width: 100%;
 	background-color: #00000000;
-	margin-bottom: 30px;
+	margin-bottom: -4px;
 }
 
 #SceneView
-{
-	width: 100%;
-	height: 100%;
-}
-
-#SceneViewMinimal
 {
 	width: 380px;
 	margin-left: -100px;
 	margin-right: -100px;
 	margin-top: -35px;
-	height: 340px;
-	visibility: collapse;
-}
-
-.Minimal #SceneView
-{
-	visibility: collapse;
-}
-
-.Minimal #SceneViewMinimal
-{
+	height: 340px;	
 	visibility: visible;
-}
-
-#ShopContainer
-{
-	width: 1600px;
-	z-index: 2;
 }
 
 #UnitShopBG
 {
 	width: fill-parent-flow( 1.0 );
-}
-
-.ShopEntry
-{
-	transition-property: transform, opacity;
-	transition-duration: 0.1s;
-	transform: translateY(-500px);
-	opacity: 0;
-}
-
-.LowVisualQuality .ShopEntry,
-.Minimal .ShopEntry
-{
-	transition-duration: 0s;
 }
 
 #ShopUnit1
@@ -644,19 +526,6 @@ DACSynergyIcon.HiddenInactive
 #ShopUnit5
 {
 	transition-delay: 0.4s;
-}
-
-.ShopEntry.Loaded
-{
-	transform: translateY(0px);
-	transition-duration: 0s;
-	transition-delay: 0s;
-	opacity: 1;
-}
-
-.ShopEntry.Loaded.Purchased
-{
-	opacity: 0;
 }
 
 #UnitsShopBG
@@ -704,72 +573,26 @@ DACSynergyIcon.HiddenInactive
 	background-image: url("s2r://panorama/images/shop/cost5_background_psd.vtex");
 }
 
-.Purchased.UnitShopBGItem
+.ShopButton
 {
-	//opacity: 0;	
-}
-
-@keyframes 'HeadShake'
-{
-	0%
-	{
-		transform: scale3d( 1, 1, 1 );
-	}
-
-	50%
-	{
-		transform: scale3d( 1.2, 1.2, 1.2 );
-	}
-
-	100%
-	{
-		transform: scale3d( 1, 1, 1 );
-	}
-}
-
-#BuyButton
-{
-	height: 100px;
-	background-image: url("s2r://panorama/images/shop/buy_button_backer_psd.vtex");
-	background-size: 100%;
-	background-color: #00000000;
-	margin-left: 0px;
-	width: 290px;
-	
-}
-
-#BuyButton Label
-{
-	text-transform: uppercase;
-	font-weight: semi-bold;
-	font-size: 50px;
-	color: gradient(linear, 0% 0%, 0% 100%, from(#ffffff), to(#b7ffdb));
-	text-shadow: 0px 0px 0px 3.0 #00000055;
-	margin-top: 8px;
-}
-
-.LowVisualQuality #BuyButton Label
-{
-	text-shadow: 0px 0px 0px 2.0 #00000055;
-}
-
-.ShopButton {
-	margin: 8px;
-	padding: 0 3px;
 	transition-property: brightness, background-color;
 	transition-duration: .2s;
 
-	width: fill-parent-flow(1);
-	height: fill-parent-flow(1);
-	background-image: url("s2r://panorama/images/shop/gutterbuttons_psd.vtex");
-	background-size: 100%;
-	background-position: center;
-	background-repeat: no-repeat;
+	width:	90px;
+	height:	110px;
+	
+	background-image: none;
 }
 
-.LowVisualQuality .ShopButton {
+.LowVisualQuality .ShopButton
+{
 	transition-property: none;
 	transition-duration: 0s;
+}
+
+.ShopButton:hover
+{
+	brightness: 2;
 }
 
 #RerollButton
@@ -780,14 +603,23 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: center;
 	background-image: url("s2r://panorama/images/shop/reroll_button_psd.vtex");
 	background-size: 100%;
+	margin-top: -3px;
 }
 
+.CannotAffordReroll #RerollButton
+{
+	opacity: 0.3;
+}
 
+.CannotAffordReroll #RerollShop:hover
+{
+	brightness: 1;
+}
 
 .FreeRerollLabel
 {	
 	font-size: 32px;
-	color: gradient(linear, 0% 0%, 0% 100%, from( #fedd6e ), to(#e7c151));
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ecb00e ), to(#f7e062));
 	font-weight: bold;
 	text-shadow: 0px 0px 0px 2.0 #000;
 	text-transform: uppercase;
@@ -795,9 +627,11 @@ DACSynergyIcon.HiddenInactive
 	width: 150px;
 
 	vertical-align: bottom;
-	margin-bottom: 24px;
+	margin-bottom: 40px;
 	text-overflow: shrink;
 	visibility: collapse;
+	
+	text-shadow: 0px 0px 0px 3.0 #000;
 }
 
 .FreeReroll .FreeRerollLabel
@@ -815,6 +649,7 @@ DACSynergyIcon.HiddenInactive
 	animation-name: RerollAnim;
 	animation-duration: 1s;
 	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
 }
 
 @keyframes 'RerollAnim'
@@ -833,22 +668,6 @@ DACSynergyIcon.HiddenInactive
 	}
 }
 
-
-.IsLayoutSmallScreen .FreeRerollLabel
-{
-	margin-bottom: 44px;
-}
-
-#LevelUpButton
-{
-	width: 105px;
-	height: 105px;
-	vertical-align: center;
-	horizontal-align: center;
-	background-image: url("s2r://panorama/images/shop/levelup_button_psd.vtex");
-	background-size: 100%;
-}
-
 #LockButton
 {
 	width: 105px;
@@ -857,6 +676,7 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: center;
 	background-image: url("s2r://panorama/images/shop/lock_button_psd.vtex");
 	background-size: 100%;
+	margin-top: 15px;
 }
 
 #UnlockButton
@@ -868,9 +688,11 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: center;
 	background-image: url("s2r://panorama/images/shop/unlock_button_psd.vtex");
 	background-size: 100%;
+	margin-top: 15px;
 }
 
-#UnlockShop {
+#UnlockShop
+{
 	animation-name: LockedAnim;
 	animation-duration: 1.1s;
 	animation-iteration-count: infinite;
@@ -906,8 +728,8 @@ DACSynergyIcon.HiddenInactive
 
 #OddsButton
 {
-	width: 105px;
-	height: 105px;
+	width: 90px;
+	height: 90px;
 	z-index: 100;
 	vertical-align: center;
 	horizontal-align: center;
@@ -915,29 +737,14 @@ DACSynergyIcon.HiddenInactive
 	background-size: 100%;
 }
 
-.ShopButton:hover
+.DefaultHidden
 {
-	brightness: 1.3;
-	background-color: gradient(linear, 0% 0%, 0% 100%, from(#29334e), to(#433963));
-}
-
-.ShopButton.Mobile
-{	
-	width: 260px;
-}
-
-.DefaultHidden {
 	visibility: collapse;
 }
 
 #SynergyCapsule
 {
-	//ui-scale: 0.75;
 	horizontal-align: center; 
-}
-
-.Minimal #SynergyCapsule
-{
 	background-image: url("s2r://panorama/images/shop/synergy_drop_shadow_psd.vtex");
 	background-size: 110%;
 	background-position: 50% 100%;
@@ -947,18 +754,14 @@ DACSynergyIcon.HiddenInactive
 
 .SynergyHelpersContainer
 {
-	width: 1600px;
-	height: 90px;
+	width: 1000px;
+	height: 140px;
 	horizontal-align: center;
+	vertical-align: top;
 	flow-children: right;
 
-	margin-left: 140px;
-	margin-right: 140px;
-
-	margin-top: 0px;
-	background-color: gradient(linear, 0% 0%, 0% 100%, from( #000000 ), color-stop( 0.12, #1b1c1d), to(#2c2c2e) );
-	border-bottom-left-radius: 16px;
-	border-bottom-right-radius: 16px;
+	margin-top: -50px;
+	background-color: #00000000;
 }
 
 .LowVisualQuality .SynergyHelpersContainer 
@@ -967,53 +770,110 @@ DACSynergyIcon.HiddenInactive
 	border-bottom-right-radius: 0px;
 }
 
-.SynergyHelper
+#TeammateSynergyHelpers
+{
+	visibility: collapse;
+	background-image: url("s2r://panorama/images/shop/teammate_shop_backer_psd.vtex");
+	background-size: 100% 130%;
+	background-position: 45% 90%;
+	background-repeat: no-repeat;
+	height: 70px;
+	margin: 0px;
+	margin-top: -10px;
+	//width: 1380px;
+	width: 1400px;
+	//opacity: .95;
+
+	z-index: -10;
+
+
+}
+
+.TeammateSynergyTitle
+{
+	width: 100px;
+	height: 50px;
+	vertical-align: center;
+	background-color: none;
+	box-shadow: 0px 0px 0px black;
+	margin-left: 20px;
+	font-size: 28px;
+	padding: 0px;
+	padding-top: 0px;
+}
+
+.GameMode_Duos #TeammateSynergyHelpers
+{
+	visibility: visible;
+}
+
+.TeammateSynergyHelper
 {
 	width: fill-parent-flow(1);
 	height: 100%;
 	opacity: 0;
 	transition-property: opacity, transform;
-	transition-duration: .2s; 
+	transition-duration: .2s;
 	transform: translateY( -100px );
+
+	opacity: 1;
+
+	//background-color: red;
+}
+
+.SynergyHelper
+{
+	width: fill-parent-flow(1);
+	height: 100%;
+	opacity: 0;
+	padding-bottom: 19px;
+	transition-property: opacity, transform;
+	transition-duration: .2s;
+	transform: translateY( -100px );
+	background-size: 100%;
 }
 
 .LowVisualQuality .SynergyHelper 
 {
-    transition-duration: 0s;
+	transition-duration: 0s;
 }
 
-.Minimal .SynergyHelper.ContainsInfo,
-.IsLayoutSmallScreen .SynergyHelper.ContainsInfo
+.SynergyHelper.ContainsInfo,
+.TeammateSynergyHelper.ContainsInfo
 {
 	opacity: 1;
 	transform: translateY( 0px );
 }
 
-.Minimal #SynergyHelperSlot0
+#SynergyHelperSlot0
 {
 	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_psd.vtex");
+	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_04_psd.vtex");
 	background-size: 100%;
 }
 
-.Minimal #SynergyHelperSlot1
+#SynergyHelperSlot1
 {
 	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_01_psd.vtex");
+	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_04_psd.vtex");
 	background-size: 100%;
 }
 
-.Minimal #SynergyHelperSlot2
+#SynergyHelperSlot2
 {
 	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_02_psd.vtex");
+	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_04_psd.vtex");
 	background-size: 100%;
 }
 
-.Minimal #SynergyHelperSlot3
+#SynergyHelperSlot3
 {
 	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_03_psd.vtex");
+	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_04_psd.vtex");
 	background-size: 100%;
 }
 
-.Minimal #SynergyHelperSlot4
+#SynergyHelperSlot4
 {
 	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_04_psd.vtex");
 	background-size: 100%;
@@ -1024,8 +884,15 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: center;
 	flow-children: right;
 	width: fit-children;
+	padding-top: 36px;
+	margin-bottom: 0px;
 	margin-left: 5px;
 	margin-right: 5px;
+}
+
+.TeammateSynergyHelper .SynergyHelperIcons
+{
+	padding-top: 0px;
 }
 
 .SynergyHelperIcons
@@ -1051,7 +918,7 @@ DACSynergyIcon.HiddenInactive
 	margin: 4px;
 
 	vertical-align: bottom;
-	margin-top: 35px;
+	margin-top: 28px;
 }
 
 .UnitContent
@@ -1112,14 +979,8 @@ DACSynergyIcon.HiddenInactive
 	width: 150px;
 
 	vertical-align: bottom;
-	margin-bottom: 42px;
-	line-height: 25px;
-}
-
-.IsLayoutSmallScreen #StatusXP {
-	vertical-align: top;
-	margin-top: 175px;
 	margin-bottom: 0px;
+	line-height: 25px;
 }
 
 .Language_schinese #StatusXP
@@ -1155,6 +1016,37 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: center;
 }
 
+#PlayerXPDividers
+{
+
+	width: 100%;
+	height: 100%;
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+.LevelBarCostIncrementGap
+{
+	//This gets rotated by code.
+	//Code rotates each copy of this. Design as if you're at 12o'clock position
+	width: 100%;
+	height: 100%;
+	horizontal-align: center;
+	vertical-align: center;
+} 
+
+.LevelBarCostIncrementGap .LevelBarCostGap
+{
+	//Code rotates each copy of this. Design as if you're at 12o'clock position
+	width: 32px;
+	height: 32px;
+	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_segment_cap_png.vtex");
+	vertical-align: center;
+	horizontal-align: center;
+	margin-bottom: 118px;
+}
+
+
 #PlayerEXPGraph_FG
 {
 	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_fg_png.vtex");
@@ -1162,8 +1054,7 @@ DACSynergyIcon.HiddenInactive
 	width: 100%;
 	height: 100%;
 	transition-property: clip;
-	transition-duration: 200ms;
-	
+	transition-duration: 200ms;	
 }
 
 #PlayerEXPContainer
@@ -1174,10 +1065,13 @@ DACSynergyIcon.HiddenInactive
 	height: 118px;
 	horizontal-align: center;
 	vertical-align: center;
+}  
 
-	ui-scale: 100%;
+
+.WillLevelUp #PlayerEXPContainer
+{
+	hue-rotation: -3deg;
 }
-
 
 #PlayerEXPGraphPreview
 {
@@ -1188,27 +1082,77 @@ DACSynergyIcon.HiddenInactive
 
 #PlayerEXPGraphPreview_FG
 {
-	brightness: 0.2;
-	hue-rotation: -15deg;
-	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_fg_png.vtex");
+	brightness: 1;
+	opacity: 1;
+	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_preview_fg_png.vtex");
 	background-size: 100%;
 	width: 100%;
 	height: 100%;
 	transition-property: clip, pre-transform-rotate2d, brightness ;
-	transition-duration: 150ms;
+	transition-duration: 200ms;
+	animation-name: BrightnessPulse;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	animation-duration: 1.2s;
 }
 
+
+@keyframes 'BrightnessPulse'
+{
+	0%
+	{
+		brightness: 0.4;
+	}
+	50%
+	{
+		brightness: 0.6;
+	}
+	100%
+	{
+		brightness: 0.4;
+	}
+} 
+
+
+.CanAffordLevelUp.WillLevelUp #PlayerEXPGraphPreview_FG
+{
+	animation-name: BrightnessPulseBigger;
+	animation-duration: 0.6s;
+}
+
+@keyframes 'BrightnessPulseBigger'
+{
+	0%
+	{
+		brightness: 0.2;
+	}
+	50%
+	{
+		brightness: 1.0;
+	}
+	100%
+	{
+		brightness: 0.2;
+	}
+}
 
 #PlayerEXPGraphLevel
 {
-	color: #f7b461;
+
+	color: #cdd2f3;
+	
 	text-align: center;
+
 	horizontal-align: center;
 	vertical-align: center;
-	font-size: 54px;
-	text-shadow: 0px 0px 0px 2.0 #000;
-	margin-top: 6px;
+
+	font-weight: bold;
+	font-size: 72px;
+	text-shadow: 0px 0px 0px 2.0 #1d2645;
+	//margin-top: 6px;
 }
+
+
 
 #PlayerEXPGraphLevel.LevelUpFlashText
 {
@@ -1221,31 +1165,33 @@ DACSynergyIcon.HiddenInactive
 {
 	0%
 	{
-		color: #ffffffff;		
-		text-shadow: 0px 0px 0px 0.0 #f7b461ff;
+		color: #ffffff00;		
+		text-shadow: 0px 0px 0px 1.0 #1d2645;
 		pre-transform-scale2d: 1.1;
 	}
-
-	5%
+ 
+	12%
 	{
-		color: #f7b461ff;
+		color: #ffffffff;
 		text-shadow: 0px 0px 0px 2.0 #ffffff10;
-		pre-transform-scale2d: 1.2;
+		pre-transform-scale2d: 1.5;
 	}
 
 	50%
 	{
-		color: #f7b461ff;
-		text-shadow: 0px 0px 0px 1.0 #ffffffff;
+		color: #ffffffff;
+		text-shadow: 0px 0px 0px 1.0 #1d2645;
 	}
 
 	100%
 	{
-		color: #f7b461ff;
-		text-shadow: 0px 0px 0px 0.0 #000000ff;		
+		color: #cdd2f3;
+		text-shadow: 0px 0px 0px 1.0 #1d2645;		
 		pre-transform-scale2d: 1.0;
 	}
 }
+
+
 
 .PlayerIsMaxLevel #StatusXP
 {
@@ -1276,56 +1222,39 @@ DACSynergyIcon.HiddenInactive
 	}
 }
 
-.ShopButton.PressButtonAnim 
+.ShopButton.PressButtonAnim
 {
 	animation-name: PressButtonAnim;
 	animation-duration: 0.25s;
 	animation-timing-function: ease-out;
 }
 
-#PoolCount
+
+@keyframes 'PressButtonAnimSpin'
 {
-	color: white;
-	font-size: 14px;
-	text-overflow: shrink;
-	vertical-align: bottom;
-	margin-bottom: 10px;
-	horizontal-align: center;
+	0%
+	{
+		pre-transform-rotate2d: 720deg;
+	}
+
+	100%
+	{
+		pre-transform-rotate2d: 0deg;
+	}
 }
 
-.HighlightForTutorial_UnitBG .CombineHighlight
+.ShopButton.PressButtonAnimSpin #RerollButton
 {
-	animation-name: CombineAnim;
-	animation-duration: 1.2s;
-	animation-iteration-count:infinite;
-}
-
-.DisabledForTutorial_Buttons #LevelUp,
-.DisabledForTutorial_Buttons #LockShop,
-.DisabledForTutorial_Buttons #LibraryShop,
-.DisabledForTutorial_ShopButton #ShopButton,
-.DisabledForTutorial_RerollButton #RerollShop
-{
-	brightness: 0.25;
-	saturation: 0;
-	animation-name: none;
-}
-
-.HiddenForTutorial_TimerBar #TimerContainer,
-.HiddenForTutorial_SynergyHelpers #SynergyHelpers
-{
-	opacity: 0;
-	visibility: collapse;
+	animation-name: PressButtonAnimSpin;
+	animation-duration: 0.35s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
 }
 
 #AbilitySnippetContainer
 {
 	horizontal-align: right;
 	vertical-align: center;
-}
-
-.Minimal #AbilitySnippetContainer
-{
 	visibility: collapse;
 }
 
@@ -1352,22 +1281,30 @@ DACSynergyIcon.HiddenInactive
 	opacity: 1;
 }
 
-#InfoRow,
-#InfoRowMinimal
+.DragUnitTooltipContainer
+{
+	width: 60px;
+	height: 60px;
+	transform: translateX( -35px ) translateY( 25px );
+}
+
+#InfoRow
 {
 	width: 100%;
 	height: 80px;
-	background-color: #444;
-	padding-right: 10px;
-	margin-bottom: 8px;
-	
-	border-top: 2px solid #ffffff15;
-	border-left: 2px solid #ffffff10;
-	border-right: 2px solid #ffffff10;
-	background-color: gradient(linear, 0% 100%, 0% 0%, from(#444), to(#4442));
 	
 	transition-property: brightness;
 	transition-duration: .2s;
+
+	margin-bottom: 56px;
+
+	padding: 0px;
+	border: 0px solid #0000;
+	background-color: #0000;
+
+	vertical-align: bottom;
+
+	z-index: 1;	// move in front of the hero card
 }
 
 #InfoRow:hover
@@ -1381,43 +1318,6 @@ DACSynergyIcon.HiddenInactive
 	transition-duration: 0s;
 }
 
-.Minimal #InfoRow
-{
-	visibility: collapse;
-}
-
-.Cost2 #InfoRow
-{
-	border-top: 2px solid #62df8144;
-	border-left: 2px solid #62df8122;
-	border-right: 2px solid #62df8122;
-	background-color: gradient(linear, 0% 100%, 0% 0%, from(#28813F), to(#4442));
-}
-
-.Cost3 #InfoRow
-{
-	border-top: 2px solid #829cf044;
-	border-left: 2px solid #829cf022;
-	border-right: 2px solid #829cf022;
-	background-color: gradient(linear, 0% 100%, 0% 0%, from(#233368), to(#4442));
-}
-
-.Cost4 #InfoRow
-{
-	border-top: 2px solid #ef87f344;
-	border-left: 2px solid #ef87f322;
-	border-right: 2px solid #ef87f322;
-	background-color: gradient(linear, 0% 100%, 0% 0%, from(#733a75), to(#4442));
-}
-
-.Cost5 #InfoRow
-{
-	border-top: 2px solid #ffe08588;
-	border-left: 2px solid #ffe08566;
-	border-right: 2px solid #ffe08566;
-	background-color: gradient(linear, 0% 100%, 0% 0%, from(#c1995b), to(#4a3d28));
-}
-
 #HeroCardRow
 {
 	width: 304px;
@@ -1427,12 +1327,13 @@ DACSynergyIcon.HiddenInactive
 	margin-top: 87px;
 }
 
-.Minimal #HeroCardRow
+#HeroCardRow
 {
 	margin-top: -60px;
 }
 
-.ParticleOverlay {
+.ParticleOverlay 
+{
 	margin-left: -170px;
 	margin-top: -85px;
 	width: 645px;
@@ -1440,18 +1341,50 @@ DACSynergyIcon.HiddenInactive
 	z-index: 50;
 }
 
-.GoldValueContainer
+#StatusGoldContainer
 {
-	width: 60px;
-	height: 54px;
-	horizontal-align: right;
+	horizontal-align: center;
+	padding-top: 292px;
+	padding-left: 1088px;
+}
 
+.GameMode_Duos #StatusGoldContainer
+{
+	visibility: collapse;
+}
+
+.IsLayoutSmallScreen #StatusGoldContainer
+{
+	padding-top: 242px;
+	padding-left: 1538px;
+}
+
+.GoldValueCoin
+{
 	background-image: url("s2r://panorama/images/hud/dac_shop_button_psd.vtex");
 	background-repeat: no-repeat;
 	background-size: contain;
+	width: 60px;
+	height: 54px;
 	background-position: 50% 50%;
-	margin-top: 34px;
-	margin-right: 4px;
+}
+
+#StatusGoldContainer .GoldValueCoin
+{
+	width: 80px;
+	height: 80px;
+}
+
+#StatusGoldContainer .CostLabel
+{
+	padding-top: 12px;
+	padding-right: 1px;
+}
+
+.GoldValueContainer
+{
+	horizontal-align: right;
+	margin-right: 0px;
 }
 
 .PlayerIsMaxLevel #LevelUp .GoldValueContainer
@@ -1479,7 +1412,8 @@ DACSynergyIcon.HiddenInactive
 	border: 2px solid black;
 }
 
-.HeroLock {
+.HeroLock
+{
 	width: 96px;
 	height: 96px;
 	opacity: 0;
@@ -1502,30 +1436,7 @@ DACSynergyIcon.HiddenInactive
 	pre-transform-scale2d: 1;
 }
 
-
-// Minimal Mode
-#InfoRowMinimal
-{
-	margin: 0px;
-	margin-bottom: 60px;
-
-	padding: 0px;
-	border: 0px solid #0000;
-	background-color: #0000;
-
-	vertical-align: bottom;
-
-	visibility: collapse;
-
-	z-index: 1;	// move in front of the hero card
-}
-
-.Minimal #InfoRowMinimal
-{
-	visibility: visible;
-}
-
-.Minimal .HeroName
+.HeroName
 {
 	text-align: center;
 	vertical-align: bottom;
@@ -1538,53 +1449,50 @@ DACSynergyIcon.HiddenInactive
 	line-height: 20px;
 }
 
-.Minimal #AbilityContainer
+#AbilityContainer
 {
 	visibility: collapse;
 }
 
-.Minimal #SynergyCapsule
+#SynergyCapsule
 {
 	ui-scale: 57%;
 }
 
-
-
-// Minimal Timer
-.Minimal #TimerContainer
-{
-	vertical-align: top;
-	width: 50%;
-	margin-top: 0px;
-}
-
-
-// helpers
-.Minimal .SynergyHelpersContainer
-{
-	border-radius: 0px;
-	background-color: #0000;
-	vertical-align: top;
-	width: 1000px;
-
-	margin-top: -50px;
-}
-
-.Minimal .SynergyHelper
+.SynergyHelper,
+.TeammateSynergyHelper
 {
 	ui-scale: 65%;
 }
 
-.Minimal #UnitShopContainer
+#UnitShopHitTestBG
 {
+	horizontal-align: center;
+	width: 100%;
+	height: 100%;
+}
+
+#UnitShopContainer
+{
+	horizontal-align: center;
+	flow-children: down;
+	width: 1300px;
+
 	height: fit-children;
-	background-image:  url("s2r://panorama/images/shop/minimal_bg_psd.vtex");
-	background-size: 100% 110%;
+	//background-image:  url("s2r://panorama/images/shop/minimal_bg_psd.vtex");
+	//background-size: 100% 100%;
+	//background-repeat: no-repeat;
+	//background-position:0px 30px;
+}
+
+.IsLayoutSmallScreen #UnitShopContainer
+{
+	background-size: 110% 100%;
 	background-repeat: no-repeat;
-	background-position: 0 43px;
+	background-position: -46px 52px;
 }
 
-.Minimal #MainRow
+#MainRow
 {
 	background-color: #0000;
 	width: fit-children;
@@ -1592,88 +1500,126 @@ DACSynergyIcon.HiddenInactive
 	height: fit-children;
 }
 
-.Minimal .ShopEntry
+.ButtonGutter
 {
-	visibility: visible;
-}
-
-.Minimal .ButtonGutter
-{
-	flow-children: right;
-
-	margin-top: 105px;
-
+	flow-children: down;
 	width: fit-children;
 	height: fit-children;
 
-	padding: 0px;
+	margin-top: 165px;
 }
 
-.Minimal .ShopButton,
-.Minimal #LibraryShop
+.ButtonGutterLeft
 {
-	width:	90px;
-	height:	190px;
-	margin: 8px;
-
-	background-color: #0000;
-	background-image: none;
+	horizontal-align: left;
+	margin-left: 12px;
+	margin-top: 154px;
 }
 
-.Minimal #LibraryButton,
-.Minimal #LockButton,
-.Minimal #UnlockButton
+.ButtonGutterRight
 {
-	width: 80px;
-	height: 80px;
+	horizontal-align: right;
+	margin-right: 12px;
 }
 
-.Minimal #RerollButton
+.IsLayoutSmallScreen .ButtonGutterLeft
 {
-	width: 80px;
-	height: 80px;
+	margin-left: 0px;
 }
 
-.Minimal #PlayerEXPContainer
+.IsLayoutSmallScreen .ButtonGutterRight
 {
-	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_bg_png.vtex");
+	margin-right: 0px;
+}
+
+.IsLayoutSmallScreen .ButtonGutter
+{
+	margin-top: 230px;
+}
+
+.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft
+{
+	margin-top: 140px;
+}
+
+
+
+
+#LibraryButton,
+#LockButton,
+#UnlockButton,
+#RerollButton
+{
+	width: 90px;
+	height: 90px;
+}
+
+#PlayerEXPContainer
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_level_progressbar_bg_psd.vtex");
 	background-size: 100%;
-	width: 166px;
-	height: 166px;
+	width: 174px;
+	height: 174px;
 	horizontal-align: center;
-	vertical-align: center;
-
+	vertical-align: top;
 	ui-scale: 52%;
 }
 
-.Minimal #UnlockShop
+#UnlockShop
 {
 	animation-name: none;
 }
 
-.Minimal #ShopContainer
+.LowVisualQuality .FreeReroll #RerollButton,
+.LowVisualQuality #PlayerEXPGraphLevel.LevelUpFlashText
+.LowVisualQuality .ShopButton.PressButtonAnim,
+.LowVisualQuality .ShopButton.PressButtonAnimSpin #RerollButton,
+{
+	animation-name: none;
+	animation-duration: 0s;
+	animation-iteration-count: 0;
+	animation-timing-function: none;
+}
+
+.LowVisualQuality #PlayerEXPGraphPreview_FG 
+{
+    animation-name: none;
+	animation-duration: 0s;
+	animation-iteration-count: 0;
+	animation-timing-function: none;
+    opacity: 0;
+}
+
+#ShopContainer
 {
 	width: 1000px;
+	z-index: 2;
+}
+
+.IsLayoutSmallScreen #UnitShopContainer
+{
+	ui-scale: 122%;
 }
 
 // Level Up button
-.Minimal #LevelUp #StatusXP
+#LevelUp #StatusXP
 {
-    vertical-align: bottom;
-	margin-bottom: 35px;
-    margin-top: 0px;
+	color: #cdd2f3;
+	color: gradient(linear, 0% 0%, 100% 0%, from(#a6a6f6), color-stop (.5, #cdd2f3), to(#a6a6f6));
+	text-shadow: 0px 0px 0px 2.0 #1d2645;
+	vertical-align: bottom;
 	font-size: 20px;
 }
 
 
-.Language_schinese .Minimal #LevelUp #StatusXP
+.Language_schinese #LevelUp #StatusXP
 {
-	margin-bottom: 10px;
+	//margin-bottom: 10px;
 	height: 50px;
 	text-overflow: shrink;
 }
 
-.Minimal .UnitShopFGItem
+.UnitShopFGItem
 {
 	width: 200px;
 	height: 200px;
@@ -1682,22 +1628,13 @@ DACSynergyIcon.HiddenInactive
 	margin-top: 0px;
 }
 
-.Minimal .ShopEntry
-{
-	width: 180px;
-	height: 280px;
-	padding: 0px;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-.Minimal .ParticleOverlay
+.ParticleOverlay
 {
 	width: 180px;
 	height: 338px;
 }
 
-.Minimal #HeroCardRow
+#HeroCardRow
 {
 	width: 100%;
 	height: 100%;
@@ -1705,49 +1642,49 @@ DACSynergyIcon.HiddenInactive
 	margin-top: 0px;
 }
 
-.Minimal #BottomFade,
-.Minimal #BorderContainer,
-.Minimal #CostContainer,
-.Minimal #WashLayer
+#BottomFade,
+#BorderContainer,
+#CostContainer,
+#WashLayer
 {
 	visibility: collapse;
 }
 
-.Minimal .ParticleOverlay
+.ParticleOverlay
 {
 	margin-left: 0px;
 	width: 180px;
 }
 
-.Minimal #UnitsShop
+#UnitsShop
 {
 	margin-top: 0px;
 	min-height:280px;
 }
 
-.Minimal #UnitsShopLockLayer
+#UnitsShopLockLayer
 {
 	margin-top: 80px;
 }
 
-.Minimal #HoverParticle,
-.Minimal #CombineParticle
+#HoverParticle,
+#CombineParticle
 {
 	visibility: collapse;
 }
 
-.Minimal .UnitShopBGItem
+.UnitShopBGItem
 {
 	background-image: none;
 	width: fill-parent-flow( 0.2 );
 }
 
-.Minimal .UnderfootImage
+.UnderfootImage
 {
 	width: 100%;
 	height: 60px;
 
-	margin-top: 147px;
+	margin-top: 149px;
 
 	background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_1_psd.vtex");
 	background-size: 120%;
@@ -1756,60 +1693,57 @@ DACSynergyIcon.HiddenInactive
 	overflow: noclip;
 }
 
-.Minimal .GoldValueContainer
+.GoldValueContainer
 {
-	width: 45px;
-	height: 45px;
+	width: 40px;
+	height: 40px;
 	horizontal-align: right;
-	margin-top: 33px;
- 
+	margin-top: 6px;
+	margin-bottom: 55px;
+	margin-right: -6px;
 }
 
-.Minimal .GoldValueContainer .CostLabel
+.GoldValueContainer .CostLabel
 {
-	font-size: 27px;
+	font-size: 24px;
 	text-align: center;
 	padding-top: 0px; 
 	margin-top: 2px;
+	margin-left: 1px;
 }
 
-.Minimal .UnderfootImage
+.UnderfootImage
 {
 	transition-property: background-image;
 	transition-duration: .2s;
 }
 
-.Minimal .Purchased .UnderfootImage
+.Purchased .UnderfootImage
 {
 	visibility: collapse;
 }
 
-.Minimal .Rank2 .UnderfootImage
+.Rank2 .UnderfootImage
 {
 	background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_2_psd.vtex");
 }
 
-.Minimal .Rank3 .UnderfootImage
+.Rank3 .UnderfootImage
 {
 	background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_3_psd.vtex");
 }
 
-.Minimal .Rank4 .UnderfootImage
+.Rank4 .UnderfootImage
 {
 	background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_4_psd.vtex");
 }
 
-.Minimal .Rank5 .UnderfootImage
+.Rank5 .UnderfootImage
 {
 	background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_5_psd.vtex");
 }
 
-.Minimal .CombineHighlight
-{
-	visibility: collapse;
-}
-
-.Minimal .CannotAfford .UnderfootImage
+.CannotAfford .UnderfootImage
 {
 	background-image: url("s2r://panorama/images/shop/shop_underfoot_glow_cannot_afford_psd.vtex");
 }
@@ -1822,7 +1756,7 @@ DACSynergyIcon.HiddenInactive
 	horizontal-align: right;
 }
 
-.Minimal .CostContainer
+.CostContainer
 {
 	width: 45px;
 	height: 45px;
@@ -1838,7 +1772,7 @@ DACSynergyIcon.HiddenInactive
 	margin-right: 15px;
 }
 
-.Minimal #CostNumber
+#CostNumber
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from(#973c00), to(#906030));
 	font-weight: bold;
@@ -1854,7 +1788,7 @@ DACSynergyIcon.HiddenInactive
 	margin-left: 2px;
 }
 
-.Minimal #UnitHeader
+#UnitHeader
 {
 	margin-top: 146px;
 }
@@ -1887,24 +1821,155 @@ DACSynergyIcon.HiddenInactive
 	margin-bottom: 93px;
 	margin-left: 10px;
 
-	visibility: collapse;
+	opacity: 0;
 
 	z-index: 201;
 
 	brightness: 1;
+	opacity: 0;
+	
+	transition-property: opacity; 
+	transition-duration: .2s;
 }
 
-.Minimal #HeroCardRow:hover #InfoButton
+#HeroCardRow:hover #InfoButton
+{
+	opacity: .18;
+}
+
+.IsLayoutSmallScreen #InfoButton
+{
+	opacity: .18;
+}
+
+#HeroCardRow:hover #InfoButton:hover
+{
+	//brightness: 2;
+	opacity: 1; 
+}
+
+#OddsShop
+{
+	visibility: collapse;
+}
+
+.IsLayoutSmallScreen #OddsShop
 {
 	visibility: visible;
 }
 
-#InfoButton:hover
+.IsLayoutSmallScreen #LibraryShop
 {
-	brightness: 2;
+	//visibility: collapse;
 }
 
-.Minimal #OddsShop
+
+.TeammateInfoIcon
 {
-	visibility: collapse;
+	width: 70px;
+	height: 70px;
+	background-image: url("s2r://panorama/images/hud/icon_teaminfo_psd.vtex");
+	background-size: 50% 50%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+
+	margin-left: 10px;
+	margin-right: 16px;
+	//opacity: .20;
+	//background-color: red;
+}
+
+.IsLayoutSmallScreen .TeammateInfoIcon
+{
+	margin: 0px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+
+.DuosSendGold
+{
+	width: 160px;
+	height: 60px;
+	flow-children: down;
+	margin-right: 40px;
+}
+
+.SendGoldPanel
+{
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center;
+
+	//width: 150px;
+	//height: 30px;
+
+	width: 70px;
+	height: 70px;
+
+	horizontal-align: right;
+	margin-right: 10px;
+	margin-left: 16px;
+
+	transition-property: brightness;
+	transition-duration: .2s;
+
+	background-image: url("s2r://panorama/images/shop/send_1_gold_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: 90% 90%;
+	background-position: 50% 50%;
+	//background-color: green;
+}
+
+.IsLayoutSmallScreen .SendGoldPanel
+{
+	background-size: 80% 80%;
+	margin: 0px;
+	margin-left: 10px;
+}
+
+.SendGoldPanel:hover
+{
+	brightness: 1.5;
+}
+
+.SendGoldAmount
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from(#973c00), to(#906030));
+	font-weight: bold;
+	font-size: 24px;
+	margin-bottom: 4px;
+	margin-right: 1px;
+
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+.IsLayoutSmallScreen .SendGoldAmount
+{
+	margin-bottom: 2px;
+	margin-right: 1px;	
+}
+
+#Send1
+{
+	//margin-top: 5px;
+}
+
+.SendGoldLabel
+{
+	font-weight: bold;
+	font-size: 18px;
+	color: gold;
+	font-family: Ravenhook, Radiance;
+	vertical-align: center;
+	width: fit-children;
+}
+
+.DuosCannotSend1Gold #Send1,
+.DuosCannotSend5Gold #Send5,
+{
+	saturation: 0;
+	opacity: .1;
 }

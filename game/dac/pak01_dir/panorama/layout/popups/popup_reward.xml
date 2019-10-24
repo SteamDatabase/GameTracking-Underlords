@@ -1,12 +1,13 @@
 <root>
-  <styles>
-    <include src="s2r://panorama/styles/gamestyles.vcss_c" />
-    <include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
-    <include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
-    <include src="s2r://panorama/styles/popups/popup_reward.vcss_c" />
-  </styles>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_reward.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+	</styles>
 
-  <PopupReward>
+	<PopupReward>
 		<Panel id="Overlay" />
 		<DACParticleScenePanel id="RewardFX" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="econ/s0/particles/battlepass/s0_battlepass_reward_page.vpcf" fov="150" />						
 				
@@ -15,7 +16,7 @@
 		<Panel id="RewardContainer">
 			
 			<Panel class="TitleContainer">
-				<Label class="Title MajorTitle" id="RewardMajorTitle"  text="#DAC_Reward_Title_Major" />
+				<Label class="Title MajorTitle HeadlineFont" id="RewardMajorTitle"  text="#DAC_Reward_Title_Major" />
 				<Panel id="MinorTitleRow" >
 					<Panel id="BPLogo" />
 					<Label class="Title MinorTitle" id="RewardMinorTitle"  text="#DAC_Reward_Title_Minor" />
@@ -25,18 +26,22 @@
 			<Panel class="ItemContainer">
 				<Panel id="ItemImage" />
 			</Panel>
+
+			<Panel id="TalentContainer">
+				<!-- Filled with DACTalentCards -->
+			</Panel>
 			
 			<Panel id="RewardTextContainer">
 				<Label class="RewardText RewardTextName" html="true"  text="#DAC_Reward_Item_Name" />
 				<Label class="RewardText RewardTextDesc" html="true"  text="#DAC_Reward_Item_Desc" />
+				<Label class="RewardText RewardTextUnlockCount" html="true"  text="#DAC_Reward_Item_TalentCount" />
+				<Label class="RewardText RewardTextUnlocked" html="true"  text="#DAC_Reward_Item_TalentUnlocked" />
 			</Panel>
 
-      <Button id="EquipButton" class="CloseButton">
-        <Label class="EquipLabel" text="#DAC_LoadoutEquip" onactivate="DACPopupRewardEquip()"/>
-      </Button>     
+			<Button id="EquipButton" class="CloseButton" onactivate="DACPopupRewardEquip()" >
+				<Label class="EquipLabel" text="#DAC_LoadoutEquip" allowtextselection="false"/>
+			</Button>
 			
 		</Panel>
-
-
-  </PopupReward>
+	</PopupReward>
 </root>

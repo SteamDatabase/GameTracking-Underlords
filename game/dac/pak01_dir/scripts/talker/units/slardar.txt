@@ -1,0 +1,149 @@
+// slardar - Hero
+criterion "Isslardar" "classname" "slardar" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response slardar_recruit_1
+{
+	speak "slardar_recruit" noscene 
+}
+
+Rule slardar_recruit_1_rule
+{
+	criteria Isslardar ConceptRecruit UnitRank1
+	response slardar_recruit_1
+}
+
+
+Response slardar_recruit_2
+{
+	speak "slardar_upgrade" noscene 
+}
+
+Rule slardar_recruit_2_rule
+{
+	criteria Isslardar ConceptRecruit UnitRank2
+	response slardar_recruit_2
+}
+
+
+Response slardar_recruit_3
+{
+	speak "slardar_final_upgrade" noscene 
+}
+
+Rule slardar_recruit_3_rule
+{
+	criteria Isslardar ConceptRecruit UnitRank3
+	response slardar_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response slardar_start_round
+{
+	speak "slardar_start_round" noscene 
+}
+
+Rule slardar_start_round_rule
+{
+	criteria Isslardar ConceptRoundStart 
+	response slardar_start_round
+}
+
+
+Response slardar_start_round_lost_last_round
+{
+	speak "slardar_start_round_lost_last_round" noscene 
+}
+
+Rule slardar_start_round_lost_last_round_rule
+{
+	criteria Isslardar ConceptRoundStart LostLastGame
+	response slardar_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response slardar_flawless_victory
+{
+	speak "slardar_flawless_victory" noscene 
+}
+
+Rule slardar_flawless_victory_rule
+{
+	criteria Isslardar ConceptRoundEnd Result_WinFlawless
+	response slardar_flawless_victory
+}
+
+
+Response slardar_decisive_victory
+{
+	speak "slardar_decisive_victory" noscene 
+}
+
+Rule slardar_decisive_victory_rule
+{
+	criteria Isslardar ConceptRoundEnd Result_WinDecisive
+	response slardar_decisive_victory
+}
+
+Response slardar_narrow_victory
+{
+	speak "slardar_narrow_victory" noscene 
+}
+
+Rule slardar_narrow_victory_rule
+{
+	criteria Isslardar ConceptRoundEnd Result_WinNarrow
+	response slardar_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response slardar_flawless_defeat
+{
+	speak "slardar_flawless_defeat" noscene 
+}
+
+Rule slardar_flawless_defeat_rule
+{
+	criteria Isslardar ConceptRoundEnd Result_LoseFlawless
+	response slardar_flawless_defeat
+}
+
+
+Response slardar_decisive_defeat
+{
+	speak "slardar_decisive_defeat" noscene 
+}
+
+Rule slardar_decisive_defeat_rule
+{
+	criteria Isslardar ConceptRoundEnd Result_LoseDecisive
+	response slardar_decisive_defeat
+}
+
+Response slardar_narrow_defeat
+{
+	speak "slardar_narrow_defeat" noscene 
+}
+
+Rule slardar_narrow_defeat_rule
+{
+	criteria Isslardar ConceptRoundEnd Result_LoseNarrow
+	response slardar_narrow_defeat
+}

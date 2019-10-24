@@ -1,0 +1,149 @@
+// warlock - Hero
+criterion "Iswarlock" "classname" "warlock" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response warlock_recruit_1
+{
+	speak "warlock_recruit" noscene 
+}
+
+Rule warlock_recruit_1_rule
+{
+	criteria Iswarlock ConceptRecruit UnitRank1
+	response warlock_recruit_1
+}
+
+
+Response warlock_recruit_2
+{
+	speak "warlock_upgrade" noscene 
+}
+
+Rule warlock_recruit_2_rule
+{
+	criteria Iswarlock ConceptRecruit UnitRank2
+	response warlock_recruit_2
+}
+
+
+Response warlock_recruit_3
+{
+	speak "warlock_final_upgrade" noscene 
+}
+
+Rule warlock_recruit_3_rule
+{
+	criteria Iswarlock ConceptRecruit UnitRank3
+	response warlock_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response warlock_start_round
+{
+	speak "warlock_start_round" noscene 
+}
+
+Rule warlock_start_round_rule
+{
+	criteria Iswarlock ConceptRoundStart 
+	response warlock_start_round
+}
+
+
+Response warlock_start_round_lost_last_round
+{
+	speak "warlock_start_round_lost_last_round" noscene 
+}
+
+Rule warlock_start_round_lost_last_round_rule
+{
+	criteria Iswarlock ConceptRoundStart LostLastGame
+	response warlock_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response warlock_flawless_victory
+{
+	speak "warlock_flawless_victory" noscene 
+}
+
+Rule warlock_flawless_victory_rule
+{
+	criteria Iswarlock ConceptRoundEnd Result_WinFlawless
+	response warlock_flawless_victory
+}
+
+
+Response warlock_decisive_victory
+{
+	speak "warlock_decisive_victory" noscene 
+}
+
+Rule warlock_decisive_victory_rule
+{
+	criteria Iswarlock ConceptRoundEnd Result_WinDecisive
+	response warlock_decisive_victory
+}
+
+Response warlock_narrow_victory
+{
+	speak "warlock_narrow_victory" noscene 
+}
+
+Rule warlock_narrow_victory_rule
+{
+	criteria Iswarlock ConceptRoundEnd Result_WinNarrow
+	response warlock_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response warlock_flawless_defeat
+{
+	speak "warlock_flawless_defeat" noscene 
+}
+
+Rule warlock_flawless_defeat_rule
+{
+	criteria Iswarlock ConceptRoundEnd Result_LoseFlawless
+	response warlock_flawless_defeat
+}
+
+
+Response warlock_decisive_defeat
+{
+	speak "warlock_decisive_defeat" noscene 
+}
+
+Rule warlock_decisive_defeat_rule
+{
+	criteria Iswarlock ConceptRoundEnd Result_LoseDecisive
+	response warlock_decisive_defeat
+}
+
+Response warlock_narrow_defeat
+{
+	speak "warlock_narrow_defeat" noscene 
+}
+
+Rule warlock_narrow_defeat_rule
+{
+	criteria Iswarlock ConceptRoundEnd Result_LoseNarrow
+	response warlock_narrow_defeat
+}

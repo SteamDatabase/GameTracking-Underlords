@@ -93,12 +93,29 @@ DACUnderlordStatus.ShowPlayer
 	transition-duration: .3s;
 	vertical-align: bottom; 
 	overflow: noclip;
-	
 }
 
-.LowVisualQuality #UnderlordParticle
+.LowVisualQuality #UnderlordParticle,
+.IsLayoutSmallScreen #UnderlordParticle
 {
 	visibility: collapse;
+}
+
+
+.UnderlordVignette
+{
+	width: 800px;
+	height: 500px;
+	background-image: url("s2r://panorama/images/hud/underlord_backing_gradient_psd.vtex");
+	background-size: 100%;
+	opacity: 1;
+	//opacity: 0;
+	transition-property: opacity;
+	transition-duration: 1s;
+
+	vertical-align: bottom;
+	horizontal-align: right;
+
 }
 
 #UnderlordSmokeParticle
@@ -127,11 +144,13 @@ DACUnderlordStatus.ShowPlayer
 {
 	horizontal-align: right;
 	vertical-align: bottom;
-
 	flow-children: down;
 	
 	padding-bottom: safe-area-inset-bottom;
 	margin-bottom: 18px;
+
+
+
 }
 
 .LeftPlayer .BottomSection
@@ -553,7 +572,10 @@ DACUnderlordStatus.ShowPlayer
 	//width: 100%;
 	horizontal-align: left;
 	margin-bottom: -5px;
+
 }
+
+
 
 .CornerStatusLevel,
 .CornerStatusGold,
@@ -576,6 +598,10 @@ DACUnderlordStatus.ShowPlayer
 	width: 190px;
 	horizontal-align: right;
 	padding-right: 0px;
+
+	vertical-align: bottom;
+	margin-bottom: 4px;
+	//margin-right: 12px;
 }
 
 #DuosBuddyPlayerProfile .CornerStatusHype
@@ -605,10 +631,21 @@ DACUnderlordStatus.ShowPlayer
 	//visibility: collapse;
 }
 
+#StatusLevel,
+#StatusGold,
+#StatusHP
+{
+	font-size: 54px;
+}
+
+#StatusHype
+{
+	font-size: 36px;
+}
+
 #StatusLevel 
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from( #8db0f4 ), to(#aad8de));
-	font-size: 46px;
 	text-shadow: 0px 0px 0px 3.0 #000;
 	font-weight: bold;
 	font-family: Ravenhook;
@@ -617,7 +654,6 @@ DACUnderlordStatus.ShowPlayer
 #StatusGold 
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from( #ecb00e ), to(#f7e062));
-	font-size: 46px;
 	text-shadow: 0px 0px 0px 3.0 #000;
 	font-weight: bold;
 	font-family: Ravenhook;
@@ -627,7 +663,6 @@ DACUnderlordStatus.ShowPlayer
 #StatusHP 
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from( #81cd74 ), to(#b1feaa));
-	font-size: 46px;
 	text-shadow: 0px 0px 0px 3.0 #000;
 	font-weight: bold;
 	font-family: Ravenhook;
@@ -637,7 +672,6 @@ DACUnderlordStatus.ShowPlayer
 #StatusHype 
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from( #aaaaaa ), to(#bfbfbf));
-	font-size: 46px;
 	text-shadow: 0px 0px 0px 3.0 #000;
 	font-weight: bold;
 	font-family: Ravenhook;
@@ -761,6 +795,9 @@ DACUnderlordStatus.ShowPlayer
 	width: 760px;
 	height: 760px;
 	margin-bottom: -50px;
+
+	//opacity: 0;
+
 }
 
 .LowVisualQuality #UnderlordPortrait 

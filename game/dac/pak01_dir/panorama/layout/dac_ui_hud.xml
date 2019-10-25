@@ -250,7 +250,7 @@
 		
 					<Panel id="DebugCommandButtons DebugSection" class="TopBottomFlow">
 						<Label class="ControlPanelLabel" text="#DAC_InGame_DevControlPanel"/>
-					<Panel id="Column_0" class="LeftRightFlow DebugSection">
+					<Panel id="Row_0" class="LeftRightFlow DebugSection">
 						<Button class="DevButton SetPlayerLevelButton" onactivate="DACDebugSetPlayerLevel( 10 )">
 							<Label html="true" text="#DAC_InGame_DevSetLevel10"/>
 						</Button>
@@ -263,16 +263,25 @@
 						<Button class="DevButton" onactivate="DACDebugGiveGold( 100 )">
 							<Label html="true" text="#DAC_InGame_DevGiveMaxGold"/>
 						</Button>
-						<Button class="DevButton" onactivate="DACDebugModifySelectedUnitRank( 1 )">
+						<Button class="DevButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( 1 )">
 							<Label html="true" text="#DAC_InGame_DevIncreaseSelectedUnitRank"/>
 						</Button>
-						<Button class="DevButton" onactivate="DACDebugModifySelectedUnitRank( -1 )">
+						<Button class="DevButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( -1 )">
 							<Label html="true" text="#DAC_InGame_DevDecreaseSelectedUnitRank"/>
 						</Button>
 					</Panel>
-					<Panel id="Column_1" class="LeftRightFlow">
+					<Panel id="Row_1" class="LeftRightFlow">
+						<Button class="DevButton" id="HalveTimescaleButton" onactivate="DACDebugModifyHostTimescale( 0.5 )">
+							<Label html="true" text="#DAC_InGame_DevModifyHostTimescaleHalf"/>
+						</Button>
+						<Button class="DevButton" id="DoubleTimescaleButton" onactivate="DACDebugModifyHostTimescale( 2.0 )">
+							<Label html="true" text="#DAC_InGame_DevModifyHostTimescaleDouble"/>
+						</Button>						
+						<Button class="DevButton" onactivate="DACDebugResetHostTimescale()">
+							<Label html="true" text="#DAC_InGame_DevModifyHostTimescaleDefault"/>
+						</Button>						
 					</Panel>
-					<Panel id="Column_2" class="LeftRightFlow">
+					<Panel id="Row_2" class="LeftRightFlow">
 						<Button class="DevButton" id="ButtonCopyShareCode" onactivate="DACDebugCopyShareCode()" onmouseover="UIShowTextTooltip( #DAC_InGame_DevCopyShareCode_Tooltip )" onmouseout="UIHideTextTooltip()">
 							<Label id="DevCopyShareCode_Label" text="#DAC_InGame_DevCopyShareCode" />
 							<Label id="DevCopyShareCode_Success" text="#DAC_InGame_DevCopyShareCode_Success" />

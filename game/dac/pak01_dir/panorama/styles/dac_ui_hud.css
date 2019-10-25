@@ -389,11 +389,16 @@ DACUIHud.FadeOut
 	margin: 2px;
 	width: fill-parent-flow( 1.0 );
 	border-radius: 2px;
+
+	transition-timing-function: ease-in;
+	transition-duration: .2s;
+	transition-property: position;
 }
 
 .DevButton:disabled
 {
 	background-color: #777777AA;
+	opacity:0.7;
 }
 
 .DevButton:hover
@@ -406,14 +411,31 @@ DACUIHud.FadeOut
 	transform: translateY(1px);
 }
 
-#Column_0 .DevButton:hover
+#Row_0 .DevButton:hover,
+#Row_1 .DevButton:hover
 {
 	background-color: #444;
 }
 
-#Column_0 .DevButton
+#Row_0 .DevButton,
+#Row_1 .DevButton
 {
 	background-color: #333333;
+}
+
+#Row_1 .DevButton:disabled
+{
+	background-color: #111111;
+	opacity:0.1;
+}
+
+DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
+{
+	visibility: collapse;
+	transform:translateY(300px);
+	transition-property: transform;
+	transition-duration: .2s;
+	transition-timing-function: ease-in;
 }
 
 #DevCopyShareCode_Success,
@@ -491,6 +513,7 @@ DACUIHud.FadeOut
 	horizontal-align: center;
 	text-align: center;
 	text-overflow: clip;
+	line-height: 16px;
 	font-size: 12px;
 	color: #ffffff;
 }

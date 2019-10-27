@@ -457,7 +457,6 @@
  Failed to pack %s
  Failed to unpack %s - Code %d
  GCConnectionStatus_GC_GOING_DOWN
- H;=V
  H;D$PH
  H;D$`H
  M9l$
@@ -1654,6 +1653,7 @@ $CMsgServerToGCUpdateLobbyServerState
 $CPublishedFile_GetUserFiles_Response
 $CWorkshop_AddSpecialPayment_Response"W
 $CWorkshop_GetSpecialPayments_Request
+$D;-Z{
 $D;3|
 $DT<I
 $E;D$
@@ -2353,23 +2353,26 @@ $z0u.A
 (#GameUI_Disconnect_RemoteProblem_Timeout
 ($$fE
 (%0.2f): %s
+(%2IS
 (%d)  EffectName "%s"  Dormant? %s  Emission Stopped? %s 
 (%d) Name: %s (%s)
 (%g %g)
-(%i_E
+(%g#h
+(%iaE
 (%s,%s)
 (*%s*), 
 (*MARK) must have an argument
 (*VERB) not recognized or malformed
 (,$fE
-(-&w*
+(-&y*
+(-c	f
 (.CPlayer_GetCommunityPreferences_Request
 (.CPlayer_GetFriendsGameplayInfo_Response"K
 (.CPlayer_GetPerFriendPreferences_Request
 (.CPlayer_SetCommunityPreferences_Request
 (.CPlayer_SetPerFriendPreferences_Request
 (0x%08X)'??'
-(5x)S
+(=x7S
 (?R or (?[+-]digits must be followed by )
 (ACTIVE)
 (A^A_]
@@ -2400,7 +2403,6 @@ $z0u.A
 (Fade Removed: [%d,%d,%d,%d])
 (H9x(
 (H9~(
-(H;=G
 (HcWP
 (ID of the Cloud file to get details for.
 (L$ A
@@ -2984,7 +2986,9 @@ $z0u.A
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
 .%0*llu
-.%?2{
+.%9qU
+.%AVS
+.%|~U
 .(Optional) Set of tags for the published file.
 .-%HD
 .-__Y
@@ -3019,7 +3023,6 @@ $z0u.A
 ..CPlayer_GetNewSteamAnnouncementState_Response"_
 .0z"u 
 .3333
-.5diU
 .5g3P
 .5uKW
 .=w<N
@@ -3482,6 +3485,7 @@ $z0u.A
 0D;#}qM
 0E;.|
 0GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW
+0H;=-
 0IcD$
 0Marks latest announcement timestamp read by user
 0NETWORK_DISCONNECT_REJECT_SERVERCDKEYAUTHINVALID
@@ -7041,7 +7045,7 @@ $z0u.A
 ;GPttK
 ;GTtO
 ;H;:t#
-;Hc5^
+;Hc5N
 ;I9<$uY
 ;L$D|*
 ;Q t#H
@@ -7501,6 +7505,7 @@ $z0u.A
 @DP5z5@
 @Dota Underlords
 @Gr}H
+@H;=@
 @HH;E
 @HI;D$H
 @Lcg(I
@@ -9410,7 +9415,7 @@ AVAUATH
 AVAUATI
 AVAUATL
 AVAUATLc
-AVAUATLc%_-
+AVAUATLc%
 AVAUATM
 AVAUATS
 AVAUATS9
@@ -10422,12 +10427,14 @@ CDACClientGCSystem
 CDACClientGCSystem::ConnectToGame - already connected
 CDACClientGCSystem::ConnectToGame(%s)
 CDACClientGCSystem::ConnectToGame(%s,%s)
+CDACClientSimulation::OnClientConnectionComplete: bGameRulesExists=%u
 CDACClientUI::CreateHUD()
 CDACClientUI::DestroyHUD()
 CDACGameAccountClient
 CDACGameConstants
 CDACGameRules
 CDACGameRules *
+CDACGameRules::GameInit: bIsConnectionComplete=%u
 CDACGameRulesProxy
 CDACInput::SetActionSet %s
 CDACInventoryManager
@@ -10468,9 +10475,15 @@ CDAC_UI_DailyChallenge::OnClaimChallenge
 CDAC_UI_DailyChallenge::OnRerollChallenge
 CDAC_UI_EquipControl::EquipLoadoutItem
 CDAC_UI_EquipControl::OnEquipSuccess
+CDAC_UI_Hud -- RemoveClass HUDWaiting
+CDAC_UI_Hud::OnMatchWaitingForPlayers(), gamestate: %u
 CDAC_UI_Hud::OnReturnToMainMenu::Lobby
 CDAC_UI_Hud::OnReturnToMainMenu::LocalBotGame
 CDAC_UI_Hud::OnSwitchToDashboard
+CDAC_UI_Hud::OnSwitchToDashboard() (hiding hud)
+CDAC_UI_Hud::OnSwitchToGame() (showing hud)
+CDAC_UI_Main::OnSwitchToDashboard() (showing main)
+CDAC_UI_Main::OnSwitchToGame() (hiding main)
 CDAC_UI_Popup_FriendCode::OnCheckCode::Get
 CDAC_UI_Popup_FriendCode::OnConfirmCode::Get
 CDAC_UI_Popup_FriendCode::OnFindCode::Get
@@ -13040,6 +13053,7 @@ D8g@t
 D9#v%H
 D9#~CH
 D9#~KH
+D9-	N
 D9;t3I
 D9C ~JMc
 D9D$4B
@@ -13079,9 +13093,10 @@ D; tMH
 D;!ttHc
 D;"tIH
 D;$2tWL
-D;%9(
+D;%$'
+D;%*~
+D;%5h
 D;'t3H
-D;-nD
 D;.tLH
 D;0}zH
 D;1Lc
@@ -13090,8 +13105,9 @@ D;3}5
 D;8tQH
 D;:tZH
 D;;}5D
-D;=Sx
-D;=ax
+D;=(r
+D;=]s
+D;=f1
 D;B`}
 D;F`u
 D;K D
@@ -16387,175 +16403,177 @@ H;0t+A
 H;0t0H
 H;0t4H
 H;0t\H
-H;5!.
-H;5!>
-H;5$!
-H;5(W
-H;50n
-H;51E
-H;5<#
-H;5<6
-H;5<7
-H;5<;
-H;5<Y
-H;5AL
-H;5D4
-H;5P@
-H;5PU
-H;5Q!
-H;5Q"
-H;5Q*
-H;5Qu
-H;5Q{
-H;5\d
-H;5\r
-H;5`=
-H;5aK
-H;5al
-H;5aq
-H;5q 
-H;5q%
+H;5()
+H;5(1
+H;5(9
+H;5(A
+H;5,P
+H;5/n
+H;51(
+H;518
+H;58:
+H;58>
+H;5<I
+H;5<|
+H;5?e
+H;5@D
+H;5@E
+H;5A;
+H;5Ao
+H;5PL
+H;5Qv
+H;5X7
+H;5XA
+H;5XF
+H;5Xz
+H;5`3
+H;5a1
+H;5aB
+H;5aI
+H;5hL
+H;5h}
+H;5h~
+H;5lA
+H;5q3
+H;5qv
+H;5xR
+H;5xU
 H;7t"
 H;9u#
-H;="&
-H;="*
-H;="d
-H;="i
-H;=#F
-H;=#h
-H;=&`
-H;=&a
-H;=(M
-H;=(}
-H;=)5
-H;=)A
-H;=)k
-H;=*o
-H;=*}
-H;=+J
-H;=+R
-H;=,v
-H;=.3
-H;=.8
-H;=/h
-H;=0B
-H;=0t
-H;=1.
-H;=1|
-H;=2]
-H;=2m
-H;=3^
-H;=5R
-H;=6g
-H;=7#
-H;=7_a
-H;=8L
-H;=9+
-H;=:J
-H;=<]
-H;=<j
-H;==Y
-H;=>1
-H;=?S
+H;= "
+H;= #
+H;= z
+H;=!+
+H;=!,
+H;="$
+H;="_
+H;=#m
+H;=#o
+H;=&9
+H;=&C
+H;=&z
+H;='H
+H;=(/
+H;=(~
+H;=)R
+H;=*%
+H;=++
+H;=,A
+H;=,Y
+H;=-v
+H;=-x
+H;=0)
+H;=0v
+H;=2<
+H;=2@
+H;=3{
+H;=4=
+H;=4>
+H;=4?
+H;=4h
+H;=6I
+H;=7!
+H;=8.
+H;=8|
+H;=8}
+H;=9e
+H;=:!
+H;=:{
+H;=< 
+H;=<T
+H;==2
+H;=>Y
+H;=>i
 H;=?U
-H;=?Y
-H;=@"
-H;=@%
-H;=@+
-H;=@W
-H;=@p
-H;=A#
-H;=A{
-H;=B,
-H;=B-
-H;=B;
-H;=BA
-H;=Bb
-H;=Bh
-H;=CX
-H;=C[
-H;=C]
-H;=Ci
-H;=H7
-H;=HK
-H;=HP
-H;=Ib
-H;=J0
-H;=Ll
-H;=M$
-H;=Ma
+H;=@*
+H;=@E
+H;=@r
+H;=An
+H;=Ao
+H;=B%
+H;=B0
+H;=B^
+H;=CV
+H;=CY
+H;=DO
+H;=D{
+H;=H-
+H;=Hp
+H;=J*
+H;=K"
+H;=Kz
+H;=L+
+H;=MC
+H;=N2
+H;=O#
 H;=OW
-H;=Oy
-H;=P 
-H;=QQ
-H;=Qi
-H;=Qq
-H;=R@
-H;=RF
-H;=RO
-H;=R]
-H;=S}
-H;=Tl
-H;=Tw
-H;=Tx
-H;=Ty
-H;=VE
-H;=VR
-H;=X	
-H;=X6
-H;=XJ
-H;=XO
-H;=X`
-H;=Xt
-H;=YR
-H;=Zi
-H;=Zv
-H;=[1
-H;=[5
-H;=\R
-H;=\o
-H;=]|
-H;=_0
-H;=`X
-H;=ag
-H;=b#
-H;=cd
-H;=ch
-H;=cj
-H;=f]
-H;=fh
-H;=h5
+H;=P?
+H;=Pp
+H;=Qv
+H;=RB
+H;=RH
+H;=RW
+H;=Sc
+H;=T_
+H;=W%
+H;=W4
+H;=WYa
+H;=X,
+H;=Xv
+H;=YI
+H;=Z0
+H;=\%
+H;=\4
+H;=\Q
+H;=^)
+H;=_2
+H;=_`
+H;=_n
+H;=`7
+H;=`Q
+H;=az
+H;=a|
+H;=b!
+H;=b5
+H;=b\
+H;=bs
+H;=cf
+H;=f:
+H;=f{
+H;=h+
 H;=hI
-H;=hN
-H;=hp
-H;=i:
-H;=j"
-H;=k+
-H;=l#
-H;=lJ
-H;=lc
-H;=lm
+H;=hm
+H;=hr
+H;=i#
+H;=j*
+H;=ke
+H;=l!
+H;=l@
+H;=lf
 H;=l{
-H;=mu
-H;=oY
-H;=r%
-H;=r*
-H;=r4
-H;=ts
-H;=u3m
-H;=uV
-H;=vW
-H;=x 
-H;=x%
-H;=x4
-H;=xH
-H;=xM
-H;=xb
-H;=yE
-H;=yJ
-H;=zg
-H;=|d
-H;=~n
+H;=mX
+H;=mY
+H;=mi
+H;=nE
+H;=p0
+H;=p@
+H;=qK
+H;=qh
+H;=rW
+H;=s[
+H;=tg
+H;=u*
+H;=u{
+H;=v"
+H;=vz
+H;=wc
+H;=xp
+H;=x}
+H;=y#
+H;={c
+H;=|H
+H;=|`
+H;=~#
 H;C(t
 H;CPw<I
 H;F t,H
@@ -16585,7 +16603,6 @@ H@Hc@8H
 HC333?
 HDR Color Scale: %0.3f
 HELPER_BONE
-HH;=}
 HIERARCHY_ABSORIGIN
 HIERARCHY_ATTACHMENT
 HIERARCHY_BONE
@@ -16733,8 +16750,8 @@ HaticsType_Default
 HaticsType_None
 Have closed caption Panorama panel perform depth testing against the scene
 HaveActivePopups
-Hc5 V
-Hc59P)
+Hc5YP)
+Hc=s4
 Hc@ H
 Hc@$H
 Hc@(E1
@@ -17903,6 +17920,7 @@ L9|$HJ
 L: %.2f deg
 L;"t!f.
 L;'tM
+L;-qM
 L;0t!A
 L;0t?H9
 L;0t[A
@@ -18000,6 +18018,8 @@ LayoutPositionType_e
 Lc"D;b
 Lc#D;c
 Lc#fA
+Lc%*K
+Lc%,h
 Lc&D;f
 Lc&E)
 Lc'D;g
@@ -18007,7 +18027,6 @@ Lc'E)
 Lc(D;h
 Lc)D;i
 Lc+D;k
-Lc-eD
 Lc.E)
 Lc/D)
 Lc/E)
@@ -18017,7 +18036,6 @@ Lc:D;z
 Lc;A9
 Lc;D;{
 Lc;E9
-Lc=Jx
 Lc?D;
 LcC D;C0
 LcC$D
@@ -19687,7 +19705,6 @@ PF_TYPE_RANDOM_UNIFORM
 PFiPKN8panorama14IUIPanelClientES2_E
 PFiPN8panorama14IUIPanelClientES1_E
 PFvP12CSceneObjectE
-PH;=5
 PHD9e
 PHD;u
 PHE9e
@@ -20676,6 +20693,8 @@ ReservedRange
 Reset
 Reset all lesson display and success counts.
 Reset information from cl_showfps.
+ResetCameraPosition
+ResetCameraPositionBinder
 ResetCarouselMouseWheelCounts
 ResetSequence : %s: %s -> %s
 ResetSequenceInfo
@@ -23462,6 +23481,7 @@ Xd9Zdu
 Xh9Zht]@
 Xr0t/H
 Y$E3Y
+Y% aV
 Y%#EQ
 Y(Optional) Starting index to begin enumeration at. Defaults to the beginning of the list."Z
 Y,D3Y
@@ -26013,6 +26033,7 @@ dac_npc
 dac_offline_only
 dac_ortho_screen_window_scale
 dac_persona
+dac_play_combat_speech
 dac_player_slot_persona
 dac_playvcd
 dac_popup_season_0_update_intro_seen
@@ -26031,6 +26052,7 @@ dac_recent_private_match_bot_difficulty
 dac_recent_private_match_mode
 dac_refresh_postgame_scoreboard
 dac_remove_banner_paintin
+dac_reset_camera_position
 dac_right_click_move
 dac_round_over_enabled
 dac_round_over_first_hero_time
@@ -27889,7 +27911,6 @@ hypeBarDarkColor
 hypeBarLightColor
 hypeCost
 h|D;-
-h|D;-3/
 i < length_
 i >= 0
 i t!H
@@ -32445,7 +32466,7 @@ muzzleflash_smg1_player
 my_custom_images/%d.png
 n	ATI
 n	ATSH
-n5ATL
+n7ATL
 nDamageTaken
 nHATSH
 nHu6H
@@ -34199,30 +34220,34 @@ runcommand:%04d,tick:%u
 runsimulation  :cmd %d -> slot %d
 russian
 s H;5
-s H;5(
+s H;5 
+s H;5!
+s H;5!2
+s H;5!A
+s H;58~
+s H;5<
 s H;5A
-s H;5HS
-s H;5L~
+s H;5D
+s H;5H8
 s H;5P
-s H;5Q
-s H;5Q<
+s H;5Q5
+s H;5Q6
+s H;5Q:
+s H;5QN
 s H;5X
-s H;5\
-s H;5`
-s H;5a
-s H;5az
+s H;5`:
 s H;5p
 s H;5q
-s H;5q'
-s H;5t
-s H;5|M
 s off
 s(AUH
 s(E9&t-A
 s(H;5
-s(H;5 9
-s(H;5(
-s(H;5xi
+s(H;51
+s(H;5E
+s(H;5L
+s(H;5Q
+s(H;5`~
+s(H;5t
 s(t.H
 s)Hc@
 s)~+@
@@ -34230,16 +34255,14 @@ s,+s(
 s/glow.vH
 s/spriteH
 s0H;5
-s0H;5 
-s0H;5+
-s0H;58
-s0H;5A
+s0H;58 
+s0H;5E@
 s0H;5H
-s0H;5L
-s0H;5X
-s0H;5_Y
-s0H;5h
-s0H;5x
+s0H;5Ln
+s0H;5Pr
+s0H;5Q
+s0H;5\
+s0H;5t
 s1_mapname
 s2r://
 s69F~
@@ -34247,31 +34270,31 @@ s7>Ip
 s8D;kP
 s8H;5
 s8H;5 
-s8H;5AR
-s8H;5t
+s8H;5H
+s8H;5X
+s8H;5x
+s8H;5}@
 s8Lcm
 s@+dev_simulate_gcdown
 s@9C@
 s@H9sHv
 s@H;5
-s@H;5 
-s@H;50
-s@H;50 
-s@H;5l
-s@H;5|
+s@H;58
 sHA9t$,t
 sHH;5
-sHH;5E!
-sHH;5d
+sHH;5(
+sHH;5/
+sHH;58k
+sHH;5M
+sHH;5h
 sHHcR
 sIf true, then files must have all the tags specified.  If false, then must have at least one of the tags specified.
 sMA9|$ 
 sPH;5
-sPH;5"
-sPH;58\
-sPH;5H
+sPH;5H~
+sPH;5X
 sXH;5
-sXH;5x
+sXH;5(
 sZtgH
 s_EntComponentInfo
 s_WindVector
@@ -34287,6 +34310,10 @@ s_kDynamicValuesArraySize
 s_nLatchPermissions
 s_nWatchTransmitEntity
 s`H;5
+s`H;5H
+s`H;5P
+s`H;5T
+s`H;5X
 saHcB
 saddlebrown
 safe-area-inset-bottom
@@ -34548,9 +34575,7 @@ setting.useadvanced
 severity
 sfixed32
 sfixed64
-shH;5 
-shH;5(
-shH;5m
+shH;5
 shMcuX
 shadowcascadecount
 shadowcascadedistance%d
@@ -34770,9 +34795,7 @@ source_file
 source_filename
 source_reference_id
 source_unit_idx
-spH;5,
-spH;5=
-spH;5X
+spH;5
 space
 space shuttle
 spacerperiod
@@ -34819,7 +34842,6 @@ specularcolor
 specularindependence
 specularity
 specularpower
-speech
 speed
 speeds
 spell_damage_dealt
@@ -35191,7 +35213,7 @@ svgstrokewidth
 swedish
 swift_prefix
 sxH;5
-sxH;5u
+sxH;5x
 sxHc@
 sxt!H
 symbol
@@ -35237,14 +35259,12 @@ t!IcE
 t!IcN 
 t";2}
 t"E9g
-t"H;=;
-t"H;={
+t"H;=
 t"HcS
 t"L;%
-t"L;%9
-t"L;%H
-t"L;%H`
+t"L;%)
 t"L;%y
+t"L;%y	
 t#;:u
 t#D;c
 t#IcD$
@@ -35303,27 +35323,27 @@ t&D;y
 t&H;wXt
 t&Icv
 t&L;%
-t&L;%H
-t&L;%h
+t&L;%(
+t&L;%F.
+t&L;%X
 t&Lcc
 t'99u
-t'H;=@
-t'H;=`
+t'H;=
 t'Lcm
 t(<)u
 t(D9m
-t(D;%'
+t(D;%
 t(IcD$8
 t(Lc#D;c
 t(Mce
 t(Mcg
 t([A\A]A^]
-t)@:5
-t)D;-
+t)@:5a&
+t)D;-p
 t)HcE
 t)Mc<$E;|$
 t)[A\]
-t*D:=
+t*D:=!7
 t*HcHPH
 t*HcJPH
 t*Lc}
@@ -35332,7 +35352,7 @@ t+D9e
 t+Ic\$
 t+Mc7E;w
 t,D9m
-t,D:%+
+t,D:%K~n
 t,HcV
 t-A9\$H
 t-D;u
@@ -35342,8 +35362,8 @@ t-Mcu
 t-[A\A]A^]
 t-rex
 t.D:%
-t.D;%
-t.D;==
+t.D;%m
+t.D;=]
 t.H9P
 t.HcC H
 t.HcC$H
@@ -35550,7 +35570,6 @@ t<IcNxH
 t=[A\]
 t>M.F9
 t>[A\]
-t@;5%
 t@Ic_
 t@L;}
 t@Lc#D;c
@@ -35590,7 +35609,6 @@ tO[A\]
 tPA9Q ~JM
 tPIc](I
 tP[A\A]A^]
-tR;5e
 tRIcE
 tS[A\]
 tTIcF
@@ -36858,14 +36876,14 @@ x	;F`
 x	;H 
 x	IcE(H9
 x = %i, y = %i, w = %i h = %i text %s
-x H;=z
+x H;=j
 x XZH
 x axis
 x#Hcw
 x$E9|$$
 x$HcSh;Sx
 x("tU
-x(H;=5
+x(H;=%
 x*;XZ
 x*D;%
 x+A9T$h~$H
@@ -37045,8 +37063,10 @@ zyuwI
 z|uzf
 z}u{L
 { H;=
-{ H;=R
-{ H;=Yn
+{ H;=	p
+{ H;=)m
+{ H;=2
+{ H;=r
 { t9I
 { t:I
 { u7H
@@ -37056,7 +37076,7 @@ z}u{L
 {([A\]
 {(fD9't)H
 {0D;{@A
-{0H;=m
+{0H;=
 {0[A\A]]
 {8[A\H
 {8[A^]
@@ -37089,7 +37109,7 @@ z}u{L
 |$ A\]
 |$ E;|$0tLI
 |$ H)
-|$ H;=!
+|$ H;=A
 |$(Hc
 |$(fA
 |$(~;A
@@ -37139,8 +37159,8 @@ z}u{L
 |MtcH
 |NIcO
 |OIcO
+|QHcK
 |QIcN
-|SHcK
 |SIcO0Ic
 |UIcO
 |WIcO

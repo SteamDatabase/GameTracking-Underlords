@@ -457,6 +457,7 @@
  Failed to pack %s
  Failed to unpack %s - Code %d
  GCConnectionStatus_GC_GOING_DOWN
+ H;=V#
  H;D$PH
  H;D$`H
  M9l$
@@ -554,10 +555,10 @@
  t3IcL$pH
  t3Ic|$\H
  t4HcG,H
- t4IcOPH
  t4IcT$$H
  t5HcG,H
  t5HcG0H
+ t5IcL$PH
  t6HcG0H
  t6HcO,H
  t8HcK8H
@@ -602,6 +603,7 @@
 !Access to global system functions
 !App ID to enumerate the files of.
 !CCloud_EnumerateUserFiles_Request
+!CDAC_UI_Hud::GetInstance()
 !CEcon_FlushInventoryCache_Request
 !CGCStoreRechargeRedirect_LineItem
 !CMsgClientToGCPartyActionResponse
@@ -1261,6 +1263,7 @@
 #DAC_Store_iOS
 #DAC_Synergy_%s
 #DAC_Synergy_Desc_%s
+#DAC_Synergy_Desc_%s_ExtraData
 #DAC_Synergy_Insect
 #DAC_Tier_Name_%d
 #DAC_Tutorial_Alliance
@@ -1545,6 +1548,7 @@
 #dac_dev_item
 #dac_dev_item_menu_global
 #dac_hero_rank%d
+#dac_hero_rankN
 #dac_hero_type_%s
 #dac_hud_mode_%u
 #dac_item_tooltip_item_type_defensive
@@ -1561,6 +1565,7 @@
 #dac_support_upload_error_no_file
 #dac_support_upload_error_unknown
 #dac_support_upload_success
+#dac_talent_cooldown
 #dac_talent_hype
 #dac_talent_nohype
 #dac_team_name_%d
@@ -1653,7 +1658,7 @@ $CMsgServerToGCUpdateLobbyServerState
 $CPublishedFile_GetUserFiles_Response
 $CWorkshop_AddSpecialPayment_Response"W
 $CWorkshop_GetSpecialPayments_Request
-$D;-Z{
+$D;-*
 $D;3|
 $DT<I
 $E;D$
@@ -2353,26 +2358,22 @@ $z0u.A
 (#GameUI_Disconnect_RemoteProblem_Timeout
 ($$fE
 (%0.2f): %s
-(%2IS
+(%bMS
 (%d)  EffectName "%s"  Dormant? %s  Emission Stopped? %s 
 (%d) Name: %s (%s)
 (%g %g)
-(%g#h
-(%iaE
 (%s,%s)
 (*%s*), 
 (*MARK) must have an argument
 (*VERB) not recognized or malformed
 (,$fE
-(-&y*
-(-c	f
 (.CPlayer_GetCommunityPreferences_Request
 (.CPlayer_GetFriendsGameplayInfo_Response"K
 (.CPlayer_GetPerFriendPreferences_Request
 (.CPlayer_SetCommunityPreferences_Request
 (.CPlayer_SetPerFriendPreferences_Request
 (0x%08X)'??'
-(=x7S
+(=:eV
 (?R or (?[+-]digits must be followed by )
 (ACTIVE)
 (A^A_]
@@ -2986,12 +2987,9 @@ $z0u.A
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
 .%0*llu
-.%9qU
-.%AVS
-.%|~U
+.%E_e
+.%yuU
 .(Optional) Set of tags for the published file.
-.-%HD
-.-__Y
 ...<truncated>...
 ../../public/entity2/entitycomponent.h
 ../../public/networksystem/networkquantizedtypes.h
@@ -3023,9 +3021,9 @@ $z0u.A
 ..CPlayer_GetNewSteamAnnouncementState_Response"_
 .0z"u 
 .3333
-.5g3P
-.5uKW
-.=w<N
+.5Ifb
+.=)oU
+.=T0M
 .>()09
 .@ sgA
 .@ zUuS
@@ -3485,7 +3483,7 @@ $z0u.A
 0D;#}qM
 0E;.|
 0GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW
-0H;=-
+0H;=m$
 0IcD$
 0Marks latest announcement timestamp read by user
 0NETWORK_DISCONNECT_REJECT_SERVERCDKEYAUTHINVALID
@@ -6521,7 +6519,6 @@ $z0u.A
 4$A\]
 4$E;t$
 4$HcE
-4(AWI
 4(Optional) Sorting method to use on returned values.
 4.CPlayer_GetMutualFriendsForIncomingInvites_Response"^
 40 40 40 196
@@ -7031,7 +7028,6 @@ $z0u.A
 ;9t2H
 ;:~`H
 ;;D$H
-;;tyHcK
 ;BXtC
 ;BXtOH
 ;BXw9H
@@ -7045,7 +7041,6 @@ $z0u.A
 ;GPttK
 ;GTtO
 ;H;:t#
-;Hc5N
 ;I9<$uY
 ;L$D|*
 ;Q t#H
@@ -7224,7 +7219,9 @@ $z0u.A
 <span class="%s">0x%x</span>
 <span class="AbilityCooldownHighlight">%.1f</span>
 <span class="AbilityValueHighlight">%s</span>
+<span class="Bonus"> (+%.2f)</span>
 <span class="Bonus"> (+%d)</span>
+<span class="NegBonus"> (%.2f)</span>
 <span class="NegBonus"> (%d)</span>
 <span class="activeLevel">%s</span>
 <span class="inactiveLevel">[ 
@@ -7455,6 +7452,7 @@ $z0u.A
 @(9A(
 @(9G(
 @(A9D$0u
+@(HcU
 @){K9_
 @+,]f}/
 @-oyrn
@@ -7505,7 +7503,6 @@ $z0u.A
 @DP5z5@
 @Dota Underlords
 @Gr}H
-@H;=@
 @HH;E
 @HI;D$H
 @Lcg(I
@@ -10427,14 +10424,15 @@ CDACClientGCSystem
 CDACClientGCSystem::ConnectToGame - already connected
 CDACClientGCSystem::ConnectToGame(%s)
 CDACClientGCSystem::ConnectToGame(%s,%s)
-CDACClientSimulation::OnClientConnectionComplete: bGameRulesExists=%u
+CDACClientSimulation::OnClientConnectionComplete()
 CDACClientUI::CreateHUD()
 CDACClientUI::DestroyHUD()
 CDACGameAccountClient
 CDACGameConstants
+CDACGameConstants::DestroyConstants()
+CDACGameConstants::OnClientConnectionStarted() -- creating constants
 CDACGameRules
 CDACGameRules *
-CDACGameRules::GameInit: bIsConnectionComplete=%u
 CDACGameRulesProxy
 CDACInput::SetActionSet %s
 CDACInventoryManager
@@ -12725,6 +12723,7 @@ Controls white-space wrapping on rendered text.  "normal" means wrap on whitespa
 Convars
 Convert SteamID into multiple formats
 ConvertGammaToLinear
+CooldownLabel
 CooldownNames
 CooldownOverlay
 CoopFullscreen
@@ -12785,6 +12784,7 @@ CreateEntity failed for slot %d
 CreateEntityToSpawn
 CreateEvent: event '%s' not registered.
 CreateGameRulesObject
+CreateHUD
 CreateParticle
 CreateParticleForPlayer
 CreatePartyLayout
@@ -13045,7 +13045,6 @@ D3Z4D3Z
 D3Z4D3Z,A
 D3Z<A
 D3Z<D3Z$D3Z
-D5	~J
 D7	_Hc
 D70A9
 D8cUt
@@ -13053,7 +13052,7 @@ D8g@t
 D9#v%H
 D9#~CH
 D9#~KH
-D9-	N
+D95qo
 D9;t3I
 D9C ~JMc
 D9D$4B
@@ -13093,9 +13092,8 @@ D; tMH
 D;!ttHc
 D;"tIH
 D;$2tWL
-D;%$'
-D;%*~
-D;%5h
+D;%y1
+D;%| 
 D;'t3H
 D;.tLH
 D;0}zH
@@ -13105,9 +13103,7 @@ D;3}5
 D;8tQH
 D;:tZH
 D;;}5D
-D;=(r
-D;=]s
-D;=f1
+D;=6?
 D;B`}
 D;F`u
 D;K D
@@ -13140,6 +13136,7 @@ D;o(D
 D;o0H
 D;pXH
 D;q(t%I
+D;r t
 D;r u
 D;s(D
 D;t$0
@@ -15353,6 +15350,7 @@ F;4*t
 F;t  t
 F<9G<t
 F<I @
+F@Lck D;k0
 FAILED_PRECONDITION
 FATAL
 FATAL ERROR: unable to register all schema data: %s
@@ -16403,177 +16401,171 @@ H;0t+A
 H;0t0H
 H;0t4H
 H;0t\H
-H;5()
-H;5(1
-H;5(9
-H;5(A
-H;5,P
-H;5/n
-H;51(
-H;518
+H;5 '
+H;5!!
+H;5!,
+H;5(a
+H;50-
+H;50k
+H;51#
+H;51+
 H;58:
-H;58>
-H;5<I
-H;5<|
-H;5?e
-H;5@D
-H;5@E
-H;5A;
-H;5Ao
-H;5PL
-H;5Qv
-H;5X7
-H;5XA
-H;5XF
-H;5Xz
-H;5`3
-H;5a1
-H;5aB
-H;5aI
-H;5hL
-H;5h}
-H;5h~
-H;5lA
-H;5q3
-H;5qv
-H;5xR
-H;5xU
+H;58V
+H;5;&
+H;5A0
+H;5A=
+H;5Aa
+H;5Ah
+H;5D5
+H;5H7
+H;5Hk
+H;5L`
+H;5Q3
+H;5QR
+H;5X/
+H;5Xq
+H;5Xt
+H;5`&
+H;5aL
+H;5a\
+H;5h/
+H;5q5
+H;5q6
+H;5qN
+H;5qc
+H;5|A
+H;5|T
+H;5|U
+H;5|Y
+H;5|w
+H;5|x
 H;7t"
 H;9u#
-H;= "
-H;= #
-H;= z
-H;=!+
-H;=!,
-H;="$
-H;="_
-H;=#m
-H;=#o
-H;=&9
-H;=&C
-H;=&z
-H;='H
-H;=(/
-H;=(~
-H;=)R
-H;=*%
-H;=++
-H;=,A
-H;=,Y
-H;=-v
-H;=-x
-H;=0)
-H;=0v
-H;=2<
-H;=2@
-H;=3{
-H;=4=
-H;=4>
-H;=4?
-H;=4h
-H;=6I
-H;=7!
-H;=8.
-H;=8|
-H;=8}
-H;=9e
-H;=:!
-H;=:{
-H;=< 
-H;=<T
-H;==2
-H;=>Y
-H;=>i
-H;=?U
-H;=@*
-H;=@E
-H;=@r
-H;=An
-H;=Ao
-H;=B%
-H;=B0
-H;=B^
-H;=CV
-H;=CY
-H;=DO
-H;=D{
-H;=H-
-H;=Hp
+H;= '
+H;= @
+H;= d
+H;="0
+H;="I
+H;="O
+H;=#&
+H;=#)
+H;=#A
+H;=#u
+H;=#x
+H;=$=
+H;=$J
+H;=%b
+H;=&?
+H;=*g
+H;=*k
+H;=+z
+H;=,6
+H;=,U
+H;=,a
+H;=-m
+H;=-n
+H;=-~
+H;=0&
+H;=4u
+H;=4|
+H;=4~
+H;=6%
+H;=7S
+H;=7p
+H;=8^
+H;=: 
+H;=::
+H;=:d
+H;=;x
+H;=<6
+H;=<D
+H;=<p
+H;==+
+H;==A
+H;=>8
+H;=>k
+H;=>u
+H;=?ea
+H;=@%
+H;=@a
+H;=B7
+H;=B}
+H;=C#
+H;=C*
+H;=Hh
+H;=Hz
 H;=J*
-H;=K"
-H;=Kz
-H;=L+
-H;=MC
-H;=N2
-H;=O#
-H;=OW
-H;=P?
-H;=Pp
-H;=Qv
-H;=RB
-H;=RH
-H;=RW
-H;=Sc
-H;=T_
-H;=W%
-H;=W4
-H;=WYa
-H;=X,
-H;=Xv
-H;=YI
-H;=Z0
-H;=\%
-H;=\4
-H;=\Q
-H;=^)
-H;=_2
-H;=_`
-H;=_n
-H;=`7
-H;=`Q
-H;=az
-H;=a|
-H;=b!
-H;=b5
-H;=b\
-H;=bs
-H;=cf
-H;=f:
-H;=f{
-H;=h+
-H;=hI
-H;=hm
-H;=hr
-H;=i#
-H;=j*
-H;=ke
-H;=l!
-H;=l@
-H;=lf
-H;=l{
-H;=mX
-H;=mY
-H;=mi
-H;=nE
-H;=p0
-H;=p@
-H;=qK
-H;=qh
-H;=rW
-H;=s[
-H;=tg
-H;=u*
-H;=u{
-H;=v"
-H;=vz
-H;=wc
-H;=xp
-H;=x}
-H;=y#
-H;={c
-H;=|H
-H;=|`
-H;=~#
+H;=JB
+H;=Ji
+H;=K^
+H;=LJ
+H;=MI
+H;=NA
+H;=Nd
+H;=O7
+H;=O|
+H;=P$
+H;=PO
+H;=P`
+H;=QB
+H;=Q^
+H;=R<
+H;=Sr
+H;=Sz
+H;=W7
+H;=XT
+H;=X_
+H;=YX
+H;=Zd
+H;=[d
+H;=[q
+H;=\g
+H;=\~
+H;=]m
+H;=^p
+H;=_m
+H;=_v
+H;=`#
+H;=`K
+H;=`_
+H;=a@
+H;=av
+H;=b|
+H;=d%
+H;=eu
+H;=f~
+H;=iS
+H;=ik
+H;=j`
+H;=k9
+H;=kJ
+H;=lO
+H;=m8
+H;=mp
+H;=o-
+H;=p"
+H;=p4
+H;=p7
+H;=pJ
+H;=p^
+H;=q3
+H;=q}
+H;=s$
+H;=t{
+H;=u|
+H;=x@
+H;=xI
+H;=xU
+H;=x`
+H;=yA
+H;=yf
+H;=z#
+H;=z7
+H;=z;
+H;=zD
+H;=zh
+H;=}9m
+H;=~O
 H;C(t
 H;CPw<I
 H;F t,H
@@ -16603,6 +16595,7 @@ H@Hc@8H
 HC333?
 HDR Color Scale: %0.3f
 HELPER_BONE
+HH;=-"
 HIERARCHY_ABSORIGIN
 HIERARCHY_ATTACHMENT
 HIERARCHY_BONE
@@ -16699,6 +16692,7 @@ Haptics Manager: LoadKV3ObjectInPlace failed: %s
 Has Cached Command List
 Has Collision; 
 Has the player viewed the about duo's description yet.
+HasAbilityPerLevel
 HasBotSlots
 HasBrawnyKills
 HasCachedCommandList
@@ -16715,6 +16709,7 @@ HasDescriptions
 HasDraws
 HasDuelBonusDamage
 HasEventData
+HasExtraData
 HasField
 HasFriends
 HasGlobalItems
@@ -16729,6 +16724,7 @@ HasMMRChangeData
 HasOverflowMembers
 HasParty
 HasPartyInvites
+HasPerLevel
 HasPlayerOpponent
 HasProfileRingItem
 HasReward
@@ -16750,8 +16746,9 @@ HaticsType_Default
 HaticsType_None
 Have closed caption Panorama panel perform depth testing against the scene
 HaveActivePopups
-Hc5YP)
-Hc=s4
+Hc5)p)
+Hc5P_
+Hc=CB
 Hc@ H
 Hc@$H
 Hc@(E1
@@ -17009,6 +17006,7 @@ HideScrollUp
 HideSection
 HideTalentCount
 HideUnderlordSelection
+HideUnitIcons
 HideWorldLayerAndDestroyEntities
 Hides this layer
 Hiding
@@ -17171,8 +17169,8 @@ Ic6A;v
 Ic7A;w
 Ic@HA
 IcA I
+IcA8L
 IcB$D
-IcB8L
 IcCpA;
 IcD$ A
 IcD$ A9
@@ -17920,7 +17918,6 @@ L9|$HJ
 L: %.2f deg
 L;"t!f.
 L;'tM
-L;-qM
 L;0t!A
 L;0t?H9
 L;0t[A
@@ -18018,8 +18015,6 @@ LayoutPositionType_e
 Lc"D;b
 Lc#D;c
 Lc#fA
-Lc%*K
-Lc%,h
 Lc&D;f
 Lc&E)
 Lc'D;g
@@ -20009,6 +20004,7 @@ Plat_GetRawCallStack
 Plat_GetThreadIndex
 Plat_GetTime
 Plat_GetWindowClientSize
+Plat_GetWindowMonitorIndex
 Plat_IAPConsumePurchase
 Plat_IAPGetPricingAsync
 Plat_IAPPurchaseSku
@@ -22008,6 +22004,7 @@ SynergyCapsuleMobile
 SynergyCapsulePC
 SynergyContainer
 SynergyDisabled
+SynergyExtraData
 SynergyIcon_%s
 SynergyIcons
 SynergyList
@@ -22218,6 +22215,7 @@ Team%u
 TeamChanged
 TeamHeader
 TeamName%d
+TeamName1
 TeamNumber%d
 TeammateCombatInProgress
 TeammateDefeat
@@ -23261,6 +23259,7 @@ W3|Uxa
 W49V4u
 W8_AXH
 W8t>H
+W=jNb
 W?,|C
 WAITING FOR VSCRIPT DEBUGGER CONNECTION -- '-vscriptdebug' was provided on the command line.
 WARNING
@@ -23481,12 +23480,10 @@ Xd9Zdu
 Xh9Zht]@
 Xr0t/H
 Y$E3Y
-Y% aV
-Y%#EQ
+Y%`eV
 Y(Optional) Starting index to begin enumeration at. Defaults to the beginning of the list."Z
 Y,D3Y
 Y,E3Y
-Y-cDQ
 Y4D3Y D3Y
 Y8E3Y$E3Y
 Y<E3Y(E3Y
@@ -23642,7 +23639,6 @@ Z}uU
 [xYq|m
 \ at end of pattern
 \$(Hc
-\$(IcD$ L
 \$0E1
 \$0I9
 \$8D9
@@ -23654,6 +23650,8 @@ Z}uU
 \$PHc
 \$`Ic
 \%03o
+\%:SK
+\%i_Q
 \C not allowed in lookbehind assertion
 \C8E1
 \IcL$
@@ -23676,6 +23674,7 @@ Z}uU
 ] IcE@
 ] is an invalid data character in JavaScript compatibility mode
 ] ~1H
+](IcE L
 ](t,I9
 ](~ZI
 ]0A;]@
@@ -24786,6 +24785,7 @@ bonemerge
 bonename
 bonus
 bonus_armor
+bonus_attack_speed
 bonus_count
 bonus_itemdefs
 bonus_to_add
@@ -24858,6 +24858,7 @@ box_maxs
 box_mins
 branding
 brass_eject_model
+brawny_bonus_health
 brawny_kills
 brazilian
 break_change_material_group
@@ -25114,8 +25115,8 @@ change callback msec warning limit
 change callback spew threshold %f msecs
 change_control_point_attachment
 changelevel
-changelevel <empty> localonly=1 listenserver=1 tutorial=%d initdata=%llu
-changelevel <empty> no_steam_server=1 remotedac=%u
+changelevel <empty> dac_dashboard=0 localonly=1 listenserver=1 tutorial=%d initdata=%llu
+changelevel <empty> dac_dashboard=0 no_steam_server=1 remotedac=%u
 changing primary controller type from %s to %s
 channel
 channel "%s"
@@ -25865,6 +25866,7 @@ dac_colourblind_mode
 dac_combat_resolution_framing_duration
 dac_connect
 dac_damage_floaters_offset_scale
+dac_dashboard
 dac_db_page_patchnotes_panorama_url
 dac_db_page_patchnotes_url
 dac_deactivate_info_world_layer
@@ -25950,6 +25952,7 @@ dac_hp_crit_icon_width
 dac_hp_death_fade_time
 dac_hp_draw_status_icon
 dac_hp_draw_ticks
+dac_hp_draw_unit_icon
 dac_hp_global_scale
 dac_hp_heal_scale
 dac_hp_health_per_block
@@ -27874,6 +27877,7 @@ hostname
 hotpink
 hourhandentity
 hover
+hp_bonus
 href="
 hscript
 hscript_lightbinding
@@ -27911,6 +27915,7 @@ hypeBarDarkColor
 hypeBarLightColor
 hypeCost
 h|D;-
+h|D;-c8
 i < length_
 i >= 0
 i t!H
@@ -32662,7 +32667,6 @@ o ATI
 o ATL
 o ATSH
 o$ATL
-o$ATSH
 o(ATL
 o(ATSH
 o*Ral
@@ -33881,6 +33885,7 @@ random_weight
 randomizecycle
 randomnum
 range out of order in character class
+rank_n
 rareitem
 rarities
 rarity
@@ -33971,6 +33976,10 @@ rencH
 renderOutlineOnly
 renderWithViewModels
 render_backface
+render_height
+render_system
+render_system_req
+render_width
 renderbatch
 rendercolor
 rendercolor32
@@ -34220,34 +34229,32 @@ runcommand:%04d,tick:%u
 runsimulation  :cmd %d -> slot %d
 russian
 s H;5
-s H;5 
-s H;5!
-s H;5!2
-s H;5!A
-s H;58~
-s H;5<
-s H;5A
-s H;5D
-s H;5H8
-s H;5P
-s H;5Q5
-s H;5Q6
-s H;5Q:
-s H;5QN
-s H;5X
-s H;5`:
-s H;5p
+s H;5$8
+s H;5(W
+s H;51
+s H;51T
+s H;51U
+s H;51Y
+s H;51m
+s H;5@Y
+s H;5P/
+s H;5a
+s H;5h
+s H;5l
 s H;5q
+s H;5x
+s H;5|
 s off
 s(AUH
 s(E9&t-A
 s(H;5
-s(H;51
-s(H;5E
-s(H;5L
-s(H;5Q
-s(H;5`~
-s(H;5t
+s(H;5 
+s(H;5%
+s(H;5,
+s(H;5H
+s(H;5T8
+s(H;5`W
+s(H;5h
 s(t.H
 s)Hc@
 s)~+@
@@ -34255,46 +34262,51 @@ s,+s(
 s/glow.vH
 s/spriteH
 s0H;5
-s0H;58 
-s0H;5E@
-s0H;5H
-s0H;5Ln
-s0H;5Pr
-s0H;5Q
-s0H;5\
-s0H;5t
+s0H;5%_
+s0H;5(=
+s0H;5,
+s0H;50
+s0H;51
+s0H;54
+s0H;5<
+s0H;5`
+s0H;5a
+s0H;5k
+s0H;5x
 s1_mapname
 s2r://
 s69F~
 s7>Ip
 s8D;kP
 s8H;5
-s8H;5 
+s8H;5(
+s8H;5(0
+s8H;58
+s8H;58>
 s8H;5H
-s8H;5X
-s8H;5x
-s8H;5}@
+s8H;5]_
 s8Lcm
 s@+dev_simulate_gcdown
 s@9C@
 s@H9sHv
 s@H;5
-s@H;58
+s@H;5P
+s@H;5`0
+s@H;5p>
 sHA9t$,t
 sHH;5
 sHH;5(
-sHH;5/
-sHH;58k
-sHH;5M
-sHH;5h
+sHH;5-1
+sHH;5?q
 sHHcR
 sIf true, then files must have all the tags specified.  If false, then must have at least one of the tags specified.
 sMA9|$ 
 sPH;5
-sPH;5H~
-sPH;5X
+sPH;5H
+sPH;5Xp
+sPH;5b1
 sXH;5
-sXH;5(
+sXH;5x
 sZtgH
 s_EntComponentInfo
 s_WindVector
@@ -34310,10 +34322,7 @@ s_kDynamicValuesArraySize
 s_nLatchPermissions
 s_nWatchTransmitEntity
 s`H;5
-s`H;5H
-s`H;5P
-s`H;5T
-s`H;5X
+s`H;50
 saHcB
 saddlebrown
 safe-area-inset-bottom
@@ -34380,6 +34389,9 @@ scratchcolor
 scratchdepth
 screenWindowCenter
 screenWindowWidth
+screen_height
+screen_refresh
+screen_width
 screenfade_t
 screenfademaxsize
 screenfademinsize
@@ -34576,6 +34588,8 @@ severity
 sfixed32
 sfixed64
 shH;5
+shH;5H
+shH;5`
 shMcuX
 shadowcascadecount
 shadowcascadedistance%d
@@ -34795,7 +34809,9 @@ source_file
 source_filename
 source_reference_id
 source_unit_idx
-spH;5
+spH;5]
+spH;5l
+spH;5x
 space
 space shuttle
 spacerperiod
@@ -35210,10 +35226,12 @@ svgstrokelinecap
 svgstrokelinejoin
 svgstrokeopacity
 svgstrokewidth
+swap_height
+swap_width
 swedish
 swift_prefix
 sxH;5
-sxH;5x
+sxH;58
 sxHc@
 sxt!H
 symbol
@@ -35260,11 +35278,13 @@ t!IcN
 t";2}
 t"E9g
 t"H;=
+t"H;=[
 t"HcS
 t"L;%
-t"L;%)
-t"L;%y
-t"L;%y	
+t"L;%9
+t"L;%Y(
+t"L;%ht
+t"L;%y#
 t#;:u
 t#D;c
 t#IcD$
@@ -35314,6 +35334,7 @@ t$hD9>t#H
 t$hH9
 t$pH9
 t$pvufA
+t%;5F=
 t%HcC0A
 t%HcSx
 t%Icv 
@@ -35323,12 +35344,11 @@ t&D;y
 t&H;wXt
 t&Icv
 t&L;%
-t&L;%(
-t&L;%F.
-t&L;%X
+t&L;%h
 t&Lcc
 t'99u
 t'H;=
+t'H;=`0
 t'Lcm
 t(<)u
 t(D9m
@@ -35338,12 +35358,12 @@ t(Lc#D;c
 t(Mce
 t(Mcg
 t([A\A]A^]
-t)@:5a&
-t)D;-p
+t)@:5
+t)D;-
 t)HcE
 t)Mc<$E;|$
 t)[A\]
-t*D:=!7
+t*D:=!D
 t*HcHPH
 t*HcJPH
 t*Lc}
@@ -35352,7 +35372,7 @@ t+D9e
 t+Ic\$
 t+Mc7E;w
 t,D9m
-t,D:%K~n
+t,D:%K
 t,HcV
 t-A9\$H
 t-D;u
@@ -35362,7 +35382,7 @@ t-Mcu
 t-[A\A]A^]
 t-rex
 t.D:%
-t.D;%m
+t.D;%=
 t.D;=]
 t.H9P
 t.HcC H
@@ -35492,10 +35512,10 @@ t4HcO`H
 t4HcW(H
 t4IcE@I
 t4IcL$PH
+t4IcL$`H
 t4IcM\H
 t4IcO4H
 t4IcO8H
-t4IcOXH
 t4IcT$(H
 t4IcT$,H
 t4Ic|$TH
@@ -35513,6 +35533,7 @@ t5HcKtH
 t5HcO
 t5HcW H
 t5IcL$PH
+t5IcL$XH
 t5IcL$lH
 t5[A\]
 t6E;<$tY
@@ -35552,6 +35573,7 @@ t8HcW(H
 t8HcW0H
 t8HcW8H
 t8IcD$0H
+t8IcUxH
 t8L;e
 t8Lc#
 t8UE1
@@ -35566,10 +35588,10 @@ t:Hc]
 t:[A\]
 t;[A\]
 t<D;h
-t<IcNxH
 t=[A\]
 t>M.F9
 t>[A\]
+t@;5e
 t@Ic_
 t@L;}
 t@Lc#D;c
@@ -35810,7 +35832,6 @@ tlD;h
 tlHc@xH
 tlIcD$
 tm#C,
-tmHcO
 tm~zL
 tnHcM
 tnHcU
@@ -35867,6 +35888,7 @@ tpHcK
 tpHc_0
 tpa_gameStateRoundsRemaining
 tqHcI
+tqIcE
 tqIc\$ A;\$0
 tqUE1
 trHcR
@@ -35927,7 +35949,6 @@ turn_rate
 tutorial
 tv_listen_voice_indices
 tv_transmitall
-twHcB
 twL;+u
 twMc.L
 two named subpatterns have the same name
@@ -36096,6 +36117,7 @@ ujA;\$
 ujLcOxfE
 uk_UA
 ukrainian
+ulA	\$
 ul[A\]
 ultra_rare
 umA	\$
@@ -36751,6 +36773,7 @@ w(~.H
 w,AUL
 w0A;OH
 w0ATL
+w0AUA
 w0AUATI
 w0AUATL
 w0AUL
@@ -36771,7 +36794,6 @@ wLAUL
 wPtOE
 wTAUL
 wXAUL
-w\AUL
 w^UHc
 w`AUL
 wait_seconds
@@ -36874,16 +36896,17 @@ x	;B`
 x	;CH
 x	;F`
 x	;H 
+x	;P 
 x	IcE(H9
 x = %i, y = %i, w = %i h = %i text %s
-x H;=j
+x H;=Z
 x XZH
 x axis
 x#Hcw
 x$E9|$$
 x$HcSh;Sx
 x("tU
-x(H;=%
+x(H;=
 x*;XZ
 x*D;%
 x+A9T$h~$H
@@ -37063,10 +37086,10 @@ zyuwI
 z|uzf
 z}u{L
 { H;=
-{ H;=	p
-{ H;=)m
-{ H;=2
-{ H;=r
+{ H;=	z
+{ H;=I~
+{ H;=R
+{ H;=i{
 { t9I
 { t:I
 { u7H
@@ -37076,7 +37099,7 @@ z}u{L
 {([A\]
 {(fD9't)H
 {0D;{@A
-{0H;=
+{0H;=}
 {0[A\A]]
 {8[A\H
 {8[A^]
@@ -37109,7 +37132,7 @@ z}u{L
 |$ A\]
 |$ E;|$0tLI
 |$ H)
-|$ H;=A
+|$ H;=!%
 |$(Hc
 |$(fA
 |$(~;A
@@ -37159,8 +37182,8 @@ z}u{L
 |MtcH
 |NIcO
 |OIcO
-|QHcK
 |QIcN
+|RHcK
 |SIcO0Ic
 |UIcO
 |WIcO

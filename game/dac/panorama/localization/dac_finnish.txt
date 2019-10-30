@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"Valitse Ultimate-kyky erässä 20"
 
 	"dac_talent_hype"									"{i:ability_hype} hypeä"
+	"dac_talent_cooldown"								"Latausaika: {i:ability_cooldown} sekuntia"
 	"dac_talent_nohype"									"Ei vaadi hypeä"
 	"dac_talent_lv_level"								"Erä {i:talent_level}"
 
@@ -1171,9 +1172,9 @@
 	"DAC_InGame_DevIncreaseSelectedUnitRank"			"+1 <br>yksikkösijoitusta"
 	"DAC_InGame_DevDecreaseSelectedUnitRank"			"-1 <br>yksikkösijoitusta"
 
-	"DAC_InGame_DevModifyHostTimescaleHalf"				"{s:decrease_timescale}x<br>Speed"
-	"DAC_InGame_DevModifyHostTimescaleDouble"			"{s:increase_timescale}x<br>Speed"	
-	"DAC_InGame_DevModifyHostTimescaleDefault"			"Reset Speed"		
+	"DAC_InGame_DevModifyHostTimescaleHalf"				"{s:decrease_timescale}x<br>nopeus"
+	"DAC_InGame_DevModifyHostTimescaleDouble"			"{s:increase_timescale}x<br>nopeus"	
+	"DAC_InGame_DevModifyHostTimescaleDefault"			"Nollaa nopeus"		
 
     "DAC_InGame_DevGiveAllGems"                         "3 jalokiveä"
 	"DAC_InGame_DevSetLevel10"							"Aseta <br>tasolle 10"
@@ -1224,7 +1225,7 @@
 	"DAC_InGame_KillStreak_Query"						"Tappoputki: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"Lisävahinkoa kaksintaisteluista: <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"Pullistelijoiden tappoja yhteensä: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Hyökkäysnopeus: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Attack Rate: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Vahinkoa: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"Kyky: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Poista valinta"
@@ -1341,6 +1342,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"Liittoumat"
 	"DAC_Units"			"Yksiköt"
@@ -1521,6 +1523,7 @@
 	"DAC_Synergy_Desc_Orc"		"Kaikkien pullistelijoiden enimmäisterveys kasvoi {s:hp_bonus} pisteellä."
 
 	"DAC_Synergy_Desc_Brawny"		"Kaikki pullistelijat saavat +{s:hp_bonus} enimmäisterveyttä jokaisesta joukkueesi pullistelijan tekemästä taposta koko pelin ajan."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Total Brawny Kills: {d:brawny_kills} <br/>Bonus Brawny Health: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Kaikki peikot saavat +{s:attack_speed_bonus_trolls} ja muut liittolaiset saavat +{s:attack_speed_bonus_others} hyökkäysnopeutta."
 
@@ -1548,7 +1551,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"Kaikki soturit saavat +{s:armor_bonus} panssaria."
 
-	"DAC_Synergy_Desc_Insect"			"Spiderlingit parveilevat vihollisen kimppuun pelilaudan reunoilta. Spiderlingeja kohti ei voi hyökätä ja ne jakavat vähän vahinkoa ja niillä on 1 terveys. Spiderlingin puremilla vihollisilla on {s:miss_chance} % ohilyönnin mahdollisuus {s:miss_chance_duration} sekunnin ajan. Spiderlingit saavat jopa {s:num_insects} parannusta kuollessaan."
+	"DAC_Synergy_Desc_Insect"			"Spiderlings constantly swarm enemies from the edge of the board. They are untargetable units that deal low damage and have 1 health. Enemies bitten by them have a {s:miss_chance}% chance to miss attacks for {s:miss_chance_duration}s. Spiderlings replenish on death to a maximum of {s:num_insects}."
 
 	"DAC_Synergy_Desc_Champion"		"Mestarit saavat kaikki liittoumabonukset."
 
@@ -1624,9 +1627,11 @@
 	"DAC_DuosMessageDetail"				"Valitse sankari tai liittouma"
 	"DAC_Duos_Msg_Sent_1_Gold"			"Lähetin sinulle 1 kullan"
 	"DAC_Duos_Msg_Sent_5_Gold"			"Lähetin sinulle 5 kultaa"
-	"DAC_Duos_Msg_Sent_N_Gold"			"I sent you {d:duos_gold_amount} Gold"
+	"DAC_Duos_Msg_Sent_N_Gold"			"Lähetin sinulle {d:duos_gold_amount} kultaa"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"En halua enää..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"Lähetä minulle kultaa!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Should we level up?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Should we spend on rerolls?"
 	"duos_benchlabel"					"Penkki:"
 	"duos_sendlabel"					"Lähetä"
 	"button_selllabel"					"Myy"
@@ -1972,7 +1977,7 @@
 	"dac_settings_captions"						"Näytä tekstitykset"
 	"dac_settings_chat_allow_custom_messages"	"Näytä mukautettu chatti"
 	"dac_settings_chat_filter_custom_messages"	"Filteröi chat"
-	"dac_settings_playunderlordcombatspeech"	"Play Underlord Combat Speech"
+	"dac_settings_playunderlordcombatspeech"	"Toista underlordin taistelupuhe"
 	
 	"dac_settings_camera_type"					"Kamera"
 	"dac_settings_camera_default"				"Oletusasetukset"
@@ -2044,6 +2049,8 @@
 	"dac_settings_unitspeech_all"				"Kaikki"
 	"dac_settings_playsoundinbackground"		"Toista äänet työpöytätilassa"
 	"dac_settings_lowlatency_audio"			"Tunnista ääniviive automaattisesti"
+
+	"dac_settings_draw_unit_icons"			"Show Unit Icons"
 
 	"dac_item_select_victory"				"Voitto!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Valitse</span> palkinto:"
@@ -2270,6 +2277,7 @@
 	"dac_hotkey_enemies_down_desc"					"Vieritä alaspäin vihollisen pelilaudalla."
 	"dac_hotkey_scroll_camera_up_desc" 				"Liikuta kameraa ylemmäksi."
     "dac_hotkey_scroll_camera_down_desc" 			"Liikuta kameraa alemmaksi."
+    "dac_hotkey_reset_camera_position_desc" 		"Nollaa kameran paikka"
 
 	"dac_hotkey_alliances_tab"						"Näytä liittoumien välilehti."
 	"dac_hotkey_dps_tab"							"Näytä vahinkovälilehti."

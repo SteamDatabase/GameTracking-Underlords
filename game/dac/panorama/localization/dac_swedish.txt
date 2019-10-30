@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"Välj en ultimat talang i runda 20"
 
 	"dac_talent_hype"									"{i:ability_hype} Hype"
+	"dac_talent_cooldown"								"Cooldown: {i:ability_cooldown} seconds"
 	"dac_talent_nohype"									"Kräver ingen Hype"
 	"dac_talent_lv_level"								"Runda {i:talent_level}"
 
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"Dödsserie: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"Bonusskada från dueller: <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"Antal dödade av muskulösa: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Attackfrekvens: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Attack Rate: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Skada: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"Förmåga: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Avmarkera"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"Allianser"
 	"DAC_Units"			"Enheter"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"Alla muskulösa enheter får +{s:hp_bonus} max-HP"
 
 	"DAC_Synergy_Desc_Brawny"		"Alla muskulösa enheter får +{s:hp_bonus} max-HP för varje enhet som alla dina muskulösa enheter har dödat genom matchen."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Total Brawny Kills: {d:brawny_kills} <br/>Bonus Brawny Health: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Alla troll får +{s:attack_speed_bonus_trolls} attackhastighet och andra allierade får +{s:attack_speed_bonus_others} attackhastighet"
 
@@ -1533,7 +1536,7 @@
 
 	"DAC_Synergy_Desc_Hunter"		"Alla jägare har {s:chance} % chans att snabbt genomföra {s:num_attacks} attacker."
 
-	"DAC_Synergy_Desc_Knight"		"Riddare tar {s:physical_reduction} % mindre fysisk och magisk skada, och ytterligare {s:physical_reduction_extra} % när de attackeras framifrån och står 1 ruta bort från en annan riddare."
+	"DAC_Synergy_Desc_Knight"		"Knight units take {s:physical_reduction}% less physical and magical damage. If attacked from the front, and within 1 cell of an allied Knight, Knight units take an additional {s:physical_reduction_extra}% less physical and magical damage."
 
 	"DAC_Synergy_Desc_Mage"		"Fiender tar {s:magic_resist_debuff} % mer magisk skada"
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"Alla krigare får +{s:armor_bonus} skydd"
 
-	"DAC_Synergy_Desc_Insect"			"Spiderlings svärmar runt fiender från sidan av spelplanen. Spiderlings kan inte göras till måltavlor, gör liten skada och har 1 HP. Fiender som blir bitna av spiderlings har {s:miss_chance} % chans att missa med sina attacker i {s:miss_chance_duration} sekunder. Spiderlings återupplivas när de dör med {s:num_insects} stycken som mest."
+	"DAC_Synergy_Desc_Insect"			"Spiderlings constantly swarm enemies from the edge of the board. They are untargetable units that deal low damage and have 1 health. Enemies bitten by them have a {s:miss_chance}% chance to miss attacks for {s:miss_chance_duration}s. Spiderlings replenish on death to a maximum of {s:num_insects}."
 
 	"DAC_Synergy_Desc_Champion"		"Mästare får alla alliansbonusar."
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"I sent you {d:duos_gold_amount} Gold"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"Jag vill inte längre ha ..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"Snälla, skicka guld!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Should we level up?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Should we spend on rerolls?"
 	"duos_benchlabel"					"Bänk:"
 	"duos_sendlabel"					"Skicka"
 	"button_selllabel"					"Sälj"
@@ -2044,6 +2049,8 @@
 	"dac_settings_playsoundinbackground"		"Spela ljud vid alt-tab"
 	"dac_settings_lowlatency_audio"			"Upptäck ljudlatens automatiskt"
 
+	"dac_settings_draw_unit_icons"			"Show Unit Icons"
+
 	"dac_item_select_victory"				"Seger!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Välj</span> ditt pris:"
 	"dac_item_select_defeat"				"Neutral runda förlorad"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"Skrolla nedåt genom fiendernas spelplaner."
 	"dac_hotkey_scroll_camera_up_desc" 				"Flytta kameran högre"
     "dac_hotkey_scroll_camera_down_desc" 			"Flytta kameran lägre"
+    "dac_hotkey_reset_camera_position_desc" 		"Reset camera position"
 
 	"dac_hotkey_alliances_tab"						"Visa fliken Allianser."
 	"dac_hotkey_dps_tab"							"Visa fliken DPS."

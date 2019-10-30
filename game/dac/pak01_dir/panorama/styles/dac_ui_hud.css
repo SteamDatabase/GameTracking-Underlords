@@ -2721,6 +2721,11 @@ DACHUDItemDisplay #HeroImage
 	margin: 0px;
 }
 
+DACHUDItemDisplay.HideUnitIcons #HeroImage
+{
+	visibility: collapse;
+}
+
 .IsUnderlord #BottomRow
 {
 	height: 32px;	
@@ -2728,7 +2733,6 @@ DACHUDItemDisplay #HeroImage
 
 .IsUnderlord #HeroImage
 {
-	visibility: visible;
 	horizontal-align: left;
 	vertical-align: bottom;
 	width: 32px;
@@ -2790,33 +2794,6 @@ DACHUDItemDisplay .HUDItem.Rank3 #Rank3Star
 .IsDraggingItem .HUDItem:not(.OnEquippableTeam)
 {
 	visibility: collapse;
-}
-
-DACHUDRankDisplay
-{
-	width: 100%;
-	height: 100%;
-	visibility: collapse;
-}
-
-DACHUDRankDisplay .HUDRankDisplay
-{
-	width: 24px;
-	height: 24px;
-	background-size: 24px 24px;
-	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_1_psd.vtex");
-}
-
-.HUDRankDisplay.Rank2
-{
-	width: 48px;
-	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_2_psd.vtex");
-}
-
-.HUDRankDisplay.Rank3
-{
-	width: 72px;
-	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_3_psd.vtex");
 }
 
 @keyframes 'PopupAnimation'
@@ -3240,21 +3217,46 @@ DACHUDRankDisplay .HUDRankDisplay
 	background-repeat: no-repeat;
 	background-position: center;
 	horizontal-align: right;
-	margin-right: 400px;
+	margin-right: 365px;
 	vertical-align: center;
-	margin-bottom: 300px;
+	margin-bottom: 225px;
+
+	transition-property: brightness;
+	transition-duration: .2s;
+
 	visibility: collapse;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 #BoardFlipButton
+{
+	margin-right: 465px;
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9 #BoardFlipButton
+{
+	margin-right: 390px;
+}
+
+.IsLayoutSmallScreen.AspectRatio4x3 #BoardFlipButton
+{
+	margin-right: 290px;
+	margin-bottom: 275px;
 }
 
 .ViewingFlippableBoard #BoardFlipButton
 {
-	visibility: collapse;
+	visibility: visible;
 	
 }
 
 #BoardFlipButton:hover
 {
 	brightness: 2;
+}
+
+.InCombatPreview #BoardFlipButton
+{
+	brightness: 1.5;
 }
 
 .HeroIconPanel

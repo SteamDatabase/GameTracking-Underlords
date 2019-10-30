@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"ラウンド20でアルティメットを選択"
 
 	"dac_talent_hype"									"{i:ability_hype}ハイプ"
+	"dac_talent_cooldown"								"クールダウン：{i:ability_cooldown}秒"
 	"dac_talent_nohype"									"ハイプ不要"
 	"dac_talent_lv_level"								"ラウンド{i:talent_level}"
 
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"連続キル：<span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"デュエルで獲得したボーナスダメージ：<span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"屈強の合計キル数：<span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"攻撃速度：<span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"攻撃速度：<span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"ダメージ：<span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"アビリティ：{s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"選択解除"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"アライアンス"
 	"DAC_Units"			"ユニット"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"全屈強ユニットの最大ヘルスが{s:hp_bonus}増加"
 
 	"DAC_Synergy_Desc_Brawny"		"全屈強ユニットはゲームを通し、チーム内のいずれかの屈強ユニットが敵1体を倒すたびに最大ヘルスが+{s:hp_bonus}増加"
+	"DAC_Synergy_Desc_Brawny_ExtraData" "屈強の合計キル数：{d:brawny_kills} <br/>屈強のボーナスヘルス：{d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"全トロールユニットは+{s:attack_speed_bonus_trolls}攻撃速度、他の味方は+{s:attack_speed_bonus_others}攻撃速度"
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"{d:duos_gold_amount}ゴールドを送ったよ！"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"もう必要ない…"
 	"DAC_Duos_Msg_Send_Me_Gold"			"ゴールドを送って！"
+	"DAC_Duos_Msg_Level_Up_Question"			"レベルアップする？"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"ゴールドを使ってリロールする？"
 	"duos_benchlabel"					"ベンチ："
 	"duos_sendlabel"					"送信"
 	"button_selllabel"					"売却"
@@ -2044,6 +2049,8 @@
 	"dac_settings_playsoundinbackground"		"デスクトップでサウンドを再生"
 	"dac_settings_lowlatency_audio"			"オーディオ遅延自動検出"
 
+	"dac_settings_draw_unit_icons"			"ユニットアイコンを表示"
+
 	"dac_item_select_victory"				"勝利！"
 	"dac_item_select_victory_subtitle"		"戦利品を<span class='SubtitleHighlight'>選択</span>："
 	"dac_item_select_defeat"				"中立ラウンド敗北"
@@ -2194,7 +2201,7 @@
 	"DAC_SelectMatchType_AboutDuos_SubTitle"	"フレンドとパーティを組み、他の7組のペアと対戦しよう。"
 	"DAC_BlockTitle_1"							"資源のトレード"
 	"DAC_BlockTitle_2"							"別々に、一緒に戦う"
-	"DAC_BlockTitle_3"							"レベルとヘルスの共有"
+	"DAC_BlockTitle_3"							"レベルとライフの共有"
 	"DAC_BlockDesc_1"							"ヒーローを集めて他のアンダーロードと戦おう。しかもこれからは味方同士、お互いを援護できます！チームメイトにヒーローとゴールドを送り、アライアンスの完成や、ヒーローのレベルアップを手助けしましょう。"
 	"DAC_BlockDesc_2"							"チームは毎ラウンド、他のチームと対戦します。バトルは個人で対戦しますが、ラウンドダメージはチームメンバーのバトル結果の合計となります。8チームが参加し、最後まで生き残ったチームが勝利を手にします。"
 	"DAC_BlockDesc_3"							"あなたとチームメイトは同じレベルを共有し、どちらかがレベルアップすると2人ともレベルアップします。でもライフバーに注意してください。ライフバーはパートナーと共有され、生死を共にします！"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"敵のボードを下にスクロール"
 	"dac_hotkey_scroll_camera_up_desc" 				"カメラを上に移動"
     "dac_hotkey_scroll_camera_down_desc" 			"カメラを下に移動"
+    "dac_hotkey_reset_camera_position_desc" 		"カメラの位置をリセット"
 
 	"dac_hotkey_alliances_tab"						"アライアンスタブを表示"
 	"dac_hotkey_dps_tab"							"ダメージ／秒タブを表示"

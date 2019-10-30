@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"Wähle eine Ultimate in Runde 20"
 
 	"dac_talent_hype"									"{i:ability_hype} Hype"
+	"dac_talent_cooldown"								"Cooldown: {i:ability_cooldown} seconds"
 	"dac_talent_nohype"									"Benötigt keinen Hype"
 	"dac_talent_lv_level"								"Runde {i:talent_level}"
 
@@ -1047,7 +1048,7 @@
 	"dac_item_undeads_stop_healing_lore"				"Manchen Leuten gefällt es einfach, wenn sie andere leiden lassen. – <i>Zenok, Hehler des Weißen Turms</i>"
 
 	"dac_item_lower_healing"							"Ristul-Dämmerung"
-	"dac_item_lower_healing_desc"						"Heilung beider Teams wird um {d:healing_prevented} % reduziert."
+	"dac_item_lower_healing_desc"						"Heilung beider Teams wird um {d:healing_prevented} % reduziert."
 	"dac_item_lower_healing_lore"						"Die Vhoul reagierten schlecht auf den Krieg in Rosenblatt. – <i>Zenok, Hehler des Weißen Turms</i>"
 	
 	"dac_item_mages_ghost_on_low_health"				"Letzter Blitz"
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"Killserie: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"Bonusschaden von Duellen: <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"Stämmige Kills: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Angriffstempo: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Attack Rate: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Schaden: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"Fähigkeit: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Auswahl aufheben"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"Allianzen"
 	"DAC_Units"			"Einheiten"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"Alle stämmigen Einheiten erhalten +{s:hp_bonus} maximale Lebenspunkte."
 
 	"DAC_Synergy_Desc_Brawny"		"Stämmige Einheiten erhalten jedes Mal für das gesamte Spiel +{s:hp_bonus} maximale Lebenspunkte, wenn eine stämmige Einheit deines Teams einen Gegner tötet."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Total Brawny Kills: {d:brawny_kills} <br/>Bonus Brawny Health: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Alle Trolle erhalten +{s:attack_speed_bonus_trolls} % Angriffstempo und andere Verbündete erhalten +{s:attack_speed_bonus_others} % Angriffstempo."
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"Alle Krieger erhalten +{s:armor_bonus} Rüstung."
 
-	"DAC_Synergy_Desc_Insect"			"Spinnlinge schwärmen ständig vom Rand des Felds auf Gegner aus. Spinnlinge sind nicht anvisierbare Einheiten, die wenig Schaden anrichten und 1 Lebenspunkt haben. Von Spinnlingen gebissene Gegner haben {s:miss_chance_duration} Sekunden lang eine {s:miss_chance}%ige Chance, dass ihre Angriffe verfehlen. Spinnlinge werden nach dem Tod wiederbelebt. (Maximal {s:num_insects} Spinnlinge)"
+	"DAC_Synergy_Desc_Insect"			"Spiderlings constantly swarm enemies from the edge of the board. They are untargetable units that deal low damage and have 1 health. Enemies bitten by them have a {s:miss_chance}% chance to miss attacks for {s:miss_chance_duration}s. Spiderlings replenish on death to a maximum of {s:num_insects}."
 
 	"DAC_Synergy_Desc_Champion"		"Champions erhalten alle Allianzboni."
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"Ich habe dir {d:duos_gold_amount} Gold geschickt"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"Ich brauche nicht mehr …"
 	"DAC_Duos_Msg_Send_Me_Gold"			"Bitte gib mir etwas Gold!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Should we level up?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Should we spend on rerolls?"
 	"duos_benchlabel"					"Bank:"
 	"duos_sendlabel"					"Schicken"
 	"button_selllabel"					"Verkaufen"
@@ -1907,7 +1912,7 @@
 	"dac_settings_coop_fullscreen"             "Desktopfreundlicher Vollbildmodus"
 	"dac_settings_window"						"Fenstermodus"
 	"dac_settings_borderless"					"Fenstermodus (rahmenlos)"
-	"dac_settings_videodefaults"				"Standard wiederherstellen"
+	"dac_settings_videodefaults"				"Standardwerte"
 	"dac_settings_fullscreenbrightness"			"Helligkeit"
 	"dac_settings_basicvideosettings"			"Einfache Einstellungen verwenden"
 	"dac_settings_fastestvideo"					"Schnell"
@@ -2021,7 +2026,7 @@
 	"dac_support_upload_success"				"Vielen Dank für das Senden deines Konsolenprotokolls."
 
 	"dac_settings_no_mode_resolutions"         "Keine unterstützten Auflösungen"
-	"dac_settings_fullscreen_focus_behavior"	"Der desktopfreundliche Vollbildmodus minimiert das Spiel bei Fokusverlust"
+	"dac_settings_fullscreen_focus_behavior"	"Desktopfreundlicher Vollbildmodus minimiert das Spiel bei Fokusverlust"
 	"dac_settings_render_system"				"Verwendete Grafikschnittstelle:"
 	"dac_settings_next_render_system"			"Grafikschnittstelle für nächsten Spielstart:"
 	"dac_settings_render_system_reset"			"Wenn das Spiel nach Änderung dieser Einstellung nicht richtig gestartet wird, können Sie die Startoption -safe_mode verwenden, um Dota Underlords mit der Standard-Grafikschnittstelle zu starten."
@@ -2043,6 +2048,8 @@
 	"dac_settings_unitspeech_all"				"Alle"
 	"dac_settings_playsoundinbackground"		"Ton bei minimiertem Spiel"
 	"dac_settings_lowlatency_audio"			"Audiolatenz automatisch erkennen"
+
+	"dac_settings_draw_unit_icons"			"Show Unit Icons"
 
 	"dac_item_select_victory"				"Sieg!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Wähle</span> deinen Preis:"
@@ -2170,11 +2177,11 @@
 	"DAC_Reward_Title_Major"					"Yo! Eine Belohnung"
 	"DAC_Reward_Title_Minor"					"Jetzt im Protopass einlösen"
 	"DAC_Reward_Item_Name"						"{s:reward_name}"
-	"DAC_Reward_Item_NameTalent"				"Runde {i:round} {s:underlord_name} Talent"
+	"DAC_Reward_Item_NameTalent"				"{s:underlord_name}-Talent (Runde {i:round})"
 	"DAC_Reward_Item_Desc"						"{s:reward_desc}"
 	"DAC_Reward_Item_Type"						"{s:reward_type}"
-	"DAC_Reward_Item_TalentCount"				"{i:talents_unlocked}/{i:talents_total}"
-	"DAC_Reward_Item_TalentUnlocked"			"{s:underlord_name} Talente freigeschaltet"
+	"DAC_Reward_Item_TalentCount"				"{i:talents_unlocked} / {i:talents_total}"
+	"DAC_Reward_Item_TalentUnlocked"			"{s:underlord_name}-Talente freigeschaltet"
 	"DAC_Reward_Item_TalentUnlockedLabel"		"Zusätzliche Talente"
 	"DAC_Reward_Item_ViewDetails"				"Details anzeigen"
 	"DAC_Reward_Item_Select"					"Auswählen"
@@ -2242,7 +2249,7 @@
 	"DAC_Notification_HeroCombine_3_Duos"		"Teamwork! {s:hero_name} <span class='HeroCombineStars3'>★★★</span>"
 	"DAC_Notification_WinStreak"				"Siegesserie über <span class='WinStreakCount'>{d:streak_length} Runden</span>!"
 	"DAC_Notification_WinStreakComplete"		"Siegesserie abgeschlossen!"
-	"DAC_Notification_PlayerEliminated"			"Auf Platz {s:final_position} <span class='KnockedOut'>ausgeschieden</span>"
+	"DAC_Notification_PlayerEliminated"			"Als {s:final_position} <span class='KnockedOut'>ausgeschieden</span>"
 	"DAC_Notification_AcquiredItem"				"{s:item_name} gekauft"
 	"DAC_Notification_ItemChangedOwner"			"{s:item_name} von {g:dac_player_slot_persona:b:old_player_slot} geklaut"
 	"DAC_Notification_LevelUp"					"Level {i:level}!"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"Nach unten durch gegnerische Spielfelder wechseln"
 	"dac_hotkey_scroll_camera_up_desc" 				"Kamera nach oben bewegen"
     "dac_hotkey_scroll_camera_down_desc" 			"Kamera nach unten bewegen"
+    "dac_hotkey_reset_camera_position_desc" 		"Kameraposition zurücksetzen"
 
 	"dac_hotkey_alliances_tab"						"Tab „Allianzen“ anzeigen"
 	"dac_hotkey_dps_tab"							"Tab „Schaden“ anzeigen"
@@ -2510,7 +2518,7 @@
 	"dac_zoo_season_0_popup"	"Saison 0: Intro"
 
 	"dac_season_0_popup_pre_title"			"Willkommen zum"
-	"dac_season_0_popup_title"			"Großes Update"
+	"dac_season_0_popup_title"			"GROẞEN UPDATE"
 	"dac_season_0_popup_desc"			"Erfahre mehr über Neuigkeiten in Dota Underlords"
 	"dac_season_0_popup_underlords"		"2 neue Underlords"
 	"dac_season_0_popup_interface"		"Neue Nutzeroberfläche"
@@ -2680,8 +2688,8 @@
 	"DAC_Jail_Crime4"	"Hühnerfälschung"
 	"DAC_Jail_Crime5"	"Hühnerschmuggel"
 	"DAC_Jail_Crime6"	"Hühnerentführung"
-	"DAC_Jail_Crime7"	"Zu kurze Hühnerbratzeit"
-	"DAC_Jail_Crime8"	"Hühnerbratzeitüberschreitung"
+	"DAC_Jail_Crime7"	"Hühnchen zu kurz gebraten"
+	"DAC_Jail_Crime8"	"Hühnchen zu lange gebraten"
 	"DAC_Jail_Crime9"	"Tätlicher Angriff auf Hühner"
 	"DAC_Jail_Crime10"	"Hühnerraub"
 	"DAC_Jail_Crime11"	"Verschwörung gegen Hühner"
@@ -2728,11 +2736,11 @@
 	"DAC_InGame_MenuJail"	"Gebannte Helden"
 	"DAC_Jail_Title"	"Heutige Häftlinge"
 	"DAC_Jail_Page_Release_From_Jail_Message" "Diese Helden sitzen derzeit im Krähenhorst ein und können nicht angeheuert werden.\nSie werden in {t:t:m:d:dac_time_left_before_jail_reset} freigelassen."
-	"DAC_Jail_Desc"		"Jeden Tag werden einige Helden aus dem Pool verfügbarer Helden entfernt. Es können trotzdem alle Allianzen vervollständigt werden."
+	"DAC_Jail_Desc"		"Jeden Tag werden einige Helden aus dem Vorrat verfügbarer Helden entfernt. Es sind trotzdem alle Allianzen möglich."
 	"DAC_MiniJail_Title"		"Heutige Häftlinge"
 
 	"RickySezLabel1"	"Ricky Rabenbuckel sagt:"
-	"RickySezLabel2"	"Die außergerichtliche Freiheitsstrafe ist Teil des täglichen Lebens im Weißen Turm!"
+	"RickySezLabel2"	"Standgerichte sind Teil des täglichen Lebens im WEIẞEN TURM!"
 
 	"DAC_HowToPlay_Title" "Spielanleitung"
 
@@ -2780,7 +2788,7 @@
 	"DAC_HowToPlay_HypeOMeter" "Hype-o-mat"
 	"DAC_HowToPlay_HypeOMeter_Body" "Ähnlich wie die anderen Helden in deinem Team hat auch dein Underlord einen Balken, der sich füllt, um Fähigkeiten zu aktivieren. Im Fall des Underlords füllt er sich mit Hype. Hype wird mit konstanter Geschwindigkeit erzeugt und jeder Underlord hat verschiedene Stärkungszauber, die es ihm ermöglichen, Hype schneller zu generieren."
 	"DAC_SelectedPlayerName" "{g:dac_player_slot_persona:b:selected_player_slot}"
-	"DAC_Spectating" "Schaut zu"
+	"DAC_Spectating" "Zuschauen:"
 
 }
 

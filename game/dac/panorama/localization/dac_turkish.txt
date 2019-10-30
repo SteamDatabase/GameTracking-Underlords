@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"20. Rauntta Son Yetenek Seçin"
 
 	"dac_talent_hype"									"{i:ability_hype} Coşku"
+	"dac_talent_cooldown"								"Dolum Süresi: {i:ability_cooldown} saniye"
 	"dac_talent_nohype"									"Coşku gerektirmez"
 	"dac_talent_lv_level"								"{i:talent_level}. Raunt"
 
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"Leş Serisi: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"Düellolardan gelen fazladan hasar: <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"Toplam Kaslı Leşi: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Saldırı Hızı: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Attack Rate: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Hasar: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"Yetenek: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Seçme"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"İttifaklar"
 	"DAC_Units"			"Birimler"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"Tüm kaslı birimlerin maksimum SP'si {s:hp_bonus} artırılır."
 
 	"DAC_Synergy_Desc_Brawny"		"Tüm kaslı birimlerin maksimum SP'si, takımdaki diğer kaslı birimlerin her leşiyle birlikte +{s:hp_bonus} artar."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Total Brawny Kills: {d:brawny_kills} <br/>Bonus Brawny Health: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Bütün Trol birimler +{s:attack_speed_bonus_trolls}, diğer dost birimler +{s:attack_speed_bonus_others} saldırı hızı kazanır."
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"Bütün savaşçılar +{s:armor_bonus} zırh kazanır."
 
-	"DAC_Synergy_Desc_Insect"			"Yavru örümcekler tahtanın köşesinden sürekli olarak düşmanları sarar. Yavru örümcekler az hasar veren, 1 SP'ye sahip ve hedeflenemeyen birimlerdir. Isırılan düşmanlar {s:miss_chance_duration} saniye boyunca %{s:miss_chance} şansla saldırılarını ıskalar. Yavru örümcekler öldükten sonra en fazla {s:num_insects} adede kadar yenilenir."
+	"DAC_Synergy_Desc_Insect"			"Yavru örümcekler tahtanın köşesinden sürekli olarak düşmanları sarar. Yavru örümcekler az hasar veren, 1 SP'ye sahip ve hedeflenemeyen birimlerdir. Isırılan düşmanlar {s:miss_chance_duration} saniye boyunca %{s:miss_chance} şansla saldırılarını ıskalar. Yavru örümcekler öldüklerinde en fazla {s:num_insects} adede kadar yenilenir."
 
 	"DAC_Synergy_Desc_Champion"		"Şampiyonlar bütün ittifak bonuslarına sahip olur."
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"Sana {d:duos_gold_amount} altın gönderdim"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"Artık şunu istemiyorum..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"Lütfen bana biraz altın gönder!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Should we level up?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Should we spend on rerolls?"
 	"duos_benchlabel"					"Yedekler:"
 	"duos_sendlabel"					"Gönder"
 	"button_selllabel"					"Sat"
@@ -2044,6 +2049,8 @@
 	"dac_settings_playsoundinbackground"		"Masaüstünde Ses Çal"
 	"dac_settings_lowlatency_audio"			"Ses Gecikmesini Otomatik Bul"
 
+	"dac_settings_draw_unit_icons"			"Birim Simgelerini Göster"
+
 	"dac_item_select_victory"				"Zafer!"
 	"dac_item_select_victory_subtitle"		"Ödülünüzü <span class='SubtitleHighlight'>seçin</span>:"
 	"dac_item_select_defeat"				"Tarafsız raunt kaybedildi"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"Düşman tahtaları arasında aşağıya doğru geçiş yapar."
 	"dac_hotkey_scroll_camera_up_desc" 				"Kamerayı yükseltir."
     "dac_hotkey_scroll_camera_down_desc" 			"Kamerayı alçaltır."
+    "dac_hotkey_reset_camera_position_desc" 		"Kamera pozisyonunu sıfırla"
 
 	"dac_hotkey_alliances_tab"						"İttifaklar sekmesini gösterir."
 	"dac_hotkey_dps_tab"							"SBH sekmesini gösterir."

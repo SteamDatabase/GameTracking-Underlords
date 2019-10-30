@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"Selecione um Ultimate na 20ª rodada"
 
 	"dac_talent_hype"									"{i:ability_hype} de vigor"
+	"dac_talent_cooldown"								"Tempo de recarga: {i:ability_cooldown}s"
 	"dac_talent_nohype"									"Não usa vigor"
 	"dac_talent_lv_level"								"{i:talent_level}ª rodada"
 
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"Em sequência: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"Dano adicional por duelos: <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"Vítimas de Corpulentos: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Taxa de ataque: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Taxa de ataque: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Dano: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"Habilidade: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Remover seleção"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"Alianças"
 	"DAC_Units"			"Unidades"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"Todas as unidades Corpulentas têm a sua vida máxima aumentada em {s:hp_bonus}."
 
 	"DAC_Synergy_Desc_Brawny"		"Todas as unidades Corpulentas ganham +{s:hp_bonus} de vida máxima por cada vítima de qualquer unidade Corpulenta da sua equipe na partida."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Vítimas de Corpulentos: {d:brawny_kills} <br/>Vida adicional de Corpulentos: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Todos os Trolls ganham +{s:attack_speed_bonus_trolls} de velocidade de ataque e outros aliados ganham +{s:attack_speed_bonus_others} de velocidade de ataque."
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"Todos os Guerreiros ganham +{s:armor_bonus} de armadura."
 
-	"DAC_Synergy_Desc_Insect"			"Aranhinhas surgem das bordas do tabuleiro constantemente para atacar inimigos. Aranhinhas são unidades inalvejáveis que causam pouco dano e têm 1 de vida. Inimigos picados por Aranhinhas têm {s:miss_chance}% de chance de errar ataques durante {s:miss_chance_duration} segundo. Aranhinhas são repostas ao morrer, até um máximo de {s:num_insects}."
+	"DAC_Synergy_Desc_Insect"			"Aranhinhas surgem das bordas do tabuleiro constantemente para atacar inimigos. Aranhinhas são unidades inalvejáveis que causam pouco dano e têm 1 de vida. Inimigos picados por Aranhinhas têm {s:miss_chance}% de chance de errar ataques durante {s:miss_chance_duration} segundos. Aranhinhas são repostas ao morrer, até um máximo de {s:num_insects}."
 
 	"DAC_Synergy_Desc_Champion"		"Campeões recebem os bônus de todas as alianças."
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"Te enviei {d:duos_gold_amount} de ouro"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"Não quero mais..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"Preciso de ouro, por favor!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Devemos subir de nível?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Devemos gastar em trocas?"
 	"duos_benchlabel"					"Banco:"
 	"duos_sendlabel"					"Enviar"
 	"button_selllabel"					"Vender"
@@ -2044,6 +2049,8 @@
 	"dac_settings_playsoundinbackground"		"Som com outra janela ativa"
 	"dac_settings_lowlatency_audio"			"Detectar latência de áudio automaticamente"
 
+	"dac_settings_draw_unit_icons"			"Mostrar ícones das unidades"
+
 	"dac_item_select_victory"				"Vitória!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Escolha</span> o seu prêmio:"
 	"dac_item_select_defeat"				"Rodada de neutros perdida"
@@ -2240,9 +2247,9 @@
 	"DAC_Notification_HeroCombine_3"			"{s:hero_name} <span class='HeroCombineStars3'>★★★</span>"
 	"DAC_Notification_HeroCombine_2_Duos"		"Trabalho em equipe! {s:hero_name} <span class='HeroCombineStars2'>★★</span>"
 	"DAC_Notification_HeroCombine_3_Duos"		"Trabalho em equipe! {s:hero_name} <span class='HeroCombineStars3'>★★★</span>"
-	"DAC_Notification_WinStreak"				"venceu <span class='WinStreakCount'>{d:streak_length} rodadas</span> consecutivas!"
+	"DAC_Notification_WinStreak"				"Venceu <span class='WinStreakCount'>{d:streak_length} rodadas</span> consecutivas!"
 	"DAC_Notification_WinStreakComplete"		"Sequência de vitórias concluída!"
-	"DAC_Notification_PlayerEliminated"			"<span class='KnockedOut'>sofreu um nocaute</span>, ficando em {s:final_position}"
+	"DAC_Notification_PlayerEliminated"			"<span class='KnockedOut'>Sofreu um nocaute</span>, ficando em {s:final_position}"
 	"DAC_Notification_AcquiredItem"				"Adquiriu {s:item_name}"
 	"DAC_Notification_ItemChangedOwner"			"Roubou {s:item_name} de {g:dac_player_slot_persona:b:old_player_slot}"
 	"DAC_Notification_LevelUp"					"Nível {i:level}!"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"Circular pelos tabuleiros inimigos, de cima para baixo."
 	"dac_hotkey_scroll_camera_up_desc" 				"Elevar câmera"
     "dac_hotkey_scroll_camera_down_desc" 			"Rebaixar câmera"
+    "dac_hotkey_reset_camera_position_desc" 		"Reiniciar posição da câmera"
 
 	"dac_hotkey_alliances_tab"						"Abrir a aba de alianças."
 	"dac_hotkey_dps_tab"							"Abrir a aba de DPS."

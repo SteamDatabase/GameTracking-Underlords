@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"Ultimátní talent si můžeš vybrat ve 20. kole"
 
 	"dac_talent_hype"									"{i:ability_hype} bodů přízně"
+	"dac_talent_cooldown"								"Cooldown: {i:ability_cooldown} sekund"
 	"dac_talent_nohype"									"Nevyžaduje žádnou přízeň"
 	"dac_talent_lv_level"								"{i:talent_level}. kolo"
 
@@ -1157,7 +1158,7 @@
 	"DAC_InGame_AllianceTier"							"Synergie"
 	"DAC_InGame_ItemTier"								"{i:item_tier}. hodnost"
 	"DAC_InGame_HeroTier"								"{i:hero_tier}. hodnost"
-	"DAC_InGame_ItemsUnclaimed"							"Nevyzvednuté odměny: {d:unclaimed_reward_count}"
+	"DAC_InGame_ItemsUnclaimed"							"Nevybrané odměny: {d:unclaimed_reward_count}"
 	"DAC_InGame_TalentSelect"							"Vyber si talent"
 	"DAC_InGame_DevControlPanel"						"Ovládací panel"
 	"DAC_InGame_DevSetTalent"							"Nastavit talent"
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"Série zabití: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"Bonus. pošk. z Duelů: <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"Počet zabití siláků: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Rychlost útoku: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Rychlost útoku: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Poškození: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"Schopnost: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Zrušit výběr"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"Synergie"
 	"DAC_Units"			"Hrdinové"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"Maximální zdraví všech siláků je navýšeno o {s:hp_bonus} bodů."
 
 	"DAC_Synergy_Desc_Brawny"		"Siláci získávají {s:hp_bonus} bodů k maximálnímu zdraví za každého nepřítele zabitého jedním z tvých siláků."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Počet zabití siláků: {d:brawny_kills} <br/>Bonus ke zdraví siláků: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Trollové získávají {s:attack_speed_bonus_trolls} % a ostatní spojenci {s:attack_speed_bonus_others} % k rychlosti útoku."
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"Válečníci získávají {s:armor_bonus} bodů k brnění."
 
-	"DAC_Synergy_Desc_Insect"			"Herní desku od okrajů neustále zaplavují pavoučci, slabé jednotky s 1 bodem zdraví, na které nelze přímo zaútočit. Kousnutí nepřátelé mají na {s:miss_chance_duration} sekundy {s:miss_chance}% šanci minout své útoky. Jakmile pavouček zemře, je nahrazen dalším, přičemž jejich maximální počet je {s:num_insects}."
+	"DAC_Synergy_Desc_Insect"			"Herní desku od okrajů neustále zaplavují pavoučci, slabé jednotky s 1 bodem zdraví, na které nelze přímo zaútočit. Kousnutí nepřátelé mají na {s:miss_chance_duration} sekundy {s:miss_chance}% šanci minout své útoky. Jakmile pavouček zemře, je nahrazen dalším, přičemž maximum je {s:num_insects}."
 
 	"DAC_Synergy_Desc_Champion"		"Šampioni získávají bonusy všech aktivních synergií."
 
@@ -1626,12 +1629,14 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"Poslal jsem ti {d:duos_gold_amount} zlaťáků"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"Už nechci..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"Prosím, pošli mi zlaťáky!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Nevylepšíme na další úroveň?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Neutratíme zlaťáky za obnovení?"
 	"duos_benchlabel"					"Střídačka:"
 	"duos_sendlabel"					"Poslat"
 	"button_selllabel"					"Prodat"
 
-	"DAC_ChatHeader_Combat"		"Chat kola"
-	"DAC_ChatHeader_Combat_Cooldown"		"Chat kola (cooldown)"
+	"DAC_ChatHeader_Combat"		"Bitevní chat"
+	"DAC_ChatHeader_Combat_Cooldown"		"Bitevní chat (cooldown)"
 	"DAC_ChatHeader_Prep"		"Globální chat"
 	"DAC_ChatHeader_Duos"		"Týmový chat"
 
@@ -2044,6 +2049,8 @@
 	"dac_settings_playsoundinbackground"		"Přehrávat zvuky i po stažení hry na lištu"
 	"dac_settings_lowlatency_audio"			"Automaticky zjišťovat latenci zvuku"
 
+	"dac_settings_draw_unit_icons"			"Zobrazovat ikony jednotek"
+
 	"dac_item_select_victory"				"Výhra!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Vyber si</span> svoji odměnu:"
 	"dac_item_select_defeat"				"Prohra proti neutrálům"
@@ -2168,7 +2175,7 @@
 	"DAC_Leaderboard_Rank"							"<span class='RankName'>{s:new_rank_name}</span>"
 
 	"DAC_Reward_Title_Major"					"Hle! Odměna!"
-	"DAC_Reward_Title_Minor"					"Vyzvedni si ji v Beta deníku"
+	"DAC_Reward_Title_Minor"					"Vyber si ji v Beta deníku"
 	"DAC_Reward_Item_Name"						"{s:reward_name}"
 	"DAC_Reward_Item_NameTalent"				"{s:underlord_name}: talent {i:round}. kola"
 	"DAC_Reward_Item_Desc"						"{s:reward_desc}"
@@ -2181,8 +2188,8 @@
 	"DAC_Reward_Item_Selected"					"Vybraný"
 	"DAC_Reward_Tooltip_Body"					"{s:reward_type}<br><span class='TooltipItalic'>{s:reward_desc}</span>"
 
-	"DAC_Reward_Claim_Button_Exp"						"Vyzvednout {d:claim_exp}<span class='claim_subscript'>XP</span>"
-	"DAC_Reward_Claim_Button"						"Vyzvednout"
+	"DAC_Reward_Claim_Button_Exp"						"Vybrat {d:claim_exp}<span class='claim_subscript'>XP</span>"
+	"DAC_Reward_Claim_Button"						"Vybrat"
 	"DAC_Reward_Claim_Challenge_Title"			"Denní výzva dokončena"
 
 	"DAC_LookingForMatch_Desc"					"Vyhledávání zápasu"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"Přepínání mezi deskami hráčů (dolů)"
 	"dac_hotkey_scroll_camera_up_desc" 				"Posunutí kamery výše"
     "dac_hotkey_scroll_camera_down_desc" 			"Posunutí kamery níže"
+    "dac_hotkey_reset_camera_position_desc" 		"Resetování pozice kamery"
 
 	"dac_hotkey_alliances_tab"						"Otevření záložky Synergie"
 	"dac_hotkey_dps_tab"							"Otevření záložky Poškození"
@@ -2364,8 +2372,8 @@
 
 	"DAC_Explain_Hero_Pool"							"Hrdinové jsou vybíráni ze seznamu sdíleného mezi všemi hráči."
 	
-	"DAC_ClaimItem_Success"							"Vyzvednul sis předmět {s:item_name}."
-	"DAC_ClaimItem_Failure"							"Nepodařilo se vyzvednout odměnu. Zkus to později znovu."
+	"DAC_ClaimItem_Success"							"Vybral sis předmět {s:item_name}."
+	"DAC_ClaimItem_Failure"							"Nepodařilo se vybrat odměnu. Zkus to později znovu."
 
 	"DAC_BattlePassTitle"							"Denní výzvy"
 	"DAC_ChallengeListTitle"						"Městské výzvy"
@@ -2393,7 +2401,7 @@
 	"DAC_RewardsAbout_PointsEarned"					"Získané body"
 	"DAC_Challenge_RerollAt"						"Nová výzva za {t:d:time_to_reroll}"
 	"DAC_Challenge_RerollAvailableAt"				"Nová výzva"
-	"DAC_Challenge_Claimable"						"Vyzvednout XP"
+	"DAC_Challenge_Claimable"						"Vybrat XP"
 	"DAC_Challenge_ChallengeComplete"				"Dokončeno"
 
 	"DAC_Achievement_WinXPVPRounds_Desc"			"{d:challengeMaxProgress}× vyhraj kolo proti hráčům."
@@ -2414,8 +2422,8 @@
 	"DAC_Popup_ChallengeReroll_Body"				"Bude ti přidělena nová výzva, ale další obnovení bude dostupné až za 24 hodin."
 	"DAC_Popup_ChallengeReroll_BodyWithProgress"	"Bude ti přidělena nová výzva, ale přijdeš o svůj současný postup a další obnovení bude dostupné až za 24 hodin."
 
-	"DAC_BattlePass_ConnectConvert"					"Pro navýšení postupu a vyzvednutí odměn se přihlas ke svému účtu služby Steam."
-	"DAC_BattlePass_ReconnectConvert"				"Pro navýšení postupu a vyzvednutí odměn se znovu připoj ke službě Steam."
+	"DAC_BattlePass_ConnectConvert"					"Pro navýšení postupu a vybrání odměn se přihlas ke svému účtu služby Steam."
+	"DAC_BattlePass_ReconnectConvert"				"Pro navýšení postupu a vybrání odměn se znovu připoj ke službě Steam."
 
 	"DAC_LoggedInElsewhere_Title"					"Jsi snad Mezihvězdný strážce?"
 	"DAC_LoggedInElsewhere_Text"					"Už jsi k síti hry Dota Underlords připojen z jiného zařízení."
@@ -2574,12 +2582,12 @@
 	"dac_challenge_map_active_region"	"Tvůj vládce podsvětí"
 
 	"dac_map_challenge_tooltip_temp"	"Tento úkol má ID {d:challenge_id}"
-	"dac_map_claim_tooltip_temp"	"Toto vyzvednutí má ID {d:claim_id}"
+	"dac_map_claim_tooltip_temp"	"Tento výběr má ID {d:claim_id}"
 
 	"dac_challenge_map_dev_complete_challenge"		"Vývojář: dokončeno"
-	"dac_challenge_map_toggle_claim_mode"			"Režim vyzvednutí"
+	"dac_challenge_map_toggle_claim_mode"			"Režim výběru"
 	"dac_challenge_map_dev_buildings"			"Vývojářské budovy"
-	"dac_challenge_map_claim_challenge"		"Vyzvednout"
+	"dac_challenge_map_claim_challenge"		"Vybrat"
 	"dac_challenge_map_claim_node"			"Obsadit rozcestí"
 
 	"dac_challenge_map_claim_locked"		"Zamčeno"
@@ -2599,7 +2607,7 @@
 
 	"dac_map_challenge_details"		"ID úkolu: {d:selected_challenge_id}"
 	
-	"dac_map_claim_details"			"ID vyzvednutí: {d:selected_claim_id}"
+	"dac_map_claim_details"			"ID výběru: {d:selected_claim_id}"
 
 	"dac_challenge_map_title"		"Krvavá exkurze"
 
@@ -2610,8 +2618,8 @@
 	"dac_challenge_map_legend_challenges"		"◈  Aktuální úkoly"
 	"dac_challenge_map_legend_location"			"◆  Lokace"
 	"dac_challenge_map_legend_premium_location"	"◇  Prémiová lokace"
-	"dac_challenge_map_legend_reward"			"◆  Nevyzvednutá odměna"
-	"dac_challenge_map_legend_premium_reward"	"◇  Nevyzvednutá prémiová odměna"
+	"dac_challenge_map_legend_reward"			"◆  Nevybraná odměna"
+	"dac_challenge_map_legend_premium_reward"	"◇  Nevybraná prémiová odměna"
 
 	"dac_challenge_map_legend_subtitle"			"Prémiové odměny jsou dostupné pouze vlastníkům Bitevního deníku"
 
@@ -2694,7 +2702,7 @@
 	"DAC_Jail_Crime18"	"Nelegálně množil slepice"
 	"DAC_Jail_Crime19"	"Nesplatil dluh Revtelu"
 	"DAC_Jail_Crime20"	"Vyzradil konec Dobromilčina nového románu"
-	"DAC_Jail_Crime21"	"Nošení ponožek v sandálech"
+	"DAC_Jail_Crime21"	"Nosil ponožky v sandálech"
 	"DAC_Jail_Crime22"	"Nerecykloval odpad"
 	"DAC_Jail_Crime23"	"Nedal Jullovi dýško"
 	"DAC_Jail_Crime24"	"Odmítl zaplatit Anessixinu „daň za tajemství“"

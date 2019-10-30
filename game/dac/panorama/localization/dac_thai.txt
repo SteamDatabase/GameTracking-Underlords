@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"เลือกอัลติเมทในรอบที่ 20"
 
 	"dac_talent_hype"									"{i:ability_hype} ไฮป์"
+	"dac_talent_cooldown"								"คูลดาวน์: {i:ability_cooldown} วินาที"
 	"dac_talent_nohype"									"ไม่ต้องการไฮป์"
 	"dac_talent_lv_level"								"รอบที่ {i:talent_level}"
 
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"สังหารต่อเนื่อง: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"พลังโจมตีโบนัสจากการดวลศึก: <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"สังหารของกำยำทั้งหมด: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"อัตราโจมตี: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Attack Rate: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"พลังโจมตี: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"สกิล: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"ไม่เลือก"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"พลังผสาน"
 	"DAC_Units"			"ยูนิต"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"ยูนิตกำยำทั้งหมดมีพลังชีวิตสูงสุดเพิ่มขึ้น {s:hp_bonus} หน่วย"
 
 	"DAC_Synergy_Desc_Brawny"		"ยูนิตกำยำทั้งหมดได้รับพลังชีวิตสูงสุด +{s:hp_bonus} ต่อจำนวนการสังหารโดยยูนิตกำยำในทีมของคุณ ที่ทำไว้ตลอดทั้งเกม"
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Total Brawny Kills: {d:brawny_kills} <br/>Bonus Brawny Health: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"ยูนิตโทรลทั้งหมดได้รับความเร็วในการโจมตี +{s:attack_speed_bonus_trolls} และฝ่ายเดียวกันตัวอื่นได้รับความเร็วในการโจมตี +{s:attack_speed_bonus_others}"
 
@@ -1533,7 +1536,7 @@
 
 	"DAC_Synergy_Desc_Hunter"		"นักล่าทั้งหมดมีโอกาส {s:chance}% ที่จะทำการโจมตี {s:num_attacks} ครั้งอย่างรวดเร็ว"
 
-	"DAC_Synergy_Desc_Knight"		"ยูนิตอัศวินได้รับความเสียหายกายภาพและเวทมนตร์ลดลง {s:physical_reduction}% นอกจากนี้ หากถูกโจมตีจากด้านหน้าและยืนในระยะ 1 ช่องของอัศวินฝ่ายเดียวกัน ยูนิตอัศวินจะได้รับความเสียหายกายภาพและเวทมนตร์ลดลงเพิ่มอีก {s:physical_reduction_extra}%"
+	"DAC_Synergy_Desc_Knight"		"ยูนิตอัศวินได้รับความเสียหายกายภาพและเวทมนตร์ลดลง {s:physical_reduction}% นอกจากนี้ หากถูกโจมตีจากด้านหน้าและยืนในระยะ 1 ช่องของอัศวินฝ่ายเดียวกัน ยูนิตอัศวินจะได้รับความเสียหายกายภาพและเวทมนตร์ ลดลงเพิ่มอีก {s:physical_reduction_extra}%"
 
 	"DAC_Synergy_Desc_Mage"		"ศัตรูได้รับความเสียหายเวทมนตร์เพิ่มขึ้น {s:magic_resist_debuff}%"
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"นักรบทั้งหมดได้รับเกราะป้องกัน +{s:armor_bonus}"
 
-	"DAC_Synergy_Desc_Insect"			"ลูกแมงมุมเข้ามารุมล้อมศัตรูจากขอบกระดานอย่างต่อเนื่อง ลูกแมงมุมเป็นยูนิตที่ไม่สามารถเลือกเป็นเป้าหมายได้ สร้างความเสียหายต่ำ และมีพลังชีวิต 1 หน่วย ศัตรูที่โดนลูกแมงมุมกัดจะมีโอกาสโจมตีพลาด {s:miss_chance}% เป็นเวลา {s:miss_chance_duration} วินาที ลูกแมงมุมจะเกิดใหม่เมื่อตาย มีจำนวนสูงสุด {s:num_insects} ตัว"
+	"DAC_Synergy_Desc_Insect"			"Spiderlings constantly swarm enemies from the edge of the board. They are untargetable units that deal low damage and have 1 health. Enemies bitten by them have a {s:miss_chance}% chance to miss attacks for {s:miss_chance_duration}s. Spiderlings replenish on death to a maximum of {s:num_insects}."
 
 	"DAC_Synergy_Desc_Champion"		"แชมเปียนได้รับโบนัสพลังผสานทั้งหมด"
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"ฉันส่ง {d:duos_gold_amount} โกลด์ให้คุณแล้ว"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"ฉันไม่ต้องการนี่แล้ว..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"ช่วยส่งโกลด์มาให้หน่อย!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Should we level up?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Should we spend on rerolls?"
 	"duos_benchlabel"					"ม้านั่งสำรอง:"
 	"duos_sendlabel"					"ส่ง"
 	"button_selllabel"					"ขาย"
@@ -1971,7 +1976,7 @@
 	"dac_settings_captions"						"แสดงคำบรรยาย"
 	"dac_settings_chat_allow_custom_messages"	"แสดงแชทแบบกำหนดเอง"
 	"dac_settings_chat_filter_custom_messages"	"กรองแชทดุเด็ดเผ็ดร้อน"
-	"dac_settings_playunderlordcombatspeech"	"เล่นเสียงพูดในการต่อสู้ของอันเดอร์ลอร์ด"
+	"dac_settings_playunderlordcombatspeech"	"เล่นเสียงพูดของอันเดอร์ลอร์ดในการต่อสู้"
 	
 	"dac_settings_camera_type"					"กล้อง"
 	"dac_settings_camera_default"				"ค่าเริ่มต้น"
@@ -2043,6 +2048,8 @@
 	"dac_settings_unitspeech_all"				"ทั้งหมด"
 	"dac_settings_playsoundinbackground"		"เล่นเสียงขณะอยู่หน้าเดสก์ทอป"
 	"dac_settings_lowlatency_audio"			"ตรวจหาความล่าช้าเสียงอัตโนมัติ"
+
+	"dac_settings_draw_unit_icons"			"Show Unit Icons"
 
 	"dac_item_select_victory"				"ได้รับชัยชนะ!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>เลือก</span>รางวัลของคุณ:"
@@ -2195,7 +2202,7 @@
 	"DAC_BlockTitle_1"							"แลกเปลี่ยนทรัพยากร"
 	"DAC_BlockTitle_2"							"สู้ด้วยกัน แต่แยกกัน"
 	"DAC_BlockTitle_3"							"เลเวลและพลังชีวิตร่วมกัน"
-	"DAC_BlockDesc_1"							"สร้างทีมของคุณและต่อสู้กับอันเดอร์ลอร์ดคนอื่น แต่ตอนนี้มาพร้อมกับความช่วยเหลือเพิ่มเติม! ฮีโร่และโกลด์สามารถส่งให้กับเพื่อนร่วมทีมของคุณ เพื่อช่วยเขาทำพลังผสานให้สมบูรณ์และเพิ่มเลเวลทีมของเขา"
+	"DAC_BlockDesc_1"							"สร้างทีมของคุณและต่อสู้กับอันเดอร์ลอร์ดคนอื่น แต่ตอนนี้มาพร้อมกับความช่วยเหลือเพิ่มเติม! ฮีโร่และโกลด์สามารถส่งให้กับเพื่อนร่วมทีมของคุณ เพื่อช่วยเขาทำพลังผสานให้สมบูรณ์ และเพิ่มเลเวลทีมของเขา"
 	"DAC_BlockDesc_2"							"ทีมจะถูกจับคู่ให้พบกับทีมอื่นในทุกรอบ การต่อสู้จะแยกกันตัวต่อตัว และความเสียหายรอบจะบวกกันจากทั้งสองการต่อสู้ แปดทีมเข้าร่วมต่อสู้ และทีมสุดท้ายที่เหลือรอดจะเป็นผู้ชนะ"
 	"DAC_BlockDesc_3"							"คุณและเพื่อนร่วมทีมของคุณมีเลเวลเดียวกัน และหากคนใดคนหนึ่งเลเวลเพิ่มขึ้น คุณทั้งสองก็จะเพิ่มขึ้นไปร่วมกัน แต่ว่าคอยระวังพลังชีวิตของคุณให้ดี - 
 คุณและคู่หูของคุณแบ่งปันแถบพลังชีวิตเดียวกัน ดังนั้นพวกคุณจะอยู่หรือตายไปด้วยกัน!"
@@ -2270,6 +2277,7 @@
 	"dac_hotkey_enemies_down_desc"					"เลื่อนลงผ่านกระดานของศัตรู"
 	"dac_hotkey_scroll_camera_up_desc" 				"ปรับกล้องให้สูงขึ้น"
     "dac_hotkey_scroll_camera_down_desc" 			"ปรับกล้องให้ต่ำลง"
+    "dac_hotkey_reset_camera_position_desc" 		"รีเซ็ตตำแหน่งกล้อง"
 
 	"dac_hotkey_alliances_tab"						"ดูแท็บพลังผสาน"
 	"dac_hotkey_dps_tab"							"ดูแท็บความเสียหายต่อวินาที"

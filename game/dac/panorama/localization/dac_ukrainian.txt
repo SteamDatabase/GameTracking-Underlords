@@ -534,10 +534,10 @@
 
 	"DAC_Underlord_Talent_NeedsPrereq"					"Потрібно: «{s:talent_prereq}»"
 	"DAC_Underlord_Talent_Locked"						"Замкнено"
-	"DAC_Underlord_Talent_UnlockConditionGeneric"		"Для відкриття здобудьте принаймні шосте місце в кількох матчах із цим підлордом. Потрібно матчів: {i:required_wins}"
-	"DAC_Underlord_Talent_UnlockCondition"				"Для відкриття здобудьте принаймні шосте місце в кількох матчах із цим підлордом. Лишилося матчів: {i:required_wins}"
-	"DAC_Underlord_Talent_UnlockConditionGenericS"		"Для відкриття здобудьте принаймні шосте місце в {i:required_wins} матчі з цим підлордом"
-	"DAC_Underlord_Talent_UnlockConditionS"				"Для відкриття здобудьте принаймні шосте місце ще в {i:required_wins} матчі з цим підлордом"
+	"DAC_Underlord_Talent_UnlockConditionGeneric"		"Потрібно {i:required_wins} чи більше разів зайняти принаймні 6-те місце з цим підлордом"
+	"DAC_Underlord_Talent_UnlockCondition"				"Потрібно ще {i:required_wins} чи більше разів зайняти принаймні 6-те місце з цим підлордом"
+	"DAC_Underlord_Talent_UnlockConditionGenericS"		"Потрібно {i:required_wins} раз зайняти принаймні 6-те місце з цим підлордом"
+	"DAC_Underlord_Talent_UnlockConditionS"				"Потрібно ще {i:required_wins} раз зайняти принаймні 6-те місце з цим підлордом"
 	"DAC_Underlord_Talent_UnlockConditionDB"			"Розблоковуйте таланти шляхом здобуття з цим підлордом принаймні 6 місця в багатокористувацьких матчах або матчах протоперепустки."
 	"DAC_Underlord_Talent_UnlockConditionNextDB"		"Наступна успішна гра відкриє: {s:next_talent}"
 
@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"Оберіть ульт у 20-му раунді"
 
 	"dac_talent_hype"									"{i:ability_hype} репутації"
+	"dac_talent_cooldown"								"Зарядка: {i:ability_cooldown} с"
 	"dac_talent_nohype"									"Не потрібно репутації"
 	"dac_talent_lv_level"								"Раунд {i:talent_level}"
 
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"Серія вбивств: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"Шкода від дуелей: <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"Усього вбивств силачами: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Швидкість атаки: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Частота атаки: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Шкода: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"Здібність: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Прибрати виділення"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"Альянси"
 	"DAC_Units"			"Істоти"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"Усі силачі отримують +{s:hp_bonus} до максимального здоров’я."
 
 	"DAC_Synergy_Desc_Brawny"		"Усі силачі починають раунд із +{s:hp_bonus} до максимального здоров’я за кожного вбитого силачами ворога впродовж гри."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Усього вбито силачами: {d:brawny_kills}<br/>Дод. здоров’я силачів: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Усі тролі отримують +{s:attack_speed_bonus_trolls} до швидкості атаки, а інші союзники отримують +{s:attack_speed_bonus_others} до швидкості атаки."
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"Надсилаю {d:duos_gold_amount} золота"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"Мені більше не треба…"
 	"DAC_Duos_Msg_Send_Me_Gold"			"Надішли мені трохи золота!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Підвищуватимемо рівень?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Витрачатимемося на заміни?"
 	"duos_benchlabel"					"Резерв:"
 	"duos_sendlabel"					"Надіслати"
 	"button_selllabel"					"Продати"
@@ -2044,6 +2049,8 @@
 	"dac_settings_playsoundinbackground"		"Звук чутно поза грою"
 	"dac_settings_lowlatency_audio"			"Автовизначення затримки звуку"
 
+	"dac_settings_draw_unit_icons"			"Показувати піктограми істот"
+
 	"dac_item_select_victory"				"Перемога!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Оберіть</span> свою нагороду:"
 	"dac_item_select_defeat"				"Поразка від нейтралів"
@@ -2176,7 +2183,7 @@
 	"DAC_Reward_Item_TalentCount"				"{i:talents_unlocked} / {i:talents_total}"
 	"DAC_Reward_Item_TalentUnlocked"			"Талантів розблоковано"
 	"DAC_Reward_Item_TalentUnlockedLabel"		"Додаткові таланти"
-	"DAC_Reward_Item_ViewDetails"				"Дивитися подробиці"
+	"DAC_Reward_Item_ViewDetails"				"Подробиці"
 	"DAC_Reward_Item_Select"					"Вибрати"
 	"DAC_Reward_Item_Selected"					"Вибрано"
 	"DAC_Reward_Tooltip_Body"					"{s:reward_type}<br><span class='TooltipItalic'>{s:reward_desc}</span>"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"Перемкнути на поле ворога нижче."
 	"dac_hotkey_scroll_camera_up_desc" 				"Підняти камеру."
     "dac_hotkey_scroll_camera_down_desc" 			"Опустити камеру."
+    "dac_hotkey_reset_camera_position_desc" 		"Скинути положення камери"
 
 	"dac_hotkey_alliances_tab"						"Переглянути альянси."
 	"dac_hotkey_dps_tab"							"Переглянути шкоду."
@@ -2393,7 +2401,7 @@
 	"DAC_RewardsAbout_PointsEarned"					"Очок зароблено"
 	"DAC_Challenge_RerollAt"						"Нове випробування: {t:d:time_to_reroll}"
 	"DAC_Challenge_RerollAvailableAt"				"Нове випробування"
-	"DAC_Challenge_Claimable"						"Отримати досвід"
+	"DAC_Challenge_Claimable"						"Отримати"
 	"DAC_Challenge_ChallengeComplete"				"Виконано"
 
 	"DAC_Achievement_WinXPVPRounds_Desc"			"Виграйте {d:challengeMaxProgress} раундів проти інших гравців."

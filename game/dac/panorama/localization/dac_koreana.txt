@@ -554,6 +554,7 @@
 	"dac_talent_ultimate_description"					"20라운드에 궁극 특성 선택"
 
 	"dac_talent_hype"									"열의 {i:ability_hype}"
+	"dac_talent_cooldown"								"쿨다운: {i:ability_cooldown}초"
 	"dac_talent_nohype"									"열의가 필요하지 않음"
 	"dac_talent_lv_level"								"{i:talent_level}라운드"
 
@@ -1224,7 +1225,7 @@
 	"DAC_InGame_KillStreak_Query"						"연속 처치: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"결투로 얻은 보너스 공격력: <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"강건함 총 처치 수: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"공격 속도: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Attack Rate: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"피해: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"능력: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"선택 해제"
@@ -1341,6 +1342,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"동맹"
 	"DAC_Units"			"유닛"
@@ -1521,6 +1523,7 @@
 	"DAC_Synergy_Desc_Orc"		"모든 강건함 유닛의 최대 체력이 {s:hp_bonus} 증가"
 
 	"DAC_Synergy_Desc_Brawny"		"모든 강건함 유닛은 팀의 강건함 유닛이 게임 전체에서 기록한 처치 1회당 {s:hp_bonus} 의 최대 체력을 획득"
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Total Brawny Kills: {d:brawny_kills} <br/>Bonus Brawny Health: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"모든 트롤 유닛이 공격 속도 +{s:attack_speed_bonus_trolls} 획득 및 다른 아군이 공격 속도 +{s:attack_speed_bonus_others} 획득"
 
@@ -1534,7 +1537,7 @@
 
 	"DAC_Synergy_Desc_Hunter"		"모든 사냥꾼이 {s:chance}% 확률로 빠르게 {s:num_attacks}번 공격"
 
-	"DAC_Synergy_Desc_Knight"		"기사 유닛이 받는 물리 및 마법 피해가 {s:physical_reduction}% 감소. 정면이자 아군 기사의 1칸 안에서 오는 공격을 받으면, 기사 유닛이 받는 물리 및 마법 피해가 추가로 {s:physical_reduction_extra}% 감소"
+	"DAC_Synergy_Desc_Knight"		"기사 유닛이 받는 물리 및 마법 피해가 {s:physical_reduction}% 감소. 아군 기사의 1칸 안에서 정면으로 오는 공격을 받으면, 기사 유닛이 받는 물리 및 마법 피해가 추가로 {s:physical_reduction_extra}% 감소"
 
 	"DAC_Synergy_Desc_Mage"		"적이 받는 마법 피해 {s:magic_resist_debuff}% 증가"
 
@@ -1548,7 +1551,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"모든 전사가 방어력 +{s:armor_bonus} 획득"
 
-	"DAC_Synergy_Desc_Insect"			"새끼거미가 끊임없이 대전판 가장자리에서 기어 나와 적을 향해 감. 새끼거미는 대상으로 지정할 수 없는 유닛이며 적은 피해를 주고 체력 1을 보유. 새끼거미에게 물린 적은 {s:miss_chance_duration}초 동안 {s:miss_chance}% 확률로 공격이 빗나감. 새끼거미는 죽으면 최대 {s:num_insects}마리가 될 때까지 계속 보충됨"
+	"DAC_Synergy_Desc_Insect"			"새끼거미가 끊임없이 대전판 가장자리에서 기어 나와 적을 향해 감. 새끼거미는 대상으로 지정할 수 없는 유닛이며 적은 피해를 주고 체력 1을 보유. 새끼거미에게 물린 적은 {s:miss_chance_duration}초 동안 {s:miss_chance}% 확률로 공격이 빗나감. 새끼거미는 죽어도 최대 {s:num_insects}마리가 될 때까지 계속 보충됨"
 
 	"DAC_Synergy_Desc_Champion"		"용사는 모든 동맹 보너스를 받음"
 
@@ -1627,6 +1630,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"{d:duos_gold_amount}골드를 보냈어요"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"더는 받고 싶지 않아요..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"골드 좀 보내주세요!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Should we level up?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Should we spend on rerolls?"
 	"duos_benchlabel"					"후보석:"
 	"duos_sendlabel"					"보내기"
 	"button_selllabel"					"팔기"
@@ -2045,6 +2050,8 @@
 	"dac_settings_playsoundinbackground"		"바탕 화면에서 소리 재생"
 	"dac_settings_lowlatency_audio"			"오디오 지연 자동 탐지"
 
+	"dac_settings_draw_unit_icons"			"유닛 아이콘 보기"
+
 	"dac_item_select_victory"				"승리!"
 	"dac_item_select_victory_subtitle"		"보상 <span class='SubtitleHighlight'>선택</span>"
 	"dac_item_select_defeat"				"중립 라운드 패배"
@@ -2270,6 +2277,7 @@
 	"dac_hotkey_enemies_down_desc"					"적 대전판을 아래로 스크롤하며 차례로 확인합니다."
 	"dac_hotkey_scroll_camera_up_desc" 				"카메라를 위로 이동"
     "dac_hotkey_scroll_camera_down_desc" 			"카메라를 아래로 이동"
+    "dac_hotkey_reset_camera_position_desc" 		"카메라 위치 초기화"
 
 	"dac_hotkey_alliances_tab"						"동맹 항목을 봅니다."
 	"dac_hotkey_dps_tab"							"초당 피해 항목을 봅니다."

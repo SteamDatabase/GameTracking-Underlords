@@ -554,6 +554,7 @@
 	"dac_talent_ultimate_description"					"在第 20 回合選擇一項終極天賦"
 
 	"dac_talent_hype"									"{i:ability_hype} 霸氣"
+	"dac_talent_cooldown"								"冷卻時間：{i:ability_cooldown} 秒"
 	"dac_talent_nohype"									"無需霸氣"
 	"dac_talent_lv_level"								"第 {i:talent_level} 回合"
 
@@ -1224,7 +1225,7 @@
 	"DAC_InGame_KillStreak_Query"						"連殺：<span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"來自決鬥的額外傷害：<span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"悍將總擊殺數：<span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"攻擊速率：<span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Attack Rate: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"傷害：<span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"技能：{s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"取消選取"
@@ -1341,6 +1342,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"特性"
 	"DAC_Units"			"單位"
@@ -1521,6 +1523,7 @@
 	"DAC_Synergy_Desc_Orc"		"所有悍將單位的最大生命提升 {s:hp_bonus}"
 
 	"DAC_Synergy_Desc_Brawny"		"整場比賽中，你的隊伍裡任何一個悍將單位每有一次擊殺，所有悍將單位都獲得 +{s:hp_bonus} 最大生命"
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Total Brawny Kills: {d:brawny_kills} <br/>Bonus Brawny Health: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"所有巨魔單位獲得 +{s:attack_speed_bonus_trolls} 攻擊速度，其它友方單位獲得 +{s:attack_speed_bonus_others} 攻擊速度"
 
@@ -1627,6 +1630,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"我給了你 {d:duos_gold_amount} 金錢"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"我不再需要…"
 	"DAC_Duos_Msg_Send_Me_Gold"			"請給我一些金錢！"
+	"DAC_Duos_Msg_Level_Up_Question"			"Should we level up?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Should we spend on rerolls?"
 	"duos_benchlabel"					"等候區："
 	"duos_sendlabel"					"傳送"
 	"button_selllabel"					"售出"
@@ -1808,7 +1813,7 @@
 	"DAC_Tutorial_PlayerWaves_1"	"試著升級你的隊伍，並善用特性來取得勝利。"
 	
 	"DAC_Tutorial_EndScene_0"		"現在開始，你將在之後的比賽中獲得提示與技巧。"
-	"DAC_Tutorial_EndScene_1"		"你可以查看規則說明，深入了解英雄、野怪、技能、規則等資訊。"
+	"DAC_Tutorial_EndScene_1"		"你可以查看規則手冊，深入了解英雄、野怪、技能、規則等資訊。"
 	"DAC_Tutorial_EndScene_2"		"現在去拿下他們吧！"
 
 	"DAC_Tutorial_Interest_0"		"每回合結束時，每擁有 10 金錢，可獲得 1 金錢的利息（計算上限為 50）。"
@@ -2045,6 +2050,8 @@
 	"dac_settings_playsoundinbackground"		"切換桌面後仍播放聲音"
 	"dac_settings_lowlatency_audio"			"自動偵測音訊延遲"
 
+	"dac_settings_draw_unit_icons"			"顯示單位圖示"
+
 	"dac_item_select_victory"				"勝利！"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>選擇</span>一項獎勵："
 	"dac_item_select_defeat"				"中立野怪回合落敗"
@@ -2243,7 +2250,7 @@
 	"DAC_Notification_HeroCombine_3_Duos"		"合作無間！{s:hero_name} <span class='HeroCombineStars3'>★★★</span>"
 	"DAC_Notification_WinStreak"				" 連勝 <span class='WinStreakCount'>{d:streak_length} 回合</span>！"
 	"DAC_Notification_WinStreakComplete"		"達成連勝！"
-	"DAC_Notification_PlayerEliminated"			"<span class='KnockedOut'>遭到了淘汰</span>，得到第 {s:final_position} 名"
+	"DAC_Notification_PlayerEliminated"			"<span class='KnockedOut'>遭到淘汰</span>，得到{s:final_position}"
 	"DAC_Notification_AcquiredItem"				"得到了{s:item_name}"
 	"DAC_Notification_ItemChangedOwner"			"從 {g:dac_player_slot_persona:b:old_player_slot} 偷到了{s:item_name}"
 	"DAC_Notification_LevelUp"					"等級 {i:level}！"
@@ -2270,6 +2277,7 @@
 	"dac_hotkey_enemies_down_desc"					"向下捲動敵手棋盤。"
 	"dac_hotkey_scroll_camera_up_desc" 				"提高視角"
     "dac_hotkey_scroll_camera_down_desc" 			"降低視角"
+    "dac_hotkey_reset_camera_position_desc" 		"重置視角位置"
 
 	"dac_hotkey_alliances_tab"						"檢視特性分頁。"
 	"dac_hotkey_dps_tab"							"檢視每秒傷害分頁。"
@@ -2637,7 +2645,7 @@
 	"dac_legendary_faceless_void_desc" "每達成一階<span class='Assassin'>刺客</span> <img class='InlineSynergyIcon SynergyAssassins'/> 特性等級，友方<span class='Assassin'>刺客</span> <img class='InlineSynergyIcon SynergyAssassins'/> 有 5% 機率讓時間倒退、完全躲避物理與魔法兩種攻擊。<br><br>若達至少一階<span class='Assassin'>刺客</span> <img class='InlineSynergyIcon SynergyAssassins'/> 特性等級，則 +15% 出現率 。"
 	"dac_legendary_sven_desc" "斯溫施放神之瀚力時，所有友方<span class='Knight'>騎士</span> <img class='InlineSynergyIcon SynergyKnights'/> 喪失其<span class='Knight'>騎士</span> <img class='InlineSynergyIcon SynergyKnights'/> 特性加成，且在該回合的剩餘時間中，每達成一階<span class='Knight'>騎士</span> <img class='InlineSynergyIcon SynergyKnights'/> 特性等級，便得到 50% 傷害。<br><br>若達至少一階<span class='Knight'>騎士</span> <img class='InlineSynergyIcon SynergyKnights'/> 特性，則 +15% 出現率。"
 
-	"DAC_MainNav_SeasonInfo"	"規則說明"
+	"DAC_MainNav_SeasonInfo"	"規則手冊"
 	"DAC_MainNav_Achievements"	"成就"
 	"DAC_MainNav_Battlepass"	"初版通行證"
 	"DAC_MainNav_SecretSociety"	"秘密結社"

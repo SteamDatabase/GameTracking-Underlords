@@ -124,7 +124,7 @@
 	"DAC_Popup_ChinaDurationControlTimeOut_Body"			"Hai raggiunto il tempo di gioco massimo consentito per un minorenne. Il gioco online è stato disabilitato fino a domani mattina o fino al termine di una pausa sufficientemente lunga."
 
 	"DAC_Popup_DisconnectListenServer_Header"			"Esci dalla partita"
-	"DAC_Popup_DisconnectListenServer_Body"				"I tuoi progressi vengono automaticamente salvati dopo ogni azione che fai durante la fase di preparazione. Vuoi andare al menu principale?"
+	"DAC_Popup_DisconnectListenServer_Body"				"I tuoi progressi vengono salvati automaticamente dopo ogni azione che fai durante la fase di preparazione. Vuoi tornare al menu principale?"
 	"DAC_Popup_DisconnectListenServerTutorial_Body"		"Tornare al menu principale?"
 
 	"DAC_Popup_DisconnectSinglePlayerLobby_Body"		"Se rimani disconnesso per più di 30 minuti, il gioco terminerà automaticamente. Continuare al menu principale?"
@@ -538,7 +538,7 @@
 	"DAC_Underlord_Talent_UnlockCondition"				"Sbloccalo arrivando almeno al 6º posto in altre {i:required_wins} partite con questo Underlord"
 	"DAC_Underlord_Talent_UnlockConditionGenericS"		"Sbloccalo arrivando almeno al 6º posto in {i:required_wins} partita con questo Underlord"
 	"DAC_Underlord_Talent_UnlockConditionS"				"Sbloccalo arrivando almeno al 6º posto in altre {i:required_wins} partite con questo Underlord"
-	"DAC_Underlord_Talent_UnlockConditionDB"			"Sbloccalo arrivando almeno al 6º posto in partite multigiocatore o Proto pass con ogni Underlord."
+	"DAC_Underlord_Talent_UnlockConditionDB"			"Sblocca i talenti arrivando almeno al 6º posto in partite multigiocatore o Proto pass con ogni Underlord."
 	"DAC_Underlord_Talent_UnlockConditionNextDB"		"La prossima partita sbloccherà: {s:next_talent}"
 
 	"DAC_Underlord_Tab_Overview"						"Panoramica"
@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"Seleziona un talento supremo al round 20"
 
 	"dac_talent_hype"									"{i:ability_hype} punti furia"
+	"dac_talent_cooldown"								"Tempo di ricarica: {i:ability_cooldown} secondi"
 	"dac_talent_nohype"									"Non richiede furia"
 	"dac_talent_lv_level"								"Round {i:talent_level}"
 
@@ -1141,7 +1142,7 @@
 	"DAC_InGame_Rank"									"Grado: {i:UnitRank}"
 	"DAC_InGame_Round"									"Round {i:gameStateRound}"
     "DAC_InGame_RoundPhase"                             "{s:gameStateRoundPhase}"
-    "DAC_InGame_NextRoundStarts"                        "Inizio round tra {i:gameStateNextRound}"
+    "DAC_InGame_NextRoundStarts"                        "Inizio round {i:gameStateNextRound} tra"
     "DAC_InGame_Resolving"                              "Attendi"	
 	"DAC_InGame_Gold"									"|   Oro: {i:shopGold}"
 	"DAC_InGame_Reroll"									"Cambia"
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"Serie di uccisioni: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"Danni bonus provenienti da Duello: <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"Totale uccisioni unità Possenti: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Velocità di attacco: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Velocità di attacco: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Danni: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"Abilità: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Deseleziona"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"Sinergie"
 	"DAC_Units"			"Unità"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"I punti salute massimi di tutte le unità Possenti aumentano di {s:hp_bonus}."
 
 	"DAC_Synergy_Desc_Brawny"		"Tutte le unità Possenti aumentano di +{s:hp_bonus} i loro punti salute massimi per ogni avversario ucciso dalle tue unità Possenti nel corso di ogni round."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Uccisioni totali unità Possente: {d:brawny_kills} <br/>Bonus punti salute sinergia Possente: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Tutte le unità Troll ottengono +{s:attack_speed_bonus_trolls} velocità di attacco e gli altri alleati ottengono +{s:attack_speed_bonus_others} velocità di attacco."
 
@@ -1533,7 +1536,7 @@
 
 	"DAC_Synergy_Desc_Hunter"		"Tutti i Cacciatori hanno il {s:chance}% di probabilità di infliggere {s:num_attacks} attacchi rapidi."
 
-	"DAC_Synergy_Desc_Knight"		"Le unità Cavaliere ricevono il {s:physical_reduction}% in meno di danni fisici e magici. Se vengono attaccati frontalmente e si trovano entro 1 casella da un altro Cavaliere alleato, ricevono un'ulteriore riduzione del {s:physical_reduction_extra}% ai danni fisici e magici."
+	"DAC_Synergy_Desc_Knight"		"I Cavalieri subiscono il {s:physical_reduction}% in meno di danni fisici e magici. Se vengono attaccati frontalmente e si trovano entro 1 casella da un altro Cavaliere alleato, ottengono un'ulteriore riduzione del {s:physical_reduction_extra}% dei danni fisici e magici."
 
 	"DAC_Synergy_Desc_Mage"		"I nemici subiscono il {s:magic_resist_debuff}% in più di danni magici."
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"Tutti i Guerrieri guadagnano {s:armor_bonus} punti armatura."
 
-	"DAC_Synergy_Desc_Insect"			"I ragni sciamano costantemente sui nemici a partire dal bordo della scacchiera, non possono essere attaccati direttamente, infliggono danni ridotti e hanno 1 punto salute. I nemici morsi dai ragni hanno il {s:miss_chance}% di probabilità di mancare i loro bersagli per {s:miss_chance_duration} secondi. Quando muoiono, un massimo di {s:num_insects} ragni viene rimpiazzato da altri ragni."
+	"DAC_Synergy_Desc_Insect"			"I ragni sciamano costantemente sui nemici a partire dal bordo della scacchiera, non possono essere attaccati direttamente, infliggono danni ridotti e hanno 1 punto salute. I nemici morsi dai ragni hanno il {s:miss_chance}% di probabilità di mancare il bersaglio per {s:miss_chance_duration} secondi. Quando muoiono, un massimo di {s:num_insects} ragni viene rimpiazzato da altri ragni."
 
 	"DAC_Synergy_Desc_Champion"		"I Campioni ricevono i bonus di tutte le sinergie."
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"Ti ho inviato {d:duos_gold_amount} monete d'oro"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"Non voglio più..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"Inviami un po' di oro!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Saliamo di livello?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Spendiamo monete d'oro per cambiare eroi?"
 	"duos_benchlabel"					"Panchina:"
 	"duos_sendlabel"					"Invia"
 	"button_selllabel"					"Vendi"
@@ -1989,7 +1994,7 @@
 	"dac_settings_synergies_hide_partial"		"Nascondi sinergie parziali durante il combattimento."
 	"dac_settings_enable_haptics"				"Attiva opzioni aptiche"
 	"dac_settings_tap_move"						"Attiva tocco per muovere"
-	"dac_settings_auto_deploy_units"			"Schiera automaticamente le unità dalla tua panchina se c'è spazio."
+	"dac_settings_auto_deploy_units"			"Schiera automaticamente le unità dalla tua panchina se c'è spazio"
 	"dac_settings_use_panorama_login"			"Accedi utilizzando il sistema classico di Steam"
 	"dac_settings_low_violence"					"Modalità violenza ridotta"
 
@@ -2043,6 +2048,8 @@
 	"dac_settings_unitspeech_all"				"Tutte"
 	"dac_settings_playsoundinbackground"		"Riproduci i suoni sul desktop"
 	"dac_settings_lowlatency_audio"			"Rileva automaticamente la latenza dell'audio"
+
+	"dac_settings_draw_unit_icons"			"Mostra le icone delle unità"
 
 	"dac_item_select_victory"				"Vittoria!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Scegli</span> il tuo premio:"
@@ -2240,10 +2247,10 @@
 	"DAC_Notification_HeroCombine_3"			"{s:hero_name} <span class='HeroCombineStars3'>★★★</span>"
 	"DAC_Notification_HeroCombine_2_Duos"		"Gioco di squadra! {s:hero_name} <span class='HeroCombineStars2'>★★</span>"
 	"DAC_Notification_HeroCombine_3_Duos"		"Gioco di squadra! {s:hero_name} <span class='HeroCombineStars3'>★★★</span>"
-	"DAC_Notification_WinStreak"				"<span class='WinStreakCount'>{d:streak_length} round</span> serie di vittorie!"
+	"DAC_Notification_WinStreak"				"<span class='WinStreakCount'>{d:streak_length}</span> vittorie consecutive!"
 	"DAC_Notification_WinStreakComplete"		"Serie di vittorie completata!"
 	"DAC_Notification_PlayerEliminated"			"<span class='KnockedOut'>Eliminato</span>: {s:final_position}"
-	"DAC_Notification_AcquiredItem"				"Ottenuto {s:item_name}"
+	"DAC_Notification_AcquiredItem"				"Ha ottenuto {s:item_name}"
 	"DAC_Notification_ItemChangedOwner"			"L'oggetto {s:item_name} è stato sottratto a {g:dac_player_slot_persona:b:old_player_slot}"
 	"DAC_Notification_LevelUp"					"Livello {i:level}!"
 	"DAC_Combat_Result_Draw"					"Pareggio"
@@ -2258,32 +2265,33 @@
 	"DAC_Combat_Result_Win_LocalPlayerOpponent"	"<span class='PlayerName'>{g:dac_player_slot_persona:b:player_slot}</span> ha respinto la tua armata"
 	"DAC_Combat_Result_Lose_LocalPlayerOpponent" "<span class='CombatDamage'>{d:damage_taken} punti danno</span>"
 
-	"dac_hotkey_sell_desc"							"Vendi unità selezionata."
-	"dac_hotkey_tobench_desc"						"Metti unità in panchina."
-	"dac_hotkey_scoreboard_desc"					"Mostra la classifica."
-	"dac_hotkey_reroll_desc"						"Cambia unità nel negozio."
-	"dac_hotkey_levelup_desc"						"Compra 5 ESP per 5 monete d'oro."
-	"dac_hotkey_shop_desc"							"Apri il negozio."
-	"dac_hotkey_home_desc"							"Seleziona e mostra la tua scacchiera."
-	"dac_hotkey_enemies_up_desc"					"Scorri tra le scacchiere nemiche verso l'alto."
-	"dac_hotkey_enemies_down_desc"					"Scorri tra le scacchiere nemiche verso il basso."
+	"dac_hotkey_sell_desc"							"Vendi unità selezionata"
+	"dac_hotkey_tobench_desc"						"Metti unità in panchina"
+	"dac_hotkey_scoreboard_desc"					"Mostra la classifica"
+	"dac_hotkey_reroll_desc"						"Cambia unità nel negozio"
+	"dac_hotkey_levelup_desc"						"Compra 5 ESP per 5 monete d'oro"
+	"dac_hotkey_shop_desc"							"Apri il negozio"
+	"dac_hotkey_home_desc"							"Seleziona e mostra la tua scacchiera"
+	"dac_hotkey_enemies_up_desc"					"Scorri tra le scacchiere nemiche verso l'alto"
+	"dac_hotkey_enemies_down_desc"					"Scorri tra le scacchiere nemiche verso il basso"
 	"dac_hotkey_scroll_camera_up_desc" 				"Muovi la telecamera più in alto"
     "dac_hotkey_scroll_camera_down_desc" 			"Muovi la telecamera più in basso"
+    "dac_hotkey_reset_camera_position_desc" 		"Ripristina posizione della telecamera"
 
-	"dac_hotkey_alliances_tab"						"Visualizza la scheda delle sinergie."
-	"dac_hotkey_dps_tab"							"Visualizza la scheda dei danni al secondo."
-	"dac_hotkey_items_tab"							"Visualizza la scheda degli oggetti."
-	"dac_hotkey_unitpurchase_desc"					"Acquista l'unità corrispondente dal negozio."
-	"dac_hotkey_buy1_desc"							"Acquista la prima unità o il primo oggetto del negozio."
-	"dac_hotkey_buy2_desc"							"Acquista la seconda unità o il secondo oggetto dal negozio."
-	"dac_hotkey_buy3_desc"							"Acquista la terza unità o il terzo oggetto dal negozio."
-	"dac_hotkey_buy4_desc"							"Acquista la quarta unità o il quarto oggetto dal negozio."
-	"dac_hotkey_buy5_desc"							"Acquista la quinta unità o il quinto oggetto dal negozio."
-	"dac_hotkey_lock_desc"							"Blocca il negozio: stesse unità all'inizio del prossimo round."
-	"dac_hotkey_opponent_board_desc"				"Visualizza la scacchiera del tuo nemico corrente."
-	"dac_hotkey_away_board_desc"					"Visualizza la scacchiera di chi combatte contro di te."
+	"dac_hotkey_alliances_tab"						"Visualizza la scheda delle sinergie"
+	"dac_hotkey_dps_tab"							"Visualizza la scheda dei danni al secondo"
+	"dac_hotkey_items_tab"							"Visualizza la scheda degli oggetti"
+	"dac_hotkey_unitpurchase_desc"					"Acquista l'unità corrispondente dal negozio"
+	"dac_hotkey_buy1_desc"							"Acquista la prima unità o il primo oggetto del negozio"
+	"dac_hotkey_buy2_desc"							"Acquista la seconda unità o il secondo oggetto dal negozio"
+	"dac_hotkey_buy3_desc"							"Acquista la terza unità o il terzo oggetto dal negozio"
+	"dac_hotkey_buy4_desc"							"Acquista la quarta unità o il quarto oggetto dal negozio"
+	"dac_hotkey_buy5_desc"							"Acquista la quinta unità o il quinto oggetto dal negozio"
+	"dac_hotkey_lock_desc"							"Blocca il negozio: stesse unità all'inizio del prossimo round"
+	"dac_hotkey_opponent_board_desc"				"Visualizza la scacchiera del tuo nemico corrente"
+	"dac_hotkey_away_board_desc"					"Visualizza la scacchiera di chi combatte contro di te"
 	"dac_hotkey_chat_desc"							"Attiva/disattiva chat"
-	"dac_hotkey_send_desc"							"Invia le unità selezionate al tuo compagno di squadra."
+	"dac_hotkey_send_desc"							"Invia le unità selezionate al tuo compagno di squadra"
 
 	"DAC_Tutorial_Intro_Title"						"Ehi, tu."
 	"DAC_Tutorial_Intro_Body1"						"Se stai leggendo questo messaggio, significa che sono morta e che Guglia bianca è in guerra. <br><br>Non posso più proteggerti, ma posso insegnarti come comandare un'armata.  Impara a farlo come si deve e non ti limiterai a sopravvivere... ma potrai regnare sull'intera città.  <br><br>Buona fortuna. Cerca di non farti ammazzare. "
@@ -2728,7 +2736,7 @@
 	"DAC_InGame_MenuJail"	"Eroi banditi"
 	"DAC_Jail_Title"	"I galeotti di oggi"
 	"DAC_Jail_Page_Release_From_Jail_Message" "Questi eroi sono attualmente detenuti in gattabuia e non possono essere reclutati.\nSaranno rilasciati fra {t:t:m:d:dac_time_left_before_jail_reset}."
-	"DAC_Jail_Desc"		"Ogni giorno, alcuni eroi vengono rimossi dal gruppo di quelli disponibili. Tutte le sinergie possono comunque venire completate."
+	"DAC_Jail_Desc"		"Ogni giorno alcuni eroi non possono essere reclutati. È comunque possibile completare tutte le sinergie."
 	"DAC_MiniJail_Title"		"I galeotti di oggi"
 
 	"RickySezLabel1"	"Ricky Corvonero informa:"

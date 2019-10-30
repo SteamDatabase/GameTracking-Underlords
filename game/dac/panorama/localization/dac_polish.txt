@@ -30,7 +30,7 @@
 	"DAC_SteamLogIn_Connecting"							"Łączenie ze Steam"
 	"DAC_SteamLogOut"									"Wyloguj się"
 	"DAC_LandingSubtitle"								"Prywatna beta"
-	"DAC_InvisibleMode"									"Bądź offline dla swoich znajomych Steam podczas grania"
+	"DAC_InvisibleMode"									"Bądź offline dla swoich znajomych Steam podczas grania."
 	"DAC_SteamCreateNewAccount"							"Nie posiadasz konta?"
 
 	"DAC_MatchTypeMultiplayer"							"Wieloosobowy"
@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"Wybierz talent ostateczny dostępny od 20 rundy"
 
 	"dac_talent_hype"									"{i:ability_hype} pkt. wrzawy"
+	"dac_talent_cooldown"								"Czas oczekiwania: {i:ability_cooldown} s"
 	"dac_talent_nohype"									"Nie wymaga wrzawy"
 	"dac_talent_lv_level"								"Runda {i:talent_level}"
 
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"Seria zabójstw: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"Dodatkowe obrażenia z Pojedynków: <span class=\"Count\">{d:duel_bonus_damage}</span> pkt."
 	"DAC_InGame_BrawnyKillCount_Query"						"Suma zabójstw krzepkich: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Częstotliwość ataku: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Częstotliwość ataku: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Obrażenia: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span> pkt."
 	"DAC_InGame_UnitAbility_Query"						"Umiejętność: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Odznacz"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"Sojusze"
 	"DAC_Units"			"Jednostki"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"Maksymalne zdrowie wszystkich krzepkich jednostek zostaje zwiększone o {s:hp_bonus} pkt."
 
 	"DAC_Synergy_Desc_Brawny"		"Wszystkie krzepkie jednostki zyskują +{s:hp_bonus} pkt. maksymalnego zdrowia za każde zabójstwo dokonane przez krzepkie jednostki w twojej drużynie przez całą grę."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Suma zabójstw krzepkich: {d:brawny_kills} <br/>Premia do zdrowia dla krzepkich: {d:brawny_bonus_health} pkt."
 
 	"DAC_Synergy_Desc_Troll"		"Wszystkie trolle zyskują +{s:attack_speed_bonus_trolls} jedn. szybkości ataku, a inni sojusznicy zyskują +{s:attack_speed_bonus_others} jedn. szybkości ataku."
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"Wszyscy wojownicy zyskują +{s:armor_bonus} pkt. pancerza."
 
-	"DAC_Synergy_Desc_Insect"			"Na wrogów z brzegu planszy stale napierają pająki. Są one jednostkami, które zadają niewielkie obrażenia, mają 1 pkt zdrowia i nie można ich obrać za cel. Wrogowie ugryzieni przez pająki mają {s:miss_chance}% szansy na chybienie swoich ataków przez {s:miss_chance_duration} s. Pająki odnawiają się po śmierci, może być ich maksymalnie {s:num_insects}."
+	"DAC_Synergy_Desc_Insect"			"Na wrogów z brzegu planszy stale napierają pająki. Są one jednostkami, które zadają niewielkie obrażenia, mają 1 pkt. zdrowia i nie można ich obrać za cel. Wrogowie ugryzieni przez nie mają {s:miss_chance}% szansy na chybienie swoich ataków przez {s:miss_chance_duration} s. Pająki odnawiają się po śmierci, może być ich maksymalnie {s:num_insects}."
 
 	"DAC_Synergy_Desc_Champion"		"Czempioni otrzymują wszystkie premie sojuszy."
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"Wysyłam ci {d:duos_gold_amount} szt. złota"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"Już nie chcę..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"Wyślij mi trochę złota!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Czy powinniśmy awansować?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Czy powinniśmy wydać na ponowne losowanie?"
 	"duos_benchlabel"					"Ławka:"
 	"duos_sendlabel"					"Wyślij"
 	"button_selllabel"					"Sprzedaj"
@@ -1987,11 +1992,11 @@
 
 	"dac_settings_steam"						"Steam"
 	"dac_settings_synergies_hide_partial"		"Ukryj częściowe sojusze podczas walki."
-	"dac_settings_enable_haptics"				"Włącz drgania"
-	"dac_settings_tap_move"						"Włącz ruch dotknięciem"
+	"dac_settings_enable_haptics"				"Włącz drgania."
+	"dac_settings_tap_move"						"Włącz ruch dotknięciem."
 	"dac_settings_auto_deploy_units"			"Automatycznie umieszczaj jednostki z ławki na planszy, jeżeli jest miejsce."
 	"dac_settings_use_panorama_login"			"Użyj starego stylu logowania do Steam"
-	"dac_settings_low_violence"					"Tryb niskiego poziomu przemocy"
+	"dac_settings_low_violence"					"Włącz tryb niskiego poziomu przemocy."
 
 	"dac_settings_low_violence_changed_title"	"Wymagany restart"
 	"dac_settings_low_violence_changed_body"	"Aby zastosować tę zmianę, musisz zamknąć i zrestartować Dota Underlords"
@@ -2043,6 +2048,8 @@
 	"dac_settings_unitspeech_all"				"Wszystkie"
 	"dac_settings_playsoundinbackground"		"Odtwarzaj dźwięk na pulpicie"
 	"dac_settings_lowlatency_audio"			"Autowykrywanie opóźnienia audio"
+
+	"dac_settings_draw_unit_icons"			"Pokaż ikony jednostek."
 
 	"dac_item_select_victory"				"Zwycięstwo!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Wybierz</span> swoją nagrodę:"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"Przewijaj w dół między wrogimi planszami."
 	"dac_hotkey_scroll_camera_up_desc" 				"Przesuń kamerę wyżej"
     "dac_hotkey_scroll_camera_down_desc" 			"Przesuń kamerę niżej"
+    "dac_hotkey_reset_camera_position_desc" 		"Zresetuj pozycję kamery"
 
 	"dac_hotkey_alliances_tab"						"Zobacz zakładkę sojuszy."
 	"dac_hotkey_dps_tab"							"Zobacz zakładkę obrażeń na sekundę."

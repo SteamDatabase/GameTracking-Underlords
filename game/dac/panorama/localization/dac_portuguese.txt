@@ -450,7 +450,7 @@
 	"DAC_Underlord_1"								"Anessix"
 	"DAC_Underlord_Subtitle_1"						"Senhora dos Segredos"
 	"DAC_Underlord_DescriptionHeader_1"				"Uma traficante de segredos"
-	"DAC_Underlord_Description_1"					"Muitos têm uma perceção errada sobre a busca pelo poder. Que para ter poder, é preciso sujar as mãos. Nada poderia estar mais longe da verdade. Alguém que se preze nunca iria sujar as mãos de sangue, é para isso que as pessoas servem. Não, a violência é só uma ferramenta. Como uma alavanca usada para conseguires o que tu queres. Mas e se eu te dissesse que há outra ferramenta disponível? Algo mais simples e eficaz. É claro que estou a falar de... segredos. Segredos são o que todos temos em comum. Não interessa se és um mendigo ou um rei; se te aparecer alguém a dizer \"Eu sei uma coisa que tu não sabes\", vais imediatamente querer essa informação. Isto só mostra como os segredos não são só algo divertido, como também algo absurdamente lucrativo... e não há segredo que eu não saiba."
+	"DAC_Underlord_Description_1"					"Muitos têm uma perceção errada da busca pelo poder. Que para o conseguir, é preciso sujar as mãos. Nada poderia estar mais longe da verdade. Alguém que se preze nunca iria sujar as mãos de sangue, é para isso que as pessoas servem. Não, a violência é só uma ferramenta. Como uma alavanca usada para conseguires o que tu queres. Mas e se eu te dissesse que há outra ferramenta disponível? Algo mais simples e eficaz. É claro que estou a falar de... segredos. Segredos são o que todos temos em comum. Não interessa se és um mendigo ou um rei; se te aparecer alguém a dizer \"Eu sei uma coisa que tu não sabes\", vais imediatamente querer essa informação. Isto só mostra como os segredos não são só algo divertido, como também algo absurdamente lucrativo... e não há nenhum que eu não saiba."
 	"DAC_Underlord_Overview_1"						"Anessix é uma manipuladora demoníaca que invoca demónios para lutarem por ela."
 
 	"DAC_Underlord_HypeMeter_Info1_1"				"Carrega a 5 de EPS (Euforia por segundo)"
@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"Seleciona um Ultimate na 20.ª ronda"
 
 	"dac_talent_hype"									"{i:ability_hype} de Euforia"
+	"dac_talent_cooldown"								"Tempo de recarga: {i:ability_cooldown} segundos"
 	"dac_talent_nohype"									"Não necessita de Euforia"
 	"dac_talent_lv_level"								"{i:talent_level}.ª ronda"
 
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"Vítimas consecutivas: <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"+Dano (Duelos): <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"Vítimas de Robustos: <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Frequência de ataque: <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Frequência de ataque: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Dano: <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"Habilidade: {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Desselecionar"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"Alianças"
 	"DAC_Units"			"Unidades"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"Unidades Robustas ganham +{s:hp_bonus} de vida máxima."
 
 	"DAC_Synergy_Desc_Brawny"		"Todas as unidades Robustas ganham +{s:hp_bonus} de vida máxima por cada vítima de qualquer unidade Robusta do teu exército durante a partida."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Vítimas de Robustos: {d:brawny_kills} <br/>Vida adicional de Robustos: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Trolls aliados ganham +{s:attack_speed_bonus_trolls} de velocidade de ataque e os outros aliados ganham +{s:attack_speed_bonus_others} de velocidade de ataque."
 
@@ -1533,7 +1536,7 @@
 
 	"DAC_Synergy_Desc_Hunter"		"Caçadores aliados têm uma probabilidade de {s:chance}% de usar {s:num_attacks} ataques rápidos seguidos."
 
-	"DAC_Synergy_Desc_Knight"		"Cavaleiros sofrem menos {s:physical_reduction}% de dano físico e mágico, e menos {s:physical_reduction_extra}% adicionais se forem atacados pela frente e estiverem a 1 espaço de distância de outro Cavaleiro."
+	"DAC_Synergy_Desc_Knight"		"Cavaleiros sofrem menos {s:physical_reduction}% de dano físico e mágico, e menos {s:physical_reduction_extra}% adicionais se forem atacados pela frente e estiverem adjacentes a outro Cavaleiro."
 
 	"DAC_Synergy_Desc_Mage"		"Todos os inimigos sofrem mais {s:magic_resist_debuff}% de dano mágico."
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"Guerreiros aliados ganham +{s:armor_bonus} de armadura."
 
-	"DAC_Synergy_Desc_Insect"			"Aranhinhas surgem das bordas do tabuleiro e atacam inimigos. Aranhinhas são unidades inselecionáveis que causam pouco dano e têm 1 de vida. Inimigos mordidos pelas Aranhinhas têm uma probabilidade de {s:miss_chance}% de falhar os seus ataques durante {s:miss_chance_duration} segundos. Aranhinhas são restauradas depois de morrerem (máximo de {s:num_insects})."
+	"DAC_Synergy_Desc_Insect"			"Aranhinhas (unidades inselecionáveis com 1 de vida que causam pouco dano) surgem das bordas do tabuleiro. Inimigos mordidos por elas têm uma probabilidade de {s:miss_chance}% de falhar os ataques durante {s:miss_chance_duration}s. Aranhinhas são restauradas depois de morrerem (máx. de {s:num_insects})."
 
 	"DAC_Synergy_Desc_Champion"		"Campeões recebem os bónus de todas as alianças."
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"Enviei-te {d:duos_gold_amount} de ouro"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"Já não preciso de..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"Preciso de ouro, por favor!"
+	"DAC_Duos_Msg_Level_Up_Question"			"Devíamos subir de nível?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Devíamos gastar ouro em trocas?"
 	"duos_benchlabel"					"Banco:"
 	"duos_sendlabel"					"Enviar"
 	"button_selllabel"					"Vender"
@@ -2044,6 +2049,8 @@
 	"dac_settings_playsoundinbackground"		"Som com outra janela ativa"
 	"dac_settings_lowlatency_audio"			"Detetar autom. latência de áudio"
 
+	"dac_settings_draw_unit_icons"			"Mostrar ícones das unidades"
+
 	"dac_item_select_victory"				"Vitória!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Escolhe</span> o teu prémio:"
 	"dac_item_select_defeat"				"Ronda de neutros perdida"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"Alternar entre tabuleiros inimigos (de cima para baixo)."
 	"dac_hotkey_scroll_camera_up_desc" 				"Mover a câmara para cima"
     "dac_hotkey_scroll_camera_down_desc" 			"Mover a câmara para baixo"
+    "dac_hotkey_reset_camera_position_desc" 		"Restaurar posição da câmara"
 
 	"dac_hotkey_alliances_tab"						"Abrir o separador de alianças."
 	"dac_hotkey_dps_tab"							"Abrir o separador de DPS."

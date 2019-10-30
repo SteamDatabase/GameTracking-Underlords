@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"在第 20 回合选择一项终极天赋"
 
 	"dac_talent_hype"									"{i:ability_hype} 霸气值"
+	"dac_talent_cooldown"								"Cooldown: {i:ability_cooldown} seconds"
 	"dac_talent_nohype"									"不需要霸气值"
 	"dac_talent_lv_level"								"第 {i:talent_level} 回合"
 
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"连杀数：<span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"从对决获得的伤害加成：<span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"悍将击杀总数：<span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"攻击速度：<span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Attack Rate: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"伤害：<span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"技能：{s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"取消选择"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"联盟"
 	"DAC_Units"			"单位"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"所有悍将单位的最大生命值增加 {s:hp_bonus}。"
 
 	"DAC_Synergy_Desc_Brawny"		"整场比赛中，己方队伍中任何一个悍将单位每有一次击杀，所有的悍将单位均获得 +{s:hp_bonus} 最大生命值。"
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Total Brawny Kills: {d:brawny_kills} <br/>Bonus Brawny Health: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"所有巨魔单位获得 +{s:attack_speed_bonus_trolls} 攻击速度，其他友军获得 +{s:attack_speed_bonus_others} 攻击速度"
 
@@ -1533,7 +1536,7 @@
 
 	"DAC_Synergy_Desc_Hunter"		"所有猎人有 {s:chance}% 几率快速进行 {s:num_attacks} 次攻击。"
 
-	"DAC_Synergy_Desc_Knight"		"骑士单位受到的物理和魔法伤害降低 {s:physical_reduction}%。如果受到正面攻击，且站在友方骑士周围 1 格内，再额外降低 {s:physical_reduction_extra}%。"
+	"DAC_Synergy_Desc_Knight"		"骑士单位受到的物理和魔法伤害降低 {s:physical_reduction}%。如果受到正面攻击，且站在友方骑士周围 1 格内，再额外降低 {s:physical_reduction_extra}% 物理和魔法伤害。"
 
 	"DAC_Synergy_Desc_Mage"		"敌人额外受到 {s:magic_resist_debuff}% 魔法伤害。"
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"所有勇士获得 +{s:armor_bonus} 护甲值"
 
-	"DAC_Synergy_Desc_Insect"			"蜘蛛幼虫不断地从棋盘边缘涌向敌人。蜘蛛幼虫无法成为目标，造成伤害低且生命值为 1。被蜘蛛幼虫咬中的敌人有 {s:miss_chance}% 几率攻击落空，持续 {s:miss_chance_duration} 秒。蜘蛛幼虫死亡时会得到补充，最多 {s:num_insects} 只。"
+	"DAC_Synergy_Desc_Insect"			"Spiderlings constantly swarm enemies from the edge of the board. They are untargetable units that deal low damage and have 1 health. Enemies bitten by them have a {s:miss_chance}% chance to miss attacks for {s:miss_chance_duration}s. Spiderlings replenish on death to a maximum of {s:num_insects}."
 
 	"DAC_Synergy_Desc_Champion"		"统御者获得所有联盟加成。"
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"我给你发送了 {d:duos_gold_amount} 金钱"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"我不想再要…"
 	"DAC_Duos_Msg_Send_Me_Gold"			"请给我来点金钱！"
+	"DAC_Duos_Msg_Level_Up_Question"			"Should we level up?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Should we spend on rerolls?"
 	"duos_benchlabel"					"板凳："
 	"duos_sendlabel"					"发送"
 	"button_selllabel"					"出售"
@@ -2044,6 +2049,8 @@
 	"dac_settings_playsoundinbackground"		"切换至桌面后依然播放声音"
 	"dac_settings_lowlatency_audio"			"自动检测音频延迟"
 
+	"dac_settings_draw_unit_icons"			"Show Unit Icons"
+
 	"dac_item_select_victory"				"胜利！"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>选择</span>你的奖品："
 	"dac_item_select_defeat"				"中立生物回合失败"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"向下滚动敌方棋盘。"
 	"dac_hotkey_scroll_camera_up_desc" 				"上移视角"
     "dac_hotkey_scroll_camera_down_desc" 			"下移视角"
+    "dac_hotkey_reset_camera_position_desc" 		"重置视角位置"
 
 	"dac_hotkey_alliances_tab"						"查看联盟栏。"
 	"dac_hotkey_dps_tab"							"查看每秒伤害栏。"

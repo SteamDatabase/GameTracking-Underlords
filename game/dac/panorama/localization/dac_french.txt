@@ -553,6 +553,7 @@
 	"dac_talent_ultimate_description"					"Choisissez un talent suprême à la manche 20"
 
 	"dac_talent_hype"									"{i:ability_hype} de frénésie"
+	"dac_talent_cooldown"								"Temps de recharge : {i:ability_cooldown} secondes"
 	"dac_talent_nohype"									"Aucune frénésie nécessaire"
 	"dac_talent_lv_level"								"Manche {i:talent_level}"
 
@@ -1223,7 +1224,7 @@
 	"DAC_InGame_KillStreak_Query"						"Série de victimes : <span class=\"Count\">{d:kill_streak}</span>"
 	"DAC_InGame_DuelBonusDamage_Query"					"Dégâts bonus apportés par les Duels : <span class=\"Count\">{d:duel_bonus_damage}</span>"
 	"DAC_InGame_BrawnyKillCount_Query"						"Total de victimes des unités robustes : <span class=\"Count\">{d:brawny_kills}</span>"
-	"DAC_InGame_AttackSpeed_Query"						"Vitesse d'attaque : <span class=\"Count\">{f:attack_speed}</span>"
+	"DAC_InGame_AttackSpeed_Query"						"Attack Rate: <span class=\"Count\">{f:attack_speed}{s:bonus_attack_speed}</span>"
 	"DAC_InGame_UnitDamage_Query"						"Dégâts : <span class=\"Count\">{i:attack_damage}{s:bonus_damage}</span>"
 	"DAC_InGame_UnitAbility_Query"						"Capacité : {s:selectedUnitAbility}"
 	"DAC_InGame_DeselectUnit"							"Désélectionner"
@@ -1340,6 +1341,7 @@
 	"dac_hero_rank1"	"★"
 	"dac_hero_rank2"	"★★"
 	"dac_hero_rank3"	"★★★"
+	"dac_hero_rankN"	"{d:rank_n}★"
 
 	"DAC_Synergies"		"Alliances"
 	"DAC_Units"			"Unités"
@@ -1404,7 +1406,7 @@
 	"dac_chart_type_damagetaken"	"Dégâts subis"
 	"dac_chart_type_healingdone"	"PV redonnés"
 	"dac_chart_type_kills"			"Victimes"
-	"dac_chart_type_disabledone"	"Durée des effets négatifs"
+	"dac_chart_type_disabledone"	"Durée des malus"
 
 	"DAC_Hero_Upgrade_2"						"{g:dac_player_slot_persona:b:player_slot} : <font color='#DAAF01'>{s:hero_name} ★★</font>"
 	"DAC_Hero_Upgrade_3"						"{g:dac_player_slot_persona:b:player_slot} : <font color='#DAAF01'>{s:hero_name} ★★★</font>"
@@ -1520,6 +1522,7 @@
 	"DAC_Synergy_Desc_Orc"		"Les PV max. de toutes les unités robustes sont augmentés de {s:hp_bonus} points"
 
 	"DAC_Synergy_Desc_Brawny"		"Les PV max. de toutes les unités robustes sont augmentés de {s:hp_bonus} points pour chaque unité tuée par vos unités robustes au cours de la partie."
+	"DAC_Synergy_Desc_Brawny_ExtraData" "Total Brawny Kills: {d:brawny_kills} <br/>Bonus Brawny Health: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Tous les trolls gagnent {s:attack_speed_bonus_trolls} de fréquence d'attaque et les autres alliés gagnent {s:attack_speed_bonus_others} de fréquence d'attaque"
 
@@ -1533,7 +1536,7 @@
 
 	"DAC_Synergy_Desc_Hunter"		"Tous les chasseurs ont {s:chance} % de chances d'effectuer rapidement {s:num_attacks} attaques."
 
-	"DAC_Synergy_Desc_Knight"		"Les chevaliers subissent {s:physical_reduction} % de dégâts physiques et magiques en moins. S'ils sont attaqués de face et qu'ils se trouvent à une case d'un chevalier allié, les dégâts physiques et magiques sont encore réduits de {s:physical_reduction_extra} % supplémentaires."
+	"DAC_Synergy_Desc_Knight"		"Les chevaliers subissent {s:physical_reduction} % de dégâts physiques et magiques en moins. S'ils sont attaqués de face et qu'ils se trouvent à une case d'un chevalier allié, leurs dégâts physiques et magiques sont encore réduits de {s:physical_reduction_extra} % supplémentaires."
 
 	"DAC_Synergy_Desc_Mage"		"Les ennemis subissent {s:magic_resist_debuff} % de dégâts magiques en plus"
 
@@ -1547,7 +1550,7 @@
 
 	"DAC_Synergy_Desc_Warrior"		"Tous les guerriers gagnent {s:armor_bonus} d'armure"
 
-	"DAC_Synergy_Desc_Insect"			"Des jeunes araignées déferlent sans cesse sur les unités ennemies depuis le bord du champ de bataille. Ces jeunes araignées sont inattaquables, infligent des dégâts faibles et ont 1 PV. Les ennemis attaqués par les jeunes araignées ont {s:miss_chance} % de chances de manquer leurs attaques pendant {s:miss_chance_duration} secondes. Jusqu'à {s:num_insects} jeunes araignées peuvent réapparaître quand elles meurent."
+	"DAC_Synergy_Desc_Insect"			"Spiderlings constantly swarm enemies from the edge of the board. They are untargetable units that deal low damage and have 1 health. Enemies bitten by them have a {s:miss_chance}% chance to miss attacks for {s:miss_chance_duration}s. Spiderlings replenish on death to a maximum of {s:num_insects}."
 
 	"DAC_Synergy_Desc_Champion"		"Les champions bénéficient des bonus de toutes les alliances."
 
@@ -1626,6 +1629,8 @@
 	"DAC_Duos_Msg_Sent_N_Gold"			"Je t'ai envoyé {d:duos_gold_amount} pièces d'or"
 	"DAC_Duos_Msg_I_No_Longer_Want"		"Je ne veux plus..."
 	"DAC_Duos_Msg_Send_Me_Gold"			"Donne-moi un peu d'or !"
+	"DAC_Duos_Msg_Level_Up_Question"			"Should we level up?"
+	"DAC_Duos_Msg_Spend_On_Reroll_Question"			"Should we spend on rerolls?"
 	"duos_benchlabel"					"Réserve"
 	"duos_sendlabel"					"Envoyer"
 	"button_selllabel"					"Vendre"
@@ -2044,6 +2049,8 @@
 	"dac_settings_playsoundinbackground"		"Écouter les sons sur le Bureau"
 	"dac_settings_lowlatency_audio"			"Détecter la latence audio automatiquement"
 
+	"dac_settings_draw_unit_icons"			"Show Unit Icons"
+
 	"dac_item_select_victory"				"Victoire !"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Choisissez</span> votre récompense :"
 	"dac_item_select_defeat"				"Manche contre les cryptides neutres perdue"
@@ -2240,7 +2247,7 @@
 	"DAC_Notification_HeroCombine_3"			"{s:hero_name} <span class='HeroCombineStars3'>★★★</span>"
 	"DAC_Notification_HeroCombine_2_Duos"		"Belle collaboration ! {s:hero_name} <span class='HeroCombineStars2'>★★</span>"
 	"DAC_Notification_HeroCombine_3_Duos"		"Belle collaboration ! {s:hero_name} <span class='HeroCombineStars3'>★★★</span>"
-	"DAC_Notification_WinStreak"				"<span class='WinStreakCount'>{d:streak_length} manches</span> gagnées de suite !"
+	"DAC_Notification_WinStreak"				"<span class='WinStreakCount'>{d:streak_length} manches</span> de suite !"
 	"DAC_Notification_WinStreakComplete"		"Série de victoires terminée !"
 	"DAC_Notification_PlayerEliminated"			"<span class='KnockedOut'>Élimination</span> en {s:final_position}"
 	"DAC_Notification_AcquiredItem"				"Objet obtenu : {s:item_name}"
@@ -2269,6 +2276,7 @@
 	"dac_hotkey_enemies_down_desc"					"Faire défiler les champs de bataille des ennemis vers le bas."
 	"dac_hotkey_scroll_camera_up_desc" 				"Lever la caméra"
     "dac_hotkey_scroll_camera_down_desc" 			"Baisser la caméra"
+    "dac_hotkey_reset_camera_position_desc" 		"Réinitialiser la position de la caméra"
 
 	"dac_hotkey_alliances_tab"						"Voir l'onglet des alliances."
 	"dac_hotkey_dps_tab"							"Voir l'onglet des DPS."

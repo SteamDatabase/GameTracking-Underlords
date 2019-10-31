@@ -1,0 +1,149 @@
+// magnus - Hero
+criterion "Ismagnus" "classname" "magnus" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response magnus_recruit_1
+{
+	speak "magnus_recruit" noscene 
+}
+
+Rule magnus_recruit_1_rule
+{
+	criteria Ismagnus ConceptRecruit UnitRank1
+	response magnus_recruit_1
+}
+
+
+Response magnus_recruit_2
+{
+	speak "magnus_upgrade" noscene 
+}
+
+Rule magnus_recruit_2_rule
+{
+	criteria Ismagnus ConceptRecruit UnitRank2
+	response magnus_recruit_2
+}
+
+
+Response magnus_recruit_3
+{
+	speak "magnus_final_upgrade" noscene 
+}
+
+Rule magnus_recruit_3_rule
+{
+	criteria Ismagnus ConceptRecruit UnitRank3
+	response magnus_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response magnus_start_round
+{
+	speak "magnus_start_round" noscene 
+}
+
+Rule magnus_start_round_rule
+{
+	criteria Ismagnus ConceptRoundStart 
+	response magnus_start_round
+}
+
+
+Response magnus_start_round_lost_last_round
+{
+	speak "magnus_start_round_lost_last_round" noscene 
+}
+
+Rule magnus_start_round_lost_last_round_rule
+{
+	criteria Ismagnus ConceptRoundStart LostLastGame
+	response magnus_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response magnus_flawless_victory
+{
+	speak "magnus_flawless_victory" noscene 
+}
+
+Rule magnus_flawless_victory_rule
+{
+	criteria Ismagnus ConceptRoundEnd Result_WinFlawless
+	response magnus_flawless_victory
+}
+
+
+Response magnus_decisive_victory
+{
+	speak "magnus_decisive_victory" noscene 
+}
+
+Rule magnus_decisive_victory_rule
+{
+	criteria Ismagnus ConceptRoundEnd Result_WinDecisive
+	response magnus_decisive_victory
+}
+
+Response magnus_narrow_victory
+{
+	speak "magnus_narrow_victory" noscene 
+}
+
+Rule magnus_narrow_victory_rule
+{
+	criteria Ismagnus ConceptRoundEnd Result_WinNarrow
+	response magnus_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response magnus_flawless_defeat
+{
+	speak "magnus_flawless_defeat" noscene 
+}
+
+Rule magnus_flawless_defeat_rule
+{
+	criteria Ismagnus ConceptRoundEnd Result_LoseFlawless
+	response magnus_flawless_defeat
+}
+
+
+Response magnus_decisive_defeat
+{
+	speak "magnus_decisive_defeat" noscene 
+}
+
+Rule magnus_decisive_defeat_rule
+{
+	criteria Ismagnus ConceptRoundEnd Result_LoseDecisive
+	response magnus_decisive_defeat
+}
+
+Response magnus_narrow_defeat
+{
+	speak "magnus_narrow_defeat" noscene 
+}
+
+Rule magnus_narrow_defeat_rule
+{
+	criteria Ismagnus ConceptRoundEnd Result_LoseNarrow
+	response magnus_narrow_defeat
+}

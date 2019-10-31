@@ -47,16 +47,16 @@ DACPopupSynergy
 }
 
 .CloseButton {
-    horizontal-align: right;
-    vertical-align: middle;
-    width: 72px;
-    height: 72px;
-    margin-right: 0px;
-    background-image: url("s2r://panorama/images/hud/close-button_png.vtex");
-    background-size: cover;
-    background-repeat: no-repeat;
-    transition-property: brightness;
-    transition-duration: 0.2s;
+	horizontal-align: right;
+	vertical-align: middle;
+	width: 72px;
+	height: 72px;
+	margin-right: 0px;
+	background-image: url("s2r://panorama/images/hud/close-button_png.vtex");
+	background-size: cover;
+	background-repeat: no-repeat;
+	transition-property: brightness;
+	transition-duration: 0.2s;
 	transition-timing-function: ease-in-out;
 	brightness: 1.0;
 }
@@ -126,6 +126,7 @@ DACSynergyIcon
 	width: fit-children;
 	height: fit-children;
 	horizontal-align: left;
+	flow-children: down;
 }
 
 .Body .LevelNumber
@@ -141,6 +142,7 @@ DACSynergyIcon
 	vertical-align: top;
 }
 
+.Body .ExtraDataDescription,
 .Body .LevelDescription
 {
 	font-family: radiance;
@@ -233,25 +235,25 @@ DACSynergyIcon
 {
 	ui-scale: 130%;
 
-    // Closely matches the actual image file contents, with a slightly
-    //   smaller width so that it overlaps the body correctly.
-    width: 36px;
-    height: 36px;
+	// Closely matches the actual image file contents, with a slightly
+	//   smaller width so that it overlaps the body correctly.
+	width: 36px;
+	height: 36px;
 
-    margin-top: 4px;
-    margin-bottom: 4px;
+	margin-top: 4px;
+	margin-bottom: 4px;
 	margin-right: 4px;
 
 	visibility: collapse;
 
-    background-repeat: no-repeat;
-    background-position: 0px 0px;
+	background-repeat: no-repeat;
+	background-position: 0px 0px;
 	background-size: contain;
-    
+	
    /* The arrows sit at a higher z-index than the body of the tooltip.
-      This is so that the arrow can overlap on top of the border to
-      give it a more seamless look */
-    z-index: 1;	
+	  This is so that the arrow can overlap on top of the border to
+	  give it a more seamless look */
+	z-index: 1;	
 }
 
 #LeftArrow
@@ -270,6 +272,17 @@ DACSynergyIcon
 
 .RightArrowVisible #RightArrow,
 .LeftArrowVisible #LeftArrow
+{
+	visibility: visible;
+}
+
+#SynergyExtraData
+{
+	margin-top: 15px;
+	visibility: collapse;
+}
+
+#SynergyExtraData.HasExtraData
 {
 	visibility: visible;
 }

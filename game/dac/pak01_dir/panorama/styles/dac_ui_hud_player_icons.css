@@ -27,6 +27,12 @@
 	width: 480px;
 }
 
+.IsLayoutSmallScreen.AspectRatio4x3 .ShowAllTabs #PlayerIcons
+{
+	margin-top: 0px;
+	height: 900px;
+}
+
 .IsLayoutSmallScreen.ShopVisible #PlayerIcons
 {
 	visibility: collapse;
@@ -44,8 +50,8 @@
 
 }
 
-.IsLayoutSmallScreen #SynergyIcons.IconList,
-.IsLayoutSmallScreen DACInventory.IconList
+.ShowOnlyOneTab #SynergyIcons.IconList,
+.ShowOnlyOneTab DACInventory.IconList
 {
 	flow-children: down-wrap-left;
 	max-height: 500px;
@@ -81,7 +87,7 @@
 	overflow: noclip;
 }
 
-.IsLayoutSmallScreen .IconsPanel,
+.ShowOnlyOneTab .IconsPanel,
 #IconsMobileContainer
 {
 	flow-children: none;
@@ -122,7 +128,7 @@
 	margin-bottom: 10px;
 }
 
-.IsLayoutSmallScreen .IconSection
+.ShowOnlyOneTab .IconSection
 {
 	flow-children: none;
 	transform: translateX(0px) translateY(0px);
@@ -139,7 +145,7 @@
 	margin-top: 50px;
 }
 
-.IsLayoutSmallScreen .IconTab
+.ShowOnlyOneTab .IconTab
 {
 	horizontal-align: right;
 }
@@ -147,6 +153,11 @@
 .IsLayoutSmallScreen.AspectRatio4x3 .IconTab
 {
 	margin: 0px;
+}
+
+.IsLayoutSmallScreen.AspectRatio4x3 .ShowAllTabs .IconTab
+{
+	margin-top: 38px;
 }
 
 .IsLayoutSmallScreen.AspectRatio4x3 #SynergiesSection .IconTab
@@ -171,7 +182,7 @@
 	transition-timing-function: ease-in-out;			
 }
 
-.IsLayoutSmallScreen .IconList
+.ShowOnlyOneTab .IconList
 {
 	padding-right: 72px;
 }
@@ -180,8 +191,13 @@
 {
 	ui-scale: 90%;
 	padding-right: 95px;
-	width: 400px;
+	width: 100%;
 	max-height: 900px;
+}
+
+.IsLayoutSmallScreen.AspectRatio4x3 .ShowAllTabs .IconList
+{
+	padding-right: 0px;
 }
 
 .IsLayoutSmallScreen.AspectRatio4x3 .BattleStatsParent .IconList
@@ -314,12 +330,12 @@
 	transition-property: none;
 }
 
-.IsLayoutSmallScreen .IconsPanel .IconSection .ToggleSectionButton
+.ShowOnlyOneTab .IconsPanel .IconSection .ToggleSectionButton
 {
 	visibility: collapse;
 }
-.IsLayoutSmallScreen #IconsMobileContainer,
 
+.ShowOnlyOneTab #IconsMobileContainer,
 {
 	visibility: visible;
 }
@@ -350,6 +366,16 @@
 	
 }
 
+.ShowOnlyOneTab #IconsMobileContainer
+{
+	visibility: visible;
+}
+
+.ShowAllTabs #IconsMobileContainer
+{
+	visibility: collapse;
+}
+
 #IconsMobileSelector  
 {
 	width: 100px;
@@ -366,24 +392,24 @@
 }
 
 
-.IsLayoutSmallScreen	.ShowSynergies		.ToggleSectionButton.Synergies,
-.IsLayoutSmallScreen	.ShowItems			.ToggleSectionButton.Items,
-.IsLayoutSmallScreen	.ShowBattleStats	.ToggleSectionButton.BattleStats
+.ShowOnlyOneTab.ShowSynergies		.ToggleSectionButton.Synergies,
+.ShowOnlyOneTab.ShowItems			.ToggleSectionButton.Items,
+.ShowOnlyOneTab.ShowBattleStats	.ToggleSectionButton.BattleStats
 {
 	brightness: 8;
 }
 
-.IsLayoutSmallScreen .ToggleSectionButton.Items
+.ShowOnlyOneTab .ToggleSectionButton.Items
 {
 	background-image: url("s2r://panorama/images/hud/right_tab_icon_items_psd.vtex");
 }
 
-.IsLayoutSmallScreen .ToggleSectionButton.Synergies
+.ShowOnlyOneTab .ToggleSectionButton.Synergies
 {
 	background-image: url("s2r://panorama/images/hud/right_tab_icon_synergies_psd.vtex");
 }
 
-.IsLayoutSmallScreen .ToggleSectionButton.BattleStats
+.ShowOnlyOneTab .ToggleSectionButton.BattleStats
 {
 	background-image: url("s2r://panorama/images/hud/right_tab_icon_dps_psd.vtex");
 }
@@ -417,7 +443,12 @@
 	
 }
 
-.IsLayoutSmallScreen .SidebarLabel
+.AspectRatio4x3.IsLayoutSmallScreen .ShowAllTabs .SidebarLabel
+{
+	font-size: 20px;
+}
+
+.ShowOnlyOneTab .SidebarLabel
 {
 	font-size: 12px;
 	text-align: right;

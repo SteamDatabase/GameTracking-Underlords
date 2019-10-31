@@ -53,6 +53,7 @@
  (%s verts, %s faces, %s edges)
  (%s verts, %s tris, %s nodes)
  (1)H
+ (NaN)
  (invalid)
  (late-bound)
  (rigid)
@@ -108,6 +109,7 @@
  no-gravity
  not colH
  pos1 = {%.2f,%.2f,%.2f} vel = {%.2f,%.2f,%.2f}
+ proceedH
  shape %p (NOT FOUND in body!)
  shape[%d] of %d
  so, Intersection flags = Default (Resolve(1))
@@ -174,6 +176,7 @@ $zUuSA
 %A9\$
 %UUUU)
 %d bones found and initialized
+%d hitboxes, %d casts
 %d tests / %d recorded traces
 %d verts, %d polys}
 %d verts, %d tris}
@@ -197,6 +200,7 @@ $zUuSA
 %s + %s
 %s - %s
 %s / %s
+%s : %s [%d hitboxes]
 %s F=%d V=%d hE=%d
 %s [%d]
 %s [%u valid / %u bones]
@@ -211,6 +215,7 @@ $zUuSA
 %s: %s
 %s: string format requested %d chars
 %s:%s needs base %s:%s to be registered
+%s:%s:%s
 %s_%d
 %s_color
 %s_matgrp
@@ -306,15 +311,15 @@ $zUuSA
 -validate
 -with flH
 . Do NotH
-.%>%/
-.%_7'
+.%Om'
+.-'r/
 ../public/ordered_constructor.h
 ../public/tier0/tslist.h
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
 ../public/tier1/utlsortvector.h
-.=1Y-
+.56m/
 .AUndefined
 .CRnPrismaticJoint
 .KTwC
@@ -394,7 +399,7 @@ $zUuSA
 19CSchemaRegistration
 1D;G 
 1DBlend
-2019-10-15 12:10:35.970000
+2019-10-25 13:57:56.472000
 20CPostConnectCallback
 20CRefCountServiceBaseILb1E6CRefMTE
 20CResourceStreamFixed
@@ -503,7 +508,6 @@ $zUuSA
 6A91I
 6ConVar
 6H92t%H
-6IcEPH
 6IcEXH
 6QZ^&D
 6fD9s
@@ -539,6 +543,7 @@ $zUuSA
 ;B@}QUH
 ;BX|'1
 ;G tu+G$L
+;IcD$PH
 ;S`s/H
 ;[A\]
 ;[A\]H
@@ -714,14 +719,17 @@ $zUuSA
 @0odief
 @2f3A2f
 @@Failed to load body %p
+@A;] }UI
 @AVAUATSH
 @D9C 
-@HIcV
+@E;n 
 @HcB$H
 @HcBXH
 @HcCH1
 @HcCP1
 @Hwed
+@P</p>
+@P</p>H
 @Ppes
 @Xas: L
 @Xes: L
@@ -735,14 +743,12 @@ $zUuSA
 @tBE+
 @tB[A\]
 @u'fA
-@uoHc
+@usHc
 A#V\H
 A#|$TH
-A+D$ 
 A+D$$H
 A+D$(
 A+D$@
-A+D$P
 A+D$X
 A+D$`
 A+D$p
@@ -767,6 +773,7 @@ A+p$Hc
 A+u$A+~$D
 A.[A\A]A^A_]
 A3T$ 
+A4A9|$
 A99~]A
 A9B\u
 A9D$8
@@ -782,9 +789,13 @@ A9GXH
 A9T$0v
 A9T$0w?H
 A9Whw
+A9\$ 
 A9\$(
+A9\$8
 A9\$@
+A9\$P
 A9\$d
+A9\$h
 A9\$hI
 A9\$hv6I
 A9\$hw
@@ -883,6 +894,7 @@ ATSLcB$H
 ATSt$@
 ATStA
 ATStH
+ATSteH
 ATSuTH
 ATSxGHc
 ATTACHMENT_INFLUENCE_FLAGS_NONE
@@ -955,6 +967,7 @@ AWAVM
 AYAZA
 AZA[H
 AZA[z
+A[A\M
 A\A]A^A_]
 A\A]A^A_]L
 A\A]A^]
@@ -1063,7 +1076,6 @@ B(9s|
 B(A9w
 B0Lc.D;n
 B2f9B,D
-B4A9|$
 BBu=H
 BEVEL_GEAR_FAST_JOINT
 BODY_DYNAMIC
@@ -1251,7 +1263,6 @@ CONTACT_MESH
 CONTACT_TYPE_COUNT
 CONTENT
 CONTENTROOT
-CONTENTS_SOLID
 CONTINUOUS_SIM
 COrientConstraint
 CParallelForAndPostProcessor
@@ -1293,6 +1304,7 @@ CResourceArray< CRnTuple< uint32, CEntIndexPair, CEntPairTouchTracker > > RnWorl
 CResourceArray< CTransformUnaligned > FeModelOverlayRefl_t::m_InitPoseArray
 CResourceArray< CTransformUnaligned > RnSoftbodyDescRefl_t::m_InitPoseArray
 CResourceArray< CUtlPair< uint32, uint > > NameIndexRefl_t::m_NameToIndex
+CResourceArray< CUtlPair< uint64, RecordedEntityClassDescRefl_t > > WorldDebugPayloadContainerRefl_t::m_EntityClassDesc
 CResourceArray< CUtlPair< uint64, RecordedHitboxDescRefl_t > > WorldDebugPayloadContainerRefl_t::m_HitboxDesc
 CResourceArray< FeAabb_t > RnSoftbodyRefl_t::m_AabbArray
 CResourceArray< FeAnimStrayRadius_t > FeModelRefl_t::m_AnimStrayRadiiArray
@@ -1331,6 +1343,7 @@ CResourceArray< FloatAttrSet_t > RnSoftbodyRefl_t::m_FloatAttrArray
 CResourceArray< NameIndexTokenRefl_t > NameIndexRefl_t::m_Names
 CResourceArray< Pair_t > BroadphaseRefl_t::m_PairBuffer
 CResourceArray< RecordedCaspuleSweepResultRefl_t > RnWorldRefl_t::m_RecordedCapsuleSweepResults
+CResourceArray< RecordedEntityDescRefl_t > WorldDebugPayloadContainerRefl_t::m_EntityDesc
 CResourceArray< RecordedForceRefl_t > RnWorldRefl_t::m_RecordedForces
 CResourceArray< RecordedHitboxCastRefl_t > WorldDebugPayloadContainerRefl_t::m_Casts
 CResourceArray< RecordedHitboxStateRefl_t > WorldDebugPayloadContainerRefl_t::m_HitboxState
@@ -1427,6 +1440,8 @@ CResourceString PhysSurfacePropertiesSoundNamesRefl_t::m_rolling
 CResourceString PhysSurfacePropertiesSoundNamesRefl_t::m_scrapeRough
 CResourceString PhysSurfacePropertiesSoundNamesRefl_t::m_scrapeSmooth
 CResourceString PhysSurfacePropertiesSoundNamesRefl_t::m_strain
+CResourceString RecordedEntityClassDescRefl_t::m_nNameAddr
+CResourceString RecordedEntityDescRefl_t::m_nNameAddr
 CResourceString RecordedHitboxDescRefl_t::m_nBoneNameAddr
 CResourceString RecordedHitboxDescRefl_t::m_nNameAddr
 CResourceString RecordedHitboxDescRefl_t::m_nSurfacePropertyAddr
@@ -1515,6 +1530,8 @@ CUtlVector< CRnShape* >
 CUtlVector< CRnSoftbody::CDelayedFloatAttr >
 CUtlVector< Manifold_t >
 CUtlVector< RecordedCaspuleSweepResult_t >
+CUtlVector< RecordedEntityClassDesc_t >
+CUtlVector< RecordedEntityDesc_t >
 CUtlVector< RecordedForce_t >
 CUtlVector< RecordedHitboxCast_t >
 CUtlVector< RecordedHitboxDesc_t >
@@ -1621,8 +1638,6 @@ C_OP_StopAfterCPDuration
 C_OP_TwistAroundAxis
 C`t6H
 CallstackSkeletonHeader_t
-Can <b>N
-Can <b>NL
 Can <b>Not</b> Hit: %s
 Can <b>Not</b> Hit: %s <font color="blue">body</font>
 Can <b>Not</b> Hit: Static <font color="blue">body</font>
@@ -1814,6 +1829,7 @@ D;k8|
 D;k@|
 D;s M
 D;s |
+D;s }
 D;s8M
 D;s8|
 D;x@}?H
@@ -1832,6 +1848,7 @@ DebugDrawTreeFlags
 DebugIndex
 DebugOverlay
 DebugPayload
+DebugRecordFlags
 DebugSelection
 DebugSerial
 DebugShapeSerial
@@ -1911,11 +1928,12 @@ E;Opu
 E;e(D
 E;e8}"I
 E;f8}"I
+E;l$ 
 E;l$0|GD
 E;l$@|
 E;o(N
 E;t$8
-E;u@}RI
+E;w@}RI
 E;|$h
 EHL9}
 EHYH)
@@ -1940,6 +1958,10 @@ EndTouchEvents
 EnergyPerUnitMass
 EngineServiceMgr001
 Entities
+Entity %x
+Entity Hitboxes
+EntityClassDesc
+EntityDesc
 EntityID
 EntityId
 EntityId %d (0x%X)
@@ -2101,6 +2123,7 @@ G( M9
 G(@M9
 G(UHc
 G(Uf9
+G(tBH
 G.[A\]
 G0AQE1
 G2f3A2f
@@ -2123,6 +2146,7 @@ GLIBC_2.2.5
 GLIBC_2.3.4
 GLIBC_2.4
 G`H;E
+Game Debug Payload
 GameResourceServiceClientV001
 GameResourceServiceServerV001
 GameSceneNodeHandle
@@ -2243,7 +2267,6 @@ HcO$H
 HcPhH
 HcQ(9
 HcS H
-HcS L
 HcS(H
 HcS0H
 HcS@L
@@ -2306,33 +2329,33 @@ IcB A
 IcB L
 IcD$ 
 IcD$ H
+IcD$ L
 IcD$(9
 IcD$0H
 IcD$0I
 IcD$0L
+IcD$8L
 IcD$@
 IcD$@fE
 IcD$XI
-IcE I
+IcD$hH
 IcE(H
 IcE0A;E@
 IcE0H
-IcE8I
 IcE@L
 IcF41
 IcF@A;FP
 IcFXL
 IcFhA9
 IcG$A
+IcG(M
 IcG81
 IcL$ Ic
 IcL$(Ic
-IcL$0Ic
 IcL$@Ic
 IcL$HIc
 IcL$PIc
 IcL$XIc
-IcL$`Ic
 IcL$hIc
 IcL$pIc
 IcM8Ic
@@ -2351,6 +2374,7 @@ IcUXD9
 IcV@D9
 IcV@M
 IcVXI
+IcW H
 IcW@H
 IcW@L
 IcWhH
@@ -2403,6 +2427,7 @@ IntersectSegmentTriangle
 IntersectSphereHull
 Intersection disabled.
 IntersectionDictionaryRefl_t
+Invalid RecordedHitboxState_t
 Invalid blob for RnMesh_t::%s (%d,%d)
 Invalid collision attr index %u, must be below %d
 Invalid collision attribute palette entry %u, expected below %d
@@ -2423,6 +2448,7 @@ Invert Axes;
 IslandIndex
 IslandSolve
 IslandStamp
+J(A;X
 J89Hd
 JIGGLE_BONE
 JOINT_AXIS_COUNT
@@ -2519,6 +2545,7 @@ Lcg0A
 Lcg0D;g@D
 Lck D;k0D
 Lck4H
+Lck8E
 Lck@D;kPD
 LckPD9k`D
 LckPD;k`D
@@ -2551,6 +2578,7 @@ Localize_001
 Locked
 LoggingSystem_IsChannelEnabled
 LoggingSystem_Log
+LoggingSystem_LogDirect
 LoggingSystem_RegisterLoggingChannel
 LookAtList
 LowerEyelid( 
@@ -2647,7 +2675,6 @@ Mc<$E;|$
 Mc>E;~
 Mce@E
 McnXH
-Mct$8E
 McuHE;uXD
 Mcw I
 Mc~ H
@@ -2987,6 +3014,7 @@ PhysicsSphericalJointSave_t
 PhysicsSpringJointSave_t
 PhysicsWeldJointSave_t
 PhysicsWorld 0x%p->0x%p %s
+PhysicsWorldDebugRecord_t
 PhysicsWorldProfiler::Stats_t
 PhysicsWorldProfiler::Stats_t RnWorldRefl_t::m_Stats
 Pitch; 
@@ -3153,6 +3181,10 @@ RecordedApiCalls
 RecordedCapsuleSweepResults
 RecordedCaspuleSweepResultRefl_t
 RecordedCaspuleSweepResult_t
+RecordedEntityClassDescRefl_t
+RecordedEntityClassDesc_t
+RecordedEntityDescRefl_t
+RecordedEntityDesc_t
 RecordedForceRefl_t
 RecordedForce_t
 RecordedForces
@@ -3161,7 +3193,7 @@ RecordedHitboxCast_t
 RecordedHitboxDescRefl_t
 RecordedHitboxDesc_t
 RecordedHitboxStateRefl_t
-RecordedHitboxState_t
+RecordedHitboxState_t[Entity]
 RecordedTraceIndex
 RecordedTraceResultRefl_t
 RecordedTraceResult_t
@@ -3595,6 +3627,7 @@ T$ LcC E
 T$ M9
 T$(9Z ~
 T$(L9u
+T$,I9
 T$0H9
 T$4fE
 T$8H9
@@ -3603,12 +3636,11 @@ T$@Mc
 T$PE1
 T$XD9
 T$XH9
+T$hD9
 T$pA\A]]
-T57".
+T%<%.
+T%Bn.
 T7$Hc
-T=,!.
-T=?!.
-T=d!.
 TILT_TWIST
 TIcL$
 TOI: Count
@@ -3759,6 +3791,7 @@ VGUI_System010
 VGUI_ivgui008
 VHI+V@H
 VHcC(1
+VHcCH1
 VIcD$
 VMDLLIB001
 VMaterialSystem2_001
@@ -3966,8 +3999,7 @@ VertexUVPosColorNormalAndTangent_t
 VisBuilder_001
 Visited: Nodes/Tris/Mesh
 W u)H
-W-K#.
-W=3#.
+W5l&.
 W@H;2t'H
 WARNING: Failed to convert introspected block for file: %s
 WARNING: Invalid resource version (%d): %s
@@ -3975,6 +4007,12 @@ WARNING: Trying to create a CRenderContextPtr without a valid context.
 WELD_JOINT
 WHI+W@H
 WHtZH
+WORLD_DEBUG_RECORD_DEBUGDRAW
+WORLD_DEBUG_RECORD_HITBOXES
+WORLD_DEBUG_RECORD_INTERNALS_LEVEL1
+WORLD_DEBUG_RECORD_STACK_TRACES
+WORLD_DEBUG_RECORD_STREAMING
+WORLD_DEBUG_RECORD_TRACES
 WPUE1
 WXs-A
 WakeUpDynamicNeighbors
@@ -3992,12 +4030,12 @@ WorldDebugPayloadContainer_t
 WorldRendererBuilderMgr001
 WorldRendererMgr001
 Wrong alignment %d
-X%$<<
+X%$J<
 X(A;\$hs
-X-Ji=
+X-Jw=
 X2:jH
-X5di=
-X=li=
+X5dw=
+X=lw=
 XForm1
 XForm2
 XIcL$
@@ -4009,11 +4047,7 @@ X[A\A]A^A_]
 X[A\A]]
 X[A\fH
 Xd$lD
-Y%4j-
-Y%oQ'
-Y-&X/
-Y5nQ'
-Y5{j-
+Y-K&.
 Y@TfA
 Y@serialize2_v%d.inl
 YCLfA
@@ -4028,8 +4062,12 @@ ZD$HL
 [ %d total, %d empty ]
 [ %u ] 
 [ 0 ]
+[%d hits]
 [%d] %d convex, %d mesh
 [%d] %s
+[%d] (%d)
+[%d] hit %d
+[%d] hitboxes
 [A\A]
 [A\A]A^A_]
 [A\A]A^]
@@ -4225,7 +4263,6 @@ bLc#D;c
 bOwnHull
 bOwnMesh
 bParallelSolver
-bRecordDebugTraces
 bSimTransformsOutdated
 bStartInSolid
 bUpdate
@@ -4249,7 +4286,7 @@ blocklight
 blocklos
 blocksound
 blue">blH
-blue">boH
+bodies -H
 bodies wH
 bodies</H
 body_groups
@@ -4288,7 +4325,6 @@ bool RnSoftbodyRefl_t::m_bGoalAttractionSimplified
 bool RnSoftbodyRefl_t::m_bGravityDisabled
 bool RnSoftbodyRefl_t::m_bSimTransformsOutdated
 bool RnWorldRefl_t::m_bParallelSolver
-bool RnWorldRefl_t::m_bRecordDebugTraces
 bool RnWorldRefl_t::m_bSleeping
 break_create_joint_revolute
 break_list
@@ -4305,7 +4341,6 @@ burst_scale
 c0HcC@A
 c8D;cHD
 cHE;o
-cIcD$H1
 cLc#D;c
 cPHcCHI
 cable
@@ -4412,7 +4447,6 @@ dmg.fire
 door_blocker
 dormant
 dragBasis
-dy</fontH
 dynamic H
 dynamic_bodies
 dynamic_interaction
@@ -4485,7 +4519,6 @@ fD3J"fA
 fD3Q"fA
 fD3X"fA
 fE3L$
-fIcO Ic
 f`A9_
 faceMergeAngle
 fademaxdist
@@ -4691,7 +4724,6 @@ from {%.2f,%.2f,%.2f} delta {%.2f,%.2f,%.2f}
 g cMesh
 g default
 g is addH
-g(D;c
 g(L;u
 g_Tier1_BitWriteMasks
 g_Tier1_CRC32Table
@@ -4722,7 +4754,6 @@ health_override
 hidden
 hit at %g
 hit: 
-hitboxes
 hullIvr-0.obj
 hullIvr-1.obj
 hullIvr-2.obj
@@ -4737,7 +4768,6 @@ hull{
 hurt_me
 hurt_them
 iLc#D;c
-ic <fontH
 id - No H
 id = %d
 if( %s > 0 )
@@ -4748,6 +4778,7 @@ impactHardThreshold
 impacthard
 impactsoft
 in_vehicle
+includesH
 inconsisH
 inertia_boxes
 ing exclH
@@ -4815,7 +4846,6 @@ is_debris
 ision grH
 ist flagH
 it foundH
-it: StatH
 ith ResoH
 jIcMPIc
 jiggle bone %u
@@ -5885,6 +5915,7 @@ numsegments
 o(ATI
 o8ATSH
 oHATI
+oIcL$ Ic
 oPIcE
 oint betH
 ollide oH
@@ -5897,7 +5928,6 @@ or="blueH
 origin_max_delta
 origin_relative
 ot have H
-ot</b> HH
 other
 other 
 oundL
@@ -6122,7 +6152,6 @@ t$2fA
 t$4D;k
 t$8D;k
 t$8E;t$H
-t$9H9
 t$@D;k
 t$HD;k
 t$HcW
@@ -6137,10 +6166,9 @@ t$XH9
 t$YD;k
 t$`D;k
 t$aH9
+t$hD;k
 t$pA\A]]
-t$pD;k
 t$pE1
-t$|D;k
 t%Hc2
 t&D;CPs L
 t&D;FPs L
@@ -6163,7 +6191,6 @@ t.IcE A;E0
 t.Mc.E;n
 t.[A\]
 t/;w(t2;w8t=1
-t/DHc
 t/Hc3I
 t/Mc/E;o
 t0DiB
@@ -6189,6 +6216,7 @@ t4[A\A]]
 t5[A\]
 t6D;[`s0L
 t6[A\A]]
+t7DHc
 t8UE1
 t9A;L$`s2I
 t:$Hc
@@ -6328,6 +6356,7 @@ uint32 ManifoldPointRefl_t::m_nID
 uint32 NameIndexRefl_t::m_nNextFreeIndex
 uint32 PhysSurfacePropertiesRefl_t::m_baseNameHash
 uint32 PhysSurfacePropertiesRefl_t::m_nameHash
+uint32 RecordedEntityDescRefl_t::m_nEntityId
 uint32 RecordedHitboxCastRefl_t::nEntityId
 uint32 RecordedHitboxDescRefl_t::m_nColor
 uint32 RecordedHitboxStateRefl_t::m_nEntityId
@@ -6348,10 +6377,12 @@ uint32 RnSoftbodyRefl_t::m_nStepsSimulated
 uint32 RnSolverJointRefl_t::m_nType
 uint32 RnSphericalJointRefl_t::m_nMotorMode
 uint32 RnWorldRefl_t::m_Simulation
+uint32 RnWorldRefl_t::m_nDebugRecordFlags
 uint32 RnWorldRefl_t::m_nSoftbodySimulationFlags
 uint64
 uint64 NameIndexRefl_t::m_nAcquireMask
 uint64 NameIndexRefl_t::m_nPreacquireMask
+uint64 RecordedEntityDescRefl_t::m_nEntityClass
 uint64 RecordedHitboxCastRefl_t::nHitboxAddr
 uint64 RecordedHitboxStateRefl_t::m_nHitboxAddr
 uint64 RecordedTraceResultRefl_t::m_nStackTrace[ 24 ]
@@ -6550,7 +6581,9 @@ yaw_start
 z#u!H
 z:KEZ
 zCuAH
+zGuEH
 zIcD$
+zKuIH
 z]u[H
 { HcU
 { [A\]
@@ -6568,7 +6601,6 @@ z]u[H
 |$ D9
 |$(A9
 |$(E1
-|$0A9
 |$0E;|$@
 |$0L9
 |$4M+e
@@ -6577,14 +6609,13 @@ z]u[H
 |$@Hc
 |$@I9
 |$@L9
-|$HA9
 |$HE1
 |$PA9
 |$XHc
-|$`A9
 |$hA9
 |$hE1
 |$pA9
+|(DHc
 |)A9\$0
 |<t1I
 |IcL$
@@ -6618,4 +6649,5 @@ z]u[H
 ~Hull id %llx local %p
 ~IHcK
 ~Yf;w
+~_IcG
 ~xAUATE1

@@ -1,0 +1,149 @@
+// shadow_demon - Hero
+criterion "Isshadow_demon" "classname" "shadow_demon" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response shadow_demon_recruit_1
+{
+	speak "shadow_demon_recruit" noscene 
+}
+
+Rule shadow_demon_recruit_1_rule
+{
+	criteria Isshadow_demon ConceptRecruit UnitRank1
+	response shadow_demon_recruit_1
+}
+
+
+Response shadow_demon_recruit_2
+{
+	speak "shadow_demon_upgrade" noscene 
+}
+
+Rule shadow_demon_recruit_2_rule
+{
+	criteria Isshadow_demon ConceptRecruit UnitRank2
+	response shadow_demon_recruit_2
+}
+
+
+Response shadow_demon_recruit_3
+{
+	speak "shadow_demon_final_upgrade" noscene 
+}
+
+Rule shadow_demon_recruit_3_rule
+{
+	criteria Isshadow_demon ConceptRecruit UnitRank3
+	response shadow_demon_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response shadow_demon_start_round
+{
+	speak "shadow_demon_start_round" noscene 
+}
+
+Rule shadow_demon_start_round_rule
+{
+	criteria Isshadow_demon ConceptRoundStart 
+	response shadow_demon_start_round
+}
+
+
+Response shadow_demon_start_round_lost_last_round
+{
+	speak "shadow_demon_start_round_lost_last_round" noscene 
+}
+
+Rule shadow_demon_start_round_lost_last_round_rule
+{
+	criteria Isshadow_demon ConceptRoundStart LostLastGame
+	response shadow_demon_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response shadow_demon_flawless_victory
+{
+	speak "shadow_demon_flawless_victory" noscene 
+}
+
+Rule shadow_demon_flawless_victory_rule
+{
+	criteria Isshadow_demon ConceptRoundEnd Result_WinFlawless
+	response shadow_demon_flawless_victory
+}
+
+
+Response shadow_demon_decisive_victory
+{
+	speak "shadow_demon_decisive_victory" noscene 
+}
+
+Rule shadow_demon_decisive_victory_rule
+{
+	criteria Isshadow_demon ConceptRoundEnd Result_WinDecisive
+	response shadow_demon_decisive_victory
+}
+
+Response shadow_demon_narrow_victory
+{
+	speak "shadow_demon_narrow_victory" noscene 
+}
+
+Rule shadow_demon_narrow_victory_rule
+{
+	criteria Isshadow_demon ConceptRoundEnd Result_WinNarrow
+	response shadow_demon_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response shadow_demon_flawless_defeat
+{
+	speak "shadow_demon_flawless_defeat" noscene 
+}
+
+Rule shadow_demon_flawless_defeat_rule
+{
+	criteria Isshadow_demon ConceptRoundEnd Result_LoseFlawless
+	response shadow_demon_flawless_defeat
+}
+
+
+Response shadow_demon_decisive_defeat
+{
+	speak "shadow_demon_decisive_defeat" noscene 
+}
+
+Rule shadow_demon_decisive_defeat_rule
+{
+	criteria Isshadow_demon ConceptRoundEnd Result_LoseDecisive
+	response shadow_demon_decisive_defeat
+}
+
+Response shadow_demon_narrow_defeat
+{
+	speak "shadow_demon_narrow_defeat" noscene 
+}
+
+Rule shadow_demon_narrow_defeat_rule
+{
+	criteria Isshadow_demon ConceptRoundEnd Result_LoseNarrow
+	response shadow_demon_narrow_defeat
+}

@@ -1,0 +1,57 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />		
+		<include src="s2r://panorama/styles/popups/popup_jail.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_private_lobby_modifiers.vcss_c" />
+	</styles>
+
+	<snippets>
+		<snippet name="HeroSnippet">
+			<Panel class="HeroCell">
+				<Panel id="HeroIcon"  class="HeroIcon">
+					<Panel class="CellBars"/>
+				</Panel>
+				<Panel class="HeroInfo">
+					<Label id="HeroName" class="HeroName" text="{s:hero_name}"/>
+					<Panel class="SynergyCapsuleContainer">
+						<DACSynergyCapsule id="SynergyCapsulePC"/>
+						<DACSynergyCapsule id="SynergyCapsuleMobile" notooltip="1"/>
+					</Panel>
+				</Panel>
+			</Panel>
+		</snippet>
+	</snippets>
+	
+	<Panel class="PopupPanel Hidden" popupbackground="dim"  onactivate="UIPopupButtonClicked()">
+		<Panel class="JailPoster" />
+		<Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
+		<Panel class="JailPosterContents">
+
+			<Label class="Title" text="#DAC_Custom_Jail_Title"/>
+			<Countdown id="ReleaseFromJail">
+				<Label class="Description" text="#DAC_Jail_LoadJailDesc"/>
+			</Countdown>
+			
+			<Panel class="Body">
+				<Panel id="Jail"/>
+				<Label class="NoBansLabel" text="#DAC_Jail_NoBans"/>						
+			</Panel>
+			<Panel class="Footer">
+				<Panel class="LeftRightFlow Bottom">
+					<Button id="PasteButton" class="PopupButton" onactivate="DACPrivateLobbyPaste()">
+						<Label text="#DAC_Jail_Paste"/>
+					</Button>
+					<Button id="ConfirmButton" class="PopupButton" onactivate="DACPrivateLobbySetJailList()">
+						<Label text="#DAC_Jail_Confirm"/>
+					</Button>
+					<Button id="DefaultButton" class="PopupButton" onactivate="DACPrivateLobbySetDefaultJailList()">
+						<Label text="#DAC_Jail_Default"/>
+					</Button>
+				</Panel>
+			</Panel>
+		</Panel>
+		
+	</Panel>
+</root>

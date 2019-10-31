@@ -1,0 +1,149 @@
+// sven - Hero
+criterion "Issven" "classname" "sven" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response sven_recruit_1
+{
+	speak "sven_recruit" noscene 
+}
+
+Rule sven_recruit_1_rule
+{
+	criteria Issven ConceptRecruit UnitRank1
+	response sven_recruit_1
+}
+
+
+Response sven_recruit_2
+{
+	speak "sven_upgrade" noscene 
+}
+
+Rule sven_recruit_2_rule
+{
+	criteria Issven ConceptRecruit UnitRank2
+	response sven_recruit_2
+}
+
+
+Response sven_recruit_3
+{
+	speak "sven_final_upgrade" noscene 
+}
+
+Rule sven_recruit_3_rule
+{
+	criteria Issven ConceptRecruit UnitRank3
+	response sven_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response sven_start_round
+{
+	speak "sven_start_round" noscene 
+}
+
+Rule sven_start_round_rule
+{
+	criteria Issven ConceptRoundStart 
+	response sven_start_round
+}
+
+
+Response sven_start_round_lost_last_round
+{
+	speak "sven_start_round_lost_last_round" noscene 
+}
+
+Rule sven_start_round_lost_last_round_rule
+{
+	criteria Issven ConceptRoundStart LostLastGame
+	response sven_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response sven_flawless_victory
+{
+	speak "sven_flawless_victory" noscene 
+}
+
+Rule sven_flawless_victory_rule
+{
+	criteria Issven ConceptRoundEnd Result_WinFlawless
+	response sven_flawless_victory
+}
+
+
+Response sven_decisive_victory
+{
+	speak "sven_decisive_victory" noscene 
+}
+
+Rule sven_decisive_victory_rule
+{
+	criteria Issven ConceptRoundEnd Result_WinDecisive
+	response sven_decisive_victory
+}
+
+Response sven_narrow_victory
+{
+	speak "sven_narrow_victory" noscene 
+}
+
+Rule sven_narrow_victory_rule
+{
+	criteria Issven ConceptRoundEnd Result_WinNarrow
+	response sven_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response sven_flawless_defeat
+{
+	speak "sven_flawless_defeat" noscene 
+}
+
+Rule sven_flawless_defeat_rule
+{
+	criteria Issven ConceptRoundEnd Result_LoseFlawless
+	response sven_flawless_defeat
+}
+
+
+Response sven_decisive_defeat
+{
+	speak "sven_decisive_defeat" noscene 
+}
+
+Rule sven_decisive_defeat_rule
+{
+	criteria Issven ConceptRoundEnd Result_LoseDecisive
+	response sven_decisive_defeat
+}
+
+Response sven_narrow_defeat
+{
+	speak "sven_narrow_defeat" noscene 
+}
+
+Rule sven_narrow_defeat_rule
+{
+	criteria Issven ConceptRoundEnd Result_LoseNarrow
+	response sven_narrow_defeat
+}

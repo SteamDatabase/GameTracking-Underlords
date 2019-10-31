@@ -1,0 +1,149 @@
+// life_stealer - Hero
+criterion "Islife_stealer" "classname" "life_stealer" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response life_stealer_recruit_1
+{
+	speak "life_stealer_recruit" noscene 
+}
+
+Rule life_stealer_recruit_1_rule
+{
+	criteria Islife_stealer ConceptRecruit UnitRank1
+	response life_stealer_recruit_1
+}
+
+
+Response life_stealer_recruit_2
+{
+	speak "life_stealer_upgrade" noscene 
+}
+
+Rule life_stealer_recruit_2_rule
+{
+	criteria Islife_stealer ConceptRecruit UnitRank2
+	response life_stealer_recruit_2
+}
+
+
+Response life_stealer_recruit_3
+{
+	speak "life_stealer_final_upgrade" noscene 
+}
+
+Rule life_stealer_recruit_3_rule
+{
+	criteria Islife_stealer ConceptRecruit UnitRank3
+	response life_stealer_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response life_stealer_start_round
+{
+	speak "life_stealer_start_round" noscene 
+}
+
+Rule life_stealer_start_round_rule
+{
+	criteria Islife_stealer ConceptRoundStart 
+	response life_stealer_start_round
+}
+
+
+Response life_stealer_start_round_lost_last_round
+{
+	speak "life_stealer_start_round_lost_last_round" noscene 
+}
+
+Rule life_stealer_start_round_lost_last_round_rule
+{
+	criteria Islife_stealer ConceptRoundStart LostLastGame
+	response life_stealer_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response life_stealer_flawless_victory
+{
+	speak "life_stealer_flawless_victory" noscene 
+}
+
+Rule life_stealer_flawless_victory_rule
+{
+	criteria Islife_stealer ConceptRoundEnd Result_WinFlawless
+	response life_stealer_flawless_victory
+}
+
+
+Response life_stealer_decisive_victory
+{
+	speak "life_stealer_decisive_victory" noscene 
+}
+
+Rule life_stealer_decisive_victory_rule
+{
+	criteria Islife_stealer ConceptRoundEnd Result_WinDecisive
+	response life_stealer_decisive_victory
+}
+
+Response life_stealer_narrow_victory
+{
+	speak "life_stealer_narrow_victory" noscene 
+}
+
+Rule life_stealer_narrow_victory_rule
+{
+	criteria Islife_stealer ConceptRoundEnd Result_WinNarrow
+	response life_stealer_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response life_stealer_flawless_defeat
+{
+	speak "life_stealer_flawless_defeat" noscene 
+}
+
+Rule life_stealer_flawless_defeat_rule
+{
+	criteria Islife_stealer ConceptRoundEnd Result_LoseFlawless
+	response life_stealer_flawless_defeat
+}
+
+
+Response life_stealer_decisive_defeat
+{
+	speak "life_stealer_decisive_defeat" noscene 
+}
+
+Rule life_stealer_decisive_defeat_rule
+{
+	criteria Islife_stealer ConceptRoundEnd Result_LoseDecisive
+	response life_stealer_decisive_defeat
+}
+
+Response life_stealer_narrow_defeat
+{
+	speak "life_stealer_narrow_defeat" noscene 
+}
+
+Rule life_stealer_narrow_defeat_rule
+{
+	criteria Islife_stealer ConceptRoundEnd Result_LoseNarrow
+	response life_stealer_narrow_defeat
+}

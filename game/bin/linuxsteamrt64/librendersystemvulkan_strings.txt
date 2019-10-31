@@ -31,6 +31,8 @@
 	delta value: 
 	distance value: 
 	distance: 
+	float2 vTexCoord				: TEXCOORD0;	
+	float2 vTexCoord				: TEXCOORD0;					
 	float3 vProjPos					: POSITION0;	
 	float4 vColor					: COLOR0;		
 	float4 vColor					: COLOR;		
@@ -45,10 +47,12 @@
 	o.vColor = v.vColor;							
 	o.vProjPos.w = 1.0;								
 	o.vProjPos.xyz = v.vProjPos;					
+	o.vTexCoord = v.vTexCoord;						
 	o.vTexCoordScaleOffset = v.vTexCoordScaleOffset;
 	return g_tMSAASrctexture.Load( vSamplePos, 0 ).x;				
 	return g_tMSAASrctexture.Load( vSamplePos, 0 );					
 	return g_tSrctexture.Load( int3( vSamplePos, 0 ) );				
+	return g_tSrctexture.SampleLevel( g_sSrcSampler, i.vTexCoord.xy, 0 );
 	return i.vColor;                                
 	return o;										
 	t;r1
@@ -656,6 +660,7 @@ $2,>S,,
 $4DTdt
 $9D$@
 $@mapped binding out of range: 
+$A;\$
 $D;3|
 $Global
 $H+C`I
@@ -1139,7 +1144,6 @@ $~VLc
 -vulkan_disable_ext_separate_stencil_usage
 -vulkan_disable_ext_validation_cache
 -vulkan_disable_external_subpass_dependency
--vulkan_disable_intermediate_swapchain_image
 -vulkan_disable_khr_descriptor_update_template
 -vulkan_disable_khr_image_format_list
 -vulkan_disable_khr_maintenance1
@@ -1233,7 +1237,7 @@ $~VLc
 09y0s
 0: Bilinear, 1: Trilinear, 2: Aniso 2x, 3: Aniso 4x, 4: Aniso 8x, 5: Aniso 16x
 0: Use classic mode. 1: Use per-thread persistently mapped buffers.
-0<	wD
+0<	wXI
 0H+t$8H
 0H31t
 0H9,$
@@ -1586,7 +1590,6 @@ $~VLc
 :H39t
 :H3>t
 :V!2m
-:[tlL
 :f9>u
 :}uqH
 ;	Fzo
@@ -2419,8 +2422,7 @@ C ~ K
 C$+CX;C,
 C$9B$
 C$9E$
-C$9G$
-C$;G$
+C$;A$
 C$A9D$
 C$A9D$$t
 C$A9E
@@ -3139,7 +3141,7 @@ D$ I9D$(
 D$ I9E
 D$ L)
 D$ L9
-D$ L;-hOr
+D$ L;-
 D$ M)
 D$ M9
 D$ Y^H
@@ -3785,7 +3787,7 @@ E H9D$(s	I
 E I+E
 E I9F rmf
 E I;E(
-E L;%r*r
+E L;%
 E PRH
 E rtiefE
 E u=H
@@ -3910,6 +3912,8 @@ Error creating the clearing vertex shader!
 Error creating the resolve MSAA pixel shader!
 Error creating the resolve depth MSAA pixel shader!
 Error creating the resolve pixel shader!
+Error creating the resolve rotated pixel shader!
+Error creating the resolve rotated vertex shader!
 Error creating the resolve vertex shader!
 Error from SDL_GetCurrentDisplayMode( %d ) = %s
 Error from SDL_GetDisplayMode( %d, %d ) = %s
@@ -4294,7 +4298,7 @@ F8I;F@I
 F@H+F8H
 F@H+F8I
 F@H+F8dH
-F@H;-A
+F@H;-
 F@I+F8A
 F@I+F8E
 F@I+F8H
@@ -5143,157 +5147,136 @@ H;*twH
 H;,$I
 H;,$t
 H;,$}eI
-H;-	9d
-H;-3Bv
-H;-:?e
-H;-QBv
-H;-~~r
+H;-"?=
+H;-OGe
+H;-{Dd
 H;0t|A
-H;5I&p
-H;5zhm
-H;=	[a
-H;= /t
-H;=! \
-H;=!!t
-H;=!B_
-H;=!b<
-H;=!yZ
-H;="U\
+H;5kRf
+H;=	ZV
+H;= 9Z
+H;= _h
+H;="H\
 H;="{\
-H;=#M`
-H;=#cE
-H;=%J[
-H;='?\
-H;='xX
-H;=)P\
-H;=*Ev
-H;=*G\
-H;=*Ka
-H;=*OP
-H;=*Ra
-H;=*\a
-H;=*e^
-H;=+%u
-H;=+:f
-H;=+S\
-H;=+lf
-H;=,XZ
-H;=.dV
-H;=/,C
-H;=/\<
-H;=15u
-H;=1C_
-H;=1D|
-H;=1wZ
-H;=4,_
-H;=47Z
-H;=5;k
-H;=63d
-H;=7%\
-H;=77\
-H;=8$\
-H;=8H
-H;=93^
-H;=:Na
-H;=:Ro
-H;=:T\
-H;=:Ua
-H;=:{t
-H;=;Lc
-H;=;W\
-H;=>!i
-H;=>[\
-H;=?W`
-H;=@=^
-H;=@P]
-H;=A1A
-H;=AD_
-H;=At|
-H;=Awm
-H;=B	d
+H;=#7\
+H;='.e
+H;=(/\
+H;=(5p
+H;=)+\
+H;=*,j
+H;=*Ma
+H;=*Ta
+H;=*i\
+H;=,]\
+H;=-a\
+H;=.	_
+H;=.!|
+H;=1$[
+H;=3P\
+H;=3xQ
+H;=4	K
+H;=42\
+H;=4xt
+H;=54t
+H;=5mU
+H;=6,A
+H;=6Ca
+H;=6D\
+H;=7`m
+H;=8	\
+H;=8*C
+H;=8:\
+H;=9,Z
+H;=:Ia
+H;=:Pa
+H;=<'Z
+H;=<e\
+H;==(\
+H;=>"K
+H;=>8n
+H;=>Dy
+H;=?`<
+H;=@yQ
+H;=A'u
+H;=B*s
+H;=BB@
 H;=B~\
-H;=D1_
-H;=D9f
-H;=F+[
-H;=FB\
-H;=FfZ
-H;=H"_
-H;=I5t
-H;=JJa
-H;=JQa
-H;=KB
-H;=LVy
-H;=L`\
-H;=NLx
-H;=NXo
-H;=OKd
-H;=P!V
-H;=P/Z
-H;=QE_
-H;=QN\
-H;=QgS
-H;=S/\
-H;=T)n
-H;=Vm?
-H;=WAm
-H;=WC\
-H;=X9\
-H;=XVF
-H;=XZM
-H;=Yd\
-H;=ZMa
-H;=ZTa
-H;=[1\
-H;=[MP
-H;=[`Y
-H;=]kX
-H;=^4\
-H;=^;p
-H;=^Oi
-H;=_'\
-H;=_}\
-H;=`&o
-H;=aF_
-H;=b!K
+H;=C3H
+H;=DUy
+H;=D|o
+H;=F;\
+H;=FQo
+H;=FZi
+H;=G6C
+H;=GEx
+H;=Gga
+H;=Gpo
+H;=JLa
+H;=JSa
+H;=J[a
+H;=KGC
+H;=L!\
+H;=L`m
+H;=M#d
+H;=M[\
+H;=NW\
+H;=Qj`
+H;=QoF
+H;=R`\
+H;=S'\
+H;=TCg
+H;=TTy
+H;=U t
+H;=U~u
+H;=X<Z
+H;=XG
+H;=Z!u
+H;=ZHa
+H;=ZOa
+H;=[9\
+H;=[BF
+H;=[C\
+H;=`>X
+H;=`\\
+H;=`vX
+H;=a4t
+H;=bOF
 H;=bz\
-H;=d!\
-H;=dWy
-H;=dXo
-H;=d`i
-H;=eFy
-H;=enc
-H;=f'u
-H;=fO\
-H;=i(i
-H;=iM\
-H;=jIa
-H;=jPa
-H;=jR\
-H;=k#u
-H;=k]a
-H;=nZ\
-H;=ndM
-H;=oF\
-H;=p	u
-H;=pZa
-H;=qA\
-H;=vOP
-H;=w	a
-H;=wL\
-H;=x(u
-H;=xi\
-H;=y#\
-H;=zEg
-H;=zLa
-H;=zLd
-H;=zSa
-H;={*\
-H;=|0<
-H;=|Ey
+H;=c{o
+H;=c}`
+H;=d,_
+H;=eh]
+H;=es\
+H;=f,i
+H;=h<a
+H;=j)[
+H;=jKa
+H;=jRa
+H;=kA
+H;=lK`
+H;=ld\
+H;=mXa
+H;=nO\
+H;=n^i
+H;=o6\
+H;=o~X
+H;=qG\
+H;=r!u
+H;=t%u
+H;=t1_
+H;=w.\
+H;=wR`
+H;=x4\
+H;=y1Z
+H;=yxZ
+H;=z0\
+H;=z4t
+H;=zGa
+H;=zNa
+H;=| _
+H;=|<\
 H;=|V\
-H;=})]
-H;=}|b
-H;=~_\
+H;=|}U
+H;=~	_
 H;@ t:H
 H;@Pt;H
 H;A r
@@ -6240,20 +6223,20 @@ L9|$(
 L9|$8
 L9|$8H
 L;$$H
-L;%1=x
-L;%Z~d
-L;%fde
-L;%p+[
-L;%}xo
-L;-jC=
-L;-{gS
+L;%HfS
+L;%j=x
+L;-1Q=
+L;-:%o
+L;-h7k
 L;0tM
 L;4$t
-L;5EPx
-L;5h0v
-L;5xkx
-L;=)yr
-L;=2or
+L;5$~y
+L;5XDm
+L;5mKx
+L;='Xm
+L;=Utr
+L;=Xdf
+L;=}ge
 L;C(t;M
 L;D$ tBI
 L;d$8
@@ -6369,6 +6352,7 @@ Localize_001
 Location
 LoggingSystem_IsChannelEnabled
 LoggingSystem_Log
+LoggingSystem_LogDirect
 LoggingSystem_RegisterLoggingChannel
 Logic Error in CExpressionEvaluator
 Logical addressing not supported: 
@@ -6875,7 +6859,7 @@ P ~ J
 P$9U$t
 P$A;S$
 P(H9X0
-P(H;-
+P(H;-<
 P(Lc}
 P0H+P(f
 P0H;P8
@@ -6890,6 +6874,7 @@ P@D2h
 P@H+P8H
 P@H;PH
 PACKED
+PARALLEL_PROCESS tinyexr_impl.cpp:163
 PARALLEL_PROCESS utlsoacontainer.cpp:2533
 PARTICLE_DEPTH_FEATHERING_OFF
 PARTICLE_DEPTH_FEATHERING_ON_OPTIONAL
@@ -7350,6 +7335,7 @@ ResType
 Reserved word.
 ReservedReadPipe
 ReservedWritePipe
+ResolveLayout
 ResourceCompilerSystem001
 ResourceHandleUtils001
 ResourceManifestRegistry001
@@ -7617,6 +7603,7 @@ SampledImageArrayNonUniformIndexingEXT
 SampledRect
 SamplerComparisonState
 SamplerState
+SamplerState g_sSrcSampler : register( s0 );						
 Sampling factors too large for interleaved scan
 SatConvertSToU
 SatConvertUToS
@@ -8123,6 +8110,7 @@ TEXMAN: Posting resource load complete msg.
 TEXTURESTREAMING: Filled %d fallback textures in %.3f ms
 TEXTURESTREAMING: Resource view ptr or texture resources are still NULL after waiting.
 TILDE
+TIcL$
 TIcN8Ic
 TOTAL: %.2f MB
 TRPGI
@@ -8921,8 +8909,6 @@ Vulkan swapchain out-of-date, suboptimal, or surface lost - recreating.  Result:
 Vulkan swapchain recreated succesfully.  Attempting to acquire next image...
 Vulkan texture manager frame update
 Vulkan using external subpass dependencies for all renderpasses.
-Vulkan using intermediate swapchain image rather than rendering direct to swapchain for Adreno 5xx to workaround corruption.
-Vulkan using intermediate swapchain image rather than rendering direct to swapchain on ARM to avoid GPU hangs.
 VulkanKHR
 VulkanKhrBindMemory2Extension()->vkBindImageMemory2KHR( VulkanDevice(), 1, &bindImageMemoryInfo )
 VulkanKhrSurface()->vkGetPhysicalDeviceSurfaceCapabilitiesKHR( pPhysicalDeviceVulkan, m_pSurfaceKHR, &surfaceCaps )
@@ -9117,7 +9103,7 @@ ZFP compression is not supported.
 ZIVTest found EQ dependence.
 ZIVTest found independence.
 ZYt@H
-ZYtyH
+ZYtzH
 ZY~,M
 Zero length tRNS chunk
 ZeroExtend
@@ -9236,7 +9222,7 @@ Z~$|7
 ]A\A]A^H
 ]A\A]A^L
 ]A]L9
-^%^QG
+^%~TG
 ^@I+^8H
 ^AXH9
 ^IcL$ Ic
@@ -9425,6 +9411,8 @@ _ZNSt6vectorIhSaIhEE15_M_range_insertIN9__gnu_cxx17__normal_iteratorIPhS1_EEEEvS
 _ZNSt6vectorIhSaIhEE15_M_range_insertIPKhEEvN9__gnu_cxx17__normal_iteratorIPhS1_EET_S9_St20forward_iterator_tag
 _ZNSt6vectorIhSaIhEE15_M_range_insertIPcEEvN9__gnu_cxx17__normal_iteratorIPhS1_EET_S8_St20forward_iterator_tag
 _ZNSt6vectorIhSaIhEE17_M_default_appendEm
+_ZNSt6vectorIhSaIhEE19_M_emplace_back_auxIIRKhEEEvDpOT_
+_ZNSt6vectorIhSaIhEE19_M_emplace_back_auxIJRKhEEEvDpOT_
 _ZNSt6vectorIhSaIhEE6insertIN9__gnu_cxx17__normal_iteratorIPhS1_EEvEES6_NS4_IPKhS1_EET_SA_
 _ZNSt6vectorIhSaIhEEC1EmRKS0_
 _ZNSt6vectorIhSaIhEEC2EmRKS0_
@@ -11060,14 +11048,14 @@ float64_t vector
 floatBitsToInt
 floatBitsToUint
 floatbitmap.cpp
-floatbitmap.cpp(140): Unknown gamma type "%s"!
-floatbitmap.cpp(2463): Error calling TGALoader::GetInfo( %s )
-floatbitmap.cpp(2474): Error loading %s
-floatbitmap.cpp(2497): Error! Unknown file type for %s
-floatbitmap.cpp(2516): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
-floatbitmap.cpp(324): Conversion not supported yet!
-floatbitmap.cpp(424): Conversion not supported yet!
-floatbitmap.cpp(887): Unsupported color format "%s", skipping!
+floatbitmap.cpp(141): Unknown gamma type "%s"!
+floatbitmap.cpp(2473): Error calling TGALoader::GetInfo( %s )
+floatbitmap.cpp(2484): Error loading %s
+floatbitmap.cpp(2507): Error! Unknown file type for %s
+floatbitmap.cpp(2526): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
+floatbitmap.cpp(325): Conversion not supported yet!
+floatbitmap.cpp(425): Conversion not supported yet!
+floatbitmap.cpp(888): Unsupported color format "%s", skipping!
 floating-point fast math mode
 floating-point rounding mode
 floor
@@ -12694,7 +12682,7 @@ overloaded functions must have the same parameter storage qualifiers for argumen
 overloaded functions must have the same return type
 override_coverage
 p D8r rK
-p H;-$#o
+p H;-
 p(H;p0H
 p0H+p(I
 p8H+p0H
@@ -12707,7 +12695,7 @@ p@H9u@u
 p@H;pP
 pAvkCreateBufferView( m_pDeviceVulkan, &bufferViewCreateInfo, NULL, &m_pTexelBufferView )
 pExt->vkCreateDescriptorUpdateTemplateKHR( m_pDeviceVulkan, &descriptorUpdateTemplateCreateInfo, NULL, &pPipelineOut->m_pDescriptorUpdateTemplate )
-pHH;5
+pHH;5`
 pNext
 pNext in VkApplicationInfo not supported.
 pNext in VkComputePipelineCreateInfo not supported.
@@ -12852,7 +12840,7 @@ qualifier has no effect on non-output parameters
 queued
 r	9A$
 r	9B$
-r H;5'L=
+r H;5
 r-wQ1
 r11f_g11f_b10f
 r16_snorm
@@ -13455,7 +13443,7 @@ t	[A\]
 t	[]A\
 t	[]A\A]
 t 8\$`
-t H;=
+t H;=I
 t H;r r
 t Hcw
 t [A\A]A^]
@@ -13936,18 +13924,18 @@ u/D9d$(A
 u/L;(u*
 u0M+u(H
 u0M+u(I
-u1H;-RCr
+u1H;-
 u32vec2
 u32vec3
 u32vec4
 u5AUATUSH
 u64( %lld = 0x%llX )
 u8H;D$@
-u<L;%(
+u<L;%
 u?H9G8L
 u@L+u8L
 uAL;%
-uAL;%jb|
+uAL;%z
 uKH9G8L
 uLH9G8L
 uMulExtended
@@ -14197,7 +14185,6 @@ v(I9u
 v0AXAYM
 v0XZM
 v8H;5
-v8H;5A
 v8L;v@
 v;<Htg<Xtc<7
 v@H+w8H
@@ -15001,7 +14988,7 @@ x(u	M
 x09y0
 x09y0s
 x09y0w&
-x4H;=
+x4H;=]Tv
 x: t,
 x: t2L
 x: t_

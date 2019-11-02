@@ -1,7 +1,10 @@
 "GameInfo"
 {
-	game 		"Dota Underlords"
-	title 		"Dota Underlords"
+	//
+	// gameinfo.gi is the non-branch-varying content and can be integrated between branches.
+	// Branch-varying info, such as the game/title and app IDs, is in gameinfo_branchspecific.gi.
+	//
+
 	type		multiplayer_only
 	
 	SupportsDX8 0
@@ -16,9 +19,6 @@
 
 	FileSystem
 	{
-		SteamAppId				1046930		// This will mount all the GCFs we need (240=CS:S, 220=HL2).
-		ToolsAppId				1046930		// Tools will load this (ie: source SDK caches) to get things like materials\debug, materials\editor, etc.
-
 		//
 		// The code that loads this file automatically does a few things here:
 		//

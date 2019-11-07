@@ -1,0 +1,149 @@
+// dazzle - Hero
+criterion "Isdazzle" "classname" "dazzle" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response dazzle_recruit_1
+{
+	speak "dazzle_recruit" noscene 
+}
+
+Rule dazzle_recruit_1_rule
+{
+	criteria Isdazzle ConceptRecruit UnitRank1
+	response dazzle_recruit_1
+}
+
+
+Response dazzle_recruit_2
+{
+	speak "dazzle_upgrade" noscene 
+}
+
+Rule dazzle_recruit_2_rule
+{
+	criteria Isdazzle ConceptRecruit UnitRank2
+	response dazzle_recruit_2
+}
+
+
+Response dazzle_recruit_3
+{
+	speak "dazzle_final_upgrade" noscene 
+}
+
+Rule dazzle_recruit_3_rule
+{
+	criteria Isdazzle ConceptRecruit UnitRank3
+	response dazzle_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response dazzle_start_round
+{
+	speak "dazzle_start_round" noscene 
+}
+
+Rule dazzle_start_round_rule
+{
+	criteria Isdazzle ConceptRoundStart 
+	response dazzle_start_round
+}
+
+
+Response dazzle_start_round_lost_last_round
+{
+	speak "dazzle_start_round_lost_last_round" noscene 
+}
+
+Rule dazzle_start_round_lost_last_round_rule
+{
+	criteria Isdazzle ConceptRoundStart LostLastGame
+	response dazzle_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response dazzle_flawless_victory
+{
+	speak "dazzle_flawless_victory" noscene 
+}
+
+Rule dazzle_flawless_victory_rule
+{
+	criteria Isdazzle ConceptRoundEnd Result_WinFlawless
+	response dazzle_flawless_victory
+}
+
+
+Response dazzle_decisive_victory
+{
+	speak "dazzle_decisive_victory" noscene 
+}
+
+Rule dazzle_decisive_victory_rule
+{
+	criteria Isdazzle ConceptRoundEnd Result_WinDecisive
+	response dazzle_decisive_victory
+}
+
+Response dazzle_narrow_victory
+{
+	speak "dazzle_narrow_victory" noscene 
+}
+
+Rule dazzle_narrow_victory_rule
+{
+	criteria Isdazzle ConceptRoundEnd Result_WinNarrow
+	response dazzle_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response dazzle_flawless_defeat
+{
+	speak "dazzle_flawless_defeat" noscene 
+}
+
+Rule dazzle_flawless_defeat_rule
+{
+	criteria Isdazzle ConceptRoundEnd Result_LoseFlawless
+	response dazzle_flawless_defeat
+}
+
+
+Response dazzle_decisive_defeat
+{
+	speak "dazzle_decisive_defeat" noscene 
+}
+
+Rule dazzle_decisive_defeat_rule
+{
+	criteria Isdazzle ConceptRoundEnd Result_LoseDecisive
+	response dazzle_decisive_defeat
+}
+
+Response dazzle_narrow_defeat
+{
+	speak "dazzle_narrow_defeat" noscene 
+}
+
+Rule dazzle_narrow_defeat_rule
+{
+	criteria Isdazzle ConceptRoundEnd Result_LoseNarrow
+	response dazzle_narrow_defeat
+}

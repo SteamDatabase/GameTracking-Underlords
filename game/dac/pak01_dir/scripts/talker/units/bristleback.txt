@@ -1,0 +1,149 @@
+// bristleback - Hero
+criterion "Isbristleback" "classname" "bristleback" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response bristleback_recruit_1
+{
+	speak "bristleback_recruit" noscene 
+}
+
+Rule bristleback_recruit_1_rule
+{
+	criteria Isbristleback ConceptRecruit UnitRank1
+	response bristleback_recruit_1
+}
+
+
+Response bristleback_recruit_2
+{
+	speak "bristleback_upgrade" noscene 
+}
+
+Rule bristleback_recruit_2_rule
+{
+	criteria Isbristleback ConceptRecruit UnitRank2
+	response bristleback_recruit_2
+}
+
+
+Response bristleback_recruit_3
+{
+	speak "bristleback_final_upgrade" noscene 
+}
+
+Rule bristleback_recruit_3_rule
+{
+	criteria Isbristleback ConceptRecruit UnitRank3
+	response bristleback_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response bristleback_start_round
+{
+	speak "bristleback_start_round" noscene 
+}
+
+Rule bristleback_start_round_rule
+{
+	criteria Isbristleback ConceptRoundStart 
+	response bristleback_start_round
+}
+
+
+Response bristleback_start_round_lost_last_round
+{
+	speak "bristleback_start_round_lost_last_round" noscene 
+}
+
+Rule bristleback_start_round_lost_last_round_rule
+{
+	criteria Isbristleback ConceptRoundStart LostLastGame
+	response bristleback_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response bristleback_flawless_victory
+{
+	speak "bristleback_flawless_victory" noscene 
+}
+
+Rule bristleback_flawless_victory_rule
+{
+	criteria Isbristleback ConceptRoundEnd Result_WinFlawless
+	response bristleback_flawless_victory
+}
+
+
+Response bristleback_decisive_victory
+{
+	speak "bristleback_decisive_victory" noscene 
+}
+
+Rule bristleback_decisive_victory_rule
+{
+	criteria Isbristleback ConceptRoundEnd Result_WinDecisive
+	response bristleback_decisive_victory
+}
+
+Response bristleback_narrow_victory
+{
+	speak "bristleback_narrow_victory" noscene 
+}
+
+Rule bristleback_narrow_victory_rule
+{
+	criteria Isbristleback ConceptRoundEnd Result_WinNarrow
+	response bristleback_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response bristleback_flawless_defeat
+{
+	speak "bristleback_flawless_defeat" noscene 
+}
+
+Rule bristleback_flawless_defeat_rule
+{
+	criteria Isbristleback ConceptRoundEnd Result_LoseFlawless
+	response bristleback_flawless_defeat
+}
+
+
+Response bristleback_decisive_defeat
+{
+	speak "bristleback_decisive_defeat" noscene 
+}
+
+Rule bristleback_decisive_defeat_rule
+{
+	criteria Isbristleback ConceptRoundEnd Result_LoseDecisive
+	response bristleback_decisive_defeat
+}
+
+Response bristleback_narrow_defeat
+{
+	speak "bristleback_narrow_defeat" noscene 
+}
+
+Rule bristleback_narrow_defeat_rule
+{
+	criteria Isbristleback ConceptRoundEnd Result_LoseNarrow
+	response bristleback_narrow_defeat
+}

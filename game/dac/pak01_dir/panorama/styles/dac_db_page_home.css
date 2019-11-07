@@ -479,6 +479,10 @@ DACHomePage
 	vertical-align: bottom;
 	margin-bottom: 20px;
 	background-color: gradient( linear, 0% 0%, 0% 100%, from( #348746 ), to( #699a61 ) );
+
+    animation-name: PulseAnimLite;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 
 .ReadyUpButton:hover
@@ -492,6 +496,7 @@ DACHomePage
 	font-weight: black;
 	letter-spacing: 2px;
 	vertical-align: middle;
+    horizontal-align: center;
 	color: #fff;
 	text-transform: uppercase;
 	max-width: 420px;
@@ -514,6 +519,7 @@ DACHomePage
 .IsLayoutSmallScreen .ReadyUpButton 
 {
 	ui-scale: 110%;
+    //width: 635px;
 }
 
 
@@ -525,6 +531,8 @@ DACHomePage
 	text-transform: uppercase;
 	transition-property: opacity;
 	transition-duration: .2s;
+    margin-left: safe-area-inset-left;
+    padding-left: 15px;
 	visibility: collapse;
 }
 
@@ -875,7 +883,7 @@ DACHomePage
 
 	background-color: gradient( linear, 0% 0%, 0% 100%, from(#1e2029), to(#0b0b0f) );
 	background-repeat: no-repeat;
-	box-shadow: #05051e 0px 0px 15px;
+	box-shadow: #000000 0px 0px 15px;
 	padding: safe-area-inset-top 0 safe-area-inset-bottom safe-area-inset-left;
 	transform: translateX( -460px );
 	transition-property: transform;
@@ -887,8 +895,6 @@ DACHomePage
 .HasParty .ShowSocialParty #SocialPanelContents
 {
 	padding-bottom: 20px;
-	box-shadow: #000000 0px 0px 0px;
-	//height: fit-children;
 	height: 80%;
 }
 
@@ -2062,4 +2068,21 @@ to
 
 	padding-top: 10px;
 	padding-bottom: 10px;
+}
+
+
+@keyframes 'PulseAnimLite'
+{
+    0%
+    {
+        brightness: .9;
+    }
+    50%
+    {
+        brightness: 1.2;
+    }   
+    100%
+    {
+        brightness: .9;
+    }
 }

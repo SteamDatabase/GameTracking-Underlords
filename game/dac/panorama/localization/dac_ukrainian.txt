@@ -204,6 +204,11 @@
 	"DAC_PartyInvite_AcceptInParty_Title"				"Долучитися до нової групи"
 	"DAC_PartyInvite_AcceptInParty_Body"				"Ви вже в групі. Бажаєте залишити поточну групу й долучитися до нової?"
 
+	"DAC_PartyTeam_NoTeamName"							"Команда без назви"
+	"DAC_PartyTeam_StatCasual"							"Перемоги у звичайних матчах"
+	"DAC_PartyTeam_StatRanked"							"Перемоги у рейтингових матчах"
+	"DAC_PartyTeam_TempLevel"							"Вискочень III рівня"
+
 	"DAC_Reconnect_IncompatibleVersionTitle"			"Не вдалося підключитися"
 	"DAC_Reconnect_IncompatibleVersionBody"				"Версія вашого клієнта не дає можливості підключитися до цього сервера. Таке може статися, якщо ви оновили свій клієнт під час гри або перейшли на платформу зі старішою версією."
 	
@@ -281,6 +286,8 @@
 	"DAC_Party_InviteUserText"							"Будь ласка, зачекайте"
 	"DAC_Party_SetBotDifficultyTitle"					"Зміна складності ботів"
 	"DAC_Party_SetBotDifficultyText"					"Будь ласка, зачекайте"
+	"DAC_Party_SetTeamNameTitle"						"Налаштування назви команди"
+	"DAC_Party_SetTeamNameText"							"Будь ласка, зачекайте"
 
 	"DAC_Party_Context_Invite"							"Запросити друзів"
 	"DAC_Party_Context_Open"							"Відкрити групу"
@@ -289,7 +296,14 @@
 	"DAC_Party_Context_ShowCode"						"Показати код групи"
 	"DAC_Party_Context_HideCode"						"Сховати код групи"
 
-
+	"DAC_SetTeamName_FailedToGetResponse"				"Не вдалося зв’язатися з мережею Dota Underlords. Спробуйте знову через кілька хвилин."
+	"DAC_RenameTeam_InternalError"						"Неочікувана внутрішня помилка сервера. Спробуйте знову пізніше."
+	"DAC_RenameTeam_Disabled"							"Перейменування команд тимчасово відключене для технічного обслуговування. Спробуйте знову пізніше."
+	"DAC_RenameTeam_TooBusy"							"Мережа Dota Underlords надто перевантажена, щоби виконати цю операцію. Спробуйте знову пізніше."
+	"DAC_RenameTeam_NotUnlocked"						"Щоб установити назву команди, потрібно спочатку здобути більше перемог"
+	"DAC_RenameTeam_InCooldown"							"Ви нещодавно змінили назву цієї команди. Будь ласка, трохи зачекайте, перш ніж знову перейменовувати її."
+	"DAC_RenameTeam_NameTooLong"						"Вказана назва команди задовга. Будь ласка, вкажіть коротшу назву."
+	   	 
 	"DAC_Party_KickedByTitle"							"Вас вилучили з групи"
 	"DAC_Party_KickedByText"							"{g:dac_persona:kicked_by_account} вилучає вас із групи"
 
@@ -376,7 +390,7 @@
 	"DAC_PlayerContextMenu_PartySwitchPlayer"			"Стати гравцем"
 	"DAC_PlayerContextMenu_PartySwitchSpectator"		"Стати глядачем"
 	"DAC_PlayerContextMenu_LoadCustomJail"				"Створити власну буцегарню"
-	"DAC_PlayerContextMenu_PartySelectTeam"				"Обрати команду"
+	"DAC_PlayerContextMenu_PartySelectTeam"				"Оберіть команду для режиму вдвох"
 	"DAC_PlayerContextMenu_PartyCreateWith"				"Створити групу"
 	"DAC_PlayerContextMenu_RemoveFriend"				"Вилучити друга"
 	"DAC_PlayerContextMenu_CancelFriendInvite"			"Скасувати запрошення в друзі"
@@ -386,6 +400,10 @@
 
 	"DAC_PartySelectTeam_Title"							"Обрати команду"
 	"DAC_PartySelectTeam_None"							"Очистити"
+
+	"DAC_PartyInfo_Ready"								"Готово"
+	"DAC_PartyInfo_NotReady"							"Не готово"
+	"DAC_PartyInfo_Spectator"							"(Глядач)"
 
 	"DAC_GenericError_RegionInfoNotProvided"			"Для гри в мережі ви маєте зареєструвати свій акаунт."
 	"DAC_GenericError_DurationControlBlocked"				"Ви перевищили максимально дозволений час для гри в мережі."
@@ -1267,6 +1285,7 @@
 	"DAC_PlayerState_BenchUnits"						"Резервні істоти"
 	"DAC_PlayerState_Synergies"							"Активні альянси"
 	"DAC_InGame_UnitCount"								"{i:gameStateUnitsDeployed}<span class=\"PopulationDivider\">/</span>{i:gameStateUnitsMaximum}"
+	"DAC_InGame_UnitCount_InfiniteLimit"				"{i:gameStateUnitsDeployed}"
 	"DAC_InGame_Zoo"									"Зоопарк"
 	"DAC_InGame_DamageType_Physical"					"Фізична"
 	"DAC_InGame_DamageType_Magical"						"Магічна"
@@ -1500,7 +1519,7 @@
 
 	"DAC_Synergy_Desc_Savage"		"Союзні дикі отримують +{s:bonus_damage_per_attack} додаткової шкоди за кожну завдану по ворогу атаку чи за використання ушкоджувальних чарів."
 
-	"DAC_Synergy_Desc_Demon"		"Коли демон чаклує заклинання, то на {s:silence_duration} с усі демони знемовлюються, а чаклувальник отримує +{s:bonus_pct_per_demon}% додаткової чистої шкоди за кожного союзного демона."
+	"DAC_Synergy_Desc_Demon"		"Коли демон чаклує заклинання, то союзні демони знемовлюються на {s:silence_duration} с, а чаклувальник отримує +{s:bonus_pct_per_demon}% додаткової абсолютної шкоди за кожного союзного демона."
 
 	"DAC_Synergy_Desc_Dragon"		"Усі дракони розблоковують додаткову драконову здібність."
 
@@ -1832,6 +1851,8 @@
 	"DAC_JoinParty_Title"		"Долучитися до групи"
 	"DAC_JoinParty_Prompt"		"Код групи"	
 	"DAC_Party_Invites"			"Запрошення до групи"
+	"DAC_RenameTeam_Title"		"Змінити назву команди"
+	"DAC_RenameTeam_Prompt"		"Назва команди"
 
 	"DAC_PartyMM_PlayersNotReady"					"Не всі гравці готові"
 	"DAC_PartyMM_TooFewPlayers"						"Замало гравців у групі"
@@ -2049,6 +2070,7 @@
 	"dac_settings_lowlatency_audio"			"Автовизначення затримки звуку"
 
 	"dac_settings_draw_unit_icons"			"Показувати піктограми істот"
+	"dac_settings_gameplay_camera_motion"		"Переміщувати камеру під час бою"
 
 	"dac_item_select_victory"				"Перемога!"
 	"dac_item_select_victory_subtitle"		"<span class='SubtitleHighlight'>Оберіть</span> свою нагороду:"
@@ -2091,7 +2113,7 @@
 
 	"dac_glossary_status_effects"			"Ефекти стану"
 	"dac_glossary_break"					"Переривання"
-	"dac_glossary_break_desc"				"Вимкнено пасивні здібності істоти, а також її альянси."
+	"dac_glossary_break_desc"				"Вимикає в істот пасивні ефекти від здібностей та предметів."
 	"dac_glossary_disarm"					"Роззброєння"
 	"dac_glossary_disarm_desc"				"Істота не може атакувати."	
 	"dac_glossary_fire"						"У вогні"
@@ -2296,7 +2318,7 @@
 	"dac_hotkey_enemies_down_desc"					"Перемкнути на поле ворога нижче."
 	"dac_hotkey_scroll_camera_up_desc" 				"Підняти камеру."
     "dac_hotkey_scroll_camera_down_desc" 			"Опустити камеру."
-    "dac_hotkey_reset_camera_position_desc" 		"Скинути положення камери"
+    "dac_hotkey_tilt_camera_modifier_desc" 			"Hold to adjust camera. Tap to reset."
 
 	"dac_hotkey_alliances_tab"						"Переглянути альянси."
 	"dac_hotkey_dps_tab"							"Переглянути шкоду."
@@ -2529,8 +2551,8 @@
 	"ECanMatchMake_Friendly_7"				"Групи не можуть шукати подібні матчі"
 	"ECanMatchMake_Friendly_8"				"Забагато гравців"
 
-	"dac_zoo_page1"			"Текст"
-	"dac_zoo_page2"			"Buttons"
+	"dac_zoo_page1"			"Сховані сторінки"
+	"dac_zoo_page2"			"Текст і кнопки"
 	"dac_zoo_page3"			"Альянси"
 	"dac_zoo_page4"			"Сповіщення"
 	"dac_zoo_page5"			"Мапа випробувань"
@@ -2740,7 +2762,7 @@
 	"DAC_Jail_Crime34"	"Змова із третім Міпо"
 	"DAC_Jail_Crime35"	"Небажання аплодувати чи свистіти на арені Ґрека"
 	"DAC_Jail_Crime36"	"Катання верхи без прав"
-	"DAC_Jail_Crime37"	"Носіння шкарпеток із сандалями"
+	"DAC_Jail_Crime37"	"Summoning Without A Stone"
 	"DAC_Jail_Crime38"	"Видавання себе за підлорда"
 	"DAC_Jail_Crime39"	"Полювання на громовиків"
 	"DAC_Jail_Crime40"	"Організація підпільних боїв жаденят"

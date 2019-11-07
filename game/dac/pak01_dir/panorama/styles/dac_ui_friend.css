@@ -49,7 +49,7 @@ DACFriend #FriendRichPresence Label
 
 .IsLayoutLargeScreen DACFriend #FriendRichPresence Label
 {
-	font-size: 15px;
+	font-size: 16px;
 }
 
 DACFriend #FriendImage
@@ -87,6 +87,7 @@ DACFriend #FriendAvatarImage, DACFriend #EmptyPanel
 #FriendImagePanel
 {
 	//box-shadow: #00000088 -3px -3px 6px 6px;    
+	vertical-align: center;
 }
 
 #HomeFriendsList #FriendImagePanel
@@ -315,6 +316,12 @@ DACFriend.SoloFriend #FriendImage
 	box-shadow: #00000030 0px 0px 15px;
 }
 
+#SocialPanelBody DACFriend.SoloFriend #FriendImage
+{
+	width: 60px;
+	height: 60px;
+}
+
 .IsLayoutSmallScreen DACFriend.SoloFriend #FriendImage
 {
 	width: 64px;
@@ -347,6 +354,16 @@ DACFriend.SoloFriend #FriendDetails
 	margin-left: 10px;
 	margin-right: 16px;
 	width: 100%;
+}
+
+#SocialPanelBody DACFriend.SoloFriend #FriendDetails
+{
+	height: 62px;
+}
+
+.IsLayoutSmallScreen #SocialPanelBody DACFriend.SoloFriend #FriendDetails
+{
+	height: 90px;
 }
 
 DACFriend.SoloFriend #FriendNameContainer
@@ -639,12 +656,70 @@ DACFriend.EditMode #FriendRichPresence Label
 }
 
 #InPartyGroup DACFriend #FriendRichPresence Label {
-	color: #9777ad;
+	//color: #9777ad;
+	color: #bbb;
 }
 
 #InPartyGroup .IsInvite DACFriend #FriendRichPresence Label {
-	color: #666666;
+	color: #bbb;
 }
+
+.FriendPartyInfo
+{
+	flow-children: right;
+	horizontal-align: left;
+	vertical-align: bottom;
+	margin-bottom: 1px;
+	visibility: collapse;
+}
+
+#SocialBodyParty .InParty .FriendPartyInfo
+{
+	visibility: visible;
+}
+
+.PartyInfoLabel
+{
+	font-size: 16px;
+	//font-weight: semi-bold;	
+	margin-right: 5px;
+}
+
+.IsLayoutSmallScreen .PartyInfoLabel
+{
+	font-size: 22px;
+	//font-weight: semi-bold;	
+	margin-right: 5px;
+}
+
+
+.PartyInfoLabel.Ready
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( #8dd083 ), to( #699a61 ) );
+	visibility: collapse;
+}
+
+.PartyInfoLabel.NotReady
+{
+	color: textDefault;
+	color: gradient( linear, 0% 0%, 0% 100%, from( #d08383 ), to( #b86c6c ) );
+	visibility: collapse;
+}
+
+.PartyInfoLabel.Spectator
+{
+	color: gradient( linear, 0% 0%, 0% 100%, from( #ccc ), to( #aaa ) );
+	visibility: collapse;
+}
+
+.IsReady .PartyInfoLabel.Ready,
+.IsNotReady .PartyInfoLabel.NotReady,
+.IsSpectator .PartyInfoLabel.Spectator
+{
+	visibility: visible;
+}
+
+
 
 
 

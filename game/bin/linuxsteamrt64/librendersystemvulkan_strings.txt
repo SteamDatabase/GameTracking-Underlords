@@ -1138,9 +1138,11 @@ $~VLc
 -vulkan_depth_texture_as_r32f
 -vulkan_descriptor_sets_per_pool
 -vulkan_diagnostic_checkpoints
+-vulkan_disable_amd_memory_overallocation_behavior
 -vulkan_disable_async_compute
 -vulkan_disable_device_coherent_allocations
 -vulkan_disable_ext_memory_budget
+-vulkan_disable_ext_memory_priority
 -vulkan_disable_ext_separate_stencil_usage
 -vulkan_disable_ext_validation_cache
 -vulkan_disable_external_subpass_dependency
@@ -2236,6 +2238,7 @@ Attempted to get underlying data type via member index for non-struct type.
 Attempted to update an image layout for an image that was not transitioned in this command buffer.
 Attempted to update invalid descriptor set.
 Attempting fallback GPU allocation in system memory.
+Attempting to create a Vulkan pipeline with too many descriptors, aborting pipeline creation.
 Attempting to create a Vulkan pipeline without a vertex shader bound, aborting pipeline creation.
 Attempting to load Steam Shader Pre-Cache database from %s
 Attempting to purge m_fencedResourceList.Count() = %d, m_pendingFencedResourceQueue.Count() = %d, nCurrentCmdBuffersAvailable = %d, nAllocatedCommandBuffers = %d
@@ -3147,6 +3150,7 @@ D$ M9
 D$ Y^H
 D$ ZY
 D$ ZYH
+D$ aviofA
 D$ f.
 D$ hH
 D$ nts
@@ -5147,136 +5151,151 @@ H;*twH
 H;,$I
 H;,$t
 H;,$}eI
-H;-"?=
-H;-OGe
-H;-{Dd
+H;-;Nd
+H;-IAd
+H;-_Kr
+H;-sJv
+H;-zGe
 H;0t|A
-H;5kRf
-H;=	ZV
-H;= 9Z
-H;= _h
-H;="H\
-H;="{\
-H;=#7\
-H;='.e
-H;=(/\
-H;=(5p
-H;=)+\
-H;=*,j
-H;=*Ma
-H;=*Ta
-H;=*i\
-H;=,]\
-H;=-a\
-H;=.	_
-H;=.!|
-H;=1$[
-H;=3P\
-H;=3xQ
-H;=4	K
-H;=42\
-H;=4xt
-H;=54t
-H;=5mU
-H;=6,A
-H;=6Ca
-H;=6D\
-H;=7`m
-H;=8	\
-H;=8*C
-H;=8:\
-H;=9,Z
-H;=:Ia
-H;=:Pa
-H;=<'Z
-H;=<e\
-H;==(\
-H;=>"K
-H;=>8n
-H;=>Dy
-H;=?`<
-H;=@yQ
-H;=A'u
-H;=B*s
-H;=BB@
-H;=B~\
-H;=C3H
-H;=DUy
-H;=D|o
-H;=F;\
-H;=FQo
-H;=FZi
-H;=G6C
-H;=GEx
-H;=Gga
-H;=Gpo
-H;=JLa
-H;=JSa
+H;5+\f
+H;5t!p
+H;=	,
+H;= HX
+H;= f\
+H;=!>t
+H;="YF
+H;=$"|
+H;=$6_
+H;=%r]
+H;=%}\
+H;=&6i
+H;=(Fa
+H;=* \
+H;=*3[
+H;=*Ua
+H;=*\a
+H;=,U`
+H;=,n\
+H;=-!|
+H;=-(j
+H;=-ba
+H;=.Y\
+H;=.hi
+H;=/*
+H;=/@\
+H;=1Q\
+H;=2+u
+H;=4/u
+H;=4;_
+H;=78\
+H;=7\`
+H;=8>\
+H;=9;Z
+H;=::\
+H;=:>t
+H;=:Qa
+H;=:Xa
+H;=<$|
+H;=<*_
+H;=<F\
+H;=<`\
+H;=?n<
+H;=BRf
+H;=Bd\
+H;=Bx\
+H;=D"\
+H;=EoS
+H;=F)
+H;=F2A
+H;=G0\
+H;=H/u
+H;=H_a
+H;=H`a
+H;=I$\
+H;=Ica
+H;=J7t
+H;=JB\
+H;=JP\
+H;=JTa
 H;=J[a
-H;=KGC
-H;=L!\
-H;=L`m
-H;=M#d
-H;=M[\
-H;=NW\
-H;=Qj`
-H;=QoF
-H;=R`\
-H;=S'\
-H;=TCg
-H;=TTy
-H;=U t
-H;=U~u
-H;=X<Z
-H;=XG
-H;=Z!u
-H;=ZHa
-H;=ZOa
-H;=[9\
-H;=[BF
-H;=[C\
-H;=`>X
-H;=`\\
-H;=`vX
-H;=a4t
-H;=bOF
-H;=bz\
-H;=c{o
-H;=c}`
-H;=d,_
-H;=eh]
-H;=es\
-H;=f,i
-H;=h<a
-H;=j)[
-H;=jKa
-H;=jRa
-H;=kA
-H;=lK`
-H;=ld\
-H;=mXa
-H;=nO\
-H;=n^i
-H;=o6\
-H;=o~X
-H;=qG\
-H;=r!u
-H;=t%u
-H;=t1_
-H;=w.\
-H;=wR`
-H;=x4\
-H;=y1Z
-H;=yxZ
-H;=z0\
-H;=z4t
-H;=zGa
-H;=zNa
-H;=| _
-H;=|<\
-H;=|V\
-H;=|}U
-H;=~	_
+H;=K,u
+H;=KXZ
+H;=M%\
+H;=M/G
+H;=MsP
+H;=N	D
+H;=N;\
+H;=Ni\
+H;=OR[
+H;=P[o
+H;=Paa
+H;=Q5t
+H;=QI_
+H;=Q}|
+H;=VL\
+H;=W&[
+H;=W*\
+H;=Y+o
+H;=YzZ
+H;=ZWa
+H;=Z^a
+H;=[*H
+H;=[vX
+H;=\3\
+H;=\jh
+H;=\xM
+H;=]ti
+H;=^m\
+H;=_ei
+H;=_fa
+H;=`7t
+H;=a(\
+H;=a)t
+H;=aJ_
+H;=aj<
+H;=b'y
+H;=b]\
+H;=cU`
+H;=ckE
+H;=eR[
+H;=gG\
+H;=iX\
+H;=jMv
+H;=jO\
+H;=jSa
+H;=jWP
+H;=jZa
+H;=jda
+H;=jm^
+H;=k-u
+H;=kBf
+H;=k[\
+H;=ktf
+H;=l`Z
+H;=nlV
+H;=o4C
+H;=od<
+H;=q=u
+H;=qK_
+H;=qL|
+H;=t4_
+H;=t?Z
+H;=uCk
+H;=v;d
+H;=w-\
+H;=w?\
+H;=x,\
+H;=y;^
+H;=zVa
+H;=zZo
+H;=z\\
+H;=z]a
+H;={$i
+H;={Tc
+H;={_\
+H;=}S
+H;=~)i
+H;=~c\
 H;@ t:H
 H;@Pt;H
 H;A r
@@ -6223,20 +6242,19 @@ L9|$(
 L9|$8
 L9|$8H
 L;$$H
-L;%HfS
-L;%j=x
-L;-1Q=
-L;-:%o
-L;-h7k
+L;%*Gx
+L;%Zne
+L;%qEx
+L;-(Ak
+L;-ZZ=
 L;0tM
 L;4$t
-L;5$~y
-L;5XDm
-L;5mKx
-L;='Xm
-L;=Utr
-L;=Xdf
-L;=}ge
+L;5-Ux
+L;5KBk
+L;5TWx
+L;==qe
+L;=\6r
+L;=rwr
 L;C(t;M
 L;D$ tBI
 L;d$8
@@ -6859,7 +6877,7 @@ P ~ J
 P$9U$t
 P$A;S$
 P(H9X0
-P(H;-<
+P(H;-
 P(Lc}
 P0H+P(f
 P0H;P8
@@ -7640,6 +7658,8 @@ ServerUploadGameStats001
 SetAssociatedThreadIndex
 SetConstantBufferDataInternal
 SetUserEventStatus
+Shader '%s' has more than the maximum number of textures per stage (has: %d MAX: %d)
+Shader '%s' has more than the maximum number of uniform blocks per stage (has: %d MAX: %d)
 Shader file version mismatch.  Expected (%d), Got (%d).
 Shader module
 Shader version: 
@@ -8591,6 +8611,8 @@ VK INFO %s %llu:%d: %s
 VK PERF %s %llu:%d: %s
 VK WARNING %s %llu:%d: %s
 VKRenderThread
+VK_AMD_mI
+VK_AMD_memory_overallocation_behavior
 VK_ERROR_DEVICE_LOST
 VK_ERROR_EXTENSION_NOT_PRESENT
 VK_ERROR_FORMAT_NOT_SUPPORTED
@@ -9222,7 +9244,7 @@ Z~$|7
 ]A\A]A^H
 ]A\A]A^L
 ]A]L9
-^%~TG
+^%>VG
 ^@I+^8H
 ^AXH9
 ^IcL$ Ic
@@ -10625,6 +10647,8 @@ else statement
 ema H
 emitFromWorld
 emory_buI
+emory_ovI
+emory_prI
 enable_limit
 encodingTry.m_fError < 3.40282346638528859812e+38F
 endInvocationInterlockARB
@@ -10642,6 +10666,7 @@ eparate_I
 equal
 equal_spacing
 equality_expression
+erallocaI
 error in user chunk
 error: 
 escriptoI
@@ -11784,6 +11809,7 @@ invert_orientation
 invocation operation
 invocations
 invocations = 
+ioriD;
 is a matrix with stride 
 is an improperly straddling vector at offset 
 is missing an Offset decoration
@@ -12682,7 +12708,7 @@ overloaded functions must have the same parameter storage qualifiers for argumen
 overloaded functions must have the same return type
 override_coverage
 p D8r rK
-p H;-
+p H;-d+o
 p(H;p0H
 p0H+p(I
 p8H+p0H
@@ -12695,7 +12721,7 @@ p@H9u@u
 p@H;pP
 pAvkCreateBufferView( m_pDeviceVulkan, &bufferViewCreateInfo, NULL, &m_pTexelBufferView )
 pExt->vkCreateDescriptorUpdateTemplateKHR( m_pDeviceVulkan, &descriptorUpdateTemplateCreateInfo, NULL, &pPipelineOut->m_pDescriptorUpdateTemplate )
-pHH;5`
+pHH;5  q
 pNext
 pNext in VkApplicationInfo not supported.
 pNext in VkComputePipelineCreateInfo not supported.
@@ -12840,7 +12866,7 @@ qualifier has no effect on non-output parameters
 queued
 r	9A$
 r	9B$
-r H;5
+r H;5gT=
 r-wQ1
 r11f_g11f_b10f
 r16_snorm
@@ -13443,7 +13469,7 @@ t	[A\]
 t	[]A\
 t	[]A\A]
 t 8\$`
-t H;=I
+t H;=	
 t H;r r
 t Hcw
 t [A\A]A^]
@@ -13821,6 +13847,7 @@ tiH;X v
 tiles
 timeAMD
 tionA
+tion_behI
 tmE;>thH
 to be the reverse of those of Result Type
 to storage image
@@ -13931,11 +13958,11 @@ u32vec4
 u5AUATUSH
 u64( %lld = 0x%llX )
 u8H;D$@
-u<L;%
+u<L;%h
 u?H9G8L
 u@L+u8L
 uAL;%
-uAL;%z
+uAL;%:
 uKH9G8L
 uLH9G8L
 uMulExtended
@@ -14185,6 +14212,7 @@ v(I9u
 v0AXAYM
 v0XZM
 v8H;5
+v8H;5K
 v8L;v@
 v;<Htg<Xtc<7
 v@H+w8H
@@ -14195,7 +14223,7 @@ vAUATUSI
 vEI9] t
 vLD;6|
 vWI9l$ t
-vXH;5
+vXH;5O1j
 v`ATUI
 validation failed
 validation.cache
@@ -14905,7 +14933,7 @@ vulkan/rendercontextvulkan.cpp(499):
 vulkan/rendercontextvulkan.cpp(512): 
 vulkan/renderdevicevulkan.cpp
 vulkan/renderthreadvulkan.cpp(194): Error! NULL texture pointer sent to OnReadPixels()!
-vulkan/texturevulkan.cpp(1451): 
+vulkan/texturevulkan.cpp(1446): 
 vulkan1.1spv1.4
 vulkan_additional_semaphores
 vulkan_amd_timestamp_workaround
@@ -14988,14 +15016,14 @@ x(u	M
 x09y0
 x09y0s
 x09y0w&
-x4H;=]Tv
+x4H;=
 x: t,
 x: t2L
 x: t_
 x: tgL
 x:!tCL
 x@HcO
-xEH;=
+xEH;=N
 xHc_ H
 xP#t\
 x[A\A]A^A_]

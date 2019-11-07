@@ -21,6 +21,7 @@
 	dedicated
 	enum_type
 	extension
+	framerate
 	host_loss
 	host_name
 	is_replay
@@ -653,6 +654,11 @@ $[A\]
 .ENetworkDisconnectionReason"
 .ESplitScreenMessageType
 .NETWORK_DISCONNECT_REQUEST_HOSTSTATE_HLTVRELAY
+.NetBandwithGraph
+.NetCmdInfo*|
+.NetGraphMsgBits
+.NetGraphMsgBits"O
+.NetPacketStatus_t:
 .PLACEHOLDER_VALUE
 .PrefetchType"5
 .ProtoFlattenedSerializer_t
@@ -706,6 +712,7 @@ $[A\]
 10CMsg_CVars
 10ConCommand
 10IAppSystem
+10NetCmdInfo
 11CEncodeInfo
 11CNETMsg_NOP
 11INetChannel
@@ -719,6 +726,7 @@ $[A\]
 12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE
 12CSVCMsg_Menu
 12CThreadEvent
+12NetGraphData
 13CCallbackBase
 13CCallbackImplILi704EE
 13CNetMessagePBILi3E23CNETMsg_SplitScreenUserL13SignonGroup_t11EL19NetChannelBufType_t1ELb0EE
@@ -749,6 +757,7 @@ $[A\]
 15CTier2AppSystemI14INetworkSystemLi0EE
 15CTier2AppSystemI19INetworkSystemUtilsLi0EE
 15INetChannelInfo
+15NetGraphMsgBits
 15SignedPayload_t
 16CDefaultAccessor
 16CNetworkMessages
@@ -760,6 +769,7 @@ $[A\]
 16CSerializerStack
 16ICommandCallback
 16INetworkMessages
+16NetBandwithGraph
 17CCLCMsg_VoiceData
 17CNETMsg_SetConVar
 17CNETMsg_StringCmd
@@ -774,6 +784,9 @@ $[A\]
 18CNETMsg_Disconnect
 18CSVCMsg_HLTVStatus
 18CSVCMsg_ServerInfo
+18CVConsoleMessagePBI12NetGraphDataE
+18CVConsoleMessagePBI18NetGraphGroupNamesE
+18NetGraphGroupNames
 19CBidirMsg_RelayInfo
 19CCLCMsg_BaselineAck
 19CNETMsg_SignonState
@@ -785,11 +798,13 @@ $[A\]
 19INetworkSystemUtils
 19ISerializedEntities
 19NetMessagePacketEnd
+19vcon_NetGraphData_t
 2 .CBidirMsg_RelayInfo.Operation_t
 2 .ProtoFlattenedSerializerField_t"!
 2!.CSVCMsg_GameSessionConfiguration
 2#.CSVCMsgList_UserMessages.usermsg_t
 2#.CSVCMsg_GameEventList.descriptor_t
+2#.NetGraphGroupNames.NetGraphGroup_t
 2#GameUI_Disconnect_RemoteProblem_TimeoutConnecting
 20CCLCMsg_CmdKeyValues
 20CCLCMsg_FileCRCCheck
@@ -841,6 +856,7 @@ $[A\]
 25CSVCMsg_ClassInfo_class_t
 25CSVCMsg_CreateStringTable
 25CSVCMsg_UpdateStringTable
+25vcon_NetGraphGroupNames_t
 26CCLCMsg_SplitPlayerConnect
 26CSVCMsg_Sounds_sounddata_t
 26ICommandCompletionCallback
@@ -873,6 +889,7 @@ $[A\]
 34CNETMsg_SpawnGroup_SetCreationTick
 34CSVCMsgList_UserMessages_usermsg_t
 34CSVCMsg_GameEventList_descriptor_t
+34NetGraphGroupNames_NetGraphGroup_t
 34NetMessageSplitscreenUserChanged_t
 38Source2SteamNetworkingSocketsCallbacks
 4$HcE
@@ -1072,7 +1089,6 @@ AWAVE1
 AWAVH
 AWAVI
 AWAVL
-AWAVLc
 AWAVM
 AWAVMc
 AYAZt
@@ -1637,6 +1653,8 @@ D9sp~rH
 D9{X~~H
 D:"u;
 D;!ttHc
+D;%mWE
+D;%xGE
 D;+t*
 D;c D
 D;c I
@@ -1789,7 +1807,6 @@ FATAL
 FATAL ERROR: unable to register all schema data: %s
 FCVAR_NEVER_AS_STRING
 FP~BH
-FU]uer
 Failed to install message handler for message %s in channel %s!
 Failed to open P2P network socket '%s'
 Failed to open UDP network socket '%s'
@@ -1932,38 +1949,33 @@ H9J(t
 H9Q(H
 H9Q(t
 H;*twH
-H;5	@J
-H;5	rJ
-H;5/\J
-H;58uL
-H;5PBJ
-H;5YHJ
-H;5Y}L
-H;5`tJ
-H;5hrL
-H;5iwJ
-H;=(#K
-H;=(2K
-H;=+GL
-H;=0*L
-H;=0IL
-H;=33L
-H;=8"K
-H;=81K
-H;=<VL
-H;=BLL
-H;=F(L
-H;=H!K
-H;=H0K
-H;=J9M
-H;=X K
-H;=X/K
-H;=Y)L
-H;=[*L
-H;=b3L
-H;=h.K
-H;=mLL
-H;=x-K
+H;="'E
+H;=#n@
+H;=&_K
+H;=',M
+H;=)>J
+H;=,=M
+H;=2|K
+H;=3iJ
+H;=CYJ
+H;=GyK
+H;=Q_K
+H;=R%E
+H;=R,M
+H;=RbC
+H;=TRJ
+H;=Z(J
+H;=[>J
+H;=b3K
+H;=g}K
+H;=ryK
+H;=sZJ
+H;=x+B
+H;=z&J
+H;={)B
+H;={*B
+H;=|#J
+H;=|_K
 H;r(H
 H[A\A]A^A_]
 H[A\A]]
@@ -2021,7 +2033,9 @@ IcL$@
 IcO H
 IcT$$A
 IcU09
+IcV I
 IcV(J
+IcV8I
 Ic^(A;]
 IdempotencyLevel
 If set, only net_showmsg spew for data inbound on this socket name e.g. client, server, etc.
@@ -2079,7 +2093,7 @@ KhJcD!
 L$ H9
 L$ IcG
 L$PfA
-L$pE1
+L$lE1
 LABEL_OPTIONAL
 LABEL_REPEATED
 LABEL_REQUIRED
@@ -2087,6 +2101,7 @@ LITE_RUNTIME
 LOG_GENERAL
 Label
 Lc#D;c
+Lc%oGE
 Lc'E)
 Lc/E)
 Lc7E)
@@ -2259,13 +2274,20 @@ Need space between number and identifier.
 Net graph %s
 Net packet timing values don't make sense.  Send time=%llu, Recv time=%llu, Now=%llu, Peer delay=%d
 Net status for host %s:
+NetBandwithGraph
 NetChan %s ProcessMessages has taken more than %dms to process %d messages.  (Current message type: '%s')
 NetChannel '%s':
+NetCmdInfo
+NetGraphData
+NetGraphGroupNames
+NetGraphGroup_t
+NetGraphMsgBits
 NetMessage '%s' still using auto-assigned, has to generate id from name CUtlStringToken hashcode = %d
 NetMessageConnectionClosed
 NetMessageConnectionCrashed
 NetMessagePacketEndB
 NetMessagePacketStart"
+NetPacketStatus_t
 NetSteamConn
 Network System Initialized
 Network field tried to use a priority that has not been registered!
@@ -2318,10 +2340,14 @@ Order,'From','To',Bits
 Ordered constructor wrapped type has no default constructor.
 Overrides IP for multihomed hosts
 P IcG
+PACKET_STATUS_COUNT
+PACKET_STATUS_DROPPED
+PACKET_STATUS_INVALID
+PACKET_STATUS_NORMAL
 PERMISSION_DENIED
 PHcG8H
 PLACEHOLDER_VALUE
-PRGNL
+PRGNH
 PT~LH
 PXfD;`
 P[A\A]A^]
@@ -2683,7 +2709,6 @@ This shouldn't be called if all the sizes are equal.
 ThreadGetCurrentId
 ThreadSleep
 Toggle field path tracing to file
-Too many network groups [%d], increase size of netbandwidthgraph_t::MAX_NETWORK_GROUPS [%d]
 Too many proxies for serializer %s.
 ToolFramework2_002
 ToolGameSimulationDispatcher_001
@@ -2701,7 +2726,7 @@ U AXAY
 UDP -> %s: sz=%5i seq=%5i ack=%5i rel=%1i tm=%8.3f
 UDP -> %s: sz=%i OOB (%d)
 UDP <- %s: sz=%5i seq=%5i ack=%5i rel=%1i tm=%8.3f
-UDP <- %s: sz=%i OOB (%d) wire=%i
+UDP <- %s: sz=%i OOB (%d)
 UIcL$@Ic
 UNAUTHENTICATED
 UNAVAILABLE
@@ -2720,7 +2745,6 @@ Unknown enumeration value of "
 Unrecognized syntax: 
 Unsupported
 Unsupported: type mismatch
-UpdateNetGraph
 Usage: sdr <setting> [<value>]
 Use lz compression on game packets.
 Use network sockets layer even for listen server local player's packets (multiplayer only).
@@ -3110,9 +3134,15 @@ available
 avg_data_in
 avg_data_out
 avg_latency_in
+avg_latency_local
+avg_latency_net
 avg_latency_out
+avg_latency_peer
 avg_loss_in
 avg_loss_out
+avg_packet_in
+avg_packet_loss
+avg_packet_out
 avg_packets_in
 avg_packets_out
 bPayloadEncrypted
@@ -3168,6 +3198,7 @@ clc_SplitPlayerConnect
 clc_SplitPlayerDisconnect
 clc_VoiceData
 client
+client_interpolation_amount
 client_streaming
 clientbitcount
 clientcmd_can_execute
@@ -3175,8 +3206,11 @@ clients
 close
 close() failed: 
 closed by peer
+cmd_info
+cmdrate
 code_filename
 codec
+color
 command
 command_number
 compressed 
@@ -3320,6 +3354,7 @@ gamemode
 generated_proto/linuxsteamrt64/netmessages.pb.cc
 generated_proto/linuxsteamrt64/networkbasetypes.pb.cc
 generated_proto/linuxsteamrt64/networksystem_protomessages.pb.cc
+generated_proto/linuxsteamrt64/vconsole_shared.pb.cc
 generic
 gethostbyname
 gethostname
@@ -3327,7 +3362,10 @@ getsockname
 gfffAUATSH
 gfffffffH
 go_package
+graph
 group
+group_index
+group_names
 h[A\A]A^A_]
 h[A\A]]
 high_value
@@ -3348,6 +3386,9 @@ import weak "$0";
 include
 including
 incoming
+incoming_data_bytespersecond
+incoming_sequence
+incoming_sequence_start
 index < 10
 inet_addr
 infinity
@@ -3393,6 +3434,7 @@ l$ D;(~
 label
 landmarkname
 last_cmd_number
+latency_seconds
 ld-linux-x86-64.so.2
 leading_comments
 leading_detached_comments
@@ -3458,6 +3500,8 @@ min_client_limit
 model_index
 msg_data
 msg_type
+msgbits_reliable
+msgbits_unreliable
 nIndex != m_priorityToOrderMap.InvalidIndex()
 nPriority != NETWORK_FIELD_CHANGE_DEFAULT_PRIORITY
 nTries < 10000000
@@ -3570,6 +3614,9 @@ origin_z
 originalSender
 out of order
 outgoing
+outgoing_data_bytespersecond
+outgoing_sequence
+outgoing_sequence_start
 output specified is NULL
 output_type
 pDIcw
@@ -3578,6 +3625,7 @@ package
 package $0;
 packed
 packet_loss_pct
+packet_status
 parentnamefixup
 parse
 parsing
@@ -3645,8 +3693,10 @@ recipientList
 registered: 
 relative
 reliable
+reliable_bits
 reliable_sound
 remote_addr
+render_interpolation_fraction
 repeated
 replicated
 required
@@ -3656,26 +3706,24 @@ resource_type
 rnd_down
 rnd_up
 s H;5
-s H;5(uJ
-s H;5@iL
-s H;5Y
-s H;5h
-s H;5huL
-s H;5xiJ
+s H;5@
+s H;5X
+s H;5q
 s(H;5
-s(H;5piL
+s(H;5-
 s0H;5
-s0H;54_L
-s0H;54eL
-s0H;5M
+s0H;5L
+s0H;5e
 s1Hc@
 s1_mapname
 s8H;5
-s8H;5\eL
+s8H;5t
 s@H;5
+s@H;5 
+s@H;50
 sHH;5
-sHH;5-yL
-sPH;5
+sHH;5E
+sPH;5"
 sample_rate
 savegamefilename
 savegamename
@@ -3703,6 +3751,8 @@ serializing
 server
 server_can_execute
 server_count
+server_framerate
+server_framerate_stddev
 server_ip_address
 server_streaming
 service
@@ -3810,9 +3860,9 @@ t$HcW
 t%D;-
 t%Hcs8
 t&IcN
-t';58
-t(D9-/
-t);=BH+
+t';5XHI
+t(D9-
+t);=BL+
 t.HcC H
 t.HcC(H
 t.HcK8H
@@ -3824,7 +3874,13 @@ t0HcC$H
 t0HcC(H
 t0HcG H
 t0HcG(H
+t0IcOlH
+t0IcOpH
+t0IcOtH
+t1HcG
+t1HcKTH
 t1HcO8H
+t1HcOHH
 t1HcOPH
 t2HcC$H
 t2HcC(H
@@ -3833,6 +3889,7 @@ t2HcG
 t2HcG H
 t2HcK$H
 t2HcK0H
+t2HcKLH
 t2HcO
 t2HcO H
 t2HcO4H
@@ -3868,6 +3925,7 @@ t7HcOLH
 t7HcOPH
 t7IcMdH
 t7IcMhH
+t7IcOhH
 t7Ic|$LH
 t7[A\A]]
 t8HcG H
@@ -3907,7 +3965,8 @@ type() == TYPE_VARINT
 type.googleapis.com/
 type.googleprod.com/
 tzHcU
-tzLc={
+tzLc=
+t{Icv 
 t}HcU
 t}L9}
 u	[A\A]A^]
@@ -3939,9 +3998,11 @@ uncompressed_size
 uninterpreted_option
 unknown
 unreliable
+unreliable_bits
 uo[A\]
 update_baseline
 updated_entries
+updaterate
 uptime
 usage:  net_spewserializer <name>
 user_data_fixed_size
@@ -3964,6 +4025,8 @@ var_encoder_sym
 var_name
 var_name_sym
 var_type_sym
+vconsole_shared.proto
+vconsole_shared.proto"~
 vector::_M_fill_insert
 vector::_M_insert_aux
 vector::reserve
@@ -3976,6 +4039,7 @@ voice_data
 voice_xsend_debug
 volume
 w AUL
+w0ATL
 w0AUL
 warning
 was deleted
@@ -3994,7 +4058,7 @@ x$A9}
 x@HcO
 xBHcO
 xEHcE
-xLcftdH
+xLcfpdH
 xRHcW
 x[A\A]A^A_]
 x[A\A]]

@@ -59,12 +59,20 @@ DACFriend #FriendImage
 	height: 100%;
 }
 
-DACFriend #FriendAvatarImage, DACFriend #EmptyPanel
+DACFriend #FriendAvatarImage, 
+DACFriend #EmptyPanel
 {
 	width: 100%;
 	height: 100%;
+	ui-scale: 120%;
 	vertical-align: bottom;
 	border: 1px solid black;
+}
+
+#FriendAvatarImage #AvatarImage
+{
+	width: 150%;
+	height: 100%;
 }
 
 #FriendNickname
@@ -110,6 +118,7 @@ DACFriend #FriendAvatarImage, DACFriend #EmptyPanel
 	//box-shadow: #666666 -2px -2px 4px 4px;
 }
 
+
 DACFriend #EmptyPanel
 {
 	background-image: url("s2r://panorama/images/control_icons/plus_png.vtex");
@@ -125,6 +134,25 @@ DACFriend #EmptyPanel:hover
 {
 	wash-color: #CCCCCC;
 }
+
+
+.MobileIcon {
+    vertical-align: bottom;
+    horizontal-align: right;
+    width: 18px;
+    height: 30px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    wash-color: white;
+    background-size: 100% 100%;
+    background-image: url("s2r://panorama/images/leaderboard/icon_mobile_psd.vtex");
+    visibility: collapse;
+}
+
+#SocialBodyParty .IsMobile .MobileIcon {
+    visibility: visible;
+}
+
 
 DACFriend #EmptyPanel:active
 {
@@ -300,7 +328,7 @@ DACFriend.SoloFriend
 	//padding-left: 8px;
 	margin-top: 0px;
 	margin-bottom: 0px;
-	margin-left: 0px;
+	margin-left: 10px;
 	margin-right: 0px;
 
 	background-color: #343e4400;
@@ -322,13 +350,20 @@ DACFriend.SoloFriend #FriendImage
 	height: 60px;
 }
 
-.IsLayoutSmallScreen DACFriend.SoloFriend #FriendImage
+
+.IsLayoutSmallScreen #SocialPanelBody DACFriend.SoloFriend #FriendImage
 {
-	width: 64px;
-	height: 64px;
-	box-shadow: inset #000000 0px 0px 5px 0px;
+	//width: 64px;
+	//height: 64px;
+	//box-shadow: inset #000000 0px 0px 5px 0px;
+	width: 80px;
+	height: 80px;
 }
 
+#SocialPanelBody .IsReady DACFriend.SoloFriend #FriendImage
+{
+	visibility: collapse;
+}
 
 .HomeFriendsListContainer DACFriend.SoloFriend #FriendImage
 {

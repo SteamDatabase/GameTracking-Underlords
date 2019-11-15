@@ -86,6 +86,7 @@
 	Waiting for lock %s from: %s line %d
 	You must construct it with ORDERED_CONSTRUCT macro in the dependency resolution function.
 	[%4d]: %s%s
+	[A\A]A^]
 	[A^]
 	accountid
 	action_id
@@ -188,6 +189,7 @@
 	sample_id
 	schema_kv
 	sender_id
+	set_flags
 	shardsize
 	signature
 	snapshots
@@ -610,6 +612,7 @@
 !k_EMsgClientToGCGetRegionModeInfo
 !k_EMsgClientToGCLookupAccountName
 !k_EMsgClientToGCPartyJoinResponse
+!k_EMsgClientToServerLoadShareCode
 !k_EMsgGCClientDisplayNotification
 !k_EMsgGCRemoveItemGifterAccountId
 !k_EMsgGCRequestCrateItemsResponse
@@ -1008,6 +1011,7 @@ $CMsgClientToGCDevForceMatchFormation"F
 $CMsgClientToGCEventChallengeProgress
 $CMsgClientToGCEventEquipVirtualItems
 $CMsgClientToGCGetFriendCodesResponse
+$CMsgClientToGCModifyGACFlagsResponse
 $CMsgClientToServerUpvoteNotification
 $CMsgEconPlayerStrangeCountAdjustment
 $CMsgGCGetPartnerAccountLink_Response
@@ -1641,6 +1645,7 @@ $zjuh
 &k_EMsgClientToGCEventChallengeProgress
 &k_EMsgClientToGCEventEquipVirtualItems
 &k_EMsgClientToGCGetFriendCodesResponse
+&k_EMsgClientToGCModifyGACFlagsResponse
 &k_EMsgClientToServerUpvoteNotification
 &k_EMsgGCAddSocketToBaseItem_DEPRECATED
 &k_EMsgGCDev_UnlockAllItemStylesRequest
@@ -1726,21 +1731,20 @@ $zjuh
 (#GameUI_Disconnect_LoopLevelLoadActivate
 (#GameUI_Disconnect_RemoteProblem_BadCert
 (#GameUI_Disconnect_RemoteProblem_Timeout
-(%	DS
-(%,US
-(%/gS
 (%0.2f) %s
 (%0.2f): %s
-(%0MS
-(%QRS
+(%8@O
 (%d %d %d %d)
 (%d) Name: %s (%s)
 (%f, %f, %f)
 (%g %g %g %g)
 (%g %g %g)
 (%g %g)
+(%g;O
 (*%s*), 
+(-aTv
 (0x%08X)'??'
+(5$A1
 (ACTIVE)
 (C0E1
 (CCommunity_GetClanAnnouncements_Response
@@ -2143,13 +2147,12 @@ $zjuh
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
 .%0*llu
-.%7%\
-.%I,`
+.%9,`
+.%G)\
 .%llu
-.%~o^
 .(z!u
 .+z|uz
-.-cKn
+.-sOn
 ...<truncated>...
 ../../game/shared/dac/dac_shareddefs.h
 ../../public/entity2/concreteentitylist.h
@@ -2174,8 +2177,8 @@ $zjuh
 ../public/tier1/utlsortvector.h
 ../public/tier2/fieldpath.h
 .2zZuXA
-.5+!<
-.5dKn
+.54Kn
+.5]<Y
 .8z%u#
 .:z-u+
 .>()09
@@ -2559,7 +2562,6 @@ $zjuh
 0E;.|
 0GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW
 0H31t
-0H;=5Y
 0L;` 
 0NETWORK_DISCONNECT_REJECT_SERVERCDKEYAUTHINVALID
 0[A\A]A^]
@@ -3503,6 +3505,7 @@ $zjuh
 16CModifierFactoryI30CDAC_Modifier_WalkBackTeleportE
 16CModifierFactoryI30CDAC_Modifier_WarlockLifestealE
 16CModifierFactoryI30CDAC_Modifier_WarriorsNeverDieE
+16CModifierFactoryI30CDAC_Modifier_Weaver_AlertnessE
 16CModifierFactoryI30CDAC_Modifier_Wisp_Tether_PullE
 16CModifierFactoryI30CDAC_Modifier_WitchDoctor_CaskE
 16CModifierFactoryI30CDAC_Modifier__BonusManaPerHitE
@@ -4364,6 +4367,7 @@ $zjuh
 2..CUserMsg_ParticleManager.UpdateParticleOrient
 2/.CMsgClientToGCGetFriendCodesResponse.EResponse
 2/.CMsgClientToGCHandleItemPurchase.StoreInfo_iOS
+2/.CMsgClientToGCModifyGACFlagsResponse.EResponse"R
 2/.CMsgLookupMultipleAccountNamesResponse.Account
 2/.CMsgPrivatePlayerState.ItemChoiceReward.Choice
 20.CMsgClientToGCAssociateDeviceResponse.EResponse"w
@@ -4608,6 +4612,7 @@ $zjuh
 21CServerMessageHandlerIL16EDACGameMessages23E38CMsgClientToServerLocalPlayerInventoryE
 21CServerMessageHandlerIL16EDACGameMessages25E21CMsgPlayerPreferencesE
 21CServerMessageHandlerIL16EDACGameMessages27E37CMsgClientToServerTeammateDuosMessageE
+21CServerMessageHandlerIL16EDACGameMessages31E31CMsgClientToServerLoadShareCodeE
 21CServerMessageHandlerIL16EDACGameMessages5E27CMsgClientSetDebugNetBufferE
 21CServerMessageHandlerIL16EDACGameMessages6E15CMsgPlayerOrderE
 21CServerRagdollTrigger
@@ -5580,6 +5585,7 @@ $zjuh
 28CMsgAMAddFreeLicenseResponse
 28CMsgClientConnectionComplete
 28CMsgClientToGCGetFriendCodes
+28CMsgClientToGCModifyGACFlags
 28CMsgCombatEvent_AttackEvaded
 28CMsgCombatEvent_AttackMissed
 28CMsgCombatEvent_CancelAttack
@@ -5810,6 +5816,7 @@ $zjuh
 30CDAC_Modifier_WalkBackTeleport
 30CDAC_Modifier_WarlockLifesteal
 30CDAC_Modifier_WarriorsNeverDie
+30CDAC_Modifier_Weaver_Alertness
 30CDAC_Modifier_Wisp_Tether_Pull
 30CDAC_Modifier_WitchDoctor_Cask
 30CDAC_Modifier__BonusManaPerHit
@@ -5966,6 +5973,7 @@ $zjuh
 31CMsgClientToGCGetRegionModeInfo
 31CMsgClientToGCLookupAccountName
 31CMsgClientToGCPartyJoinResponse
+31CMsgClientToServerLoadShareCode
 31CMsgCombatEvent_ModifierDestroy
 31CMsgEventClaimRewards_Challenge
 31CMsgGCClientDisplayNotification
@@ -6341,6 +6349,7 @@ $zjuh
 36CMsgClientToGCEventChallengeProgress
 36CMsgClientToGCEventEquipVirtualItems
 36CMsgClientToGCGetFriendCodesResponse
+36CMsgClientToGCModifyGACFlagsResponse
 36CMsgClientToServerUpvoteNotification
 36CMsgEconPlayerStrangeCountAdjustment
 36CMsgGCGetPartnerAccountLink_Response
@@ -6584,6 +6593,7 @@ $zjuh
 42CDAC_Modifier_NaturesProphet_WrathOfNature
 42CDAC_Modifier_PudgeForceAttackHookedTarget
 42CDOTA_Modifier_SandKing_CausticFinale_Slow
+42CGameMsg_k_EMsgClientToServerLoadShareCode
 42CMsgClientToGCClaimChallengeRewardResponse
 42CMsgClientToGCClearPurchaseReserveResponse
 42CMsgClientToGCEventEquipVirtualItems_Equip
@@ -6973,6 +6983,7 @@ $zjuh
 ;CProtoItemSocket_AssetModifier_DESERIALIZE_FROM_STRING_ONLY
 ;G tu+G$L
 ;GAME_PARTICLE_MANAGER_EVENT_CHANGE_CONTROL_POINT_ATTACHMENT
+;Hc5F
 ;I9<$uY
 ;J0t%1
 ;Q tH
@@ -7319,7 +7330,6 @@ $zjuh
 @DA\H
 @DP5z5@
 @Gr}H
-@H;=HW
 @H@u#H
 @HH;E
 @LD9m
@@ -9218,8 +9228,8 @@ AYAZv
 AYAZ}
 AZA[L
 AZtwM
+A[A\H
 A[A\t
-A[A]H
 A[A^D
 A[A^u
 A[~TH
@@ -11015,6 +11025,7 @@ CMsgClientToGCGetRegionModeInfo";
 CMsgClientToGCIsInMatchmaking"?
 CMsgClientToGCLeaveLobby
 CMsgClientToGCLookupAccountName
+CMsgClientToGCModifyGACFlags
 CMsgClientToGCNameItem
 CMsgClientToGCNameItemResponse
 CMsgClientToGCPartyAction
@@ -11039,6 +11050,7 @@ CMsgClientToGCUnpackBundle
 CMsgClientToGCUnwrapGift
 CMsgClientToServerChatMsg
 CMsgClientToServerInitData
+CMsgClientToServerLoadShareCode
 CMsgClientUnderlordLoadout
 CMsgClientUnderlordLoadoutList
 CMsgClientWelcome
@@ -12439,6 +12451,7 @@ D$8L;p
 D$8QH
 D$8[A\]
 D$8f%
+D$9 u
 D$<8C<tXL
 D$<9C<t
 D$<9C<t"H
@@ -12531,6 +12544,8 @@ D8sUt
 D9"t=Lc
 D90tyHc@
 D9;t3I
+D9=-I
+D9=E~
 D9C ~JMc
 D9HxtmI
 D9a t#
@@ -12560,13 +12575,15 @@ D; tMH
 D; }VH
 D;!ttHc
 D;$2tWL
-D;%L 
-D;%c>
-D;%l#
+D;%3S
+D;%<2
+D;%\:
+D;%`%
+D;%r(
 D;'t3H
 D;)ts
 D;*tqHcR8
-D;-K	
+D;-{	
 D;.tLH
 D;1Lc
 D;3t 
@@ -13278,6 +13295,7 @@ EGrantRewards
 EGrantRewards_No
 EGrantRewards_NoLongerEligible
 EGrantRewards_Yes
+EH u/H
 EHANDLE2
 EHapticPulseType
 EInGameChatType
@@ -13514,6 +13532,7 @@ EX;CXtXL
 EXPORTSYSTEM_INTERFACE_VERSION_001
 EXfD9 t\H
 E`A]A^]
+EanimTimeSerializer
 EarlyInit_Tier0
 Ease In
 Ease In/Out
@@ -14424,7 +14443,6 @@ GE_Source1LegacyGameEvent
 GE_Source1LegacyGameEventList
 GE_Source1LegacyListenEvents
 GE_VDebugGameSessionIDEvent
-GH u/H
 GHH;0t1H
 GHL;`
 GIcO8Hc
@@ -14497,7 +14515,6 @@ GameToolEventTraceRayServerToolEvent_tHookupGameSystem
 GameUIService_001
 GasCylinder.Explode
 Gaussian
-Gdiff buffer overrun
 General.Sell
 Generate a Navigation Mesh for the current map and save it to disk.
 Generate: Error - Data corrupt.
@@ -14782,167 +14799,160 @@ H;0t0H
 H;0tCH
 H;0teH
 H;2t_A
-H;5	d
-H;5 $
-H;5 7
-H;5 ?
-H;5$>
-H;5$M
-H;5)3
-H;5)^
-H;5)r
-H;5-?
-H;50'
-H;509
-H;50<
-H;50a
+H;5 	
+H;5!E
+H;5!d
+H;5!s
+H;5(3
+H;5(o
 H;50g
-H;54V
-H;59s
-H;5@/
-H;5@p
-H;5Do
-H;5I8
-H;5IW
+H;51$
+H;51)
+H;51g
+H;5<C
+H;5<K
+H;5?+
+H;5@^
+H;5@n
+H;5Ad
+H;5Ak
+H;5H4
+H;5H`
+H;5H}
+H;5O`
 H;5PX
-H;5Td
-H;5Wo
-H;5X7
-H;5Y<
-H;5`"
-H;5`l
-H;5bv
-H;5d@
-H;5hK
-H;5h^
-H;5i$
-H;5iA
-H;5i\
-H;5j?
-H;5oq
-H;5pC
-H;5tN
-H;5x'
-H;5y9
-H;5yF
-H;5y_
+H;5Q'
+H;5Q(
+H;5QK
+H;5Q`
+H;5Qo
+H;5Qq
+H;5Q{
+H;5XZ
+H;5`d
+H;5a*
+H;5ao
+H;5p;
+H;5q-
+H;5q2
+H;5q8
+H;5qd
 H;7t"
 H;8tmH
 H;9u#
-H;= ;^
-H;=#A
-H;=$N
-H;=&o
-H;='$
-H;='[
-H;='p
-H;='w
-H;=()
-H;=(O	
-H;=(V
-H;=(h
-H;=+K
-H;=,_
-H;=-.
-H;=/q
-H;=/t
-H;=07^
-H;=0M
-H;=2P
-H;=2V
-H;=2u
-H;=3`
-H;=4r
-H;=7	
-H;=7:	
-H;=8N	
-H;=8g
-H;=9y
-H;=>i
-H;=>k
-H;=@/
-H;=@<^
-H;=A8
-H;=AJ
-H;=B6	
-H;=BF
-H;=BT
-H;=Dw
-H;=E;
-H;=F"
-H;=GU
-H;=G_
-H;=G~
-H;=H6
-H;=HM	
-H;=HQ
-H;=Hf
-H;=Lf
-H;=Lz
-H;=Nx
-H;=P8^
-H;=R$
-H;=R2
-H;=RM
-H;=R[
-H;=Rh
-H;=Rj
-H;=Rp
-H;=Rw
-H;=TO
-H;=VK
-H;=WV
-H;=X5
-H;=XI
-H;=XL	
-H;=XS
-H;=Xe
-H;=Z_
-H;=[8
-H;=[V
-H;=`V
-H;=ag
-H;=ar
-H;=at
-H;=b*
-H;=b:	
-H;=dP
-H;=du
-H;=f	
-H;=gY
-H;=h$
-H;=h4
-H;=hK	
-H;=hR
-H;=hS^
-H;=iQ^
-H;=j7
-H;=k/
-H;=l8
-H;=l[
-H;=o'
-H;=oc
-H;=op
-H;=os
-H;=ot
-H;=p9^
-H;=pk
-H;=pu
-H;=r(
-H;=rU
-H;=r_
-H;=rq
-H;=sJ
-H;=t&
-H;=tF
-H;=tT
-H;=vW
-H;=w7	
-H;=wQ
-H;=x3
-H;=xJ	
-H;=zz
-H;={U
+H;=	x
+H;= .
+H;= 8
+H;= B
+H;= u
+H;=#:
+H;=#;
+H;=$>
+H;=$H
+H;=%J
+H;=&Z
+H;=(N^
+H;=)3
+H;=*>
+H;=*z	
+H;=+2
+H;=,f
+H;=/{
+H;=0"
+H;=0-
+H;=07
+H;=0A
+H;=0t
+H;=1W
+H;=2w
+H;=34
+H;=3o
+H;=4	
+H;=4?
+H;=4x
+H;=5v
+H;=6M
+H;=8J^
+H;=9$
+H;=;!
+H;=>2
+H;=?T
+H;=?w	
+H;=@,
+H;=@6
+H;=@9
+H;=@<
+H;=@@
+H;=@s
+H;=D>
+H;=DL
+H;=HO^
+H;=J%
+H;=J@
+H;=JQ
+H;=J[
+H;=Jg
+H;=Jv
+H;=Kn
+H;=Kw
+H;=Ny
+H;=O8
+H;=O?
+H;=Oe
+H;=P+
+H;=P5
+H;=P\
+H;=Pr
+H;=R1
+H;=S9
+H;=T,
+H;=T-
+H;=T.
+H;=T/
+H;=T3
+H;=U>
+H;=UM
+H;=UZ
+H;=V>
+H;=XK^
+H;=YM
+H;=Yy
+H;=Z{
+H;=["
+H;=\K
+H;=]w
+H;=^o
+H;=_	
+H;=_.
+H;=_{	
+H;=`*
+H;=`q
+H;=aW
+H;=b(
+H;=c[
+H;=dM
+H;=eH
+H;=hP^
+H;=jP
+H;=jw	
+H;=l'
+H;=o+
+H;=o<
+H;=p)
+H;=pp
+H;=q&
+H;=rY
+H;=s7
+H;=sS
+H;=xL^
+H;=x\
+H;=y|
+H;=z8
+H;=ze
+H;=}y
+H;=~2
+H;=~3
+H;=~Z
 H;CPw<I
 H;G t
 H;IXu
@@ -14994,6 +15004,7 @@ HORIZ_JUSTIFICATION_CENTER
 HORIZ_JUSTIFICATION_LEFT
 HORIZ_JUSTIFICATION_NONE
 HORIZ_JUSTIFICATION_RIGHT
+HPHc@HA
 HPHc@HH
 HPHc@HL
 HParticleSystemDefinition
@@ -15315,10 +15326,8 @@ Hero_Warlock.ShadowWordCastBad
 Hero_Warlock.ShadowWordCastGood
 Hero_Weaver.Shukuchi
 Hero_Windrunner.PowershotDamage
-Hero_Wisp.Overcharge
 Hero_Wisp.Return.Target
 Hero_Wisp.ReturnCounter
-Hero_Wisp.Tether
 Hero_Wisp.Tether.Stop
 Hero_WitchDoctor.Paralyzing_Cask_Bounce
 Hero_WitchDoctor.Paralyzing_Cask_Cast
@@ -15527,6 +15536,7 @@ IcN@Ic
 IcNHIc
 IcO Ic
 IcO0Ic
+IcO8Hc
 IcODt
 IcP<M
 IcT$ I
@@ -16340,9 +16350,9 @@ L9(A
 L: %.2f deg
 L; t9H
 L;"t!f.
-L;%eG	
-L;%rGz
+L;%wM
 L;'tP
+L;-.\
 L;0t!A
 L;0t?H9
 L;0t[A
@@ -16411,6 +16421,7 @@ Lc'E)
 Lc(D;h
 Lc)D;i
 Lc+D;k
+Lc-<&
 Lc.D;n
 Lc.E)
 Lc/D;o
@@ -16781,6 +16792,7 @@ MODIFIER_PROPERTY_HEALTH_BONUS
 MODIFIER_PROPERTY_HEALTH_REGEN_CONSTANT
 MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE
 MODIFIER_PROPERTY_HEALTH_REGEN_PERCENTAGE_UNIQUE
+MODIFIER_PROPERTY_HOLDS_CELL_ON_DEATH
 MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE
 MODIFIER_PROPERTY_HP_REGEN_AMPLIFY_PERCENTAGE_SOURCE
 MODIFIER_PROPERTY_HYPE_GENERATION_PERCENTAGE
@@ -17800,6 +17812,7 @@ PF_TYPE_CONTROL_POINT_COMPONENT
 PF_TYPE_LITERAL
 PF_TYPE_PARTICLE_AGE_NORMALIZED
 PF_TYPE_RANDOM_UNIFORM
+PH;=uj
 PHA9]H
 PHD9m
 PHE9e
@@ -17933,7 +17946,6 @@ PhysFrictionEffectPrecache_server
 PhysObjectHeader_t
 Phys_motor %s does not have a valid axis helper, and self-destructed!
 PhysicalDmg
-Physics Debug World
 Physics Prop
 Physics props
 Physics2 Interface Old v0.5
@@ -20889,11 +20901,9 @@ WriteToBuffer Message %s is not initialized! Probably missing required fields!
 Writes the selected set to disk for merging into another mesh via nav_merge_mesh.
 WxH;2t*H
 X(Hc@ H
-X-kG5
 X0A;X@
 X0Hc@(L
 X4[A\]
-X5&H5
 X8HcF
 X=2v?
 XAxis
@@ -20929,8 +20939,7 @@ X^'@d
 XboxSystemInterface001
 Xr0t/H
 X|~lA
-Y%gqi
-Y%o94
+Y%wti
 Y@server_cvar
 YAxis
 YD$$H
@@ -21061,7 +21070,7 @@ Z}uU
 \$PIcT$HL
 \$pL;+
 \%03o
-\%RD;
+\%bH;
 \D$$H
 \F ;H
 \H8L9
@@ -21253,6 +21262,7 @@ _ZNSs12_Alloc_hiderC1EPcRKSaIcE
 _ZNSs12_M_leak_hardEv
 _ZNSs12_S_empty_repEv
 _ZNSs13_S_copy_charsEPcS_S_
+_ZNSs14_M_replace_auxEmmmc
 _ZNSs2atEm
 _ZNSs3endEv
 _ZNSs4_Rep10_M_destroyERKSaIcE
@@ -21742,7 +21752,6 @@ angular_motion_y
 angular_motion_z
 angulardampingratio
 angularfrequency
-animTimeSerializer
 anim_disable
 anim_modifier
 anim_name
@@ -21778,6 +21787,7 @@ app_instance_count
 appear_time
 appid
 appliesToItems
+applies_to_untargetable_units
 apply_after_keywords
 apply_duration
 apply_voice_ban_rules
@@ -23124,6 +23134,7 @@ dialog_type
 dialog_variable_name
 did_you_see_that_talent
 diff buff needs increase
+diff buffer overrun
 differs  :
 difficulty
 dimension0
@@ -23194,7 +23205,6 @@ dormant child
 dot_damage
 dot_dps_per_level
 dot_duration
-dot_tick_interval
 dota_ability_channel_finished
 dota_max_haste
 dota_min_haste
@@ -23265,7 +23275,6 @@ eResponse_MissingEvent
 eResponse_MissingLeague
 eResponse_OfferingDisabled
 eResponse_Success
-eXfA;
 eZQ9\
 ease-in
 ease-in-ease-out
@@ -24225,6 +24234,7 @@ gfffH
 gfffHcK
 gfffHcs(A
 gfffHcs8A
+gfffU
 gffff
 gfffffffD
 gfffffffH
@@ -24409,7 +24419,6 @@ heart_of_tarrasque_new
 heavy_wounds_talent
 height
 hero_%d
-hero_Crystal.frostbite
 hero_gems_only
 hero_id
 hero_model_change
@@ -24552,6 +24561,8 @@ hurt_them
 hurtme
 hxATL
 hypeBarBaseColor
+hypeBarColorEnd
+hypeBarColorStart
 hypeBarDarkColor
 hypeBarLightColor
 hypeCost
@@ -25206,6 +25217,7 @@ k_EMsgClientToGCEventPurchase
 k_EMsgClientToGCGetFriendCodes
 k_EMsgClientToGCIsInMatchmaking
 k_EMsgClientToGCLeaveLobby
+k_EMsgClientToGCModifyGACFlags
 k_EMsgClientToGCNameItem
 k_EMsgClientToGCPartyAction
 k_EMsgClientToGCPartyCreate
@@ -28518,6 +28530,7 @@ m_nCPField
 m_nCascades
 m_nCase
 m_nCastShadows
+m_nCastTimes
 m_nChainIndex
 m_nChainInvIndex
 m_nChainType
@@ -30399,10 +30412,12 @@ modifier_warrior
 modifier_warriors_never_die
 modifier_warriors_never_die_hat
 modifier_weaken
+modifier_weaver_alertness
 modifier_weaver_shukuchi
 modifier_winter_wyvern_winters_curse
 modifier_wisp_death
 modifier_wisp_overcharge
+modifier_wisp_overcharge_self
 modifier_wisp_relocate
 modifier_wisp_relocate_channel
 modifier_wisp_relocate_resurrect
@@ -32447,32 +32462,32 @@ runspeed
 rxD;wx
 s D;0
 s H;5
-s H;5	J
-s H;5	Z
-s H;5 !
-s H;5(
-s H;5)
-s H;5)N
+s H;5!
 s H;58
-s H;59a
-s H;5X
-s H;5Ye
-s H;5\H
-s H;5`
+s H;58[
+s H;5A
+s H;5AF
+s H;5L
+s H;5P
+s H;5X8
+s H;5`3
 s H;5`g
-s H;5d`
-s H;5i
-s H;5ie
-s H;5ii
+s H;5a
+s H;5q
+s H;5q;
+s H;5qG
+s H;5qm
 s off
 s$[A\]
 s'Hc@
 s(D;s8D
 s(H;5
-s(H;5I
-s(H;5]+
-s(H;5d!
-s(H;5i
+s(H;5$x
+s(H;50
+s(H;5P
+s(H;5h[
+s(H;5x
+s(H;5}
 s([A\A]A^]
 s(t.H
 s)~+@
@@ -32482,40 +32497,41 @@ s.daH
 s/glow.vH
 s/spriteH
 s0H;5
-s0H;58
-s0H;5D
+s0H;5,Q
+s0H;5,W
+s0H;50
+s0H;51
+s0H;58A
+s0H;5;_
 s0H;5H
-s0H;5`
-s0H;5i 
-s0H;5t
+s0H;5\
+s0H;5t~
+s0H;5x;
 s1_mapname
 s69F~
 s7>Ip
 s8D;kP
 s8H;5
-s8H;5 *
-s8H;5)C
-s8H;50
-s8H;55L
-s8H;5@
-s8H;5Y
+s8H;58@
+s8H;5TW
+s8H;5XR
 s8Lcm
 s@H;5
-s@H;5H
-s@H;5X*
+s@H;5a
 s@HcE
 sGlaiveInfo
 sHH;5
-sHH;50
-sHH;5W
-sHH;5m+
-sHH;5p
+sHH;5%k
+sHH;5(
+sHH;5?
+sHH;5x
 sLockedSentence
 sLockedSound
 sLuQH
 sMA9|$ 
 sPH;5
-sPH;5J
+sPH;5X
+sPH;5X;
 sUnlockedSentence
 sUnlockedSound
 sXH;5
@@ -32533,9 +32549,7 @@ s_nSceneFlushCounter
 s_nWatchTransmitEntity
 s_vecAllNPCS
 s_vecThinkers
-s`H;5 >
-s`H;5h
-s`H;5l
+s`H;5
 saHcB
 sale_price
 sample_duration_ms
@@ -32795,7 +32809,7 @@ setting m_SimulationState[%d].m_flSimulationTime=%f
 sfixed32
 sfixed64
 shH;5
-shH;5P>
+shH;50
 shMcuX
 shadow_control
 shadow_demon_demonic_purge
@@ -32819,6 +32833,7 @@ shadowtextureheight
 shadowtexturewidth
 shake
 shapeType
+share_code
 shared
 sharedobj
 sharpStartAngle
@@ -33018,7 +33033,8 @@ source_filename
 source_player
 source_reference_id
 source_unit_idx
-spH;5
+spH;58~
+spH;5<
 space shuttle
 spark_shower
 spawn group
@@ -33518,7 +33534,8 @@ swapmodel
 swarm_count
 sweet_talk_talent
 swift_prefix
-sxH;5
+sxH;5`m
+sxH;5h~
 sxt!H
 symbols
 sync_version
@@ -33567,20 +33584,21 @@ t!D;'t`H
 t!HcCx;C|E
 t!IcE
 t!IcN 
-t!L; t6H
+t!L; tgH
 t";2}
 t"A;0I
 t"E9g
 t"H;=
-t"H;=c?
+t"H;=[
 t"HcK 
 t"HcS
 t"Icv8
 t"L;%
-t"L;%!#
-t"L;%`
-t"L;%q
-t"L;%q$
+t"L;%)
+t"L;%)d
+t"L;%8
+t"L;%I
+t"L;%ye
 t"L;e
 t"L;u
 t#D;c
@@ -33624,7 +33642,6 @@ t$hH9
 t$pD9
 t$pH9
 t$xH9
-t%;5&
 t%HcC0A
 t%HcE
 t%Icv 
@@ -33632,11 +33649,13 @@ t%L;}
 t%Lc;D;{
 t&Icwh
 t&L;%
-t&L;%0
-t&L;%P#
+t&L;%X
+t&L;%Xd
+t&L;%x
 t&L;e
 t'99u
 t'H;=
+t'H;=pq
 t'I9r
 t'Ic]
 t'Lc}
@@ -33651,8 +33670,8 @@ t([A\]
 t)HcE
 t)[A\]
 t*9C 
-t*D:=Q
-t*D;%
+t*D:=!
+t*D;%y
 t+Ic\$
 t+[A\A]A^]
 t,D9m
@@ -33663,9 +33682,9 @@ t,Ic:H
 t-HcC$H
 t-L9p
 t-rex
-t.D:%mwp
-t.D:-
-t.D;=
+t.D:%=
+t.D:-V@o
+t.D;=M
 t.H9P
 t.H;w(t8H;w0tBH;w8tLH;w@t
 t.HcC H
@@ -33707,7 +33726,7 @@ t1HcO@H
 t1HcOLH
 t1HcOPH
 t1HcW H
-t1IcO
+t1IcN
 t1Ic|$lH
 t1Mc,$E;l$
 t2HcC$H
@@ -33873,7 +33892,6 @@ t<M9|$
 t=[A\]
 t>M.F9
 t?[A\]
-t@;5E
 t@HcE
 t@Hcs0;s4E
 t@Ic_
@@ -34071,6 +34089,7 @@ tk[A\A]A^]
 tkrYU
 tlD;h
 tlIcD$
+tm;5V
 tnHcM
 tnHcU
 tnr\@
@@ -34219,7 +34238,9 @@ type_field
 type_id
 type_instances
 type_value
+tz;5N
 tzIcG0A;G@L
+t{95R
 t{UE1
 t{riU
 t|UHc
@@ -34887,13 +34908,13 @@ x&IcT$ A;T$0
 x&IcT$(A;T$8
 x("tU
 x(;w }#H
-x(H;=m$
+x(H;=uD
 x([A\]
 x*;XZ
 x+A9T$h~$H
 x,A;T$
 x0;wH}+Hc
-x0H;=B%
+x0H;=JE
 x7Hcw
 x8"tq
 x8H;=
@@ -35066,10 +35087,9 @@ z{uyI
 z}u{fA
 { D;{0
 { H;=
-{ H;=!
-{ H;=8a
-{ H;=:
-{ H;=z
+{ H;="
+{ H;=I
+{ H;=b
 { []H
 { t6H
 {%d,%d,%d}
@@ -35081,7 +35101,7 @@ z}u{fA
 {([A\]
 {(fD9't)H
 {0D;{@A
-{0H;=U2^
+{0H;=
 {0[A\]
 {@	u\
 {@[A\]
@@ -35106,7 +35126,7 @@ z}u{fA
 |!$Hc
 |$ A\]
 |$ E;|$0tLI
-|$ H;=yt
+|$ H;=!
 |$ Hc
 |$(E1
 |$(Hc
@@ -35180,7 +35200,6 @@ z}u{fA
 }0UHc
 }1A;^<
 }2'@+P
-}3fA;]nw,L
 }6Hc@
 }7A;_$
 }8A\A]A^]
@@ -35217,7 +35236,7 @@ z}u{fA
 ~(Mco8E;oHD
 ~(};Hc
 ~)H;7I
-~)H;=|
+~)H;=
 ~*fE;g
 ~+Hcu
 ~+Lc}

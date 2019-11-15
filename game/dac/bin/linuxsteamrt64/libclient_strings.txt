@@ -214,6 +214,7 @@
 	schema_kv
 	send_time
 	sender_id
+	set_flags
 	shardsize
 	signature
 	snapshots
@@ -459,7 +460,7 @@
  Failed to pack %s
  Failed to unpack %s - Code %d
  GCConnectionStatus_GC_GOING_DOWN
- H;=N
+ H;=^
  H;D$PH
  H;D$`H
  M9l$
@@ -654,6 +655,7 @@
 !k_EMsgClientToGCGetRegionModeInfo
 !k_EMsgClientToGCLookupAccountName
 !k_EMsgClientToGCPartyJoinResponse
+!k_EMsgClientToServerLoadShareCode
 !k_EMsgGCClientDisplayNotification
 !k_EMsgGCRemoveItemGifterAccountId
 !k_EMsgGCRequestCrateItemsResponse
@@ -1655,6 +1657,7 @@ $CMsgClientToGCDevForceMatchFormation"F
 $CMsgClientToGCEventChallengeProgress
 $CMsgClientToGCEventEquipVirtualItems
 $CMsgClientToGCGetFriendCodesResponse
+$CMsgClientToGCModifyGACFlagsResponse
 $CMsgClientToServerUpvoteNotification
 $CMsgEconPlayerStrangeCountAdjustment
 $CMsgGCGetPartnerAccountLink_Response
@@ -1673,7 +1676,6 @@ $CMsgServerToGCUpdateLobbyServerState
 $CPublishedFile_GetUserFiles_Response
 $CWorkshop_AddSpecialPayment_Response"W
 $CWorkshop_GetSpecialPayments_Request
-$D;-z
 $D;3|
 $DT<I
 $E;D$
@@ -2281,6 +2283,7 @@ $z0u.A
 &k_EMsgClientToGCEventChallengeProgress
 &k_EMsgClientToGCEventEquipVirtualItems
 &k_EMsgClientToGCGetFriendCodesResponse
+&k_EMsgClientToGCModifyGACFlagsResponse
 &k_EMsgClientToServerUpvoteNotification
 &k_EMsgGCAddSocketToBaseItem_DEPRECATED
 &k_EMsgGCDev_UnlockAllItemStylesRequest
@@ -2383,13 +2386,14 @@ $z0u.A
 (*MARK) must have an argument
 (*VERB) not recognized or malformed
 (,$fE
+(-CTf
 (.CPlayer_GetCommunityPreferences_Request
 (.CPlayer_GetFriendsGameplayInfo_Response"K
 (.CPlayer_GetPerFriendPreferences_Request
 (.CPlayer_SetCommunityPreferences_Request
 (.CPlayer_SetPerFriendPreferences_Request
 (0x%08X)'??'
-(5A`S
+(5aeS
 (?R or (?[+-]digits must be followed by )
 (ACTIVE)
 (A^A_]
@@ -2580,6 +2584,7 @@ $z0u.A
 *N5GCSDK17GCClientJobLambdaIZN14CDACItemSystem33RequestReservedItemDefinitionListEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN18CDACClientGCSystem14ConnectToLobbyEbEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN18CDACClientGCSystem17BGetReconnectInfoEP20CClientReconnectInfoEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN18CDACClientGCSystem30UpdateAccountSynchronizedFlagsEbEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController10LeaveLobbyEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController10LeavePartyEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController11CreatePartyEjEUlvE_EE
@@ -3013,7 +3018,11 @@ $z0u.A
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
 .%0*llu
+.%d-r
 .(Optional) Set of tags for the published file.
+.-&E~
+.-F!R
+.-MD~
 ...<truncated>...
 ../../public/entity2/entitycomponent.h
 ../../public/networksystem/networkquantizedtypes.h
@@ -3045,6 +3054,9 @@ $z0u.A
 ..CPlayer_GetNewSteamAnnouncementState_Response"_
 .0z"u 
 .3333
+.5HVi
+.5X.b
+.5yXi
 .=gZN
 .>()09
 .@ sgA
@@ -3497,7 +3509,6 @@ $z0u.A
 00000000-0000-0000-0000-000000000000
 00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
 0123456789ABCDEF
-0123456789ABCDEFreconnect.dat
 0123456789abcdef
 0: custom accelaration disabled
 0<	wXI
@@ -3510,7 +3521,7 @@ $z0u.A
 0D;#}qM
 0E;.|
 0GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW
-0H;=e
+0H;=u
 0IcD$
 0Marks latest announcement timestamp read by user
 0NETWORK_DISCONNECT_REJECT_SERVERCDKEYAUTHINVALID
@@ -3582,6 +3593,7 @@ $z0u.A
 10CMsgIDLinkILj1ELj16ELj9199E29CMsgClientToGCAssociateDeviceE
 10CMsgIDLinkILj1ELj16ELj9203E34CMsgClientToGCPartySetGameModifierE
 10CMsgIDLinkILj1ELj16ELj9207E25CMsgClientToGCSetTeamNameE
+10CMsgIDLinkILj1ELj16ELj9209E28CMsgClientToGCModifyGACFlagsE
 10CMsgIDLinkILj3ELj16ELj7000E24CMsgAnyToGCReportAssertsE
 10CMsgQAngle
 10CMsgTEDust
@@ -4416,6 +4428,7 @@ $z0u.A
 18CMsgIDLinkResponseILj1ELj16ELj9199E29CMsgClientToGCAssociateDeviceLj9200E37CMsgClientToGCAssociateDeviceResponseE
 18CMsgIDLinkResponseILj1ELj16ELj9203E34CMsgClientToGCPartySetGameModifierLj9204E42CMsgClientToGCPartySetGameModifierResponseE
 18CMsgIDLinkResponseILj1ELj16ELj9207E25CMsgClientToGCSetTeamNameLj9208E33CMsgClientToGCSetTeamNameResponseE
+18CMsgIDLinkResponseILj1ELj16ELj9209E28CMsgClientToGCModifyGACFlagsLj9211E36CMsgClientToGCModifyGACFlagsResponseE
 18CMsgIDLinkResponseILj3ELj16ELj7000E24CMsgAnyToGCReportAssertsLj7001E32CMsgAnyToGCReportAssertsResponseE
 18CMsgNotifyWatchdog
 18CMsgPackageLicense
@@ -4760,6 +4773,7 @@ $z0u.A
 2.CHelpRequestLogs_UploadUserApplicationLog_Request
 2/.CMsgClientToGCGetFriendCodesResponse.EResponse
 2/.CMsgClientToGCHandleItemPurchase.StoreInfo_iOS
+2/.CMsgClientToGCModifyGACFlagsResponse.EResponse"R
 2/.CMsgLookupMultipleAccountNamesResponse.Account
 2/.CMsgPrivatePlayerState.ItemChoiceReward.Choice
 20.0f
@@ -5048,6 +5062,7 @@ $z0u.A
 22CDAC_UI_Settings_Panel
 22CDAC_UI_TalentSelector
 22CDAC_UI_TooltipManager
+22CDAC_UI_Tooltip_Player
 22CDAC_UI_UnitScenePanel
 22CDefScriptAccessorBase
 22CDefaultResponseSystem
@@ -5839,6 +5854,7 @@ $z0u.A
 28CMsgAMAddFreeLicenseResponse
 28CMsgClientConnectionComplete
 28CMsgClientToGCGetFriendCodes
+28CMsgClientToGCModifyGACFlags
 28CMsgCombatEvent_AttackEvaded
 28CMsgCombatEvent_AttackMissed
 28CMsgCombatEvent_CancelAttack
@@ -6144,6 +6160,7 @@ $z0u.A
 31CMsgClientToGCGetRegionModeInfo
 31CMsgClientToGCLookupAccountName
 31CMsgClientToGCPartyJoinResponse
+31CMsgClientToServerLoadShareCode
 31CMsgCombatEvent_ModifierDestroy
 31CMsgEventClaimRewards_Challenge
 31CMsgGCClientDisplayNotification
@@ -6396,6 +6413,7 @@ $z0u.A
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9199E29CMsgClientToGCAssociateDeviceLj9200E37CMsgClientToGCAssociateDeviceResponseE
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9203E34CMsgClientToGCPartySetGameModifierLj9204E42CMsgClientToGCPartySetGameModifierResponseE
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9207E25CMsgClientToGCSetTeamNameLj9208E33CMsgClientToGCSetTeamNameResponseE
+35CMsgIDLinkGenericClientToGCResponseILj1ELj9209E28CMsgClientToGCModifyGACFlagsLj9211E36CMsgClientToGCModifyGACFlagsResponseE
 35CMsgIDLinkGenericClientToGCResponseILj3ELj7000E24CMsgAnyToGCReportAssertsLj7001E32CMsgAnyToGCReportAssertsResponseE
 35CMsgMatchSignoutData_Disconnections
 35CMsgPlayerCombatResult_DamageSource
@@ -6425,6 +6443,7 @@ $z0u.A
 36CMsgClientToGCEventChallengeProgress
 36CMsgClientToGCEventEquipVirtualItems
 36CMsgClientToGCGetFriendCodesResponse
+36CMsgClientToGCModifyGACFlagsResponse
 36CMsgClientToServerUpvoteNotification
 36CMsgEconPlayerStrangeCountAdjustment
 36CMsgGCGetPartnerAccountLink_Response
@@ -6804,6 +6823,7 @@ $z0u.A
 6;2t&H
 6<u7@
 6=((E
+6A91t"
 6A;1t"
 6ATSH
 6CCoJob
@@ -6852,7 +6872,7 @@ $z0u.A
 8;W t
 8;w t#H
 8<lCE
-8@:wrt
+8@:wrt'
 8AUATSH
 8A]A^]
 8A^]H
@@ -6912,7 +6932,6 @@ $z0u.A
 90tTH
 92tVA
 95*P>
-95J5s
 98N*>
 99w(|&H
 9<t	]
@@ -7077,7 +7096,6 @@ $z0u.A
 ;2t)H
 ;2t,H
 ;2t.H
-;5y4s
 ;7};UI
 ;9t2H
 ;:~`H
@@ -7095,6 +7113,7 @@ $z0u.A
 ;GPttK
 ;GTtO
 ;H;:t#
+;Hc5I
 ;I9<$uY
 ;L$D|*
 ;Q t#H
@@ -7402,7 +7421,6 @@ $z0u.A
 ?B\9{g
 ?CBaseAnimatingEasings_t
 ?CWorldTextSceneObjectDesc
-?Clearing old .sav file %s
 ?Compressed texture bits for mip %i are corrupt, decompression error!
 ?D]`,
 ?DebugAutoComplete
@@ -7519,6 +7537,7 @@ $z0u.A
 @2l9<)8
 @4A\]
 @8/N|
+@85Bx
 @89B8]
 @89u"
 @8:B8
@@ -7552,10 +7571,9 @@ $z0u.A
 @AUATA
 @CBodyComponentReferenced
 @CW"P
+@Clearing old .sav file %s
 @DP5z5@
-@Dota Underlords
 @Gr}H
-@H;=x
 @HH;E
 @HI;D$H
 @Lcg(I
@@ -7667,7 +7685,6 @@ A#E\H
 A#P\H
 A#U\H
 A#V\H
-A#]\H
 A#p\H
 A#q\H
 A#u\H
@@ -9391,7 +9408,6 @@ ASARAPE1
 ATASAPL
 ATASARAQAPWH
 ATAUAV
-ATAUf
 ATI1N
 ATI2N
 ATI_DST16
@@ -9468,7 +9484,7 @@ AVAUATH
 AVAUATI
 AVAUATL
 AVAUATLc
-AVAUATLc%_
+AVAUATLc%
 AVAUATM
 AVAUATS
 AVAUATS9
@@ -9497,7 +9513,7 @@ AVAUL
 AVAULc
 AVAUM
 AVAUfA
-AWATH
+AWATE1
 AWAVA
 AWAVATI
 AWAVATSH
@@ -9542,7 +9558,6 @@ AWAVMc
 AWAVSH
 AWAVfA
 AXA9GX
-AXAY1
 AXAYH
 AXAYui
 AXAYv
@@ -9959,6 +9974,7 @@ B<9F<t
 B@8C@t
 B@Lcc D;c0
 B@Lck D;k0
+B@Lcs D;s0
 BADFUNCTIONPOINTER
 BATSH
 BC6h compression not supported on this target (windows only).
@@ -11251,6 +11267,7 @@ CMsgClientToGCGetRegionModeInfo";
 CMsgClientToGCIsInMatchmaking"?
 CMsgClientToGCLeaveLobby
 CMsgClientToGCLookupAccountName
+CMsgClientToGCModifyGACFlags
 CMsgClientToGCNameItem
 CMsgClientToGCNameItemResponse
 CMsgClientToGCPartyAction
@@ -11275,6 +11292,7 @@ CMsgClientToGCUnpackBundle
 CMsgClientToGCUnwrapGift
 CMsgClientToServerChatMsg
 CMsgClientToServerInitData
+CMsgClientToServerLoadShareCode
 CMsgClientUnderlordLoadout
 CMsgClientUnderlordLoadoutList
 CMsgClientWelcome
@@ -13122,7 +13140,9 @@ D9#v%H
 D9#~CH
 D9#~KH
 D9(t8H
+D9-qQ
 D9;t3I
+D9=5(y
 D9C ~JMc
 D9D$4B
 D9D$4H
@@ -13159,21 +13179,28 @@ D; tMH
 D;!ttHc
 D;"tIH
 D;$2tWL
-D;%	b
-D;%+>
-D;%P#
-D;%Zs
-D;%bb
-D;%w%
+D;%C{
+D;%T#
+D;%[2
+D;%c^
+D;%r-
 D;'t3H
+D;-"(
+D;-"u
+D;-+g
+D;-[e
 D;.tLH
 D;0}zH
 D;1Lc
 D;3t 
 D;3}5
+D;5*:
 D;8tQH
 D;:tZH
 D;;}5D
+D;=#J
+D;=G<
+D;@`}
 D;B`}
 D;F`u
 D;K D
@@ -13438,6 +13465,7 @@ DACHideMapChallengeTooltip
 DACHideMapClaimTooltip
 DACHideMenuButtons
 DACHideMeterDetailsTooltip
+DACHidePlayerTooltip
 DACHideRoundOverScreen
 DACHideScoreboard
 DACHideSynergyTooltip
@@ -13583,6 +13611,7 @@ DACPlayerEliminated
 DACPlayerLevelUp
 DACPlayerReceivedUnitFromDuosPartner
 DACPlayerSelectedTalent
+DACPlayerTooltip
 DACPlayerWinStreak
 DACPlayersDoneAnimating
 DACPopupFriendCodeAddFriend
@@ -13772,6 +13801,7 @@ DACShowPartyJailPopup
 DACShowPatchNotesPage
 DACShowPlayerContextMenu
 DACShowPlayerStatePopup
+DACShowPlayerTooltip
 DACShowPostGame
 DACShowProfilePage
 DACShowRewardsPage
@@ -13866,6 +13896,7 @@ DACTooltipHero
 DACTooltipItem
 DACTooltipManager
 DACTooltipMeterDetails
+DACTooltipPlayer
 DACTooltipSynergy
 DACTooltipTalentInfo
 DACTooltipUnderlordAbility
@@ -13891,6 +13922,8 @@ DACUnderlordScenePanel
 DACUnderlordSpeak
 DACUnderlordSpeakCombat
 DACUnderlordStatus
+DACUnderlordStatusHideTooltip
+DACUnderlordStatusShowTooltip
 DACUnderlordTabSelect
 DACUnderlordsPage
 DACUnderlordsViewChange
@@ -14569,6 +14602,7 @@ E H;C t
 E I;G t
 E#A\H
 E#`\H
+E#e\H
 E(9E 
 E(L9}
 E(Mc>E;~
@@ -14627,6 +14661,7 @@ E3\$@x&D
 E3\$Px
 E49C4
 E8A9E u
+E9&tJI
 E9&~,I
 E9&~2M
 E9.t.A
@@ -14666,7 +14701,6 @@ E;&t'A
 E;&t)A
 E;&t/A
 E;&t2A
-E;&tJI
 E;&}SI
 E;,$Hc
 E;,$Hc]
@@ -14711,6 +14745,7 @@ E;l$L|#I
 E;l$X|
 E;l$X}AI
 E;l$t
+E;n }'I
 E;n(u
 E;nPE
 E;o |
@@ -15417,7 +15452,6 @@ F09G0]
 F09G0t
 F0A;F@
 F0HcE
-F0Mc}
 F49C4
 F49G4u
 F4A9D$4
@@ -15623,6 +15657,7 @@ Failed to find the default key bindings template: DEFAULT.
 Failed to generate correct hostname for URL.
 Failed to get HTTP response data.
 Failed to get HTTP response size.
+Failed to get a response for updating client synchronized flags with the GC
 Failed to get lock %s at %s(%d) after waiting in %s
 Failed to grant client challenge progress for event %u, slot %u, sequence %u
 Failed to include script "%s"
@@ -16028,7 +16063,9 @@ G<@teI
 G<@t}I
 G<@uCD
 G@HcU
+G@Lcc D;c0
 G@Lcg(D;g8D
+G@Lcs D;s0
 GAME INSTRUCTOR: 
 GAMECONSOLE
 GAMEROOT
@@ -16483,217 +16520,201 @@ H;0t+A
 H;0t0H
 H;0t4H
 H;0t\H
-H;5	&
-H;5 >
-H;5 ^
-H;5 f
-H;5$3
-H;5(%
-H;5)>
-H;50#
-H;50)
-H;50H
-H;50N
-H;50`
-H;54~
-H;57C
-H;5@y
-H;5IP
-H;5IW
-H;5Jh
-H;5MQ
-H;5P;
-H;5T]
-H;5W.
-H;5Y&
-H;5`5
-H;5d,
-H;5h9
-H;5iB
-H;5iK
-H;5p+
-H;5xi
-H;5y1
-H;5y^
+H;5	:
+H;5's
+H;5).
+H;5)Z
+H;5)k
+H;50z
+H;54 
+H;54$
+H;54B
+H;54C
+H;54q
+H;59#
+H;595
+H;5@ 
+H;5@+
+H;5@p
+H;5H)
+H;5H>
+H;5I 
+H;5I^
+H;5Iv
+H;5X&
+H;5Yx
+H;5`*
+H;5``
+H;5ho
+H;5i	
+H;5if
+H;5te
+H;5tm
+H;5tt
+H;5yy
+H;5|E
 H;7t"
 H;9u#
-H;=	G
-H;=	_
-H;=	z
-H;= 0
-H;= F
-H;= O
-H;= _
+H;= '
+H;= 7
 H;= w
-H;= {
-H;=!D
-H;=&#
-H;=&K
-H;=(H
-H;=)]
-H;=*8
-H;=*N
-H;=*i
-H;=*}
-H;=+2
-H;=+?
-H;=+L	
-H;=.q
-H;=/>
-H;=/X
-H;=/_
-H;=0)b
-H;=0/
-H;=0D
-H;=0E
-H;=0N
-H;=0^
-H;=0x
-H;=0z
-H;=1V
-H;=1f
-H;=2i
-H;=2y
-H;=3_
-H;=3|
-H;=4	
-H;=4F
-H;=4m
-H;=4z
-H;=6u
-H;=86
-H;=96
-H;=:S
-H;=:_
-H;=;?
-H;=<8
-H;=>T
-H;=>[
-H;=??
-H;=?Y
-H;=@.
-H;=@D
-H;=@J
-H;=@M
-H;=@]
-H;=@w
-H;=@y
+H;="'
+H;=$d
+H;=${
+H;=' 
+H;='q
+H;='}	
+H;=(=
+H;=(]
+H;=({
+H;=)H
+H;=*$
+H;=*1
+H;=+\
+H;=+h
+H;=+|
+H;=,K
+H;=,V
+H;=,W
+H;=,X
+H;=.h
+H;=/k
+H;=/t
+H;=0&
+H;=06
+H;=0v
+H;=0{
+H;=1.
+H;=11
+H;=23
+H;=5[
+H;=6'
+H;=6P
+H;=7<
+H;=7>
+H;=7a
+H;=8Y
+H;=:!
+H;=:*
+H;=:<
+H;=:U
+H;=:W
+H;=:d
+H;=:r
+H;=:}
+H;=;A
+H;=;C
+H;=;D
+H;=;F
+H;=;R
+H;=>G
+H;=>f
+H;=@		
+H;=@%
+H;=@5
+H;=@k
 H;=@~
-H;=C$
-H;=C;
-H;=Cg
-H;=C|
-H;=DU
-H;=Fj
-H;=G	
-H;=G;
-H;=Hk
-H;=Iv
-H;=J"
-H;=J;
-H;=JG
-H;=Jd
-H;=Jq
-H;=Jr
-H;=K$
-H;=K)
-H;=K3
-H;=KM	
-H;=Kw
-H;=N7
-H;=NC
-H;=O!
-H;=O\
-H;=P?
-H;=PC
-H;=PH
-H;=PL
-H;=PY
-H;=P\
-H;=Pr
-H;=Pv
-H;=Px
+H;=Ao	
+H;=BV	
+H;=DP
+H;=GP
+H;=GZ
+H;=Gb
+H;=Gt
+H;=Hw
+H;=H|
+H;=I'
+H;=I(
+H;=IF
+H;=J)
+H;=J,
+H;=J9
+H;=K\
+H;=Ko
+H;=Mc
+H;=N.
+H;=N0
+H;=Nz
+H;=N}
+H;=O~
+H;=P$
+H;=P)
+H;=PI
+H;=P]
+H;=Pj
 H;=P}
-H;=Qcm
-H;=T]
-H;=Ty
-H;=Uq
+H;=Q	
+H;=QZ
+H;=RR
+H;=Rsm
+H;=TH
+H;=U\
+H;=VM
 H;=W,
-H;=W8	
-H;=XD
-H;=Xz
-H;=X}
-H;=Z4
-H;=ZO
-H;=ZX
-H;=Z\
-H;=Z_
-H;=Zv
-H;=Zw
-H;=[@
-H;=]y
-H;=^&
-H;=^*
-H;=^_
-H;=_&
-H;=_;
-H;=_o
-H;=`2
-H;=`6
-H;=`K
-H;=`W
-H;=`[
+H;=WH
+H;=X	
+H;=XH
+H;=Z)
+H;=Zt
+H;=[S
+H;=[i
+H;=[v
+H;=\h
+H;=^[
+H;=^a
+H;=`#
+H;=`Y
+H;=`d
 H;=`i
-H;=`u
-H;=`w
 H;=`|
-H;=aO
-H;=ap
-H;=bD
-H;=d6
-H;=hl
-H;=j8
-H;=j?
-H;=jY
-H;=j_
-H;=jl
-H;=kN	
-H;=n;
-H;=o/
-H;=oD
-H;=oT
-H;=oU
-H;=o\
-H;=o`
-H;=p1
-H;=pJ
-H;=pV
-H;=pZ
-H;=pt
-H;=pv
+H;=a#
+H;=ak
+H;=c1
+H;=d3
+H;=dU
+H;=gP	
+H;=gq
+H;=h]
+H;=hx
+H;=i\
+H;=j'
+H;=j4
+H;=jW
+H;=ky
+H;=o_
+H;=p"
+H;=p&
+H;=ph
 H;=p{
-H;=q*	
-H;=qZ
-H;=s|
-H;=tj
-H;=tv
-H;=w/
-H;=x;
-H;=xE
-H;=x}
-H;=zA
-H;=zJ
-H;=z\
-H;=zh
-H;=zi
-H;={*
-H;={,
-H;={<
-H;=|]
-H;=|^
-H;=}C
-H;=~!
-H;=~P
+H;=r		
+H;=rM
+H;=rP
+H;=tF
+H;=tM
+H;=tV	
+H;=uG
+H;=vc
+H;=w`
+H;=x)
+H;=x^
+H;=xc
+H;=xy
+H;=xz
+H;=z5
+H;=zP
+H;=z]
+H;=zk
+H;=zx
+H;={M
+H;={T
+H;={_
+H;=|&
+H;=|'
+H;=|.
+H;=|7
+H;=~,
+H;=~c
+H;=~|
 H;C(t
 H;CHt`H
 H;CPw<I
@@ -16722,7 +16743,7 @@ H@Hc@8H
 HC333?
 HDR Color Scale: %0.3f
 HELPER_BONE
-HH;=%
+HH;=5
 HIERARCHY_ABSORIGIN
 HIERARCHY_ATTACHMENT
 HIERARCHY_BONE
@@ -16823,7 +16844,6 @@ HasAbilityPerLevel
 HasBotSlots
 HasBrawnyKills
 HasCachedCommandList
-HasClass
 HasCodeDisplay
 HasCodeGen
 HasCodeWaiting
@@ -16833,12 +16853,14 @@ HasCredential
 HasDamage
 HasDamageType
 HasData
+HasDescriptions
 HasDraws
 HasDuelBonusDamage
 HasEventData
 HasExtraData
 HasField
 HasFriends
+HasGems
 HasGlobalItems
 HasInput
 HasItem
@@ -16874,6 +16896,7 @@ HaticsType_Default
 HaticsType_None
 Have closed caption Panorama panel perform depth testing against the scene
 HaveActivePopups
+Hc5yU+
 Hc@ H
 Hc@$H
 Hc@(E1
@@ -16903,7 +16926,6 @@ HcC D9
 HcC H
 HcC I
 HcC$D
-HcC$H
 HcC(1
 HcC(;C,
 HcC(A
@@ -16996,7 +17018,6 @@ HcRXH9
 HcS ;S0H
 HcS A
 HcS$D
-HcS$H
 HcS(;S,
 HcS(H
 HcS0;S4
@@ -17118,6 +17139,7 @@ Hide text debugging information about the given entity(ies) on top of the entity
 Hide the herotooltip
 Hide the item tooltip
 Hide the meter details tooltip
+Hide the player tooltip.
 Hide the synergy tooltip
 Hide the talent unlock info tooltip
 Hide the underlord ability option tooltip
@@ -17198,8 +17220,8 @@ HunterDamage
 HunterDamage_global_client
 HypeBarBackground
 HypeLabel
-HypeSegment%d
-HypeSegmentActive%d
+HypeMeter
+HypeMeterActive
 I	D$0A
 I	G0H9
 I	G0I
@@ -17422,7 +17444,6 @@ IcT$XI
 IcT$\H
 IcT$`I
 IcT$h
-IcT$hL
 IcT$xI
 IcU$A
 IcU$D
@@ -17432,6 +17453,7 @@ IcU8H
 IcUHI
 IcU\H
 IcU`A;Up
+IcUhL
 IcV(E1
 IcV8H
 IcVDA
@@ -17971,6 +17993,7 @@ Joy : voiced postalveolar afficate
 K %vmo
 K D;K0
 K HcU
+K(A9L$0u
 K,+K(
 K0[A\A]A^]
 K6u:H
@@ -18049,10 +18072,8 @@ L9kHv
 L9|$HJ
 L: %.2f deg
 L;"t!f.
-L;%Ep
-L;%ee
 L;'tM
-L;-~W
+L;-N}
 L;0t!A
 L;0t?H9
 L;0t[A
@@ -18151,7 +18172,6 @@ LayoutPositionType_e
 Lc"D;b
 Lc#D;c
 Lc#fA
-Lc%Qs
 Lc&D;f
 Lc&E)
 Lc'D;g
@@ -18162,12 +18182,12 @@ Lc+D;k
 Lc.E)
 Lc/E)
 Lc3D;s
+Lc5!:
 Lc7E)
 Lc:D;z
 Lc;A9
 Lc;D;{
 Lc;E9
-Lc=z6
 Lc?D;
 LcC D;C0
 LcC$D
@@ -18659,7 +18679,7 @@ McD$0A
 McGhE;Gx
 McO`I
 Mc_XA
-McexE;
+McfxE;
 Mcg E;g0D
 Mcg0E;g@D
 McgHE;gXD
@@ -19056,6 +19076,7 @@ N8panorama14CEdgeScrollBarE
 N8panorama14CSlottedSliderE
 N8panorama14CStylePropertyE
 N8panorama14CUIPanelEvent0E
+N8panorama14CUIPanelEvent1I12PlayerSlot_tEE
 N8panorama14CUIPanelEvent1I14EventClaimID_tEE
 N8panorama14CUIPanelEvent1I22EventChallengeSlotID_tEE
 N8panorama14CUIPanelEvent1I23item_definition_index_tEE
@@ -19579,11 +19600,15 @@ NumFirstPlace
 NumItemIconsVisible
 NumItemIconsVisible%d
 NumSegments
+NumSynergies
+NumSynergies%d
 NumSynergyIconsVisible
 NumSynergyIconsVisible%d
 NumTalentsNeedingSelection
 NumTalentsNeedingSelection%d
 NumTopThree
+NumUnits
+NumUnits%d
 Number of seconds forced between similar lesson start sounds.
 NumberEntry
 NumberEntryChanged
@@ -19746,18 +19771,14 @@ OverviewContainer
 OwnGameplayInfo
 P A;]
 P D	@
-P D9k
 P HcC
-P HcF
 P HcM
 P IcD$
 P IcF
 P Lcc
 P M;:
 P [A\]
-P(A9_
 P(A;]
-P(D9c
 P(D;c
 P(t>Ic\$ @
 P0AYAZ
@@ -19781,10 +19802,9 @@ P8H=vpcf
 P8H=vtex
 P9KeyValues
 P<9S8t
-P@A9_
 P@A;]
 P@A;](|
-P@D9c
+P@Dota Underlords
 P@E9'
 P@H9C@tKH
 P@H;]
@@ -20090,7 +20110,6 @@ PhysEntityCollisionsAreDisabled called on entities in two different scene worlds
 PhysFrictionEffectPrecache_client
 PhysObjectHeader_t
 PhysicalDmgBar
-Physics Debug World
 Physics.WaterSplash
 Physics2 Interface Old v0.5
 PhysicsBodyMarkup
@@ -20443,7 +20462,6 @@ ProgressBarParticle
 ProgressBarRight
 ProgressBarVisible
 ProgressBarWithMiddle
-ProgressPip%d
 PropColon
 PropRow
 PropSemicolon
@@ -20504,13 +20522,11 @@ Put; voiceless alveolar stop
 PxMc}
 PxwrH
 Q%s\%s
-Q(D9{
 Q(Optional) If supplied, the resulting published file's Id is appended to the URI.
 Q)=blendindices
 Q4E3Q E3Q
 Q8A;]
 Q8q(2
-Q@D9{
 QAngle
 QAngle-world
 QHcKpIc
@@ -21677,6 +21693,7 @@ Show an underlord ability tooltip.
 Show cloth debug info in ent_text display
 Show entity contexts in ent_text display
 Show fake market prices for items
+Show info about a player.
 Show listening addition/removals
 Show missing closecaption entries.
 Show missing closecaptions (0 = no, 1 = devconsole, 2 = show in hud)
@@ -21803,6 +21820,7 @@ Slot_Global
 Slot_Placeable
 SlottedSlider
 SlottedSliderValueChanged
+SmallItem
 Smear boneflags across the model.  Costs computation, but tests to make sure your bone flags are consistent.
 SmokeFogOverlaySystem
 SmokeGrenade.Explode
@@ -22467,6 +22485,8 @@ The engine will set this to 1 if vprof_vtrace is enabled but VTrace itself was n
 The entity instance is too large for type %s! Make more components referenced!
 The entity to specifically debug
 The first enum value must be zero in proto3.
+The flags that we have set on this client that should be synchronized with the GC
+The list of items that this device has a reservation on
 The maximum number of heroes that can be banned for the specified draft tier
 The maximum slope the player can overcome [-]
 The stick range where autoaim dampening is applied. 0 = off
@@ -22629,6 +22649,7 @@ Tooltip.TextColor
 TooltipBase
 TooltipContents
 TooltipCustomLayout
+TooltipTarget
 TooltipText
 TooltipTitleImageText
 TooltipTitleText
@@ -23027,6 +23048,7 @@ Update(CDACLobby)
 Update(CDACParty)
 Update(CEconGameAccountClient)
 Update(CEconItem)
+UpdateAccountSynchronizedFlags
 UpdateColorCorrection
 UpdateCountdownInternal
 UpdateDirtyPanel
@@ -23418,7 +23440,6 @@ W0A;_H
 W3|Uxa
 W49V4u
 W8_AXH
-W=*ub
 W?,|C
 W@t>H
 WAITING FOR VSCRIPT DEBUGGER CONNECTION -- '-vscriptdebug' was provided on the command line.
@@ -23592,8 +23613,10 @@ X Hc@
 X [A\]
 X$D3X
 X$E3X
+X%7	_
 X(E3X
 X(Optional) If true, only return the published file ids of files that satisfy this query.
+X-T	_
 X0A;X@
 X0E3X
 X0Hc@(L
@@ -23639,15 +23662,12 @@ X^'@d
 XboxSystemInterface001
 Xr0t/H
 Y$E3Y
-Y%3rQ
-Y%_#+
+Y%7(~
 Y(Optional) Starting index to begin enumeration at. Defaults to the beginning of the list."Z
 Y,D3Y
 Y,E3Y
-Y-;zO
-Y-sqQ
+Y-3tQ
 Y4D3Y D3Y
-Y5^#+
 Y8E3Y$E3Y
 Y<E3Y(E3Y
 Y@is_underlord
@@ -23812,8 +23832,8 @@ Z}uU
 \$PASE
 \$PHc
 \$`Ic
+\%!8o
 \%03o
-\%a>o
 \C not allowed in lookbehind assertion
 \C8E1
 \IcL$
@@ -24678,6 +24698,7 @@ appid
 appid=%d
 application/json
 appliesToItems
+applies_to_untargetable_units
 apply_voice_ban_rules
 ar_fade_in
 arcana_level
@@ -25681,6 +25702,7 @@ client_session_id
 client_session_need
 client_steam_id
 client_streaming
+client_synchronized_flags
 client_synthesized_for_setup
 client_ui_panel
 client_version
@@ -26279,6 +26301,7 @@ dac_spoof_player_slot
 dac_start_fake_game_intro
 dac_start_fake_game_outro
 dac_stop_fake_game_outro
+dac_store_item_reservations
 dac_synergies_hide_bench_in_combat
 dac_synergies_hide_partial_during_combat
 dac_tab_dps
@@ -26686,7 +26709,6 @@ dynamic_prop
 dynamic_recipe
 dynamic_recipe_component
 dynamic_weather
-e0E;e@
 e0F$J
 e:wd,;"
 eDc?t
@@ -26876,7 +26898,6 @@ ep1_citadel_02
 ep1_citadel_02b
 ep1_citadel_03
 ep2_groggy
-epfA;
 episodic_intro
 episodic_stun
 equip_conflicts
@@ -27182,6 +27203,7 @@ file://{images}/hud/neutral_round%d_avatar.png
 file://{images}/hud/neutral_round%d_vs_small.png
 file://{images}/items/%s.psd
 file://{images}/items/empty.psd
+file://{images}/items/small/%s.psd
 file://{images}/mini_profile/mini_profile_rank_%d_bg.psd
 file://{images}/mini_profile/mini_profile_rank_%d_tier_%d_pin.psd
 file://{images}/mini_profile/mini_profile_tier_numeral_%d.psd
@@ -27350,6 +27372,7 @@ file://{resources}/layout/tooltips/tooltip_hero_ability.xml
 file://{resources}/layout/tooltips/tooltip_item.xml
 file://{resources}/layout/tooltips/tooltip_legendary.xml
 file://{resources}/layout/tooltips/tooltip_meter_details.xml
+file://{resources}/layout/tooltips/tooltip_player.xml
 file://{resources}/layout/tooltips/tooltip_synergy.xml
 file://{resources}/layout/tooltips/tooltip_talent_info.xml
 file://{resources}/layout/tooltips/tooltip_text.xml
@@ -27863,6 +27886,7 @@ grabbable
 grabs the object in front of the player. Options: -loose -multiple -toggle
 gradient
 gradient( 
+gradient(linear, 0%% 0%%, 100%% 0%%, from( rgb(%d,%d,%d) ), to( rgb(%d,%d,%d) ) )
 grant
 grant_credits
 grant_in_order
@@ -28083,11 +28107,13 @@ hungarian
 hurt_me
 hurt_them
 hypeBarBaseColor
+hypeBarColorEnd
+hypeBarColorStart
 hypeBarDarkColor
 hypeBarLightColor
 hypeCost
 h|D;-
-h|D;-C
+h|D;-^
 i < length_
 i >= 0
 i t!H
@@ -28828,6 +28854,7 @@ k_EMsgClientToGCEventPurchase
 k_EMsgClientToGCGetFriendCodes
 k_EMsgClientToGCIsInMatchmaking
 k_EMsgClientToGCLeaveLobby
+k_EMsgClientToGCModifyGACFlags
 k_EMsgClientToGCNameItem
 k_EMsgClientToGCPartyAction
 k_EMsgClientToGCPartyCreate
@@ -34102,6 +34129,7 @@ recipe component
 recipe name
 recipe_def_index
 recipientList
+reconnect.dat
 reconnect_delay
 record_lose_streak
 record_losses
@@ -34422,31 +34450,40 @@ runcommand:%04d,tick:%u
 runsimulation  :cmd %d -> slot %d
 russian
 s H;5
-s H;5	]
-s H;5(
-s H;58
-s H;5Io
+s H;5 
+s H;5)m
+s H;5)t
+s H;54
+s H;58n
+s H;59
+s H;59Y
+s H;5@
+s H;5@<
+s H;5H
+s H;5Hd
+s H;5I%
+s H;5L
 s H;5P
-s H;5Y(
-s H;5Y/
+s H;5Y
+s H;5Yr
 s H;5d
-s H;5h)
+s H;5h
+s H;5hp
 s H;5i
-s H;5p
-s H;5pZ
+s H;5t6
+s H;5tB
 s H;5x
-s H;5xy
+s H;5x)
 s H;5y
-s H;5|t
 s off
 s(AUH
 s(E9&t-A
 s(H;5
-s(H;50>
-s(H;5<
-s(H;5H
+s(H;5 J	
 s(H;5P
-s(H;5p
+s(H;5x
+s(H;5x<
+s(H;5|
 s(t.H
 s)Hc@
 s)~+@
@@ -34454,53 +34491,46 @@ s,+s(
 s/glow.vH
 s/spriteH
 s0H;5
-s0H;5$
-s0H;5,[
-s0H;5H\
-s0H;5H}
-s0H;5S
-s0H;5`
-s0H;5`:
-s0H;5`>
-s0H;5g
-s0H;5p
-s0H;5t
+s0H;5#
+s0H;50
+s0H;50\
+s0H;578
+s0H;5@
+s0H;5D
+s0H;5P
+s0H;5T
+s0H;5pV
+s0H;5t1
 s1_mapname
 s2r://
 s69F~
 s7>Ip
 s8D;kP
 s8H;5
-s8H;5 
-s8H;5 [
-s8H;50
-s8H;5E
-s8H;5i
+s8H;59;
+s8H;5`
+s8H;5l
 s8Lcm
 s@9C@
 s@CGCToClientPollFileJob
 s@H9sHv
 s@H;5
-s@H;58\
-s@H;5H
-s@H;5X
-s@H;5p
-s@H;5t?
+s@H;5(	
+s@H;5@
+s@H;5D
 sHA9t$,t
 sHH;5
-sHH;5'
-sHH;5l\
-sHH;5m
+sHH;5<
+sHH;5=
+sHH;5p
 sHHcR
 sIf true, then files must have all the tags specified.  If false, then must have at least one of the tags specified.
 sMA9|$ 
 sPH;5
-sPH;50
-sPH;5@
-sPH;5J
+sPH;5`
 sRHc@
 sXH;5
-sXH;5`
+sXH;50
 sZtgH
 s_EntComponentInfo
 s_WindVector
@@ -34781,9 +34811,8 @@ setting.useadvanced
 severity
 sfixed32
 sfixed64
-shH;50g
-shH;5H_
-shH;5uf
+shH;5
+shH;5E
 shMcuX
 shadowcascadecount
 shadowcascadedistance%d
@@ -34807,6 +34836,7 @@ shake_show
 shake_stop
 shake_testpunch
 shapeType
+share_code
 shared
 sharedobj
 sharpStartAngle
@@ -35004,9 +35034,9 @@ source_file
 source_filename
 source_reference_id
 source_unit_idx
-spH;5Eg
-spH;5Ta
-spH;5`g
+spH;5
+spH;5$
+spH;50
 space
 space shuttle
 spacerperiod
@@ -35426,8 +35456,8 @@ swap_width
 swedish
 swift_prefix
 sxH;5
-sxH;5 R
-sxH;5}g
+sxH;5M
+sxH;5`
 sxHc@
 sxt!H
 symbol
@@ -35472,15 +35502,18 @@ t!E9_
 t!IcE
 t!IcN 
 t";2}
+t"D85
 t"E9g
 t"H;=
-t"H;=C
+t"H;=S
 t"HcS
 t"L;%
-t"L;%!k
+t"L;%1
 t"L;%A
-t"L;%a
-t"L;%qK
+t"L;%P
+t"L;%Q
+t"L;%`
+t"L;%p;
 t#;:u
 t#D;c
 t#IcD$
@@ -35498,6 +35531,7 @@ t$(H9
 t$(L)
 t$(L9
 t$(t-H
+t$0E1
 t$0H9
 t$0Hc
 t$0f.
@@ -35531,37 +35565,40 @@ t$hH9
 t$pH9
 t$pvufA
 t$xH9
-t%;5f
+t%;5F
 t%HcC0A
 t%HcSx
 t%Icv 
 t%L;}
 t%Lc;D;{
+t&;5oW
 t&D;y
 t&H;wXt
 t&Icv
 t&L;%
-t&L;%Pk
+t&L;% 
+t&L;%@
+t&L;%`
 t&L;%p
 t&Lcc
 t'99u
-t'H;=H
-t'H;=h
+t'H;=
+t'H;=8R
 t'Lcm
 t(<)u
 t(D9m
-t(D;%7@
+t(D;%GS
 t(IcD$8
 t(Lc#D;c
 t(Mce
 t(Mcg
 t([A\A]A^]
 t)@:5
-t)D;-
+t)D;- T
 t)HcE
 t)Mc<$E;|$
 t)[A\]
-t*D:=A
+t*D:=
 t*HcHPH
 t*HcJPH
 t*Lc}
@@ -35570,7 +35607,7 @@ t+D9e
 t+Ic\$
 t+Mc7E;w
 t,D9m
-t,D:%+
+t,D:%
 t-A9\$H
 t-D;u
 t-HcC$H
@@ -35578,9 +35615,9 @@ t-Mc&E;f
 t-Mcu
 t-[A\A]A^]
 t-rex
-t.D:%
-t.D;%}
-t.D;=MU
+t.D:%}
+t.D;%
+t.D;=
 t.H9P
 t.HcC H
 t.HcC$H
@@ -35795,7 +35832,6 @@ t<HcR
 t=[A\]
 t>M.F9
 t>[A\]
-t@;5u4s
 t@Ic_
 t@L;}
 t@Lc#D;c
@@ -35837,6 +35873,7 @@ tO[A\]
 tPA9Q ~JM
 tPIc](I
 tP[A\A]A^]
+tR;5ULs
 tRIcE
 tS[A\]
 tTIcF
@@ -37111,7 +37148,7 @@ x	;F`
 x	;H 
 x	IcE(H9
 x = %i, y = %i, w = %i h = %i text %s
-x H;=
+x H;=b
 x XZH
 x axis
 x#Hcw
@@ -37120,7 +37157,7 @@ x$HcSh;Sx
 x("tU
 x(H;=
 x*;XZ
-x*D;%
+x*D;%x
 x+A9T$h~$H
 x,E9|$,
 x0;wH}+Hc
@@ -37131,7 +37168,7 @@ x4A9WH~.H
 x7Hcs
 x7Hcw
 x8"tq
-x8H;=:
+x8H;=
 x9;B }4H
 x:Hcw
 x@HcO
@@ -37300,9 +37337,8 @@ zyuwI
 z|uzf
 z}u{L
 { H;=
-{ H;=!
-{ H;=Z-
-{ H;=Z2
+{ H;=1&
+{ H;=JE
 { t9I
 { t:I
 { u7H
@@ -37312,7 +37348,7 @@ z}u{L
 {([A\]
 {(fD9't)H
 {0D;{@A
-{0H;=U
+{0H;=
 {0[A\A]]
 {8[A\H
 {8[A^]
@@ -37345,7 +37381,7 @@ z}u{L
 |$ A\]
 |$ E;|$0tLI
 |$ H)
-|$ H;=
+|$ H;=)}
 |$(Hc
 |$(fA
 |$(~;A
@@ -37423,6 +37459,7 @@ z}u{L
 }/fA9
 }/fA;
 }0E;}@
+}0E;}@A
 }1A;^<
 }1fA;
 }2'@+P
@@ -37430,7 +37467,6 @@ z}u{L
 }3Hc@
 }4fA9
 }6Hc@
-}6fA;
 }8A\A]A^]
 }8Icv0A;v4A
 }9E;e$
@@ -37470,7 +37506,7 @@ z}u{L
 ~ A\A]A^A_]
 ~ E9'
 ~ XZH
-~"D;%R
+~"D;%B
 ~$D9e
 ~(A;]<
 ~(};Hc

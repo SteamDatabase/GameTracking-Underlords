@@ -328,6 +328,8 @@ DACUnderlordStatus.ShowPlayer
 	border: 6px solid black;
 
 	opacity-mask: url("s2r://panorama/images/masks/square_vignette_psd.vtex");
+
+	brightness: 1.8;
 }
 
 .LowVisualQuality #AbilitySection .TalentAbility .TalentAbilityImageContainer #TalentAbilityImage
@@ -340,15 +342,9 @@ DACUnderlordStatus.ShowPlayer
 	width: 100%;
 	height: 100%;
 	saturation: 0;
-	brightness: 0.1;
+	brightness: 0.2;
 
 	border: 6px solid black;
-}
-
-#AbilitySection .TalentAbility .TalentAbilityImageContainer #CooldownOverlay
-{
-	saturation: 1;
-	brightness: 1;
 }
 
 #AbilitySection .TalentAbility .TalentAbilityImageContainer #CooldownOverlay.Hidden
@@ -416,13 +412,14 @@ DACUnderlordStatus.ShowPlayer
 	border-radius: 0px;
 }
 
-#AbilitySection .RightSection .HypeSegment
+#AbilitySection .RightSection .HypeMeter
 {
 	height: 100%;
+	width: 100%;
 	background-color: gradient(linear, 0% 0%, 100% 0%, from( #343434 ), to(#525252) );
 }
 
-#AbilitySection .RightSection .HypeSegmentActive
+#AbilitySection .RightSection .HypeMeterActive
 {
 	height: 100%;
 	border-top-right-radius: 8px;
@@ -433,8 +430,8 @@ DACUnderlordStatus.ShowPlayer
 	transition-timing-function: linear;
 }
 
-.LowVisualQuality .HypeSegment,
-.LowVisualQuality .HypeSegmentActive
+.LowVisualQuality .HypeMeter,
+.LowVisualQuality .HypeMeterActive
 {
 	border-top-right-radius: 0px;
 	border-bottom-right-radius: 0px;
@@ -468,50 +465,7 @@ DACUnderlordStatus.ShowPlayer
 	animation-iteration-count: 1;
 }
 
-#AbilitySection #HypeBarBackground.Underlord_1 #HypeSegmentActive1
-{
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #6b14a7 ), to( #6e1ef3 ) );
-}
 
-#AbilitySection #HypeBarBackground.Underlord_1 #HypeSegmentActive2
-{
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #8d00af ), to( #6f00fc ) );
-}
-
-#AbilitySection #HypeBarBackground.Underlord_1 #HypeSegmentActive3
-{
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #c316ca ), to( #f869ec ) );
-}
-
-#AbilitySection #HypeBarBackground.Underlord_2 #HypeSegmentActive1
-{
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #149aa7 ), to( #1ef3d2 ) );
-}
-
-#AbilitySection #HypeBarBackground.Underlord_2 #HypeSegmentActive2
-{
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #00a4af ), to( #00edfc ) );
-}
-
-#AbilitySection #HypeBarBackground.Underlord_2 #HypeSegmentActive3
-{
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #16aeca ), to( #69e6f8 ) );
-}
-
-#AbilitySection #HypeBarBackground.Underlord_4 #HypeSegmentActive1
-{
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #A73B14 ), to( #F3591E ) );
-}
-
-#AbilitySection #HypeBarBackground.Underlord_4 #HypeSegmentActive2
-{
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #AF5500 ), to( #FC7F00 ) );
-}
-
-#AbilitySection #HypeBarBackground.Underlord_4 #HypeSegmentActive3
-{
-	background-color: gradient(linear, 0% 0%, 100% 0%, from( #b48918 ), to( #f8cb4d ) );
-}
 
 #AbilitySection .RightSection .ProgressPip
 {
@@ -529,38 +483,6 @@ DACUnderlordStatus.ShowPlayer
 {
 	visibility: collapse;
 }
-
-#AbilitySection .RightSection #HypeSegment1
-{
-	border-right: 2px solid #000;
-	border-bottom-right-radius: 8px;
-	border-top-right-radius: 8px;
-}
-
-#AbilitySection .RightSection #HypeSegment2
-{
-	border-left: 2px solid #000;
-	border-right: 2px solid #000;
-	border-radius: 8px;
-	margin-left: -3px;
-	margin-right: -3px;
-}
-
-#AbilitySection .RightSection #HypeSegment3
-{
-	border-left: 2px solid #000;
-	border-bottom-left-radius: 8px;
-	border-top-left-radius: 8px;
-}
-
-
-.LowVisualQuality #AbilitySection .RightSection #HypeSegment1,
-.LowVisualQuality #AbilitySection .RightSection #HypeSegment2,
-.LowVisualQuality #AbilitySection .RightSection #HypeSegment3
-{
-	border-radius: 0px;
-}
-
 
 #AbilitySection .RightSection .OtherAbilities
 {
@@ -856,6 +778,27 @@ DACUnderlordStatus.ShowPlayer
 	transform: ScaleX(-1) translateX(160px);
 }
 
+#TooltipTarget
+{
+	visibility: collapse;
+
+	horizontal-align: right;
+	vertical-align: bottom;
+	margin-bottom: 188px;
+
+	width: 456px;
+	height: 566px;
+}
+
+.LeftPlayer #TooltipTarget
+{
+	horizontal-align: left;
+}
+
+.IsLayoutSmallScreen #TooltipTarget
+{
+	visibility: collapse;
+}
 
 #ChatButton
 {
@@ -1015,7 +958,8 @@ DACUnderlordStatus.ShowPlayer
 }
 
 .HasUnderlord #UnderlordPortrait ,
-.HasUnderlord #UnderlordItems
+.HasUnderlord #UnderlordItems,
+.HasUnderlord #TooltipTarget
 {
 	visibility: visible;
 }

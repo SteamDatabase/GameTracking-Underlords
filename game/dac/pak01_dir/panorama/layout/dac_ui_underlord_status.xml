@@ -11,6 +11,11 @@
 	<DACUnderlordStatus hittest="false">
 		<DACUnderlordScenePanel id="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" usePortraitData="true" glowsize="0" fov="50" cameraUp="155" cameraLeft="10" cameraDistance="120" hittest="false"/>
 		
+		<!-- just where to stick the tooltip arrow -->
+    <!-- Designers: Change back to this version when you want to work on it.
+    <Panel id="TooltipTarget" hittest="true" onmouseover="DACUnderlordStatusShowTooltip()" onmouseout="DACUnderlordStatusHideTooltip()"/> -->
+    <Panel id="TooltipTarget" hittest="false" />
+    
 		<Panel id="SideItems" hittest="false">
 			<Panel id="UnderlordItems" hittest="false">
 				<Panel id="ChatButton" hittest="true" onactivate="DACShowChatLineContextMenu()" />
@@ -24,12 +29,12 @@
 					<DACParticleScenePanel id="UnderlordSmokeParticle" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/underlord_smoke.vpcf" fov="-200" />
 				</Panel>
 
-				<Panel class="UnderlordVignette" />
+				<Panel class="UnderlordVignette" hittest="false"/>
 				
 				<Panel class="BottomSection" hittest="false">
 					<Panel class="Info" hittest="false">
 
-						<Panel class="InfoBlock">
+						<Panel class="InfoBlock" hittest="false">
 							<Panel id="DuosTeamName" hittestchildren="false">
 								<Label text="{s:duos_team_name}" />
 							</Panel>
@@ -78,19 +83,8 @@
 						</Panel>
 						<Panel class="RightSection">
 							<Panel id="HypeBarBackground">
-								<Panel id="HypeSegment1" class="HypeSegment">
-									<Panel id="HypeSegmentActive1" class="HypeSegmentActive">
-										<Panel id="ProgressPip1" class="ProgressPip"/>
-									</Panel>
-								</Panel>
-								<Panel id="HypeSegment2" class="HypeSegment">
-									<Panel id="HypeSegmentActive2" class="HypeSegmentActive">
-										<Panel id="ProgressPip2" class="ProgressPip"/>
-									</Panel>
-								</Panel>
-								<Panel id="HypeSegment3" class="HypeSegment">
-									<Panel id="HypeSegmentActive3" class="HypeSegmentActive">
-										<Panel id="ProgressPip3" class="ProgressPip"/>
+								<Panel id="HypeMeter" class="HypeMeter">
+									<Panel id="HypeMeterActive" class="HypeMeterActive">
 									</Panel>
 								</Panel>
 							</Panel>

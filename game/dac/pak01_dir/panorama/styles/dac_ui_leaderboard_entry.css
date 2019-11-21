@@ -211,6 +211,10 @@ DACLeaderboardEntry {
 	opacity-mask: url("s2r://panorama/images/hud/dac_profile_rounded_corner_mask_psd.vtex");	
 }
 
+.GameMode_Duos .PlayerAvatarGroup {
+	opacity-mask: none;
+}
+
 
 .HasPlayerOpponent.InCombat .IsAwayGame
 {
@@ -319,6 +323,10 @@ DACLeaderboardEntry {
 	transition-property: brightness, border, saturation;
 	transition-duration: .1s;
 	opacity-mask: url("s2r://panorama/images/hud/dac_profile_rounded_corner_right_mask_psd.vtex");
+}
+
+.GameMode_Duos #LeaderboardAvatar {
+	opacity-mask: none;
 }
 
 .LowVisualQuality .PlayerAvatarGroup,
@@ -1439,33 +1447,26 @@ DACLeaderboardEntry {
 	text-shadow: 0px 0px 0px 2.0 #000;
 }
 
-#PostGameStats #ParticleBG, #PostGameStats #ParticleFG
+#PostGameStats #ParticleBG, #PostGameStats #ParticleFGTop, #PostGameStats #ParticleFGBottom
 {
 	visibility:collapse;
 }
 
-#ParticleBG, #ParticleFG {
-	width: 100%;
-	height: 100%;	
-}
 
-#ParticleFG {
+#ParticleFGTop, #ParticleFGBottom {
 	z-index: 2;
 }
 
 #ParticleBG,
-#ParticleFG {
-	height: 165px;
-	width: 480px;
-	margin-top: -46px;
+#ParticleFGTop, #ParticleFGBottom {
+	height: 500px;
+	width: 500px;
+	margin-top: -220px;
 }
 
 
-.GameMode_Duos #ParticleBG,
-.GameMode_Duos #ParticleFG {
-	height: 165px;
-	width: 505px;
-	margin-top: -46px;
+.GameMode_Duos #ParticleBG {
+	margin-left: 30px;
 }
 
 
@@ -1799,9 +1800,9 @@ DACLeaderboardEntry {
 	transition-property: opacity;
 	transition-duration: 100ms;
 	
-	width: 360px;//expanded so that clashing sword and shield are visible
+	width: 320px;//expanded so that clashing sword and shield are visible
 	height: 75px;
-	margin-top: 17px;//offset to line up with child stuff
+	margin-top: 0px;//offset to line up with child stuff
 	wash-color: #ccc;//
 
 	animation-duration: .81s;
@@ -1810,6 +1811,10 @@ DACLeaderboardEntry {
 
 	visibility: collapse;
 	margin-left : -15px;
+}
+
+.GameMode_Duos .LeaderboardTargetIndicator {
+	width: 355px;
 }
 
 /* todo
@@ -1842,8 +1847,8 @@ DACLeaderboardEntry {
 	animation-duration: .81s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
-	width: 42px;
-	height: 42px;
+	width: 32px;
+	height: 32px;
 	margin-bottom: 12px;
 	overflow: noclip;
 	//visibility: collapse;
@@ -1882,12 +1887,12 @@ DACLeaderboardEntry {
 {
 	margin-top: 20px;
 	ui-scale: 100%;
-	margin-left: 0px;
+	margin-left: 20px;
 }
 
-.GameMode_Duos.InCombat .IsHomeGame .LeaderboardTargetIndicator {
-	width: 370px;
-}
+/* .GameMode_Duos.InCombat .IsHomeGame .LeaderboardTargetIndicator {
+	margin-left: 15px;
+} */
 
 .InCombat .IsAwayGame .LeaderboardTargetIndicator
 {
@@ -1903,6 +1908,14 @@ DACLeaderboardEntry {
 	visibility: visible;
 }
 
+.GameMode_Duos.InCombat .LeaderboardTargetIndicator
+{
+	ui-scale: 80%;
+	margin-top: 0px;
+	margin-left: 83px;
+
+	visibility: visible;
+}
 
 
 
@@ -1952,7 +1965,7 @@ DACLeaderboardEntry {
 
 .LeaderboardNotification
 {
-	margin-left: 295px;
+	margin-left: 285px;
 	max-width: 1500px;
 	height: fit-children;
 	height: 60px; 
@@ -1961,9 +1974,13 @@ DACLeaderboardEntry {
 
 	z-index: 2;
 
-	
     /*flow-children: right;*/
 }
+
+.GameMode_Duos .LeaderboardNotification {
+	margin-left: 330px;
+}
+
 
 
 .LowVisualQuality .ShowNotification .LeaderboardNotification 
@@ -2120,6 +2137,15 @@ DACLeaderboardEntry {
 	//background-color: black;
 }
 
+.IsLoss .PlayerLeaderboard {
+	wash-color: #FF3D3D90;
+}
+
+
+.GameMode_Duos .PlayerLeaderboard {
+	width: 320px;
+}
+
 .LowVisualQuality .PlayerLeaderboard
 {
 	transition-duration: 0s;
@@ -2148,34 +2174,47 @@ DACLeaderboardEntry {
 	flow-children: right;
 }
 
+#PlayerNameContainer {
+	max-width: 130px;
+	opacity-mask: url("s2r://panorama/images/masks/fade_name_right_psd.vtex");	
+	margin-top: 5px;
+	margin-bottom: -3px;
+}
+
 .PlayerName 
 {
 	text-shadow: 0px 0px 0px 1.0 #00000000;
 	font-size: 20px;
 	font-weight: light;
-	vertical-align: middle;
+	//vertical-align: top;
+	max-height: 20px;
 	color: #dedede;
 	width: 130px;
 	text-overflow: ellipsis;
-	margin-left: 10px;
 	line-height: 22px;
-	margin-top: 1px;
+	//margin-top: -2px;
+
+	opacity-mask: url("s2r://panorama/images/masks/fade_name_right_psd.vtex");	
 }
 
-.GameMode_Duos .PlayerName {
-	width: 160px;
+.GameMode_Duos #PlayerNameContainer,
+.GameMode_Duos .PlayerName,
+.GameMode_Duos #PlayerStats {
+	max-width: 245px;
+	width: 245px;
 }
 
-.PlayerAvatarGroup #PlayerLevelContainer {
-	width: 100%;
+#PlayerLevelContainer {
+	width: 40px;
 	height: 100%;
+	flow-children: right;
 }
 
-.IsDead #PlayerLevelContainer {
+/* .IsDead #PlayerLevelContainer {
 	visibility: collapse;
-}
+} */
 
-.PlayerLevelBG {
+/* .PlayerLevelBG {
 	width: 40px;
 	height: 40px;
 	vertical-align: bottom;
@@ -2184,39 +2223,52 @@ DACLeaderboardEntry {
 	background-image: url("s2r://panorama/images/leaderboard/levelcontainer_png.vtex");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
-}
+} */
 
 .PlayerAvatarGroup .PlayerLevel {
 	
 	color: #3E4586;
 	font-size: 18px;
 	vertical-align: bottom;
-	horizontal-align: right;
-	margin-right: 5px;
+	horizontal-align: left;
+	margin-right: 0px;
 	text-overflow: shrink;
 	max-width: 13px;
 	
 }
 
-#PlayerInfo {
+#PlayerStats {
+	width: 135px;
+	height: 100%;
 	flow-children: down;
-	horizontal-align: right;
-	min-width: 75px;
+	margin-left: 10px;
 }
 
-#GoldRow,
-#HealthRow {
+#PlayerInfo {
 	flow-children: right;
-	horizontal-align: right;
+	horizontal-align: left;
+	width: 100%;
+	height: 26px;
+	margin-top: 3px;
 }
+
+
 
 #GoldRow {
-	margin-top: 3px;
+	margin-top: 0px;
+	flow-children: right;
+	horizontal-align: left;
+	height: 100%;
 }
 
 #HealthRow {
-	margin-top: 3px;
-	margin-bottom: -4px;
+
+	flow-children: left;
+	horizontal-align: right;
+	width: 70px;
+	margin-right: 5px;
+	//border: 1px solid pink;
+	vertical-align: middle;
 }
 
 .GameMode_Duos #HealthRow {
@@ -2229,9 +2281,9 @@ DACLeaderboardEntry {
 .PlayerHealth,
 .PlayerGold
 {
-	font-size: 25px;
+	font-size: 20px;
 	font-weight: bold;
-	margin-left: 15px;
+	//font-family: 'Ravenhook';
 }
 
 
@@ -2245,9 +2297,10 @@ DACLeaderboardEntry {
 {
 	text-shadow: 0px 0px 0px 1.0 #00000000;
 	color: #93b7fe;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #8db0f4 ), to(#aad8de));
 	vertical-align: center;
-	width: 24px;
-	text-align: right;
+	//width: 24px;
+	text-align: left;
 	margin-left: 0px;
 
 	text-overflow: shrink;
@@ -2256,14 +2309,16 @@ DACLeaderboardEntry {
 
 .PlayerHealth {
 	text-shadow: 0px 0px 0px 1.0 #00000000;
-
+	font-size: 28px;
 	text-align: right;
-	padding-right: 4px;
+	padding-right: 6px;
 	color: #a2ff92;
 	//color: gradient( linear, 0% 0%, 0% 100%, from( #a2ff92 ), to( #52af43 ) );
 	vertical-align: middle;
+	horizontal-align: right;
 	letter-spacing: 1px;
 	text-shadow: 0px 0px 3 #000000;
+	width: 60px;
 }
 
 .HealthMid .PlayerHealth
@@ -2278,16 +2333,16 @@ DACLeaderboardEntry {
 
 .PlayerGold {
 	text-shadow: 0px 0px 0px 1.0 #00000000;
-	//width: 32px;
-	font-size: 18px;
+	//width: 30px;
+	//font-size: 25px;
 	text-align: right;
-	text-overflow: shrink;
+	//text-overflow: shrink;
 	padding-right: 6px;
 	color: gold;
-	//color: gradient( linear, 0% 0%, 0% 100%, from( #FBF8E2 ), to( #B1AC77 ) );
+	color: gradient( linear, 0% 0%, 0% 100%, from( #FBF8E2 ), to( #B1AC77 ) );
 	vertical-align: middle;
-	letter-spacing: 1px;
-	font-weight: semi-bold;
+	letter-spacing: 0px;
+	font-weight: bold;
 	text-shadow: 0px 0px 3 #000000;
 
 }
@@ -2299,17 +2354,15 @@ DACLeaderboardEntry {
 	margin-top: -3px;
 }
 
-.GameMode_Duos .PlayerGold
-{
-	margin-left: 5px;
-}
+
 
 .PlayerLevelIcon
 {
-	width: 18px;
-	height: 18px;
-	opacity: .75;
+	width: 16px;
+	height: 16px;
+	opacity: 1;
 	margin-left: 0px;
+	margin-top: 1px;
 	vertical-align: center;
 	background-image: url("s2r://panorama/images/leaderboard/player_level_psd.vtex");
 	background-size: contain;
@@ -2398,17 +2451,44 @@ DACLeaderboardEntry {
 }
 
 //DUOS
-
+/* 
 .GameMode_Duos .PlayerLeaderboard
 {
 	width: 300px;
-}
+} */
 
 .GameMode_Duos .PlayerLeaderboard .PlayerHealth,
-.GameMode_Duos .PlayerLeaderboard .PlayerHealthIcon
+.GameMode_Duos .PlayerLeaderboard .PlayerHealthIcon,
+.GameMode_Duos .PlayerLeaderboard #PlayerLevelContainer,
+.GameMode_Duos .PlayerLeaderboard .PlayerLevel,
+.GameMode_Duos .PlayerLeaderboard .PlayerLevelIcon
 {
 	visibility: collapse;
 }
+
+.GameMode_Duos #PlayerSlot_2.IsOpen,
+.GameMode_Duos #PlayerSlot_4.IsOpen,
+.GameMode_Duos #PlayerSlot_6.IsOpen,
+.GameMode_Duos #PlayerSlot_8.IsOpen,
+.GameMode_Duos #PlayerSlot_10.IsOpen,
+.GameMode_Duos #PlayerSlot_12.IsOpen, 
+.GameMode_Duos #PlayerSlot_14.IsOpen, 
+.GameMode_Duos #PlayerSlot_16.IsOpen {
+	margin-bottom: 5px;
+}
+
+.GameMode_Duos #PlayerSlot_2.IsHomeGame.IsOpen,
+.GameMode_Duos #PlayerSlot_4.IsHomeGame.IsOpen,
+.GameMode_Duos #PlayerSlot_6.IsHomeGame.IsOpen,
+.GameMode_Duos #PlayerSlot_8.IsHomeGame.IsOpen,
+.GameMode_Duos #PlayerSlot_10.IsHomeGame.IsOpen,
+.GameMode_Duos #PlayerSlot_12.IsHomeGame.IsOpen, 
+.GameMode_Duos #PlayerSlot_14.IsHomeGame.IsOpen, 
+.GameMode_Duos #PlayerSlot_16.IsHomeGame.IsOpen {
+	margin-bottom: 0px;
+}
+
+
 
 
 //------------------------------------------
@@ -2417,13 +2497,25 @@ DACLeaderboardEntry {
 
 .PlayerLeaderboard
 {
-	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_png.vtex");
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_psd.vtex");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
 
 .MyTeam .PlayerLeaderboard {
-	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_png.vtex");
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_you_psd.vtex");
+}
+
+.StreakGold1.WinStreak .PlayerLeaderboard  {
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_streak1_psd.vtex");
+}
+
+.StreakGold2.WinStreak .PlayerLeaderboard  {
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_streak2_psd.vtex");
+}
+
+.StreakGold3.WinStreak .PlayerLeaderboard  {
+	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_streak3_psd.vtex");
 }
 
 .IsSelf .PlayerName
@@ -2441,8 +2533,8 @@ DACLeaderboardEntry {
 }
 
 .IsSelf .PlayerLeaderboard {
-	//brightness: 2.0;
-	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_png.vtex");
+	//brightness: 3.0;
+	//background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_png.vtex");
 }
 
 .LowVisualQuality .IsSelf .PlayerLeaderboard {

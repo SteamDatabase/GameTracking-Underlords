@@ -35,9 +35,12 @@
 
 	"DAC_MatchTypeMultiplayer"							"Flera spelare"
 	"DAC_MatchTypeStandard"								"Standard"
+	"DAC_MatchTypeTurbo"								"Turbo"
 	"DAC_MatchTypeMultiplayerMMSelect"					"Välj typ"
 	"DAC_MatchTypeName0"								"Icke-rankad"
 	"DAC_MatchTypeNameRanked"							"Rankad"
+	"DAC_MatchTypeBotTeammate"							"Bot Teammate"
+	"DAC_MatchTypeInviteAFriend"						"Invite a Friend"
 	"DAC_MatchTypeNameRankedLocked1"					"Spela {i:games_needed_to_unlock_ranked} icke-rankade matcher för att låsa upp"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Spela {i:games_needed_to_unlock_ranked} icke-rankade matcher för att låsa upp"
 	"DAC_MatchTypeBotMatch"								"Botmatch"
@@ -52,6 +55,8 @@
 	"DAC_DBHome_Play_Party"								"Gruppmatch"
 	"DAC_DBHome_Searching_Party"						"Söker match"
 	"DAC_ComingSoon"									"Kommer snart"
+	"DAC_MatchTypeNameDuosState_SoloWithBots"			"Join a bot teammate and battle other players"
+	"DAC_MatchTypeNameDuosState_PartyWithBots"			"Some players will have a bot for a teammate"
 	"DAC_MatchTypeNameDuosState_NoParty"				"Kräver en grupp med minst 2 spelare."
 	"DAC_MatchTypeNameDuosState_NeedBuddy"				"Din grupp är för liten för detta läge. Välj för att bjuda in en vän."
 	"DAC_MatchTypeNameDuosState_ExcessBuddies"			"Din grupp är för stor för detta läge. Välj för att reducera gruppens storlek."
@@ -65,9 +70,11 @@
 	"DAC_Teammate"										"Lagkamrat"
 	"DuosAboutLabel"									"Vad är Duos?"
 	"DAC_MatchTypeDescStandard"							"Utmana sju fiendearméer att besegra"
-	"DAC_MatchTypeDescDuos"								"Strid tillsammans med en vän"
+	"DAC_MatchTypeDescDuosCasual"						"Party-up with a friend or bot and go to battle"
+	"DAC_MatchTypeDescDuosRanked"						"Party-up with a friend and go to battle"
 	"DAC_MatchTypeDescBots"								"Spela ensam mot AI"	
 	"DAC_MatchTypeDescResume"							"Återuppta din senaste match mot AI"	
+	"DAC_MatchTypeDescTurboBots"						"Play a single player TURBO match against AI"
 	"DAC_MatchTypeDescDuosBots"							"Spela med en AI-lagkamrat i en Duos-botmatch."	
 	"DAC_MatchTypeDescFreestyle"						"Ställ in och testa simulerade strider utan begränsning"	
 	"DAC_MatchTypeDescFreestyle2"						"I detta läge har du full kontroll över spelplanen och kan skapa vilket scenario du vill. Använd det för att utforska olika kombinationer av arméer eller för att testa nya hypoteser. Du kan sedan dela din design med vänner och gemenskapen."	
@@ -303,6 +310,8 @@
 	"DAC_RenameTeam_NotUnlocked"						"Du måste vinna fler matcher innan du kan ställa in namnet på detta lag"
 	"DAC_RenameTeam_InCooldown"							"Tillräckligt med tid har inte gått sedan du bytte namn på det här laget. Vänta en stund och byt namn på det senare."
 	"DAC_RenameTeam_NameTooLong"						"Det tillhandahållna namnet är för långt för ett lagnamn. Försök med ett kortare namn."
+	"DAC_RenameTeam_CommunityBanned"					"You are currently community banned on Steam and therefore are not allowed to name teams"
+	"DAC_RenameTeam_GameBanned"							"You have been banned from being able to name teams due to previous behavior"
 	   	 
 	"DAC_Party_KickedByTitle"							"Utsparkad från grupp"
 	"DAC_Party_KickedByText"							"Du sparkades ut från gruppen av {g:dac_persona:kicked_by_account}"
@@ -887,9 +896,9 @@
 	"dac_item_shivas_guard_desc"						"+{d:bonus_armor} skydd. Avger en frysande våg som gör {d:blast_damage} skada på fiender inom 3 rutor och saktar ned deras förflyttningshastighet och attackhastighet i {s:blast_debuff_duration}s. (en gång per strid)"
 	"dac_item_shivas_guard_lore"						"Fråga inte hur detta lämnade Safirkonklavens valv. – <i>Zenok, langare i White Spire</i>"
 
-	"dac_item_bloodthorn"							"Blodstorn"
-	"dac_item_bloodthorn_desc"						"+{d:attack_damage} attackskada. När en fiendehjälte har mer än {d:mana_trigger_percentage} % mana tystas den i {d:silence_duration}s. Attacker mot tystade hjältar kan inte missa och ger {d:target_crit_multiplier} % kritisk skada. (10s cooldown)"
-	"dac_item_bloodthorn_lore"						"Att bära det här svärdet kommer inte göra dig populär, men det kommer garanterat att döda dina fiender. – <i>Zenok, langare i White Spire</i>"
+	"dac_item_bloodthorn"								"Blodstorn"
+	"dac_item_bloodthorn_desc"			    			"+{d:attack_damage} Attack Damage. When an enemy hero has more than {d:mana_trigger_percentage}% mana, silence them for {d:silence_duration}s. Attacks against the silenced hero can't miss and crit for {d:target_crit_multiplier}%. ({d:cooldown}s cooldown)"
+	"dac_item_bloodthorn_lore"							"Att bära det här svärdet kommer inte göra dig populär, men det kommer garanterat att döda dina fiender. – <i>Zenok, langare i White Spire</i>"
 	
 	"dac_item_hood_of_defiance"							"Trotsarens huva"
 	"dac_item_hood_of_defiance_desc"					"+{d:bonus_magical_resistance} % magiresistens. +{d:health_regen} HP-regeneration."
@@ -1394,6 +1403,7 @@
 	"DAC_PostGame_BP_Subheader"			"Framsteg"
 	"DAC_PostGame_BP_Desc"				"Spela matcher och genomför utmaningar för att få XP och lås upp belöningar."
 	"DAC_PostGame_Rank"					"Rankingnivå"
+	"DAC_PostGame_TeamRank"				"Team Rank Level"
 	"DAC_PostGame_NonRanked"			"Rankingframsteg registrerades inte i denna match."
 
 	"dac_synergy_popup_units_on_board"		"Du har {d:units_on_board} enheter av denna typ på spelplanen"
@@ -1570,7 +1580,7 @@
 
 	"DAC_Synergy_Desc_Insect"			"Spiderlings svärmar runt fiender från sidan av spelplanen. Spiderlings kan inte göras till måltavlor, gör liten skada och har 1 HP. Fiender som blir bitna av spiderlings har {s:miss_chance} % chans att missa med sina attacker i {s:miss_chance_duration} sekunder. Spiderlings återupplivas när de dör med {s:num_insects} stycken som mest."
 
-	"DAC_Synergy_Desc_Champion"		"Mästare får alla alliansbonusar."
+	"DAC_Synergy_Desc_Champion"		"Champions receive all Alliance bonuses. In addition, they gain 10% extra damage and max health per Alliance received."
 
 	"DAC_Synergy_Desc_Wisp"			"Io delar alliansbonusar med sin kompanjon till alla allierade enheter. *beep boop*"
 
@@ -1652,6 +1662,7 @@
 	"duos_benchlabel"					"Bänk:"
 	"duos_sendlabel"					"Skicka"
 	"button_selllabel"					"Sälj"
+	"button_recyclelabel"				"Återvinn"
 
 	"DAC_ChatHeader_Combat"		"Chatt för rundan"
 	"DAC_ChatHeader_Combat_Cooldown"		"Chatt för rundan (Cooldown)"
@@ -1851,8 +1862,22 @@
 	"DAC_JoinParty_Title"		"Gå med i grupp"
 	"DAC_JoinParty_Prompt"		"Grupp-ID"	
 	"DAC_Party_Invites"			"Gruppinbjudningar"
+
+	"DAC_Team_Info"				"Team Info"
 	"DAC_RenameTeam_Title"		"Ändra lagnamn"
 	"DAC_RenameTeam_Prompt"		"Lagnamn"
+	"DAC_RenameTeam_TeamStats"	"Team Stats:"
+	"DAC_RenameTeam_NumGames"	"Total Games Played: {d:total_games}"
+	"DAC_RenameTeam_NumWins"	"First Place Finishes: {d:total_first}"
+	"DAC_RenameTeam_NumPodiums"	"Top Three Finishes: {d:total_podiums}"
+	"DAC_RenameTeam_FirstGame"	"First Game together: {t:s:first_game}"
+	"DAC_RenameTeam_UnlockAfter_Plural"			"Play {d:games_until_rename} more games to customize your team name"
+	"DAC_RenameTeam_UnlockAfter_Singular"		"Play one more game to customize your team name"
+	"DAC_RenameTeam_CooldownAfter_Plural"		"You may rename your team again after {d:games_until_rename} more games"
+	"DAC_RenameTeam_CooldownAfter_Singular"		"You may rename your team again after one more game"
+	"DAC_RenameTeam_NewTeamText"				"This team has not yet played any games together"
+	"DAC_RenameTeam_ApplyName"					"Apply"
+	"DAC_RenameTeam_Close"						"Close"
 
 	"DAC_PartyMM_PlayersNotReady"					"Alla spelare är inte redo"
 	"DAC_PartyMM_TooFewPlayers"						"För få spelare i gruppen"
@@ -2017,6 +2042,7 @@
 	"dac_settings_auto_deploy_units"			"Placera ut enheter på spelplanen automatiskt om det finns plats."
 	"dac_settings_use_panorama_login"			"Använd äldre Steam-inloggning"
 	"dac_settings_low_violence"					"Reducerat våld"
+	"dac_settings_filter_offensive_text"		"Hide offensive words"
 
 	"dac_settings_low_violence_changed_title"	"Kräver omstart"
 	"dac_settings_low_violence_changed_body"	"Du måste starta om Dota Underlords för att verkställa denna ändring"
@@ -2190,12 +2216,15 @@
 	"DACRankTierDisplayName8"							"Nivå 8"
 	"DACRankLegendaryUnit"								"Stjärnnivå"
 	"DACRankPoints" "{d:player_rank_score} <span class='RankPoints'>Rankingpoäng</span>"
+	"DACTeamRankPoints" "{d:team_rank_score} <span class='RankPoints'>Rank Points</span>"
 
 	"DAC_Season_Rank_Title"						"Säsongsenliga rankingmedaljer"
 	"DAC_Season_Rank_Desc"						"I takt med att din skicklighet ökar under säsongen kommer du att belönas med rangmedaljer som alla har fem nivåer. Om du passerar nivån Högste ledare V kommer du att krönas till en av White Spires herrar och inta din plats på den globala topplistan."
 
 	"DAC_LevelUp_Rank_Old"	"<span class='RankName'>{s:old_rank_name}</span> {s:old_rank_tier}"
 	"DAC_LevelUp_Rank_New"	"<span class='RankName'>{s:new_rank_name}</span> {s:new_rank_tier}"
+	"DAC_LevelUp_Team_Rank_Old"	"<span class='RankName'>{s:old_team_rank_name}</span> {s:old_team_rank_tier}"
+	"DAC_LevelUp_Team_Rank_New"	"<span class='RankName'>{s:new_team_rank_name}</span> {s:new_team_rank_tier}"
 	"DAC_LevelUp_Title_Minor"	"Du gick upp i nivå!"
 	"DAC_LevelUp_Title_Major"	"Befordran!"
 	"DAC_LevelDown_Title_Minor"	"Du tappade en nivå!"
@@ -2215,6 +2244,7 @@
 	"DAC_Tier_Name_4"							"Nivå IV"
 	"DAC_Tier_Name_5"							"Nivå V"
 	"DAC_Leaderboard_Rank"							"<span class='RankName'>{s:new_rank_name} </span>"
+	"DAC_Team_Leaderboard_Rank"							"<span class='RankName'>{s:new_team_rank_name}</span>"
 
 	"DAC_Reward_Title_Major"					"Yo! En belöning"
 	"DAC_Reward_Title_Minor"					"Lös ut nu på Protopass-sidan"
@@ -2278,6 +2308,8 @@
 	"DAC_FightResultDefeat"						"FÖRLUST"
 	"DAC_FightResultDefeatDmg"					"-{d:damage_taken}"
 	"DAC_FightResultDraw"						"OAVGJORT"
+	"DAC_FightResultWinStreak"					"x{d:win_streak} VINSTSERIE!"
+	"DAC_FightResultWinStreakComplete"			"VINSTSERIE KOMPLETT!"
 
 	"DAC_Duos_Team_Header"						"Lag {d:lobby_team}"
 	"DAC_Duos_Team_Header_Home"						"Lag {d:lobby_team_home}"
@@ -2841,6 +2873,7 @@
 	"DAC_HowToPlay_HypeOMeter_Body" "Hypemätaren håller koll på en Underlords hypenivå. Kom ihåg att högre nivåer av hype förbättrar din Underlords skada och cooldowns."
 	"DAC_SelectedPlayerName" "{g:dac_player_slot_persona:b:selected_player_slot}"
 	"DAC_Spectating" "Åskådar"
+
 
 }
 

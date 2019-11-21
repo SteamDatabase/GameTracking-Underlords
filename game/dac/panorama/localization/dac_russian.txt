@@ -35,9 +35,12 @@
 
 	"DAC_MatchTypeMultiplayer"							"Сетевая"
 	"DAC_MatchTypeStandard"								"Стандартная"
+	"DAC_MatchTypeTurbo"								"Турбо"
 	"DAC_MatchTypeMultiplayerMMSelect"					"Выберите тип"
 	"DAC_MatchTypeName0"								"Обычная"
 	"DAC_MatchTypeNameRanked"							"Рейтинговая"
+	"DAC_MatchTypeBotTeammate"							"Бот-союзник"
+	"DAC_MatchTypeInviteAFriend"						"Пригласите друга"
 	"DAC_MatchTypeNameRankedLocked1"					"Обычных игр до разблокировки режима: {i:games_needed_to_unlock_ranked}"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Обычных игр до разблокировки режима: {i:games_needed_to_unlock_ranked}"
 	"DAC_MatchTypeBotMatch"								"С ботами"
@@ -52,6 +55,8 @@
 	"DAC_DBHome_Play_Party"								"Игра в группе"
 	"DAC_DBHome_Searching_Party"						"Поиск игры"
 	"DAC_ComingSoon"									"Скоро"
+	"DAC_MatchTypeNameDuosState_SoloWithBots"			"Сыграйте с ботом-союзником против других игроков"
+	"DAC_MatchTypeNameDuosState_PartyWithBots"			"Некоторые пары состоят из игрока и бота"
 	"DAC_MatchTypeNameDuosState_NoParty"				"Требуется группа хотя бы из 2 игроков."
 	"DAC_MatchTypeNameDuosState_NeedBuddy"				"Ваша группа слишком маленькая. Нажмите, чтобы пригласить друга."
 	"DAC_MatchTypeNameDuosState_ExcessBuddies"			"Ваша группа слишком большая. Нажмите, чтобы уменьшить её."
@@ -65,9 +70,11 @@
 	"DAC_Teammate"										"Союзник"
 	"DuosAboutLabel"									"Что такое «парный режим»?"
 	"DAC_MatchTypeDescStandard"							"Сразитесь против семи игроков за победу"
-	"DAC_MatchTypeDescDuos"								"Хватайте друга,\nи в бой!"
+	"DAC_MatchTypeDescDuosCasual"						"Хватайте друга или бота, и в бой!"
+	"DAC_MatchTypeDescDuosRanked"						"Хватайте друга, и в бой!"
 	"DAC_MatchTypeDescBots"								"Сыграйте в одиночку против ботов"	
 	"DAC_MatchTypeDescResume"							"Продолжите прошлую игру с ботами"	
+	"DAC_MatchTypeDescTurboBots"						"Сыграйте в одиночной турбо-игре против ботов"
 	"DAC_MatchTypeDescDuosBots"							"Играйте в паре с ботом против других ботов"	
 	"DAC_MatchTypeDescFreestyle"						"Проводите тестовые бои без ограничений"	
 	"DAC_MatchTypeDescFreestyle2"						"Этот режим предоставляет вам полную свободу над полем боя, чтобы вы могли воссоздать совершенно любую ситуацию. Попробуйте с его помощью различные сборки героев или проверьте возможные теории, а затем поделитесь своим замыслом с друзьями и сообществом."	
@@ -303,6 +310,8 @@
 	"DAC_RenameTeam_NotUnlocked"						"Прежде чем задать название команды, нужно выиграть больше игр"
 	"DAC_RenameTeam_InCooldown"							"Недавно вы уже изменяли название команды. Пожалуйста, подождите немного и переименуйте её позже."
 	"DAC_RenameTeam_NameTooLong"						"Слишком длинное название команды. Введите название покороче."
+	"DAC_RenameTeam_CommunityBanned"					"Вы заблокированы в сообществе Steam, поэтому не можете называть команды"
+	"DAC_RenameTeam_GameBanned"							"Вам запрещено называть команды из-за некорректного поведения"
 	   	 
 	"DAC_Party_KickedByTitle"							"Вас исключили из группы"
 	"DAC_Party_KickedByText"							"{g:dac_persona:kicked_by_account} исключает вас из группы"
@@ -887,9 +896,9 @@
 	"dac_item_shivas_guard_desc"						"+{d:bonus_armor} к броне. Выпускает морозную волну, которая наносит {d:blast_damage} урона врагам в радиусе 3 и замедляет их передвижение и атаку на {s:blast_debuff_duration} сек. (один раз за бой)."
 	"dac_item_shivas_guard_lore"						"«Не спрашивай, почему он не в хранилище Сапфирового Собрания». <i>(Зенок, торгаш из Белого Шпиля)</i>"
 
-	"dac_item_bloodthorn"							"Кровавый шип"
-	"dac_item_bloodthorn_desc"						"+{d:attack_damage} к урону от атак. Когда вражеский герой накапливает больше {d:mana_trigger_percentage}% маны, накладывает на него безмолвие на {d:silence_duration} сек. Атаки по обезмолвленному герою не промахиваются и наносят критический урон в {d:target_crit_multiplier}%. Перезарядка: 10 секунд."
-	"dac_item_bloodthorn_lore"						"«Этот клинок не добавит тебе популярности. Но врагов в могилу отправит». <i>(Зенок, торгаш из Белого Шпиля)</i>"
+	"dac_item_bloodthorn"								"Кровавый шип"
+	"dac_item_bloodthorn_desc"			    			"+{d:attack_damage} к урону от атак. Когда вражеский герой накапливает больше {d:mana_trigger_percentage}% маны, накладывает на него безмолвие на {d:silence_duration} сек. Атаки по обезмолвленному герою не промахиваются и наносят критический урон в {d:target_crit_multiplier}%. Перезарядка: {d:cooldown} сек."
+	"dac_item_bloodthorn_lore"							"«Этот клинок не добавит тебе популярности. Но врагов в могилу отправит». <i>(Зенок, торгаш из Белого Шпиля)</i>"
 	
 	"dac_item_hood_of_defiance"							"Капюшон непокорности"
 	"dac_item_hood_of_defiance_desc"					"+{d:bonus_magical_resistance}% к сопротивлению магии. +{d:health_regen} к восстановлению здоровья."
@@ -1394,6 +1403,7 @@
 	"DAC_PostGame_BP_Subheader"			"Прогресс"
 	"DAC_PostGame_BP_Desc"				"Играйте и проходите испытания, чтобы получать опыт и награды."
 	"DAC_PostGame_Rank"					"Уровень ранга"
+	"DAC_PostGame_TeamRank"				"Командный ранг"
 	"DAC_PostGame_NonRanked"			"Рейтинг в этом матче не начислялся."
 
 	"dac_synergy_popup_units_on_board"		"Существ этого типа на поле: {d:units_on_board}"
@@ -1570,7 +1580,7 @@
 
 	"DAC_Synergy_Desc_Insect"			"С краёв игрового поля на противников постоянно набрасываются паучки. Их нельзя выбрать целью, они наносят небольшой урон, и у них всего единица здоровья. Укушенный паучком враг следующие {s:miss_chance_duration} сек. может промахнуться атакой с шансом в {s:miss_chance}%. Со смертью паучков появляются новые (максимум — {s:num_insects} паучков)."
 
-	"DAC_Synergy_Desc_Champion"		"Чемпионы получают бонусы всех альянсов."
+	"DAC_Synergy_Desc_Champion"		"Чемпионы получают бонусы всех альянсов, а также 10% дополнительного урона и максимального здоровья за каждый полученный альянс."
 
 	"DAC_Synergy_Desc_Wisp"			"Все союзные существа получают бонусы от привязанного к Ио союзника. *Бип-буп*"
 
@@ -1652,6 +1662,7 @@
 	"duos_benchlabel"					"Запас:"
 	"duos_sendlabel"					"Передать"
 	"button_selllabel"					"Продать"
+	"button_recyclelabel"				"Перековать"
 
 	"DAC_ChatHeader_Combat"		"Чат раунда"
 	"DAC_ChatHeader_Combat_Cooldown"		"Подождите"
@@ -1851,8 +1862,22 @@
 	"DAC_JoinParty_Title"		"Войти в группу"
 	"DAC_JoinParty_Prompt"		"ID группы"	
 	"DAC_Party_Invites"			"Приглашения"
+
+	"DAC_Team_Info"				"Данные команды"
 	"DAC_RenameTeam_Title"		"Переименовать команду"
 	"DAC_RenameTeam_Prompt"		"Название команды"
+	"DAC_RenameTeam_TeamStats"	"Статистика команды:"
+	"DAC_RenameTeam_NumGames"	"Всего игр: {d:total_games}"
+	"DAC_RenameTeam_NumWins"	"Первых мест: {d:total_first}"
+	"DAC_RenameTeam_NumPodiums"	"Попаданий в тройку: {d:total_podiums}"
+	"DAC_RenameTeam_FirstGame"	"Первая игра вместе: {t:s:first_game}"
+	"DAC_RenameTeam_UnlockAfter_Plural"			"Сыграйте ещё несколько игр ({d:games_until_rename}), чтобы иметь возможность переименовать команду"
+	"DAC_RenameTeam_UnlockAfter_Singular"		"Сыграйте ещё одну игру, чтобы иметь возможность переименовать команду"
+	"DAC_RenameTeam_CooldownAfter_Plural"		"Вы сможете снова переименовать команду, сыграв ещё несколько игр ({d:games_until_rename})"
+	"DAC_RenameTeam_CooldownAfter_Singular"		"Вы сможете снова переименовать команду, сыграв ещё одну игру"
+	"DAC_RenameTeam_NewTeamText"				"Эта команда ещё не играла вместе"
+	"DAC_RenameTeam_ApplyName"					"Применить"
+	"DAC_RenameTeam_Close"						"Закрыть"
 
 	"DAC_PartyMM_PlayersNotReady"					"Не все игроки готовы"
 	"DAC_PartyMM_TooFewPlayers"						"В группе слишком мало игроков"
@@ -2017,6 +2042,7 @@
 	"dac_settings_auto_deploy_units"			"Автоматически выставлять существ из запаса, если возможно."
 	"dac_settings_use_panorama_login"			"Использовать классический вход в Steam"
 	"dac_settings_low_violence"					"Режим с низким уровнем насилия"
+	"dac_settings_filter_offensive_text"		"Hide offensive words"
 
 	"dac_settings_low_violence_changed_title"	"Требуется перезапуск"
 	"dac_settings_low_violence_changed_body"	"Чтобы изменение вступило в силу, необходимо закрыть и перезапустить игру"
@@ -2190,12 +2216,15 @@
 	"DACRankTierDisplayName8"							"8 разряд"
 	"DACRankLegendaryUnit"								"Разряд главарей"
 	"DACRankPoints" "{d:player_rank_score} <span class='RankPoints'>очков рейтинга</span>"
+	"DACTeamRankPoints" "{d:team_rank_score} <span class='RankPoints'>очков рейтинга</span>"
 
 	"DAC_Season_Rank_Title"						"Сезонные медали рейтинга"
 	"DAC_Season_Rank_Desc"						"С улучшением мастерства вы будете получать медали рейтинга, у каждой из которых есть по пять уровней. Превзойдя звание «Большой босс V уровня», вы станете Лордом Белого Шпиля и попадёте в глобальный список лидеров."
 
 	"DAC_LevelUp_Rank_Old"	"<span class='RankName'>{s:old_rank_name}</span> {s:old_rank_tier}"
 	"DAC_LevelUp_Rank_New"	"<span class='RankName'>{s:new_rank_name}</span> {s:new_rank_tier}"
+	"DAC_LevelUp_Team_Rank_Old"	"<span class='RankName'>{s:old_team_rank_name}</span> {s:old_team_rank_tier}"
+	"DAC_LevelUp_Team_Rank_New"	"<span class='RankName'>{s:new_team_rank_name}</span> {s:new_team_rank_tier}"
 	"DAC_LevelUp_Title_Minor"	"Вы получили новый уровень!"
 	"DAC_LevelUp_Title_Major"	"Повышение!"
 	"DAC_LevelDown_Title_Minor"	"Вы потеряли уровень!"
@@ -2215,6 +2244,7 @@
 	"DAC_Tier_Name_4"							"IV уровня"
 	"DAC_Tier_Name_5"							"V уровня"
 	"DAC_Leaderboard_Rank"							"<span class='RankName'>{s:new_rank_name}</span>"
+	"DAC_Team_Leaderboard_Rank"							"<span class='RankName'>{s:new_team_rank_name}</span>"
 
 	"DAC_Reward_Title_Major"					"Йо! У вас награда"
 	"DAC_Reward_Title_Minor"					"Получите её на странице пробного пропуска"
@@ -2278,6 +2308,8 @@
 	"DAC_FightResultDefeat"						"ПОРАЖЕНИЕ"
 	"DAC_FightResultDefeatDmg"					"−{d:damage_taken}"
 	"DAC_FightResultDraw"						"НИЧЬЯ"
+	"DAC_FightResultWinStreak"					"СЕРИЯ ИЗ {d:win_streak} ПОБЕД!"
+	"DAC_FightResultWinStreakComplete"			"СЕРИЯ ПОБЕД ЗАВЕРШЕНА!"
 
 	"DAC_Duos_Team_Header"						"Команда {d:lobby_team}"
 	"DAC_Duos_Team_Header_Home"						"Команда {d:lobby_team_home}"
@@ -2841,6 +2873,7 @@
 	"DAC_HowToPlay_HypeOMeter_Body" "Эта шкала показывает азарт лорда. Чем больше азарта, тем больше урона наносит ваш лорд и тем быстрее перезаряжаются его способности."
 	"DAC_SelectedPlayerName" "{g:dac_player_slot_persona:b:selected_player_slot}"
 	"DAC_Spectating" "Наблюдение"
+
 
 }
 

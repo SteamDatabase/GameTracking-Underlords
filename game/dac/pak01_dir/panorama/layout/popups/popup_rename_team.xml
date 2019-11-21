@@ -6,18 +6,42 @@
     <include src="s2r://panorama/styles/popups/popup_rename_team.vcss_c" />
   </styles>
 
-  <Panel class="PopupPanel Hidden" popupbackground="dim" defaultfocus="TeamNameEntry">
-    <Label text="#DAC_RenameTeam_Title" class="TextHeader"/>
+  <Panel class="PopupPanel Hidden" popupbackground="dim">
 
-    <TextEntry id="TeamNameEntry" placeholder="#DAC_RenameTeam_Prompt" oninputsubmit="DACPopupSetTeamName()" />
+    <Label text="#DAC_Team_Info" class="RenamePopupHeader"/>
 
-    <Panel class="PopupButtonRow">
-      <Panel class="ButtonContainer">
+    <Panel class="RenameTeamGroup">    
+      <Label text="#DAC_RenameTeam_Title" class="ChangeTeamHeader"/>
+      <Panel class="TeamEntryField">
+        <TextEntry id="TeamNameEntry" placeholder="#DAC_RenameTeam_Prompt" oninputsubmit="DACPopupSetTeamName()" />
         <Button id="OKButton" class="PopupButton" onactivate="DACPopupSetTeamName()">
-          <Label text="#OK" />
+          <Label text="#DAC_RenameTeam_ApplyName" />
         </Button>
+      </Panel>
+    </Panel>
+    <Panel class="TeamNameGroup">
+      <Label text="{g:dac_filtered_string:team_name}" class="TeamName" html="true"/>
+      <Label id="RenameTeamUnlock" text="{s:rename_team_cooldown}"/>
+    </Panel>
+
+    <Panel class="BottomPanel">
+      <Panel class="TeamStatsGroup">
+        <Label text="#DAC_RenameTeam_TeamStats" class="TeamStatHeader"/>
+        <Label text="#DAC_RenameTeam_NumGames" class="TeamStat"/>
+        <Label text="#DAC_RenameTeam_NumWins" class="TeamStat"/>
+        <Label text="#DAC_RenameTeam_NumPodiums" class="TeamStat"/>
+        <Label text="#DAC_RenameTeam_FirstGame" class="TeamStat"/>
+      </Panel>
+      <Panel class="TeamStatsEmptyGroup">
+        <Label text="#DAC_RenameTeam_NewTeamText" class="TeamStat"/>
+      </Panel>
+      <DACRankIcon id="TeamRankIcon" iconstyle="standalone" duos="1"/>
+    </Panel>
+
+		<Panel class="PopupButtonRow">
+      <Panel class="ButtonContainer">
         <Button class="PopupButton" onactivate="UIPopupButtonClicked()">
-          <Label text="#Cancel" />
+          <Label text="#DAC_RenameTeam_Close" />
         </Button>
       </Panel>
     </Panel>

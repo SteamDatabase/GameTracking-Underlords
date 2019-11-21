@@ -37,6 +37,7 @@
             <Label id="PrivateLockedLabel" class="MultiplayerLabel" text="#DAC_MatchTypeNameRankedLocked1"/>
             <DACCarousel id="PrivateMatchModeCarousel">
               <Label id="Underlords" text="#DAC_MatchTypeStandard" PrivateMatchMode="1"/>
+			        <Label id="Turbo" text="#DAC_MatchTypeTurbo" PrivateMatchMode="2"/>
               <Label id="Duos" text="#DAC_MatchTypeNameDuos" PrivateMatchMode="3"/>
             </DACCarousel>
             <DACCarousel id="PrivateMatchBotDifficultyCarousel">
@@ -58,12 +59,14 @@
               </Panel>
               <Label class="MatchTypeDesc TypeBots" text="#DAC_MatchTypeDescBots"/>
               <Label class="MatchTypeDesc TypeResume" text="#DAC_MatchTypeDescResume"/>
+			        <Label class="MatchTypeDesc TypeTurboBots" text="#DAC_MatchTypeTurboBots"/>
               <Label class="MatchTypeDesc TypeDuosBots" text="#DAC_MatchTypeDescDuosBots"/>
               <Label class="MatchTypeDesc TypeFreestyle" text="#DAC_MatchTypeDescFreestyle"/>
             </Panel>
             <DACCarousel id="BotMatchCarousel">
               <Label id="Resume" text="#DAC_BotSaveGameExists_Button_Resume" MMType="5"/>
               <Label id="Bots" text="#DAC_MatchTypeStandard" MMType="1"/>
+			        <Label id="Turbo" text="#DAC_MatchTypeTurbo" MMType="8"/>
               <Label id="DuosBots" text="#DAC_MatchTypeNameDuos" MMType="6"/>
               <Label id="Freestyle" text="#DAC_MatchTypeName5" MMType="7"/>
             </DACCarousel>
@@ -96,6 +99,7 @@
             <Label class="LoginRequired" text="#DAC_SteamLogIn_Desc4" onactivate="DACSelectMatchTypeLogin()"/>
             <DACCarousel id="BattleTypeCarousel">
               <Label id="Casual" text="#DAC_MatchTypeName0" MMType="0"/>
+			        <Label id="Turbo" text="#DAC_MatchTypeTurbo" MMType="9"/>
               <Label id="Ranked" text="#DAC_MatchTypeNameRanked" MMType="3"/>
             </DACCarousel>
           </Panel>
@@ -103,17 +107,22 @@
           <Panel id="Duos" class="Multiplayer MatchTypePanel">
             <Panel id="DuosSelectRegion" class="TypeSelectRegion" onactivate="DACSelectMatchTypeSelectedDuos(); PlaySoundEffect( 'DAC_UI.PlayMenu_Activate' );" onmouseover="PlaySoundEffect('DAC_UI.PlayMenu_Hover')">
               <Panel class="MatchTypeImage"/>
+              <Button id="DuosAboutButton" onactivate="DACSelectMatchTypeAboutDuos()" />
               <Label class="PlayModeTitle MultiplayerLabel HeadlineFont" hittest="false" text="#DAC_MatchTypeNameDuos"/>
-              <Label class="MatchTypeDesc" text="#DAC_MatchTypeDescDuos"/>
+              <Label class="MatchTypeDesc" text="{s:duos_desc}"/>
               <Panel id="PartyDuosFindButton" class="FindMatchButtonButton">
                 <Label class="DistressedFont" text="#DAC_PreMatchDetails_FindMatch"/>
               </Panel>
             </Panel>
-            <DACCarousel id="DuosMatchTypeCarousel" class="Disabled">
-              <Label id="Casual" text="#DAC_MatchTypeName0" MMType="0"/>
+            <DACCarousel id="DuosMatchTypeCarousel">
+              <Label id="Casual" text="#DAC_MatchTypeName0" MMType="11"/>
+              <Label id="Ranked" text="#DAC_MatchTypeNameRanked" MMType="12"/>
+            </DACCarousel>
+            <DACCarousel id="DuosBotPartnerCarousel">
+              <Label id="BotTeammate" text="#DAC_MatchTypeBotTeammate" BotPartner="1"/>
+              <Label id="InviteFriend" text="#DAC_MatchTypeInviteAFriend" BotPartner="0"/>
             </DACCarousel>
             <Label class="LoginRequired" text="#DAC_SteamLogIn_Desc4" onactivate="DACSelectMatchTypeLogin()"/>
-            <Button id="DuosAboutButton" onactivate="DACSelectMatchTypeAboutDuos()" />
             <Label id="DuosLockedLabel" class="MultiplayerLabel" hittest="false" text="{s:duos_state}"/>
           </Panel>
 

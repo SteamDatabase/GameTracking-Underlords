@@ -35,9 +35,12 @@
 
 	"DAC_MatchTypeMultiplayer"							"Multiplayer"
 	"DAC_MatchTypeStandard"								"Standard"
+	"DAC_MatchTypeTurbo"								"Turbo"
 	"DAC_MatchTypeMultiplayerMMSelect"					"Vælg type"
 	"DAC_MatchTypeName0"								"Casual"
 	"DAC_MatchTypeNameRanked"							"Rangeret"
+	"DAC_MatchTypeBotTeammate"							"Bot-holdkammerat"
+	"DAC_MatchTypeInviteAFriend"						"Inviter en ven"
 	"DAC_MatchTypeNameRankedLocked1"					"Spil {i:games_needed_to_unlock_ranked} casual spil for at låse op"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Spil {i:games_needed_to_unlock_ranked} casual spil for at låse op"
 	"DAC_MatchTypeBotMatch"								"Botkamp"
@@ -52,6 +55,8 @@
 	"DAC_DBHome_Play_Party"								"Gruppekamp"
 	"DAC_DBHome_Searching_Party"						"Finder en kamp"
 	"DAC_ComingSoon"									"Kommer snart"
+	"DAC_MatchTypeNameDuosState_SoloWithBots"			"Gå sammen med en bot som holdkammerat, og kæmp imod andre spillere"
+	"DAC_MatchTypeNameDuosState_PartyWithBots"			"Nogle spillere har en bot som holdkammerat"
 	"DAC_MatchTypeNameDuosState_NoParty"				"Kræver en gruppe på mindst 2 spillere."
 	"DAC_MatchTypeNameDuosState_NeedBuddy"				"Din gruppe er for lille til denne tilstand. Inviter en ven."
 	"DAC_MatchTypeNameDuosState_ExcessBuddies"			"Din gruppe er for stor til denne tilstand. Reducer gruppens størrelse."
@@ -65,9 +70,11 @@
 	"DAC_Teammate"										"Holdkammerat"
 	"DuosAboutLabel"									"Hvad er Duo?"
 	"DAC_MatchTypeDescStandard"							"Udfordr syv fjendtlige hold for at vinde"
-	"DAC_MatchTypeDescDuos"								"Gå sammen med en ven, og gå i kamp"
-	"DAC_MatchTypeDescBots"								"Spil en singleplayer-kamp mod AI"	
+	"DAC_MatchTypeDescDuosCasual"						"Gå sammen med en ven eller en bot, og gå i kamp"
+	"DAC_MatchTypeDescDuosRanked"						"Gå sammen med en ven, og gå i kamp"
+	"DAC_MatchTypeDescBots"								"Spil en singleplayer-kamp mod bot"	
 	"DAC_MatchTypeDescResume"							"Genoptag din seneste kamp mod bot"	
+	"DAC_MatchTypeDescTurboBots"						"Spil en TURBO-kamp som singleplayer mod bot"
 	"DAC_MatchTypeDescDuosBots"							"Spil med en bot som din holdkammerat i en duo-botkamp"	
 	"DAC_MatchTypeDescFreestyle"						"Sæt testkampe op, og kæmp uden begrænsninger"	
 	"DAC_MatchTypeDescFreestyle2"						"I denne tilstand har du fuld kontrol over brættet og kan skabe et hvilket som helst scenarie, du vil. Brug den til at udforske hærkompositioner eller teste nye hypoteser. Bagefter kan du dele resultatet med venner og fællesskabet."	
@@ -303,6 +310,8 @@
 	"DAC_RenameTeam_NotUnlocked"						"Du skal vinde flere kampe, før du kan angive et navn til dette hold"
 	"DAC_RenameTeam_InCooldown"							"Du har ændret navnet på dette hold for nylig. Vent venligst lidt, før du ændrer navnet igen."
 	"DAC_RenameTeam_NameTooLong"						"Det angivne holdnavn er for langt. Prøv med et kortere navn."
+	"DAC_RenameTeam_CommunityBanned"					"Du er i øjeblikket udelukket fra Steam og kan derfor ikke navngive hold"
+	"DAC_RenameTeam_GameBanned"							"Du er i øjeblikket udelukket fra at navngive hold pga. af tidligere opførsel"
 	   	 
 	"DAC_Party_KickedByTitle"							"Smidt ud af gruppe"
 	"DAC_Party_KickedByText"							"Du blev smidt ud af gruppen af {g:dac_persona:kicked_by_account}"
@@ -887,9 +896,9 @@
 	"dac_item_shivas_guard_desc"						"+{d:bonus_armor} rustning. Udsender en frysende bølge, som giver {d:blast_damage} skade til fjender inden for 3 felter og nedsætter deres bevægelses- og angrebshastighed i {s:blast_debuff_duration} sek. (en gang pr. kamp)."
 	"dac_item_shivas_guard_lore"						"Spørg ikke, hvordan denne kom ud af Safirkonklavens hvælving. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 
-	"dac_item_bloodthorn"							"Blodtorn"
-	"dac_item_bloodthorn_desc"						"+{d:attack_damage} angrebsskade. Undertryk en fjendtlig helt i {d:silence_duration} sek., når fjenden har mere end {d:mana_trigger_percentage}% mana. Angreb mod den undertrykkede helt kan ikke ramme ved siden af, og helten får {d:target_crit_multiplier}% kritisk skade (10 sek. nedkøling)."
-	"dac_item_bloodthorn_lore"						"Man bliver ikke populær af at bruge denne klinge, men man får dræbt nogle fjender. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_bloodthorn"								"Blodtorn"
+	"dac_item_bloodthorn_desc"			    			"+{d:attack_damage} angrebsskade. Undertryk en fjendtlig helt i {d:silence_duration} sek., når fjenden har mere end {d:mana_trigger_percentage}% mana. Angreb mod den undertrykkede helt kan ikke ramme ved siden af, og helten får {d:target_crit_multiplier}% kritisk skade ({d:cooldown} sek. nedkøling)."
+	"dac_item_bloodthorn_lore"							"Man bliver ikke populær af at bruge denne klinge, men man får dræbt nogle fjender. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_hood_of_defiance"							"Trodsighedens Hætte"
 	"dac_item_hood_of_defiance_desc"					"+{d:bonus_magical_resistance}% magisk resistens. +{d:health_regen} helbredsregenerering."
@@ -1394,6 +1403,7 @@
 	"DAC_PostGame_BP_Subheader"			"Fremskridt"
 	"DAC_PostGame_BP_Desc"				"Spil og gennemfør udfordringer for at få XP og låse op for belønninger."
 	"DAC_PostGame_Rank"					"Ranglevel"
+	"DAC_PostGame_TeamRank"				"Holdets ranglevel"
 	"DAC_PostGame_NonRanked"			"Der blev ikke registreret rangfremskridt i denne kamp."
 
 	"dac_synergy_popup_units_on_board"		"Du har {d:units_on_board} enheder af denne type på brættet"
@@ -1570,7 +1580,7 @@
 
 	"DAC_Synergy_Desc_Insect"			"Edderkoppeunger sværmer konstant om fjender fra kanten af brættet. Disse enheder kan ikke rammes. De giver ikke så meget skade og har 1 helbred. Fjender, som bliver bidt af dem, har {s:miss_chance}% risiko for at ramme ved siden af i {s:miss_chance_duration} sek. Edderkoppeunger genoplives, når de dør (maks. {s:num_insects} edderkopper)."
 
-	"DAC_Synergy_Desc_Champion"		"Champions modtager alle alliancebonusser."
+	"DAC_Synergy_Desc_Champion"		"Champions får alle alliancebonusser. Derudeover får de 10% ekstra skade og maks. helbred pr. alliance, de modtager."
 
 	"DAC_Synergy_Desc_Wisp"			"Io deler alliancebonuser fra sin ledsager, der bruger Bind Fast, med alle allierede enheder. *Bip*"
 
@@ -1652,6 +1662,7 @@
 	"duos_benchlabel"					"Bænk:"
 	"duos_sendlabel"					"Send"
 	"button_selllabel"					"Sælg"
+	"button_recyclelabel"				"Genbrug"
 
 	"DAC_ChatHeader_Combat"		"Rundechat"
 	"DAC_ChatHeader_Combat_Cooldown"		"Rundechat (nedkøling)"
@@ -1851,8 +1862,22 @@
 	"DAC_JoinParty_Title"		"Tilslut gruppe"
 	"DAC_JoinParty_Prompt"		"Gruppe-ID"	
 	"DAC_Party_Invites"			"Gruppeinvitationer"
+
+	"DAC_Team_Info"				"Holdoplysninger"
 	"DAC_RenameTeam_Title"		"Skift holdnavn"
 	"DAC_RenameTeam_Prompt"		"Holdnavn"
+	"DAC_RenameTeam_TeamStats"	"Holdstatistikker:"
+	"DAC_RenameTeam_NumGames"	"Spil spillet i alt: {d:total_games}"
+	"DAC_RenameTeam_NumWins"	"Førstepladsplaceringer: {d:total_first}"
+	"DAC_RenameTeam_NumPodiums"	"Placeringer i top-3: {d:total_podiums}"
+	"DAC_RenameTeam_FirstGame"	"Første spil sammen: {t:s:first_game}"
+	"DAC_RenameTeam_UnlockAfter_Plural"			"Spil {d:games_until_rename} spil mere for at vælge dit eget holdnavn"
+	"DAC_RenameTeam_UnlockAfter_Singular"		"Spil et spil mere for at vælge dit eget holdnavn"
+	"DAC_RenameTeam_CooldownAfter_Plural"		"Du kan omdøbe dit hold igen efter {d:games_until_rename} spil mere"
+	"DAC_RenameTeam_CooldownAfter_Singular"		"Du kan omdøbe dit hold igen efter et spil mere"
+	"DAC_RenameTeam_NewTeamText"				"Dette hold har endnu ikke spillet nogen spil sammen"
+	"DAC_RenameTeam_ApplyName"					"Anvend"
+	"DAC_RenameTeam_Close"						"Luk"
 
 	"DAC_PartyMM_PlayersNotReady"					"Ikke alle spillere er klar"
 	"DAC_PartyMM_TooFewPlayers"						"Ikke nok spillere i gruppen"
@@ -2017,6 +2042,7 @@
 	"dac_settings_auto_deploy_units"			"Indsæt automatisk enheder fra bænken, hvis der er plads."
 	"dac_settings_use_panorama_login"			"Brug gammelt Steam-login"
 	"dac_settings_low_violence"					"Tilstand med lav vold"
+	"dac_settings_filter_offensive_text"		"Skjul stødende ord"
 
 	"dac_settings_low_violence_changed_title"	"Genstart påkrævet"
 	"dac_settings_low_violence_changed_body"	"For at anvende denne ændring, skal du afslutte og genstarte Dota Underlords"
@@ -2190,12 +2216,15 @@
 	"DACRankTierDisplayName8"							"Niveau 8"
 	"DACRankLegendaryUnit"								"Es-niveau"
 	"DACRankPoints" "{d:player_rank_score} <span class='RankPoints'>rangpoint</span>"
+	"DACTeamRankPoints" "{d:team_rank_score} <span class='RankPoints'>rangpoint</span>"
 
 	"DAC_Season_Rank_Title"						"Sæsonbestemte rangmedaljer"
 	"DAC_Season_Rank_Desc"						"Efterhånden som dine færdigheder forbedres i sæsonen, får du rangmedaljer med fem levels hver. Hvis du kommer forbi Kæmpe Boss V, bliver du udnævnt som Det Hvide Spirs hersker og får en placering på den globale førertavle."
 
 	"DAC_LevelUp_Rank_Old"	"<span class='RankName'>{s:old_rank_name}</span> {s:old_rank_tier}"
 	"DAC_LevelUp_Rank_New"	"<span class='RankName'>{s:new_rank_name}</span> {s:new_rank_tier}"
+	"DAC_LevelUp_Team_Rank_Old"	"<span class='RankName'>{s:old_team_rank_name}</span> {s:old_team_rank_tier}"
+	"DAC_LevelUp_Team_Rank_New"	"<span class='RankName'>{s:new_team_rank_name}</span> {s:new_team_rank_tier}"
 	"DAC_LevelUp_Title_Minor"	"Du gik op i level!"
 	"DAC_LevelUp_Title_Major"	"Forfremmelse!"
 	"DAC_LevelDown_Title_Minor"	"Du mistede et level!"
@@ -2215,6 +2244,7 @@
 	"DAC_Tier_Name_4"							"Level IV"
 	"DAC_Tier_Name_5"							"Level V"
 	"DAC_Leaderboard_Rank"							"<span class='RankName'>{s:new_rank_name}</span>"
+	"DAC_Team_Leaderboard_Rank"							"<span class='RankName'>{s:new_team_rank_name}</span>"
 
 	"DAC_Reward_Title_Major"					"Yo! En belønning"
 	"DAC_Reward_Title_Minor"					"Indløs nu på Protopas-siden"
@@ -2278,6 +2308,8 @@
 	"DAC_FightResultDefeat"						"NEDERLAG"
 	"DAC_FightResultDefeatDmg"					"-{d:damage_taken}"
 	"DAC_FightResultDraw"						"UAFGJORT"
+	"DAC_FightResultWinStreak"					"SEJRSRÆKKE PÅ {d:win_streak}!"
+	"DAC_FightResultWinStreakComplete"			"SEJRSRÆKKE GENNEMFØRT!"
 
 	"DAC_Duos_Team_Header"						"Hold: {d:lobby_team}"
 	"DAC_Duos_Team_Header_Home"						"Hold: {d:lobby_team_home}"
@@ -2841,6 +2873,7 @@
 	"DAC_HowToPlay_HypeOMeter_Body" "Hype-meteret viser en Underlords hype-level. Husk, at højere hype-levels forbedrer din Underlords skade og nedkølinger."
 	"DAC_SelectedPlayerName" "{g:dac_player_slot_persona:b:selected_player_slot}"
 	"DAC_Spectating" "Ser på"
+
 
 }
 

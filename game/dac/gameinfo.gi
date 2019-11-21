@@ -53,7 +53,7 @@
 		RenderModes
 		{
 			"game" "Default"
-			"game" "DotaDeferred"
+			"game" "DotaDeferred" [!$MOBILE] //We don't run the deferred rendering pipeline on mobile
 			"game" "DotaForward"
 			"game" "Depth"
 

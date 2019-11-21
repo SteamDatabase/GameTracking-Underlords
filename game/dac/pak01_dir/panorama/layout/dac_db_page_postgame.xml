@@ -48,27 +48,54 @@
                   </Panel>   
                 </Panel>
                 
-                <Panel id="ChallengeAndRankContainer" class="InfoBlock">
+                <Panel id="SoloRankContainer" class="InfoBlock ChallengeAndRankContainer">
                   <Label class="InfoHeader DistressedFont" text="#DAC_PostGame_Rank" />
-                  <DACControlBattlePass id="BattlePassOverview" class="PostGameBPControl" />
-                  <Label id="NonRankedContainer" text="#DAC_PostGame_NonRanked"/>
-                  <Panel class="RankIndicator" id="RankContainer">
-                    <DACRankIcon id="RankIcon" iconstyle="standalone" />
+                  <Label class="NonRankedContainer" text="#DAC_PostGame_NonRanked"/>
+                  <Panel  id="SoloRankDataContainer" class="RankIndicator">
+                    <DACRankIcon id="SoloRankIcon" iconstyle="standalone" />
                     <Panel class="NameContainer">
-                      <Label id="PlayerRank" html="true"  text="#DAC_LevelUp_Rank_New" />
-                      <ProgressBar id="PlayerRankProgressBar" />	
-                      <Panel id="PlayerScoreContainer">
-                        <Label id="PlayerRankScore" html="true" text="#DACRankPoints" />
-                        <Label id="PlayerRankScoreDelta" html="true" text="( {s:player_level_score_delta} )" />
+                      <Label id="PlayerRank" class="RankDesc" html="true"  text="#DAC_LevelUp_Rank_New" />
+                      <ProgressBar id="PlayerRankProgressBar" class="RankProgressBar"/>	
+                      <Panel class="RankScoreContainer">
+                        <Label class="RankScore" html="true" text="#DACRankPoints" />
+                        <Label class="RankScoreDelta" html="true" text="( {s:player_level_score_delta} )" />
                       </Panel>
-                      <Label id="PlayerLeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
+                      <Label class="LeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
                     </Panel>
                   </Panel>
                 </Panel>
               </Panel>
-							<Panel id="UnderlordContainer" >
-								<DACUnderlordScenePanel id="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" hittest="false" glowsize="0" />
-							</Panel>
+              
+              <Panel id="RightPanel" class="ProgressContainer">
+                <Panel id="UnderlordContainer" >
+								  <Panel id="LocalUnderlordContainer" class="PlayerUnderlordContainer">
+                    <DACUnderlordScenePanel id="LocalUnderlordPortrait" class="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" hittest="false" glowsize="0" />
+                    <Label id="LocalPlayerName" class="UnderlordPlayerName" html="true" text="{g:dac_persona:b:player_accountid}"/>
+                  </Panel>
+                  <Panel id="TeammateUnderlordContainer" class="PlayerUnderlordContainer">
+                    <DACUnderlordScenePanel id="TeammateUnderlordPortrait" class="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" hittest="false" glowsize="0" />
+                    <Label id="TeammatePlayerName" class="UnderlordPlayerName" html="true" text="{g:dac_persona:b:teammate_accountid}"/>
+                  </Panel>
+                </Panel>
+                
+                <Panel id="TeamRankContainer" class="InfoBlock ChallengeAndRankContainer">
+                  <Label class="InfoHeader DistressedFont" text="#DAC_PostGame_TeamRank" />
+                  <Label class="NonRankedContainer" text="#DAC_PostGame_NonRanked"/>
+                  <Panel id="TeamRankDataContainer" class="RankIndicator">
+                    <DACRankIcon id="TeamRankIcon" iconstyle="standalone" />
+                    <Panel class="NameContainer">
+                      <Label id="TeamRank" class="RankDesc" html="true"  text="#DAC_LevelUp_Team_Rank_New" />
+                      <ProgressBar id="TeamRankProgressBar" class="RankProgressBar"/>
+                      <Panel class="RankScoreContainer">
+                        <Label class="RankScore" html="true" text="#DACTeamRankPoints" />
+                        <Label class="RankScoreDelta" html="true" text="( {s:team_level_score_delta} )" />
+                      </Panel>
+                      <Label class="LeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
+                    </Panel>
+                  </Panel>
+                </Panel>
+
+              </Panel>
             </Panel>
           </Panel>    
         </Panel>

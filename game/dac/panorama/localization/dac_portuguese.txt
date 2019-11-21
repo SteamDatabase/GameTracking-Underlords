@@ -35,9 +35,12 @@
 
 	"DAC_MatchTypeMultiplayer"							"Multijogador"
 	"DAC_MatchTypeStandard"								"Standard"
+	"DAC_MatchTypeTurbo"								"Turbo"
 	"DAC_MatchTypeMultiplayerMMSelect"					"Selecionar tipo"
 	"DAC_MatchTypeName0"								"Casual"
 	"DAC_MatchTypeNameRanked"							"Competitivo"
+	"DAC_MatchTypeBotTeammate"							"Parceiro Bot"
+	"DAC_MatchTypeInviteAFriend"						"Convidar amigo"
 	"DAC_MatchTypeNameRankedLocked1"					"Joga {i:games_needed_to_unlock_ranked} partida casual para desbloquear"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Joga {i:games_needed_to_unlock_ranked} partidas casuais para desbloquear"
 	"DAC_MatchTypeBotMatch"								"Contra bots"
@@ -52,6 +55,8 @@
 	"DAC_DBHome_Play_Party"								"Partida em grupo"
 	"DAC_DBHome_Searching_Party"						"A procurar partida"
 	"DAC_ComingSoon"									"Em breve"
+	"DAC_MatchTypeNameDuosState_SoloWithBots"			"Junta-te a um bot e enfrenta outros jogadores"
+	"DAC_MatchTypeNameDuosState_PartyWithBots"			"Alguns jogadores terão um parceiro bot"
 	"DAC_MatchTypeNameDuosState_NoParty"				"Requer grupo de pelo menos 2 jogadores."
 	"DAC_MatchTypeNameDuosState_NeedBuddy"				"Grupo demasiado pequeno. Seleciona para convidares um amigo."
 	"DAC_MatchTypeNameDuosState_ExcessBuddies"			"Grupo demasiado grande. Seleciona para reduzires o tamanho."
@@ -65,9 +70,11 @@
 	"DAC_Teammate"										"Parceiro"
 	"DuosAboutLabel"									"Duplas? O que é?"
 	"DAC_MatchTypeDescStandard"							"Compete com 7 exércitos inimigos pela vitória"
-	"DAC_MatchTypeDescDuos"								"Cria um grupo com um amigo para lutarem juntos"
+	"DAC_MatchTypeDescDuosCasual"						"Cria um grupo com um amigo ou um bot para lutarem juntos"
+	"DAC_MatchTypeDescDuosRanked"						"Cria um grupo com um amigo para lutarem juntos"
 	"DAC_MatchTypeDescBots"								"Joga uma partida contra o computador"	
 	"DAC_MatchTypeDescResume"							"Continua a tua última partida contra bots"	
+	"DAC_MatchTypeDescTurboBots"						"Joga uma partida rápida contra o computador"
 	"DAC_MatchTypeDescDuosBots"							"Joga com um bot aliado numa partida de Duplas contra bots"	
 	"DAC_MatchTypeDescFreestyle"						"Prepara e testa batalhas sem limites"	
 	"DAC_MatchTypeDescFreestyle2"						"Neste modo, tu tens controlo total sobre o tabuleiro e podes criar qualquer cenário possível e imaginário. Usa-o para testares novas combinações de heróis e estratégias. Podes depois partilhar os teus cenários com os teus amigos e com a comunidade."	
@@ -303,6 +310,8 @@
 	"DAC_RenameTeam_NotUnlocked"						"Precisas de vencer mais partidas para poderes definir o nome desta equipa"
 	"DAC_RenameTeam_InCooldown"							"Mudaste o nome desta equipa muito recentemente. Tenta de novo mais tarde."
 	"DAC_RenameTeam_NameTooLong"						"O nome introduzido é demasiado grande. Tenta um mais pequeno."
+	"DAC_RenameTeam_CommunityBanned"					"Estás atualmente banido na Comunidade Steam e, portanto, não podes mudar o nome de equipas."
+	"DAC_RenameTeam_GameBanned"							"Estás impedido de mudar o nome de equipas devido ao comportamento que demonstraste anteriormente."
 	   	 
 	"DAC_Party_KickedByTitle"							"Expulso(a) do grupo"
 	"DAC_Party_KickedByText"							"{g:dac_persona:kicked_by_account} expulsou-te do grupo"
@@ -887,9 +896,9 @@
 	"dac_item_shivas_guard_desc"						"+{d:bonus_armor} de armadura. Causa {d:blast_damage} de dano a inimigos dentro de até 3 espaços de distância e reduz-lhes a velocidade de movimento e de ataque durante {s:blast_debuff_duration} segundos. (Uma vez por batalha)"
 	"dac_item_shivas_guard_lore"						"Nem perguntes como é que isto saiu da caixa-forte do Conclave de Safira. - <i>Zenok, contrabandista de Torre Branca</i>"
 
-	"dac_item_bloodthorn"							"Espinho de Sangue"
-	"dac_item_bloodthorn_desc"						"+{d:attack_damage} de dano de ataque. Quando um herói inimigo tiver mais de {d:mana_trigger_percentage}% de mana, este item silencia-o durante {d:silence_duration} segundos. Ataques contra o herói silenciado não falham e causam {d:target_crit_multiplier}% de dano crítico. (Tempo de recarga: 10 segundos)"
-	"dac_item_bloodthorn_lore"						"Esta espada não te faz popular, mas certamente faz com que os teus inimigos morram. - <i>Zenok, contrabandista de Torre Branca</i>"
+	"dac_item_bloodthorn"								"Espinho de Sangue"
+	"dac_item_bloodthorn_desc"			    			"+{d:attack_damage} de dano de ataque. Quando um herói inimigo tiver mais de {d:mana_trigger_percentage}% de mana, este item silencia-o durante {d:silence_duration}s; ataques contra o herói silenciado não falham e causam {d:target_crit_multiplier}% de dano crítico. (Tempo de recarga: {d:cooldown}s)"
+	"dac_item_bloodthorn_lore"							"Esta espada não te faz popular, mas certamente faz com que os teus inimigos morram. - <i>Zenok, contrabandista de Torre Branca</i>"
 	
 	"dac_item_hood_of_defiance"							"Capuz da Audácia"
 	"dac_item_hood_of_defiance_desc"					"+{d:bonus_magical_resistance}% de resistência a magia. +{d:health_regen} de regeneração de vida."
@@ -1394,6 +1403,7 @@
 	"DAC_PostGame_BP_Subheader"			"Progresso"
 	"DAC_PostGame_BP_Desc"				"Joga partidas e conclui desafios para ganhares XP e desbloqueares recompensas."
 	"DAC_PostGame_Rank"					"Classificação"
+	"DAC_PostGame_TeamRank"				"Classificação da equipa"
 	"DAC_PostGame_NonRanked"			"Progresso de classificação não foi registado nesta partida."
 
 	"dac_synergy_popup_units_on_board"		"Tens {d:units_on_board} unidades como esta no tabuleiro"
@@ -1570,7 +1580,7 @@
 
 	"DAC_Synergy_Desc_Insect"			"Aranhinhas (unidades inselecionáveis com 1 de vida que causam pouco dano) surgem das bordas do tabuleiro. Inimigos mordidos por elas têm uma probabilidade de {s:miss_chance}% de falhar os ataques durante {s:miss_chance_duration}s. Aranhinhas são restauradas depois de morrerem (máx. de {s:num_insects})."
 
-	"DAC_Synergy_Desc_Champion"		"Campeões recebem os bónus de todas as alianças."
+	"DAC_Synergy_Desc_Champion"		"Campeões recebem todos os bónus das alianças. Além disso, ganham mais 10% de dano e de vida máxima por cada bónus de aliança."
 
 	"DAC_Synergy_Desc_Wisp"			"Io partilha os bónus de alianças do aliado conectado a todas as unidades aliadas. *bip bup*"
 
@@ -1652,6 +1662,7 @@
 	"duos_benchlabel"					"Banco:"
 	"duos_sendlabel"					"Enviar"
 	"button_selllabel"					"Vender"
+	"button_recyclelabel"				"Reciclar"
 
 	"DAC_ChatHeader_Combat"		"Chat da ronda"
 	"DAC_ChatHeader_Combat_Cooldown"		"Chat da ronda (indisponível)"
@@ -1851,8 +1862,22 @@
 	"DAC_JoinParty_Title"		"Entrar em grupo"
 	"DAC_JoinParty_Prompt"		"ID do grupo"	
 	"DAC_Party_Invites"			"Convites para o grupo"
+
+	"DAC_Team_Info"				"Dados da equipa"
 	"DAC_RenameTeam_Title"		"Mudar nome da equipa"
 	"DAC_RenameTeam_Prompt"		"Nome da equipa"
+	"DAC_RenameTeam_TeamStats"	"Estatísticas da equipa:"
+	"DAC_RenameTeam_NumGames"	"Partidas jogadas: {d:total_games}"
+	"DAC_RenameTeam_NumWins"	"Vitórias (1.º lugar): {d:total_first}"
+	"DAC_RenameTeam_NumPodiums"	"N.º de vezes no pódio: {d:total_podiums}"
+	"DAC_RenameTeam_FirstGame"	"1.ª partida juntos: {t:s:first_game}"
+	"DAC_RenameTeam_UnlockAfter_Plural"			"Joga mais {d:games_until_rename} partidas para mudares o nome da equipa"
+	"DAC_RenameTeam_UnlockAfter_Singular"		"Joga mais 1 partida para mudares o nome da equipa"
+	"DAC_RenameTeam_CooldownAfter_Plural"		"Podes voltar a mudar o nome da equipa após {d:games_until_rename} partidas"
+	"DAC_RenameTeam_CooldownAfter_Singular"		"Podes voltar a mudar o nome da equipa após mais 1 partida"
+	"DAC_RenameTeam_NewTeamText"				"Os membros desta equipa ainda não jogaram juntos"
+	"DAC_RenameTeam_ApplyName"					"Aplicar"
+	"DAC_RenameTeam_Close"						"Fechar"
 
 	"DAC_PartyMM_PlayersNotReady"					"Nem todos os jogadores estão prontos"
 	"DAC_PartyMM_TooFewPlayers"						"Muito poucos jogadores no grupo"
@@ -2017,6 +2042,7 @@
 	"dac_settings_auto_deploy_units"			"Posicionar automaticamente unidades do banco se houver espaço."
 	"dac_settings_use_panorama_login"			"Usar sistema antigo de início de sessão"
 	"dac_settings_low_violence"					"Modo de baixa violência"
+	"dac_settings_filter_offensive_text"		"Ocultar palavras ofensivas"
 
 	"dac_settings_low_violence_changed_title"	"Requer reinicialização"
 	"dac_settings_low_violence_changed_body"	"Para aplicar esta alteração, é preciso reiniciar o Dota Underlords"
@@ -2190,12 +2216,15 @@
 	"DACRankTierDisplayName8"							"Classe 8"
 	"DACRankLegendaryUnit"								"Classe Elite"
 	"DACRankPoints" "{d:player_rank_score} <span class='RankPoints'>pts classific.</span>"
+	"DACTeamRankPoints" "{d:team_rank_score} <span class='RankPoints'>pts classific.</span>"
 
 	"DAC_Season_Rank_Title"						"Medalhas de classificação na temporada"
 	"DAC_Season_Rank_Desc"						"À medida que ficas cada vez melhor durante a temporada, vais recebendo medalhas de classificação, cada uma com cinco níveis. Se ultrapassares o nível de Grande Chefe V, conseguirás o nível de Lorde de Torre Branca, o que te dá direito a um lugar na tabela de classificações mundial."
 
 	"DAC_LevelUp_Rank_Old"	"<span class='RankName'>{s:old_rank_name}</span> {s:old_rank_tier}"
 	"DAC_LevelUp_Rank_New"	"<span class='RankName'>{s:new_rank_name}</span> {s:new_rank_tier}"
+	"DAC_LevelUp_Team_Rank_Old"	"<span class='RankName'>{s:old_team_rank_name}</span> {s:old_team_rank_tier}"
+	"DAC_LevelUp_Team_Rank_New"	"<span class='RankName'>{s:new_team_rank_name}</span> {s:new_team_rank_tier}"
 	"DAC_LevelUp_Title_Minor"	"Subiste de nível!"
 	"DAC_LevelUp_Title_Major"	"Promoção!"
 	"DAC_LevelDown_Title_Minor"	"Desceste de nível!"
@@ -2215,6 +2244,7 @@
 	"DAC_Tier_Name_4"							"Nível IV"
 	"DAC_Tier_Name_5"							"Nível V"
 	"DAC_Leaderboard_Rank"							"<span class='RankName'>{s:new_rank_name}</span>"
+	"DAC_Team_Leaderboard_Rank"							"<span class='RankName'>{s:new_team_rank_name}</span>"
 
 	"DAC_Reward_Title_Major"					"Yo! Uma recompensa!"
 	"DAC_Reward_Title_Minor"					"Reclama-a na página do protopasse"
@@ -2278,6 +2308,8 @@
 	"DAC_FightResultDefeat"						"DERROTA"
 	"DAC_FightResultDefeatDmg"					"-{d:damage_taken}"
 	"DAC_FightResultDraw"						"EMPATE"
+	"DAC_FightResultWinStreak"					"{d:win_streak} SEGUIDAS!"
+	"DAC_FightResultWinStreakComplete"			"SEQUÊNCIA CONCLUÍDA!"
 
 	"DAC_Duos_Team_Header"						"Equipa {d:lobby_team}"
 	"DAC_Duos_Team_Header_Home"						"Equipa {d:lobby_team_home}"
@@ -2841,6 +2873,7 @@
 	"DAC_HowToPlay_HypeOMeter_Body" "A barra de Euforia indica o nível de Euforia de um Underlord. Lembra-te que quanto mais Euforia, maior será o dano causado pelo teu Underlord e melhores serão os tempos de recarga das habilidades dele."
 	"DAC_SelectedPlayerName" "{g:dac_player_slot_persona:b:selected_player_slot}"
 	"DAC_Spectating" "A assistir"
+
 
 }
 

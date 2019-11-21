@@ -35,9 +35,12 @@
 
 	"DAC_MatchTypeMultiplayer"							"Multiplayer"
 	"DAC_MatchTypeStandard"								"Standard"
+	"DAC_MatchTypeTurbo"								"Turbo"
 	"DAC_MatchTypeMultiplayerMMSelect"					"Select Type"
 	"DAC_MatchTypeName0"								"Casual"
 	"DAC_MatchTypeNameRanked"							"Ranked"
+	"DAC_MatchTypeBotTeammate"							"Bot Teammate"
+	"DAC_MatchTypeInviteAFriend"						"Invite a Friend"
 	"DAC_MatchTypeNameRankedLocked1"					"Play {i:games_needed_to_unlock_ranked} casual game to unlock"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Play {i:games_needed_to_unlock_ranked} casual games to unlock"
 	"DAC_MatchTypeBotMatch"								"Bot Match"
@@ -52,6 +55,8 @@
 	"DAC_DBHome_Play_Party"								"Party Match"
 	"DAC_DBHome_Searching_Party"						"Finding a match"
 	"DAC_ComingSoon"									"Coming Soon"
+	"DAC_MatchTypeNameDuosState_SoloWithBots"			"Join a bot teammate and battle other players"
+	"DAC_MatchTypeNameDuosState_PartyWithBots"			"Some players will have a bot for a teammate"
 	"DAC_MatchTypeNameDuosState_NoParty"				"Requires a party of at least 2 players."
 	"DAC_MatchTypeNameDuosState_NeedBuddy"				"Your party is too small for this mode.  Select to invite a friend."
 	"DAC_MatchTypeNameDuosState_ExcessBuddies"			"Your party is too large for this mode.  Select to reduce party size."
@@ -65,9 +70,11 @@
 	"DAC_Teammate"										"Teammate"
 	"DuosAboutLabel"									"What is Duos?"
 	"DAC_MatchTypeDescStandard"							"Challenge seven enemy armies for victory"
-	"DAC_MatchTypeDescDuos"								"Party-up with a friend and go to battle"
+	"DAC_MatchTypeDescDuosCasual"						"Party-up with a friend or bot and go to battle"
+	"DAC_MatchTypeDescDuosRanked"						"Party-up with a friend and go to battle"
 	"DAC_MatchTypeDescBots"								"Play a single player match against AI"	
 	"DAC_MatchTypeDescResume"							"Resume your last match against AI"	
+	"DAC_MatchTypeDescTurboBots"						"Play a single player TURBO match against AI"
 	"DAC_MatchTypeDescDuosBots"							"Play with an AI teammate in a Duos bot match"	
 	"DAC_MatchTypeDescFreestyle"						"Set up and test mock battles without limitation"	
 	"DAC_MatchTypeDescFreestyle2"						"In this mode you have full control of the board, and can create any scenario you can think of. Use it to explore army compositions, or test new hypotheses.  You can then share your design with friends and the community."	
@@ -303,6 +310,8 @@
 	"DAC_RenameTeam_NotUnlocked"						"You must win more matches before you can set the name of this team"
 	"DAC_RenameTeam_InCooldown"							"You have changed the name of this team too recently. Please wait some time to rename it later."
 	"DAC_RenameTeam_NameTooLong"						"The provided name is too long for a team name. Please try a shorter one."
+	"DAC_RenameTeam_CommunityBanned"					"You are currently community banned on Steam and therefore are not allowed to name teams"
+	"DAC_RenameTeam_GameBanned"							"You have been banned from being able to name teams due to previous behavior"
 	   	 
 	"DAC_Party_KickedByTitle"							"Kicked from Party"
 	"DAC_Party_KickedByText"							"You were kicked from your party by {g:dac_persona:kicked_by_account}"
@@ -887,9 +896,9 @@
 	"dac_item_shivas_guard_desc"						"+{d:bonus_armor} Armor. Emits a freezing wave that deals {d:blast_damage} damage to enemies within 3 cells and slows their movement and attack speed for {s:blast_debuff_duration}s. (once per battle)"
 	"dac_item_shivas_guard_lore"						"Don't ask how this came out of the Sapphire Conclave's vault - <i>Zenok, White Spire Fence</i>"
 
-	"dac_item_bloodthorn"							"Bloodthorn"
-	"dac_item_bloodthorn_desc"						"+{d:attack_damage} Attack Damage. When an enemy hero has more than {d:mana_trigger_percentage}% mana, silence them for {d:silence_duration}s. Attacks against the silenced hero can't miss and crit for {d:target_crit_multiplier}%. (10s cooldown)"
-	"dac_item_bloodthorn_lore"						"Wielding this blade doesn't make you popular, but it sure makes your enemies dead. - <i>Zenok, White Spire Fence</i>"
+	"dac_item_bloodthorn"								"Bloodthorn"
+	"dac_item_bloodthorn_desc"			    			"+{d:attack_damage} Attack Damage. When an enemy hero has more than {d:mana_trigger_percentage}% mana, silence them for {d:silence_duration}s. Attacks against the silenced hero can't miss and crit for {d:target_crit_multiplier}%. ({d:cooldown}s cooldown)"
+	"dac_item_bloodthorn_lore"							"Wielding this blade doesn't make you popular, but it sure makes your enemies dead. - <i>Zenok, White Spire Fence</i>"
 	
 	"dac_item_hood_of_defiance"							"Hood of Defiance"
 	"dac_item_hood_of_defiance_desc"					"+{d:bonus_magical_resistance}% Magic Resistance. +{d:health_regen} Health Regen."
@@ -1394,6 +1403,7 @@
 	"DAC_PostGame_BP_Subheader"			"Progress"
 	"DAC_PostGame_BP_Desc"				"Play games and complete challenges to gain XP and unlock rewards."
 	"DAC_PostGame_Rank"					"Rank Level"
+	"DAC_PostGame_TeamRank"				"Team Rank Level"
 	"DAC_PostGame_NonRanked"			"Rank progress was not tracked in this match."
 
 	"dac_synergy_popup_units_on_board"		"You have {d:units_on_board} units of this type on the board"
@@ -1570,7 +1580,7 @@
 
 	"DAC_Synergy_Desc_Insect"			"Spiderlings constantly swarm enemies from the edge of the board. They are untargetable units that deal low damage and have 1 health. Enemies bitten by them have a {s:miss_chance}% chance to miss attacks for {s:miss_chance_duration}s. Spiderlings replenish on death to a maximum of {s:num_insects}."
 
-	"DAC_Synergy_Desc_Champion"		"Champions receive all Alliance bonuses."
+	"DAC_Synergy_Desc_Champion"		"Champions receive all Alliance bonuses. In addition, they gain 10% extra damage and max health per Alliance received."
 
 	"DAC_Synergy_Desc_Wisp"			"Io shares the Alliance bonuses of its Tether companion to all allied units. *beep boop*"
 
@@ -1652,6 +1662,7 @@
 	"duos_benchlabel"					"Bench:"
 	"duos_sendlabel"					"Send"
 	"button_selllabel"					"Sell"
+	"button_recyclelabel"				"Recycle"
 
 	"DAC_ChatHeader_Combat"		"Round Chat"
 	"DAC_ChatHeader_Combat_Cooldown"		"Round Chat (Cooldown)"
@@ -1851,8 +1862,22 @@
 	"DAC_JoinParty_Title"		"Join Party"
 	"DAC_JoinParty_Prompt"		"Party ID"	
 	"DAC_Party_Invites"			"Party Invites"
+
+	"DAC_Team_Info"				"Team Info"
 	"DAC_RenameTeam_Title"		"Change Team Name"
 	"DAC_RenameTeam_Prompt"		"Team Name"
+	"DAC_RenameTeam_TeamStats"	"Team Stats:"
+	"DAC_RenameTeam_NumGames"	"Total Games Played: {d:total_games}"
+	"DAC_RenameTeam_NumWins"	"First Place Finishes: {d:total_first}"
+	"DAC_RenameTeam_NumPodiums"	"Top Three Finishes: {d:total_podiums}"
+	"DAC_RenameTeam_FirstGame"	"First Game together: {t:s:first_game}"
+	"DAC_RenameTeam_UnlockAfter_Plural"			"Play {d:games_until_rename} more games to customize your team name"
+	"DAC_RenameTeam_UnlockAfter_Singular"		"Play one more game to customize your team name"
+	"DAC_RenameTeam_CooldownAfter_Plural"		"You may rename your team again after {d:games_until_rename} more games"
+	"DAC_RenameTeam_CooldownAfter_Singular"		"You may rename your team again after one more game"
+	"DAC_RenameTeam_NewTeamText"				"This team has not yet played any games together"
+	"DAC_RenameTeam_ApplyName"					"Apply"
+	"DAC_RenameTeam_Close"						"Close"
 
 	"DAC_PartyMM_PlayersNotReady"					"Not all players are ready"
 	"DAC_PartyMM_TooFewPlayers"						"Too few players in party"
@@ -2017,6 +2042,7 @@
 	"dac_settings_auto_deploy_units"			"Auto deploy units from your bench if there is room."
 	"dac_settings_use_panorama_login"			"Use legacy Steam login"
 	"dac_settings_low_violence"					"Low Violence Mode"
+	"dac_settings_filter_offensive_text"		"Hide offensive words"
 
 	"dac_settings_low_violence_changed_title"	"Restart required"
 	"dac_settings_low_violence_changed_body"	"To apply this change, you must close and restart Dota Underlords"
@@ -2135,7 +2161,7 @@
 	"dac_glossary_gold"						"Gold"
 	"dac_glossary_gold_desc"				"Gold is used in Underlords to buy heroes (1-5 gold), reroll the Shop (2 gold), and buy experience (5 gold for 5 XP). Gold can be earned throughout the match in a variety of ways. A base amount of gold is earned after each round regardless of how you did in the last battle. In addition, bonus gold can earned from win streaks, lose streaks, and items. Gold can also be earned through interest – for every 10 gold you have at the beginning of a round up to 50 gold, you will earn 1 extra gold."
 	"dac_glossary_hype"						"Hype"
-	"dac_glossary_hype_desc"				"Hype is an Underlord's main source of power. As your Underlord gain Hype, their damage output increases (to a max of +50% at full Hype), and ability cooldowns tick faster (up to 40% at full Hype). Hype is generated at a constant rate - and each Underlord has different buffs that allow it to generate faster. Killing your opponent's Underlord grants 2x Hype generation, but getting humiliated by being Stunned or Hexed reduces Hype by 5 a second."
+	"dac_glossary_hype_desc"				"Hype is an Underlord's main source of power. As your Underlord gains Hype, their damage output increases (to a max of +50% at full Hype), and ability cooldowns tick faster (up to 40% at full Hype). Hype is generated at a constant rate - and each Underlord has different buffs that allow it to generate faster. Killing your opponent's Underlord grants 2x Hype generation, but getting humiliated by being Stunned or Hexed reduces Hype by 5 each second."
 	"dac_glossary_level"					"Player Level"
 	"dac_glossary_level_desc"				"When you earn enough XP, you will level up. XP is earned automatically at 1 XP per round, or can be purchased in the Shop - 5XP for 5 gold. Leveling up gives you several bonuses. Your crew count increases along with your level (at level 2 you can field 2 heroes, at level 5, you can field 5). The Shop odds change with your level as well – more powerful heroes will appear in the Shop as you level up."
 	"dac_glossary_rank"						"Hero Rank"
@@ -2190,12 +2216,15 @@
 	"DACRankTierDisplayName8"							"Tier 8"
 	"DACRankLegendaryUnit"								"Ace Tier"
 	"DACRankPoints" "{d:player_rank_score} <span class='RankPoints'>Rank Points</span>"
+	"DACTeamRankPoints" "{d:team_rank_score} <span class='RankPoints'>Rank Points</span>"
 
 	"DAC_Season_Rank_Title"						"Seasonal Rank Medals"
 	"DAC_Season_Rank_Desc"						"As your skill progresses in the season, you will be awarded rank medals, each with five levels.  If you surpass Big Boss V, you will be crowned a Lord of White Spire and earn your place on the global leaderboard."
 
 	"DAC_LevelUp_Rank_Old"	"<span class='RankName'>{s:old_rank_name}</span> {s:old_rank_tier}"
 	"DAC_LevelUp_Rank_New"	"<span class='RankName'>{s:new_rank_name}</span> {s:new_rank_tier}"
+	"DAC_LevelUp_Team_Rank_Old"	"<span class='RankName'>{s:old_team_rank_name}</span> {s:old_team_rank_tier}"
+	"DAC_LevelUp_Team_Rank_New"	"<span class='RankName'>{s:new_team_rank_name}</span> {s:new_team_rank_tier}"
 	"DAC_LevelUp_Title_Minor"	"You leveled up!"
 	"DAC_LevelUp_Title_Major"	"Promotion!"
 	"DAC_LevelDown_Title_Minor"	"You lost a level!"
@@ -2215,6 +2244,7 @@
 	"DAC_Tier_Name_4"							"Level IV"
 	"DAC_Tier_Name_5"							"Level V"
 	"DAC_Leaderboard_Rank"							"<span class='RankName'>{s:new_rank_name}</span>"
+	"DAC_Team_Leaderboard_Rank"							"<span class='RankName'>{s:new_team_rank_name}</span>"
 
 	"DAC_Reward_Title_Major"					"Yo! A Reward"
 	"DAC_Reward_Title_Minor"					"Claim now on the proto pass page"
@@ -2278,6 +2308,8 @@
 	"DAC_FightResultDefeat"						"DEFEAT"
 	"DAC_FightResultDefeatDmg"					"-{d:damage_taken}"
 	"DAC_FightResultDraw"						"DRAW"
+	"DAC_FightResultWinStreak"					"x{d:win_streak} STREAK!"
+	"DAC_FightResultWinStreakComplete"			"STREAK COMPLETE!"
 
 	"DAC_Duos_Team_Header"						"Team {d:lobby_team}"
 	"DAC_Duos_Team_Header_Home"						"Team {d:lobby_team_home}"
@@ -2841,6 +2873,7 @@
 	"DAC_HowToPlay_HypeOMeter_Body" "The Hype-o-Meter tracks an Underlord's Hype level. Remember, higher levels of Hype improve your Underlord's damage and cooldowns."
 	"DAC_SelectedPlayerName" "{g:dac_player_slot_persona:b:selected_player_slot}"
 	"DAC_Spectating" "Spectating"
+
 
 }
 

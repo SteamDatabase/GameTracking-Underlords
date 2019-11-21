@@ -8,13 +8,8 @@
 
 	<DACLeaderboardEntry>
 			
-		<Panel class="LeaderboardTargetIndicator">
-			<Panel class="CombatLeaderboardBackground" hittest="false" />
-			<Image class="DefendIcon" src="s2r://panorama/images/leaderboard/icon_defend_psd.vtex" hittest="false" />
-			<Image class="SwordIcon" src="s2r://panorama/images/leaderboard/icon_vs_psd.vtex" hittest="false" />
-		</Panel>
-		<DACParticleScenePanel id="ParticleBG" squarepixels="false" hittest="false" startActive="true" particleName="" fov="-450" cameraDist="400" cameraLeft="-160" cameraUp="-12"  />
-		<DACParticleScenePanel id="ParticleFG"  squarepixels="false" hittest="false" startActive="true" particleName="" fov="-500" cameraDist="400" cameraLeft="-400" cameraUp="-15" />
+		
+		<DACParticleScenePanel id="ParticleBG" hittest="false" startActive="true" fov="-2000" cameraLeft="140"   />
 		<Panel class="PlayerLeaderboard" id="HitBox" hittest="true" onmouseover="PlaySoundEffect( 'DAC_UI.AvatarRollover' );">
 			<Panel class="PlayerAvatarGroup">
 					
@@ -27,29 +22,43 @@
 						<Image class="MobileIcon" src="s2r://panorama/images/leaderboard/icon_mobile_psd.vtex" hittest="false" />
 					</Panel> 
 
-					<Panel id="PlayerLevelContainer">
+					<!-- <Panel id="PlayerLevelContainer">
 						<Panel class="PlayerLevelBG" />
 						<Label class="PlayerLevel" text="{d:leaderboard_Level}" />
-					</Panel>
+					</Panel> -->
 
 				<Image class="LeaderboardDisconnectedIndicator" src="s2r://panorama/images/leaderboard/disconnected_glow_psd.vtex" hittest="false" />
 				<Image class="CloneIcon" src="s2r://panorama/images/hud/dac_profile_avatar_clone_psd.vtex" hittest="false" /> 
 			</Panel>
-		
-			<Label class="PlayerName" text="{g:dac_player_slot_persona:b:leaderboard_Slot}" html="true" />
-			<!-- <Label class="PlayerLevel" text="{d:leaderboard_Level}" />
-			<Panel class="PlayerLevelIcon" /> -->
-			<Panel id="PlayerInfo">
-				<Panel id="HealthRow">
-					<Label class="PlayerHealth" text="{d:leaderboard_Health}" />
-					<Panel class="PlayerHealthIcon" />
+
+			<Panel id="PlayerStats">
+				<Panel id="PlayerNameContainer">
+					<Label class="PlayerName" text="{g:dac_player_slot_persona:b:leaderboard_Slot}" html="true" />
 				</Panel>
-				<Panel id="GoldRow">
-					<Label class="PlayerGold" text="{d:leaderboard_Gold}" />
-					<Panel class="PlayerGoldIcon" />
-				</Panel>
-			
+				<!-- <Label class="PlayerLevel" text="{d:leaderboard_Level}" />
+				<Panel class="PlayerLevelIcon" /> -->
+					<Panel id="PlayerInfo">
+						<Panel id="PlayerLevelContainer">
+								<Label class="PlayerLevel" text="{d:leaderboard_Level}" />
+								<Panel class="PlayerLevelIcon" />
+						</Panel>
+						<Panel id="GoldRow">
+							<Label class="PlayerGold" text="{d:leaderboard_Gold}" />
+							<Panel class="PlayerGoldIcon" />
+						</Panel>
+					</Panel>
 			</Panel>
+
+			<Panel id="HealthRow">
+						<Panel class="PlayerHealthIcon" />
+						<Label class="PlayerHealth" text="{d:leaderboard_Health}" />
+					
+			</Panel>
+		</Panel>
+		<Panel class="LeaderboardTargetIndicator">
+			<Panel class="CombatLeaderboardBackground" hittest="false" />
+			<Image class="DefendIcon" src="s2r://panorama/images/leaderboard/icon_defend_psd.vtex" hittest="false" />
+			<Image class="SwordIcon" src="s2r://panorama/images/leaderboard/icon_vs_psd.vtex" hittest="false" />
 		</Panel>
 
 	

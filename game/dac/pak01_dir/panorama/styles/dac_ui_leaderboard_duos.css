@@ -7,6 +7,7 @@ DACLeaderboardDuos {
 	opacity: 1;
 	visibility: collapse;
 	//margin-top: 20px;
+	ui-scale: 110%;
 }
 
 .ScoreboardVisible DACLeaderboardDuos
@@ -29,17 +30,31 @@ DACLeaderboardEntry, .TeamHeaderContainer {
 	transition-duration: .1s;
 	transition-timing-function: ease-in-out;
 	width: 240px;
-	height: 45px;
+	height: 30px;
 	overflow: noclip;
-	//margin: 1px 0px;
+}
+
+.TeamHeaderContainer {
+	margin: 1px 0px;
 }
 
 .TeamHeaderContainer.IsOpen,
 .TeamHeaderContainer.IsAwayGame,
 .TeamHeaderContainer.IsHomeGame,
 .TeamHeaderContainer.IsFinished {
+	//height: 28px;
+	margin: 0px;
+}
+
+.TeamHeaderContainer.IsOpen {
 	height: 30px;
+	margin-top: 5px;
 	margin-bottom: 0px;
+}
+
+.TeamHeaderContainer.IsOpen.IsAwayGame {
+	height: 30px;
+	margin-top: 0px;
 }
 
 
@@ -52,6 +67,25 @@ DACLeaderboardEntry, .TeamHeaderContainer {
 .HasPlayerOpponent.ScoreboardHidden.InCombat .IsAwayGame
 {
 	margin-bottom: 5px;
+}
+
+.HasPlayerOpponent.ScoreboardHidden.InCombat .IsAwayGame.IsOpen
+{
+	margin-top: -5px;
+}
+
+#ParticleBG {
+	height: 500px;
+	width: 500px;
+	margin-top: -186px;
+	margin-left: 40px;
+	ui-scale: 80%;
+
+}
+/* Scale particle down a smidge for "small" sized team headers */
+.Combat #ParticleBG, .IsOpen #ParticleBG {
+	/* margin-top: -185px;
+	ui-scale: 80%; */
 }
 
 /* Selection/Visibility styles */
@@ -77,9 +111,7 @@ DACLeaderboardDuos DACLeaderboardEntry
 DACLeaderboardDuos DACLeaderboardEntry.IsOpen
 {
 	height: 60px;
-	width: 300px;
-	//visibility: visible;
-	margin-left: 15px;
+	width: 320px;
 }
 
 
@@ -177,19 +209,45 @@ DACLeaderboardEntry {
 .TeamHeader {
 	width: 240px;
 	//width: 300px;
+	flow-children: right;
 
 	color: #000;
 	text-transform: uppercase;
 	padding: 1px 0px;
 	//height: 80px;
 	//margin-left: 10px;
-	height: 100%;
+	height: 30px;
+	//background-color: #131313;
+	background-image: url("s2r://panorama/images/leaderboard/team_header_closed_psd.vtex");
+	border-radius: 4px;
 
 	saturation: .9;
 	brightness: .8;
 
 	transition-property: brightness;
 	transition-duration: .2s;	
+}
+
+.MyTeam.TeamHeader {
+	//border-radius: 10px 10px 0px 0px;
+	//background-image: url("s2r://panorama/images/leaderboard/team_isself_header_open_psd.vtex");
+	brightness: 2.0;
+}
+
+.IsOpen .TeamHeader {
+	background-image: url("s2r://panorama/images/leaderboard/team_header_open_psd.vtex");
+}
+
+.IsHomeGame .TeamHeader {
+	border-radius: 10px 10px 0px 0px;
+}
+
+.IsAwayGame .TeamHeader {
+	border-radius: 0px 0px 10px 10px;
+}
+
+.IsLoss .TeamHeader {
+	wash-color: #FF3D3D90;
 }
 
 .LowVisualQuality .TeamHeader
@@ -203,10 +261,6 @@ DACLeaderboardEntry {
 	brightness: 1.3;
 }
 
-.Combat .TeamHeader
-{
-	//height: 40px;
-}
 
 .Combat .TeamVSTop
 {
@@ -231,24 +285,27 @@ DACLeaderboardEntry {
 }
 
 #HealthRow {
-	width: fit-children;
+	//width: fit-children;
 	horizontal-align: right;
-	margin-right: 10px;
+	//margin-right: 4px;
+	vertical-align: middle;
+	flow-children: right;
+	width: 43px;
+	//border: 1px solid pink;
 }
 
 #TeamHealth {
 	color: #a2ff92;
 	vertical-align: center;
-	horizontal-align: right;
 	text-shadow: 0px 0px 0px 3.0 #000;
 	font-weight: bold;
-	//font-size:24px;
-	//margin-right: 10px;
+	//font-family: 'Ravenhook';
+	text-align: right;
+	horizontal-align: right;
+	width: 30px;
 
 	font-size: 18px;
-	margin-right: 15px;
-	horizontal-align: right;
-	text-align: right;
+	//margin-right: 15px;
 }
 
 .HealthMid #TeamHealth 
@@ -256,10 +313,139 @@ DACLeaderboardEntry {
 	color: #ffb66e;
 }
 
-.HealthLow #TeamHealth 
-{
+
+.HealthLow #TeamHealth  {
 	color: #ff6123;
-}	
+
+	animation-duration: 2.24s;
+	animation-timing-function: linear;
+	animation-name: HealthDeltaThrob;
+	animation-iteration-count: infinite;
+}
+
+//Two throbs
+//Three
+@keyframes 'HealthDeltaThrob'
+{
+	0%
+	{
+		pre-transform-scale2d: 1.0;
+		text-shadow: 0px 0px 0px 1.0 #000000ff;
+	}
+
+	8.33333%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+		13%
+		{
+			
+			pre-transform-scale2d: 1.0;
+		}
+
+			16.6666%
+			{
+				
+				pre-transform-scale2d: 1.1;
+			}
+
+		19%
+		{
+			
+			pre-transform-scale2d: 1.0;
+		}
+
+	25%
+	{
+		
+		pre-transform-scale2d: 1.0;
+	}
+
+		30%
+		{
+			
+			pre-transform-scale2d: 1.0;
+		}
+
+				33.333%
+				{
+					
+					pre-transform-scale2d: 1.2;
+				}
+
+		36%
+		{
+			
+			pre-transform-scale2d: 1.0;
+		}
+
+	41.666%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+	//blip
+	50%
+	{
+		pre-transform-scale2d: 1.0;
+		text-shadow: 0px 0px 0px 2.0 #73000b60;
+	}
+
+	58.33%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+
+		63%
+		{
+			pre-transform-scale2d: 1.0;		
+		}
+
+			66.666%
+			{
+				pre-transform-scale2d: 1.1;	
+			}
+
+		69%
+		{
+			pre-transform-scale2d: 1;	
+		}
+
+	
+	75%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+		80%
+		{
+			pre-transform-scale2d: 1.0;
+		}
+
+				83.333%
+				{
+					pre-transform-scale2d: 1.2;
+				}
+
+		88%
+		{
+			pre-transform-scale2d: 1.0;
+		}
+
+	91.666%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+	100%
+	{
+		pre-transform-scale2d: 1.0;
+		text-shadow: 0px 0px 0px 1.0 #000000ff;
+	}
+	//blip
+}
 
 .PlayerHealthIcon
 {
@@ -267,9 +453,10 @@ DACLeaderboardEntry {
 	height: 12px;
 	vertical-align: center;
 	background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex");
-	background-size: contain;
-	margin-top: 3px;
-	margin-left: -3px;
+	background-repeat: no-repeat;
+	//background-position: 50% 50%;
+	background-size: 100% 100%;
+ 	margin-top: 3px; 
 	horizontal-align: right;
 }
 /*
@@ -299,23 +486,26 @@ DACLeaderboardEntry {
 	background-image: url("s2r://panorama/images/leaderboard/icon_health_low_psd.vtex");
 }	
 
-/*
-.TeamName {
-	width: fill-parent-flow(1);
-	font-size: 21px;
-	width: 150px;
-	text-shadow: 0px 0px 0px 3.0 #000;
-	margin-left: 8px;
-	padding-left: 8px;
-	color: white;
+
+#PlayerNameContainer {
+	width: 125px;
+	opacity-mask: url("s2r://panorama/images/masks/fade_name_right_psd.vtex");	
+	transition-property: width;
+	transition-duration: .15s;
+	//margin-top: 2px;
+	margin-left: 6px;
 	vertical-align: center;
-}*/
+}
+
+.IsOpen #PlayerNameContainer {
+	width: 98px;
+}
 
 .TeamAvatars {
 	width: 85px;
 	height: 100%;
 	flow-children: right;
-	visibility: visible;
+	visibility: collapse;
 }
 
 .IsOpen .TeamAvatars,
@@ -345,41 +535,77 @@ DACLeaderboardEntry {
 
 .TeamName
 {
-	font-size: 13px;
-	//width: 220px;
-	//text-shadow: 0px 0px 0px 3.0 #000;
-	//padding-left: 8px;
-	color: white;
+	font-size: 15px;
+	color: #dedede;
+
+
 	vertical-align: center;
-	text-transform: uppercase;
+	line-height: 17px;
+	//margin-top: -1px;
+	text-align: left;
+	horizontal-align: left;
+	
+	text-overflow: ellipsis;
+	width: 135px;
+	height: 20px;
+	margin-top: 3px;
+	white-space: nowrap;
+	//font-family: 'Ravenhook';
+	//letter-spacing: 1px;
+	//text-transform: uppercase;
 	font-weight: semi-bold;
-	letter-spacing: 1px;
-	margin-right: 10px;
-	//margin-top: 1px;
-	margin-bottom: -2px;
-	text-align: right;
-	horizontal-align: right;
-	text-overflow: shrink;
-	max-width: 150px;
-	max-height: 30px;
+
+}
+/* 
+.DuosTeam_0 .TeamName {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#aeec9b));
 }
 
-.IsOpen .TeamName {
+.DuosTeam_1 .TeamName {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#ebe18b));
+}
+
+.DuosTeam_2 .TeamName {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#af8beb));
+}
+
+.DuosTeam_3 .TeamName {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#b4856f));
+}
+
+.DuosTeam_4 .TeamName {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#ebb98b));
+}
+
+.DuosTeam_5 .TeamName {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#98a1f0));
+}
+
+.DuosTeam_6 .TeamName {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#f8aade));
+}
+
+.DuosTeam_7 .TeamName {
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#eba98b));
+} */
+
+/* .IsOpen .TeamName {
 	horizontal-align: left;
 	text-align: left;
-	margin-left: 20px;
 	padding-left: 7px;
-}
+	max-width: 150px;
+	//border: 1px solid red;
+} */
 
 
-.IsAwayGame .TeamName,
+/* .IsAwayGame .TeamName,
 .IsHomeGame .TeamName,
 .IsFinished .TeamName {
 	horizontal-align: left;
 	text-align: left;
 	margin-left: 20px;
 	padding-left: 7px;
-}
+} */
 
 .MyTeam  {
 	//border: 3px solid white;
@@ -389,21 +615,20 @@ DACLeaderboardEntry {
 	//border-bottom: 2px solid #ffffffaa;
 }
 
+.MyTeam .TeamName {
+	//font-weight: semi-bold;
+	color: #ffffff;
+}
+
 .TeamInfo {
 	vertical-align: center;
-	//flow-children: right;
-	flow-children: down;
-	width: 150px;
+	flow-children: right;
+	margin-left: 5px;
+	margin-right: 8px;
+	width: 80px;
 	horizontal-align: right;
 }
 
-.IsOpen .TeamInfo,
-.IsAwayGame .TeamInfo,
-.IsHomeGame .TeamInfo,
-.IsFinished .TeamInfo {
-	flow-children: right;
-	width: 100%;
-}
 
 .TeamMembers {
 	//margin-top: 65px;
@@ -502,6 +727,29 @@ DACLeaderboardEntry {
 	margin-right: 38px;
 }
 
+#PlayerLevelContainer {
+	flow-children: right;
+	width: 28px;
+	margin-left: 5px;
+	//border: 1px solid blue;
+	horizontal-align: right;
+	vertical-align: center;
+}
+
+.PlayerLevel
+{
+	text-shadow: 0px 0px 0px 1.0 #00000000;
+	color: #93b7fe;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #8db0f4 ), to(#aad8de));
+	vertical-align: center;
+	text-align: left;
+	margin-left: 0px;
+	font-size: 14px;
+	font-weight: bold;
+
+	text-overflow: shrink;
+}
+
 .PlayerLevelIcon
 {
 	width: 12px;
@@ -511,9 +759,8 @@ DACLeaderboardEntry {
 	background-image: url("s2r://panorama/images/leaderboard/player_level_psd.vtex");
 	background-size: contain;
 	background-repeat: no-repeat;
-	horizontal-align: right;
-	margin-right: 31px;
-	margin-bottom: 1px;
+	margin-top: 2px;
+
 }
 
 .LowVisualQuality .PlayerLevelIcon
@@ -596,7 +843,7 @@ DACLeaderboardEntry {
 	background-color: #000;
 }
 
-.PlayerGold {
+/* .PlayerGold {
 	font-size: 22px;
 	text-shadow: 0px 0px 0px 3.0 #000;
 	color: gold;
@@ -620,25 +867,10 @@ DACLeaderboardEntry {
 	text-overflow: shrink;
 	horizontal-align: right;
 
-}
+} */
 
-.LowVisualQuality .PlayerLevel
-{
-	border-radius: 0px;
-}
 
-.PlayerLevelBG {
-	width: 81px;
-	height: 40px;
-	vertical-align: bottom;
-	horizontal-align: right;
-
-	background-image: url("s2r://panorama/images/leaderboard/levelcontainer_png.vtex");
-	background-size: 40% 80%;
-	background-position: right bottom;
-	background-repeat: no-repeat;
-}
-
+/* 
 .PlayerAvatarGroup .PlayerLevel {
 	
 	color: #3E4586;
@@ -646,19 +878,19 @@ DACLeaderboardEntry {
 	vertical-align: bottom;
 	horizontal-align: right;
 	margin-right: 6px;
-}
+} */
 
-.IsOpen #PlayerLevelContainer,
+/* .IsOpen #PlayerLevelContainer,
 .IsAwayGame #PlayerLevelContainer,
 .IsHomeGame #PlayerLevelContainer,
 .IsFinished #PlayerLevelContainer {
 	visibility: collapse;
-}
+} */
 
 .Selected .TeamMembers {
 	visibility: visible;
 	//opacity: 1;
-	height: 100px;
+	//height: 100px;
 }
 
 .Combat .TeamMembers
@@ -687,22 +919,26 @@ DACLeaderboardEntry {
 
 .TeamBacking
 {
-	width: 20px;
+	width: 18px;
 	height: 40px;
 
-	border-left: 0px;
 	brightness: .5;
 	opacity: .5;
 
-	transition-property: height;
+	transition-property: width;
 	transition-duration: .15s;
 }
 
-.Selected .TeamBacking
-{
-	height: 130px;
-	//vertical-align: bottom;
+.IsOpen .TeamBacking {
+	width: 45px;
+	border-radius: 10px 0px 0px 0px;
 }
+
+.IsAwayGame.IsOpen .TeamBacking {
+	border-radius: 0px 0px 0px 10px;
+}
+
+
 
 /* Teams */
 
@@ -717,7 +953,7 @@ DACLeaderboardEntry {
 {
 	background-size: 100% 100%;
 	background-position: 0% 0%;
-	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_png.vtex");
+	//background-image: url("s2r://panorama/images/leaderboard/team_header_open_psd.vtex");
 }
 
 .DuosTeam_0 .TeamHeader,
@@ -733,12 +969,36 @@ DACLeaderboardEntry {
 	background-size: 100% 100%;
 	background-position: 100% 0%;
 	//wash-color: #b2da42;
-	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_png.vtex");
+	//background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_enemy_png.vtex");
 }
 
-.MyTeam .TeamHeader {
-	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_png.vtex");
+
+
+.StreakGold1.WinStreak .TeamHeader  {
+	background-image: url("s2r://panorama/images/leaderboard/team_header_closed_streak1_psd.vtex");
 }
+
+.IsOpen.StreakGold1.WinStreak .TeamHeader {
+	background-image: url("s2r://panorama/images/leaderboard/team_header_open_streak1_psd.vtex");
+}
+
+.StreakGold2.WinStreak .TeamHeader  {
+	background-image: url("s2r://panorama/images/leaderboard/team_header_closed_streak2_psd.vtex");
+}
+
+.IsOpen.StreakGold2.WinStreak .TeamHeader {
+	background-image: url("s2r://panorama/images/leaderboard/team_header_open_streak2_psd.vtex");
+}
+
+.StreakGold3.WinStreak .TeamHeader  {
+	background-image: url("s2r://panorama/images/leaderboard/team_header_closed_streak3_psd.vtex");
+}
+
+.IsOpen.StreakGold3.WinStreak .TeamHeader {
+	background-image: url("s2r://panorama/images/leaderboard/team_header_open_streak3_psd.vtex");
+}
+
+
 
 DACLeaderboardEntry #PlayerSlot_2 .MyTeam {
 	margin-top: -2px;
@@ -899,7 +1159,7 @@ DACLeaderboardEntry #PlayerSlot_2 .MyTeam {
 
 .IsFinished .IsLoss.PlayerName
 {
-	color: #d74545;
+	color: #FFB4B4;
 }
 
 .MyTeamIndicator
@@ -1098,6 +1358,16 @@ DACLeaderboardEntry #PlayerSlot_2 .MyTeam {
 	margin-left: 130px;
 }
 
+.IsOpen .CombinedNotifications,
+.IsOpen .DuosNotifications {
+	ui-scale: 100%;
+	margin-left: 130px;
+}
+
+
+
+
+
 .Selected .CombinedNotifications {
 	visibility: collapse;
 }
@@ -1197,12 +1467,15 @@ DACLeaderboardEntry #PlayerSlot_2 .MyTeam {
 	margin-top: 20px;
 }
 
+/* TARGET INDICATOR FOR COMBAT ROUNDS */
 .ScoreboardHidden.InCombat .IsHomeGame .LeaderboardTargetIndicator
 {
-	margin-top: -10px;
-	ui-scale: 100%;
+	margin-top: 5px;
+	ui-scale: 60%;
 	width: 300px;
-	margin-left: 0px;
+	margin-left: 95px;
+	z-index: 100;
+	opacity: 0.5;
 }
 
 .ScoreboardHidden.InCombat .IsAwayGame .LeaderboardTargetIndicator
@@ -1215,11 +1488,14 @@ DACLeaderboardEntry #PlayerSlot_2 .MyTeam {
 	visibility: collapse;
 }
 
+
+/* TARGET INDICATOR FOR CREEP ROUNDS */
 .ScoreboardHidden.InCombat .LeaderboardTargetIndicator
 {
 	ui-scale: 50%;
-	margin-top: 0px;
-	margin-left: 95px;
+	margin-top: -5px;
+	margin-left: 100px;
+	opacity: 0.5;
 
 	visibility: visible;
 }
@@ -1238,7 +1514,7 @@ DACLeaderboardEntry #PlayerSlot_2 .MyTeam {
 
 .IsFinished.IsLoss .TeamName
 {
-	color: #d74545;
+	color: #FFB4B4;
 }
 .IsFinished.IsVictory .TeamName
 {

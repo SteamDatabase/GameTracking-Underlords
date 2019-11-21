@@ -35,9 +35,12 @@
 
 	"DAC_MatchTypeMultiplayer"							"Multiplayer"
 	"DAC_MatchTypeStandard"								"Standaard"
+	"DAC_MatchTypeTurbo"								"Turbo"
 	"DAC_MatchTypeMultiplayerMMSelect"					"Type selecteren"
 	"DAC_MatchTypeName0"								"Casual"
 	"DAC_MatchTypeNameRanked"							"Competitief"
+	"DAC_MatchTypeBotTeammate"							"Bot-teamlid"
+	"DAC_MatchTypeInviteAFriend"						"Vriend uitnodigen"
 	"DAC_MatchTypeNameRankedLocked1"					"Speel {i:games_needed_to_unlock_ranked} casual spel om te ontgrendelen"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Speel {i:games_needed_to_unlock_ranked} casual spellen om te ontgrendelen"
 	"DAC_MatchTypeBotMatch"								"Botspel"
@@ -52,6 +55,8 @@
 	"DAC_DBHome_Play_Party"								"Groepsspel"
 	"DAC_DBHome_Searching_Party"						"Spel zoeken"
 	"DAC_ComingSoon"									"Binnenkort"
+	"DAC_MatchTypeNameDuosState_SoloWithBots"			"Vorm een team met een bot en strijd tegen andere spelers"
+	"DAC_MatchTypeNameDuosState_PartyWithBots"			"Sommige spelers krijgen een bot als teamlid"
 	"DAC_MatchTypeNameDuosState_NoParty"				"Groep van ten minste twee spelers vereist."
 	"DAC_MatchTypeNameDuosState_NeedBuddy"				"Je groep is te klein voor deze modus. Selecteer om een vriend uit te nodigen."
 	"DAC_MatchTypeNameDuosState_ExcessBuddies"			"Je groep is te groot voor deze modus. Selecteer om je groep kleiner te maken."
@@ -65,9 +70,11 @@
 	"DAC_Teammate"										"Teamlid"
 	"DuosAboutLabel"									"Wat is duo's?"
 	"DAC_MatchTypeDescStandard"							"Daag zeven vijandelijke legers uit voor een overwinning"
-	"DAC_MatchTypeDescDuos"								"Vorm samen met een vriend een groep en trek ten strijde"
+	"DAC_MatchTypeDescDuosCasual"						"Vorm samen met een vriend of bot een groep en trek ten strijde"
+	"DAC_MatchTypeDescDuosRanked"						"Vorm samen met een vriend een groep en trek ten strijde"
 	"DAC_MatchTypeDescBots"								"Speel een singleplayerspel tegen bots"	
 	"DAC_MatchTypeDescResume"							"Hervat je laatste spel tegen bots"	
+	"DAC_MatchTypeDescTurboBots"						"Speel een singleplayer-TURBO-spel tegen bots"
 	"DAC_MatchTypeDescDuosBots"							"Speel met een AI-teamlid in een Duo's-botspel"	
 	"DAC_MatchTypeDescFreestyle"						"Maak een opstelling en test ongelimiteerd gevechtssimulaties"	
 	"DAC_MatchTypeDescFreestyle2"						"In deze modus heb je volledige controle over het bord en kun je elk scenario samenstellen dat je hartje begeert. Gebruik het om troepenopstellingen uit te proberen, of nieuwe theorieën te testen. Je kunt dan vervolgens je ontwerp met vrienden en de community delen."	
@@ -303,6 +310,8 @@
 	"DAC_RenameTeam_NotUnlocked"						"Je moet eerst meer spellen winnen voordat je dit team een naam kunt geven"
 	"DAC_RenameTeam_InCooldown"							"Je hebt de naam van dit team te kort geleden veranderd. Wacht even voordat je een nieuwe poging doet."
 	"DAC_RenameTeam_NameTooLong"						"De naam die je opgaf is te lang. Probeer het opnieuw met een kortere naam."
+	"DAC_RenameTeam_CommunityBanned"					"Je bent momenteel van de Steam Community verbannen en kunt daardoor geen teamnaam kiezen"
+	"DAC_RenameTeam_GameBanned"							"Op basis van eerder gedrag kun je geen teamnaam kiezen"
 	   	 
 	"DAC_Party_KickedByTitle"							"Verwijderd uit groep"
 	"DAC_Party_KickedByText"							"Je bent uit je groep verwijderd door {g:dac_persona:kicked_by_account}"
@@ -887,9 +896,9 @@
 	"dac_item_shivas_guard_desc"						"+{d:bonus_armor} pantser. Straalt een bevriezende golf uit die {d:blast_damage} schade aanricht aan vijanden in een straal van 3 cellen en hun bewegings- en aanvalssnelheid {s:blast_debuff_duration} seconden vertraagt (een keer per gevecht)."
 	"dac_item_shivas_guard_lore"						"Vraag me niet hoe dit uit de Saffieren Conclaaf is gekomen. – <i>Zenok, heler van Witspits</i>"
 
-	"dac_item_bloodthorn"							"Bloeddoorn"
-	"dac_item_bloodthorn_desc"						"+{d:attack_damage} aanvalsschade. Wanneer een vijandelijke held meer dan {d:mana_trigger_percentage}% mana heeft, wordt deze {d:silence_duration} seconden het zwijgen opgelegd. Aanvallen tegen de stilgezwegen held kunnen niet missen en richten {d:target_crit_multiplier}% kritieke schade aan (afkoeltijd van 10 seconden)."
-	"dac_item_bloodthorn_lore"						"Bij het gebruik van deze kling maak je geen vrienden, maar je schakelt er wel veel vijanden mee uit. – <i>Zenok, heler van Witspits</i>"
+	"dac_item_bloodthorn"								"Bloeddoorn"
+	"dac_item_bloodthorn_desc"			    			"+{d:attack_damage} aanvalsschade. Wanneer een vijandelijke held meer dan {d:mana_trigger_percentage}% mana heeft, wordt deze {d:silence_duration} seconden het zwijgen opgelegd. Aanvallen tegen de gemuilkorfde held kunnen niet missen en richten {d:target_crit_multiplier}% kritieke schade aan (afkoeltijd van {d:cooldown} seconden)."
+	"dac_item_bloodthorn_lore"							"Bij het gebruik van deze kling maak je geen vrienden, maar je schakelt er wel veel vijanden mee uit. – <i>Zenok, heler van Witspits</i>"
 	
 	"dac_item_hood_of_defiance"							"Kap der opstand"
 	"dac_item_hood_of_defiance_desc"					"+{d:bonus_magical_resistance}% magieweerstand. +{d:health_regen} gezondheidsherstel."
@@ -1394,6 +1403,7 @@
 	"DAC_PostGame_BP_Subheader"			"Voortgang"
 	"DAC_PostGame_BP_Desc"				"Speel spellen en voltooi uitdagingen om XP te verdienen en beloningen te ontgrendelen."
 	"DAC_PostGame_Rank"					"Ranglevel"
+	"DAC_PostGame_TeamRank"				"Ranglevel van team"
 	"DAC_PostGame_NonRanked"			"Rangvoortgang is in dit spel niet bijgehouden."
 
 	"dac_synergy_popup_units_on_board"		"Je hebt {d:units_on_board} eenheden van dit type op het bord"
@@ -1570,7 +1580,7 @@
 
 	"DAC_Synergy_Desc_Insect"			"Spinnetjes storten zich voortdurend vanaf de rand van het bord op vijanden. Deze spinnetjes kunnen niet als doelwit worden gekozen, richten weinig schade aan en hebben 1 gezondheid. Vijanden die door de spinnetjes worden gebeten, hebben een kans van {s:miss_chance}% op mislukte aanvallen gedurende {s:miss_chance_duration} seconden. Als spinnetjes doodgaan, verschijnen er nieuwe tot een maximum van {s:num_insects}."
 
-	"DAC_Synergy_Desc_Champion"		"Kampioenen ontvangen alle alliantiebonussen."
+	"DAC_Synergy_Desc_Champion"		"Champions receive all Alliance bonuses. In addition, they gain 10% extra damage and max health per Alliance received."
 
 	"DAC_Synergy_Desc_Wisp"			"Io deelt de alliantiebonussen van de gekoppelde partner met alle geallieerde eenheden. *bliep bloep*"
 
@@ -1652,6 +1662,7 @@
 	"duos_benchlabel"					"Reserve:"
 	"duos_sendlabel"					"Sturen"
 	"button_selllabel"					"Verkopen"
+	"button_recyclelabel"				"Recyclen"
 
 	"DAC_ChatHeader_Combat"		"Rondechat"
 	"DAC_ChatHeader_Combat_Cooldown"		"Rondechat (afkoelen)"
@@ -1851,8 +1862,22 @@
 	"DAC_JoinParty_Title"		"Groep betreden"
 	"DAC_JoinParty_Prompt"		"Groeps-ID"	
 	"DAC_Party_Invites"			"Groepsuitnodigingen"
+
+	"DAC_Team_Info"				"Teaminfo"
 	"DAC_RenameTeam_Title"		"Teamnaam wijzigen"
 	"DAC_RenameTeam_Prompt"		"Teamnaam"
+	"DAC_RenameTeam_TeamStats"	"Teamstatistieken:"
+	"DAC_RenameTeam_NumGames"	"Totaal aantal gespeelde spellen: {d:total_games}"
+	"DAC_RenameTeam_NumWins"	"Aantal keer eerste plaats: {d:total_first}"
+	"DAC_RenameTeam_NumPodiums"	"Aantal podiumplaatsen: {d:total_podiums}"
+	"DAC_RenameTeam_FirstGame"	"Eerste spel samen: {t:s:first_game}"
+	"DAC_RenameTeam_UnlockAfter_Plural"			"Speel nog {d:games_until_rename} spellen om je teamnaam aan te passen"
+	"DAC_RenameTeam_UnlockAfter_Singular"		"Speel nog een spel om je teamnaam aan te passen"
+	"DAC_RenameTeam_CooldownAfter_Plural"		"Je kunt je team na {d:games_until_rename} spellen weer hernoemen"
+	"DAC_RenameTeam_CooldownAfter_Singular"		"Je kunt je team na een spel weer hernoemen"
+	"DAC_RenameTeam_NewTeamText"				"Dit team heeft nog geen spellen samen gespeeld"
+	"DAC_RenameTeam_ApplyName"					"Toepassen"
+	"DAC_RenameTeam_Close"						"Sluiten"
 
 	"DAC_PartyMM_PlayersNotReady"					"Niet alle spelers zijn gereed"
 	"DAC_PartyMM_TooFewPlayers"						"Te weinig spelers in groep"
@@ -2017,6 +2042,7 @@
 	"dac_settings_auto_deploy_units"			"Reserve-eenheden automatisch opstellen als er plaats is"
 	"dac_settings_use_panorama_login"			"Oud Steam-inlogsysteem gebruiken"
 	"dac_settings_low_violence"					"Weinig geweld"
+	"dac_settings_filter_offensive_text"		"Scheldwoorden verbergen"
 
 	"dac_settings_low_violence_changed_title"	"Opnieuw opstarten vereist"
 	"dac_settings_low_violence_changed_body"	"Om deze verandering toe te passen, moet je eerst Dota Underlords sluiten en opnieuw opstarten"
@@ -2190,12 +2216,15 @@
 	"DACRankTierDisplayName8"							"Niveau 8"
 	"DACRankLegendaryUnit"								"Eliteniveau"
 	"DACRankPoints" "{d:player_rank_score} <span class='RankPoints'>rangpunten</span>"
+	"DACTeamRankPoints" "{d:team_rank_score} <span class='RankPoints'>rangpunten</span>"
 
 	"DAC_Season_Rank_Title"						"Seizoensmedailles"
 	"DAC_Season_Rank_Desc"						"Naarmate je vaardigheden in het seizoen verbeteren verdien je rangmedailles, elk met vijf niveaus. Als je Grote baas V overtreft, word je Heerser van Witspits en verdien je een plekje op het globale klassement."
 
 	"DAC_LevelUp_Rank_Old"	"<span class='RankName'>{s:old_rank_name}</span> {s:old_rank_tier}"
 	"DAC_LevelUp_Rank_New"	"<span class='RankName'>{s:new_rank_name}</span> {s:new_rank_tier}"
+	"DAC_LevelUp_Team_Rank_Old"	"<span class='RankName'>{s:old_team_rank_name}</span> {s:old_team_rank_tier}"
+	"DAC_LevelUp_Team_Rank_New"	"<span class='RankName'>{s:new_team_rank_name}</span> {s:new_team_rank_tier}"
 	"DAC_LevelUp_Title_Minor"	"Level omhoog!"
 	"DAC_LevelUp_Title_Major"	"Promotie!"
 	"DAC_LevelDown_Title_Minor"	"Level gezakt!"
@@ -2215,6 +2244,7 @@
 	"DAC_Tier_Name_4"							"Level IV"
 	"DAC_Tier_Name_5"							"Level V"
 	"DAC_Leaderboard_Rank"							"<span class='RankName'>{s:new_rank_name}</span>"
+	"DAC_Team_Leaderboard_Rank"							"<span class='RankName'>{s:new_team_rank_name}</span>"
 
 	"DAC_Reward_Title_Major"					"Hé! Een beloning"
 	"DAC_Reward_Title_Minor"					"Nu op de protopaspagina opeisen"
@@ -2278,6 +2308,8 @@
 	"DAC_FightResultDefeat"						"VERSLAGEN"
 	"DAC_FightResultDefeatDmg"					"-{d:damage_taken}"
 	"DAC_FightResultDraw"						"GELIJKSPEL"
+	"DAC_FightResultWinStreak"					"{d:win_streak} WINSTREEKS!"
+	"DAC_FightResultWinStreakComplete"			"WINSTREEKS VOLTOOID!"
 
 	"DAC_Duos_Team_Header"						"Team {d:lobby_team}"
 	"DAC_Duos_Team_Header_Home"						"Team {d:lobby_team_home}"
@@ -2841,6 +2873,7 @@
 	"DAC_HowToPlay_HypeOMeter_Body" "De hypemeter vertelt je hoeveel hype je Underlord heeft. Zoals je weet, betekent meer hype betere aanvallen en kortere afkoeltijden voor je Underlord."
 	"DAC_SelectedPlayerName" "{g:dac_player_slot_persona:b:selected_player_slot}"
 	"DAC_Spectating" "Toeschouwen"
+
 
 }
 

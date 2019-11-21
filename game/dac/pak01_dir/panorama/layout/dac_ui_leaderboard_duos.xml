@@ -9,31 +9,32 @@
 	<snippets>
 		<snippet name="TeamHeader">
 			<Panel class="TeamHeaderContainer" hittest="false">
+				<DACParticleScenePanel id="ParticleBG" hittest="false" startActive="true" fov="-2500" cameraLeft="0"  />
 				
-				<Panel class="LeaderboardTargetIndicator">
-					<Panel class="CombatLeaderboardBackground" hittest="false" />
-					<Image class="DefendIcon" src="s2r://panorama/images/leaderboard/icon_defend_psd.vtex" hittest="false" />
-					<Image class="SwordIcon" src="s2r://panorama/images/leaderboard/icon_vs_psd.vtex" hittest="false" />
-				</Panel>
 				
 				<DACNotificationContainer id="EventNotificationContainer" class="CombinedNotifications DuosNotifications" hittest="false" />
 				<Panel class="TeamHeader" id="Header">
 
-					<DACParticleScenePanel id="ParticleBG" hittest="false" startActive="true" particleName="" fov="-450" cameraDist="400" cameraLeft="-160" cameraUp="-12"  />	
-					<DACParticleScenePanel id="ParticleFG" hittest="false" startActive="true" particleName="" fov="-500" cameraDist="400" cameraLeft="-400" cameraUp="-15" />
 				<Panel class="TeamBacking" />
 					<Panel class="TeamAvatars">
 						<DACPlayerAvatar class="Teammate TeammateOne" id="player1_avatar" />
 						<DACPlayerAvatar class="Teammate TeammateTwo" id="player2_avatar"  />
 						<!-- <Label class="PlayerLevel" text="{d:player1_level}" /> -->
 					</Panel>
-					<Panel id="PlayerLevelContainer">
+					<!-- <Panel id="PlayerLevelContainer">
 						<Panel class="PlayerLevelBG" />
 						<Label class="PlayerLevel" text="{d:player1_level}" />
-					</Panel>
+					</Panel> -->
+					<Panel id="PlayerNameContainer">
+							<Label id="TeamName" class="TeamName" text="#DAC_Duos_Team_Header" />
+						</Panel>
 					<Panel class="TeamInfo">
-						<Label id="TeamName" class="TeamName" text="#DAC_Duos_Team_Header" />
 						
+						<!-- <Label id="TeamName" class="TeamName" text="#DAC_Duos_Team_Header" /> -->
+						<Panel id="PlayerLevelContainer">
+								<Label class="PlayerLevel" text="{d:player1_level}" />
+								<Panel class="PlayerLevelIcon" />
+						</Panel>
 						<Panel id="HealthRow">
 							<Label id="TeamHealth" text="{d:team_health}" />
 							<Panel class="PlayerHealthIcon" />
@@ -54,6 +55,11 @@
 
 				
 					
+				</Panel>
+				<Panel class="LeaderboardTargetIndicator">
+					<Panel class="CombatLeaderboardBackground" hittest="false" />
+					<Image class="DefendIcon" src="s2r://panorama/images/leaderboard/icon_defend_psd.vtex" hittest="false" />
+					<Image class="SwordIcon" src="s2r://panorama/images/leaderboard/icon_vs_psd.vtex" hittest="false" />
 				</Panel>
 				
 			</Panel>

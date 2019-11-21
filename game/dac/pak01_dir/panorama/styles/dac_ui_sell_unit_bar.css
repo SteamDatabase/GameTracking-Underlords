@@ -174,14 +174,29 @@
     margin-bottom: 73px;
 }
 
+#RecycleLabel
+{
+	visibility:collapse;
+}
+
+.IsDraggingItem #RecycleLabel
+{
+	visibility:visible;
+}
+
+.IsDraggingItem #SellLabel
+{
+	visibility: collapse;
+}
+
 .IsLayoutSmallScreen .SellLabel,
 .IsLayoutSmallScreen.InCombat .SellLabel,
 .GameMode_Duos.IsLayoutSmallScreen .SellLabel,
 .GameMode_Duos.IsLayoutSmallScreen.InCombat .SellLabel
 {
-    font-size: 32px;
-    //margin-bottom: 125px;
-    margin-bottom: 115px;
+	font-size: 32px;
+	//margin-bottom: 125px;
+	margin-bottom: 115px;
 }
 
 
@@ -213,9 +228,57 @@
 	visibility: collapse;
 }
 
+#OffensiveGemValueContainer,
+#DefensiveGemValueContainer,
+#SupportGemValueContainer
+{
+	width: 80px;
+	height: 65px;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 5px;
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
+	visibility: collapse;
+}
+
+#GemContainer
+{
+	flow-children:right;
+	width:fit-children;
+	height:fit-children;
+	vertical-align:bottom;
+	horizontal-align:middle;
+}
+
+
+.IsDraggingItem #SellUnitBar #GoldValueContainer
+{
+	visibility: collapse;
+}
+
+.DraggingItemWithOffensiveGem #OffensiveGemValueContainer
+{
+	background-image: url("s2r://panorama/images/items/gem_offensive_psd.vtex");
+	visibility:visible;
+}
+
+.DraggingItemWithDefensiveGem #DefensiveGemValueContainer
+{
+	background-image: url("s2r://panorama/images/items/gem_defensive_psd.vtex");
+	visibility: visible;
+}
+
+.DraggingItemWithSupportGem #SupportGemValueContainer
+{
+	background-image: url("s2r://panorama/images/items/gem_support_psd.vtex");
+	visibility: visible;
+}
+
 .IsLayoutSmallScreen #GoldValueContainer,
 .GameMode_Duos.IsLayoutSmallScreen #GoldValueContainer,
-.InCombat.GameMode_Duos.IsLayoutSmallScreen #GoldValueContainer,
+.InCombat.GameMode_Duos.IsLayoutSmallScreen #GoldValueContainer
 {
 	width: 105px;
 	height: 85px;

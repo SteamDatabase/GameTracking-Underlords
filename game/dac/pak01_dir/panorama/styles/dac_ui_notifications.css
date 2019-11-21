@@ -93,7 +93,7 @@ Button Label
 	
 	height: 60px;
 	//margin-right: 40px; 
-	margin-right: 0px;
+	margin-right: 10px;
 	//border-radius: 2px;
 	transition-property: opacity;
 	transition-duration: 0.2s;
@@ -309,44 +309,129 @@ Button Label
 	}
 }
 
-.NotificationItem.WinStreak,
-.NotificationItem.WinStreakComplete,
 .NotificationItem.CombatWin
 {
 	background-color: #4c6fd475;
 }
 
-.IsLayoutSmallScreen .NotificationItem.WinStreak,
-.IsLayoutSmallScreen .NotificationItem.WinStreakComplete,
-.IsLayoutSmallScreen .NotificationItem.CombatWin,
-.IsLayoutSmallScreen .NotificationItem.CombatLose
-{
-
-	background-color: gradient( linear, 0% 0%, 100% 0%, from( #25277c00 ), color-stop( 0.2, #25277caa ), color-stop( .8, #25277caa ), to( #25277c00 ) );
-		
-	animation-name: BlueFadeIn;
-	animation-duration: .3s;
-	animation-iteration-count: 1;
-		
+/* win streaks */
+.NotificationItem.WinStreak .TextContainer {
+	flow-children: down;
 }
 
-.NotificationItem.WinStreak,
-.NotificationItem.WinStreakComplete {
-	margin-left: 30px;
-	margin-right: 30px;
+.StreakPips {
+	flow-children: right;
+	height: 20px;
+		overflow: noclip;
 }
 
-@keyframes 'BlueFadeIn'
-{
-	0%
-	{
-		background-color: gradient( linear, 0% 0%, 100% 0%, from( #25277c00 ), color-stop( 0.2, #25277c00 ), color-stop( .8, #25277c00 ), to( #25277c00 ) );
-	}
+.NotificationItem.WinStreak #NotificationLabel {
+	text-shadow: 1px 1px 0px 3.0 #000;
+	font-size: 20px;
+	height: 24px;
+	
+}
 
-	100%
-	{
-		background-color: gradient( linear, 0% 0%, 100% 0%, from( #25277c00 ), color-stop( 0.2, #25277caa ), color-stop( .8, #25277caa ), to( #25277c00 ) );
-	}
+.WinStreak1 .NotificationItem.WinStreak #NotificationLabel  {
+	color: #9bf1f6;
+}
+
+.WinStreak2 .NotificationItem.WinStreak #NotificationLabel  {
+	color: #e6baf1;
+}
+
+.WinStreak3 .NotificationItem.WinStreak #NotificationLabel  {
+	color: #ffe794;
+}
+/* Streak complete */
+.WinStreak4 .NotificationItem.WinStreak #NotificationLabel  {
+	color: #ffe794;
+}
+
+.WinStreak1 .NotificationItem.WinStreak .Win1 {
+	visibility: visible;
+}
+
+.WinStreak2 .NotificationItem.WinStreak .Win2 {
+	visibility: visible;
+}
+
+.WinStreak3 .NotificationItem.WinStreak .Win3 {
+	visibility: visible;
+}
+
+.WinStreak4 .NotificationItem.WinStreak .Win4 {
+	visibility: visible;
+}
+
+.StreakPip {
+	width: 20px;
+	height: 20px;
+	opacity: 0;
+	transition-duration: 200ms;
+	transition-delay: 100ms;
+	transition-property: opacity, pre-transform-scale2d, transform;
+
+	visibility: collapse;
+
+	background-image: url("s2r://panorama/images/notifications/chevron_blue_png.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+
+	pre-transform-scale2d: 1.4;
+	transform: translate3d( -20px, 0px, 0px );
+	
+}
+
+.LowVisualQuality .StreakPip {
+	pre-transform-scale2d: 1.0;
+	transform: none;
+}
+
+.WinStreak2 .NotificationItem.WinStreak .StreakPip  {
+	background-image: url("s2r://panorama/images/notifications/chevron_purple_png.vtex");
+}
+
+.WinStreak3 .NotificationItem.WinStreak .StreakPip {
+	background-image: url("s2r://panorama/images/notifications/chevron_yellow_png.vtex");
+}
+
+/* Streak complete */
+.WinStreak4 .NotificationItem.WinStreak .StreakPip {
+	background-image: url("s2r://panorama/images/notifications/chevron_yellow_png.vtex");
+}
+
+/* Streak animations */
+.AppearEffects .StreakPip  {
+	opacity: 1;
+	margin-left: 0;
+	pre-transform-scale2d: 1.0;
+	transform: none;
+}
+
+.StreakPip.Pip1 {
+	transition-delay: 100ms;
+}
+.StreakPip.Pip2 {
+	transition-delay: 300ms;
+}
+.StreakPip.Pip3 {
+	transition-delay: 500ms;
+}
+.StreakPip.Pip4 {
+	transition-delay: 700ms;
+}
+.StreakPip.Pip5 {
+	transition-delay: 900ms;
+}
+.StreakPip.Pip6 {
+	transition-delay: 1100ms;
+}
+.StreakPip.Pip7 {
+	transition-delay: 1300ms;
+}
+.StreakPip.Pip8 {
+	transition-delay: 1500ms;
 }
 
 #UpvoteContainer
@@ -443,6 +528,10 @@ DACNotifications DACParticleScenePanel {
 	visibility: collapse;
 }
 
+.StreakLevel0 #ParticleStreakLevel1,
+.StreakLevel0 #ParticleStreakLevel1Burst {
+	visibility: visible;
+}
 
 .StreakLevel1 #ParticleStreakLevel1,
 .StreakLevel1 #ParticleStreakLevel1Burst,
@@ -477,18 +566,18 @@ DACNotifications DACParticleScenePanel {
 
 /* Level up */
 .NotificationItem.LevelUp Label {
-	background-color: #000;
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), to( #b2b7db ) );
-	border: 2px solid #2f2f7e;
+	background-color: #131313;
+	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), to( #b2b7db ) );
+	border: 2px solid #555555;
 	border-radius: 12px;
 	padding: 13px 15px;
-	color: #4242b4;
-	font-size: 20px;
+	color: #dedede;
+	font-size: 24px;
 	text-shadow: none;
-	font-weight: black;
-	text-transform: uppercase;
-	font-family: 'Ravenhook';
-	text-shadow: 1px 1px 0px #fff;
+	font-weight: bold;
+	//text-transform: uppercase;
+	//font-family: 'Ravenhook';
+	//text-shadow: 1px 1px 0px #fff;
 }
 
 .NotificationItem.LevelUp #NotificationLabel {
@@ -598,6 +687,8 @@ DACNotifications DACParticleScenePanel {
 .NotificationItem.EarnGold .GoldBg {
 	border: 2px solid #f8efb1;
 	background-color: #f1d20a;
+	//background-image: url("s2r://panorama/images/notifications/gold_bg_psd.vtex");
+	background-size: 100% 100%;
 	color: #7f6b02;
 	border-radius: 20px;
 	width: 40px;

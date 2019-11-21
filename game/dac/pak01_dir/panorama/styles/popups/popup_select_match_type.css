@@ -207,16 +207,17 @@ PopupSelectMatchType
 	margin: 504px 40px 0px 40px;
 }
 
-.DuoPartyState_Ready #Duos .MatchTypeDesc,
-.InParty .BattleType .MatchTypeDesc
-{
-	visibility: collapse;
+.DuosModeInParty.DuoPartyState_Ready #Duos .MatchTypeDesc,
+.DuoPartyState_ReadyWithBots #Duos .MatchTypeDesc,
+.InParty .BattleType .MatchTypeDesc {
+    visibility: collapse;
 }
 
 // Bot match descriptions
 
 .TypeBots,
 .TypeResume,
+.TypeTurboBots,
 .TypeDuosBots,
 .TypeFreestyle
 {
@@ -225,6 +226,7 @@ PopupSelectMatchType
 
 .Bots .TypeBots,
 .DuosBots .TypeDuosBots,
+.TurboBots .TypeTurboBots,
 .Freestyle .TypeFreestyle
 {
 	visibility: visible;
@@ -347,6 +349,7 @@ PopupSelectMatchType
 .DuoPartyState_ExcessBuddies #DuosLockedLabel,
 .DuoPartyState_NeedsBuddy #DuosLockedLabel,
 .DuoPartyState_NoParty #DuosLockedLabel,
+.DuoPartyState_ReadyWithBots #DuosLockedLabel,
 .Duos.DuoPartyState_NeedsBuddy #PrivateDuosLockedLabel,
 {
     visibility: visible;
@@ -445,9 +448,9 @@ PopupSelectMatchType
 	background-size: 100%;
 	transition-property: brightness;
 	transition-duration: .2s;
-	vertical-align: center;
+	vertical-align: top;
 	horizontal-align: right;
-	margin-top: -80px;
+	margin-top: 12px;
 	margin-right: 12px;
 }
 
@@ -587,8 +590,8 @@ DACCarousel #Resume,
 
 .InParty #PartyBattleFindButton,
 .InParty #PrivateFindButton,
-.DuoPartyState_Ready #PartyDuosFindButton
-{
+.DuosModeInParty.DuoPartyState_Ready #PartyDuosFindButton,
+.DuoPartyState_ReadyWithBots #PartyDuosFindButton {
     visibility: visible;
 }
 
@@ -602,4 +605,12 @@ DACCarousel #Resume,
     text-overflow: shrink;
     padding: 0px 16px 0px 16px;
     text-transform: uppercase;
+}
+
+#DuosBotPartnerCarousel {
+    visibility: collapse;
+}
+
+.CanHaveDuosBotPartner #DuosBotPartnerCarousel {
+    visibility: visible;
 }

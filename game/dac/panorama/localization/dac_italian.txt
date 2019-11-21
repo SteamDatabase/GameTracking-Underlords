@@ -35,9 +35,12 @@
 
 	"DAC_MatchTypeMultiplayer"							"Multigiocatore"
 	"DAC_MatchTypeStandard"								"Classica"
+	"DAC_MatchTypeTurbo"								"Turbo"
 	"DAC_MatchTypeMultiplayerMMSelect"					"Seleziona modalità partita"
 	"DAC_MatchTypeName0"								"Non classificata"
 	"DAC_MatchTypeNameRanked"							"Classificata"
+	"DAC_MatchTypeBotTeammate"							"Bot compagno di squadra"
+	"DAC_MatchTypeInviteAFriend"						"Invita un amico"
 	"DAC_MatchTypeNameRankedLocked1"					"Gioca a {i:games_needed_to_unlock_ranked} una partita non classificata per sbloccare"
 	"DAC_MatchTypeNameRankedLockedPlural"				"Gioca a {i:games_needed_to_unlock_ranked} partite non classificate per sbloccare"
 	"DAC_MatchTypeBotMatch"								"Partita con i bot"
@@ -52,6 +55,8 @@
 	"DAC_DBHome_Play_Party"								"Partita di gruppo"
 	"DAC_DBHome_Searching_Party"						"Ricerca di una partita"
 	"DAC_ComingSoon"									"In arrivo"
+	"DAC_MatchTypeNameDuosState_SoloWithBots"			"Fai squadra con un bot e affronta gli altri giocatori"
+	"DAC_MatchTypeNameDuosState_PartyWithBots"			"Alcuni giocatori faranno squadra con un bot"
 	"DAC_MatchTypeNameDuosState_NoParty"				"Richiede un gruppo di almeno 2 giocatori."
 	"DAC_MatchTypeNameDuosState_NeedBuddy"				"Il tuo gruppo non ha abbastanza membri per questa modalità. Seleziona per invitare un amico."
 	"DAC_MatchTypeNameDuosState_ExcessBuddies"			"Il tuo gruppo ha troppi membri per questa modalità. Seleziona per ridurre le dimensioni del gruppo."
@@ -65,9 +70,11 @@
 	"DAC_Teammate"										"Compagno di squadra"
 	"DuosAboutLabel"									"Cos'è la modalità Duo?"
 	"DAC_MatchTypeDescStandard"							"Sfida sette armate avversarie per vincere"
-	"DAC_MatchTypeDescDuos"								"Unisciti a un amico e vai in battaglia"
+	"DAC_MatchTypeDescDuosCasual"						"Unisciti a un amico o un bot e vai in battaglia"
+	"DAC_MatchTypeDescDuosRanked"						"Unisciti a un amico e vai in battaglia"
 	"DAC_MatchTypeDescBots"								"Gioca in solitaria contro i bot"	
 	"DAC_MatchTypeDescResume"							"Riprendi la tua ultima partita contro i bot"	
+	"DAC_MatchTypeDescTurboBots"						"Gioca in solitaria TURBO contro i bot"
 	"DAC_MatchTypeDescDuosBots"							"Gioca con un compagno di squadra IA in una partita Duo con i bot"	
 	"DAC_MatchTypeDescFreestyle"						"Configura e prova delle battaglie simulate senza limiti"	
 	"DAC_MatchTypeDescFreestyle2"						"In questa modalità hai il controllo completo della scacchiera e puoi creare qualsiasi scenario che ti venga in mente. Usala per esplorare le composizioni delle armate o provare sul campo strategie e idee. Potrai anche condividere i tuoi progetti con gli amici e la Comunità di Steam."	
@@ -303,6 +310,8 @@
 	"DAC_RenameTeam_NotUnlocked"						"Devi vincere più partite prima di poter scegliere un nome per questa squadra"
 	"DAC_RenameTeam_InCooldown"							"Hai cambiato il nome di questa squadra troppo di recente. Devi attendere un po' prima di modificarlo di nuovo."
 	"DAC_RenameTeam_NameTooLong"						"Il nome fornito per la squadra è troppo lungo. Scegline uno più corto."
+	"DAC_RenameTeam_CommunityBanned"					"Hai ricevuto un ban della Comunità di Steam e non sei autorizzato a cambiare il nome alla squadra"
+	"DAC_RenameTeam_GameBanned"							"Hai ricevuto un ban e non puoi scegliere il nome della squadra a causa di comportamenti pregressi"
 	   	 
 	"DAC_Party_KickedByTitle"							"Espulso dal gruppo"
 	"DAC_Party_KickedByText"							"Sei stato espulso dal gruppo da {g:dac_persona:kicked_by_account}"
@@ -887,9 +896,9 @@
 	"dac_item_shivas_guard_desc"						"+{d:bonus_armor} punti armatura. Un'onda congelante infligge {d:blast_damage} punti danno ai nemici nel raggio di 3 caselle e ne rallenta velocità di movimento e attacco per {s:blast_debuff_duration}s (una volta per battaglia)."
 	"dac_item_shivas_guard_lore"						"Non chiedermi come abbia fatto a uscire dal caveau del Conclave zaffiro. - <i>Zenok, guardiano di Guglia bianca</i>"
 
-	"dac_item_bloodthorn"							"Spina insanguinata"
-	"dac_item_bloodthorn_desc"						"+{d:attack_damage} punti danno. Quando un nemico ha più del {d:mana_trigger_percentage}% di mana, viene silenziato per {d:silence_duration}s. Gli attacchi contro l'eroe silenziato non possono mancare il bersaglio e infliggono il {d:target_crit_multiplier}% di danno critico (tempo di ricarica: 10s)."
-	"dac_item_bloodthorn_lore"						"Brandire questa lama non ti renderà popolare, ma di certo ucciderà i tuoi nemici. - <i>Zenok, guardiano di Guglia bianca</i>"
+	"dac_item_bloodthorn"								"Spina insanguinata"
+	"dac_item_bloodthorn_desc"			    			"+{d:attack_damage} punti danno. Quando un nemico ha più del {d:mana_trigger_percentage}% di mana, viene silenziato per {d:silence_duration}s. Gli attacchi contro l'eroe silenziato non possono mancare il bersaglio e infliggono il {d:target_crit_multiplier}% di danno critico (tempo di ricarica: {d:cooldown}s)."
+	"dac_item_bloodthorn_lore"							"Brandire questa lama non ti renderà popolare, ma di certo ucciderà i tuoi nemici. - <i>Zenok, guardiano di Guglia bianca</i>"
 	
 	"dac_item_hood_of_defiance"							"Cappuccio della Tenacia"
 	"dac_item_hood_of_defiance_desc"					"+{d:bonus_magical_resistance}% di resistenza ai danni magici. +{d:health_regen} di rigenerazione della salute."
@@ -1394,6 +1403,7 @@
 	"DAC_PostGame_BP_Subheader"			"Progresso"
 	"DAC_PostGame_BP_Desc"				"Gioca e completa sfide per guadagnare ESP e sbloccare ricompense."
 	"DAC_PostGame_Rank"					"Livello del grado"
+	"DAC_PostGame_TeamRank"				"Livello del grado della squadra"
 	"DAC_PostGame_NonRanked"			"Il progresso nel grado non è stato monitorato in questa partita."
 
 	"dac_synergy_popup_units_on_board"		"Hai {d:units_on_board} unità di questo tipo sulla scacchiera"
@@ -1570,7 +1580,7 @@
 
 	"DAC_Synergy_Desc_Insect"			"I ragni sciamano costantemente sui nemici a partire dal bordo della scacchiera, non possono essere attaccati direttamente, infliggono danni ridotti e hanno 1 punto salute. I nemici morsi dai ragni hanno il {s:miss_chance}% di probabilità di mancare il bersaglio per {s:miss_chance_duration} secondi. Quando muoiono, un massimo di {s:num_insects} ragni viene rimpiazzato da altri ragni."
 
-	"DAC_Synergy_Desc_Champion"		"I Campioni ricevono i bonus di tutte le sinergie."
+	"DAC_Synergy_Desc_Champion"		"I Campioni ricevono i bonus di tutte le sinergie. Inoltre ottengono il 10% di punti danno aggiuntivi e di punti salute massima per ogni sinergia ottenuta."
 
 	"DAC_Synergy_Desc_Wisp"			"Io condivide i bonus della sinergia del compagno collegato tramite Legame con tutte le unità alleate. *beep boop*"
 
@@ -1652,6 +1662,7 @@
 	"duos_benchlabel"					"Panchina:"
 	"duos_sendlabel"					"Invia"
 	"button_selllabel"					"Vendi"
+	"button_recyclelabel"				"Ricicla"
 
 	"DAC_ChatHeader_Combat"		"Chat del round"
 	"DAC_ChatHeader_Combat_Cooldown"		"Chat del round (ricarica)"
@@ -1851,8 +1862,22 @@
 	"DAC_JoinParty_Title"		"Unisciti a un gruppo"
 	"DAC_JoinParty_Prompt"		"ID gruppo"	
 	"DAC_Party_Invites"			"Inviti ai gruppi"
+
+	"DAC_Team_Info"				"Informazioni sulla squadra"
 	"DAC_RenameTeam_Title"		"Cambia il nome della squadra"
 	"DAC_RenameTeam_Prompt"		"Nome della squadra"
+	"DAC_RenameTeam_TeamStats"	"Statistiche di squadra:"
+	"DAC_RenameTeam_NumGames"	"Partite totali giocate: {d:total_games}"
+	"DAC_RenameTeam_NumWins"	"Partite finite in prima posizione: {d:total_first}"
+	"DAC_RenameTeam_NumPodiums"	"Partite finite sul podio: {d:total_podiums}"
+	"DAC_RenameTeam_FirstGame"	"Prima partita insieme: {t:s:first_game}"
+	"DAC_RenameTeam_UnlockAfter_Plural"			"Gioca altre {d:games_until_rename} partite per personalizzare il nome della tua squadra"
+	"DAC_RenameTeam_UnlockAfter_Singular"		"Gioca ancora ad una partita per personalizzare il nome della tua squadra"
+	"DAC_RenameTeam_CooldownAfter_Plural"		"Potrai rinominare di nuovo la tua squadra tra {d:games_until_rename} partite"
+	"DAC_RenameTeam_CooldownAfter_Singular"		"Potrai rinominare di nuovo la tua squadra tra una partita"
+	"DAC_RenameTeam_NewTeamText"				"Questa squadra non ha ancora giocato partite insieme"
+	"DAC_RenameTeam_ApplyName"					"Applica"
+	"DAC_RenameTeam_Close"						"Chiudi"
 
 	"DAC_PartyMM_PlayersNotReady"					"Non tutti i giocatori sono pronti"
 	"DAC_PartyMM_TooFewPlayers"						"Giocatori nel gruppo insufficienti"
@@ -2017,6 +2042,7 @@
 	"dac_settings_auto_deploy_units"			"Schiera automaticamente le unità dalla tua panchina se c'è spazio"
 	"dac_settings_use_panorama_login"			"Accedi utilizzando il sistema classico di Steam"
 	"dac_settings_low_violence"					"Modalità violenza ridotta"
+	"dac_settings_filter_offensive_text"		"Nascondi parole offensive"
 
 	"dac_settings_low_violence_changed_title"	"Richiede il riavvio"
 	"dac_settings_low_violence_changed_body"	"Per applicare questa modifica devi chiudere e riavviare Dota Underlords"
@@ -2190,12 +2216,15 @@
 	"DACRankTierDisplayName8"							"Livello 8"
 	"DACRankLegendaryUnit"								"Livello Campioni"
 	"DACRankPoints" "{d:player_rank_score} <span class='RankPoints'>Punti grado</span>"
+	"DACTeamRankPoints" "{d:team_rank_score} <span class='RankPoints'>Punti grado</span>"
 
 	"DAC_Season_Rank_Title"						"Medaglie stagionali"
 	"DAC_Season_Rank_Desc"						"Mano a mano che sali di livello durante la stagione ti verranno assegnate delle medaglie di grado, ognuna delle quali ha cinque livelli. Se passi il livello Boss supremo livello V sarai incoronato Signore di Guglia bianca e otterrai un posto nella classifica globale."
 
 	"DAC_LevelUp_Rank_Old"	"<span class='RankName'>{s:old_rank_name}</span> {s:old_rank_tier}"
 	"DAC_LevelUp_Rank_New"	"<span class='RankName'>{s:new_rank_name}</span> {s:new_rank_tier}"
+	"DAC_LevelUp_Team_Rank_Old"	"<span class='RankName'>{s:old_team_rank_name}</span> {s:old_team_rank_tier}"
+	"DAC_LevelUp_Team_Rank_New"	"<span class='RankName'>{s:new_team_rank_name}</span> {s:new_team_rank_tier}"
 	"DAC_LevelUp_Title_Minor"	"Nuovo livello!"
 	"DAC_LevelUp_Title_Major"	"Promozione!"
 	"DAC_LevelDown_Title_Minor"	"Hai perso un livello!"
@@ -2215,6 +2244,7 @@
 	"DAC_Tier_Name_4"							"Livello IV"
 	"DAC_Tier_Name_5"							"Livello V "
 	"DAC_Leaderboard_Rank"							"<span class='RankName'>{s:new_rank_name}</span>"
+	"DAC_Team_Leaderboard_Rank"							"<span class='RankName'>{s:new_team_rank_name}</span>"
 
 	"DAC_Reward_Title_Major"					"Ehi, una ricompensa!"
 	"DAC_Reward_Title_Minor"					"Riscatta ora sulla pagina del proto pass"
@@ -2278,6 +2308,8 @@
 	"DAC_FightResultDefeat"						"SCONFITTA"
 	"DAC_FightResultDefeatDmg"					"-{d:damage_taken}"
 	"DAC_FightResultDraw"						"PAREGGIO"
+	"DAC_FightResultWinStreak"					"SERIE DI {d:win_streak} VITTORIE!"
+	"DAC_FightResultWinStreakComplete"			"SERIE DI VITTORIE COMPLETA!"
 
 	"DAC_Duos_Team_Header"						"Squadra {d:lobby_team}"
 	"DAC_Duos_Team_Header_Home"						"Squadra {d:lobby_team_home}"
@@ -2781,7 +2813,7 @@
 	"DAC_Jail_Title"	"I galeotti di oggi"
 	"DAC_Custom_Jail_Title"	"Prigione personalizzata"
 	"DAC_Jail_Page_Release_From_Jail_Message" "Questi eroi sono attualmente detenuti in gattabuia e non possono essere reclutati.\nSaranno rilasciati fra {t:t:m:d:dac_time_left_before_jail_reset}."
-	"DAC_Jail_Desc"		"Ogni giorno alcuni eroi vengono rimossi dal gruppo di quelli disponibili, quindi potrebbe non essere possibile completare alcune sinergie."
+	"DAC_Jail_Desc"		"Ogni giorno alcuni eroi vengono rimossi da quelli disponibili, quindi potrebbe non essere possibile completare alcune sinergie."
 	"DAC_MiniJail_Title"		"I galeotti di oggi"
 
 	"DAC_Jail_LoadJail"	"Carica prigione"
@@ -2841,6 +2873,7 @@
 	"DAC_HowToPlay_HypeOMeter_Body" "Il furiometro tiene traccia dei punti furia del tuo Underlord. Ricorda: all'aumentare dei punti furia, il tuo Underlord diventa più potente e i tempi di ricarica si riducono."
 	"DAC_SelectedPlayerName" "{g:dac_player_slot_persona:b:selected_player_slot}"
 	"DAC_Spectating" "Modalità spettatore"
+
 
 }
 

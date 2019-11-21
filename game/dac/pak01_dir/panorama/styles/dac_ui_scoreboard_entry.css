@@ -61,11 +61,6 @@ DACScoreboardEntry.Self
 	text-align: center;
 }
 
-.GameMode_Duos #RankHeader
-{
-	visibility: collapse;
-}
-
 .Column.Rank {
 	width: 100px;
 	
@@ -84,12 +79,13 @@ DACScoreboardEntry.Self
 	
 }
 
-.MatchModeSoloBot .Column.Rank, .MatchModeCasual .Column.Rank {
+.MatchModeSoloBot .Column.Rank,
+.MatchModeCasual .Column.Rank
+{
 	width: 0;
 	opacity: 0;
 }
 
-.GameMode_Duos .Column.Rank,
 .GameMode_Duos .Column.Score,
 .GameMode_Duos .Column.TotalGold,
 .GameMode_Duos .Column.Talent,
@@ -814,16 +810,43 @@ DACSynergyIcon {
 }
 
 // shenanigans to make duo column work
-.GameMode_Duos .TeamSlot1 #DuosColumn
+.GameMode_Duos .TeamSlot1 #DuosColumn,
+.GameMode_Duos .TeamSlot1 .Column.Rank
 {
 	height: 130px;
 	margin-top: -65px;
 }
 
-.GameMode_Duos .TeamSlot0 #DuosColumn
+.GameMode_Duos .TeamSlot0 #DuosColumn,
+.GameMode_Duos .TeamSlot0 .Column.Rank
 {
 	visibility: collapse;
 }
+
+.MatchModeRanked.GameMode_Duos .TeamSlot0 .Column.Rank
+{
+	visibility: visible;
+}
+
+.MatchModeRanked.GameMode_Duos #RankHeader,
+.MatchModeRanked.GameMode_Duos #AlliancesHeader
+{
+	background-color: #00000055;	
+}
+
+
+.MatchModeRanked.GameMode_Duos .Column.Rank,
+.MatchModeRanked.GameMode_Duos .Column.Alliances
+{
+	background-color: #00000044;	
+}
+
+.MatchModeRanked.GameMode_Duos #RosterHeader,
+.MatchModeRanked.GameMode_Duos .Column.Roster
+{
+	background-color: none;
+}
+
 
 .GameMode_Duos .TeamSlot0 .Column.Name
 {

@@ -228,13 +228,19 @@ DACParty {
 
 #MemberList DACPartyMember {
     width: 100%;
+   //width: 80%;
     //height: 60px;
     height: 75px;
     padding-left: 8px;
     padding-top: 2px;
     padding-right: 4px;
     margin-top: 8px;
+}
 
+#MemberList .TeamGroup DACPartyMember {
+    margin-top: 0px;
+    margin: 5px 0px 0px 0px;
+    //padding-left: 30px;
 }
 
 #InviteList DACPartyInvite {
@@ -561,12 +567,39 @@ DACParty {
 	font-size: 32px;
 }
 
+.TeamGroup
+{
+    width: 100%;
+    height: fit-children;
+    background-color: black;
+    border: 2px solid #333;
+    margin-bottom: 5px;
+
+    //padding: 20px 20px;
+    flow-children: down;
+
+}
+
 .TeamHeader {
     width: 100%;
-    height: 80px;
-    background-color: black;
+    height: 85px;
+    background-color: #444;
+    background-image: url("s2r://panorama/images/dashboard/bg_play_dialog_psd.vtex");
+    background-size: 110% 100%;
 
     flow-children: right;
+
+
+    //if we want to completely hide the teams if they havent played together yet, we want visibility: collapse here
+}
+
+.IsLayoutSmallScreen .TeamHeader
+{
+    height: 95px;
+}
+
+.HasPlayedTogether .TeamHeader {
+    visibility: visible;
 }
 
 .TeamHeaderLeft
@@ -586,18 +619,19 @@ DACParty {
 #TeamRankIcon
 {
     width: 100%;
-    height: 100%;
-    background-image: url("s2r://panorama/images/mini_profile/mini_profile_rank_1_tier_3_pin_psd.vtex");  
-    //background-size: cover;
-    background-size: cover;
-    background-repeat: no-repeat;
+    height: 100%;    
 }
 
-.IsLayoutSmallScreen .TeamHeaderRight,
 .IsLayoutSmallScreen .TeamHeaderLeft
+{
+    margin-left: 20px;
+}
+
+.IsLayoutSmallScreen .TeamHeaderRight
 {
     margin-left: 15px;
 }
+
 
 .TeamTitleBar {
     width: 100%;
@@ -612,12 +646,14 @@ DACParty {
 .EditTeamName {
     horizontal-align: right;
     vertical-align: center;
-    width: 24px;
-    height: 24px;
+    width: 57px;
+    height: 32px;
     background-image: url("s2r://panorama/images/dashboard/icon_settings_white_psd.vtex");    
     wash-color: #5d6076;
-    background-size: cover;
-    margin-right: 18px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 100% 0%;
+    margin-right: 12px;
     margin-top: 12px;
 
     opacity: 1;
@@ -626,24 +662,30 @@ DACParty {
     visibility: collapse;
 }
 
+.HasPlayedTogether .EditTeamName {
+    visibility: visible;
+}
+
+.CanRename.NoTeamName .EditTeamName {
+    //TODO: Make the edit team button glow to call attention that they should set the team name
+    wash-color: gold;
+}
+
 .IsLayoutSmallScreen .EditTeamName
 {
-    width: 40px;
-    height: 40px;
-    margin-top: 5px;
+    width: 32px;
+    height: 32px;
+    margin-top: 10px;
+    margin-right: 20px;
 }
 
 .EditTeamName:hover
 {
-    brightness: 2;
-}
-
-.CanRename .EditTeamName {
-    visibility: visible;
+    brightness: 1.2;
 }
 
 .TeamName {
-    width: 300px;
+    width: 275px;
     //color: white;
     color: gradient(linear, 0% 0%, 0% 100%, from( #aaaaaa ), to(#ffffff));    
     font-size: 28px;
@@ -667,14 +709,19 @@ DACParty {
     font-size: 22px;
     font-weight: normal;
     vertical-align: center;
-    color: textDefault;
+    color: gradient(linear, 0% 0%, 0% 100%, from( #ecb00e ), to(#f7e062));
+}
+
+.NoTeamName #TeamRankLevel
+{
+    color: gradient(linear, 0% 0%, 0% 100%, from( #aaa ), to(#ddd));
 }
 
 .TeamNameNotSet {
     width: 100%;
     color: gray;
     font-size: 28px;
-    margin-left: 4px;
+    //margin-left: 4px;
     text-overflow: shrink;
     visibility: collapse;
     vertical-align: center;
@@ -688,8 +735,15 @@ DACParty {
     visibility: collapse;
 }
 
-.PlayerInTeam .TeamNameNotSet,
-.PlayerInTeam .TeamName {
+.PlayerInTeam .TeamNameNotSet
+{
+    color: gradient(linear, 0% 0%, 0% 100%, from( #aaa ), to(#ddd));
+    font-weight: bold;
+    vertical-align: bottom;
+}
+
+.PlayerInTeam .TeamName 
+{
     color: gradient(linear, 0% 0%, 0% 100%, from( #ecb00e ), to(#f7e062));
 }
 
@@ -720,11 +774,9 @@ DACParty {
     visibility: collapse;
 }
 
-.TeamFooter {
+.TeamGroup {
     width: 100%;
-    //border: 2px solid black;
-    margin: 10px 0px;
-    height: 10px;
+    flow-children: down;
 }
 
 

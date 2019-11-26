@@ -98,7 +98,6 @@ $[A\]
 %s| Project: '%s' Binary: '%s'
 %s| SizeOf: %d
 %s| Virtual: %s; Abstract: %s; TrivialConstr: %s; TrivialDestr: %s
-&Hc=h
 &YA1D
 &YA1H
 &YA1L
@@ -107,7 +106,8 @@ $[A\]
 'Lighten blend mode
 ( Lc=
 (%d)  EffectName "%s"  Dormant? %s  Emission Stopped? %s 
-(54\	
+(-LE 
+(5D`	
 (@ Hc
 (D$@f
 (D$PE
@@ -124,6 +124,7 @@ $[A\]
 (w@Hc=
 (|$ H
 (|$@D
+)C@vI
 )D$ H
 )D$ L
 )K H;
@@ -134,9 +135,10 @@ $[A\]
 )g09M
 )q@tG
 *ZN18CNewParticleEffect12StopEmissionEbbbbEUlvE_
-+Hc58
++Hc5X
 +S$Hc
 +m_flValue
++r_stereo_mode_crossed
 +s$Hc
 , parent: 
 ,>u"u?
@@ -326,6 +328,7 @@ $[A\]
 19C_INIT_StatusEffect
 19C_OP_ColorAdjustHSL
 19C_OP_CurlNoiseForce
+19C_OP_DecayOffscreen
 19C_OP_ParentVortices
 19C_OP_RemapSpeedtoCP
 19C_OP_RenderAsModels
@@ -660,6 +663,7 @@ $[A\]
 32CParticleFunctionDefinitionTypedI19C_INIT_StatusEffectE
 32CParticleFunctionDefinitionTypedI19C_OP_ColorAdjustHSLE
 32CParticleFunctionDefinitionTypedI19C_OP_CurlNoiseForceE
+32CParticleFunctionDefinitionTypedI19C_OP_DecayOffscreenE
 32CParticleFunctionDefinitionTypedI19C_OP_ParentVorticesE
 32CParticleFunctionDefinitionTypedI19C_OP_RemapSpeedtoCPE
 32CParticleFunctionDefinitionTypedI19C_OP_RenderAsModelsE
@@ -1013,6 +1017,7 @@ $[A\]
 ;*3$"
 ;0t:H
 ;2t,H
+;58MA
 ;B0}F
 ;BX|'1
 ;Fl|	
@@ -1103,7 +1108,8 @@ A#V\H
 A#W\H
 A#|$TH
 A(Hc=
-A(Hc=(M@
+A(Hc=4
+A(Hc=@n9
 A+D$$H
 A+D$,I
 A+E$A
@@ -1133,6 +1139,7 @@ A9\$l
 A9\$l~.A
 A9\$p
 A;D$X}
+A;D$lH
 A;F`}
 A;G A
 A;G`}
@@ -1163,6 +1170,7 @@ AE_MELEE_DAMAGE
 AE_NPC_BECOME_TEMPORARY_RAGDOLL
 AE_NPC_HURT_INTERACTION_PARTNER
 AE_NPC_SET_INTERACTION_CANTDIE
+AE_NPC_START_POWERED_RAGDOLL
 AE_NPC_WEAPON_FIRE
 AE_NPC_WEAPON_SET_SEQUENCE_NUMBER
 AE_PASSENGER_PHYSICS_PUSH
@@ -1182,7 +1190,7 @@ ANIMATION_TYPE_MANUAL_FRAMES
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
 ARAQAPWL
 ASPATA
-ATLc%
+ATLc%F
 ATSHc
 ATSLc"H
 ATSt$@
@@ -1210,6 +1218,7 @@ AVAUATA
 AVAUATASARAQAPWH
 AVAUATI
 AVAUATL
+AVAUATM
 AVAUATS
 AVAUATSH
 AVAUATSHc
@@ -1249,8 +1258,8 @@ AWAVL
 AWAVLc
 AWAVM
 AXAYE
+AXAYH
 AYAZu
-AZA[H
 A\A]A^A_]
 A\A]A^A_]L
 A\A]A^]
@@ -1258,19 +1267,21 @@ A\A]H
 A\A]]
 A\A]]L
 A]A^]
-A^A_H
 A^A_]
+AbsolutePoseControl
 Acceleration
 Add + Self Illum
 Add Decay to Bounce
 Add a wind-like force to particles that used the particle normal to scale the force
 Add pixels from sequence 0 and 1 together
+Add to Current Value
 Add to Initial Value
 Add vector to vector
 AddRef
 AddToTailGetPtr
 Additive alpha - write alpha during additive
 Address of m_Children.m_pHead: [%p]
+Age - Oldest
 All Particle Systems:
 AllocInternal
 Allocated Particles
@@ -1670,6 +1681,7 @@ C_OP_CylindricalDistanceToCP
 C_OP_DampenToCP
 C_OP_Decay
 C_OP_DecayMaintainCount
+C_OP_DecayOffscreen
 C_OP_DifferencePreviousParticle
 C_OP_DistanceBetweenCPs
 C_OP_DistanceBetweenCPsToCP
@@ -1970,12 +1982,14 @@ D$HH9
 D$PH9
 D$PtQA
 D$XH9
+D$hE1
 D$hH9
 D$pH9
 D+c$Mc
 D+k$Mc
 D+s$Mc
 D+u0D9
+D5q.7
 D9C ~JMc
 D9k D
 D9{l~JHc
@@ -2014,6 +2028,7 @@ Detail2Combo_t
 Detect from CP's Object
 DevMsg
 Disable to get a better look at what's happening offscreen
+Distance - Nearest
 Distance to Both of Two Control Points
 Distance to Control Point
 Distance to Either of Two Control Points
@@ -2046,7 +2061,6 @@ E+n$Mc
 E+u$Mc
 E+}$Mc
 E9.~x
-E9el~
 E9el~\K
 E9gPI
 E9l$l
@@ -2117,9 +2131,6 @@ F A+F
 F D9kl
 F"5PH
 F;t  t
-F@AXAY
-F@^AX
-F@_AX
 FATAL ERROR: unable to register all schema data: %s
 FCVAR_NEVER_AS_STRING
 FHtLE
@@ -2227,6 +2238,7 @@ GetErrorResource
 GetResourceManifestCount
 GetResourceManifests
 GfFFH
+GfFFI
 Globally Scale Initial Attributes
 Glow Alpha
 Glow RGB
@@ -2244,7 +2256,7 @@ H90t/A
 H90t0A
 H98t`H
 H;0t!
-H@Hc5
+H@Hc5vP5
 HAT	K 
 HAT	KAT	KAT	KAT	K 
 HBm_influenceFlags
@@ -2259,37 +2271,38 @@ H[A\A]A^A_]
 H[A\A]]
 HammerMapLoader001
 Has Collision; 
-Hc5&G@
-Hc5.@3
-Hc56R9
-Hc5>-G
-Hc5FJ?
-Hc5Gv=
-Hc5H/G
-Hc5RS9
-Hc5VhH
-Hc5^]3
-Hc5_d9
-Hc5a+G
-Hc5bR9
-Hc5eD5
-Hc5h{I
-Hc5p,C
-Hc5rRB
-Hc5x&5
-Hc5zdB
-Hc5}hH
-Hc5~"3
+Hc5 QG
+Hc5!l3
+Hc5'\C
+Hc5.8G
+Hc58"C
+Hc5;RG
+Hc5A13
+Hc5Fa@
+Hc5GOC
+Hc5MlG
+Hc5P35
+Hc5V\9
+Hc5Vm9
+Hc5^N3
+Hc5al9
+Hc5dd?
+Hc5r]9
+Hc5rwB
+Hc5vAE
+Hc5|x@
 Hc8Hc
-Hc=)WB
-Hc=/vC
-Hc=CvB
-Hc=f%5
-Hc=g@C
-Hc=phC
-Hc=tu=
-Hc=|AC
-Hc=|T=
+Hc=)|B
+Hc=,Q5
+Hc=B!?
+Hc=CcC
+Hc=L:C
+Hc=N25
+Hc=Rx@
+Hc=f	<
+Hc=l&>
+Hc=lm=
+Hc=s	<
 Hc@pD
 Hc@pH
 HcA$I
@@ -2412,23 +2425,21 @@ Last/Newest Particle
 Lc"D;b
 Lc#D;c
 Lc#Mc
-Lc%d44
+Lc%>34
 Lc&E)
 Lc'D;g
 Lc'E)
 Lc)D;i
 Lc*D;j
 Lc+D;k
+Lc-.TI
+Lc-0S5
 Lc.D;n
 Lc.E)
 Lc/E)
 Lc2D;r
 Lc3D;s
-Lc5M"<
-Lc5\u3
-Lc5xuI
 Lc7E)
-Lc=k{I
 LccHD;cXD
 Lck(E;o
 Left Hand
@@ -2441,6 +2452,7 @@ Lerp initial scalar
 Lerp initial vector
 Life Duration
 Lifespan decay
+Lifespan decay when offscreen
 Lifespan endcap timed decay
 Lifespan from endcap decay
 Lifespan maintain count decay
@@ -2521,7 +2533,6 @@ MPropertyFriendlyName
 MPropertyGroupName
 MPropertySortPriority
 MPropertySuppressField
-MPzTuR
 MVectorIsCoordinate
 MVectorIsSometimesCoordinate
 Made disabling operators + children actually fully work.
@@ -2550,6 +2561,7 @@ Mc,$E;l$
 Mc4$E;t$
 Mc7E;w
 MemAlloc_AllocFunc
+MemAlloc_CallocFunc
 MemAlloc_FreeFunc
 Memory at [%p]:
 MeshSystem001
@@ -2604,7 +2616,7 @@ N&B:H
 N24CFieldPathHuffmanEncoder12InternalNodeE
 N24CFieldPathHuffmanEncoder5INodeE
 N24CFieldPathHuffmanEncoder8LeafNodeE
-N@Hc5\55
+N@Hc5lA5
 NETWORK_FIELD_CHANGED_ARRAY_WITH_VALUE
 NETWORK_FIELD_CHANGED_NO_VALUE
 NETWORK_FIELD_CHANGED_NO_VALUE_NO_CONTEXT
@@ -2639,6 +2651,7 @@ Nh#F\H
 No Buffer
 No DATA block for resource '%s'
 No valid format conversion from '%s' to '%s'
+NoPoseControl
 Noise animation time scale
 Noise scalar
 Noise vector
@@ -2652,7 +2665,9 @@ Normalized3x3SobelEdgeFilterFrom
 Not safe to 'new' this class due to alignment requirements
 Number of Children to Use
 Numer of points along path
+OPzTuR
 ORIENT
+Offscreen Time Before Decay
 Offset from control point
 Offset from control point for path end
 Offset from curve midpoint for curve center
@@ -2675,7 +2690,7 @@ Output Scalar
 Output field 0-2 X/Y/Z
 Output vector
 Overlay
-P E9el
+P E9gl
 P HcA
 P8H=vpcf
 P8H=vpcft
@@ -2725,10 +2740,13 @@ PARTICLE_PIN_SPEED
 PARTICLE_SELECTION_FIRST
 PARTICLE_SELECTION_LAST
 PARTICLE_SELECTION_NUMBER
+PARTICLE_SET_ADD_TO_CURRENT_VALUE
 PARTICLE_SET_ADD_TO_INITIAL_VALUE
 PARTICLE_SET_REPLACE_VALUE
 PARTICLE_SET_SCALE_CURRENT_VALUE
 PARTICLE_SET_SCALE_INITIAL_VALUE
+PARTICLE_SORTING_CREATION_TIME
+PARTICLE_SORTING_NEAREST
 PARTICLE_TOPOLOGY_CUBES
 PARTICLE_TOPOLOGY_LINES
 PARTICLE_TOPOLOGY_POINTS
@@ -2782,6 +2800,7 @@ PF_RANDOM_MODE_VARYING
 PF_TYPE_COLLECTION_AGE
 PF_TYPE_CONTROL_POINT_COMPONENT
 PF_TYPE_COUNT
+PF_TYPE_ENDCAP_AGE
 PF_TYPE_INVALID
 PF_TYPE_LITERAL
 PF_TYPE_PARTICLE_AGE
@@ -2854,6 +2873,7 @@ ParticlePreviewBodyGroup_t
 ParticlePreviewState_t
 ParticleSelection_t
 ParticleSetMethod_t
+ParticleSortingChoiceList_t
 ParticleSystem
 ParticleSystemMgr003
 ParticleSystemRequiredResources
@@ -2897,6 +2917,7 @@ Plat_IsHighDPI
 Plat_IsInDebugSession
 Plat_MSTime
 Plat_ShouldCollectMiniDumpsForFatalErrors
+Plat_USTime
 Plat_UUIDFromString
 Plat_UUIDToString
 Play EndCap when Finished
@@ -2950,7 +2971,7 @@ PropertyEditorSystem_001
 PrototypeFeatureID
 Pull towards control point
 Q"u.H
-Q@Hc5T65
+Q@Hc5dB5
 QAngle
 Quadrilaterals
 Quantize Float
@@ -3243,6 +3264,7 @@ Skip rendering on mobile
 Snapshot Index T Value
 Snapshot load error for resource '%s': %s
 Snapshot start point
+Sort Method
 SoundOpSystem001
 SoundOpSystemEdit001
 SoundPicker()
@@ -3517,7 +3539,7 @@ X Dimension Count
 X Dimension Spacing
 X axis scaling scalar field
 X offset of center point
-XHc5C
+XHc5s
 XIcL$
 XY velocity only
 X[A\A]A^A_]
@@ -3646,7 +3668,9 @@ _ZTVN10__cxxabiv121__vmi_class_type_infoE
 _ZdaPv
 _ZdlPv
 _Znam
+_ZnamRKSt9nothrow_t
 _Znwm
+_ZnwmRKSt9nothrow_t
 __bss_start
 __cxa_atexit
 __cxa_finalize
@@ -4122,7 +4146,7 @@ golden angle (is 137.508)
 gravity
 group emission times for new particles
 group id
-hHc54
+hHc5T
 h[A\A]A^A_]
 h[A\A]]
 half-lambert normals
@@ -5024,6 +5048,7 @@ m_flNormalMapOffsetU
 m_flNormalMapOffsetV
 m_flNumToAssign
 m_flNumberOfChildren
+m_flOffscreenTime
 m_flOffset
 m_flOffsetByRadiusFactor
 m_flOffsetRot
@@ -5505,6 +5530,7 @@ m_nSnapShotStartPoint
 m_nSnapshotControlPoint
 m_nSnapshotControlPointNumber
 m_nSndLvlField
+m_nSortMethod
 m_nSourceCP
 m_nSpinRateDegrees
 m_nSpinRateMinDegrees
@@ -5887,6 +5913,7 @@ modeldoc24
 modeldoc25
 modeldoc26
 modeldoc27
+modeldoc28
 modeldoc3
 modeldoc4
 modeldoc5
@@ -6098,6 +6125,8 @@ play_endcap
 point list
 point0
 point1
+pose_control
+pose_control_type
 position
 position cache attribute
 posxyz
@@ -6336,7 +6365,7 @@ slHcCHA9
 slack
 snapshot control point
 snapshot control point number
-sort particles
+sort particles (DEPRECATED - USE RENDERER OPTION)
 sound channel
 sound control point number
 sound field name
@@ -6624,7 +6653,7 @@ vtexH
 vtexL
 w HcA
 w0E;w@
-w@Hc=
+w@Hc=%Q5
 wait for children to finish
 walkspeed
 warp amount
@@ -6694,8 +6723,8 @@ zmukE
 ~*91t&H
 ~+Hcu
 ~0E;~@A
-~0Hc5
-~0Hc5c
+~0Hc53
+~0Hc5u
 ~0Hcu
 ~7;w$
 ~CHcG

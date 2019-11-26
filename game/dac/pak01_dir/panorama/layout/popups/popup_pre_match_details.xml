@@ -1,71 +1,71 @@
 <root>
-  <styles>
-    <include src="s2r://panorama/styles/gamestyles.vcss_c" />
-    <include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
-    <include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
-    <include src="s2r://panorama/styles/dac_global.vcss_c" />
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
 		<include src="s2r://panorama/styles/dac_ui_underlord.vcss_c" />
 		<include src="s2r://panorama/styles/popups/popup_pre_match_details.vcss_c" />
-  </styles>
+	</styles>
 
-  <PopupPreMatchDetails class="PopupPanel" popupbackground="blur">
-  <DACParticleScenePanel id="PopupFog" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/ui_generic_smoke.vpcf" fov="-200" />
-    <Panel class="Contents">
-      <Panel id="PreMatchContainer">
-        <Panel id="Header">
-          <Panel class="TitleContainer">
-            <Button id="BackButton" onactivate="UIPopupButtonClicked(close); PlaySoundEffect( 'DAC_UI.PlayMenu_Cancel' );"/>
-            <Panel id="BotDifficultyTitle" class="MatchTypeTitle">
-              <Label id="BotDifficulty" class="PreMatchDetailsTitle DistressedFont" text="{s:bot_difficulty}"/>
-            </Panel>
-            <Panel id="MatchmakingTypeTitle" class="MatchTypeTitle">
-              <Label id="Casual" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeName0"/>
-              <Label id="Ranked" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeNameRanked"/>
-            </Panel>
-            <Panel id="MatchTypeTitle" class="MatchTypeTitle">
-              <Label id="SoloBot" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeBotMatch"/>
-              <Label id="Multiplayer" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeStandard"/>
-              <Label id="Party" class="PreMatchDetailsTitle DistressedFont" text="#DAC_DBHome_Play_Party"/>
-              <Label id="Private" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeName1_Party"/>
-              <Label id="Duos" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeName3"/>
-              <Label id="DuosBot" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeDuosBotMatch"/>
-              <Label id="ReadyUp" class="PreMatchDetailsTitle DistressedFont" text="#DAC_DBHome_ReadyUp"/>
-              <Label id="Freestyle" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeName5"/>
-            </Panel>
-          </Panel>
-        </Panel>
+	<PopupPreMatchDetails class="PopupPanel" popupbackground="blur">
+	<DACParticleScenePanel id="PopupFog" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/ui_generic_smoke.vpcf" fov="-200" />
+		<Panel class="Contents">
+			<Panel id="PreMatchContainer">
+				<Panel id="Header">
+					<Panel class="TitleContainer">
+						<Button id="BackButton" onactivate="UIPopupButtonClicked(close); PlaySoundEffect( 'DAC_UI.PlayMenu_Cancel' );"/>
+						<Panel id="BotDifficultyTitle" class="MatchTypeTitle">
+							<Label id="BotDifficulty" class="PreMatchDetailsTitle DistressedFont" text="{s:bot_difficulty}"/>
+						</Panel>
+						<Panel id="MatchmakingTypeTitle" class="MatchTypeTitle">
+							<Label id="Casual" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeName0"/>
+							<Label id="Ranked" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeNameRanked"/>
+						</Panel>
+						<Panel id="MatchTypeTitle" class="MatchTypeTitle">
+							<Label id="SoloBot" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeBotMatch"/>
+							<Label id="Multiplayer" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeStandard"/>
+							<Label id="Party" class="PreMatchDetailsTitle DistressedFont" text="#DAC_DBHome_Play_Party"/>
+							<Label id="Private" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeName1_Party"/>
+							<Label id="Duos" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeName3"/>
+							<Label id="DuosBot" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeDuosBotMatch"/>
+							<Label id="ReadyUp" class="PreMatchDetailsTitle DistressedFont" text="#DAC_DBHome_ReadyUp"/>
+							<Label id="Freestyle" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeName5"/>
+						</Panel>
+					</Panel>
+				</Panel>
 
-        <Panel id="MainContainer">
-          <Panel id="LeftContainer" hittest="false">
-            <Panel id="BattlePassContainer">
-              <DACControlBattlePass id="BattlePassOverview" />
-              <Panel class="RankIndicator DefaultHidden" id="RankContainer">
-                <Label class="SectionTitle" text="#DAC_PostGame_Rank" />
-                <DACRankIcon id="RankIcon" iconstyle="standalone" />
-                <Panel class="RankHoverContainer">
-                  <Panel class="NameContainer">
-                    <Label id="PlayerRank" html="true"  text="#DAC_LevelUp_Rank_New" />
-                    <Label id="PlayerLeaderboardPosition" html="true" text="#DAC_Leaderboard_Rank" />
-                  </Panel>
-                  <Panel class="PlayerRankScoreContainer">
-                    <ProgressBar id="PlayerRankProgressBar" />
-                    <Label id="PlayerRankScore" html="true" text="#DACRankPoints" />
-                  </Panel>
-                </Panel>
-              </Panel>
-            </Panel>
-            <Panel id="NoBattlePassContainer">
-              <Label id="NoRewardsTitle" class="TalentsUnlockedNumbers HeadlineFont" text="#DAC_RewardsUnavailable_Title"/>
-              <Label id="NoRewardsDesc" class="TalentsUnlocked" text="#DAC_RewardsUnavailable_GameMode"/>
-            </Panel>
-            <Panel id="FreestyleContainer">
-              <Label id="FreestyleTitle" class="TalentsUnlockedNumbers HeadlineFont" text="#DAC_MatchTypeDescFreestyle"/>
-              <Label id="FreestyleDesc" class="TalentsUnlocked" text="#DAC_MatchTypeDescFreestyle2"/>
-            </Panel>
-          </Panel>
-          <Panel id="UnderlordContainer">
-            <DACUnderlordScenePanel id="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" cameraUp="155" cameraLeft="10" cameraDistance="120" glowsize="0" hittest="false"/>
+				<Panel id="MainContainer">
+					<Panel id="LeftContainer" hittest="false">
+						<Panel id="BattlePassContainer">
+							<DACControlBattlePass id="BattlePassOverview" />
+							<Panel class="RankIndicator DefaultHidden" id="RankContainer">
+								<Label class="SectionTitle" text="#DAC_PostGame_Rank" />
+								<DACRankIcon id="RankIcon" iconstyle="standalone" />
+								<Panel class="RankHoverContainer">
+									<Panel class="NameContainer">
+										<Label id="PlayerRank" html="true"  text="#DAC_LevelUp_Rank_New" />
+										<Label id="PlayerLeaderboardPosition" html="true" text="#DAC_Leaderboard_Rank" />
+									</Panel>
+									<Panel class="PlayerRankScoreContainer">
+										<ProgressBar id="PlayerRankProgressBar" />
+										<Label id="PlayerRankScore" html="true" text="#DACRankPoints" />
+									</Panel>
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel id="NoBattlePassContainer">
+							<Label id="NoRewardsTitle" class="TalentsUnlockedNumbers HeadlineFont" text="#DAC_RewardsUnavailable_Title"/>
+							<Label id="NoRewardsDesc" class="TalentsUnlocked" text="#DAC_RewardsUnavailable_GameMode"/>
+						</Panel>
+						<Panel id="FreestyleContainer">
+							<Label id="FreestyleTitle" class="TalentsUnlockedNumbers HeadlineFont" text="#DAC_MatchTypeDescFreestyle"/>
+							<Label id="FreestyleDesc" class="TalentsUnlocked" text="#DAC_MatchTypeDescFreestyle2"/>
+						</Panel>
+					</Panel>
+					<Panel id="UnderlordContainer">
+						<DACUnderlordScenePanel id="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" cameraUp="155" cameraLeft="10" cameraDistance="120" glowsize="0" hittest="false"/>
 						<Panel class="UnderlordSelectContainer">
 							<Panel class="UnderlordSelectTopContainer">
 								<Panel class="UnderlordSelectBackground"/>
@@ -80,31 +80,31 @@
 							<Panel class="UnderlordSelectBottomContainer">
 								<Label class="TalentsUnlockedNumbers HeadlineFont" text="#DAC_Reward_Item_TalentCount"/>
 								<Label class="TalentsUnlocked" text="#DAC_Reward_Item_TalentUnlockedLabel"/>
-                <Image class="InfoImage" onmouseover="DACShowTalentInfoTooltip()" onmouseout="DACHideTalentInfoTooltip()"/>
+								<Image class="InfoImage" onmouseover="DACShowTalentInfoTooltip()" onmouseout="DACHideTalentInfoTooltip()"/>
 							</Panel>
 						</Panel>
-          </Panel>
-        </Panel>
-        
-        <Panel id="Footer">
-          <DACMiniJail id="MiniJail"/>         
-          <Button id="FindMatchButton" class="FindMatchButton" onactivate="DACPreMatchDetailsFindMultiplayerMatch()">
-            <Label id="Find" class="DistressedFont" text="#DAC_PreMatchDetails_FindMatch"/>
-          </Button>
-          <Button id="SoloBotMatchButton" class="FindMatchButton" onactivate="DACPreMatchDetailsStartBotMatch()">
-            <Label id="Begin" class="DistressedFont" text="#DAC_PreMatchDetails_BeginMatch"/>
-          </Button>
-          <Button id="CreatePartyButton" class="FindMatchButton" onactivate="DACCreateParty(); UIPopupButtonClicked()">
-            <Label id="Create" class="DistressedFont" text="#DAC_Party_CreateParty"/>
-          </Button>
-          <Button id="JoinPartyButton" class="FindMatchButton" onactivate="DACPreMatchDetailsJoinParty()">
-            <Label id="Join" class="DistressedFont" text="#DAC_Party_JoinParty"/>
-          </Button>
-          <Button id="ReadyButton" class="FindMatchButton" onactivate="DACPreMatchDetailsReadyUp()">
-            <Label id="Ready" class="DistressedFont" text="#DAC_Party_ReadyUp"/>
-          </Button>
-        </Panel>
-      </Panel>
-    </Panel>
-  </PopupPreMatchDetails>
+					</Panel>
+				</Panel>
+				
+				<Panel id="Footer">
+					<Button id="FindMatchButton" class="FindMatchButton" onactivate="DACPreMatchDetailsFindMultiplayerMatch()">
+						<Label id="Find" class="DistressedFont" text="#DAC_PreMatchDetails_FindMatch"/>
+					</Button>
+					<Button id="SoloBotMatchButton" class="FindMatchButton" onactivate="DACPreMatchDetailsStartBotMatch()">
+						<Label id="Begin" class="DistressedFont" text="#DAC_PreMatchDetails_BeginMatch"/>
+					</Button>
+					<Button id="CreatePartyButton" class="FindMatchButton" onactivate="DACCreateParty(); UIPopupButtonClicked()">
+						<Label id="Create" class="DistressedFont" text="#DAC_Party_CreateParty"/>
+					</Button>
+					<Button id="JoinPartyButton" class="FindMatchButton" onactivate="DACPreMatchDetailsJoinParty()">
+						<Label id="Join" class="DistressedFont" text="#DAC_Party_JoinParty"/>
+					</Button>
+					<Button id="ReadyButton" class="FindMatchButton" onactivate="DACPreMatchDetailsReadyUp()">
+						<Label id="Ready" class="DistressedFont" text="#DAC_Party_ReadyUp"/>
+					</Button>					
+					<DACMiniJail id="MiniJail"/>
+				</Panel>
+			</Panel>
+		</Panel>
+	</PopupPreMatchDetails>
 </root>

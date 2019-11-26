@@ -18,10 +18,15 @@ DACDPSChart
 {
 	ui-scale: 75%;
 	width: 420px;
-	background-color: #000000cc;
+	//background-color: #000000cc;
+	background-image: url("s2r://panorama/images/right_bar_backers/right_bar_backer_battlestats_psd.vtex");
+	background-size: 100%;
+	height: 539px;
 	padding: 20px;
-	border-radius: 8px;
+	//border-radius: 8px;
 	//border: 2px solid black;
+	margin-right: 14px;
+	margin-top: -2px;
 }
 
 .IsLayoutSmallScreen.AspectRatio4x3 DACDPSChart
@@ -98,6 +103,11 @@ DACDPSChart
 	height: fit-children;
 }
 
+.IsLayoutSmallScreen #BattleStatsBody
+{
+	margin-bottom: 20px;
+}
+
 .BattleStatsHeader
 {
 	height: 40px;
@@ -138,6 +148,7 @@ DACDPSChart
 	vertical-align: middle;
 	horizontal-align: left;
 	//brightness: 3;
+	padding-left: 2px;
 }
 
 .DPSRow
@@ -172,6 +183,7 @@ DACDPSChart
 
 .IsLayoutSmallScreen .BarContainer {
 	width: 320px;
+	margin-left: 2px;
 	// if you change width here, you may also need to change width in:
 	// .BarContainer
 	// and max-width in:
@@ -187,6 +199,7 @@ DACDPSChart
 .IsLayoutSmallScreen .DPSOverlay .NameLabel
 {
 	font-size: 24px;
+	font-size: 28px;
 	vertical-align:middle;
 	text-overflow:ellipsis;
 	max-width: 230px;
@@ -199,7 +212,30 @@ DACDPSChart
 DACDPSChart VerticalScrollBar
 {
 	//todo
+	//margin-right: -5px;
+	//background-color: #00000077;
+	overflow: noclip;
 }
+
+DACDPSChart VerticalScrollBar .ScrollThumb, HTMLVerticalScrollBar .ScrollThumb
+{
+	background-color: #adade033;
+	border: 0px solid white;
+	//border-radius: 3px;
+	margin-left: 2px;
+	//margin-top: 65px;
+}
+
+
+DACDPSChart VerticalScrollBar:hover .ScrollThumb, HTMLVerticalScrollBar:hover .ScrollThumb {
+	background-color: #adade066;
+}
+
+
+DACDPSChart VerticalScrollBar:active .ScrollThumb, HTMLVerticalScrollBar:active .ScrollThumb {
+	background-color: #adade0aa;
+}
+
 
 #HeroIcon
 {
@@ -296,6 +332,11 @@ DACDPSChart VerticalScrollBar
 	text-overflow: shrink;
 }
 
+.IsLayoutSmallScreen .DPSOverlay Label
+{
+	font-size: 27px;
+}
+
 .DPSOverlay .NumberOutput
 {
 	color: #e4e7ff;
@@ -337,6 +378,9 @@ DACDPSChart VerticalScrollBar
 .IsLayoutSmallScreen .DPSChartContainer
 {
 	max-height: 315px;
+	max-height: 525px;
+	margin-top: 0px;
+	margin-top: 35px;
 }
 
 .AspectRatio4x3.IsLayoutSmallScreen .DPSChartContainer
@@ -417,8 +461,8 @@ DACDPSChart VerticalScrollBar
 
 #PipsContainer
 {
-	margin-top:12px;
-	margin-bottom:4px;
+	//margin-top:20px;
+	margin-bottom:-3px;
 	vertical-align: bottom;
 	height:20px;
 	flow-children:right;
@@ -527,6 +571,14 @@ DACDPSChart VerticalScrollBar
 
 //TESTING NEW DESIGN MERGING PLAYER AND ENEMY STATS
 
+#PlayerVsEnemyDivider
+{
+	margin-top: 7px;
+	margin-bottom: 6px;
+	height: 3px;
+	width: 100%;
+	background-color: #ffffff09;
+}
 
 .ShowPlayerBattleStats #DPSChartContainerEnemy,
 .ShowEnemyBattleStats #DPSChartContainerPlayer
@@ -558,9 +610,9 @@ DACDPSChart VerticalScrollBar
 }
 #DPSChartContainerEnemy
 {
-	border-top: 3px solid #cdd2f333;
+	//border-top: 3px solid #cdd2f333;
 	padding-top: 10px;
-	margin-top: 6px;
+	//margin-top: 6px;
 }
 
 .ButtonHolder
@@ -569,7 +621,7 @@ DACDPSChart VerticalScrollBar
 }
 .DPSChartContainer
 {
-	margin-top: 50px;
+	margin-top: 40px;
 	max-height: 250px;
 	height: fit-children;
 	
@@ -580,14 +632,24 @@ DACDPSChart VerticalScrollBar
 	visibility: collapse;
 }
 
+.IsLayoutSmallScreen #PipsContainer
+{
+	visibility: visible;
+}
+
 #BattleStatsType 
 {
 	flow-children: right;
 }
 
+.IsLayoutSmallScreen #BattleStatsType
+{
+	margin-top: -5px;
+}
+
 .ChartType
 {
-	margin-right: 10px;
+	margin-right: 5px;
 }
 
 .ChartNextButton
@@ -597,10 +659,18 @@ DACDPSChart VerticalScrollBar
 	height: 24px;
 	width: 24px;
 	vertical-align: middle;
-	background-size: cover;
-	margin-bottom: 2px;
+	background-size: 100%;
+	//margin-bottom: 2px;
+	overflow: noclip;
+	
 }
 
+.IsLayoutSmallScreen .ChartNextButton
+{
+	margin-top: 0px;
+	height: 26px;
+	width: 26px;
+}
 
 .ChartNextButton:hover
 {

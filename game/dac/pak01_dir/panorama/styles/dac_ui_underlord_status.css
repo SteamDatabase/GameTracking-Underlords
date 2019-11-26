@@ -47,7 +47,8 @@ DACUnderlordStatus.ShowPlayer
 }
 
 .GameMode_Duos.ERoundState_Preparing .DuosBuddy DACUnderlordStatus,
-.ERoundState_Preparing.GameMode_Sandbox .LeftPlayer DACUnderlordStatus
+.ERoundState_Preparing.GameMode_Sandbox .LeftPlayer DACUnderlordStatus,
+.ERoundState_Preparing.GameMode_Puzzle .LeftPlayer DACUnderlordStatus
 {
 	visibility: visible;
 }
@@ -169,16 +170,17 @@ DACUnderlordStatus.ShowPlayer
 .AspectRatio21x9.IsLayoutSmallScreen .BottomSection 
 {
 	ui-scale: 130%;
-	margin-right: -52px;
-	margin-bottom: -28px;
+	margin-right: 122px;
+	margin-bottom: -68px;
 }
 
 .AspectRatio21x9.IsLayoutSmallScreen .LeftPlayer .BottomSection
 {
 	ui-scale: 130%;
-	margin-left: -58px;
-	margin-bottom: -28px;
+	margin-left: 270px;
+	margin-bottom: -68px;
 	overflow: noclip;
+	margin-right: 0px;
 }
 
 .IsLayoutSmallScreen .BottomSection 
@@ -236,18 +238,39 @@ DACUnderlordStatus.ShowPlayer
 	margin-bottom: -30px;
 }
 
+.IsLayoutSmallScreen.AspectRatio21x9 .InfoBlock
+{
+	width: 380px;
+	horizontal-align: left;
+	padding: 8px 0px;
+	margin-left: 10px;
+	//background-color: green;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 .LeftPlayer .InfoBlock
+{
+	margin-left: 16px;
+}
+
+
 .NameContainer 
 {
 	width: 493px;
 	flow-children: right;
 	//margin-bottom: 3px;
-	margin-bottom: -5px;
+	margin-bottom: 0px;
 	height: 60px;
 }
+
 
 .LeftPlayer #PlayerName
 {
 	horizontal-align: left;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 .LeftPlayer #PlayerName
+{
+	horizontal-align: right;
 }
 
 #DuosTeamName
@@ -255,6 +278,11 @@ DACUnderlordStatus.ShowPlayer
 	vertical-align: bottom;
 	margin-bottom: -8px;
 	margin-left: 0px;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 .LeftPlayer #DuosTeamName
+{
+	horizontal-align: right;
 }
 
 #DuosTeamName Label
@@ -289,6 +317,11 @@ DACUnderlordStatus.ShowPlayer
 	flow-children: right;
 }
 
+.AspectRatio21x9 #AbilitySection
+{
+	ui-scale: 80%;
+}
+
 #AbilitySection .TalentAbility
 {
 	width: 108px;
@@ -296,14 +329,31 @@ DACUnderlordStatus.ShowPlayer
 	margin: 7px;
 	margin-top: 7px;
 
+	
+
 	flow-children: down;
+}
+
+.AspectRatio21x9 #AbilitySection .TalentAbility
+{
+	width: 102px;
+	height: 122px;
 }
 
 #AbilitySection .TalentAbility.Large
 {
 	width: 136px;
 	height: 156px;
-	margin-top: 0px;
+	
+	margin: 7px;
+	margin-top: 2px;
+}
+
+.AspectRatio21x9 #AbilitySection .TalentAbility.Large
+{
+	width: 144px;
+	height: 164px;
+	margin-top: 2px;
 }
 
 #AbilitySection .TalentAbility .TalentAbilityImageContainer
@@ -324,13 +374,37 @@ DACUnderlordStatus.ShowPlayer
 {
 	width: 100%;
 	height: 100%;
+	padding: 10px;
+	//background-position: center;
+	//background-size: 50%;
 
-	border: 6px solid black;
+	//border: 6px solid red;
 
 	opacity-mask: url("s2r://panorama/images/masks/square_vignette_psd.vtex");
 
 	brightness: 1.8;
+	
+	
 }
+
+#AbilityBevelOverlay
+{
+	width: 100%;
+	height: 100%;
+	
+	background-image: url("s2r://panorama/images/hud/ability_bevel_overlay_psd.vtex");
+	background-size: 100%;
+}
+
+#AbilityBevelOverlayLarge
+{
+	width: 100%;
+	height: 100%;
+	
+	background-image: url("s2r://panorama/images/hud/ability_bevel_overlay_large_psd.vtex");
+	background-size: 100%;
+}
+	
 
 .LowVisualQuality #AbilitySection .TalentAbility .TalentAbilityImageContainer #TalentAbilityImage
 {
@@ -407,6 +481,12 @@ DACUnderlordStatus.ShowPlayer
 	margin-left: 4px;
 }
 
+.AspectRatio21x9 #AbilitySection .RightSection #HypeBarBackground
+{
+	height: 33px;
+	width: 333px;
+}
+
 .LowVisualQuality #AbilitySection .RightSection #HypeBarBackground
 {
 	border-radius: 0px;
@@ -464,8 +544,6 @@ DACUnderlordStatus.ShowPlayer
 	animation-duration: .4s;
 	animation-iteration-count: 1;
 }
-
-
 
 #AbilitySection .RightSection .ProgressPip
 {
@@ -526,6 +604,20 @@ DACUnderlordStatus.ShowPlayer
 
 }
 
+.AspectRatio21x9 .DetailsContainer
+{
+	overflow: noclip;
+	margin-bottom: -20px;
+}
+
+.AspectRatio21x9 .IsOpponent .DetailsContainer
+{
+	width: 380px;
+	width: fit-children;
+	flow-children: right;
+	horizontal-align: right;
+}
+
 
 
 .CornerStatusLevel,
@@ -537,6 +629,21 @@ DACUnderlordStatus.ShowPlayer
 	width: fit-children;
 	padding-right: 20px;
 }
+
+.AspectRatio21x9 .IsOpponent .CornerStatusLevel,
+.AspectRatio21x9 .IsOpponent .CornerStatusGold,
+.AspectRatio21x9 .IsOpponent .CornerStatusHealth,
+.AspectRatio21x9 .IsOpponent .CornerStatusHype
+{
+	flow-children: right;
+	width: fit-children;
+	padding-left: 20px;
+	padding-right: 0px;
+	horizontal-align: right;
+	
+}
+
+
 
 .CornerStatusHealth
 {
@@ -553,6 +660,24 @@ DACUnderlordStatus.ShowPlayer
 	vertical-align: bottom;
 	margin-bottom: 4px;
 	//margin-right: 12px;
+}
+
+.AspectRatio21x9 .CornerStatusHype
+{
+	visibility: collapse;
+}
+
+.CornerStatusHypeMobile
+{
+	opacity: 0;
+}
+
+.AspectRatio21x9 .CornerStatusHypeMobile
+{
+	vertical-align: bottom;
+	margin-bottom: 26px;
+	margin-left: 10px;
+	opacity: 0;
 }
 
 #DuosBuddyPlayerProfile .CornerStatusHype
@@ -746,10 +871,23 @@ DACUnderlordStatus.ShowPlayer
 {
 	width: 760px;
 	height: 760px;
-	margin-bottom: -50px;
-
+	margin-bottom: 0px;
+	margin-bottom: -130px;
+	margin-right: -10px;
+	opacity-mask: url("s2r://panorama/images/masks/left_side_fade_mobile_psd.vtex");
 	opacity: 1;
+	ui-scale: 100%;
+}
 
+.AspectRatio21x9.IsLayoutSmallScreen .LeftPlayer #UnderlordPortrait
+{
+	margin-left: -10px;
+	margin-right: 0px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen .LeftPlayer .Underlord_1 #UnderlordPortrait
+{
+	margin-bottom: -160px;
 }
 
 .LowVisualQuality #UnderlordPortrait 
@@ -811,6 +949,7 @@ DACUnderlordStatus.ShowPlayer
 	//margin-top: 12px;
 	//margin-left: 150px;
 	background-image: url("s2r://panorama/images/hud/chat_icon_psd.vtex");
+	
 	background-size: 100% 100%;
 	transition-property: brightness, opacity;
 	transition-duration: .2s;
@@ -823,9 +962,14 @@ DACUnderlordStatus.ShowPlayer
 
 .AspectRatio21x9.IsLayoutSmallScreen #ChatButton
 {
-	margin-right: 0px;
-	margin-bottom: 500px;
+	margin-right: 120px;
+	margin-bottom: 40px;
+	width: 180px;
+	height: 180px;
+	background-image: url("s2r://panorama/images/hud/chat_icon_underlord_psd.vtex");
+	opacity: .4;
 }
+
 
 .Underlord_4  #ChatButton 
 {
@@ -954,14 +1098,18 @@ DACUnderlordStatus.ShowPlayer
 {
 	width:100%;
 	height:100%;
-	visibility: collapse;	
+	visibility: collapse;
 }
 
-.HasUnderlord #UnderlordPortrait ,
+.HasUnderlord #UnderlordPortrait,
 .HasUnderlord #UnderlordItems,
 .HasUnderlord #TooltipTarget
 {
 	visibility: visible;
 }
 
-.GameMode_Sandbox #TalentsButton		{ opacity: 0; }
+.GameMode_Sandbox #TalentsButton,
+.GameMode_Puzzle #TalentsButton
+{
+	opacity: 0;
+}

@@ -325,7 +325,9 @@ DACLeaderboardEntry {
 	opacity-mask: url("s2r://panorama/images/hud/dac_profile_rounded_corner_right_mask_psd.vtex");
 }
 
-.GameMode_Duos #LeaderboardAvatar {
+.GameMode_Duos #LeaderboardAvatar,
+.GameMode_Tutorial #LeaderboardAvatar  
+{
 	opacity-mask: none;
 }
 
@@ -559,7 +561,7 @@ DACLeaderboardEntry {
 
 .IsDead .PlayerLeaderboard
 {
-	width: 200px;
+	width: 285px;
 }
 
 .LeaderboardName Label {
@@ -1669,6 +1671,11 @@ DACLeaderboardEntry {
     visibility: collapse;
 }
 
+.GameMode_Tutorial .IsClone.CloneIsVisible
+{
+    visibility: collapse;
+}
+
  .IsClone.CloneIsVisible
 {
     visibility: visible;
@@ -1889,6 +1896,19 @@ DACLeaderboardEntry {
 	ui-scale: 100%;
 	margin-left: 20px;
 }
+
+// for tutorial
+
+.GameMode_Tutorial.InCombat .LeaderboardTargetIndicator
+{
+	visibility: collapse;
+}
+
+.GameMode_Tutorial.InCombat .IsSelf .LeaderboardTargetIndicator
+{
+	visibility: visible;
+}
+
 
 /* .GameMode_Duos.InCombat .IsHomeGame .LeaderboardTargetIndicator {
 	margin-left: 15px;
@@ -2204,10 +2224,21 @@ DACLeaderboardEntry {
 	width: 245px;
 }
 
+.GameMode_Turbo #PlayerNameContainer,
+.GameMode_Turbo .PlayerName,
+.GameMode_Turbo #PlayerStats {
+	max-width: 215px;
+	width: 215px;
+}
+
 #PlayerLevelContainer {
 	width: 40px;
 	height: 100%;
 	flow-children: right;
+}
+
+.GameMode_Turbo #PlayerLevelContainer {
+	visibility: collapse;
 }
 
 /* .IsDead #PlayerLevelContainer {
@@ -2272,6 +2303,10 @@ DACLeaderboardEntry {
 }
 
 .GameMode_Duos #HealthRow {
+	visibility: collapse;
+}
+
+.GameMode_Turbo #HealthRow {
 	visibility: collapse;
 }
 
@@ -2352,6 +2387,11 @@ DACLeaderboardEntry {
 	horizontal-align: right;
 	min-width: 58px;
 	margin-top: -3px;
+}
+
+.GameMode_Turbo #PlayerInfo {
+	/* width: 100%;
+	border: 1px solid red; */
 }
 
 
@@ -2488,6 +2528,91 @@ DACLeaderboardEntry {
 	margin-bottom: 0px;
 }
 
+// TURBO 
+
+#TurboHealth {
+	//background-color: red;
+	flow-children: right;
+	horizontal-align: right;
+	margin-right: 5px;
+	margin-top: 8px;
+	visibility: collapse;
+} 
+
+.GameMode_Turbo #TurboHealth {
+	visibility: visible;
+}
+
+.TurboHeart {
+	width: 17px;
+	height: 17px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex");
+	background-size: contain;
+	margin-right: 1px;
+}
+
+.Heart4 .TurboHeart1,
+.Heart4 .TurboHeart2,
+.Heart4 .TurboHeart3,
+.Heart4 .TurboHeart4 {
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex");
+}
+
+.Heart3 .TurboHeart1,
+.Heart3 .TurboHeart2,
+.Heart3 .TurboHeart3 {
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex");
+}
+
+.Heart3 .TurboHeart4 {
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_empty_psd.vtex");
+	opacity: 0.5;
+}
+ 
+.Heart2 .TurboHeart1,
+.Heart2 .TurboHeart2 {
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_mid_psd.vtex");
+}
+
+.Heart2 .TurboHeart3,
+.Heart2 .TurboHeart4 {
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_empty_psd.vtex");
+	opacity: 0.5;
+}
+
+.Heart1 .TurboHeart1 {
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_low_psd.vtex");
+
+	
+	animation-duration: 2.24s;
+	animation-timing-function: linear;
+	animation-name: HealthDeltaThrob;
+	animation-iteration-count: infinite;
+	
+}
+
+.Heart1 .TurboHeart2,
+.Heart1 .TurboHeart3,
+.Heart1 .TurboHeart4 {
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_empty_psd.vtex");
+	opacity: 0.5;
+}
+
+.IsDead .TurboHeart1,
+.IsDead .TurboHeart2,
+.IsDead .TurboHeart3,
+.IsDead .TurboHeart4 {
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_empty_psd.vtex");
+	opacity: 0.3;
+}
+
+.IsClone .TurboHeart1,
+.IsClone .TurboHeart2,
+.IsClone .TurboHeart3,
+.IsClone .TurboHeart4 {
+	wash-color: #456699ff;
+}
 
 
 

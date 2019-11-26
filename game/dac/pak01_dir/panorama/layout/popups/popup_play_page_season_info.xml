@@ -1,0 +1,50 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_play_page_season_info.vcss_c" />
+  </styles>
+
+  <PopupPlayPageSeasonInfo class="PopupPanel" popupbackground="blur">
+	  <DACParticleScenePanel id="PopupFog" hittest="true" onactivate="UIPopupButtonClicked()" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/ui_generic_smoke.vpcf" fov="-200" />
+	  <Panel class="Contents">
+      <Panel id="BackButton" onactivate="UIPopupButtonClicked()"/>
+      <Panel id="PreMatchContainer">
+				<Panel id="Header">
+					<Panel class="TitleContainer">
+						<Label id="SoloBot" class="PreMatchDetailsTitle DistressedFont" text="#DAC_MatchTypeBotMatch"/>
+					</Panel>
+				</Panel>
+
+				<Panel id="MainContainer">
+					<Panel id="LeftContainer" hittest="false">
+						<Panel id="BattlePassContainer">
+							<DACControlBattlePass id="BattlePassOverview" />
+							<Panel class="RankIndicator" id="RankContainer">
+								<Label class="SectionTitle" text="#DAC_PostGame_Rank" />
+								<DACRankIcon id="RankIcon" iconstyle="standalone" />
+								<Panel class="RankHoverContainer">
+									<Panel class="NameContainer">
+										<Label id="PlayerRank" html="true"  text="#DAC_LevelUp_Rank_New" />
+										<Label id="PlayerLeaderboardPosition" html="true" text="#DAC_Leaderboard_Rank" />
+									</Panel>
+									<Panel class="PlayerRankScoreContainer">
+										<ProgressBar id="PlayerRankProgressBar" />
+										<Label id="PlayerRankScore" html="true" text="#DACRankPoints" />
+									</Panel>
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+				</Panel>
+				
+				<Panel id="Footer">
+					<DACMiniJail id="MiniJail"/>
+				</Panel>
+			</Panel>
+		</Panel>
+	</PopupPlayPageSeasonInfo>
+</root>

@@ -63,7 +63,7 @@
     Expected  : 
     Field type: 
    %d initial materials (%d initial depth-only), %d copy material changes
-   %d material Vfx evals, %d material Vfx rule checks
+   %d material Vfx evals, %d material Vfx rule checks, %i cb updates (%ikb)
    %d material computes, %d full material sets, %d similar sets, %d texture-only sets
   0x%08X %s,
   Actual   : 
@@ -86,7 +86,8 @@
  %llu aggs, %s total data
  '%s'
  ( def. "%s" )
- *** Skip layer 
+ *** Skip layer '%s' 
+ +Timer took %.4f
  -shadowTargetSize Adjusting shadow target size to %d from %d
  -shadowTargetSize psys jba Adjusting nMaxShadowBufferSize size to %d from %d
  ... }
@@ -493,6 +494,7 @@ $[A\]
 ([A\]
 ([]A\A]A^A_
 (cannot determine missing fields for lite message)
+(discarded renderbatch = 
 (dump)
 (dump3d)
 (index =
@@ -508,7 +510,7 @@ $[A\]
 )NETWORK_DISCONNECT_NO_PEER_GROUP_HANDLERS
 )NETWORK_DISCONNECT_PURESERVER_CLIENTEXTRA
 )NETWORK_DISCONNECT_REQUEST_HOSTSTATE_IDLE
-)PPfA
+)WPfE
 *#GameUI_Disconnect_LocalProblem_ManyRelays
 *>mathlib.cpp
 *NETWORK_DISCONNECT_CLIENT_CONSISTENCY_FAIL
@@ -516,6 +518,7 @@ $[A\]
 *NETWORK_DISCONNECT_LOOP_LEVELLOAD_ACTIVATE
 *NETWORK_DISCONNECT_REJECT_INVALIDKEYLENGTH
 *NETWORK_DISCONNECT_STRINGTABLEMSG_OVERFLOW
+*ZN14CLightBinnerVr14InitForFrustumEP10CSceneViewP11ISceneLayerP14IRenderContextRK8CFrustumbyyEUlP25CSceneLightObjectInternalE0_
 *ZN14CLightBinnerVr19GatherVisibleLightsER23CUtlVectorFixedGrowableI15ConsiderLight_tLm256EES3_P10CSceneViewRK8CFrustumyyEUlP25CSceneLightObjectInternalE_
 *ZN14CLightBinnerVr25AddEnvironmentMapsForViewEP10CSceneViewyyEUlP18CEnvMapSceneObjectE_
 *ZN14CLightBinnerVr27AddLightProbeVolumesForViewEP10CSceneViewyyEUlP28CSceneLightProbeVolumeObjectE_
@@ -568,15 +571,16 @@ $[A\]
 -sse2
 -sse3
 -sse4
--stereo
 -tools
 -y south
 -z down
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
+.%Vf,
+.-he,
 ...<truncated>...
 ../public/ordered_constructor.h
-../public/scenesystem/sceneobject.h(2827): Material %s cannot render in mode %s but is being asked to
+../public/scenesystem/sceneobject.h(2844): Material %s cannot render in mode %s but is being asked to
 ../public/tier0/tslist.h
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utlleanvector.h
@@ -628,6 +632,7 @@ $[A\]
 .text
 .}QRP
 0 <= i
+0.005
 00000000-0000-0000-0000-000000000000
 00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
 0123456789abcdef
@@ -643,6 +648,7 @@ $[A\]
 0x%016llX : %s
 1 1 1
 1 = visualize bounds, 2 = visualize sceneobject mesh materials
+1024.0
 10CEntityMsg
 10CMsgQAngle
 10CMsgVector
@@ -747,6 +753,7 @@ $[A\]
 20ISceneObjectDescBaseI25CSceneLightObjectInternalE
 20ISceneObjectDescBaseI28CBindlessFastPathSceneObjectE
 20ISceneObjectDescBaseI28CSceneLightProbeVolumeObjectE
+20ISceneObjectDescBaseI33CAmbientOcclusionProxySceneObjectE
 20ISceneObjectDescBaseIN23CCharacterDecalRenderer26CCharacterDecalSceneObjectEE
 21CPointLightObjectDesc
 21CResolveLayerRenderer
@@ -817,6 +824,7 @@ $[A\]
 32CNETMsg_SpawnGroup_LoadCompleted
 32CSVCMsg_GameSessionConfiguration
 33333333H
+33CAmbientOcclusionProxySceneObject
 33CLightPropagationVolumeObjectDesc
 33CNETMsg_SpawnGroup_ManifestUpdate
 34CLightPropagationVolumeSceneObject
@@ -824,6 +832,7 @@ $[A\]
 34CSVCMsgList_UserMessages_usermsg_t
 34CSimplePostProcessingLayerRenderer
 35CInputLayoutRegistration_sm_hLayout
+37CAmbientOcclusionProxySceneObjectDesc
 37CCopySkyLightingPixelsProceduralLayer
 38IMaxSwapChainDimensionsChangedListener
 4$A\]
@@ -1121,6 +1130,7 @@ AE_MELEE_DAMAGE
 AE_NPC_BECOME_TEMPORARY_RAGDOLL
 AE_NPC_HURT_INTERACTION_PARTNER
 AE_NPC_SET_INTERACTION_CANTDIE
+AE_NPC_START_POWERED_RAGDOLL
 AE_NPC_WEAPON_FIRE
 AE_NPC_WEAPON_SET_SEQUENCE_NUMBER
 AE_PASSENGER_PHYSICS_PUSH
@@ -1150,12 +1160,8 @@ ANIMATION_SNAPSHOT_SERVER_SIMULATION
 ANIMATION_TYPE_FIT_LIFETIME
 ANIMATION_TYPE_FIXED_RATE
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
-AQAPWL
 ARAPL
-ARAQAPWL
-ASARAPL
-ATAVAW
-ATAWAV
+ARAQAPV
 ATI1N
 ATI2N
 ATI_DST16
@@ -1180,7 +1186,7 @@ AUATSH
 AUATSL
 AUATSLc/E)
 AUATSfA
-AVARSj
+AVARAUj
 AVATI
 AVAUA
 AVAUATA
@@ -1203,6 +1209,7 @@ AVAUH
 AVAUI
 AVAUL
 AVAUM
+AWATASQL
 AWAVA
 AWAVAUA
 AWAVAUATA
@@ -1221,6 +1228,7 @@ AWAVAUATUSH
 AWAVAUATfA
 AWAVAUATfI
 AWAVAUE
+AWAVAUE1
 AWAVAUI
 AWAVAUL
 AWAVAULc
@@ -1238,22 +1246,20 @@ AWAVN
 AWAVfI
 AXAYH
 AXAYf
-AXAYu
-AYAZH
 AYAZM
-AYAZu
 A\A]A^A_]
 A\A]A^A_]L
 A\A]A^]
+A\A]A^]H
 A\A]H
 A\A]I
 A\A]]
 A\A]]H
 A\A]]L
-A]A^H
 A]A^]
 A]A^]A
 A^A_]
+AbsolutePoseControl
 AddAllocatedMessage
 AddBool
 AddDouble
@@ -1349,7 +1355,7 @@ BGRA4444
 BGRA5551
 BGRA8888_LINEAR
 BGRX8888_LINEAR
-BXZD9
+BXZYD9
 BackUp() can only be called after a successful Next().
 Bad KV3 data for '%s': %s
 Bad expression operator: '%c%c', expected C style boolean expression operator.
@@ -1379,7 +1385,6 @@ BreakPieceEmbedded
 BreakPieceExternal
 Byte size calculation and serialization were inconsistent.  This may indicate a bug in protocol buffers or it may be caused by concurrent modification of 
 C uXL
-C$ t"L
 C$ t0L
 C$x$H
 C,[A\]
@@ -1387,6 +1392,7 @@ C0[A\]
 C6FaceSkyboxObjectDesc
 CANCELLED
 CAimConstraint
+CAmbientOcclusionProxySceneObjectDesc
 CAnimBone
 CAnimDataChannelDesc
 CAnimKeyData
@@ -1892,7 +1898,6 @@ CharacterDecalSystemManifest
 Check
 Cht7Lc{pD;
 Cht9D
-Cj_AX
 ClearField
 ClearHistory
 Client Rendering
@@ -1910,6 +1915,7 @@ Combo(
 CommandLine
 CommandProcedure
 CommandProcedureList
+Compute EnvMapAndLightProbes
 ComputeLayerInfo
 ConVar(%s) defined with infinite float value (%s)
 ConVarRef %s doesn't point to an existing ConVar
@@ -1934,7 +1940,6 @@ CubeMapDebugColors
 Cubic
 C|X[]
 D#O\H
-D#`$H
 D#j\H
 D$ E1
 D$ H9E
@@ -1983,6 +1988,7 @@ D;i(D
 D;j(D
 D;q(t/I
 D;{(D
+D;~(D
 DATA_LOSS
 DEADLINE_EXCEEDED
 DEFAULT_WRITE_PATH
@@ -2031,7 +2037,7 @@ Dump a list of the objects in a sceneworld (Usage: sc_dumpworld <world_index>)
 Dump debug info
 Dump the objects in a sceneworld into a 3d geoview buffer (Usage: sc_dumpworld3d <world_index>)
 DynamicConfigList
-E H9E0txH
+E H9E0tqSL
 E(ATL
 E(A]L
 E([A\A]A^]
@@ -2044,7 +2050,7 @@ E;l$(A
 E;l$(tvI
 E;t$0A
 E;|$(D
-EHAVP
+EHAUP
 ENetworkDisconnectionReason
 ERROR
 EXPORTSYSTEM_INTERFACE_VERSION_001
@@ -2205,6 +2211,8 @@ FloatBitMap_t::LoadFromBuffer: Received improper buffer size, skipping!
 FloatBitMap_t::LoadFromBuffer: Unsupported color format, skipping!
 FloatBitMap_t::LoadFromFloatBitmap: Received improper bitmap size, skipping!
 FloatBitMap_t::WriteToBuffer: Received improper buffer size %s (expecting %s), skipping!
+Fog Clipmaps - insufficient shadow atlas space %d units centered on (setpos %d %d %d) - some lighting will be missing from the fog
+Fog Clipmaps - too many lights (max: %d) %d units centered on (setpos %d %d %d) - some lighting will be missing from fog
 FogLightView
 FontManager_001
 FormatV
@@ -2302,16 +2310,24 @@ H90t4
 H91tz
 H;*twH
 H;0t#H
-H;5(CW
-H;5(SW
+H;5 |W
+H;5PyW
 H;8t$H
-H;= cW
-H;=!lW
-H;=JkW
-H;=KcW
-H;=LlW
-H;=ukW
-H;=vcW
+H;=.1W
+H;=0QW
+H;=4=P
+H;=6NP
+H;=?TW
+H;=A2W
+H;=AUW
+H;=C3W
+H;=J<W
+H;=XQW
+H;=d^W
+H;=j=X
+H;=jTW
+H;=l2W
+H;=sJW
 H;q u
 H@McA
 HELPER_BONE
@@ -2472,6 +2488,7 @@ KeyValues::RecursiveSaveToFile: TODO, missing code for TYPE_COLOR.
 KeyValues::SaveToFile: couldn't open file "%s" in path "%s".
 KeyValuesSystem
 L$ H9
+L$0AWH
 L$8IcD$@
 L$hfA
 L$kH;
@@ -2481,8 +2498,6 @@ L9G u
 L9O(u
 L; t4
 L; tD
-L;%AOR
-L;%`LR
 L;2ta
 LABEL_OPTIONAL
 LABEL_REPEATED
@@ -2517,6 +2532,7 @@ Lc.E)
 Lc/E)
 Lc3D;s
 Lc7E)
+Lc8D;x
 LccHD;cXD
 Lcg H
 LchpH
@@ -2562,7 +2578,6 @@ LookAtList
 Low level command to set the flags byte associated with an object class. sc_SetClassFlags <classname> <value>
 LowerEyelid( 
 LrwcE
-M0AWH
 MATCHFRAMEWORK_001
 MDIcE@
 MDefaultString
@@ -2615,6 +2630,7 @@ MathLib_Init
 Max( %s, %s )
 MbP?+
 Mc#Ic
+Mc>E;~
 Mcf0E;f@
 McfHE;fXD
 Mcf`E;fpD
@@ -2741,6 +2757,7 @@ Nh#F\H
 No Buffer
 No default value
 No field named "uninterpreted_option" in the Options proto.
+NoPoseControl
 Non-primitive types can't be packed.
 Non-repeated Any specified multiple times.
 Non-repeated field "
@@ -2769,6 +2786,7 @@ Number of objects culled by screen-size test:
 Number of objects culled by vis: 
 Number of objects occlusion-culled: 
 Number of objects passing cull check: 
+Number of objects pre-cull check: 
 Number of objects starting to fade: 
 Number of occlusion renders: 
 Number of pushconstant sets: 
@@ -2826,7 +2844,7 @@ PARTICLE_DEPTH_FEATHERING_ON_OPTIONAL
 PARTICLE_SET_REPLACE_VALUE
 PARTICLE_SET_SCALE_CURRENT_VALUE
 PARTICLE_SET_SCALE_INITIAL_VALUE
-PAUAW
+PATAW
 PERMISSION_DENIED
 PF_BIAS_TYPE_EXPONENTIAL
 PF_MAP_TYPE_MULT
@@ -3133,6 +3151,7 @@ SetupLightingForViewVr
 ShF;d*
 Shadowed spot lights in view: %d
 Should not reach here.
+Show cost of lights in fog clipmap constant buffer. yellow = 1 cost, red = 6 cost
 Show light priority values. 1 = normal lights, 2 = cached lights.
 Show occluder
 Show the occluder depth buffer mip level. 0=off, 1=1st mip, 2=2nd mip, etc...
@@ -3204,10 +3223,10 @@ Suggested
 SunShadow
 SunShadow%u
 SunShadowClear
+SxA[XH
 Symbol name "
 Syntax Error at offset: %d
 T$(H9
-T$`Mc
 T$jHc
 T$pH9
 T: %7.3f
@@ -3256,7 +3275,6 @@ ThreadMultiWait
 ThreadMultiWaitObjectSetDestroy
 ThreadSleep
 Thread_ProcessProceduralLayer
-Timer took %.4f
 Toggle display of box around text
 ToneMapping
 TonemapManifest
@@ -3271,6 +3289,7 @@ ToolGameSimulationSystem_001
 ToolSceneNodeFactory_001
 ToolScriptManager001
 ToolService_001
+Total : %d (%ukb)
 Trailing Data
 Translucent
 TranslucentScreenSpace
@@ -3333,9 +3352,9 @@ UpperEyelid(
 Usage is sc_setfloatattr <attrname> <value>
 Usage is sc_setintattr <attrname> <value>
 Usage scope:
+Use multiview instancing for stereo rendering.
 UserInfoChangeService_001
 Using 16-bit blend indices
-UzIuG
 V tC1
 V=H_H
 VApplication001
@@ -3366,7 +3385,6 @@ VPhysics2_Handle_Interface_001
 VPhysics2_Interface_001
 VProcessUtils002
 VProfService_001
-VR.}:
 VR_001
 VRenderDeviceSetupV001
 VSInputSignature
@@ -3377,7 +3395,6 @@ VScriptManager010
 VStringTokenSystem001
 VUUUA
 VUUUD
-VUUUH
 VUUUI
 VUUUL
 V_CopyMemory3D
@@ -3513,6 +3530,7 @@ XZ~aM
 X[A\A]A^A_]
 X[A\A]]
 X[]A\A]A^A_
+Y=z+(
 Yaw; 
 Z89Y8
 ZLPVQuadVB
@@ -3552,6 +3570,7 @@ Z\9Y\
 ^IcL$
 ^IcL$ Ic
 ^IcO@Ic
+_AX~`H
 _BoundTexture%d
 _BoundTextureSrgb%d
 _HcKXIc
@@ -3817,6 +3836,7 @@ _ZdaPv
 _ZdlPv
 _ZdlPvRKSt9nothrow_t
 _Znam
+_ZnamRKSt9nothrow_t
 _Znwm
 _ZnwmRKSt9nothrow_t
 __assert_fail
@@ -3874,6 +3894,7 @@ animationLifeSpan
 animationScale
 animgraph0
 annotation
+ao_proxy_capsule_list
 archive
 array_ != __null
 attach_point
@@ -3914,6 +3935,7 @@ bodygroup
 bone_name
 bone_names
 bonemerge
+bonename
 borrow
 bouncecolor
 box2i
@@ -4412,7 +4434,6 @@ m_flDuration
 m_flEmissionDuration
 m_flEmissionScale
 m_flEmitRate
-m_flExtraShaderData
 m_flFalloff
 m_flFarCullDistanceSquared
 m_flFingerScaleRatio
@@ -4516,7 +4537,6 @@ m_nClusterSizeMax
 m_nClusterSizeMin
 m_nControlPoint
 m_nControlPointNumber
-m_nCubeMapPrecomputedHandshake
 m_nCurrentLOD
 m_nCurrentMeshGroupMask
 m_nD3DSemanticIndex
@@ -4549,7 +4569,6 @@ m_nLayerForceID
 m_nLayerId
 m_nLayerIndex
 m_nLayerMatchID
-m_nLightProbeVolumePrecomputedHandshake
 m_nMapType
 m_nMask
 m_nMeshGroupMaskSmall
@@ -4811,6 +4830,7 @@ modeldoc24
 modeldoc25
 modeldoc26
 modeldoc27
+modeldoc28
 modeldoc3
 modeldoc4
 modeldoc5
@@ -4862,6 +4882,7 @@ nxnstripped
 o ATE1
 o@ATI
 oIc@ 1
+oXL;mP
 objc_class_prefix
 occlusionproxyvb
 oneof_decl
@@ -4917,6 +4938,8 @@ point1
 pointLightLayout
 pointLightQuadLayout
 pos2Dtex2D
+pose_control
+pose_control_type
 position
 positionH
 positive_int_value
@@ -4945,6 +4968,7 @@ ptr( 0x%p )
 ptr_ != __null
 public_dependency
 py_generic_services
+q(ATI
 r8A96
 rHHcU
 rJlightbinner_vr.cpp
@@ -4978,6 +5002,10 @@ r_ssao_bias
 r_ssao_blur
 r_ssao_radius
 r_ssao_strength
+r_stereo_mode_anaglyph
+r_stereo_mode_crossed
+r_stereo_mode_parallel
+r_stereo_multiview_instancing
 r_texture_lod_scale
 radius0
 radius1
@@ -5021,20 +5049,19 @@ rt_lpvPongG.vtex
 rt_lpvPongR.vtex
 runspeed
 s H;5
-s H;5QOW
+s H;5(pW
+s H;5P|W
 s off
 s(APL
 s(H;5
+s(H;5XpW
 s0H;5
-s0H;5H8W
 s1_mapname
 s8H;5
-s8H;5H+W
-s8H;5X9W
+s8H;5DlW
 s@H;5
 s@I9t$@u
 sHH;5
-sHH;5M,W
 sPH;5
 s_flSizeCullBloatScale
 savegamefilename
@@ -5049,6 +5076,7 @@ sc_aux_cameras_enabled
 sc_aux_cameras_single_submit
 sc_batch_cb_updates_for_view
 sc_batch_layer_cb_updates
+sc_cache_envmap_lpv_lookup
 sc_check_world
 sc_disableThreading
 sc_disable_dynamic_sky_lighting
@@ -5083,6 +5111,8 @@ sc_log_submits
 sc_max_framebuffer_copies_per_layer
 sc_multithread_sorted_layers
 sc_new_morph_atlasing
+sc_no_cull
+sc_no_vis
 sc_only_render_opaque
 sc_only_render_shadowcasters
 sc_optimize_partitions_every_frame
@@ -5099,6 +5129,9 @@ sc_setclassflags
 sc_setclassflags %s %d
 sc_setfloatattr
 sc_setintattr
+sc_shadow_depth_bias
+sc_shadow_depth_bias_clamp
+sc_shadow_slopescale_depth_bias
 sc_show_rejected_objects
 sc_show_rejected_objects_range
 sc_showclasses
@@ -5120,8 +5153,8 @@ scenesysCone
 scenesysDodecahedron
 scenesystem
 scenesystem.cpp
-scenesystem.cpp(6209): Expecting 1 renderable pass for material "%s" but found %d!
-scenesystem.cpp(7433): Waited 500 ms for jobs to complete. Attempt to drain windows message queue. Jobs in queue = %d
+scenesystem.cpp(6236): Expecting 1 renderable pass for material "%s" but found %d!
+scenesystem.cpp(7462): Waited 500 ms for jobs to complete. Attempt to drain windows message queue. Jobs in queue = %d
 scenesystemdebug
 sceneview.cpp
 sceneviewdebugoverlays.cpp
@@ -5314,7 +5347,7 @@ u	[A\]
 u5LcsHE
 u5[A\]
 u64( %lld = 0x%llX )
-uAL;%z
+uAL;%
 uDIcE@
 uE[A\]
 uO[A\]
@@ -5330,6 +5363,7 @@ unknown
 unrecognized string in token spec %s
 unspecified
 up;rpug
+ur[A\A]A^]
 usHcCHL
 usHcC`L
 usHcCxL
@@ -5412,6 +5446,7 @@ vpcf7
 vpcf8
 vpcf9
 vr_allow_time_sliced_shadow_map_rendering
+vr_baked_sun_shadow_distance
 vr_carry_type
 vr_cubemap_normalization_max
 vr_cubemap_normalization_roughness_begin
@@ -5419,8 +5454,8 @@ vr_directional_lightmaps
 vr_dump_lights
 vr_enable_cached_lights
 vr_enable_lights
-vr_fake_directionality
 vr_max_lights
+vr_show_light_fog_clipmap_cb_cost
 vr_show_light_priority
 vr_unlit_shadow_color
 vsnap
@@ -5429,7 +5464,6 @@ w HcA
 w0AUL
 w0E;w@
 wDIcW@
-wXL;uP
 walkspeed
 wcscmp
 wcslen
@@ -5467,15 +5501,12 @@ yaw_end
 yaw_start
 z&u$H
 z7u5f
+z<u:H
 z@tmD
-z@u>I
-zCuAH
-zJuHE
-zLuJD
+zEuCD
 zPuNLc
 z[uYH
 z[uYM
-zpunH
 zwuu1
 {YIN?
 {[xYL
@@ -5485,6 +5516,7 @@ zwuu1
 {}[]=, 	
 |$0E;|$@
 |$0L9
+|] fA
 ~!I;0t`1
 ~)H;7I
 ~-L;`H

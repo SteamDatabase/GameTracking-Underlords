@@ -101,6 +101,7 @@
 		<Panel id="ShopTimerParticle" hittest="false" >
 			<DACParticleScenePanel id="TimerParticle" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/timer/shop_timer_lightrays.vpcf" squarepixels="true" fov="-200" />
 		</Panel>
+
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<Panel id="GameUISection" class="SafeArea" hittest="false">
 			<Panel id="GameStatePanel">
@@ -108,9 +109,9 @@
 				<!-- - GameStatePanel_Normal -->
 				<!-- - GameStatePanel_TechPrototypeA -->
 			</Panel>
-			<Panel class="PlayPauseContainer" hittest="false">
+			<Panel class="PlayPauseContainer" id="PlayPauseContainer" hittest="false">
 				<Panel class="PauseButton" onactivate="DACTogglePauseGame()" />
-				<Panel class="FastForwardButton" onactivate="DACStepForward()">
+				<Panel class="FastForwardButton" id="FastForwardButton" onactivate="DACStepForward()">
 					<DACParticleScenePanel id="FastForwardButtonTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
 				</Panel>
 				<Panel class="FastForwardButton_Sandbox" onactivate="DACStepForward()">
@@ -122,18 +123,22 @@
 		</Panel>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<Panel id="MainUISection" class="SafeArea" hittest="false">
-			<Panel id="PlayerStateContainer" class="RightPlayer PlayerState" hittest="false">
+		<Panel id="PlayerStateContainer" class="RightPlayer PlayerState" hittest="false">
 				<Panel id="PlayerDamageEffectTarget" />
 				<DACUnderlordStatus id="PlayerProfile" hittest="false" notooltip="1" />
 				<DACHudPlayerIcons id="PlayerIcons" hittest="true" />
-			</Panel>
+		</Panel>
+		
+		<Panel id="OpponentPlayerStateContainer" class="LeftPlayer PlayerState" hittest="false">
+				<DACUnderlordStatus id="OpponentPlayerProfile" hittest="false" />
+		</Panel>
+		
+		<Panel id="MainUISection" class="SafeArea" hittest="false">
+			
 
 			<DACNotificationContainer id="DuosMyNotificationContainer" class="DuosNotifications" hittest="false"/>
 
-			<Panel id="OpponentPlayerStateContainer" class="LeftPlayer PlayerState" hittest="false">
-				<DACUnderlordStatus id="OpponentPlayerProfile" hittest="false" />
-			</Panel>
+			
 
 			<Panel id="DuosBuddyPlayerStateContainer" class="LeftPlayer DuosBuddy PlayerState" hittest="false">
 				<DACUnderlordStatus id="DuosBuddyPlayerProfile" hittest="false" />
@@ -144,17 +149,14 @@
 			
 			</Panel>
 		</Panel>
-
+		
+		
+		
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<Panel id="LeaderboardSection" class="SafeArea" hittest="false">
 
 			<Panel class="PlayerLeaderboardBackground Hidden"  hittest="false">
 				<Panel id="LeaderboardLeftRail">
-					<Panel id="ShowScoreboardButton" onactivate="DACShowScoreboard()" >
-						<Label class="ScoreboardLabel" text="#DAC_InGame_Button_Show_Scoreboard" />
-						<Panel class="ScoreboardLabelIcon" />
-					</Panel>
-				
 					<Label id="LeaderboardTitle" text="#DAC_InGame_Tab_Leaderboard" />
 					<DACLeaderboardDuos />
 					<DACLeaderboard hittest="false" />
@@ -165,8 +167,14 @@
 				<Panel id="LeftDropZones" hittestchildren="true">
 					<DACSellUnitBar id="SellUnitBar" class="UnitDropBar"/>
 					<DACSendUnitBar id="SendUnitBar" class="UnitDropBar"/>
+					<DACUnitModifiers id="UnitModifiers" class="TopBottomFlow"/>
 				</Panel>
 			</Panel>
+		</Panel>
+		
+		<Panel id="ShowScoreboardButton" onactivate="DACShowScoreboard()" >
+			<Label class="ScoreboardLabel" text="#DAC_InGame_Button_Show_Scoreboard" />
+			<Panel class="ScoreboardLabelIcon" />
 		</Panel>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -178,8 +186,15 @@
 		</Panel>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+		
+		
 		<Panel id="ShopSection" hittest="false">
 			<DACUIShop hittest="false"/>
+		</Panel>
+
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<Panel id="TurboShopSection" hittest="false">
+			<DACUITurboShop hittest="false" />
 		</Panel>
 			
 		<Panel id="ShopButton" onactivate="DACToggleShop()">
@@ -201,15 +216,24 @@
 		</Panel>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<Panel id="ScoreboardBG" onactivate="DACHideScoreboard()" />	
+		
 		<Panel id="ScoreboardSection" class="SafeArea" hittest="false">
-			<Panel id="ScoreboardBG" onactivate="DACHideScoreboard()" />	
-			<Panel id="HideScoreboardButton" onactivate="DACHideScoreboard()">
+			<DACScoreboard />
+		</Panel>
+		
+		
+		
+		<Panel id="HideScoreboardButton" onactivate="DACHideScoreboard()">
 				<Label class="ScoreboardLabel" text="#DAC_InGame_Button_Hide_Scoreboard" />
 				<Panel class="ScoreboardLabelIcon" />
-			</Panel>		
-			<DACScoreboard />			
 		</Panel>
 
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<Panel id="PuzzleTopLeft" hittest="false">
+			<!-- This will get stuff added to it if the game is in Puzzle mode -->
+		</Panel>
+		
 		<!-- Debug menu under chat, so tooltips work properly 	-->
 		<Panel id="DebugMenuWrapper" hittest="false">
 			<Panel class="LeftRightFlow DebugSection DebugOpenCloseContainer">
@@ -351,14 +375,17 @@
 		</Panel>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<Panel id="SystemButtonsSection" class="SafeArea" hittest="false">
+		<Panel id="SystemButtonsSection" hittest="false">
 			<Panel class="BatteryIndicator" />
 			<Panel id="UpperRightZone">
 				<Panel id="HamburgerButton" onactivate="DACShowMenuButtons(); PlaySoundEffect( 'DAC_UI.InGame_SettingsOpen' )" />
 			</Panel>
-			<Panel id="ErrorMsg">
-				<Label text="{s:error_message}"/>
-			</Panel>
+			
+		</Panel>
+
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<Panel id="ErrorMsg">
+			<Label text="{s:error_message}"/>
 		</Panel>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -376,10 +403,10 @@
 				<Button class="MenuButton BevelButton" onactivate="DACHideMenuButtons(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 					<Label text="#DAC_InGame_MenuCancel"></Label>
 				</Button>
-				<Button class="MenuButton BevelButton" onactivate="DACIngameShowJail(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
+				<Button id="JailButton" class="MenuButton BevelButton" onactivate="DACIngameShowJail(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 					<Label text="#DAC_InGame_MenuJail"></Label>
 				</Button>
-				<Button class="MenuButton BevelButton" onactivate="DACShowHeropediaPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
+				<Button id="HeropediaButton" class="MenuButton BevelButton" onactivate="DACShowHeropediaPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 					<Label text="#DAC_InGame_Heropedia"></Label>
 				</Button>
 				<Button class="MenuButton BevelButton SettingsButton" onactivate="DACShowSettingsPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
@@ -388,8 +415,11 @@
 				<Button id="ZooButton" class="MenuButton BevelButton" onactivate="DACShowHudZoo(); DACHideMenuButtons()">
 					<Label text="#DAC_InGame_Zoo"></Label>
 				</Button>
-				<Button class="MenuButton BevelButton" onactivate="DACReturnToDashboard( false ); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
+				<Button  id="LeaveGameButton" class="MenuButton BevelButton" onactivate="DACReturnToDashboard( false ); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 					<Label text="#DAC_InGame_ReturnToMainMenu"></Label>
+				</Button>
+				<Button id="LeaveTutorialButton" class="MenuButton BevelButton" onactivate="DACReturnToDashboard( false ); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
+					<Label text="#DAC_InGame_LeaveTutorial"></Label>
 				</Button>
 			</Panel>
 			<Panel class="MenuBattlePassContainer">
@@ -401,12 +431,14 @@
 		<DACPopupManager id="PopupManager"/>		
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<Panel class="FadeOutPanel" />		
+		<Panel class="FadeOutPanel" />
 		<DACUIMatchIntro id="MatchIntro"/>
 		<Panel class="IntroFadeInPanel" />
 		<Panel id="WaitingForPlayers">
 			<Label text="#DAC_Hud_WaitingForPlayers"/>
 		</Panel>
+
+		<DACUIPuzzleIntro id="PuzzleIntro" />
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<Panel class="SafeArea" hittest="false">
@@ -504,5 +536,7 @@
 				</Button>
 			</Panel>
 		</Panel>
+
+		<DACUIHudTutorial/>
 	</DACUIHud>
 </root>

@@ -80,15 +80,22 @@
 		</Panel>
 		<Panel id="IconsMobileContainer">
 			<Panel id="IconsMobileSelector">
-				<Panel class="LocalPlayer ToggleSectionButton Synergies" onactivate="DACShowSynergiesTab()" >
+				<Panel class="LocalPlayer SynergiesButtonGroup ToggleSectionButton" hittest="true" onactivate="DACShowSynergiesTab()" >
+					<Panel class="Synergies" />
 					<Label class="SidebarLabel" text="#DAC_InGame_Tab_Synergies" />
 				</Panel>
-				<Panel class="LocalPlayer ToggleSectionButton Items" onactivate="DACShowItemsTab()">
+				<Panel class="LocalPlayer ItemsButtonGroup ToggleSectionButton" hittest="true" onactivate="DACShowItemsTab()">
+					<Panel class="Items" />
 					<Label class="SidebarLabel" text="#DAC_InGame_Tab_Items" />
+					<Label id="UnassignedItemsCount" text="{i:itemsUnassigned}" />
+						<Label class="BenchedItemsCount" text="{i:itemsBenched}" />
+						<DACScenePanel id="UnassignedItemsParticleScenePanel" hittest="false" map="particles/hud/items_unassigned" camera="cam_default" particleonly="true"/>
 				</Panel>
-				<Panel class="LocalPlayer ToggleSectionButton BattleStats" onactivate="DACShowBattleStatsTab()">
+				<Panel id="BattleStatsPanel" class="LocalPlayer BattleStatsButtonGroup ToggleSectionButton" hittest="true" onactivate="DACShowBattleStatsTab()">
+					<Panel class="BattleStats"/>
 					<Label class="SidebarLabel" text="#DAC_InGame_Tab_DamageShort" />
 				</Panel>
+
 			</Panel>
 		</Panel>
 	</DACHudPlayerIcons>

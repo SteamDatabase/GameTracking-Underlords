@@ -1,0 +1,149 @@
+// snapfire - Hero
+criterion "Issnapfire" "classname" "snapfire" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response snapfire_recruit_1
+{
+	speak "snapfire_recruit" noscene 
+}
+
+Rule snapfire_recruit_1_rule
+{
+	criteria Issnapfire ConceptRecruit UnitRank1
+	response snapfire_recruit_1
+}
+
+
+Response snapfire_recruit_2
+{
+	speak "snapfire_upgrade" noscene 
+}
+
+Rule snapfire_recruit_2_rule
+{
+	criteria Issnapfire ConceptRecruit UnitRank2
+	response snapfire_recruit_2
+}
+
+
+Response snapfire_recruit_3
+{
+	speak "snapfire_final_upgrade" noscene 
+}
+
+Rule snapfire_recruit_3_rule
+{
+	criteria Issnapfire ConceptRecruit UnitRank3
+	response snapfire_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response snapfire_start_round
+{
+	speak "snapfire_start_round" noscene 
+}
+
+Rule snapfire_start_round_rule
+{
+	criteria Issnapfire ConceptRoundStart 
+	response snapfire_start_round
+}
+
+
+Response snapfire_start_round_lost_last_round
+{
+	speak "snapfire_start_round_lost_last_round" noscene 
+}
+
+Rule snapfire_start_round_lost_last_round_rule
+{
+	criteria Issnapfire ConceptRoundStart LostLastGame
+	response snapfire_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response snapfire_flawless_victory
+{
+	speak "snapfire_flawless_victory" noscene 
+}
+
+Rule snapfire_flawless_victory_rule
+{
+	criteria Issnapfire ConceptRoundEnd Result_WinFlawless
+	response snapfire_flawless_victory
+}
+
+
+Response snapfire_decisive_victory
+{
+	speak "snapfire_decisive_victory" noscene 
+}
+
+Rule snapfire_decisive_victory_rule
+{
+	criteria Issnapfire ConceptRoundEnd Result_WinDecisive
+	response snapfire_decisive_victory
+}
+
+Response snapfire_narrow_victory
+{
+	speak "snapfire_narrow_victory" noscene 
+}
+
+Rule snapfire_narrow_victory_rule
+{
+	criteria Issnapfire ConceptRoundEnd Result_WinNarrow
+	response snapfire_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response snapfire_flawless_defeat
+{
+	speak "snapfire_flawless_defeat" noscene 
+}
+
+Rule snapfire_flawless_defeat_rule
+{
+	criteria Issnapfire ConceptRoundEnd Result_LoseFlawless
+	response snapfire_flawless_defeat
+}
+
+
+Response snapfire_decisive_defeat
+{
+	speak "snapfire_decisive_defeat" noscene 
+}
+
+Rule snapfire_decisive_defeat_rule
+{
+	criteria Issnapfire ConceptRoundEnd Result_LoseDecisive
+	response snapfire_decisive_defeat
+}
+
+Response snapfire_narrow_defeat
+{
+	speak "snapfire_narrow_defeat" noscene 
+}
+
+Rule snapfire_narrow_defeat_rule
+{
+	criteria Issnapfire ConceptRoundEnd Result_LoseNarrow
+	response snapfire_narrow_defeat
+}

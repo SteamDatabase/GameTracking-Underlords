@@ -1,0 +1,893 @@
+DACPlayPage
+{
+	width: 100%;
+	height: 100%;
+	background-size: 100%;
+}
+
+#ForegroundContainer
+{
+    width: 100%;
+    height:100%;
+    flow-children: down;
+    horizontal-align: right;
+}
+
+#GameModeContainer
+{
+    width: fit-children;
+    height: 776px;
+    flow-children: right;
+    margin-top: 120px;
+    horizontal-align: right;
+}
+
+
+.AspectRatio21x9 #GameModeContainer
+{
+	margin-right: safe-area-inset-right;
+}
+
+#GameModeSelectionContainer
+{
+    width: 776px;
+    height: 776px;
+    margin-right: 32px;
+    horizontal-align: right;
+}
+
+.GameModeButton
+{
+    width: 372px;
+    height: 372px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    brightness: 0.6;
+    saturation: 0.4;
+
+    transition-property: brightness, background-color, saturation, border, box-shadow;
+    transition-duration: 0.2s;
+    border: 2px solid #00000000;
+    background-color: #100f10;
+}
+
+.GameModeButton:hover
+{
+    brightness: 1.0;
+    saturation: 1.0;
+}
+
+.SelectedModeTurbo #TurboGameModeButton,
+.SelectedModeTurboLocalBotDifficulty #TurboGameModeButton,
+.SelectedModeTurboGCBotDifficulty #TurboGameModeButton,
+.SelectedModeStandard #StandardGameModeButton,
+.SelectedModeStandardLocalBotDifficulty #StandardGameModeButton,
+.SelectedModeStandardGCBotDifficulty #StandardGameModeButton,
+.SelectedModeDuos #DuosGameModeButton,
+.SelectedModeDuosLocalBotDifficulty #DuosGameModeButton,
+.SelectedModeDuosGCBotDifficulty #DuosGameModeButton,
+.SelectedModeTraining #TrainingGameModeButton,
+{
+    background-color: gradient (linear, 0% 0%, 0% 100%, from(#6777cacc), to(#100f10));
+    border: 2px solid textBrightest;
+    box-shadow: #393c8e88 0px 0px 16px;
+    brightness: 1;
+    saturation: 1;
+}
+
+.IsLayoutSmallScreen .SelectedModeTurbo #TurboGameModeButton .GameModeDescContainer,
+.IsLayoutSmallScreen .SelectedModeTurboLocalBotDifficulty #TurboGameModeButton .GameModeDescContainer,
+.IsLayoutSmallScreen .SelectedModeTurboGCBotDifficulty #TurboGameModeButton .GameModeDescContainer,
+.IsLayoutSmallScreen .SelectedModeStandard #StandardGameModeButton .GameModeDescContainer,
+.IsLayoutSmallScreen .SelectedModeStandardLocalBotDifficulty #StandardGameModeButton .GameModeDescContainer,
+.IsLayoutSmallScreen .SelectedModeStandardGCBotDifficulty #StandardGameModeButton .GameModeDescContainer,
+.IsLayoutSmallScreen .SelectedModeDuos #DuosGameModeButton .GameModeDescContainer,
+.IsLayoutSmallScreen .SelectedModeDuosLocalBotDifficulty #DuosGameModeButton .GameModeDescContainer,
+.IsLayoutSmallScreen .SelectedModeDuosGCBotDifficulty #DuosGameModeButton .GameModeDescContainer, 
+.IsLayoutSmallScreen .SelectedModeTraining #TrainingGameModeButton .GameModeDescContainer,
+{
+    height: 160px;
+}
+
+.IsLayoutSmallScreen .SelectedModeTurbo #TurboGameModeButton .GameModeButtonDesc,
+.IsLayoutSmallScreen .SelectedModeTurboLocalBotDifficulty #TurboGameModeButton .GameModeButtonDesc,
+.IsLayoutSmallScreen .SelectedModeTurboGCBotDifficulty #TurboGameModeButton .GameModeButtonDesc,
+.IsLayoutSmallScreen .SelectedModeStandard #StandardGameModeButton .GameModeButtonDesc,
+.IsLayoutSmallScreen .SelectedModeStandardLocalBotDifficulty #StandardGameModeButton .GameModeButtonDesc,
+.IsLayoutSmallScreen .SelectedModeStandardGCBotDifficulty #StandardGameModeButton .GameModeButtonDesc,
+.IsLayoutSmallScreen .SelectedModeDuos #DuosGameModeButton .GameModeButtonDesc,
+.IsLayoutSmallScreen .SelectedModeDuosLocalBotDifficulty #DuosGameModeButton .GameModeButtonDesc,
+.IsLayoutSmallScreen .SelectedModeDuosGCBotDifficulty #DuosGameModeButton .GameModeButtonDesc, 
+.IsLayoutSmallScreen .SelectedModeTraining #TrainingGameModeButton .GameModeButtonDesc,
+{
+    opacity: 1.0;
+    color: #c7dbda;
+}
+
+
+.SelectedModeTurbo #TurboGameModeButton Label,
+.SelectedModeTurboLocalBotDifficulty #TurboGameModeButton Label,
+.SelectedModeTurboGCBotDifficulty #TurboGameModeButton Label,
+.SelectedModeStandard #StandardGameModeButton Label,
+.SelectedModeStandardLocalBotDifficulty #StandardGameModeButton Label,
+.SelectedModeStandardGCBotDifficulty #StandardGameModeButton Label,
+.SelectedModeDuos #DuosGameModeButton Label,
+.SelectedModeDuosLocalBotDifficulty #DuosGameModeButton Label,
+.SelectedModeDuosGCBotDifficulty #DuosGameModeButton Label,
+.SelectedModeTraining #TrainingGameModeButton Label,
+{
+    color: #c7dbda;
+    //text-shadow: 0px 0px 1px 2.0 #393c8e88;
+}
+
+#TurboGameModeButton Label,
+#StandardGameModeButton Label,
+#DuosGameModeButton Label,
+#TrainingGameModeButton Label,
+{
+    transition-property: color, opacity;
+    transition-duration: 0.2s;
+}
+
+#TurboGameModeButton
+{
+    horizontal-align: left;
+    background-image: url("s2r://panorama/images/dashboard/play/btn_turbo_psd.vtex");
+}
+#StandardGameModeButton
+{
+    horizontal-align: right;
+    background-image: url("s2r://panorama/images/dashboard/play/btn_classic_psd.vtex");
+}
+#DuosGameModeButton
+{
+    vertical-align: bottom;
+    horizontal-align: left;
+    background-image: url("s2r://panorama/images/dashboard/play/btn_duos_psd.vtex");
+}
+#TrainingGameModeButton
+{
+    vertical-align: bottom;
+    horizontal-align: right;
+    background-image: url("s2r://panorama/images/dashboard/play/btn_training_psd.vtex");
+}
+.GameModeButtonTitle
+{
+    font-size: 52px;
+    horizontal-align: center;
+    vertical-align: top;
+    margin-bottom: 16px;
+    padding: 0px 20px 0px 20px;
+    color: textDark;
+    height: 52px;
+}
+
+.GameModeDescContainer
+{
+    horizontal-align: center;
+    vertical-align: bottom;
+    height: 68px;
+    transition-property: height;
+    transition-duration: 0.2s;
+    flow-children: down;
+    overflow: noclip;
+}
+
+.GameModeButton:hover .GameModeDescContainer
+{
+    height: 160px;
+}
+
+.GameModeButton:hover .GameModeButtonDesc
+{
+    opacity: 1.0;
+    color: #c7dbda;
+}
+
+.GameModeButton:hover .GameModeButtonTitle
+{
+    color: #c7dbda;
+}
+
+.GameModeButtonDesc
+{
+    height: 108px;
+    horizontal-align: center;
+    text-align: center;
+    font-size: 24px;
+    font-weight: black;
+    color: textDark;
+    text-transform: uppercase;
+    padding: 0px 20px 0px 20px;
+    text-overflow: shrink;
+    width: 372px;
+    opacity: 0;
+    background-color: gradient (linear, 0% 0%, 0% 100%, from(#2c2e3700), to(#100f10));
+    transition-property: opacity;
+    transition-duration: 0.2s;
+}
+
+#GameModeOptionsContainer
+{
+    width: 440px;
+    height: 100%;
+    padding: 20px;
+    background-color: gradient (linear, 0% 0%, 0% 100%, from(#2c2e37), to(#000000cc));
+    margin-right: 32px;
+}
+
+.GameModeOptionsPanel
+{
+    width: 100%;
+    height: 100%;
+    flow-children: down;
+    visibility: collapse;
+    transition-property: visibility;
+    transition-duration: 0.2s;
+}
+.SelectedModeTurbo #TurboOptions,
+.SelectedModeTurboLocalBotDifficulty #TurboBotDifficulty,
+.SelectedModeTurboGCBotDifficulty #TurboBotDifficulty,
+.SelectedModeStandard #StandardOptions,
+.SelectedModeStandardLocalBotDifficulty #StandardBotDifficulty,
+.SelectedModeStandardGCBotDifficulty #StandardBotDifficulty,
+.SelectedModeDuos #DuosOptions,
+.SelectedModeDuosLocalBotDifficulty #DuosBotDifficulty,
+.SelectedModeDuosGCBotDifficulty #DuosBotDifficulty,
+.SelectedModeTraining #TrainingOptions,
+{
+    visibility: visible;
+}
+
+.GameModeOptionsSettingsContainer,
+.ResumeInfoContainer
+{
+    width: 100%;
+    height: fit-children;
+    flow-children: down;
+    vertical-align: top;
+}
+#LocalTurboBotDifficultyContainer,
+#GCTurboBotDifficultyContainer,
+#LocalTurboBotDifficultyContainer,
+#GCStandardBotDifficultyContainer,
+#LocalDuosBotDifficultyContainer,
+#GCDuosBotDifficultyContainer,
+{
+    visibility: collapse;
+}
+.SelectedModeTurboLocalBotDifficulty #LocalTurboBotDifficultyContainer,
+.SelectedModeTurboGCBotDifficulty #GCTurboBotDifficultyContainer,
+.SelectedModeStandardLocalBotDifficulty #LocalTurboBotDifficultyContainer,
+.SelectedModeStandardGCBotDifficulty #GCStandardBotDifficultyContainer,
+.SelectedModeDuosLocalBotDifficulty #LocalDuosBotDifficultyContainer,
+.SelectedModeDuosGCBotDifficulty #GCDuosBotDifficultyContainer,
+{
+    visibility: visible;
+}
+
+.GameModeOptionsSettingsSubContainer,
+.DuosMatchTypeMultiplayer.DuosMatchmakingTypeRanked #DuosSubSettingTeammate,
+{
+    width: 100%;
+    height: fit-children;
+    flow-children: down;
+    visibility: collapse;
+}
+.TurboMatchTypeMultiplayer #TurboSubSettingMultiplayer,
+.TurboMatchTypeBots #TurboSubSettingBots,
+.StandardMatchTypeMultiplayer #StandardSubSettingMultiplayer,
+.StandardMatchTypeBots #StandardSubSettingBots,
+.DuosMatchTypeMultiplayer #DuosSubSettingMultiplayer,
+.DuosMatchTypeMultiplayer #DuosSubSettingTeammate,
+.DuosMatchTypeBots #DuosSubSettingBots,
+{
+    visibility: visible;
+}
+
+.GameModeOptionsTitle
+{
+    font-size: 52px;
+    margin-bottom: 12px;
+    color: #c7dbda;
+}
+.GameModeOptionsDesc
+{
+    color: textDark;
+    font-size: 24px;
+    font-weight: black;
+    text-transform: uppercase;
+    margin-bottom: 32px;
+    transition-property: color;
+    transition-duration: 0.2s;
+}
+
+.TrainingFreestyle .GameModeOptionsDesc.TrainingDesc, .TrainingTutorial .GameModeOptionsDesc.FreestyleDesc
+{
+    color: #424552;
+}
+
+.GameModeOptionsDiv
+{
+    width: 100%;
+    height: 4px;
+    margin-bottom: 12px;
+    horizontal-align: center;
+    background-image: url("s2r://panorama/images/dashboard/play_rule_psd.vtex");
+    background-repeat: no-repeat;
+}
+
+#DuosTeammateDiv
+{
+    visibility: collapse;
+}
+
+.DuosMatchTypeMultiplayer #DuosTeammateDiv 
+{
+    visibility: visible;
+}
+
+.GameModeOptionButton
+{
+    margin-top: 8px;
+    margin-bottom: 12px;
+    height: 80px;
+    background-image: url("s2r://panorama/images/dashboard/play/option_button_bg_psd.vtex");
+    background-size: cover;
+    width: 100%;
+    background-color: none;
+    transition-property: background-color, brightness;
+    transition-duration: 0.2s;
+    background-color: #1e222f;
+    brightness: 1.0;
+}
+
+.GameModeOptionButton:hover
+{
+    brightness: 1.5;
+}
+
+
+.TurboMatchTypeMultiplayer #TurboMatchTypeButtonMultiplayer,
+.TurboMatchTypeBots #TurboMatchTypeButtonBots,
+.TurboMatchmakingTypeCasual #TurboMatchmakingTypeButtonCasual,
+.StandardMatchTypeMultiplayer #StandardMatchTypeButtonMultiplayer,
+.StandardMatchTypeBots #StandardMatchTypeButtonBots,
+.StandardMatchmakingTypeCasual #StandardMatchmakingTypeButtonCasual,
+.StandardMatchmakingTypeRanked #StandardMatchmakingTypeButtonRanked,
+.DuosMatchTypeMultiplayer #DuosMatchTypeButtonMultiplayer,
+.DuosMatchTypeBots #DuosMatchTypeButtonBots,
+.DuosMatchmakingTypeCasual #DuosMatchmakingTypeButtonCasual,
+.DuosMatchmakingTypeRanked #DuosMatchmakingTypeButtonRanked,
+.TrainingFreestyle #TrainingTypeButtonFreestyle,
+.TrainingTutorial #TrainingTypeButtonTutorial,
+.DuosTeammateTypeInvite #DuosTeammateTypeButtonInvite,
+.DuosTeammateTypeBot #DuosTeammateTypeButtonBot,
+.ResumeSaveGameSelected #TurboResumeBotGameButton,
+.ResumeSaveGameSelected #StandardResumeBotGameButton,
+.ResumeSaveGameSelected #DuosResumeBotGameButton,
+.DeleteSaveGameSelected #TurboDeleteBotGameButton,
+.DeleteSaveGameSelected #StandardDeleteBotGameButton,
+.DeleteSaveGameSelected #DuosDeleteBotGameButton,
+{
+    background-color: gradient (linear, 0% 0%, 100% 0%, from(#6777ca88), to(#100f10));
+}
+.LocalTurboBotDifficulty0 #EasyLocalTurboBotOptionButton,
+.LocalTurboBotDifficulty1 #MediumLocalTurboBotOptionButton,
+.LocalTurboBotDifficulty2 #ChallengingLocalTurboBotOptionButton,
+.LocalTurboBotDifficulty3 #HardcoreLocalTurboBotOptionButton,
+.LocalTurboBotDifficulty4 #BattlepassLocalTurboBotOptionButton,
+.GCTurboBotDifficulty1 #EasyGCTurboBotOptionButton,
+.GCTurboBotDifficulty2 #MediumGCTurboBotOptionButton,
+.GCTurboBotDifficulty3 #ChallengingGCTurboBotOptionButton,
+.GCTurboBotDifficulty4 #BattlepassGCTurboBotOptionButton,
+.GCTurboBotDifficulty0 #NoBotGCTurboBotOptionButton,
+.LocalStandardBotDifficulty0 #EasyLocalStandardBotOptionButton,
+.LocalStandardBotDifficulty1 #MediumLocalStandardBotOptionButton,
+.LocalStandardBotDifficulty2 #ChallengingLocalStandardBotOptionButton,
+.LocalStandardBotDifficulty3 #HardcoreLocalStandardBotOptionButton,
+.LocalStandardBotDifficulty4 #BattlepassLocalStandardBotOptionButton,
+.GCStandardBotDifficulty1 #EasyGCStandardBotOptionButton,
+.GCStandardBotDifficulty2 #MediumGCStandardBotOptionButton,
+.GCStandardBotDifficulty3 #ChallengingGCStandardBotOptionButton,
+.GCStandardBotDifficulty4 #BattlepassGCStandardBotOptionButton,
+.GCStandardBotDifficulty0 #NoBotGCStandardBotOptionButton,
+.LocalDuosBotDifficulty0 #EasyLocalDuosBotOptionButton,
+.LocalDuosBotDifficulty1 #MediumLocalDuosBotOptionButton,
+.LocalDuosBotDifficulty2 #ChallengingLocalDuosBotOptionButton,
+.LocalDuosBotDifficulty3 #HardcoreLocalDuosBotOptionButton,
+.LocalDuosBotDifficulty4 #BattlepassLocalDuosBotOptionButton,
+.GCDuosBotDifficulty1 #EasyGCDuosBotOptionButton,
+.GCDuosBotDifficulty2 #MediumGCDuosBotOptionButton,
+.GCDuosBotDifficulty3 #ChallengingGCDuosBotOptionButton,
+.GCDuosBotDifficulty4 #BattlepassGCDuosBotOptionButton,
+.GCDuosBotDifficulty0 #NoBotGCDuosBotOptionButton,
+{
+    background-color: gradient (linear, 0% 0%, 100% 0%, from(#6777ca88), to(#100f10));
+}
+
+
+.TurboMatchTypeMultiplayer #TurboMatchTypeButtonMultiplayer:hover,
+.TurboMatchTypeBots #TurboMatchTypeButtonBots:hover,
+.TurboMatchmakingTypeCasual #TurboMatchmakingTypeButtonCasual:hover,
+.StandardMatchTypeMultiplayer #StandardMatchTypeButtonMultiplayer:hover,
+.StandardMatchTypeBots #StandardMatchTypeButtonBots:hover,
+.StandardMatchmakingTypeCasual #StandardMatchmakingTypeButtonCasual:hover,
+.StandardMatchmakingTypeRanked #StandardMatchmakingTypeButtonRanked:hover,
+.DuosMatchTypeMultiplayer #DuosMatchTypeButtonMultiplayer:hover,
+.DuosMatchTypeBots #DuosMatchTypeButtonBots:hover,
+.DuosMatchmakingTypeCasual #DuosMatchmakingTypeButtonCasual:hover,
+.DuosMatchmakingTypeRanked #DuosMatchmakingTypeButtonRanked:hover,
+.TrainingFreestyle #TrainingTypeButtonFreestyle:hover,
+.TrainingTutorial #TrainingTypeButtonTutorial:hover,
+.DuosTeammateTypeInvite #DuosTeammateTypeButtonInvite:hover,
+.DuosTeammateTypeBot #DuosTeammateTypeButtonBot:hover,
+{
+    brightness: 1.0;
+}
+
+.DuosMatchmakingTypeRanked #DuosTeammateTypeButtonBot,
+{
+    visibility: collapse;
+}
+
+.TurboMatchTypeMultiplayer #TurboMatchTypeButtonMultiplayer Label,
+.TurboMatchTypeBots #TurboMatchTypeButtonBots Label,
+.TurboMatchmakingTypeCasual #TurboMatchmakingTypeButtonCasual Label,
+.StandardMatchTypeMultiplayer #StandardMatchTypeButtonMultiplayer Label,
+.StandardMatchTypeBots #StandardMatchTypeButtonBots Label,
+.StandardMatchmakingTypeCasual #StandardMatchmakingTypeButtonCasual Label,
+.StandardMatchmakingTypeRanked #StandardMatchmakingTypeButtonRanked Label,
+.DuosMatchTypeMultiplayer #DuosMatchTypeButtonMultiplayer Label,
+.DuosMatchTypeBots #DuosMatchTypeButtonBots Label,
+.DuosMatchmakingTypeCasual #DuosMatchmakingTypeButtonCasual Label,
+.DuosMatchmakingTypeRanked #DuosMatchmakingTypeButtonRanked Label,
+.TrainingFreestyle #TrainingTypeButtonFreestyle Label,
+.TrainingTutorial #TrainingTypeButtonTutorial Label,
+.DuosTeammateTypeInvite #DuosTeammateTypeButtonInvite Label,
+.DuosTeammateTypeBot #DuosTeammateTypeButtonBot Label,
+.ResumeSaveGameSelected #TurboResumeBotGameButton Label,
+.ResumeSaveGameSelected #StandardResumeBotGameButton Label,
+.ResumeSaveGameSelected #DuosResumeBotGameButton Label,
+.DeleteSaveGameSelected #TurboDeleteBotGameButton Label,
+.DeleteSaveGameSelected #StandardDeleteBotGameButton Label,
+.DeleteSaveGameSelected #DuosDeleteBotGameButton Label,
+{
+    color: #c7dbda;
+}
+.LocalTurboBotDifficulty0 #EasyLocalTurboBotOptionButton Label,
+.LocalTurboBotDifficulty1 #MediumLocalTurboBotOptionButton Label,
+.LocalTurboBotDifficulty2 #ChallengingLocalTurboBotOptionButton Label,
+.LocalTurboBotDifficulty3 #HardcoreLocalTurboBotOptionButton Label,
+.LocalTurboBotDifficulty4 #BattlepassLocalTurboBotOptionButton Label,
+.GCTurboBotDifficulty1 #EasyGCTurboBotOptionButton Label,
+.GCTurboBotDifficulty2 #MediumGCTurboBotOptionButton Label,
+.GCTurboBotDifficulty3 #ChallengingGCTurboBotOptionButton Label,
+.GCTurboBotDifficulty4 #BattlepassGCTurboBotOptionButton Label,
+.GCTurboBotDifficulty0 #NoBotGCTurboBotOptionButton Label,
+.LocalStandardBotDifficulty0 #EasyLocalStandardBotOptionButton Label,
+.LocalStandardBotDifficulty1 #MediumLocalStandardBotOptionButton Label,
+.LocalStandardBotDifficulty2 #ChallengingLocalStandardBotOptionButton Label,
+.LocalStandardBotDifficulty3 #HardcoreLocalStandardBotOptionButton Label,
+.LocalStandardBotDifficulty4 #BattlepassLocalStandardBotOptionButton Label,
+.GCStandardBotDifficulty1 #EasyGCStandardBotOptionButton Label,
+.GCStandardBotDifficulty2 #MediumGCStandardBotOptionButton Label,
+.GCStandardBotDifficulty3 #ChallengingGCStandardBotOptionButton Label,
+.GCStandardBotDifficulty4 #BattlepassGCStandardBotOptionButton Label,
+.GCStandardBotDifficulty0 #NoBotGCStandardBotOptionButton Label,
+.LocalDuosBotDifficulty0 #EasyLocalDuosBotOptionButton Label,
+.LocalDuosBotDifficulty1 #MediumLocalDuosBotOptionButton Label,
+.LocalDuosBotDifficulty2 #ChallengingLocalDuosBotOptionButton Label,
+.LocalDuosBotDifficulty3 #HardcoreLocalDuosBotOptionButton Label,
+.LocalDuosBotDifficulty4 #BattlepassLocalDuosBotOptionButton Label,
+.GCDuosBotDifficulty1 #EasyGCDuosBotOptionButton Label,
+.GCDuosBotDifficulty2 #MediumGCDuosBotOptionButton Label,
+.GCDuosBotDifficulty3 #ChallengingGCDuosBotOptionButton Label,
+.GCDuosBotDifficulty4 #BattlepassGCDuosBotOptionButton Label,
+.GCDuosBotDifficulty0 #NoBotGCDuosBotOptionButton Label,
+{
+    color: #c7dbda;
+}
+
+#TurboMatchmakingTypeButtonCasual
+{
+    visibility: collapse;
+}
+
+#ViewChallenges
+{
+    height: 60px;
+    background-image: url("s2r://panorama/images/dashboard/play/option_button_bg_psd.vtex");
+    background-size: 100%;
+    background-color: none; 
+    horizontal-align: center;
+    margin-left: 128px;
+    margin-top: 36px;
+    brightness: 1.0;
+    transition-property: brightness;
+    transition-duration: 0.2s;
+    max-width: 300px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #ViewChallenges
+{
+    margin-left: 324px; 
+    ui-scale: 120%;
+}
+
+#ViewChallenges:hover
+{
+    brightness: 1.8;
+}
+
+#ViewChallenges Label
+{
+    color: textDark;
+    font-size: 28px;
+    font-weight: black;
+    text-transform: uppercase;
+    vertical-align: center;
+    padding: 0px 20px;
+    text-overflow: shrink;
+}
+
+.GameModeOptionButton Label
+{
+    color: #4b4e5d;
+    font-size: 32px;
+    font-weight: black;
+    text-transform: uppercase;
+    vertical-align: center;
+    padding: 0px 20px;
+    transition-property: color;
+    transition-duration: 0.2s;
+}
+
+.OptionHeader
+{
+    color: #4b4e5d;
+    font-size: 24px;
+    font-weight: black;
+    text-transform: uppercase;
+    margin-top: 12px;
+}
+
+.BotDifficultyDropdown
+{
+    width: 100%;
+    background-color: #25262e;
+    height: 72px;
+    background-image: url("s2r://panorama/images/dashboard/dropdown_icon_psd.vtex");
+    background-position: right 60px 50%;
+    background-repeat: no-repeat;
+    margin-top: 12px;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+}
+
+.BotDifficultyDropdown:hover
+{
+    background-color: #2b2d36;
+}
+#GCTurboBotDifficultyButton,
+#GCStandardBotDifficultyButton,
+#GCDuosBotDifficultyButton,
+.HasParty #LocalTurboBotDifficultyButton,
+.HasParty #LocalStandardBotDifficultyButton,
+.HasParty #LocalDuosBotDifficultyButton,
+{
+    visibility: collapse;
+}
+.HasParty #GCTurboBotDifficultyButton,
+.HasParty #GCStandardBotDifficultyButton,
+.HasParty #GCDuosBotDifficultyButton,
+{
+    visibility: visible;
+}
+.BotDifficultyDropdown Label
+{
+    font-size: 32px;
+    font-weight: black;
+    text-transform: uppercase;
+    vertical-align: center;
+    color: #c7dbda;
+    padding-left: 20px;
+}
+
+
+#StandardLocalBotDifficultyDropdownDropDownMenu
+{
+    width: 400px;
+}
+
+#StandardLocalBotDifficultyDropdownDropDownMenu .DropDownChild,
+#TurboLocalBotDifficultyDropdownDropDownMenu .DropDownChild,
+#DuosLocalBotDifficultyDropdownDropDownMenu .DropDownChild
+{
+    background-color: #25262e;
+    text-transform: uppercase;
+}
+
+DropDownMenu Label
+{
+    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: black;
+    padding: 6px 0px 6px 20px;
+}
+
+DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
+{
+    color: #c7dbda;  
+}
+
+.PlayPageLabel
+{
+    visibility: collapse;
+    color: textDark;
+    font-size: 24px;
+    line-height: 28px;
+    horizontal-align: center;
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: black;
+    text-align: center;
+}
+
+
+#Footer
+{
+    width: 100%;
+    height: 25%;
+}
+
+#PlayButtonContainer
+{
+    width: fit-children;
+    height: 100%;
+    horizontal-align: right;
+    margin-top: 16px;
+    flow-children: down;
+}
+
+.PlayButton
+{
+    horizontal-align: right;
+	max-width: 540px;
+	height: 112px;
+	opacity: 1;
+	transition-property: brightness;
+	transition-duration: .2s; 
+	background-image: url("s2r://panorama/images/dashboard/play/play_button_find_match_psd.vtex");
+    background-size: 100%;
+    transition-property: background-image, max-width, brightness;
+    transition-duration: 0.2s;
+}
+
+.PlayButton:hover
+{
+    brightness: 2.0;
+}
+
+.AspectRatio21x9 .PlayButton
+{
+    max-width: 800px;
+}
+
+.SelectedModeDuos .PlayButton
+{
+    background-image: url("s2r://panorama/images/dashboard/play/play_button_invite_psd.vtex");
+}
+
+.DuoPartyState_Ready.SelectedModeDuos .PlayButton,
+.DuosMatchTypeBots.SelectedModeDuos .PlayButton
+{
+	background-image: url("s2r://panorama/images/dashboard/play/play_button_find_match_psd.vtex");
+}
+
+#TurboPlayButton,
+#StandardPlayButton,
+#DuosPlayButton,
+#TrainingPlayButton,
+{
+    visibility: collapse;
+}
+
+
+
+.SelectedModeTurbo #TurboPlayButton,
+.SelectedModeStandard #StandardPlayButton,
+.SelectedModeDuos #DuosPlayButton,
+.SelectedModeTraining #TrainingPlayButton,
+{
+    visibility: visible;
+}
+
+.FindMatchLabel, .BeginMatchLabel, .InviteFriendLabel, .StartLabel
+{
+    font-size: 80px;
+	font-weight: black;
+	letter-spacing: 1px;
+	vertical-align: center;
+	color: textBrighter;
+	text-transform: uppercase;
+	text-align: right;
+	text-overflow: shrink;
+	overflow: noclip;
+    max-width: 510px;
+    height: 112px;
+	transition-property: brightness;
+	transition-duration: .2s; 
+	//opacity-mask: url("s2r://panorama/images/dashboard/homebutton_mask_psd.vtex");
+	padding: 4px 0px 0px 36px;
+    margin-right: 32px;
+}
+
+.AspectRatio21x9 .FindMatchLabel, .AspectRatio21x9 .BeginMatchLabel, .AspectRatio21x9 .InviteFriendLabel, .AspectRatio21x9 .StartLabel
+{
+    margin-right: safe-area-inset-right;
+    max-width: 600px;
+}
+
+#DuosFindMatchLabel,
+.TurboMatchTypeBots #TurboFindMatchLabel,
+.TurboMatchTypeMultiplayer #TurboBeginMatchLabel,
+.StandardMatchTypeBots #StandardFindMatchLabel,
+.StandardMatchTypeMultiplayer #StandardBeginMatchLabel,
+.DuosMatchTypeBots #DuosFindMatchLabel,
+.DuosMatchTypeBots.DuoPartyState_Ready #DuosFindMatchLabel,
+.DuosMatchTypeMultiplayer #DuosBeginMatchLabel,
+.DuoPartyState_Ready #DuosInviteFriendLabel,
+.DuosMatchTypeBots #DuosInviteFriendLabel,
+{
+    visibility: collapse;
+}
+.DuoPartyState_Ready #DuosFindMatchLabel,
+{
+    visibility: visible;
+}
+
+.LockedLabel, .LoginRequired
+{
+    color: #c13939;
+    font-weight: black;
+    text-transform: uppercase;
+    font-size: 28px;
+    visibility: collapse;
+    horizontal-align: right;
+    text-align: right;
+    margin-right: 32px;
+}
+.AspectRatio21x9 .LockedLabel, .AspectRatio21x9 .LoginRequired
+{
+    margin-right: safe-area-inset-right;	
+}
+
+#DuosLockedLabel,
+{
+    visibility: collapse;
+}
+.CasualIsLocked #CasualLockedLabel,
+.RankedIsLocked #RankedLockedLabel,
+.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosLockedLabel,
+{
+    visibility: visible;
+}
+.SelectedModeDuos.DuosMatchTypeMultiplayer.DuoPartyState_Ready #DuosLockedLabel,
+{
+    visibility: collapse;
+}
+
+#UnderlordSelector
+{
+    horizontal-align: left;
+    margin-left: 100px;
+    margin-right: 0px;
+}
+
+.IsLayoutSmallScreen #UnderlordSelector
+{
+    margin-left: 60px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #UnderlordSelector
+{
+    margin-left: 232px;
+}
+
+.Underlord_0 .UnderlordSelectContainer .UnderlordSelectTopContainer,
+.Underlord_0 .UnderlordSelectContainer .UnderlordSelectMiddleContainer,
+.Underlord_0 .UnderlordSelectContainer .UnderlordSelectBottomContainer,
+.UnderlordSelectContainer.HideUnderlordSelection
+{
+    visibility: collapse;
+}
+.IsLayoutSmallScreen .UnderlordSelectContainer
+{
+    ui-scale: 120%;
+}
+.HasParty.PartyReady DACPlayPage #Deselect,
+DACPlayPage #ViewDetails,
+.HasParty DACPlayPage #Select,
+{
+    visibility: visible;
+}
+
+.HasParty DACPlayPage #ViewDetails,
+.HasParty.PartyReady DACPlayPage #Select,
+.HasParty.PartyReady .UnderlordArrow
+{
+    visibility: collapse;
+}
+
+#UnderlordShadow
+{
+	background-image: url("s2r://panorama/images/dashboard/underlord_shadow_left_psd.vtex");
+	vertical-align: bottom;
+	horizontal-align: left;
+	width: 1400px;
+	height: 300px;
+	background-size: cover;
+}
+
+.NotConnectedToGC #TurboMatchTypeButtonMultiplayer,
+.NotConnectedToGC #StandardMatchTypeButtonMultiplayer,
+.NotConnectedToGC #DuosMatchTypeButtonMultiplayer,
+{
+    visibility: collapse;
+}
+#BattlepassLocalTurboBotOptionButton,
+.NotConnectedToGC #BattlepassLocalStandardBotOptionButton,
+.NotConnectedToGC #BattlepassLocalDuosBotOptionButton,
+{
+    visibility: collapse;
+}
+
+.ResumeAvailable.SelectedModeTurbo #TurboPlayButton,
+.ResumeAvailable.SelectedModeStandard #StandardPlayButton,
+.ResumeAvailable.SelectedModeDuos #DuosPlayButton,
+#SaveGamePlayButton,
+.ResumeAvailable.SelectedModeTurbo #TurboSubSettingBots,
+.ResumeAvailable.SelectedModeStandard #StandardSubSettingBots,
+.ResumeAvailable.SelectedModeDuos #DuosSubSettingBots,
+#TurboSubSettingResume,
+#StandardSubSettingResume,
+#DuosSubSettingResume,
+.ResumeAvailable.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboSubSettingResume,
+.ResumeAvailable.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardSubSettingResume,
+.ResumeAvailable.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosSubSettingResume,
+.ResumeAvailable.SelectedModeTurbo.TurboMatchTypeMultiplayer #SaveGamePlayButton,
+.ResumeAvailable.SelectedModeStandard.StandardMatchTypeMultiplayer #SaveGamePlayButton,
+.ResumeAvailable.SelectedModeDuos.DuosMatchTypeMultiplayer #SaveGamePlayButton,
+.ResumeAvailable.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboSubSettingBots,
+.ResumeAvailable.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardSubSettingBots,
+.ResumeAvailable.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosSubSettingBots,
+{
+    visibility: collapse;
+}
+
+.ResumeAvailable #TurboSubSettingResume,
+.ResumeAvailable #StandardSubSettingResume,
+.ResumeAvailable #DuosSubSettingResume,
+.ResumeAvailable #SaveGamePlayButton,
+.ResumeAvailable.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboPlayButton,
+.ResumeAvailable.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardPlayButton,
+.ResumeAvailable.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosPlayButton,
+{
+    visibility: visible;
+}
+
+#ResumeGameLabel,
+#DeleteGameLabel,
+{
+    visibility: collapse;
+}
+
+.ResumeSaveGameSelected #ResumeGameLabel,
+.DeleteSaveGameSelected #DeleteGameLabel,
+.ResumeAvailable .ResumeLabel
+{
+    visibility: visible;
+}
+

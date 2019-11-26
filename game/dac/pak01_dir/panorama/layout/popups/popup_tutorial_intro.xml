@@ -1,23 +1,31 @@
 <root>
 	<styles>
     <include src="s2r://panorama/styles/gamestyles.vcss_c" />
+    <include src="s2r://panorama/styles/dac_global.vcss_c" />
     <include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+    <include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
     <include src="s2r://panorama/styles/popups/popup_tutorial_intro.vcss_c" />
   </styles>
 
-  <Panel class="PopupPanel Hidden" popupbackground="blur" oncancel="UIPopupButtonClicked(); DACTutorialStepForward();" onactivate="UIPopupButtonClicked(); DACTutorialStepForward();">
-    <Panel class="HeroTutorialImage" />
-    <Panel id="DynamicPopupContainer" class="PopUpPanel">
-      <Image class="PopupBlurBackgroundImage"  hittest="false" />
-		  <Panel class="PopupBlurBackgroundOverlay" hittest="false" />    
-      <Panel class="PopupContent">
-        <Panel class="MessagePanel" >
-          <Label class="MessageTitle" html="true" text="#DAC_Tutorial_Intro_Title"/>
-          <Label class="MessageLabel" html="true" text="#DAC_Tutorial_Intro_Body1"/>
-          <Label class="MessageSignoff" html="true" text="#DAC_Tutorial_Intro_Body2"/>
+    <Panel class="PopupPanel" popupbackground="dim">
+      <Panel class="ButtonContainer">
+        <Panel class="TutorialIntroButton">
+          <Panel id="PlayTutorialButton" class="TutorialButtonImage" onactivate="DACStartTutorial(0);"/>
+          <Label class="PopupDesc" text="#dac_play_tutorial_popup_desc"/>
+        </Panel>
+        <Panel class="TutorialIntroButton">
+          <Panel id="SkipTutorialButton" class="TutorialButtonImage" onactivate="UIPopupButtonClicked()"/>
+          <Label class="PopupDesc" text="#dac_skip_tutorial_popup_desc" />
         </Panel>
       </Panel>
-    </Panel>
-
+      <Label class="PreTitle" text="#dac_tutorial_popup_pre_title" />
+      <Label class="Title TextTitleAlt" text="#dac_tutorial_popup_title" />      
+      <Panel class="CloseButton" onactivate="UIPopupButtonClicked();" /> 
+      <Panel id="RickyContainer" hittest="false">
+        <Panel id="Ricky"/>     
+        <Panel id="RickyChatBubble" onactivate="DACTutorialFireTrigger('ClickedPanel', 'RickyChatBubble')">
+           <Label id="RickyText" html="true" text="#dac_tutorial_ricky_text"/>       
+        </Panel>
+      </Panel>
   </Panel>
 </root>

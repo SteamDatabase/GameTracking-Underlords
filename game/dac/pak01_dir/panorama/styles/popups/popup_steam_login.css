@@ -9,6 +9,7 @@ PopupSteamLogin
     sound: "DCG_Progression.Ranked_Tier_01";
 }
 
+
 .SoftwareKeyboardVisible PopupSteamLogin .PopupPanel
 {
     margin-bottom: 0%;
@@ -89,7 +90,7 @@ PopupSteamLogin
     width: 100%;
     height: 60px;
     border: 2px solid #5e686966;
-    padding-top: 10px;
+    padding-top: 3px;
 }
 
 .SettingsTextEntryPassword
@@ -99,6 +100,11 @@ PopupSteamLogin
     height: 60px;
     border: 2px solid #5e686966;
     padding-top: 10px;
+}
+
+.LoginFailed .SettingsTextEntryPassword,
+.LoginFailed .SettingsTextEntryUserName {
+    border: 2px solid #e75050;
 }
 
 .SettingTitle
@@ -114,10 +120,6 @@ PopupSteamLogin
     visibility: collapse;
 }
 
-.LoginFailed .LogInDataEntry
-{
-    border: 2px solid red;
-}
 
 .LoginFailed #SteamGuardEntry
 {
@@ -129,7 +131,8 @@ PopupSteamLogin
     width: 100%;
     height: fit-children;
     flow-children: down;
-    vertical-align: bottom;
+    vertical-align: top;
+    margin-top: 45px;
 }
 
 #LogInButtonContainer Button
@@ -142,6 +145,20 @@ PopupSteamLogin
 {
     width: 100%;
     margin-bottom: 16px;
+}
+
+#SteamLoginButton {
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #15aad8 ), to( #4168b2 ) );
+    border: 0px solid #ffffff;
+    margin-bottom: 67px;
+}
+
+#SteamLoginButton:hover {
+    brightness: 2;
+}
+
+#SteamLoginButton Label {
+    font-size: 40px;
 }
 
 .LogInDataEntry
@@ -163,7 +180,7 @@ PopupSteamLogin
     text-align: left;
     horizontal-align: left;
     border: 0px;
-    border-bottom: 2px solid 5e686966;
+    text-transform: none;
 }
 
 #HelpButton Label,
@@ -174,10 +191,11 @@ PopupSteamLogin
     text-align: left;
     horizontal-align: left;
     vertical-align: bottom;
+    border-bottom: 2px solid grey;
 }
 
 #HelpButton {
-    horizontal-align: right;
+    horizontal-align: left;
 }
 
 .BottomButtons {
@@ -217,9 +235,19 @@ PopupSteamLogin
 #SteamPasswordEntry Label,
 #SteamGuardEntry Label
 {
-    font-weight: black;
-    color: white;
+    font-weight: semi-bold;
+    color: #999999;
+    letter-spacing: 2px;
+    margin-bottom: 3px;
 }
+
+.LoginFailed #SteamIDEntry Label,
+.LoginFailed #SteamPasswordEntry Label,
+.LoginFailed #SteamGuardEntry Label
+{
+    color: #e75050;
+}
+
 
 #SteamPasswordEntry
 {
@@ -233,6 +261,7 @@ PopupSteamLogin
     height: 100px;
     font-size: 70px;
     text-transform: none;
+    margin-top: 1px;
 }
 
 #SteamPasswordTextEntry

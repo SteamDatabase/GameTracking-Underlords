@@ -1,0 +1,149 @@
+// void_spirit - Hero
+criterion "Isvoid_spirit" "classname" "void_spirit" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response void_spirit_recruit_1
+{
+	speak "void_spirit_recruit" noscene 
+}
+
+Rule void_spirit_recruit_1_rule
+{
+	criteria Isvoid_spirit ConceptRecruit UnitRank1
+	response void_spirit_recruit_1
+}
+
+
+Response void_spirit_recruit_2
+{
+	speak "void_spirit_upgrade" noscene 
+}
+
+Rule void_spirit_recruit_2_rule
+{
+	criteria Isvoid_spirit ConceptRecruit UnitRank2
+	response void_spirit_recruit_2
+}
+
+
+Response void_spirit_recruit_3
+{
+	speak "void_spirit_final_upgrade" noscene 
+}
+
+Rule void_spirit_recruit_3_rule
+{
+	criteria Isvoid_spirit ConceptRecruit UnitRank3
+	response void_spirit_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response void_spirit_start_round
+{
+	speak "void_spirit_start_round" noscene 
+}
+
+Rule void_spirit_start_round_rule
+{
+	criteria Isvoid_spirit ConceptRoundStart 
+	response void_spirit_start_round
+}
+
+
+Response void_spirit_start_round_lost_last_round
+{
+	speak "void_spirit_start_round_lost_last_round" noscene 
+}
+
+Rule void_spirit_start_round_lost_last_round_rule
+{
+	criteria Isvoid_spirit ConceptRoundStart LostLastGame
+	response void_spirit_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response void_spirit_flawless_victory
+{
+	speak "void_spirit_flawless_victory" noscene 
+}
+
+Rule void_spirit_flawless_victory_rule
+{
+	criteria Isvoid_spirit ConceptRoundEnd Result_WinFlawless
+	response void_spirit_flawless_victory
+}
+
+
+Response void_spirit_decisive_victory
+{
+	speak "void_spirit_decisive_victory" noscene 
+}
+
+Rule void_spirit_decisive_victory_rule
+{
+	criteria Isvoid_spirit ConceptRoundEnd Result_WinDecisive
+	response void_spirit_decisive_victory
+}
+
+Response void_spirit_narrow_victory
+{
+	speak "void_spirit_narrow_victory" noscene 
+}
+
+Rule void_spirit_narrow_victory_rule
+{
+	criteria Isvoid_spirit ConceptRoundEnd Result_WinNarrow
+	response void_spirit_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response void_spirit_flawless_defeat
+{
+	speak "void_spirit_flawless_defeat" noscene 
+}
+
+Rule void_spirit_flawless_defeat_rule
+{
+	criteria Isvoid_spirit ConceptRoundEnd Result_LoseFlawless
+	response void_spirit_flawless_defeat
+}
+
+
+Response void_spirit_decisive_defeat
+{
+	speak "void_spirit_decisive_defeat" noscene 
+}
+
+Rule void_spirit_decisive_defeat_rule
+{
+	criteria Isvoid_spirit ConceptRoundEnd Result_LoseDecisive
+	response void_spirit_decisive_defeat
+}
+
+Response void_spirit_narrow_defeat
+{
+	speak "void_spirit_narrow_defeat" noscene 
+}
+
+Rule void_spirit_narrow_defeat_rule
+{
+	criteria Isvoid_spirit ConceptRoundEnd Result_LoseNarrow
+	response void_spirit_narrow_defeat
+}

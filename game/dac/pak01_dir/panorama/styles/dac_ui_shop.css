@@ -375,6 +375,7 @@ DACUIShop.Visible
 	height: 100%;
 }
 
+.ShopEntry:disabled,
 .ShopEntry.CannotAfford .CostContainer
 {
 	wash-color: #614a48;
@@ -593,6 +594,12 @@ DACSynergyIcon.HiddenInactive
 	height:	110px;
 	
 	background-image: none;
+}
+
+.GameMode_Turbo #LevelUp .GoldValueContainer,
+.GameMode_Turbo #LevelUp #StatusXP
+{
+	visibility: collapse;
 }
 
 #Rulebook
@@ -906,6 +913,133 @@ height: 90px;
 {
 	background-image: url("s2r://panorama/images/shop/minimal_synergy_helper_background_04_psd.vtex");
 	background-size: 100%;
+}
+
+#ShopUnitHintsContainer
+{
+	visibility: collapse;
+	width:1000px;
+	height:145px;
+	flow-children:right;	
+	horizontal-align:center;
+
+	//background-image: url("s2r://panorama/images/shop/teammate_shop_backer_psd.vtex");
+	background-size: 100% 130%;
+	background-position: 45% 90%;
+	background-repeat: no-repeat;
+}
+
+.GameMode_Tutorial #ShopUnitHintsContainer
+{
+	visibility: visible;
+}
+
+.UnitHintContainer
+{	
+	width:fill-parent-flow(1);
+	height:100%;
+	margin-top: 5px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #151515ea ), to( #000000ee ) );
+	flow-children:down;
+	margin-right: 5px;
+	margin-left: 5px;
+	//background-color: #151515;
+	//opacity: 0.9;
+}
+.UnitHintContainer.Purchased
+{
+	opacity:0;
+}
+
+.HintArrow
+{
+	background-image: url("s2r://panorama/images/shop/shop_hint_arrow_png.vtex");
+	background-size: 100%;	
+	width:128px;	
+	height:128px;	
+	horizontal-align:center;
+	visibility: collapse;
+}
+
+.HintTextContainer
+{
+	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #272d2eff ), to( #131617cc ) );
+	//background-color: gradient( linear, 0% 0%, 0% 100%, from( #000000cc ), to( #00000055 ) );
+	//border: 2px solid #5e6869;	
+	vertical-align: middle;
+	horizontal-align: center;
+	opacity: 1.0;
+	//box-shadow: black -4px -4px 8px 8px;
+	width: 192px;
+	height:128px;	
+	padding: 2px;
+	flow-children: down;
+	padding-top: 10px;
+}
+
+.HintHeaderContainer {
+	flow-children: right;
+	horizontal-align: center;
+}
+
+.HintText
+{	
+	font-weight: semi-bold;
+	font-size: 20px;
+	color: #D1D1D1;
+	text-shadow: 0px 1px 0px 3.0 #000000aa;
+	padding-top: 5px;
+	padding-bottom:5px;
+	text-align: center;
+	horizontal-align:center;
+	vertical-align:top;
+	text-overflow: shrink; 
+}
+
+.HintHeader
+{
+	font-weight: semi-bold;
+	font-size: 18px;
+	color: #ccc;
+	text-shadow: 0px 1px 0px 3.0 #000000aa;
+	text-align: center;
+	horizontal-align:center;
+	vertical-align:top;
+	text-overflow: shrink; 
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	margin-top: 5px;
+	vertical-align: middle;
+	margin-top: -2px;
+}
+
+.HintIcon {
+	width: 25px;
+	height: 25px;
+	margin-right: 2px;
+	background-size: 100%;
+}
+
+.Melee .HintIcon { 
+	background-image: url("s2r://panorama/images/tutorial/melee_png.vtex");
+}
+
+.Ranged .HintIcon { 
+	background-image: url("s2r://panorama/images/tutorial/ranged_png.vtex");
+}
+
+.HintHeader.Melee
+{
+	//color: gradient(linear, 0% 0%, 0% 100%, from( #ff3333 ), to(#ff7777));
+	//text-decoration: underline;
+	color: #F16363;
+}
+
+.HintHeader.Ranged
+{
+	//color: gradient(linear, 0% 0%, 0% 100%, from( #6161ff ), to(#9595ff));
+	//text-decoration: underline;
+	color: #98D1DD;
 }
 
 .SynergyHelperIcons
@@ -1256,6 +1390,11 @@ height: 90px;
 	animation-name: PressButtonAnim;
 	animation-duration: 0.25s;
 	animation-timing-function: ease-out;
+}
+
+.GameMode_Turbo #LevelUp.PressButtonAnim
+{
+	animation-name: none;
 }
 
 
@@ -1822,20 +1961,6 @@ height: 90px;
 	margin-top: 146px;
 }
 
-#PlayerEXPTutorialHighlight 
-{
-	width: 160px;
-	height: 160px;
-	margin-top: 1px;
-	margin-left: 1px;
-	visibility: collapse;
-}
-
-.TutorialBuyXPPopup #PlayerEXPTutorialHighlight
-{
-	visibility: visible;
-}
-
 #InfoButton
 {
 	background-image: url("s2r://panorama/images/shop/shop_info_icon_psd.vtex");
@@ -1921,6 +2046,10 @@ height: 90px;
 	opacity: 1;
 }
 
+.GameMode_Turbo #JailShop
+{
+	visibility: collapse;
+}
 
 .TeammateInfoIcon
 {
@@ -2030,4 +2159,10 @@ height: 90px;
 {
 	saturation: 0;
 	opacity: .1;
+}
+
+/* ==================  Tutorial ================== */
+.GameMode_Tutorial .ButtonGutterLeft
+{
+	visibility: collapse;
 }

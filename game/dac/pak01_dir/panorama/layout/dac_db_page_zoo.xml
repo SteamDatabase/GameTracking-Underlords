@@ -44,15 +44,16 @@
 			<Label class="PageButton PageButton4 TextButton" text="#dac_zoo_page4" onactivate="DACSetZooPage('Page4')" allowtextselection="false"/>
 			<Label class="NavDivider" text="#dac_zoo_page_divider" />
 			<Label class="PageButton PageButton5 TextButton" text="#dac_zoo_page5" onactivate="DACSetZooPage('Page5')" allowtextselection="false"/>
-			<Label class="NavDivider" text="#dac_zoo_page_divider" />
-			<Label class="PageButton PageButton6 TextButton" text="#dac_zoo_page6" onactivate="DACSetZooPage('Page6')" allowtextselection="false"/>
 		</Panel>
 
 		<Panel class="ZooPage1 ZooPage">
 			<Panel class="ZooColumn">
-				<TextButton class="BevelButton" text="City Crawl" />
+				<TextButton class="BevelButton" text="City Crawl" onactivate="DACShowChallengeWorldMapPage()" />
 				<TextButton class="BevelButton" text="Season 1 Battle Pass" />
+				<TextButton class="BevelButton" text="Start Tutorial (Phase 1)" onactivate="DACStartTutorial(0)" />
+				<TextButton class="BevelButton" text="Start Tutorial (Phase 2)" onactivate="DACStartTutorial(1)" />
 			</Panel>
+			<Panel class="ZooColumn" id="ZooPage1Column2" />
 		</Panel>
 		<Panel class="ZooPage2 ZooPage">
 
@@ -288,6 +289,15 @@
 				<Button class="SimpleButton" onactivate="DACShowSeason0IntroPopup()">
 					<Label text="#dac_zoo_season_0_popup" />
 				</Button>
+				<Button class="SimpleButton" onactivate="DACShowTutorialIntroPopup()">
+					<Label text="#DAC_MatchTypeName7" />
+				</Button>
+				<Button class="SimpleButton" onactivate="DACShowUnderlordPickerPopup()">
+					<Label text="Underlord Picker" />
+				</Button>
+				<Button class="SimpleButton" onactivate="DACShowGameModePickerPopup()">
+					<Label text="Gamemode Picker" />
+				</Button>
 			</Panel>
 
 			<Panel class="ZooColumn">
@@ -306,7 +316,7 @@
 		</Panel>
 
 		<Panel class="ZooPage6 ZooPage">
-			<DACChallengeWorldMap id="ChallengeWorldMap" />
+			
 		</Panel>
 
 	</DACZooPage>

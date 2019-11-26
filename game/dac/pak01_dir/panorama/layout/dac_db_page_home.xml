@@ -21,6 +21,7 @@
 			<Panel id="MainNav">
 				<Panel class="MainNavButton MainNav01" onactivate="DACSelectDashboardButton('HeropediaContainer'); DACShowHeropediaPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
 					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_SeasonInfo"/>
+					
 				</Panel>
 				<Panel class="MainNavButton MainNav02 AchievementsButton" onactivate="DACSelectDashboardButton('AchievementsContainer'); DACShowAchievementsPage();">
 					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_Achievements"/>
@@ -29,8 +30,10 @@
 					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_Loadout"/>
 				</Panel>
 				<Panel class="MainNavButton MainNavBattlePass" onactivate="DACSelectDashboardButton('BattlePassContainer'); DACShowRewardsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_ProtPassActivate' );">
-					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_Battlepass"/>
-					<DACControlBattlePass id="BattlePassOverview" class="OnDACHomePage HideSectionTitle HideQuests"/>
+					<Panel id="BattlePassPanel">
+						<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_Battlepass"/>
+						<DACControlBattlePass id="BattlePassOverview" class="OnDACHomePage HideSectionTitle HideQuests"/>
+					</Panel>
 				</Panel>
 			</Panel>
 
@@ -89,7 +92,7 @@
 				<Label text="#DAC_Home_Underlords"/>
 			</Button>
 
-			<Panel class="RankIndicator DefaultHidden" id="RankContainer">
+			<Panel class="RankIndicator DefaultHidden SafeArea" id="RankContainer">
 				<DACRankIcon id="RankIcon" iconstyle="standalone" />
 				<Panel class="RankHoverContainer">
 					<Panel class="NameContainer">
@@ -123,7 +126,12 @@
 						<Button class="SocialButtonClose" onactivate="DACToggleSocialPanel()" />
 						<Panel id="SteamLoginRequiredContents">
 							<Panel id="SteamLogo"/>
-
+							<Panel class="LoginDescContainer">
+								<Panel class="LogInDesc">
+									<Panel class="LogInDescBullet"/>
+									<Label text="#DAC_SteamLogIn_Desc1" class="LogInDescText"/>
+								</Panel>
+							</Panel>
 							<Button class="PopupButton LoginButton" id="SteamLoginButton" onactivate="DACSteamLogin()">
 								<Label text="#DAC_SteamAccountLogin" />
 							</Button>
@@ -133,12 +141,6 @@
 							<Button class="PopupButton LoginButton" id="SteamCreateButton" onactivate="DACSteamCreateAccount()">
 								<Label text="#DAC_SteamCreateAccount" />
 							</Button>
-							<Panel class="LoginDescContainer">
-								<Panel class="LogInDesc">
-									<Panel class="LogInDescBullet"/>
-									<Label text="#DAC_SteamLogIn_Desc1" class="LogInDescText"/>
-								</Panel>
-							</Panel>
 						</Panel>
 					</Panel>
 

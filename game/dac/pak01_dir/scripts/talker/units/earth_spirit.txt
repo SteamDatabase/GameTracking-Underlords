@@ -1,0 +1,149 @@
+// earth_spirit - Hero
+criterion "Isearth_spirit" "classname" "earth_spirit" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response earth_spirit_recruit_1
+{
+	speak "earth_spirit_recruit" noscene 
+}
+
+Rule earth_spirit_recruit_1_rule
+{
+	criteria Isearth_spirit ConceptRecruit UnitRank1
+	response earth_spirit_recruit_1
+}
+
+
+Response earth_spirit_recruit_2
+{
+	speak "earth_spirit_upgrade" noscene 
+}
+
+Rule earth_spirit_recruit_2_rule
+{
+	criteria Isearth_spirit ConceptRecruit UnitRank2
+	response earth_spirit_recruit_2
+}
+
+
+Response earth_spirit_recruit_3
+{
+	speak "earth_spirit_final_upgrade" noscene 
+}
+
+Rule earth_spirit_recruit_3_rule
+{
+	criteria Isearth_spirit ConceptRecruit UnitRank3
+	response earth_spirit_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response earth_spirit_start_round
+{
+	speak "earth_spirit_start_round" noscene 
+}
+
+Rule earth_spirit_start_round_rule
+{
+	criteria Isearth_spirit ConceptRoundStart 
+	response earth_spirit_start_round
+}
+
+
+Response earth_spirit_start_round_lost_last_round
+{
+	speak "earth_spirit_start_round_lost_last_round" noscene 
+}
+
+Rule earth_spirit_start_round_lost_last_round_rule
+{
+	criteria Isearth_spirit ConceptRoundStart LostLastGame
+	response earth_spirit_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response earth_spirit_flawless_victory
+{
+	speak "earth_spirit_flawless_victory" noscene 
+}
+
+Rule earth_spirit_flawless_victory_rule
+{
+	criteria Isearth_spirit ConceptRoundEnd Result_WinFlawless
+	response earth_spirit_flawless_victory
+}
+
+
+Response earth_spirit_decisive_victory
+{
+	speak "earth_spirit_decisive_victory" noscene 
+}
+
+Rule earth_spirit_decisive_victory_rule
+{
+	criteria Isearth_spirit ConceptRoundEnd Result_WinDecisive
+	response earth_spirit_decisive_victory
+}
+
+Response earth_spirit_narrow_victory
+{
+	speak "earth_spirit_narrow_victory" noscene 
+}
+
+Rule earth_spirit_narrow_victory_rule
+{
+	criteria Isearth_spirit ConceptRoundEnd Result_WinNarrow
+	response earth_spirit_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response earth_spirit_flawless_defeat
+{
+	speak "earth_spirit_flawless_defeat" noscene 
+}
+
+Rule earth_spirit_flawless_defeat_rule
+{
+	criteria Isearth_spirit ConceptRoundEnd Result_LoseFlawless
+	response earth_spirit_flawless_defeat
+}
+
+
+Response earth_spirit_decisive_defeat
+{
+	speak "earth_spirit_decisive_defeat" noscene 
+}
+
+Rule earth_spirit_decisive_defeat_rule
+{
+	criteria Isearth_spirit ConceptRoundEnd Result_LoseDecisive
+	response earth_spirit_decisive_defeat
+}
+
+Response earth_spirit_narrow_defeat
+{
+	speak "earth_spirit_narrow_defeat" noscene 
+}
+
+Rule earth_spirit_narrow_defeat_rule
+{
+	criteria Isearth_spirit ConceptRoundEnd Result_LoseNarrow
+	response earth_spirit_narrow_defeat
+}

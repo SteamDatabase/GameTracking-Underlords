@@ -205,16 +205,17 @@
 	price_key
 	price_usd
 	proximity
+	puzzle_id
 	rank_tier
 	recipient
 	region_id
 	reward_id
 	rule_type
 	sample_id
+	satisfied
 	schema_kv
 	send_time
 	sender_id
-	set_flags
 	shardsize
 	signature
 	snapshots
@@ -225,6 +226,7 @@
 	soundname
 	source_gc
 	steam_ids
+	str_value
 	svc_Print
 	svc_dummy
 	synergies
@@ -389,6 +391,7 @@
  %lx %lx
  %s{%.2f,%.2f,%.2f}
  %u in queue
+ %u in queue (+%u)
  '%s'
  ( def. "%s" )
  (%d Hz)
@@ -420,6 +423,7 @@
  BackUp() can only be called after Next().
  CClientMsg_CustomGameEventBounce
  CMsgAnyToGCReportAssertsResponse
+ CMsgClientAccountSyncStorageFile
  CMsgClientToGCCreateStaticRecipe
  CMsgClientToGCEquipItemsResponse
  CMsgClientToGCEventClaimResponse
@@ -459,7 +463,6 @@
  Failed to pack %s
  Failed to unpack %s - Code %d
  GCConnectionStatus_GC_GOING_DOWN
- H;=V
  H;D$PH
  H;D$`H
  M9l$
@@ -547,20 +550,21 @@
  onactivate="event:DACShowPlayerContextMenu(%llu)"
  parent-relative
  t/IcT$4H
- t0HcK|L
  t2HcC0H
- t2HcC4H
  t2HcG,H
  t2HcO,H
  t2IcOtH
  t3HcG,H
+ t3HcKxH
  t3IcL$pH
+ t3IcT$0H
  t3Ic|$\H
  t4HcG,H
  t4IcT$$H
  t5HcG,H
  t5HcG0H
  t5IcL$PH
+ t5IcT$8H
  t6HcG0H
  t6HcO,H
  t8HcK8H
@@ -654,6 +658,7 @@
 !k_EMsgClientToGCGetRegionModeInfo
 !k_EMsgClientToGCLookupAccountName
 !k_EMsgClientToGCPartyJoinResponse
+!k_EMsgClientToGCUpdateAccountSync
 !k_EMsgClientToServerLoadShareCode
 !k_EMsgGCClientDisplayNotification
 !k_EMsgGCRemoveItemGifterAccountId
@@ -770,6 +775,7 @@
 "CEcon_FlushInventoryCache_Response
 "CMsgClientToGCClaimChallengeReward
 "CMsgClientToGCClearPurchaseReserve
+"CMsgClientToGCDevOperationResponse">
 "CMsgClientToGCEquipLoadoutResponse
 "CMsgClientToGCEventRequestInfoSync
 "CMsgClientToGCPartySetGameModifier
@@ -1185,6 +1191,30 @@
 #DAC_Purchase_CheckingTitle
 #DAC_Purchase_ClearReservationBody
 #DAC_Purchase_ClearReservationTitle
+#DAC_Puzzle_RuleDescription_BoardCostLimit
+#DAC_Puzzle_RuleDescription_BoardCostLimit_Hi
+#DAC_Puzzle_RuleDescription_BoardCostLimit_Lo
+#DAC_Puzzle_RuleDescription_BoardStarLimit
+#DAC_Puzzle_RuleDescription_BoardStarLimit_Hi
+#DAC_Puzzle_RuleDescription_BoardStarLimit_Lo
+#DAC_Puzzle_RuleDescription_ItemCountLimit
+#DAC_Puzzle_RuleDescription_ItemCountLimit_Hi
+#DAC_Puzzle_RuleDescription_ItemCountLimit_Lo
+#DAC_Puzzle_RuleDescription_ItemCountLimit_No
+#DAC_Puzzle_RuleDescription_SynergyRequirements
+#DAC_Puzzle_RuleDescription_UnderlordCountLimit
+#DAC_Puzzle_RuleDescription_UnderlordCountLimit_Hi
+#DAC_Puzzle_RuleDescription_UnderlordCountLimit_Lo
+#DAC_Puzzle_RuleDescription_UnderlordCountLimit_No
+#DAC_Puzzle_RuleDescription_UnitCostLimit
+#DAC_Puzzle_RuleDescription_UnitCostLimit_Hi
+#DAC_Puzzle_RuleDescription_UnitCostLimit_Lo
+#DAC_Puzzle_RuleDescription_UnitCountLimit
+#DAC_Puzzle_RuleDescription_UnitCountLimit_Hi
+#DAC_Puzzle_RuleDescription_UnitCountLimit_Lo
+#DAC_Puzzle_RuleDescription_UnitStarLimit
+#DAC_Puzzle_RuleDescription_UnitStarLimit_Hi
+#DAC_Puzzle_RuleDescription_UnitStarLimit_Lo
 #DAC_RP_Away
 #DAC_RP_Busy
 #DAC_RP_FINDING_MATCH
@@ -1289,20 +1319,6 @@
 #DAC_Synergy_Desc_%s_ExtraData
 #DAC_Synergy_Insect
 #DAC_Tier_Name_%d
-#DAC_Tutorial_Alliance
-#DAC_Tutorial_Bench
-#DAC_Tutorial_BuyXPPopup
-#DAC_Tutorial_Combat
-#DAC_Tutorial_CombatExplain
-#DAC_Tutorial_Damage
-#DAC_Tutorial_EquipItemPopup
-#DAC_Tutorial_GlobalItemPopup
-#DAC_Tutorial_Goal
-#DAC_Tutorial_LevelUpPopup
-#DAC_Tutorial_OverpopPopup
-#DAC_Tutorial_Player
-#DAC_Tutorial_RankUpPopup
-#DAC_Tutorial_Shop
 #DAC_UnbundleInProgress_Text
 #DAC_UnbundleInProgress_Title
 #DAC_Underlord_%u
@@ -1476,9 +1492,13 @@
 #Steam_DAC_RP_FindingMatch
 #Steam_DAC_RP_GM_Duos
 #Steam_DAC_RP_GM_Normal
+#Steam_DAC_RP_GM_Puzzle
+#Steam_DAC_RP_GM_Sandbox
+#Steam_DAC_RP_GM_Turbo
 #Steam_DAC_RP_InGame_Disconnected
 #Steam_DAC_RP_InGame_Eliminated
-#Steam_DAC_RP_InGame_Playing
+#Steam_DAC_RP_InGame_PlayingBoring
+#Steam_DAC_RP_InGame_PlayingUnderlord
 #Steam_DAC_RP_InGame_Spectator
 #Steam_DAC_RP_InGame_Victory
 #Steam_DAC_RP_InParty
@@ -1491,6 +1511,7 @@
 #Steam_DAC_RP_MM_Ranked
 #Steam_DAC_RP_MM_SoloBot
 #Steam_DAC_RP_MainMenu
+#Steam_DAC_RP_UL_%u
 #StoreCheckout_AlreadyPurchasedSingletonItem
 #StoreCheckout_CannotPurchase
 #StoreCheckout_Error_Title
@@ -1562,6 +1583,9 @@
 #dac_ability_%s_Lore
 #dac_ability_%s_description
 #dac_ability_%s_description_perlevel
+#dac_challenge_%s_description
+#dac_challenge_%s_title
+#dac_challenge_difficulty_%d
 #dac_challenge_map_locked_description
 #dac_challenge_map_unclamied_description
 #dac_dev_hero_1_keyword
@@ -1569,6 +1593,8 @@
 #dac_dev_hero_3_keywords
 #dac_dev_item
 #dac_dev_item_menu_global
+#dac_hero_hint_melee
+#dac_hero_hint_ranged
 #dac_hero_rank%d
 #dac_hero_rank1
 #dac_hero_rankN
@@ -1592,6 +1618,7 @@
 #dac_talent_hype
 #dac_talent_nohype
 #dac_team_name_%d
+#dac_turbo_bucket_tip_%s
 #dota_settings_no_mode_resolutions
 #dota_settings_render_system_recommended
 #dota_spectator_watching_broadcaster
@@ -1664,7 +1691,6 @@ $CMsgClientToGCDevForceMatchFormation"F
 $CMsgClientToGCEventChallengeProgress
 $CMsgClientToGCEventEquipVirtualItems
 $CMsgClientToGCGetFriendCodesResponse
-$CMsgClientToGCModifyGACFlagsResponse
 $CMsgClientToServerUpvoteNotification
 $CMsgEconPlayerStrangeCountAdjustment
 $CMsgGCGetPartnerAccountLink_Response
@@ -1702,10 +1728,13 @@ $incoming_invite_mutual_friends_lists
 $k_AddSocket_Failed_FailedToAddSocket
 $k_EClientStatsEvent_StartSteamSignon
 $k_EDACDisconnectReason_OldConnection
+$k_EDACPuzzleRule_SynergyRequirements
+$k_EDACPuzzleRule_UnderlordCountLimit
 $k_EGCMsgInitiateTradeResponse_Cancel
 $k_EMatchSignoutData_PerformanceStats
 $k_EMsgClientToGCClaimChallengeReward
 $k_EMsgClientToGCClearPurchaseReserve
+$k_EMsgClientToGCDevOperationResponse
 $k_EMsgClientToGCEquipLoadoutResponse
 $k_EMsgClientToGCEventRequestInfoSync
 $k_EMsgClientToGCPartySetGameModifier
@@ -1970,7 +1999,8 @@ $z0u.A
 %s * %s
 %s + %s
 %s - %s %s
-%s --------------------------------------------------
+%s ----------   END INTERPOLATION HISTORY -----------
+%s ---------- BEGIN INTERPOLATION HISTORY -----------
 %s -> 
 %s / %s
 %s : %8.2f:  clearing events
@@ -1990,8 +2020,8 @@ $z0u.A
 %s allocation count overflow( %llu >= %llu )
 %s at %.0f %.0f %0.f uses model %s, which has an invalid prop_data type. DELETED.
 %s at %.0f %.0f %0.f uses model %s, which has no propdata which means it must be used on a prop_static. DELETED.
-%s at %.6f (interp %.6f) target %.6f
 %s at (%.3f, %.3f, %.3f) has no model name!
+%s at current time: %.6f (interpolation amount of: %.6f) target interpolation time is: %.6f
 %s at offset %lld reading array element %d
 %s at offset %lld start of component
 %s at offset %lld start of referenced
@@ -2049,6 +2079,7 @@ $z0u.A
 %s:  %d decals saved 
 %s:  %d of %d decals restored
 %s:  %d restoring decal %s from %d to %d
+%s:  %d:%f - %s origin changed ( %g, %g, %g ) to ( %g, %g, %g )
 %s:  %f tick(%d) curtime(%f) %24.24s %d:  %s prevcycle %6.4f start %8.3f rate %6.3f [%s]
 %s:  %f tick(%d) curtime(%f) %24.24s %d: %s %6.4f -> %6.4f rate %6.3f fade %6.3f weight %5.3f
 %s:  %f tick(%d) curtime(%f) AddCurrentSequenceToTransition: %s : %d=[%s] : %6.4f -> %6.4f rate %6.3f fade %6.3f weight %5.3f
@@ -2291,7 +2322,6 @@ $z0u.A
 &k_EMsgClientToGCEventChallengeProgress
 &k_EMsgClientToGCEventEquipVirtualItems
 &k_EMsgClientToGCGetFriendCodesResponse
-&k_EMsgClientToGCModifyGACFlagsResponse
 &k_EMsgClientToServerUpvoteNotification
 &k_EMsgGCAddSocketToBaseItem_DEPRECATED
 &k_EMsgGCDev_UnlockAllItemStylesRequest
@@ -2331,6 +2361,7 @@ $z0u.A
 'CMsgClientToGCDevEventOperationResponse"?
 'CMsgClientToGCGetRegionModeInfoResponse
 'CMsgClientToGCLookupAccountNameResponse
+'CMsgClientToGCUpdateAccountSyncResponse
 'CMsgGCPartnerRechargeRedirectURLRequest
 'CMsgGCToClientStoreTransactionCompleted
 'CMsgGCToGCApplyLocalizationDiffResponse
@@ -2394,12 +2425,14 @@ $z0u.A
 (*MARK) must have an argument
 (*VERB) not recognized or malformed
 (,$fE
+(-F4Q
 (.CPlayer_GetCommunityPreferences_Request
 (.CPlayer_GetFriendsGameplayInfo_Response"K
 (.CPlayer_GetPerFriendPreferences_Request
 (.CPlayer_SetCommunityPreferences_Request
 (.CPlayer_SetPerFriendPreferences_Request
 (0x%08X)'??'
+(5W^Y
 (?R or (?[+-]digits must be followed by )
 (ACTIVE)
 (A^A_]
@@ -2433,6 +2466,7 @@ $z0u.A
 (HcWP
 (ID of the Cloud file to get details for.
 (IImageSource)
+(IcD$(A;D$,u
 (L$ A
 (L$0f
 (Lcg0
@@ -2444,6 +2478,7 @@ $z0u.A
 (NETWORK_DISCONNECT_SERVER_REQUIRES_STEAM
 (NETWORK_DISCONNECT_STEAM_AUTHALREADYUSED
 (None)
+(T$ A
 (T$`A
 (Text description for the published file.
 (WIPE AND EXTRACT)
@@ -2540,6 +2575,7 @@ $z0u.A
 )k_EMsgClientToGCDevEventOperationResponse
 )k_EMsgClientToGCGetRegionModeInfoResponse
 )k_EMsgClientToGCLookupAccountNameResponse
+)k_EMsgClientToGCUpdateAccountSyncResponse
 )k_EMsgGCPartnerRechargeRedirectURLRequest
 )k_EMsgGCPresets_SelectPresetForClassReply
 )k_EMsgGCRemoveItemGifterAccountIdResponse
@@ -2577,6 +2613,7 @@ $z0u.A
 *D$Tf
 *GAME_PARTICLE_MANAGER_EVENT_UPDATE_FORWARD
 *Gets the last-played times for the account
+*N5GCSDK17GCClientJobLambdaIZL10SendDevMsg37CMsgClientToGCDevOperation_EOperationyPKcEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZL15SendEventDevMsg42CMsgClientToGCDevEventOperation_EOperationPK19CDACEventDefinitionjjEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZL19party_mm_start_duosRK15CCommandContextRK8CCommandEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZL26ConfirmAndSendRemoveFriendjPKcS2_S2_S2_S2_S2_EUlvE_EE
@@ -2603,9 +2640,10 @@ $z0u.A
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17AcceptPartyInviteE9PartyID_tEUlvE0_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17AcceptPartyInviteE9PartyID_tEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17CancelPartyInviteEjEUlvE_EE
-*N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17InternalFindMatchE13EDACMatchMode12EDACGameMode26CSODACParty_EBotDifficultyEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17InternalFindMatchE13EDACMatchMode12EDACGameMode26CSODACParty_EBotDifficultyRK20CMsgGameModeSettingsEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17InviteUserToPartyEjbEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController17RejectPartyInviteE9PartyID_tEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController21StartMMKeepAliveCheckEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController22InternalFindPartyMatchE13EDACMatchMode12EDACGameMode26CSODACParty_EBotDifficultyEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController24OnRequestChinaRegionInfoEPKcEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN19CDAC_PlayController27DurationControlTimerExpiredEvEUlvE_EE
@@ -2628,11 +2666,14 @@ $z0u.A
 *N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_Popup_FriendCode14OnGenerateCodeEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_Popup_FriendCode17OnCheckFriendCodeEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_Popup_RenameTeam15InternalSetNameEPKcEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN25CClientAccountSyncStorage10ForceValueE15AccountSyncID_ttEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN25CClientAccountSyncStorage15ReconcileWithGCEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN25CDAC_DB_Page_Achievements25OnRedeemAchievementRewardEiiEUlvE_EE
-*N5GCSDK17GCClientJobLambdaIZN25CDAC_UI_ChallengeWorldMap14ClaimChallengeE22EventChallengeSlotID_tEUlvE_EE
-*N5GCSDK17GCClientJobLambdaIZN25CDAC_UI_ChallengeWorldMap17CompleteChallengeE22EventChallengeSlotID_tEUlvE_EE
-*N5GCSDK17GCClientJobLambdaIZN25CDAC_UI_ChallengeWorldMap30OnChallengeWorldMapSelectClaimE14EventClaimID_tEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN28CDAC_UI_Popup_GameModePicker22OnTutorialStartBotGameEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN29CDAC_UI_Popup_PostGame_Reward7OnCloseEvEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN32CDAC_DB_Page_Challenge_World_Map14ClaimChallengeE22EventChallengeSlotID_tEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN32CDAC_DB_Page_Challenge_World_Map17CompleteChallengeE22EventChallengeSlotID_tEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN32CDAC_DB_Page_Challenge_World_Map30OnChallengeWorldMapSelectClaimE14EventClaimID_tEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN32CDAC_UI_Popup_FriendCodeAddPopup9OnConfirmEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN36CDAC_UI_Popup_PrivateLobby_Modifiers13OnSetJailListEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN36CDAC_UI_Popup_PrivateLobby_Modifiers20OnSetDefaultJailListEvEUlvE_EE
@@ -2651,10 +2692,12 @@ $z0u.A
 *ZN12CDACCS_Setup21TriggerSynergyEffectsEvEUliP9C_DAC_NPCE_
 *ZN12CDAC_UI_Shop11OnHudUpdateEvEUlPN8panorama8CPanel2DEE_
 *ZN12CDAC_UI_Shop15UpdateSynergiesEvEUlPN8panorama14IUIPanelClientES2_E_
+*ZN12CDAC_UI_Shop15UpdateUnitHintsEvEUlPN8panorama8CPanel2DEE_
 *ZN12CDAC_UI_Shop23UpdateTeammateSynergiesEvEUlPN8panorama14IUIPanelClientES2_E_
 *ZN12C_EnvCubemap9PreRenderE16CSplitScreenSlotEUlvE_
 *ZN13CDACCS_Combat17AdvanceSimulationEvEUliP9C_DAC_NPCE_
-*ZN13CDACCS_Combat17HandleCombatEndedEvEUliP9C_DAC_NPCE_
+*ZN13CDACCS_Combat25HandleCombatDurationEndedEvEUliP9C_DAC_NPCE_
+*ZN13CDACCS_Combat29HandleCombatEvent_CombatEndedEfRK27CMsgCombatEvent_CombatEndedfEUliP9C_DAC_NPCE_
 *ZN15C_EnvTimeOfDay29PreRenderE16CSplitScreenSlotEUlvE_
 *ZN18CDAC_UI_Tooltip_XP6UpdateEvEUlPK10KeyValues3E_
 *ZN18CNewParticleEffect10SetDormantEbEUlvE_
@@ -2668,6 +2711,8 @@ $z0u.A
 *ZN20CDAC_HUD_ItemDisplay11EventUpdateEvEUliP9C_DAC_NPCE_
 *ZN20CDAC_HUD_RankDisplay11EventUpdateEvEUliP9C_DAC_NPCE_
 *ZN20CDAC_UI_EquipControl10SetupItemsEvEUlPN8panorama14IUIPanelClientES2_E_
+*ZN20CDAC_UI_Hud_Tutorial25UpdatePlayerStateTriggersEvEUliP9C_DAC_NPCE_
+*ZN20CDAC_UI_Hud_Tutorial28OnTutorialSetHUDClassEnabledEPKcS1_bEUlPN8panorama8CPanel2DEE_
 *ZN20CDAC_UI_PopupManager18OnShowSynergyPopupERKN8panorama9CPanelPtrINS0_8IUIPanelEEE12EUnitKeyword12PlayerSlot_tEUlP21CDAC_UI_Popup_SynergyE_
 *ZN21CDAC_UI_Notifications11OnHudUpdateEvEUlP26CDAC_UI_ParticleScenePanelE_
 *ZN21CDAC_UI_Notifications16ShowNotificationEPKcjEUlP26CDAC_UI_ParticleScenePanelE_
@@ -2675,6 +2720,7 @@ $z0u.A
 *ZN22CDAC_UI_HudPlayerIcons15UpdateSynergiesEPK21CMsgPublicPlayerStateEUlPN8panorama14IUIPanelClientES5_E_
 *ZN23CDAC_UI_Popup_Hero_Odds6UpdateEvEUlPK10KeyValues3E_
 *ZN23CDAC_UI_RoundOverScreen10PlayVOLineEvEUliP9C_DAC_NPCE_
+*ZN23CDAC_UI_RoundOverScreen13OnAddNextHeroEvEUliP9C_DAC_NPCE_
 *ZN23CDAC_UI_RoundOverScreen21SetupDefaultRoundOverERK22CMsgPlayerCombatResultEUliP9C_DAC_NPCE_
 *ZN24CDAC_UI_Leaderboard_Duos16UpdateVisibilityEvEUlPN8panorama8CPanel2DEE_
 *ZN25CDAC_DB_Page_Achievements16LoadAchievementsEvEUlP24CDAC_UI_AchievementPanelE_
@@ -2941,6 +2987,7 @@ $z0u.A
 -classes
 -curtimeasserts
 -curtimewarnings
+-dac_force_eventid
 -dac_offline
 -dac_scoreboard
 -dac_tilt_camera_modifier
@@ -3000,6 +3047,7 @@ $z0u.A
 -s2-mix-blend-mode
 -s2-mix-blend-mode: multiply;
 -s2-mix-blend-mode: screen;</pre>
+-sandbox
 -score
 -secondary
 -showscores
@@ -3023,12 +3071,10 @@ $z0u.A
 .  Please update your library.  If you compiled the program yourself, make sure that your headers are from the same version of Protocol Buffers as your link-time library.  (Version verification failed in "
 . This will make the proto fail to compile for some languages, such as C#.
 .%0*llu
-.%FFa
-.%d.r
 .(Optional) Set of tags for the published file.
-.-6K~
-.-ZEa
-.-]J~
+.-&vR
+.-/bS
+.-\R}
 ...<truncated>...
 ../../public/entity2/entitycomponent.h
 ../../public/networksystem/networkquantizedtypes.h
@@ -3060,12 +3106,8 @@ $z0u.A
 ..CPlayer_GetNewSteamAnnouncementState_Response"_
 .0z"u 
 .3333
-.5(Zi
-.582b
-.5Y\i
-.5s)j
-.=I,]
-.=v.R
+.5Iuj
+.=)E]
 .>()09
 .@ sgA
 .@ zUuS
@@ -3156,12 +3198,17 @@ $z0u.A
 .CMsgGCToClientEventInfo"
 .CMsgGCToClientEventInfo.Claim
 .CMsgGCToGCStoreProcessCDKeyTransactionResponse
+.CMsgGameModeSettings
+.CMsgGameModeSettings"
+.CMsgGameModeSettings"P
 .CMsgGameModeState_DuosH
 .CMsgGameModeState_Normal
 .CMsgGameModeState_Normal"
 .CMsgGameModeState_NormalH
+.CMsgGameModeState_PuzzleH
 .CMsgGameModeState_SandboxH
 .CMsgGameModeState_TurboH
+.CMsgGameModeState_TutorialH
 .CMsgGameModifiers
 .CMsgGameModifiers"
 .CMsgGameModifiers"J
@@ -3206,6 +3253,7 @@ $z0u.A
 .CMsgSynergy
 .CMsgTEBaseBeam
 .CMsgTeamInfo
+.CMsgTurboBucket
 .CMsgUnitAbilityCooldown
 .CMsgUnitMeterDamageDealt
 .CMsgUnitMeterDamageTaken
@@ -3243,7 +3291,6 @@ $z0u.A
 .CPublishedFile_Update_Request
 .CPublishedFile_Update_Response"/
 .CSODACParty.EBotDifficulty
-.CSODACParty.EBotDifficulty"
 .CSODACParty.EPlayerType
 .CSODACParty.Invite
 .CSODACParty.LeftMember
@@ -3273,7 +3320,9 @@ $z0u.A
 .Chz!u
 .Clz\uZ
 .CpzOuMH
+.C|wjH
 .D	,w
+.D$(z
 .D$0z
 .D$4z
 .D$8z
@@ -3294,10 +3343,13 @@ $z0u.A
 .EDACLobbyTeam
 .EDACLobbyTeam"
 .EDACMatchMode
+.EDACMatchMode"%
 .EDACMatchState
 .EDACNetBuffer
 .EDACPlatform
 .EDACPlayerState
+.EDACPuzzleRule
+.EDACRegionMode
 .EDACRegionMode"
 .EDACRegionMode"O
 .EDACStoreID
@@ -3327,12 +3379,13 @@ $z0u.A
 .ESplitScreenMessageType
 .EUnitAIState
 .EUnitKeyword
+.EUnitKeyword"D
 .Exclude any files that have any of these tags.
 .F z1u/
 .F$z	
 .G vEH
 .G(z>u<f
-.G(zjuhE!
+.G(zhufE!
 .G8z:u8]
 .G<zUuS
 .GAME_PARTICLE_MANAGER_EVENT_SET_FOW_PROPERTIES
@@ -3341,6 +3394,7 @@ $z0u.A
 .HTz)u'H
 .K$z+u)
 .K(zQuOH
+.K(zfudI
 .K8zvut
 .K<znul
 .K@zfud
@@ -3444,7 +3498,7 @@ $z0u.A
 // the top left corner of the image is placed 10px to the right of, 40px below the top left corner of the panel
 /CMsgRequestItemPurgatory_RefundPurchaseResponse
 /CPlayer_UpdateSteamAnnouncementLastRead_Request
-/D333333
+/DDota Underlords
 /I9D$
 /Published file id of the file we'd like update.
 /Removes a friend or ignores a friend suggestion
@@ -3533,7 +3587,7 @@ $z0u.A
 0D;#}qM
 0E;.|
 0GAME_PARTICLE_MANAGER_EVENT_SET_SHOULD_CHECK_FOW
-0H;=m
+0H;=-
 0IcD$
 0Marks latest announcement timestamp read by user
 0NETWORK_DISCONNECT_REJECT_SERVERCDKEYAUTHINVALID
@@ -3576,6 +3630,7 @@ $z0u.A
 10CMsgIDLinkILj1ELj16ELj9010E30CMsgClientToGCStartMatchmakingE
 10CMsgIDLinkILj1ELj16ELj9012E29CMsgClientToGCStopMatchmakingE
 10CMsgIDLinkILj1ELj16ELj9015E24CMsgClientToGCLeaveLobbyE
+10CMsgIDLinkILj1ELj16ELj9017E29CMsgClientToGCIsInMatchmakingE
 10CMsgIDLinkILj1ELj16ELj9121E34CMsgClientToGCReplacementSDRTicketE
 10CMsgIDLinkILj1ELj16ELj9123E25CMsgClientToGCPartyCreateE
 10CMsgIDLinkILj1ELj16ELj9125E24CMsgClientToGCPartyLeaveE
@@ -3604,6 +3659,8 @@ $z0u.A
 10CMsgIDLinkILj1ELj16ELj9199E29CMsgClientToGCAssociateDeviceE
 10CMsgIDLinkILj1ELj16ELj9203E34CMsgClientToGCPartySetGameModifierE
 10CMsgIDLinkILj1ELj16ELj9207E25CMsgClientToGCSetTeamNameE
+10CMsgIDLinkILj1ELj16ELj9212E26CMsgClientToGCDevOperationE
+10CMsgIDLinkILj1ELj16ELj9214E31CMsgClientToGCUpdateAccountSyncE
 10CMsgIDLinkILj3ELj16ELj7000E24CMsgAnyToGCReportAssertsE
 10CMsgQAngle
 10CMsgTEDust
@@ -3861,6 +3918,7 @@ $z0u.A
 13C_PointEntity
 13C_PointHintUi
 13C_SceneEntity
+13DACPuzzleID_t
 13EDACChartType
 13EDACMatchMode
 13IBaseSequence
@@ -4054,6 +4112,7 @@ $z0u.A
 15CMsgPlayerOrder
 15CMsgRoundCombat
 15CMsgTEExplosion
+15CMsgTurboBucket
 15CMsg_CVars_CVar
 15CRejoinPartyJob
 15CSOItemCriteria
@@ -4137,6 +4196,7 @@ $z0u.A
 16CDAC_UI_MiniJail
 16CDAC_UI_UserName
 16CDAC_UI_VSScreen
+16CDAC_UI_Violator
 16CDCGGameMovement
 16CDecalGameSystem
 16CDefaultAccessor
@@ -4224,6 +4284,7 @@ $z0u.A
 17CChoreoObjectBase
 17CDACCameraManager
 17CDAC_DB_Page_Home
+17CDAC_DB_Page_Play
 17CDAC_SpeechSystem
 17CDAC_UI_ChatWheel
 17CDAC_UI_HudTopBar
@@ -4360,6 +4421,7 @@ $z0u.A
 18CDAC_UI_SwipePanel
 18CDAC_UI_TalentCard
 18CDAC_UI_Tooltip_XP
+18CDAC_UI_Turbo_Shop
 18CDAC_UI_UnitStatus
 18CDOTARenderTargets
 18CDefSaveRestoreOps
@@ -4413,6 +4475,7 @@ $z0u.A
 18CMsgIDLinkResponseILj1ELj16ELj9010E30CMsgClientToGCStartMatchmakingLj9011E38CMsgClientToGCStartMatchmakingResponseE
 18CMsgIDLinkResponseILj1ELj16ELj9012E29CMsgClientToGCStopMatchmakingLj9013E37CMsgClientToGCStopMatchmakingResponseE
 18CMsgIDLinkResponseILj1ELj16ELj9015E24CMsgClientToGCLeaveLobbyLj9016E32CMsgClientToGCLeaveLobbyResponseE
+18CMsgIDLinkResponseILj1ELj16ELj9017E29CMsgClientToGCIsInMatchmakingLj9018E37CMsgClientToGCIsInMatchmakingResponseE
 18CMsgIDLinkResponseILj1ELj16ELj9121E34CMsgClientToGCReplacementSDRTicketLj9122E42CMsgClientToGCReplacementSDRTicketResponseE
 18CMsgIDLinkResponseILj1ELj16ELj9123E25CMsgClientToGCPartyCreateLj9124E33CMsgClientToGCPartyCreateResponseE
 18CMsgIDLinkResponseILj1ELj16ELj9125E24CMsgClientToGCPartyLeaveLj9126E32CMsgClientToGCPartyLeaveResponseE
@@ -4439,6 +4502,8 @@ $z0u.A
 18CMsgIDLinkResponseILj1ELj16ELj9199E29CMsgClientToGCAssociateDeviceLj9200E37CMsgClientToGCAssociateDeviceResponseE
 18CMsgIDLinkResponseILj1ELj16ELj9203E34CMsgClientToGCPartySetGameModifierLj9204E42CMsgClientToGCPartySetGameModifierResponseE
 18CMsgIDLinkResponseILj1ELj16ELj9207E25CMsgClientToGCSetTeamNameLj9208E33CMsgClientToGCSetTeamNameResponseE
+18CMsgIDLinkResponseILj1ELj16ELj9212E26CMsgClientToGCDevOperationLj9213E34CMsgClientToGCDevOperationResponseE
+18CMsgIDLinkResponseILj1ELj16ELj9214E31CMsgClientToGCUpdateAccountSyncLj9215E39CMsgClientToGCUpdateAccountSyncResponseE
 18CMsgIDLinkResponseILj3ELj16ELj7000E24CMsgAnyToGCReportAssertsLj7001E32CMsgAnyToGCReportAssertsResponseE
 18CMsgNotifyWatchdog
 18CMsgPackageLicense
@@ -4526,6 +4591,8 @@ $z0u.A
 19CDAC_UI_MiniProfile
 19CDAC_UI_PartyInvite
 19CDAC_UI_PartyMember
+19CDAC_UI_PuzzleIntro
+19CDAC_UI_PuzzleRules
 19CDAC_UI_SellUnitBar
 19CDAC_UI_SendUnitBar
 19CDAC_UI_UserControl
@@ -4607,6 +4674,7 @@ $z0u.A
 19C_EconItemAttribute
 19C_EnvWindClientside
 19C_GenericFlexCycler
+19C_TriggerLerpObject
 19C_fogplayerparams_t
 19ClientModeDACNormal
 19EDACResponseConcept
@@ -4629,7 +4697,6 @@ $z0u.A
 1CHelpRequestLogs_UploadUserApplicationLog_Request
 1CMsgRequestItemPurgatory_FinalizePurchaseResponse
 1D;G 
-1D;fhu
 1DBlend
 1GAME_PARTICLE_MANAGER_EVENT_SET_TEXTURE_ATTRIBUTE
 1GERA
@@ -4646,6 +4713,7 @@ $z0u.A
 1k_ItemPurgatoryResponse_Finalize_Failed_NoSOCache
 1k_RemoveItemAttribute_Failed_AttributeDoesntExist
 1k_UnpackBundle_Failed_UnableToCreateContainedItem
+1tbHc
 1w?WA
 2	.CMsgUnit
 2 .CBidirMsg_RelayInfo.Operation_t
@@ -4654,6 +4722,7 @@ $z0u.A
 2 .CMsgEventClaimRewards.Challenge
 2 .CMsgGCHUpdateSession.ExtraField
 2 .CMsgGCRoutingInfo.RoutingMethod:
+2 .CMsgGCToClientDevMMStatus.Party
 2 .CMsgGCToClientPartyEvent.EEvent
 2 .CMsgGCToGCForwardAccountDetails"&
 2 .CMsgHttpResponse.ResponseHeader
@@ -4699,6 +4768,7 @@ $z0u.A
 2$.CGameInfo.CDotaGameInfo.CPlayerInfo
 2$.CMsgAddItemToSocketResponse.EAddGem"
 2$.CMsgGCToClientEventInfo.VirtualItem
+2$.CMsgGameModeState_Puzzle.ActiveRule
 2$.CMsgPlayerCombatResult.DamageSource
 2$.CMsgPublicPostMatchStats.PlayerInfo
 2$.CMsgSerializedSOCache.Cache.Version
@@ -4710,6 +4780,7 @@ $z0u.A
 2%.CMsgSource1LegacyGameEventList.key_t"K
 2%.CServerLobbyData_PlayerInfo.Currency
 2&.CMsgClientToGCCreateStaticRecipe.Item
+2&.CMsgClientToGCDevOperation.EOperation
 2&.CMsgGCMsgMasterSetWebAPIRouting.Entry
 2&.CMsgIndividualPostMatchStats.Currency
 2&.CServerLobbyData_PlayerInfo.Challenge
@@ -4785,7 +4856,6 @@ $z0u.A
 2.CHelpRequestLogs_UploadUserApplicationLog_Request
 2/.CMsgClientToGCGetFriendCodesResponse.EResponse
 2/.CMsgClientToGCHandleItemPurchase.StoreInfo_iOS
-2/.CMsgClientToGCModifyGACFlagsResponse.EResponse"R
 2/.CMsgLookupMultipleAccountNamesResponse.Account
 2/.CMsgPrivatePlayerState.ItemChoiceReward.Choice
 20.0f
@@ -4829,10 +4899,12 @@ $z0u.A
 20CDAC_UI_ChallengeMap
 20CDAC_UI_EquipControl
 20CDAC_UI_FriendPicker
+20CDAC_UI_Hud_Tutorial
 20CDAC_UI_PlayerAvatar
 20CDAC_UI_PopupManager
 20CDAC_UI_Popup_RankUp
 20CDAC_UI_Popup_Reward
+20CDAC_UI_PuzzleStatus
 20CDAC_UI_SettingsEnum
 20CDAC_UI_Synergy_Icon
 20CDAC_UI_Tooltip_Hero
@@ -4873,6 +4945,7 @@ $z0u.A
 20CMsgCraftingResponse
 20CMsgGCGetCommandList
 20CMsgGCHUpdateSession
+20CMsgGameModeSettings
 20CMsgItemAcknowledged
 20CMsgItemChangedOwner
 20CMsgNetBufferRemoved
@@ -4972,6 +5045,7 @@ $z0u.A
 21CDAC_UI_Popup_Synergy
 21CDAC_UI_Rewards_About
 21CDAC_UI_TalentBrowser
+21CDAC_UI_UnitModifiers
 21CDefPredictionCopyOps
 21CEconTool_StrangePart
 21CEconTool_StyleUnlock
@@ -5013,6 +5087,7 @@ $z0u.A
 21CPropsBreakableSystem
 21CRagdollLRURetirement
 21CRenderingPipelineDac
+21CSOAccountSyncStorage
 21CSVCMsg_GameEventList
 21CSVCMsg_ServerSteamID
 21CSteamCallbackGeneric
@@ -5049,6 +5124,7 @@ $z0u.A
 22.CMsgAMGetUserGameStatsResponse.Achievement_Blocks
 22.CMsgClientToGCAckSupportCreditsResponse.EResponse"f
 22.CMsgClientToGCCanPurchaseItemResponse.Reservation
+22.CMsgClientToGCUpdateAccountSyncResponse.EResponse"i
 22.CMsgPlayerSignoutData_EventGrantProgress.Currency
 22.CMsgServerToGCMatchSignoutResponse.ESignoutResult"
 22.CUserMsg_ParticleManager.DestroyParticleInvolving
@@ -5065,6 +5141,7 @@ $z0u.A
 22CClientUIDialogManager
 22CCloud_Delete_Response
 22CCourierFlyingModifier
+22CDACAccountSyncStorage
 22CDACGameAssertListener
 22CDAC_DB_Page_Heropedia
 22CDAC_UI_Banner_Paintin
@@ -5298,6 +5375,7 @@ $z0u.A
 23C_DAC_ChallengeMapClaim
 23C_DevtestHierarchyChild
 23C_DynamicPropClientside
+23C_FuncElectrifiedVolume
 23C_MaterialModifyControl
 23C_PostProcessController
 23C_ServerRagdollAttached
@@ -5423,6 +5501,7 @@ $z0u.A
 24CMsgGCToClientPartyEvent
 24CMsgGCToGCRefreshSOCache
 24CMsgGameModeState_Normal
+24CMsgGameModeState_Puzzle
 24CMsgPlayerOrderProcessed
 24CMsgPlayerSelectedTalent
 24CMsgPublicPostMatchStats
@@ -5513,13 +5592,13 @@ $z0u.A
 25CConCommandMemberAccessorI13CLoopModeGameE
 25CConCommandMemberAccessorI16CDecalGameSystemE
 25CConCommandMemberAccessorI18CSoundOpGameSystemE
+25CConCommandMemberAccessorI20CDAC_UI_Hud_TutorialE
 25CConCommandMemberAccessorI22CEntityDebugGameSystemE
 25CConCommandMemberAccessorI26C_Peer2PeerGenericMessagesE
 25CConCommandMemberAccessorI9CFPSStatsE
 25CControllerHapticsManager
 25CCustomKillEffectModifier
 25CDAC_DB_Page_Achievements
-25CDAC_UI_ChallengeWorldMap
 25CDAC_UI_ContextMenu_Party
 25CDAC_UI_Popup_Reward_Info
 25CDAC_UI_Popup_Steam_Login
@@ -5527,7 +5606,6 @@ $z0u.A
 25CDemoStringTables_items_t
 25CDemoStringTables_table_t
 25CDotaMaterialQuadRenderer
-25CEconTool_DACGrantCredits
 25CIconModifier_HeroMinimap
 25CInfoDynamicShadowHintBox
 25CInterpolatedVarArrayBaseI10CHistoryIdLb0ELb1E28COwnerInterpolationLerpFuncsIS0_34CAnimGraphHistoryInterpolationHookEE
@@ -5629,12 +5707,14 @@ $z0u.A
 26CDAC_Client_CombatIncident
 26CDAC_DB_Control_BattlePass
 26CDAC_PortraitWorldRenderer
+26CDAC_UI_ChallengeMap_Claim
 26CDAC_UI_ContextMenuManager
 26CDAC_UI_ContextMenu_Player
 26CDAC_UI_ParticleScenePanel
 26CDAC_UI_Popup_Player_State
 26CDAC_UI_Popup_RewardsAbout
 26CDAC_UI_Popup_Season0Intro
+26CDAC_UI_Popup_Tutorialntro
 26CDAC_iConvarPanoramaSetter
 26CDefaultKeyValuesErrorSpew
 26CEconTool_BackpackExpander
@@ -5654,6 +5734,7 @@ $z0u.A
 26CLightDescriptorSetManager
 26CMsgAMFindAccountsResponse
 26CMsgClearEntityDecalsEvent
+26CMsgClientToGCDevOperation
 26CMsgClientToGCEquipLoadout
 26CMsgClientToGCSetItemStyle
 26CMsgClientToGCSpectateUser
@@ -5669,6 +5750,7 @@ $z0u.A
 26CMsgGCServerVersionUpdated
 26CMsgGCToGCSOCacheSubscribe
 26CMsgGCToServerAddSpectator
+26CMsgGameModeState_Tutorial
 26CMsgGameReplayActionMarker
 26CMsgHttpRequest_QueryParam
 26CMsgServerToGCAbandonMatch
@@ -5850,6 +5932,7 @@ $z0u.A
 28CDAC_DB_Page_Heropedia_Items
 28CDAC_DB_Page_Heropedia_Rules
 28CDAC_UI_ContextMenu_ChatLine
+28CDAC_UI_Popup_GameModePicker
 28CDAC_UI_Popup_Rank_Tier_Desc
 28CDAC_UI_SettingsEnumDropDown
 28CDAC_UI_Tooltip_MeterDetails
@@ -5866,7 +5949,6 @@ $z0u.A
 28CMsgAMAddFreeLicenseResponse
 28CMsgClientConnectionComplete
 28CMsgClientToGCGetFriendCodes
-28CMsgClientToGCModifyGACFlags
 28CMsgCombatEvent_AttackEvaded
 28CMsgCombatEvent_AttackMissed
 28CMsgCombatEvent_CancelAttack
@@ -5935,6 +6017,7 @@ $z0u.A
 29CDAC_UI_NotificationContainer
 29CDAC_UI_Popup_PartySelectTeam
 29CDAC_UI_Popup_PostGame_Reward
+29CDAC_UI_Popup_UnderlordPicker
 29CDecalSaveRestoreBlockHandler
 29CDefaultIdleExpresionModifier
 29CEntityMessageRemoveAllDecals
@@ -5957,6 +6040,7 @@ $z0u.A
 29CMsgGCRequestSubGCSessionInfo
 29CMsgGCToClientEventInfo_Claim
 29CMsgGCToClientPollFileRequest
+29CMsgGCToClientUpdateAvailable
 29CMsgGCToGCAddSubscriptionTime
 29CMsgGCToGCCanUseDropRateBonus
 29CMsgGameStateIntegrationBlock
@@ -6021,6 +6105,7 @@ $z0u.A
 30CBidirMsg_RebroadcastGameEvent
 30CBodyComponentSkeletonInstance
 30CCloud_GetFileDetails_Response
+30CDAC_UI_ChallengeMap_Challenge
 30CDAC_UI_FriendElementContainer
 30CDAC_UI_Popup_UnderlordAbility
 30CDAC_UI_UnitScenePanelInteract
@@ -6172,6 +6257,7 @@ $z0u.A
 31CMsgClientToGCGetRegionModeInfo
 31CMsgClientToGCLookupAccountName
 31CMsgClientToGCPartyJoinResponse
+31CMsgClientToGCUpdateAccountSync
 31CMsgClientToServerLoadShareCode
 31CMsgCombatEvent_ModifierDestroy
 31CMsgEventClaimRewards_Challenge
@@ -6179,6 +6265,7 @@ $z0u.A
 31CMsgGCHUpdateSession_ExtraField
 31CMsgGCMsgMasterSetWebAPIRouting
 31CMsgGCStorePurchaseInitResponse
+31CMsgGCToClientDevMMStatus_Party
 31CMsgGCToClientPollConvarRequest
 31CMsgGCToGCApplyLocalizationDiff
 31CMsgGCToGCBannedWordListUpdated
@@ -6221,6 +6308,7 @@ $z0u.A
 31ToolEvent_GetEntityInfoResult_t
 31ToolEvent_GetEntityInputsResult
 32CClientMsg_CustomGameEventBounce
+32CDAC_DB_Page_Challenge_World_Map
 32CDAC_DB_Page_Heropedia_HowToPlay
 32CDAC_DB_Page_Heropedia_Synergies
 32CDAC_UI_Popup_FriendCodeAddPopup
@@ -6239,6 +6327,7 @@ $z0u.A
 32CGameMsg_k_EMsgNetBufferContents
 32CMsgAMSendEmail_ReplacementToken
 32CMsgAnyToGCReportAssertsResponse
+32CMsgClientAccountSyncStorageFile
 32CMsgClientToGCCreateStaticRecipe
 32CMsgClientToGCEquipItemsResponse
 32CMsgClientToGCEventClaimResponse
@@ -6280,6 +6369,7 @@ $z0u.A
 32CUserMessageHapticsManagerEffect
 32C_BaseAnimatingOverlayController
 32ISkeletonAnimationHistoryContext
+333333
 33333333H
 333?)\
 333?333?
@@ -6329,7 +6419,6 @@ $z0u.A
 33ToolEvent_GetEntityInputsResult_t
 34CCloud_EnumerateUserFiles_Response
 34CCloud_GetUploadServerInfo_Request
-34CDAC_UI_Tooltip_ChallengeMap_Claim
 34CEconItemSpecificAttributeIterator
 34CEcon_FlushInventoryCache_Response
 34CGameMsg_k_EMsgRecordLocalBotStats
@@ -6337,6 +6426,7 @@ $z0u.A
 34CInlineJob_CMsgGCToClientSDRTicket
 34CMsgClientToGCClaimChallengeReward
 34CMsgClientToGCClearPurchaseReserve
+34CMsgClientToGCDevOperationResponse
 34CMsgClientToGCEquipLoadoutResponse
 34CMsgClientToGCEventRequestInfoSync
 34CMsgClientToGCPartySetGameModifier
@@ -6381,6 +6471,7 @@ $z0u.A
 35CDAC_DB_Page_Heropedia_Items_ByTier
 35CDAC_DB_Page_Heropedia_Items_ByType
 35CDAC_UI_Popup_Legendary_Description
+35CDAC_UI_Popup_Play_Page_Season_Info
 35CDynamicFaceOcclusionRendererObject
 35CEventQueue_SaveRestoreBlockHandler
 35CGCMsgMemCachedGetResponse_ValueTag
@@ -6397,9 +6488,11 @@ $z0u.A
 35CMsgGCToClientEventInfo_VirtualItem
 35CMsgGCToClientUpdateConsoleCommands
 35CMsgGCToServerUpdateConsoleCommands
+35CMsgGameModeState_Puzzle_ActiveRule
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9010E30CMsgClientToGCStartMatchmakingLj9011E38CMsgClientToGCStartMatchmakingResponseE
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9012E29CMsgClientToGCStopMatchmakingLj9013E37CMsgClientToGCStopMatchmakingResponseE
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9015E24CMsgClientToGCLeaveLobbyLj9016E32CMsgClientToGCLeaveLobbyResponseE
+35CMsgIDLinkGenericClientToGCResponseILj1ELj9017E29CMsgClientToGCIsInMatchmakingLj9018E37CMsgClientToGCIsInMatchmakingResponseE
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9121E34CMsgClientToGCReplacementSDRTicketLj9122E42CMsgClientToGCReplacementSDRTicketResponseE
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9123E25CMsgClientToGCPartyCreateLj9124E33CMsgClientToGCPartyCreateResponseE
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9125E24CMsgClientToGCPartyLeaveLj9126E32CMsgClientToGCPartyLeaveResponseE
@@ -6426,6 +6519,8 @@ $z0u.A
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9199E29CMsgClientToGCAssociateDeviceLj9200E37CMsgClientToGCAssociateDeviceResponseE
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9203E34CMsgClientToGCPartySetGameModifierLj9204E42CMsgClientToGCPartySetGameModifierResponseE
 35CMsgIDLinkGenericClientToGCResponseILj1ELj9207E25CMsgClientToGCSetTeamNameLj9208E33CMsgClientToGCSetTeamNameResponseE
+35CMsgIDLinkGenericClientToGCResponseILj1ELj9212E26CMsgClientToGCDevOperationLj9213E34CMsgClientToGCDevOperationResponseE
+35CMsgIDLinkGenericClientToGCResponseILj1ELj9214E31CMsgClientToGCUpdateAccountSyncLj9215E39CMsgClientToGCUpdateAccountSyncResponseE
 35CMsgIDLinkGenericClientToGCResponseILj3ELj7000E24CMsgAnyToGCReportAssertsLj7001E32CMsgAnyToGCReportAssertsResponseE
 35CMsgMatchSignoutData_Disconnections
 35CMsgPlayerCombatResult_DamageSource
@@ -6455,7 +6550,6 @@ $z0u.A
 36CMsgClientToGCEventChallengeProgress
 36CMsgClientToGCEventEquipVirtualItems
 36CMsgClientToGCGetFriendCodesResponse
-36CMsgClientToGCModifyGACFlagsResponse
 36CMsgClientToServerUpvoteNotification
 36CMsgEconPlayerStrangeCountAdjustment
 36CMsgGCGetPartnerAccountLink_Response
@@ -6517,7 +6611,6 @@ $z0u.A
 37CWorkshop_SetItemPaymentRules_Request
 384.0f
 38CDACCameraParamsBlenderKillerAndVictim
-38CDAC_UI_Tooltip_ChallengeMap_Challenge
 38CDAC_UI_Tooltip_UnderlordAbilityOption
 38CGCSystemMsg_GetPurchaseTrust_Response
 38CGCToGCMsgMasterStartupComplete_GCInfo
@@ -6557,6 +6650,7 @@ $z0u.A
 39CMsgClientToGCDevEventOperationResponse
 39CMsgClientToGCGetRegionModeInfoResponse
 39CMsgClientToGCLookupAccountNameResponse
+39CMsgClientToGCUpdateAccountSyncResponse
 39CMsgGCPartnerRechargeRedirectURLRequest
 39CMsgGCToClientStoreTransactionCompleted
 39CMsgGCToGCApplyLocalizationDiffResponse
@@ -6752,7 +6846,6 @@ $z0u.A
 49GameToolEventToolTraceRayResult_tHookupGameSystem
 4?33s?
 4@G8-x
-4@LcD
 4@fD9l
 4@fD9t
 4@fD9|
@@ -6761,9 +6854,8 @@ $z0u.A
 4[Ic\
 4k_EGCMsgInitiateTradeResponse_Target_Already_Trading
 4k_EGCMsgInitiateTradeResponse_Trade_Banned_Initiator
+4vHct
 4vf;T
-4w#HcS
-4w#HcS0;S4
 4w>Mw
 4x3Button
 5(EWorkshopFileType) Type of Workshop file to publish.
@@ -6806,15 +6898,19 @@ $z0u.A
 59CMsgGCToGCGrantAccountRolledItems_Item_AdditionalAuditEntry
 59CPlayer_GetFriendsGameplayInfo_Response_FriendsGameplayInfo
 59CProtoItemSocket_AssetModifier_DESERIALIZE_FROM_STRING_ONLY
+5<<illegal>>
 5CSHA1
 5CSave
 5ISave
 5Retrieves information about a set of published files.
-5Signon
 5UUUU
 5YHe/
 5k_RemoveItemAttribute_Failed_AttributeCannotBeRemoved
 5t~BC
+5w HcS
+5w#HcS
+5w#HcS0;S4
+5wGHcS
 6(Optional) Type of game the published file represents.
 60 frames: %3.1f fps, avg time:%3.2fms abs_range:%3.2fms, min_time:%3.2fms, max_time:%3.2fms
 60 server ticks: %3.1f tps, avg time:%3.2fms abs_range:%3.2fms, min_time:%3.2fms, max_time:%3.2fms
@@ -6859,14 +6955,11 @@ $z0u.A
 6k_EGCMsgInitiateTradeResponse_Shared_Account_Initiator
 6k_ItemPurgatoryResponse_Refund_Failed_CouldNotFindItem
 72CWorkshop_PopulateItemDescriptions_Request_ItemDescriptionsLanguageBlock
-7At!H
-7AtlH
 7CP4File
 7CRender
 7CTEDust
 7CTEFizz
 7C_World
-7H;0t+H
 7ICamera
 7IConVar
 7INotify
@@ -6875,8 +6968,8 @@ $z0u.A
 7Ze&<o
 7[A\A]A^]
 7`ZKV?e
+7t HcCxI
 7t$UH
-7t(HcCxI
 8#GameUI_Disconnect_LocalProblem_HostedServerPrimaryRelay
 8$u9M
 8+taL
@@ -6885,7 +6978,7 @@ $z0u.A
 8;W t
 8;w t#H
 8<lCE
-8@:wrt'
+8@:wzt'
 8AUATSH
 8A]A^]
 8A^]H
@@ -6949,6 +7042,7 @@ $z0u.A
 99w(|&H
 9<t	]
 9@8:u
+9Bxt	
 9C Y^
 9C t=H
 9C tJH
@@ -7030,11 +7124,9 @@ $z0u.A
 9C_DAC_NPC
 9C_EnvWind
 9C_PhysBox
-9CxtcI
 9D7V=
 9ELanguage
 9EventID_t
-9Fxt	
 9G tPH
 9G twH
 9G(t=H
@@ -7109,11 +7201,11 @@ $z0u.A
 ;2t)H
 ;2t,H
 ;2t.H
-;5Zcs
 ;7};UI
 ;9t2H
 ;:~`H
 ;;D$H
+;A9G\tG
 ;BXtC
 ;BXtOH
 ;BXw9H
@@ -7123,11 +7215,11 @@ $z0u.A
 ;CPt,H
 ;FPttK
 ;G tu+G$L
+;G0}D
 ;GAME_PARTICLE_MANAGER_EVENT_CHANGE_CONTROL_POINT_ATTACHMENT
 ;GPttK
 ;GTtO
-;H;:t#
-;Hc5~|+
+;H9:t#
 ;I9<$uY
 ;L$D|*
 ;Q t#H
@@ -7149,7 +7241,7 @@ $z0u.A
 ;p t H
 ;p t$A
 ;r t#H
-;r }BI
+;r }2I
 ;sv_pausable;sv_cheats
 ;w |	]
 ;w(UH
@@ -7213,7 +7305,6 @@ $z0u.A
 </v(<7w$
 </~.H
 <0fD;'t?H
-<0tHH
 <0u3H
 <0u7H
 <0uKH
@@ -7231,7 +7322,6 @@ $z0u.A
 <:uOH
 <:usH
 << NULL >>
-<<illegal>>
 <<null>>
 <?uuE1
 <?xml version="1.0" encoding="UTF-8"?>
@@ -7242,8 +7332,12 @@ $z0u.A
 <Ath<G
 <ERROR>
 <Eu.H
+<Event Name>
 <HOi#
 <Ht%1
+<ID> <Bit Index> Sets a bit [0..15] on the sync storage value
+<ID> <Value> Forces a set of the specified variable
+<ID> <Value> Sets a max style account sync storage value
 <IJcL2
 <IJcL:
 <INVALID EXPRESSION>
@@ -7271,6 +7365,8 @@ $z0u.A
 <a class="PersonaName"%s%s>%s</a>
 <a class="PersonaName">%s</a>
 <account ID> Attempts to spectate the match of the specified user
+<amount> [message] Grants the specified credit object to the user
+<bucket id> <shop generation id>
 <classptr>
 <custom>
 <embedded>
@@ -7325,6 +7421,7 @@ $z0u.A
 <unknown item>
 <unknown>
 <ununsed>
+<vHcq(H
 <}u2<}
 =.f?y
 === %s ===
@@ -7343,7 +7440,7 @@ $z0u.A
 >()09,)G>r
 >9K!0>N
 >;9t9H
->ChallengePopupVisible
+>@UnitID
 >LZSSt
 >M.F9
 >QL^9
@@ -7380,7 +7477,6 @@ $z0u.A
 ?*a\`E<
 ?*ij~
 ?*oG8-
-?*t0L
 ?+Vh{O@
 ?+hZbe4
 ?,F]k
@@ -7428,23 +7524,22 @@ $z0u.A
 ?A@YY$
 ?A^A_]
 ?A^]H
-?AnimateInAndOut
 ?AnimatedImageStrip
 ?B&:G
 ?B@|h8
 ?B\9{g
 ?CBaseAnimatingEasings_t
-?CBodyComponentReferenced
 ?CWorldTextSceneObjectDesc
+?CollapseItemChoices
 ?Compressed texture bits for mip %i are corrupt, decompression error!
 ?D]`,
 ?DebugAutoComplete
 ?Default Game Description
 ?Filename Cell Directory
+?HeroPanels
 ?JcL2
 ?JcL:
 ?LrA/<,M?+
-?MiniJailVisible
 ?N%E\
 ?N%fj
 ?N=w'
@@ -7454,7 +7549,6 @@ $z0u.A
 ?TFm,r
 ?The most recent last-played time the client already knows about"
 ?TooltipHidden
-?UUUUUU
 ?Vdt@
 ?ViewEffects
 ?Wzm6V"
@@ -7502,6 +7596,7 @@ $z0u.A
 ?q?}WF
 ?qe?A
 ?r4GV~	
+?r_DotaSpecificCulling is %s
 ?rl=C8&
 ?tJf.
 ?t`9B
@@ -7540,7 +7635,6 @@ $z0u.A
 @(9A(
 @(9G(
 @(A9D$0u
-@(HcU
 @){K9_
 @+,]f}/
 @,333?
@@ -7548,7 +7642,7 @@ $z0u.A
 @-oyrn
 @/5B?S
 @0!!!P
-@09C,t?
+@09C,tB
 @0A;@@
 @0H;E
 @0HcE
@@ -7556,6 +7650,7 @@ $z0u.A
 @2l9<)8
 @4A\]
 @8/N|
+@85J{
 @89B8]
 @89u"
 @8:B8
@@ -7565,6 +7660,7 @@ $z0u.A
 @8rXtZUH
 @8w	UH
 @8w)t
+@8w0t
 @8w@u
 @8wBt4UH
 @8wSUH
@@ -7575,9 +7671,10 @@ $z0u.A
 @:w$UH
 @:w)t
 @:w)t/H
+@:wztkUH
 @<9A<
 @<9B<
-@<9C8t
+@<9C@t
 @=#?m\
 @?$2bUs
 @@/data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcBlock4x4.cpp
@@ -7589,22 +7686,23 @@ $z0u.A
 @A;t$
 @AUATA
 @CW"P
-@Clearing old .sav file %s
 @DP5z5@
 @Gr}H
+@H;=@
 @HH;E
-@HI;D$H
+@HI;FH
 @Lcg(I
+@OnEngineDisconnectReason
 @P<	u4H
 @P<*t
 @P<*u
 @P</t
 @PARD
-@ShowTalentBrowser
 @TtFA
 @TuMH
 @UN{J
 @Underlord Intro
+@UnderlordIsSelected
 @Vc	kc
 @VectorAligned
 @W?,}
@@ -7627,7 +7725,6 @@ $z0u.A
 @[]A\
 @`%zt~
 @`A^]
-@`fff?A
 @asiW|
 @c~MZ
 @fD9l
@@ -7638,12 +7735,10 @@ $z0u.A
 @g3^%
 @g|_\
 @hA#P\H
-@hA9E
 @huNH
 @i4^_
 @keyframes 
 @keyframes '%s'
-@l9Clu
 @pA\]
 @panorama_daisy_wheel
 @panorama_debug_movies
@@ -7667,12 +7762,14 @@ $z0u.A
 @t2HcO0H
 @t2HcO<H
 @t2IcT$(H
+@t3Hc
 @t3HcG0H
 @t3IcOxH
+@t3IcT$<H
 @t3Ic|$`H
 @t4HcC4H
 @t4HcG0H
-@t4Ic~dH
+@t9Ctu
 @t;Ic
 @t?Ic
 @tBE+
@@ -7683,6 +7780,7 @@ $z0u.A
 @uNIc
 @uVIc
 @vf'(
+@|A9E
 @~<Hc
 @~=Ic
 @~KIc
@@ -7768,13 +7866,15 @@ A9D$4
 A9D$4u
 A9D$@
 A9D$D
+A9D$x
+A9D$|
 A9E t
 A9E$u
 A9E,t
 A9E@tBH
 A9EDu
 A9EHA
-A9E`H
+A9EhH
 A9F t
 A9F u
 A9F$t	E
@@ -7786,6 +7886,7 @@ A9GX~zI
 A9H(t
 A9L$4u
 A9L$D
+A9M4u
 A9N M
 A9N t	E
 A9NLA
@@ -7801,7 +7902,6 @@ A9\$0
 A9\$ut
 A9] L
 A9](}
-A9]||
 A9^ I
 A9^ u
 A9^ ~DI
@@ -7822,7 +7922,6 @@ A;D$PA
 A;D$X}
 A;D$`t
 A;D$`}
-A;D$x
 A;E$t
 A;EPs
 A;E`}
@@ -7830,16 +7929,14 @@ A;F t
 A;F$t
 A;FPA
 A;F`}
-A;Fht
 A;FpA
+A;Fpt
 A;G A
 A;G0A
 A;G0} I
 A;GPA
-A;GpA
 A;H`}
 A;I`}
-A;N(tlI
 A;T$$u
 A;Z D
 A;\$ 
@@ -7852,13 +7949,13 @@ A;\$8
 A;\$8|
 A;\$<t
 A;\$x|
+A;] M
 A;] |
 A;](t:I
 A;](|
 A;](}3I
 A;]8tSI
 A;]8|
-A;]8}WI
 A;]H|
 A;]h|
 A;^ D
@@ -7869,6 +7966,7 @@ A;^(}-I
 A;^h|
 A;^l|!I
 A;_ M
+A;_ },I
 A;_,t
 A;_8|
 A;_8}TI
@@ -7884,8 +7982,7 @@ A;t$
 A;vX~
 A;vht{H
 A;w0u
-A;wPA
-A@Ic] A;]0
+A;w|u
 A@Lcc D;c0
 A@Lck D;k0
 A@Mcl$ E;l$0
@@ -7995,7 +8092,11 @@ ACT_CSGO_SILENCER_DETACH
 ACT_CSGO_TAUNT
 ACT_CSGO_TWITCH
 ACT_CSGO_TWITCH_BUYZONE
+ACT_DAC_ATTACK_IDLE
 ACT_DAC_BC_IDLE
+ACT_DAC_BC_IDLE_HAPPY
+ACT_DAC_BC_IDLE_SAD
+ACT_DAC_CHANNEL_LOOP
 ACT_DEPLOY
 ACT_DEPLOY_IDLE
 ACT_DIEBACKWARD
@@ -9522,7 +9623,6 @@ AVAUATS~
 AVAUATUH
 AVAUATUS
 AVAUATUSH
-AVAUATfA
 AVAUD
 AVAUE
 AVAUE1
@@ -9588,14 +9688,12 @@ AYAZf
 AYAZt
 AYAZv
 AYAZ}
-AYt"H
-AYt9H
+AYt3H
 AZA[H
 A[A\D
 A[A\L
 A[A\t
 A[A^D
-A\9B\u
 A\A]%
 A\A]1
 A\A]9
@@ -9652,6 +9750,7 @@ Ability_%s
 AboutTabButton
 AboutTabContent
 AbsTagType(unknown)
+AbsolutePoseControl
 Ac&Q/
 Accept Party Invite
 Accept Party Invite - In Party
@@ -9660,11 +9759,14 @@ Account
 Account does not exist or is temporarily unavailable
 Account is disabled
 Account is not allowed to purchase
+Account sync storage. GC Dirty: %u
 Accumulator in challenge %s is missing a name
 Achievement
 AchievementProgressBar
 AchievementReward%d%d
 Achievement_Blocks
+Acknowledged
+AcknowledgedViolators
 AcquiredTalent
 Activate an info world layer
 ActivateMainWindow
@@ -9675,7 +9777,10 @@ ActiveModelConfig_t
 ActiveModifiers
 ActiveRegion
 ActiveRegion%d
-ActiveUnderlord
+ActiveRule
+ActiveRule_%d
+ActiveRule_Description
+ActiveRules
 ActiveUnderlord_%d
 ActiveUnitRow
 Activity %s
@@ -9750,7 +9855,6 @@ Adds an I/O connection that will call the named function on this entity when the
 Adds to list of names to display text debugging information about the given entity(ies) on top of the entity (See Overlay Text)
 Adjusts how much time it takes for each player to appear in the intro sequence
 AdvanceAnimatedImageStripFrame
-AdvanceSimulation
 Advanced joystick settings initialized for joystick %d
 AdvancedVideo
 Aegis.Used
@@ -9790,6 +9894,7 @@ Alpha for rope antialiasing effect
 Already saw decimal point or exponent; can't have another one.
 Alternate icon definition index %d must be greater than or equal to zero
 AlternateActions
+Always
 Am_origin2D
 Ambient %s:Unknown command %s
 AmbientCubes
@@ -9838,8 +9943,9 @@ AnimVRFinger_t
 AnimVRHand_t
 AnimatableSceneObjectDesc
 AnimateDuringGameplayPause
-AnimateIn
+AnimateInAndOut
 AnimateOut
+AnimatePlayers
 Animated
 Animated characters who have vertex flex capability.
 AnimatedHeadlineBG
@@ -9990,7 +10096,6 @@ B<9F<t
 B@8C@t
 B@Lcc D;c0
 B@Lck D;k0
-B@Lcs D;s0
 BADFUNCTIONPOINTER
 BATSH
 BC6h compression not supported on this target (windows only).
@@ -10030,6 +10135,7 @@ BRouteWorkItemCompleted called for a job that could not be found!
 BS8CSt
 BSR_ANYCRLF)
 BSR_UNICODE)
+BSelectedMode
 BT8CTt
 BU8CUt
 BUCKSHOT
@@ -10041,6 +10147,7 @@ BYield
 BYldPromptYesNo
 B[A\]
 B\9{gt
+B\A9G\u
 B\f9F\t
 B^f9F^t
 B_txt
@@ -10133,7 +10240,6 @@ BenchSlotDragDestinationHovered
 BenchSlotDragSourceHovered
 BenchSlot_Snippet
 BenchUnitRow
-Benched
 BenchmarkService001
 Bengali
 BentNormalData
@@ -10154,6 +10260,7 @@ Binding_FindAllMatches
 Binding_FindAllMatches(query,leeway) : Returns an array of all matching responses. If leeway is nonzero, all results scoring within 'leeway' of the best score return. 
 Binding_FindBestMatch
 Binding_FindBestMatch(query) : Query the database and return the best result found. If multiple of equal score found, an arbitrary one returns. 
+Bit Set
 Bitfield of entindices to listen to voice messages from when connected to SourceTV, default is none
 Bj8Fj
 Bl8Flt
@@ -10201,6 +10308,7 @@ BotPlayer
 BottomArrow
 BottomArrowVisible
 BottomMouseScrollRegion
+BoughtUnit
 Bounce multiplier for when physically simulated objects collide with other objects.
 Bounce.Concrete
 Bounce.Flesh
@@ -10238,6 +10346,7 @@ Buginese
 Buhid
 Build Cubemaps
 Build offsets and runs for %s 0x%p
+BuildCacheSubscribed(CDACAccountSyncStorage)
 BuildCacheSubscribed(CDACGameAccountClient)
 BuildCacheSubscribed(CDACLobby)
 BuildCacheSubscribed(CDACParty)
@@ -10292,17 +10401,17 @@ C [A\A]A^]
 C [A\]
 C tiE
 C u[H
-C!?t;
+C!?tBH
 C!?tBf.
-C!?tC
 C!?tJf.
 C!?tM1
 C!?tcD
 C!?tsH
+C!?u"
 C!?u*
-C!?u-
 C$+CX;C,
 C$A;G$t
+C$AUH
 C$x$H
 C(9B(
 C(D9@(A
@@ -10337,14 +10446,13 @@ C8Hcu
 C8IcT$0H
 C8[A\A]A^]
 C8[A\]
-C8tEH
+C8tHH
 C9,h5
 C<A9D$<
 C<A9D$<}
 C<D+C8E
 C<[A\A]A^]
 C@H;CHs
-C@Hc2H
 C@HcS8H
 C@[A\A]A^]
 C@[A\]
@@ -10428,6 +10536,7 @@ CBodyComponentBaseModelEntityReferencedPtr
 CBodyComponentPoint
 CBodyComponentPointReferenced
 CBodyComponentPointReferencedPtr
+CBodyComponentReferenced
 CBodyComponentReferencedPtr
 CBodyComponentSkeletonInstance
 CBodyComponentSkeletonInstanceReferenced
@@ -10457,9 +10566,12 @@ CCLCMsg_SplitPlayerConnect
 CCLCMsg_SplitPlayerDisconnect
 CCLCMsg_VoiceData
 CCameraManagerGameSystem
+CChallengePopupVisible
 CChoreoScene::ImportEventFromKV3( %s ):  discarding invalid event of type '%s' [%f -> %f]
 CChoreoScene::ParseEvent( %s ):  discarding invalid event of type '%s' [%f -> %f]
 CChoreoScene::RestoreFromBinaryBuffer( %s ):  discarding invalid event of type '%s' [%f -> %f]
+CClientAccountSyncStorage::ForceValue
+CClientAccountSyncStorage::ReconcileWithGC
 CClientAlphaProperty
 CClientAlphaProperty CUtlMemoryPool
 CClientModeGameSystem
@@ -10505,6 +10617,7 @@ CControllerHapticsManager::TriggerHapticVibrationAction Requires VR to be Active
 CControllerHapticsManager::TriggerHapticVibrationAction STOPPED 
 CCopyRecipientFilter
 CCustomTextureToolCache
+CDACAccountSyncStorage
 CDACClientGCSystem
 CDACClientGCSystem::ConnectToGame - already connected
 CDACClientGCSystem::ConnectToGame(%s)
@@ -10538,6 +10651,7 @@ CDACPurchaseController::UnpackBundleItemDef
 CDACRichPresence
 CDACViewRender::UpdateGlobalDescriptorSet - Too many threads (%d) accessing the render device, need to increase -r_max_device_threads
 CDACWorldParticleSystem
+CDAC_DB_Page_Challenge_World_Map::ClaimChallenge
 CDAC_DB_Page_Rewards::ClaimItem
 CDAC_PlayController::BCheckLaunchParameters() - We are in a game we could try to reconnect to -- ignoring launch parameters
 CDAC_PlayController::BCheckLaunchParameters() - no SteamApps() - steam not initialized yet?
@@ -10553,7 +10667,6 @@ CDAC_SpeechSystem
 CDAC_UI_AchievementPanel::ClaimAchievement
 CDAC_UI_AvatarImage::LoadAvatarInternal
 CDAC_UI_ChallengeMap::OnClaimChallenge
-CDAC_UI_ChallengeWorldMap::ClaimChallenge
 CDAC_UI_DailyChallenge::OnClaimChallenge
 CDAC_UI_DailyChallenge::OnRerollChallenge
 CDAC_UI_EquipControl::EquipLoadoutItem
@@ -10736,6 +10849,7 @@ CFootDefinition
 CFuncAreaPortalWindow
 CFuncBrush
 CFuncCombineBarrier
+CFuncElectrifiedVolume
 CFuncOccluder
 CFuncRotating
 CFunc_LOD
@@ -10820,7 +10934,6 @@ CGameSceneNode::m_flScale
 CGameSceneNode::m_flZOffset
 CGameSceneNode::m_hParent
 CGameSceneNode::m_hierarchyAttachName
-CGameSceneNode::m_p_iv_rootToParent
 CGameSceneNode::m_vecOrigin
 CGameSceneNodeHandle
 CGameSceneNodeOriginSerializer::Serialize:  CellFromCoord( %d, %f ) == %d, expected %d for ( %f %f %f )[%d]%s
@@ -11063,6 +11176,7 @@ CHECK failed: type > 0 && type <= WireFormatLite::MAX_FIELD_TYPE:
 CHECK failed: uninterpreted_options_field != NULL: 
 CHECK failed: value != NULL: 
 CHECK failed: z.first != NULL: 
+CHHc2H
 CHTML::Paint
 CH[A\A]A^]
 CH[A\]
@@ -11263,6 +11377,7 @@ CMsgClientToGCCanPurchaseItem
 CMsgClientToGCCheckFriendCode
 CMsgClientToGCCreateFriendCode"
 CMsgClientToGCDevEventOperation
+CMsgClientToGCDevOperation
 CMsgClientToGCEquipItems
 CMsgClientToGCEquipLoadout
 CMsgClientToGCEventClaim
@@ -11273,7 +11388,6 @@ CMsgClientToGCGetRegionModeInfo";
 CMsgClientToGCIsInMatchmaking"?
 CMsgClientToGCLeaveLobby
 CMsgClientToGCLookupAccountName
-CMsgClientToGCModifyGACFlags
 CMsgClientToGCNameItem
 CMsgClientToGCNameItemResponse
 CMsgClientToGCPartyAction
@@ -11296,6 +11410,7 @@ CMsgClientToGCUnlockCrate
 CMsgClientToGCUnlockItemStyle
 CMsgClientToGCUnpackBundle
 CMsgClientToGCUnwrapGift
+CMsgClientToGCUpdateAccountSync
 CMsgClientToServerChatMsg
 CMsgClientToServerInitData
 CMsgClientToServerLoadShareCode
@@ -11309,9 +11424,9 @@ CMsgCombatEvent_Attack
 CMsgCombatEvent_AttackBlocked
 CMsgCombatEvent_AttackEvaded"5
 CMsgCombatEvent_AttackMissed"
-CMsgCombatEvent_CancelAttack"
+CMsgCombatEvent_CancelAttack"6
 CMsgCombatEvent_CastAbility
-CMsgCombatEvent_CombatEnded"
+CMsgCombatEvent_CombatEnded
 CMsgCombatEvent_Damage
 CMsgCombatEvent_Death"3
 CMsgCombatEvent_ModifierCreate
@@ -11394,6 +11509,7 @@ CMsgGCToClientPollFileRequest
 CMsgGCToClientPollFileResponse
 CMsgGCToClientRequestDropped"
 CMsgGCToClientSDRTicket
+CMsgGCToClientUpdateAvailable
 CMsgGCToGCAddSubscriptionTime
 CMsgGCToGCApplyLocalizationDiff
 CMsgGCToGCBannedWordListUpdated
@@ -11425,11 +11541,14 @@ CMsgGCToServerAddSpectator
 CMsgGCToServerAllocateForMatch
 CMsgGCToServerRequestPing"2
 CMsgGCUpdateSubGCSessionInfo
+CMsgGameModeSettings
 CMsgGameModeState
 CMsgGameModeState_Duos
 CMsgGameModeState_Normal"I
+CMsgGameModeState_Puzzle
 CMsgGameModeState_Sandbox
 CMsgGameModeState_Turbo
+CMsgGameModeState_Tutorial
 CMsgGameModifiers
 CMsgGameReplayActionMarker
 CMsgGameStateIntegrationBlock
@@ -11572,6 +11691,7 @@ CMsgTESmoke
 CMsgTESparks
 CMsgTEWorldDecal
 CMsgTeamInfo
+CMsgTurboBucket
 CMsgUnit
 CMsgUnitAbilityCooldown
 CMsgUnitMeterDamageDealt
@@ -11787,6 +11907,7 @@ CRuleScriptBridge
 CRuleScriptBridge initializing...
 CRuleScriptBridge was double-initialized: tearing down and rebuilding
 CSOAContainer::SetAttributeType - ERROR, trying to change type of previously-defined attribute %d!
+CSOAccountSyncStorage
 CSODACLobby
 CSODACParty
 CSODACServerDynamicLobby
@@ -12194,6 +12315,7 @@ C_FogController
 C_FuncAreaPortalWindow
 C_FuncBrush
 C_FuncCombineBarrier
+C_FuncElectrifiedVolume
 C_FuncOccluder
 C_FuncRotating
 C_Func_LOD
@@ -12352,13 +12474,14 @@ C_TintController
 C_TonemapController2
 C_TonemapController2Alias_env_tonemap_controller2
 C_TriggerCamera
+C_TriggerLerpObject
 C_TriggerVolume
 C_VRHandModelOverride
 C_ViewmodelWeapon
 C_World
 C_fogplayerparams_t
 C`D98~qH
-C`H;=
+C`H;=f
 C`HcSXH
 C`IcT$XH
 C`[A\A]A^]
@@ -12429,6 +12552,7 @@ Cancel Party Invite
 CancelButton
 CancelEntityIOEvents
 Canceled
+Candy and Laser Beams %d
 Cannot access SDR network.  %s
 Cannot add cubemaps to %s because it is still loaded!
 Cannot allocate abstract class
@@ -12492,7 +12616,6 @@ Catmull-Rom (Norm)
 Catmull-Rom (Tangent)
 CelebrationParticles
 CenterColumn
-ChE;g
 ChHcS`H
 ChIcE,H
 Chain '%s' SetEnabled(%s)
@@ -12500,6 +12623,7 @@ Chakma
 Challenge %s failed to load the goals and reward block
 Challenge %s has a condition specified for a client controlled challenge!
 Challenge %s has an accumulator with unrecognized event '%s'
+Challenge %s has an invalid condition when parsing event accumulator condition for event name %s
 Challenge %s has an invalid condition when parsing event condition for event name %s
 Challenge %s has an invalid score type of %s
 Challenge %s has no ID
@@ -12531,9 +12655,9 @@ ChallengeID
 ChallengeListContainer
 ChallengeNode
 ChallengeNodes
+ChallengePanel
 ChallengeSlot
 ChallengeSlot%d
-ChallengeTooltipDest
 ChallengeValid
 Challenge_%d
 ChangeAccessorFieldPathIndex_t
@@ -12596,10 +12720,12 @@ ClaimID
 ClaimLocationImage
 ClaimLocked
 ClaimMode
+ClaimPanel
 ClaimPopupVisible
 ClaimRewardImage
 ClaimText
-ClaimTooltipDest
+ClaimValid
+ClaimVisible
 ClampHealth
 Class: %s (%d)
 Class_T
@@ -12615,6 +12741,7 @@ ClearHistory
 ClearImageSource
 ClearPanelEvent
 ClearWorldDecalsEvent_t
+Clearing old .sav file %s
 Clearing reconnect info, we are connected to GC and GC says lobby is in state %d
 Clearing reconnect info, we are connected to GC and GC says we have no lobby
 Clears all debug overlays
@@ -12677,7 +12804,6 @@ CmdLinkAH
 CodeCopied
 ColdLS
 Collapse
-CollapseItemChoices
 Collapsed
 Collide rope with the world
 CollisionAttributeChanged
@@ -12732,6 +12858,7 @@ Completely resets the event for a user
 Componenf
 Component %s illegally specified INT_MIN as its priority!
 Component class %s needs its own datadesc (is using %s)
+Compute LOD mask internally like since 2016, i.e. force all LOD groups' bones to compute
 Compute the closest point on the OBB of an entity.
 Compute the distance between two entity OBB. A negative return value indicates an input error. A return value of zero indicates that the OBBs are overlapping.
 ComputeGraphicsSync
@@ -12858,6 +12985,7 @@ CountdownTimer
 CountryDailyRevenue
 Courier
 CourierAbility%d
+CpE;g
 Cpf;E
 CpfA;
 CpfD; t
@@ -12866,6 +12994,7 @@ Create Party
 Create a C proxy for a script-based spawn group filter
 Create a savegame before VCD playback
 Create all I/O events for a particular entity
+Create(CDACAccountSyncStorage)
 Create(CDACGameAccountClient)
 Create(CDACLobby)
 Create(CDACParty)
@@ -12924,7 +13053,6 @@ Current item schema is up-to-date with version %08X.
 Current name of the skybox texture
 Current peak value (out of 64k) of the incoming voice stream
 Current sound patches: %d
-CurrentTutorialStep
 CurrentUser
 CurrentlyEquipped
 CurrentlyRerolling
@@ -12958,6 +13086,7 @@ D#j\H
 D#r\H
 D#s\H
 D#z\H
+D$	A9
 D$  t
 D$  t%I
 D$  t?I
@@ -12973,6 +13102,7 @@ D$ Hc
 D$ Hc\
 D$ Ic
 D$ IcT$
+D$ Lc
 D$ Mc
 D$ [A\]
 D$ t	
@@ -12983,6 +13113,10 @@ D$!?t
 D$!?tAf
 D$!?tTH
 D$!?tU
+D$!?t\E1
+D$!?t\H
+D$!?tsE1
+D$!?twH
 D$$9C$t
 D$$H)
 D$$[A\]
@@ -13007,7 +13141,6 @@ D$,:C,t
 D$0+BXD9
 D$08C0t
 D$0;D$(
-D$0A\A]A^]
 D$0E1
 D$0H9
 D$0Hc
@@ -13039,6 +13172,7 @@ D$8t$
 D$8tcI
 D$8u	I
 D$<8C<t}1
+D$<HcE
 D$<f.
 D$@E1
 D$@H9
@@ -13066,6 +13200,7 @@ D$PE;
 D$PH9
 D$PHc
 D$PIc
+D$PIcT$HH
 D$P~+I
 D$P~~H
 D$T9CTu
@@ -13075,11 +13210,11 @@ D$X;D$L
 D$XHc
 D$XI9
 D$XIc
-D$X[A\A]A^]
+D$X[A\]
 D$Xf9CXr
 D$Xf9CXu
 D$\A9E\u
-D$\tG
+D$\t?
 D$`9D$T
 D$`A9E`A
 D$`H9
@@ -13087,7 +13222,6 @@ D$`t
 D$`tgI
 D$hHc
 D$hIc
-D$hIcT$`H
 D$lxQI
 D$pE1
 D$pH9
@@ -13115,6 +13249,7 @@ D+s$Mc
 D+{$H
 D.$Hc
 D.DHc
+D/ A9
 D0gPad
 D15S1
 D16_SHADOW
@@ -13140,12 +13275,12 @@ D3Z4D3Z,A
 D3Z<A
 D3Z<D3Z$D3Z
 D7	_Hc
+D7 D9
 D70A9
 D8cUt
 D9#v%H
 D9#~CH
 D9#~KH
-D9-1h
 D9;t3I
 D9C ~JMc
 D9D$4B
@@ -13164,6 +13299,7 @@ D9g<|aH
 D9hXu
 D9j }
 D9k D
+D9kLtM
 D9l$(
 D9l$H
 D9s H
@@ -13183,25 +13319,28 @@ D; tMH
 D;!ttHc
 D;"tIH
 D;$2tWL
-D;%#u
-D;%.+
-D;%2D
-D;%E2
-D;%TL
-D;%cy
-D;%x:
+D;%#R
+D;%7	
+D;%<^
+D;%<a
+D;%<c
+D;%C5
+D;%Ki
+D;%\f
+D;%\h
+D;%`J
 D;'t3H
-D;-DW
+D;-;<
 D;.tLH
 D;0}zH
 D;1Lc
 D;3t 
 D;3}5
-D;5J7
 D;8tQH
 D;:tZH
 D;;}5D
-D;@`}
+D;=Qd
+D;=ce
 D;B`}
 D;F`u
 D;K D
@@ -13220,28 +13359,28 @@ D;c@|
 D;c@}
 D;cXD
 D;c`}FH
+D;fhu
 D;g D
 D;g(D
 D;g@D
 D;h0D
 D;k D
 D;k H
-D;k u
 D;k |
 D;k0|
 D;kh|
 D;l$H
 D;o(D
 D;o0H
+D;pHu	
 D;pXH
 D;q(t%I
-D;r t
-D;r u
 D;s(D
 D;t$0
 D;t$@
 D;t$H
 D;x<s
+D;xHu	
 D;{ D
 D;{ }!H
 D;{h}?M
@@ -13264,6 +13403,7 @@ DACAchievementClaimFailed
 DACAchievementClaimSuccess
 DACAchievementPanel
 DACAchievementsPage
+DACAcknowledgeViolator
 DACAddNextGoldPanel
 DACAddNextHero
 DACAddSteamFriend
@@ -13279,7 +13419,6 @@ DACBannerPreviewScenePanel
 DACBoardClick
 DACBoardPosition_t
 DACBotDifficultySelect
-DACBotDifficultySelected
 DACBoughtShopUnit
 DACBuyEXP
 DACBuyShopItem
@@ -13295,6 +13434,8 @@ DACCarouselChanged
 DACCarouselMoveLeft
 DACCarouselMoveRight
 DACChallengeMap
+DACChallengeMapChallenge
+DACChallengeMapClaim
 DACChallengeMapClaimChallenge
 DACChallengeMapClaimNode
 DACChallengeMapCompleteSelectedChallenge
@@ -13312,6 +13453,7 @@ DACChallengeWorldMapCamera
 DACChallengeWorldMapDevBuildings
 DACChallengeWorldMapHideChallengePopup
 DACChallengeWorldMapHideClaimPopup
+DACChallengeWorldMapReset
 DACChallengeWorldMapSelectChallenge
 DACChallengeWorldMapSelectClaim
 DACChallengeWorldMapToggleClaimMode
@@ -13330,6 +13472,7 @@ DACClientSimulation
 DACCloseFriendsButtonClicked
 DACClosePopOvers
 DACCloseShop
+DACCloseTurboShop
 DACCombatSimEnded
 DACConnectionStatusUpdated
 DACContextMenuChatLine
@@ -13463,10 +13606,9 @@ DACHideHeroTooltip
 DACHideHudZoo
 DACHideItemTooltip
 DACHideLeaderboardDeltas
-DACHideMapChallengeTooltip
-DACHideMapClaimTooltip
 DACHideMenuButtons
 DACHideMeterDetailsTooltip
+DACHideModifierIconTooltip
 DACHidePlayerTooltip
 DACHideRoundOverScreen
 DACHideScoreboard
@@ -13506,7 +13648,6 @@ DACInventoryItemPlacementDigitalNavigateNextHero
 DACInventoryItemPlacementDigitalNavigateSelect
 DACInventoryItemPlacementDigitalNavigateStart
 DACInventoryItemPlacementDigitalNavigateUnequip
-DACInventoryItemPostEquip
 DACInventoryMouseOut
 DACInventoryMouseOver
 DACItemBeingPlaced
@@ -13523,6 +13664,8 @@ DACItemTooltip
 DACJailButtonMouseOut
 DACJailButtonMouseOver
 DACJoinPartyCode
+DACLaunchPuzzle
+DACLaunchSelectedChallengePuzzle
 DACLeaderboard
 DACLeaderboardDuos
 DACLeaderboardDuosSelectCombat
@@ -13544,8 +13687,6 @@ DACLoginSteamguardEntered
 DACLoginUsernameEntered
 DACMainUpdate
 DACManageFriendsClicked
-DACMapChallengeTooltip
-DACMapClaimTooltip
 DACMatchFormed
 DACMatchIntroFadeOut
 DACMatchIntroFinish
@@ -13572,6 +13713,7 @@ DACNotifications
 DACOpenMicSettingChanged
 DACOpenRewardsAbout
 DACOpenShop
+DACOpenTurboShop
 DACPagePostGame
 DACParticleScenePanel
 DACPartyAcceptInvite
@@ -13605,6 +13747,32 @@ DACPartyTeamRename
 DACPartyUpdated
 DACPatchNotesPage
 DACPauseGame
+DACPlayChangeUnderlord
+DACPlayDisplayBotDifficulty
+DACPlayDuosSetGCBotDifficulty
+DACPlayDuosSetLocalBotDifficulty
+DACPlayDuosSetMatchType
+DACPlayDuosSetMatchmakingType
+DACPlayDuosSetTeammateType
+DACPlayHandleSaveGame
+DACPlayLaunchDuos
+DACPlayLaunchStandard
+DACPlayLaunchTraining
+DACPlayLaunchTurbo
+DACPlayPage
+DACPlaySelectMode
+DACPlaySetBotDifficulty
+DACPlaySetSaveGameAction
+DACPlayStandardSetGCBotDifficulty
+DACPlayStandardSetLocalBotDifficulty
+DACPlayStandardSetMatchType
+DACPlayStandardSetMatchmakingType
+DACPlayTrainingSetMatchType
+DACPlayTurboSetGCBotDifficulty
+DACPlayTurboSetLocalBotDifficulty
+DACPlayTurboSetMatchType
+DACPlayTurboSetMatchmakingType
+DACPlayViewSeasonInfo
 DACPlayerAcquiredItem
 DACPlayerAvatar
 DACPlayerChatMessage
@@ -13674,6 +13842,8 @@ DACPurchaseCancelled
 DACPurchaseItem
 DACPurchaseSuccessful
 DACPurchaseUnbundleFailed
+DACPuzzleID_t
+DACPuzzleIntroBegin
 DACQuitApp
 DACQuitAppConfirmed
 DACQuitAppConfirmed()
@@ -13740,6 +13910,7 @@ DACSendShopUnit
 DACSendUnit
 DACSendUnitBar
 DACSetActiveTab
+DACSetActiveUnderlord
 DACSetAspectRatio
 DACSetAudioDefaults
 DACSetAutoDeploy
@@ -13748,6 +13919,7 @@ DACSetFullscreenFocusBehavior
 DACSetGrass
 DACSetNormalMaps
 DACSetPlayerMuteStatus
+DACSetShopSlotEnabled
 DACSetVSync
 DACSetVideoDefaults
 DACSetZooPage
@@ -13771,9 +13943,11 @@ DACShowBannerPaintin
 DACShowBattlePassProgress
 DACShowBattlePassRewardPopup
 DACShowBattleStatsTab
+DACShowChallengeWorldMapPage
 DACShowChatLineContextMenu
 DACShowEndingScreen
 DACShowEquipDialog
+DACShowGameModePickerPopup
 DACShowGemsContextMenu
 DACShowHeroOddsPopup
 DACShowHeroPopup
@@ -13797,13 +13971,13 @@ DACShowLeaderboardGoldDelta
 DACShowLeaderboardHealthDelta
 DACShowLeaderboardTab
 DACShowLoadoutPage
-DACShowMapChallengeTooltip
-DACShowMapClaimTooltip
 DACShowMenuButtons
 DACShowMeterDetailsTooltip
+DACShowModifierIconTooltip
 DACShowPartyCode
 DACShowPartyJailPopup
 DACShowPatchNotesPage
+DACShowPlayPage
 DACShowPlayerContextMenu
 DACShowPlayerStatePopup
 DACShowPlayerTooltip
@@ -13827,10 +14001,12 @@ DACShowSynergyTooltip
 DACShowTalentInfoPopup
 DACShowTalentInfoTooltip
 DACShowTalentsTab
+DACShowTutorialIntroPopup
 DACShowUnderlordAbilityOptionPopup
 DACShowUnderlordAbilityOptionTooltip
 DACShowUnderlordAbilityPopup
 DACShowUnderlordAbilityTooltip
+DACShowUnderlordPickerPopup
 DACShowUnderlordTalentSelector
 DACShowUnderlordsPage
 DACShowVSScreen
@@ -13847,7 +14023,6 @@ DACStartDraggingItem
 DACStartDraggingShopUnit
 DACStartDraggingUnit
 DACStartMatchmaking
-DACStartNewMatch
 DACStartTutorial
 DACSteamCreateAccount
 DACSteamLogin
@@ -13886,6 +14061,7 @@ DACTimerChanged
 DACToggleChat
 DACToggleFlipBoard
 DACToggleGameStatePanel
+DACToggleHintsContainer
 DACToggleInvisibleMode
 DACToggleItemChoiceVisibility
 DACToggleLockShop
@@ -13895,25 +14071,40 @@ DACTogglePauseGame
 DACToggleScoreboard
 DACToggleShop
 DACToggleSocialPanel
-DACTooltipChallengeMapChallenge
-DACTooltipChallengeMapClaim
 DACTooltipHero
 DACTooltipItem
 DACTooltipManager
 DACTooltipMeterDetails
+DACTooltipModifier
 DACTooltipPlayer
 DACTooltipSynergy
 DACTooltipTalentInfo
 DACTooltipUnderlordAbility
 DACTooltipUnderlordAbilityOption
 DACTooltipXP
-DACTutorialStepForward
+DACTurboShopMulligan
+DACTurboShopSelectOffering
+DACTutorialAdvanceCombat
+DACTutorialBackToDashboard
+DACTutorialFinished
+DACTutorialFireTrigger
+DACTutorialRandomNumber
+DACTutorialRerollShop
+DACTutorialSetHUDClassEnabled
+DACTutorialShowInstruction
+DACTutorialSpawnUnderlord
+DACTutorialStartBotGame
 DACUIHud
 DACUIHudTopBar
+DACUIHudTutorial
 DACUIMain
 DACUIMatchIntro
+DACUIPuzzleIntro
+DACUIPuzzleRules
+DACUIPuzzleStatus
 DACUISettingsPanel
 DACUIShop
+DACUITurboShop
 DACUIZoo
 DACUnderlordAbilityOptionTooltip
 DACUnderlordAbilityTooltip
@@ -13936,6 +14127,7 @@ DACUnhighlightDashboardButton
 DACUnitActivateLegendaryPopup
 DACUnitHideAbilityTooltip
 DACUnitHideLegendaryTooltip
+DACUnitModifiers
 DACUnitResurrected
 DACUnitScenePanel
 DACUnitScenePanelInteract
@@ -13958,6 +14150,8 @@ DACUserControl
 DACUserName
 DACUserRichPresence
 DACVSScreen
+DACViolator
+DACViolatorManagerInitialized
 DACWorldBanner
 DACWorldMain
 DACXPTooltip
@@ -13965,6 +14159,12 @@ DACZooGiveItem
 DACZooHeroDropdownChanged
 DACZooPage
 DAC_BotDifficultyName%d
+DAC_BotDifficultyName0
+DAC_BotDifficultyName1
+DAC_BotDifficultyName2
+DAC_BotDifficultyName3
+DAC_BotDifficultyName4
+DAC_BotDifficultyName5
 DAC_EndGame_%d
 DAC_ErrorMsg_CannotEquipManaless
 DAC_Jail_Crime%d
@@ -13973,6 +14173,7 @@ DAC_Jail_Crime_Alliance_%s%d
 DAC_Jail_Crime_Unit_%s%d
 DAC_LootRound_Desc%d
 DAC_MatchTypeName%i
+DAC_MatchTypeNameDuosState_NeedBuddyOrBot
 DAC_Music.ArenaAhead
 DAC_Music.ArenaBehind
 DAC_Music.ArenaNeutral
@@ -14222,6 +14423,7 @@ DebugStyleBlock
 DebugStyleSeparator
 DebugStyleStatus
 DebugTextureInfo001
+DebugTutorialText
 DebugVisualizerMgr
 Debugger connected
 Decal material index %d (%s) not loaded.
@@ -14260,6 +14462,7 @@ Delete this entity
 DeleteFrameRowButton
 DeletePanel
 DeleteRowButton
+DeleteSaveGameSelected
 DeleteVideoPlayer
 Density of Particle Rain 0-1
 Dependency
@@ -14296,6 +14499,7 @@ DetailList
 DetailSnippet
 Detected video config level %d
 Dev Challenge Op
+Dev Op
 DevConsole
 DevItemImage
 DevItemListLabel
@@ -14539,6 +14743,7 @@ DumpMemory
 DumpScriptBindings()
 Dumps a list of caches that the GC currently has information about
 Dumps info about an entity
+Dumps out the information for the client sync storage state
 Dumps the SO cache for the current user
 Dumps the client's soundscape data.
 Dumps the lobby that we are connected to
@@ -14559,7 +14764,13 @@ DuosCannotSend5Gold
 DuosCasualSelected
 DuosCombine
 DuosMatch
+DuosMatchType
+DuosMatchTypeBots
 DuosMatchTypeCarousel
+DuosMatchTypeMultiplayer
+DuosMatchmakingType
+DuosMatchmakingTypeCasual
+DuosMatchmakingTypeRanked
 DuosMessageContainer
 DuosMessageOpen
 DuosMessageSelectionMode
@@ -14584,6 +14795,9 @@ DuosRankedMatch
 DuosRankedSelected
 DuosSelectRegion
 DuosTeam_%d
+DuosTeammateType
+DuosTeammateTypeBot
+DuosTeammateTypeInvite
 Duplicate 'default' item definition.
 Duplicate Asset modifier definition (%d)
 Duplicate Market remap definition '%s'.
@@ -14679,13 +14893,11 @@ E3\$@x&D
 E3\$Px
 E49C4
 E8A9E u
-E9&tJI
 E9&~,I
 E9&~2M
 E9.t.A
 E9.t2A
 E97XL
-E9D$4u
 E9H0A
 E9Q A
 E9f(A
@@ -14696,23 +14908,26 @@ E9l$(
 E9l$(D
 E9l$0
 E9l$<
-E9l$DtN
+E9l$H
 E9l$L
 E9l$`
 E9l$h
 E9l$hD
 E9ntu
-E9olD
+E9o|D
 E9t$ M
 E9t$(D
 E9t$h
-E9u$u
+E9u Hc
 E9u0~cI
+E9|$ 
 E9|$ L
 E9|$0
+E9|$8
 E9|$8A
 E9|$H
 E9|$L
+E9|$P
 E9}(D
 E9}H~8E
 E9~$I
@@ -14721,8 +14936,6 @@ E;&t)A
 E;&t/A
 E;&t2A
 E;&}SI
-E;,$Hc
-E;,$Hc]
 E;,$|
 E;.t4A
 E;.tuA
@@ -14740,6 +14953,8 @@ E;e(t2I
 E;eh}NI
 E;f |
 E;f(D
+E;f8|
+E;f8}TI
 E;g D
 E;g |
 E;g(D
@@ -14763,11 +14978,10 @@ E;l$L
 E;l$L|#I
 E;l$X|
 E;l$X}AI
-E;l$t
+E;l$|
 E;n(u
 E;nPE
 E;o |
-E;o }'I
 E;o }WL
 E;o(t?I
 E;oPE
@@ -14831,6 +15045,7 @@ EDACMatchState
 EDACNetBuffer
 EDACPlatform
 EDACPlayerState
+EDACPuzzleRule
 EDACRegionMode
 EDACStoreID
 EDamageSourceType
@@ -14900,13 +15115,13 @@ ENTITY_SUSPENDED
 ENetworkDisconnectionReason
 ENotificationSetting
 EOperation
-EPA;G
 EPlayerConnectionState
 EPlayerOrder
 EPlayerOrder_BuyAndCombine
 EPlayerOrder_BuyAndSend
 EPlayerOrder_BuyCombineMove
 EPlayerOrder_BuyXP
+EPlayerOrder_ClearBoard
 EPlayerOrder_CombineItem
 EPlayerOrder_DevGiveUnderlord
 EPlayerOrder_DevGold
@@ -14917,6 +15132,7 @@ EPlayerOrder_DevRemoveAllUnits
 EPlayerOrder_DevSetPlayerLevel
 EPlayerOrder_DevSetUnitRank
 EPlayerOrder_DevTalent
+EPlayerOrder_GoToTutorialState
 EPlayerOrder_LockShop
 EPlayerOrder_MoveUnit
 EPlayerOrder_MutePlayer
@@ -14925,12 +15141,14 @@ EPlayerOrder_ReRoll
 EPlayerOrder_RequestPlayerStats
 EPlayerOrder_ResumeGame
 EPlayerOrder_SelectTalent
+EPlayerOrder_SelectTurboBucket
 EPlayerOrder_SellItem
 EPlayerOrder_SellUnit
 EPlayerOrder_Send
 EPlayerOrder_SendGold
 EPlayerOrder_SpectatePlayer
 EPlayerOrder_StepForward
+EPlayerOrder_TurboBucketReroll
 EPlayerType
 EProtoExecutionSite
 EPurchaseResponse
@@ -15028,6 +15246,7 @@ EUnitKeyword_Healer
 EUnitKeyword_Human
 EUnitKeyword_Hunter
 EUnitKeyword_Insect
+EUnitKeyword_Invalid
 EUnitKeyword_Inventor
 EUnitKeyword_Invoker
 EUnitKeyword_Knight
@@ -15069,6 +15288,7 @@ E\A9D$\
 E`9C`t
 E`A;Ep
 E`A;^
+E`fff?
 EarlyInit_Tier0
 EarlyRetireParticleSystems
 EarnGold
@@ -15123,6 +15343,7 @@ EmptyReward
 EmptySlot
 Enable : %d SplitScreen %X
 Enable Items 2.0
+Enable all physics simulation
 Enable animation graph
 Enable animation sequence transitioner.
 Enable close captioning.
@@ -15222,6 +15443,7 @@ Entity I/O attempted to invoke unknown private script function "%s" on entity "%
 Entity Input  (%0.2f): "%s"[%s].%s(%s) <- Caller "%s"[%s] <- Activator "%s"[%s]
 Entity Load Unserialize
 Entity Output (%0.2f): "%s"[%s] -> "%s".%s(%s)%s	Activator "%s"[%s]
+Entity Output (%0.2f): "%s"[%s] : "%s"	Activator "%s"[%s]
 Entity System
 Entity allocation failed since it forced slot %d, which is currently used by entity "%s"!
 Entity class %s does not have its own datadesc (uses %s)
@@ -15308,8 +15530,6 @@ Event%d
 EventActive
 EventAdvanceTick_t
 EventAppShutdown_t
-EventChallengeID_t
-EventClaimID_t
 EventClientAdvanceTick_t
 EventClientFrameSimulate_t
 EventClientOutput_t
@@ -15479,6 +15699,7 @@ F88C8
 F8A8D$8
 F8A8E8
 F8t~L
+F9$8t}L
 F9%<H
 F9%<L
 F98C9
@@ -15891,6 +16112,7 @@ First valid class must be greater than 0.
 First valid class must be less than or equal to last valid class.
 First valid item slot must be less than or equal to last valid item slot.
 FirstEncounter
+FirstPlace
 Fix this or you'll see a crash.
 FixupResourceName: Illegal full path passed in ("%s")!
 FixupResourceName: Illegal path, missing extension passed in ("%s")!
@@ -15932,6 +16154,8 @@ Force Display:
 Force all clients to disable their game instructors.
 Force match intro to hold
 Force the height to something.  -1 to ignore
+Force the tutorial into a specific state by index.
+Force the tutorial into a specific state by name.
 ForceRefresh
 Forces a soundscape to play
 Forces color correction entities to be updated on the client
@@ -16048,7 +16272,6 @@ G!?t?
 G!?tJ
 G!?tdD
 G!?tv1
-G!?u!
 G!?u(
 G!?u,
 G$+GX;G,A
@@ -16075,6 +16298,7 @@ G8I;G@r
 G8t%H
 G8t.H
 G8t~L
+G<@tD
 G<@tLL
 G<@tY
 G<@teA
@@ -16082,9 +16306,7 @@ G<@teI
 G<@t}I
 G<@uCD
 G@HcU
-G@Lcc D;c0
 G@Lcg(D;g8D
-G@Lcs D;s0
 GAME INSTRUCTOR: 
 GAMECONSOLE
 GAMEROOT
@@ -16097,7 +16319,6 @@ GC sent malformed CGCUpdateItemSchema message: No schema data, no URL
 GC told us to expect %08X, we got %08X
 GC too busy
 GC->GCH Multiplex Message Bandwidth
-GCBotDifficulty
 GCC: (SteamRT 5.4.0-7.really.6+steamrt1.2+srt2) 5.4.1 20160803
 GCC: (SteamRT/Linaro 4.6.3-1ubuntu5+steamrt1.2+srt1) 4.6.3
 GCC: (Ubuntu 4.8.4-1ubuntu15~12.04+steamrt1+srt2) 4.8.4
@@ -16107,6 +16328,8 @@ GCConnectionStatus_HAVE_SESSION
 GCConnectionStatus_NO_SESSION
 GCConnectionStatus_NO_STEAM
 GCConnectionStatus_SUSPENDED
+GCDuosBotDifficulty
+GCDuosBotDifficulty%i
 GCH Send
 GCH->Network Multiplex Message Output
 GCHost
@@ -16114,8 +16337,12 @@ GCInfo
 GCSQLVersion
 GCSQL_VERSION_BASELINE
 GCSQL_VERSION_BOOLTYPE
+GCStandardBotDifficulty
+GCStandardBotDifficulty%i
 GCStatusScary
 GCStatusVisible
+GCTurboBotDifficulty
+GCTurboBotDifficulty%i
 GDACNetwork_Client().GetServerConnection() != k_HSteamNetConnection_Invalid
 GENDER_BIKER
 GENDER_BRIDE
@@ -16227,6 +16454,7 @@ GameSessionManifest_client
 GameShutdown
 GameState.CombatOver
 GameState.CombatStarts
+GameStateChanged
 GameStatePanel_Normal
 GameStatePanel_TechPrototypeA
 GameSystem2HostHook
@@ -16259,6 +16487,7 @@ GasCylinder.Explode
 Gathering overrides for %s 0x%p
 Gaussian
 GemButton
+GemParticleScenePanel
 General.BurningFlesh
 General.BurningObject
 General.InvalidTarget_Invulnerable
@@ -16360,6 +16589,7 @@ GetPlayerLimits:  default maxplayers must be >= 1 (%i)
 GetPlayerLimits:  max players limited to %i
 GetPlayerLimits:  min maxplayers %i > max %i
 GetPlayerLimits:  min maxplayers must be >= 1 (%i)
+GetPreviewPlayerState
 GetQuantizedFloatEncoderByIndex
 GetRadialGradientValues
 GetRadius
@@ -16382,7 +16612,6 @@ GetResourceManifestCount
 GetResourceManifests
 GetSceneFilename() failed for scene index %d
 GetScriptClassForDesignerName
-GetSelectedPlayerOpponentPlayerSlot
 GetSequence
 GetSpriteAxes: Bad sprite type %d
 GetStabilityDamage
@@ -16467,7 +16696,11 @@ Gujarati
 Gurmukhi
 H	C H
 H	C0A
+H	C0H
+H	H0D
+H	H0H
 H	P0H
+H	P0L
 H	p(]
 H	w(UH
 H IcD$
@@ -16540,214 +16773,165 @@ H;0t+A
 H;0t0H
 H;0t4H
 H;0t\H
-H;5 C
-H;5!	
-H;5!m
-H;5!v
-H;5(C
-H;5(S
-H;5/'
-H;50(
-H;51g
-H;52@
-H;55)
-H;5<G
-H;5Al
-H;5Hn
-H;5H{
-H;5PU
-H;5Q|
-H;5XA
-H;5\m
-H;5_?
+H;5 5
+H;5!+
+H;5!,
+H;5!1
+H;5!B
+H;5!O
+H;5!s
+H;5!z
+H;5(I
+H;5,r
+H;51.
+H;51E
+H;51d
+H;587
+H;58A
+H;5A/
+H;5A^
+H;5An
+H;5H=
+H;5HA
+H;5LW
+H;5O"
+H;5QG
+H;5QH
+H;5Q`
+H;5Qu
+H;5\S
+H;5\f
+H;5\g
+H;5\k
+H;5a5
+H;5aM
+H;5aj
 H;5a|
-H;5i!
-H;5jV
-H;5lt
-H;5pC
-H;5p^
-H;5pk
-H;5qb
-H;5qc
-H;5qt
-H;5r'
-H;5r@
-H;5u(
-H;5u?
-H;5|Y
-H;5|r
+H;5dd
+H;5hG
+H;5pM
+H;5pp
+H;5q*
+H;5qZ
 H;7t"
 H;9u#
-H;=	'
-H;=	6
-H;=	H
-H;=	~
-H;= (
-H;= U
-H;= f
-H;=!U
-H;=")
-H;="1
-H;="5
-H;="<
-H;="I
-H;=#f
-H;=$P
-H;=&Q
-H;='$
-H;='+
-H;='x
-H;=(*
-H;=(9
-H;=(:
-H;=(E
-H;=(G
-H;=(V
-H;=(]
-H;=)8
-H;=.R
-H;=/A
-H;=/u
-H;=0 c
-H;=0S
-H;=2#
-H;=2%
-H;=2@
-H;=2A
-H;=2[
-H;=2v
-H;=48
-H;=49
-H;=4:
-H;=4W
-H;=5=
-H;=6t
-H;=72
-H;=79
-H;=8)
-H;=88
-H;=89
-H;=8D
-H;=8\
-H;=93
-H;=9M
-H;=:7
-H;=;'
-H;=;H
-H;=<$
-H;=@$
-H;=@)
-H;=A;
-H;=A<
-H;=B.
-H;=B5
-H;=B7
-H;=B:
-H;=BD
-H;=C"
-H;=Cf
-H;=Ck
-H;=DT
-H;=Ep
-H;=F4
-H;=GN
-H;=H	
-H;=H(
-H;=H7
-H;=H8
-H;=H=
-H;=HC
-H;=Hf
-H;=I7
-H;=I_
-H;=L@
-H;=LU
-H;=Lx
-H;=OH
-H;=OP
-H;=OU
-H;=Oi
-H;=P!c
-H;=P$
-H;=QQ
-H;=R+
-H;=Rh
-H;=Rx
-H;=Ry
-H;=S|
-H;=T=
-H;=U=
-H;=W*
-H;=W6
-H;=WV
-H;=X'
-H;=X6
-H;=X7
-H;=XQb
-H;=XS
-H;=Yp
-H;=\R
-H;=_/
-H;=`*
-H;=`A
-H;=b2
-H;=b9
-H;=b?
+H;=	n
+H;= 5
+H;=!L
+H;="8
+H;="S
+H;="n
+H;="t
+H;="v
+H;=#5
+H;=#<
+H;=$	
+H;=$D
+H;=&A
+H;=&}
+H;='-
+H;='Eb
+H;='I
+H;=(7
+H;=(z
+H;=)-
+H;=+l
+H;=.v
+H;=0!
+H;=0a
+H;=0t
+H;=2-
+H;=5[
+H;=6L
+H;=6S
+H;=7A
+H;=86
+H;=9T
+H;=:y
+H;=<y
+H;=<{
+H;=?$
+H;=?{
+H;=@^
+H;=@`
+H;=A$
+H;=A%
+H;=A1
+H;=Bz
+H;=Cv
+H;=F>
+H;=FC
+H;=G#
+H;=G*
+H;=H&
+H;=H5
+H;=HF
+H;=IR
+H;=Ie
+H;=L5
+H;=MJ
+H;=P(
+H;=PF
+H;=Pu
+H;=Q}
+H;=R	
+H;=RD
+H;=RJ
+H;=S6
+H;=U.
+H;=Ww
+H;=X!
+H;=X4
+H;=Yx
+H;=Z7
+H;=Zz
+H;=[-
+H;=[>
+H;=[M
+H;=\E
+H;=\b
+H;=]F
+H;=^a
+H;=_0
+H;=`R
+H;=`[
+H;=`a
+H;=aS
+H;=b	
+H;=b$
+H;=b1
 H;=bL
-H;=c#
-H;=c3
-H;=d<
-H;=d=
-H;=d>
-H;=f,
-H;=g(
-H;=gn
-H;=gu
-H;=h&
-H;=h5
-H;=h6
-H;=h:
-H;=hR
-H;=i7
-H;=i>
-H;=k3
-H;=lZ
-H;=mA
-H;=ot
-H;=pp
-H;=q4
-H;=q8
-H;=r9
-H;=rN
-H;=rT
-H;=r]
-H;=ro
-H;=rr
-H;=r|
-H;=s 
-H;=ss
-H;=s}
-H;=vH
-H;=w/
-H;=w6
-H;=x$
-H;=x%
-H;=x4
-H;=x5
-H;=xE
-H;=xO
-H;=xQ
-H;=yF
-H;=z@
-H;=zP
-H;={_
-H;=|Q
-H;=|i
-H;=}B
-H;=~U
-H;=~t
+H;=b]
+H;=bg
+H;=bq
+H;=bw
+H;=d.
+H;=h#
+H;=h*
+H;=h3
+H;=hP
+H;=id
+H;=j$
+H;=l,
+H;=m5
+H;=p	
+H;=pv
+H;=r#
+H;=r*
+H;=rp
+H;=rv
+H;=uP
+H;=vu
+H;=w=
+H;=x)
+H;=xF
+H;=xX
+H;=z:
+H;={e
+H;=|9
+H;=|}
 H;C(t
-H;CHt`H
+H;CPt`H
 H;CPw<I
 H;F t,H
 H;G tOH
@@ -16774,7 +16958,6 @@ H@Hc@8H
 HC333?
 HDR Color Scale: %0.3f
 HELPER_BONE
-HH;=-
 HIERARCHY_ABSORIGIN
 HIERARCHY_ATTACHMENT
 HIERARCHY_BONE
@@ -16838,7 +17021,6 @@ HTMLVerticalScrollBar
 HUDItem
 HUDWaiting
 HUD_BattlePassProgressVisible
-HXHc@PH
 H[A\A]
 H[A\A]A^A_]
 H[A\A]H
@@ -16872,9 +17054,11 @@ Has Cached Command List
 Has Collision; 
 Has the player viewed the about duo's description yet.
 HasAbilityPerLevel
+HasAnyActiveSynergies
 HasAnyBattleStats
 HasAnyItems
 HasAnySynergies
+HasBenchedItems
 HasBotSlots
 HasBrawnyKills
 HasCachedCommandList
@@ -16891,6 +17075,7 @@ HasDefensive
 HasDescriptions
 HasDraws
 HasDuelBonusDamage
+HasEquippedItem
 HasEventData
 HasExtraData
 HasField
@@ -16914,6 +17099,10 @@ HasPlayedTogether
 HasPlayerOpponent
 HasProfileRingItem
 HasRank
+HasRank1UnitOnBench
+HasRank1UnitOnBoard
+HasRank2UnitOnBench
+HasRank2UnitOnBoard
 HasReward
 HasRewards
 HasShapeItem
@@ -16922,6 +17111,7 @@ HasSubName
 HasSupport
 HasTalent
 HasTalents
+HasUnassignedItems
 HasUnderlord
 HasUnitTypeInfo
 HasUnselectedTalent
@@ -16935,14 +17125,13 @@ HaticsType_Default
 HaticsType_None
 Have closed caption Panorama panel perform depth testing against the scene
 HaveActivePopups
-Hc59l-
+Hc5nS.
 Hc@ H
 Hc@$H
 Hc@(E1
 Hc@HH
 Hc@HI
 Hc@PH
-Hc@PI
 Hc@\H
 Hc@`H
 Hc@pD
@@ -16965,6 +17154,7 @@ HcC D9
 HcC H
 HcC I
 HcC$D
+HcC$H
 HcC(1
 HcC(;C,
 HcC(A
@@ -17010,6 +17200,7 @@ HcFXH
 HcFhH
 HcG 9
 HcG H
+HcG t
 HcG$H
 HcG(9
 HcG(H
@@ -17040,7 +17231,6 @@ HcK8H
 HcK8Ic
 HcK@Ic
 HcKxH
-HcKxIc
 HcO$H
 HcO0H
 HcO@L
@@ -17048,10 +17238,13 @@ HcOPH
 HcOXH
 HcP 9
 HcP(Hi
+HcQ A9
+HcQ D9
 HcQ H
 HcQ09
 HcQ0A9
 HcQ8H
+HcQPH
 HcQhH
 HcR(I
 HcRTH
@@ -17059,6 +17252,7 @@ HcRXH9
 HcS ;S0H
 HcS A
 HcS$D
+HcS$H
 HcS(;S,
 HcS(H
 HcS0;S4
@@ -17069,6 +17263,7 @@ HcS0H
 HcS4f
 HcS8;S<
 HcS8H
+HcS8L
 HcS<H
 HcSHL
 HcSPH
@@ -17078,9 +17273,11 @@ HcSlH
 HcSxH
 HcS|H
 HcT$4Mc
+HcVPH
 HcW$H
 HcW(H
 HcW(UH
+HcW`D
 HcW`H
 HcWpH
 HcXPH
@@ -17098,7 +17295,7 @@ Hc_@;_P
 Hc_X;_ht+I
 Hc_X;_ht-I
 HcpxH
-HcqXHcI@H
+HcqXHcI@L
 Hcs H
 Hcs(H
 Hcs@H
@@ -17118,6 +17315,8 @@ Health: %d, collision group: %d, nav ignore: %s
 HealthLow
 HealthMid
 HealthNumberLabel
+Heart%d
+HeartBG%d
 Hebrew
 Height of closed caption Panorama panel
 HelicopterMegaBomb
@@ -17140,7 +17339,6 @@ HeroItemSlot
 HeroList
 HeroPanel
 HeroPanel_%d
-HeroPanels
 HeroPersona_t
 HeroPopupSetHeroRank
 HeroPopupSetNext
@@ -17199,6 +17397,7 @@ HideScrollRight
 HideScrollUp
 HideSection
 HideTalentCount
+HideTimer
 HideUnderlordSelection
 HideUnitIcons
 HideWorldLayerAndDestroyEntities
@@ -17215,6 +17414,7 @@ HighRollerContainer
 HighlightLevel
 HighlightSlot
 Highlighted
+HintHeader
 HintText
 Hiragana
 Hit Test
@@ -17265,7 +17465,6 @@ HypeLabel
 HypeMeter
 HypeMeterActive
 I	D$0A
-I	G0H9
 I	G0I
 I	M0H
 I$HcS4
@@ -17370,6 +17569,8 @@ IcD$ A
 IcD$ A9
 IcD$ I
 IcD$ L
+IcD$ M
+IcD$(
 IcD$(H
 IcD$8
 IcD$81
@@ -17381,16 +17582,17 @@ IcD$@1
 IcD$H
 IcD$HI
 IcD$P
+IcD$PI
 IcD$PL
 IcD$\I
-IcD$`I
 IcD$h1
 IcD$hA
 IcD$p
+IcD$pA9
 IcD$x
-IcD$xH
+IcD$xA
+IcE H
 IcE I
-IcE M
 IcE$1
 IcE$A
 IcE$H
@@ -17404,6 +17606,8 @@ IcE`I
 IcEhI
 IcEpH
 IcExA
+IcExD
+IcExH
 IcF 1
 IcF I
 IcF L
@@ -17430,8 +17634,8 @@ IcG8I
 IcGHA;GX
 IcGPA;G`
 IcGPH
-IcGX9
 IcGh1
+IcGh9
 IcGhA;Gx
 IcGp1
 IcGp9
@@ -17453,16 +17657,16 @@ IcL$HIc
 IcL$XIc
 IcL$hIc
 IcL$xIc
+IcM Ic
 IcM$A
 IcM(Ic
 IcM8Ic
 IcMHIc
 IcMhIc
 IcN0I
-IcN8Ic
 IcO Ic
 IcO0I
-IcO0Ic
+IcO8Ic
 IcODt
 IcOhI
 IcOxIc
@@ -17497,10 +17701,13 @@ IcU\H
 IcU`A;Up
 IcUhL
 IcV(E1
+IcV8A;VH
 IcV8H
 IcVDA
 IcVHI
+IcVPA;V`
 IcV\H
+IcVhA;Vx
 IcVhH
 IcW H
 IcW@A;WP
@@ -17517,7 +17724,7 @@ Ic]XA;]h
 Ic^0A;^@
 Ic^HA;^X
 Ic^XM
-Ic_ A;_0M
+Ic_(A;_8M
 Ic_@A;_P
 Ic_PA;_`
 Ic_XA;_htoI
@@ -17526,9 +17733,10 @@ Icon%d
 IconStyle_Circle
 IconStyle_LeftCapsule
 IconVisible
-Icp0H
+Icp0E
 Ict$ 
 Ict$@
+IcwDt
 IdempotencyLevel
 If 0, the 360controller.cfg file will be executed on startup & option changes.
 If a player is moving slower than this, don't push away physics objects (enables ducking behind things).
@@ -17744,11 +17952,12 @@ IntensityOverTime: failed to parse %s!
 Intentionally vague touch behavior for %p
 Internal error
 Internal error. Unable to find claim %u on second iteration for loading criteria
+InternalLambdaEvent
 InternalUniverse
 Interpolate LATCH_ANIMATION_BIT vars if interpolation interval is greater than simulation interval
 Interpolate LATCH_SIMULATION_BIT vars if interpolation interval is greater than animation interval
 Interpolate NPC positions starting this many seconds in past (or cl_interp, if greater)
-Interpolate at %f%s value %s
+Interpolate at %f%s value         %s
 InterpolatedVar_NoteChanged
 Interpolation
 Interpreting non ascii codepoint %d.
@@ -17759,9 +17968,11 @@ IntroBGContainer_%d
 IntroFadeIn
 IntroProfilePlayerSlot%d
 Introduced extra sample(s) at %f
+Invalid EDACPuzzleRule specified in PuzzleDef: %s
 Invalid EXR header.
 Invalid Path
 Invalid `part number' in EXR header chunks.
+Invalid account sync storage value for ID %s
 Invalid argument for DecodeEXRImage().
 Invalid argument for LoadDeepEXR
 Invalid argument for LoadEXR()
@@ -17789,6 +18000,7 @@ Invalid code point \u%04x
 Invalid compressed buffer size
 Invalid control characters encountered in text.
 Invalid conversion : CString '%s' to bool
+Invalid credit grant amount specified: '%u'
 Invalid currency amount %u specified
 Invalid currency in match reward list: %s
 Invalid data for member '%s'
@@ -17895,9 +18107,9 @@ IsLoss
 IsMarkedForDeletion
 IsMember
 IsMobile
+IsMultipleHumanGame
 IsNoLongerEligibleForRewards
 IsNotReady
-IsOpen
 IsOpponent
 IsPaused
 IsPlatformMobile
@@ -17907,6 +18119,7 @@ IsPlaying
 IsReady
 IsReleaseBuild
 IsSelf
+IsSingleHumanGame
 IsSpectator
 IsTalent
 IsTeammate
@@ -18036,7 +18249,6 @@ JxHcRpH
 K %vmo
 K D;K0
 K HcU
-K(A9L$0u
 K,+K(
 K0[A\A]A^]
 K6u:H
@@ -18076,17 +18288,15 @@ KnucklesEV1_3Controller
 Kochanek-Bartels
 Kochanek-Bartels Early
 Kochanek-Bartels Late
-Kp H;=
-L	@0D
+Kp H;=b
 L$ E;L$0ttI
 L$ H9
-L$ Ic
 L$ ^_H
 L$$H;E
+L$(A9M0u
 L$(Hc
 L$(vU
 L$0 H
-L$0Hc
 L$4A	
 L$4E1
 L$@D)
@@ -18102,6 +18312,7 @@ L$`A
 L$`AWE
 L$`LcKlH
 L$dE1
+L$h91trH
 L$hD)
 L$hD99t#H
 L$hHc
@@ -18115,10 +18326,13 @@ L9kHv
 L9|$HJ
 L: %.2f deg
 L;"t!f.
-L;'tM
+L;'tU
+L;-U]
 L;0t!A
 L;0t?H9
 L;0t[A
+L;=-}
+L;=m}
 L;?u"
 L;O0UH
 L;RPfD
@@ -18199,9 +18413,24 @@ Last duos mode entered.
 Last duos partner selction
 Last local difficulty used.
 Last matchmaking mode entered.
+Last selected duos local bot difficulty
 Last selected duos match mode.
+Last selected duos match type.
+Last selected duos matchmaking type.
+Last selected duos party bot difficulty
+Last selected duos teammate
+Last selected game mode.
 Last selected private match mode.
 Last selected private match type.
+Last selected standard local bot difficulty
+Last selected standard match type.
+Last selected standard matchmaking type.
+Last selected standard party bot difficulty
+Last selected training match type.
+Last selected turbo local bot difficulty
+Last selected turbo match type.
+Last selected turbo matchmaking type.
+Last selected turbo party bot difficulty
 Latam_Spanish
 LatchAndSaveLastSimulationValuesForInterpolationList
 LatchAndSaveLastSimulationValuesForInterpolationList [%s] %.2fms for %d entities
@@ -18216,8 +18445,6 @@ LayoutPositionType_e
 Lc"D;b
 Lc#D;c
 Lc#fA
-Lc%,+
-Lc%<2
 Lc&D;f
 Lc&E)
 Lc'D;g
@@ -18228,12 +18455,12 @@ Lc+D;k
 Lc.E)
 Lc/E)
 Lc3D;s
-Lc5A7
 Lc7E)
 Lc:D;z
 Lc;A9
 Lc;D;{
 Lc;E9
+Lc=Ze
 Lc?D;
 LcC D;C0
 LcC$D
@@ -18274,7 +18501,9 @@ Lch D;h0D
 LchXA
 Lck(M
 Lck0D;k@D
+LckHD;kXD
 LckHD;kXt?H
+LckPD;k`D
 LckhE
 Lco D;o0D
 Lco0D;o@D
@@ -18397,6 +18626,7 @@ LoadKeyValuesFromString
 LoadLayoutFileAsync
 LoadLayoutFromBase64XMLStringAsync
 LoadLayoutFromXMLStringAsync
+LoadTutorialDefs
 LoadUnitDefs
 Loading
 Loading Game State Integration: %s
@@ -18415,6 +18645,8 @@ Local player died...
 Local player disconnected...
 LocalBotDifficulty
 LocalDefeat
+LocalDuosBotDifficulty
+LocalDuosBotDifficulty%i
 LocalLights Compute
 LocalPlayerBoard
 LocalPlayerEventTier%d
@@ -18425,7 +18657,11 @@ LocalPlayerNotInMatch
 LocalPlayerSelected
 LocalPlayerSynergies
 LocalResult
+LocalStandardBotDifficulty
+LocalStandardBotDifficulty%i
 LocalTime
+LocalTurboBotDifficulty
+LocalTurboBotDifficulty%i
 LocalUnderlordPortrait
 LocalVictory
 LocalWeaponExclusive
@@ -18497,7 +18733,6 @@ Lycian
 Lydian
 M#7I	
 M(AQL
-M(~?A
 M9|$ t#M9
 M9|$x
 M;<$u
@@ -18513,6 +18748,8 @@ MESH_DRAW_FLAGS_DRAW_LAST
 MESH_DRAW_FLAGS_IS_OCCLUDER
 MESH_DRAW_FLAGS_NONE
 MIcM8Ic
+MIcO(Ic
+MM Keep Alive Check
 MMType
 MNetworkAlias
 MNetworkBitCount
@@ -18685,6 +18922,7 @@ MaterialParam_t
 MaterialResourceData_t
 MaterialUtils_001
 MathLib_Init
+Max Value
 Max heroes banned in a local game
 Max mouse move scale factor, 0 for no limit
 Max number of video resolutions to show in UI.
@@ -18716,7 +18954,7 @@ Maximum think time in milliseconds, warning is printed if this is exceeded.
 Maximum velocity for a drag scroll flick
 Maximum velocity for a drag scroll flick in VR
 Maximum visible distance
-MbP?UnitID
+MbP?SettingsPanelVisible
 Mc&E;f
 Mc'E;g
 Mc,$E;l$
@@ -18730,7 +18968,7 @@ McD$0A
 McGhE;Gx
 McO`I
 Mc_XA
-McfxE;
+Mcf`E;fp
 Mcg E;g0D
 Mcg0E;g@D
 McgHE;gXD
@@ -18738,13 +18976,9 @@ Mcl$0I
 Mcl$@E;l$P
 Mcl$HE
 Mcl$PE;l$`
-Mcl$PE;l$`D
 Mcl$XH
 Mcl$pE;
 McnhE;nxt0I
-Mco8E;oHD
-McoPE;o`D
-McohE;oxD
 Mct$ E;t$0H
 Mct$(E;t$8D
 Mct$0D;r
@@ -18834,6 +19068,7 @@ Min( %s, %s )
 MinAnimTime
 MinButton
 MiniJailShowInitial
+MiniJailVisible
 MinimalProfileEdit
 MinimizeApp
 Minimum number of caption items to show.
@@ -18869,6 +19104,8 @@ ModelConfigAttachmentType_t
 ModelConfigHandle_t
 ModelDocUtils001
 Modifier
+ModifierSnippetContainer
+ModifierTooltip
 Modify global screen fade max size in pixels
 Modify global screen fade min size in pixels
 Modifying Tick Entry at %f   new : %s
@@ -18935,6 +19172,7 @@ Moving %s to %s
 Moving entindex %i to open bench slot
 MsgPS
 MsgSaved%
+MulliganAvailable
 MultiPlayerSelectRegion
 Multiline
 Multiple components in same entity instance not supported (%s in class %s)
@@ -18961,7 +19199,7 @@ MuzzleFlash_global_client
 MyTeam
 Myanmar
 N A9F$t
-N APA
+N APWD
 N"@q:
 N&B:A
 N&B:H
@@ -18969,7 +19207,7 @@ N(ATD
 N(Optional) Tags that must be present on a published file to satisfy the query.
 N0 M9t$
 N0+q A
-N0A9H(u
+N0A;H(u
 N0A;VH
 N10Reflection6Detail9TypeInfoTI11IToolObjectEE
 N10Reflection6Detail9TypeInfoTINS_6ObjectEEE
@@ -19073,6 +19311,7 @@ N5GCSDK17CGCClientProtoJobI35CMsgGCToClientUpdateConsoleCommandsEE
 N5GCSDK17CGCClientProtoJobI36CMsgGCToClientDurationControlWarningEE
 N5GCSDK17CGCClientProtoJobI39CMsgClientToGCLookupAccountNameResponseEE
 N5GCSDK17GCClientJobLambdaIZN15CAsyncDataCacheI19EventDataCacheKey_t23CMsgGCToClientEventInfoE18RequestCurrentDataERKS2_EUlvE_EE
+N5GCSDK18COutputToEmitGroupE
 N5GCSDK18CSharedObjectCacheE
 N5GCSDK21ISharedObjectListenerE
 N5GCSDK22CGCSOUpdateMultipleJobE
@@ -19089,6 +19328,7 @@ N6snappy15ByteArraySourceE
 N6snappy22UncheckedByteArraySinkE
 N6snappy4SinkE
 N6snappy6SourceE
+N8HcU
 N8panorama10CCountdownE
 N8panorama10CScrollBarE
 N8panorama10CTabButtonE
@@ -19127,8 +19367,6 @@ N8panorama14CSlottedSliderE
 N8panorama14CStylePropertyE
 N8panorama14CUIPanelEvent0E
 N8panorama14CUIPanelEvent1I12PlayerSlot_tEE
-N8panorama14CUIPanelEvent1I14EventClaimID_tEE
-N8panorama14CUIPanelEvent1I22EventChallengeSlotID_tEE
 N8panorama14CUIPanelEvent1I23item_definition_index_tEE
 N8panorama14CUIPanelEvent1I25EVideoPlayerPlaybackErrorEE
 N8panorama14CUIPanelEvent1INS_13GamePadData_tEEE
@@ -19317,12 +19555,12 @@ N8panorama9CUIEvent1IN23CDACUIFindOpponentState13EFindingStateEEE
 N8panorama9CUIEvent1INS_13GamePadData_tEEE
 N8panorama9CUIEvent1INS_9CPanelPtrINS_8CPanel2DEEEEE
 N8panorama9CUIEvent1IP12IVideoPlayerEE
-N8panorama9CUIEvent1IPK17CMsgGameModeStateEE
 N8panorama9CUIEvent1IPK24CMsgPublicPostMatchStatsEE
 N8panorama9CUIEvent1IPK28CMsgIndividualPostMatchStatsEE
 N8panorama9CUIEvent1IPKcEE
 N8panorama9CUIEvent1IPNS_25CVideoPlayerAudioRendererEEE
 N8panorama9CUIEvent1IPNS_8CPanel2DEEE
+N8panorama9CUIEvent1IRK17CMsgGameModeStateEE
 N8panorama9CUIEvent1IbEE
 N8panorama9CUIEvent1IfEE
 N8panorama9CUIEvent1IhEE
@@ -19331,6 +19569,7 @@ N8panorama9CUIEvent1IjEE
 N8panorama9CUIEvent1IyEE
 N8panorama9CUIEvent2I12PlayerSlot_tRK22CMsgPlayerCombatResultEE
 N8panorama9CUIEvent2I12PlayerSlot_tbEE
+N8panorama9CUIEvent2I13DACPuzzleID_tbEE
 N8panorama9CUIEvent2I13EDACMatchMode12EDACGameModeEE
 N8panorama9CUIEvent2I13UnderlordID_tS1_EE
 N8panorama9CUIEvent2I22EventChallengeSlotID_t18EventChallengeID_tEE
@@ -19338,13 +19577,13 @@ N8panorama9CUIEvent2I9EventID_t14EventClaimID_tEE
 N8panorama9CUIEvent2I9EventID_t22EventChallengeSlotID_tEE
 N8panorama9CUIEvent2INS_9CPanelPtrINS_8IUIPanelEEEPKcEE
 N8panorama9CUIEvent2IPK24CMsgCombatMetersSnapshotfEE
-N8panorama9CUIEvent2IPKcNS_9CPanelPtrINS_8CPanel2DEEEEE
 N8panorama9CUIEvent2IPKcS2_EE
 N8panorama9CUIEvent2IPNS_27CVideoPlayerEventDispatcherE17EVideoPlayerEventEE
 N8panorama9CUIEvent2IbNS_9CPanelPtrINS_8CPanel2DEEEEE
 N8panorama9CUIEvent2IbiEE
 N8panorama9CUIEvent2IfPNS_8IUIEventEEE
 N8panorama9CUIEvent2Ii12PlayerSlot_tEE
+N8panorama9CUIEvent2IibEE
 N8panorama9CUIEvent2IiiEE
 N8panorama9CUIEvent2Ij10CUtlVectorI20SNotificationSubtype10CUtlMemoryIS2_iEEEE
 N8panorama9CUIEvent2IjNS_9CPanelPtrINS_8CPanel2DEEEEE
@@ -19355,6 +19594,7 @@ N8panorama9CUIEvent2IyjEE
 N8panorama9CUIEvent3I12PlayerSlot_tRK22CMsgPlayerCombatResultbEE
 N8panorama9CUIEvent3I19EDACResponseConcepti13UnderlordID_tEE
 N8panorama9CUIEvent3IPKcS2_12PlayerSlot_tEE
+N8panorama9CUIEvent3IPKcS2_bEE
 N8panorama9CUIEvent3IPNS_25CVideoPlayerAudioRendererEiiEE
 N8panorama9CUIEvent3IffbEE
 N8panorama9CUIEvent3Ii10EGameState11ERoundStateEE
@@ -19454,6 +19694,7 @@ NPC_STATE_NONE
 NPC_STATE_PLAYDEAD
 NPC_STATE_PRONE
 NPC_STATE_SCRIPT
+NPHcU
 NSt13__future_base12_Task_setterISt10unique_ptrINS_7_ResultIjEENS_12_Result_base8_DeleterEEjEE
 NSt13__future_base12_Task_setterISt10unique_ptrINS_7_ResultIvEENS_12_Result_base8_DeleterEEvEE
 NSt13__future_base15_Deferred_stateISt12_Bind_simpleIFSt7_Mem_fnIMN3Etc5ImageEFvjjEEPS4_ijEEvEE
@@ -19531,11 +19772,13 @@ NewRankMajor%d
 NewTeam
 New_Tai_Lue
 Newline in string literal
+Next attempt: %s, Backoff count: %u
 NextHidden
 NextItemButton
 NextRewardImage
 NextSearch
 Nh#F\H
+NhHcU
 Nil time value
 Nku*A
 No %s file found. May be unable to create items.
@@ -19590,6 +19833,7 @@ NoLeft
 NoMessage
 NoName
 NoParent
+NoPoseControl
 NoReadingString
 NoRight
 NoSearchResults
@@ -19649,6 +19893,8 @@ NotifySOCacheUnsubscribed(%s) [not in cache]
 Notifying GC we don't need a session.
 Num Bones
 Num Calls
+NumActiveSynergyIconsVisible
+NumActiveSynergyIconsVisible%d
 NumItemIconsVisible
 NumItemIconsVisible%d
 NumSegments
@@ -19662,6 +19908,7 @@ NumUnits
 NumUnits%d
 Number of games required to cool down renaming
 Number of games required to unlock naming of the team
+Number of seconds between checking to make sure that the client is still in MM
 Number of seconds forced between similar lesson start sounds.
 NumberEntry
 NumberEntryChanged
@@ -19687,7 +19934,7 @@ OHcK@Ic
 OH~2fA
 OIcF81
 OIcG81
-OIcGX1
+OIcGh1
 OKButton
 OP;1t+A
 OPD;)|
@@ -19697,6 +19944,8 @@ OSCILLATE_POSE_PARAMETERS
 OUT_OF_RANGE
 OcclusionQueryIssueLayer
 OffensiveEquipped
+OfferingContainer
+OfferingHero%d
 Offscreen
 Ogham
 OlUE1
@@ -19721,6 +19970,7 @@ OnEffectsChanged
 OnEntText
 OnEquippableTeam
 OnGameActivate
+OnGameModeStateReceived
 OnGlowColorChanged
 OnHeropediaButtonResetPressed
 OnHeropediaToggleOwnedHeroes
@@ -19731,6 +19981,10 @@ OnInterpolationFrameChanged
 OnItemDragTo
 OnItemPlaced
 OnLatchInterpolatedVariables
+OnLaunchDuos
+OnLaunchStandard
+OnLaunchTraining
+OnLaunchTurbo
 OnLeaderboardHealthDelta
 OnLeaderboardHealthThrob
 OnLeaderboardShowGoldDelta
@@ -19755,6 +20009,7 @@ OnReturnToMainMenu
 OnShowSound
 OnSimulationTimeChanged
 OnSpriteScaleChanged
+OnStartBotMatch
 OnSteamServerConnectFailure(result=%u, StillRetrying=%d)
 OnSteamServersConnected()
 OnSteamServersDisconnected(result=%u)
@@ -19824,6 +20079,7 @@ OverviewContainer
 OwnGameplayInfo
 P A;]
 P D	@
+P HcA
 P HcC
 P HcM
 P IcD$
@@ -19831,7 +20087,9 @@ P IcF
 P Lcc
 P M;:
 P [A\]
+P(A9_
 P(A;]
+P(D9c
 P(D;c
 P(t>Ic\$ @
 P0AYAZ
@@ -19854,9 +20112,10 @@ P8H=vmdlu
 P8H=vpcf
 P8H=vtex
 P9KeyValues
+P@A9_
 P@A;]
 P@A;](|
-P@Dota Underlords
+P@D9c
 P@E9'
 P@H9C@tKH
 P@H;]
@@ -19929,7 +20188,6 @@ PIcF(
 PIcG(H
 PIcT$(L
 PIcU(H
-PK17CMsgGameModeState
 PK24CMsgCombatMetersSnapshot
 PK24CMsgPublicPostMatchStats
 PK28CMsgIndividualPostMatchStats
@@ -20016,7 +20274,7 @@ PX_AXL
 PXfD;e
 P[A\A]A^]
 P[A\]
-P`A;E<u
+P`A;EDu
 P`Hc@XH
 Packed store %s with refcount > 0.
 PadBackButton
@@ -20026,7 +20284,6 @@ Page%d
 Page0
 Page1
 Page4
-Page6
 PageDown
 PageManager
 PageManagerActivatedPage
@@ -20101,6 +20358,7 @@ PartnerAccountType
 PartnerInfo
 PartnerItemPaymentRule
 PartnerMicroTxn
+Party
 Party Ready
 PartyCodeEntry
 PartyContextMenu
@@ -20286,10 +20544,12 @@ PlayerEXPContainer
 PlayerEXPGraph
 PlayerEXPGraphLevel
 PlayerEXPGraphPreview
+PlayerEliminatedKnockout
 PlayerFogController
 PlayerInTeam
 PlayerInfo
 PlayerInstanceFromIndex
+PlayerIsLevel
 PlayerIsMaxLevel
 PlayerLeaderboardContainer
 PlayerNickname
@@ -20340,6 +20600,7 @@ PopupEnableButtons
 PopupEquipSlot
 PopupFriendCode
 PopupFriendCodeAddPopup
+PopupGameModePicker
 PopupGems
 PopupGeneric
 PopupGenericTextEntry
@@ -20354,6 +20615,7 @@ PopupLookingForMatch
 PopupPartyInviteFriend
 PopupPartyJail
 PopupPartySelectTeam
+PopupPlayPageSeasonInfo
 PopupPlayerState
 PopupPostGameReward
 PopupPreMatchDetails
@@ -20369,7 +20631,9 @@ PopupSettings
 PopupShowAsync
 PopupSteamLogin
 PopupTalentInfo
+PopupTutorialIntro
 PopupUnderlordAbility
+PopupUnderlordPicker
 PopupWrapper
 Portrait: Composite (FXAA)
 Portrait: Glows
@@ -20417,6 +20681,7 @@ PpufH
 PreEntityPacketReceived
 PreEntityPacketReceived(no commands ack)
 PreGameBind
+PreHealth%d
 Precache a list of entity KeyValues tables
 Precache an entity from KeyValues in table
 PrecacheCustomResponseSystem %s - Finish
@@ -20426,6 +20691,7 @@ PrecacheDACChallengeMapModels_client
 PrecacheDACClientInput_client
 PrecacheDACClientSimulation_client
 PrecacheDACGameRules_client
+PrecacheDACHUDTutorial_client
 PrecacheDACHUD_client
 PrecacheDACIntroSequenceAssets_client
 PrecacheDACMatchIntro_client
@@ -20532,6 +20798,7 @@ Protocol Buffer map usage error:
 Protocol Buffer reflection usage error:
 Protocol message could not be serialized.
 Protocol message serialized itself in invalid fashion.
+Provide both the ID and the value to set
 PtKfD9
 PublicUniverse
 Publish
@@ -20571,14 +20838,21 @@ Pushes an identifier used to group overlays. Deletes all existing overlays using
 Pushes an identifier used to group overlays. Overlays marked with this identifier can be deleted in a big batch.
 Put all physics in all the worlds to sleep
 Put; voiceless alveolar stop
+PuzzleBot
+PuzzleChallenge
+PuzzleImage
+PuzzleTopLeft
+Puzzle_RulesSatisfied
 PxMc}
 PxwrH
 Q%s\%s
+Q(D9c
 Q(Optional) If supplied, the resulting published file's Id is appended to the URI.
 Q)=blendindices
 Q4E3Q E3Q
 Q8A;]
 Q8q(2
+Q@D9c
 QAngle
 QAngle-world
 QHcKpIc
@@ -20602,6 +20876,7 @@ QueueDestroyEntityDeferred
 QueuePostDataUpdates
 QueuedLoaderVersion001
 Quintic
+R E9l$
 R channel not found
 R channel not found!
 R(Optional) If true, only return the total number of files that satisfy this query.
@@ -20671,6 +20946,7 @@ RP_UNPAUSE
 RT_txt
 RULE MATCHED!
 RXHcI0
+RXHcv0
 RXMc@0B
 Radial using: %s
 RadialDistortion
@@ -20694,6 +20970,7 @@ RandomInt
 RandomSeed
 Randomly show eliminated panels
 Range: %d Rate: %.2f %.2f %.2f AttackPoint: %.2f 
+Ranged
 Rank%i
 RankClass
 RankDownParticle
@@ -20829,6 +21106,7 @@ Removed %d %ss
 Removed %s(%s)
 Removes a connected script function from an I/O event on the passed entity.
 Removes a connected script function from an I/O event on this entity.
+Removes all credits from this account
 Removes all entities of the specified type
 Removes all overlays marked with a specific identifier, regardless of their lifetime.
 Removes from the list of names to display text debugging information about the given entity(ies) on top of the entity (See Overlay Text)
@@ -20911,6 +21189,7 @@ ResetSequenceInfo
 ResetToDefaultValue
 Resets all display and success counts to zero.
 Resets the cooldown on all challenges (or optionally just a specific slot if you specify one)
+Resets the state of all violators.
 Resetting keybindings...
 ResolutionDropDown
 ResourceCompiler/DefaultMapBuilders/bakedlighting
@@ -20932,7 +21211,7 @@ Restore underflow!
 RestoreData:%32.32s [%4d]
 RestoreData:%32.32s [orig]
 RestoreEntityToPredictedFrame
-RestoreLastSimulationValue %s
+RestoreLastSimulationValue             %s
 RestoreLastSimulationValuesForInterpolationList
 RestoreOriginalEntityState
 Restricts spectator modes for dead players
@@ -20946,6 +21225,8 @@ Result_WinFlawless
 Result_WinNarrow
 Result_WinNormal
 ResumeAvailable
+ResumeOrDelete
+ResumeSaveGameSelected
 ResumeSelected
 ResurrectedUnreachables%d
 RetargetSrc.%s.%s
@@ -20981,6 +21262,8 @@ RichText.BgColor
 RichText.SelectedBgColor
 RichText.SelectedTextColor
 RichText.TextColor
+RickyText
+RickyTextHidden
 RiftSController
 RightArrow
 RightArrowVisible
@@ -21013,11 +21296,13 @@ Round
 Round ended...
 Round started...
 Round%dInner
+RoundNumber_%d
 RoundOverVSScreen
 RoundSelector
 RoundSelector_%u
 RoundSnippet
 RoundStartAnimation
+RoundStateChanged
 RoundState_Combat
 RoundState_Preparing
 RoutingMethod
@@ -21055,7 +21340,7 @@ S(I9F
 S(I9G
 S*fA9
 S0[A\A]A^]
-S2SVt4H
+S2SVtTH
 S4+S0
 S4t H
 S4t#H
@@ -21075,6 +21360,7 @@ S@H;SHs
 SAVE/
 SAVE/%s.HL%s
 SAVE/%s.sav
+SAVE/%s/
 SAVE/*.hl?
 SAVE\animgraph
 SAVE\faceposer
@@ -21229,7 +21515,6 @@ S\+SX
 S`v1f
 S`v3f
 Samaritan
-Sandbox
 Saurashtra
 Save Header
 Save current animation to file
@@ -21446,6 +21731,7 @@ SeasonProgressPage
 SeasonTabContainer
 Second argument to Swap() (of type "
 Second argument to SwapFields() (of type "
+SecondPlace
 SecondaryLayoutRequested
 SecretTabContent
 Section Pause
@@ -21471,9 +21757,21 @@ SelectUnitItem
 SelectedChallengeClaimable
 SelectedChallengeCompleted
 SelectedEditItemInfo_t
+SelectedModeDuos
+SelectedModeDuosGCBotDifficulty
+SelectedModeDuosLocalBotDifficulty
+SelectedModeStandard
+SelectedModeStandardGCBotDifficulty
+SelectedModeStandardLocalBotDifficulty
+SelectedModeTraining
+SelectedModeTurbo
+SelectedModeTurboGCBotDifficulty
+SelectedModeTurboLocalBotDifficulty
 SelectedPanelName
 SelectedPlayerEventTier%d
 SelectedPlayerEventTierValid
+SelectedTurboBucket
+SelectedUnderlord
 SelectedUnitAvatarOverlay
 SelectedUnitContainer
 SelectedUnitOnBoard
@@ -21559,6 +21857,7 @@ SetBool
 SetBool(name, val) : sets the value of the convar to the bool.
 SetCanBeBlocked
 SetCarouselSelectedChild
+SetChallengeSlotID
 SetChildPanelsSelected
 SetColorCorrectionWeight
 SetCommunityPreferences
@@ -21588,7 +21887,7 @@ SetInt(name, val) : sets the value of the convar to the int.
 SetInt32
 SetInt64
 SetIntAttr
-SetInterpolatedVarContains %s -> %s
+SetInterpolatedVarContains changing from %s to %s
 SetInterpolationTimeType - changing interpolation phase type from %s to %s
 SetKinematic
 SetLerpValues
@@ -21680,7 +21979,6 @@ Sets the z-index for a panel, panels will be sorted and painted in order within 
 Sets whether the given panel is enabled
 Setting %s's status to %s.
 SettingsPanelShown
-SettingsPanelVisible
 SetupModel
 SetupPage
 SetupSequences
@@ -21708,6 +22006,8 @@ Shop.Available
 Shop.Unavailable
 ShopButton
 ShopEntry
+ShopIsClosed
+ShopIsOpen
 ShopLevelUp
 ShopLevelUpBinder
 ShopLock
@@ -21733,8 +22033,6 @@ Show Round Over screen
 Show a hero tooltip.
 Show a meter details tooltip for an entity
 Show a synergy tooltip.
-Show a tooltip for a node / claim on the crawl map.
-Show a tooltip for an edge / challenge on the crawl map.
 Show activities in the (client) animation state display.
 Show all EmitSound calls including their symbolic name and the actual wave file they resolved to. (-1 = for nobody, 0 = for everybody, n = for one entity)
 Show an item tooltip.
@@ -21743,6 +22041,7 @@ Show an underlord ability tooltip.
 Show cloth debug info in ent_text display
 Show entity contexts in ent_text display
 Show fake market prices for items
+Show hints under shop UI
 Show info about a player.
 Show listening addition/removals
 Show missing closecaption entries.
@@ -21783,8 +22082,10 @@ ShowFightResult
 ShowFreeReroll
 ShowGenericGCBusy
 ShowHealthLost
+ShowHintsContainer
 ShowIOSMuted
 ShowInterest
+ShowIntro
 ShowItems
 ShowName
 ShowOffensiveGem
@@ -21805,8 +22106,10 @@ ShowStreak
 ShowSupportGem
 ShowSynergies
 ShowSynergiesCondensed
+ShowTalentBrowser
 ShowTitle
 ShowTotalGold
+ShowTutorialHUD
 ShowVictory
 ShowVictoryGold
 ShowWorldLayerAndSpawnEntities
@@ -21824,6 +22127,7 @@ Shuts down all open lessons and reloads them from the script file.
 Shutting down...
 SignedDestinationAddress_t
 SignedPayload_t
+Signon
 Silver
 SimThinkHook
 Simple Cubic
@@ -22041,10 +22345,16 @@ St23_Sp_counted_ptr_inplaceINSt6thread5_ImplISt12_Bind_simpleIFZNSt13__future_ba
 St23_Sp_counted_ptr_inplaceINSt6thread5_ImplISt12_Bind_simpleIFZNSt13__future_base17_Async_state_implIS2_IFSt7_Mem_fnIMN3Etc5ImageEFvjjEEPS7_ijEEvEC1EOSD_EUlvE_vEEEESaISJ_ELN9__gnu_cxx12_Lock_policyE2EE
 St31_Maybe_unary_or_binary_functionIiJPKN8panorama14IUIPanelClientES3_EE
 St8functionIFiPKN8panorama14IUIPanelClientES3_EE
+St8functionIFvvEE
 Stabilize camera orientation/position during demo playback.  1 == remove roll, 2 == steadycam
 Stack depth limit hit (%d)
 StampedItems
-Standard
+StandardMatchType
+StandardMatchTypeBots
+StandardMatchTypeMultiplayer
+StandardMatchmakingType
+StandardMatchmakingTypeCasual
+StandardMatchmakingTypeRanked
 Start a screenshake with the following parameters. vecCenter, flAmplitude, flFrequency, flDuration, flRadius, eCommand( SHAKE_START = 0, SHAKE_STOP = 1 ), bAirShake
 Start a sound event
 Start a sound event from position
@@ -22069,6 +22379,7 @@ Start_txt
 Started download of cloud file %08X%08X
 Started lesson 
 Starting upload of %s to UFS....
+State name[Index]: %s[%d]
 State: %s
 StateFindingMatch
 StateIdle
@@ -22260,6 +22571,7 @@ T$,w6A
 T$0H9
 T$0Hc
 T$0tnH
+T$89B
 T$8E1
 T$8Hc
 T$@E1
@@ -22548,8 +22860,8 @@ The capsule pogo stick frequency [hz].
 The engine will set this to 1 if vprof_vtrace is enabled but VTrace itself was not detected.
 The entity instance is too large for type %s! Make more components referenced!
 The entity to specifically debug
+The final death must be alone for this duration for combat camera motion to occur.
 The first enum value must be zero in proto3.
-The flags that we have set on this client that should be synchronized with the GC
 The games played to use for testing
 The leaderboard position played to use for testing
 The list of items that this device has a reservation on
@@ -22560,8 +22872,10 @@ The stick range where autoaim dampening is applied. 0 = off
 The team name to use for testing
 The type parameter T in RepeatedFieldRef<T> API doesn't match 
 Thin Plate
+ThirdPlace
 This ZeroCopyOutputStream doesn't support aliasing. Reaching here usually means a ZeroCopyOutputStream implementation bug.
 This can't happen; base64 decoder state = 
+This is the description for a particular puzzle
 This program requires version 
 This program was compiled against version 
 This shouldn't be called if all the sizes are equal.
@@ -22747,6 +23061,10 @@ TrackedControllerManager
 Tracks an entity in spec mode
 Traditional_Chinese
 Trailing Data
+TrainingFreestyle
+TrainingGameModeButton
+TrainingMatchType
+TrainingTutorial
 Transaction Insert
 Transaction currency does not match user's Steam Wallet currency
 Transaction denied
@@ -22782,8 +23100,13 @@ Trying to load more than 9 menu items in voicecommands.txt, extras ignored
 Trying to play envelope on invalid sound event %s
 Trying to play unknown soundscape %s
 Trying to send message type %u (%s) before GC connection established.  This is guaranteed to fail.
-Turbo
 TurboBot
+TurboHealth
+TurboMatchType
+TurboMatchTypeBots
+TurboMatchTypeMultiplayer
+TurboMatchmakingType
+TurboMatchmakingTypeCasual
 Turn an entity index integer to an HScript representing that entity's script instance.
 Turn off a particular trace output by file or function name
 Turn off a particular trace output by table/instance
@@ -22797,27 +23120,7 @@ Turn this on to see all the particle attachment points we tried to look up on th
 TurnOffActiveController
 Turns on the absbox for all active physics objects.
 Turns on turbo physics
-TutorialAdvanceButtonUnlocked
-TutorialAlliancePopup
-TutorialBenchPopup
-TutorialBuyXPPopup
-TutorialCloseShopPopup
-TutorialCombatPopup
-TutorialCombatPopup2
-TutorialDamagePopup
-TutorialEquipItemPopup
-TutorialGameGoal
-TutorialGlobalItemPopup
-TutorialHightlightAllianceTab
-TutorialHightlightItemTab
-TutorialLevelUp
-TutorialOverpopPopup
-TutorialPlayerPopup
-TutorialPopup
-TutorialShopCloseStepFinished
-TutorialShopPopup
-TutorialTimeout%s
-TutorialUpgradePopup
+Tutorial Flags
 Tweak this parameter to adjust Free Camera mouse rotation.
 Tweak this parameter to adjust Free Camera movement acceleration.
 Tweak this parameter to adjust Free Camera movement max speed.
@@ -22943,6 +23246,7 @@ UTIL_Remove
 UTIL_RemoveImmediate
 UUID:	0x%x, 0x%x, 0x%x, 0x%x, 0x%x, 0x%x, 0x%x, 0x%x, 0x%x, 0x%x, 0x%x
 UUID_1.0
+UUUUUU
 UUUUUUU
 UUUUUUUUH
 UV;PX~TA
@@ -23003,7 +23307,6 @@ Unable to restore scene '%s'
 Unable to set set item remap for definition '%s' to itself.
 Unable to write file '%s'
 Unable to write video config convar %s
-Unassigned
 UnavailableGeneric
 Uncompressed
 Underlord %d playing scene %s
@@ -23012,7 +23315,6 @@ Underlord.Death
 Underlord.ExtraHype
 UnderlordID
 UnderlordID_t
-UnderlordIsSelected
 UnderlordSelected
 UnderlordSelector
 Underlord_%s
@@ -23034,10 +23336,14 @@ UnitCost
 UnitCost%d
 UnitCostSwitch
 UnitHealthGraph
+UnitHintContainerSlot0
+UnitHintContainerSlot1
+UnitHintContainerSlot2
+UnitHintContainerSlot3
+UnitHintContainerSlot4
 UnitIconContainer
 UnitIcon_%d
 UnitIsAlive
-UnitOnBench
 UnitPanel_%d
 UnitPortraitView
 UnitRank
@@ -23076,7 +23382,8 @@ UnlockShop
 Unmuted
 UnreadyForDisplay
 Unrecognized flag name '%s'
-Unrecognized mode specifier for match reward: %s
+Unrecognized game mode specifier for match reward: %s
+Unrecognized match mode specifier for match reward: %s
 Unrecognized parameter %s in condition for challenge %s
 Unrecognized phoneme %s
 Unrecognized phoneme code %i
@@ -23109,6 +23416,7 @@ UpAction
 Update
 Update spatial partition entities before we do latch work. Overcomes a potential deadlock in IK, but convared so we can test perf implications.
 Update the animation graph
+Update(CDACAccountSyncStorage)
 Update(CDACGameAccountClient)
 Update(CDACLobby)
 Update(CDACParty)
@@ -23124,6 +23432,7 @@ UpdateGlobalDescriptorSet
 UpdateItems
 UpdateJSConsoleNextHistory
 UpdateJSConsolePriorHistory
+UpdateLabelForRule
 UpdateNewEffects
 UpdatePanelInfo
 UpdatePanelInfo - update
@@ -23156,12 +23465,15 @@ Usage:
 Usage:  %s < entindex [server|client] varname | reset >
 Usage:  %s <entindex>
 Usage:  %s minx miny miny maxx maxy maxz <lifetime = 10.0> <r g b a>
+Usage:  dac_debug_dispatch_event eventName
 Usage:  dac_playvcd <vcd file>
+Usage:  dac_tutorial_force_state_by_name <statename>
 Usage: %s <angle in degrees>
 Usage: %s x y z f a d
 Use IK on in-place turns.
 Use Raw Input for mouse input.
 Use compute shader for Bloom downsample
+Use fixed size spheres instead of variable size hitboxes for unit selection and hover over
 Use the garbage collector to track down reference cycles
 Use the specified entity for animation debugging.
 Use the test store for the purchase path
@@ -23223,6 +23535,7 @@ VGUI_ivgui008
 VGuiPaintSurfaceLayout
 VHARH
 VHcC01
+VIcFp1
 VIcG@1
 VM Did not start!
 VMDLLIB001
@@ -23269,6 +23582,7 @@ VR_HAND_HAPTIC_PULSE_LIGHT
 VR_HAND_HAPTIC_PULSE_MEDIUM
 VR_HAND_HAPTIC_PULSE_STRONG
 VRenderDeviceSetupV001
+VRigHost001
 VSCRIPT: Started VScript virtual machine using script language '%s'
 VSInputSignature
 VSMiniProfileLocalPlayer
@@ -23416,6 +23730,7 @@ ValveBiped.Bip01_Head1
 ValveBiped_
 ValveLogo
 Vc	kc,
+Vd{AMc
 Vector-dir
 Vector-quantized
 Vector2D
@@ -23506,7 +23821,7 @@ W3|Uxa
 W49V4u
 W8_AXH
 W?,|C
-W@t>H
+W@t8L
 WAITING FOR VSCRIPT DEBUGGER CONNECTION -- '-vscriptdebug' was provided on the command line.
 WARNING
 WARNING! Field %s is using the wrong FIELD_ type!
@@ -23684,7 +23999,6 @@ X(Optional) If true, only return the published file ids of files that satisfy th
 X0A;X@
 X0E3X
 X0Hc@(L
-X0t6I
 X360_DST16
 X360_DST24
 X360_DST24F
@@ -23710,8 +24024,8 @@ XLcm H
 XP%dIncrementDivider
 XPRewardVisible
 XT$DH
+XYtbA
 XZ[A\A]A^]
-XZ[A\]
 XZt	H
 XZt>M
 XZu/H
@@ -23726,15 +24040,19 @@ X^'@d
 XboxSystemInterface001
 Xr0t/H
 Y$E3Y
-Y%G.~
+Y%&_%
+Y%/~+
+Y%W)R
 Y(Optional) Starting index to begin enumeration at. Defaults to the beginning of the list."Z
 Y,D3Y
 Y,E3Y
 Y4D3Y D3Y
-Y5~4+
+Y5.~+
+Y5}b}
 Y8E3Y$E3Y
 Y<E3Y(E3Y
-Y@is_underlord
+Y=WSH
+Y@AnimateIn
 YD$(A
 YD$DH
 YFPL9
@@ -23762,6 +24080,7 @@ You have been waiting for approximately %02d:%02d.
 You need to name the scheme (%s)!
 Yt4Mc
 Yu	D;
+YuXD8u
 Z D3Z
 Z D9Y u
 Z E3Z
@@ -23790,7 +24109,6 @@ ZPD9XP|
 ZRf9^Rw
 ZT$,H
 ZXfD9XXs
-ZYt\A
 ZYtzH
 Zap : voiced alveolar fricative
 Zipping %s (%d files)
@@ -23892,11 +24210,13 @@ Z}uU
 \$@Ic
 \$@Mc
 \$Df9
-\$HL9
 \$PASE
 \$PHc
+\$PL9
 \$`Ic
 \%03o
+\5*8S
+\=O8S
 \C not allowed in lookbehind assertion
 \C8E1
 \IcL$
@@ -23933,6 +24253,7 @@ Z}uU
 ]htHH
 ]pt4H
 ]u9n5;> )"
+^%J5!
 ^(D	;H
 ^-wf"
 ^?O<g
@@ -24281,6 +24602,7 @@ _ZTSSt11_Mutex_baseILN9__gnu_cxx12_Lock_policyE2EE
 _ZTSSt14_Function_base
 _ZTSSt15_Sp_counted_ptrIPbLN9__gnu_cxx12_Lock_policyE2EE
 _ZTSSt16_Sp_counted_baseILN9__gnu_cxx12_Lock_policyE2EE
+_ZTSSt8functionIFvvEE
 _ZTTSt18basic_stringstreamIcSt11char_traitsIcESaIcEE
 _ZTVN10__cxxabiv117__class_type_infoE
 _ZTVN10__cxxabiv119__pointer_type_infoE
@@ -24298,6 +24620,7 @@ _ZdaPv
 _ZdlPv
 _ZdlPvRKSt9nothrow_t
 _Znam
+_ZnamRKSt9nothrow_t
 _Znwm
 _ZnwmRKSt9nothrow_t
 _ZynF
@@ -24379,8 +24702,6 @@ _rt_capture_uipanel_dash.vtex
 _rt_capture_uipanel_dash_depth.vtex
 _rt_capture_uipanel_dash_final.vtex
 _rt_dota_canvas_msaa.vtex
-_scef
-_scefD
 _test_conversion_counter
 _to_curve_
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../../../_generated_code/client_dota_auto_chess/release/linuxsteamrt64/../../../../game/client/c_basecombatcharacter.cpp
@@ -24460,12 +24781,18 @@ _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/dac_cs_setup.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/dac_healthbars.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/dac_material_proxies.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/dac_network_client.cpp
+_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_db_page_play.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_db_page_postgame.cpp
+_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_challenge_map_challenge.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_hud.cpp
+_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_hud_tutorial.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_inventory.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_match_intro.cpp
+_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_puzzle_rules.cpp
+_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_puzzle_status.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_shop.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_synergy_icon.cpp
+_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/popups/dac_ui_popup_pre_match_details.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/renderingpipeline_dac_portrait.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac_viewrender.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../econ/tool_items/custom_texture_cache.cpp
@@ -24551,6 +24878,10 @@ account_id
 account_id_list
 account_ids
 account_name
+account_sync_storage_dump
+account_sync_storage_force
+account_sync_storage_set_bit
+account_sync_storage_set_max
 account_to_spectate
 accountids
 accounts
@@ -24582,6 +24913,8 @@ active_region_challenge_count
 active_region_challenges_complete
 active_region_challenges_total
 active_region_name
+active_rules
+active_rules_satisfied
 active_spawngroup_handle
 active_start_time
 activity
@@ -25132,7 +25465,6 @@ broadcast_id
 broken
 brush models
 bspline
-bucket
 bucket1
 bucket_360
 bucket_position
@@ -25177,6 +25509,9 @@ c?kdWZF
 cAt : semi-low front unrounded vowel
 cHIc\$ A;\$0
 cHulH
+cIcL$
+cIcN Ic
+cIcN8Ic
 cL[A\]
 cPD; 
 cUt : lower-mid back unrounded vowel
@@ -25276,6 +25611,7 @@ castRange
 cast_spells
 castshadows
 casual
+casual_locked
 category
 category_desc
 category_tags
@@ -25381,7 +25717,6 @@ chat_line_count
 chat_lines
 chat_msg
 chat_muted
-chat_text_count
 chat_wheel
 chat_wheel_type
 chatroomgroup/%llu
@@ -25578,6 +25913,7 @@ cl_phys_block_dist
 cl_phys_block_fraction
 cl_phys_debug_callback_entities
 cl_phys_dump_intersection_controller
+cl_phys_enabled
 cl_phys_list
 cl_phys_sleep
 cl_phys_sleep_enable
@@ -25764,7 +26100,7 @@ client_session_id
 client_session_need
 client_steam_id
 client_streaming
-client_synchronized_flags
+client_sync_storage.soc
 client_synthesized_for_setup
 client_ui_panel
 client_version
@@ -25783,6 +26119,7 @@ clip2_size
 clip_3D_skybox_near_to_world_far
 clip_3D_skybox_near_to_world_far_offset
 clip_size
+clock drift: %f (%d ticks)
 close
 close() failed: 
 closecaption
@@ -25841,6 +26178,7 @@ combat_duration_s
 combat_highlights
 combat_id
 combat_intro_duration
+combat_line_count
 combat_result
 combat_results
 combat_rounds
@@ -25861,6 +26199,7 @@ commentcount
 commonitem
 community_market_item_remaps
 community_sparkle
+compat_version
 compatibility_version
 compendium
 compendium_event_id
@@ -25889,6 +26228,7 @@ constrainedEventID
 constraint_axislimit_t
 constraint_breakableparams_t
 constraint_hingeparams_t
+constraints
 consumable_item_ids
 consumer_appid
 consumer_shortcut_name
@@ -25896,6 +26236,7 @@ consumer_shortcutid
 consumption_components
 contain
 content
+content_enable_group
 contents
 context
 context-menu-arrow-position
@@ -25961,7 +26302,6 @@ cpoint%d
 cpoint%d_value
 cpoint1
 cppclass
-cr[A\]H
 crafting
 crate_item_def
 crate_item_id
@@ -25977,8 +26317,10 @@ creator
 creator_appid
 credit grant amount
 credit grant reason
+credit_grant_amount
 credits
-credits_to_grant
+credits_grant_item
+credits_remove_all
 crime
 crimson
 criteria is an array of %d
@@ -26000,7 +26342,6 @@ cubemapfoglodbiase
 cubemapfogstartdistance
 cubemapfogtexture
 cubic-bezier
-cumulative
 curr_connections
 curr_items
 currencies
@@ -26095,8 +26436,6 @@ dac_buy_slot4
 dac_buy_slot5
 dac_cache_underlord_scene_panel_data
 dac_camera_default_blend_duration
-dac_chalH
-dac_chalI
 dac_challenge_claim_state_override
 dac_challenge_cooldown_override
 dac_challenge_map_building_anim_time
@@ -26115,6 +26454,7 @@ dac_chat_message_duration
 dac_chat_show_unfiltered
 dac_client_msg_report
 dac_client_net_buffer_report
+dac_client_solo_mm_keep_alive_check_s
 dac_colourblind_mode
 dac_combat_resolution_framing_duration
 dac_connect
@@ -26124,6 +26464,7 @@ dac_db_page_patchnotes_panorama_url
 dac_db_page_patchnotes_url
 dac_deactivate_info_world_layer
 dac_deactivate_info_world_layer: requires info_worldlayer name.
+dac_debug_dispatch_event
 dac_debug_particle_attachment_lookups
 dac_desat_enemy_particles
 dac_developer_mode
@@ -26149,6 +26490,7 @@ dac_fake_postgame_ranked_game
 dac_filter_full
 dac_filter_offensive_text
 dac_filtered_string
+dac_fix_clock_drift
 dac_force_mobile_ui
 dac_force_panorama_login
 dac_force_web_login
@@ -26166,6 +26508,7 @@ dac_gameplay_camera_max_accel
 dac_gameplay_camera_max_dynamic_duration
 dac_gameplay_camera_max_iteration
 dac_gameplay_camera_min_combat_length_for_motion
+dac_gameplay_camera_min_solitary_alive_for_motion
 dac_gameplay_camera_mobile_touch_tilt
 dac_gameplay_camera_motion
 dac_gameplay_camera_motion_preroll
@@ -26242,6 +26585,7 @@ dac_hud
 dac_hud_outro_duration
 dac_hud_rank_y_offset
 dac_hud_reload
+dac_hud_show_shop_hints
 dac_hud_show_zoo
 dac_iap_consume
 dac_iap_consume requires a purchase token
@@ -26303,14 +26647,31 @@ dac_profile_min_reward_value
 dac_profile_reward_value_scalar
 dac_recent_bot_mode
 dac_recent_duos
+dac_recent_duos_local_bot_difficulty
 dac_recent_duos_match_mode
+dac_recent_duos_match_type
+dac_recent_duos_matchmaking_type
 dac_recent_duos_partner
+dac_recent_duos_party_bot_difficulty
+dac_recent_duos_teammate
 dac_recent_local_bot_difficulty
 dac_recent_matchmaking
 dac_recent_private_match_bot_difficulty
 dac_recent_private_match_mode
+dac_recent_selected_mode
+dac_recent_standard_local_bot_difficulty
+dac_recent_standard_match_type
+dac_recent_standard_matchmaking_type
+dac_recent_standard_party_bot_difficulty
+dac_recent_training_match_type
+dac_recent_turbo_local_bot_difficulty
+dac_recent_turbo_match_type
+dac_recent_turbo_matchmaking_type
+dac_recent_turbo_party_bot_difficulty
 dac_refresh_postgame_scoreboard
+dac_reload_localization
 dac_remove_banner_paintin
+dac_reset_violators
 dac_right_click_move
 dac_round_over_enabled
 dac_round_over_first_hero_time
@@ -26374,6 +26735,7 @@ dac_synergies_hide_partial_during_combat
 dac_tab_dps
 dac_tap_move
 dac_test_multimap
+dac_test_new_play_flow
 dac_test_opponent_chat_combat
 dac_test_player_chat_combat
 dac_test_player_chat_global
@@ -26384,9 +26746,15 @@ dac_toggle_chat
 dac_toggle_item_choice_picker
 dac_toggle_notification_debug_menu
 dac_toggle_scoreboard
+dac_turbo_shop
+dac_tutorial_force_state_by_index
+dac_tutorial_force_state_by_name
+dac_tutorial_text_advance_delay
+dac_tutorial_text_advance_delay_fast
 dac_ui_input_mode
 dac_ui_layout_mode
 dac_underlord
+dac_underlord_alt_voice
 dac_unit_bench_scale
 dac_unit_global_scale
 dac_unit_name
@@ -26394,6 +26762,7 @@ dac_unitchatwheel_dead_zone_radius
 dac_unitchatwheel_outer_radius
 dac_unitchatwheel_ui_center_radius
 dac_use_combat_chat
+dac_use_simplified_ui_traces
 dac_use_test_store
 dac_view_away
 dac_view_home
@@ -26490,6 +26859,7 @@ death_effect
 death_modifier
 deathmatch
 debug - disable trace query cache
+debug of origin changes for %d set to %s
 debug_anim_source
 debug_materialmodifycontrol_client
 debug_message
@@ -26499,7 +26869,6 @@ decalDepth
 decalFadeDuration
 decalScale
 decalScaleVariation
-decalSpecularExp
 decalStartFadeTime
 decal_texture_index
 decalmaterialindex
@@ -26603,6 +26972,7 @@ details_modifier_create
 details_modifier_destroy
 details_normal
 details_particle_event
+details_puzzle
 details_resurrect
 details_sandbox
 details_sound_event
@@ -26612,6 +26982,7 @@ details_start_gesture
 details_stop_gesture
 details_tech_prototype_a
 details_turbo
+details_tutorial
 dev/panorama_world_panel_default.vmat
 dev/panorama_world_panel_hint_ui.vmat
 dev/panorama_world_panel_lit_default.vmat
@@ -26665,6 +27036,7 @@ disable_movement
 disable_outline
 disable_party_code
 disable_style_selector
+disable_turbo
 disableactivatepause
 disabled by parent
 disabledone
@@ -27008,6 +27380,7 @@ event %s "%s"
 event date
 event:
 eventID
+eventName
 event_add_challenge
 event_add_currency
 event_challenge_cooldown
@@ -27121,7 +27494,7 @@ f %d %d %d
 f == __null || dynamic_cast<To>(f) != __null
 f$E+f
 f,x-L
-f92tQ
+f92tS
 f98tM
 f99u"
 f9W$u
@@ -27243,6 +27616,7 @@ file://{images}/%s%s
 file://{images}/%s.png
 file://{images}/browser/browser_mousepan.png
 file://{images}/challenge_map/locations/claim_%d.psd
+file://{images}/challenges/%s.png
 file://{images}/control_icons/question_mark_background.png
 file://{images}/dashboard/background/background.png
 file://{images}/dashboard/background/flattened-bg.jpg
@@ -27311,6 +27685,7 @@ file://{resources}/layout/dac_db_page_heropedia_synergies.xml
 file://{resources}/layout/dac_db_page_home.xml
 file://{resources}/layout/dac_db_page_loadout.xml
 file://{resources}/layout/dac_db_page_patchnotes.xml
+file://{resources}/layout/dac_db_page_play.xml
 file://{resources}/layout/dac_db_page_postgame.xml
 file://{resources}/layout/dac_db_page_profile.xml
 file://{resources}/layout/dac_db_page_rewards.xml
@@ -27322,6 +27697,8 @@ file://{resources}/layout/dac_ui_achievement_panel.xml
 file://{resources}/layout/dac_ui_banner_paintin.xml
 file://{resources}/layout/dac_ui_challenge_map.xml
 file://{resources}/layout/dac_ui_challenge_world_map.xml
+file://{resources}/layout/dac_ui_challengemap_challenge.xml
+file://{resources}/layout/dac_ui_challengemap_claim.xml
 file://{resources}/layout/dac_ui_chat_wheel.xml
 file://{resources}/layout/dac_ui_context_menu_chat_line.xml
 file://{resources}/layout/dac_ui_context_menu_gems.xml
@@ -27336,6 +27713,7 @@ file://{resources}/layout/dac_ui_friend_picker.xml
 file://{resources}/layout/dac_ui_hud.xml
 file://{resources}/layout/dac_ui_hud_player_icons.xml
 file://{resources}/layout/dac_ui_hud_top_bar.xml
+file://{resources}/layout/dac_ui_hud_tutorial.xml
 file://{resources}/layout/dac_ui_inventory.xml
 file://{resources}/layout/dac_ui_inventory_item.xml
 file://{resources}/layout/dac_ui_item_select.xml
@@ -27355,6 +27733,9 @@ file://{resources}/layout/dac_ui_player_avatar.xml
 file://{resources}/layout/dac_ui_postgame_scoreboard.xml
 file://{resources}/layout/dac_ui_postgame_scoreboard_entry.xml
 file://{resources}/layout/dac_ui_postgame_stats_overview.xml
+file://{resources}/layout/dac_ui_puzzle_intro.xml
+file://{resources}/layout/dac_ui_puzzle_rules.xml
+file://{resources}/layout/dac_ui_puzzle_status.xml
 file://{resources}/layout/dac_ui_rank_icon.xml
 file://{resources}/layout/dac_ui_rewards_about.xml
 file://{resources}/layout/dac_ui_round_over.xml
@@ -27371,8 +27752,10 @@ file://{resources}/layout/dac_ui_synergy_icon_no_bars.xml
 file://{resources}/layout/dac_ui_talent_browser.xml
 file://{resources}/layout/dac_ui_talent_card.xml
 file://{resources}/layout/dac_ui_talent_selector.xml
+file://{resources}/layout/dac_ui_turbo_shop.xml
 file://{resources}/layout/dac_ui_underlord_config.xml
 file://{resources}/layout/dac_ui_underlord_status.xml
+file://{resources}/layout/dac_ui_unit_modifiers.xml
 file://{resources}/layout/dac_ui_unit_status.xml
 file://{resources}/layout/dac_ui_vs_screen.xml
 file://{resources}/layout/dac_ui_zoo.xml
@@ -27396,6 +27779,7 @@ file://{resources}/layout/popups/popup_claim_item_success.xml
 file://{resources}/layout/popups/popup_equip_slot.xml
 file://{resources}/layout/popups/popup_friend_code.xml
 file://{resources}/layout/popups/popup_friend_code_addpopup.xml
+file://{resources}/layout/popups/popup_gamemode_picker.xml
 file://{resources}/layout/popups/popup_gems.xml
 file://{resources}/layout/popups/popup_generic.xml
 file://{resources}/layout/popups/popup_generic_text_entry.xml
@@ -27411,6 +27795,7 @@ file://{resources}/layout/popups/popup_looking_for_match.xml
 file://{resources}/layout/popups/popup_manager.xml
 file://{resources}/layout/popups/popup_party_invite_friend.xml
 file://{resources}/layout/popups/popup_party_select_team.xml
+file://{resources}/layout/popups/popup_play_page_season_info.xml
 file://{resources}/layout/popups/popup_player_state.xml
 file://{resources}/layout/popups/popup_postgame_reward.xml
 file://{resources}/layout/popups/popup_pre_match_details.xml
@@ -27428,8 +27813,8 @@ file://{resources}/layout/popups/popup_steam_login.xml
 file://{resources}/layout/popups/popup_synergy.xml
 file://{resources}/layout/popups/popup_talent_info.xml
 file://{resources}/layout/popups/popup_tutorial_intro.xml
-file://{resources}/layout/popups/popup_tutorial_message.xml
 file://{resources}/layout/popups/popup_underlord_ability.xml
+file://{resources}/layout/popups/popup_underlord_picker.xml
 file://{resources}/layout/popups/settings_enum.xml
 file://{resources}/layout/popups/settings_slider.xml
 file://{resources}/layout/settings_keybinder.xml
@@ -27437,13 +27822,12 @@ file://{resources}/layout/textinput/text_input_daisy.xml
 file://{resources}/layout/textinput/text_input_daisy_group.xml
 file://{resources}/layout/tooltip.xml
 file://{resources}/layout/tooltips/tooltip_base.xml
-file://{resources}/layout/tooltips/tooltip_challengemap_challenge.xml
-file://{resources}/layout/tooltips/tooltip_challengemap_claim.xml
 file://{resources}/layout/tooltips/tooltip_hero.xml
 file://{resources}/layout/tooltips/tooltip_hero_ability.xml
 file://{resources}/layout/tooltips/tooltip_item.xml
 file://{resources}/layout/tooltips/tooltip_legendary.xml
 file://{resources}/layout/tooltips/tooltip_meter_details.xml
+file://{resources}/layout/tooltips/tooltip_modifier.xml
 file://{resources}/layout/tooltips/tooltip_player.xml
 file://{resources}/layout/tooltips/tooltip_synergy.xml
 file://{resources}/layout/tooltips/tooltip_talent_info.xml
@@ -27780,10 +28164,14 @@ game_constants
 game_dir
 game_directory
 game_end
+game_event_listener
+game_event_name
 game_id
 game_info
+game_instructor_counts.txt
 game_interactions
 game_keys
+game_mode_settings
 game_modifiers
 game_msg
 game_newmap
@@ -27834,6 +28222,7 @@ gc msg %s, SteamID %llu
 gc msg %s, SteamID %llu, version %hd, job source %llu, job target %llu
 gc_connected
 gc_dir_index_source
+gc_duos_bot_difficulty
 gc_info
 gc_mismatched_version
 gc_msg_src
@@ -27841,7 +28230,9 @@ gc_name
 gc_queue_position
 gc_queue_wait_time
 gc_socache_file_version
+gc_standard_bot_difficulty
 gc_status
+gc_turbo_bot_difficulty
 gcclient.cpp
 gcsdk_gcmessages.proto
 gcsql_version
@@ -27966,7 +28357,6 @@ gradient
 gradient( 
 gradient(linear, 0%% 0%%, 100%% 0%%, from( rgb(%d,%d,%d) ), to( rgb(%d,%d,%d) ) )
 grant
-grant_credits
 grant_in_order
 grant_one_of_each_item
 grant_reason
@@ -27990,6 +28380,8 @@ group name must start with a non-digit
 group=%u
 group_code
 group_id
+gtU~;
+gt]~;
 gunshotsplash
 gunshotsplash_global_client
 gustdirchange
@@ -27998,9 +28390,9 @@ gxXM|Z
 g~i|H
 h2h1H
 h;K5X]
+h@IcD$
 hATSH
 hAttacker
-hHH	P0H
 hIcL$
 hRenderTexture != RENDER_TEXTURE_HANDLE_INVALID && m_image.IsValid()
 hS^<6?G
@@ -28089,7 +28481,6 @@ hex_color
 hex_model
 hidden
 hidden_only
-hide the challenge map tooltip
 hideHealthBar
 hide_adult_content_sex
 hide_adult_content_violence
@@ -28110,6 +28501,7 @@ highlander
 highlight_keywords
 highlight_type
 highlightnextunit
+hintWords
 hint_name
 hint_panel_fadein
 hint_panel_fadeout
@@ -28165,7 +28557,7 @@ https://
 https://api-beta.steampowered.com
 https://api.steampowered.com
 https://api.steampowered.com/IClientDeviceStats_%u/ClientDeviceEvent/v001/?data=%s
-https://help.steampowered.com/en/
+https://help.steampowered.com/%s/wizard/HelpWithLogin
 https://store.steampowered.com/join?insideAppModal=1&embedded_appid=%d
 https://store.steampowered.com/m/accesscode/%d
 https://underlords.com/feedback/?l=%s
@@ -28412,6 +28804,7 @@ interp entity count
 interpolated [%.2f]
 interpolated hermite [%.2f]
 interrupt
+introPanoramaEvents
 introSoundEvent
 invalid UTF-16 string
 invalid UTF-32 string
@@ -28505,6 +28898,7 @@ is_trade_banned
 is_transition
 is_tutorial
 is_two_factor_auth_enabled
+is_underlord
 is_unlimited
 is_update_compressed
 is_user_facing
@@ -28587,6 +28981,8 @@ itemid_t
 itemname
 itempack__ack_immediately
 items
+itemsBenched
+itemsUnassigned
 items_autographs
 items_clientside
 items_fulfilled
@@ -28843,6 +29239,7 @@ k_EDACAIType_Lvl5
 k_EDACAIType_Lvl6
 k_EDACAIType_Lvl7
 k_EDACAIType_Lvl8
+k_EDACAIType_ML
 k_EDACAIType_PB0
 k_EDACAIType_PB1
 k_EDACAIType_PB10
@@ -28870,6 +29267,9 @@ k_EDACAIType_PB3
 k_EDACAIType_PB30
 k_EDACAIType_PB31
 k_EDACAIType_PB32
+k_EDACAIType_PB33
+k_EDACAIType_PB34
+k_EDACAIType_PB35
 k_EDACAIType_PB4
 k_EDACAIType_PB5
 k_EDACAIType_PB6
@@ -28880,10 +29280,11 @@ k_EDACDisconnectReason_Goodbye
 k_EDACGameMode_Duos
 k_EDACGameMode_Invalid
 k_EDACGameMode_Normal
-k_EDACGameMode_Normal*
+k_EDACGameMode_Puzzle
 k_EDACGameMode_Sandbox
 k_EDACGameMode_TechPrototypeA
 k_EDACGameMode_Turbo
+k_EDACGameMode_Tutorial
 k_EDACLobbyTeam_Spectator
 k_EDACLobbyTeam_Team0
 k_EDACLobbyTeam_Team1
@@ -28898,6 +29299,14 @@ k_EDACMatchMode_Invalid
 k_EDACMatchMode_PrivateLobby
 k_EDACMatchMode_Ranked
 k_EDACMatchMode_SoloBot
+k_EDACPuzzleRule_%s
+k_EDACPuzzleRule_BoardCostLimit
+k_EDACPuzzleRule_BoardStarLimit
+k_EDACPuzzleRule_ItemCountLimit
+k_EDACPuzzleRule_None
+k_EDACPuzzleRule_UnitCostLimit
+k_EDACPuzzleRule_UnitCountLimit
+k_EDACPuzzleRule_UnitStarLimit
 k_EDACRegionMode_China
 k_EDACRegionMode_ROW
 k_EDACStoreID_GooglePlay
@@ -28927,6 +29336,7 @@ k_EMsgClientSetDebugNetBuffer
 k_EMsgClientToGCAssociateDevice
 k_EMsgClientToGCCanPurchaseItem
 k_EMsgClientToGCCheckFriendCode
+k_EMsgClientToGCDevOperation
 k_EMsgClientToGCEquipItems
 k_EMsgClientToGCEquipLoadout
 k_EMsgClientToGCEventClaim
@@ -28934,7 +29344,6 @@ k_EMsgClientToGCEventPurchase
 k_EMsgClientToGCGetFriendCodes
 k_EMsgClientToGCIsInMatchmaking
 k_EMsgClientToGCLeaveLobby
-k_EMsgClientToGCModifyGACFlags
 k_EMsgClientToGCNameItem
 k_EMsgClientToGCPartyAction
 k_EMsgClientToGCPartyCreate
@@ -29043,6 +29452,7 @@ k_EMsgGCToClientPartyEvent
 k_EMsgGCToClientPollFileRequest
 k_EMsgGCToClientRequestDropped
 k_EMsgGCToClientSDRTicket
+k_EMsgGCToClientUpdateAvailable
 k_EMsgGCToGCAddSubscriptionTime
 k_EMsgGCToGCCanUseDropRateBonus
 k_EMsgGCToGCConsoleOutput
@@ -29180,6 +29590,7 @@ k_eAlreadyResolved
 k_eBlocked
 k_eBotDifficulty_Easy
 k_eBotDifficulty_Hard
+k_eBotDifficulty_ML
 k_eBotDifficulty_Medium
 k_eBotDifficulty_Nightmare
 k_eBotDifficulty_None
@@ -29187,6 +29598,7 @@ k_eCancelFindMatch
 k_eCancelInvite
 k_eCannotReroll
 k_eCannotSelectRegion
+k_eClearAllCredits
 k_eCommunityBanned
 k_eDACNetBuffer_Debug
 k_eDACNetBuffer_GameModeState
@@ -29225,7 +29637,10 @@ k_eFlags_FinishedTutorial
 k_eFlags_RegisteredAccount
 k_eFlags_SideLoaded
 k_eFlags_StartedTutorial
+k_eFlags_StartedTutorialBot
+k_eForceAccountSyncValue
 k_eGameBanned
+k_eGrantCreditObject
 k_eHaveTooManyFriends
 k_eIgnored
 k_eInCooldown
@@ -29246,6 +29661,7 @@ k_eInvalidItem
 k_eInvalidItemType
 k_eInvalidKey
 k_eInvalidLoadoutSlot
+k_eInvalidMessage
 k_eInvalidModifier
 k_eInvalidOrderID
 k_eInvalidPartyID
@@ -29321,6 +29737,7 @@ k_eRewardsNotClaimed
 k_eSequenceMismatch
 k_eServerFull
 k_eSetBotDifficulty
+k_eSetGACFlags
 k_eSetMemberTeam
 k_eSetMemberUnderlord
 k_eSetPlayerType
@@ -29403,7 +29820,6 @@ l$ D;h
 l$ E;l$$}
 l$ Ic
 l$ Mce
-l$ fA
 l$ v=
 l$(Hc
 l$0D9
@@ -29443,6 +29859,8 @@ lastinv
 lastupdated
 lastupdatedB8
 latam
+latest_client_version
+latest_compat_version
 latest_timestamp_from_steam
 latitude
 lavender
@@ -29490,7 +29908,6 @@ legendary_title
 lemonchiffon
 len >= 0
 len >= input_len
-lenge_maH
 length
 length_ >= n
 lesson_name
@@ -29606,6 +30023,7 @@ local.origin
 local.scales
 localBits
 localSound
+local_duos_bot_difficulty
 local_game_modifiers_max_banned_heroes
 local_game_modifiers_max_banned_tier_1
 local_game_modifiers_max_banned_tier_2
@@ -29617,7 +30035,9 @@ local_mmr_level
 local_player_event_level
 local_player_slot
 local_player_team
+local_standard_bot_difficulty
 local_temp_entity
+local_turbo_bot_difficulty
 localhost
 localhost/community/
 localhost/dota
@@ -30207,6 +30627,7 @@ m_bIsGeneratingEconItem
 m_bIsGeneratingLatchedParentSpaceState
 m_bIsGesture
 m_bIsInContact
+m_bIsInContactTeleportClip
 m_bIsInSimulation
 m_bIsInView
 m_bIsInteractionsDisabled
@@ -30367,6 +30788,7 @@ m_bStartedFreezeFraming
 m_bState
 m_bStopped
 m_bSuppressAnimEventSounds
+m_bSuppressPostCombatCelebration
 m_bThreadsActive
 m_bTipTransformInitialized
 m_bTopLevel
@@ -30817,6 +31239,7 @@ m_flLightSourceDim0
 m_flLightSourceDim1
 m_flLightSourceSize0
 m_flLightSourceSize1
+m_flLightStyleStartTime
 m_flLightningAngle
 m_flLightningElevation
 m_flLightningEventMagnitude
@@ -30995,7 +31418,6 @@ m_flSlack
 m_flSlopeIncoming
 m_flSlopeOutgoing
 m_flSnapValue
-m_flSpecExp
 m_flSpecularIndependence
 m_flSpecularPower
 m_flSpeed
@@ -31435,7 +31857,6 @@ m_mouseaccel1
 m_mouseaccel2
 m_mousespeed
 m_movementCollisionNormal
-m_msgGameModeState.has_details_sandbox()
 m_nAbilityLayer
 m_nActiveInteraction
 m_nActivity
@@ -32020,6 +32441,7 @@ m_unOrientation
 m_unOverrideOrigin
 m_unOwnerContext
 m_unOwnerPlayerSlot
+m_unPuzzleID
 m_unTeamID
 m_unUnderlord
 m_unVerticalAlign
@@ -32500,6 +32922,7 @@ maxexposure
 maxgpulevel
 maxgust
 maxgustdelay
+maximum
 maximumChangePerSecond
 maximumDistanceFromLine
 maxlogexposure
@@ -32585,6 +33008,7 @@ mingust
 mingustdelay
 minhealthdmg
 minimal
+minimum
 minimum_priority
 miniprofile
 minlogexposure
@@ -32660,6 +33084,7 @@ modeldoc24
 modeldoc25
 modeldoc26
 modeldoc27
+modeldoc28
 modeldoc3
 modeldoc4
 modeldoc5
@@ -32687,6 +33112,7 @@ models/weapons/c_models/c_shogun_katana/c_shogun_katana_soldier.vmdl
 models/weapons/w_models/w_sapper.vmdl
 models/weapons/w_models/w_toolbox.vmdl
 modemanager->Init()
+modifier=%d
 modifier_assassin_leap
 modifier_entindex
 modifier_id
@@ -32727,8 +33153,10 @@ mp_usehwmmodels
 mp_usehwmvcds
 mrS^F
 msg.has_game_constants()
+msgGameModeState.has_details_puzzle()
 msgGameModeState.has_details_sandbox()
 msgGameModeState.has_details_tech_prototype_a()
+msgGameModeState.has_details_tutorial()
 msgRoundCombat.has_round_number()
 msgUnitSnapshot.has_team_number()
 msg_data
@@ -32746,7 +33174,6 @@ multiply
 multitouchzoomscale
 must_complete
 must_complete_list
-muted_by
 mutual_friend_account_ids
 muzzle
 muzzle_flash_enable
@@ -32959,10 +33386,14 @@ o ATI
 o ATL
 o ATSH
 o$ATL
-o%L#+
+o%3b+
+o%;Y+
+o%Nd+
+o%cg+
 o(ATL
 o(ATSH
 o*Ral
+o-u|@
 o0ATL
 o0E;o@
 o8ATL
@@ -32996,6 +33427,8 @@ odds_tier_4_next
 odds_tier_5
 odds_tier_5_next
 offensive_gems
+offering_%d
+offering_description
 offline_mode
 offset
 ohATSH
@@ -33104,11 +33537,11 @@ order_pause_game
 order_reroll
 order_resume_game
 order_select_item_reward_choice
+order_select_turbo_bucket
 order_sell_unit
 orig: %d
 orig_query
 origin
-origin changed ( %g, %g, %g ) to ( %g, %g, %g )
 origin=%f, %f, %f
 originParentSpace
 origin_max_delta
@@ -33151,6 +33584,7 @@ outputcolor
 outputdepth
 outputid
 outputintermediate
+outroPanoramaEvents
 overflow: squish scroll; // scrolls contents in the Y direction</pre>
 overflow_members
 overhead_follow
@@ -33172,9 +33606,9 @@ p HcC
 p IcE
 p IcG
 p ~&H
-p ~1M
-p(A;V@
+p(A9V@
 p(Hc@ H
+p0A9t$,
 p0t=H
 p2p_Ping
 p2p_TextMessage
@@ -33203,9 +33637,11 @@ pE;&|
 pE;&}$L
 pEt : lower-mid front unrounded vowel
 pField
+pHH	P0H
 pHUDContainer
 pHY^t,L
 pIcD$
+pMain
 pMessage
 pSynergyData
 pUnitDef
@@ -33214,7 +33650,6 @@ pWorldObject
 pXfA9
 p[A\A]A^]
 p[A\]
-p_challeH
 pa end %f
 pa start %f
 package
@@ -33338,6 +33773,9 @@ particles/blood_impact/blood_impact_yellow_01.vpcf
 particles/burning_fx/burning_character.vpcf
 particles/citycrawl/challenge_claimable.vpcf
 particles/citycrawl/challenge_icon.vpcf
+particles/citycrawl/challenge_icon_puzzle_easy.vpcf
+particles/citycrawl/challenge_icon_puzzle_hard.vpcf
+particles/citycrawl/challenge_icon_puzzle_medium.vpcf
 particles/citycrawl/claim_claimable.vpcf
 particles/code_driven/func_precipitation.vpcf
 particles/code_driven/func_precipitation_with_trail.vpcf
@@ -33426,6 +33864,8 @@ particles/tracer_fx/weapon_tracers.vpcf
 particles/ui/bench/receive_duos_unit.vpcf
 particles/ui/bench/ui_bench_hero_psst.vpcf
 particles/ui/challenge_link.vpcf
+particles/ui/end_of_round/defeat/eor_defeat_enemy2portrait_proj.vpcf
+particles/ui/end_of_round/defeat/eor_defeat_heartbreak%d.vpcf
 particles/ui/end_of_round/defeat/eor_defeat_proj.vpcf
 particles/ui/end_of_round/defeat/eor_defeat_unit_0%d.vpcf
 particles/ui/end_of_round/defeat/eor_defeat_unit_01.vpcf
@@ -33435,7 +33875,6 @@ particles/ui/end_of_round/exit_tp/exit_tp.vpcf
 particles/ui/end_of_round/victory/eor_victory.vpcf
 particles/ui/end_of_round/victory/eor_victory_hero.vpcf
 particles/ui/end_of_round/victory/eor_victory_proj.vpcf
-particles/ui/gems/ui_gem_apply_green.vpcf
 particles/ui/gems/ui_gem_apply_highlight_green.vpcf
 particles/ui/items/generic/ui_item_assign.vpcf
 particles/ui/items/generic/ui_item_available.vpcf
@@ -33503,6 +33942,7 @@ particles/water_fx/water_trail_directional_walk.vpcf
 particles/water_fx/water_trail_idle.vpcf
 particles/weapon_fx/muzzleflash_smgs.vpcf
 particles_list
+parties
 partner
 partner_accounts
 partner_id
@@ -33517,6 +33957,7 @@ party_mm_info
 party_mm_start_duos
 party_password
 party_refresh
+party_size
 party_test_force_games_played
 party_test_force_games_to_rename
 party_test_force_leaderboard_place
@@ -33566,7 +34007,7 @@ perspective
 perspective-origin
 pervertexlighting
 pfE+QXfE
-pfOnEngineDisconnectReason
+pfvmt
 phA;vh
 phase
 phone_id
@@ -33768,6 +34209,8 @@ pos-cellorigin
 pos:  %.02f %.02f %.02f
 pos: (%f, %f, %f)
 poseParametersChanged
+pose_control
+pose_control_type
 pose_param %s: %f
 position
 positionH
@@ -33837,6 +34280,7 @@ priority
 privacy
 private
 private_ip_address
+private_locked
 private_player_state
 private_player_state_v1
 process_id
@@ -33914,6 +34358,9 @@ purchase_result_detail
 purchase_type
 pure_damage_taken
 purgatory expires after date
+puzzle_description
+puzzle_id
+puzzle_victory
 pvsplayer
 pwatchent
 pwatchvar
@@ -33955,7 +34402,6 @@ r_AirboatViewDampenDamp
 r_AirboatViewDampenFreq
 r_AirboatViewZHeight
 r_DotaSpecificCulling
-r_DotaSpecificCulling is %s
 r_DotaSpecificCullingToggle
 r_DrawRain
 r_ForceWaterLeaf
@@ -34183,6 +34629,7 @@ rain_fx
 rain_inner_amount
 rain_inner_radius
 rain_outer_radius
+ran_out_of_time
 random_attributes
 random_count
 random_seed
@@ -34192,6 +34639,7 @@ randomizecycle
 randomnum
 range out of order in character class
 rank_n
+ranked_locked
 rareitem
 rarities
 rarity
@@ -34537,79 +34985,92 @@ runcommand:%04d,tick:%u
 runsimulation  :cmd %d -> slot %d
 russian
 s H;5
-s H;5 
-s H;5 Q
-s H;5!
-s H;5$L
-s H;5(
-s H;51
-s H;51Y
-s H;51m
-s H;5@
+s H;5 k
+s H;50A
+s H;51T
 s H;5A
-s H;5Aq
+s H;5H(
 s H;5L
-s H;5P
+s H;5Q
+s H;5QX
+s H;5\
+s H;5`
+s H;5a
+s H;5a!
 s H;5h
-s H;5h|
-s H;5l 
-s H;5q
-s H;5qu
-s H;5qx
-s H;5xn
+s H;5p
+s H;5ql
+s H;5t
+s H;5xA
 s off
+s ~#H
 s(AUH
 s(E9&t-A
 s(H;5
-s(H;5P
-s(H;5TL
-s(H;5X
-s(H;5}
+s(H;5(
+s(H;50
+s(H;54J
+s(H;5@i
+s(H;5H
 s(t.H
+s(~?A
 s)Hc@
 s)~+@
 s,+s(
 s/glow.vH
 s/spriteH
 s0H;5
-s0H;5(<
-s0H;5(n
-s0H;5,P
-s0H;5L
-s0H;5Xz
-s0H;5`
-s0H;5a1
+s0H;5@
+s0H;5@	
+s0H;5H
+s0H;5K1
+s0H;5X
+s0H;5_
+s0H;5a
+s0H;5h
+s0H;5l7
+s0H;5l=
+s0H;5p7
+s0H;5x
+s0H;5x"
+s0H;5|
 s1_mapname
 s2r://
 s69F~
 s7>Ip
+s8;0v0H
 s8D;kP
 s8H;5
-s8H;58
-s8H;5D
-s8H;5X<
-s8H;5Xf
+s8H;5(#
+s8H;5=q
+s8H;5A
 s8H;5a
 s8Lcm
+s<HcI
 s@9C@
 s@CGCToClientPollFileJob
 s@H9sHv
 s@H;5
-s@H;5a
+s@H;50
+s@H;5@B
+s@H;5PP
+s@H;5h
+s@H;5l
+sDHc@
 sHA9t$,t
 sHH;5
-sHH;5HV
-sHH;5_
-sHH;5x
+sHH;5()
+sHH;5d
+sHH;5eQ
 sHHcR
 sIf true, then files must have all the tags specified.  If false, then must have at least one of the tags specified.
 sMA9|$ 
 sPH;5
-sPH;58=
-sRHc@
+sPH;5(
+sPH;58
+sPH;5BC
 sXH;5
-sXH;5h=
-sXH;5x>
+sXH;5X
 sZtgH
 s_EntComponentInfo
 s_WindVector
@@ -34638,10 +35099,13 @@ sample_rate
 sample_stack
 samples
 samples_use_time
+sandbox_share_code
 sandybrown
 saturation
 save    | 
 save faceposer\%s
+save/%s
+save/%s/%s
 save/game_instructor_counts.txt
 save_game_key
 save_id
@@ -34703,8 +35167,6 @@ screentilt_t
 script
 script_debug %s
 script_precache_resource
-scriptedH
-scriptedI
 scripted_scene
 scripted_sequence
 scripts/abilities.json
@@ -34712,6 +35174,7 @@ scripts/abilities_staging.json
 scripts/activity_modifier_weights.txt
 scripts/addon_hud_textures
 scripts/chat_wheel_lines.json
+scripts/dac_acknowledged_violators.txt
 scripts/decals_subrect.txt
 scripts/events.json
 scripts/haptic_curves.txt
@@ -34732,6 +35195,7 @@ scripts/modifiers_staging.json
 scripts/npc/portraits_underlords_hud.txt
 scripts/npc/portraits_vs_radiant.txt
 scripts/propdata.txt
+scripts/puzzles.json
 scripts/soundscapes_%s.txt
 scripts/soundscapes_manifest.txt
 scripts/surfaceproperties_game.txt
@@ -34739,6 +35203,7 @@ scripts/surfaceproperties_impact_effects.txt
 scripts/synergies.json
 scripts/synergies_staging.json
 scripts/talker/response_rules.txt
+scripts/tutorialdefs.json
 scripts/units.json
 scripts/units_staging.json
 scripts/voicecommands.txt
@@ -34887,10 +35352,13 @@ setting.refreshrate_numerator
 setting.resettodefaults
 setting.shaderquality
 setting.useadvanced
+settings"
 severity
 sfixed32
 sfixed64
-shH;5
+shH;5(
+shH;5@
+shH;5m
 shMcuX
 shadowcascadecount
 shadowcascadedistance%d
@@ -34969,7 +35437,6 @@ silver
 simple_cubic
 simplified
 simulate mobile UI
-simulation
 simulationTimeSerializer
 sincos
 single_shot
@@ -34990,6 +35457,7 @@ skeletonMeshGroupMaskChanged
 skeletonModelChanged
 skeletonMotionTypeChanged
 skeletonRenderingEnableChanged
+skeleton_instance_lod_optimization
 skeletoninstancehash
 skin_cp
 skip_model_combine
@@ -35112,7 +35580,9 @@ source_file
 source_filename
 source_reference_id
 source_unit_idx
-spH;5
+spH;5=
+spH;5L
+spH;5X
 space
 space shuttle
 spacerperiod
@@ -35150,7 +35620,6 @@ special
 special1
 special2
 special3
-special_keyword
 special_payments
 specific_item
 spectate_account_id
@@ -35237,6 +35706,7 @@ stat_value
 state
 state_change_time
 state_duration
+states
 static const TypeID IAudioAnimTag::MyTypeID()
 static const TypeID IClothSettingsAnimTag::MyTypeID()
 static const TypeID IFootstepLandedAnimTag::MyTypeID()
@@ -35528,13 +35998,14 @@ svgstrokelinecap
 svgstrokelinejoin
 svgstrokeopacity
 svgstrokewidth
+swHc@
 swap_height
 swap_width
 swedish
 swift_prefix
 sxH;5
-sxH;5%?
-sxH;58?
+sxH;5`n
+sxH;5u
 sxHc@
 sxt!H
 symbol
@@ -35547,6 +36018,7 @@ synergy
 synergy_%d
 synergy_level
 synergy_name
+synergy_tip_%d
 synergyicons/insect.psd
 syntax
 syntax = "$0";
@@ -35559,7 +36031,6 @@ t	D;B
 t	D;H
 t	D;P
 t	I9x
-t	M9#
 t	X[]
 t	[A\A]A^]
 t	[A\]
@@ -35570,6 +36041,7 @@ t HcM
 t Hc\
 t Hcs0;s4u
 t Hcw
+t L;e
 t L;u
 t!<>u
 t!A;_
@@ -35579,24 +36051,23 @@ t!E9_
 t!IcE
 t!IcN 
 t";2}
-t"D85
+t"D85l~
 t"E9g
-t"H;=
-t"H;=+=
+t"H;=;
+t"H;={
 t"HcS
 t"L;%
-t"L;%	
-t"L;%(
-t"L;%)@
-t"L;%XP
-t"L;%Y
-t"L;%yA
+t"L;%9:
+t"L;%Y5
+t"L;%i
+t"L;%x
+t"L;%y
 t#;:u
 t#D;c
 t#IcD$
 t#[A\]
+t#|GE9
 t$	H9
-t$ A;w|u
 t$ H9
 t$ L)
 t$ L9
@@ -35611,11 +36082,13 @@ t$(t-H
 t$0E1
 t$0H9
 t$0Hc
+t$0Lc
 t$0f.
 t$8H9
 t$<	t 
 t$@fA
 t$D9g
+t$D9x$
 t$H;h
 t$HH9
 t$HcS
@@ -35626,7 +36099,6 @@ t$HcW
 t$Hf.
 t$Htl
 t$Lc+I
-t$PA;pP
 t$PA;uPu
 t$PD;m
 t$PH9
@@ -35636,13 +36108,12 @@ t$XH9
 t$XIc
 t$Xf9q
 t$`H9
-t$hD9>t
 t$hD9>t#H
 t$hH9
 t$pH9
+t$pLcu
 t$pvufA
 t$xH9
-t%;56
 t%HcC0A
 t%HcSx
 t%Icv 
@@ -35652,12 +36123,12 @@ t&D;y
 t&H;wXt
 t&Icv
 t&L;%
-t&L;%8
-t&L;%H#
-t&L;%X@
+t&L;%H
+t&L;%h:
 t&Lcc
 t'99u
 t'H;=
+t'H;=@B
 t'Lcm
 t(<)u
 t(D9m
@@ -35672,7 +36143,7 @@ t)D;-
 t)HcE
 t)Mc<$E;|$
 t)[A\]
-t*D:=A
+t*D:=aM
 t*HcHPH
 t*HcJPH
 t*Lc}
@@ -35681,9 +36152,8 @@ t+D9e
 t+Ic\$
 t+Mc7E;w
 t,D9m
-t,D:%k
+t,D:%
 t-A9\$H
-t-D;u
 t-HcC$H
 t-Mc&E;f
 t-Mcu
@@ -35707,21 +36177,25 @@ t/HcC<H
 t/HcG
 t/HcG H
 t/HcG$H
+t/HcG,H
 t/HcG8H
 t/HcK0H
 t/HcO
 t/HcO H
 t/HcW(H
 t/HcW0H
+t/IcL$HH
 t/IcM8H
 t/IcMTH
 t/IcM`H
 t/Mc.E;n
+t0D9m
 t0D;;
 t0HcC$H
 t0HcC(H
 t0HcG H
 t0HcG(H
+t0HcG0H
 t0HcK@H
 t0HcKXH
 t0[A\A]]
@@ -35734,7 +36208,6 @@ t1HcO8H
 t1HcO@H
 t1HcOLH
 t1HcOPH
-t1Ic~lH
 t1Mc,$E;l$
 t1[A\]
 t2HcC$H
@@ -35749,8 +36222,6 @@ t2HcK H
 t2HcK$H
 t2HcK0H
 t2HcK4H
-t2HcK8H
-t2HcK<H
 t2HcKPH
 t2HcK`H
 t2HcKdH
@@ -35796,6 +36267,8 @@ t3IcL$<H
 t3IcMdH
 t3IcOlH
 t3IcOpH
+t3IcT$(H
+t3IcT$,H
 t3IcU H
 t3Ic|$PH
 t3Ic|$TH
@@ -35807,7 +36280,6 @@ t3[A\A]]
 t3[A\]
 t4D;g
 t4HcC$H
-t4HcC(H
 t4HcC,H
 t4HcG
 t4HcG H
@@ -35815,7 +36287,7 @@ t4HcG$H
 t4HcG0H
 t4HcK
 t4HcK4H
-t4HcK@H
+t4HcKlH
 t4HcO4H
 t4HcOHH
 t4HcO`H
@@ -35828,12 +36300,10 @@ t4IcO4H
 t4IcO8H
 t4IcT$(H
 t4IcT$,H
-t4Ic~TH
 t4LcIPH
 t4[A\A]A^]
 t4[A\A]]
 t5HcC(H
-t5HcC0H
 t5HcG
 t5HcG H
 t5HcG(H
@@ -35843,17 +36313,25 @@ t5HcKtH
 t5HcO
 t5HcU
 t5HcW H
+t5HcW,H
+t5IcL$@H
 t5IcL$PH
 t5IcL$XH
 t5IcL$lH
+t5IcN8H
+t5IcT$$H
+t5IcT$8H
+t5Lc]
 t5[A\]
 t6E;<$tY
 t6H;C t0H
 t6HcG$H
 t6IcD$ H
 t6IcD$(H
+t6IcL$DH
 t6IcO|H
 t6IcT$$H
+t6IcT$0H
 t6IcU
 t6[A\A]]
 t7HcG H
@@ -35904,6 +36382,7 @@ t<HcR
 t=[A\]
 t>M.F9
 t>[A\]
+t@;5U
 t@Ic_
 t@L;}
 t@Lc#D;c
@@ -35954,7 +36433,7 @@ tYH9C(A
 tZD9k
 t[[A\]
 t\H90u
-t]D;p
+t\[A\A]A^A_]
 t]Icv 
 t_HcU
 t`[A\]
@@ -36012,7 +36491,6 @@ tdD;h
 tdD;p
 tdD;x
 tdHc_(
-td[A\A]A^A_]
 td[A\]
 te.proto
 te[A\A]A^]
@@ -36027,11 +36505,11 @@ team_mmr_level
 team_number
 team_rank_score
 team_slot
-teammate_accountid
 teammate_bench_count
 teammate_damage_result
 teammate_opponent_slot
 teammate_slot
+teammate_slotid
 teamplay_broadcast_audio
 teams
 tempent_renderamt
@@ -36149,7 +36627,6 @@ tlD;h
 tlHc@xH
 tlIcD$
 tm#C,
-tm;5Vcs
 tm~zL
 tnHcM
 tnHcU
@@ -36234,6 +36711,8 @@ transition-property
 transition-timing-function
 transition-timing-function: cubic-bezier( 0.785, 0.385, 0.555, 1.505 );</pre>
 transition-timing-function: ease-in-out, linear;
+transitionEvents
+transitionToState
 transitioning
 translate3d(
 translate3d( 
@@ -36253,6 +36732,7 @@ trial_account
 trigger1
 trigger2
 trigger3
+triggerArg
 trigger_transition
 tripmine
 true 
@@ -36261,13 +36741,17 @@ trunc
 trusted
 trusted_server
 ttD;h
+ttHcR
 tuA9O
 tuH;U
 tuLcs0D;s@D
+turbo_buckets
 turbo_mode
 turkish
 turn_rate
 tutorial
+tutorial_phase
+tutorial_state_index
 tv_listen_voice_indices
 tv_transmitall
 twH;XPt
@@ -36302,7 +36786,7 @@ tyHc@
 tyHcI
 tyHcQ
 tyHcR
-tyHcS
+tyHcR 
 tyHcW
 tyHcW(
 tyIc\$
@@ -36321,11 +36805,9 @@ type_field
 type_id
 type_instances
 type_value
-tz;5Ncs
 tzHcS@
 tzHcVPH
 tzIcG0A;G@L
-t{95Rcs
 t{E;l$
 t{UE1
 t{riU
@@ -36349,7 +36831,6 @@ u*[A\]
 u+[A\A]A^]
 u-[A\]
 u.[A\]
-u/D	k
 u0A	\$
 u0A;t$,
 u0[A\]
@@ -36363,7 +36844,6 @@ u6LccHH
 u6[A\A]A^]
 u6[A\]
 u7A	\$
-u7HcGp
 u7[A\]
 u8[A\]
 u9% &
@@ -36375,9 +36855,11 @@ u>[A\]
 uA[A\]
 uBA	\$
 uBE;,
+uB[A\]
 uCA	\$
 uC[A\]
 uE[A\]
+uGHcGx
 uGrants an implicit OAuth token (grant type 'token') for the specified client ID on behalf of a user without prompting
 uHLcs D;s0D
 uH[A\]
@@ -36389,7 +36871,6 @@ uLH9G8L
 uL[A\]
 uM[A\]
 uN[A\]
-uOMcu
 uO[A\]
 uPA	\$
 uPHcA
@@ -36401,12 +36882,12 @@ uV[A\]
 uYA	\$
 uYLl>
 uY[A\]
-u[[A\]
 u\[A\]
 u]A	\$
 u][A\]
 u^[&`
 u_[A\]
+ubD	k
 ub[A\]
 udA	\$
 ud[A\]
@@ -36438,6 +36919,7 @@ uint64 (%llu)
 uint64 differs (net %llu pred %llu) diff(%lld)
 uint8
 uint_value
+uint_value_2
 ujA;\$
 ujLcOxfE
 uk_UA
@@ -36458,6 +36940,7 @@ uncompressed_size
 unconnected
 undefined
 underline
+underlordID
 underlord_available_talents
 underlord_away
 underlord_home
@@ -36481,6 +36964,7 @@ unitYaw
 unit_cap_cost
 unit_cost
 unit_id
+unit_ids
 unit_killed
 unit_lore
 unit_rank
@@ -36606,6 +37090,7 @@ use_max_instead_of_increment
 use_oriented_effect
 use_string
 used_by_heroes
+used_turbo_bucket_reroll
 usemtl initialShadingGroup
 user_account_id
 user_account_id}
@@ -36624,10 +37109,10 @@ usermessages.proto"
 usermsgs
 username
 users
-users_in_queue
 users_per_second
 usesLeft
 uses_essence
+utMc}
 utlbuffer.cpp
 utlstring (%s)
 utlstring.cpp
@@ -36640,13 +37125,11 @@ uz9GxV
 v %g %g %g
 v %g %g %g%s
 v 9K$t
-v Hc@
 v IcD$
 v axis
-v!HcR
-v&]H9
 v(A9u0u
 v(A\I
+v*Hc@
 v8array
 v8callback
 v8object
@@ -36656,9 +37139,9 @@ v><vt:
 v>zlK9T
 vD\AH
 vHA9t$H
-vHcq(H
 vIcG01
 vKH+E
+vPA;pP
 vVIcv
 vVd{AVd{AVd{AVd{A
 v[A\A]A^A_]H
@@ -36896,6 +37379,7 @@ vpost
 vprof_could_not_detect_vtrace
 vprof_scope_entity_clientthink
 vprof_scope_entity_thinks
+vqHc@
 vr_allow_zero_tracking
 vr_always_teleport_player
 vr_anchor_allow_non_up_floor
@@ -37233,9 +37717,9 @@ x#Hcw
 x$E9|$$
 x$HcSh;Sx
 x("tU
-x(H;=
+x(H;=Ek
 x*;XZ
-x*D;%8
+x*D;%X
 x+A9T$h~$H
 x,E9|$,
 x0;wH}+Hc
@@ -37246,7 +37730,7 @@ x4A9WH~.H
 x7Hcs
 x7Hcw
 x8"tq
-x8H;=R
+x8H;=
 x:Hcw
 x@HcO
 xBHcO
@@ -37255,7 +37739,6 @@ xDIcE
 xE;&|
 xE;&}$L
 xH"t:f
-xHt)H
 xI9<$u
 xI9>u
 xJ;QX}EHcy\N
@@ -37322,7 +37805,6 @@ z%u#A
 z%u#D
 z&u$D;+t
 z&u$H
-z&u$f
 z'u%H
 z("t%f
 z("tZ
@@ -37333,6 +37815,7 @@ z(9~(|
 z(A9G@
 z(u&A
 z)u'A
+z)u'f
 z*u(A
 z*u(H
 z+u)A
@@ -37348,9 +37831,9 @@ z0u.A
 z0u.H
 z1u/A
 z1u/H
-z1u/f
 z2tOA
 z2u01
+z4u2f
 z5u3H
 z6u4H
 z6u4fA
@@ -37381,13 +37864,13 @@ zSuQUH
 zTuRA
 zTuRH
 zTuRI
+zUuSA
 zVuTH
 zXfA9|$Xr
 zYuWA
 zYuWH
 zYuWHc
 z^u\A
-z_u]H
 zcuaE
 zcuaH
 zero_value
@@ -37396,6 +37879,7 @@ zfudH
 zgueA
 zh_CN
 zh_TW
+zkuiH
 zkuif
 zm6Vb
 zoom_autoaim
@@ -37410,13 +37894,13 @@ zyuwI
 z|uzf
 z}u{L
 { H;=
-{ H;=	=
-{ H;=):
-{ H;=RS
-{ H;=RX
+{ H;=	&
+{ H;=)#
+{ H;=R
 { t9I
 { t:I
 { u7H
+{ ~#H
 {$t%:
 {(1~NM
 {(9x(
@@ -37458,6 +37942,8 @@ z}u{L
 |$ E;|$0tLI
 |$ H)
 |$ H;=
+|$ XZH
+|$ fA
 |$(Hc
 |$(fA
 |$(~;A
@@ -37472,7 +37958,9 @@ z}u{L
 |$8A\]
 |$8E1
 |$8Hc
+|$8Mc
 |$<L9
+|$@E;|$Pu
 |$@u	H
 |$PA9
 |$`H;
@@ -37493,7 +37981,6 @@ z}u{L
 |20M9
 |5H;I
 |7IcN
-|8IcO
 |=H;IX
 |?5^:+
 |@L9m
@@ -37505,11 +37992,11 @@ z}u{L
 |JIcO
 |MIcL$
 |MtcH
+|NHcK
 |NIcO
-|NIcO0Ic
+|NIcO@Ic
 |OIcO
 |QIcN
-|RHcK
 |UIcO
 |WIcO
 |[HcM
@@ -37536,7 +38023,6 @@ z}u{L
 }/fA;
 }0E;}@
 }0E;}@A
-}0Icv0A;v4A
 }1A;^<
 }1fA;
 }2'@+P
@@ -37545,12 +38031,12 @@ z}u{L
 }4fA9
 }6Hc@
 }8A\A]A^]
+}8Icv0A;v4A
 }9E;e$
 };E;e$
 }=f9K
 }>fA;
 }?E:n
-}@E;}Pu
 }AE9G$|;I
 }AE;e$
 }BE9l$$|;I
@@ -37570,7 +38056,6 @@ z}u{L
 }UfA9]>rNH
 }VfA9
 }XfD9
-}]Hc@
 }cfD9
 }d)H"j
 }iHc@
@@ -37583,6 +38068,7 @@ z}u{L
 ~ E9'
 ~ XZH
 ~"D;%
+~$98u
 ~$D9e
 ~(A;]<
 ~(};Hc
@@ -37615,9 +38101,10 @@ z}u{L
 ~Kf;w
 ~Lf;w
 ~N;w$
+~NIcV
 ~OHcE
-~OMco
 ~Of;w
+~PHc@
 ~RA9_4|LL
 ~S$\H
 ~Tf;w
@@ -37631,6 +38118,6 @@ z}u{L
 ~gfA;\$&
 ~lf9K
 ~p>u,
-~sHc@
+~rA;_$
 ~uUE1
 ~|LcE

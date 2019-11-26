@@ -34,12 +34,6 @@
 	transition-timing-function: ease-out;
 }
 
-.GameMode_Duos #MatchIntro.PlayIntroAnim
-{
-	animation-name: DACMatchIntroDuosRootAnim;
-}
-
-
 @keyframes 'DACMatchIntroRootAnim'
 {
 	0%
@@ -106,6 +100,7 @@
 	}
 }
 
+// Root intro for duos
 @keyframes 'DACMatchIntroDuosRootAnim'
 {
 	0%
@@ -136,6 +131,41 @@
 	}
 }
 
+
+// Individual profile anim
+@keyframes 'IntroAppearAnim' {
+	from
+	{
+		opacity: 0;
+		pre-transform-scale2d: 3.0;
+	}
+	0% {
+		opacity: 0;
+		pre-transform-scale2d: 3.0;
+	}
+	1% {
+		opacity: 1;
+		pre-transform-scale2d: 3.0;
+	}
+	1.5% {
+		opacity: 1;
+		pre-transform-scale2d: 1.0;
+	}		
+	97%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: 1.0;
+	}
+	100%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: 1.0;
+	}
+	to {
+		opacity: 1;
+		pre-transform-scale2d: 1.0;
+	}
+}
 
 
 .SoloProfileContainer, .DuosProfileContainer
@@ -182,6 +212,25 @@
 	background-image: url("s2r://panorama/images/post_game/poster_brick_wall_psd.vtex");	
 	background-size:100%;
 }
+.GameMode_Turbo #MatchIntro.PlayIntroAnim #KnockoutLabel
+{
+	visibility: visible;
+}
+#KnockoutLabel
+{
+	horizontal-align: center;
+	vertical-align: center;
+	visibility: collapse;
+	font-family: Ravenhook;
+	font-size:200px;
+	text-shadow: 0px 0px 0px 2.0 #000;
+	opacity:.8;
+	font-weight: bold;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #D31C1C33 ), to(#D31C1C));
+	transform: rotatez(-15deg) translatey(-160px) translatex(-100px); 	
+}
+
+
 
 .GameMode_Duos .IntroProfileContainerRow DACMiniProfile
 {
@@ -284,118 +333,39 @@ DACRankIcon
 DACRankIcon.HasRank
 {
 	visibility: visible;
+
+
 }
 
-
-
-
-#TeamName1
+.CustomTeamName .IntroTeamName
 {
-	color: #b2da42;
-    animation-delay: 1.4s;
+
 }
 
-#TeamName2
+.IntroTeamName.ShowingRank
 {
-	color: #ffee78;
-    animation-delay: 4.4s;
+	margin-left: 75px;
 }
 
-#TeamName3
+.TeamRank
 {
-	color: #957bf2;
-    animation-delay: 4.43s;
+	width: 48px;
+	height: 64px;
+	vertical-align: top;
+	margin-top: 50px;
+	margin-left: 30px;
+	z-index: 1;
 }
 
-#TeamName4
+DACRankIcon
 {
-	color: #f0581f;
-    animation-delay: 4.32s;
+	visibility: collapse;
+	ui-scale: 80%;
 }
 
-#TeamName5
+DACRankIcon.HasRank
 {
-	color: #fef9af;
-    animation-delay: 4.41s;
-}
-
-#TeamName6
-{
-	color: #8bc1fa;
-    animation-delay: 4.34s;
-}
-
-#TeamName7
-{
-	color: #ff8fae;
-    animation-delay: 4.34s;
-}
-
-#TeamName8
-{
-	color: #fdbf5a;
-    animation-delay: 4.35s;
-}
-
-// Individual profile anim
-@keyframes 'IntroAppearAnim' {
-	from
-	{
-		opacity: 0;
-		pre-transform-scale2d: 3.0;
-	}
-	0% {
-		opacity: 0;
-		pre-transform-scale2d: 3.0;
-	}
-	1% {
-		opacity: 1;
-		pre-transform-scale2d: 3.0;
-	}
-	1.5% {
-		opacity: 1;
-		pre-transform-scale2d: .95;
-	}		
-	97%
-	{
-		opacity: 1; 
-		pre-transform-scale2d: .95;
-	}
-	100%
-	{
-		opacity: 1; 
-		pre-transform-scale2d: .95;
-	}
-	to {
-		opacity: 1;
-		pre-transform-scale2d: .95;
-	}
-}
-
-// Root container anim
-@keyframes 'DACMatchIntroFadeInAndOutTeams'
-{
-	0%
-	{
-		opacity: 0; 
-		pre-transform-scale2d: 0.5;
-	}
-	10%
-	{
-		opacity: 1; 
-		pre-transform-scale2d: 1;
-	}
-	90%	
-	{
-		opacity: 1; 
-		pre-transform-scale2d: 1;
-		ui-scale: 100%;
-	}
-	100%
-	{
-		opacity: 0; 
-		pre-transform-scale2d: 0.5;
-	}
+	visibility: visible;
 }
 
 DACMiniProfile.InvalidPlayer
@@ -403,7 +373,7 @@ DACMiniProfile.InvalidPlayer
 	visibility: collapse;
 }
 
-DACMiniProfile.Appear {	
+.AnimatePlayers DACMiniProfile {	
 	animation-name: IntroAppearAnim;	
 	animation-duration: 9s;	
 	animation-iteration-count: 1;
@@ -411,7 +381,7 @@ DACMiniProfile.Appear {
 	opacity:0;	
 }
 
-.HoldMatchIntro DACMiniProfile.Appear
+.HoldMatchIntro .AnimatePlayers DACMiniProfile
 {
 	opacity: 1;	
 	animation-name: none;
@@ -424,7 +394,34 @@ DACMiniProfile.Appear {
 
 .SoloProfileContainer .IntroProfilePlayerSlot
 {
-	pre-transform-scale2d: .95;
+	pre-transform-scale2d: 1.0;
+	margin: 5px 0px 5px -5px;
+}
+
+.AnimatePlayers .SoloProfileContainer #IntroProfilePlayerSlot0 { animation-delay: 1.4s; }
+.AnimatePlayers .SoloProfileContainer #IntroProfilePlayerSlot1 { animation-delay: 4.23s;  }
+.AnimatePlayers .SoloProfileContainer #IntroProfilePlayerSlot2 { animation-delay: 4.40s;  }
+.AnimatePlayers .SoloProfileContainer #IntroProfilePlayerSlot3 { animation-delay: 4.32s;  }
+.AnimatePlayers .SoloProfileContainer #IntroProfilePlayerSlot4 { animation-delay: 4.22s;  }
+.AnimatePlayers .SoloProfileContainer #IntroProfilePlayerSlot5 { animation-delay: 4.29s;  }
+.AnimatePlayers .SoloProfileContainer #IntroProfilePlayerSlot6 { animation-delay: 4.23s;  }
+.AnimatePlayers .SoloProfileContainer #IntroProfilePlayerSlot7 { animation-delay: 4.21s;  }
+
+.SoloProfileContainer #IntroProfilePlayerSlot0 { transform: translateY(40px) translateX(-25px) rotatez(0deg); }
+.SoloProfileContainer #IntroProfilePlayerSlot1 { transform: translateY(60px) translateX(-35px) rotatez(0deg); }
+.SoloProfileContainer #IntroProfilePlayerSlot2 { transform: translateY(15px) translateX(-20px) rotatez(0deg); }
+.SoloProfileContainer #IntroProfilePlayerSlot3 { transform: translateY(35px) translateX(-5px) rotatez(0deg); }
+.SoloProfileContainer #IntroProfilePlayerSlot4 { transform: translateY(25px) translateX(-10px) rotatez(4.5deg);}
+.SoloProfileContainer #IntroProfilePlayerSlot5 { transform: translateY(10px) translateX(-5px) rotatez(0deg);}
+.SoloProfileContainer #IntroProfilePlayerSlot6 { transform: translateY(-25px) translateX(-15px) rotatez(0deg);}
+.SoloProfileContainer #IntroProfilePlayerSlot7 { transform: translateY(5px) translateX(-30px) rotatez(0deg);}
+
+
+// new duos intro stuff
+
+.GameMode_Duos #MatchIntro.PlayIntroAnim
+{
+	animation-name: DACMatchIntroDuosRootAnim;
 }
 
 .GameMode_Duos .IntroProfilePlayerSlot
@@ -455,108 +452,6 @@ DACMiniProfile.Appear {
 	visibility: visible;
 }
 
-/*
-.GameMode_Duos #IntroProfilePlayerSlot0 { transform: rotatez(0deg); }
-.GameMode_Duos #IntroProfilePlayerSlot1 { transform: rotatez(-3deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot2 { transform: rotatez(2deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot3 { transform: rotatez(5deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot4 { transform: rotatez(2deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot5 { transform: rotatez(1deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot6 { transform: rotatez(0deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot7 { transform: rotatez(-3deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot8 { transform: rotatez(2deg); }
-.GameMode_Duos #IntroProfilePlayerSlot9 { transform: rotatez(1deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot10 { transform: rotatez(0deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot11 { transform: rotatez(-4deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot12 { transform: rotatez(-2deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot13 { transform: rotatez(3deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot14 { transform: rotatez(1deg);  }
-.GameMode_Duos #IntroProfilePlayerSlot15 { transform: rotatez(4deg);  }
-
-.GameMode_Duos #IntroProfilePlayerSlot0.Appear { animation-delay: 1.4s; }
-.GameMode_Duos #IntroProfilePlayerSlot1.Appear { animation-delay: 1.4s;  }
-.GameMode_Duos #IntroProfilePlayerSlot2.Appear { animation-delay: 4.40s;  }
-.GameMode_Duos #IntroProfilePlayerSlot3.Appear { animation-delay: 4.32s;  }
-.GameMode_Duos #IntroProfilePlayerSlot4.Appear { animation-delay: 4.22s;  }
-.GameMode_Duos #IntroProfilePlayerSlot5.Appear { animation-delay: 4.29s;  }
-.GameMode_Duos #IntroProfilePlayerSlot6.Appear { animation-delay: 4.23s;  }
-.GameMode_Duos #IntroProfilePlayerSlot7.Appear { animation-delay: 4.21s;  }
-.GameMode_Duos #IntroProfilePlayerSlot8.Appear { animation-delay: 4.23s; }
-.GameMode_Duos #IntroProfilePlayerSlot9.Appear { animation-delay: 4.23s;  }
-.GameMode_Duos #IntroProfilePlayerSlot10.Appear { animation-delay: 4.40s;  }
-.GameMode_Duos #IntroProfilePlayerSlot11.Appear { animation-delay: 4.32s;  }
-.GameMode_Duos #IntroProfilePlayerSlot12.Appear { animation-delay: 4.22s;  }
-.GameMode_Duos #IntroProfilePlayerSlot13.Appear { animation-delay: 4.29s;  }
-.GameMode_Duos #IntroProfilePlayerSlot14.Appear { animation-delay: 4.23s;  }
-.GameMode_Duos #IntroProfilePlayerSlot15.Appear { animation-delay: 4.21s;  }
-
-.GameMode_Duos #IntroProfilePlayerSlot0.Appear { animation-delay: 1.4s; }
-.GameMode_Duos #IntroProfilePlayerSlot1.Appear { animation-delay: 1.4s;  }
-.GameMode_Duos #IntroProfilePlayerSlot2.Appear { animation-delay: 4.40s;  }
-.GameMode_Duos #IntroProfilePlayerSlot3.Appear { animation-delay: 4.4s;  }
-.GameMode_Duos #IntroProfilePlayerSlot4.Appear { animation-delay: 4.2s;  }
-.GameMode_Duos #IntroProfilePlayerSlot5.Appear { animation-delay: 4.2s;  }
-.GameMode_Duos #IntroProfilePlayerSlot6.Appear { animation-delay: 4.1s;  }
-.GameMode_Duos #IntroProfilePlayerSlot7.Appear { animation-delay: 4.1s;  }
-.GameMode_Duos #IntroProfilePlayerSlot8.Appear { animation-delay: 4.2s; }
-.GameMode_Duos #IntroProfilePlayerSlot9.Appear { animation-delay: 4.2s;  }
-.GameMode_Duos #IntroProfilePlayerSlot10.Appear { animation-delay: 4.4s;  }
-.GameMode_Duos #IntroProfilePlayerSlot11.Appear { animation-delay: 4.4s;  }
-.GameMode_Duos #IntroProfilePlayerSlot12.Appear { animation-delay: 4.2s;  }
-.GameMode_Duos #IntroProfilePlayerSlot13.Appear { animation-delay: 4.2s;  }
-.GameMode_Duos #IntroProfilePlayerSlot14.Appear { animation-delay: 4.3s;  }
-.GameMode_Duos #IntroProfilePlayerSlot15.Appear { animation-delay: 4.3s;  }
-*/
-
-
-// would be nice for this to be the whole poster, instead of individual people
-.GameMode_Duos #IntroProfilePlayerSlot0.Appear { animation-delay: 1.4s; }
-.GameMode_Duos #IntroProfilePlayerSlot1.Appear { animation-delay: 1.4s;  }
-.GameMode_Duos #IntroProfilePlayerSlot2.Appear { animation-delay: 4.40s;  }
-.GameMode_Duos #IntroProfilePlayerSlot3.Appear { animation-delay: 4.4s;  }
-.GameMode_Duos #IntroProfilePlayerSlot4.Appear { animation-delay: 4.2s;  }
-.GameMode_Duos #IntroProfilePlayerSlot5.Appear { animation-delay: 4.2s;  }
-.GameMode_Duos #IntroProfilePlayerSlot6.Appear { animation-delay: 4.1s;  }
-.GameMode_Duos #IntroProfilePlayerSlot7.Appear { animation-delay: 4.1s;  }
-.GameMode_Duos #IntroProfilePlayerSlot8.Appear { animation-delay: 4.2s; }
-.GameMode_Duos #IntroProfilePlayerSlot9.Appear { animation-delay: 4.2s;  }
-.GameMode_Duos #IntroProfilePlayerSlot10.Appear { animation-delay: 4.4s;  }
-.GameMode_Duos #IntroProfilePlayerSlot11.Appear { animation-delay: 4.4s;  }
-.GameMode_Duos #IntroProfilePlayerSlot12.Appear { animation-delay: 4.2s;  }
-.GameMode_Duos #IntroProfilePlayerSlot13.Appear { animation-delay: 4.2s;  }
-.GameMode_Duos #IntroProfilePlayerSlot14.Appear { animation-delay: 4.3s;  }
-.GameMode_Duos #IntroProfilePlayerSlot15.Appear { animation-delay: 4.3s;  }
-
-.GameMode_Duos .Team1 { transform: rotatez(0deg); }
-.GameMode_Duos .Team2 { transform: rotatez(-2deg);  }
-.GameMode_Duos .Team3 { transform: rotatez(2deg);  }
-.GameMode_Duos .Team4 { transform: rotatez(-1deg);  }
-.GameMode_Duos .Team5 { transform: rotatez(2deg);  }
-.GameMode_Duos .Team6 { transform: rotatez(1deg);  }
-.GameMode_Duos .Team7 { transform: rotatez(0deg);  }
-.GameMode_Duos .Team8 { transform: rotatez(-2deg);  }
-
-.SoloProfileContainer #IntroProfilePlayerSlot0.Appear { animation-delay: 1.4s; }
-.SoloProfileContainer #IntroProfilePlayerSlot1.Appear { animation-delay: 4.23s;  }
-.SoloProfileContainer #IntroProfilePlayerSlot2.Appear { animation-delay: 4.40s;  }
-.SoloProfileContainer #IntroProfilePlayerSlot3.Appear { animation-delay: 4.32s;  }
-.SoloProfileContainer #IntroProfilePlayerSlot4.Appear { animation-delay: 4.22s;  }
-.SoloProfileContainer #IntroProfilePlayerSlot5.Appear { animation-delay: 4.29s;  }
-.SoloProfileContainer #IntroProfilePlayerSlot6.Appear { animation-delay: 4.23s;  }
-.SoloProfileContainer #IntroProfilePlayerSlot7.Appear { animation-delay: 4.21s;  }
-
-.SoloProfileContainer #IntroProfilePlayerSlot0 { transform: translateY(40px) translateX(-25px) rotatez(0deg); }
-.SoloProfileContainer #IntroProfilePlayerSlot1 { transform: translateY(60px) translateX(-35px) rotatez(0deg); }
-.SoloProfileContainer #IntroProfilePlayerSlot2 { transform: translateY(15px) translateX(-20px) rotatez(0deg); }
-.SoloProfileContainer #IntroProfilePlayerSlot3 { transform: translateY(35px) translateX(-5px) rotatez(0deg); }
-.SoloProfileContainer #IntroProfilePlayerSlot4 { transform: translateY(25px) translateX(-10px) rotatez(4.5deg);}
-.SoloProfileContainer #IntroProfilePlayerSlot5 { transform: translateY(10px) translateX(-5px) rotatez(0deg);}
-.SoloProfileContainer #IntroProfilePlayerSlot6 { transform: translateY(-25px) translateX(-15px) rotatez(0deg);}
-.SoloProfileContainer #IntroProfilePlayerSlot7 { transform: translateY(5px) translateX(-30px) rotatez(0deg);}
-
-
-// new duos intro stuff
-
 .GameMode_Duos .IntroTeamRow1,
 .GameMode_Duos .IntroTeamRow2
 {
@@ -574,6 +469,56 @@ DACMiniProfile.Appear {
 	background-position: center;	
 }
 
+/* All team _containers_ use the intro appear anim, not the profiles */
+.AnimatePlayers .TeamContainer
+{
+	animation-name: IntroAppearAnim;	
+	animation-duration: 9s;	
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	opacity:0;	
+}
+
+/* Kill the regular animation for the profiles in duos */
+.GameMode_Duos .AnimatePlayers DACMiniProfile
+{
+	opacity: 1;	
+	animation-name: none;
+}
+
+/* Kill the regular animation for the team names in duos */
+.GameMode_Duos .IntroTeamName
+{
+	animation-name: none;
+}
+
+/* Offset each team */
+.AnimatePlayers .Team1 { animation-delay: 1.4s; }
+.AnimatePlayers .Team2 { animation-delay: 4.23s;  }
+.AnimatePlayers .Team3 { animation-delay: 4.40s;  }
+.AnimatePlayers .Team4 { animation-delay: 4.32s;  }
+.AnimatePlayers .Team5 { animation-delay: 4.22s;  }
+.AnimatePlayers .Team6 { animation-delay: 4.29s;  }
+.AnimatePlayers .Team7 { animation-delay: 4.23s;  }
+.AnimatePlayers .Team8 { animation-delay: 4.21s;  }
+
+.GameMode_Duos .Team1 { transform: rotatez(0deg); }
+.GameMode_Duos .Team2 { transform: rotatez(-2deg);  }
+.GameMode_Duos .Team3 { transform: rotatez(2deg);  }
+.GameMode_Duos .Team4 { transform: rotatez(-1deg);  }
+.GameMode_Duos .Team5 { transform: rotatez(2deg);  }
+.GameMode_Duos .Team6 { transform: rotatez(1deg);  }
+.GameMode_Duos .Team7 { transform: rotatez(0deg);  }
+.GameMode_Duos .Team8 { transform: rotatez(-2deg);  }
+
+#TeamName1 { color: #b2da42; }
+#TeamName2 { color: #ffee78; }
+#TeamName3 { color: #957bf2; }
+#TeamName4 { color: #f0581f; }
+#TeamName5 { color: #fef9af; }
+#TeamName6 { color: #8bc1fa; }
+#TeamName7 { color: #ff8fae; }
+#TeamName8 { color: #fdbf5a; }
 
 .GameMode_Duos .Teammates
 {

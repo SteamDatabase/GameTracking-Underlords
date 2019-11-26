@@ -1,0 +1,149 @@
+// storm_spirit - Hero
+criterion "Isstorm_spirit" "classname" "storm_spirit" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response storm_spirit_recruit_1
+{
+	speak "storm_spirit_recruit" noscene 
+}
+
+Rule storm_spirit_recruit_1_rule
+{
+	criteria Isstorm_spirit ConceptRecruit UnitRank1
+	response storm_spirit_recruit_1
+}
+
+
+Response storm_spirit_recruit_2
+{
+	speak "storm_spirit_upgrade" noscene 
+}
+
+Rule storm_spirit_recruit_2_rule
+{
+	criteria Isstorm_spirit ConceptRecruit UnitRank2
+	response storm_spirit_recruit_2
+}
+
+
+Response storm_spirit_recruit_3
+{
+	speak "storm_spirit_final_upgrade" noscene 
+}
+
+Rule storm_spirit_recruit_3_rule
+{
+	criteria Isstorm_spirit ConceptRecruit UnitRank3
+	response storm_spirit_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response storm_spirit_start_round
+{
+	speak "storm_spirit_start_round" noscene 
+}
+
+Rule storm_spirit_start_round_rule
+{
+	criteria Isstorm_spirit ConceptRoundStart 
+	response storm_spirit_start_round
+}
+
+
+Response storm_spirit_start_round_lost_last_round
+{
+	speak "storm_spirit_start_round_lost_last_round" noscene 
+}
+
+Rule storm_spirit_start_round_lost_last_round_rule
+{
+	criteria Isstorm_spirit ConceptRoundStart LostLastGame
+	response storm_spirit_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response storm_spirit_flawless_victory
+{
+	speak "storm_spirit_flawless_victory" noscene 
+}
+
+Rule storm_spirit_flawless_victory_rule
+{
+	criteria Isstorm_spirit ConceptRoundEnd Result_WinFlawless
+	response storm_spirit_flawless_victory
+}
+
+
+Response storm_spirit_decisive_victory
+{
+	speak "storm_spirit_decisive_victory" noscene 
+}
+
+Rule storm_spirit_decisive_victory_rule
+{
+	criteria Isstorm_spirit ConceptRoundEnd Result_WinDecisive
+	response storm_spirit_decisive_victory
+}
+
+Response storm_spirit_narrow_victory
+{
+	speak "storm_spirit_narrow_victory" noscene 
+}
+
+Rule storm_spirit_narrow_victory_rule
+{
+	criteria Isstorm_spirit ConceptRoundEnd Result_WinNarrow
+	response storm_spirit_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response storm_spirit_flawless_defeat
+{
+	speak "storm_spirit_flawless_defeat" noscene 
+}
+
+Rule storm_spirit_flawless_defeat_rule
+{
+	criteria Isstorm_spirit ConceptRoundEnd Result_LoseFlawless
+	response storm_spirit_flawless_defeat
+}
+
+
+Response storm_spirit_decisive_defeat
+{
+	speak "storm_spirit_decisive_defeat" noscene 
+}
+
+Rule storm_spirit_decisive_defeat_rule
+{
+	criteria Isstorm_spirit ConceptRoundEnd Result_LoseDecisive
+	response storm_spirit_decisive_defeat
+}
+
+Response storm_spirit_narrow_defeat
+{
+	speak "storm_spirit_narrow_defeat" noscene 
+}
+
+Rule storm_spirit_narrow_defeat_rule
+{
+	criteria Isstorm_spirit ConceptRoundEnd Result_LoseNarrow
+	response storm_spirit_narrow_defeat
+}

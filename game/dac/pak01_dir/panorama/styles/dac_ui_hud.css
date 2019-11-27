@@ -124,6 +124,22 @@ DACUIHud.FadeOut
 	overflow: noclip; 
 }
 
+.IsLayoutSmallScreen.AspectRatio16x9.ShopVisible  #ShopBackingGradient 
+{
+	width: 100%;
+	height: 65%;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9.ShopVisible  #ShopBackingGradient 
+{
+	width: 100%;
+	height: 66%;
+}
+
+
+
+
+
 .LowVisualQuality #ShopBackingGradient
 {
 	transition-property: none;
@@ -931,7 +947,7 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 }
 
 .IsLayoutSmallScreen.AspectRatio4x3 #LeftInfoZone {
-	height: 830px;
+	height: 100%;
 }
 
 .DraggingUnit #LeftInfoZone,
@@ -959,6 +975,12 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 .IsLayoutSmallScreen #LeftDropZones
 {
 	height: 350px;
+	width: 300px;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen #LeftDropZones
+{
+	height: 500px;
 	width: 300px;
 }
 
@@ -1559,10 +1581,11 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	width: 336px;
 	//height: fit-children;
 	//height: 375px;
-	height: 600px;
+	height: 700px;
 	margin-right: 0px;
 	ui-scale: 92%;
-	margin-top: 40px;
+	margin-top: 240px;
+	vertical-align: top;
 }
 
 
@@ -2285,6 +2308,11 @@ DACLeaderboard
 	visibility: collapse;
 }
 
+.AspectRatio4x3 .UnitSelected .ShopVisible DACLeaderboard
+{
+	visibility: collapse;
+}
+
 DACLeaderboardEntry
 {
 	transition-property: position;
@@ -2811,7 +2839,7 @@ DACHUDItemDisplay.HideUnitIcons #HeroImage
 
 }
 
-DACHUDItemDisplay #Rank1Star, DACHUDItemDisplay #Rank2Star, DACHUDItemDisplay #Rank3Star
+DACHUDItemDisplay #Rank1Star, DACHUDItemDisplay #Rank2Star, DACHUDItemDisplay #Rank3Star 
 {
 	visibility: collapse;
 }
@@ -2843,6 +2871,26 @@ DACHUDItemDisplay .HUDItem.Rank3 #Rank3Star
 {
 	visibility: visible;
 	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_3_psd.vtex");
+}
+
+DACHUDItemDisplay #WorthNoGold
+{
+	visibility: collapse;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	horizontal-align: left;
+	vertical-align: center;
+	width: 22px;
+	height: 22px;
+	margin: 0px;
+	margin-bottom: -2px;
+	margin-left: 2px;
+	background-image: url("s2r://panorama/images/hud/turbo_no_gold_small_psd.vtex");
+}
+
+.WorthNoGold #WorthNoGold
+{
+	visibility: visible;
 }
 
 .IsDraggingItem .HUDItem.CannotAcceptDrag .Unavailable
@@ -3101,6 +3149,7 @@ DACHUDItemDisplay .HUDItem.Rank3 #Rank3Star
 	transition-duration: 0.0s;
 }
 
+.AspectRatio4x3.UnitSelected .PlayerLeaderboardBackground,
 .IsLayoutSmallScreen.UnitSelected .PlayerLeaderboardBackground,
 .ShopVisible .PlayerLeaderboardBackground,
 .EGameState_Intro .PlayerLeaderboardBackground,
@@ -3114,8 +3163,8 @@ DACHUDItemDisplay .HUDItem.Rank3 #Rank3Star
 
 .IsLayoutSmallScreen.UnitSelected.AspectRatio4x3 .PlayerLeaderboardBackground
 {
-	opacity: 1;
-	position: 0 0 0;
+	//opacity: 1;
+	//position: 0 0 0;
 }
 
 .IsLayoutSmallScreen.UnitSelected.AspectRatio4x3.ShopVisible .PlayerLeaderboardBackground
@@ -3550,12 +3599,12 @@ DACScoreboard {
 }
 .HasPlayerOpponent.IsLayoutSmallScreen.AspectRatio4x3.ERoundState_Combat #ShowScoreboardButton
 {
-	margin-top: 666px;
+	//margin-top: 666px;
 }
 
 .IsLayoutSmallScreen.AspectRatio4x3 #HideScoreboardButton
 {
-	visibility: collapse;
+	//visibility: collapse;
 }
 
 
@@ -3604,6 +3653,25 @@ DACScoreboard {
 	transition-duration: .2s;
 }
 
+.AspectRatio4x3.IsLayoutSmallScreen #ShowScoreboardButton
+{
+	width: 70px;
+	height: 70px;
+	background-image: none;
+	//background-color: red;
+	background-image: url("s2r://panorama/images/control_icons/open_scoreboard_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	overflow: noclip;
+	margin-top: 15px;
+	margin-left: 25px;
+	margin-right: 5px;
+	brightness: .75;
+	opacity: .4;
+	transition-property: opacity, background-image; 
+	transition-duration: .2s;
+}
+
 .IsLayoutLargeScreen #HideScoreboardButton
 {
 	width: 46px;
@@ -3642,6 +3710,25 @@ DACScoreboard {
 	transition-duration: .2s;
 }
 
+.AspectRatio4x3.IsLayoutSmallScreen #HideScoreboardButton
+{
+	width: 70px;
+	height: 70px;
+	background-image: none;
+	//background-color: red;
+	background-image: url("s2r://panorama/images/control_icons/close_scoreboard_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	overflow: noclip;
+	margin-top: 15px;
+	margin-left: 25px;
+	margin-right: 5px;
+	brightness: .75;
+	opacity: .4;
+	transition-property: opacity, background-image; 
+	transition-duration: .2s;
+}
+
 .IsLayoutLargeScreen #ShowScoreboardButton:hover,
 .IsLayoutLargeScreen #HideScoreboardButton:hover
 {
@@ -3659,6 +3746,14 @@ DACScoreboard {
 .AspectRatio21x9.IsLayoutSmallScreen #ShowScoreboardButton .ScoreboardLabel,
 .AspectRatio21x9.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabelIcon,
 .AspectRatio21x9.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabel,
+{
+	visibility: collapse;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen #ShowScoreboardButton .ScoreboardLabelIcon, 
+.AspectRatio4x3.IsLayoutSmallScreen #ShowScoreboardButton .ScoreboardLabel,
+.AspectRatio4x3.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabelIcon,
+.AspectRatio4x3.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabel,
 {
 	visibility: collapse;
 }
@@ -3710,6 +3805,13 @@ DACScoreboard {
 }
 
 .ScoreboardVisible #HideScoreboardButton
+{
+	visibility: visible;
+	height: 46px;
+	width: 46px;
+}
+
+.AspectRatio4x3 .ScoreboardVisible #HideScoreboardButton
 {
 	visibility: visible;
 	height: 46px;

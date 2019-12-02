@@ -1235,11 +1235,6 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	margin-top: 20px;
 }
 
-.IsLayoutSmallScreen.AspectRatio21x9.HighResolutionDisplay #ShopButton
-{
-	margin-right: 368px;
-}
-
 .IsLayoutSmallScreen.AspectRatio16x9 #ShopButton
 {
 	margin-right: 216px;
@@ -1719,11 +1714,6 @@ Label.ChoiceItem_Description
 .IsLayoutSmallScreen .PlayPauseContainer
 {
 	margin-top: 30px;
-}
-
-.AspectRatio21x9.IsLayoutSmallScreen.HighResolutionDisplay .PlayPauseContainer
-{
-	padding-right: 120px; 
 }
 
 .PauseButton,
@@ -3427,7 +3417,6 @@ DACScoreboard {
 	opacity: 0.2;
 }
 
-#ShowScoreboardButton,
 #HideScoreboardButton,
 #ShowBattlePassProgress,
 #HideBattlePassProgress
@@ -3441,7 +3430,6 @@ DACScoreboard {
 	brightness: .7;
 }
 
-.LowVisualQuality #ShowScoreboardButton,
 .LowVisualQuality #HideScoreboardButton,
 .LowVisualQuality #ShowBattlePassProgress,
 .LowVisualQuality #HideBattlePassProgress
@@ -3451,16 +3439,15 @@ DACScoreboard {
 	brightness: 1;
 }
 
-#ShowScoreboardButton,
 #HideScoreboardButton {
 	//width: fit-children;
 	//width: 100%;
 	width: 180px;
 	height: 25px;
-	padding: 5px 0px;
+	//padding: 5px 0px;
 	background-image: url("s2r://panorama/images/leaderboard/leaderboard_bar_png.vtex");
 	flow-children: right;
-	padding-left: 10px;
+	//padding-left: 10px;
 
 }
 
@@ -3522,7 +3509,6 @@ DACScoreboard {
 	visibility:visible;
 }
 
-.IsLayoutSmallScreen.AspectRatio4x3 #ShowScoreboardButton,
 .IsLayoutSmallScreen.AspectRatio4x3 #HideScoreboardButton,
 .IsLayoutSmallScreen.AspectRatio4x3 #ShowBattlePassProgress,
 .IsLayoutSmallScreen.AspectRatio4x3 #HideBattlePassProgress
@@ -3559,9 +3545,7 @@ DACScoreboard {
 	margin-bottom: 20px;
 }
 
-.GameMode_Duos #ShowScoreboardButton,
 .GameMode_Duos #HideScoreboardButton,
-.IsLayoutSmallScreen #ShowScoreboardButton,
 .IsLayoutSmallScreen #HideScoreboardButton
 {
 	width: 285px;
@@ -3570,7 +3554,6 @@ DACScoreboard {
 	
 }
 
-.IsLayoutSmallScreen.AspectRatio16x9 #ShowScoreboardButton,
 .IsLayoutSmallScreen.AspectRatio16x9 #HideScoreboardButton
 {
 	width: 285px;
@@ -3580,41 +3563,8 @@ DACScoreboard {
 
 	margin-left: safe-area-inset-left;
 }
-.HasPlayerOpponent.IsLayoutSmallScreen.AspectRatio16x9.ERoundState_Combat #ShowScoreboardButton
-{
-	margin-top: 666px;
-}
 
-.ShopVisible.IsLayoutSmallScreen #ShowScoreboardButton,
-.UnitSelected.IsLayoutSmallScreen #ShowScoreboardButton
-{
-	visibility: collapse;
-}
-
-
-
-.IsLayoutSmallScreen.AspectRatio4x3 #ShowScoreboardButton
-{
-	margin-top: 628px;
-}
-.HasPlayerOpponent.IsLayoutSmallScreen.AspectRatio4x3.ERoundState_Combat #ShowScoreboardButton
-{
-	//margin-top: 666px;
-}
-
-.IsLayoutSmallScreen.AspectRatio4x3 #HideScoreboardButton
-{
-	//visibility: collapse;
-}
-
-
-
-.IsLayoutSmallScreen.AspectRatio16x9 #HideScoreboardButton
-{
-	visibility: collapse;
-}
-
-.IsLayoutLargeScreen #ShowScoreboardButton
+.ShowScoreboardButton
 {
 	width: 46px;
 	height: 46px;
@@ -3627,49 +3577,94 @@ DACScoreboard {
 	margin-top: 15px;
 	margin-left: 15px;
 	margin-right: 5px;
-	brightness: .75;
+	brightness: .25;
 	opacity: .4;
 	transition-property: opacity, background-image; 
 	transition-duration: .2s;
+	vertical-align: top;
 }
 
+.ShowScoreboardButton:hover
+{
+	opacity: 1;
+	brightness: 1;
+}
 
-.AspectRatio21x9.IsLayoutSmallScreen #ShowScoreboardButton
+.LowVisualQuality .ShowScoreboardButton
+{
+	transition-property: none;
+	transition-duration: 0s;
+	opacity: 1;
+	brightness: 1;
+}
+
+.IsLayoutSmallScreen .ShowScoreboardButton
 {
 	width: 70px;
 	height: 70px;
-	background-image: none;
-	//background-color: red;
-	background-image: url("s2r://panorama/images/control_icons/open_scoreboard_psd.vtex");
-	background-size: contain;
-	background-repeat: no-repeat;
-	overflow: noclip;
+}
+
+.IsLayoutSmallScreen.HasSafeAreaLeft .ShowScoreboardButton
+{
+	margin-left: 25px;
 	margin-top: 25px;
-	margin-left: 25px;
-	margin-right: 5px;
-	brightness: .75;
-	opacity: .4;
-	transition-property: opacity, background-image; 
-	transition-duration: .2s;
 }
 
-.AspectRatio4x3.IsLayoutSmallScreen #ShowScoreboardButton
+#TopScoreboardButton
 {
-	width: 70px;
-	height: 70px;
-	background-image: none;
-	//background-color: red;
-	background-image: url("s2r://panorama/images/control_icons/open_scoreboard_psd.vtex");
-	background-size: contain;
-	background-repeat: no-repeat;
-	overflow: noclip;
-	margin-top: 15px;
-	margin-left: 25px;
-	margin-right: 5px;
-	brightness: .75;
-	opacity: .4;
-	transition-property: opacity, background-image; 
-	transition-duration: .2s;
+	visibility: visible;
+}
+
+#BottomScoreboardButton
+{
+	visibility: collapse;
+}
+
+#BottomScoreboardButton.TutorialHide,
+#TopScoreboardButton.TutorialHide
+{
+	visibility: collapse;
+	opacity: 0; 
+}
+
+.IsLayoutSmallScreen #TopScoreboardButton
+{
+	visibility: collapse;
+}
+
+.IsLayoutSmallScreen #BottomScoreboardButton
+{
+	visibility: visible;
+}
+
+.IsLayoutSmallScreen.AspectRatio4x3 #TopScoreboardButton,
+.IsLayoutSmallScreen.HasSafeAreaLeft #TopScoreboardButton
+{
+	visibility: visible;
+}
+
+.IsLayoutSmallScreen.AspectRatio4x3 #BottomScoreboardButton,
+.IsLayoutSmallScreen.HasSafeAreaLeft #BottomScoreboardButton
+{
+	visibility: collapse;
+}
+
+.UnitSelected.IsLayoutSmallScreen .ShowScoreboardButton
+{
+	visibility: collapse;
+}
+
+
+.IsLayoutSmallScreen.AspectRatio4x3 #HideScoreboardButton
+{
+	//visibility: collapse;
+}
+
+
+
+.IsLayoutSmallScreen.AspectRatio16x9 #HideScoreboardButton
+{
+	visibility: collapse;
 }
 
 .IsLayoutLargeScreen #HideScoreboardButton
@@ -3729,37 +3724,29 @@ DACScoreboard {
 	transition-duration: .2s;
 }
 
-.IsLayoutLargeScreen #ShowScoreboardButton:hover,
 .IsLayoutLargeScreen #HideScoreboardButton:hover
 {
 	opacity: 1;
 }
 
 
-.AspectRatio21x9.IsLayoutSmallScreen #ShowScoreboardButton:hover,
 .AspectRatio21x9.IsLayoutSmallScreen #HideScoreboardButton:hover
 {
 	opacity: 1;
 }
 
-.AspectRatio21x9.IsLayoutSmallScreen #ShowScoreboardButton .ScoreboardLabelIcon, 
-.AspectRatio21x9.IsLayoutSmallScreen #ShowScoreboardButton .ScoreboardLabel,
 .AspectRatio21x9.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabelIcon,
 .AspectRatio21x9.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabel,
 {
 	visibility: collapse;
 }
 
-.AspectRatio4x3.IsLayoutSmallScreen #ShowScoreboardButton .ScoreboardLabelIcon, 
-.AspectRatio4x3.IsLayoutSmallScreen #ShowScoreboardButton .ScoreboardLabel,
 .AspectRatio4x3.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabelIcon,
 .AspectRatio4x3.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabel,
 {
 	visibility: collapse;
 }
 
-.IsLayoutLargeScreen #ShowScoreboardButton .ScoreboardLabelIcon, 
-.IsLayoutLargeScreen #ShowScoreboardButton .ScoreboardLabel,
 .IsLayoutLargeScreen #HideScoreboardButton .ScoreboardLabelIcon,
 .IsLayoutLargeScreen #HideScoreboardButton .ScoreboardLabel
 {
@@ -3775,8 +3762,6 @@ DACScoreboard {
 	margin: 0px 0px 0px 0px;
 }
 
-.EGameState_Intro #ShowScoreboardButton,
-.EGameState_Intro #HideScoreboardButton,
 .EGameState_Intro #ShowBattlePassProgress,
 .EGameState_Intro #HideBattlePassProgress
 {
@@ -3799,7 +3784,7 @@ DACScoreboard {
 	visibility: collapse;
 }
 
-.ScoreboardVisible #ShowScoreboardButton
+.ScoreboardVisible .ShowScoreboardButton
 {
 	visibility: collapse;
 }
@@ -3828,7 +3813,7 @@ DACScoreboard {
 	overflow: clip clip;
 }
 
-#ShowScoreboardButton, #HideScoreboardButton {
+#HideScoreboardButton {
 	font-size: 35px;
 	color: #fff;
 	font-weight: bold;
@@ -3837,14 +3822,12 @@ DACScoreboard {
 
 
 
-.GameMode_Duos #ShowScoreboardButton,
 .GameMode_Duos #HideScoreboardButton {
 	//margin-left: 13px;
 	//width: 275px;
 	//visibility: collapse;
 }
 
-.IsBattlePassGame #ShowScoreboardButton,
 .IsBattlePassGame #HideScoreboardButton
 {
 	margin-left: 0px;

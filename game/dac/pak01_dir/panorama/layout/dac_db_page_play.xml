@@ -23,21 +23,21 @@
       <Panel class="UnderlordSelectTopContainer">
         <Panel class="UnderlordSelectBackground"/>
         <Panel class="UnderlordSelectTop">
-          <Button id="LeftUnderlordArrow" class="UnderlordArrow ArrowLeft" onactivate="DACPlayChangeUnderlord(-1)"/>
+          <Button id="LeftUnderlordArrow" class="UnderlordArrow ArrowLeft" onactivate="DACPlayChangeUnderlord(-1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )"/>
           <Panel class="UnderlordButton">
             <Label class="DistressedFont" html="true" text="{s:underlord_name}"/>
           </Panel>
-          <Button id="RightUnderlordArrow" class="UnderlordArrow" onactivate="DACPlayChangeUnderlord(1)"/>
+          <Button id="RightUnderlordArrow" class="UnderlordArrow" onactivate="DACPlayChangeUnderlord(1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )"/>
         </Panel>
       </Panel>
       <Panel class="UnderlordSelectMiddleContainer">
         <Panel id="ViewDetails" class="MiddleButton" onactivate="DACSelectDashboardButton('UnderlordsContainer'); DACShowUnderlordsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
           <Label text="#DAC_Reward_Item_ViewDetails"/>
         </Panel>
-        <Panel id="Select" class="MiddleButton" onactivate="DACPartyMemberToggleReady()">
+        <Panel id="Select" class="MiddleButton" onactivate="DACPartyMemberToggleReady() PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
           <Label text="#DAC_SelectUnderlord"/>
         </Panel>
-        <Panel id="Deselect" class="MiddleButton" onactivate="DACPartyMemberToggleReady()">
+        <Panel id="Deselect" class="MiddleButton" onactivate="DACPartyMemberToggleReady() PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
           <Label text="#DAC_DeselectUnderlord"/>
         </Panel>
       </Panel>
@@ -51,25 +51,25 @@
     <Panel id="ForegroundContainer">
 			<Panel id="GameModeContainer">
         <Panel id="GameModeSelectionContainer">
-          <Panel id="TurboGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(0)">
+          <Panel id="TurboGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(0) PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' )">
             <Panel class="GameModeDescContainer">
               <Label text="#DAC_MatchTypeTurbo" class="GameModeButtonTitle HeadlineFont"/>
               <Label text="#DAC_MatchTypeDescTurbo" class="GameModeButtonDesc"/>
             </Panel>  
           </Panel>
-          <Panel id="StandardGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(1)">
+          <Panel id="StandardGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(1) PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' )">
             <Panel class="GameModeDescContainer">
               <Label text="#DAC_MatchTypeStandard" class="GameModeButtonTitle HeadlineFont"/>
               <Label text="#DAC_MatchTypeDescStandard" class="GameModeButtonDesc"/>
             </Panel>
           </Panel>
-          <Panel id="DuosGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(2)">
+          <Panel id="DuosGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(2) PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' )">
             <Panel class="GameModeDescContainer">
               <Label text="#DAC_MatchTypeName3" class="GameModeButtonTitle HeadlineFont"/>
               <Label text="#DAC_MatchTypeDescDuos" class="GameModeButtonDesc"/>
             </Panel>
           </Panel>
-          <Panel id="TrainingGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(3)">
+          <Panel id="TrainingGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(3) PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' )">
              <Panel class="GameModeDescContainer">
               <Label text="#DAC_Training" class="GameModeButtonTitle HeadlineFont"/>
               <Label text="#DAC_MatchTypeDescTraining" class="GameModeButtonDesc"/>
@@ -86,47 +86,47 @@
             
             <Panel class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_MatchOpponent"/>
-              <Panel id="TurboMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchType(0)">
+              <Panel id="TurboMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchType(0) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_MatchTypeMultiplayer"/>
               </Panel>
 
-              <Panel id="TurboMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchType(3)">  <!--EDACMatchMode-->
+              <Panel id="TurboMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchType(3) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">  <!--EDACMatchMode-->
                 <Label text="#DAC_MatchTypeBotMatch"/>
               </Panel>
             </Panel>
-
+           
 
 
             <Panel class="GameModeOptionsSettingsContainer">
               <Panel id="TurboSubSettingMultiplayer" class="GameModeOptionsSettingsSubContainer">
-                 <Panel id="TurboMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchmakingType(1)">  <!--EDACMatchMode-->
+                <Panel id="TurboMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchmakingType(1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeName0"/>
                 </Panel>
 
               </Panel>
+              </Panel>
+            <Panel id="TurboSubSettingBots" class="GameModeOptionsSettingsSubContainer">
+              <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
+              <Panel id="LocalTurboBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(0) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">  <!--EPlayBotDifficultyType-->
+                <Label id="TurboBotDifficultyLabel" text="{s:local_turbo_bot_difficulty}"/>
+              </Panel>
+              <Panel id="GCTurboBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">  <!--EPlayBotDifficultyType-->
+                <Label id="TurboBotDifficultyLabel" text="{s:gc_turbo_bot_difficulty}"/>
+              </Panel>
+            </Panel>
 
-              <Panel id="TurboSubSettingBots" class="GameModeOptionsSettingsSubContainer">
-                <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-                <Panel id="LocalTurboBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(0)">  <!--EPlayBotDifficultyType-->
-                  <Label id="TurboBotDifficultyLabel" text="{s:local_turbo_bot_difficulty}"/>
-                </Panel>
-                <Panel id="GCTurboBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(1)">  <!--EPlayBotDifficultyType-->
-                  <Label id="TurboBotDifficultyLabel" text="{s:gc_turbo_bot_difficulty}"/>
-                </Panel>
+            <Panel id="TurboSubSettingResume" class="GameModeOptionsSettingsSubContainer">
+              <Label class="OptionHeader" text="#DAC_MatchResume"/>
+              <Panel id="TurboResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+                <Label text="#DAC_Play_ResumeBots"/>
+              </Panel>
+              <Panel id="TurboDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+                <Label text="#DAC_BotSaveGameExists_Button_NewGame"/>
               </Panel>
 
-              <Panel id="TurboSubSettingResume" class="GameModeOptionsSettingsSubContainer">
-                <Panel id="TurboResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false)">
-                  <Label text="#DAC_Play_ResumeBots"/>
-                </Panel>
-                <Panel id="TurboDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true)">
-                  <Label text="#DAC_Home_DeleteSave"/>
-                </Panel>
-
-                <Panel class="ResumeInfoContainer">
-                  <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Desc"/>
-                  <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Timestamp"/>
-                </Panel>
+              <Panel class="ResumeInfoContainer">
+                <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Desc"/>
+                <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Timestamp"/>
               </Panel>
             </Panel>
           </Panel>
@@ -139,49 +139,50 @@
 
             <Panel id="LocalTurboBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-              <Panel id="EasyLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,0)">
+              <Panel id="EasyLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,0) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,1)">
+              <Panel id="MediumLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,2)">
+              <Panel id="ChallengingLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,2) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="HardcoreLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,3)">
+              <Panel id="HardcoreLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,3) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_BotDifficultyName3"/>
               </Panel>
 
-              <Panel id="BattlepassLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,4)">
+              <Panel id="BattlepassLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,4) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_BotDifficultyName5"/>
               </Panel>
             </Panel>
 
             <Panel id="GCTurboBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
-              <Panel id="EasyGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,1)">
+              <Panel id="EasyGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,2)">
+              <Panel id="MediumGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,2) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,3)">
+              <Panel id="ChallengingGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,3) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="BattlepassGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,4)">
+              <Panel id="BattlepassGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,4) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_BotDifficultyName5"/>
               </Panel>
 
-              <Panel id="NoBotGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,0)">
+              <Panel id="NoBotGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,0) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
                 <Label text="#DAC_BotDifficultyName4"/>
               </Panel>
             </Panel>
 
+            <Panel class="DifficultyBackButton" onactivate="DACPlaySelectMode(0)"/>
           </Panel>
 
           <!-- *************************Standard Options************************* -->
@@ -193,11 +194,11 @@
 
             <Panel class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_MatchOpponent"/>
-              <Panel id="StandardMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchType(0)">
+              <Panel id="StandardMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchType(0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_MatchTypeMultiplayer"/>
               </Panel>
 
-              <Panel id="StandardMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchType(3)">  <!--EDACMatchMode-->
+              <Panel id="StandardMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchType(3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
                 <Label text="#DAC_MatchTypeBotMatch"/>
               </Panel>
             </Panel>
@@ -207,32 +208,33 @@
             <Panel class="GameModeOptionsSettingsContainer">
               <Panel id="StandardSubSettingMultiplayer" class="GameModeOptionsSettingsSubContainer">
                 <Label class="OptionHeader" text="#DAC_MatchType"/>
-                <Panel id="StandardMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchmakingType(1)">  <!--EDACMatchMode-->
+                <Panel id="StandardMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchmakingType(1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeName0"/>
                 </Panel>
 
-                <Panel id="StandardMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchmakingType(4)">  <!--EDACMatchMode-->
+                <Panel id="StandardMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchmakingType(4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeNameRanked"/>
                 </Panel>
+                <Label class="LockedLabel RankedLockedLabel" text="{s:ranked_locked}"/>
 
               </Panel>
 
               <Panel id="StandardSubSettingBots" class="GameModeOptionsSettingsSubContainer">
                 <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-                <Panel id="LocalStandardBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(2)">  <!--EPlayBotDifficultyType-->
+                <Panel id="LocalStandardBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(2) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EPlayBotDifficultyType-->
                   <Label text="{s:local_standard_bot_difficulty}"/>
                 </Panel>
-                <Panel id="GCStandardBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(3)">  <!--EPlayBotDifficultyType-->
+                <Panel id="GCStandardBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EPlayBotDifficultyType-->
                   <Label text="{s:gc_standard_bot_difficulty}"/>
                 </Panel>
               </Panel>
 
               <Panel id="StandardSubSettingResume" class="GameModeOptionsSettingsSubContainer">
-                <Panel id="StandardResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false)">
+                <Panel id="StandardResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                   <Label text="#DAC_Play_ResumeBots"/>
                 </Panel>
-                <Panel id="StandardDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true)">
-                  <Label text="#DAC_Home_DeleteSave"/>
+                <Panel id="StandardDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+                  <Label text="#DAC_BotSaveGameExists_Button_NewGame"/>
                 </Panel>
 
                 <Panel class="ResumeInfoContainer">
@@ -250,49 +252,50 @@
             </Panel>
             <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
             <Panel id="LocalStandardBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
-              <Panel id="EasyLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,0)">
+              <Panel id="EasyLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,1)">
+              <Panel id="MediumLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,2)">
+              <Panel id="ChallengingLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,2) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="HardcoreLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,3)">
+              <Panel id="HardcoreLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName3"/>
               </Panel>
 
-              <Panel id="BattlepassLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,4)">
+              <Panel id="BattlepassLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName5"/>
               </Panel>
             </Panel>
 
             <Panel id="GCStandardBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
-              <Panel id="EasyGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,1)">
+              <Panel id="EasyGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,2)">
+              <Panel id="MediumGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,2) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,3)">
+              <Panel id="ChallengingGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="BattlepassGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,4)">
+              <Panel id="BattlepassGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName5"/>
               </Panel>
 
-              <Panel id="NoBotGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,0)">
+              <Panel id="NoBotGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName4"/>
               </Panel>
             </Panel>
 
+            <Panel class="DifficultyBackButton" onactivate="DACPlaySelectMode(1)"/>
           </Panel>
 
           <!-- *************************Duos Options************************* -->
@@ -304,11 +307,11 @@
 
             <Panel class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_MatchOpponent"/>
-              <Panel id="DuosMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchType(0)">
+              <Panel id="DuosMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchType(0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_MatchTypeMultiplayer"/>
               </Panel>
 
-              <Panel id="DuosMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchType(3)">  <!--EDACMatchMode-->
+              <Panel id="DuosMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchType(3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
                 <Label text="#DAC_MatchTypeBotMatch"/>
               </Panel>
             </Panel>
@@ -316,32 +319,33 @@
             <Panel class="GameModeOptionsSettingsContainer">
               <Panel id="DuosSubSettingMultiplayer" class="GameModeOptionsSettingsSubContainer">
                 <Label class="OptionHeader" text="#DAC_MatchType"/>
-                <Panel id="DuosMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchmakingType(1)">  <!--EDACMatchMode-->
+                <Panel id="DuosMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchmakingType(1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeName0"/>
                 </Panel>
 
-                <Panel id="DuosMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchmakingType(4)">  <!--EDACMatchMode-->
+                <Panel id="DuosMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchmakingType(4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeNameRanked"/>
                 </Panel>
+                <Label class="LockedLabel RankedLockedLabel" text="{s:ranked_locked}"/>
 
               </Panel>
 
               <Panel id="DuosSubSettingBots" class="GameModeOptionsSettingsSubContainer">
                 <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-                <Panel id="LocalDuosBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(4)">  <!--EPlayBotDifficultyType-->
+                <Panel id="LocalDuosBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EPlayBotDifficultyType-->
                   <Label text="{s:local_duos_bot_difficulty}"/>
                 </Panel>
-                <Panel id="GCDuosBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(5)">  <!--EPlayBotDifficultyType-->
+                <Panel id="GCDuosBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(5) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EPlayBotDifficultyType-->
                   <Label text="{s:gc_duos_bot_difficulty}"/>
                 </Panel>
               </Panel>
               
               <Panel id="DuosSubSettingResume" class="GameModeOptionsSettingsSubContainer">
-                <Panel id="DuosResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false)">
+                <Panel id="DuosResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                   <Label text="#DAC_Play_ResumeBots"/>
                 </Panel>
-                <Panel id="DuosDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true)">
-                  <Label text="#DAC_Home_DeleteSave"/>
+                <Panel id="DuosDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+                  <Label text="#DAC_BotSaveGameExists_Button_NewGame"/>
                 </Panel>
 
                 <Panel class="ResumeInfoContainer">
@@ -354,19 +358,9 @@
 
             <Panel class="GameModeOptionsSettingsContainer">
               <Panel id="DuosSubSettingTeammate" class="GameModeOptionsSettingsSubContainer">
-              <Label class="OptionHeader" text="#DAC_MatchTeammate"/>
-<!--
-                <DropDown id="DuosTeammateDropdown" class="GameModeOptionsDropdown">
-                  <Label id="Invite" text="#DAC_MatchTypeInviteAFriend" TeammateType="0"/>
-                  <Label id="Bot" text="#DAC_MatchTypeBotTeammate" TeammateType="1"/>
-                </DropDown>
--->
-                <Panel id="DuosTeammateTypeButtonInvite" class="GameModeOptionButton" onactivate="DACPlayDuosSetTeammateType(0)">
-                  <Label text="#DAC_MatchTypeInviteAFriend"/>
-                </Panel>
-
-                <Panel id="DuosTeammateTypeButtonBot" class="GameModeOptionButton" onactivate="DACPlayDuosSetTeammateType(1)">
-                  <Label text="#DAC_MatchTypeBotTeammate"/>
+                <Label class="OptionHeader" text="#DAC_MatchTeammate"/>
+                <Panel id="DuosTeammateButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayDuosTeammateOptions() PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+                  <Label text="{s:duos_teammate}"/>
                 </Panel>
 
               </Panel>
@@ -381,64 +375,87 @@
 
             <Panel id="LocalDuosBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-              <Panel id="EasyLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,0)">
+              <Panel id="EasyLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,1)">
+              <Panel id="MediumLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,2)">
+              <Panel id="ChallengingLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,2) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="HardcoreLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,3)">
+              <Panel id="HardcoreLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName3"/>
               </Panel>
 
-              <Panel id="BattlepassLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,4)">
+              <Panel id="BattlepassLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName5"/>
               </Panel>
             </Panel>
 
             <Panel id="GCDuosBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
-              <Panel id="EasyGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,1)">
+              <Panel id="EasyGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,2)">
+              <Panel id="MediumGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,2) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,3)">
+              <Panel id="ChallengingGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="BattlepassGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,4)">
+              <Panel id="BattlepassGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName5"/>
               </Panel>
 
-              <Panel id="NoBotGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,0)">
+              <Panel id="NoBotGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_BotDifficultyName4"/>
               </Panel>
+
             </Panel>
 
+            <Panel class="DifficultyBackButton" onactivate="DACPlaySelectMode(2)"/>
           </Panel>
 
-          <!-- *************************Training Options************************* -->
+          <!-- *************************Duos Teammate Options************************* -->
+          <Panel id="DuosTeammateOptions" class="GameModeOptionsPanel">
+            <Panel class="GameModeOptionsSettingsContainer">
+              <Label class="GameModeOptionsTitle HeadlineFont" text="#DAC_MatchTypeNameDuos"/>
+            </Panel>
+
+            <Panel id="DuosTeammateOptionsContainer" class="GameModeOptionsSettingsContainer">
+              <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
+              <Panel id="DuosTeammateTypeButtonInvite" class="GameModeOptionButton" onactivate="DACPlayDuosSetTeammateType(0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+                <Label text="#DAC_MatchTypeInviteAFriend"/>
+              </Panel>
+
+              <Panel id="DuosTeammateTypeButtonBot" class="GameModeOptionButton" onactivate="DACPlayDuosSetTeammateType(1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+                <Label text="#DAC_MatchTypeBotTeammate"/>
+              </Panel>
+
+            </Panel>
+
+            <Panel class="DifficultyBackButton" onactivate="DACPlaySelectMode(2)"/>
+          </Panel>
+
+              <!-- *************************Training Options************************* -->
           <Panel id="TrainingOptions" class="GameModeOptionsPanel">
             <Panel class="GameModeOptionsSettingsContainer">
               <Label class="GameModeOptionsTitle HeadlineFont" text="#DAC_Training"/>
             </Panel>
 
             <Panel class="GameModeOptionsSettingsContainer">
-              <Panel id="TrainingTypeButtonFreestyle" class="GameModeOptionButton" onactivate="DACPlayTrainingSetMatchType(0)">
+              <Panel id="TrainingTypeButtonFreestyle" class="GameModeOptionButton" onactivate="DACPlayTrainingSetMatchType(0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_MatchTypeName5"/>
               </Panel>
               <Label class="GameModeOptionsDesc FreestyleDesc" text="#DAC_MatchTypeDescFreestyle"/>
 
-              <Panel id="TrainingTypeButtonTutorial" class="GameModeOptionButton" onactivate="DACPlayTrainingSetMatchType(1)">
+              <Panel id="TrainingTypeButtonTutorial" class="GameModeOptionButton" onactivate="DACPlayTrainingSetMatchType(1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
                 <Label text="#DAC_MatchTypeName7"/>
               </Panel>
               <Label class="GameModeOptionsDesc TrainingDesc" text="#DAC_ReplayTheTutorial"/>
@@ -455,29 +472,28 @@
         </Panel>
         
         <Panel id="PlayButtonContainer">
-          <Panel id="TurboPlayButton" class="PlayButton" onactivate="DACPlayLaunchTurbo()">
+          <Panel id="TurboPlayButton" class="PlayButton" onactivate="DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' ); DACPlayLaunchTurbo();">
             <Label id="TurboFindMatchLabel" class="FindMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_FindMatch"/>
             <Label id="TurboBeginMatchLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_BeginMatch"/>
           </Panel>
-          <Panel id="StandardPlayButton" class="PlayButton" onactivate="DACPlayLaunchStandard()">
+          <Panel id="StandardPlayButton" class="PlayButton" onactivate="DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' ); DACPlayLaunchStandard();">
             <Label id="StandardFindMatchLabel" class="FindMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_FindMatch"/>
             <Label id="StandardBeginMatchLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_BeginMatch"/>
           </Panel>
-          <Panel id="DuosPlayButton" class="PlayButton" onactivate="DACPlayLaunchDuos()">
+          <Panel id="DuosPlayButton" class="PlayButton" onactivate="DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' ); DACPlayLaunchDuos();">
             <Label id="DuosFindMatchLabel" class="FindMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_FindMatch"/>
             <Label id="DuosBeginMatchLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_BeginMatch"/>
-            <Label id="DuosInviteFriendLabel" class="InviteFriendLabel HeadlineFont" text="#DAC_Party_Context_Invite"/>
+            <Label id="DuosInviteFriendLabel" class="InviteFriendLabel HeadlineFont" text="#DAC_Play_Duos_Invite"/>
           </Panel>
           <Panel id="TrainingPlayButton" class="PlayButton" onactivate="DACPlayLaunchTraining()">
             <Label id="TrainingStartLabel" class="StartLabel HeadlineFont" text="#DAC_Start"/>
           </Panel>
           <Panel id="SaveGamePlayButton" class="PlayButton" onactivate="DACPlayHandleSaveGame()">
             <Label id="ResumeGameLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_Home_ResumeBots"/>
-            <Label id="DeleteGameLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_Home_DeleteSave"/>
+            <Label id="NewGameLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_BotSaveGameExists_Button_NewGame"/>
           </Panel>
           <Label id="DuosLockedLabel" class="LockedLabel" hittest="false" text="{s:duos_state}"/>
           <Label id="CasualLockedLabel" class="LockedLabel" text="{s:casual_locked}"/>
-          <Label id="RankedLockedLabel" class="LockedLabel" text="{s:ranked_locked}"/>
           <Label class="LoginRequired" text="#DAC_SteamLogIn_Desc4" onactivate="DACSelectMatchTypeLogin()"/>
         </Panel>
       </Panel>

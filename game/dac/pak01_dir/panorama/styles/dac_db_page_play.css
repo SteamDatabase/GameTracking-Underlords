@@ -22,11 +22,28 @@ DACPlayPage
     horizontal-align: right;
 }
 
+.AspectRatio16x10 #GameModeContainer
+{
+    margin-top: 200px;
+}
 
-.AspectRatio21x9 #GameModeContainer
+
+.AspectRatio4x3 #GameModeContainer
+{
+    margin-top: 300px;
+}
+
+
+.AspectRatio21x9.IsLayoutSmallScreen #GameModeContainer
 {
 	margin-right: safe-area-inset-right;
 }
+
+.AspectRatio21x9 #GameModeContainer
+{
+	margin-right: 160px;
+}
+
 
 #GameModeSelectionContainer
 {
@@ -67,6 +84,7 @@ DACPlayPage
 .SelectedModeDuos #DuosGameModeButton,
 .SelectedModeDuosLocalBotDifficulty #DuosGameModeButton,
 .SelectedModeDuosGCBotDifficulty #DuosGameModeButton,
+.SelectedModeDuosTeammateOptions #DuosGameModeButton,
 .SelectedModeTraining #TrainingGameModeButton,
 {
     background-color: gradient (linear, 0% 0%, 0% 100%, from(#6777cacc), to(#100f10));
@@ -74,6 +92,10 @@ DACPlayPage
     box-shadow: #393c8e88 0px 0px 16px;
     brightness: 1;
     saturation: 1;
+}
+.HasParty #TrainingGameModeButton
+{
+    visibility: collapse;
 }
 
 .IsLayoutSmallScreen .SelectedModeTurbo #TurboGameModeButton .GameModeDescContainer,
@@ -84,7 +106,8 @@ DACPlayPage
 .IsLayoutSmallScreen .SelectedModeStandardGCBotDifficulty #StandardGameModeButton .GameModeDescContainer,
 .IsLayoutSmallScreen .SelectedModeDuos #DuosGameModeButton .GameModeDescContainer,
 .IsLayoutSmallScreen .SelectedModeDuosLocalBotDifficulty #DuosGameModeButton .GameModeDescContainer,
-.IsLayoutSmallScreen .SelectedModeDuosGCBotDifficulty #DuosGameModeButton .GameModeDescContainer, 
+.IsLayoutSmallScreen .SelectedModeDuosGCBotDifficulty #DuosGameModeButton .GameModeDescContainer,
+.IsLayoutSmallScreen .SelectedModeDuosTeammateOptions #DuosGameModeButton .GameModeDescContainer,
 .IsLayoutSmallScreen .SelectedModeTraining #TrainingGameModeButton .GameModeDescContainer,
 {
     height: 160px;
@@ -98,7 +121,8 @@ DACPlayPage
 .IsLayoutSmallScreen .SelectedModeStandardGCBotDifficulty #StandardGameModeButton .GameModeButtonDesc,
 .IsLayoutSmallScreen .SelectedModeDuos #DuosGameModeButton .GameModeButtonDesc,
 .IsLayoutSmallScreen .SelectedModeDuosLocalBotDifficulty #DuosGameModeButton .GameModeButtonDesc,
-.IsLayoutSmallScreen .SelectedModeDuosGCBotDifficulty #DuosGameModeButton .GameModeButtonDesc, 
+.IsLayoutSmallScreen .SelectedModeDuosGCBotDifficulty #DuosGameModeButton .GameModeButtonDesc,
+.IsLayoutSmallScreen .SelectedModeDuosTeammateOptions #DuosGameModeButton .GameModeButtonDesc,
 .IsLayoutSmallScreen .SelectedModeTraining #TrainingGameModeButton .GameModeButtonDesc,
 {
     opacity: 1.0;
@@ -115,6 +139,7 @@ DACPlayPage
 .SelectedModeDuos #DuosGameModeButton Label,
 .SelectedModeDuosLocalBotDifficulty #DuosGameModeButton Label,
 .SelectedModeDuosGCBotDifficulty #DuosGameModeButton Label,
+.SelectedModeDuosTeammateOptions #DuosGameModeButton Label,
 .SelectedModeTraining #TrainingGameModeButton Label,
 {
     color: #c7dbda;
@@ -223,9 +248,10 @@ DACPlayPage
     height: 100%;
     flow-children: down;
     visibility: collapse;
-    transition-property: visibility;
+    transition-property: transform;
     transition-duration: 0.2s;
 }
+
 .SelectedModeTurbo #TurboOptions,
 .SelectedModeTurboLocalBotDifficulty #TurboBotDifficulty,
 .SelectedModeTurboGCBotDifficulty #TurboBotDifficulty,
@@ -236,6 +262,7 @@ DACPlayPage
 .SelectedModeDuosLocalBotDifficulty #DuosBotDifficulty,
 .SelectedModeDuosGCBotDifficulty #DuosBotDifficulty,
 .SelectedModeTraining #TrainingOptions,
+.SelectedModeDuosTeammateOptions #DuosTeammateOptions,
 {
     visibility: visible;
 }
@@ -250,7 +277,7 @@ DACPlayPage
 }
 #LocalTurboBotDifficultyContainer,
 #GCTurboBotDifficultyContainer,
-#LocalTurboBotDifficultyContainer,
+#LocalStandardBotDifficultyContainer,
 #GCStandardBotDifficultyContainer,
 #LocalDuosBotDifficultyContainer,
 #GCDuosBotDifficultyContainer,
@@ -259,7 +286,7 @@ DACPlayPage
 }
 .SelectedModeTurboLocalBotDifficulty #LocalTurboBotDifficultyContainer,
 .SelectedModeTurboGCBotDifficulty #GCTurboBotDifficultyContainer,
-.SelectedModeStandardLocalBotDifficulty #LocalTurboBotDifficultyContainer,
+.SelectedModeStandardLocalBotDifficulty #LocalStandardBotDifficultyContainer,
 .SelectedModeStandardGCBotDifficulty #GCStandardBotDifficultyContainer,
 .SelectedModeDuosLocalBotDifficulty #LocalDuosBotDifficultyContainer,
 .SelectedModeDuosGCBotDifficulty #GCDuosBotDifficultyContainer,
@@ -280,7 +307,7 @@ DACPlayPage
 .StandardMatchTypeMultiplayer #StandardSubSettingMultiplayer,
 .StandardMatchTypeBots #StandardSubSettingBots,
 .DuosMatchTypeMultiplayer #DuosSubSettingMultiplayer,
-.DuosMatchTypeMultiplayer #DuosSubSettingTeammate,
+.DuosMatchTypeMultiplayer.DuosMatchmakingTypeCasual #DuosSubSettingTeammate,
 .DuosMatchTypeBots #DuosSubSettingBots,
 {
     visibility: visible;
@@ -403,6 +430,8 @@ DACPlayPage
 .GCDuosBotDifficulty3 #ChallengingGCDuosBotOptionButton,
 .GCDuosBotDifficulty4 #BattlepassGCDuosBotOptionButton,
 .GCDuosBotDifficulty0 #NoBotGCDuosBotOptionButton,
+.DuosTeammateTypeInvite #DuosTeammateTypeButtonInvite,
+.DuosTeammateTypeBot #DuosTeammateTypeButtonBot,
 {
     background-color: gradient (linear, 0% 0%, 100% 0%, from(#6777ca88), to(#100f10));
 }
@@ -453,6 +482,8 @@ DACPlayPage
 .DeleteSaveGameSelected #TurboDeleteBotGameButton Label,
 .DeleteSaveGameSelected #StandardDeleteBotGameButton Label,
 .DeleteSaveGameSelected #DuosDeleteBotGameButton Label,
+.DuosTeammateTypeInvite #DuosTeammateTypeButtonInvite Label,
+.DuosTeammateTypeBot #DuosTeammateTypeButtonBot Label,
 {
     color: #c7dbda;
 }
@@ -495,6 +526,24 @@ DACPlayPage
     visibility: collapse;
 }
 
+.SelectedModeTurbo #TurboBotDifficulty,
+.SelectedModeStandard #StandardBotDifficulty,
+.SelectedModeDuos #DuosBotDifficulty,
+.SelectedModeDuos #DuosTeammateOptions,
+{
+    transform: translateX( 420px );
+}
+.SelectedModeTurboLocalBotDifficulty #TurboOptions,
+.SelectedModeTurboGCBotDifficulty #TurboOptions,
+.SelectedModeStandardLocalBotDifficulty #StandardOptions,
+.SelectedModeStandardGCBotDifficulty #StandardOptions,
+.SelectedModeDuosLocalBotDifficulty #DuosOptions,
+.SelectedModeDuosGCBotDifficulty #DuosOptions,
+.SelectedModeDuosTeammateOptions #DuosOptions,
+{
+    transform: translateX( -420px );
+}   
+
 #ViewChallenges
 {
     height: 60px;
@@ -504,7 +553,7 @@ DACPlayPage
     horizontal-align: center;
     margin-left: 128px;
     margin-top: 36px;
-    brightness: 1.0;
+    brightness: 1.4;
     transition-property: brightness;
     transition-duration: 0.2s;
     max-width: 300px;
@@ -516,9 +565,14 @@ DACPlayPage
     ui-scale: 120%;
 }
 
+.AspectRatio21x9 #ViewChallenges
+{
+    margin-left: 410px; 
+}
+
 #ViewChallenges:hover
 {
-    brightness: 1.8;
+    brightness: 2.0;
 }
 
 #ViewChallenges Label
@@ -625,14 +679,14 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
 .PlayPageLabel
 {
     visibility: collapse;
-    color: textDark;
+    color: #4b4e5d;
     font-size: 24px;
     line-height: 28px;
     horizontal-align: center;
     width: 100%;
     text-transform: uppercase;
     font-weight: black;
-    text-align: center;
+    text-align: left;
 }
 
 
@@ -640,6 +694,7 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
 {
     width: 100%;
     height: 25%;
+    vertical-align: bottom;
 }
 
 #PlayButtonContainer
@@ -663,6 +718,11 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
     background-size: 100%;
     transition-property: background-image, max-width, brightness;
     transition-duration: 0.2s;
+}
+
+.AspectRatio4x3 .PlayButton
+{
+    max-width: 800px;
 }
 
 .PlayButton:hover
@@ -724,9 +784,21 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
     margin-right: 32px;
 }
 
-.AspectRatio21x9 .FindMatchLabel, .AspectRatio21x9 .BeginMatchLabel, .AspectRatio21x9 .InviteFriendLabel, .AspectRatio21x9 .StartLabel
+.AspectRatio4x3 .FindMatchLabel, .AspectRatio4x3 .BeginMatchLabel, .AspectRatio4x3 .InviteFriendLabel, .AspectRatio4x3 .StartLabel
+{
+    ui-scale: 116%;
+    max-width: 800px;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 .FindMatchLabel, .IsLayoutSmallScreen.AspectRatio21x9 .BeginMatchLabel, .IsLayoutSmallScreen.AspectRatio21x9 .IsLayoutSmallScreen.InviteFriendLabel, .IsLayoutSmallScreen.AspectRatio21x9 .StartLabel
 {
     margin-right: safe-area-inset-right;
+    max-width: 600px;
+}
+
+.AspectRatio21x9 .FindMatchLabel, .AspectRatio21x9 .BeginMatchLabel, .IsLayoutSmallScree.AspectRatio21x9 .InviteFriendLabel, .AspectRatio21x9 .StartLabel
+{
+    margin-right: 80px;
     max-width: 600px;
 }
 
@@ -753,7 +825,7 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
     color: #c13939;
     font-weight: black;
     text-transform: uppercase;
-    font-size: 28px;
+    font-size: 24px;
     visibility: collapse;
     horizontal-align: right;
     text-align: right;
@@ -764,16 +836,21 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
     margin-right: safe-area-inset-right;	
 }
 
-#DuosLockedLabel,
-{
-    visibility: collapse;
-}
 .CasualIsLocked #CasualLockedLabel,
-.RankedIsLocked #RankedLockedLabel,
+.RankedIsLocked .RankedLockedLabel,
 .SelectedModeDuos.DuosMatchTypeMultiplayer #DuosLockedLabel,
 {
     visibility: visible;
 }
+
+.RankedIsLocked .RankedLockedLabel
+{
+    color: textDark;
+    margin-right: 0px;
+    horizontal-align: left;
+    text-align: left;
+}
+
 .SelectedModeDuos.DuosMatchTypeMultiplayer.DuoPartyState_Ready #DuosLockedLabel,
 {
     visibility: collapse;
@@ -794,6 +871,11 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
 .AspectRatio21x9.IsLayoutSmallScreen #UnderlordSelector
 {
     margin-left: 232px;
+}
+
+.AspectRatio21x9 #UnderlordSelector
+{
+    margin-left: 400px;
 }
 
 .Underlord_0 .UnderlordSelectContainer .UnderlordSelectTopContainer,
@@ -826,7 +908,7 @@ DACPlayPage #ViewDetails,
 	background-image: url("s2r://panorama/images/dashboard/underlord_shadow_left_psd.vtex");
 	vertical-align: bottom;
 	horizontal-align: left;
-	width: 1400px;
+	width: 1200px;
 	height: 300px;
 	background-size: cover;
 }
@@ -837,40 +919,42 @@ DACPlayPage #ViewDetails,
 {
     visibility: collapse;
 }
-#BattlepassLocalTurboBotOptionButton,
+
 .NotConnectedToGC #BattlepassLocalStandardBotOptionButton,
 .NotConnectedToGC #BattlepassLocalDuosBotOptionButton,
 {
     visibility: collapse;
 }
 
-.ResumeAvailable.SelectedModeTurbo #TurboPlayButton,
-.ResumeAvailable.SelectedModeStandard #StandardPlayButton,
-.ResumeAvailable.SelectedModeDuos #DuosPlayButton,
+.ResumeAvailable.SaveGameMode2.SelectedModeTurbo #TurboPlayButton,
+.ResumeAvailable.SaveGameMode1.SelectedModeStandard #StandardPlayButton,
+.ResumeAvailable.SaveGameMode3.SelectedModeDuos #DuosPlayButton,
 #SaveGamePlayButton,
-.ResumeAvailable.SelectedModeTurbo #TurboSubSettingBots,
-.ResumeAvailable.SelectedModeStandard #StandardSubSettingBots,
-.ResumeAvailable.SelectedModeDuos #DuosSubSettingBots,
+.ResumeAvailable.SaveGameMode2.SelectedModeTurbo #TurboSubSettingBots,
+.ResumeAvailable.SaveGameMode1.SelectedModeStandard #StandardSubSettingBots,
+.ResumeAvailable.SaveGameMode3.SelectedModeDuos #DuosSubSettingBots,
 #TurboSubSettingResume,
 #StandardSubSettingResume,
 #DuosSubSettingResume,
-.ResumeAvailable.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboSubSettingResume,
-.ResumeAvailable.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardSubSettingResume,
-.ResumeAvailable.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosSubSettingResume,
-.ResumeAvailable.SelectedModeTurbo.TurboMatchTypeMultiplayer #SaveGamePlayButton,
-.ResumeAvailable.SelectedModeStandard.StandardMatchTypeMultiplayer #SaveGamePlayButton,
-.ResumeAvailable.SelectedModeDuos.DuosMatchTypeMultiplayer #SaveGamePlayButton,
-.ResumeAvailable.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboSubSettingBots,
-.ResumeAvailable.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardSubSettingBots,
-.ResumeAvailable.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosSubSettingBots,
+.ResumeAvailable.SaveGameMode2.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboSubSettingResume,
+.ResumeAvailable.SaveGameMode2.SelectedModeTurbo.TurboMatchTypeMultiplayer #SaveGamePlayButton,
+.ResumeAvailable.SaveGameMode2.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboSubSettingBots,
+.ResumeAvailable.SaveGameMode1.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardSubSettingResume,
+.ResumeAvailable.SaveGameMode1.SelectedModeStandard.StandardMatchTypeMultiplayer #SaveGamePlayButton,
+.ResumeAvailable.SaveGameMode1.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardSubSettingBots,
+.ResumeAvailable.SaveGameMode3.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosSubSettingResume,
+.ResumeAvailable.SaveGameMode3.SelectedModeDuos.DuosMatchTypeMultiplayer #SaveGamePlayButton,
+.ResumeAvailable.SaveGameMode3.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosSubSettingBots,
 {
     visibility: collapse;
 }
 
-.ResumeAvailable #TurboSubSettingResume,
-.ResumeAvailable #StandardSubSettingResume,
-.ResumeAvailable #DuosSubSettingResume,
-.ResumeAvailable #SaveGamePlayButton,
+.ResumeAvailable.SaveGameMode2 #TurboSubSettingResume,
+.ResumeAvailable.SaveGameMode1 #StandardSubSettingResume,
+.ResumeAvailable.SaveGameMode3 #DuosSubSettingResume,
+.ResumeAvailable.SaveGameMode2.SelectedModeTurbo #SaveGamePlayButton,
+.ResumeAvailable.SaveGameMode1.SelectedModeStandard #SaveGamePlayButton,
+.ResumeAvailable.SaveGameMode3.SelectedModeDuos #SaveGamePlayButton,
 .ResumeAvailable.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboPlayButton,
 .ResumeAvailable.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardPlayButton,
 .ResumeAvailable.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosPlayButton,
@@ -879,15 +963,34 @@ DACPlayPage #ViewDetails,
 }
 
 #ResumeGameLabel,
-#DeleteGameLabel,
+#NewGameLabel,
 {
     visibility: collapse;
 }
 
 .ResumeSaveGameSelected #ResumeGameLabel,
-.DeleteSaveGameSelected #DeleteGameLabel,
+.DeleteSaveGameSelected #NewGameLabel,
 .ResumeAvailable .ResumeLabel
 {
     visibility: visible;
 }
 
+.DifficultyBackButton
+{
+    horizontal-align: left;
+    width: 44px;
+    height: 44px;
+    margin-top: 40px;
+    background-image: url("s2r://panorama/images/dashboard/dropdown_icon_psd.vtex");
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    brightness: 1.0;
+    transform: scaleX(-1);
+    transition-property: brightness;
+    transition-duration: 0.2s;
+}
+.DifficultyBackButton:hover
+{
+    brightness: 1.6;
+}

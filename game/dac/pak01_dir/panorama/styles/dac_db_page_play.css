@@ -379,6 +379,7 @@ DACPlayPage
 .TurboMatchTypeMultiplayer #TurboMatchTypeButtonMultiplayer,
 .TurboMatchTypeBots #TurboMatchTypeButtonBots,
 .TurboMatchmakingTypeCasual #TurboMatchmakingTypeButtonCasual,
+.TurboMatchmakingTypeRanked #TurboMatchmakingTypeButtonRanked,
 .StandardMatchTypeMultiplayer #StandardMatchTypeButtonMultiplayer,
 .StandardMatchTypeBots #StandardMatchTypeButtonBots,
 .StandardMatchmakingTypeCasual #StandardMatchmakingTypeButtonCasual,
@@ -398,7 +399,7 @@ DACPlayPage
 .DeleteSaveGameSelected #StandardDeleteBotGameButton,
 .DeleteSaveGameSelected #DuosDeleteBotGameButton,
 {
-    background-color: gradient (linear, 0% 0%, 100% 0%, from(#6777ca88), to(#100f10));
+    background-color: gradient (linear, 0% 0%, 100% 0%, from(#6777cacc), to(#100f10));
 }
 .LocalTurboBotDifficulty0 #EasyLocalTurboBotOptionButton,
 .LocalTurboBotDifficulty1 #MediumLocalTurboBotOptionButton,
@@ -440,6 +441,7 @@ DACPlayPage
 .TurboMatchTypeMultiplayer #TurboMatchTypeButtonMultiplayer:hover,
 .TurboMatchTypeBots #TurboMatchTypeButtonBots:hover,
 .TurboMatchmakingTypeCasual #TurboMatchmakingTypeButtonCasual:hover,
+.TurboMatchmakingTypeRanked #TurboMatchmakingTypeButtonRanked:hover,
 .StandardMatchTypeMultiplayer #StandardMatchTypeButtonMultiplayer:hover,
 .StandardMatchTypeBots #StandardMatchTypeButtonBots:hover,
 .StandardMatchmakingTypeCasual #StandardMatchmakingTypeButtonCasual:hover,
@@ -464,6 +466,7 @@ DACPlayPage
 .TurboMatchTypeMultiplayer #TurboMatchTypeButtonMultiplayer Label,
 .TurboMatchTypeBots #TurboMatchTypeButtonBots Label,
 .TurboMatchmakingTypeCasual #TurboMatchmakingTypeButtonCasual Label,
+.TurboMatchmakingTypeRanked #TurboMatchmakingTypeButtonRanked Label,
 .StandardMatchTypeMultiplayer #StandardMatchTypeButtonMultiplayer Label,
 .StandardMatchTypeBots #StandardMatchTypeButtonBots Label,
 .StandardMatchmakingTypeCasual #StandardMatchmakingTypeButtonCasual Label,
@@ -519,11 +522,6 @@ DACPlayPage
 .GCDuosBotDifficulty0 #NoBotGCDuosBotOptionButton Label,
 {
     color: #c7dbda;
-}
-
-#TurboMatchmakingTypeButtonCasual
-{
-    visibility: collapse;
 }
 
 .SelectedModeTurbo #TurboBotDifficulty,
@@ -993,4 +991,199 @@ DACPlayPage #ViewDetails,
 .DifficultyBackButton:hover
 {
     brightness: 1.6;
+}
+
+.RankContainer
+{
+    width: 100%;
+    height: 250px;
+    //background-image: url("s2r://panorama/images/dashboard/rank_backing_psd.vtex");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    vertical-align: bottom;
+    horizontal-align: center;
+    flow-children: right;
+    margin-left: -24px;
+    visibility: collapse;
+    transition-property: visibility;
+}
+
+DACPlayPage .RankContainer DACRankIcon
+{
+    margin-left: 26px;
+    vertical-align: middle;
+    horizontal-align: center;
+    ui-scale: 84%;
+}
+
+.RankHoverContainer
+{
+    flow-children: down;
+    width: 100%;
+}
+
+/* Center heavy icons */
+.MajorRank1 DACRankIcon,
+.MajorRank2 DACRankIcon,
+.MajorRank3 DACRankIcon,
+.MajorRank4 DACRankIcon,
+.MajorRank5 DACRankIcon,
+.MajorRank6 DACRankIcon,
+{
+    margin-top: -8px;
+}
+
+.MajorRank7 #RankIcon
+{
+    margin-top: 12px;
+}
+
+.MajorRank8 #RankIcon
+{
+    margin-top: -6px;
+}
+
+.MajorRank9 #RankIcon
+{
+    margin-top: 6px;
+}
+
+.NameContainer
+{
+    flow-children: down;
+    vertical-align: top;
+    margin-top: 28px;
+    width: fill-parent-flow(1.0);
+}
+
+.PlayerName
+{
+    color: textBrighter;
+    font-size: 26px;
+    margin-top: 8px;
+    font-weight: black;
+    visibility: collapse;
+    width: 100%;
+}
+
+.RankName
+{
+    font-size: 24px;
+    text-transform: uppercase;
+    color: #c7dbda;
+}
+
+.RankScore
+{
+    font-size: 24px;
+    font-weight: black;
+    color: #4b4e5d;
+    text-transform: uppercase;
+    margin-top: 4px;
+}
+
+.PlayerRankScoreContainer
+{
+    width: 100%;
+    vertical-align: center;
+    flow-children: up;
+}
+
+.RankPoints
+{
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.RankProgressBar
+{
+    width: 100%;
+    height: 16px;
+    horizontal-align: center;
+    background-color: #00000033;
+    margin-top: 4px;
+    border: 2px solid #2e2d44;
+    box-shadow: inset 0px 6px 20px #000000cc;
+    horizontal-align: left;
+}
+
+.MajorRank9 .RankProgressBar
+{
+    visibility: collapse;
+}
+
+#PlayerRankProgressBar_Left,
+#TeamRankProgressBar_Left,
+{
+    //background-color: gradient (linear, 0% 0%, 100% 0%, from(#402c5a), to(#8D60C6));
+    transition-property: width;
+    transition-duration: .5s;
+    transition-timing-function: ease-out;
+    border-top: 1px solid #ffffff22;
+    border-bottom: 1px solid #00000033;
+    border-right: 1px solid #ffffff22;
+}
+
+.MinorRank1 #RankProgressBar1_Left,
+.MinorRank1 #RankProgressBar2_Left,
+.MinorRank1 #RankProgressBar3_Left,
+{
+    background-color: gradient( linear, 0% 110%, 0% 0%, from( #3b9208 ), to( #65f013 ) );
+}
+
+.MinorRank2 #RankProgressBar1_Left,
+.MinorRank2 #RankProgressBar2_Left,
+.MinorRank2 #RankProgressBar3_Left,
+{
+    background-color: gradient( linear, 0% 110%, 0% 0%, from( #0c6583 ), to( #14b4eb ) );
+}
+
+.MinorRank3 #RankProgressBar1_Left,
+.MinorRank3 #RankProgressBar2_Left,
+.MinorRank3 #RankProgressBar3_Left,
+{
+    background-color: gradient( linear, 0% 110%, 0% 0%, from( #991115 ), to( #fb262e ) );
+}
+
+.MinorRank4 #RankProgressBar1_Left,
+.MinorRank4 #RankProgressBar2_Left,
+.MinorRank4 #RankProgressBar3_Left,
+{
+    background-color: gradient( linear, 0% 110%, 0% 0%, from( #6a1e88 ), to( #c151ec ) );
+}
+
+.MinorRank5 #RankProgressBar1_Left,
+.MinorRank5 #RankProgressBar2_Left,
+.MinorRank5 #RankProgressBar3_Left,
+{
+    background-color: gradient( linear, 0% 110%, 0% 0%, from( #9b6714 ), to( #f8ad33 ) );
+}
+
+.LeaderboardPosition
+{
+    visibility: collapse;
+    font-size: 24px;
+    text-shadow: 1px 1px 0px 2.0 #00000066;
+    font-weight: black;
+    text-transform: uppercase;
+    margin-top: 0px;
+    letter-spacing: 1px;
+    color: gradient( linear, 80% 100%, 0% 0%, from( #f8cc33 ), to( #f8ad33 ) );
+}
+
+.MajorRank9 .LeaderboardPosition
+{
+    visibility: visible;
+}
+
+.MajorRank9.RankScore
+{
+    visibility: collapse;
+}
+
+.TurboMatchmakingTypeRanked #RankContainer2,
+.StandardMatchmakingTypeRanked #RankContainer1,
+.DuosMatchmakingTypeRanked #RankContainer3,
+{
+    visibility: visible;
 }

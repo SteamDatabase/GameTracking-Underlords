@@ -99,12 +99,33 @@
 
             <Panel class="GameModeOptionsSettingsContainer">
               <Panel id="TurboSubSettingMultiplayer" class="GameModeOptionsSettingsSubContainer">
+                <Label class="OptionHeader" text="#DAC_MatchType"/>
                 <Panel id="TurboMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchmakingType(1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeName0"/>
                 </Panel>
 
+                <Panel id="TurboMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchmakingType(4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
+                  <Label text="#DAC_MatchTypeNameRanked"/>
+                </Panel>
+                <Label class="LockedLabel RankedLockedLabel" text="{s:ranked_locked}"/>
+
+                <!-- Rank info ID's are set according to their associated EDACGameMode -->
+                <Panel id="RankContainer2" class="RankContainer">
+                  <DACRankIcon id="RankIcon2" iconstyle="standalone" ranktype="turbo"/>
+                  <Panel class="RankHoverContainer">
+                    <Panel class="NameContainer">
+                      <Label class="PlayerName" html="true" text="{g:dac_persona:b:player_accountid}" />
+                      <Label id="RankName2" class="RankName" html="true"  text="#DAC_LevelUp_Rank_New2" />
+                      <Label id="LeaderboardPosition2" class="LeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank2" />
+                    </Panel>
+                    <Panel class="PlayerRankScoreContainer">
+                      <Label id="RankScore2" class="RankScore" html="true" text="#DACRankPoints2" />
+                      <ProgressBar id="RankProgressBar2" class="RankProgressBar"/>
+                    </Panel>
+                  </Panel>
+                </Panel>
               </Panel>
-              </Panel>
+            </Panel>
             <Panel id="TurboSubSettingBots" class="GameModeOptionsSettingsSubContainer">
               <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
               <Panel id="LocalTurboBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(0) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">  <!--EPlayBotDifficultyType-->
@@ -217,6 +238,21 @@
                 </Panel>
                 <Label class="LockedLabel RankedLockedLabel" text="{s:ranked_locked}"/>
 
+                <!-- Rank info ID's are set according to their associated EDACGameMode -->
+                <Panel  id="RankContainer1" class="RankContainer">
+                  <DACRankIcon id="RankIcon1" iconstyle="standalone" ranktype="standard"/>
+                  <Panel class="RankHoverContainer">
+                    <Panel class="NameContainer">
+                      <Label class="PlayerName" html="true" text="{g:dac_persona:b:player_accountid}" />
+                      <Label id="RankName1" class="RankName" html="true"  text="#DAC_LevelUp_Rank_New1" />
+                      <Label id="LeaderboardPosition1" class="LeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank1" />
+                    </Panel>
+                    <Panel class="PlayerRankScoreContainer">
+                      <Label id="SRankScore1" class="RankScore" html="true" text="#DACRankPoints1" />
+                      <ProgressBar id="RankProgressBar1" class="RankProgressBar"/>
+                    </Panel>
+                  </Panel>
+                </Panel>
               </Panel>
 
               <Panel id="StandardSubSettingBots" class="GameModeOptionsSettingsSubContainer">
@@ -328,6 +364,22 @@
                 </Panel>
                 <Label class="LockedLabel RankedLockedLabel" text="{s:ranked_locked}"/>
 
+                <!-- Rank info ID's are set according to their associated EDACGameMode -->
+                <!-- Duos uses the standard MMR -->
+                <Panel id="RankContainer3" class="RankContainer">
+                  <DACRankIcon id="RankIcon3" iconstyle="standalone" ranktype="standard"/>
+                  <Panel class="RankHoverContainer">
+                    <Panel class="NameContainer">
+                      <Label class="PlayerName" html="true" text="{g:dac_persona:b:player_accountid}" />
+                      <Label id="RankName3" class="RankName" html="true"  text="#DAC_LevelUp_Rank_New1" />
+                      <Label id="LeaderboardPosition3" class="LeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank1" />
+                    </Panel>
+                    <Panel class="PlayerRankScoreContainer">
+                      <Label id="RankScore3" class="RankScore" html="true" text="#DACRankPoints1" />
+                      <ProgressBar id="RankProgressBar3" class="RankProgressBar"/>
+                    </Panel>
+                  </Panel>
+                </Panel>
               </Panel>
 
               <Panel id="DuosSubSettingBots" class="GameModeOptionsSettingsSubContainer">

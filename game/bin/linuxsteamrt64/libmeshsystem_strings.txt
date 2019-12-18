@@ -633,6 +633,7 @@ CModelConfigElement_SetMaterialGroup
 CModelConfigElement_SetRenderColor
 CModelConfigElement_UserPick
 CModelConfigList
+CModelTypeManager::NotifyManifestResourceFinished
 CMorphBundleData
 CMorphConstraint
 CMorphData
@@ -793,7 +794,6 @@ ConnectInterfaces
 Control block error for '%s': %s
 ConvertFloatToChannel: Trying to convert to a a float to a destation of byte size %d
 ConvertFloatToChannel: Trying to convert to a a normalized float to a destation of byte size %d
-Cos( %s )
 CovMatrix3
 CreateInterface
 Cubic
@@ -969,6 +969,7 @@ FIELD_VMATRIX_WORLDSPACE
 FIELD_VOID
 FLEX_OP_2WAY_0
 FLEX_OP_2WAY_1
+FLEX_OP_ABS
 FLEX_OP_ADD
 FLEX_OP_CLOSE
 FLEX_OP_COMBO
@@ -1090,11 +1091,12 @@ H;pXt6L
 H=vmat
 H=vmdl
 H=vmdlu
-HB_modelbuilder_phys_%i.vphys
 HELPER_BONE
 H[A\A]A^A_]
 H[A\A]]
 HammerMapLoader001
+HangWatchdogInternal_BeginScope
+HangWatchdogInternal_EndScope
 Has Collision; 
 Hc@0H
 Hc@0L
@@ -1154,9 +1156,9 @@ IcV@M
 IcVXI
 IcW@H
 IcW|L
-Ic\$(A;\$8tNI
 Ic\$Hf
 Ic\$Pf
+Ic^(A;^8tgI
 Ic^8A;^H
 Ic^PA;^`
 Identity
@@ -1235,6 +1237,7 @@ LightSourceShape_t
 LightType_t
 LightingBasis
 LightmapUV
+LightmapUVW
 Line %d at "%s": 
 Line %d at "%s": %s
 Line %d: 
@@ -1311,7 +1314,6 @@ MaterialParam_t
 MaterialResourceData_t
 MaterialUtils_001
 MathLib_Init
-Max( %s, %s )
 MbP?+
 McG@E;GPtaI
 Mce@E
@@ -1324,7 +1326,6 @@ MeshSystem
 MeshSystem001
 MeshSystem::InitPosedProp: Bone mismatch between transforms out (%d) and transforms in skeleton (%d)
 MeshTranslucencyType_t
-Min( %s, %s )
 Missing file '%s'
 Model %s missing bone and flex counts (%d < %d), init %d
 Model %s: Attempted to attach attachment %s to an unknown bone %s!
@@ -1587,8 +1588,8 @@ SequenceMarkupList
 SerializedEntitiesVersion001
 ServerUploadGameStats001
 Simulated
-Sin( %s )
 SkeletonBoneBounds_t
+SlopeTrace
 SoundOpSystem001
 SoundOpSystemEdit001
 SoundService_001
@@ -1605,7 +1606,6 @@ Source2GameEntities001
 Source2Host001
 Source2Server001
 Source2ServerSerializers002
-Sqrt( %s )
 Stack depth limit hit (%d)
 StatsService_001
 SteamAudio001
@@ -1816,7 +1816,7 @@ WorldRendererMgr001
 X2:jH
 XHcG(
 XIcL$
-XIcL$8Ic
+XIcN8Ic
 X[A\A]A^A_]
 X[A\A]]
 YD$\H
@@ -1927,10 +1927,12 @@ __stack_chk_fail
 __temp_unserialization_member__
 _edata
 _fini
+_modelbuilder_phys_%i.vphys
 _root_keyname
 _test_conversion_counter
 ` HcG
 `[A\]
+abs( %s )
 ai_model_info
 allowstatic
 anchor_angles
@@ -2018,6 +2020,7 @@ config_state
 configvalue.cpp
 control_point
 control_points_list
+cos( %s )
 create_particle
 curvature
 dH34%(
@@ -2044,6 +2047,7 @@ error opening required file %s
 event_class
 event_keys
 eventindex
+exp( %s )
 explosion_behavior
 explosion_buildup
 explosion_delay
@@ -2258,6 +2262,7 @@ m_InteractExcludeStrings
 m_InteractWith
 m_InteractWithStrings
 m_JiggleBones
+m_JointConstraintData
 m_JointConstraintPairs
 m_JointName
 m_Joints
@@ -2813,6 +2818,7 @@ m_outputWeightList
 m_pBody
 m_pD3DSemanticName
 m_pFeModel
+m_pJointConstraintData
 m_pModelConfigList
 m_pName
 m_pParent
@@ -2950,6 +2956,8 @@ m_vStancePositionMS
 m_vTintColor
 m_vTipOffset
 m_vToStrideStartPos
+m_vTraceOffset
+m_vTraceScale
 m_vUpLS
 m_vUpVector
 m_vViewMax
@@ -2976,6 +2984,7 @@ materials/tools/show_skeleton.vmat
 materialsystem2
 matrix3x4_t
 matrix3x4a_t
+max( %s, %s )
 maxHullVertices
 maxSpringTension
 maxVerticesPerHull
@@ -2993,8 +3002,9 @@ mesh_index
 meshinstance_imp.cpp
 meshsystem
 meshsystem.cpp
-meshsystem.cpp(155): GetErrorModel() called before error model exists!
+meshsystem.cpp(152): GetErrorModel() called before error model exists!
 meshutils.cpp
+min( %s, %s )
 min_angle
 model.cpp
 model_default_preview_sequence_name
@@ -3149,6 +3159,7 @@ shadowtextureheight
 shadowtexturewidth
 shapeType
 sharpStartAngle
+sin( %s )
 singleplayer
 size0
 size1
@@ -3156,6 +3167,7 @@ source_filename
 spawn_motion_disabled
 speeds
 springConstant
+sqrt( %s )
 sqrtf
 ss_added
 staticImpactVolume
@@ -3228,6 +3240,7 @@ vmdlH
 vmdlkeys0
 vmdlkeys1
 vmdlkeys2
+vmdlkeys3
 vmesh
 vmorf
 vn %g %g %g

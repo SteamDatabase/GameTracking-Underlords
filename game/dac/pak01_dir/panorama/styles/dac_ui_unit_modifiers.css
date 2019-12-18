@@ -1,8 +1,50 @@
 @import url("file://{resources}/styles/battle_pass/current_battlepass.css");
 
-#UnitModifiers
+#DACUnitModifiers
 {
     flow-children: down;
+}
+
+#StatusAndModifiers {
+    width: fit-children;
+    height: fit-children;
+    flow-children: down;
+    overflow: scroll;
+}
+
+#UnitStatus
+{
+    flow-children: right;
+    height: 60px;
+}
+
+.InCombat.SelectedUnitOnBoard #UnitStatus
+{
+    vertical-align: top;
+    visibility: visible;
+}
+
+:not(.InCombat) #UnitStatus
+{
+    visibility: collapse;
+}
+
+.LowVisualQuality #UnitStatus
+{
+    transition-duration: 0.0s;
+}
+
+#ActiveStatus
+{
+    width: fit-children;
+    height: 60px;
+    flow-children: right;
+    horizontal-align: center;
+}
+
+#UnitModifiers
+{
+    flow-children: right-wrap;
 }
 
 .InCombat.SelectedUnitOnBoard #UnitModifiers
@@ -14,9 +56,57 @@
 :not(.InCombat) #UnitModifiers
 {
     visibility: collapse;
-} 
+}
 
-.ActiveModifiers
+.LowVisualQuality #UnitModifiers
+{
+    transition-duration: 0.0s;
+}
+
+.ActiveStatus #UnitModifiers
+{
+    width: fit-children;
+    height: fit-children;
+    horizontal-align: center;
+}
+
+#StatusSnippetContainer
+{
+    flow-children: right-wrap;
+    horizontal-align: center;
+    vertical-align: center;
+    overflow: scroll;
+    width: fit-children;
+    height: fit-children;
+    margin-top: 5px;
+    ui-scale: 50%;
+}
+
+.IsLayoutSmallScreen #StatusSnippetContainer
+{
+    ui-scale: 100%;
+}
+
+#StatusContainer
+{
+    margin: 2px 2px 6px 2px;
+    box-shadow: #000000bb 0px 0px 12px;
+    background-image: url("s2r://panorama/images/hud/ability_icon_bevel_psd.vtex");
+    background-size: 100%;
+    horizontal-align: center;
+}
+
+.IsLayoutSmallScreen #StatusContainer
+{
+    ui-scale: 80%;
+}
+
+#Status {
+    width: 100%;
+    height: 100%;
+}
+
+#ActiveModifiers
 {
     width: fit-children;
     height: fit-children;
@@ -41,29 +131,46 @@
 	ui-scale: 100%;
 }
 
-.ModifierContainer
+#StatusContainer
+{
+    margin: 2px 2px 6px 2px;
+    box-shadow: #000000bb 0px 0px 12px;
+    background-size: 100%;
+    horizontal-align: center;
+}
+
+.IsLayoutSmallScreen #StatusContainer
+{
+    ui-scale: 80%;
+}
+
+#ModifierContainer
 {
     margin: 2px 2px 6px 2px;
     box-shadow: #000000bb 0px 0px 12px;
     background-image: url("s2r://panorama/images/hud/ability_icon_bevel_psd.vtex");
     background-size: 100%;
     horizontal-align: center;
-    width: 70px;
-    height: 70px;
 }
 
-.IsLayoutSmallScreen .ModifierContainer
+.IsLayoutSmallScreen #ModifierContainer
 {
     ui-scale: 80%;
+}
+
+#ActiveStatus
+{
+    flow-children: down;
+}
+
+#Status
+{
+    width: 100%;
+    height: 100%;
 }
 
 #Modifier
 {
 	width: 100%;
 	height: 100%;
-}
-
-.LowVisualQuality DACUnitModifiers
-{
-    transition-duration: 0.0s;
 }

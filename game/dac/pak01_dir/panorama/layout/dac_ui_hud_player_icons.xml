@@ -38,50 +38,59 @@
 	</snippets>
 
 	<DACHudPlayerIcons hittest="false" acceptsfocus="false">
-		<Panel class="IconsPanel">
-			<Panel id="BattleStatsSection" class="IconSection BattleStatsParent">
-			
-					<Panel id="BattleStats" class="IconTab IconList DamageDealtActive">
-						<DACDPSChart id="DamageDealt" chart="damagedealt" />
-						<DACDPSChart id="DPS" chart="dps" />
-						<DACDPSChart id="DamageTaken" chart="damagetaken" />
-						<DACDPSChart id="HealingDone" chart="healingdone" />
-						<DACDPSChart id="Kills" chart="kills" />
-						<DACDPSChart id="DisableDone" chart="disabledone" />
-					</Panel>
-					
+		<Panel class="IconsPanel" id="IconsPanel">
+			<Panel id="BattleStatsSection" class="IconSection BattleStatsParent">			
+				<Panel id="BattleStats" class="IconTab IconList DamageDealtActive">
+					<DACDPSChart id="DamageDealt" chart="damagedealt" />
+					<DACDPSChart id="DPS" chart="dps" />
+					<DACDPSChart id="DamageTaken" chart="damagetaken" />
+					<DACDPSChart id="HealingDone" chart="healingdone" />
+					<DACDPSChart id="Kills" chart="kills" />
+					<DACDPSChart id="DisableDone" chart="disabledone" />
 				</Panel>
-			<Panel id="SynergiesSection" class="IconSection"> 
-			<Panel class="TopDivider" hittest="false" />
+			</Panel>
+			<Panel id="SynergiesSection" class="IconSection">
+				<Panel class="TopDivider" hittest="false" />
 				<Panel class="IconTab">
-				
 					<Panel id="SynergyIcons" class="IconList" hittest="false" />
 				</Panel>
 				<!-- correct button will be shown based on css -->
-				<Panel class="LocalPlayer ToggleSectionButton Synergies" onactivate="DACShowSynergiesTab()">
-					<Panel class="ToggleIcon Items" />
+				<Panel class="LocalPlayer ToggleSectionButton Synergies" hittest="false">
 					<Label class="SidebarLabel" text="#DAC_InGame_Tab_Synergies" />
 				</Panel>
 			</Panel>		
 			<Panel id="ItemsSection" class="IconSection">
-			<Panel class="TopDivider" hittest="false" />
+				<Panel class="TopDivider" hittest="false" />
 				<Panel class="IconTab">
-				
 					<DACInventory id="Items" class="IconList" hittest="false" />
 				</Panel>
 				<!-- correct button will be shown based on css -->
-				<Panel onactivate="DACShowItemsTab()" class="LocalPlayer ToggleSectionButton Items">
-					<Panel class="ToggleIcon Items" />
+				<Panel class="LocalPlayer ToggleSectionButton Items" hittest="false">
 					<Label class="SidebarLabel" text="#DAC_InGame_Tab_Items" />
 				</Panel>
 			</Panel>
-
+			<Panel id="PuzzleStatsSection" class="IconSection">
+				<Panel class="TopDivider" hittest="false" />
+				<Panel id="StatsContainer" class="IconTab">
+					<!-- <Label id="StatLastResult" class="SidebarLabel" text="#DAC_InGame_Stat_LastResult" /> -->
+					<Label id="StatLastGoldSpend" class="SidebarLabel" text="#DAC_InGame_Stat_LastNetWorth" />
+					<Label id="StatLastDuration" class="SidebarLabel" text="#DAC_InGame_Stat_LastDuration" />
+					<Label id="StatLastSurvival" class="SidebarLabel" text="#DAC_InGame_Stat_LastSurvival" />
+					<Label id="StatBestGoldSpend" class="SidebarLabel" text="#DAC_InGame_Stat_BestNetWorth" />
+					<Label id="StatBestDuration" class="SidebarLabel" text="#DAC_InGame_Stat_BestDuration" />
+					<Label id="StatBestSurvival" class="SidebarLabel" text="#DAC_InGame_Stat_BestSurvival" />
+				</Panel>
+				<!-- correct button will be shown based on css -->
+				<Panel class="LocalPlayer ToggleSectionButton Items">
+					<Label class="SidebarLabel" text="#DAC_InGame_Tab_Stats" />
+				</Panel>
+			</Panel>
 		
 		</Panel>
 		<Panel id="IconsMobileContainer">
 			<Panel id="IconsMobileSelector">
-				<Panel class="LocalPlayer SynergiesButtonGroup ToggleSectionButton" hittest="true" onactivate="DACShowSynergiesTab()" >
-					<Panel class="Synergies" />
+				<Panel class="LocalPlayer SynergiesButtonGroup ToggleSectionButton" id="MobileSynergiesTab" hittest="true" onactivate="DACShowSynergiesTab()" >
+					<Panel class="Synergies"/>
 					<Label class="SidebarLabel" text="#DAC_InGame_Tab_Synergies" />
 				</Panel>
 				<Panel class="LocalPlayer ItemsButtonGroup ToggleSectionButton" hittest="true" onactivate="DACShowItemsTab()">

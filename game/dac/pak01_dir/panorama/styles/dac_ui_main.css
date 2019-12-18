@@ -34,6 +34,7 @@ DACUIMain.InGame
 #HudModeDropdown {
 	vertical-align: bottom;
 	width: 200px;
+	margin-left: 60px;
 	//opacity: 0;
 }
 
@@ -203,11 +204,11 @@ DACUIMain.InGame
 #TopBarStatusMessageContainer Label {
 	letter-spacing: 1px;
 	horizontal-align: center;
-	font-weight: normal;
+	font-weight: bold;
 	font-size: 18px;
 	text-transform: uppercase;
-	color: #aaccff;
-	text-shadow: 0px 0px 4px 1.0 #101010;
+	color: #ffaa88;
+	//text-shadow: 0px 0px 4px 1.0 #ff5353;
 }
 
 .IsLayoutSmallScreen #TopBarStatusMessageContainer Label {
@@ -217,7 +218,7 @@ DACUIMain.InGame
  
 .GCStatusScary #TopBarStatusMessageContainer Label {
 	color: #ffaa88;
-	text-shadow: 0px 0px 6px 1.0 #ff1010;
+	//text-shadow: 0px 0px 6px 1.0 #ff5353;
 }
 
 
@@ -357,14 +358,14 @@ DACUIMain.InGame
 	margin-left: 0px;
 }
 
-#PatchNotesViolator
+#PatchNotesViolator, #AchievementsViolator
 {
 	visibility: collapse;
 
-	width: 35px;
-	height: 35px;
+	width: 36px;
+	height: 36px;
 
-	margin-top: 58px;
+	margin-top: 64px;
 	margin-right: 10px;
 	
 	background-image: url("s2r://panorama/images/dashboard/patch_notes_violator_psd.vtex");
@@ -373,10 +374,12 @@ DACUIMain.InGame
 	horizontal-align: right;
 }
 
-.IsLayoutSmallScreen #PatchNotesViolator
+.IsLayoutSmallScreen #PatchNotesViolator, .IsLayoutSmallScreen #AchievementsViolator
 {
-	margin-top: 68px;
-	margin-right: 20px;
+	margin-top: 64px;
+	margin-right: 2px;
+	width: 48px;
+	height: 48px;
 }
 
 #Exclamation
@@ -389,6 +392,11 @@ DACUIMain.InGame
 }
 
 .NewSteamAnnouncement #PatchNotesViolator
+{
+	visibility: visible;
+}
+
+.CanClaimAchievement #AchievementsViolator
 {
 	visibility: visible;
 }
@@ -543,22 +551,6 @@ DACUIMain.InGame
 }
 
 
-#AchievementsButton 
-{
-	background-image: url("s2r://panorama/images/dashboard/top_btn_achievements_psd.vtex");
-	background-size: 100%;
-	height: 131px;
-	width: 180px;
-	
-	transition-property: background-image;
-	transition-duration: .1s;
-}
-
-.AchievementsContainer #AchievementsButton 
-{
-	background-image: url("s2r://panorama/images/dashboard/top_btn_achievements_active_psd.vtex");
-}
-
 .AchievementsClaimFX
 {
 	width: 115px;
@@ -632,24 +624,21 @@ DACUIMain.InGame
 .SystemButtonsTop
 {
 	flow-children: right;
+	margin-right: 16px;
 }
 
-#MiniJail
+.SystemButtonHover
 {
-	opacity: 0;
-	transition-property: opacity;
-	transition-duration: .2s;
-
-	margin-right: 120px;
-
-	horizontal-align: right;
+	brightness: 0.8;
+	transition-property: brightness;
+	transition-duration: 0.2s;
 }
 
-.MiniJailVisible #MiniJail,
-.MiniJailShowInitial #MiniJail
+.SystemButtonHover:hover
 {
-	opacity: 1;
+	brightness: 1.4;
 }
+
 
 .Page_DACPagePostGame .SystemButtons,
 .Page_DACPagePostGame .FeedbackPanel
@@ -661,6 +650,30 @@ DACUIMain.InGame
 {
 	vertical-align: top;
 	horizontal-align: right;
+}
+
+#AchievementsButtonContainer
+{
+	vertical-align: top;
+	horizontal-align: right;
+	margin: 0px;
+}
+
+#AchievementsButton
+{
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-image: url("s2r://panorama/images/dashboard/icon_achievements_psd.vtex");
+	opacity: 0.6;
+
+	height: 50px;
+	width: 50px;
+	margin-top: 40px;
+	margin-right: 20px;
+	wash-color: textDefault;
+	transition-property: brightness;
+	transition-duration: 0.2s;
 }
 
 .IsLayoutLargeScreen #QuitButtonContainer
@@ -685,10 +698,12 @@ DACUIMain.InGame
 }
 
 .PatchNotesContainer #PatchNotesButton,
-.SettingsMenuContainer #SettingsMenuButton
+.SettingsMenuContainer #SettingsMenuButton,
+.AchievementsContainer #AchievementsButton
 {
-	wash-color: #ffd461;
+	wash-color: textBrighter;
 	opacity: 1.0;
+	brightness: 1.2;
 }
 
 .ZooContainer #ZooButton
@@ -715,8 +730,8 @@ DACUIMain.InGame
 	background-image: url("s2r://panorama/images/dashboard/icon_settings_psd.vtex");
 	opacity: 0.6;
 
-	height: 50px;
-	width: 50px;
+	height: 52px;
+	width: 52px;
 	margin-top: 40px;
 	margin-right: 20px;
 	wash-color: textDefault;
@@ -744,7 +759,7 @@ DACUIMain.InGame
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-image: url("s2r://panorama/images/dashboard/icon_zoo_psd.vtex");
-	margin-left: 212px;
+	margin-left: 262px;
 	margin-bottom: 6px;
 
 	height: 40px;
@@ -763,29 +778,20 @@ DACUIMain.InGame
 	visibility: visible;
 }
 
-#JailButtonContainer
-{
-	background-size: 100%;
-	background-repeat: no-repeat;
-	background-position: 50% 50%;
-	background-image: url("s2r://panorama/images/dashboard/icon_jail_psd.vtex");
-	opacity: 0.6;
-
-	height: 50px;
-	width: 50px;
-	margin-top: 40px;
-	margin-right: 20px;
-	wash-color: textDefault;
-}
-
 .IsLayoutSmallScreen #QuitButton,
 .IsLayoutSmallScreen #SettingsMenuButton,
 .IsLayoutSmallScreen #PatchNotesButton,
-.IsLayoutSmallScreen #ZooButton,
-.IsLayoutSmallScreen #JailButtonContainer
+.IsLayoutSmallScreen #AchievementsButton,
+.IsLayoutSmallScreen #ZooButton
 {
 	ui-scale: 130%;
 	margin-right: 20px;
+	margin-top: 32px;
+}
+
+.IsLayoutSmallScreen #ZooButton
+{
+	ui-scale: 130%;
 }
 
 .AspectRatio21x9.IsLayoutSmallScreen #SettingsMenuButton
@@ -889,7 +895,7 @@ DACUIMain.InGame
 	background-size: contain;
 	background-repeat: no-repeat;
 	
-	opacity: 0.001;
+	opacity: 0.0;
 	transition-property: opacity;
 	transition-duration: 1s;
 }
@@ -905,54 +911,66 @@ DACUIMain.InGame
 {
 	horizontal-align: right;
 	vertical-align: bottom;
-	/*width: 878px;*/
-	/*height: 878px;*/
 	width: 100%;
 	height: 100%;
 	z-index: 0;
-	/*transform: translateX(100px) translateY(52px);*/
-	transition-property: width,height,transform;
+	opacity: 1;
+	transition-property: width,height, opacity;
 	transition-duration: 300ms;
 	transition-timing-function: ease-in-out;
 }
 
+.UnderlordPageViewingUnderlord2 #UnderlordPortrait
+{
+	transform: translateX( 240px );
+}
+
+
+.Page_DACLoadoutPage #UnderlordPortrait,
+.Page_DACRewardsBattlePassPage #UnderlordPortrait,
+.Page_DACRewardsProtopassPage #UnderlordPortrait,
+.Page_DACLoadoutProtopassPage #UnderlordPortrait
+{
+	visibility: collapse;
+}
+
+#MainFade
+{
+	width:100%;
+	height:100%;
+	opacity: 0;
+	background-color:black;
+}
+
+.Page_DACPagePostGame #MainFade
+{
+	opacity: 1;
+}
+
+.Page_DACPagePostGame #UnderlordPortrait,
 .Page_DACPlayPage #UnderlordPortrait
 {
-	transform: translateX( -1040px );
+	opacity: 0;
 }
 
 .AspectRatio4x3.Page_DACUnderlordsPage #UnderlordPortrait
 {
-	transform: translateX( 140px );
+	transform: translateX( 200px );
 }
 
-#UnderlordTint
+.IsLayoutSmallScreen.AspectRatio16x9.Page_DACUnderlordsPage #UnderlordPortrait
 {
-	background-size: 100%;
-	background-repeat: no-repeat;
-	horizontal-align: left;
-	height: 100%;
-	width: 1200px;
-	opacity: 0;
-	transition-property: opacity;
-	transition-duration: 0.2s;
+	transform: translateX( 200px );
 }
 
-.Page_DACPlayPage.Underlord_4 #UnderlordTint
+.IsLayoutSmallScreen.AspectRatio16x9.UnderlordPageViewingUnderlord2.Page_DACUnderlordsPage #UnderlordPortrait
 {
-	background-image: url("s2r://panorama/images/dashboard/play/bg_tint_hobgen_psd.vtex");
-	opacity: 1;
+	transform: translateX( 350px );
 }
 
-.Page_DACPlayPage.Underlord_1 #UnderlordTint
+.AspectRatio4x3.Page_DACUnderlordsPage.UnderlordPageViewingUnderlord2 #UnderlordPortrait
 {
-	background-image: url("s2r://panorama/images/dashboard/play/bg_tint_anessix_psd.vtex");
-	opacity: 1;
-}
-
-.AspectRatio21x9.IsLayoutSmallScreen.Page_DACPlayPage #UnderlordPortrait
-{
-	transform: translateX( -1200px );
+	transform: translateX( 440px );
 }
 
 #UnderlordShadow
@@ -976,7 +994,9 @@ DACUIMain.InGame
 
 .Page_DACPlayPage
 {
-	background-color: gradient( linear, 0% 100%, 0% 0%, from( #232d35 ), to( #14191e ) );
+	//background-color: gradient( linear, 0% 100%, 0% 0%, from( #232d35 ), to( #14191e ) );
+	background-color: gradient (linear, 0% 100%, 0% 0%, from(#0b0f14dd), to(#191c2fee));
+	//background-image: url("s2r://panorama/images/heropedia/heropedia-bg-2_psd.vtex");
 }
 
 #PopupFog
@@ -997,4 +1017,55 @@ DACUIMain.InGame
 .Page_DACZooPage #UnderlordPortrait
 {
 	visibility: collapse;
+}
+
+#DebugCorners
+{
+	width: 100%;
+	height: 100%;
+
+	visibility: collapse;
+}
+
+.DebugDrawCorners #DebugCorners
+{
+	visibility: visible;
+}
+
+.LowVisualQuality #DebugCorners
+{
+	visibility: collapse;
+}
+
+#DebugCornerTopLeft,
+#DebugCornerTopRight,
+#DebugCornerBottomLeft,
+#DebugCornerBottomRight
+{
+	width: 100px;
+	height: 100px;
+	background-position: 50% 50%;
+	background-size: cover;
+	background-repeat: no-repeat;	
+	background-image: url("s2r://panorama/images/ui/screen_rounded_corner_png.vtex");
+	wash-color: black;
+}
+
+#DebugCornerTopRight
+{
+	horizontal-align: right;
+	transform: rotateZ(90deg);
+}
+
+#DebugCornerBottomLeft
+{
+	vertical-align: bottom;
+	transform: rotateZ(-90deg);
+}
+
+#DebugCornerBottomRight
+{
+	vertical-align: bottom;
+	horizontal-align: right;
+	transform: rotateZ(180deg);
 }

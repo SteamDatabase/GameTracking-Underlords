@@ -10,10 +10,26 @@ DACScoreboardEntry
 	overflow: noclip;
 }
 
-DACScoreboardEntry.Odd 
+DACScoreboardEntry.Odd
 {
 	
 	background-color: #221c2855;
+}
+
+
+DACPostGameScoreboardEntry
+{
+	flow-children: right;
+	background-color: #00000020;
+	overflow: noclip;
+}
+
+DACPostGameScoreboardEntry.Odd {
+	background-color: #FFFFFF07;
+}
+
+.GameMode_Duos DACPostGameScoreboardEntry.Odd {
+	background-color: #00000020;
 }
 
 DACScoreboardEntry.Self
@@ -22,14 +38,30 @@ DACScoreboardEntry.Self
 	background-color: #71659350;
 }
 
+DACPostGameScoreboardEntry.Self
+{
+	//background-image: url("s2r://panorama/images/post_game/self-bg_psd.vtex");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-color: #7279e623;
+}
+
 .GameMode_Duos DACScoreboardEntry.Self
 {
 	background-color: #71659340;
 }
 
+/* Visibility */
+DACScoreboardEntry .Place, DACScoreboardEntry #PlaceHeader {
+	visibility: collapse;
+}
+
+DACPostGameScoreboardEntry .Bench, DACPostGameScoreboardEntry #BenchHeader {
+	visibility: collapse;
+}
+
 /* Columns */
-
-
 
 .Column {
 	height: 130px;
@@ -37,6 +69,11 @@ DACScoreboardEntry.Self
 
 .GameMode_Duos .Column {
 	height: 65px;
+}
+
+#PlaceHeader {
+	text-align: center;
+	width: 100px;
 }
 
 #NameHeader {
@@ -304,6 +341,76 @@ DACScoreboardEntry.Self
 }
 
 
+/* Placing */
+.HealthLabel {
+	visibility: collapse;
+	
+	flow-children: right;
+	horizontal-align: center;
+	vertical-align: center;
+	
+}
+
+.HealthLabel Label {
+	color: #a2ff92;
+	font-size: 36px;
+	font-weight: black;
+}
+
+.HealthMid .HealthLabel {
+	color: #fff66e;
+}
+
+.HealthLow .HealthLabel {
+	color: #ff6123;
+}
+
+/* Not used right now, until we get some real art in place 
+#MedalPanel
+{
+	width:100%;
+	height:100%;
+}
+
+.GoldMedalFX
+{
+	overflow:noclip;
+	width:80px;
+	height:80px;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+.Medal
+{
+	width:40px;
+	height:40px;
+	vertical-align: center;
+	horizontal-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/medal_gold_png.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	visibility: collapse;
+}
+
+.FirstPlace #GoldMedal
+{	
+	background-image: url("s2r://panorama/images/leaderboard/medal_gold_png.vtex");
+}
+
+.SecondPlace #SilverMedal
+{
+	background-image: url("s2r://panorama/images/leaderboard/medal_silver_png.vtex");
+}
+
+.ThirdPlace #BronzeMedal
+{
+	background-image: url("s2r://panorama/images/leaderboard/medal_bronze_png.vtex");
+}
+
+*/
+
+
 
 
 /* Talents */
@@ -363,12 +470,14 @@ DACScoreboardEntry.Self
 	width: 260px;
 	background-color: #00000055;
 	text-align: center;
+	visibility: collapse;
 }
 
 .Column.Global {
 	width: 260px;
 	padding-top: 5px;
 	padding-left: 5px;
+	visibility: collapse;
 	
 }
 
@@ -522,7 +631,7 @@ DACScoreboardEntry.Self
 }
 
 #ItemIcon {
-	margin-top: 65px;
+	margin: 65px 0 0 0;
 	//ui-scale: 80%;
 	//ui-scale: 70%;
 	ui-scale: 80%;
@@ -645,6 +754,24 @@ DACSynergyIcon {
 	margin: 5px;
 }
 
+/* Place */
+.Column.Place
+{
+	width: 100px;
+	text-align: center;
+
+}
+
+.Place Label
+{
+	color: #e1decc77;
+	font-weight: black;
+	font-size: 32px;
+	margin-top: 45px;
+	horizontal-align: center;
+}
+
+
 /* Bench */
 #BenchContainer {
 	flow-children: right-wrap;
@@ -735,7 +862,7 @@ DACSynergyIcon {
 
 .HealthLow .PlayerHP
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from( #81cd74 ), to(#b1feaa));
+	color: #ff6123;
 }	
 
 .PlayerLevel {
@@ -811,14 +938,16 @@ DACSynergyIcon {
 
 // shenanigans to make duo column work
 .GameMode_Duos .TeamSlot1 #DuosColumn,
-.GameMode_Duos .TeamSlot1 .Column.Rank
+.GameMode_Duos .TeamSlot1 .Column.Rank,
+.GameMode_Duos .TeamSlot1 .Column.Place
 {
 	height: 130px;
 	margin-top: -65px;
 }
 
 .GameMode_Duos .TeamSlot0 #DuosColumn,
-.GameMode_Duos .TeamSlot0 .Column.Rank
+.GameMode_Duos .TeamSlot0 .Column.Rank,
+.GameMode_Duos .TeamSlot0 .Column.Place Label
 {
 	visibility: collapse;
 }

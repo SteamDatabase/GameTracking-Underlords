@@ -14,22 +14,37 @@
 				<Panel id="TimerBar" />
 		</Panel>
 
-		<Panel class="GameStatePanelClock">
-			<Panel class="GameStateTimer LeftRightFlow">
-				<Panel id="HeaderRoundTimeContainer">
-					<Label class="HeaderRoundTime" id="TimeRemaining" text="{i:gameStateTimeLeft}" />
+		
+		
+		<Panel class="TopBottomFlow" id="VertTimerContainer" >
+			<Panel class="LeftRightFlow" >
+				<Panel id="RoundHeaderContainer">
+					<Panel class="TopBarLeft">
+						<Label class="RoundPhaseText Preparing" text="#DAC_TopBar_Preparing_Left" />
+						<Label class="RoundPhaseText Combat" text="#DAC_TopBar_Combat_Left" />
+						<Label class="RoundPhaseText Countdown" text="#DAC_TopBar_Countdown_Left" />
+						<Label class="RoundPhaseText Loot" text="#DAC_TopBar_Loot_Left" />
+					</Panel>
+					
+					<Panel class="TopBarRight">
+						<Label class="RoundPhaseText Preparing" text="#DAC_TopBar_Preparing_Right" />
+						<Label class="RoundPhaseText Combat" text="#DAC_TopBar_Combat_Right" />
+						<Label class="RoundPhaseText Countdown" text="#DAC_TopBar_Countdown_Right" />
+						<Label class="RoundPhaseText Loot" text="#DAC_TopBar_Loot_Right" />
+					</Panel>
 				</Panel>
 			</Panel>
-		</Panel>		
-
-		<Panel id="RoundHeaderContainer">
 			
-			<Label id="RoundPhase" class="RoundPhaseText" text="#DAC_InGame_RoundPhase" />
-			<Label id="NextRoundLabel" class="RoundPhaseText" text="#DAC_InGame_NextRoundStarts" />
-
-			<Label id="RoundNum" class="RoundPhaseText" text="#DAC_InGame_Round"/>
+			<Panel class="GameStatePanelClock" >
+					<!--<DACParticleScenePanel id="TimerDripParticle" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/timer/ui_round_timer_drops.vpcf" squarepixels="true" fov="-200" />-->
+					<Panel id="TimerDripParticle" hittest="false" />
+					<Panel class="GameStateTimer LeftRightFlow">
+						<Panel id="HeaderRoundTimeContainer">
+							<Label class="HeaderRoundTime" id="TimeRemaining" text="{i:gameStateTimeLeft}" />
+						</Panel>
+					</Panel>
+			</Panel>
 		</Panel>
-
 		<Label id="RoundHeaderPauseIndicator" text="#DAC_GamePaused" />	
 	</DACUIHudTopBar>
 </root>

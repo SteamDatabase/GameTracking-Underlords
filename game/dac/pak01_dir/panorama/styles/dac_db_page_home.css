@@ -138,6 +138,16 @@ DACHomePage
 	background-color: #444;
 }
 
+DACHomePage.DashboardPage
+{
+	transition-duration: 0s;
+}
+.Page_DACPagePostGame DACHomePage.DashboardPage
+{
+	visibility: collapse;
+	opacity:0;
+}
+
 .DefaultHidden
 {
 	visibility: collapse;
@@ -325,16 +335,16 @@ DACHomePage
 	margin-bottom: 150px;
 }
 
-.HomeButton 
+.HomeButton, #ReconnectButton 
 {
 	horizontal-align: left;
-	width: fit-children;
-	height: 133px;
+	max-width: 700px;
+	height: 140px;
 	opacity: 1;
 	transition-property: brightness;
 	transition-duration: .2s; 
-	margin-left: safe-area-inset-left;
-	padding-left: 12px;
+	background-image: url("s2r://panorama/images/dashboard/main_nav_play_psd.vtex");
+	background-size: cover;
 }
 
 .IsLayoutSmallScreen .HomeButton 
@@ -351,9 +361,9 @@ DACHomePage
 	visibility: collapse;
 }
 
-.HomeButton Label 
+.HomeButton Label, .ReconnectButton Label 
 {
-	font-size: 132px;
+	font-size: 100px;
 	font-weight: black;
 	letter-spacing: 4px;
 	vertical-align: middle;
@@ -362,14 +372,30 @@ DACHomePage
 	color: textBrighter;
 	text-transform: uppercase;
 	//transform: rotateZ(-2deg);
-	max-width: 420px;
+	max-width: 600px;
 	text-align: center;
 	text-overflow: shrink;
 	overflow: noclip;
 	margin-left: 20px;
 	transition-property: brightness;
 	transition-duration: .2s; 
-	opacity-mask: url("s2r://panorama/images/dashboard/homebutton_mask_psd.vtex");
+	padding: 4px 12px 4px 40px;
+	margin-right: 24px;
+}
+
+.ReconnectButton Label 
+{
+	font-size: 80px;
+}
+
+.HasSafeAreaRight .HomeButton Label, .HasSafeAreaRight .ReconnectButton Label 
+{
+	margin-right: safe-area-inset-right;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9
+{
+	margin-right: safe-area-inset-right;
 }
 
 .HomeButton:hover Label 
@@ -377,15 +403,16 @@ DACHomePage
 	brightness: 1.5;
 }
 
-.HomeButton:disabled Label
+.HomeButton:disabled 
 {
-	color: #4d4a45;
+	visibility: collapse;
 }
 
 .PlayButtonContainer {
 	overflow: noclip;
 }
 
+.LookingForMatchPopupVisible .PlayButtonContainer,
 .HasParty .PlayButtonContainer
 {
 	visibility: collapse;
@@ -394,21 +421,6 @@ DACHomePage
 .HasParty.AllPartyMembersReady .PlayButtonContainer
 {
 	visibility: visible;
-}
-
-.Language_schinese .HomeButton Label,
-.Language_tchinese .HomeButton Label,
-.Language_koreana .HomeButton Label,
-.Language_japanese .HomeButton Label
-{
-	margin-top: 0px;
-	margin-bottom: 5px;
-	font-size: 90px;
-}
-
-.Language_russian .HomeButton Label
-{
-	font-size: 100px;
 }
 
 .PartyNotReadyLabel
@@ -466,19 +478,16 @@ DACHomePage
 
 .ReadyUpButton
 {
-	horizontal-align: left;
-	width: fit-children;
-	height: 100px;
+    horizontal-align: right;
+	max-width: 540px;
+	height: 112px;
+	opacity: 1;
 	transition-property: brightness;
 	transition-duration: .2s; 
-	margin-left: 20px;
-	padding-left: 10px;
-	padding-right: 10px;
-	margin-top: 20px;
-	horizontal-align: left;
-	vertical-align: bottom;
-	margin-bottom: 20px;
-	background-color: gradient( linear, 0% 0%, 0% 100%, from( #348746 ), to( #699a61 ) );
+	background-image: url("s2r://panorama/images/dashboard/play/play_button_find_match_psd.vtex");
+    background-size: 100%;
+    transition-property: background-image, max-width, brightness;
+    transition-duration: 0.2s;
 
     animation-name: PulseAnimLite;
     animation-duration: 2s;
@@ -492,23 +501,21 @@ DACHomePage
 
 .ReadyUpButton Label 
 {
-	font-size: 132px;
+	font-size: 80px;
 	font-weight: black;
-	letter-spacing: 2px;
-	vertical-align: middle;
-    horizontal-align: center;
-	color: #fff;
+	letter-spacing: 1px;
+	vertical-align: center;
+	color: textBrighter;
 	text-transform: uppercase;
-	max-width: 420px;
-	white-space: nowrap;
-	padding: 12px 40px;
-
-	text-align: center;
+	text-align: right;
 	text-overflow: shrink;
 	overflow: noclip;
+    max-width: 510px;
+    height: 112px;
 	transition-property: brightness;
 	transition-duration: .2s; 
-	//opacity-mask: url("s2r://panorama/images/dashboard/homebutton_mask_psd.vtex");
+	padding: 4px 0px 0px 36px;
+    margin-right: 32px;
 }
 
 .ReadyUpButton:hover Label 
@@ -522,31 +529,12 @@ DACHomePage
     //width: 635px;
 }
 
-
-#HomeIOSMuted 
-{
-	font-size: 36px;
-	font-weight: bold;
-	color: #fff;
-	text-transform: uppercase;
-	transition-property: opacity;
-	transition-duration: .2s;
-    margin-left: safe-area-inset-left;
-    padding-left: 15px;
-	visibility: collapse;
-}
-
-.ShowIOSMuted #HomeIOSMuted
-{
-	visibility: visible;
-}
-
 #ReconnectButton
 {
 	vertical-align: top;
 }
 
-.ReconnectButton Label
+/*.ReconnectButton Label
 {
 	font-size: 88px;
 	text-overflow: shrink;
@@ -561,7 +549,7 @@ DACHomePage
 	margin-left: 24px;
 	transition-property: brightness;
 	transition-duration: 0.2s;
-}
+}*/
 
 .ReconnectButton Label:hover
 {
@@ -570,9 +558,16 @@ DACHomePage
 
 #LeaveButton 
 {
-	width: 300px;
-	height: 50px;
-	margin-left: 24px;
+	width: fit-children;
+	height: fit-children;
+	margin-right: 24px;
+	horizontal-align: right;
+	margin-top: 12px;
+}
+
+.IsLayoutSmallScreen #LeaveButton
+{
+	margin-right: safe-area-inset-right;
 }
 
 #LeaveButton Label 
@@ -618,7 +613,8 @@ DACHomePage
 }
 
 .LeftHomeButton:hover, 
-.HomeButton:hover
+.HomeButton:hover,
+#ReconnectButton:hover
 {
 	brightness:1.6;
 }
@@ -710,9 +706,9 @@ DACHomePage
 
 #ButtonContainer
 {
-	horizontal-align: left;
+	horizontal-align: right;
 	vertical-align: bottom;
-	margin-bottom: 6%;
+	margin-bottom: 40px;
 	flow-children: down;
 
 	overflow: noclip;
@@ -812,14 +808,14 @@ DACHomePage
 
 #SocialPanelButton
 {
-	width: 64px;
+	width: 60px;
 	height: 80px;
 	background-image: url("s2r://panorama/images/dashboard/icon_friends_list_psd.vtex");
-	background-size: 64px 64px;
+	background-size: 60px 60px;
 	background-repeat: no-repeat;
 	horizontal-align: left;
 	vertical-align: top;
-	margin: 40px 0px 0px 40px;
+	margin: 40px 0px 0px 56px;
 	transition-property: brightness;
 	transition-duration: 0.2s;
 	z-index: 200;
@@ -829,7 +825,7 @@ DACHomePage
 
 .IsLayoutSmallScreen #SocialPanelButton
 {
-	margin: 38px 0px 0px 32px;
+	margin: 32px 0px 0px 24px;
 	width: 80px;
 	height: 100px;
 	background-size: 80px 80px;
@@ -856,7 +852,7 @@ DACHomePage
 
 .GCStatusVisible #SocialPanel
 {
-	//margin-top: 30px;
+	margin-top: 30px;
 }
 
 #SocialPanel
@@ -886,16 +882,6 @@ DACHomePage
 	transition-duration: 0.2s;
     //border-bottom: 2px solid #27272faa;
     //border-right: 2px solid #27272faa;
-}
-
-.LookingForMatch #SocialPanelContents
-{
-	height: 84%;
-}
-
-.LookingForMatch.IsLayoutSmallScreen #SocialPanelContents
-{
-	height: 84%;
 }
 
 .HasParty .ShowSocialParty #SocialPanelContents
@@ -1972,6 +1958,7 @@ to
 {
 	background-image: url("s2r://panorama/images/dashboard/main_nav_battlepass_psd.vtex");
 	padding-right: 42px;
+	min-width: 400px;
 }
 
 .MainNav00
@@ -2051,8 +2038,10 @@ to
 	//text-shadow: 1px 1px 4px 2 #000000;
 }
 
-#BattlePassPanel {
+#BattlePassPanel
+{
 	flow-children: down;
+	min-width: 360px;
 }
 
 .Underlord_0 .UnderlordSelectContainer .UnderlordSelectTopContainer,
@@ -2067,16 +2056,6 @@ to
 {
 	ui-scale: 120%;
 }
-
-#MiniJail
-{
-	margin-left: safe-area-inset-left;
-	padding-left: 10px;
-
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
 
 @keyframes 'PulseAnimLite'
 {
@@ -2122,4 +2101,9 @@ to
 DACViolator.Acknowledged
 {
 	visibility:collapse;
+}
+
+.Page_DACHomePage .UnderlordSelectContainer
+{
+	visibility: collapse;
 }

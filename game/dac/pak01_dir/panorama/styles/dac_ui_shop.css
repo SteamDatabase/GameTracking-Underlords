@@ -23,8 +23,38 @@ DACUIShop
 .IsLayoutSmallScreen #DACUIShopContainer
 {
 	width: 1400px;
+	overflow: noclip;
 }
 
+.ShopOdds
+{
+	width: 200px;
+	margin-left: -100px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen DACUIShop,
+.AspectRatio21x9.IsLayoutSmallScreen #DACUIShopContainer
+{
+	width: 1480px;
+	width: 1900px;
+	//ui-scale: 120%;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen DACUIShop,
+.AspectRatio16x9.IsLayoutSmallScreen #DACUIShopContainer
+{
+	width: 1480px;
+	width: 1610px;
+	//ui-scale: 120%;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen DACUIShop,
+.AspectRatio4x3.IsLayoutSmallScreen #DACUIShopContainer
+{
+	width: 1480px;
+	width: 1550px;
+	//ui-scale: 120%;
+}
 
 DACUIShop.Visible
 {
@@ -326,6 +356,11 @@ DACUIShop.Visible
 	margin-top: 70px;
 }
 
+.AspectRatio21x9.IsLayoutSmallScreen #MainRow
+{
+	margin-top: 50px;
+}
+
 #UnitsShop
 {
 	width: 100%;
@@ -333,8 +368,9 @@ DACUIShop.Visible
 
 .CostLabel
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from(#973c00), to(#906030));
-	font-weight: bold;
+	color: gradient(linear, 0% 0%, 0% 100%, from(#000), to(#956015));
+	font-family: ravenhook;
+	//font-weight: bold;
 	horizontal-align: center;
 	vertical-align: top;
 
@@ -592,9 +628,36 @@ DACSynergyIcon.HiddenInactive,
 	transition-duration: .2s;
 
 	width:	90px;
-	height:	110px;
+	height:	90px;
 	
 	background-image: none;
+	
+}
+
+#LevelUp
+{
+	margin-left: 2px;
+	//overflow: noclip;
+}
+
+.GameMode_Normal.IsLayoutLargeScreen #LevelUp
+{
+	height: 106px;
+}
+
+.GameMode_Normal.IsLayoutSmallScreen #LevelUp
+{
+	//height: 136px;
+}
+
+.GameMode_Normal #LevelUp:hover 
+{
+	brightness: 1;
+}
+
+.IsLayoutLargeScreen .ShopButton
+{
+	margin-bottom: 20px;
 }
 
 .GameMode_Turbo #LevelUp .GoldValueContainer,
@@ -609,7 +672,29 @@ width: 90px;
 height: 90px;
 }
 
+.AspectRatio16x9.IsLayoutLargeScreen #Rulebook
+{
+	width: 90px;
+	height: 90px;
+}
 
+.AspectRatio16x9.IsLayoutSmallScreen #Rulebook
+{
+	width: 110px;
+	height: 110px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #Rulebook
+{
+	width: 120px;
+	height: 120px;
+}
+
+.AspectRatio4x3 #Rulebook
+{
+	width: 120px;
+	height: 120px;
+}
 
 .LowVisualQuality .ShopButton
 {
@@ -622,15 +707,22 @@ height: 90px;
 	brightness: 2;
 }
 
+
+
 #RerollButton
 {
-	width: 118px;
-	height: 118px;
+	width: 105px;
+	height: 105px;
 	vertical-align: center;
 	horizontal-align: center;
 	background-image: url("s2r://panorama/images/shop/reroll_button_psd.vtex");
 	background-size: 100%;
-	margin-top: -3px;
+	//margin-top: -3px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #RerollButton
+{
+	margin-top: 0px;
 }
 
 .CannotAffordReroll #RerollButton
@@ -703,7 +795,12 @@ height: 90px;
 	horizontal-align: center;
 	background-image: url("s2r://panorama/images/shop/lock_button_psd.vtex");
 	background-size: 100%;
-	margin-top: 15px;
+	//margin-top: 15px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #LockButton
+{
+	margin-top: 0px;
 }
 
 #UnlockButton
@@ -715,7 +812,7 @@ height: 90px;
 	horizontal-align: center;
 	background-image: url("s2r://panorama/images/shop/unlock_button_psd.vtex");
 	background-size: 100%;
-	margin-top: 15px;
+	//margin-top: 15px;
 }
 
 #UnlockShop
@@ -752,6 +849,30 @@ height: 90px;
 	background-size: 100%;
 }
 
+.AspectRatio21x9.IsLayoutSmallScreen #RulebookButton
+{
+	width: 120px;
+	height: 120px;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen #RulebookButton
+{
+	width: 120px;
+	height: 120px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #RulebookButton
+{
+	width: 120px;
+	height: 120px;
+}
+
+.AspectRatio4x3 #RulebookButton
+{
+	width: 120px;
+	height: 120px;
+}
+
 #LibraryButton
 {
 	width: 105px;
@@ -774,9 +895,9 @@ height: 90px;
 	background-size: 100%;
 }
 
-.GameMode_Turbo.AspectRatio21x9.IsLayoutSmallScreen #OddsButton
+.AspectRatio21x9.IsLayoutSmallScreen #OddsButton
 {
-	//visibility: collapse;
+	visibility: collapse;
 }
 
 .DefaultHidden
@@ -1145,8 +1266,8 @@ height: 90px;
 	font-weight: bold;
 	text-shadow: 0px 0px 0px 2.0 #000;
 	text-align: center;
-	width: 150px;
-
+	width: fit-children;
+	horizontal-align: center;
 	vertical-align: bottom;
 	margin-bottom: 0px;
 	line-height: 25px;
@@ -1213,6 +1334,21 @@ height: 90px;
 	vertical-align: center;
 	horizontal-align: center;
 	margin-bottom: 118px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen .LevelBarCostIncrementGap .LevelBarCostGap
+{
+	margin-bottom: 108px;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen .LevelBarCostIncrementGap .LevelBarCostGap
+{
+	margin-bottom: 100px;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen .LevelBarCostIncrementGap .LevelBarCostGap
+{
+	margin-bottom: 107px;
 }
 
 
@@ -1319,6 +1455,8 @@ height: 90px;
 	font-size: 72px;
 	text-shadow: 0px 0px 0px 2.0 #1d2645;
 	//margin-top: 6px;
+	
+	font-family: ravenhook;
 }
 
 
@@ -1538,9 +1676,11 @@ height: 90px;
 	background-image: url("s2r://panorama/images/hud/dac_shop_button_psd.vtex");
 	background-repeat: no-repeat;
 	background-size: contain;
-	width: 60px;
-	height: 54px;
+	width: 40px;
+	height: 40px;
 	background-position: 50% 50%;
+	overflow: noclip;
+	//margin-left: 6px;
 }
 
 #StatusGoldContainer .GoldValueCoin
@@ -1604,6 +1744,7 @@ height: 90px;
 	transition-timing-function: ease-in;	
 }
 
+
 .ShopLocked .HeroLock
 {
 	opacity: 1;
@@ -1664,7 +1805,10 @@ height: 90px;
 	background-size: 110% 100%;
 	background-repeat: no-repeat;
 	background-position: -46px 52px;
+	overflow: noclip;
 }
+
+
 
 #MainRow
 {
@@ -1687,21 +1831,34 @@ height: 90px;
 {
 	horizontal-align: left;
 	margin-left: 12px;
-	margin-top: 65px;
+	margin-top: 162px;
 	//visibility: collapse;
 }
 
 .GameMode_Turbo.AspectRatio16x9 .ButtonGutterLeft
 {
-	margin-top: 168px;
+	margin-top: 162px;
+}
+
+.GameMode_Turbo.AspectRatio16x10 .ButtonGutterLeft
+{
+	margin-top: 162px;
+}
+
+.GameMode_Turbo.IsLayoutLargeScreen.AspectRatio21x9 .ButtonGutterLeft
+{
+	margin-top: 162px;
 }
 
 .ButtonGutterRight
 {
 	horizontal-align: right;
-	margin-right: 12px;
+	margin-right: 10px;
 	//visibility: collapse;
+	margin-top: 163px;
 }
+
+
 
 .IsLayoutSmallScreen .ButtonGutterLeft
 {
@@ -1716,7 +1873,28 @@ height: 90px;
 .AspectRatio21x9.IsLayoutSmallScreen .ButtonGutterRight
 {
 	margin-top: 45px;
-	margin-top: 145px;
+	margin-top: 177px;
+	margin-top: 177px;
+	ui-scale: 112%;
+	margin-right: -10px;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen .ButtonGutterRight
+{
+	margin-top: 5px;
+	margin-top: 177px;
+	margin-top: 165px;
+	ui-scale: 112%;
+	margin-right: -10px;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen .ButtonGutterRight
+{
+	margin-top: 5px;
+	margin-top: 157px;
+	margin-top: 170px;
+	//ui-scale: 112%;
+	margin-right: -10px;
 }
 
 .IsLayoutSmallScreen .ButtonGutter
@@ -1729,7 +1907,43 @@ height: 90px;
 	margin-top: 45px;
 }
 
+.AspectRatio16x9.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft
+{
+	margin-top: 166px;
+	ui-scale: 112%;
+}
 
+.AspectRatio4x3.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft
+{
+	margin-top: 166px;
+	//ui-scale: 112%;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft
+{
+	margin-top: 178px;
+	ui-scale: 112%;
+	
+}
+
+.GameMode_Turbo.AspectRatio21x9.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft
+{
+	margin-top: 178px;
+	ui-scale: 112%;
+	
+}
+
+.GameMode_Turbo.AspectRatio16x9.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft
+{
+	margin-top: 166px;
+	ui-scale: 112%;
+}
+
+.GameMode_Turbo.AspectRatio4x3.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft
+{
+	margin-top: 166px;
+	//ui-scale: 112%;
+}
 
 
 #LibraryButton,
@@ -1737,8 +1951,57 @@ height: 90px;
 #UnlockButton,
 #RerollButton
 {
-	width: 90px;
-	height: 90px;
+	width: 105px;
+	height: 105px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen .ShopButton
+{
+	width: 120px;
+	height: 120px;
+	margin-top: 32px;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen .ShopButton
+{
+	width: 110px;
+	height: 110px;
+	margin-top: 26px;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen .ShopButton
+{
+	width: 120px;
+	height: 120px;
+	margin-top: 32px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #LibraryButton,
+.AspectRatio21x9.IsLayoutSmallScreen #LockButton,
+.AspectRatio21x9.IsLayoutSmallScreen #UnlockButton,
+.AspectRatio21x9.IsLayoutSmallScreen #RerollButton
+{
+	width: 120px;
+	height: 120px;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen #LibraryButton,
+.AspectRatio16x9.IsLayoutSmallScreen #LockButton,
+.AspectRatio16x9.IsLayoutSmallScreen #UnlockButton,
+.AspectRatio16x9.IsLayoutSmallScreen #RerollButton
+{
+	width: 120px;
+	height: 120px;
+}
+	
+	
+.AspectRatio4x3.IsLayoutSmallScreen #LibraryButton,
+.AspectRatio4x3.IsLayoutSmallScreen #LockButton,
+.AspectRatio4x3.IsLayoutSmallScreen #UnlockButton,
+.AspectRatio4x3.IsLayoutSmallScreen #RerollButton
+{
+	width: 120px;
+	height: 120px;
 }
 
 #PlayerEXPContainer
@@ -1750,6 +2013,22 @@ height: 90px;
 	horizontal-align: center;
 	vertical-align: top;
 	ui-scale: 52%;
+	//pre-transform-scale2d: 0.52;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #PlayerEXPContainer
+{
+	ui-scale: 76%;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen #PlayerEXPContainer
+{
+	ui-scale: 76%;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen #PlayerEXPContainer
+{
+	ui-scale: 76%;
 }
 
 #UnlockShop
@@ -1788,6 +2067,24 @@ height: 90px;
 	ui-scale: 122%;
 }
 
+.AspectRatio21x9.IsLayoutSmallScreen #UnitShopContainer
+{
+	ui-scale: 150%;
+	//overflow: noclip;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen #UnitShopContainer
+{
+	ui-scale: 128%;
+	//overflow: noclip;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen #UnitShopContainer
+{
+	ui-scale: 132%;
+	//overflow: noclip;
+}
+
 // Level Up button
 #LevelUp #StatusXP
 {
@@ -1796,6 +2093,15 @@ height: 90px;
 	text-shadow: 0px 0px 0px 2.0 #1d2645;
 	vertical-align: bottom;
 	font-size: 20px;
+	font-family: ravenhook;
+	//margin-bottom: -18px;
+	overflow: noclip;
+}
+
+.GameMode_Normal.IsLayoutSmallScreen #LevelUp #StatusXP
+{
+	margin-bottom: -18px;
+	font-size: 24px;
 }
 
 
@@ -1814,6 +2120,8 @@ height: 90px;
 	margin-bottom: 0px;
 	margin-top: 0px;
 }
+
+
 
 .ParticleOverlay
 {
@@ -1885,14 +2193,15 @@ height: 90px;
 	width: 40px;
 	height: 40px;
 	horizontal-align: right;
-	margin-top: 6px;
+	//margin-top: 6px;
 	margin-bottom: 55px;
-	margin-right: -6px;
+	margin-right: -4px;
+	overflow: noclip;
 }
 
 .GoldValueContainer .CostLabel
 {
-	font-size: 24px;
+	font-size: 23px;
 	text-align: center;
 	padding-top: 0px; 
 	margin-top: 2px;
@@ -1961,9 +2270,9 @@ height: 90px;
 
 #CostNumber
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from(#973c00), to(#906030));
+	color: gradient(linear, 0% 0%, 0% 100%, from(#000), to(#956015));
 	font-weight: bold;
-	font-size: 28px;
+	font-size: 26px;
 
 	text-align: center;
 	//padding-top: 1px;
@@ -1971,8 +2280,10 @@ height: 90px;
 	horizontal-align: center;
 
 	text-shadow: none;
-	margin-top: 2px;
-	margin-left: 2px;
+	margin-top: 3px;
+	margin-left: 1px;
+	
+	font-family: ravenhook;
 }
 
 #UnitHeader
@@ -2012,7 +2323,8 @@ height: 90px;
 
 .IsLayoutSmallScreen #InfoButton
 {
-	opacity: .18;
+	opacity: 0;
+	margin-top: 30px;
 }
 
 #HeroCardRow:hover #InfoButton:hover
@@ -2034,40 +2346,6 @@ height: 90px;
 .IsLayoutSmallScreen #LibraryShop
 {
 	//visibility: collapse;
-}
-
-.ShopJail
-{
-	horizontal-align: left;
-	vertical-align: bottom;
-	margin-bottom: -15px;
-
-	transition-property: opacity;
-	transition-duration: .2s;
-	padding: 5px 25px 15px 25px;
-	//background-image: url("s2r://panorama/images/jail/title_bg_04_psd.vtex");
-	background-image: url("s2r://panorama/images/shop/teammate_shop_backer_psd.vtex");
-	background-size: 100% 130%;
-	background-position: 100% 95%;
-	//background-size: cover;
-	background-repeat:no-repeat;
-
-	opacity: 0;
-}
-
-.GameMode_Duos .ShopJail
-{
-	margin-bottom: 50px;
-}
-
-.ShowMiniJail .ShopJail
-{
-	opacity: 1;
-}
-
-.GameMode_Turbo #JailShop
-{
-	visibility: collapse;
 }
 
 .TeammateInfoIcon
@@ -2184,4 +2462,126 @@ height: 90px;
 .GameMode_Tutorial .ButtonGutterLeft
 {
 	visibility: collapse;
+}
+
+/** Odds */
+.HeroOddsLabel
+{
+	font-size: 27px;
+	line-height: 23px;
+	color: white;
+	text-transform: uppercase;
+	text-shadow: 0px 1px 0px 3.0 #000000aa;
+	font-weight: semi-bold;
+	
+}
+
+
+
+.Tier1 .HeroOddsLabel
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from(#d0b2cd), to(#cedef8));
+}
+
+.Tier2 .HeroOddsLabel
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from(#3ed93b), to(#99d3a0));
+}
+
+.Tier3 .HeroOddsLabel
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from(#5990ff), to(#9cbbed));
+}
+
+.Tier4 .HeroOddsLabel
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from(#e347ff), to(#e49bff));
+}
+
+.Tier5 .HeroOddsLabel
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from(#fc9f45), to(#ffd0a2));
+}
+
+.CurrentLevelOdds {
+	flow-children: down;
+	visibility: collapse;
+}
+
+.IsLayoutSmallScreen .CurrentLevelOdds
+{
+	margin-left: -25px;
+	visibility: visible;
+	margin-top: 235px;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen .CurrentLevelOdds
+{
+	margin-left: -22px;
+	visibility: visible;
+	margin-top: 212px;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen .CurrentLevelOdds
+{
+	margin-left: -22px;
+	visibility: visible;
+	margin-top: 212px;
+}
+
+.HeroOddsContainer {
+	flow-children: right;
+	margin-bottom: 25px;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen .HeroOddsContainer
+{
+	margin-bottom: 21px;
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen .HeroOddsContainer
+{
+	margin-bottom: 22px;
+}
+
+.AspectRatio16x9.IsLayoutSmallScreen.HasSafeAreaLeft.HasSafeAreaRight .HeroOddsContainer
+{
+	margin-bottom: 21px;
+}
+
+.HeroOddsIcon {
+	width: 26px;
+	height: 26px;
+	opacity: 1;
+	margin-right: 0px;
+	margin-top: 1px;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/leaderboard/player_level_white_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.Tier1 .HeroOddsIcon
+{
+	background-image: url("s2r://panorama/images/leaderboard/player_level_tier1_psd.vtex");
+}
+
+.Tier2 .HeroOddsIcon
+{
+	background-image: url("s2r://panorama/images/leaderboard/player_level_tier2_psd.vtex");
+}
+
+.Tier3 .HeroOddsIcon
+{
+	background-image: url("s2r://panorama/images/leaderboard/player_level_tier3_psd.vtex");
+}
+
+.Tier4 .HeroOddsIcon
+{
+	background-image: url("s2r://panorama/images/leaderboard/player_level_tier4_psd.vtex");
+}
+
+.Tier5 .HeroOddsIcon
+{
+	background-image: url("s2r://panorama/images/leaderboard/player_level_tier5_psd.vtex");
 }

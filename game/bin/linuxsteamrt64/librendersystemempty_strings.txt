@@ -158,7 +158,7 @@ $fD	0
 14ConCommandBase
 14IRenderContext
 15CMemberFunctor4IP19CTextureManagerBaseMS0_FvP25IAsyncResourceDataRequestP12CTextureBase22TextureSpecification_tiES3_S5_S6_i12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
-15CMemberFunctor7IP19CTextureManagerBaseMS0_FvP12CTextureBase12ResourceId_tPvi22TextureSpecification_ti23TextureBitsMemoryType_tES3_S4_S5_iS6_iS7_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
+15CMemberFunctor9IP19CTextureManagerBaseMS0_FvP12CTextureBase11CWeakHandleI31InfoForResourceTypeCTextureBaseE12ResourceId_tPvi22TextureSpecification_tS9_i23TextureBitsMemoryType_tES3_S6_S7_S8_iS9_S9_iSA_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CRenderPassDesc
 15CSwapChainEmpty
 15CTier0AppSystemI12IRenderUtilsE
@@ -373,7 +373,9 @@ AssetBrowserSystem_001
 AssetPreviewSystem_001
 AssetSystem001
 AssetSystemTest001
+Async Texture hookup uses its own threadpool instead of the global pool.
 AsyncHookUpTextureBits
+AsyncTextureHookup
 At marker 0x%02x, recovery action %d
 Attempt to set buffer size beyond max ignored
 B channel not found
@@ -496,6 +498,7 @@ Corrupt JPEG data: bad arithmetic code
 Corrupt JPEG data: found marker 0x%02x instead of RST%d
 Corrupt JPEG data: premature end of data segment
 CreateInterface
+CreateNewThreadPool
 CubeMapFace_t
 D$ H)
 D$ H9D$
@@ -603,6 +606,7 @@ Extra compression data
 F	@t&
 FATAL ERROR: unable to register all schema data: %s
 FCVAR_NEVER_AS_STRING
+FPATI
 Failed AllocateTexture for '%s'
 Failed to compute channel layout.
 Failed to create device. Modules loaded: %s
@@ -709,7 +713,6 @@ Hc{@L
 Hc{xH
 HelpSystem_001
 HookUpConfigValue
-HookUpTextureBits
 HostStateMgr001
 Huffman code size table overflow
 Huffman table 0x%02x was not defined
@@ -1299,17 +1302,14 @@ T$0t}H
 T$4D;d$4
 T$4E+n A9
 TEX: %u textures, %.2f MB
-TEXMAN: %s %s
 TEXMAN: %s MarkTextureBitsLoaded (%s)
 TEXMAN: %s loaded %s %i/%i mips (%ix%i / %ix%i) of %s (%i bytes)
 TEXMAN: Abandoning job in %s
 TEXMAN: Abandoning streaming request in %s
-TEXMAN: Added hookup job for %s
 TEXMAN: Adding %s, %llx to abandoned hookup jobs
 TEXMAN: DeferTextureLoads %s MarkTextureBitsLoaded (%s)
 TEXMAN: Deleting %d textures
 TEXMAN: Outstanding stream count %d -> %d (%s)
-TEXMAN: Posting resource load complete msg.
 TIcL$
 TOTAL: %.2f MB
 TRPGI
@@ -1724,7 +1724,6 @@ __pthread_key_create
 __sprintf_chk
 __stack_chk_fail
 __tls_get_addr
-_bake
 _edata
 _fini
 _setjmp
@@ -1932,7 +1931,6 @@ notify
 o$D9e
 out of memory
 p[A\A]A^]
-p[A\]
 parameter error
 pixelAspectRatio
 png/jpg
@@ -1955,6 +1953,7 @@ queued
 r_fullscreen_gamma
 r_gpu_mem_stats
 r_max_texture_pool_size
+r_texture_hookup_uses_threadpool
 r_texture_nonstreaming_load
 r_texture_nonstreaming_only_fullmipchain
 r_texture_pool_size
@@ -1974,7 +1973,6 @@ rgb to gray red coefficient
 rnd_down
 rnd_up
 roundf
-s8AUAVH
 sAmTb
 sPLT chunk has bad length
 sPLT chunk requires too much memory
@@ -2051,16 +2049,16 @@ tUH;v0
 t[D9e
 text compression mode is out of range
 texturebase.cpp
-texturebase.cpp(1726):Error loading texture: %s
-texturebase.cpp(2642):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2663):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2674):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2685):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2696):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2717):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2728):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2739):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2750):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(1731):Error loading texture: %s
+texturebase.cpp(2647):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2668):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2679):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2690):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2701):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2722):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2733):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2744):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2755):ResourceHandleToData( %s ) failed! Falling back to error texture!
 tiles
 tmE;>thH
 too many length or distance symbols
@@ -2121,6 +2119,7 @@ zlib version error
 |5H;I0
 |B Hc
 ~)H;7I
+~0AWE
 ~7;w$
 ~CHcW
 ~IHcK

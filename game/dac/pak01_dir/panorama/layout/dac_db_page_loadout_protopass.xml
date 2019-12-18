@@ -1,0 +1,107 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_page_loadout_protopass.vcss_c" />
+	</styles>
+	
+	<DACLoadoutProtopassPage hittest="false" class="DashboardPage">
+		<Panel class="Dimmer"/>
+		<Panel id="BottomRow">
+			<Panel class="LoadoutContainer Left">
+				<Panel class="LeftSide">
+					<Panel class="PreviewBanner">
+						<Label class="LoadoutLabel" text="#DAC_Loadout_BannerPreview" />
+						<DACBannerPreviewScenePanel hittest="true" id="BannerSceneView" map="scenes/banner" camera="cam_main" renderdeferred="false" rendershadows="false" squarepixels="true"/>
+					</Panel>
+				</Panel>					
+				<Panel class="RightSide">
+
+					<Panel class="LoadoutSigils LoadoutDetail" onactivate="DACShowEquipDialog('flag_image')">
+						<Panel class="FlagShapeImage ImageDetail" slotName='flag_image' />
+						<Label class="LoadoutLabel" text="#DAC_Loadout_BannerSigils" />
+						<Panel id="EquippedItemName">
+							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+							<Label class="EquippedText" text="{s:reward_name}"/>
+						</Panel>
+					</Panel>
+					
+					<Panel class="LoadoutFlags LoadoutDetail" onactivate="DACShowEquipDialog('flag_shape')">
+						<Panel class="FlagShapeImage ImageDetail" slotName='flag_shape' />
+						<Label class="LoadoutLabel" text="#DAC_Loadout_BannerShapes" />
+						<Panel id="EquippedItemName">
+							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+							<Label class="EquippedText" text="{s:reward_name}"/>
+						</Panel>
+					</Panel>
+					
+					<Panel class="LoadoutStandards LoadoutDetail" onactivate="DACShowEquipDialog('flag_base')">
+						<Label class="LoadoutLabel" text="#DAC_Loadout_BannerBases" />
+						<Panel class="FlagBaseImage ImageDetail" slotName='flag_base' />
+						<Panel id="EquippedItemName">
+							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+							<Label class="EquippedText" text="{s:reward_name}"/>
+						</Panel>
+					</Panel>
+				</Panel>
+			</Panel>
+			<Panel class="LoadoutContainer Right">
+				
+					<Panel class="LoadoutMaps LoadoutDetail" onactivate="DACShowEquipDialog('map')">
+						<Panel class="MapImage ImageDetail" slotName='map' />
+						<Label class="LoadoutLabel" text="#DAC_Loadout_Maps" />
+						<Panel id="EquippedItemName">
+							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+							<Label class="EquippedText" text="{s:reward_name}"/>
+						</Panel>
+					</Panel>
+				
+				<Panel class="MiddleContainer">				
+					<Panel class="LoadoutStreaks LoadoutDetail" onactivate="DACShowEquipDialog('fireworks')">
+					<Panel class="FireworksImage ImageDetail" slotName='fireworks' />
+					<Label class="LoadoutLabel" text="#DAC_Loadout_Fireworks" />
+							<Panel id="EquippedItemName">
+							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+							<Label class="EquippedText" text="{s:reward_name}"/>
+						</Panel>
+					</Panel>
+					
+					<Panel class="LoadoutYos LoadoutDetail" onactivate="DACShowEquipDialog('teleport')">
+					<Panel class="TeleportImage ImageDetail" slotName='teleport' />
+					<Label class="LoadoutLabel" text="#DAC_Loadout_Teleports" />
+						<Panel id="EquippedItemName">
+							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+							<Label class="EquippedText" text="{s:reward_name}"/>
+						</Panel>
+					</Panel>
+				</Panel>
+				
+				<Panel class="BottomContainer">
+					
+					<Panel class="LoadoutStreaks LoadoutDetail" onactivate="DACShowEquipDialog('kill_streak')">
+						<Label class="LoadoutLabel" text="#DAC_Loadout_Streaks" />
+						<Panel class="StreakImage ImageDetail" slotName='kill_streak' />
+						<Panel id="EquippedItemName">
+							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+							<Label class="EquippedText" text="{s:reward_name}"/>
+						</Panel>
+					</Panel>
+					
+					<Panel class="LoadoutYos LoadoutDetail" onactivate="DACShowEquipDialog('yo')">
+						<Panel class="YoImage ImageDetail" slotName='yo' />
+						<Label class="LoadoutLabel" text="#DAC_Loadout_Yos" />
+						<Panel id="EquippedItemName">
+							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+							<Label class="EquippedText" text="{s:reward_name}"/>
+						</Panel>
+					</Panel>
+				</Panel>
+			</Panel>
+		</Panel>
+		<Panel class="DashboardHeader">
+			<Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
+			<Label class="PageTitle DistressedFont" text="#DAC_Loadout"/>
+			<!--<Label class="PageSubtitle" text="#DAC_AchievementsSubtitle"/>-->
+		</Panel>
+	</DACLoadoutProtopassPage>
+</root>

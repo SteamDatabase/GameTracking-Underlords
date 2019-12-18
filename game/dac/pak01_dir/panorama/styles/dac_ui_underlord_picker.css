@@ -1,0 +1,471 @@
+DACUIUnderlordPicker
+{
+	width: 100%;
+	height: 100%;
+	background-color: #00000090;
+
+	transition-property: opacity;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-out;
+	opacity: 0; 
+
+	padding-left: safe-area-inset-left;
+	padding-right: safe-area-inset-right;
+	background-image: url("s2r://panorama/images/hud/select_underlord_bg_png.vtex");
+	background-size: 100%;
+
+	animation-duration: 1.0s;
+	animation-timing-function: ease-out;
+	animation-name: SwipeIn;
+	animation-iteration-count: 1;	
+}
+
+.AspectRatio21x9 DACUIUnderlordPicker
+{
+	background-size: 100%;
+}
+
+.AspectRatio4x3 DACUIUnderlordPicker
+{
+	background-size: 100%;
+}
+
+DACUIUnderlordPicker.Visible
+{
+	opacity: 1;
+}
+
+#MainContainer
+{
+	width: 100%;
+	height: fit-children;
+	vertical-align: middle;
+
+	flow-children: down;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 #MainContainer
+{
+	margin-top: 25px;
+	ui-scale: 90%;
+}
+
+.AspectRatio4x3 #MainContainer {
+	vertical-align: middle;
+	height: fit-children;
+	ui-scale: 120%;
+}
+
+.SelectUnderlordTitle,
+.SelectFightingStyleTitle
+{	
+	horizontal-align: center;
+	color: #363434;
+	color: gradient(linear, 0% 0%, 100% 0%, from( #000000 ), color-stop( .5, #363434 ), to( #000000 ));
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#C6DCFE));
+	font-size: 80px;
+	text-transform: uppercase;
+	margin-top: 30px;
+	font-family: ravenhook;
+	//opacity-mask: url("s2r://panorama/images/masks/crunchy_text_mask_psd.vtex");	
+	opacity: 0;
+}
+
+.SelectUnderlordTitle
+{
+	opacity: 1;
+}
+
+.IsLayoutSmallScreen .SelectUnderlordTitle {
+	margin-top: 90px;
+}
+
+.IsLayoutSmallScreen.AspectRatio4x3 .SelectUnderlordTitle {
+	margin-top: 20px;
+}
+
+.AspectRatio16x10 .Title
+{
+	margin-top: 190px;
+}
+
+.AspectRatio4x3 .Title
+{
+	margin-top: 300px;
+}
+
+#UnderlordPhaseContainer
+{
+	width: fit-children;
+	height: fit-children;
+	horizontal-align: center;
+	flow-children: right;
+
+	opacity: 1;
+	//margin-top: 230px;
+}
+
+#UnderlordDetails {
+	flow-children: down;
+	vertical-align: bottom;
+}
+
+.UnderlordIcon {
+	width: 60px; 
+	height: 60px;
+	horizontal-align: center;
+	img-shadow: 0px 1px 4px 2 #000000b0;
+
+	background-size: 100% 100%;
+}
+
+#UnderlordSelectButton0 .UnderlordIcon {
+	background-image: url("s2r://panorama/images/underlords/icon_anessix_png.vtex");
+}
+
+#UnderlordSelectButton1 .UnderlordIcon {
+	background-image: url("s2r://panorama/images/underlords/icon_jull_png.vtex");
+}
+
+#UnderlordSelectButton2 .UnderlordIcon {
+	background-image: url("s2r://panorama/images/underlords/icon_hobgen_png.vtex");
+}
+/* 
+.Underlord3 .UnderlordIcon {
+	background-image: url("s2r://panorama/images/underlords/icon_enno_png.vtex");
+} */
+
+
+.UnderlordChoice
+{
+	width: 200px;
+	height: 200px;
+	border: 1px solid black;
+}
+
+@keyframes 'OfferingAnimateIn'
+{
+	from
+	{
+		opacity: 0; 
+		pre-transform-scale2d: 1.2;
+	}
+	to
+	{
+		opacity: 1; 
+		pre-transform-scale2d: 1;
+	}
+}
+
+.UnderlordSelectButton
+{
+	flow-children: none;
+	overflow: noclip;
+	transition-property: pre-transform-scale2d;
+	transition-duration: .1s;
+	height: 680px;
+	width: 480px;
+	padding: 50px 55px;
+	//transform: translate3d( 0px, 0px, 0px );
+	transform: rotateY( -5deg ) translateY(0px) translateZ( 0px);
+
+	background-image: url("s2r://panorama/images/underlords/select_box_bg_png.vtex");
+	background-repeat: no-repeat;
+	background-position: center;
+	transition-property: transform;
+	
+	opacity: 0;
+}
+
+.UnderlordSelectButton:hover
+{
+	transition-property: transform;
+	transition-duration: .1s;
+	transform: rotateY( 0deg ) translateY(0px) translateZ( 0px);
+	//pre-transform-scale2d: 1.01;
+	brightness: 1.5;
+	overflow: noclip;
+	background-image: url("s2r://panorama/images/underlords/select_box_bg_png.vtex");
+}
+
+.IsLayoutSmallScreen .UnderlordSelectButton {
+	transform: rotateY( 0deg ) translateY(0px) translateZ( 0px);
+}
+
+.IsLayoutSmallScreen .UnderlordSelectButton {
+	ui-scale: 150%;
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9 .UnderlordSelectButton {
+	ui-scale: 135%;
+}
+
+.IsLayoutSmallScreen.AspectRatio4x3 .UnderlordSelectButton {
+	ui-scale: 100%;
+}
+
+.UnderlordSelectButton.ContainsInfo
+{
+	animation-name: OfferingAnimateIn;
+	animation-delay: 0s;
+	animation-duration: 1.25s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	opacity: 1;
+}
+
+#UnderlordSelectButton0
+{
+	animation-duration: 0.2s;
+}
+
+#UnderlordSelectButton1
+{
+	animation-duration: 0.35s;
+}
+
+#UnderlordSelectButton2
+{
+	animation-duration: 0.5s;
+}
+
+.IsLayoutSmallScreen #UnderlordSelectButton1 {
+	transform: translateX(-30px);
+}
+
+
+
+.IsLayoutSmallScreen #UnderlordSelectButton2 {
+	transform: translateX(-60px);
+}
+
+
+.UnderlordPortrait
+{
+	width: 500px;
+	height: 500px;	
+	transform: translateZ(1px);
+	transform: translateX(-60px) translateY(-80px);
+	opacity-mask: url("s2r://panorama/images/dashboard/play_underlord_mask_psd.vtex");
+}
+
+/* .IsLayoutSmallScreen .UnderlordPortrait {
+	width: 450px;
+	height: 450px;
+	transform: translateX(-50px) translateY(-40px);
+} */
+
+.UnderlordName,
+.UnderlordDesc {
+	horizontal-align: center;
+	text-align: center;	
+}
+
+.UnderlordName {
+	font-family: ravenhook, radiance;
+	color: textBright;
+	font-size: 60px;
+	text-overflow: shrink;
+	width: 100%;
+	margin-bottom: -5px;
+	letter-spacing: 1px;
+}
+
+
+.UnderlordDesc {
+	font-size: 20px;
+	font-family: Radiance;
+	font-weight: black;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #ddd;
+	margin-bottom:12px;
+}
+
+.UnderlordName
+{
+	text-shadow: 0px 1px 0px 3.0 #000;
+}
+
+.UnderlordBuildName
+{
+	font-size: 26px;
+	letter-spacing: 1px;
+	line-height: 26px;
+	font-family: ravenhook, radiance;
+	color: textBright;
+}
+
+#AbilityContainer0 .UnderlordBuildName {
+	color: gradientAnessix;
+}
+
+#AbilityContainer1 .UnderlordBuildName {
+	color: gradientJull;
+}
+
+#AbilityContainer2 .UnderlordBuildName {
+	color: gradientHobgen;
+}
+
+.UnderlordBuildDescription
+{
+	font-size: 20px;
+	width: 400px;
+	color: textDefault;
+	font-family: RadianceM,Radiance,k_alwaysFontNames;
+}
+
+
+@keyframes 'SwipeIn'
+{
+	0%
+	{
+		width: 0px;
+	}
+
+
+	100%
+	{
+		width: 100%;
+		
+	}
+}
+
+
+@keyframes 'AbilityBlockAnimateIn'
+{
+	from
+	{
+		opacity: 0; 
+		pre-transform-scale2d: 1.2;
+	}
+	85%
+	{
+		opacity: 0;
+		pre-transform-scale2d: 1.5;
+	}
+	to
+	{
+		opacity: 1; 
+		pre-transform-scale2d: 1;
+	}
+}
+
+@keyframes 'Rotate'
+{
+	from
+	{
+		transform: rotatez(0deg);
+	}
+	to
+	{
+		transform: rotatez(180deg);
+	}
+}
+
+@keyframes 'Disappear'
+{
+	from
+	{
+		opacity: 1;
+	}
+	to
+	{
+		opacity: 0;
+	}
+}
+
+.PreAbility
+{
+	color: #999999;
+	font-weight: bold;
+	font-size: 80px;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 40px;
+	opacity: 0;
+
+	animation-name: Disappear;
+	animation-delay: 0.3s;
+	animation-duration: 0.01s;
+	animation-iteration-count: 1;
+}
+
+.AbilityBlock
+{
+	width: 370px;
+	height: 174px;
+	vertical-align: bottom;
+	flow-children: right;
+	horizontal-align: center;
+	//background-color: #101010;
+	//border: 1px solid red;
+	
+	opacity: 0;
+}
+
+.UnderlordSelectButton.ContainsInfo .AbilityBlock
+{
+	animation-name: AbilityBlockAnimateIn;
+	animation-delay: 0s;
+	animation-duration: 1.25s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	opacity: 1;
+}
+
+#UnderlordSelectButton0 .AbilityBlock
+{
+	animation-duration: 0.7s;
+}
+
+#UnderlordSelectButton1 .AbilityBlock
+{
+	animation-duration: 0.85s;
+}
+
+#UnderlordSelectButton2 .AbilityBlock
+{
+	animation-duration: 1.0s;
+}
+
+#AbilityIcon
+{
+	width: 110px;
+	height: 180px;
+	background-color: #000000;
+}
+
+.AbilityInfo 
+{
+	flow-children: down;
+	width: 100%;
+	margin-left: 15px;
+	margin-top: 10px;
+}
+
+.AbilityName 
+{
+	font-size: 16px;
+	color: #ffffff;
+	text-transform: uppercase;
+	font-weight: semi-bold;
+	letter-spacing: 2px;
+	font-family: Radiance;
+	margin-bottom: 3px;
+}
+
+.AbilityDesc 
+{
+	font-size: 20px;
+	line-height: 24px;
+	color: #c7c7c7;
+	width: 100%;
+	text-overflow: shrink;
+}
+
+.IsLayoutSmallScreen .AbilityDesc 
+{
+	font-size: 22px;
+}

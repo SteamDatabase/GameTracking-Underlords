@@ -19,12 +19,12 @@ DACPlayPage
     height: 776px;
     flow-children: right;
     margin-top: 120px;
-    horizontal-align: right;
+    horizontal-align: center;
 }
 
 .AspectRatio16x10 #GameModeContainer
 {
-    margin-top: 200px;
+    margin-top: 160px;
 }
 
 
@@ -33,23 +33,11 @@ DACPlayPage
     margin-top: 300px;
 }
 
-
-.AspectRatio21x9.IsLayoutSmallScreen #GameModeContainer
-{
-	margin-right: safe-area-inset-right;
-}
-
-.AspectRatio21x9 #GameModeContainer
-{
-	margin-right: 160px;
-}
-
-
 #GameModeSelectionContainer
 {
     width: 776px;
     height: 776px;
-    margin-right: 32px;
+    margin-right: 72px;
     horizontal-align: right;
 }
 
@@ -188,6 +176,12 @@ DACPlayPage
     height: 52px;
 }
 
+.Language_korean .GameModeButtonTitle, .Language_tchinese .GameModeButtonTitle, .Language_schinese .GameModeButtonTitle, .Language_japanese .GameModeButtonTitle
+{
+    margin-top: -16px;
+    height: 64px;
+}
+
 .GameModeDescContainer
 {
     horizontal-align: center;
@@ -237,9 +231,9 @@ DACPlayPage
 {
     width: 440px;
     height: 100%;
-    padding: 20px;
-    background-color: gradient (linear, 0% 0%, 0% 100%, from(#2c2e37), to(#000000cc));
-    margin-right: 32px;
+    padding: 8px 20px 20px 20px;
+    background-color: gradient (linear, 0% 0%, 0% 100%, from(#2c2e37cc), to(#00000000));
+    //margin-right: 48px;
 }
 
 .GameModeOptionsPanel
@@ -316,7 +310,8 @@ DACPlayPage
 .GameModeOptionsTitle
 {
     font-size: 52px;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
+    margin-top: -4px;
     color: #c7dbda;
 }
 .GameModeOptionsDesc
@@ -399,7 +394,7 @@ DACPlayPage
 .DeleteSaveGameSelected #StandardDeleteBotGameButton,
 .DeleteSaveGameSelected #DuosDeleteBotGameButton,
 {
-    background-color: gradient (linear, 0% 0%, 100% 0%, from(#6777cacc), to(#100f10));
+    background-color: gradient (linear, 0% 0%, 100% 0%, from(#5e72ddcc), to(#100f10));
 }
 .LocalTurboBotDifficulty0 #EasyLocalTurboBotOptionButton,
 .LocalTurboBotDifficulty1 #MediumLocalTurboBotOptionButton,
@@ -555,6 +550,7 @@ DACPlayPage
     transition-property: brightness;
     transition-duration: 0.2s;
     max-width: 300px;
+    visibility: collapse;
 }
 
 .AspectRatio21x9.IsLayoutSmallScreen #ViewChallenges
@@ -608,7 +604,7 @@ DACPlayPage
 .BotDifficultyDropdown
 {
     width: 100%;
-    background-color: #25262e;
+    background-color: #2b2d36;
     height: 72px;
     background-image: url("s2r://panorama/images/dashboard/dropdown_icon_psd.vtex");
     background-position: right 60px 50%;
@@ -620,8 +616,74 @@ DACPlayPage
 
 .BotDifficultyDropdown:hover
 {
-    background-color: #2b2d36;
+    background-color: #32353f;
 }
+
+#DuosTeammateButton
+{
+    visibility: collapse;
+}
+
+.PlayCheckbox
+{
+    width: 100%;
+    background-color: #262830;
+    height: 72px;
+    background-repeat: no-repeat;
+    margin-top: 12px;
+    transition-property: background-color;
+    transition-duration: 0.2s;
+    padding: 0px;
+    visibility: visible;
+}
+
+.PlayCheckbox:hover
+{
+    background-color: #32353f;
+}
+
+
+DACSettingsCheckbox:selected .PlayCheckbox
+{
+    background-image: url("s2r://panorama/images/dashboard/play/option_button_bg_psd.vtex");
+    background-size: cover;
+    background-color: red;
+}
+
+.PlayCheckbox Label
+{
+    font-size: 32px;
+    font-weight: black;
+    text-transform: uppercase;
+    vertical-align: center;
+    
+    color:#4b4e5d;
+    padding-left: 20px;
+    margin: 0px;
+}
+
+DACSettingsCheckbox:selected Label
+{
+    color: #c7dbda;
+}
+
+.PlayCheckbox .TickBox
+{
+    width: 32px;
+	height: 32px;
+    vertical-align: center;
+    horizontal-align: right;
+    border: 4px solid #4b4e5d;
+    margin-left: 20px;
+}
+
+DACSettingsCheckbox:selected .TickBox
+{
+    border: 4px solid #4b4e5d;
+    padding: 2px;
+    background-color: #c7dbda;
+}
+
 #GCTurboBotDifficultyButton,
 #GCStandardBotDifficultyButton,
 #GCDuosBotDifficultyButton,
@@ -700,15 +762,20 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
     width: fit-children;
     height: 100%;
     horizontal-align: right;
-    margin-top: 16px;
+    margin-top: 24px;
     flow-children: down;
+}
+
+.AspectRatio4x3 #PlayButtonContainer
+{
+    margin-top: 120px;
 }
 
 .PlayButton
 {
     horizontal-align: right;
-	max-width: 540px;
-	height: 112px;
+	max-width: 800px;
+	height: 128px;
 	opacity: 1;
 	transition-property: brightness;
 	transition-duration: .2s; 
@@ -773,12 +840,11 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
 	text-align: right;
 	text-overflow: shrink;
 	overflow: noclip;
-    max-width: 510px;
-    height: 112px;
+    height: fit-children;
 	transition-property: brightness;
 	transition-duration: .2s; 
 	//opacity-mask: url("s2r://panorama/images/dashboard/homebutton_mask_psd.vtex");
-	padding: 4px 0px 0px 36px;
+	padding-left: 44px;
     margin-right: 32px;
 }
 
@@ -788,16 +854,19 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
     max-width: 800px;
 }
 
-.IsLayoutSmallScreen.AspectRatio21x9 .FindMatchLabel, .IsLayoutSmallScreen.AspectRatio21x9 .BeginMatchLabel, .IsLayoutSmallScreen.AspectRatio21x9 .IsLayoutSmallScreen.InviteFriendLabel, .IsLayoutSmallScreen.AspectRatio21x9 .StartLabel
+.IsLayoutSmallScreen.AspectRatio21x9 .FindMatchLabel, .IsLayoutSmallScreen.AspectRatio21x9 .BeginMatchLabel, .IsLayoutSmallScreen.AspectRatio21x9 .InviteFriendLabel, .IsLayoutSmallScreen.AspectRatio21x9 .StartLabel
 {
     margin-right: safe-area-inset-right;
-    max-width: 600px;
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .FindMatchLabel, .IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .BeginMatchLabel, .IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .InviteFriendLabel, .IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .StartLabel
+{
+    margin-right: safe-area-inset-right;
 }
 
 .AspectRatio21x9 .FindMatchLabel, .AspectRatio21x9 .BeginMatchLabel, .IsLayoutSmallScree.AspectRatio21x9 .InviteFriendLabel, .AspectRatio21x9 .StartLabel
 {
     margin-right: 80px;
-    max-width: 600px;
 }
 
 #DuosFindMatchLabel,
@@ -828,8 +897,15 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
     horizontal-align: right;
     text-align: right;
     margin-right: 32px;
+    margin-top: -4px;
 }
-.AspectRatio21x9 .LockedLabel, .AspectRatio21x9 .LoginRequired
+
+#DuosLockedLabel.LockedLabel
+{
+    color: textDark;
+}
+
+.HasSafeAreaRight .LockedLabel, .HasSafeAreaRight .LoginRequired
 {
     margin-right: safe-area-inset-right;	
 }
@@ -859,6 +935,7 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
     horizontal-align: left;
     margin-left: 100px;
     margin-right: 0px;
+    visibility: collapse;
 }
 
 .IsLayoutSmallScreen #UnderlordSelector
@@ -978,7 +1055,7 @@ DACPlayPage #ViewDetails,
     horizontal-align: left;
     width: 44px;
     height: 44px;
-    margin-top: 40px;
+    margin-top: 24px;
     background-image: url("s2r://panorama/images/dashboard/dropdown_icon_psd.vtex");
     background-size: 100%;
     background-position: 50% 50%;
@@ -1003,7 +1080,7 @@ DACPlayPage #ViewDetails,
     vertical-align: bottom;
     horizontal-align: center;
     flow-children: right;
-    margin-left: -24px;
+    margin-left: -36px;
     visibility: collapse;
     transition-property: visibility;
 }
@@ -1052,7 +1129,7 @@ DACPlayPage .RankContainer DACRankIcon
 {
     flow-children: down;
     vertical-align: top;
-    margin-top: 28px;
+    margin-top: 16px;
     width: fill-parent-flow(1.0);
 }
 
@@ -1071,6 +1148,7 @@ DACPlayPage .RankContainer DACRankIcon
     font-size: 24px;
     text-transform: uppercase;
     color: #c7dbda;
+    font-weight: black;
 }
 
 .RankScore
@@ -1100,10 +1178,10 @@ DACPlayPage .RankContainer DACRankIcon
     width: 100%;
     height: 16px;
     horizontal-align: center;
-    background-color: #00000033;
+    background-color: #2b2d36;
     margin-top: 4px;
-    border: 2px solid #2e2d44;
-    box-shadow: inset 0px 6px 20px #000000cc;
+    //border: 2px solid #2e2d44;
+    //box-shadow: inset 0px 6px 20px #000000cc;
     horizontal-align: left;
 }
 
@@ -1128,35 +1206,35 @@ DACPlayPage .RankContainer DACRankIcon
 .MinorRank1 #RankProgressBar2_Left,
 .MinorRank1 #RankProgressBar3_Left,
 {
-    background-color: gradient( linear, 0% 110%, 0% 0%, from( #3b9208 ), to( #65f013 ) );
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #3b9208 ), to( #65f013 ) );
 }
 
 .MinorRank2 #RankProgressBar1_Left,
 .MinorRank2 #RankProgressBar2_Left,
 .MinorRank2 #RankProgressBar3_Left,
 {
-    background-color: gradient( linear, 0% 110%, 0% 0%, from( #0c6583 ), to( #14b4eb ) );
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #0c6583 ), to( #14b4eb ) );
 }
 
 .MinorRank3 #RankProgressBar1_Left,
 .MinorRank3 #RankProgressBar2_Left,
 .MinorRank3 #RankProgressBar3_Left,
 {
-    background-color: gradient( linear, 0% 110%, 0% 0%, from( #991115 ), to( #fb262e ) );
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #991115 ), to( #fb262e ) );
 }
 
 .MinorRank4 #RankProgressBar1_Left,
 .MinorRank4 #RankProgressBar2_Left,
 .MinorRank4 #RankProgressBar3_Left,
 {
-    background-color: gradient( linear, 0% 110%, 0% 0%, from( #6a1e88 ), to( #c151ec ) );
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #6a1e88 ), to( #c151ec ) );
 }
 
 .MinorRank5 #RankProgressBar1_Left,
 .MinorRank5 #RankProgressBar2_Left,
 .MinorRank5 #RankProgressBar3_Left,
 {
-    background-color: gradient( linear, 0% 110%, 0% 0%, from( #9b6714 ), to( #f8ad33 ) );
+    background-color: gradient( linear, 0% 0%, 100% 0%, from( #9b6714 ), to( #f8ad33 ) );
 }
 
 .LeaderboardPosition
@@ -1186,4 +1264,30 @@ DACPlayPage .RankContainer DACRankIcon
 .DuosMatchmakingTypeRanked #RankContainer3,
 {
     visibility: visible;
+}
+
+#BattlePassContainer
+{
+    width: 440px;
+    margin-right: 72px;
+}
+
+#BattlePassProgress
+{
+    visibility: collapse;
+}
+
+.HasParty .BotMatchLabel,
+.PrivateMatchLabel
+{
+    visibility: collapse;
+}
+.HasParty .PrivateMatchLabel
+{
+    visibility: visible;
+}
+
+.NeedsSteamLogin .BattlepassOptionButton
+{
+    visibility: collapse;
 }

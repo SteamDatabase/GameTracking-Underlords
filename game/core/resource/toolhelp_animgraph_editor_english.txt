@@ -1287,5 +1287,33 @@ Speed scaling reduces the speed of the root motion if it is not going in the sam
 "
 		"Attribute.CFollowPathAnimNode.m_bBlockNonPathMovement"		"Block Non-Path Movement"
 		"Attribute.CFollowPathAnimNode.m_bBlockNonPathMovement:help"		"If the character does not have a path, then all root motion translation from this node's children will be blocked when this option is enabled.  Rotation from child nodes will not be affected.  "
+		"Element.CJiggleBoneAnimNode"		"Jiggle Bone"
+		"Element.CJiggleBoneAnimNode:help"		"Procedurally animates a bone or bones as if they are attached to their animated position by a spring"
+		"Attribute.CJiggleBoneAnimNode.m_sName"		"Name"
+		"Attribute.CJiggleBoneAnimNode.m_sName:help"		"The name of the anim graph node.  Shown in the header bar of the node in the graph editor.  If no name is set, or the name is \"Unnamed\", then the graph editor will show the type of the node as its name.  "
+		"Attribute.CJiggleBoneAnimNode.m_networkMode"		"Network Mode"
+		"Attribute.CJiggleBoneAnimNode.m_networkMode:help"		"Not used for this node; the spring simulation is performed locally on both the server and the client"
+		"Attribute.CJiggleBoneAnimNode.m_items"		"Jiggle Bones"
+		"Attribute.CJiggleBoneAnimNode.m_items:help"		"List of bones to simulate.  Note that each bone is simulated independently, and they do not affect each other directly.  "
+		"Attribute.CJiggleBoneItem.m_boneName"		"Bone"
+		"Attribute.CJiggleBoneItem.m_boneName:help"		"The bone to simulate"
+		"Attribute.CJiggleBoneItem.m_flSpringStrength"		"Spring Strength"
+		"Attribute.CJiggleBoneItem.m_flSpringStrength:help"		"A scale of the force that pulls the bone to its animated position.  "
+		"Attribute.CJiggleBoneItem.m_flSimRateFPS"		"Sim Rate"
+		"Attribute.CJiggleBoneItem.m_flSimRateFPS:help"		"The rate at which the simulation is run, in frames per second.  If the graph update is longer than this time, multiple sub-step simulations are performed.  If the graph update is shorter than this then the sim will use a single step with the same time delta as the graph"
+		"Attribute.CJiggleBoneItem.m_flDamping"		"Damping"
+		"Attribute.CJiggleBoneItem.m_flDamping:help"		"The rate at which the motion stabilizes.  The value represents the amount of energy removed from the simulation each update.  "
+		"Attribute.CJiggleBoneItem.m_eSimSpace"		"Sim Space"
+		"Attribute.CJiggleBoneItem.m_eSimSpace:help"		"The coordinate system the simulation is performed in.  Use the to control how much motion the bone inherit from the movement of the character.  
+
+<UL>
+<LI><b>Local Space:</b> The sim is performed in the bone's local space.  Only the animation on the bone itself will affect the simulation </LI>
+<LI><b>Model Space:</b> Sim is performed in the coordinate space of the model.  The character's full body animation will affect the simulation, but its movement through the world will not </LI>
+<LI><b>World Space:</b> Sim is performed in world space.  All motion of the characer will affect the simulation </LI>
+</UL>"
+		"Attribute.CJiggleBoneItem.m_vBoundsMaxLS"		"Movement Limit Max"
+		"Attribute.CJiggleBoneItem.m_vBoundsMaxLS:help"		"The farthest that the simulation can move the bone from its animated position in each axis"
+		"Attribute.CJiggleBoneItem.m_vBoundsMinLS"		"Movement Limit Min"
+		"Attribute.CJiggleBoneItem.m_vBoundsMinLS:help"		"The farthest that the simulation can move the bone from its animated position in each axis"
 	}
 }

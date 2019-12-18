@@ -363,7 +363,7 @@ $woL)
 15CMemberFunctor4IP19CTextureManagerBaseMS0_FvP25IAsyncResourceDataRequestP12CTextureBase22TextureSpecification_tiES3_S5_S6_i12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CMemberFunctor6IP13CSOAContainerMS0_FviiiiiDv4_fEiiiiiS2_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CMemberFunctor7IP13CSOAContainerMS0_FviiiiPKS0_iiEiiiiS3_ii12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
-15CMemberFunctor7IP19CTextureManagerBaseMS0_FvP12CTextureBase12ResourceId_tPvi22TextureSpecification_ti23TextureBitsMemoryType_tES3_S4_S5_iS6_iS7_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
+15CMemberFunctor9IP19CTextureManagerBaseMS0_FvP12CTextureBase11CWeakHandleI31InfoForResourceTypeCTextureBaseE12ResourceId_tPvi22TextureSpecification_tS9_i23TextureBitsMemoryType_tES3_S6_S7_S8_iS9_S9_iSA_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CRenderDeviceGL
 15CRenderPassDesc
 15CRenderResource
@@ -704,7 +704,9 @@ AssetBrowserSystem_001
 AssetPreviewSystem_001
 AssetSystem001
 AssetSystemTest001
+Async Texture hookup uses its own threadpool instead of the global pool.
 AsyncHookUpTextureBits
+AsyncTextureHookup
 At marker 0x%02x, recovery action %d
 Attempt to set buffer size beyond max ignored
 Attempting to create OpenGL context: v%d.%d (%s profile)...
@@ -896,6 +898,7 @@ Corrupt JPEG data: premature end of data segment
 Could not find required OpenGL entry point '%s'!
 CreateDevice: Requested DX level %d, clamped to DX level %d
 CreateInterface
+CreateNewThreadPool
 CreateRenderThread
 CreateSimpleThread
 CubeMapFace_t
@@ -1102,6 +1105,7 @@ FCVAR_NEVER_AS_STRING
 FEATURES
 FLOATLITERAL
 FLOATSUFFIX
+FPATI
 Failed AllocateTexture for '%s'
 Failed to compute channel layout.
 Failed to create D3D device! Please see the following for more info.
@@ -3300,15 +3304,14 @@ H9W8t
 H9l$(u
 H;*twH
 H;2t$H
-H;=:w.
-H;=@L/
-H;=B~.
-H;=Fv.
-H;=Rw.
-H;=V}.
-H;=jw.
-H;=n}.
-H;=r./
+H;=,t.
+H;=/D/
+H;=8u.
+H;=G}.
+H;=Ks.
+H;=Lt.
+H;=lt.
+H;=sz.
 H;@8t;H
 H;BHH
 H;H }'H
@@ -3366,7 +3369,6 @@ Hc{xH
 HelpSystem_001
 Hitch alert: Present was waiting for %d iterations and %.1f seconds.
 HookUpConfigValue
-HookUpTextureBits
 HostStateMgr001
 Huffman code size table overflow
 Huffman table 0x%02x was not defined
@@ -4242,18 +4244,15 @@ T$4E+n A9
 TERMVALUE
 TEX read request: %d KB; %s
 TEX: %u textures, %.2f MB
-TEXMAN: %s %s
 TEXMAN: %s MarkTextureBitsLoadRequired (%s)
 TEXMAN: %s MarkTextureBitsLoaded (%s)
 TEXMAN: %s loaded %s %i/%i mips (%ix%i / %ix%i) of %s (%i bytes)
 TEXMAN: Abandoning job in %s
 TEXMAN: Abandoning streaming request in %s
-TEXMAN: Added hookup job for %s
 TEXMAN: Adding %s, %llx to abandoned hookup jobs
 TEXMAN: DeferTextureLoads %s MarkTextureBitsLoaded (%s)
 TEXMAN: Deleting %d textures
 TEXMAN: Outstanding stream count %d -> %d (%s)
-TEXMAN: Posting resource load complete msg.
 TEXTURESTREAMING: Filled %d fallback textures in %.3f ms
 THIRD_PARTY
 TIcL$
@@ -5040,7 +5039,6 @@ __stack_chk_fail
 __strcpy_chk
 __tls_get_addr
 _addons
-_bake
 _edata
 _feature
 _fini
@@ -5865,7 +5863,6 @@ p?RGB565
 pA*** VB "%s": Tried to lock too much memory for subregion (%d>%d)!
 pXA^]
 p[A\A]A^]
-p[A\]
 parameter error
 pass %u
 pbucket->plinkLast->GetNext() == nullptr
@@ -5917,6 +5914,7 @@ r_fullscreen_gamma
 r_gpu_mem_stats
 r_max_texture_pool_size
 r_texture_eager_eviction
+r_texture_hookup_uses_threadpool
 r_texture_nonstreaming_load
 r_texture_nonstreaming_only_fullmipchain
 r_texture_pool_size
@@ -5956,7 +5954,6 @@ rwtexture1darray
 rwtexture2d
 rwtexture2darray
 rwtexture3d
-s8AUAVH
 sAmTb
 sMA9|$ 
 sPLT chunk has bad length
@@ -6088,16 +6085,16 @@ texCoords = vec4( inTexCoords, 0.0, 0.0 );
 texcoord
 text compression mode is out of range
 texturebase.cpp
-texturebase.cpp(1726):Error loading texture: %s
-texturebase.cpp(2642):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2663):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2674):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2685):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2696):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2717):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2728):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2739):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2750):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(1731):Error loading texture: %s
+texturebase.cpp(2647):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2668):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2679):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2690):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2701):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2722):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2733):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2744):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2755):ResourceHandleToData( %s ) failed! Falling back to error texture!
 tgHcS
 thIcG
 three
@@ -6120,7 +6117,7 @@ u'[]A\A]A^
 u64( %lld = 0x%llX )
 u:[A\A]A^]
 u?H9G8L
-uAL;%
+uAL;%R
 uLH9G8L
 uRIcI
 udev_device_get_property_value
@@ -6271,6 +6268,7 @@ zlib version error
 }zf;B
 ~)H;7I
 ~-A;F,w'
+~0AWE
 ~4Ic1I
 ~7;w$
 ~;HcE

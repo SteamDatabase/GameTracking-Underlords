@@ -29,6 +29,8 @@ DACUnderlordConfig #UnderlordContainer
 	height: 100%;
 	//padding: 120px 150px;
 	background-color: gradient(linear, 0% 0%, 70% 0%, from( #5126AB ), to(#00000000));
+	transition-property: background-color;
+	transition-duration: 0.4s;
 }
 
 DACUnderlordConfig #UnderlordContainer .DashboardHeader
@@ -73,16 +75,17 @@ DACUnderlordConfig #UnderlordContainer #BioSection #Name
 	color: gradient(linear, 0% 0%, 0% 100%, from( #ffffff ), to(#C6DCFE));
 }
 
-.IsLayoutSmallScreen.AspectRatio21x9 DACUnderlordConfig #Name 
+.IsLayoutSmallScreen.AspectRatio21x9 DACUnderlordConfig #Name,
+.IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaLeft DACUnderlordConfig #Name 
 {
-	margin-left: 80px;
+	margin-left: 125px;
 }
 
 DACUnderlordConfig #UnderlordContainer #BioSection #TabSection
 {
 	width: 500px;
-	margin-top: 10px;
-	margin-bottom: 30px;
+	//margin-top: 10px;
+	//margin-bottom: 30px;
 }
 
 DACUnderlordConfig #UnderlordContainer #BioSection #TabSection #TabBackground
@@ -111,6 +114,8 @@ DACUnderlordConfig #UnderlordContainer #BioSection #TabSection #TabLabels
 {
 	width: 100%;
 	flow-children: right;
+
+	visibility: collapse;
 }
 
 DACUnderlordConfig #UnderlordContainer #BioSection #TabSection .TabLabel
@@ -150,13 +155,14 @@ DACUnderlordConfig #UnderlordContainer #BioSection #Subtitle
 
 	color: #ffffff;
 
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	margin-top: -20px;
 }
 
-.IsLayoutSmallScreen.AspectRatio21x9 #Subtitle
+.IsLayoutSmallScreen.AspectRatio21x9 #Subtitle,
+.IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaLeft #Subtitle 
 {
-	margin-left: 80px;
+	margin-left: 130px;
 }
 
 DACUnderlordConfig #UnderlordContainer #BioSection .TabSection
@@ -194,18 +200,28 @@ DACUnderlordConfig.TabSelected2 #UnderlordContainer #BioSection #AbilityContents
 }
 
 
+
 DACUnderlordConfig #UnderlordContainer #BioSection #Oneliner
 {
 	font-size: 30px;
 	color: #dedede;
 	font-weight: semi-bold;
 
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	margin-right: 100px;
 }
 
-.IsLayoutSmallScreen DACUnderlordConfig #UnderlordContainer #BioSection #Oneliner {
-	font-size: 36px;
+.IsLayoutSmallScreen.AspectRatio21x9 #Oneliner,
+.IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaLeft #Oneliner
+
+{
+	margin-left: 130px;
+}
+
+
+.IsLayoutSmallScreen DACUnderlordConfig #UnderlordContainer #BioSection #Oneliner
+{
+	font-size: 30px;
 }
 
 DACUnderlordConfig #UnderlordContainer #BioSection #Description
@@ -217,6 +233,8 @@ DACUnderlordConfig #UnderlordContainer #BioSection #Description
 	font-style: italic;
 
 	color: #a8a8a8;
+
+	visibility: collapse;
 }
 
 .IsLayoutSmallScreen DACUnderlordConfig #UnderlordContainer #BioSection #Description {
@@ -227,6 +245,10 @@ DACUnderlordConfig #UnderlordContainer #BioSection #Description
 
 #PlayButtonContainer {
 	flow-children: right;
+	horizontal-align: right;
+	margin-right: 120px;
+	margin-top: -160px;
+	margin-bottom: 75px;
 }
 
 #PlayButtonLabel {
@@ -240,9 +262,9 @@ DACUnderlordConfig #UnderlordContainer #BioSection #Description
 }
 
 #PlayButtonIcon {
-	width: 60px;
-    height: 60px;
-	background-image: url("s2r://panorama/images/underlords/play_sound_psd.vtex");
+	width: 85px;
+    height: 85px;
+	background-image: url("s2r://panorama/images/hud/chat_icon_psd.vtex");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
@@ -262,18 +284,51 @@ DACUnderlordConfig #UnderlordContainer #BioSection #Description
 	vertical-align: middle;
 } */
 
-#UnderlordsMonologueButton {
-	flow-children: right;
-}
 
 #UnderlordsMonologueButton:hover {
 	brightness: 2;
 }
 
+.IsLayoutSmallScreen.AspectRatio21x9 .UnderlordBuild,
+.IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaLeft .UnderlordBuild
+{
+	padding-left: 30px;
+}
 
+.UnderlordBuildName
+{
+	font-size: 40px;
+	font-family: Ravenhook, Radiance;
+	margin-bottom: 10px;
+}
 
+.UnderlordPageViewingUnderlord1 .UnderlordBuildName
+{
+	color: gradientAnessix;
+}
 
-DACUnderlordConfig #UnderlordContainer #BioSection #AbilityContents #AbilityList
+.UnderlordPageViewingUnderlord2 .UnderlordBuildName
+{
+	color: gradientJull;
+}
+
+.UnderlordPageViewingUnderlord4 .UnderlordBuildName
+{
+	color: gradientHobgen;
+}
+
+.IsLayoutSmallScreen .UnderlordBuildName
+{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#AbilityList
+{
+	visibility: collapse;
+}
+
+DACUnderlordConfig .UnderlordBuild 
 {
 	horizontal-align: left;
 	width: 100%;
@@ -281,30 +336,69 @@ DACUnderlordConfig #UnderlordContainer #BioSection #AbilityContents #AbilityList
 	flow-children: down;
 
 	margin-bottom: 40px;
+	margin-top: 10px;
 }
 
-DACUnderlordConfig #UnderlordContainer #BioSection #AbilityContents #AbilityList .AbilityBlock 
+DACUnderlordConfig .UnderlordBuild .BuildContainer
+{
+	width: 100%;
+	flow-children: down;
+}
+
+DACUnderlordConfig .UnderlordBuild .AbilityBlock 
 {
 	width: 100%;
 	flow-children: right;
-	margin-top: 20px;
+	margin-bottom: 10px;
+	margin-left: -3px;
 }
 
-DACUnderlordConfig #UnderlordContainer #BioSection #AbilityContents #AbilityList #AbilityIcon 
+
+.IsLayoutSmallScreen DACUnderlordConfig .UnderlordBuild .AbilityBlock 
 {
-	width: 110px;
-	height: 110px;
-	background-color: #999999;
+	margin-bottom: 10px;
 }
 
-DACUnderlordConfig #UnderlordContainer #BioSection #AbilityContents #AbilityList .AbilityInfo 
+DACUnderlordConfig .UnderlordBuild .AbilityIcon 
+{
+	width: 105px;
+	height: 105px;
+	background-size: contain;
+}
+
+.IsLayoutSmallScreen DACUnderlordConfig .UnderlordBuild .AbilityIcon 
+{
+	width: 85px;
+	height: 85px;
+	background-size: contain;
+}
+
+#AbilityBevelOverlay
+{
+	width: 100%;
+	height: 100%;
+	
+	background-image: url("s2r://panorama/images/hud/ability_bevel_overlay_psd.vtex");
+	background-size: 100%;
+}
+
+#AbilityBevelOverlayLarge
+{
+	width: 100%;
+	height: 100%;
+	
+	background-image: url("s2r://panorama/images/hud/ability_bevel_overlay_large_psd.vtex");
+	background-size: 100%;
+}
+
+DACUnderlordConfig .UnderlordBuild .AbilityInfo 
 {
 	flow-children: down;
 	width: 100%;
-	margin-left: 30px;
+	margin-left: 20px;
 }
 
-DACUnderlordConfig #UnderlordContainer #BioSection #AbilityContents #AbilityList .AbilityName 
+DACUnderlordConfig .UnderlordBuild .AbilityName 
 {
 	font-size: 30px;
 	color: #ffffff;
@@ -314,13 +408,31 @@ DACUnderlordConfig #UnderlordContainer #BioSection #AbilityContents #AbilityList
 	font-family: 'Ravenhook';
 }
 
-DACUnderlordConfig #UnderlordContainer #BioSection #AbilityContents #AbilityList .AbilityDesc 
+DACUnderlordConfig .UnderlordBuild .AbilityDesc 
 {
 	font-size: 20px;
 	color: #c7c7c7;
 }
 
-.IsLayoutSmallScreen DACUnderlordConfig #UnderlordContainer #BioSection #AbilityContents #AbilityList .AbilityDesc 
+DACUnderlordConfig .UnderlordBuild .AbilityDesc.PassiveDesc
+{
+	font-style: italic;
+	color: #888;
+	visibility: collapse;
+}
+
+DACUnderlordConfig .UnderlordBuild .IsPassive .AbilityDesc.PassiveDesc
+{
+	visibility: visible;
+}
+
+
+DACUnderlordConfig .UnderlordBuild .AbilityDesc .AbilityValueHighlight
+{
+	color: #b29600;
+}
+
+.IsLayoutSmallScreen DACUnderlordConfig .UnderlordBuild .AbilityDesc 
 {
 	font-size: 26px;
 }
@@ -487,7 +599,8 @@ DACUnderlordConfig:not(.UnderlordIsSelected) #MainNavUnderlordsButton:hover
 .UnderlordSelectContainer
 {
     width: 450px;
-	height: 220px;
+	//height: 220px;
+	height: 170px;
     horizontal-align: right;
     vertical-align: bottom;
     margin-bottom: 72px;
@@ -546,7 +659,9 @@ DACUnderlordConfig:not(.UnderlordIsSelected) #MainNavUnderlordsButton:hover
 .UnderlordSelectContainer .UnderlordSelectTopContainer
 {
 	width: 100%;
-	height: 100px;
+	height: 120px;
+	vertical-align: center;
+	margin-top: 30px;
 }
 
 .UnderlordSelectContainer .UnderlordSelectTopContainer .UnderlordSelectBackground 
@@ -554,7 +669,7 @@ DACUnderlordConfig:not(.UnderlordIsSelected) #MainNavUnderlordsButton:hover
 	width: 100%;
 	height: 100%;
 
-    background-image: url("s2r://panorama/images/dashboard/underlords_button_01_psd.vtex");
+    //background-image: url("s2r://panorama/images/dashboard/underlords_button_01_psd.vtex");
     background-size: 100%;
     background-repeat: no-repeat;
 
@@ -566,12 +681,12 @@ DACUnderlordConfig:not(.UnderlordIsSelected) #MainNavUnderlordsButton:hover
 
 .Underlord_1 .UnderlordSelectContainer .UnderlordSelectTopContainer .UnderlordSelectBackground
 {
-    background-image: url("s2r://panorama/images/dashboard/underlords_button_anessix_psd.vtex");
+    //background-image: url("s2r://panorama/images/dashboard/underlords_button_anessix_psd.vtex");
 }
 
 .Underlord_4 .UnderlordSelectContainer .UnderlordSelectTopContainer .UnderlordSelectBackground
 {
-    background-image: url("s2r://panorama/images/dashboard/underlords_button_hobgen_psd.vtex");
+    //background-image: url("s2r://panorama/images/dashboard/underlords_button_hobgen_psd.vtex");
 }
 
 .UnderlordSelectContainer .UnderlordSelectTopContainer .UnderlordSelectTop
@@ -585,7 +700,7 @@ DACUnderlordConfig:not(.UnderlordIsSelected) #MainNavUnderlordsButton:hover
 .UnderlordSelectContainer .UnderlordSelectTopContainer .UnderlordSelectTop .UnderlordArrow
 {
     background-image: url("s2r://panorama/images/dashboard/arrow_right_underlord_psd.vtex"); 
-    height: 90px;
+    height: 120px;
     width: height-percentage( 64% );
     background-size: 50%;
 	background-repeat: no-repeat;
@@ -733,7 +848,7 @@ horizontal-align: center;
 	margin-top: 6px;
 }
 
-.IsPlatformMobile .UnderlordSelectContainer .UnderlordSelectBottomContainer .InfoImage
+.IsLayoutSmallScreen .UnderlordSelectContainer .UnderlordSelectBottomContainer .InfoImage
 {
 	visibility: collapse;
 }
@@ -748,4 +863,105 @@ horizontal-align: center;
     background-image: url("s2r://panorama/images/dashboard/icon_info_psd.vtex"); 
     wash-color: textDark;
     background-size: 100%;
+}
+
+.Underlord_1_Page,
+.Underlord_2_Page,
+.Underlord_3_Page,
+.Underlord_4_Page
+{
+	visibility: collapse;
+}
+
+.UnderlordPageViewingUnderlord1 .Underlord_1_Page,
+.UnderlordPageViewingUnderlord2 .Underlord_2_Page,
+.UnderlordPageViewingUnderlord3 .Underlord_3_Page,
+.UnderlordPageViewingUnderlord4 .Underlord_4_Page
+{
+	visibility: visible;
+}
+
+//Anessix Detail Page Images
+
+.AbilityIcon.Underlord_1_Passive
+{
+	background-image: url("s2r://panorama/images/heroes/spellicons/anessix_passive_png.vtex"); 
+}
+
+.AbilityIcon.Underlord_1_Build_0_Ability
+{
+	background-image: url("s2r://panorama/images/underlords/talents/anessix_the_end_of_medicine_psd.vtex"); 
+}
+
+.AbilityIcon.Underlord_1_Build_0_Ult
+{
+	background-image: url("s2r://panorama/images/underlords/talents/anessix_enthrall_png.vtex"); 
+}
+
+.AbilityIcon.Underlord_1_Build_1_Ability
+{
+	background-image: url("s2r://panorama/images/underlords/talents/anessix_arcane_ritual_psd.vtex"); 
+}
+
+.AbilityIcon.Underlord_1_Build_1_Ult
+{
+	background-image: url("s2r://panorama/images/underlords/talents/anessix_summon_golem_psd.vtex"); 
+}
+
+
+//Jull Detail Page Images
+
+.AbilityIcon.Underlord_2_Passive
+{
+	background-image: url("s2r://panorama/images/heroes/spellicons/jull_passive_png.vtex"); 
+}
+
+.AbilityIcon.Underlord_2_Build_0_Ability
+{
+	background-image: url("s2r://panorama/images/underlords/talents/jull_talent_08_png.vtex"); 
+}
+
+.AbilityIcon.Underlord_2_Build_0_Ult
+{
+	background-image: url("s2r://panorama/images/heroes/spellicons/jull_barrelsoffun_png.vtex"); 
+}
+
+.AbilityIcon.Underlord_2_Build_1_Ability
+{
+	background-image: url("s2r://panorama/images/underlords/talents/jull_talent_07_png.vtex"); 
+}
+
+.AbilityIcon.Underlord_2_Build_1_Ult
+{
+	background-image: url("s2r://panorama/images/heroes/spellicons/jull_happyhour_png.vtex"); 
+}
+
+
+
+
+//Hobgen Detail Page Images
+
+.AbilityIcon.Underlord_4_Passive
+{
+	background-image: url("s2r://panorama/images/heroes/spellicons/hobgen_passive_png.vtex"); 
+}
+
+.AbilityIcon.Underlord_4_Build_0_Ability
+{
+	background-image: url("s2r://panorama/images/underlords/talents/hobgen_implosion_talent_psd.vtex"); 
+}
+
+.AbilityIcon.Underlord_4_Build_0_Ult
+{
+	background-image: url("s2r://panorama/images/underlords/talents/hobgen_friendly_fire_psd.vtex"); 
+}
+
+.AbilityIcon.Underlord_4_Build_1_Ability
+{
+	background-image: url("s2r://panorama/images/underlords/talents/hobgen_shockwave_psd.vtex"); 
+}
+
+.AbilityIcon.Underlord_4_Build_1_Ult
+{
+	background-image: url("s2r://panorama/images/underlords/talents/hobgen_lets_go_crazy_psd.vtex"); 
 }

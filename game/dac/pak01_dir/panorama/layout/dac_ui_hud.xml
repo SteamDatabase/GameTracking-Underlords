@@ -106,16 +106,7 @@
 				<!-- - GameStatePanel_Normal -->
 				<!-- - GameStatePanel_TechPrototypeA -->
 			</Panel>
-			<Panel class="PlayPauseContainer" id="PlayPauseContainer" hittest="false">
-				<Panel class="PauseButton" onactivate="DACTogglePauseGame()" />
-				<Panel class="FastForwardButton" id="FastForwardButton" onactivate="DACStepForward()">
-					<DACParticleScenePanel id="FastForwardButtonTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
-				</Panel>
-				<Panel class="FastForwardButton_Sandbox" onactivate="DACStepForward()">
-					<Label class="DebugText FFBSB_ToCombat" text="#DAC_InGame_DevToCombat" />
-					<Label class="DebugText FFBSB_ToSetup" text="#DAC_InGame_DevBackToSetup" />
-				</Panel>
-			</Panel>
+			
 			<Panel id="BoardFlipButton" onactivate="DACToggleFlipBoard()" />
 		</Panel>
 
@@ -167,6 +158,7 @@
 			<DACVSScreen id="VSScreen" hittest="false" />
 			<DACRoundStart />
 			<DACRoundOverScreen />
+			<DACMatchOverScreen />
 		</Panel>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
@@ -180,6 +172,17 @@
 			<Label text="{i:shopGold}" id="StatusGold" />
 			<Panel id="OpenShopButton" />
 			<Panel id="CloseShopButton" />
+		</Panel>
+		
+		<Panel class="PlayPauseContainer" id="PlayPauseContainer" hittest="false">
+				<Panel class="PauseButton" onactivate="DACTogglePauseGame()" />
+				<Panel class="FastForwardButton" id="FastForwardButton" onactivate="DACStepForward()">
+					<DACParticleScenePanel id="FastForwardButtonTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
+				</Panel>
+				<Panel class="FastForwardButton_Sandbox" onactivate="DACStepForward()">
+					<Label class="DebugText FFBSB_ToCombat" text="#DAC_InGame_DevToCombat" />
+					<Label class="DebugText FFBSB_ToSetup" text="#DAC_InGame_DevBackToSetup" />
+				</Panel>
 		</Panel>
 
 		<Panel class="GoHomeButtonContainer" hittest="false">
@@ -253,7 +256,7 @@
 		
 					<Panel id="DebugCommandButtons DebugSection" class="TopBottomFlow">
 						<Label class="ControlPanelLabel" text="#DAC_InGame_DevControlPanel"/>
-					<Panel id="Row_0" class="LeftRightFlow DebugSection">
+					<Panel id="Row_0" class="DebugButtonRow LeftRightFlow DebugSection">
 						<Button class="DevButton SetPlayerLevelButton" onactivate="DACDebugSetPlayerLevel( 10 )">
 							<Label html="true" text="#DAC_InGame_DevSetLevel10"/>
 						</Button>
@@ -273,7 +276,7 @@
 							<Label html="true" text="#DAC_InGame_DevDecreaseSelectedUnitRank"/>
 						</Button>
 					</Panel>
-					<Panel id="Row_1" class="LeftRightFlow">
+					<Panel id="Row_1" class="DebugButtonRow LeftRightFlow">
 						<Button class="DevButton" id="HalveTimescaleButton" onactivate="DACDebugModifyHostTimescale( 0.5 )">
 							<Label html="true" text="#DAC_InGame_DevModifyHostTimescaleHalf"/>
 						</Button>
@@ -284,7 +287,7 @@
 							<Label html="true" text="#DAC_InGame_DevModifyHostTimescaleDefault"/>
 						</Button>						
 					</Panel>
-					<Panel id="Row_2" class="LeftRightFlow">
+					<Panel id="Row_2" class="DebugButtonRow LeftRightFlow">
 						<Button class="DevButton" id="ButtonCopyShareCode" onactivate="DACDebugCopyShareCode()" onmouseover="UIShowTextTooltip( #DAC_InGame_DevCopyShareCode_Tooltip )" onmouseout="UIHideTextTooltip()">
 							<Label id="DevCopyShareCode_Label" text="#DAC_InGame_DevCopyShareCode" />
 							<Label id="DevCopyShareCode_Success" text="#DAC_InGame_DevCopyShareCode_Success" />
@@ -364,6 +367,7 @@
 		<Panel id="FullscreenModalUISection" hittest="false">
 			<DACUIZoo id="Zoo"/>
 			<DACTalentSelector id="TalentSelector"/>
+			<DACUIUnderlordPicker id="UnderlordPicker" />
 			<DACItemSelect id="ItemSelect" />
 			<DACUITurboShop id="TurboShop" hittest="false" />
 		</Panel>
@@ -378,14 +382,15 @@
 		</Panel>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+		<DACUIHudTutorial/>
+
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<Panel id="SettingsMenuSection" hittest="true" onactivate="DACHideMenuButtons(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 			<Panel class="MenuButtonContainer PopupPanel" hittest="true">
 				<Panel class="MenuLogo" />
 				<Button class="MenuButton BevelButton" onactivate="DACHideMenuButtons(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 					<Label text="#DAC_InGame_MenuCancel"></Label>
-				</Button>
-				<Button id="JailButton" class="MenuButton BevelButton" onactivate="DACIngameShowJail(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
-					<Label text="#DAC_InGame_MenuJail"></Label>
 				</Button>
 				<Button id="HeropediaButton" class="MenuButton BevelButton" onactivate="DACShowHeropediaPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
 					<Label text="#DAC_InGame_Heropedia"></Label>
@@ -518,6 +523,12 @@
 			</Panel>
 		</Panel>
 
-		<DACUIHudTutorial/>
+
+		<Panel id="DebugCorners" hittestchildren="false" hittest="false">
+			<Panel id="DebugCornerTopLeft" />
+			<Panel id="DebugCornerTopRight" />
+			<Panel id="DebugCornerBottomLeft" />
+			<Panel id="DebugCornerBottomRight" />
+		</Panel>		
 	</DACUIHud>
 </root>

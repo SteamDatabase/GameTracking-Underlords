@@ -44,12 +44,15 @@
 			<Label class="PageButton PageButton4 TextButton" text="#dac_zoo_page4" onactivate="DACSetZooPage('Page4')" allowtextselection="false"/>
 			<Label class="NavDivider" text="#dac_zoo_page_divider" />
 			<Label class="PageButton PageButton5 TextButton" text="#dac_zoo_page5" onactivate="DACSetZooPage('Page5')" allowtextselection="false"/>
+			<Label class="NavDivider" text="#dac_zoo_page_divider" />
+			<Label class="PageButton PageButton6 TextButton" text="#dac_zoo_page6" onactivate="DACSetZooPage('Page6')" allowtextselection="false"/>
 		</Panel>
 
 		<Panel class="ZooPage1 ZooPage">
 			<Panel class="ZooColumn">
 				<TextButton class="BevelButton" text="City Crawl" onactivate="DACShowChallengeWorldMapPage()" />
-				<TextButton class="BevelButton" text="Season 1 Battle Pass" />
+				<TextButton class="BevelButton" text="Season 1 Battle Pass" onactivate="DACShowRewardsBattlePassPage()"/>
+				<TextButton class="BevelButton" text="Season 1 Loadout" onactivate="DACShowLoadoutPage()"/>				
 				<TextButton class="BevelButton" text="Start Tutorial (Phase 1)" onactivate="DACStartTutorial(0)" />
 				<TextButton class="BevelButton" text="Start Tutorial (Phase 2)" onactivate="DACStartTutorial(1)" />
 			</Panel>
@@ -131,7 +134,6 @@
 		</Panel>
 
 		<Panel class="ZooPage3 ZooPage">
-
 
 				<Panel class="ZooRowContainer TopBottomFlow">
 					<Panel class="ZooSynergies">
@@ -258,18 +260,8 @@
 						<DACSynergyIcon iconstyle="circle" keyword="33" />
 
 						<DACSynergyIcon iconstyle="circle" keyword="37" />
-						<DACSynergyIcon iconstyle="circle" keyword="38" />
-						<DACSynergyIcon iconstyle="circle" keyword="39" />
 						<DACSynergyIcon iconstyle="circle" keyword="40" />
-						<DACSynergyIcon iconstyle="circle" keyword="41" />
-						<DACSynergyIcon iconstyle="circle" keyword="42" />
-						<DACSynergyIcon iconstyle="circle" keyword="43" />
-						<DACSynergyIcon iconstyle="circle" keyword="44" />
-						<DACSynergyIcon iconstyle="circle" keyword="45" />
-						<DACSynergyIcon iconstyle="circle" keyword="46" />
 						<DACSynergyIcon iconstyle="circle" keyword="47" />
-						<DACSynergyIcon iconstyle="circle" keyword="48" />
-						<DACSynergyIcon iconstyle="circle" keyword="49" />
 						<DACSynergyIcon iconstyle="circle" keyword="50" />
 					</Panel>
 
@@ -316,7 +308,51 @@
 		</Panel>
 
 		<Panel class="ZooPage6 ZooPage">
-			
+			<Panel class="ZooColumn">
+
+				<Panel class="PostGameOption">
+					<Label text="#DAC_Zoo_PostGame_GameMode" />
+					<DropDown id="GameModeDropDown">
+						<Label id="1" class="GameModeOption" text="#DAC_MatchTypeName1" value="1" />
+						<Label id="2" class="GameModeOption" text="#DAC_MatchTypeName2" value="2" />
+						<Label id="3" class="GameModeOption" text="#DAC_MatchTypeName3" value="3" />
+					</DropDown>
+				</Panel>
+
+				<Panel class="PostGameOption">
+					<DACSettingsCheckbox id="RankedCheckbox" convar="" text="#DAC_Zoo_PostGame_Ranked" />
+				</Panel>
+
+				<Panel class="PostGameOption">
+					<Label text="#DAC_Zoo_PostGame_Position" />
+					
+					<DropDown id="PositionDropDown">
+						<Label id="1" class="GameModeOption" text="1" value="1" />
+						<Label id="2" class="GameModeOption" text="2" value="2" />
+						<Label id="3" class="GameModeOption" text="3" value="3" />
+						<Label id="4" class="GameModeOption" text="4" value="4" />
+						<Label id="5" class="GameModeOption" text="5" value="5" />
+						<Label id="6" class="GameModeOption" text="6" value="6" />
+						<Label id="7" class="GameModeOption" text="7" value="7" />
+						<Label id="8" class="GameModeOption" text="8" value="8" />
+					</DropDown>
+				</Panel>
+
+				<Panel class="PostGameOption">
+					<Label text="#DAC_Zoo_PostGame_InitialCurrency" />
+					<TextEntry id="InitialCurrencyTextEntry" textmode="numeric" text="0" />
+				</Panel>
+
+				<Panel class="PostGameOption">
+					<Label text="#DAC_Zoo_PostGame_CurrencyGain" />
+					<TextEntry id="AddCurrencyTextEntry" textmode="numeric" text="0" />
+				</Panel>
+
+				<Button id="PostGameButton" class="SimpleButton" onactivate="DACZooShowPostGame()">
+					<Label text="#dac_zoo_show_post_game" />
+				</Button>
+
+			</Panel>
 		</Panel>
 
 	</DACZooPage>

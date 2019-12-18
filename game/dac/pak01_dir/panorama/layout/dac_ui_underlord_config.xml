@@ -9,10 +9,14 @@
 	<snippets>
 		<snippet name="AbilitySnippet">
 			<Panel class="AbilityBlock">
-				<Image id="AbilityIcon" scaling="stretch-to-fit-preserve-aspect" />
+				<Panel class="TalentAbilityImageContainer">
+					<Image class="AbilityIcon" id="AbilityIcon" scaling="stretch-to-fit-preserve-aspect" />
+					<Image id="AbilityBevelOverlayLarge" hittest="false" />
+				</Panel>
 				<Panel class="AbilityInfo">
-					<Label class="AbilityName" text="{s:ability_name}" />
-					<Label class="AbilityDesc" text="{s:ability_description}" html="true" />
+					<Label class="AbilityName" text="{s:ability_name}"/>
+					<Label class="AbilityDesc" html="true" text="{s:ability_description}" />
+					<Label class="AbilityDesc PassiveDesc" text="#dac_underlord_detail_passive_build_desc" html="true" />
 				</Panel>
 			</Panel>
 		</snippet>
@@ -21,6 +25,7 @@
 	<DACUnderlordConfig>
 
 		<Panel id="UnderlordContainer">
+
 			<Panel id="BioSection">
 				<Label id="Name" class="DistressedFont"/>
 				<Label id="Subtitle" class="DistressedFont"/>
@@ -31,39 +36,38 @@
 						<Label id="TabCombat" class="TabLabel DistressedFont" text="#dac_settings_about" onactivate="DACUnderlordTabSelect(0)" allowtextselection="false"/>
 					</Panel>
 				</Panel>
-			
-			
+
+				<Panel id="PlayButtonContainer">
+					<Button id="UnderlordsMonologueButton" onactivate="DACUnderlordPlayMonologue()">
+						<Panel id="PlayButtonIcon" />
+					</Button>
+				</Panel>				
 
 				<Panel id="TabOptions">
 					<Panel id="AbilityContents" class="TabSection">
-						<Panel id="AbilityList">
-							<!-- filled with AbilitySnippet -->
-						</Panel>
-					</Panel>
-					<Panel id="CombatContents" class="TabSection">
 						<Label id="Oneliner"/>
+						<Label id="Description" html="true"/>
 
-						<Panel id="TalentsButton" onactivate="DACUnderlordConfigBrowseTalents()">
-							<Label text="#DAC_Underlord_TalentsShow"/>
-						</Panel>
-
-						<Panel id="UnderlordsMonologue">
-							<Panel id="PlayButtonContainer">
-								<Button id="UnderlordsMonologueButton" onactivate="DACUnderlordPlayMonologue()">
-									<Panel id="PlayButtonIcon" />
-									<Label id="PlayButtonLabel" text="#DAC_DBHome_Mobile_PlayAudio" html="true"/>
-								</Button>
+						<Panel class="UnderlordBuild">
+							<!-- Passive -->
+							<Label class="UnderlordBuildName" text="#dac_underlord_detail_passive_name" />
+							<Panel id="PassiveContainer" class="BuildContainer">
+								<!-- AbilitySnippet -->
 							</Panel>
-							<Label id="Description" html="true"/>
-							
+							<!-- Build 1 -->
+							<Label class="UnderlordBuildName" text="{s:build0name}" />
+							<Panel id="Build0Container" class="BuildContainer">
+								<!-- AbilitySnippet -->
+								<!-- AbilitySnippet -->
+							</Panel>
+							<!-- Build 2 -->
+							<Label class="UnderlordBuildName" text="{s:build1name}"  />
+							<Panel id="Build1Container" class="BuildContainer">
+								<!-- AbilitySnippet -->
+								<!-- AbilitySnippet -->
+							</Panel>
 						</Panel>
-						
-
-					
-
 					</Panel>
-
-				
 				</Panel>
 			</Panel>
 
@@ -71,7 +75,6 @@
 				<Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
 			</Panel>
 
-		
 
 			<Panel class="UnderlordSelectContainer">
 				<Panel class="UnderlordSelectTopContainer">
@@ -84,6 +87,8 @@
 						<Button id="RightUnderlordArrow" class="UnderlordArrow" onactivate="DACUnderlordsViewChange(1)"/>
 					</Panel>
 				</Panel>
+
+<!-- 
 				<Panel class="UnderlordSelectMiddleContainer">
 					<Panel id="Select" class="MiddleButton"  onactivate="DACUnderlordActivate()">
 						<Label text="#DAC_Reward_Item_Select"/>
@@ -96,6 +101,7 @@
 					<Label class="TalentsUnlockedNumbers" text="#DAC_Reward_Item_TalentCount"/>
 					<Label class="TalentsUnlocked" text="#DAC_Reward_Item_TalentUnlockedLabel"/>
 				</Panel>
+ -->
 			</Panel>
 		</Panel>
 

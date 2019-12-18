@@ -1,14 +1,35 @@
-DACScoreboard {
+DACScoreboard, DACPostGameScoreboard {
 	flow-children: down;
 	vertical-align: top;
-	margin-top: 45px;
-	ui-scale: 80%; /* Matches scale value of scoreboard in PC mode */
 	
+	
+	margin-top: 8px;
 	overflow: scroll scroll;
-	width: 100%;
-	max-height: 100%;
+	ui-scale: 70%;
 	
 	//background-color: #2c2a32;
+}
+
+DACScoreboard {
+	width: 100%;
+	max-height: 100%;
+	margin-top: 45px;
+	
+}
+
+.IsLayoutSmallScreen.IsLayoutSmallScreen.AspectRatio16x9 DACPostGameScoreboard
+{
+	height: 810px;
+}
+
+.IsLayoutSmallScreen.IsLayoutSmallScreen.AspectRatio21x9 DACPostGameScoreboard
+{
+	height: 810px;
+}
+
+DACPostGameScoreboard
+{
+	//opacity-mask: url("s2r://panorama/images/post_game/scoreboard_fade_psd.vtex");
 }
 
 #ScoreboardEntryContainer {
@@ -18,22 +39,33 @@ DACScoreboard {
 	background-repeat: repeat-x;
 }
 
-.IsLayoutSmallScreen DACScoreboard {
+DACPostGameScoreboard #ScoreboardEntryContainer {
+	background-image: none;
+	background-color: #00000088;
+}
+
+.IsLayoutSmallScreen DACScoreboard
+{
 	margin-top: 35px;
 	ui-scale: 90%;
 }
 
-.IsLayoutSmallScreen.AspectRatio16x9 DACScoreboard {
+.IsLayoutSmallScreen DACPostGameScoreboard
+{
+	margin-top: 20px;
+	ui-scale: 90%;	
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9 DACScoreboard, .IsLayoutSmallScreen.AspectRatio16x9 DACPostGameScoreboard {
 	margin-bottom: 0px;
 }
 
-.IsLayoutSmallScreen.AspectRatio4x3 DACScoreboard {
+.IsLayoutSmallScreen.AspectRatio4x3 DACScoreboard, .IsLayoutSmallScreen.AspectRatio4x3 DACPostGameScoreboard {
 	ui-scale: 100%;
-	margin-bottom: 28px;
-	margin-top: 100px;
+	margin-top: 20px;
 }
 
-.IsLayoutSmallScreen.AspectRatio21x9 DACScoreboard {
+.IsLayoutSmallScreen.AspectRatio21x9 DACScoreboard, .IsLayoutSmallScreen.AspectRatio21x9 DACPostGameScoreboard {
 	ui-scale: 90%;
 	margin-bottom: 0px;
 	//max-width: 1920px;
@@ -49,20 +81,20 @@ DACScoreboard {
 	visibility: visible;
 }
 
-.PlayerLeaderboardBackground DACScoreboard #ScrollThumb
+.PlayerLeaderboardBackground DACScoreboard #ScrollThumb, .PlayerLeaderboardBackground DACPostGameScoreboard #ScrollThumb
 {
 	background-color: #4b4354aa;
 	height: 20px;
 }
 
-.PlayerLeaderboardBackground DACScoreboard #HorizontalScrollBar
+.PlayerLeaderboardBackground DACScoreboard #HorizontalScrollBar, .PlayerLeaderboardBackground DACPostGameScoreboard #HorizontalScrollBar
 {
 	background-color: #000000;
 	//background-color: red;
 	height: 20px;
 }
 
-.IsLayoutSmallScreen .PlayerLeaderboardBackground DACScoreboard #HorizontalScrollBar
+.IsLayoutSmallScreen .PlayerLeaderboardBackground DACScoreboard #HorizontalScrollBar, .IsLayoutSmallScreen .PlayerLeaderboardBackground DACPostGameScoreboard #HorizontalScrollBar
 {
 	height: 10px;
 	//background-color: #ffffff88;
@@ -70,21 +102,28 @@ DACScoreboard {
 
 #Header {
 	flow-children: right;
-	background-color: #352d3e;
+	
 	max-height: 60px;
 }
 
+DACScoreboard #Header {
+	background-color: #352d3e;
+}
+
+
+
 #Header Label {
-	color: #fff;
+	color: textBrighter;
 	font-size: 24px;
 	padding: 15px 10px 15px 10px;
 	text-transform: uppercase;
 	text-overflow: shrink;
+	font-weight: black;
 }
 
 .IsLayoutSmallScreen.AspectRatio16x9 #Header Label,
 .IsLayoutSmallScreen.AspectRatio21x9 #Header Label{
-	color: #fff;
+	color: textBrighter;
 	font-size: 24px;
 	padding: 0px 10px 0px 10px;
 	text-transform: uppercase;
@@ -125,4 +164,13 @@ DACScoreboard {
 {
 	// hiding scoreboard for Duos for the time being
 	//visibility: collapse; 
+}
+
+/* Visibility */
+DACScoreboardEntry .Place, DACScoreboard #PlaceHeader {
+	visibility: collapse;
+}
+
+DACPostGameScoreboard .Bench, DACPostGameScoreboard #BenchHeader {
+	visibility: collapse;
 }

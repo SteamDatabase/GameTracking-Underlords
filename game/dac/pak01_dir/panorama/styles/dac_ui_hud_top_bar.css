@@ -25,12 +25,13 @@ DACUIHudTopBar {
 	width: 100%;
 	horizontal-align: center;
 	vertical-align: top;
-	height: 28px;
+	height: 12px;
 	//background-color: #000000dd;
 	margin-top: 0px;
-	padding: 4px;
+	//padding: 4px;
 
 	opacity: 0.01;
+	opacity: 1;
 	transition-property: opacity;
 	transition-duration: 0.2s;
 }
@@ -55,14 +56,18 @@ DACUIHudTopBar {
 {
 	height: 100%;
 	horizontal-align: center;
-	background-color: gradient(linear, 0% 0%, 100% 0%, from(#970a00), color-stop (.5, #EE2222), to(#970a00));
+	background-color: gradient(linear, 0% 0%, 100% 0%, from(#efeca777), color-stop (.2, #0fdfba77), color-stop (.3, #0cabca77), color-stop (.4, #618bb877), color-stop (.47, #7bc2ff77), color-stop (.5, #7bc2ff99), color-stop (.53, #7bc2ff77), color-stop (.6, #618bb877), color-stop (.7, #0cabca77), color-stop (.8, #0fdfba77), to(#efeca777));
+	//background-color: gradient( radial, 50% 50%, 0% 0%, 300% 300%, from(#efeca7), color-stop (.2, #0fdfba), color-stop (.3, #0cabca), color-stop (.4, #618bb8), color-stop (.5, #8bb6dd), color-stop (.6, #618bb8), color-stop (.7, #0cabca), color-stop (.8, #0fdfba), to(#efeca7));
 	//background-color: gradient(linear, 0% 0%, 50% 0%, from(rgba(255,244,244,1)), color-stop (.5, #EE2222), to(#970a00));
 	//background-color: gradient(linear, 0%, rgba(255,244,244,1) 15%, rgba(9,107,121,1) 60%, rgba(255,0,0,1) 100%);
 	//transition-delay: 0.5s;//this is weird
 	transition-property: width;
-	transition-duration: 0.35s;
-	//transition-timing-function: ease-in;  
-	border: 4px solid #000e;
+	transition-duration: 1s;
+	transition-timing-function: linear;  
+	border: 2px solid #ffffff22;
+	border-top: 0px;
+	//background-image: url("s2r://panorama/images/shop/timer_bar_backer_psd.vtex");
+	//background-size: 100%;
 }
 
 .TimerHide #TimerContainer
@@ -83,12 +88,12 @@ DACUIHudTopBar {
 {
 	0%
 	{
-		background-color: gradient(linear, 0% 0%, 100% 0%, from(#fff), color-stop (.5, #fff), to(#fff));
+		background-color: gradient(linear, 0% 0%, 100% 0%, from(#fff), color-stop (.2, #fff), color-stop (.47, #fff), color-stop (.5, #fff), color-stop (.53, #fff), color-stop (.8, #fff), to(#fff));
 
 	}
 	100%
 	{
-		background-color: gradient(linear, 0% 0%, 100% 0%, from(#970a00), color-stop (.5, #EE2222), to(#970a00));
+		background-color: gradient(linear, 0% 0%, 100% 0%, from(#efeca777), color-stop (.2, #0fdfba77), color-stop (.47, #7bc2ff77), color-stop (.5, #7bc2ff99), color-stop (.53, #7bc2ff77), color-stop (.8, #0fdfba77), to(#efeca777));
 	}
 }
 
@@ -97,48 +102,23 @@ DACUIHudTopBar {
 .GameStatePanelClock
 {
 
-	width: fit-children;
+	width: 100px;
 	horizontal-align: center;
 	transition-property: transform;
-	transition-duration: 0.26s;
+	transition-duration: 0.2s;
+	overflow: noclip;
+	transition-timing-function: ease-in;
+	overflow: noclip;
+	horizontal-align: center;
 }
 
-.IsLayoutSmallScreen .GameStatePanelClock
+.GameStateTimer
 {
-	margin-top: 35px;
+	overflow: noclip;
 }
+
 
 .HiddenForTutorial_Timer #TimerContainer
-{
-	visibility: collapse;
-}
-
-.IsCombatIntroRunning .GameStatePanelClock,
-.ERoundState_Combat .GameStatePanelClock
-{
-	transform: translateY( -150px );
-}
-
-.ERoundState_Combat .AfterMyCombat .GameStatePanelClock
-{
-	transform: translateY( 0px );
-}
-
-#NextRoundLabel
-{
-	visibility: collapse;
-}
-
-.ERoundState_RoundOver #NextRoundLabel,
-.ERoundState_Combat .AfterMyCombat:not(.NeutralCombat) #NextRoundLabel
-{
-	visibility: visible;
-}
-
-.ERoundState_Combat .AfterMyCombat:not(.NeutralCombat) #RoundNum,
-.ERoundState_Combat .AfterMyCombat:not(.NeutralCombat) #RoundPhase,
-.ERoundState_RoundOver #RoundPhase,
-.ERoundState_RoundOver #RoundNum
 {
 	visibility: collapse;
 }
@@ -146,12 +126,6 @@ DACUIHudTopBar {
 .TutorialCutscene DACUIHudTopBar
 {
 	opacity: 0;
-}
-
-.EGameState_Intro DACUIHudTopBar
-{
-	opacity: 0;
-	transform: translateY( -150px );
 }
 
 .IsLayoutLargeScreen DACUIHudTopBar
@@ -169,18 +143,64 @@ DACUIHudTopBar {
 	visibility: collapse;
 }
 
+
+.TopBarLeft .RoundPhaseText
+{
+	width: fit-children;
+	text-align: right;
+	font-family: ravenhook;
+	margin-right: 3px;
+	transform: translateY(-100px);
+	z-index: 100;
+}
+
+
+.TopBarRight .RoundPhaseText
+{
+	width: fit-children;
+	text-align: left;
+	font-family: ravenhook;
+	margin-left: 3px;
+	transform: translateY(-100px);
+	z-index: 100;
+}
+
+
+
 .RoundPhaseText {
-	font-size: 24px;
+	font-size: 34px;
 	font-weight: bold;
 	padding: 4px, 0px 4px 0px;
 	text-transform: uppercase;
 	text-shadow: 0px 1px 0px 3.0 #000;
-	color: gradient(linear, 0% 0%, 0% 100%, from( #c0daf4 ), to(#ffffff));
+	color: gradient(linear, 0% 0%, 0% 100%, from( #7272c7 ), to(#cdd2f3));
+	margin-top: 20px;
+	margin-bottom: 5px;
+	transition-property: color, transform;
+	transition-duration: .2s;
+	letter-spacing: 1px;
+	opacity: 0;
+	transition-timing-function: ease-in;
 }
 
-.LowVisualQuality .RoundPhaseText {
-	text-shadow: 0px 1px 0px 2.0 #000;
+.ShopVisible .RoundPhaseText
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#ffffff));
 }
+
+
+
+#asdf
+{
+	opacity: 1;
+	width: 500px;
+	text-align: right;
+	margin-right: 10px;
+	font-family: ravenhook;
+	letter-spacing: 1px;
+	opacity: 1;
+}
+
 
 .Language_schinese .RoundPhaseText,
 .Language_tchinese .RoundPhaseText,
@@ -192,6 +212,108 @@ DACUIHudTopBar {
 }
 
 
+#TimerDripParticle
+{
+	width: 600px;
+	height: 170px;
+	//background-color: red;
+	overflow: noclip;
+	pre-transform-scale2d: .75;
+	margin-top: -55px;
+	margin-top: -50px;
+	margin-left: -250px;
+
+	background-image: url("s2r://panorama/images/hud/timer_backing_glow_psd.vtex");
+	background-size: 100%;
+	background-position: 50% 50%;
+	overflow: noclip;
+	opacity: .9;
+	
+	transition-property: opacity, transform, brightness;
+	transition-duration: .2s;
+	
+	animation-name: TimerBackerPulse;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
+	//visibility: collapse;
+	z-index: 0;
+}
+
+.IsLayoutSmallScreen #TimerDripParticle
+{
+	margin-top: -58px;
+}
+
+@keyframes 'TimerBackerPulse'
+{
+	0%
+	{
+		opacity: 1;
+	}
+	50%
+	{
+		opacity: 0;
+	}	
+	100%
+	{
+		opacity: 1;
+	}
+}
+
+.ShopVisible #TimerDripParticle
+{
+	opacity: .6;
+	animation-name: TimerBackerPulseShop;
+	animation-duration: 6s;
+	animation-iteration-count: infinite;
+	brightness: 4;
+}
+
+@keyframes 'TimerBackerPulseShop'
+{
+	0%
+	{
+		opacity: .6;
+	}
+	50%
+	{
+		opacity: .3;
+	}	
+	100%
+	{
+		opacity: .6;
+	}
+}
+
+.IsVersusOrCombatRunning #TimerDripParticle
+{
+	opacity: .001;
+	animation-name: TimerBackerPulseCombat;
+	animation-duration: 6s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes 'TimerBackerPulseCombat'
+{
+	0%
+	{
+		opacity: .5;
+	}
+	50%
+	{
+		opacity: .3;
+	}	
+	100%
+	{
+		opacity: .5;
+	}
+}
+
+#VertTimerContainer
+{
+	horizontal-align: center;
+	overflow: noclip;
+}
 
 #RoundHeaderContainer
 {
@@ -201,13 +323,16 @@ DACUIHudTopBar {
 	height: fit-children;
 	flow-children: right;
 	horizontal-align: center;
+	//background-color: blue;
+	//opacity-mask: url("s2r://panorama/images/masks/crunchy_text_mask_psd.vtex");
 }
+
 
 .IsLayoutSmallScreen #RoundHeaderContainer
 {
 	ui-scale: 140%;
 	padding: 0px;
-	margin-top: 10px;
+	margin-top: 2px;
 }
 
 #RoundHeaderPauseIndicator
@@ -218,15 +343,26 @@ DACUIHudTopBar {
 	max-height: 37px;
 	font-weight: black;
 	text-transform: uppercase;
-	transform: rotatez( -3deg );
+	transform: rotatez( -3deg ) translateY( 0px );
 	background-color: #000000;
 	padding: 3px 14px 2px 16px;
 	letter-spacing: 2px;
 	box-shadow: 0px 0px 2px #000000;
-	margin-top: 110px;
+	margin-top: 140px;
 	opacity: 0.0;
 	text-overflow: shrink;
 	overflow: noclip; // because it has rotation	
+	
+}
+
+.ShopVisible #RoundHeaderPauseIndicator
+{
+	transform: rotatez( -3deg ) translateY( -40px );
+}
+
+.IsLayoutSmallScreen.ShopVisible #RoundHeaderPauseIndicator
+{
+	transform: rotatez( -3deg ) translateY( -76px );
 }
 
 
@@ -241,47 +377,64 @@ DACUIHudTopBar {
 
 .IsLayoutSmallScreen #RoundHeaderPauseIndicator
 {
-	ui-scale: 110%;
-	margin-top: 140px;
+	ui-scale: 140%;
+	margin-top: 200px;
+	margin-top: 216px;
 }
 
 .AspectRatio4x3.IsLayoutSmallScreen #RoundHeaderPauseIndicator
 {
-	margin-top: 150px;
+	margin-top: 220px;
 }
 .IsPaused #RoundHeaderPauseIndicator
 {
 	opacity: 1.0;
-	transition-property: opacity;
-	transition-duration: 0.1s;
+	transition-property: opacity, transform;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
 }
 
 .HeaderRoundTime
 {
-	padding-top: 8px;
+	padding-top: -16px;
 	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#ffffff));
 	text-shadow: 0px 1px 0px 3.0 #000;
-	font-size: 105px;
+	font-size: 70px;
 	font-family: radianceM;
+	font-family: ravenhook;
 	letter-spacing: 0px;
 	text-align: center;
-	width: 130px;
-	height: 130px;
+	width: 100px;
+	height: 70px;
 	animation-duration: 0.5s;
 	animation-iteration-count: 1;
-	transition-duration: 0.25s;
-	transition-timing-function: ease-out;
-	transition-property: color, text-shadow;
-		
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+	transition-property: color, text-shadow, transform;
+	transform: translateY(0px);
+	
 	text-transform: uppercase;
 	font-weight: bold;
+	overflow: noclip;
+}
 
+.ShopVisible .HeaderRoundTime
+{
+	transform: translateY(-40px);
+}
+
+.IsLayoutSmallScreen.ShopVisible .HeaderRoundTime
+{
+	transform: translateY(-60px);
 }
 
 #HeaderRoundTimeContainer
 {
 	flow-children: none;
+	overflow: noclip;
 }
+
+
 
 @keyframes 'TimerAnim'
 {
@@ -298,4 +451,108 @@ DACUIHudTopBar {
 	}
 }
 
+/* Round control */
+.RoundPhaseText {
+	visibility: collapse;
+}
 
+/* Setup phase */
+.ERoundState_Preparing .RoundPhaseText.Preparing {
+	visibility: visible;
+	transform: translateY(0px);
+	opacity: 1;
+}
+
+.ShopVisible.ERoundState_Preparing .RoundPhaseText.Preparing {
+	visibility: visible;
+	transform: translateY(-100px);
+	opacity: 0;
+}
+
+.ShopVisible.ERoundState_Preparing #TimerDripParticle {
+	visibility: visible;
+	transform: translateY(-40px);
+	opacity: 0;
+}
+
+.IsLayoutSmallScreen.ShopVisible.ERoundState_Preparing #TimerDripParticle {
+	visibility: visible;
+	transform: translateY(-50px);
+	opacity: 0;
+}
+
+/* Combat phase */
+
+.ERoundState_Combat  DACUIHudTopBar:not(.AfterMyCombat) .RoundPhaseText.Combat {
+	visibility: visible;
+	transform: translateY(0px);
+	opacity: 1;
+}
+
+.ShopVisible.ERoundState_Combat  DACUIHudTopBar:not(.AfterMyCombat) .RoundPhaseText.Combat {
+	visibility: visible;
+	//transform: translateY(-100px);
+	opacity: 1;
+}
+
+.ERoundState_Combat  DACUIHudTopBar:not(.AfterMyCombat) .GameStatePanelClock {
+	visibility: collapse;
+	transform: translateY(-100px);
+	opacity: 0;
+}
+
+.ShopVisible.ERoundState_Combat  DACUIHudTopBar:not(.AfterMyCombat) .GameStatePanelClock {
+	visibility: visible;
+	transform: translateY(0px);
+	opacity: 0;
+}
+
+/* After combat */
+.ERoundState_Combat DACUIHudTopBar.AfterMyCombat .RoundPhaseText.Countdown {
+	visibility: visible;
+	transform: translateY(0px);
+	opacity: 1;
+}
+
+.ShopVisible.ERoundState_Combat DACUIHudTopBar.AfterMyCombat .RoundPhaseText.Countdown {
+	visibility: visible;
+	transform: translateY(-100px);
+	opacity: 0;
+}
+
+.ShopVisible.ERoundState_Combat #TimerDripParticle {
+	visibility: visible;
+	transform: translateY(-40px);
+	opacity: 0;
+}
+
+.IsLayoutSmallScreen.ShopVisible.ERoundState_Combat #TimerDripParticle {
+	visibility: visible;
+	transform: translateY(-50px);
+	opacity: 0;
+}
+
+/* Item pick */
+.ERoundState_RoundOver .RoundPhaseText.Loot {
+	visibility: visible;
+	transform: translateY(0px);
+	opacity: 1;
+}
+
+.ShopVisible.ERoundState_RoundOver  .RoundPhaseText.Loot {
+	visibility: visible;
+	//transform: translateY(-100px);
+	opacity: 1;
+}
+
+.ShopVisible.ERoundState_RoundOver   .GameStatePanelClock {
+	visibility: visible;
+
+}
+
+/* Preparing for next round phase */
+.ERoundState_RoundOver .RoundPhaseText.Countdown,
+.ERoundState_Ready .RoundPhaseText.Countdown
+{
+	visibility: visible;
+}

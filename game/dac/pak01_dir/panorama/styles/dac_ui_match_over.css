@@ -1,0 +1,145 @@
+DACMatchOverScreen
+{
+	width:100%;
+	height:800px;
+	pre-transform-scale2d:.7;	
+	
+	transition-property: opacity;
+	transition-duration: 0.2s;
+
+	visibility: collapse;
+	vertical-align: top;
+	margin-top:-100px;
+}
+
+.LowVisualQuality DACMatchOverScreen.ShowMatchOver
+{
+	animation-name: none;
+	visibility: visible;
+	opacity: 1;
+}
+
+DACMatchOverScreen.ShowMatchOver
+{
+	visibility: visible;
+	animation-name: IntroAppearAnim;
+	animation-duration: 2s;	
+	animation-iteration-count: 1;
+	animation-timing-function: ease-out;
+	pre-transform-scale2d:.7;	
+}
+
+
+// Individual profile anim
+@keyframes 'IntroAppearAnim' {
+	0% {
+		opacity: 0;
+		pre-transform-scale2d: 3.0;
+	}
+	1% {
+		opacity: 1;
+		pre-transform-scale2d: 3.0;
+	}
+	5% {
+		opacity: 1;
+		pre-transform-scale2d: .5;
+	}		
+	8%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: .7;
+	}
+	97%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: .7;
+	}
+	100%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: .7;
+	}
+}
+
+
+#PlaceContainer
+{		 	
+	background-image: url("s2r://panorama/images/hud/dac_banner_postgame_bg_png.vtex");
+	background-position: center;
+	background-repeat: no-repeat;
+	width:100%;
+	height:100%;	
+}
+
+#PlaceAccents
+{	
+	background-image: url("s2r://panorama/images/hud/dac_banner_postgame_fg_png.vtex");	
+	background-position: center center;
+	width:100%;
+	height:100%;		
+}
+
+#PlaceText
+{
+	width:fit-children;
+	height:760px;
+	flow-children:none;
+	vertical-align: center;
+	horizontal-align: center;	
+	transform: rotateZ(3.5deg);
+	margin-left:50px;	
+}
+
+.FirstPlace #PlaceAccents { wash-color:#eaca72; } 
+.SecondPlace #PlaceAccents { wash-color:#989793; } 
+.ThirdPlace #PlaceAccents { wash-color:#c9906f; } 
+
+.FirstPlace #PlaceContainer { transform: rotateZ(-1.5deg);} 
+.SecondPlace #PlaceContainer { transform: rotateZ(-1.5deg); } 
+.ThirdPlace #PlaceContainer { transform: rotateZ(1.5deg); } 
+
+.FirstPlace #PlaceText Label {	color: gradient(linear, 100% 100%, 0% 10%, from( #eaca72 ), color-stop( 0.125, #eaca72 ), color-stop( 0.4, #eaca72 ), color-stop( 0.85, #efe199 ), to( #e1e199 )); }
+.SecondPlace #PlaceText Label {	color: gradient(linear, 100% 100%, 0% 10%, from( #989793 ), color-stop( 0.125, #989793 ), color-stop( 0.4, #c3c3c3 ), color-stop( 0.85, #c3c3c3 ), to( #989793 )); }
+.ThirdPlace #PlaceText Label {	color: gradient(linear, 100% 100%, 0% 10%, from( #b48164 ), color-stop( 0.125, #c9906f ), color-stop( 0.4, #c9906f ), color-stop( 0.85, #b48164 ), to( #b48164 )); }
+
+#PlaceTitle,
+#PlaceSubtitle
+{			
+	vertical-align: center;
+	horizontal-align: center;		
+	font-size: 304px;	
+	letter-spacing: 1px;
+	vertical-align: center;
+	text-align: center;
+	color: white;
+	text-transform: uppercase;
+	font-family: Radiance Black Distressed, k_alwaysFontNames;
+	opacity: 0.8;
+}
+
+#PlaceSubtitle
+{
+	width:400px;		
+	vertical-align: bottom;
+	margin-bottom:15px;
+	text-overflow: shrink;
+}
+
+/*#FirstPlaceFX
+{
+	visibility: collapse;
+	width:800px;
+	height:800px;
+	vertical-align: center;
+	horizontal-align: center;
+}
+
+.FirstPlace #FirstPlaceFX
+{
+	visibility: visible;
+}
+
+.LowVisualQuality .FirstPlace #FirstPlaceFX
+{
+	visibility: collapse;
+}*/

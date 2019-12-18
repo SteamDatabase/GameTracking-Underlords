@@ -19,17 +19,16 @@
 		<Panel id="ForegroundContainer">
 			
 			<Panel id="MainNav">
-				<Panel class="MainNavButton MainNav01" onactivate="DACSelectDashboardButton('HeropediaContainer'); DACShowHeropediaPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
-					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_SeasonInfo"/>
-					
+				<Panel class="MainNavButton MainNav01" onactivate="DACSelectDashboardButton('UnderlordsContainer'); DACShowUnderlordsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+					<Label class="MainNavLabel DistressedFont" text="#DAC_Underlords"/>	
 				</Panel>
-				<Panel class="MainNavButton MainNav02 AchievementsButton" onactivate="DACSelectDashboardButton('AchievementsContainer'); DACShowAchievementsPage();">
-					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_Achievements"/>
+				<Panel class="MainNavButton MainNav02" onactivate="DACSelectDashboardButton('HeropediaContainer'); DACShowHeropediaPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_SeasonInfo"/>
 				</Panel>		
-				<Panel class="MainNavButton MainNav03 LoadoutButton" onactivate="DACSelectDashboardButton('LoadoutButtonContainer'); DACShowLoadoutPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' );">
+				<Panel class="MainNavButton MainNav03 LoadoutButton" onactivate="DACSelectDashboardButton('LoadoutButtonContainer'); DACShowLoadoutProtopassPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' );">
 					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_Loadout"/>
 				</Panel>
-				<Panel class="MainNavButton MainNavBattlePass" onactivate="DACSelectDashboardButton('BattlePassContainer'); DACShowRewardsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_ProtPassActivate' );">
+				<Panel class="MainNavButton MainNavBattlePass" onactivate="DACSelectDashboardButton('BattlePassContainer'); DACShowRewardsProtopassPage(); PlaySoundEffect( 'DAC_UI.MainMenu_ProtPassActivate' );">
 					<Panel id="BattlePassPanel">
 						<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_Battlepass"/>
 						<DACControlBattlePass id="BattlePassOverview" class="OnDACHomePage HideSectionTitle HideQuests"/>
@@ -56,11 +55,13 @@
 						<Label text="#DAC_Reward_Item_ViewDetails"/>
 					</Panel>
 				</Panel>
+				<!-- 				
 				<Panel class="UnderlordSelectBottomContainer">
 					<Label class="TalentsUnlockedNumbers HeadlineFont" text="#DAC_Reward_Item_TalentCount"/>
 					<Label class="TalentsUnlocked" text="#DAC_Reward_Item_TalentUnlockedLabel"/>
 					<Image class="InfoImage" onmouseover="DACShowTalentInfoTooltip()" onmouseout="DACHideTalentInfoTooltip()" onactivate="DACShowTalentInfoPopup()"/>
-				</Panel>
+				</Panel> 
+				-->
 			</Panel>
 
 			<Panel id="LogoArea">
@@ -69,7 +70,6 @@
 			</Panel>
 
 			<Panel id="ButtonContainer">
-				<Label text="#dac_settings_ios_muted" id ="HomeIOSMuted" />
 				<Label class="PartyNotReadyLabel" text="#DAC_DBHome_Party_Member_Not_Ready" />
 				<Panel class="PlayButtonContainer">
 					<Button id="PlayButton" class="HomeButton" onactivate="DACMatchTypeSelect(); PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' );" onmouseover="PlaySoundEffect('DAC_UI.MainMenu_PlayHover')">
@@ -193,7 +193,7 @@
 
 			<Panel class="ReadyUpContainer SafeArea">
 				<Button id="ReadyUpButton" class="ReadyUpButton" onactivate="DACPartyMemberToggleReady(); PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' );" onmouseover="PlaySoundEffect('DAC_UI.MainMenu_PlayHover')">
-					<Label class="DistressedFont" text="#DAC_DBHome_ReadyUp" hittest="false" />
+					<Label class="HeadlineFont" text="#DAC_DBHome_ReadyUp" hittest="false" />
 				</Button>
 			</Panel>
 		</Panel>

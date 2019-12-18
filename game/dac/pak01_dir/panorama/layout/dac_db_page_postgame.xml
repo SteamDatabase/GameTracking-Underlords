@@ -2,133 +2,139 @@
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_postgame.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 	</styles>
 
-
 	<DACPagePostGame onactivate="" class="DashboardPage" >
-    <Panel class="PostGameTopBar">
-      <Button class="TopBarButton" id="TopBarProgressButton" onactivate="DACPostGameShowSeasonProgressPage()">
-        <Label class="" text="#DAC_PostGame_Progress" />
-      </Button>
-      <Button class="TopBarButton" id="TopBarStatsButton" onactivate="DACPostGameShowStatsPage()">
-        <Label class="" text="#DAC_PostGame_Stats" />
-      </Button>
-      <Button class="TopBarButton" id="TopBarScoreboardButton" onactivate="DACPostGameShowScoreboardPage()">
-        <Label class="" text="#DAC_PostGame_Scoreboard" />
-      </Button>
-    </Panel>
+		<Panel class="PostGameTopBar">
+			<Button class="TopBarButton" id="TopBarProgressButton" onactivate="DACPostGameShowSeasonProgressPage()">
+				<Label class="" text="#DAC_PostGame_Progress" />
+			</Button>
+			<Button class="TopBarButton" id="TopBarStatsButton" onactivate="DACPostGameShowStatsPage()">
+				<Label class="" text="#DAC_PostGame_Stats" />
+			</Button>
+			<Button class="TopBarButton" id="TopBarScoreboardButton" onactivate="DACPostGameShowScoreboardPage()">
+				<Label class="" text="#DAC_PostGame_Scoreboard" />
+			</Button>
+		</Panel>
 
-    <Panel id="PageContainer">
-      <Panel id="ScrollingPage">
-        <Panel id="SeasonProgressPage" class="OverlayContainer">
-          <Panel id="SeasonProgressContainer">
+		<Panel id="PageContainer">
+			<Panel id="ScrollingPage">
+				<Panel id="SeasonProgressPage" class="OverlayContainer">
+					<Panel id="SeasonProgressContainer">
 
-            <Panel class="PlaceContainer">
-              <Label class="PlaceTitle HeadlineFont" text="#DAC_InGame_UserDiedPlace"/>
-              <Label class="PlaceQuote" text="{s:result_quote}"/>
-            </Panel>
-            
-            <Panel id="ProgressBody">
-              <Panel class="ProgressContainer">
-                <Panel class="InfoBlock BattlePassBlock">
-                  <Label class="InfoHeader DistressedFont" text="#DAC_Rewards_Title" />
-                  <Panel class="ProgressBar">
-                    <ParticleProgressBar id="SeasonLevelProgress" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar_complete.vpcf" />
-                    <Panel id="LevelContainer">
-                      <Label id="SeasonLevelNum" class="Tier_Default_Bg" text="{i:current_season_level}"/>
-                    </Panel>
-                    <Label id="LevelPointCounts" text="#DAC_PostGame_LevelPointCount"/>
-                  </Panel>
-                  <Panel id="RewardsContainer">
-                    <Label id="NextRewardDesc" text="#DAC_PostGame_NextReward"/>
-                    <Label id="NextRewardName" text="{s:next_reward_name}"/>
-                    <Panel id="NextRewardContainer">
-                      <Panel id="NextRewardImage" />
-                    </Panel>
-                  </Panel>   
-                </Panel>
-                
-                <Panel id="SoloRankContainer" class="InfoBlock ChallengeAndRankContainer">
-                  <Label id="SoloRankTitle" class="InfoHeader DistressedFont" text="#DAC_PostGame_Rank" />
-                  <Label id="TurboRankTitle" class="InfoHeader DistressedFont" text="#DAC_PostGame_TurboRank" />
-                  <Label class="NonRankedContainer" text="#DAC_PostGame_NonRanked"/>
-                  <Panel  id="SoloRankDataContainer" class="RankIndicator">
-                    <DACRankIcon id="SoloRankIcon" iconstyle="standalone" />
-                    <Panel class="NameContainer">
-                      <Label id="PlayerRank" class="RankDesc" html="true"  text="#DAC_LevelUp_Rank_New" />
-                      <ProgressBar id="PlayerRankProgressBar" class="RankProgressBar"/>	
-                      <Panel class="RankScoreContainer">
-                        <Label class="RankScore" html="true" text="#DACRankPoints" />
-                        <Label class="RankScoreDelta" html="true" text="( {s:player_level_score_delta} )" />
-                      </Panel>
-                      <Label class="LeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
-                    </Panel>
-                  </Panel>
-                </Panel>
-              </Panel>
-              
-              <Panel id="RightPanel" class="ProgressContainer">
-                <Panel id="UnderlordContainer" >
-								  <Panel id="LocalUnderlordContainer" class="PlayerUnderlordContainer">
-                    <DACUnderlordScenePanel id="LocalUnderlordPortrait" class="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" hittest="false" glowsize="0" />
-                    <Label id="LocalPlayerName" class="UnderlordPlayerName" html="true" text="{g:dac_persona:b:player_accountid}"/>
-                  </Panel>
-                  <Panel id="TeammateUnderlordContainer" class="PlayerUnderlordContainer">
-                    <DACUnderlordScenePanel id="TeammateUnderlordPortrait" class="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" hittest="false" glowsize="0" />
-                    <Label id="TeammatePlayerName" class="UnderlordPlayerName" html="true" text="{g:dac_player_slot_persona:b:teammate_slotid}"/>
-                  </Panel>
-                </Panel>
-                
-                <Panel id="TeamRankContainer" class="InfoBlock ChallengeAndRankContainer">
-                  <Label class="InfoHeader DistressedFont" text="#DAC_PostGame_TeamRank" />
-                  <Label class="NonRankedContainer" text="#DAC_PostGame_NonRanked"/>
-                  <Panel id="TeamRankDataContainer" class="RankIndicator">
-                    <DACRankIcon id="TeamRankIcon" ranktype="duos" iconstyle="standalone" />
-                    <Panel class="NameContainer">
-                      <Label id="TeamRank" class="RankDesc" html="true"  text="#DAC_LevelUp_Team_Rank_New" />
-                      <ProgressBar id="TeamRankProgressBar" class="RankProgressBar"/>
-                      <Panel class="RankScoreContainer">
-                        <Label class="RankScore" html="true" text="#DACTeamRankPoints" />
-                        <Label class="RankScoreDelta" html="true" text="( {s:team_level_score_delta} )" />
-                      </Panel>
-                      <Label class="LeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
-                    </Panel>
-                  </Panel>
-                </Panel>
+						<Panel class="PlaceContainer">
+							<Label class="PlaceTitle HeadlineFont" text="#DAC_InGame_UserDiedPlace"/>
+							<Label class="PlaceQuote" text="{s:result_quote}"/>
+						</Panel>
+						
+						<Panel id="ProgressBody">
+							<Panel class="ProgressContainer">
+								<Panel class="InfoBlock BattlePassBlock">
+									<Label class="InfoHeader DistressedFont" text="#DAC_Rewards_Title" />
+									<Panel class="ProgressBar">
+										<ParticleProgressBar id="SeasonLevelProgress" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar_complete.vpcf" />
+										<Panel id="LevelContainer">
+											<Label id="SeasonLevelNum" class="Tier_Default_Bg" text="{i:current_season_level}"/>
+										</Panel>
+										<Label id="LevelPointCounts" text="#DAC_PostGame_LevelPointCount"/>
+									</Panel>
+									<Panel id="RewardsContainer">
+										<Label id="NextRewardDesc" text="#DAC_PostGame_NextReward"/>
+										<Label id="NextRewardName" text="{s:next_reward_name}"/>
+										<Panel id="NextRewardContainer">
+											<Panel id="NextRewardImage" />
+										</Panel>
+									</Panel>   
+								</Panel>
+								
+								<Panel id="SoloRankContainer" class="InfoBlock ChallengeAndRankContainer">
+									<Label id="SoloRankTitle" class="InfoHeader DistressedFont" text="#DAC_PostGame_Rank" />
+									<Label id="TurboRankTitle" class="InfoHeader DistressedFont" text="#DAC_PostGame_TurboRank" />
+									<Label class="NonRankedContainer" text="#DAC_PostGame_NonRanked"/>
+									<Panel  id="SoloRankDataContainer" class="RankIndicator">
+										<DACRankIcon id="SoloRankIcon" iconstyle="standalone" />
+										<Panel class="NameContainer">
+											<Label id="PlayerRank" class="RankDesc" html="true"  text="#DAC_LevelUp_Rank_New" />
+											<ProgressBar id="PlayerRankProgressBar" class="RankProgressBar"/>	
+											<Panel class="RankScoreContainer">
+												<Label class="RankScore" html="true" text="#DACRankPoints" />
+												<Label class="RankScoreDelta" html="true" text="( {s:player_level_score_delta} )" />
+											</Panel>
+											<Label class="LeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
+										</Panel>
+									</Panel>
+								</Panel>
+							</Panel>
+							
+							<Panel id="RightPanel" class="ProgressContainer">
+								<Panel id="UnderlordContainer" >
+									<Panel id="LocalUnderlordContainer" class="PlayerUnderlordContainer">
+										<DACUnderlordScenePanel id="LocalUnderlordPortrait" class="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" hittest="false" glowsize="0" />
+										<Label id="LocalPlayerName" class="UnderlordPlayerName" html="true" text="{g:dac_persona:b:player_accountid}"/>
+									</Panel>
+									<Panel id="TeammateUnderlordContainer" class="PlayerUnderlordContainer">
+										<DACUnderlordScenePanel id="TeammateUnderlordPortrait" class="UnderlordPortrait" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" hittest="false" glowsize="0" />
+										<Label id="TeammatePlayerName" class="UnderlordPlayerName" html="true" text="{g:dac_player_slot_persona:b:teammate_slotid}"/>
+									</Panel>
+								</Panel>
+								
+								<Panel id="TeamRankContainer" class="InfoBlock ChallengeAndRankContainer">
+									<Label class="InfoHeader DistressedFont" text="#DAC_PostGame_TeamRank" />
+									<Label class="NonRankedContainer" text="#DAC_PostGame_NonRanked"/>
+									<Panel id="TeamRankDataContainer" class="RankIndicator">
+										<DACRankIcon id="TeamRankIcon" ranktype="duos" iconstyle="standalone" />
+										<Panel class="NameContainer">
+											<Label id="TeamRank" class="RankDesc" html="true"  text="#DAC_LevelUp_Team_Rank_New" />
+											<ProgressBar id="TeamRankProgressBar" class="RankProgressBar"/>
+											<Panel class="RankScoreContainer">
+												<Label class="RankScore" html="true" text="#DACTeamRankPoints" />
+												<Label class="RankScoreDelta" html="true" text="( {s:team_level_score_delta} )" />
+											</Panel>
+											<Label class="LeaderboardPosition" html="true"  text="#DAC_Leaderboard_Rank" />
+										</Panel>
+									</Panel>
+								</Panel>
 
-              </Panel>
-            </Panel>
-          </Panel>    
-        </Panel>
+							</Panel>
+						</Panel>
+					</Panel>    
+				</Panel>
 
 				<DACPostGameStatsOverview  id="StatsPage" class="OverlayContainer" />
 
 				<Panel id="ScoreboardPage" class="OverlayContainer">
-			    <Label class="PlaceTitle" text="#DAC_PostGame_Scoreboard_Title"/>
-          <Panel id="ScoreboardContainer">
-			      <DACPostGameScoreboard id="Scoreboard" />
-          </Panel>
-		    </Panel>
-      </Panel>
-    </Panel>
-    
+					<Label class="PlaceTitle" text="#DAC_PostGame_Scoreboard_Title"/>
+					<Panel id="ScoreboardContainer">
+						<Panel id="RoundSelectorContainer">
+							<Button id="LeftRoundArrow" class="RoundArrow ArrowLeft" onactivate="DACChangeScoreboardRound(-1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )"/>
+							<Panel>
+								<Label id="RoundText" class="DistressedFont" text="#DAC_PostGameStats_RoundSelector"/>
+							</Panel>
+							<Button id="RightRoundArrow" class="RoundArrow ArrowRight" onactivate="DACChangeScoreboardRound(1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )"/>
+						</Panel>
+						<DACPostGameScoreboard id="Scoreboard" />
+					</Panel>
+				</Panel>
+			</Panel>
+		</Panel>
+		
 		<Panel class="ButtonContainer">
 			<Button id="ReturnToGameButton" class="LowerNavButton" onactivate="DACPostGameReturnToGame()">
 				<Label class="DistressedFont" text="#DAC_InGame_KeepWatching" />
 			</Button>
 
-      <Button id="PlayAgainButton" class="LowerNavButton" onactivate="DACPostGamePlayAgain()">
-        <Label class="DistressedFont" text="#DAC_Home_PlayAgain" />
-      </Button>
+			<Button id="PlayAgainButton" class="LowerNavButton" onactivate="DACPostGamePlayAgain()">
+				<Label class="DistressedFont" text="#DAC_Home_PlayAgain" />
+			</Button>
 
 			<Button id="MainMenuButton" class="LowerNavButton"  onactivate="DACPostGameMainMenu()">
 				<Label class="DistressedFont" text="#DAC_InGame_ReturnToMainMenu" />
 			</Button>
 		</Panel>
 
-		<DACPopupManager id="PopupManager" />
 		<DACParticleScenePanel id="CelebrationParticles" squarepixels="true" hittest="false" cameraLeft="0" cameraUp="0" fov="-200" />
-		
+		<Panel id="BlackBG"/>
 	</DACPagePostGame>
 
 </root>

@@ -6,8 +6,16 @@
 	</styles>
 
 	<DACPostGameScoreboard acceptsfocus="false">
+		<Panel id="RoundSelectorContainer">
+            <Button id="LeftRoundArrow" class="RoundArrow ArrowLeft" onactivate="DACChangeScoreboardRound(-1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )"/>
+            <Panel>
+              <Label id="RoundText" class="DistressedFont" text="#DAC_PostGameStats_RoundSelector"/>
+            </Panel>
+            <Button id="RightRoundArrow" class="RoundArrow" onactivate="DACChangeScoreboardRound(1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )"/>
+          </Panel>
 		<Panel id="Header">
 			<Label id="PlaceHeader" class="Column Place" text="#dac_scoreboard_heading_place" />
+			<Label id="HealthHeader" class="Column Health" text="#dac_scoreboard_heading_health" />
 			<Label id="ProfileHeader" class="Column MiniProfile" text="#dac_scoreboard_heading_profile" />
 			<Label id="RankHeader" class="Column Rank" text="#dac_scoreboard_heading_rank" />
 			<Label id="NameHeader" class="Column Name" text="#dac_scoreboard_heading_name" />

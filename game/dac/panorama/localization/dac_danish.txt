@@ -58,6 +58,7 @@
 	"DAC_MatchResume"									"Genoptag"
 	"DAC_MatchTeammate"									"Holdkammerat"
 	"DAC_MatchType"										"Kamptype"
+	"DAC_GameMode"										"Spiltilstand"
 	"DAC_FreestyleDesc"									"I denne tilstand har du fuld kontrol over brættet og kan skabe et hvilket som helst scenarie, du vil. Brug den til at udforske hærkompositioner eller teste nye hypoteser. Bagefter kan du dele resultatet med venner og fællesskabet."
 	"DAC_DBHome_Play_Party"								"Gruppekamp"
 	"DAC_DBHome_Searching_Party"						"Finder en kamp"
@@ -252,6 +253,9 @@
 	"DAC_JoinParty_InvalidCode"							"Den kode, du indtastede, matchede ikke nogen gruppe. Koden er ugyldig, eller den tilknyttede gruppe er blevet opløst."
 	"DAC_JoinParty_RateLimited"							"Du har lavet for mange tilslutningsanmodninger for nylig. Vent venligst i nogle sekunder, før du laver flere."
 
+	"DAC_JoinParty_TeamNameDelayedTitle"				"Holdnavn ændret"
+	"DAC_JoinParty_TeamNameDelayed"						"Du har ændret dit holdnavn, men er ved at søge efter en kamp. Det nye holdnavn træder først i kraft, næste gang din gruppe skal finde en kamp."
+
 	"DAC_LeaveParty_ErrorTitle"							"Fejl"
 	"DAC_LeaveParty_FailedToGetResponse"				"Kunne ikke kommunikere med Dota Underlords-netværket lige nu og forlade din gruppe. Prøv igen om et par minutter."
 	"DAC_LeaveParty_InternalError"						"Der opstod en intern fejl, da du forsøgte at forlade gruppen"
@@ -429,6 +433,10 @@
 	"DAC_PlayerContextMenu_EmptyMenu"					"--"
 	"DAC_PlayerContextMenu_CustomChat"					"<Brugerdefineret>"
 
+	"DAC_SupportGrant_Title"							"Support har udstedt"
+	"DAC_SupportGrant_CreditGrant"						"{d:amount} kreditter"
+	"DAC_SupportGrant_ReasonHeader"						"Begrundelse:"
+
 	"DAC_PartySelectTeam_Title"							"Vælg hold"
 	"DAC_PartySelectTeam_None"							"Ryd"
 
@@ -506,9 +514,10 @@
 
 	"DAC_Underlord_2"								"Jull"
 	"DAC_Underlord_Subtitle_2"						"Spritsmugler fra Gletsjerlandet"
-	"DAC_Underlord_Overview_2"						"En stor og kold fætter."
+	"DAC_Underlord_2_SubDesc"						"Hårdtslående hvalros"
+	"DAC_Underlord_Overview_2"						"Jull er en stærk nærkampstank. Han forsyner sit hold med drikkevarer, så de altid er skarpe."
 	"DAC_Underlord_DescriptionHeader_2"				"En gangster med principper"
-	"DAC_Underlord_Description_2"					"Det kan godt være, Jull er uetisk, men han er ærlig. En spritsmugler med stødtænder fra Gletsjerlandet. Jull er Det Hvide Spirs spiritusbaron og driver byens beværtning. Han sørger for, at hans udsøgte varer fra Gletsjerlandet kommer ind i byen gennem tunneler og bestikkelse."
+	"DAC_Underlord_Description_2"					"Det er en skændsel, hvad de kalder for vin i syden, og det, de kalder whisky, er direkte afskyeligt. Det var aldrig min hensigt at sprede frygt... Jeg ville bare sørge for, at det gode folk i Det Hvide Spir har den kvalitetsspiritus, som Gletsjerlandet er kendt for. Men konkurrence baseret på misundelse gør mænd desperate. Og desperate mænd træffer... dårlige beslutninger. Jeg havde intet valg: Jeg blev nødt til at statuere et eksempel."
 
 	"DAC_Underlord_3"								"Enno"
 	"DAC_Underlord_Subtitle_3"						"Stammeleder"
@@ -520,7 +529,7 @@
 	"DAC_Underlord_Subtitle_4"						"Begejstret brandstifter"
 	"DAC_Underlord_4_SubDesc"						"Distanceflammekaster"
 	"DAC_Underlord_Description_4"					"<i>Lad mig fortælle dig en lille hemmelighed om kærlighed. Kærlighed er ikke blot noget meget smukt, men også noget meget stærkt. Dets tilstedeværelse løfter dit humør, når tingene ser allermørkest ud. Dets fravær skaber et tomrum, som kan mærkes i dit inderste inde. Kærlighed er mere end romantik. Kærlighed er en sund besættelse. En motiveringsfaktor. En inspiration. Noget, der gør dig bedre tilpas. Det er sådan, jeg ved, at jeg elsker at påsætte brande.</i>"
-	"DAC_Underlord_Overview_4"						"Pyromanen Hobgen angriber på afstand, og hans styrke afhænger af, hvor mange enheder han sætter ild til."
+	"DAC_Underlord_Overview_4"						"Pyromanen Hobgen angriber på afstand og finder glæde i at sætte ild til helte."
 	"DAC_Underlord_HypeMeter_Info1_4"				"Lades med 3 HPS (hype pr. sekund)"
 	"DAC_Underlord_HypeMeter_Info2_4"				"HPS øges med 1,25 for hver fjende, der er ild i."
 
@@ -627,15 +636,111 @@
 	"dac_name_enno"										"Enno"
 
 	"dac_item_anessixs_gift"							"Anessix' Gave"
-	"dac_item_anessixs_gift_desc"						"Udstyret enhed regnes ud over sine andre alliancer som en dæmon."
+	"dac_item_anessixs_gift_desc"						"Udstyret helt regnes ud over sine andre alliancer som en dæmon."
 	"dac_item_anessixs_gift_lore"						"Sagn om Anessix' Gave"
 
 	"dac_name_cinderwall"								"Askemur"	
 	"dac_item_cinderwall_desc"							"En barrikade, som sætter ild til fjender i nærheden."
 	"dac_item_cinderwall_lore"							"Sagn om Askemur"
 
+    "dac_item_aegis_new"                                "Ægide"
+    "dac_item_aegis_new_desc"                           "Udstyret helt genopstår med {d:resurrect_health_percent}% af sit maksimale helbred, {d:resurrect_delay} sek. efter den dør (en gang pr. kamp)."
+    "dac_item_aegis_new_lore"                           "Osten bliver serveret alene. <i>&#8213; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_bloodthorn"		    					"Blodtorn"
+	"dac_item_bloodthorn_desc"			    			"+{d:attack_damage} angrebsskade. Undertryk en fjendtlig helt i {d:silence_duration} sek., når fjenden har mere end {d:mana_trigger_percentage}% mana. Angreb mod den undertrykkede helt kan ikke ramme ved siden af, og helten får {d:target_crit_multiplier}% kritisk skade ({d:cooldown} sek. nedkøling)."
+	"dac_item_bloodthorn_lore"			    			"Man bliver ikke populær af at bruge denne klinge, men man får dræbt nogle fjender. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_butterfly"								"Sommerfugl"
+	"dac_item_butterfly_desc"			    			"+{d:attack_damage} angrebsskade. +{d:attack_speed} angrebshastighed. +{d:evasion}% undvigelse."
+	"dac_item_butterfly_lore"			    			"Ungerne elsker denne ting. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_crystalis"								"Krystalis"
+	"dac_item_crystalis_desc"							"+{d:attack_damage} angrebsskade. {d:bonus_damage_chance}% chance for {d:bonus_damage_multiplier}% kritisk skade."
+	"dac_item_crystalis_lore"							"Jeg kan kun forestille mig, hvilken slags skade en Slørnonne kan lave med en af disse ting. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_desolator"								"Desolator"
+	"dac_item_desolator_desc"							"Angrebsmål mister {d:target_armor} rustning i {d:duration} sek."
+	"dac_item_desolator_lore"							"Nå, så du vil gerne gøre dig bemærket. I så tilfælde har denne her måske interesse... <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_diffusal_blade"							"Sjæleklinge"
+	"dac_item_diffusal_blade_lore"						"Når du bruger denne her, føler du dig som Antimagikeren. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"		
+	"dac_item_diffusal_blade_desc"						"Udstyret helts angreb afbrænder {d:mana_per_hit} mana pr. slag. Skade, som udføres af den udstyrede helt, genererer 0 mana for målet."
+    "dac_item_divine_rapier_new"                        "Guddommelig Kårde"
+	"dac_item_divine_rapier_new_desc"					"+{d:attack_damage} angrebsskade. Hvis Guddommelig Kårde er i kamp, og du taber en runde til en anden spiller, stjæler den spiller kården."
+	"dac_item_divine_rapier_new_lore"					"Nogle gange forlanger guderne blod. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"	
+    "dac_item_eul"										"Guddommelighedens Scepter"
+	"dac_item_eul_desc"									"+{d:mana_per_second} mana pr. sekund. Når en enhed angriber den udstyrede helt, bliver den kastet op i luften og bliver usårlig i {s:eul_duration} sek. ({d:cooldown} sek. nedkøling)."
+	"dac_item_eul_lore"									"Med denne kan du styre forandringens vinde. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_hand_of_midas"							"Midas' Hånd"
+	"dac_item_hand_of_midas_desc"						"+{d:attack_speed} angrebshastighed. {d:percent_gold}% chance for at få {d:gold} guld, når den udstyrede helt dræber en fjende."
+	"dac_item_hand_of_midas_lore"						"Nogle folk siger, at penge er roden til alt ondt. Disse folk er idioter, og det er derfor, de er fattige. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_heart_of_tarrasque_new"					"Tarrasques Hjerte"
+	"dac_item_heart_of_tarrasque_new_desc"				"+{d:health_bonus} helbred. Udstyret helt regenererer {d:bonus_hp_regen}% af maks. helbred pr. sekund."
+	"dac_item_heart_of_tarrasque_new_lore"				"Døden er for de svage. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+    "dac_item_horn_of_the_alpha"                        "Alfahorn"
+    "dac_item_horn_of_the_alpha_desc"                   "Hidkalder en stærk ledsager i form af Tordenhorn, {s:summon_cooldown} sek. efter kampen begynder (en gang pr. kamp)."
+    "dac_item_horn_of_the_alpha_lore"                   "Du aner ikke, hvor mange Marrowfell-jægere der døde for at få fat i dette horn. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+    "dac_item_kaya"										"Kaya"
+	"dac_item_kaya_desc"								"+{d:bonus_spell_damage}% øget evneskade."
+	"dac_item_kaya_lore"								"Hør her, når folk siger, at noget har været \"forsvundet i utallige årtusinder\", skal du tage det med et gran salt. Det er ren reklame. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_mask_of_death"							"Morbid Maske"
+	"dac_item_mask_of_death_desc"						"+{d:lifesteal_percentage}% livsstjæl."
+	"dac_item_mask_of_death_lore"						"Et ord til de kloge: Hvis du er til en fest, og du er den eneste, der ikke bærer en maske som denne, så skal du skynde dig væk i en helvedes fart. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_octarine_essence"							"Oktarinessens"
+	"dac_item_octarine_essence_desc"					"Reducerer evnenedkølinger med {d:cooldown_percentage}%."
+	"dac_item_octarine_essence_lore"					"Det her er kun en lille forsmag på, hvad Oktarinkernen kan. – <i>Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_orb_of_venom"								"Giftkugle"
+	"dac_item_orb_of_venom_desc"						"Fjender, der skades af den udstyrede helts angreb, tager {d:dps} skade pr. sekund i {d:venom_duration} sekunder."
+	"dac_item_orb_of_venom_lore"						"Man siger, at tiden slår alle ihjel. Jeg siger: Hvorfor ikke hjælpe tiden lidt? <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_radiance_new"                             "Glødende Sværd"
+    "dac_item_radiance_new_desc"                        "Brænder fjender inden for {d:attack_damage_aoe} felter med {d:attack_damage_over_time} skade pr. sekund. Brændende fjender har {d:miss_percent}% chance for at misse deres mål."
+    "dac_item_radiance_new_lore"                        "Noget så helligt som dette hører ikke til i Det Hvide Spir. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+    "dac_item_headdress"								"Hovedbeklædning"
+	"dac_item_headdress_desc"							"Enheder inden for 1 felt fra den udstyrede helt får +{d:health_regen} helbred pr. sekund."
+	"dac_item_headdress_lore"							"Jeg fik den fra en fyr, som sagde, den kom fra Gruets Rede. Jeg ved ikke, om det er sandt, men fjeren er flot. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_satanic"                                  "Satanisk"
+    "dac_item_satanic_desc"                             "+{d:bonus_health} helbred. Når den udstyrede helt har under {d:activation_percent}% helbred, får den +{d:life_steal_percent}% livsstjæl i {s:life_steal_duration} sek. ({d:cooldown} sek. nedkøling)."
+    "dac_item_satanic_lore"                             "Jo før du får denne ting ud af min butik, desto bedre. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+    "dac_item_shivas_guard_new"							"Shivas Vogter"
+	"dac_item_shivas_guard_new_desc"					"+{d:bonus_armor} rustning. Udsender en frysende bølge, som giver {d:blast_damage} skade til fjender inden for 3 felter og nedsætter deres bevægelses- og angrebshastighed med {d:blast_debuff_move_speed} i {s:blast_debuff_duration} sek. (en gang pr. kamp)."
+	"dac_item_shivas_guard_new_lore"					"Spørg ikke, hvordan denne kom ud af Safirkonklavens hvælving. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+    "dac_item_stonehall_pike"							"Stenhalslanse"
+	"dac_item_stonehall_pike_desc"						"Udstyret helt giver +{d:damage_per_kill} skade for hver enhed, helten har dræbt. (+16 skade i knockouttilstand)"
+	"dac_item_stonehall_pike_lore"						"Der er en grund til, at folk frygter hæren fra Stenhal. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_stonehall_cloak"							"Stenhalskappe"
+	"dac_item_stonehall_cloak_desc"						"Udstyret helt får +{d:hp_per_kill} helbred for hver enhed, helten har dræbt. (+200 helbred i knockouttilstand)"
+	"dac_item_stonehall_cloak_lore"						"For nogle er det et symbol på stolthed. For andre er det et minde om en fortid, det er bedst at glemme. <i>&#8211;<i>Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_silver_edge"								"Sølvklinge"
+	"dac_item_silver_edge_desc"							"+{d:attack_speed} angrebshastighed. +{d:bonus_health} helbred. Når den udstyrede helt angriber en enhed, afbrydes enhedens passive evner i {d:break_duration} sek. ({d:cooldown} sek. nedkøling)."
+	"dac_item_silver_edge_lore"							"Vi ved alle, at Dyrenes Konge og Lykantropen bruges til at stoppe den vanvittige Kong Ostarion... Men det er kun én side af historien. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_talisman_of_evasion"						"Undvigelsesamulet"
+	"dac_item_talisman_of_evasion_desc"					"+{d:evasion_pct}% undvigelse."
+	"dac_item_talisman_of_evasion_lore"					"Hør, Lyralei. Jeg siger bare, du ikke er lige så flygtig, som du har været. <i>&#8211; <i>Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_vesture_of_the_tyrant"                    "Tyranens Klædningsstykke"
+    "dac_item_vesture_of_the_tyrant_desc"               "Allierede inden for {d:ally_zombie_range} felter kan ikke dø, før den udstyrede helt dør."
+    "dac_item_vesture_of_the_tyrant_lore"               "Galanius' regel er absolut. Kun et fjols ville modsætte sig ham. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+    "dac_item_void_stone"								"Tomhedssten"
+	"dac_item_void_stone_desc"							"+{d:mana_per_second} mana pr. sekund."
+	"dac_item_void_stone_lore"							"Safirarchonterne smeder deres emblemer ud af det her. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_unit_name_spiderling"							"Edderkoppeunge"
+	"dac_item_aeon_disk"								"Æonskive"
+	"dac_item_aeon_disk_lore"							"Dem, der har magt, kan altid finde et sted, de er sikre. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_aeon_disk_desc"							"+{d:health_bonus} helbred. Den udstyrede helt bliver usårlig, afvæbnes og kan ikke rammes i {d:invuln_duration} sek., når dens helbred kommer under {d:health_trigger_percentage}% (en gang pr. kamp)."
+	"dac_ability_barricade_aura_new"					"Barrikade"
+	"dac_ability_barricade_aura_new_description"		"Barrikade beskytter enheder i nærheden og har magisk immunitet."
+	"dac_ability_barricade_aura_new_lore"				""
+	"dac_ability_target_dummy_taunt_new"				"Hån"
+	"dac_ability_target_dummy_taunt_new_description"	"Skydeskiven håner enheder i nærheden."
+	"dac_ability_target_dummy_taunt_new_lore"			""
+	"dac_ability_healing_ward_healing_aura_new"					"Helingsaura"
+	"dac_ability_healing_ward_healing_aura_new_description"		"Heler allierede enheder inden for {s:heal_range} felt med {s:health_regen} helbred pr. sekund."
+	"dac_ability_healing_ward_healing_aura_new_lore"			""
+	"dac_ability_tombstone_raise_zombies_new"				"Hidkald Zombier"
+	"dac_ability_tombstone_raise_zombies_new_description"	"Enheder, som dør inden for en rækkevidde på {s:range} felt, hidkalder en zombie."
+	"dac_ability_tombstone_raise_zombies_new_lore"			""
+	"dac_item_vladmirs_offering"						"Vladimirs Offer"
+	"dac_item_vladmirs_offering_desc"					"Allierede inden for 2 felter får +{d:damage}% skade, +{d:armor} rustning og +{d:lifesteal}% livsstjæl."
+	"dac_item_vladmirs_offering_lore"					"Alle, som aflægger ed, giver noget af sig selv... og får noget til gengæld. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
+	"dac_item_big_time_contract"						"Kæmpe Kontrakt"
+	"dac_item_big_time_contract_desc"					"Udstyret helt regnes ud over sine andre typer som <span class='Ogre'>blodsbunden</span> <img class='InlineSynergyIcon SynergyOgre'/>."
+	"dac_item_big_time_contract_lore"					"Rita har ikke længere monopol på at få ting til at vokse. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
-
 
 	"dac_hero_hint_melee"								"Nærkamp"
 	"dac_hero_hint_ranged"								"Afstandskamp"
@@ -690,7 +795,8 @@
 	"dac_hero_hint_ability_spawns_allies"				"Evnen genopliver allierede"
 	"dac_hero_hint_resurrects_allies"					"Genopliver døde allierede"
 	"dac_hero_hint_cleave_attack"						"Angreb kløver fjender i nærheden"
-	"dac_hero_hint_life_stealer_attack"					"Dræner HP baseret på fjendens maksimale helbred"
+	"dac_hero_hint_life_stealer_attack"					"Dræner helbred baseret på fjendens maksimale helbred"
+	"dac_hero_hint_aoe_slow"							"Hæmmer et stort område"
 
 	"dac_hero_name_abaddon"								"Abaddon"
 	"dac_hero_name_alchemist"							"Alkymisten"
@@ -902,11 +1008,11 @@
 	"dac_item_blink_dagger_lore"						"Den Oglodi bliver ved med at bede om en blinkøkse... <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_mask_of_madness"							"Galskabens Maske"
-	"dac_item_mask_of_madness_desc"						"Helt er undertrykket. +{d:lifesteal_percentage}% livsstjæl. +{d:attack_speed} angrebshastighed."
+	"dac_item_mask_of_madness_desc"						"Udstyret helt er undertrykket. +{d:lifesteal_percentage}% livsstjæl. +{d:attack_speed} angrebshastighed."
 	"dac_item_mask_of_madness_lore"						"Hvem ved, hvor galskab ender, og genialitet begynder... <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_blade_mail"								"Knivpanser"
-	"dac_item_blade_mail_desc"							"Reflekterer {d:damage_taken_reflect_percentage}% af den modtagne skade tilbage til angriberen."
+	"dac_item_blade_mail_desc"							"+{d:armor} rustning. Reflekterer {d:damage_taken_reflect_percentage}% af den modtagne skade tilbage til angriberen."
 	"dac_item_blade_mail_lore"							"Jeg mister ca. tre kunder om året, fordi folk vil prøve den her... <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_battle_fury"								"Vredens Kampøkse"
@@ -914,7 +1020,7 @@
 	"dac_item_battle_fury_lore"							"Vi ved udmærket, at det aldrig er én mod én i ret lang tid... Det er bedst at være forberedt. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_dagon"									"Dagon"
-	"dac_item_dagon_desc"								"Giv {d:ability_damage} skade til en tilfældig fjendtlig enhed, som har {d:health_trigger_percentage}% eller mindre helbred (en gang pr. kamp)."
+	"dac_item_dagon_desc"								"Giv {d:ability_damage} skade til en tilfældig fjendtlig enhed, som har {d:health_trigger_percentage}% eller mindre helbred ({d:cooldown} sek. nedkøling)."
 	"dac_item_dagon_lore"								"Der er dem, der synes, det er forkert at sparke en mand, der ligger ned... De ville ikke overleve en uge i Det Hvide Spir. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_sacred_relic"								"Helligt Relikvie"
@@ -926,7 +1032,7 @@
 	"dac_item_maelstrom_lore"							"Ingen kan styre vejret... Men man kan hjælpe det lidt på vej. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_refresher_orb"							"Nulstiller"
-	"dac_item_refresher_orb_desc"						"Efter en evne kastes, opdaterer den alle nedkølinger og gendanner {d:mana_restored} mana hos den udstyrede helt. Den reducerer også den tilbageværende nedkølingstid med {d:ally_cooldown_multiplier}% og gendanner {d:ally_mana_restored} mana hos allierede {d:refresh_radius} felt væk (en gang pr. kamp)."
+	"dac_item_refresher_orb_desc"						"Nulstiller alle nedkølinger og gendanner {d:mana_restored} mana hos den udstyrede helt, efter en evne bruges (en gang pr. kamp)."
 	"dac_item_refresher_orb_lore"						"Denne her har ændret resultatet af mange en kamp. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_heart_of_tarrasque"						"Tarrasques Hjerte"
@@ -942,7 +1048,7 @@
 	"dac_item_assault_cuirass_lore"						"Hvis du skal kæmpe, skal du gå fornuftigt til værks. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_black_king_bar"							"Sort Stavvåben"
-	"dac_item_black_king_bar_desc"						"Udstyret helt får magisk immunitet i {d:magic_immune_duration} sek., når den første fjende har {d:mana_trigger_percentage}% mana (en gang pr. kamp)."
+	"dac_item_black_king_bar_desc"						"+{d:attack_damage} angrebsskade. Udstyret helt får magisk immunitet i {d:magic_immune_duration} sek., når den første fjende har {d:mana_trigger_percentage}% mana (en gang pr. kamp)."
 	"dac_item_black_king_bar_lore"						"Giv ikke dine fjender en chance. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_mekansm"									"Mekanism"
@@ -950,7 +1056,7 @@
 	"dac_item_mekansm_lore"								"Spørg ikke, hvordan den virker. Bare vær glad for, at den gør. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_arcane_boots"								"Mystiske Støvler"
-	"dac_item_arcane_boots_desc"						"Når en udstyret helt har over {d:mana_trigger_percentage}% mana, får alle allierede {d:replenish_radius} felter væk {d:replenish_amount} mana tilbage (en gang pr. kamp)."
+	"dac_item_arcane_boots_desc"						"Når en udstyret helt har over {d:mana_trigger_percentage}% mana, får alle allierede {d:replenish_radius} felter væk {d:replenish_amount} mana ({d:cooldown} sek. nedkøling)."
 	"dac_item_arcane_boots_lore"						"Vær en fordel for dine allierede. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_daedalus"									"Daidalos"
@@ -962,7 +1068,7 @@
 	"dac_item_radiance_lore"							"Ah, jeg ser, du har meget til fælles med Hobgen... <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_skadi"									"Skadis Øje"
-	"dac_item_skadi_desc"								"+{d:health_bonus} helbred. Sløver fjenders bevægelseshastighed med {d:cold_movement_speed} og angrebshastighed med {d:cold_attack_speed} ved angreb."
+	"dac_item_skadi_desc"								"+{d:health_bonus} helbred. Sløver fjenders bevægelseshastighed med {d:cold_movement_speed} og angrebshastighed med {d:cold_attack_speed} ved angreb i {s:cold_duration_ranged} sek."
 	"dac_item_skadi_lore"								"Du ønsker ikke at vide, hvordan jeg er kommet i besiddelse af dette... <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_chainmail"								"Ringbrynje"
@@ -985,9 +1091,6 @@
 	"dac_item_shivas_guard_desc"						"+{d:bonus_armor} rustning. Udsender en frysende bølge, som giver {d:blast_damage} skade til fjender inden for 3 felter og nedsætter deres bevægelses- og angrebshastighed i {s:blast_debuff_duration} sek. (en gang pr. kamp)."
 	"dac_item_shivas_guard_lore"						"Spørg ikke, hvordan denne kom ud af Safirkonklavens hvælving. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 
-	"dac_item_bloodthorn"								"Blodtorn"
-	"dac_item_bloodthorn_desc"			    			"+{d:attack_damage} angrebsskade. Undertryk en fjendtlig helt i {d:silence_duration} sek., når fjenden har mere end {d:mana_trigger_percentage}% mana. Angreb mod den undertrykkede helt kan ikke ramme ved siden af, og helten får {d:target_crit_multiplier}% kritisk skade ({d:cooldown} sek. nedkøling)."
-	"dac_item_bloodthorn_lore"							"Man bliver ikke populær af at bruge denne klinge, men man får dræbt nogle fjender. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_hood_of_defiance"							"Trodsighedens Hætte"
 	"dac_item_hood_of_defiance_desc"					"+{d:bonus_magical_resistance}% magisk resistens. +{d:health_regen} helbredsregenerering."
@@ -998,7 +1101,7 @@
 	"dac_item_vanguard_lore"							"Hvis du vil beskytte dig selv, kan du ikke gøre det meget bedre end dette. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_basher"									"Kranieknuser"
-	"dac_item_basher_desc"								"+{d:attack_damage} angrebsskade. {d:bash_chance}% chance for at give yderligere {d:bonus_chance_damage}% skade og lamme mål i {s:bash_duration} sek."
+	"dac_item_basher_desc"								"+{d:attack_damage} angrebsskade. {d:bash_chance}% chance for at give yderligere {d:bonus_chance_damage}% skade og lamme målet i {s:bash_duration} sek."
 	"dac_item_basher_lore"								"En fjende med hjernerystelser bliver hurtigt en død fjende. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	
 	"dac_item_pipe_of_insight"							"Indsigtspipe"
@@ -1006,15 +1109,15 @@
 	"dac_item_pipe_of_insight_lore"						"Hvor tror du, Tinkeren får sine skøre ideer fra? <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 
 	"dac_item_bloodbound_hat"							"Kæmpe Kontrakt"
-	"dac_item_bloodbound_hat_desc"						"+{d:health_bonus} helbred. Udstyret enhed regnes ud over sine andre alliancer som <span class='Ogre'>blodsbunden</span> <img class='InlineSynergyIcon SynergyOgre'/>."
+	"dac_item_bloodbound_hat_desc"						"+{d:health_bonus} helbred. Udstyret helt regnes ud over sine andre alliancer som <span class='Ogre'>blodsbunden</span> <img class='InlineSynergyIcon SynergyOgre'/>."
 	"dac_item_bloodbound_hat_lore"						"Rita har ikke længere monopol på at få ting til at vokse. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 
 	"dac_item_sheepstick"								"Vysekultens Le"
-	"dac_item_sheepstick_desc"							"Når den udstyrede helt tager skade, forvandles den angribende enhed til en gris i {s:sheep_duration} sek. ({d:cooldown} sek. nedkøling)."
+	"dac_item_sheepstick_desc"							"+{d:mana_per_second} mana pr. sekund. Når den udstyrede helt tager skade, forvandles den angribende enhed til en gris i {s:sheep_duration} sek. ({d:cooldown} sek. nedkøling)."
 	"dac_item_sheepstick_lore"							"Jeg siger dig, shamaner kan ikke få nok af denne ting. <i>Zenok, hæler i Det Hvide Spir</i>"
 
 	"dac_item_force_staff"								"Kraftstav"
-	"dac_item_force_staff_desc"							"Når den udstyrede helt tager skade fra et nærkampsangreb, skubbes angriberen op til {d:push_length} felter væk. ({d:cooldown} sek. nedkøling)"
+	"dac_item_force_staff_desc"							"Når den udstyrede helt tager skade fra et nærkampsangreb, skubbes angriberen op til {d:push_length} felter væk ({d:cooldown} sek. nedkøling)."
 	"dac_item_force_staff_lore"							"Det siges, at Aghanim har en flottere stav, men jeg har aldrig set den. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 
 	"dac_item_never_die_hat"							"Den Udødeliges Hjelm"
@@ -1173,12 +1276,12 @@
 
 	"dac_name_healing_ward"								"Helingsvagt"
 	"dac_item_healing_ward"								"Helingsvagt"
-	"dac_item_healing_ward_desc"						"Heler allierede enheder inden for 1 felt med 40 HP pr. sekund."
+	"dac_item_healing_ward_desc"						"Heler allierede enheder inden for 1 felt med 50 helbred pr. sekund."
 	"dac_item_healing_ward_lore"						"En generøs gave. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 
 	"dac_name_barricade"								"Barrikade"
 	"dac_item_barricade"								"Barrikade"
-	"dac_item_barricade_desc"							"To barrikader, der kan placeres, som blokerer fjender og afstandsangreb. Har magisk immunitet."
+	"dac_item_barricade_desc"							"To barrikader med 600 helbred, som blokerer fjender og afstandsangreb. Har magisk immunitet."
 	"dac_item_barricade_lore"							"Når du ikke kan finde dækning, så tag dækningen med dig. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 
 	"dac_name_tombstone"								"Gravsten"
@@ -1187,8 +1290,8 @@
 	"dac_item_tombstone_lore"							"Endelig noget at bruge alle disse lig til. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 	"dac_name_tombstone_zombie"							"Zombie"
 
-	"dac_name_target_dummy"								"Fugleskræmsel"
-	"dac_item_target_dummy"								"Fugleskræmsel"
+	"dac_name_target_dummy"								"Skydeskive"
+	"dac_item_target_dummy"								"Skydeskive"
 	"dac_item_target_dummy_desc"						"Håner fjender og tiltrækker angreb. Kan udstyre genstande. Kan ikke hele."
 	"dac_item_target_dummy_lore"						"Sørgeligt nok har jeg mødt dårligere modstandere end denne omgang hø. <i>&#8211; Zenok, hæler i Det Hvide Spir</i>"
 
@@ -1255,6 +1358,15 @@
 	"DAC_ConfirmQuit"									"Afslut spil?"
 	"DAC_ConfirmQuitDesc"								"Er du sikker?"
 
+	"DAC_TopBar_Preparing_Left"							"Forbereder"
+	"DAC_TopBar_Preparing_Right"						"{i:gameStateRound}. runde"
+	"DAC_TopBar_Combat_Left"							"Kamp"
+	"DAC_TopBar_Combat_Right"							"{i:gameStateRound}. runde"
+	"DAC_TopBar_Countdown_Left"							"Nedtælling til"
+	"DAC_TopBar_Countdown_Right"						"{i:gameStateNextRound}. runde"
+	"DAC_TopBar_Loot_Left"								"Nedtælling til"
+	"DAC_TopBar_Loot_Right"								"{i:gameStateNextRound}. runde"
+
 	"DAC_InGame_Buy"									"Køb"
 	"DAC_InGame_Combine"								"Kombiner"
 	"DAC_InGame_Rank"									"Rang: {i:UnitRank}"
@@ -1319,10 +1431,12 @@
 	"DAC_InGame_VsOpponentRecordWinLoss"				"{d:wins} vundet – {d:losses} tabt"
 	"DAC_InGame_VsOpponentRecordWinLossDraw"			"{d:wins} vundet – {d:losses} tabt – {d:draws} uafgjort"
 	"DAC_InGame_LootRound"								"Plyndringsrunde"
+	"DAC_InGame_UnderlordSelectionRound"				"Forstærkninger!"
 	"DAC_InGame_Tab_Synergies"							"Alliancer"
 	"DAC_InGame_Tab_Damage"								"Kampstatistikker"
 	"DAC_InGame_Tab_DamageShort"						"Statistik"
 	"DAC_InGame_Tab_Items"								"Genstande"
+	"DAC_InGame_Tab_Stats"								"Statistik"
 	"DAC_InGame_Tab_Heroes"								"Helte"
 	"DAC_InGame_Tab_Creeps"								"Kryb"
 	"DAC_InGame_Tab_LootRounds"							"Plyndringsrunder"
@@ -1357,7 +1471,15 @@
 	"DAC_InGame_MenuCancel"								"Tilbage til spil"
 	"DAC_InGame_UserDied"								"DU DØDE"
 	"DAC_InGame_UserDiedPlace"							"{s:finalPlaceStr}"
-	"DAC_InGame_HowToPlay"								"Regler"							
+	"DAC_InGame_HowToPlay"								"Regler"
+
+	"DAC_InGame_Stat_LastResult"						"Tidligere resultat: {s:result}"
+	"DAC_InGame_Stat_LastNetWorth"						"Tidligere nettoværdi: {d:stat_prev_net_worth}"
+	"DAC_InGame_Stat_LastDuration"						"Tidligere kampvarighed: {s:stat_prev_duration}"
+	"DAC_InGame_Stat_LastSurvival"						"Tidligere overlevelse: {s:stat_prev_survival}"
+	"DAC_InGame_Stat_BestNetWorth"						"Bedste nettoværdi: {d:stat_best_net_worth}"
+	"DAC_InGame_Stat_BestDuration"						"Bedste kampvarighed: {s:stat_best_duration}"
+	"DAC_InGame_Stat_BestSurvival"						"Bedste overlevelse: {s:stat_best_survival}"
 
 	"DAC_PostGame_Progress"								"Fremskridt"
 	"DAC_PostGame_Scoreboard"							"Pointtavle"
@@ -1371,6 +1493,18 @@
 	"DAC_Place_6"										"6.-plads"
 	"DAC_Place_7"										"7.-plads"
 	"DAC_Place_8"										"8.-plads"
+
+	"DAC_Place_1_Title"									"1."
+	"DAC_Place_2_Title"									"2."
+	"DAC_Place_3_Title"									"3."
+	"DAC_Place_4_Title"									"4."
+	"DAC_Place_5_Title"									"5."
+	"DAC_Place_6_Title"									"6."
+	"DAC_Place_7_Title"									"7."
+	"DAC_Place_8_Title"									"8."
+
+	"DAC_Place_Subtitle"								"-plads"
+
 	"DAC_InGame_PlayerXP"								"{i:playerStateEXP}/{i:playerStateNextEXP} XP"
 	"DAC_InGame_Health"									"Helbred"
 	"DAC_InGame_HealthRegen"							"Helbredsregenerering"
@@ -1413,6 +1547,8 @@
 	"DAC_PostGame_Alliances_Title"						"Alliancer"
 	"DAC_PostGame_GlobalItems_Title"					"Globale genstande"
 	"DAC_PostGame_NoGlobalItems"						"ingen"
+	"DAC_PostGame_Underlord"							"Underlord"
+	"DAC_PostGame_Contraptions"							"Himstregimser"
 	
 
 	"DAC_HeroRosterTemp"								"[hero roster with items goes here]"
@@ -1455,6 +1591,13 @@
 	"DAC_Zoo"											"Zoo"
 	"DAC_ChallengeWorldMapPage"							"Byvandring"
 
+	"DAC_Zoo_PostGame_GameMode"							"Spiltilstand"
+	"DAC_Zoo_PostGame_Ranked"							"Rangeret"
+	"DAC_Zoo_PostGame_Position"							"Position"
+	
+	"DAC_Zoo_PostGame_InitialCurrency"						"Startvaluta"
+	"DAC_Zoo_PostGame_CurrencyGain"						"Tilføj valuta"
+
 	"DAC_Loadout_Desc"									"Opnå respekt, level op og indløs dine belønninger.\nUdstyr dit bræt og dine Underlords her."
 	"DAC_Loadout_ComingSoon_Desc"						"Se og udstyr dine Protopas-belønninger"
 
@@ -1468,6 +1611,7 @@
 	"DAC_Units"			"Enheder"
 	"DAC_GlobalItems"	"Globale og ikke-udstyrede genstande"
 	
+	"DAC_PostGameStats_RoundSelector"	"{d:round}. runde"
 	"DAC_PostGameStats_Round"	"{d:round}. runde"
 	"DAC_PostGameStats_PlayerHealth"	"Helbred: {d:player_health}"
 	"DAC_PostGameStats_PlayerGold"	"Guld: {d:player_gold}"
@@ -1544,14 +1688,15 @@
 	"DAC_DPSChart_You"							"Dig"
 	"DAC_DPSChart_Enemy"						"Fjende"
 
-	"dac_hud_mode_0"				"PC 16:9"
-	"dac_hud_mode_1"				"PC 16:10"    
-	"dac_hud_mode_2"				"PC 21:9"
-	"dac_hud_mode_3"				"Mobil 16:9"
-	"dac_hud_mode_4"				"Mobil 4:3"
-	"dac_hud_mode_5"				"iPhone XR"
-	"dac_hud_mode_6"				"Pixel 3XL (3/4-opløsning, indsnit til venstre)"
-	"dac_hud_mode_7"                "Tiny-mobil 16:9 (nogenlunde i skala)"
+	"dac_hud_mode_0"				"PC 16x9"
+	"dac_hud_mode_1"				"PC 16x10"
+	"dac_hud_mode_2"				"PC 21x9"
+	"dac_hud_mode_3"				"Mobil 16x9"
+	"dac_hud_mode_4"				"Mobil 4x3"
+	"dac_hud_mode_5"				"iPhone XR (21x9)"
+	"dac_hud_mode_6"				"Pixel 3XL (bred 16x9 +notch)"
+	"dac_hud_mode_7"				"Pixel 4XL (bred 16x9 +hjørner)"
+	"dac_hud_mode_8"				"Lille mobil 16x9"
 
 	"DAC_Hud_WaitingForPlayers"					"Venter på, at spillere tilslutter sig..."
 	"DAC_ErrorMsg_CannotAfford"					"Ikke nok guld til at købe denne enhed"
@@ -1565,6 +1710,7 @@
 	"DAC_ErrorMsg_CannotAffordToSend1Gold"		"Du har ikke 1 guld at sende."
 	"DAC_ErrorMsg_CannotAffordToSend5Gold"		"Du har ikke 5 guld at sende."
 	"DAC_ErrorMsg_CantPlaceUnitDuringCombat"	"Du kan ikke placere enheder på brættet under kamp"
+	"DAC_ErrorMsg_InvalidBoardPosition"			"Du kan ikke placere en enhed i den position"
 
 	"DAC_UI_Popup_Synergy_Header"				"{s:synergy_name}"
 	"DAC_UI_Popup_Synergy_UnitCount"			"Bræt: {d:units_on_board}  Bænk: {d:units_on_bench}"
@@ -1635,7 +1781,7 @@
 
 	"DAC_Synergy_Desc_Elf"		"Alle flygtige enheder har {s:proc_chance}% chance for at få +{s:evasion_bonus}% undvigelse og +{s:attack_speed} angrebshastighed i {s:buff_duration} sek. ved angreb."
 
-	"DAC_Synergy_Desc_Goblin"		"{s:alliance_eligible} får +{s:armor_bonus} rustning og +{s:hp_regen} HP-regenerering. Rustning og HP fordobles, når du har færre enheder i live end din modstander."
+	"DAC_Synergy_Desc_Goblin"		"{s:alliance_eligible} får +{s:armor_bonus} rustning og +{s:hp_regen} helbredsregenerering. Rustning og regenerering fordobles, når du har færre enheder i live end din modstander."
 
 	"DAC_Synergy_Desc_Human"		"Allierede genererer {s:mana_regen} mana pr. sekund."
 
@@ -1643,9 +1789,9 @@
 
 	"DAC_Synergy_Desc_Ogre"		"Når en blodsbunden enhed dør, giver den +{s:enrage_bonus_pct}% angrebsskade plus dens eventuelle bonus som blodsbunden til en tilfældig allieret blodsbunden enhed."
 
-	"DAC_Synergy_Desc_Orc"		"Alle muskuløse enheder får øget deres maksimale HP med {s:hp_bonus}"
+	"DAC_Synergy_Desc_Orc"		"Alle muskuløse enheder får øget deres maksimale helbred med {s:hp_bonus}"
 
-	"DAC_Synergy_Desc_Brawny"		"Alle muskuløse enheder får +{s:hp_bonus} maksimal HP for hvert drab, der udføres af dit holds muskuløse enheder i hele spillet."
+	"DAC_Synergy_Desc_Brawny"		"Alle muskuløse enheder får +{s:hp_bonus} maksimalt helbred for hvert drab, der udføres af dit holds muskuløse enheder i hele spillet. (+[ 60 / 120 ] maksimalt helbred i knockouttilstand)"
 	"DAC_Synergy_Desc_Brawny_ExtraData" "Muskuløse drab i alt: {d:brawny_kills} <br/>Helbredsbonus til muskuløse enheder: {d:brawny_bonus_health}"
 
 	"DAC_Synergy_Desc_Troll"		"Alle troldeenheder får +{s:attack_speed_bonus_trolls} angrebshastighed, og andre allierede får +{s:attack_speed_bonus_others} angrebshastighed"
@@ -1664,7 +1810,7 @@
 
 	"DAC_Synergy_Desc_Mage"		"Fjender får {s:magic_resist_debuff}% mere magisk skade"
 
-	"DAC_Synergy_Desc_Mech"		"Alle opfindere får +{s:health_regen} HP-regenerering"
+	"DAC_Synergy_Desc_Mech"		"Alle opfindere får +{s:health_regen} helbredsregenerering"
 
 	"DAC_Synergy_Desc_Inventor"		"Allierede opfindere eksploderer, når de dør, og giver {s:damage_hp_pct}% af deres maksimale helbred til alle fjender, som er 1 felt væk."
 
@@ -1697,6 +1843,8 @@
 
 	"DAC_Shop_My_Synergies"		"Mine alliancer"
 
+	"DAC_Chat_BoardSpray1"      "Brætspray 1"
+
 	"DAC_Chat_GoodGame"			"God kamp!"
 	"DAC_Chat_GoodLuck"			"Det er ikke ovre endnu!"
 	"DAC_Chat_BadRNG"			"RNG hader mig!"
@@ -1706,21 +1854,34 @@
 	"DAC_Chat_GoodRun"			"Mine kræfter vokser!"
 	"DAC_Chat_BadRun"			"Vis nåde!"
 
+	
+	"DAC_Chat_No_UL_Prep_01"		"Held og lykke."
+	"DAC_Chat_No_UL_Prep_02"		"God kamp."
+	"DAC_Chat_No_UL_Prep_03"		"Jeg er kommet godt fra start."
+	"DAC_Chat_No_UL_Prep_04"		"Disse opdateringer tager livet af mig!"
+	"DAC_Chat_No_UL_Combat_01"		"Det er et tæt løb."
+	"DAC_Chat_No_UL_Combat_02"		"Jeg har brug for et bedre hold."
+	"DAC_Chat_No_UL_Combat_03"		"Du går ned!"
+	"DAC_Chat_No_UL_Combat_04"		"Mit held vender snart."
+
+	
+	
+	
 	"DAC_Chat_Hobgen_Prep_01"		"God kamp."
 	"DAC_Chat_Hobgen_Prep_02"		"Det var sjovt."
-	"DAC_Chat_Hobgen_Prep_03"		"Held og lykke."
+	"DAC_Chat_Hobgen_Prep_03"		"Hvad sker der lige?"
 	"DAC_Chat_Hobgen_Prep_04"		"Jeg vinder."
-	"DAC_Chat_Hobgen_Prep_05"		"Lad os brænde nogle høns!"
+	"DAC_Chat_Hobgen_Prep_05"		"Du var heldig."
 	"DAC_Chat_Hobgen_Prep_06"		"Du laver sjov med mig!"
 	"DAC_Chat_Hobgen_Prep_07"		"Jeg har lavet en dum fejl!"
 	"DAC_Chat_Hobgen_Prep_08"		"Vis mig, hvad du dur til."
-	"DAC_Chat_Hobgen_Combat_01"		"Jeg laver et eksempel ud af dig."
-	"DAC_Chat_Hobgen_Combat_02"		"Giv dog op!"
-	"DAC_Chat_Hobgen_Combat_03"		"Du kan slå fra dig."
+	"DAC_Chat_Hobgen_Combat_01"		"Tabte jeg?!"
+	"DAC_Chat_Hobgen_Combat_02"		"Held og lykke."
+	"DAC_Chat_Hobgen_Combat_03"		"Ny strategi. Vi har brug for en ny strategi."
 	"DAC_Chat_Hobgen_Combat_04"		"Du har gjort dig fortjent til min respekt."
 	"DAC_Chat_Hobgen_Combat_05"		"Det var tæt på."
 	"DAC_Chat_Hobgen_Combat_06"		"Jeg havde dig næsten!"
-	"DAC_Chat_Hobgen_Combat_07"		"Du vil ikke overleve dette."
+	"DAC_Chat_Hobgen_Combat_07"		"Helt ærligt!"
 	"DAC_Chat_Hobgen_Combat_08"		"Jeg slår dig ihjeeel."
 	
 	"DAC_Chat_Anessix_Prep_01"		"God kamp."
@@ -1728,17 +1889,34 @@
 	"DAC_Chat_Anessix_Prep_03"		"Bed om nåde."
 	"DAC_Chat_Anessix_Prep_04"		"Giv nu bare op."
 	"DAC_Chat_Anessix_Prep_05"		"Dette er absurd."
-	"DAC_Chat_Anessix_Prep_06"		"Jeg hader høns."
+	"DAC_Chat_Anessix_Prep_06"		"Sikke et mareridt."
 	"DAC_Chat_Anessix_Prep_07"		"Skæbnen hader mig."
-	"DAC_Chat_Anessix_Prep_08"		"Alting bryder bare sammen."
+	"DAC_Chat_Anessix_Prep_08"		"Denne krig er ikke slut!"
 	"DAC_Chat_Anessix_Combat_01"	"Du vinder aldrig."
 	"DAC_Chat_Anessix_Combat_02"	"Jeg har dig lige, hvor jeg vil have dig."
-	"DAC_Chat_Anessix_Combat_03"	"Dette bør blive interessant."
+	"DAC_Chat_Anessix_Combat_03"	"Det skal vi da gøre igen en dag."
 	"DAC_Chat_Anessix_Combat_04"	"Godt spillet."
 	"DAC_Chat_Anessix_Combat_05"	"Se, det var lidt af et eventyr, var det ikk'?"
 	"DAC_Chat_Anessix_Combat_06"	"Du gav mig kamp til stregen."
-	"DAC_Chat_Anessix_Combat_07"	"Din desperation er ligeså sjov, som den er pinlig."
-	"DAC_Chat_Anessix_Combat_08"	"Det er ikke for sent at sværge din evige troskab til mig."
+	"DAC_Chat_Anessix_Combat_07"	"Det her virker ikke."
+	"DAC_Chat_Anessix_Combat_08"	"Jeg er forbandet. Det er den eneste logiske forklaring."
+	
+	"DAC_Chat_Jull_Prep_01"			"Held og lykke."
+	"DAC_Chat_Jull_Prep_02"			"Jeg ønsker dig held og lykke i alle kampe, som ikke er imod mig."
+	"DAC_Chat_Jull_Prep_03"			"God kamp."
+	"DAC_Chat_Jull_Prep_04"			"Mit hold er udueligt."
+	"DAC_Chat_Jull_Prep_05"			"Det var forfærdeligt."
+	"DAC_Chat_Jull_Prep_06"			"Det var tæt på."
+	"DAC_Chat_Jull_Prep_07"			"Nederlag giver en bitter eftersmag af sur Riesling."
+	"DAC_Chat_Jull_Prep_08"			"Hør du... jeg giver en drink, når du har tabt."
+	"DAC_Chat_Jull_Combat_01"		"Det var sjovt."
+	"DAC_Chat_Jull_Combat_02"		"Du kan aldrig slå mig!"
+	"DAC_Chat_Jull_Combat_03"		"Jeg ved ikke, om du har set det, men du er ved at tabe!"
+	"DAC_Chat_Jull_Combat_04"		"Jeg har brug for en drink."
+	"DAC_Chat_Jull_Combat_05"		"Endestationen er nær."
+	"DAC_Chat_Jull_Combat_06"		"Dette kan gå begge veje."
+	"DAC_Chat_Jull_Combat_07"		"Det var en ære at kæmpe mod dig."
+	"DAC_Chat_Jull_Combat_08"		"Det var dårligt."
 	
 	
 	"DAC_DuosMessageType"				"Hold-\nchat"
@@ -1885,10 +2063,10 @@
 
 	"DAC_Tutorial_V2_Turbo_2a"		"I Knockouttilstand starter du på level 5 og vælger de første 5 helte, som matcher de viste alliancer."
 	"DAC_Tutorial_V2_Turbo_2b"		"Hvis du modtager skade fire gange i denne tilstand, er det slut. Men du stiger også automatisk i level, og du skal kun have 2 enheder for at opgradere en helts rang."
-	"DAC_Tutorial_V2_Turbo_2c"		"Da det er første gang, at du prøver denne tilstand, sættes runder automatisk på pause. Når du er klar til næste runde, skal du trykke på knappen \"Spring over\" ovenfor."
+	"DAC_Tutorial_V2_Turbo_2c"		"Da det er første gang, at du spiller i knockouttilstand, sættes runder automatisk på pause. Når du er klar til næste runde, skal du trykke på knappen \"Spring over\" ovenfor."
 
-	"DAC_Tutorial_V2_Normal_2a"		"I Strategisk tilstand skal du selv sørge for at stige i level, og du skal have 3 enheder for at få en helt til at stige i rang i stedet for 2!"	
-	"DAC_Tutorial_V2_Normal_2b"		"Da det er første gang, at du prøver denne tilstand, sættes spillet automatisk på pause. Når du er klar til næste runde, skal du trykke på knappen \"Spring over\" ovenfor."
+	"DAC_Tutorial_V2_Normal_2a"		"I standardtilstand skal du selv sørge for at stige i level, og du skal have 3 enheder for at få en helt til at stige i rang i stedet for 2!"	
+	"DAC_Tutorial_V2_Normal_2b"		"Da det er første gang, at du spiller i standardtilstand, sættes runder automatisk på pause. Når du er klar til næste runde, skal du trykke på knappen \"Spring over\" ovenfor."
 
 
 	"DAC_Tutorial_V2_Intro_1a"		"Dota Underlords er et strategispil, hvor du kæmper mod syv andre spillere. Den sidste overlevende spiller vinder."
@@ -1908,7 +2086,7 @@
 
 	"DAC_Tutorial_V2_Intro_3a"		"Det ser godt ud. Det er en ny runde, hvilket betyder mere guld og nye modstandere. Hvis tur er det?"
 	"DAC_Tutorial_V2_Intro_3b"		"Hmm, disse gutter ser stærkere ud, så lad os se, hvordan vi kan styrke din helt. Lad os åbne butikken."
-	"DAC_Tutorial_V2_Intro_3c"		"Jackpot! Hvis du hyrer to af den samme helt, kombineres de til en stærkere helt med rang 2!"
+	"DAC_Tutorial_V2_Intro_3c"		"Jackpot! Hvis du hyrer to af den samme helt, kombineres de til en stærkere helt med rang 2! (I nogle spiltilstande skal du have tre helte, før de kombineres)."
 	"DAC_Tutorial_V2_Intro_3d"		"Se lige den stærkere helt. Hvorfor kombineres de? Godt spørgsmål. Et rigtig godt spørgsmål. Svaret er ... Nej, se, de slås!"
 	
 	"DAC_Tutorial_V2_Intro_4a"		"Så let er det. Nå, nu har vi kæmpet nok mod kryb. I næste runde møder du et nyt hold helte, og som altid er der mere guld."
@@ -1920,8 +2098,8 @@
 	"DAC_Tutorial_V2_Intro_4d1"		"Træk dit nyeste holdmedlem over på brættet for at få helten med i kampen."
 	"DAC_Tutorial_V2_Intro_4e"		"Hmm, ifølge disse røde markeringer kan du kun have én helt på brættet. Antallet af helte, du kan have på brættet, svarer til dit level."
 	"DAC_Tutorial_V2_Intro_4f"		"Dette er levelindikatoren. Du får automatisk 1 XP pr. runde, men du kan også købe 5 XP for 5 guld. Klik på knappen ovenfor for at købe XP nu."
-	"DAC_Tutorial_V2_Intro_4g"		"Sådan! Nu kan du få en helt mere på brættet."
-	"DAC_Tutorial_V2_Intro_4h"		"Godt gået. Med to helte og én alliance tror jeg, vi klarer os i denne kamp. "
+	"DAC_Tutorial_V2_Intro_4g"		"Fint! Nu kan du sætte en helt mere på brættet. Vær opmærksom på, at du i nogle spiltilstande automatisk stiger i level og ikke skal bekymre dig om XP."
+	"DAC_Tutorial_V2_Intro_4h"		"Med to helte og én alliance tror jeg, vi klarer os i denne kamp. "
 
 	"DAC_Tutorial_V2_Intro_5a"		"Tillykke med din første sejr over en anden (bot)spiller! Eftersom du vandt, gav du skade til det andet hold, og førertavlen er blevet opdateret."
 	"DAC_Tutorial_V2_Intro_5b"		"Som altid får du guld i begyndelsen af runden. Denne gang får du også en ædelsten. Fedt! Men hvad er en ædelsten?"
@@ -1934,9 +2112,10 @@
 	"DAC_Tutorial_V2_Intro_6c"		"Sådan. Du kan trykke på eller holde musen over en genstand for at se, hvordan den er blevet forbedret."
 
 	"DAC_Tutorial_V2_Intro_7a"		"Den sidste brik er Underlorden, altså dig! Underlorden anfører holdet i kampen om at overtage Det Hvide Spir."
-	"DAC_Tutorial_V2_Intro_7a1"		"Hver Underlord har sin egen spillestil og strategi. Du lærer mere om dem, jo mere du spiller, men lige nu vælger vi en for dig."
-	"DAC_Tutorial_V2_Intro_7b"		"Underlords kæmper på brættet sammen med deres hold, og de har hver deres eget unikke sæt evner, som gør hele holdet stærkere. Vælg en Underlord for at prøve det."
-	"DAC_Tutorial_V2_Intro_7c"		"Underlords kæmper automatisk side om side med dit hold, og de har flere evner, som hjælper holdet eller skader fjenden. Lad os se med!"
+	"DAC_Tutorial_V2_Intro_7a1"		"Hver Underlord har sin egen spillestil og sine egne styrker og evner. Normalt kan du selv vælge, men lige nu vælger vi en for dig."
+	"DAC_Tutorial_V2_Intro_7a1_new"	"I hver kamp vælger du en Underlord, når dit hold er faldet til rette – enten i 3. eller 10. runde afhængigt af spiltilstanden. Lad os se engang."
+	"DAC_Tutorial_V2_Intro_7b"		"Hver Underlord har sin egen spillestil og sine egne styrker og evner. De har også en af to tilfældige ultimative evner. Vælg en, og prøv dig frem!"
+	"DAC_Tutorial_V2_Intro_7c"		"Din Underlord kæmper på brættet sammen med sit hold og bruger sine evner automatisk. Lad os se, hvad der sker!"
 
 
 	"DAC_Tutorial_Intro2_0"			"Underlords spilles over mange runder."
@@ -1998,12 +2177,12 @@
 	"DAC_Tutorial_EndScene_1"		"Tjek regelbogen for detaljerede oplysninger om helte, kryb, evner og regler."
 	"DAC_Tutorial_EndScene_2"		"Ta' dem så!"
 
-	"DAC_Tutorial_Interest_0"		"Du får 1 guld i rente for hver 10 (op til 50) guld ved udgangen af hver runde."
+	"DAC_Tutorial_Interest_0"		"Du får 1 guld i rente for hver 10 (op til 30) guld ved udgangen af hver runde i standard- og duotilstand."
 
 	"DAC_Tutorial_Selling_0"		"Du kan sælge helte ved at vælge dem og flytte dem til salgsknappen."
 	
 	"DAC_Tutorial_Level_0"			"Dit spillerniveau er lig med det antal helte, du kan have på brættet."
-	"DAC_Tutorial_Level_1"			"Du kan bruge 5 guld for at få 4 XP og øge dit level hurtigere."
+	"DAC_Tutorial_Level_1"			"Du kan bruge 5 guld for at få 5 XP og øge dit level hurtigere."
 	"DAC_Tutorial_Level_2"			"Det er en god taktik at gemme guld for at øge dit level."
 
 	"DAC_Tutorial_PlaceHero_0"		"Du kan placere lige så mange helte som dit spillerniveau.\nSørg for at fylde dit hold!"
@@ -2216,10 +2395,12 @@
 
 	"dac_settings_developer_options"		"Udviklerindstillinger"
 	"dac_settings_dac_developer_mode"			"dac_developer_mode"
+	"dac_settings_cl_showmem"					"cl_showmem"
 
 	"dac_settings_support_options"			"Supportindstillinger"
 	"dac_support_upload_save_game"				"Upload gemt spil til Steam Support"
 	"dac_support_upload_console_log"			"Upload konsollog til Steam Support"
+	"dac_dump_memory_stats"						"Gem hukommelsesstatistikker"
 	"dac_support_upload"						"Upload til Steam Support"
 	"dac_support_upload_error_unknown"			"Upload mislykkedes, ukendt fejl."
 	"dac_support_upload_error_no_file"			"Upload mislykkedes, ingen fil fundet til upload."
@@ -2316,7 +2497,7 @@
 	"dac_glossary_alliance"					"Alliance"
 	"dac_glossary_alliance_desc"			"Hver helteenhed indgår i en, to eller tre alliancer. Når de kæmper på brættet sammen med andre helte, som har den samme alliance, får holdet en alliancebonus. Bonussen kan gøre dit hold stærkere på en eller anden måde eller din modstanders hold svagere på en eller anden måde. Mange alliancer har flere styrkeniveauer, som kan opnås, når du har flere unikke helte fra en bestemt alliance på brættet. Du opnår for eksempel en muskuløs alliance på niveau 1 med to helte, og du kan få en muskuløs alliance på niveau 2 med fire helte. Højere allianceniveauer giver større fordele til dit hold."
 	"dac_glossary_gold"						"Guld"
-	"dac_glossary_gold_desc"				"Guld bruges i Underlords til at købe helte (1-5 guld), opdatere butikken (2 guld) og købe erfaring (5 guld for 5 XP). Du kan optjene guld i løbet af kampen på forskellige måder. Du optjener en basismængde guld efter hver runde, uanset hvordan du klarede dig i den sidste kamp. Derudover kan du optjene bonusguld fra genstande og ved at vinde eller tabe flere kampe i træk. Du kan også optjene guld fra renter – du får 1 ekstra guld for hver 10 guld, du har i begyndelsen af en runde, op til 50 guld."
+	"dac_glossary_gold_desc"				"Guld bruges i Underlords til at købe helte (1-5 guld), opdatere butikken (2 guld) og købe erfaring (5 guld for 5 XP). Du kan optjene guld i løbet af kampen på forskellige måder. Du optjener en basismængde guld efter hver runde, uanset hvordan du klarede dig i den sidste kamp. Derudover kan du optjene bonusguld fra genstande og ved at vinde eller tabe flere kampe i træk. Du kan også optjene guld fra renter – du får 1 ekstra guld for hver 10 guld, du har i begyndelsen af en runde, op til 30 guld."
 	"dac_glossary_hype"						"Hype"
 	"dac_glossary_hype_desc"				"Hype er en Underlords primære kraftkilde. Når din Underlord får hype, giver den mere skade (op til maks. +50% ved fuld hype), og evnenedkølinger går hurtigere (op til 40% ved fuld hype). Hype genereres i et konstant tempo, og hver Underlord har forskellige positive effekter, som gør, at hype kan genereres hurtigere. Hvis du dræber din modstanders Underlord, får du dobbelt hype-generering, men hvis du bliver ydmyget ved at blive lammet eller fortryllet, reduceres din hype-generering med 5 pr. sekund."
 	"dac_glossary_level"					"Spillerlevel"
@@ -2453,6 +2634,7 @@
 
 	"DAC_NextRoundStarting"						"{d:roundnum}. runde"
 	"DAC_GoldBreakdownInterest"					"+{d:interest} RENTE"
+	"DAC_GoldBreakdownInterestMax"				"+{d:interest} MAKS. RENTE OPNÅET"
 	"DAC_GoldBreakdownStreakWIN"				"+{d:streak} SEJRSRÆKKE"
 	"DAC_GoldBreakdownStreakLOSE"				"+{d:streak} TABSRÆKKE"
 	"DAC_GoldBreakdownItems"					"+{d:items} FRA GENSTANDE"
@@ -2460,9 +2642,6 @@
 	"DAC_GoldBreakdownVictory"					"+{d:victory} SEJR"
 	"DAC_GoldBreakdownTotal"					"{d:total} GULD I ALT"
 	"DAC_GoldBreakdownFreeReroll"				"+GRATIS OPDATERING"
-	"DAC_GoldBreakdownFreeOffensiveGem"			"+OFFENSIV ÆDELSTEN"
-	"DAC_GoldBreakdownFreeDefensiveGem"			"+DEFENSIV ÆDELSTEN"
-	"DAC_GoldBreakdownFreeSupportGem"			"+SUPPORTÆDELSTEN"
 
 	"DAC_TopPlayersPrefix"						"Top"
 	"DAC_TopPlayersCount"						"{d:playercount}"
@@ -2573,6 +2752,7 @@
 
 
 	"dac_scoreboard_heading_place"					"Placering"
+	"dac_scoreboard_heading_health"					"Helbred"	
 	"dac_scoreboard_heading_name"					"Spiller"
 	"dac_scoreboard_heading_rank"					"Rang"
 	"dac_scoreboard_heading_rankpoints"				"Rangpoint"
@@ -2610,6 +2790,12 @@
 	"DAC_Hero_Odds_Tier4_Next"						"Enheder på niveau 4: {s:odds_tier_4_next}%"
 	"DAC_Hero_Odds_Tier5_Next"						"Es-enheder: {s:odds_tier_5_next}%"
 
+	"DAC_Hero_Odds_Tier1_Short"							"{s:odds_tier_1}%"
+	"DAC_Hero_Odds_Tier2_Short"							"{s:odds_tier_2}%"
+	"DAC_Hero_Odds_Tier3_Short"							"{s:odds_tier_3}%"
+	"DAC_Hero_Odds_Tier4_Short"							"{s:odds_tier_4}%"
+	"DAC_Hero_Odds_Tier5_Short"							"{s:odds_tier_5}%"
+
 	"DAC_Explain_Hero_Pool"							"Helte i butikken vælges fra en pulje, som er fælles for alle spillere."
 	
 	"DAC_ClaimItem_Success"							"Du har indløst {s:item_name}."
@@ -2643,6 +2829,7 @@
 	"DAC_Challenge_RerollAvailableAt"				"Ny udfordring"
 	"DAC_Challenge_Claimable"						"Indløs XP"
 	"DAC_Challenge_ChallengeComplete"				"Gennemført"
+	"DAC_Challenge_Number"							"Udfordring {d:challenge_slot}"
 
 	"DAC_Achievement_WinXPVPRounds_Desc"			"Vind {d:challengeMaxProgress} runder mod andre spillere."
 	"DAC_Achievement_WinXPVERounds_Desc"			"Vind {d:challengeMaxProgress} plyndringsrunder."
@@ -2653,7 +2840,7 @@
 	"DAC_Achievement_HitLv10_Desc"					"Nå 10. level {d:challengeMaxProgress} gange."
 	"DAC_Achievement_EarnStreakGold_Desc"			"Optjen {d:challengeMaxProgress} guld fra sejrs- og tabsrækker."
 	"DAC_Achievement_EarnInterestGold_Desc"			"Optjen {d:challengeMaxProgress} guld i rente."
-	"DAC_Achievement_WinWith4GlobalItems_Desc"		"Vind {d:challengeMaxProgress} runder med mindst 2 globale genstande."
+	"DAC_Achievement_WinWith4GlobalItems_Desc"		"Vind {d:challengeMaxProgress} runder med mindst 1 eller flere himstregimser."
 	"DAC_Achievement_WinWith5ActiveSynergies_Desc"	"Vind {d:challengeMaxProgress} runder med mindst 5 aktive alliancer."
 	"DAC_Achievement_WinWithA6Synergy_Desc"			"Vind {d:challengeMaxProgress} runder med en aktiv alliance med mindst 6 helte."
 
@@ -2752,8 +2939,10 @@
 	"dac_zoo_page3"			"Alliancer"
 	"dac_zoo_page4"			"Pop op-beskeder"
 	"dac_zoo_page5"			"Udfordringsbane"
-	"dac_zoo_page6"			"Udfordringsbane"
+	"dac_zoo_page6"			"Efterspil"
 	"dac_zoo_page_divider"	"/"
+
+	"dac_zoo_show_post_game"	"Vis efterspil"
 
 	"dac_zoo_season_0_popup"	"Sæson 0 – Introduktion"
 
@@ -2990,7 +3179,7 @@
 	"DAC_Jail_Crime46"	"Dansede, som om nogen kiggede"
 	"DAC_Jail_Crime47"	"Havde urimelige forventninger om retfærdighed"
 	"DAC_Jail_Crime48"	"Ved ikke, hvordan man tilbereder en bøf ordentligt"
-	"DAC_Jail_Crime49"	"Fortalte en dum vittighed, som alle havde hørt før"
+	"DAC_Jail_Crime49"	"Fortalte dumme vittigheder, alle har hørt før"
 	"DAC_Jail_Crime50"	"Sagde ikke \"god hund\" til en sød vovse"
 	
 	"DAC_InGame_MenuJail"	"Udviste helte"
@@ -3032,12 +3221,12 @@
 	"DAC_HowToPlay_FormAlliances" "Dan alliancer"
 	"DAC_HowToPlay_FormAlliances_Body" "Hver helt kan også indgå i en eller flere forskellige alliancer med andre helte. Når du har flere helte på brættet med samme alliance, får dit hold bonusser. Generelt betyder flere helte med samme alliance på dit hold større bonusser."
 
-	"DAC_HowToPlay_LootRounds" "PLYNDRINGSRUNDER"
+	"DAC_HowToPlay_LootRounds" "PLYNDRINGSRUNDER OG GENSTANDE"
 	"DAC_HowToPlay_FightForLoot" "Kæmp om plyndringsgods"
-	"DAC_HowToPlay_FightForLoot_Body" "De første 3 runder og runde 10, 15, 20 osv. er plyndringsrunder. I plyndringsrunderne kæmper dit hold mod neutrale monstre. Når kampen er slut, kan du vælge mellem forskellige genstande, som du kan udstyre din hær med."
+	"DAC_HowToPlay_FightForLoot_Body" "Indimellem runder er der nogle gange plyndringsrunder. Disse runder fungerer ligesom andre, bortset fra at når kampen er slut, så kan du vælge mellem et sæt genstande til dit hold."
 
 	"DAC_HowToPlay_Items" "genstande"
-	"DAC_HowToPlay_Items_Body" "Der er tre slags genstande – udstyrbare genstande, himstregimser og globale genstande. Udstyrbare genstande kan placeres på dine helte (én pr. helt), mens himstregimser placeres på brættet. Globale genstande har effekter, som påvirker hele din hær."
+	"DAC_HowToPlay_Items_Body" "Der er to slags genstande – udstyrbare genstande og himstregimser. Udstyrbare genstande kan placeres på dine helte (én pr. helt), mens himstregimser placeres på brættet."
 
 	"DAC_HowToPlay_Versus_Rounds" "VS-RUNDER"
 	"DAC_HowToPlay_HeadToHead" "Én mod én"
@@ -3048,47 +3237,49 @@
 
 	"DAC_HowToPlay_YourUnderlord" "DIN UNDERLORD"
 	"DAC_HowToPlay_WhatsAnUnderlord" "Hvad er en Underlord?"
-	"DAC_HowToPlay_WhatsAnUnderlord_Body" "Du er en Underlord. I Dota Underlords vælger du en Underlord før hver kamp. Hver Underlord har sin egen spillestil og fordele. Underlords kæmper på brættet sammen med dit hold. I hver kamp vokser din Underlords kræfter, og dens angreb og evner bliver stærkere."
+	"DAC_HowToPlay_WhatsAnUnderlord_Body" "Du er en Underlord. I hver kamp i Underlords bygger du dit hold op, og på et tidspunkt vælger du, hvem du vil lede. Din Underlord er en stærk enhed med sin egen spillestil og sine egne fordele og evner og kæmper på brættet sammen med dit hold."
 
-	"DAC_HowToPlay_AbilitiesAndTalents" "evner og talenter"
-	"DAC_HowToPlay_AbilitiesAndTalents_Body" "Hver Underlord har en passiv evne, to aktive evner og én ultimativ evne. Efterhånden som kampen skrider frem, kan du vælge forskellige talenter, som forbedrer eller låser op for disse evner. Hver kamp er unik, og din Underlord kan tilpasse sig enhver situation."
+	"DAC_HowToPlay_AbilitiesAndTalents" "Vælg en Underlord"
+	"DAC_HowToPlay_AbilitiesAndTalents_Body" "Efter 1. runde i knockouttilstand og efter 9. runde i standard- og Duo-tilstand kan du vælge en Underlord. Hver Underlord har en af to tilfældige \"former\". Disse former inkluderer en passiv evne, en aktiv evne og en ultimativ evne."
 
 	"DAC_HowToPlay_HypeOMeter" "Hype-meter"
 	"DAC_HowToPlay_HypeOMeter_Body" "Hype-meteret viser en Underlords hype-level. Husk, at højere hype-levels forbedrer din Underlords skade og nedkølinger."
 	"DAC_SelectedPlayerName" "{g:dac_player_slot_persona:b:selected_player_slot}"
 	"DAC_Spectating" "Ser på"
 
-	"DAC_Puzzle_RuleDescription_UnitCountLimit"			"Du skal have {d:minimum}-{d:maximum} enheder."
-	"DAC_Puzzle_RuleDescription_UnitCountLimit_Hi"		"Du må ikke have mere end {d:maximum} enheder."
-	"DAC_Puzzle_RuleDescription_UnitCountLimit_Lo"		"Du skal mindst have {d:minimum} enheder."
+	"DAC_Puzzle_RuleDescription_UnitCountLimit"			"Du skal have {d:minimum}-{d:maximum} enheder (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_UnitCountLimit_Hi"		"Du må ikke have mere end {d:maximum} enheder (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_UnitCountLimit_Lo"		"Du skal mindst have {d:minimum} enheder (aktuelt antal: {d:current})."
 
-	"DAC_Puzzle_RuleDescription_UnitStarLimit"			"Hver enhed skal have {d:minimum}-{d:maximum} stjerner."
-	"DAC_Puzzle_RuleDescription_UnitStarLimit_Hi"		"Hver enhed må ikke have mere end {d:maximum} stjerner."
-	"DAC_Puzzle_RuleDescription_UnitStarLimit_Lo"		"Hver enhed skal mindst have {d:minimum} stjerner."
+	"DAC_Puzzle_RuleDescription_UnitStarLimit"			"Hver enhed skal have {d:minimum}-{d:maximum} stjerner (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_UnitStarLimit_Hi"		"Hver enhed må ikke have mere end {d:maximum} stjerner (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_UnitStarLimit_Lo"		"Hver enhed skal have mindst {d:minimum} stjerner (aktuelt antal: {d:current})."
 
-	"DAC_Puzzle_RuleDescription_BoardStarLimit"			"Dit bræt skal have {d:minimum}-{d:maximum} stjerner i alt."
-	"DAC_Puzzle_RuleDescription_BoardStarLimit_Hi"		"Dit bræt må ikke have mere end {d:maximum} stjerner i alt."
-	"DAC_Puzzle_RuleDescription_BoardStarLimit_Lo"		"Dit bræt skal mindst have {d:minimum} stjerner i alt."
+	"DAC_Puzzle_RuleDescription_BoardStarLimit"			"Dit bræt skal have {d:minimum}-{d:maximum} stjerner i alt (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_BoardStarLimit_Hi"		"Dit bræt må ikke have mere end {d:maximum} stjerner i alt (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_BoardStarLimit_Lo"		"Dit bræt skal have mindst {d:minimum} stjerner i alt (aktuelt antal: {d:current})."
 
-	"DAC_Puzzle_RuleDescription_UnitCostLimit"			"Hver enhed skal koste {d:minimum}-{d:maximum} guld."
-	"DAC_Puzzle_RuleDescription_UnitCostLimit_Hi"		"Hver enhed må ikke koste mere end {d:maximum} guld."
-	"DAC_Puzzle_RuleDescription_UnitCostLimit_Lo"		"Hver enhed skal mindst koste {d:minimum} guld."
+	"DAC_Puzzle_RuleDescription_UnitCostLimit"			"Hver enhed skal koste {d:minimum}-{d:maximum} guld (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_UnitCostLimit_Hi"		"Hver enhed må ikke koste mere end {d:maximum} guld (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_UnitCostLimit_Lo"		"Hver enhed skal koste mindst {d:minimum} guld (aktuelt antal: {d:current})."
 
-	"DAC_Puzzle_RuleDescription_BoardCostLimit"			"Dit bræt skal koste {d:minimum}-{d:maximum} guld i alt."
-	"DAC_Puzzle_RuleDescription_BoardCostLimit_Hi"		"Dit bræt må ikke koste mere end {d:maximum} guld i alt."
-	"DAC_Puzzle_RuleDescription_BoardCostLimit_Lo"		"Dit bræt skal mindst koste {d:minimum} guld i alt."
+	"DAC_Puzzle_RuleDescription_BoardCostLimit"			"Dit bræt skal koste {d:minimum}-{d:maximum} guld i alt (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_BoardCostLimit_Hi"		"Dit bræt må ikke koste mere end {d:maximum} guld i alt (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_BoardCostLimit_Lo"		"Dit bræt skal koste mindst {d:minimum} guld i alt (aktuelt antal: {d:current})."
 
-	"DAC_Puzzle_RuleDescription_ItemCountLimit"			"Du skal have {d:minimum}-{d:maximum} genstande."
-	"DAC_Puzzle_RuleDescription_ItemCountLimit_Hi"		"Du må ikke have mere end {d:maximum} genstande."
-	"DAC_Puzzle_RuleDescription_ItemCountLimit_Lo"		"Du skal mindst have {d:minimum} genstande."
+	"DAC_Puzzle_RuleDescription_ItemCountLimit"			"Du skal have {d:minimum}-{d:maximum} genstande (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_ItemCountLimit_Hi"		"Du må ikke have mere end {d:maximum} genstande (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_ItemCountLimit_Lo"		"Du skal have mindst {d:minimum} genstande (aktuelt antal: {d:current})."
 	"DAC_Puzzle_RuleDescription_ItemCountLimit_No"		"Du må ikke have nogen genstande."
 
-	"DAC_Puzzle_RuleDescription_UnderlordCountLimit"	"Du skal have {d:minimum}-{d:maximum} Underlords på brættet."
-	"DAC_Puzzle_RuleDescription_UnderlordCountLimit_Hi"	"Du må ikke have mere end {d:maximum} Underlords på brættet."
-	"DAC_Puzzle_RuleDescription_UnderlordCountLimit_Lo"	"Du skal mindst have {d:minimum} Underlords på brættet."
+	"DAC_Puzzle_RuleDescription_UnderlordCountLimit"	"Du skal have {d:minimum}-{d:maximum} Underlords på brættet (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_UnderlordCountLimit_Hi"	"Du må ikke have mere end {d:maximum} Underlords på brættet (aktuelt antal: {d:current})."
+	"DAC_Puzzle_RuleDescription_UnderlordCountLimit_Lo"	"Du skal have mindst {d:minimum} Underlords på brættet (aktuelt antal: {d:current})."
 	"DAC_Puzzle_RuleDescription_UnderlordCountLimit_No"	"Du må ikke have nogen Underlords på brættet."
 
 	"DAC_Puzzle_RuleDescription_SynergyRequirements"	"TODO: Synergy Requirements Description"
+
+	"DAC_Puzzle_RuleDescription_ValidBoardPositions"	"Enheder kan kun placeres på gyldige felter."
 
 	"dac_puzzle_title"			"Bagholdsangreb!"
 	"dac_puzzle_difficulty"			"Svær"
@@ -3134,37 +3325,166 @@
 	"dac_challenge_kotl_cages_title"				"Fanget af Lysets Vogter"
 	"dac_challenge_kotl_cages_description"			"This is the description for the 'KOTL Cages' puzzle. Let's add some more words here so we can see if everything fits."
 
-	"modifier_add_attack_damage"					"Yderligere angrebsskade"
-	"modifier_add_mana_per_damage"					"Tilføj mana pr. skade"
-	"modifier_alchemist_acid_spray"					"Alkymistens Syrespray"
-	"modifier_demon_silence"						"Dæmonundertrykkelse"
-	"modifier_disarmed"								"Afvæbnet"
-	"modifier_disruptor_static_storm_thinker"		"Disruptors Elektrisk Storm"
-	"modifier_doom_bringer_doom"					"Bringer af dommedag"
-	"modifier_dragon_knight_dragon_form"			"Drageform"
-	"modifier_enchantress_natures_attendants"		"Naturens Opsynsmænd"
-	"modifier_increased_damage_over_time"			"Øget skade over tid"
-	"modifier_juggernaut_blade_fury"				"Klingevrede"
-	"modifier_lycan_shift"							"Lykantropen: Formskift"
-	"modifier_ogre_enrage"							"Troldemagikeren: Provoker"
-	"modifier_ogre_magi_bloodlust"					"Troldemagikeren: Blodbegær"
-	"modifier_on_fire"								"I brand"
-	"modifier_pure_pain_armor"						"Ren Smerte: Rustning"
-	"modifier_pure_pain_attack_speed"				"Ren Smerte: Angrebshastighed"
-	"modifier_shadow_shaman_voodoo"					"Voodoo"
-	"modifier_stunned"								"Lammet"
-	"modifier_techies_bomb_detonate"				"Pyroteknikerne: Bombedetonation"
-	"modifier_terrorblade_metamorph"				"Terrorklinge: Forvandling"
-	"modifier_void_spirit_dissimilate"				"Tomrummets Ånd: Pist Væk"
-	"modifier_void_spirit_dissimilate_slow"				"Pist Væk sløves"
+	"dac_challenge_position_test_title"				"Placeringstest"
+	"dac_challenge_position_test_description"		"Den, hvor du placerer enheder på bestemte pladser."
+
+	"dac_challenge_omegaslark_title"				"Omegaslark"
+	"dac_challenge_omegaslark_description"			"Slark med højeste rang, nogle Io-venner med højeste rang og et Måneskår for god ordens skyld."
+
+	"dac_challenge_defendersoftheforest_title"			"Skovens forsvarere"
+	"dac_challenge_defendersoftheforest_description"	"Keenfolket har gjort krav på dette land. Kan du rydde det for dyreliv udelukkende med opfindere?"
+
+	"dac_challenge_boundbyblood_title"				"Bundet af blod"
+	"dac_challenge_boundbyblood_description"		"Legionkommandøren er ude efter hævn... sammen med sine livvagter, som giver 60.000 skade pr. sekund."
+	
+    "dac_modifier_abaddon_aphotic_shield"               "Afotisk Skjold"
+	"dac_modifier_add_attack_damage"					"Yderligere angrebsskade"
+	"dac_modifier_add_mana_per_damage"					"Tilføj mana pr. skade"
+    "dac_modifier_aegis_limbo"                          "Ægides limbo"
+	"dac_modifier_alchemist_acid_spray"					"Alkymistens Syrespray"
+    "dac_modifier_anessix_companion_demon_warrior_protect_aura"     "Anessix' dæmonledsager med beskyttelsesaura"
+    "dac_modifier_anessix_companion_demon_warrior_protect_buff"     "Anessix' dæmonledsager med ekstra beskyttelseseffekt"
+	"dac_modifier_anessix_companion_demonic_rage"		"Dæmonisk Vrede"
+    "dac_modifier_anessix_enthrall_target"              "Tryllebundet: Mål"
+    "dac_modifier_anessix_martyrs_boon"                 "Martyrens Godhed"
+    "dac_modifier_anessix_pure_pain"                    "Ren Smerte"
+    "dac_modifier_airstrike"                            "Luftangreb"
+	"dac_modifier_axe_berserkers_call"					"Bersærkerråb"
+    "dac_modifier_axe_berserkers_call_armor"            "Bersærkerråb: Rustning"
+    "dac_modifier_batrider_sticky_napalm"               "Klistret Napalm"
+    "dac_modifier_beastmaster_wild_axes"                "Vilde Økser"
+    "dac_modifier_black_dragon_splash_attack"           "Sprøjteangreb"
+    "dac_modifier_bloodseeker_blood_rage"               "Blodraseri"
+    "dac_modifier_bloodseeker_movement"                 "Blodsøgeren: Bevægelse"
+    "dac_modifier_break"                                "Afbrudt"
+    "dac_modifier_bristleback_quill_spray"              "Piggespray"
+    "dac_modifier_broodmother_spin_web"                 "Væv et Spind"
+	"dac_modifier_brutalized"							"Brutaliseret"
+    "dac_modifier_clockwerk_battery_assault"            "Granatangreb"
+    "dac_modifier_deadeye_bonus"                        "Dødbringende: Bonus"
+	"dac_modifier_demon_silence"						"Dæmonundertrykkelse"
+    "dac_modifier_demon_warrior_bash"                   "Dæmon: Krigerisk Slag"
+	"dac_modifier_disarmed"								"Afvæbnet"
+	"dac_modifier_disruptor_static_storm"		        "Disruptors Elektrisk Storm"
+    "dac_modifier_disruptor_warlock_bonus"              "Disruptors heksemesterbonus"
+	"dac_modifier_doom_bringer_doom"					"Bringer af dommedag"
+	"dac_modifier_dragon_knight_dragon_form"			"Drageform"
+	"dac_modifier_dragonknight_breathefire_reduction"	"Ildedrag: Svækkelse"
+    "dac_modifier_earth_spirit_geomagnetic_grip_debuff" "Geomagnetisk Greb: Svækkelse"
+    "dac_modifier_ember_spirit_sleight_of_fist"         "Knytnævekneb"
+	"dac_modifier_enchantress_natures_attendants"		"Naturens Opsynsmænd"
+    "dac_modifier_enthrall_trigger"                     "Tryllebundet: Udløser"
+    "dac_modifier_enthrall_victim"                      "Tryllebundet: Offer"
+    "dac_modifier_frontline_armor"                      "Frontlinje: Rustning"
+    "dac_modifier_granny_lizard_shotgun_slow"           "Snapfire: Jagtgevær sløves"
+    "dac_modifier_gyrocopter_call_down_slow"            "Gyrokopteren: Påkald Missilangreb – hæmning"
+    "dac_modifier_hobgen_afterburn"                     "Glødeild"
+    "dac_modifier_hobgen_burning_down_the_house"        "Nedbrænding"
+    "dac_modifier_hobgen_molten_armor"                  "Smeltet Rustning"
+    "dac_modifier_hobgen_supercharge"                   "Hobgen: Superladet"
+    "dac_modifier_ignore_max_ms"                        "Ignorer begrænsning af bevægelseshastighed"
+    "dac_modifier_infernal_immunity"                    "Djævelsk immunitet"
+	"dac_modifier_global_unit_changes"			"Øget skade over tid"
+    "dac_modifier_inventor"                             "Opfinder"
+	"dac_modifier_juggernaut_blade_fury"				"Klingevrede"
+    "dac_modifier_knight_buff"                          "Ridder: Positiv effekt"
+    "dac_modifier_kunkka_ghost_ship"                    "Spøgelsesskib"
+    "dac_modifier_legion_commander_duel"                "Duel"
+    "dac_modifier_legion_commander_will_of_the_bullsnake"  "Tyresnogens Vilje"
+    "dac_modifier_lich_chainfrost_slow"                 "Frostkugle sløves"
+    "dac_modifier_lich_mage_bonus"                      "Liget: Magikerbonus"
+    "dac_modifier_lina_laguna_blade"                    "Lagunasværd"
+    "dac_modifier_lone_druid_spirit_bear_entangle_effect"   "Bjørnens Ånd: Rodfæste"
+	"dac_modifier_lycan_shift"							"Lykantropen: Formskift"
+    "dac_modifier_martyrs_boon"                         "Martyrens Godhed"
+    "dac_modifier_medusa_hunter_bonus"                  "Medusa: Jægerbonus"
+    "dac_modifier_medusa_stone_gaze"                    "Medusa: Forstenet Blik"
+    "dac_modifier_medusa_stone_gaze_facing"             "Medusa: Forstenet Blik rettet mod"
+    "dac_modifier_nyx_assassin_vendetta"                "Lejemorderen Nyx: Vendetta"
+    "dac_modifier_nyx_assassin_spiked_carapace"         "Piggeskjold"
+	"dac_modifier_ogre_enrage"							"Troldemagikeren: Provoker"
+	"dac_modifier_ogre_magi_bloodlust"					"Troldemagikeren: Blodbegær"
+	"dac_modifier_on_fire"								"I brand"
+    "dac_modifier_oov_dot"                              "Giftkugle: Skade"
+    "dac_modifier_phased_movement"                      "Bevæg igennem"
+    "dac_modifier_primordial_bonus"                     "Urhav: Bonus"
+    "dac_modifier_pudge_force_attack"                   "Pudge: Gennemtving angreb"
+    "dac_modifier_pudge_meathook"                       "Pudge: Kødkrog"
+	"dac_modifier_pure_pain_armor"						"Ren Smerte: Rustning"
+	"dac_modifier_pure_pain_attack_speed"				"Ren Smerte: Angrebshastighed"
+    "dac_modifier_queenofpain_scream_of_pain"           "Smertensskrig"
+    "dac_modifier_sand_king_caustic_finale_orb"         "Kaustisk Finale: Kugle"
+    "dac_modifier_sand_king_caustic_finale_slow"        "Kaustisk Finale: Hæmning"
+    "dac_modifier_shadow_demon_purge_slow"              "Skyggedæmonen: Dæmonisk Udrensning sløves"
+    "dac_modifier_shaman_hex"                           "Fortryl"
+	"dac_modifier_shadow_shaman_voodoo"					"Voodoo"
+	"dac_modifier_sheepstick_debuff"					"Gris"
+    "dac_modifier_slardar_amplify_damage"               "Forstærk skade"
+	"dac_modifier_slark_dark_pact"						"Mørk Pagt"
+    "dac_modifier_slark_pounce"                         "Overfald"
+    "dac_modifier_sniper_assassinate"                   "Dræb"
+	"dac_modifier_stunned"								"Lammet"
+    "dac_modifier_sven_gods_strength"                   "Guddommelig Styrke"
+    "dac_modifier_target_dummy_disablehealing"          "Træningsmål: Slå heling fra"
+    "dac_modifier_target_dummy_taunt"                   "Træningsmålet håner"
+	"dac_modifier_techies_bomb_detonate"				"Pyroteknikerne: Bombedetonation"
+	"dac_modifier_terrorblade_metamorph"				"Terrorklinge: Forvandling"
+    "dac_modifier_tidehunter_ravage"                    "Tidevandsjægeren: Ødelæggelse"
+    "dac_modifier_tiny_toss_stundamage"                 "Tiny: Kast – skade"
+    "dac_modifier_treant_leech_seed"                    "Blodsugende Frø"
+    "dac_modifier_tusk_walrus_punch"                    "Hvalrosslag"
+    "dac_modifier_venomancer_venomous_gale"             "Giftig Storm"
+	"dac_modifier_void_spirit_dissimilate"				"Tomrummets Ånd: Pist Væk"
+	"dac_modifier_void_spirit_dissimilate_slow"			"Pist Væk sløves"
+    "dac_modifier_void_spirit_dissimilate_debuff"       "Pist Væk: Svækkelse"
+    "dac_modifier_voidspirit_spirit_bonus"              "Ånd: Bonus"
+    "dac_modifier_warlock_disruptor_double"             "Heksemester: Disruptors dobbeltgænger"
+    "dac_modifier_warlock_shadow_word"                  "Troldmanden: Skyggeord"
+    "dac_modifier_weaver_alertness"                     "Væverens opmærksomhed"
+    "dac_modifier_wisp_overcharge"                      "Fe: Overladning"
+	"dac_modifier_wisp_relocate_channel"				"Fe: Flyt – kanalisering"
+	"dac_modifier_wisp_relocate_resurrect"				"Fe: Flyt – genopståen"
+	"dac_modifier_wisp_relocate_return"			    	"Fe: Flyt – tilbagevenden"
 
 	"DAC_Heropedia_NewTitle"					"Velkommen til regelbogen"
 	"DAC_Heropedia_NewDesc"						"Det er første gang, du ser den nye regelbog! Vi burde have skrevet en introduktion! Når du har bekræftet dette pop op-vindue, vil det ikke blive vist igen."
 
-	
-
 	"dac_turbo_shop_title"							"Vælg dit starthold"
 	"dac_turbo_shop_mulligan"						"Opdater"
+	"dac_turbo_shop_mulligan_available"				"Opdater: Tilgængelig"
+
+	"dac_underlord_picker_title"				"Vælg en Underlord"
+
+	"dac_underlord_picker_1_name"					"Anessix"
+	"dac_underlord_picker_1_title"					"Dæmonhidkalder"
+
+	"dac_underlord_picker_1_build_0_title"			"Skadende support"
+	"dac_underlord_picker_1_build_0_ability_desc"	"Udfordrer og svækker en fjende. Hvis fjenden dræbes, bliver den gjort til en slavedæmon."
+
+	"dac_underlord_picker_1_build_1_title"			"Helende support"
+	"dac_underlord_picker_1_build_1_ability_desc"	"Hidkalder et monster bag fjendens linjer, som kæmper for dit hold."
+
+	"dac_underlord_picker_2_name"					"Jull"
+	"dac_underlord_picker_2_title"					"Nærkæmper i rustning"
+
+	"dac_underlord_picker_2_build_0_title"			"Aggressiv tank"
+	"dac_underlord_picker_2_build_0_ability_desc"	"Hidkalder tønder, styrker allierede og svækker fjender."
+
+	"dac_underlord_picker_2_build_1_title"			"Helende tank"
+	"dac_underlord_picker_2_build_1_ability_desc"	"Giver en omgang til dit hold og reducerer skade."
+
+	"dac_underlord_picker_4_name"					"Hobgen"
+	"dac_underlord_picker_4_title"					"Afstandspyroman"
+
+	"dac_underlord_picker_4_build_0_title"			"High Damage Dealer"
+	"dac_underlord_picker_4_build_0_ability_desc"	"Kaster bomber på brættet og giver skade i eksplosionsområdet."
+
+	"dac_underlord_picker_4_build_1_title"			"Support Damage Dealer"
+	"dac_underlord_picker_4_build_1_ability_desc"	"Hobgen undertrykkes og styrkes, og hele hæren får øget angrebshastighed."
+
+
+	"dac_underlord_detail_passive_name"			"Passiv evne"
+	"dac_underlord_detail_passive_build_desc"	"I spillet får du vist en af de to former nedenfor."
 
 	"dac_turbo_bucket_tip_Demon"				"<span class='Demon'>Øger skade</span>"
 	"dac_turbo_bucket_tip_Dragon"				"<span class='Dragon'>Yderligere evner</span>"
@@ -3194,4 +3514,15 @@
 	"dac_turbo_bucket_tip_Champion"				"<span class='Champion'>Modtager alle alliancebonusser</span>"
 	"dac_turbo_bucket_tip_Brutal"				"<span class='Brutal'>Svækker fjendens skade</span>"
 	"dac_turbo_bucket_tip_Healer"				"<span class='Healer'>Øger heling</span>"
+
+	"dac_status_stunned"                        "Lammet"
+	"dac_status_hexed"                          "Fortryllet"
+	"dac_status_muted"                          "Dæmpet"
+	"dac_status_silenced"                       "Undertrykt"
+	"dac_status_rooted"							"Fastgjort"
+	"dac_status_disarmed"                       "Afvæbnet"
+	"dac_status_break"                          "Afbrudt"
+	"DAC_DevKillBots"			"Dræb alle bots!"
+	"DAC_DevRandomBot"			"Dræb 1 bot"
+	"DAC_DevKillSelf"			"Dræb spiller"
 }

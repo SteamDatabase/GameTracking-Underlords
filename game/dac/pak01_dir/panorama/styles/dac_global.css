@@ -24,6 +24,10 @@
 @define uiNeutralGrey: #839595;
 @define baseText: #A5ADA2ff;
 
+// UNDERLORD GRADIENTS 
+@define gradientAnessix: gradient( linear, 0% 0%, 0% 100%, from( #DBA1FF ), to( #8E5DDD ) );
+@define gradientHobgen: gradient( linear, 0% 0%, 0% 100%, from( #FFEF9C ), to( #D28F52 ) );
+@define gradientJull: gradient( linear, 0% 0%, 0% 100%, from( #91D9AA ), to( #008B51 ) );
 
 /* ContextMenu - used in code -- dont rename */
 @define ContextMenuFadoutTime: 0.2s;
@@ -1329,10 +1333,6 @@ SimpleContextMenu .ContextMenuBody Button:disabled Label
 {
 	flow-children: none;
 	height: 128px;
-}
-
-.AspectRatio21x9.IsLayoutSmallScreen .DashboardHeader
-{
 	margin-left: safe-area-inset-left;
 }
 
@@ -1340,27 +1340,35 @@ SimpleContextMenu .ContextMenuBody Button:disabled Label
 {
 	vertical-align: top;
 	horizontal-align: left;
-	width: 64px;
-	height: 64px;
-	margin: 40px 0px 0px 40px;
+	width: 60px;
+	height: 60px;
+	margin: 40px 0px 0px 56px;
 	background-image: url("s2r://panorama/images/dashboard/icon_back_arrow_psd.vtex");
 	background-size: 100%;
 	background-position: 50% 60%;
 	background-repeat: no-repeat;
 	wash-color: textDefault;
 	opacity: 0.6;
+	transition-property: brightness;
+	transition-duration: 0.2s; 
+}
+
+#BackButton:hover
+{
+	brightness: 1.6;
 }
 
 .IsLayoutSmallScreen #BackButton
 {
-	margin: 32px 0px 0px 32px;
+	margin: 32px 0px 0px 24px;
 	width: 80px;
 	height: 80px;
+	//margin-left: safe-area-inset-left;
 }
 
 .AspectRatio21x9.IsLayoutSmallScreen #BackButton
 {
-	margin-left: 0px;
+	//margin-left: 0px;
 }
 
 .Page_DACHomePage #BackButton, .Page_DACPagePostGame #BackButton
@@ -1379,6 +1387,11 @@ SimpleContextMenu .ContextMenuBody Button:disabled Label
 	margin-top: 32px;
 }
 
+.Language_korean .PageTitle, .Language_tchinese .PageTitle, .Language_schinese .PageTitle, .Language_japanese .PageTitle
+{
+	margin-top: 16px;
+}
+
 .PageSubtitle 
 {
     color: textDefault;
@@ -1387,6 +1400,11 @@ SimpleContextMenu .ContextMenuBody Button:disabled Label
 	font-weight: semi-bold;
     margin-left: 138px;
 	margin-top: 100px;
+}
+
+.Language_korean .PageSubtitle, .Language_tchinese .PageSubtitle, .Language_schinese .PageSubtitle, .Language_japanese .PageSubtitle
+{
+	margin-top: 96px;
 }
 
 .AspectRatio21x9.IsLayoutSmallScreen .PageTitleLabel
@@ -1884,7 +1902,6 @@ DACCarousel .OptionPanel.Focused
 	{
 		brightness: 1.0;
 		contrast:1.0;
-		opacity: 1.0;
 		saturation:1;
 		pre-transform-scale2d: 1;
 	}
@@ -1894,7 +1911,6 @@ DACCarousel .OptionPanel.Focused
 		brightness: 2;
 		contrast: .8;
 		saturation:1.1;
-		opacity: 1;
 		pre-transform-scale2d: 1;
 	}
 
@@ -1902,7 +1918,6 @@ DACCarousel .OptionPanel.Focused
 	{
 		brightness: 1.0;
 		contrast:1.0;
-		opacity: 1.0;
 		saturation:1.0;
 		pre-transform-scale2d: 1;
 	}

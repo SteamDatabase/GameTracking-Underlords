@@ -28,9 +28,10 @@ DACUIHudTutorial
 	transition-timing-function: ease-in-out;
 }
 
-#Ricky
+#Ricky1,
+#Ricky2
 {
-	background-image: url("s2r://panorama/images/tutorial/raven_hookey_tutorial_psd.vtex");
+	background-image: url("s2r://panorama/images/tutorial/raven_hookey_tutorial_02_psd.vtex");
 	background-size: contain;
 	width: 30%;
 	height: 30%;		
@@ -43,6 +44,20 @@ DACUIHudTutorial
 	visibility: collapse;
 }
 
+#Ricky2
+{			
+	opacity:0;
+	background-image: url("s2r://panorama/images/tutorial/raven_hookey_tutorial_psd.vtex");
+}
+
+.MouthIsAnimating #Ricky1
+{	
+	//TODO: Replace with a mouth closed image
+	background-image: url("s2r://panorama/images/tutorial/raven_hookey_tutorial_02_psd.vtex");
+}
+
+.MouthIsOpen #Ricky1 {	opacity:0; }
+.MouthIsOpen #Ricky2 {	opacity:1; }
 
 
 #RickyTextHidden,
@@ -85,7 +100,8 @@ DACUIHudTutorial
 	transition-property: transform, position;
 	transition-duration: 0.3s;
 	transition-timing-function: ease-in-out;
-	transform: translateX(-500px) translateY(100px);
+	//transform: translateX(-500px) translateY(100px);
+	transform: translateX(-325px) translateY(25px);
 }
 
 .IsLayoutSmallScreen #RickyChatBubble
@@ -122,7 +138,12 @@ DACUIHudTutorial
 	visibility: visible;
 }
 
-.ShowRicky #Ricky,
+.ShowRicky #Ricky1,
+.ShowRicky #Ricky2
+{
+	visibility: visible;
+}
+
 .ShowChatBubble #RickyChatBubble
 {
 	opacity:1;

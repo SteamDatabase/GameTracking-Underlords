@@ -1981,7 +1981,6 @@ $zYuWA
 5t~BC
 5w HcS
 5w#HcS
-5wFHcC0;C4
 5wGHcS
 60CMsgEconPlayerStrangeCountAdjustment_CStrangeCountAdjustment
 60CWorkshop_SetItemPaymentRules_Request_PartnerItemPaymentRule
@@ -2021,7 +2020,6 @@ $zYuWA
 : failed to parse contents
 ;*3$"
 ;0tWD
-;=ze]
 ;BX|'1
 ;CProtoItemSocket_AssetModifier_DESERIALIZE_FROM_STRING_ONLY
 ;G tu+G$L
@@ -2928,6 +2926,10 @@ CNETMsg_SpawnGroup_Unload
 CNETMsg_SplitScreenUser
 CNETMsg_StringCmd
 CNETMsg_Tick
+COLLISION_MODE_INITIAL_TRACE_DOWN
+COLLISION_MODE_PER_FRAME_PLANESET
+COLLISION_MODE_PER_PARTICLE_TRACE
+COLLISION_MODE_USE_NEAREST_TRACE
 COLORCORRECTION_VERSION_1
 COM_TimestampedLog
 CONTENT
@@ -3131,6 +3133,7 @@ C_OP_SetRandomControlPointPosition
 C_OP_SetSingleControlPointPosition
 C_OP_StopAfterCPDuration
 C_OP_TwistAroundAxis
+C_OP_WorldTraceConstraint
 C`HcSXH
 Cache
 Call set methods to initialize MapKey.
@@ -3742,71 +3745,84 @@ H!w(H
 H99tzHcQ
 H99u 
 H;*twH
-H;50mX
-H;5HIJ
-H;5H]T
-H;5QDX
-H;5\YJ
-H;5\fX
-H;5h{X
-H;5qrT
+H;5 $M
+H;51XX
+H;51cW
+H;58MJ
+H;5<AX
+H;5?rT
+H;5HyT
+H;5LpT
+H;5QtX
+H;5hWJ
+H;5lhN
+H;5pmX
+H;5x_T
+H;5|gJ
+H;5|rX
 H;9u#
-H;="8U
-H;=#\Z
-H;='WK
-H;='mI
-H;=)^Y
-H;=.>S
-H;=/9M
-H;=15M
-H;=2SK
-H;=2T]
-H;=3 G
-H;=60K
-H;=<lP
-H;=>MI
-H;=B ^
-H;=Bz[
-H;=CVW
-H;=C]Z
-H;=FuW
-H;=GPK
-H;=H_]
-H;=HpK
-H;=Kh]
-H;=PaZ
-H;=QmI
-H;=RWK
-H;=S!G
-H;=TIO
-H;=TJO
-H;=TKO
-H;=VLK
-H;=WVM
-H;=X1H
-H;=XoK
-H;=[5M
-H;=\UW
-H;=^]]
-H;=_BZ
-H;=`}]
-H;=a0K
-H;=b>M
-H;=c^Z
-H;=gTK
-H;=h0H
-H;=hnK
-H;=q^]
-H;=qb[
-H;=rPK
-H;=s"G
-H;=s_]
-H;=uuW
-H;=w{[
-H;=x/H
-H;=xaZ
-H;=xmK
-H;=zh]
+H;='aK
+H;=(5H
+H;=(jM
+H;=(sK
+H;=)fV
+H;=,tM
+H;=-BK
+H;=/DZ
+H;=/[I
+H;=2]K
+H;=3-G
+H;=4WO
+H;=4XO
+H;=6#K
+H;=84H
+H;=8iM
+H;=8rK
+H;=;r[
+H;=<0Z
+H;=<XI
+H;=<n]
+H;=<{P
+H;=?SZ
+H;=@-Z
+H;=@rZ
+H;=C!G
+H;=G'H
+H;=GeK
+H;=G{I
+H;=H'Q
+H;=L;Y
+H;=OGM
+H;=QCM
+H;=RaK
+H;=S.G
+H;=TZO
+H;=V,H
+H;=V>K
+H;=X&Q
+H;=XfW
+H;=]#K
+H;=^[I
+H;=fr[
+H;=g^K
+H;=gn]
+H;=h%Q
+H;=hrZ
+H;=h~K
+H;=n-Z
+H;=q{I
+H;=reK
+H;=s/G
+H;=sXZ
+H;=v'H
+H;=vZK
+H;=wdM
+H;=x$Q
+H;=x?H
+H;=x}K
+H;=z{^
+H;={CM
+H;=~&I
 HBm_influenceFlags
 HELPER_BONE
 HIGHDPI
@@ -3816,7 +3832,6 @@ HammerMapLoader001
 HangWatchdog_IndicateActivity
 Has Collision; 
 HasField
-Hc7;w
 Hc@$H
 HcC H
 HcC(;C,
@@ -3841,6 +3856,7 @@ HcC`;Cdt4H
 HcCh;Cl
 HcChA
 HcChH
+HcCx;C|
 HcCxA
 HcG$H
 HcG89
@@ -6413,6 +6429,7 @@ m_ConeAxis
 m_ConeCutoff
 m_ConfigName
 m_Configs
+m_Constraints
 m_ControlRigData
 m_CullDataIndex
 m_Data
@@ -6633,6 +6650,7 @@ m_nChoice
 m_nClientOutputFrames
 m_nClusterSizeMax
 m_nClusterSizeMin
+m_nCollisionMode
 m_nControlPoint
 m_nControlPointNumber
 m_nCount
@@ -7010,6 +7028,7 @@ output_items
 output_items_criteria
 output_type
 overlay
+override_item_slot
 owner_account_id
 owner_id
 owner_soid
@@ -7240,49 +7259,51 @@ runleft
 runright
 runspeed
 s H;5
-s H;5!
-s H;5(
-s H;50fX
+s H;5 
+s H;51rX
 s H;54
+s H;58
+s H;5A
+s H;5H
+s H;5L
 s H;5Q
-s H;5X
-s H;5a
+s H;5q
+s H;5qqT
 s H;5t
 s off
 s(H;5
-s(H;5AXI
-s(H;5D
+s(H;5!WJ
+s(H;5(
+s(H;50
+s(H;55
+s(H;5<uJ
+s(H;5H
 s(H;5P
-s(H;5`
-s(H;5x
+s(H;5afI
+s(H;5d
+s(H;5p
 s0H;5
-s0H;5!fJ
 s0H;58
-s0H;5L
-s0H;5P,J
-s0H;5[uJ
-s0H;5h
+s0H;5?6X
+s0H;5AtJ
+s0H;5X
+s0H;5d
+s0H;5p:J
 s0H;5x
+s0H;5{
 s1_mapname
 s8H;5
-s8H;5(cG
-s8H;5Q
-s8H;5q
-s8H;5t
+s8H;5HqG
 s@H;5
-s@H;5 
-s@H;50
 sHH;5
-sHH;5E
-sHH;5_*X
+sHH;5(KS
+sHH;58aG
 sPH;5
-sPH;5"
-sPH;58MT
-sPH;5x)X
 sXH;5
+sXH;5h
 s`H;5
-s`H;5 /J
-s`H;5TUG
+s`H;5@=J
+s`H;5tcG
 sale_price
 sample_duration_ms
 sample_msg
@@ -7359,8 +7380,8 @@ set_to_value
 settings"
 sfixed32
 sfixed64
-shH;5(
-shH;5P/J
+shH;5
+shH;5p=J
 shake
 shapeType
 share_code
@@ -7404,8 +7425,8 @@ source_filename
 source_folder
 source_reference_id
 source_unit_idx
-spH;5X
-spH;5\1J
+spH;5
+spH;5|?J
 spawn_count
 spawn_motion_disabled
 spawngrouphandle
@@ -7449,6 +7470,7 @@ status_effect_index
 status_label
 stderr
 stdout
+stealable
 steam_id
 steam_id_list
 steam_level
@@ -7516,6 +7538,7 @@ swap_height
 swap_width
 swift_prefix
 sxH;5
+sxH;5(
 sync_version
 synergies_affect_all_allies
 synergy
@@ -7526,11 +7549,10 @@ t	X[]
 t	[A\]
 t L;u
 t"H;=
-t"H;={
 t"HcS
 t"L;%
-t"L;%H
-t"L;%XHK
+t"L;%8fM
+t"L;%xVK
 t$	H9
 t$ H9
 t$(H9
@@ -7544,9 +7566,9 @@ t$`H9
 t$hH9
 t$pH9
 t$xH9
-t&L;%
+t&L;%()H
 t'H;=
-t'H;=0
+t'H;=P
 t)HcE
 t-HcC$H
 t.HcC$H
@@ -7920,6 +7942,7 @@ vpcf22
 vpcf23
 vpcf24
 vpcf25
+vpcf26
 vpcf3
 vpcf4
 vpcf5

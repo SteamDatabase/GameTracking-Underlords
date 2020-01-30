@@ -368,11 +368,18 @@ While Off operator will work as before.
 		"Attribute.C_OP_RenderStandardLight.m_flFalloffLinearity"		"Falloff Linearity"
 		"Attribute.C_OP_RenderStandardLight.m_flFalloffLinearity:help"		"0.0 = quadratic falloff (harsher)
 1.0 = linear falloff (softer)"
-		"Attribute.C_OP_WorldTraceConstraint.m_nCollisionMode:help"		"Colission Modes :
-#define COLLISION_MODE_PER_PARTICLE_TRACE 0
-#define COLLISION_MODE_PER_FRAME_PLANESET 1
-#define COLLISION_MODE_INITIAL_TRACE_DOWN 2
-#define COLLISION_MODE_USE_NEAREST_TRACE 3"
+		"Attribute.C_OP_WorldTraceConstraint.m_nCollisionMode"		"Collision Modes"
+		"Attribute.C_OP_WorldTraceConstraint.m_nCollisionMode:help"		"Collision Modes :<p>
+
+Per-Particle Trace - Does a trace every frame for each particle.  Most accurate, but very expensive.  Avoid if possible.<p>
+
+Trace Caching - Builds up a trace cache each time it does a trace and similar nearby particles will use the same data.  Less accurate, but faster than constant tracing.<p>
+
+Per-Frame Plane Set - Creates a set of planes from trace tests and only evaluates versus those planes.  Can lead to false positives/negatives, but cheap for a lot of particles.<p>
+
+Initial Trace Down - Does a single trace down and creates a plane versus the impact point.  All particles collide versus that plane.  Very cheap, but often wrong unless you know the location the effect is authored for.<p>
+
+Collision Disabled - No collision at all.  This operation is aborted.<p>"
 		"Attribute.C_OP_RepeatedTriggerChildGroup.m_nChildGroupID:help"		"Children with this Group ID specified will not fire when the system is created.
 
 Instead, they will fire based on the settings of this operator.  Group ID is available under the Base Properties as an Advanced Option of all particle systems.
@@ -698,5 +705,30 @@ Expected amplitude is a normalized 0.0 - 1.0 range.
 When Detect from CP's Object is used, the CP that is selected is checked for the users hand and if found, it is set to the hand assigned to that CP.  This allows a single effect to be played to either hand and it will select the right one automatically.  
 <p>
 If no hand is found, no haptics will be created."
+		"Attribute.C_OP_WorldTraceConstraint.m_nCollisionModeMin"		"Minimum Quality Collision Mode"
+		"Attribute.C_OP_WorldTraceConstraint.m_nCollisionModeMin:shorthelp"		"The minimum mode to fall back to on lowest settings"
+		"Attribute.C_OP_WorldTraceConstraint.m_nCollisionModeMin:help"		"Based on the user's settings, collision may be scaled back to cheaper alternatives.  This allows a minimum level to be set for effects which require some control over that process.  <p>
+It is recommended you leave this at Collision Disabled unless you have a good reason not to.<p>
+
+The following modes will be used based on detail levels, clamped to the selected collision mode and minimum collision mode:<p>
+
+Ultra : Per-Particle Trace<br>
+High : Trace Caching<br>
+Medium : Per-Frame Planeset<br>
+Low : Collision Disabled<p>
+
+Initial Trace Down will not be used unless manually selected due to its highly situational nature.<p>
+
+Collision Modes :<p>
+
+Per-Particle Trace - Does a trace every frame for each particle.  Most accurate, but very expensive.  Avoid if possible.<p>
+
+Trace Caching - Builds up a trace cache each time it does a trace and similar nearby particles will use the same data.  Less accurate, but faster than constant tracing.<p>
+
+Per-Frame Plane Set - Creates a set of planes from trace tests and only evaluates versus those planes.  Can lead to false positives/negatives, but cheap for a lot of particles.<p>
+
+Initial Trace Down - Does a single trace down and creates a plane versus the impact point.  All particles collide versus that plane.  Very cheap, but often wrong unless you know the location the effect is authored for.<p>
+
+Collision Disabled - No collision at all.  This operation is aborted.<p>"
 	}
 }

@@ -249,7 +249,6 @@
 ##GameUI_Disconnect_BadRelayPassword
 ##GameUI_Disconnect_ReliableOverflow
 ##GameUI_Disconnect_SnapshotOverflow
-#5BA 
 #Bidirectional_Messages_LowFrequency
 #GameUI_ClientConsistencyFail
 #GameUI_ClientDifferentMap
@@ -1591,6 +1590,10 @@ CNetworkSystem::InitGameServer: CSteamGameServerAPIContext::Init OK
 CNetworkSystem::SendToNsAddress ISteamNetworkingSockets::SendMessageToConnection %s returned %d when sending %d bytes
 CNetworkSystem::ShutdownGameServer
 CNetworkedQuantizedFloat
+COLLISION_MODE_INITIAL_TRACE_DOWN
+COLLISION_MODE_PER_FRAME_PLANESET
+COLLISION_MODE_PER_PARTICLE_TRACE
+COLLISION_MODE_USE_NEAREST_TRACE
 COLORCORRECTION_VERSION_1
 CPA9D$
 CPPTYPE_BOOL
@@ -1748,6 +1751,7 @@ C_OP_SetRandomControlPointPosition
 C_OP_SetSingleControlPointPosition
 C_OP_StopAfterCPDuration
 C_OP_TwistAroundAxis
+C_OP_WorldTraceConstraint
 CalcDelta
 Call set methods to initialize MapKey.
 Caller should provide us with *buffer_ when buffer is non-empty
@@ -1844,13 +1848,15 @@ D%x (int:%d, float:%f)
 D+e0D9
 D6<Hc
 D8"u'
+D9%-_D
+D9%C_D
 D9+t*
 D9k D
 D9sp~rH
 D9{X~~H
 D:"u;
 D;!ttHc
-D;%=wG
+D;%8_D
 D;+t*
 D;c D
 D;c I
@@ -2178,28 +2184,34 @@ H9J(t
 H9Q(H
 H9Q(t
 H;*twH
-H;5!	M
-H;5(-O
-H;5(=O
-H;50DM
-H;5Q$M
-H;5d`M
-H;5xSM
-H;=8dM
-H;=:DG
-H;=HNO
-H;=IWO
-H;=JMG
-H;=JtO
-H;=Z{M
-H;=bGL
-H;=jdM
-H;=pcM
-H;=rVO
-H;=sNO
-H;=tWO
-H;=zKG
-H;={qO
+H;5!1O
+H;5!:M
+H;5!LM
+H;5<9O
+H;5P O
+H;5X>M
+H;5pPM
+H;5q(O
+H;5x;M
+H;==VO
+H;=>NO
+H;=@{O
+H;=BcM
+H;=JIG
+H;=JqO
+H;=PzO
+H;=ZpL
+H;=^JL
+H;=`yO
+H;=hMO
+H;=hVO
+H;=iNO
+H;=pxO
+H;=qpO
+H;=tcM
+H;=zGG
+H;=znL
+H;=|kL
 H;r(H
 H[A\A]A^A_]
 H[A\A]]
@@ -3872,6 +3884,7 @@ m_ChainData
 m_Children
 m_Color
 m_ColorScale
+m_Constraints
 m_ControlRigData
 m_DefaultSolverSettings
 m_DefaultTargetSettings
@@ -3960,6 +3973,7 @@ m_nCP
 m_nCPField
 m_nClusterSizeMax
 m_nClusterSizeMin
+m_nCollisionMode
 m_nControlPoint
 m_nControlPointNumber
 m_nFeatheringMode
@@ -4290,23 +4304,24 @@ rnd_down
 rnd_up
 rootNode
 s H;5
-s H;5Q9O
-s H;5\QM
-s H;5`DM
+s H;5@ M
+s H;5X
+s H;5qRM
 s(H;5
+s(H;5-DM
 s0H;5
-s0H;5(
-s0H;5H"O
+s0H;5L
+s0H;5eDM
 s1Hc@
 s1_mapname
 s8H;5
-s8H;5H
-s8H;5X#O
+s8H;5t
 s@H;5
-s@H;5qEM
+s@H;5 
+s@H;50#O
 sHH;5
-sHH;5M
-sPH;5
+sHH;5E$O
+sPH;5"
 sample_rate
 savegamefilename
 savegamename
@@ -4456,10 +4471,9 @@ t$HcW
 t%D;-
 t%Hcs8
 t&IcN
-t';58
-t(D9-o6G
+t(D9-
 t)HcE
-t*D;=z}K
+t*D;=
 t.HcC H
 t.HcC(H
 t.HcK8H
@@ -4558,7 +4572,7 @@ type() == TYPE_VARINT
 type.googleapis.com/
 type.googleprod.com/
 tzHcU
-tzLc=
+tzLc=[XI
 t}HcU
 t}L9}
 u	[A\A]A^]
@@ -4661,6 +4675,7 @@ vpcf22
 vpcf23
 vpcf24
 vpcf25
+vpcf26
 vpcf3
 vpcf4
 vpcf5

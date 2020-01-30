@@ -108,6 +108,8 @@ DACUIUnderlordPicker.Visible
 #UnderlordDetails {
 	flow-children: down;
 	vertical-align: bottom;
+
+	width: 370px;
 }
 
 .UnderlordIcon {
@@ -128,12 +130,12 @@ DACUIUnderlordPicker.Visible
 }
 
 #UnderlordSelectButton2 .UnderlordIcon {
+	background-image: url("s2r://panorama/images/underlords/icon_enno_png.vtex");
+}
+
+#UnderlordSelectButton3 .UnderlordIcon {
 	background-image: url("s2r://panorama/images/underlords/icon_hobgen_png.vtex");
 }
-/* 
-.Underlord3 .UnderlordIcon {
-	background-image: url("s2r://panorama/images/underlords/icon_enno_png.vtex");
-} */
 
 
 .UnderlordChoice
@@ -166,41 +168,44 @@ DACUIUnderlordPicker.Visible
 	height: 680px;
 	width: 480px;
 	padding: 50px 55px;
-	//transform: translate3d( 0px, 0px, 0px );
-	transform: rotateY( -5deg ) translateY(0px) translateZ( 0px);
+	transform: rotateY( 0deg ) translateY(0px) translateZ( 0px);
 
 	background-image: url("s2r://panorama/images/underlords/select_box_bg_png.vtex");
 	background-repeat: no-repeat;
 	background-position: center;
-	transition-property: transform;
+	transition-property: transform, brightness, pre-transform-scale2d;
+	transition-duration: 0.1s, 0.2s;
 	
 	opacity: 0;
 }
 
 .UnderlordSelectButton:hover
 {
-	transition-property: transform;
-	transition-duration: .1s;
+	transition-property: transform, pre-transform-scale2d;
 	transform: rotateY( 0deg ) translateY(0px) translateZ( 0px);
-	//pre-transform-scale2d: 1.01;
+	pre-transform-scale2d: 1.03;
 	brightness: 1.5;
 	overflow: noclip;
 	background-image: url("s2r://panorama/images/underlords/select_box_bg_png.vtex");
 }
 
-.IsLayoutSmallScreen .UnderlordSelectButton {
+.IsLayoutSmallScreen .UnderlordSelectButton
+{
 	transform: rotateY( 0deg ) translateY(0px) translateZ( 0px);
 }
 
-.IsLayoutSmallScreen .UnderlordSelectButton {
+.IsLayoutSmallScreen .UnderlordSelectButton
+{
 	ui-scale: 150%;
 }
 
-.IsLayoutSmallScreen.AspectRatio16x9 .UnderlordSelectButton {
-	ui-scale: 135%;
+.IsLayoutSmallScreen.AspectRatio16x9 .UnderlordSelectButton
+{
+	ui-scale: 115%;
 }
 
-.IsLayoutSmallScreen.AspectRatio4x3 .UnderlordSelectButton {
+.IsLayoutSmallScreen.AspectRatio4x3 .UnderlordSelectButton
+{
 	ui-scale: 100%;
 }
 
@@ -221,22 +226,71 @@ DACUIUnderlordPicker.Visible
 
 #UnderlordSelectButton1
 {
-	animation-duration: 0.35s;
+	animation-duration: 0.3s;
 }
 
 #UnderlordSelectButton2
 {
+	animation-duration: 0.4s;
+}
+
+#UnderlordSelectButton3
+{
 	animation-duration: 0.5s;
 }
 
-.IsLayoutSmallScreen #UnderlordSelectButton1 {
+
+.UnderlordSelectButton.NotSelected
+{
+	brightness: 0.1;
+}
+
+.UnderlordSelectButton.Selected
+{
+}
+
+/* MOBILE CARD PLACEMENT */
+
+.IsLayoutSmallScreen #UnderlordSelectButton0
+{
 	transform: translateX(-30px);
 }
 
+.IsLayoutSmallScreen #UnderlordSelectButton1
+{
+	transform: translateX(-110px);
+}
 
+.IsLayoutSmallScreen #UnderlordSelectButton2
+{
+	transform: translateX(-190px);
+}
 
-.IsLayoutSmallScreen #UnderlordSelectButton2 {
-	transform: translateX(-60px);
+.IsLayoutSmallScreen #UnderlordSelectButton3
+{
+	transform: translateX(-270px);
+}
+
+/* IPHONE X CARD PLACEMENT */
+
+.IsLayoutSmallScreen.AspectRatio21x9  #UnderlordSelectButton0
+{
+	transform: translateX(-75px);
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9  #UnderlordSelectButton1
+{
+	transform: translateX(-208px);
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9  #UnderlordSelectButton2
+{
+	transform: translateX(-340px);
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9  #UnderlordSelectButton3
+{
+	transform: translateX(-470px);
 }
 
 
@@ -305,6 +359,10 @@ DACUIUnderlordPicker.Visible
 }
 
 #AbilityContainer2 .UnderlordBuildName {
+	color: gradientEnno;
+}
+
+#AbilityContainer3 .UnderlordBuildName {
 	color: gradientHobgen;
 }
 
@@ -364,34 +422,6 @@ DACUIUnderlordPicker.Visible
 	}
 }
 
-@keyframes 'Disappear'
-{
-	from
-	{
-		opacity: 1;
-	}
-	to
-	{
-		opacity: 0;
-	}
-}
-
-.PreAbility
-{
-	color: #999999;
-	font-weight: bold;
-	font-size: 80px;
-	horizontal-align: center;
-	vertical-align: bottom;
-	margin-bottom: 40px;
-	opacity: 0;
-
-	animation-name: Disappear;
-	animation-delay: 0.3s;
-	animation-duration: 0.01s;
-	animation-iteration-count: 1;
-}
-
 .AbilityBlock
 {
 	width: 370px;
@@ -422,10 +452,15 @@ DACUIUnderlordPicker.Visible
 
 #UnderlordSelectButton1 .AbilityBlock
 {
-	animation-duration: 0.85s;
+	animation-duration: 0.8s;
 }
 
 #UnderlordSelectButton2 .AbilityBlock
+{
+	animation-duration: 0.9s;
+}
+
+#UnderlordSelectButton3 .AbilityBlock
 {
 	animation-duration: 1.0s;
 }

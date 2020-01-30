@@ -2982,6 +2982,11 @@ DACHUDItemDisplay #WorthNoGold
 	visibility: collapse;
 }
 
+.ERoundState_Combat.IsVersusOrCombatRunning DACHUDItemDisplay:not(.IsDraggingItem) .HUDItem.UnderlordHasItem
+{
+	visibility: visible;
+}
+
 .IsDraggingItem .HUDItem:not(.OnEquippableTeam)
 {
 	visibility: collapse;
@@ -3003,6 +3008,28 @@ DACHUDItemDisplay #WorthNoGold
 	{
 		pre-transform-scale2d: 0.95;
 	}
+}
+
+@keyframes 'FadeItem'
+{
+	0%
+	{
+		opacity: 0.95;
+	}
+
+	100%
+	{
+		opacity: 0.01;
+	}
+}
+
+.ERoundState_Combat.IsVersusOrCombatRunning .HUDItem.FadeItem
+{
+	animation-name: FadeItem;
+	animation-duration: 1.0s;
+	animation-timing-function: linear;
+	visibility:visible;
+	opacity:0.95;
 }
 
 #ErrorMsg

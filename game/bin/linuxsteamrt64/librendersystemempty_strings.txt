@@ -48,6 +48,8 @@ $ORIGIN
 %lld
 %llu
 %ls [wstring, len = %d]
+%s / %s MB
+%s / %s MB (non-evictable: %s MB)
 %s%d
 %s,
 %s/
@@ -100,9 +102,11 @@ $ORIGIN
 ...
 ../public/ordered_constructor.h
 ../public/tier0/tslist.h
+../public/tier1/memstack.h
 ../public/tier1/utlfixedmemory.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utltshash.h
 .exr
 .jpg
 .pfm
@@ -125,7 +129,6 @@ $ORIGIN
 11CFunctorJob
 11IRefCounted
 12CDeviceFence
-12CEmptyConVar
 12CRefCounted1I11IRefCounted20CRefCountServiceBaseILb1E6CRefMTEE
 12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE
 12CRenderUtils
@@ -138,8 +141,8 @@ $ORIGIN
 14CSwapChainBase
 14ConCommandBase
 14IRenderContext
-15CMemberFunctor4IP19CTextureManagerBaseMS0_FvP25IAsyncResourceDataRequestP12CTextureBase22TextureSpecification_tiES3_S5_S6_i12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
-15CMemberFunctor9IP19CTextureManagerBaseMS0_FvP12CTextureBase11CWeakHandleI31InfoForResourceTypeCTextureBaseE12ResourceId_tPvi22TextureSpecification_tS9_i23TextureBitsMemoryType_tES3_S6_S7_S8_iS9_S9_iSA_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
+15CMemberFunctor5IP19CTextureManagerBaseMS0_FvP25IAsyncResourceDataRequest11CWeakHandleI31InfoForResourceTypeCTextureBaseEP12CTextureBase22TextureSpecification_tiES3_S6_S8_S9_i12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
+15CMemberFunctor9IP19CTextureManagerBaseMS0_FvP12CTextureBase11CWeakHandleI31InfoForResourceTypeCTextureBaseE12ResourceId_tPvj22TextureSpecification_tS9_i23TextureBitsMemoryType_tES3_S6_S7_S8_iS9_S9_iSA_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CRenderPassDesc
 15CSwapChainEmpty
 15CTier0AppSystemI12IRenderUtilsE
@@ -155,6 +158,7 @@ $ORIGIN
 16IRenderDeviceMgr
 17CRenderDeviceBase
 18CEmptyShaderBuffer
+18CPlaceholderConVar
 18CRenderDeviceEmpty
 19CRenderContextEmpty
 19CSchemaRegistration
@@ -205,10 +209,13 @@ $ORIGIN
 <
 << NULL >>
 <NULL>
+<deferred>
 <invalid %d>
+<no deferred ref found>
 <no failure reason set>
 <none>
 <null>
+<unconnected>
 <unknown multisample type
 <x360>
 =
@@ -218,7 +225,6 @@ $ORIGIN
 ?
 ?"N
 ?(3w
-?cfg/moddefaults.txt
 @
 @&LH
 @@
@@ -233,6 +239,8 @@ ATI1N
 ATI2N
 ATI_DST16
 ATI_DST24
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Adobe APP14 marker: version %d, flags 0x%04x 0x%04x, transform %d
 AllocInternal
 AllocateAndUploadSequenceData
@@ -336,20 +344,20 @@ CTextureManagerBase::MarkAsyncUpdatedThisFrame - Invalid texture handle.
 CTextureManagerBase::WasAsyncUpdatedThisFrame - Invalid texture handle.
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadMultiWaitEvent::CThreadMultiWaitEvent(bool)
 CThreadMultiWaitEvent::Set()
 CThreadMultiWaitEvent::~CThreadMultiWaitEvent()
 CThreadRWLock_FastRead::CThreadRWLock_FastRead()
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
-CThreadRWLock_FastRead::UnlockReadAccounting(unsigned int)
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int)
+CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
+CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
 CThreadSemaphore::Release(int, int*)
 CThreadSemaphore::~CThreadSemaphore()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::Wait(unsigned int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
@@ -377,6 +385,7 @@ CXXABI_1.3
 CXXABI_1.3.3
 Call to NULL read function
 Can't clear TEXTURE_WAITING_FOR_IO flag because of streaming request mismatch: %d in handle, %d in request
+Can't clear TEXTURE_WAITING_FOR_IO flag because pTexture is NULL
 Can't detect memory size on this platform!
 Can't discard critical data on CRC error
 Can't set both read_data_fn and write_data_fn in the same structure
@@ -647,6 +656,7 @@ Invalid JPEG file structure: two SOI markers
 Invalid PLTE after IDAT
 Invalid SOS parameters for sequential JPEG
 Invalid `part number' in EXR header chunks.
+Invalid access of deferred ConVarRef for '%s'
 Invalid argument for DecodeEXRImage().
 Invalid argument for LoadDeepEXR
 Invalid argument for LoadEXR()
@@ -895,6 +905,7 @@ Out of place sRGB chunk
 Out of place tIME chunk
 Output file write error --- out of disk space?
 Output memory size is zero
+Overall System GPU memory use:
 Overflow of the sheet cache texture. Releasing and starting over. This is ok in asset browser, not so ok if the game is triggering this!
 Overflow of the sheet cache texture: Try increasing SheetCacheTextureRows in gameinfo.gi (current value %d)!
 P
@@ -936,6 +947,7 @@ Plat_MessageBox
 Plat_NeedsLowFragmentation
 Plat_OsSpecificHandleToPlatWindow
 Plat_ReconfigureWindow
+Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_VirtualAlloc
 Plat_VirtualFree
@@ -1142,6 +1154,7 @@ TEX: %u textures, %.2f MB
 TEXMAN: %s MarkTextureBitsLoaded (%s)
 TEXMAN: %s loaded %s %i/%i mips (%ix%i / %ix%i) of %s (%i bytes)
 TEXMAN: Abandoning job in %s
+TEXMAN: Abandoning streaming request early in %s
 TEXMAN: Abandoning streaming request in %s
 TEXMAN: Adding %s, %llx to abandoned hookup jobs
 TEXMAN: DeferTextureLoads %s MarkTextureBitsLoaded (%s)
@@ -1178,6 +1191,7 @@ TestFormatE
 TestScriptMgr001
 TextLayout_001
 TextMessageMgr_001
+Texture Streaming:
 Texture manager out of space! Can't allocate new texture!
 Texture memory discrepancy! %llu != %llu
 Texture streaming validation OK (%d texture loads in flight).
@@ -1280,6 +1294,7 @@ V_GetErrno
 V_GetFileExtension
 V_IsAbsolutePath
 V_PathContainsPath
+V_PrettifyNum
 V_RemoveDotSlashes
 V_SetErrno
 V_StrTrim
@@ -1336,7 +1351,9 @@ Vector2D
 Vector4D
 VectorAligned
 VendorID
+Version
 Video Card %s (%04x : %04x)
+Video config version number changed ( '%s' is version %i, current version is %i ). Resetting video config.
 Virtual array controller messed up
 VisBuilder_001
 VsInputSignatureElement_t
@@ -1456,6 +1473,7 @@ ceil
 ceilf
 cfg/video.txt
 cfg/video_%02d.txt
+cfg/video_version.txt
 cfg/videodefaults.txt
 channels
 char* std::string::_S_construct<char*>(char*, char*, std::allocator<char> const&, std::forward_iterator_tag)
@@ -1550,6 +1568,7 @@ invalid literal/length code
 invalid literal/lengths set
 invalid stored block lengths
 invalid window size
+keyvalues.cpp
 kh9F
 l
 l!;b
@@ -1622,6 +1641,7 @@ need dictionary
 none
 notconnected
 notify
+occlusionquerymgr.cpp
 okOP
 operator delete(void*)
 operator delete[](void*)
@@ -1666,7 +1686,9 @@ r_wait_on_present
 rb
 realloc
 rendercontextbase.cpp
+renderdevicebase.cpp
 renderdevicemgrbase.cpp
+renderstatehelper.h
 rendersystemempty
 replicated
 resourcesystem
@@ -1791,16 +1813,16 @@ tRNS chunk not allowed with alpha channel
 text
 text compression mode is out of range
 texturebase.cpp
-texturebase.cpp(1731):Error loading texture: %s
-texturebase.cpp(2647):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2668):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2679):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2690):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2701):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2722):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2733):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2744):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2755):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(1803):Error loading texture: %s
+texturebase.cpp(2737):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2758):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2769):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2780):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2791):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2812):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2823):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2834):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2845):ResourceHandleToData( %s ) failed! Falling back to error texture!
 tiles
 too many length or distance symbols
 transparency
@@ -1820,12 +1842,12 @@ uvCropped
 uvUncropped
 v2f
 vQO+
-vb_created_input_layout
 vector::_M_default_append
 vector::_M_emplace_back_aux
 vector::_M_range_check: __n (which is %zu) >= this->size() (which is %zu)
 vector::_M_range_insert
 video.cfg
+video_version
 void std::vector<std::vector<unsigned long, std::allocator<unsigned long> >, std::allocator<std::vector<unsigned long, std::allocator<unsigned long> > > >::_M_emplace_back_aux<std::vector<unsigned long, std::allocator<unsigned long> > const&>(std::vector<unsigned long, std::allocator<unsigned long> > const&)
 void std::vector<unsigned char, std::allocator<unsigned char> >::_M_emplace_back_aux<unsigned char const&>(unsigned char const&)
 void std::vector<unsigned char, std::allocator<unsigned char> >::_M_range_insert<__gnu_cxx::__normal_iterator<unsigned char*, std::vector<unsigned char, std::allocator<unsigned char> > > >(__gnu_cxx::__normal_iterator<unsigned char*, std::vector<unsigned char, std::allocator<unsigned char> > >, __gnu_cxx::__normal_iterator<unsigned char*, std::vector<unsigned char, std::allocator<unsigned char> > >, __gnu_cxx::__normal_iterator<unsigned char*, std::vector<unsigned char, std::allocator<unsigned char> > >, std::forward_iterator_tag)

@@ -145,1445 +145,1738 @@
 		}
 
 	},
-    "challenges": {
+	"challenges": {
 
-        "dodge_attacks": {
-            "id": 5,
-            "disabled": true,
-            "event": {
-                "event_name": "attack_dodge",
-                "condition": {
-                    "player": {
-                        "=": "local"
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 100
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 200
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 400
-                }
-            ],
-            "locstring": "#DAC_Challenge_DodgeAttacks"
-        },
-        "crit_attacks": {
-            "id": 6,
-            "event": {
-                "event_name": "attack_crit",
-                "count_instances": true,
-                "condition": {
-                    "source_player": {
-                        "=": "local"
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 100
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 200
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 400
-                }
-            ],
-            "locstring": "#DAC_Challenge_CritAttacks"
-        },
-        "earn_gold": {
-            "id": 7,
-            "event": {
-                "event_name": "gold_gained",
-                "condition": {
-                    "concept": {
-                        "!=": "sell_unit"
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 150
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 300
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 600
-                }
-            ],
-            "locstring": "#DAC_Challenge_EarnGold"
-        },
-        "deal_magic_damage": {
-            "id": 8,
-            "event": {
-                "event_name": "magic_damage_dealt",
-                "condition": {
-                    "source_player": {
-                        "=": "local"
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 50000
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 100000
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 200000
-                }
-            ],
-            "locstring": "#DAC_Challenge_DealMagicDamage"
-        },
-        "lifesteal_attacks": {
-            "id": 9,
-            "event": {
-                "event_name": "lifesteal",
-                "condition": {
-                    "source_player": {
-                        "=": "local"
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 2000
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 4000
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 8000
-                }
-            ],
-            "locstring": "#DAC_Challenge_LifestealAttacks"
-        },
-        "cast_spells": {
-            "id": 10,
-            "event": {
-                "event_name": "cast_spells",
-                "condition": {
-                    "source_player": {
-                        "=": "local"
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 200
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 400
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 800
-                }
-            ],
-            "locstring": "#DAC_Challenge_CastSpells"
-        },
-        "kill_units": {
-            "id": 11,
-            "event": {
-                "event_name": "unit_killed",
-                "condition": {
-                    "operator": "AND",
-                    "operands": [
-                        {
-                            "source_player": {
-                                "=": "local"
-                            }
-                        },
-                        {
-                            "player": {
-                                "!=": "local"
-                            }
-                        }
-                    ]
+		"dodge_attacks": {
+			"id": 5,
+			"disabled": true,
+			"event": {
+				"event_name": "attack_dodge",
+				"condition": {
+					"player": {
+						"=": "local"
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 100
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 200
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 400
+				}
+			],
+			"locstring": "#DAC_Challenge_DodgeAttacks"
+		},
+		"crit_attacks": {
+			"id": 6,
+			"event": {
+				"event_name": "attack_crit",
+				"count_instances": true,
+				"condition": {
+					"source_player": {
+						"=": "local"
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 100
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 200
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 400
+				}
+			],
+			"locstring": "#DAC_Challenge_CritAttacks"
+		},
+		"earn_gold": {
+			"id": 7,
+			"event": {
+				"event_name": "gold_gained",
+				"condition": {
+					"concept": {
+						"!=": "sell_unit"
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 150
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 300
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 600
+				}
+			],
+			"locstring": "#DAC_Challenge_EarnGold"
+		},
+		"deal_magic_damage": {
+			"id": 8,
+			"event": {
+				"event_name": "magic_damage_dealt",
+				"condition": {
+					"source_player": {
+						"=": "local"
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 50000
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 100000
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 200000
+				}
+			],
+			"locstring": "#DAC_Challenge_DealMagicDamage"
+		},
+		"lifesteal_attacks": {
+			"id": 9,
+			"event": {
+				"event_name": "lifesteal",
+				"condition": {
+					"source_player": {
+						"=": "local"
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 2000
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 4000
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 8000
+				}
+			],
+			"locstring": "#DAC_Challenge_LifestealAttacks"
+		},
+		"cast_spells": {
+			"id": 10,
+			"event": {
+				"event_name": "cast_spells",
+				"condition": {
+					"source_player": {
+						"=": "local"
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 200
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 400
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 800
+				}
+			],
+			"locstring": "#DAC_Challenge_CastSpells"
+		},
+		"kill_units": {
+			"id": 11,
+			"event": {
+				"event_name": "unit_killed",
+				"condition": {
+					"operator": "AND",
+					"operands": [
+						{
+							"source_player": {
+								"=": "local"
+							}
+						},
+						{
+							"player": {
+								"!=": "local"
+							}
+						}
+					]
 
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 200
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 400
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 800
-                }
-            ],
-            "locstring": "#DAC_Challenge_KillUnits"
-        },
-        "summon_units": {
-            "id": 12,
-            "disabled": true,
-            "event": {
-                "event_name": "unit_summoned",
-                "condition": {
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 200
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 400
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 800
+				}
+			],
+			"locstring": "#DAC_Challenge_KillUnits"
+		},
+		"summon_units": {
+			"id": 12,
+			"disabled": true,
+			"event": {
+				"event_name": "unit_summoned",
+				"condition": {
 
-                    "player": {
-                        "=": "local"
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 50
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 100
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 200
-                }
-            ],
-            "locstring": "#DAC_Challenge_SummonUnits"
-        },
-        "combine_3_stars": {
-            "id": 13,
-            "event": {
-                "event_name": "combine_unit",
-                "condition": {
-                    "rank": {
-                        "=": 3
-                    }
+					"player": {
+						"=": "local"
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 50
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 100
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 200
+				}
+			],
+			"locstring": "#DAC_Challenge_SummonUnits"
+		},
+		"combine_3_stars": {
+			"id": 13,
+			"event": {
+				"event_name": "combine_unit",
+				"condition": {
+					"rank": {
+						"=": 3
+					}
 
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 2
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 4
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 8
-                }
-            ],
-            "locstring": "#DAC_Challenge_Combine3Stars"
-        },
-        "heal_units": {
-            "id": 14,
-            "event": {
-                "event_name": "heal_unit",
-                "condition": {
-                    "operator": "AND",
-                    "operands": [
-                        {
-                            "source_player": {
-                                "=": "local"
-                            }
-                        },
-                        {
-                            "player": {
-                                "=": "local"
-                            }
-                        }
-                    ]
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 50000
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 100000
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 200000
-                }
-            ],
-            "locstring": "#DAC_Challenge_HealUnits"
-        },
-        "acquire_global_items": {
-            "id": 15,
-            "disabled": true,
-            "event": {
-                "event_name": "acquire_item",
-                "condition": {
-                    "operator": "OR",
-                    "operands": [
-                        {
-                            "item_type": {
-                                "=": "global"
-                            }
-                        },
-                        {
-                            "item_type": {
-                                "=": "alliance"
-                            }
-                        }
-                    ]
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 4
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 8
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 16
-                }
-            ],
-            "locstring": "#DAC_Challenge_AcquireGlobalItems"
-        },
-        "combine_2_stars": {
-            "id": 16,
-            "event": {
-                "event_name": "combine_unit",
-                "condition": {
-                    "rank": {
-                        "=": 2
-                    }
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 2
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 4
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 8
+				}
+			],
+			"locstring": "#DAC_Challenge_Combine3Stars"
+		},
+		"heal_units": {
+			"id": 14,
+			"event": {
+				"event_name": "heal_unit",
+				"condition": {
+					"operator": "AND",
+					"operands": [
+						{
+							"source_player": {
+								"=": "local"
+							}
+						},
+						{
+							"player": {
+								"=": "local"
+							}
+						}
+					]
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 50000
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 100000
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 200000
+				}
+			],
+			"locstring": "#DAC_Challenge_HealUnits"
+		},
+		"acquire_global_items": {
+			"id": 15,
+			"disabled": true,
+			"event": {
+				"event_name": "acquire_item",
+				"condition": {
+					"operator": "OR",
+					"operands": [
+						{
+							"item_type": {
+								"=": "global"
+							}
+						},
+						{
+							"item_type": {
+								"=": "alliance"
+							}
+						}
+					]
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 4
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 8
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 16
+				}
+			],
+			"locstring": "#DAC_Challenge_AcquireGlobalItems"
+		},
+		"combine_2_stars": {
+			"id": 16,
+			"event": {
+				"event_name": "combine_unit",
+				"condition": {
+					"rank": {
+						"=": 2
+					}
 
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "$reward"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "reward": 400,
-                    "threshold": 15
-                },
-                {
-                    "id": 2,
-                    "reward": 800,
-                    "threshold": 30
-                },
-                {
-                    "id": 3,
-                    "reward": 1600,
-                    "threshold": 60
-                }
-            ],
-            "locstring": "#DAC_Challenge_Combine2Stars"
-        },
-        "win_pvp_rounds": {
-            "id": 17,
-            "event": {
-                "event_name": "round_end",
-                "condition": {
-                    "operator": "AND",
-                    "operands": [
-                        {
-                            "round_result": {
-                                "=": "victory"
-                            }
-                        },
-                        {
-                            "round_type": {
-                                "=": "pvp"
-                            }
-                        }
-                    ]
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 50,
-                    "threshold2": 500,
-                    "threshold3": 5000
-                }
-            ],
-            "locstring": "#DAC_Achievement_WinXPVPRounds"
-        },
-        "win_pve_rounds": {
-            "id": 18,
-            "event": {
-                "event_name": "acquire_item",
-                "condition": {
-                    "operator": "OR",
-                    "operands": [
-                        {
-                            "item_type": {
-                                "=": "global"
-                            }
-                        },
-                        {
-                            "item_type": {
-                                "!=": "global"
-                            }
-                        }
-                    ]
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 15,
-                    "threshold2": 150,
-                    "threshold3": 1500
-                }
-            ],
-            "locstring": "#DAC_Achievement_WinXPVERounds"
-        },
-        "get_x_top3": {
-            "id": 19,
-            "event": {
-                "event_name": "game_end",
-                "condition": {
-                    "final_place": {
-                        "<=": 3
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 2,
-                    "threshold2": 20,
-                    "threshold3": 200
-                }
-            ],
-            "locstring": "#DAC_Achievement_GetXTop3"
-        },
-        "buy_5cost_units": {
-            "id": 20,
-            "event": {
-                "event_name": "buy_unit",
-                "condition": {
-                    "cost": {
-                        "=": 5
-                    }
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "$reward"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"reward": 400,
+					"threshold": 15
+				},
+				{
+					"id": 2,
+					"reward": 800,
+					"threshold": 30
+				},
+				{
+					"id": 3,
+					"reward": 1600,
+					"threshold": 60
+				}
+			],
+			"locstring": "#DAC_Challenge_Combine2Stars"
+		},
+		"win_pvp_rounds": {
+			"id": 17,
+			"event": {
+				"event_name": "round_end",
+				"condition": {
+					"operator": "AND",
+					"operands": [
+						{
+							"round_result": {
+								"=": "victory"
+							}
+						},
+						{
+							"round_type": {
+								"=": "pvp"
+							}
+						}
+					]
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 50,
+					"threshold2": 500,
+					"threshold3": 5000
+				}
+			],
+			"locstring": "#DAC_Achievement_WinXPVPRounds"
+		},
+		"win_pve_rounds": {
+			"id": 18,
+			"event": {
+				"event_name": "acquire_item",
+				"condition": {
+					"operator": "OR",
+					"operands": [
+						{
+							"item_type": {
+								"=": "global"
+							}
+						},
+						{
+							"item_type": {
+								"!=": "global"
+							}
+						}
+					]
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 15,
+					"threshold2": 150,
+					"threshold3": 1500
+				}
+			],
+			"locstring": "#DAC_Achievement_WinXPVERounds"
+		},
+		"get_x_top3": {
+			"id": 19,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"final_place": {
+						"<=": 3
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 2,
+					"threshold2": 20,
+					"threshold3": 200
+				}
+			],
+			"locstring": "#DAC_Achievement_GetXTop3"
+		},
+		"buy_5cost_units": {
+			"id": 20,
+			"event": {
+				"event_name": "buy_unit",
+				"condition": {
+					"cost": {
+						"=": 5
+					}
 
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 10,
-                    "threshold2": 100,
-                    "threshold3": 1000
-                }
-            ],
-            "locstring": "#DAC_Achievement_Buy5CostUnits"
-        },
-        "make_x_3stars": {
-            "id": 21,
-            "event": {
-                "event_name": "combine_unit",
-                "condition": {
-                    "rank": {
-                        "=": 3
-                    }
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 10,
+					"threshold2": 100,
+					"threshold3": 1000
+				}
+			],
+			"locstring": "#DAC_Achievement_Buy5CostUnits"
+		},
+		"make_x_3stars": {
+			"id": 21,
+			"event": {
+				"event_name": "combine_unit",
+				"condition": {
+					"rank": {
+						"=": 3
+					}
 
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 5,
-                    "threshold2": 50,
-                    "threshold3": 500
-                }
-            ],
-            "locstring": "#DAC_Achievement_Make3Stars"
-        },
-        "win_with_all_2stars": {
-            "id": 22,
-            "event": {
-                "event_name": "round_end",
-                "condition": {
-                    "operator": "AND",
-                    "operands": [
-                        {
-                            "round_result": {
-                                "=": "victory"
-                            }
-                        },
-                        {
-                            "min_unit_rank": {
-                                ">=": 2
-                            }
-                        }
-                    ]
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 10,
-                    "threshold2": 100,
-                    "threshold3": 1000
-                }
-            ],
-            "locstring": "#DAC_Achievement_WinWithAll2Stars"
-        },
-        "hit_lv_10": {
-            "id": 23,
-            "event": {
-                "event_name": "level_up",
-                "condition": {
-                    "player_level": {
-                        "=": 10
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 3,
-                    "threshold2": 30,
-                    "threshold3": 300
-                }
-            ],
-            "locstring": "#DAC_Achievement_HitLv10"
-        },
-        "earn_streak_gold": {
-            "id": 24,
-            "event": {
-                "event_name": "gold_gained",
-                "condition": {
-                    "concept": {
-                        "=": "streak"
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 30,
-                    "threshold2": 300,
-                    "threshold3": 3000
-                }
-            ],
-            "locstring": "#DAC_Achievement_EarnStreakGold"
-        },
-        "earn_interest_gold": {
-            "id": 25,
-            "event": {
-                "event_name": "gold_gained",
-                "condition": {
-                    "concept": {
-                        "=": "interest"
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 30,
-                    "threshold2": 300,
-                    "threshold3": 3000
-                }
-            ],
-            "locstring": "#DAC_Achievement_EarnInterestGold"
-        },
-        "win_with_alliance_item_affecting_3_units": {
-            "id": 26,
-            "event": {
-                "event_name": "round_end",
-                "condition": {
-                    "operator": "AND",
-                    "operands": [
-                        {
-                            "round_result": {
-                                "=": "victory"
-                            }
-                        },
-                        {
-                            "contraptions_count": {
-                                ">=": 1
-                            }
-                        }
-                    ]
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 10,
-                    "threshold2": 100,
-                    "threshold3": 1000
-                }
-            ],
-            "locstring": "#DAC_Achievement_WinWith4GlobalItems"
-        },
-        "win_with_5_active_synergies": {
-            "id": 27,
-            "event": {
-                "event_name": "round_end",
-                "condition": {
-                    "operator": "AND",
-                    "operands": [
-                        {
-                            "round_result": {
-                                "=": "victory"
-                            }
-                        },
-                        {
-                            "active_synergies": {
-                                ">=": 5
-                            }
-                        }
-                    ]
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 10,
-                    "threshold2": 100,
-                    "threshold3": 1000
-                }
-            ],
-            "locstring": "#DAC_Achievement_WinWith5ActiveSynergies"
-        },
-        "win_with_a_6_synergy": {
-            "id": 28,
-            "event": {
-                "event_name": "round_end",
-                "condition": {
-                    "operator": "AND",
-                    "operands": [
-                        {
-                            "round_result": {
-                                "=": "victory"
-                            }
-                        },
-                        {
-                            "maximum_synergy_units": {
-                                ">=": 6
-                            }
-                        }
-                    ]
-                }
-            },
-            "goals": [
-                {
-                    "goal": "$threshold1",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "600"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold2",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "1200"
-                            }
-                        ]
-                    }
-                },
-                {
-                    "goal": "$threshold3",
-                    "reward": {
-                        "currency_grants": [
-                            {
-                                "currency": "event_points",
-                                "grant": "2400"
-                            }
-                        ]
-                    }
-                }
-            ],
-            "configs": [
-                {
-                    "id": 1,
-                    "threshold1": 10,
-                    "threshold2": 100,
-                    "threshold3": 1000
-                }
-            ],
-            "locstring": "#DAC_Achievement_WinWithA6Synergy"
-        },
-        "underlord_1_wins": {
-            "id": 30,
-            "event": {
-                "event_name": "game_end",
-                "condition": {
-                    "final_place": {
-                        "<=": 6
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": 1,
-                    "reward": {}
-                },
-                {
-                    "goal": 2,
-                    "reward": {}
-                },
-                {
-                    "goal": 3,
-                    "reward": {}
-                },
-                {
-                    "goal": 4,
-                    "reward": {}
-                },
-                {
-                    "goal": 5,
-                    "reward": {}
-                },
-                {
-                    "goal": 6,
-                    "reward": {}
-                },
-                {
-                    "goal": 7,
-                    "reward": {}
-                },
-                {
-                    "goal": 8,
-                    "reward": {}
-                },
-                {
-                    "goal": 9,
-                    "reward": {}
-                },
-                {
-                    "goal": 10,
-                    "reward": {}
-                },
-                {
-                    "goal": 11,
-                    "reward": {}
-                }
-            ],
-            "locstring": "#DAC_Achievement_Underlord1Wins"
-        },
-        "underlord_4_wins": {
-            "id": 31,
-            "event": {
-                "event_name": "game_end",
-                "condition": {
-                    "final_place": {
-                        "<=": 6
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": 1,
-                    "reward": {}
-                },
-                {
-                    "goal": 2,
-                    "reward": {}
-                },
-                {
-                    "goal": 3,
-                    "reward": {}
-                },
-                {
-                    "goal": 4,
-                    "reward": {}
-                },
-                {
-                    "goal": 5,
-                    "reward": {}
-                },
-                {
-                    "goal": 6,
-                    "reward": {}
-                },
-                {
-                    "goal": 7,
-                    "reward": {}
-                },
-                {
-                    "goal": 8,
-                    "reward": {}
-                },
-                {
-                    "goal": 9,
-                    "reward": {}
-                },
-                {
-                    "goal": 10,
-                    "reward": {}
-                },
-                {
-                    "goal": 11,
-                    "reward": {}
-                }
-            ],
-            "locstring": "#DAC_Achievement_Underlord4Wins"
-        },
-        "underlord_2_wins": {
-            "id": 32,
-            "event": {
-                "event_name": "game_end",
-                "condition": {
-                    "final_place": {
-                        "<=": 6
-                    }
-                }
-            },
-            "goals": [
-                {
-                    "goal": 1,
-                    "reward": {}
-                },
-                {
-                    "goal": 2,
-                    "reward": {}
-                },
-                {
-                    "goal": 3,
-                    "reward": {}
-                },
-                {
-                    "goal": 4,
-                    "reward": {}
-                },
-                {
-                    "goal": 5,
-                    "reward": {}
-                },
-                {
-                    "goal": 6,
-                    "reward": {}
-                },
-                {
-                    "goal": 7,
-                    "reward": {}
-                },
-                {
-                    "goal": 8,
-                    "reward": {}
-                },
-                {
-                    "goal": 9,
-                    "reward": {}
-                },
-                {
-                    "goal": 10,
-                    "reward": {}
-                },
-                {
-                    "goal": 11,
-                    "reward": {}
-                }
-            ],
-            "locstring": "#DAC_Achievement_Underlord2Wins"
-        }
-    }
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 5,
+					"threshold2": 50,
+					"threshold3": 500
+				}
+			],
+			"locstring": "#DAC_Achievement_Make3Stars"
+		},
+		"win_with_all_2stars": {
+			"id": 22,
+			"event": {
+				"event_name": "round_end",
+				"condition": {
+					"operator": "AND",
+					"operands": [
+						{
+							"round_result": {
+								"=": "victory"
+							}
+						},
+						{
+							"min_unit_rank": {
+								">=": 2
+							}
+						}
+					]
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 10,
+					"threshold2": 100,
+					"threshold3": 1000
+				}
+			],
+			"locstring": "#DAC_Achievement_WinWithAll2Stars"
+		},
+		"hit_lv_10": {
+			"id": 23,
+			"event": {
+				"event_name": "level_up",
+				"condition": {
+					"player_level": {
+						"=": 10
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 3,
+					"threshold2": 30,
+					"threshold3": 300
+				}
+			],
+			"locstring": "#DAC_Achievement_HitLv10"
+		},
+		"earn_streak_gold": {
+			"id": 24,
+			"event": {
+				"event_name": "gold_gained",
+				"condition": {
+					"concept": {
+						"=": "streak"
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 30,
+					"threshold2": 300,
+					"threshold3": 3000
+				}
+			],
+			"locstring": "#DAC_Achievement_EarnStreakGold"
+		},
+		"earn_interest_gold": {
+			"id": 25,
+			"event": {
+				"event_name": "gold_gained",
+				"condition": {
+					"concept": {
+						"=": "interest"
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 30,
+					"threshold2": 300,
+					"threshold3": 3000
+				}
+			],
+			"locstring": "#DAC_Achievement_EarnInterestGold"
+		},
+		"win_with_alliance_item_affecting_3_units": {
+			"id": 26,
+			"event": {
+				"event_name": "round_end",
+				"condition": {
+					"operator": "AND",
+					"operands": [
+						{
+							"round_result": {
+								"=": "victory"
+							}
+						},
+						{
+							"contraptions_count": {
+								">=": 1
+							}
+						}
+					]
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 10,
+					"threshold2": 100,
+					"threshold3": 1000
+				}
+			],
+			"locstring": "#DAC_Achievement_WinWith4GlobalItems"
+		},
+		"win_with_5_active_synergies": {
+			"id": 27,
+			"event": {
+				"event_name": "round_end",
+				"condition": {
+					"operator": "AND",
+					"operands": [
+						{
+							"round_result": {
+								"=": "victory"
+							}
+						},
+						{
+							"active_synergies": {
+								">=": 5
+							}
+						}
+					]
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 10,
+					"threshold2": 100,
+					"threshold3": 1000
+				}
+			],
+			"locstring": "#DAC_Achievement_WinWith5ActiveSynergies"
+		},
+		"win_with_a_6_synergy": {
+			"id": 28,
+			"event": {
+				"event_name": "round_end",
+				"condition": {
+					"operator": "AND",
+					"operands": [
+						{
+							"round_result": {
+								"=": "victory"
+							}
+						},
+						{
+							"maximum_synergy_units": {
+								">=": 6
+							}
+						}
+					]
+				}
+			},
+			"goals": [
+				{
+					"goal": "$threshold1",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "600"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold2",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "1200"
+							}
+						]
+					}
+				},
+				{
+					"goal": "$threshold3",
+					"reward": {
+						"currency_grants": [
+							{
+								"currency": "event_points",
+								"grant": "2400"
+							}
+						]
+					}
+				}
+			],
+			"configs": [
+				{
+					"id": 1,
+					"threshold1": 10,
+					"threshold2": 100,
+					"threshold3": 1000
+				}
+			],
+			"locstring": "#DAC_Achievement_WinWithA6Synergy"
+		},
+		"underlord_1_wins_deprecated": {
+			"id": 30,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"final_place": {
+						"<=": 6
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1,
+					"reward": {}
+				},
+				{
+					"goal": 2,
+					"reward": {}
+				},
+				{
+					"goal": 3,
+					"reward": {}
+				},
+				{
+					"goal": 4,
+					"reward": {}
+				},
+				{
+					"goal": 5,
+					"reward": {}
+				},
+				{
+					"goal": 6,
+					"reward": {}
+				},
+				{
+					"goal": 7,
+					"reward": {}
+				},
+				{
+					"goal": 8,
+					"reward": {}
+				},
+				{
+					"goal": 9,
+					"reward": {}
+				},
+				{
+					"goal": 10,
+					"reward": {}
+				},
+				{
+					"goal": 11,
+					"reward": {}
+				}
+			],
+			"locstring": "#DAC_Achievement_Underlord1Wins"
+		},
+		"underlord_4_wins_deprecated": {
+			"id": 31,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"final_place": {
+						"<=": 6
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1,
+					"reward": {}
+				},
+				{
+					"goal": 2,
+					"reward": {}
+				},
+				{
+					"goal": 3,
+					"reward": {}
+				},
+				{
+					"goal": 4,
+					"reward": {}
+				},
+				{
+					"goal": 5,
+					"reward": {}
+				},
+				{
+					"goal": 6,
+					"reward": {}
+				},
+				{
+					"goal": 7,
+					"reward": {}
+				},
+				{
+					"goal": 8,
+					"reward": {}
+				},
+				{
+					"goal": 9,
+					"reward": {}
+				},
+				{
+					"goal": 10,
+					"reward": {}
+				},
+				{
+					"goal": 11,
+					"reward": {}
+				}
+			],
+			"locstring": "#DAC_Achievement_Underlord4Wins"
+		},
+		"underlord_2_wins_deprecated": {
+			"id": 32,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"final_place": {
+						"<=": 6
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1,
+					"reward": {}
+				},
+				{
+					"goal": 2,
+					"reward": {}
+				},
+				{
+					"goal": 3,
+					"reward": {}
+				},
+				{
+					"goal": 4,
+					"reward": {}
+				},
+				{
+					"goal": 5,
+					"reward": {}
+				},
+				{
+					"goal": 6,
+					"reward": {}
+				},
+				{
+					"goal": 7,
+					"reward": {}
+				},
+				{
+					"goal": 8,
+					"reward": {}
+				},
+				{
+					"goal": 9,
+					"reward": {}
+				},
+				{
+					"goal": 10,
+					"reward": {}
+				},
+				{
+					"goal": 11,
+					"reward": {}
+				}
+			],
+			"locstring": "#DAC_Achievement_Underlord2Wins"
+		},
+		"underlord_place_1": {
+			"id": 43,
+			"event": {
+				"event_name": "game_end_placement",
+				"condition": {
+					"underlord_id": {
+						"=": 1
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"underlord_place_2": {
+			"id": 44,
+			"event": {
+				"event_name": "game_end_placement",
+				"condition": {
+					"underlord_id": {
+						"=": 2
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"underlord_place_3": {
+			"id": 45,
+			"event": {
+				"event_name": "game_end_placement",
+				"condition": {
+					"underlord_id": {
+						"=": 3
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"underlord_place_4": {
+			"id": 46,
+			"event": {
+				"event_name": "game_end_placement",
+				"condition": {
+					"underlord_id": {
+						"=": 4
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"underlord_matches_1": {
+			"id": 47,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"underlord_id": {
+						"=": 1
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"underlord_matches_2": {
+			"id": 48,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"underlord_id": {
+						"=": 2
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"underlord_matches_3": {
+			"id": 49,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"underlord_id": {
+						"=": 3
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"underlord_matches_4": {
+			"id": 50,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"underlord_id": {
+						"=": 4
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"first_finishes": {
+			"id": 35,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"final_place": {
+						"=": 1
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"second_finishes": {
+			"id": 36,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"final_place": {
+						"=": 2
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"third_finishes": {
+			"id": 37,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"final_place": {
+						"=": 3
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"total_matches": {
+			"id": 38,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"final_place": {
+						"<=": 8
+					}
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"highest_total_damage": {
+			"id": 39,
+			"event": {
+				"event_name": "game_end_total_damage",
+				"condition": {
+					"final_place": {
+						"<=": 8
+					}
+				}
+			},
+			"score": "max",
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"highest_net_worth": {
+			"id": 40,
+			"event": {
+				"event_name": "game_end_networth",
+				"condition": {
+					"final_place": {
+						"<=": 8
+					}
+				}
+			},
+			"score": "max",
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"highest_round": {
+			"id": 41,
+			"event": {
+				"event_name": "game_end_round",
+				"condition": {
+					"final_place": {
+						"<=": 8
+					}
+				}
+			},
+			"score": "max",
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		},
+		"undefeated_knockout_matches": {
+			"id": 42,
+			"event": {
+				"event_name": "game_end",
+				"condition": {
+					"operator": "AND",
+					"operands": [
+						{
+							"game_mode": {
+								"=": 2
+							}
+						},
+						{
+							"final_place": {
+								"=": 1
+							}
+						},
+						{
+							"losses": {
+								"=": 0
+							}
+						}
+					]
+				}
+			},
+			"goals": [
+				{
+					"goal": 1000000,
+					"reward": {}
+				}
+			]
+		}
+
+	}
 }
+
+

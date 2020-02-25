@@ -7,7 +7,7 @@
 #include
 #include is NULL
 #int#
-$@open
+$@processutils.cpp
 $ORIGIN
 %
 %%-%ds
@@ -67,11 +67,14 @@ $ORIGIN
 -teststringtokencollision
 -threads
 ../public/ordered_constructor.h
+../public/tier0/threadtools.h
 ../public/tier0/tslist.h
+../public/tier1/memstack.h
 ../public/tier1/quantizedfloatencoder.h
 ../public/tier1/utlfixedmemory.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utltshash.h
 /dev/urandom
 0
 0123456789abcdef
@@ -86,7 +89,6 @@ $ORIGIN
 11CThreadPool
 11IRefCounted
 11IThreadPool
-12CEmptyConVar
 12CEventSystem
 12CRefCounted1I11IRefCounted20CRefCountServiceBaseILb1E6CRefMTEE
 12CRefCounted1I11IThreadPool20CRefCountServiceBaseILb1E6CRefMTEE
@@ -124,6 +126,7 @@ $ORIGIN
 17CDefaultCvarQuery
 17CGlobalThreadPool
 17CPooledFunctorJob
+18CPlaceholderConVar
 18CUtlCharConversion
 18CUtlJSONConversion
 19CDmSymbolTableLarge
@@ -160,9 +163,12 @@ $ORIGIN
 <<
 << NULL >>
 <NULL>
+<deferred>
 <invalid handle>
 <li>
+<no deferred ref found>
 <null>
+<unconnected>
 <unknown>
 <unspecified>
 >>
@@ -172,6 +178,8 @@ A
 ACCESSIBLE_FROM_THREADS
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
 ATTEMPTED TO DECOMMIT OWNED MEMORY STACK SPACE
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 AddCompletionCallback
 AllocInternal
 AnimGraphEditorUtils001
@@ -206,7 +214,6 @@ CBufferString::Relinquish(CBufferString::EAllocationOption_t)
 CCommand::Tokenize: Encountered command which overflows the argument buffer.. Clamped!
 CCommand::Tokenize: Encountered command which overflows the tokenizer buffer.. Skipping!
 CConfigurationSystem::ReadConfiguration: Error parsing configuration file!
-CCvar::FindCommandBase
 CFiber::IsReadyToResume()
 CFiber::ReachedZeroReferences()
 CFiber::ResumeJob(void*)
@@ -247,7 +254,7 @@ CThreadEvent::CThreadEvent(char const*, bool, bool)
 CThreadEvent::Check()
 CThreadEvent::Reset()
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadMultiWaitEvent::CThreadMultiWaitEvent(bool)
 CThreadMultiWaitEvent::Reset()
 CThreadMultiWaitEvent::Set()
@@ -255,22 +262,22 @@ CThreadMultiWaitEvent::~CThreadMultiWaitEvent()
 CThreadMultiWaitSemaphore::CThreadMultiWaitSemaphore()
 CThreadMultiWaitSemaphore::Release()
 CThreadMultiWaitSemaphore::~CThreadMultiWaitSemaphore()
-CThreadMutex::TryLock()
+CThreadMutex::TryLock(char const*, int)
 CThreadPool::Start called and it was already initialized.
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
 CThreadRWLock_FastRead::CThreadRWLock_FastRead()
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
-CThreadRWLock_FastRead::UnlockReadAccounting(unsigned int)
+CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
 CThreadRWLock_FastRead::UnlockRead_LockForWrite()
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int)
+CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
 CThreadSemaphore::Release(int, int*)
 CThreadSemaphore::~CThreadSemaphore()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::Wait(unsigned int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
@@ -314,6 +321,7 @@ ConfigurationSystem_001
 ConnectInterfaces
 Console
 Convar %s has conflicting %s flags (child: %s%s, parent: %s%s, parent wins)
+Convars/CCvar::FindCommandBase
 Coroutine_Cancel
 Coroutine_Continue
 Coroutine_Create
@@ -431,6 +439,7 @@ InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallUniformRandomStream
 Intentionally vague touch behavior for %p
+Invalid access of deferred ConVarRef for '%s'
 JAPANESE
 JSON error, unterminated element:
 KOREAN
@@ -954,6 +963,7 @@ dupe
 english
 error
 essential
+eventsystem.cpp
 execute_per_tick
 execvpe
 f
@@ -986,6 +996,7 @@ img
 int( %d = 0x%X )
 interfaces.cpp
 jobthread.cpp
+keyvalues.cpp
 keyvaluessystem.cpp
 l
 launch
@@ -1026,6 +1037,7 @@ notify
 numeric
 off
 once
+open
 open64
 opendir
 operator delete(void*)
@@ -1088,6 +1100,7 @@ test string
 testscript_debug
 testscriptmgr.cpp
 threadsafe
+true
 type
 typeinfo for CThread
 typeinfo for CThreadSyncObject
@@ -1102,6 +1115,7 @@ unlink
 update
 urandom_result > 0 || ( urandom_result < 0 && errno == EINTR )
 utlstring.cpp
+utlstringtokensystem.cpp
 value
 vconsole_fuzzy
 vconsole_set_focus

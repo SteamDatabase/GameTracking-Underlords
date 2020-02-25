@@ -6,6 +6,14 @@ DACChallengeWorldMap
 	flow-children: down;
 }
 
+/* DACChallengeWorldMap .SystemButtons {
+	opacity: 0;
+} */
+
+#PlayButtonContainer {
+	visibility: collapse;
+}
+
 .MapContainer
 {
 	background-color: #b4b2ac;
@@ -18,27 +26,35 @@ DACChallengeWorldMap
 {
 	width: 100%;
 	height: 100%;
-
-	padding: 20px;
 }
 
 .DevButtonContainer
 {
 	flow-children: right;
-	vertical-align: bottom;
+	vertical-align: top;
 	horizontal-align: right;
 	padding-bottom: 60px;
 	padding-right: 55px;
+	visibility: collapse;
 }
 
-.SimpleButton
+.ShowDevButtons .DevButtonContainer
 {
-	padding: 5px;
-	height: 50px;
-	min-width: 150px;
+	visibility: visible;
+}
+
+.TrailerMode .DevButtonContainer
+{
+	visibility: collapse;
+}
+
+.MiniButton
+{
+
 	margin-left: 5px;
 	margin-right: 5px;
 	background-color: #444;
+	
 }
 
 //================
@@ -59,14 +75,56 @@ DACChallengeWorldMap
 	visibility: visible;
 }
 
-.InOverview .OverviewButton
+.InOverview .OverviewButton,
+.InOverview .ZoomOutButton,
+.ActiveRegion0 .ZoomOutButton
 {
-	visibility: collapse;
+    visibility: collapse;
+}
+.ZoomOutButton
+{
+    margin-left: 130px;
+	margin-top: 45px;
+	height: 50px;
+	background-color: #00000090;
+	border: 3px solid #ffffff90;
+	padding: 10px 20px;
+	flow-children: right;
+}
+
+.IsLayoutSmallScreen .ZoomOutButton {
+	ui-scale: 130%;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 .ZoomOutButton {
+	margin-left: 220px;
+}
+
+.ZoomOutButton Label {
+	font-size: 18px;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	color: #ffffff;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+.ZoomOutButton:hover {
+	brightness: 2.0;
+}
+
+.ZoomOutIcon {
+	width: 18px;
+	height: 18px;
+	margin-right: 15px;
+	vertical-align: middle;
+	background-image: url("s2r://panorama/images/challenge_map/icon_zoomout_png.vtex");
+	background-size: 100% 100%;
 }
 
 .ClaimMode .ClaimModeButton
 {
-	border: 2px solid red;
+    border: 2px solid red;
 }
 
 .RegionButton
@@ -74,83 +132,92 @@ DACChallengeWorldMap
 	width: 50%;
 	height: 50%;
 	padding: 30px;
+	//border: 1px solid red;
+}
+
+.RegionTitleArea {
+	//border: 1px solid red;
+	horizontal-align: middle;
+	flow-children: down;
+	brightness: 1.0;
+	transform: translateY(0px);
+	margin-top: 60px;
+
+	transition-property: transform, brightness;
+	transition-duration: 0.2s;
+	transition-timing-function: ease;
+
+}
+
+.RegionTitleArea:hover {
+	brightness: 2.0;
+	transform: translateY(-15px);
 }
 
 .RegionTitle
 {
-	font-size: 40px;
+	font-size: 70px;
 	font-weight: black;
-	color: black;
-	background-color: white;
-	box-shadow: 0px 0px 3px #ffffff;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	padding: 0px 30px;
-	transform: rotateZ(2deg);
+	color: #ffffff;
+	color: gradient( linear, 0% 100%, 0% 0%, from( #dedede ), to( #ffffff ) );
+	//text-transform: uppercase;
+	//letter-spacing: 2px;
+	text-shadow: 2px 2px 2.0 #000000;
+	font-family: Early Bird, k_alwaysFontNames;
 
-	margin-top: 130px;
+	margin-top: -110px;
+	
+	margin-bottom: -50px;
 
 	horizontal-align: center;
 }
 
-.RegionImage
+.RegionImage,
+.FixedRegionImage
 {
-	width: 150px;
-	height: 150px;
-	border-radius: 50%;
-	border: 6px solid #aaa;
+	width: 450px;
+	height: 350px;
 	background-size: 100%;
 	background-repeat: no-repeat;
+	horizontal-align: middle;
+}
 
+.Region1Image,
+#DACChallengeWorldMap.ActiveRegion1 .RegionImage
+{
+	background-image: url("s2r://panorama/images/map/overview_anessix_png.vtex");
+}
+
+.Region2Image,
+#DACChallengeWorldMap.ActiveRegion2 .RegionImage
+{
+	background-image: url("s2r://panorama/images/map/overview_jull_png.vtex");
+}
+
+.Region3Image,
+#DACChallengeWorldMap.ActiveRegion3 .RegionImage
+{
+	background-image: url("s2r://panorama/images/map/overview_enno_png.vtex");
+}
+
+.Region4Image,
+#DACChallengeWorldMap.ActiveRegion4 .RegionImage
+{
+	background-image: url("s2r://panorama/images/map/overview_hobgen_png.vtex");
+}
+
+.RegionProgress {
+	font-size: 16px;
+	color: #ffffff;
+	font-weight: semi-bold;
 	horizontal-align: center;
-	vertical-align: center;
-
-	background-color: black;
-}
-
-.RegionButton:hover .RegionImage
-{
-	border: 6px solid white;
-}
-
-.Region1 .RegionImage
-{
-	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_1_0_png.vtex");
-}
-
-.Region2 .RegionImage
-{
-	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_2_0_png.vtex");
-}
-
-.Region3 .RegionImage
-{
-	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_3_0_png.vtex");
-}
-
-.Region4 .RegionImage
-{
-	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_4_0_png.vtex");
-}
-
-.ActiveRegionLabel
-{
-	color: white;
-	font-size: 28px;
-	visibility: collapse;
-	background-color: black;
-	padding: 5px;
-
-	horizontal-align: center;
-	margin-top: 240px;
-}
-
-.ActiveUnderlord_1 .ActiveRegion1,
-.ActiveUnderlord_2 .ActiveRegion2,
-.ActiveUnderlord_3 .ActiveRegion3,
-.ActiveUnderlord_4 .ActiveRegion4
-{
-	visibility: visible;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-family: Ravenhook;
+	//background-color: #000000;
+	//padding: 3px 10px;
+	text-shadow: 2px 2px 2.0 #000000;
+	margin-top: -55px;
 }
 
 // Locked Premium claim - we haven't purchased the battle pass to get access to this claim node
@@ -190,12 +257,11 @@ DACChallengeWorldMap
 
 .UnderlordPortrait
 {
-	horizontal-align: center;
+	horizontal-align: right;
 	vertical-align: bottom;
-	width: 300px;
-	height: 160px;
-
-	margin-bottom: 55px;
+	margin-right: -100px;
+	width: 500px;
+	height: 500px;
 
 	opacity: 0;
 
@@ -206,25 +272,27 @@ DACChallengeWorldMap
 	background-repeat: no-repeat;
 }
 
-.UnderlordPortrait1
+/* .UnderlordPortrait1
 {	
-	background-image: url("s2r://panorama/images/challenge_map/underlords/underlord_1_psd.vtex");
+	background-image: url("s2r://panorama/images/map/portrait_anessix_default_png.vtex");
 }
 
 .UnderlordPortrait2
 {	
-	background-image: url("s2r://panorama/images/challenge_map/underlords/underlord_2_psd.vtex");
+	background-image: url("s2r://panorama/images/map/portrait_jull_default_png.vtex");
 }
 
 .UnderlordPortrait3
 {	
-	background-image: url("s2r://panorama/images/challenge_map/underlords/underlord_3_psd.vtex");
+	background-image: url("s2r://panorama/images/map/portrait_enno_default_png.vtex");
+	//horizontal-align: left;
 }
 
 .UnderlordPortrait4
 {	
-	background-image: url("s2r://panorama/images/challenge_map/underlords/underlord_4_psd.vtex");
-}
+	background-image: url("s2r://panorama/images/map/portrait_hobgen_default_png.vtex");
+	//horizontal-align: left;
+} */
 
 .ActiveRegion1 .UnderlordPortrait1,
 .ActiveRegion2 .UnderlordPortrait2,
@@ -310,86 +378,163 @@ DACChallengeWorldMap
 
 .AreaLabels
 {
-	horizontal-align: center;
+	horizontal-align: right;
 	vertical-align: bottom;
-	flow-children: up;
-	opacity: 1;
+	transform: translateX(400px);
 
 	padding: 5px;
 	padding-top: 3px;
 
-	margin-bottom: 20px;
+	margin-bottom: 40px;
+	margin-right: 20px;
 
-	transition-property: opacity;
-	transition-duration: 0.4s;
+	transition-property: opacity, transform;
+	transition-duration: 0.5s;
+	transition-timing-function: ease;
 
 	overflow: noclip;
 
-	background-color: #161318;
+	opacity: 0;
 }
 
-.InOverview .AreaLabels
+.IsLayoutSmallScreen .AreaLabels {
+	ui-scale: 150%;
+	margin-right: -20px;
+	margin-bottom: 20px;
+}
+
+
+.ActiveRegion1 .AreaLabels,
+.ActiveRegion2 .AreaLabels,
+.ActiveRegion3 .AreaLabels,
+.ActiveRegion4 .AreaLabels
+{
+	opacity: 1;
+	transform: translateX(0px);
+}
+
+.ActiveRegion0 .AreaLabels
 {
 	opacity: 0;
+}
+
+.LookingForMatch .AreaLabels
+{
+	transform: translateY(-130px);
 }
 
 .AreaChallengeCount
 {
 	color: white;
-	font-size: 24px;
+	font-size: 16px;
 	horizontal-align: center;
 	text-transform: uppercase;
-}
-
-.Legend
-{
-	width: 500px;
-	flow-children: down;
-	border: 1px solid #c4beb4;
-	margin: 5px;
-
-	margin-top: 60px;
-	margin-left: 60px;
-}
-
-.InOverview .Legend
-{
+	background-color: #000000;
+	font-weight: semi-bold;
+	padding: 3px 12px;
+	letter-spacing: 1px;
+	margin-top: -50px;
 	visibility: collapse;
 }
 
-.LegendToggle
+.RegionCounters {
+	width: 360px;
+	height: 40px;
+	margin-top: 300px;
+	flow-children: right;
+	horizontal-align: middle;
+	//border: 1px solid red;
+	padding: 0px 5%;
+}
+
+.RegionButtonContainer .RegionCounters {
+	margin-top: -45px;
+}
+
+.CounterBlock {
+	height: 100%;
+	width: 100px;
+	//background-color: red;
+	margin: 0px 8px 0px 0px;
+	flow-children: right;
+}
+
+.CounterIcon {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+	vertical-align: middle;
+	img-shadow: 0px 0px 15px #000000;
+}
+
+.ObjectivesIcon {
+	background-image: url("s2r://panorama/images/challenge_map/icon_objective_png.vtex");
+	//background-size: 200% 200%;
+	background-size: 20px 25px;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.PuzzlesIcon {
+	background-image: url("s2r://panorama/images/challenge_map/icon_puzzle_png.vtex");
+	background-size: 25px auto;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.StreetfightsIcon {
+	background-image: url("s2r://panorama/images/challenge_map/icon_streetfight_png.vtex");
+	background-size: 25px auto;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+}
+
+.CounterBlock Label {
+	font-family: Ravenhook;
+	color: #B8B8B8;
+	font-size: 20px;
+	vertical-align: middle;
+	text-shadow: 1px 1px 3.0 #000000;
+	margin-top: -2px;
+}
+
+.AreaName {
+	font-size: 60px;
+	font-family: "Early Bird";
+	color: #ffffff;
+	text-shadow: 2px 2px 2.0 #000000;
+	margin-bottom: -40px;
+}
+
+#AreaItemContainer
 {
 	width: 100%;
-	background-color: #161318;
-	padding-left: 5px;
+	height: 60px;
+	margin-top: 12px;
+	visibility: collapse;
 }
 
-.LegendToggle Label
-{
-	color: #c4beb4;
-	font-size: 28px;
-}
-
-.LegendToggle .LegendTitle
-{
-	horizontal-align: center;
-	vertical-align: center;
-	color: white;
+#AreaItemButton {
+	width: 60px;
+	height: 60px;
+	vertical-align: top;
+	margin-top: 180px;
+	margin-left: 70px;
+	background-image: url("s2r://panorama/images/challenge_map/icon_backpack_enno_psd.vtex");
+	background-size: 100% 100%;
+	background-position: 50% 50%;
 }
 
 .LeftArrow
 {
 	horizontal-align: left;
+	padding-left: 30px;
 }
 
 .RightArrow
 {
 	horizontal-align: right;
-}
-
-.LegendExpanded .ArrowUp
-{
-	visibility: collapse;
+	padding-right: 30px;
 }
 
 .ArrowDown
@@ -397,63 +542,10 @@ DACChallengeWorldMap
 	visibility: collapse;
 }
 
-.LegendExpanded .ArrowDown
-{
-	visibility: visible;
-}
-
-.LegendContents
-{
-	width: 100%;
-	height: fit-children;
-	flow-children: down;
-
-	background-color: #c4beb4;
-	border: 2px solid #161318;
-
-	visibility: collapse;
-	padding: 5px;
-	padding-left: 5px;
-	padding-right: 5px;
-}
-
-.LegendContents Label
-{
-	font-size: 28px;
-	color: #161318;
-}
-
-.LegendItems
-{
-	flow-children: down;
-	padding: 30px;
-}
-
-.LegendItems Label
-{
-	text-transform: uppercase;
-	color: #161318;
-}
-
-.LegendContents .LegendSubtitle
-{
-	text-transform: uppercase;
-	font-size: 20px;
-	width: 100%;
-	text-align: center;
-}
-
-.LegendExpanded .LegendContents
-{
-	visibility: visible;
-}
-
 .BorderContainer
 {
 	width: 100%;
 	height: 100%;
-
-	padding: 20px;
 }
 
 .InnerGlow
@@ -461,9 +553,10 @@ DACChallengeWorldMap
 	width: 100%;
 	height: 100%;
 
-	margin: 32px;
-	
-	box-shadow: inset #333 14px 14px 28px 28px;
+	margin: 0px;
+	background-image: url("s2r://panorama/images/map/vignette_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 .Corner
@@ -540,10 +633,10 @@ DACChallengeWorldMap
 
 #ChallengePanel
 {
-	horizontal-align: right;
+	horizontal-align: left;
 	vertical-align: center;
 
-	margin-right: 70px;
+	margin-left: 70px;
 }
 
 #ClaimPanel
@@ -553,3 +646,610 @@ DACChallengeWorldMap
 	margin-right: 70px;
 	margin-top: 70px;
 }
+
+#AreaInventoryContainer
+{
+	width: 100%;
+	height: 100%;
+	visibility: collapse;
+}
+.InventoryVisible #AreaInventoryContainer
+{
+	visibility: visible;
+}
+
+#AreaInventory
+{
+	flow-children: down;
+	width: 700px;
+	height: fit-children;
+
+	padding: 20px;
+
+	background-color: #222222;
+	border: 5px solid grey;
+
+	horizontal-align: right;
+	vertical-align: bottom;
+	margin-bottom: 200px;
+	margin-right: 400px;
+
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+}
+
+.InventoryVisible #AreaInventory
+{
+	opacity: 1;
+}
+
+.AreaInventoryTitle
+{
+	color: white;
+	text-transform: uppercase;
+	font-size: 26px;
+	horizontal-align: center;
+	font-weight: bold;
+	letter-spacing: 2px;
+}
+
+.AreaInventoryDescription
+{
+	color: #999;
+	font-size: 20px;
+	horizontal-align: center;
+	text-align: center;
+}
+
+#AreaInventoryItems
+{
+	width: 540px;
+	horizontal-align: center;
+	flow-children: right-wrap;
+	margin-top: 20px;
+	margin-bottom: 15px;
+}
+
+.NoItemsLabel
+{
+	horizontal-align: center;
+	font-size: 32px;
+	color: grey;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	visibility: collapse;
+	text-align: center;
+}
+
+.NoItems .NoItemsLabel
+{
+	visibility: visible;
+}
+
+.NoItems #AreaInventoryItems
+{
+	visibility: collapse;
+}
+
+#AreaInventoryItems > DACInventoryItem
+{
+	visibility: visible;
+}
+
+.AreaInventoryCount
+{
+	horizontal-align: center;
+	text-transform: uppercase;
+	color: grey;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.DevLabel
+{
+	color: white;
+	font-size: 20px;
+	margin-top: 6px;
+}
+
+.FadePanel
+{
+	width: 100%;
+	height: 100%;
+
+	background-color: black;
+
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: 2s;
+}
+
+.MovieDoneFadeIn .FadePanel
+{
+	opacity: 1;
+}
+
+.FadedOut .FadePanel
+{
+	opacity: 1;
+}
+
+.CityKeyContainer {
+	width: fit-children;
+	height: 115px;
+	vertical-align: bottom;
+	horizontal-align: left;
+	margin: 20px;
+}
+
+.CityKeyImg {
+	width: 100px;
+	height: 115px;
+	horizontal-align: left;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/challenge_map/key_psd.vtex");
+	background-size: 100% 100%;
+}
+.KeyCount {
+	width: 40px;
+	height: 40px;
+	vertical-align: bottom;
+	horizontal-align: right;
+}
+
+.CityKeyLabel {
+	font-family: Ravenhook;
+	font-size: 36px;
+	color: #3b2a20;
+	vertical-align: center;
+	horizontal-align: center;
+	vertical-align: middle;
+}
+
+.CityKeyBG {
+	width: 40px;
+	height: 40px;
+	background-color: red;
+	opacity-mask: url("s2r://panorama/images/masks/circle_psd.vtex");
+	background-color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
+
+}
+
+
+// loc for diamond underlords
+
+/* LOC FOR REGION IMAGES */
+
+.Language_brazilian .Region1Image, .Language_brazilian #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/brazilian_png.vtex");
+}
+
+.Language_bulgarian .Region1Image, .Language_bulgarian #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/bulgarian_png.vtex");
+}
+
+.Language_czech .Region1Image, .Language_czech #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/czech_png.vtex");
+}
+
+.Language_danish .Region1Image, .Language_danish #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/danish_png.vtex");
+}
+
+.Language_dutch .Region1Image, .Language_dutch #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/dutch_png.vtex");
+}
+
+.Language_finnish .Region1Image, .Language_finnish #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/finnish_png.vtex");
+}
+
+.Language_french .Region1Image, .Language_french #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/french_png.vtex");
+}
+
+.Language_german .Region1Image, .Language_german #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/german_png.vtex");
+}
+
+.Language_greek .Region1Image, .Language_greek #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/greek_png.vtex");
+}
+
+.Language_hungarian .Region1Image, .Language_hungarian #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/hungarian_png.vtex");
+}
+
+.Language_italian .Region1Image, .Language_italian #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/italian_png.vtex");
+}
+
+.Language_japanese .Region1Image, .Language_japanese #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/japanese_png.vtex");
+}
+
+.Language_korean .Region1Image, .Language_korean #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/korean_png.vtex");
+}
+
+.Language_latam .Region1Image, .Language_latam #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/latam_png.vtex");
+}
+
+.Language_norwegian .Region1Image, .Language_norwegian #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/norwegian_png.vtex");
+}
+
+.Language_polish .Region1Image, .Language_polish #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/polish_png.vtex");
+}
+
+.Language_portuguese .Region1Image, .Language_portuguese #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/portuguese_png.vtex");
+}
+
+.Language_romanian .Region1Image, .Language_romanian #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/romanian_png.vtex");
+}
+
+.Language_russian .Region1Image, .Language_russian #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/russian_png.vtex");
+}
+
+.Language_schinese .Region1Image, .Language_schinese #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/schinese_png.vtex");
+}
+
+.Language_spanish .Region1Image, .Language_spanish #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/spanish_png.vtex");
+}
+
+.Language_swedish .Region1Image, .Language_swedish #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/swedish_png.vtex");
+}
+
+.Language_tchinese .Region1Image, .Language_tchinese #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/tchinese_png.vtex");
+}
+
+.Language_thai .Region1Image, .Language_thai #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/thai_png.vtex");
+}
+
+.Language_turkish .Region1Image, .Language_turkish #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/turkish_png.vtex");
+}
+
+.Language_ukrainian .Region1Image, .Language_ukrainian #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/ukrainian_png.vtex");
+}
+
+.Language_vietnamese .Region1Image, .Language_vietnamese #DACChallengeWorldMap.ActiveRegion1 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/anessix/vietnamese_png.vtex");
+}
+
+.Language_brazilian .Region2Image, .Language_brazilian #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/brazilian_png.vtex");
+}
+
+.Language_bulgarian .Region2Image, .Language_bulgarian #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/bulgarian_png.vtex");
+}
+
+.Language_czech .Region2Image, .Language_czech #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/czech_png.vtex");
+}
+
+.Language_danish .Region2Image, .Language_danish #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/danish_png.vtex");
+}
+
+.Language_dutch .Region2Image, .Language_dutch #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/dutch_png.vtex");
+}
+
+.Language_finnish .Region2Image, .Language_finnish #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/finnish_png.vtex");
+}
+
+.Language_french .Region2Image, .Language_french #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/french_png.vtex");
+}
+
+.Language_german .Region2Image, .Language_german #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/german_png.vtex");
+}
+
+.Language_greek .Region2Image, .Language_greek #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/greek_png.vtex");
+}
+
+.Language_hungarian .Region2Image, .Language_hungarian #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/hungarian_png.vtex");
+}
+
+.Language_italian .Region2Image, .Language_italian #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/italian_png.vtex");
+}
+
+.Language_japanese .Region2Image, .Language_japanese #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/japanese_png.vtex");
+}
+
+.Language_korean .Region2Image, .Language_korean #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/korean_png.vtex");
+}
+
+.Language_latam .Region2Image, .Language_latam #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/latam_png.vtex");
+}
+
+.Language_norwegian .Region2Image, .Language_norwegian #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/norwegian_png.vtex");
+}
+
+.Language_polish .Region2Image, .Language_polish #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/polish_png.vtex");
+}
+
+.Language_portuguese .Region2Image, .Language_portuguese #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/portuguese_png.vtex");
+}
+
+.Language_romanian .Region2Image, .Language_romanian #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/romanian_png.vtex");
+}
+
+.Language_russian .Region2Image, .Language_russian #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/russian_png.vtex");
+}
+
+.Language_schinese .Region2Image, .Language_schinese #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/schinese_png.vtex");
+}
+
+.Language_spanish .Region2Image, .Language_spanish #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/spanish_png.vtex");
+}
+
+.Language_swedish .Region2Image, .Language_swedish  #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/swedish_png.vtex");
+}
+
+.Language_tchinese .Region2Image, .Language_tchinese #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/tchinese_png.vtex");
+}
+
+.Language_thai .Region2Image, .Language_thai #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/thai_png.vtex");
+}
+
+.Language_turkish .Region2Image, .Language_turkish #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/turkish_png.vtex");
+}
+
+.Language_ukrainian .Region2Image, .Language_ukrainian #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/ukrainian_png.vtex");
+}
+
+.Language_vietnamese .Region2Image, .Language_vietnamese #DACChallengeWorldMap.ActiveRegion2 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/jull/vietnamese_png.vtex");
+}
+
+.Language_brazilian .Region3Image, .Language_brazilian #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/brazilian_png.vtex");
+}
+
+.Language_bulgarian .Region3Image, .Language_bulgarian #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/bulgarian_png.vtex");
+}
+
+.Language_czech .Region3Image, .Language_czech #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/czech_png.vtex");
+}
+
+.Language_danish .Region3Image, .Language_danish #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/danish_png.vtex");
+}
+
+.Language_dutch .Region3Image, .Language_dutch #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/dutch_png.vtex");
+}
+
+.Language_finnish .Region3Image, .Language_finnish #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/finnish_png.vtex");
+}
+
+.Language_french .Region3Image, .Language_french #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/french_png.vtex");
+}
+
+.Language_german .Region3Image, .Language_german #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/german_png.vtex");
+}
+
+.Language_greek .Region3Image, .Language_greek #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/greek_png.vtex");
+}
+
+.Language_hungarian .Region3Image, .Language_hungarian #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/hungarian_png.vtex");
+}
+
+.Language_italian .Region3Image, .Language_italian #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/italian_png.vtex");
+}
+
+.Language_japanese .Region3Image, .Language_japanese #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/japanese_png.vtex");
+}
+
+.Language_korean .Region3Image, .Language_korean #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/korean_png.vtex");
+}
+
+.Language_latam .Region3Image, .Language_latam #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/latam_png.vtex");
+}
+
+.Language_norwegian .Region3Image, .Language_norwegian #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/norwegian_png.vtex");
+}
+
+.Language_polish .Region3Image, .Language_polish #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/polish_png.vtex");
+}
+
+.Language_portuguese .Region3Image, .Language_portuguese #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/portuguese_png.vtex");
+}
+
+.Language_romanian .Region3Image, .Language_romanian #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/romanian_png.vtex");
+}
+
+.Language_russian .Region3Image, .Language_russian #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/russian_png.vtex");
+}
+
+.Language_schinese .Region3Image, .Language_schinese #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/schinese_png.vtex");
+}
+
+.Language_spanish .Region3Image, .Language_spanish #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/spanish_png.vtex");
+}
+
+.Language_swedish .Region3Image, .Language_swedish #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/swedish_png.vtex");
+}
+
+.Language_tchinese .Region3Image, .Language_tchinese #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/tchinese_png.vtex");
+}
+
+.Language_thai .Region3Image, .Language_thai #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/thai_png.vtex");
+}
+
+.Language_turkish .Region3Image, .Language_turkish #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/turkish_png.vtex");
+}
+
+.Language_ukrainian .Region3Image, .Language_ukrainian #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/ukrainian_png.vtex");
+}
+
+.Language_vietnamese .Region3Image, .Language_vietnamese #DACChallengeWorldMap.ActiveRegion3 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/enno/vietnamese_png.vtex");
+}
+
+.Language_brazilian .Region4Image, .Language_brazilian #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/brazilian_png.vtex");
+}
+
+.Language_bulgarian .Region4Image, .Language_bulgarian #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/bulgarian_png.vtex");
+}
+
+.Language_czech .Region4Image, .Language_czech #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/czech_png.vtex");
+}
+
+.Language_danish .Region4Image, .Language_danish #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/danish_png.vtex");
+}
+
+.Language_dutch .Region4Image, .Language_dutch #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/dutch_png.vtex");
+}
+
+.Language_finnish .Region4Image, .Language_finnish #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/finnish_png.vtex");
+}
+
+.Language_french .Region4Image, .Language_french #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/french_png.vtex");
+}
+
+.Language_german .Region4Image, .Language_german #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/german_png.vtex");
+}
+
+.Language_greek .Region4Image, .Language_greek #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/greek_png.vtex");
+}
+
+.Language_hungarian .Region4Image, .Language_hungarian #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/hungarian_png.vtex");
+}
+
+.Language_italian .Region4Image, .Language_italian #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/italian_png.vtex");
+}
+
+.Language_japanese .Region4Image, .Language_japanese #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/japanese_png.vtex");
+}
+
+.Language_korean .Region4Image, .Language_korean #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/korean_png.vtex");
+}
+
+.Language_latam .Region4Image, .Language_latam #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/latam_png.vtex");
+}
+
+.Language_norwegian .Region4Image, .Language_norwegian #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/norwegian_png.vtex");
+}
+
+.Language_polish .Region4Image, .Language_polish #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/polish_png.vtex");
+}
+
+.Language_portuguese .Region4Image, .Language_portuguese #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/portuguese_png.vtex");
+}
+
+.Language_romanian .Region4Image, .Language_romanian #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/romanian_png.vtex");
+}
+
+.Language_russian .Region4Image, .Language_russian #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/russian_png.vtex");
+}
+
+.Language_schinese .Region4Image, .Language_schinese #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/schinese_png.vtex");
+}
+
+.Language_spanish .Region4Image, .Language_spanish #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/spanish_png.vtex");
+}
+
+.Language_swedish .Region4Image, .Language_swedish #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/swedish_png.vtex");
+}
+
+.Language_tchinese .Region4Image, .Language_tchinese #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/tchinese_png.vtex");
+}
+
+.Language_thai .Region4Image, .Language_thai #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/thai_png.vtex");
+}
+
+.Language_turkish .Region4Image, .Language_turkish #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/turkish_png.vtex");
+}
+
+.Language_ukrainian .Region4Image, .Language_ukrainian #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/ukrainian_png.vtex");
+}
+
+.Language_vietnamese .Region4Image, .Language_vietnamese #DACChallengeWorldMap.ActiveRegion4 .RegionImage {
+    background-image: url("s2r://panorama/images/challenge_map/underlords/hobgen/vietnamese_png.vtex");
+}
+

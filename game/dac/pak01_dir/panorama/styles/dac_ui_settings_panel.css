@@ -73,10 +73,6 @@ DACUISettingsPanel.Hidden {
     wash-color: none;
 }
 
-#AboutTabButton{
-    visibility: collapse;
-}
-
 .SettingsTabSeparator {
     margin-left: 16px;
     margin-right: 16px;
@@ -185,11 +181,16 @@ DACUISettingsPanel Label {
 
 #BuildVersion Label
 {
-	font-size: 14px;
+	font-size: 20px;
 	vertical-align: middle;
     font-weight: normal;
     color: #666;
     padding: 0;
+}
+
+.IsLayoutSmallScreen #BuildVersion Label
+{
+    font-size: 30px;
 }
 
 #BuildVersion:selected > Label
@@ -288,6 +289,13 @@ DACUISettingsPanel Label {
     height: 100%;
     margin-top: 0px;
     padding: 18px 32px;
+}
+
+
+.IsLayoutSmallScreen #LanguageSettings
+{
+    ui-scale: 190%;
+    width: 100%;
 }
 
 
@@ -1834,7 +1842,8 @@ DropDown, DACSettingsEnumDropDown {
 
 #AdvancedVideo:disabled
 {
-    opacity: 0;
+    //opacity: 0;
+    visibility: collapse;
 }
 
 #BasicVideo {
@@ -1909,6 +1918,7 @@ DropDown, DACSettingsEnumDropDown {
 
 #VideoBestLookingLabel {
     horizontal-align: right;
+    //margin-right: 15px;
 }
 
 .AutocastContainer {
@@ -1994,6 +2004,11 @@ a {
 
 .SettingsTabFiller {
     width: fill-parent-flow( 1.0 );
+}
+
+.EGameState_Playing #AboutTabButton
+{
+    visibility: collapse;
 }
 
 #AboutTabContentContainer {
@@ -2824,7 +2839,8 @@ DACSettingsEnum .EnumButton {
     visibility: collapse;
 }
 
-.IsLayoutSmallScreen #RenderingSettingsColumn.SettingsDualColumn {
+.IsLayoutSmallScreen #RenderingSettingsColumn.SettingsDualColumn 
+{
     ui-scale: 190%;
     width: 100%;
 }

@@ -211,6 +211,7 @@ $tI
 -------------------------------------------
 ---------------------------------------------------- ----------- ----------- ----------- ------ ----------- ------ ----------- ----------- ----------- -----------
 --hint
+-2GB
 -allowmultiple
 -assertbreak
 -clearassertstate
@@ -246,6 +247,7 @@ $tI
 ............|
 ../
 ../public/ordered_constructor.h
+../public/tier0/globallist.h
 ../public/tier0/tslist.h
 .\
 .so
@@ -278,8 +280,8 @@ $tI
 10CTestSuite
 10ITestSuite
 12CCommandLine
-12CStdMemAllocI24MemoryAllocationHeader_tI9MemConfigILb0ELb0E27DefaultAdditionalPropertiesEEE
-12CStdMemAllocI24MemoryAllocationHeader_tI9MemConfigILb0ELb0E27RuntimeAdditionalPropertiesEEE
+12CStdMemAllocI9MemConfigILb0ELb0E27DefaultAdditionalPropertiesEE
+12CStdMemAllocI9MemConfigILb0ELb0E27RuntimeAdditionalPropertiesEE
 12CThreadEvent
 12ICommandLine
 13CFiberJobPool
@@ -290,10 +292,11 @@ $tI
 16CThreadFullMutex
 16CThreadSemaphore
 16ILoggingListener
-17CStdMemAlloc_DataI24MemoryAllocationHeader_tI9MemConfigILb0ELb0E27DefaultAdditionalPropertiesEEE
-17CStdMemAlloc_DataI24MemoryAllocationHeader_tI9MemConfigILb0ELb0E27RuntimeAdditionalPropertiesEEE
+17CStdMemAlloc_DataI9MemConfigILb0ELb0E27DefaultAdditionalPropertiesEE
+17CStdMemAlloc_DataI9MemConfigILb0ELb0E27RuntimeAdditionalPropertiesEE
 17CThreadSyncObject
 18CThreadManualEvent
+18IMemAlloc_Internal
 22CPerfTraceDepotDefault
 22CSimpleLoggingListener
 22CStdMemAlloc_Data_Base
@@ -307,8 +310,8 @@ $tI
 26CVProfileOutputColumn_Peak
 27CMiniDumpCommentBuilderBase
 27CVProfileOutputColumn_Count
-28CStdMemAlloc_Data_StackStatsI24MemoryAllocationHeader_tI9MemConfigILb0ELb0E27DefaultAdditionalPropertiesEELb0EE
-28CStdMemAlloc_Data_StackStatsI24MemoryAllocationHeader_tI9MemConfigILb0ELb0E27RuntimeAdditionalPropertiesEELb0EE
+28CStdMemAlloc_Data_StackStatsI9MemConfigILb0ELb0E27DefaultAdditionalPropertiesELb0EE
+28CStdMemAlloc_Data_StackStatsI9MemConfigILb0ELb0E27RuntimeAdditionalPropertiesELb0EE
 28CallStackStatStructDescFuncs
 29CDefaultLoggingResponsePolicy
 31IForceSignalNumberIntoCallStack
@@ -507,6 +510,7 @@ CCallStackStatsGatherer_Base::STUB_RemoveSharedInstanceData(CallStackStatsGather
 CCallStackStatsGatherer_Base::STUB_UnlockEntry(unsigned int)
 CDeferredCallStackMarker::Insert()
 CDeferredCallStackMarker::Remove()
+CDynamicFunction: Closing library '%s' (%p)
 CDynamicFunction: Loading library '%s' (%p)
 CDynamicFunction: Lookup of '%s' in '%s': %p
 CEventListNode::AllocTempNode()
@@ -615,7 +619,7 @@ CThreadEvent::Reset()
 CThreadEvent::Set()
 CThreadEvent::WaitForMultiple(int, CThreadEvent**, bool, unsigned int)
 CThreadEvent::WaitForMultiple(int, CThreadEvent*, bool, unsigned int)
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadFiber::CThreadFiber(unsigned long)
 CThreadFullMutex::CThreadFullMutex(bool, char const*, bool, bool)
 CThreadFullMutex::IsCreator() const
@@ -640,31 +644,31 @@ CThreadMultiWaitSemaphore
 CThreadMultiWaitSemaphore::CThreadMultiWaitSemaphore()
 CThreadMultiWaitSemaphore::Release()
 CThreadMultiWaitSemaphore::~CThreadMultiWaitSemaphore()
-CThreadMutex::TryLock()
-CThreadRWLock::LockForWrite()
-CThreadRWLock::TryLockForWrite()
-CThreadRWLock::UnlockRead_LockForWrite()
-CThreadRWLock::UnlockWrite()
-CThreadRWLock::UnlockWrite_LockForRead()
+CThreadMutex::TryLock(char const*, int)
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::TryLockForWrite(char const*, int)
+CThreadRWLock::UnlockRead_LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
+CThreadRWLock::UnlockWrite_LockForRead(char const*, int)
 CThreadRWLock::WaitForRead()
 CThreadRWLock_FastRead::CThreadRWLock_FastRead()
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
-CThreadRWLock_FastRead::UnlockReadAccounting(unsigned int)
+CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
 CThreadRWLock_FastRead::UnlockRead_LockForWrite()
 CThreadRWLock_FastRead::UnlockWrite_LockForRead()
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int)
+CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
 CThreadSemaphore::CThreadSemaphore(int, int, char const*, bool)
 CThreadSemaphore::Release(int, int*)
 CThreadSemaphore::WaitImpl(unsigned int)
 CThreadSemaphore::~CThreadSemaphore()
-CThreadSpinLock::CThreadSpinLock(int)
+CThreadSpinLock::CThreadSpinLock(char const*, int)
 CThreadSpinLock::SetMaxSpins(int)
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockRead_LockForWrite()
-CThreadSpinRWLock::UnlockWrite()
-CThreadSpinRWLock::UnlockWrite_LockForRead()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockRead_LockForWrite(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
+CThreadSpinRWLock::UnlockWrite_LockForRead(char const*, int)
 CThreadSwapContext::CThreadSwapContext(CThreadSwapTarget*)
 CThreadSwapContext::~CThreadSwapContext()
 CThreadSwapTarget::CThreadSwapTarget()
@@ -712,6 +716,7 @@ CVProfReporter::ScheduleVProfQuery(CVProfReporter*)
 CVProfReporter::~CVProfReporter()
 CVProfile::AddBudgetGroupName(char const*, int)
 CVProfile::AddDeferredFunction(void (*)(void*), void*)
+CVProfile::AssignNextTimespanId()
 CVProfile::BudgetGroupNameToBudgetGroupID(char const*)
 CVProfile::BudgetGroupNameToBudgetGroupID(char const*, int)
 CVProfile::CVProfile()
@@ -726,7 +731,7 @@ CVProfile::FreeNodes_R(CVProfNode*)
 CVProfile::GetBudgetGroupColor(int, int&, int&, int&, int&)
 CVProfile::GetCounterGroup(int) const
 CVProfile::GetCounterName(int) const
-CVProfile::GetCounterNameAndValue(int, int&) const
+CVProfile::GetCounterNameAndValue(int, unsigned long&) const
 CVProfile::GetCounterValue(int) const
 CVProfile::GetNumBudgetGroups()
 CVProfile::GetNumCounters() const
@@ -1031,7 +1036,9 @@ NOTE: this is the total bytes of the regions above, not the growth since the old
 NO_GAME_ASSERT_DIALOG
 NO_RAISE_ON_ASSERT
 NPCs
+NavMesh
 Networking
+NextBot
 No samples
 NoteAlloc
 O
@@ -1218,6 +1225,7 @@ Plat_SetCpuTimeIsReliable
 Plat_SetCurrentDirectory
 Plat_SetCurrentFrame
 Plat_SetDefaultMonitorIndex
+Plat_SetDenormalsAreZero
 Plat_SetDesktopNotifyIconPath
 Plat_SetFileReadOnly
 Plat_SetForegroundWindow
@@ -2010,6 +2018,7 @@ a
 alarm
 asctime
 asctime_r
+assert_dialog.cpp
 at+
 backtrace
 bin/linuxsteamrt64/libtier0.so
@@ -2042,6 +2051,7 @@ false
 fchmod
 fcntl
 fcntl(%d) for %s failed
+fibertools.cpp
 fopen64
 forced dump
 fork
@@ -2087,6 +2097,7 @@ getrlimit64
 getrusage
 gettimeofday
 gmtime_r
+hibernate.cpp
 high
 higher
 i
@@ -2141,6 +2152,7 @@ physical id
 platform.cpp
 platform_sdl.cpp
 popen
+posix_memalign
 prctl
 processor
 pthread_attr_destroy
@@ -2190,6 +2202,7 @@ sigaddset
 sigemptyset
 sigprocmask
 srand
+stacktools.cpp
 std::_Rb_tree<char const*, std::pair<char const* const, unsigned long long>, std::_Select1st<std::pair<char const* const, unsigned long long> >, std::less<char const*>, std::allocator<std::pair<char const* const, unsigned long long> > >::_M_erase(std::_Rb_tree_node<std::pair<char const* const, unsigned long long> >*)
 std::_Rb_tree_decrement(std::_Rb_tree_node_base*)
 std::_Rb_tree_increment(std::_Rb_tree_node_base*)
@@ -2252,6 +2265,7 @@ unlink
 usleep
 vfscanf
 vpk:
+vprof.cpp
 vsscanf
 vswscanf
 vtable for BasicStatStructFieldDesc

@@ -102,7 +102,9 @@ $ORIGIN
 ../../public/tier1/utlrbtree.h
 ../../public/tier1/utlsortvector.h
 ../public/ordered_constructor.h
+../public/scenesystem/vertexformat.h
 ../public/tier1/utllinkedlist.h
+../public/tier1/utlsymbol.h
 0 - no auto-resize
 0 - top-left
 0x%016llX
@@ -111,7 +113,6 @@ $ORIGIN
 1 - top-right
 10CheckImage
 10IAppSystem
-12CEmptyConVar
 12CIntProperty
 12CThreadEvent
 12ColumnButton
@@ -132,6 +133,7 @@ $ORIGIN
 16CRSEmbeddedPanel
 17IVGuiPaintSurface
 18CBuildModeNavCombo
+18CPlaceholderConVar
 18CTextureDictionary
 18CTextureIdProperty
 18CVGuiRenderSurface
@@ -170,19 +172,23 @@ $ORIGIN
 << NULL >>
 <NULL>
 <a href=
+<deferred>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 <unknown>
 >
 ?../public/tier1/utlrbtree.h
 ???
 @
-@@
 @A
 A
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
 APanelListPanel
 Accel
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 ActivateItem
 AllocInternal
 Already have converter for type %s, ignoring...
@@ -277,14 +283,14 @@ CTextureDictionary::LoadDeferredIdNOW() blocking load of "%s"
 CTextureDictionary::ProcessDeferredResourceLoading()
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
 CTreeViewListControl
@@ -542,6 +548,7 @@ InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 Intentionally vague touch behavior for %p
+Invalid access of deferred ConVarRef for '%s'
 Invalid parent region %s specified for region %s in panel %s
 Invalidate
 JSON error, unterminated element:
@@ -892,6 +899,7 @@ Plat_IsWindowMinimized
 Plat_IsWindowVisible
 Plat_MinimizeWindow
 Plat_ScreenToWindowCoords
+Plat_SetDenormalsAreZero
 Plat_SetWindowPos
 Plat_SetWindowSize
 Plat_SetWindowTitleW
@@ -1131,6 +1139,7 @@ VGUI_Scheme010
 VGUI_Surface032
 VGUI_System010
 VGUI_ivgui008
+VGuiPaintSurfaceLayout
 VGuiRenderSurface
 VGuiRenderSurface requires the file system to run!
 VGuiRenderSurface requires the material system to run!
@@ -1246,6 +1255,7 @@ X360
 \\
 ]
 ]<%
+]vguipaintsurfacequeued.cpp
 _ITM_deregisterTMCloneTable
 _ITM_registerTMCloneTable
 _Jv_RegisterClasses
@@ -1289,6 +1299,7 @@ alpha
 alt
 anim_framerate
 animate
+animationcontroller.cpp
 append
 archive
 armedBgColor_override
@@ -1367,6 +1378,7 @@ drophoverdelay
 droppable
 dulltext
 editable
+editablepanel.cpp
 element
 element_array
 elementid
@@ -1432,6 +1444,7 @@ keybindings
 keyboardFocusColor_override
 keyboardinputenabled
 keycode
+keyvalues.cpp
 keyvalues2_flat
 l
 labelText
@@ -1614,6 +1627,7 @@ textalignment
 textfile
 textinsetx
 textinsety
+texturedictionary.cpp
 textureid
 this
 tileHorizontally
@@ -1653,6 +1667,7 @@ use_proportional_insets
 user
 usetitlesafe
 utlstring.cpp
+utlsymbol.cpp
 uuid_generate
 variable
 vector2
@@ -1671,6 +1686,7 @@ vgui_controls is missing a required interface!
 vgui_draw_regions
 vguioffscreenrendertarget
 vguioffscreenrendertargetdepth
+vguipaintsurfacemainthread.cpp
 vguirendersurface
 vguirendersurface.cpp
 vslider

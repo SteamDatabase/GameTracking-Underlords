@@ -1,0 +1,186 @@
+DACQuickEquipButton
+{
+	width: fit-children;
+	height: fit-children;
+	
+	vertical-align: top;
+	horizontal-align: left;
+	flow-children: down;//temp
+	brightness: 1;
+	visibility: collapse;
+
+	//padding: 50px;
+	
+	box-shadow: 0px 0px 20px #4b5aff33;
+	transition-property: brightness;
+	transition-duration: .2s;
+}
+
+
+DACQuickEquipButton:hover
+{
+	brightness: 1.8;
+}
+
+.IsLayoutSmallScreen DACQuickEquipButton
+{
+	// this lets all the sigils fit in the equip panel
+	//ui-scale: 80%;
+	ui-scale: 120%;
+	box-shadow: 0px 0px 10px #4b5aff33;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 DACQuickEquipButton
+{
+	margin-left: 112px;
+}
+
+
+DACQuickEquipButton.CanCategoricallyBeEquipped.IsUnlocked
+{
+	visibility: visible;
+}
+
+#ItemInspector DACQuickEquipButton
+{
+	margin-top: 0px;
+	margin-left: 64px;
+	horizontal-align: left;
+}
+
+.AspectRatio4x3 #ItemInspector DACQuickEquipButton
+{
+	margin-left: 40px;
+}
+
+.AspectRatio21x9.IsLayoutSmallScreen #ItemInspector DACQuickEquipButton
+{
+	margin-left: 114px;
+}
+
+#EquippedPipContainer,
+#UnequippedPipContainer
+{
+	width: 50px;
+    height: 50px;
+    
+	background-image: url("s2r://panorama/images/battle_pass/bp1/equipped_pip_psd.vtex");
+    background-repeat: no-repeat;
+    background-size: 100%;
+	
+	horizontal-align: center;
+	vertical-align: center;
+	margin-top: 0px;
+	margin-left: 6px;
+}
+
+#UnequippedPipContainer
+{
+	background-image: url("s2r://panorama/images/battle_pass/bp1/unequipped_pip_psd.vtex");
+}
+
+
+
+.ItemEquippingStatus
+{
+	height: 58px;
+	width: fit-children;
+	//height: 100px;
+	background-color: #00000055;
+	border: 2px solid #b7d5ffaa;
+	box-shadow: inset 0px 0px 20px #4b5affcc;
+	flow-children: right;
+	visibility: collapse;
+
+}
+
+.IsLayoutSmallScreen .ItemEquippingStatus
+{
+	box-shadow: inset 0px 0px 10px #4b5affcc;
+}
+
+
+
+.IsCurrentlyEquipped #AlreadyEquippedPanel
+{
+	visibility: visible;
+}
+
+.GoToLoadoutScreen #GotoLoadoutScreenButton
+{
+	visibility: visible;
+}
+
+.EquipmentType_streetfight_item #GotoLoadoutScreenButton
+{
+	visibility: collapse;
+}
+
+
+.IsUnlocked.CanCategoricallyBeEquipped #EquipButton
+{
+	visibility: visible;
+}
+
+.Requires_BattlePass,
+.IsUnlocked.IsCurrentlyEquipped #EquipButton,
+.IsUnlocked.GoToLoadoutScreen #EquipButton
+{
+	visibility: collapse;
+}
+
+
+//todo: requires battlepass label
+
+.PosterTitleText
+{
+	text-transform: uppercase;
+	padding-top: 3px;
+	text-align: left;
+	font-size: 16px;
+    text-overflow: shrink;
+	font-weight: black;
+	letter-spacing: 4px;
+    color: #ffffff;
+
+    vertical-align: top;
+    horizontal-align: left;
+
+}
+
+Label
+{
+	text-transform: uppercase;
+	padding-top: 3px;
+	padding-right: 28px;
+	padding-top: 8px;
+	text-align: right;
+	font-size: 30px;
+    text-overflow: shrink;
+	text-shadow: 0px 0px 0px 3.0 #4242b400;
+	font-weight: black;
+	letter-spacing: 1px;
+    color: #ffffff;
+
+    vertical-align: center;
+    horizontal-align: left;
+    visibility: visible;
+	
+	font-family: Ravenhook;
+	margin-left: -10px;
+	margin-top: -8px;
+	
+	//color: gradient (linear, 100% 0%, 0% 0%, from(#b1b9f2), to(#d4d7ec));
+}
+
+#GotoLoadoutScreenButton Label,
+#EquipButton Label
+{
+	color: #ffffff;
+	text-shadow: 0px 0px 0px 3.0 #4242b400;
+}
+
+#GotoLoadoutScreenButton Label
+{
+	padding-left: 38px;
+}

@@ -6,7 +6,11 @@ DACUnderlordStatus
 	transition-duration: 300ms;
 	transition-timing-function: ease-in-out;	
 }
-
+.GameMode_Puzzle DACUnderlordStatus,
+.GameMode_Puzzle.EGameState_Playing DACUnderlordStatus
+{
+    visibility: collapse;
+}
 .LowVisualQuality DACUnderlordStatus
 {
 	transition-property: none;
@@ -714,6 +718,10 @@ DACUnderlordStatus.ShowPlayer
 	horizontal-align: left;
 }
 
+.GameMode_Puzzle .DetailsContainer
+{
+	opacity:0;
+}
 
 
 .CornerStatusLevel,
@@ -970,10 +978,13 @@ DACUnderlordStatus.ShowPlayer
 {
 	horizontal-align: right;
 	vertical-align: bottom;
-	margin-right: 60px;
+	margin-right: 20px;
 	
-	width: 678px;
-	height: 678px;
+	//width: 678px;
+	//height: 678px;
+	width: 800px;
+	height: 800px;
+	margin-bottom: -120px;
 	
 	brightness: 2;
 	
@@ -997,10 +1008,14 @@ DACUnderlordStatus.ShowPlayer
 	background-repeat: no-repeat;
 	pre-transform-scale2d:.7;
 }
+.GameMode_Streetfight #UnknownUnderlordPortrait
+{
+    visibility: collapse;
+}
 
 .LeftPlayer .UnknownUnderlord
 {
-	margin-left: 60px;
+    margin-left: 20px;
 }
 
 .UnknownUnderlordBacking
@@ -1273,9 +1288,10 @@ DACUnderlordStatus.ShowPlayer
     background-image: url("s2r://panorama/images/hud/chat_icon_underlord_2_psd.vtex");
 }	
 
+.GameMode_Puzzle #ChatButton,
 #DuosBuddyPlayerProfile #ChatButton,
 #OpponentPlayerStateContainer #ChatButton,
-.LocalPlayerNotInMatch #ChatButton
+.IsLocalPlayerSpectating #ChatButton
 {
 	visibility: collapse;
 }

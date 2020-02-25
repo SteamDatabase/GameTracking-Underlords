@@ -1,0 +1,57 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/controls/dac_play_button.vcss_c" />
+	</styles>
+	<snippets>
+
+	</snippets>
+
+	<DACPlayButton>
+	<Panel id="HomeButtonContainer" class="ButtonContainer">
+		<Panel id="HomePlayButton" class="PlayButton MoveUp" onactivate="DACShowPlayPage(); PlaySoundEffect( 'UL_UI.MainMenu_FightActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_FightRollover' )">
+			<Label class="HomeLabel HeadlineFont" text="#DAC_DBHome_Fight" hittest="false" />
+		</Panel>
+
+		<Panel id="ReconnectButton" class="PlayButton MoveUp" onactivate="DACReconnectLobby()">
+			<Label class="HomeLabel HeadlineFont" text="#DAC_Home_Reconnect"/>
+		</Panel>
+		<Panel id="ResumeButton" class="PlayButton MoveUp" onactivate="DACReconnectLobby()">
+			<Label id="ResumeGameLabel" class="SaveGameLabel HeadlineFont" text="#DAC_Home_ResumeBots"/>
+		</Panel>
+
+		<Panel id="LeaveButton" onactivate="DACLeaveLobby()">
+			<Label class="HeadlineFont" text="#DAC_Home_LeaveGame"/>
+      </Panel>
+    </Panel>
+
+    <Panel id="PlayButtonContainer" class="ButtonContainer">
+      <Panel id="GamePlayButton" class="PlayButton MoveUp" onactivate="DACShowHomePage(); DACPlayButtonLaunchGame(); PlaySoundEffect( 'UL_UI.MainMenu_FightActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_FightRollover' )">
+        <Label class="FindMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_FindMatch"/>
+        <Label class="BeginMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_BeginMatch"/>
+        <Label class="InviteFriendLabel HeadlineFont" text="#DAC_Play_Duos_Invite"/>
+      </Panel>
+      <Panel id="TrainingPlayButton" class="PlayButton MoveUp" onactivate="DACShowHomePage(); DACPlayButtonLaunchTraining(); PlaySoundEffect( 'UL_UI.MainMenu_FightActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_FightRollover' )">
+        <Label class="StartLabel HeadlineFont" text="#DAC_Start"/>
+      </Panel>
+      <Panel id="SaveGamePlayButton" class="PlayButton MoveUp" onactivate="DACPlayButtonHandleSaveGame(); PlaySoundEffect( 'UL_UI.MainMenu_FightActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_FightRollover' )">
+        <Label id="ResumeGameLabel" class="SaveGameLabel HeadlineFont" text="#DAC_Home_ResumeBots"/>
+        <Label id="NewGameLabel" class="SaveGameLabel HeadlineFont" text="#DAC_BotSaveGameExists_Button_NewGame"/>
+      </Panel>
+      <Panel id="SignInPlayButton" class="PlayButton MoveUp" onactivate="DACShowHomePage(); DACSteamLogin(); PlaySoundEffect( 'UL_UI.MainMenu_FightActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_FightRollover' )">
+        <Label class="SignInLabel HeadlineFont" text="#DAC_SteamAccountLogin"/>
+      </Panel>
+    </Panel>
+
+    <Panel id="PartyLabelContainer">
+      <Label id="PartyMatchLabel" text="#DAC_DBHome_Play_Party" />
+      <Label id="PartyNotReadyLabel" text="#DAC_DBHome_Party_Member_Not_Ready" />
+    </Panel>
+    <Panel id="LockedLabelContainer">
+      <Label id="DuosLockedLabel" class="LockedLabel" hittest="false" text="{s:duos_state}"/>
+      <Label id="CasualLockedLabel" class="LockedLabel" hittest="false" text="{s:casual_locked}"/>
+      <Label id="RankedLockedLabel" class="LockedLabel" hittest="false" text="{s:ranked_locked}"/>
+      <Label id="SignInLockedLabel" class="LockedLabel" hittest="false" text="#DAC_SteamLogIn_Desc4"/>
+    </Panel>
+  </DACPlayButton>
+</root>

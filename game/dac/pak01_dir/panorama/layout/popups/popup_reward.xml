@@ -5,46 +5,43 @@
 		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
 		<include src="s2r://panorama/styles/popups/popup_reward.vcss_c" />
 		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass_rewardline.vcss_c" />
 	</styles>
 
 	<PopupReward>
-		<Panel id="Overlay" />
-		<DACParticleScenePanel id="RewardFX" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="econ/s0/particles/battlepass/s0_battlepass_reward_page.vpcf" fov="150" />						
-				
-		<Button id="ContinueButton" class="PopupButton" onactivate="UIPopupButtonClicked()"/>
-
-		<Panel id="RewardContainer">
-			
-			<Panel class="TitleContainer">
-				<Label class="Title MajorTitle HeadlineFont" id="RewardMajorTitle"  text="#DAC_Reward_Title_Major" />
-				<Panel id="MinorTitleRow" >
-					<Panel id="BPLogo" />
-					<Label class="Title MinorTitle" id="RewardMinorTitle"  text="#DAC_Reward_Title_Minor" />
-				</Panel>
-			</Panel>
-
-			<Panel class="ItemContainer">
-				<Panel id="ItemImage" />
-			</Panel>
-
-			<Panel id="TalentContainer">
-				<!-- Filled with DACTalentCards -->
-			</Panel>
-			
-			<Panel id="RewardTextContainer">
-				<Label class="RewardText RewardTextName" html="true"  text="#DAC_Reward_Item_Name" />
-				<Label class="RewardText RewardTextDesc" html="true"  text="#DAC_Reward_Item_Desc" />
-				<Panel class="HorizontalCenter">
-					<Panel class="RewardMaybeHorizontal">
-						<Label class="RewardText RewardTextUnlockCount" html="true"  text="#DAC_Reward_Item_TalentCount" />
-						<Label class="RewardText RewardTextUnlocked" html="true"  text="#DAC_Reward_Item_TalentUnlocked" />
+		<Panel id="Overlay">
+			<Panel id="BattlepassBackgroundImage"/>
+			<Panel id="OptionalBackground" />				
+			<Panel id="OptionalBackground2" />	
+			<!--<DACParticleScenePanel id="RewardFX" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="econ/s0/particles/battlepass/s0_battlepass_reward_page.vpcf" fov="150" />						-->
+			<Panel id="ItemInspector">
+				<Panel id="ItemContents">
+					<Panel id="RewardTextContainer">
+						<Panel id="RewardTextHeadnote">
+							<Label class="RewardText RewardTextLevel" html="true" text="#DAC_Reward_Item_Level" />
+							<Label class="RewardText RewardTextCityCrawl" html="true" text="#DAC_CC_Unlock_Title" />
+							<Panel class="EquipmentTypeIcon" /> 
+							<Label class="RewardText RewardTypeDesc" html="true" text="#DAC_Reward_Item_Type" />
+						</Panel>
+						<Label class="RewardText RewardTextName HeadlineFont" html="true" text="#DAC_Reward_Item_Name" />
+						
 					</Panel>
 				</Panel>
+				<Label class="RewardText RewardTextDesc" html="true" text="#DAC_Reward_Item_Desc" />
 			</Panel>
 
-			<Button id="EquipButton" class="CloseButton" onactivate="DACPopupRewardEquip()" >
-				<Label class="EquipLabel" text="#DAC_LoadoutEquip" allowtextselection="false"/>
-			</Button>
+			<DACRewardPreviewScenePanel hittest="true" id="RewardContainer" use_3D_preview ="true" use_inventory_image_if_3D_preview_not_found="true" map="scenes/banner" camera="cam_item_preview_big_preview" renderdeferred="false" rendershadows="false" squarepixels="true" preview_model_scale="1.0" glowsize="0" cleardepth="true" enable_sound_effects="true" use_portrait_camera="true" use_portrait_lighting="true" use_portrait_backgrounds="false" camera_set="RewardPopup" >
+				<Panel id="OptionalImage" />
+				<Label id="OptionalPosterTitleText" class="PosterTitleText" text="{s:reward_name}"/>
+				 
+			</DACRewardPreviewScenePanel>
+			<Panel id="OptionalForeground"/>
+			<Panel class="TitleContainer">
+				<Label class="Title MajorTitle HeadlineFont" id="RewardUnlockedLabel"  text="#DAC_Reward_Unlocked"/>
+			</Panel>
+			<DACQuickEquipButton id="QuickEquipButton" hittest="true"/>
+			<Button id="ContinueButton" class="PopupButton" onactivate="DACPopupRewardContinueOrClose()"/>
+			<Button id="SkipAllButton" class="PopupButton" onactivate="DACPopupRewardSkipAll()"/>
 			
 		</Panel>
 	</PopupReward>

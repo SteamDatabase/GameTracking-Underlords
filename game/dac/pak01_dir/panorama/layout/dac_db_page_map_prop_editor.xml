@@ -1,0 +1,27 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_page_map_prop_editor.vcss_c" />
+	</styles>
+	
+	<DACMapPropEditorPage hittest="false" class="DashboardPage">	
+		<Panel id="RootPanel">
+			<Label class="PropEditorHeader PropEditorLabel" text="#DAC_Map_Prop_Editor_Header"/>
+			<Label class="PropEditorSubheader PropEditorLabel" text="#DAC_Map_Prop_Editor_Subheader" html="true"/>			
+			<DACMapPropList id="PropList"/>
+			<Panel id="FooterPanel">
+				<Label id="SaveWarningText" text="#DAC_Map_Prop_Editor_SaveWarning"/>
+				<Button class="StandardButton SaveButton" onactivate="DACMapPropEditorSaveAndExit(); PlaySoundEffect( 'UL_UI.Loadout_SaveExit_Activation' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_SaveExit_Rollover' )">
+					<Label class="ButtonLabel PropEditorLabel" text="#DAC_Map_Prop_Editor_SaveAndExit" />
+				</Button>					
+				<Button class="StandardButton ClearButton" onactivate="DACMapPropEditorClearSelectedProp() PlaySoundEffect( 'UL_UI.Loadout_ClearProp_Activation' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_ClearProp_Rollover' )" >
+					<Label class="ButtonLabel PropEditorLabel" text="#DAC_Map_Prop_Editor_ClearProp" />
+				</Button>
+			</Panel>			
+		</Panel>
+		<Panel class="DashboardHeader GameHeader" onactivate="DACShowLoadoutCategory('CategorySelect'); PlaySoundEffect( 'UL_UI.Loadout_BackoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_BackoutRollover' )">
+			<Panel id="BackButton2"  onactivate="DACMapPropEditorDiscardChanges()" />	
+		</Panel>	
+	</DACMapPropEditorPage>
+</root>

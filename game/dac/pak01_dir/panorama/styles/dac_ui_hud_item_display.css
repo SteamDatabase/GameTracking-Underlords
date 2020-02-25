@@ -1,0 +1,392 @@
+
+.EGameState_Playing DACHUDRankDisplay,
+.EGameState_Playing DACHUDItemDisplay
+{
+	visibility: visible;
+}
+
+DACHUDItemDisplay
+{
+	width: 100%;
+	height: 100%;
+	visibility: collapse;
+}
+
+DACHUDItemDisplay .HUDItem
+{
+	width: 128px;
+	height: 128px; 
+}
+
+
+DACHUDItemDisplay .HUDItem.OnItemPlaced
+{
+	width: 128px;
+	height: 128px;
+	transition-property: width, height;
+	transition-duration: 1000ms;
+	transition-timing-function: ease-out;
+}
+
+.IsLayoutLargeScreen DACHUDItemDisplay .HUDItem
+{
+	width: 128px;
+	height: 128px;
+}
+
+DACHUDItemDisplay .HUDItem.OnItemPlaced
+{
+	animation-name: OnPlaceItemSlamAnim;
+	animation-duration: 0.15s;
+	animation-timing-function: ease-out;
+	animation-iteration-count: 1;
+}
+
+@keyframes 'OnPlaceItemSlamAnim'
+{
+	0%
+	{
+		pre-transform-scale2d: 2.0;
+	}
+	100%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+}
+
+DACHUDItemDisplay .HUDItem.UnitOnBench
+{
+	transform: translateY( -26px );
+}
+
+.IsDraggingItem .HUDItem.EmptySlot #ItemImage
+{
+	visibility: visible;
+}
+
+.HUDItem.EmptySlot #ItemImage
+{
+	visibility: collapse;
+}
+
+DACHUDItemDisplay #ItemImage
+{
+	width: 44px;
+	height: 44px;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 32px;
+}
+
+DACHUDItemDisplay #BottomRow
+{
+	width: fit-children;
+	height: 24px;
+	margin-top: 16px;
+	vertical-align: bottom;
+	horizontal-align: center;
+	flow-children: right;
+	margin-bottom: 16px;
+	background-image: url("s2r://panorama/images/hud/mini_hero_backer_psd.vtex");
+	brightness: 1.5;
+	background-size: 100%;
+}
+
+.LowVisualQuality DACHUDItemDisplay #BottomRow
+{
+	brightness: 1;
+}
+
+DACHUDItemDisplay .HUDItem #ItemImage
+{
+	margin-bottom: 40px;
+}
+
+DACHUDItemDisplay #HeroImage
+{
+	visibility: visible;
+	horizontal-align: left;
+	vertical-align: center;
+	width: 24px;
+	height: 24px;
+	margin: 0px;
+}
+
+DACHUDItemDisplay.HideUnitIcons #HeroImage
+{
+	visibility: collapse;
+}
+
+.IsUnderlord #BottomRow
+{
+	height: 32px;	
+}
+
+.IsUnderlord #HeroImage
+{
+	horizontal-align: left;
+	vertical-align: bottom;
+	width: 32px;
+	height: 32px;
+	margin: 0px;
+	margin-bottom: -2px;
+
+}
+
+DACHUDItemDisplay #Rank1Star, DACHUDItemDisplay #Rank2Star, DACHUDItemDisplay #Rank3Star 
+{
+	visibility: collapse;
+}
+
+DACHUDItemDisplay .RankStar
+{
+	vertical-align: center;
+	width: 16px;
+	height: 16px;
+	background-size: 100%;
+}
+
+DACHUDItemDisplay .HUDItem.Rank1 #Rank1Star
+{	
+	visibility: visible;
+	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_1_psd.vtex");
+}
+
+DACHUDItemDisplay .HUDItem.Rank2 #Rank1Star,
+DACHUDItemDisplay .HUDItem.Rank2 #Rank2Star
+{
+	visibility: visible;
+	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_2_psd.vtex");
+}
+
+DACHUDItemDisplay .HUDItem.Rank3 #Rank1Star,
+DACHUDItemDisplay .HUDItem.Rank3 #Rank2Star,
+DACHUDItemDisplay .HUDItem.Rank3 #Rank3Star
+{
+	visibility: visible;
+	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_3_psd.vtex");
+}
+
+@keyframes 'MapPropPopupAnimation'
+{
+	0%
+	{
+		pre-transform-scale2d: 1.0;
+	}		
+	10%
+	{
+		pre-transform-scale2d: 1.3;
+	}
+	15%
+	{
+		pre-transform-scale2d: 1.0;
+	}
+
+	90%
+	{
+		pre-transform-scale2d: 1.0;
+		opacity:1;
+	}
+	100%
+	{
+		pre-transform-scale2d: 0.0;
+		opacity:0;
+	}
+}
+
+DACHUDItemDisplay #WorthNoGold
+{
+	visibility: collapse;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	horizontal-align: left;
+	vertical-align: center;
+	width: 22px;
+	height: 22px;
+	margin: 0px;
+	margin-bottom: -2px;
+	margin-left: 2px;
+	background-image: url("s2r://panorama/images/hud/turbo_no_gold_small_psd.vtex");
+}
+
+.WorthNoGold #WorthNoGold
+{
+	visibility: visible;
+}
+
+.IsDraggingItem .HUDItem.CannotAcceptDrag .Unavailable
+{
+	width: 100%;
+	height: 100%;
+	background-size: 50%;
+	background-repeat: no-repeat;
+	background-position: 50% 70%;
+	background-image: url("s2r://panorama/images/hud/synergy_slash_psd.vtex");
+}
+
+.ERoundState_Combat.IsVersusOrCombatRunning DACHUDItemDisplay:not(.IsDraggingItem) .HUDItem:not(.UnitOnBench)
+{
+	visibility: collapse;
+}
+
+.ERoundState_Combat.IsVersusOrCombatRunning DACHUDItemDisplay:not(.IsDraggingItem) .HUDItem.UnderlordHasItem
+{
+	visibility: visible;
+}
+
+.IsDraggingItem .HUDItem:not(.OnEquippableTeam)
+{
+	visibility: collapse;
+}
+
+@keyframes 'PopupAnimation'
+{
+	0%
+	{
+		pre-transform-scale2d: 0.95;
+	}
+
+	50%
+	{
+		pre-transform-scale2d: 1.05;
+	}
+
+	100%
+	{
+		pre-transform-scale2d: 0.95;
+	}
+}
+
+@keyframes 'FadeItem'
+{
+	0%
+	{
+		opacity: 0.95;
+	}
+
+	100%
+	{
+		opacity: 0.01;
+	}
+}
+
+.ERoundState_Combat.IsVersusOrCombatRunning .HUDItem.FadeItem
+{
+	animation-name: FadeItem;
+	animation-duration: 1.0s;
+	animation-timing-function: linear;
+	visibility:visible;
+	opacity:0.95;
+}
+
+.PropSnippet
+{
+	animation-name: MapPropPopupAnimation;
+	animation-duration: .95s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in-out;
+	pre-transform-scale2d: 0.0;
+	flow-children:down;
+	width:200px;
+	height:300px;
+}
+
+#BattlePassLevel
+{
+	width:100%;
+	height:100%;
+}
+
+.PropImage
+{
+	horizontal-align:center;
+	width:100%;
+	height:100%;	
+	background-repeat: no-repeat;
+	background-size:contain; 	
+
+	width:100px;
+	height:100px;	
+}
+
+#RickyImage { background-image: url("s2r://panorama/images/econ/s1/map_props/click_ricky_psd.vtex"); }
+#GoldenRickyImage { background-image: url("s2r://panorama/images/econ/s1/map_props/click_goldenricky_psd.vtex"); }
+
+#RankButtons
+{
+	margin-bottom: 0px;
+	margin-left: 0px;
+	horizontal-align: right;
+	flow-children: down;
+	opacity: 0;
+	transition-duration: 0.3s;
+	transition-property: opacity, transform; 
+}
+
+.GameMode_Puzzle #RankButtons
+{
+	opacity: 1;
+}
+
+.ModifyRankButton
+{
+	height: 44px;
+	width: 44px;
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+	transition-property: brightness, opacity;
+	transition-duration: 0.2s;
+	opacity: 0;
+}
+
+.ModifyRankButton:hover
+{
+	brightness: 1.3;
+}
+
+.IsPlatformMobile #RankButtons
+{
+	margin-right: -50px;
+	margin-top: -30px;
+}
+
+.IsPlatformMobile .ModifyRankButton
+{
+	height: 80px;
+	width: 80px;
+	overflow: noclip;
+} 
+
+.ModifyRankButton:hover
+{
+	brightness: 1.4;
+}
+
+.AllowRankUpAndDown .ModifyRankButton
+{
+	opacity: 1;
+}
+
+.AllowRankUpAndDown.Rank3 #IncreaseUnitRankButton
+{
+	opacity: 0.7;
+	saturation: .2;
+}
+
+.AllowRankUpAndDown.Rank1 #DecreaseUnitRankButton
+{
+	opacity: 0.7;
+	saturation: .2;
+}
+
+#IncreaseUnitRankButton
+{
+	background-image: url("s2r://panorama/images/hud/puzzle_increase_unit_rank_circle_psd.vtex");
+	margin-bottom: 4px;
+}
+
+#DecreaseUnitRankButton
+{
+	background-image: url("s2r://panorama/images/hud/puzzle_decrease_unit_rank_circle_psd.vtex");
+}

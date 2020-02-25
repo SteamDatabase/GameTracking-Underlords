@@ -480,10 +480,12 @@ $tI
 ../public/ordered_constructor.h
 ../public/panorama/layout/fillbrush.h
 ../public/tier0/tslist.h
+../public/tier1/memstack.h
 ../public/tier1/utlleanvector.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
 ../public/tier1/utlsortvector.h
+../public/tier1/utlsymbol.h
 ./google/protobuf/arena.h
 ./google/protobuf/arenastring.h
 ./google/protobuf/descriptor.pb.h
@@ -580,7 +582,6 @@ $tI
 11CRefCountedI20CRefCountServiceBaseILb1E6CRefMTEE
 11IRefCounted
 120.0f
-12CEmptyConVar
 12CRefCounted1I12IVideoPlayer20CRefCountServiceBaseILb1E6CRefMTEE
 12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE
 12CRefCounted1IN8panorama10IUITextureE20CRefCountServiceBaseILb1E6CRefMTEE
@@ -593,7 +594,9 @@ $tI
 13CCallbackBase
 14 (default)
 14CBaseAppSystemI17IPanoramaUIEngineE
+14CVectorGraphic
 14ConCommandBase
+14IVectorGraphic
 150
 15CMemberFunctor4IPN8panorama20CSource2UIFileSystemEMS1_FvP17IAsyncFileRequestPKcP10CUtlBuffer12CUtlDelegateIFvS6_RS7_bEEES4_S6_S8_SC_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CNoOpFileSystem
@@ -605,6 +608,7 @@ $tI
 17CPanoramaUIEngine
 17EVideoPlayerEvent
 17IPanoramaUIEngine
+18CPlaceholderConVar
 18CValidatableThread
 19CDragStartCallbacks
 1g*
@@ -621,7 +625,7 @@ $tI
 20CPostConnectCallback
 20CRefCountServiceBaseILb1E6CRefMTE
 20IResourceTypeManager
-21:37:51
+21:41:45
 22CSchemaInstallCallback
 22IToolsResourceListener
 23IConCommandBaseAccessor
@@ -708,10 +712,13 @@ $tI
 <ASN1 29>
 <INVALID>
 <NULL>
+<deferred>
 <g*
+<no deferred ref found>
 <no failure reason set>
 <null>
 <script>
+<unconnected>
 <unknown>
 =
 = { <proto text format> }". To set fields within it, use syntax like "
@@ -763,6 +770,7 @@ $tI
 @panorama_disable_layer_clear
 @panorama_disable_render_callbacks
 @panorama_disallow_hover_styles
+@panorama_dispatch_event
 @panorama_dragscroll_affordance
 @panorama_dragscroll_affordance_vr
 @panorama_dragscroll_mintime
@@ -995,6 +1003,8 @@ ATI_DST24
 ATTEMPTED TO DECOMMIT OWNED MEMORY STACK SPACE
 ATTLIST
 Acceptable OCSP Responses
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 AccessParticleSystem
 AccessStopColors
 ActivateMainWindow
@@ -1766,22 +1776,22 @@ CThread::~CThread()
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Reset()
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadFiber::CThreadFiber(unsigned long)
 CThreadMultiWaitEvent::CThreadMultiWaitEvent(bool)
 CThreadMultiWaitEvent::Set()
 CThreadMultiWaitEvent::~CThreadMultiWaitEvent()
-CThreadMutex::TryLock()
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadMutex::TryLock(char const*, int)
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
 CThreadSemaphore::CThreadSemaphore(int, int, char const*, bool)
 CThreadSemaphore::Release(int, int*)
 CThreadSemaphore::~CThreadSemaphore()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::Wait(unsigned int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
@@ -2139,7 +2149,6 @@ Data size too short
 Data:
 DebugTextureInfo001
 Dec
-Dec 16 2019
 Decipher Only
 DeclareCurrentThreadIsMainThread
 Decompression Error
@@ -2150,6 +2159,7 @@ Define Huffman Table 0x%02x
 Define Quantization Table %d  precision %d
 Define Restart Interval %u
 DeleteVideoPlayer
+Deliver async event '%s' (at %.2f, scheduled for %.2f) for '%s' ( 0x%p )
 DevMsg
 DevMsg(char const*, ...)
 DevWarning(char const*, ...)
@@ -2164,6 +2174,7 @@ DirName
 DirName:
 Directory
 Disable descendant selector filtering
+Dispatch the event defined by the argument string. No creating panel is specified.
 DispatchAsyncEvent backlog, failed to dispatch all this frame. Remaining queue depth: %d (was %d)
 DispatchPanelEvent
 DispatchQueuedEvent: %d events queued for %d distinct events
@@ -2569,6 +2580,7 @@ FastHexToBuffer() wants non-negative integers, not
 Fatal V8 Error: %s - %s
 Fatal error (code: %d)
 Feb
+Feb 24 2020
 Feel free to add support for more if you need it.
 Fg*
 Field       :
@@ -2838,6 +2850,7 @@ ISO-8859-1
 ISO-US
 ISSUING_DIST_POINT
 IV block
+If non-empty, print debug info about async event queue and dispatch behavior for events containing the substring.
 IfHasClassEvent
 IfHoverOtherEvent
 IfNotHasClassEvent
@@ -2940,6 +2953,7 @@ Invalid JPEG file structure: two SOI markers
 Invalid Key Bind
 Invalid PLTE after IDAT
 Invalid SOS parameters for sequential JPEG
+Invalid access of deferred ConVarRef for '%s'
 Invalid at the top level of the document
 Invalid attempt to read row data
 Invalid bKGD after IDAT
@@ -3097,6 +3111,7 @@ Lifetime Svg File size read: %d
 Lifetime Svg allocs: %d
 Lifetime Svg texture allocs: %d
 Line %d col %d:
+Linear
 Linux;tenfoot
 Load certs from files in a directory
 Load file into cache
@@ -3395,6 +3410,7 @@ N6google8protobuf8internal33RandomAccessRepeatedFieldAccessorE
 N8panorama10CImageDataE
 N8panorama10CStyleFileE
 N8panorama10ESoundTypeE
+N8panorama10IUITextureE
 N8panorama11CLayoutFileE
 N8panorama11CPanelStyleE
 N8panorama11GamePadCodeE
@@ -4117,6 +4133,7 @@ Plat_RelativeTicks
 Plat_RemoveFile
 Plat_ScreenToWindowCoords
 Plat_SetActiveWindow
+Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_TickDiffMicroSec
 Plat_TicksAfterMicroSecs
@@ -4183,6 +4200,7 @@ Quantization table 0x%02x was not defined
 Quantizing to %d = %d*%d*%d colors
 Quantizing to %d colors
 QuarterSizeAttrWithBoxFilter
+Queue async event '%s' (delay %.2f to deliver at %.2f) for '%s' ( 0x%p )
 QueuedLoaderVersion001
 QuitApp
 R
@@ -4705,6 +4723,7 @@ Sets letter-spacing for text in a string. Possible values:<br>normal - no manual
 Sets the amount of blur to apply to the contents behind this panel during composition.  Default is no blur, for now Gaussian is the only blur type and takes a horizontal standard deviation, vertical standard deviation, and number of passes.  Good std deviation values are around 0-10, if 10 is still not intense enough consider more passes, but more than one pass is bad for perf.  As shorthand you can specify with just one value, which will be used for the standard deviation in both directions and 1 pass will be set.<br><br><b>Examples:</b><pre>background-blur: gaussian( 2.5 );background-blur: gaussian( 6, 6, 1 );</pre>
 Sets the amount of blur to apply to the panel and all it's children during composition.  Default is no blur, for now Gaussian is the only blur type and takes a horizontal standard deviation, vertical standard deviation, and number of passes.  Good std deviation values are around 0-10, if 10 is still not intense enough consider more passes, but more than one pass is bad for perf.  As shorthand you can specify with just one value, which will be used for the standard deviation in both directions and 1 pass will be set.<br><br><b>Examples:</b><pre>blur: gaussian( 2.5 );blur: gaussian( 6, 6, 1 );</pre>
 Sets the amount of saturation to apply to the panel and all it's children during composition.  Default of 1.0 means no adjustment, 0.0 means fully desaturated to gray scale, greater than 1.0 means over-saturation.<br><br><b>Example:</b><pre>saturation: 0.4;</pre>
+Sets the background color opacity for a panel (does nothing on its own, but when merged with a full background-color it overrides the opacity).<br><br><b>Examples:</b><pre>background-color-opacity: 0.5;</pre>
 Sets the background fill color/gradient/combination for a panel.<br><br><b>Examples:</b><pre>background-color: #FFFFFFFF;background-color: gradient( linear, 0% 0%, 0% 100%, from( #fbfbfbff ), to( #c0c0c0c0 ) );background-color: gradient( linear, 0% 0%, 0% 100%, from( #fbfbfbff ), color-stop( 0.3, #ebebebff ), to( #c0c0c0c0 ) );background-color: gradient( radial, 50% 50%, 0% 0%, 80% 80%, from( #00ff00ff ), to( #0000ffff ) );background-color: #0d1c22ff, gradient( radial, 100% -0%, 100px -40px, 320% 270%, from( #3a464bff ), color-stop( 0.23, #0d1c22ff ), to( #0d1c22ff ) );</pre>
 Sets the brightness that applies to the panel and all it's children during composition. The value is a multiplier on the HSB brightness value.<br><br><b>Example:</b><pre>brightness: 1.5;</pre>
 Sets the contrast that applies to the panel and all it's children during composition.<br><br><b>Example:</b><pre>contrast: 1.5;</pre>
@@ -4812,6 +4831,7 @@ Specifies where to position the body of a context menu relative to this panel. T
 Specifies where to position the body of a tooltip relative to this panel. The first value controls how the body is aligned horizontally when the tooltip is to the top or bottom of the panel, and the second value controls how the body is aligned vertically when the tooltip is to the left or right of the panel. 0% means left/top aligned, 50% means center/middle aligned, and 100% means right/bottom aligned. Default is '0% 0%'.<br><br><b>Example:</b><pre>tooltip-body-position: 50% 100%;</pre>
 Specifies which properties should transition smoothly to new values if a class/pseudo class changes the styles.  Also specifies duration, timing function, and delay.  Valid timing functions are: ease, ease-in, ease-out, ease-in-out, linear.<br><br><b>Example:</b><pre>transition: position 2.0s ease-in-out 0.0s, perspective-origin 1.2s ease-in-out 0.8s;</pre>
 Specifies which properties should transition smoothly to new values if a class/pseudo class changes the styles.<br><br><b>Examples:</b><pre>transition: position, transform, background-color;</pre>
+Ss
 Ss=%d, Se=%d, Ah=%d, Al=%d
 St8functionIFvvEE
 Stack part of OpenSSL 1.0.2j  26 Sep 2016
@@ -5059,6 +5079,7 @@ UV88
 UVLX8888
 UVWQ8888
 Unable to @import style file '%s'
+Unable to CreateEventFromString for the supplied string: %s
 Unable to find child '%s' in layout file '%s'
 Unable to find child '%s' in panel '%s'
 Unable to find panel '%s' in layout file '%s'
@@ -5765,6 +5786,7 @@ b;!l
 b_print.c
 background-blur
 background-color
+background-color-opacity
 background-image
 background-position
 background-repeat
@@ -8062,6 +8084,7 @@ keyfunc
 keygen failure
 keylen <= sizeof key
 keys not set
+keyvalues.cpp
 kh9F
 kisa
 ko
@@ -8214,7 +8237,6 @@ md_rand.c
 md_size <= EVP_MAX_MD_SIZE
 mdc2
 mdc2WithRSA
-mdl
 medium
 mediumaquamarine
 mediumblue
@@ -8673,6 +8695,7 @@ panorama_nov8
 panorama_rt_%s.vtex
 panorama_rt_ds_%s.vtex
 panorama_rt_pp_%s.vtex
+panorama_spew_async_event_substring
 panorama_text_pango
 panorama_texture_u.vtex
 panorama_texture_v.vtex
@@ -8986,6 +9009,7 @@ registerforreadyevents
 reject
 rememberchildfocus
 removeFromCRL
+renderer/uirenderengine.cpp
 renegotiate ext too long
 renegotiation encoding err
 renegotiation mismatch
@@ -9412,6 +9436,7 @@ sound
 sound-out
 source2/renderer/source2surface.cpp
 source2/uienginesource2.cpp
+source2/uirenderdevicesource2.cpp
 spanish
 spkac
 sprintf
@@ -10143,6 +10168,7 @@ userNotice
 userPassword
 utf8only
 utlstring.cpp
+utlsymbol.cpp
 v
 v1(0)
 v2f
@@ -10191,6 +10217,7 @@ value.single
 value.unknown
 value.x509cert
 value.x509crl
+valveextensions.proto
 variable has no value
 vcss
 vcss_c

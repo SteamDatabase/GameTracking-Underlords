@@ -1,88 +1,242 @@
 DACEquipControl
 {
-	//width:1000px;
-	width: fit-children;
-	max-width: 2200px;
-	min-width: 800px;
-	padding: 0px 50px;
-	min-height:360px;
-	max-height: 720px;
+	margin-top: 100px;
+	width: 1296px;
 	height: fit-children;
-	
-	vertical-align: center;
+	flow-children: down;
 	horizontal-align: center;
-	flow-children: right;
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9 .PopupPanel,
+.IsLayoutSmallScreen.AspectRatio4x3 .PopupPanel,
+.IsLayoutSmallScreen.AspectRatio21x9
+{
+	ui-scale: 115%;
 }
 
 #EquippableItemContainer
 {
-	//flow-children: right;
 	flow-children: right-wrap;
-	horizontal-align: center;
-	//margin-top: 50px;
-
+	horizontal-align: left;
+	overflow: clip;
+	width: 100%;
 }
 
-
+.EquippableItem.poster_title
+{
+	background-image: url("s2r://panorama/images/post_game/wanted_poster_plain_psd.vtex");
+	background-size: 100% 100%;
+}
 
 .EquippableItem
 {
-	margin-right: 10px;
-	margin-left: 10px;
-	width: 270px;
-	height: 360px;
-	border: 3px solid #88888800;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	width: 188px;
+	height: 260px;
+	//border: 3px solid #88888800;
 	opacity: 1;
-	brightness: .8;
-	//width: fill-parent-flow(0.1);
+	brightness: .6;
+	box-shadow: fill 0px 0px 24px #00000066;
 
-	transition-property: brightness, background-color, border;
+	transition-property: brightness, background-color, border, box-shadow;
 	transition-duration: .2s;
 	background-position: top;
-	background-size: 80%;
 	flow-children: none;
 }
 
-.IsLayoutSmallScreen DACEquipControl
+.EquippableItem.IsLocked
 {
-	// this lets all the sigils fit in the equip panel
-	ui-scale: 80%;
+	brightness: 0.5;
+	saturation: 0.1;
+	wash-color: #3a458188;
 }
 
+.EquippableItem.Selected {
+	box-shadow: 0px 0px 30px #4242b450;
+}
+
+
+DACEquipControl DACRewardPreviewScenePanel
+{
+	width: 100%;
+	height: 100%;
+	visibility: visible;
+	opacity: 1;
+	box-shadow: fill 0px 0px 24px #00000066;
+	//background-color: black;
+}
 
 .EquippableItem:hover,
 .EquippableItem:active
 {
 	brightness: 1.2;
-	border: 3px solid #88888822;
+	//border: 3px solid #8D60C6;
+}
+
+.EquippableItem.IsLocked:hover,
+.EquippableItem.IsLocked:active
+{
+	brightness: 0.5;
+	saturation: 0.1;
 }
 
 .CurrentlyEquipped.EquippableItem
 {
 	brightness: 1.2;
     background-color: gradient( radial, 50% 40%, 0% 0%, 50% 35%, from( #44444488 ), to( #22222222 ) );
-    border: 3px solid #8D60C6;
+    //border: 3px solid #424f95;
+}
+
+.PosterTitleText
+{
+    font-size: 32px;
+    color:white;
+    horizontal-align:center;
+    vertical-align: bottom;      
+    text-overflow: shrink;
+    text-align:center;
+    transform:translateY(-26px);
+    width:170px;
+    height:30px;
+	font-family: Ravenhook, k_alwaysFontNames;
+}
+
+
+
+.EquippedItemLabel
+{
+    font-size: 36px;
+    color:white;
+    horizontal-align:center;
+    vertical-align: bottom;    
+    transform: translateY(-10px);
+    text-overflow: shrink;
+    text-align:center;
+    width:380px;
+	text-shadow: 2px 2px 2.0 #333333;
+	margin-bottom: 16px;
+}
+
+
+.the_closer .EquippedItemLabel { color: #e1d3c6; text-shadow: none; }
+.ash_man .EquippedItemLabel { color: #2e2a2d; text-shadow: none; }
+.throne_collector .EquippedItemLabel { color: #2e2a2d; text-shadow: none; }
+.money_man .EquippedItemLabel { color: #1f1c1e;  text-shadow: none; }
+.default_title .EquippedItemLabel { color: #97887d; text-shadow: none; }
+.black_title .EquippedItemLabel { color: black; text-shadow: none; }
+.white_title .EquippedItemLabel { color: white; text-shadow: none; }
+
+.the_closer .PosterTitleText { color: #e1d3c6; }
+.ash_man .PosterTitleText { color: #2e2a2d; }
+.throne_collector .PosterTitleText { color: #2e2a2d; }
+.money_man .PosterTitleText { color: #1f1c1e;  }
+.default_title .PosterTitleText { color: #97887d; }
+.black_title .PosterTitleText { color: black; }
+.white_title .PosterTitleText { color: white; }
+
+#CurrentPosterBG,
+#CurrentPosterFrame,
+#PosterFrame,
+#PosterBG
+{
+	height:100%;
+	width:100%;	
+	horizontal-align: center;
+	vertical-align: center;	
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;		
+}
+
+#CurrentPosterBG,
+#CurrentPosterFrame
+{
+	visibility: collapse;
+	background-size: contain;
+}
+
+.wanted_poster_title #CurrentPosterFrame
+{
+	background-image: url("s2r://panorama/images/post_game/wanted_poster_plain_psd.vtex");
+	background-size: 100% 100%;
+	visibility: visible;
+}
+
+
+DACEquipControl DACRewardPreviewScenePanel.wanted_poster
+{
+	transform:translateY(-27px);
+}
+
+
+.wanted_poster #CurrentPosterBG,
+.wanted_poster #CurrentPosterFrame
+{
+	visibility: visible;
+}
+
+#CurrentPosterBG,
+#PosterBG
+{
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_5_png.vtex");	
+	transform:translateY(-25px);
+}
+
+#CurrentPosterFrame,
+#PosterFrame
+{
+	background-image: url("s2r://panorama/images/post_game/wanted_poster_plain_psd.vtex");		
+}
+
+
+.WantedPosterImage
+{
+	transform:translateY(-25px);
+	pre-transform-scale2d:1.08;
+}
+
+.IsLocked.EquipmentType_wanted_poster .WantedPosterImage
+{
+	brightness:0.01;
+}
+
+.IsLocked.EquipmentType_wanted_poster .LockIcon
+{
+  	vertical-align: bottom;
+    horizontal-align: center;
+    margin-bottom:50px;
+    pre-transform-scale2d:1.5;    
 }
 
 .EquipText
 {
-	//text-transform: uppercase;
-	padding-top: 3px;
 	text-align: center;
-	font-size: 28px;
+	font-size: 24px;
     text-overflow: shrink;
-	font-weight: semi-bold;
     color: #eeeeee;
-    margin-top: 255px;
-    //margin-bottom: 0px;
-
+    margin-top: 180px;
+	padding: 0px 8px;
     vertical-align: center;
-    horizontal-align: center;
+	horizontal-align: center;
+	text-shadow: 2px 2px 2.0 #333333;
+	line-height: 24px;
 }
+
+.EquipLabelContainer
+{
+	width: fit-children;
+	height: fit-children;
+	transition-property: border, background-color;
+	transition-duration: .2s;
+	flow-children: right;
+	horizontal-align: left;
+	margin-top: 8px;
+}
+
 
 #EquipButton
 {
-	//vertical-align: bottom;
 	width: 100%;
 	height: 100%;
 	transition-property: border, background-color;
@@ -92,12 +246,11 @@ DACEquipControl
 .EquipLabel
 {
 	text-transform: uppercase;
-	padding-top: 3px;
+	padding-top: 4px;
 	text-align: center;
 	font-size: 28px;
     text-overflow: shrink;
 	font-weight: black;
-	letter-spacing: 4px;
     color: #555;
 
     vertical-align: top;
@@ -108,39 +261,26 @@ DACEquipControl
 	opacity: 0;
 }
 
-#EquipButton:hover
-{
-	//border: 3px solid #aaa;
-	//background-color: #666;
-}
-
-#EquipButton:hover .EquipLabel
-{
-	//opacity: 1;
-	//color: #eeeeee;
-}
 
 .CurrentlyEquipped #EquipButton
 {
 	background-color: #00000000;
-	border: 3px solid #00000000;
+	//border: 3px solid #00000000;
 }
 
 .EquippedLabel
 {
-    font-size: 18px;
+    font-size: 24px;
     text-transform: uppercase;
-    color: #ffffff;
+    color: #cdd2f3;
     text-align: right;
     font-weight: bold;
-    letter-spacing: 1px;
-    background-color: #8D60C6;
-    padding: 5px 7px;
-    margin: -3px -3px 0px 0px;
 
     vertical-align: top;
-    horizontal-align: right;
-    visibility: collapse;
+    horizontal-align: left;
+	visibility: collapse;
+	font-family: Ravenhook;
+	text-shadow: 0px 0px 0px 3.0 #2c3ab555;
 }
 
 .CurrentlyEquipped .EquipLabel
@@ -153,9 +293,245 @@ DACEquipControl
 	visibility: visible;
 }
 
+#EquippedItemPreview #LoadoutFX
+{
+	margin-bottom:20px;
+}
 
+#LoadoutFX
+{
+    width:100%;
+    height:100%;
+}
 
 .CurrentlyEquipped .EquipLabel
 {
 	color: #666;
 }
+
+.IsLocked .LockIcon
+{
+    width: 32px;
+    height: 32px;
+    vertical-align: top;
+	horizontal-align: right;
+	margin-top: 8px;
+	margin-right: 8px;
+
+    background-image: url("s2r://panorama/images/shop/locked_icon_psd.vtex");
+	background-size: 100%;
+}
+
+#GrantButton
+{
+	visibility: collapse;
+	font-size: 22px;
+}
+
+#GrantButton Label
+{
+	padding: 8px;
+}
+
+#GrantButton:hover
+{
+	brightness: 2;
+}
+
+#GrantButton Label.ProbablyUnlocalizedText
+{
+	animation-name: none;
+	color: white;
+	background-color: #333333;
+}
+
+.BuildMain .IsLocked #GrantButton,
+.BuildStaging .IsLocked #GrantButton
+{
+	visibility: visible;
+}
+
+#CurrentlyEquipped {
+	width: 400px;
+	height: 544px;
+	margin-right: 24px;
+	margin-left: 24px;
+}
+
+#BattlepassBackgroundImage {
+	width: 100%;
+	height: 100%;
+}
+
+.ContentContainer {
+	flow-children: right;
+	height: 568px;
+	width: 100%;
+}
+
+.PaginationContainer {
+	flow-children: right;
+	width: 240px;
+	height: 88px;
+	horizontal-align: right;
+	margin-right: 20px;
+}
+
+.PaginationContainer {
+	visibility: collapse;
+}
+
+.HasPagingControls  .PaginationContainer{
+	visibility: visible;
+}
+
+.ArrowLeft, .ArrowRight
+{
+	background-size: 100%;
+	width: 42px;
+	height: 66px;
+	opacity: 0;
+	transition-property: opacity, brightness, wash-color;
+	transition-duration: 0.2s;
+	wash-color: #454e6a;
+}
+.ArrowRight
+{
+	background-image: url("s2r://panorama/images/dashboard/arrow_right_underlord_psd.vtex");
+	horizontal-align: right;
+}
+
+.ArrowLeft
+{
+	background-image: url("s2r://panorama/images/dashboard/arrow_left_underlord_psd.vtex");
+	horizontal-align: left;
+}
+
+.CanPageRight .ArrowRight, .CanPageLeft .ArrowLeft
+{
+	opacity: 1;
+	wash-color: #cdd2f3;
+}
+
+.CanPageRight .ArrowRight:hover, .CanPageLeft .ArrowLeft:hover
+{
+	brightness: 1.5;
+}
+
+.CurrentlyEquipped #EquippedPipContainer
+{
+	visibility: visible;
+}
+
+#EquippedPipContainer
+{
+	width: 32px;
+    height: 32px;
+    
+	background-image: url("s2r://panorama/images/battle_pass/bp1/equipped_pip_psd.vtex");
+    background-repeat: no-repeat;
+    background-size: 100%;
+	
+	horizontal-align: center;
+	vertical-align: center;
+	margin-top: 0px;
+	margin-left: 4px;
+	margin-right: -2px;
+	visibility: collapse;
+}
+
+.PageNumbers
+{
+	font-size: 40px;
+	width: 156px;
+	color: #8b91a6;
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	margin-top: 8px;
+}
+
+.poster_title .EquippedItemLabel
+{
+	margin-bottom:48px;
+	width:280px;	
+	height:40px;
+}
+.poster_title #RewardPreviewScenePanel
+{
+	width:400px;
+}
+
+.Footer
+{
+    height: fill-parent-flow(1);
+    width: 100%;
+}
+
+#EquippedSelectionButton {
+	visibility: collapse;
+}
+
+#EquipSelectionButton
+{
+    height: 100%;
+    width: 100%;
+	margin-left: 24px;
+	height: 58px;
+	width: 400px;
+	//height: 100px;
+	background-color: #00000055;
+	border: 2px solid #b7d5ffaa;
+	box-shadow: inset 0px 0px 20px #4b5affcc;
+	visibility: visible;
+
+	transition-property: background-color;
+	transition-duration: .2s;
+
+}
+
+.IsLayoutSmallScreen #EquipSelectionButton
+{
+	box-shadow: inset 0px 0px 10px #4b5affcc;
+}
+
+#EquipSelectionButton Label
+{
+	font-size: 32px;
+	width: 156px;
+	color: #8b91a6;
+	text-align: center;
+	vertical-align: center;
+	horizontal-align: center;
+	margin-top: 0px;
+	font-family: Ravenhook;
+	color: #ffffff;
+	letter-spacing: 2px;
+	text-align: center;
+}
+
+#EquipSelectionButton:hover
+{
+	background-color: #253782;
+}
+
+
+
+#EquipSelectionButton.ViewingEquippedItem,
+#EquipSelectionButton.NotOwned {
+	border: 0px solid #000000;
+	box-shadow: inset 0px 0px 0px #4b5aff00;
+}
+
+#EquipSelectionButton.ViewingEquippedItem Label,
+#EquipSelectionButton.NotOwned Label {
+	color: #7e7f89;
+	opacity: 0.5;
+}
+
+#EquipSelectionButton.ViewingEquippedItem:hover,
+#EquipSelectionButton.NotOwned:hover {
+	background-color: #00000055;
+}
+
+

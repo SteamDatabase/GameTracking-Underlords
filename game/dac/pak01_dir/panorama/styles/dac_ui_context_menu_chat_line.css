@@ -1,4 +1,12 @@
-/* styles for the player context menu */
+/* styles for the chat context menu */
+#ContentsBody
+{
+	width: fit-children;
+	height: fit-children;
+	overflow: noclip;
+	flow-children: down;
+}
+
 #Contents.CombatChatOptionsPanel 
 {
     width: 500px;
@@ -8,13 +16,34 @@
 
 #MenuOptionsContainer
 {
-	width: 100%;
+	width: 444px;
 	flow-children: right;
 }
 
 .ChatHeaderContainer
 {
+	width: 444px;
 	flow-children: right;
+}
+
+.IsLayoutSmallScreen .ChatHeaderContainer
+{
+	width: 580px;
+}
+.IsLayoutSmallScreen #ChatLineContextMenu #MenuOptionsContainer
+{
+	width: 580px;
+}
+
+.IsLayoutSmallScreen #ChatLineContextMenu #Contents
+{
+	width: 600px;
+	padding-bottom: 48px;
+}
+
+.IsLayoutSmallScreen #ChatLineContextMenu #ContextMenuBodyRow
+{
+	padding-right: -48px;
 }
 
 .ChatHeader
@@ -22,7 +51,7 @@
 	color: #eee;
 	font-family: Ravenhook, Radiance;
 	font-size: 32px;
-	width: 475px;
+	width: 100%;
 	//background-color: red;
 	text-align: center;
 	margin-bottom: 10px;
@@ -31,7 +60,7 @@
 	visibility: collapse;
 }
 
-.IsPlatformMobile .ChatHeader
+.IsLayoutSmallScreen .ChatHeader
 {
 	margin-bottom: 0px;
 	margin-top: 5px;	
@@ -65,6 +94,7 @@
 {
 	flow-children: down;
 	width: fill-parent-flow(1);
+	height: fit-children;
 
 	//transform: TranslateY(-100% );
 	transform: TranslateY(0% );
@@ -75,6 +105,11 @@
 	transition-timing-function: ease-in-out;
 
 	visibility: collapse;
+}
+
+.IsLayoutSmallScreen .ChatMenu
+{
+	ui-scale: 170%;
 }
 
 .RoundState_Preparing #PreparationChatOptionsPanel

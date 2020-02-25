@@ -1,37 +1,45 @@
-.IsLayoutLargeScreen PopupItem {
-	ui-scale: 80%;
+.IsLayoutLargeScreen PopupItem
+{
+	ui-scale: 100%;
 }
 
-.PopupPanel {
-	//width: 1200px;
-	width: fit-children;
-	max-width: 2200px;
-	min-width: 500px;	
-	height: fit-children;
-	min-height: 440px;
+.IsLayoutLargeScreen .PopupPanel
+{
+	ui-scale: 100%;
+}
+
+.PopupPanel
+{
+	width: 1400px;	
+	height: 782px;
 	vertical-align: middle;
-	padding: 0px;
-	/*opacity-mask: url("s2r://panorama/images/masks/portrait_scratch_psd.vtex") 1;*/
+	padding: 20px;
+	background-image: url("s2r://panorama/images/dashboard/equip_bg_psd.vtex");
+	background-size: 100%;
+	background-color: none;
+	flow-children: none;
+	background-color: #000000;
+}
 
-
-	//background-color: #0000;
-	//border-width: 0px;
+.IsLayoutSmallScreen .PopupPanel {
+	ui-scale: 160%;
 }
 
 .BPPopupTitle
 {
-
-	margin-top: 35px;
-	margin-bottom: 25px;
-	font-size: 32px;
-
-    text-overflow: shrink;
-	font-weight: black;
-	letter-spacing: 4px;
-    vertical-align: center;
-    horizontal-align: center;
-    color: #ffffff;
+    //color: gradient (linear, 0% 0%, 0% 100%, from(#C6DCFE), to(#fff));
+    color: #cdd2f3;
+	font-size: 48px;
+    font-weight: medium;
+    letter-spacing: 0px;    
+    text-align: left;
+	width: fit-children;
+	vertical-align: middle;
+    text-shadow: 0px 0px 0px 3.0 #4242b4;
     text-transform: uppercase;
+	
+	margin-top: 5px;
+	margin-left: 87px;
 	visibility: collapse;
 }
 
@@ -42,7 +50,60 @@
 .fireworks .BPPopupTitle.Fireworks,
 .kill_streak .BPPopupTitle.Streaks,
 .yo .BPPopupTitle.Yos,
-.flag_image .BPPopupTitle.Sigils
+.wanted_poster .BPPopupTitle.WantedPosterPortraits,
+.wanted_poster_title .BPPopupTitle.WantedPosterTitles,
+.flag_image .BPPopupTitle.Sigils,
+.underlord_damage_effect .BPPopupTitle.DamageEffect,
+.board_spray .BPPopupTitle.BoardSpray,
+.target_buddy_skin .BPPopupTitle.TargetBuddy,
+.barricade_skin .BPPopupTitle.Barricade
+{
+	visibility: visible;
+}
+
+.underlord_cosmetic.skin .BPPopupTitle.UnderlordOutfit,
+.underlord_cosmetic.victory_dance .BPPopupTitle.VictoryDance
+{
+	visibility: visible;
+}
+
+.BPPopupDesc
+{
+    //color: gradient (linear, 0% 0%, 0% 100%, from(#C6DCFE), to(#fff));
+    color: #cdd2f3;
+	font-size: 24px;
+    font-weight: medium;
+    letter-spacing: 0px;    
+    text-align: left;
+    width: fit-children;
+    //text-shadow: 0px 0px 0px 3.0 #4242b4;
+   
+    margin-top: -8px;
+	margin-left: 90px;
+	visibility: collapse;
+	font-weight: semi-bold;
+}
+
+.Map .BPPopupDesc.Boards,
+.flag_shape .BPPopupDesc.Banners,
+.flag_base .BPPopupDesc.BannerBases,
+.teleport .BPPopupDesc.Teleports,
+.fireworks .BPPopupDesc.Fireworks,
+.kill_streak .BPPopupDesc.Streaks,
+.yo .BPPopupDesc.Yos,
+.wanted_poster .BPPopupDesc.WantedPosterPortraits,
+.wanted_poster_title .BPPopupDesc.WantedPosterTitles,
+.flag_image .BPPopupDesc.Sigils,
+.underlord_damage_effect .BPPopupDesc.DamageEffect,
+.board_spray .BPPopupDesc.BoardSpray,
+.target_buddy_skin .BPPopupDesc.TargetBuddy,
+.barricade_skin .BPPopupDesc.Barricade
+{
+	visibility: visible;
+}
+
+.underlord_cosmetic.skin .BPPopupDesc.UnderlordOutfit,
+.underlord_cosmetic.victory_dance .BPPopupDesc.VictoryDance
 {
 	visibility: visible;
 }
@@ -81,33 +142,46 @@ DACEquipControl
 {
 	width: 80%;
 	height: 70%;
-	vertical-align: center;
-	horizontal-align: center;
 	flow-children: right;
 }
 
 .CloseButton
 {
-	width: 250px;
+	width: 80px;
 	height: 80px;
-	border: 3px solid #aaa;
-	horizontal-align: center;
-	margin-bottom: 30px;
-	margin-top: 30px;
+	vertical-align: top;
+	horizontal-align: right;
+	background-image: url("s2r://panorama/images/hud/close-button_png.vtex");
+	background-size: 100%;
+	opacity: 1;
+	brightness: 0.8;
+	transition-property: brightness;
+	transition-duration: 0.2s;
+	wash-color: none;
+}
+.CloseButton:hover
+{
+	brightness: 1.8;
 }
 
-.CloseButton Label
+#HeaderLabelContainer {
+	horizontal-align: left;
+	flow-children: down;
+	margin-left: 40px;
+}
+
+.EquipmentTypeIcon
 {
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
 
-	text-transform: uppercase;
-	padding-top: 3px;
-	text-align: center;
-	font-size: 32px;
-    text-overflow: shrink;
-	font-weight: black;
-	letter-spacing: 4px;
-    color: #eeeeee;
+	  vertical-align:top;
+	horizontal-align: left;
+	margin-left: 38px;
 
-    vertical-align: center;
-    horizontal-align: center;
+    width: 90px;
+    height: 90px;
+
+    opacity: 1;
 }

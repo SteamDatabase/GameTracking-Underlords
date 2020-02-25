@@ -6,117 +6,191 @@
 		<include src="s2r://panorama/styles/dac_ui_challenge_world_map.vcss_c" />
 	</styles>
 
-	<DACChallengeMap hittest="true" class="DashboardPage">
+	<DACChallengeWorldMap hittest="true" class="DashboardPage">
 
-		<Panel class="DashboardHeader">
-			<Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
-			<Label class="PageTitle DistressedFont" text="#DAC_ChallengeWorldMapPage"/>
-		</Panel>
+		<Panel class="MapContainer">		
 
-		<Panel class="MapContainer">
-
-			<DACScenePanel id="Scene" map="ui/citycrawl/bp1_city_crawl_map" camera="cam_default" antialias="true" particleonly="false" orthocam="false" rendershadows="true" glowsize="0" squarepixels="true" />
-
+			<DACScenePanel id="Scene" map="ui/citycrawl/bp1_city_crawl_map" renderdeferred="true" camera="cam_default" antialias="true" particleonly="false" orthocam="false" rendershadows="true" glowsize="0" squarepixels="true" />
+		
 			<Panel class="BorderContainer" hittest="false" hittestchildren="false">
-				<Panel class="Vertical Left" />
-				<Panel class="Vertical Right" />
-				<Panel class="Horizontal Top" />
-				<Panel class="Horizontal Bottom" />
-				<Panel class="Corner Top Left" />
-				<Panel class="Corner Top Right" />
-				<Panel class="Corner Bottom Left" />
-				<Panel class="Corner Bottom Right" />
 				<Panel class="InnerGlow" />
 			</Panel>
 
-			<!-- renderdeferred="true" -->
-
 			<Panel class="RegionButtonContainer">
 				<Panel class="RegionButton Region3" onactivate="DACChallengeWorldMapCamera(3);" >
-					<Panel class="RegionImage" />
-					<Label class="RegionTitle" text="#dac_region_3_title" />
-					<Label class="RegionProgress TextSubTitle" text="#dac_challenge_map_progress_3" />
-					<Label class="ActiveRegionLabel ActiveRegion3" text="#dac_challenge_map_active_region" />
+					<Panel class="RegionTitleArea">
+						<Panel class="Region3Image FixedRegionImage" />
+						<Panel class="RegionCounters">
+							<Panel class="CounterBlock Objectives">
+								<Panel class="CounterIcon ObjectivesIcon" />
+								<Label class="CountLabel" text="{d:region_3_objectives_complete} / {d:region_3_objectives_total}" />
+							</Panel>
+							<Panel class="CounterBlock Puzzles">
+								<Panel class="CounterIcon PuzzlesIcon" />
+								<Label class="CountLabel" text="{d:region_3_puzzles_complete} / {d:region_3_puzzles_total}" />
+							</Panel>
+							<Panel class="CounterBlock Streetfights">
+								<Panel class="CounterIcon StreetfightsIcon" />
+								<Label class="CountLabel" text="{d:region_3_streetfights_complete} / {d:region_3_streetfights_total}" />
+							</Panel>
+						</Panel>
+						<!-- <Label class="RegionProgress" text="#dac_challenge_map_progress_3" /> -->
+					</Panel>
+				</Panel>
+				<Panel class="RegionButton Region1" onactivate="DACChallengeWorldMapCamera(1);">
+					<Panel class="RegionTitleArea">
+						<Panel class="Region1Image FixedRegionImage" />
+						<Panel class="RegionCounters">
+							<Panel class="CounterBlock Objectives">
+								<Panel class="CounterIcon ObjectivesIcon" />
+								<Label class="CountLabel" text="{d:region_1_objectives_complete} / {d:region_1_objectives_total}" />
+							</Panel>
+							<Panel class="CounterBlock Puzzles">
+								<Panel class="CounterIcon PuzzlesIcon" />
+								<Label class="CountLabel" text="{d:region_1_puzzles_complete} / {d:region_1_puzzles_total}" />
+							</Panel>
+							<Panel class="CounterBlock Streetfights">
+								<Panel class="CounterIcon StreetfightsIcon" />
+								<Label class="CountLabel" text="{d:region_1_streetfights_complete} / {d:region_1_streetfights_total}" />
+							</Panel>
+						</Panel>
+						<!-- <Label class="RegionProgress" text="#dac_challenge_map_progress_1" /> -->
+					</Panel>
 				</Panel>
 
 				<Panel class="RegionButton Region2" onactivate="DACChallengeWorldMapCamera(2);">
-					<Panel class="RegionImage" />
-					<Label class="RegionTitle" text="#dac_region_2_title" />
-					<Label class="RegionProgress TextSubTitle" text="#dac_challenge_map_progress_2" />
-					<Label class="ActiveRegionLabel ActiveRegion2" text="#dac_challenge_map_active_region" />
+					<Panel class="RegionTitleArea">
+						<Panel class="Region2Image FixedRegionImage" />
+						<Panel class="RegionCounters">
+							<Panel class="CounterBlock Objectives">
+								<Panel class="CounterIcon ObjectivesIcon" />
+								<Label class="CountLabel" text="{d:region_2_objectives_complete} / {d:region_2_objectives_total}" />
+							</Panel>
+							<Panel class="CounterBlock Puzzles">
+								<Panel class="CounterIcon PuzzlesIcon" />
+								<Label class="CountLabel" text="{d:region_2_puzzles_complete} / {d:region_2_puzzles_total}" />
+							</Panel>
+							<Panel class="CounterBlock Streetfights">
+								<Panel class="CounterIcon StreetfightsIcon" />
+								<Label class="CountLabel" text="{d:region_2_streetfights_complete} / {d:region_2_streetfights_total}" />
+							</Panel>
+						</Panel>
+						<!-- <Label class="RegionProgress" text="#dac_challenge_map_progress_2" /> -->
+					</Panel>
 				</Panel>
 
 				<Panel class="RegionButton Region4" onactivate="DACChallengeWorldMapCamera(4);">
-					<Panel class="RegionImage" />
-					<Label class="RegionTitle" text="#dac_region_4_title" />
-					<Label class="RegionProgress TextSubTitle" text="#dac_challenge_map_progress_4" />
-					<Label class="ActiveRegionLabel ActiveRegion4" text="#dac_challenge_map_active_region" />
+					<Panel class="RegionTitleArea">
+						<Panel class="Region4Image FixedRegionImage" />
+						<Panel class="RegionCounters">
+						<Panel class="CounterBlock Objectives">
+								<Panel class="CounterIcon ObjectivesIcon" />
+								<Label class="CountLabel" text="{d:region_4_objectives_complete} / {d:region_4_objectives_total}" />
+							</Panel>
+							<Panel class="CounterBlock Puzzles">
+								<Panel class="CounterIcon PuzzlesIcon" />
+								<Label class="CountLabel" text="{d:region_4_puzzles_complete} / {d:region_4_puzzles_total}" />
+							</Panel>
+							<Panel class="CounterBlock Streetfights">
+								<Panel class="CounterIcon StreetfightsIcon" />
+								<Label class="CountLabel" text="{d:region_4_streetfights_complete} / {d:region_4_streetfights_total}" />
+							</Panel>
+						</Panel>
+						<!-- <Label class="RegionProgress" text="#dac_challenge_map_progress_4" /> -->
+					</Panel>
 				</Panel>
 
-				<Panel class="RegionButton Region1" onactivate="DACChallengeWorldMapCamera(1);">
-					<Panel class="RegionImage" />
-					<Label class="RegionTitle" text="#dac_region_1_title" />
-					<Label class="RegionProgress TextSubTitle" text="#dac_challenge_map_progress_1" />
-					<Label class="ActiveRegionLabel ActiveRegion1 TextSmallHeader" text="#dac_challenge_map_active_region" />
-				</Panel>
+
 			</Panel>
 
-			<DACChallengeMapClaim id="ClaimPanel" />
-			<DACChallengeMapChallenge id="ChallengePanel" />
+			<Panel id="BackButton2" onactivate="DACSelectDashboardButton('PlayContainer'); DACNavigateBack(); PlaySoundEffect( 'UL_UI.CityCrawl_BackoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_BackoutRollover' )"/>
+
+			<Button class="ZoomOutButton" onactivate="DACChallengeWorldMapCamera(0)">
+				<Panel class="ZoomOutIcon" />
+				<Label text="#DAC_City_Crawl_Zoom_Out" />
+			</Button>
 
 			<Panel class="DevButtonContainer">
-				<Button class="SimpleButton OverviewButton" onactivate="DACChallengeWorldMapCamera(0)">
+				<Button class="MiniButton OverviewButton" onactivate="DACChallengeWorldMapCamera(0)">
 					<Label text="#dac_challenge_map_dev_area_0" />
 				</Button>
 
-				<Button class="SimpleButton ClaimModeButton" onactivate="DACChallengeWorldMapToggleClaimMode()">
+				<Button class="MiniButton ClaimModeButton" onactivate="DACChallengeWorldMapToggleClaimMode()">
 					<Label text="#dac_challenge_map_toggle_claim_mode" />
 				</Button>
 
-				<Button class="SimpleButton" onactivate="DACChallengeWorldMapDevBuildings()">
+				<Button class="MiniButton" onactivate="DACChallengeWorldMapDevBuildings()">
 					<Label text="#dac_challenge_map_dev_buildings" />
 				</Button>
 
-				<Button class="SimpleButton" onactivate="DACChallengeWorldMapReset()">
+				<Button class="MiniButton" onactivate="DACChallengeWorldMapReset()">
 					<Label text="#dac_challenge_map_reset" />
+				</Button>
+
+				<Button class="MiniButton" onactivate="DACChallengeWorldMapDevGetAKey()">
+					<Label text="#dac_challenge_map_dev_key" />
+				</Button>
+
+				<Button class="MiniButton" onactivate="DACShowCityCrawlIntro()">
+					<Label text="#dac_challenge_map_intro_popup" />
 				</Button>
 			</Panel>
 
-			<Panel class="HeaderLabels">
+			<!-- <Panel class="HeaderLabels">
 				<Label class="CrawlTitle" text="#dac_challenge_map_title" />
 				<Label class="RegionTitleHeader" text="{s:active_region_name}" />
-			</Panel>
+			</Panel> -->
 
 			<Panel class="UnderlordPortrait1 UnderlordPortrait" />
 			<Panel class="UnderlordPortrait2 UnderlordPortrait" />
 			<Panel class="UnderlordPortrait3 UnderlordPortrait" />
 			<Panel class="UnderlordPortrait4 UnderlordPortrait" />
 
+			<Panel class="CityKeyContainer SafeArea" onmouseover="UIShowTextTooltip( #DAC_CC_Key_Tooltip )" onmouseout="UIHideTextTooltip()">
+				<Panel class="CityKeyImg" />
+				<Panel class="KeyCount">
+					<Panel class="CityKeyBG" />
+					<Label class="CityKeyLabel" text="#DAC_challenge_map_city_key_count" />
+				</Panel>
+				
+			</Panel>
 			<Panel class="AreaLabels">
+				<Panel class="RegionImage" />
+			
+				<!-- <Label class="AreaName" text="{s:active_region_name}" /> -->
 				<Label class="AreaChallengeCount" text="#dac_challenge_map_challenge_count" />
-			</Panel>
-
-			<Panel class="Legend">
-				<Panel class="LegendToggle" onactivate="DACChallengeMapToggleLegend()">
-					<Label class="LeftArrow ArrowUp" text="#dac_challenge_map_legend_up_arrow" />
-					<Label class="LeftArrow ArrowDown" text="#dac_challenge_map_legend_down_arrow" />
-					<Label class="LegendTitle" text="#dac_challenge_map_legend_title" />
-					<Label class="RightArrow ArrowUp" text="#dac_challenge_map_legend_up_arrow" />
-					<Label class="RightArrow ArrowDown" text="#dac_challenge_map_legend_down_arrow" />
-				</Panel>
-				<Panel class="LegendContents">
-					<Panel class="LegendItems">
-						<Label text="#dac_challenge_map_legend_challenges" />
-						<Label text="#dac_challenge_map_legend_location" />
-						<Label text="#dac_challenge_map_legend_premium_location" />
-						<Label text="#dac_challenge_map_legend_reward" />
-						<Label text="#dac_challenge_map_legend_premium_reward" />
+				<Panel class="RegionCounters">
+					<Panel class="CounterBlock Objectives">
+						<Panel class="CounterIcon ObjectivesIcon" />
+						<Label class="CountLabel" text="{d:active_region_objectives_complete} / {d:active_region_objectives_total}" />
 					</Panel>
-					<Label class="LegendSubtitle" text="#dac_challenge_map_legend_subtitle" />
+					<Panel class="CounterBlock Puzzles">
+						<Panel class="CounterIcon PuzzlesIcon" />
+						<Label class="CountLabel" text="{d:active_region_puzzles_complete} / {d:active_region_puzzles_total}" />
+					</Panel>
+					<Panel class="CounterBlock Streetfights">
+						<Panel class="CounterIcon StreetfightsIcon" />
+						<Label class="CountLabel" text="{d:active_region_streetfights_complete} / {d:active_region_streetfights_total}" />
+					</Panel>
 				</Panel>
-
+				<Panel id="AreaItemButton" onactivate="DACToggleStreetFightInventory(); PlaySoundEffect( 'UL_UI.CityCrawl_BackpackActivate' )"/>
 			</Panel>
+
+			<Panel id="AreaInventoryContainer" onactivate="DACToggleStreetFightInventory()" hittest="true">
+				<Panel id="AreaInventory">
+					<Label class="AreaInventoryTitle" text="#DAC_Area_Inventory_Title" />
+					<Label class="AreaInventoryDescription" text="#DAC_Area_Inventory_Description" />
+					<Label class="NoItemsLabel" text="#DAC_Area_Inventory_No_Items" />
+					<Panel id="AreaInventoryItems">
+						<!--<DACInventoryItem /> added from code -->
+					</Panel>
+					<Label class="AreaInventoryCount" text="#DAC_Area_Inventory_Count" />
+				</Panel>
+			</Panel>
+
+			<Panel class="FadePanel" />
+			
 		</Panel>
 
-	</DACChallengeMap>
+	</DACChallengeWorldMap>
 </root>

@@ -8,23 +8,89 @@
 	<snippets>
 		<snippet name="HeroIcon">
 			<Panel class="HeroIconPanel" onactivate="DACShowHeroPopup(1)">
-				<Label class="HeroRank" text="{s:rank}"/>
+				
 				<Panel id="HeroImage"/>
+				<Label class="HeroRank" text="{s:rank}"/>
+				<Label class="HeroName" text="{s:hero_name}"/>
 			</Panel>
 		</snippet>
+
+		<snippet name="AbilitySnippet">
+			<Panel class="AbilityBlock">
+				<Image id="AbilityIcon" scaling="stretch-to-cover-preserve-aspect" />
+			
+			</Panel>
+		</snippet>
+
 	</snippets>
 
 
 	<DACPostGameStatsOverview>
 			<Panel id="StatsPageContainer">
-				<Panel class="PlaceContainer">
-					<Label class="PlaceTitle HeadlineFont" text="#DAC_InGame_UserDiedPlace"/>
-					<Label class="PlaceQuote" text="{s:result_quote}"/>
+
+				<Panel class="StatsTitleRow">
+					<Label class="SummaryTitle" text="#DAC_InGame_UserDiedPlace" />
+					
+					<Panel class="MatchDetails">
+						<Label text="{s:game_mode}" />
+						<Panel class="SummaryDivider" />
+						<Panel class="BotMatchLabelContainer">
+							<Label text="{s:bot_difficulty}" />
+						</Panel>
+						<Panel class="RankedModeMatchContainer">
+							<Label text="{s:rank_mode}" />
+						</Panel>
+						<!-- <Label text="| Easy" /> -->
+					</Panel>
+
+				</Panel>
+				<Panel class="StatsMainRow">
+					<Panel class="ItemsAndTalentsColumn">
+						<Panel class="StatsColumn">
+							<DACPlayerAvatar id="PlayerAvatar" usesmallportrait="true"/>		
+							<Label class="TalentsTitle DistressedFont" html="true" text="{g:dac_persona:b:player_accountid}" />
+							
+							
+						</Panel>
+					</Panel>
+
+
+						<Panel class="HeroesColumn StatsColumn">
+						
+
+						<Panel id="HeroesContainer" >
+							<!-- Code generated -->
+						</Panel>
+					</Panel>
+
 				</Panel>
 
-				<Panel class="StatsMainRow">
+				<Panel class="StatsMainRow Synergies">
 
-					<Panel class="SynergiesColumn StatsColumn">
+
+					<Panel class="ItemsAndTalentsColumn UnderlordAbility">
+						<Panel class="TalentsColumn StatsColumn">
+							<Label class="TalentsTitle DistressedFont" text="{s:build_title}" />
+							<Panel id="TalentsContainer">
+								<!-- Code generated -->
+							</Panel>
+						</Panel>
+						
+						
+						<Panel class="ItemsColumn StatsColumn Hidden">
+							<Label class="FinalCrewTitle DistressedFont" text="#DAC_PostGame_Contraptions"/>
+
+							<Panel id="ItemsContainer">
+								
+							</Panel>
+
+							<Label class="NoGlobalItemsLabel" text="#DAC_PostGame_NoGlobalItems" />
+						</Panel>
+						
+						</Panel>
+
+
+						<Panel class="SynergiesColumn StatsColumn">
 						<Label class="FinalCrewTitle DistressedFont" text="#DAC_PostGame_Alliances_Title"/>
 
 						<Panel id="SynergiesContainer">
@@ -32,49 +98,26 @@
 						</Panel>
 					</Panel>
 
-					<Panel class="HeroesColumn StatsColumn">
-						<Label class="FinalCrewTitle DistressedFont" text="#DAC_FinalCrew_Title"/>
 
-						<Panel id="HeroesContainer" class="HeroRoster">
-							<!-- Code generated -->
-						</Panel>
-					</Panel>
-
-					<Panel class="ItemsAndTalentsColumn">
-						<Panel class="TalentsColumn StatsColumn">
-							<Label class="TalentsTitle DistressedFont" text="#DAC_PostGame_Underlord" />
-							<Panel id="TalentsContainer">
-								<!-- Code generated -->
-							</Panel>
-						</Panel>
-						<Panel class="ItemsColumn StatsColumn">
-							<Label class="FinalCrewTitle DistressedFont" text="#DAC_PostGame_Contraptions"/>
-
-							<Panel id="ItemsContainer">
-								<!-- Code generated -->
-							</Panel>
-
-							<Label class="NoGlobalItemsLabel" text="#DAC_PostGame_NoGlobalItems" />
-						</Panel>
-					</Panel>		
 				</Panel>
 
-				<Panel class="StatsContainer">
+
+					<Panel class="StatsContainer">
 					<Panel id="RoundsWon" class="StatsSubContainer">
-						<Label class="StatDescription DistressedFont" text="#DAC_EndGame_RoundsWon" />
 						<Label class="BigStat HeadlineFont" text="{d:rounds_won}" />
+						<Label class="StatDescription" text="#DAC_EndGame_RoundsWon" />
 					</Panel>
 					<Panel id="EndGameDamageDealt" class="StatsSubContainer">
-						<Label class="StatDescription DistressedFont" text="#DAC_EndGame_DamageDealt" />
-					<Label class="BigStat HeadlineFont" text="{d:damage_dealt}" />
+						<Label class="BigStat HeadlineFont" text="{d:damage_dealt}" />
+						<Label class="StatDescription" text="#DAC_EndGame_DamageDealt" />
 					</Panel>
-					<Panel id="EndGameDamagePlayers" class="StatsSubContainer">
-						<Label class="StatDescription DistressedFont" text="#DAC_EndGame_DamagePlayers" />
-					<Label class="BigStat HeadlineFont" text="{d:damage_dealt_players}" />
+					<Panel id="EndGameDamagePlayers" class="StatsSubContainer Hidden">
+						<Label class="BigStat HeadlineFont" text="{d:damage_dealt_players}" />
+						<Label class="StatDescription" text="#DAC_EndGame_DamagePlayers" />
 					</Panel>
 					<Panel id="GoldEarned" class="StatsSubContainer">
-						<Label class="StatDescription DistressedFont" text="#DAC_EndGame_GoldEarned" />
 						<Label class="BigStat HeadlineFont" text="{d:gold_earned}" />
+						<Label class="StatDescription" text="#DAC_EndGame_GoldEarned" />
 					</Panel>
 				</Panel>
 			</Panel>

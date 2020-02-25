@@ -15,17 +15,14 @@
 
 	<DACRoundOverScreen hittest="false" hittestchildren="false">
 		<Panel id="RoundOverContainer">
+			<!--
 			<Panel id="BreakLabelContainer" class="Defeat">
-				<Label class="FightResultLabel Defeat Break1" text="{s:resultlabel}"/>
-				<Label class="FightResultLabel Defeat Break2" text="{s:resultlabel}"/>
+				<Label class="FightResultLabel Defeat Break1 HeadlineFont" text="{s:resultlabel}"/>
+				<Label class="FightResultLabel Defeat Break2 HeadlineFont" text="{s:resultlabel}"/>
 				<Panel class="BreakDebris"/>
 			</Panel>
+			-->
 				<Panel id="FightResultPanel">
-					<DACBannerPaintin 
-						id="FightResultAnimation" 
-						headline="{s:resultlabel}"
-						class="Victory Draw" 
-					/>                
 					<Label class="RoundOpponent" text="#DAC_RoundOver_OpponentName" html="true"/>
 					<Panel id="RoundAndRoundDamage">
 						<Label id="RoundLabel" text="#DAC_RoundOver_RoundNumber"/>
@@ -34,8 +31,8 @@
 					<Label id="RoundOverSpecialLabel" text="{s:roundoverheader}"/>
 					<Panel id="OpponentHeroesPanel"></Panel>
 					<Panel id="HealthPanel">
-						<Label id="HealthNumberLabel" text="{d:healthlost}"/>
-						<Label id="HealthLostLabel" text="#DAC_RoundOver_HealthLost_Label"/>
+						<Label id="HealthNumberLabel" class="HeadlineMonoFont" text="{d:healthlost}"/>
+						<Label id="HealthLostLabel" class="HeadlineMonoFont" text="#DAC_RoundOver_HealthLost_Label"/>
 					</Panel>
 
 					<Panel id="TurboHealth">
@@ -69,7 +66,8 @@
 					</Panel>
 			</Panel>
 		</Panel>
-		<DACBannerPaintin id="FightResultAnimation" class="Victory Draw" headline="{s:resultlabel}"/>   
+		<DACBannerPaintin id="FightResultAnimation" class="Victory Draw Defeat" headline="{s:resultlabel}"/>
+		
 		<DACVSScreen id="RoundOverVSScreen" hittest="false" />
 	</DACRoundOverScreen>
 </root>

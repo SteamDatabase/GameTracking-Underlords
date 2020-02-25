@@ -8,6 +8,11 @@ DACControlBattlePass
 	width: 100%;
 }
 
+#DACProfilePage DACControlBattlePass 
+{
+	margin-bottom: 34px;
+}
+
 .ProgressBarParticle {
 	width: 100%;
 	width: 100%;
@@ -168,16 +173,22 @@ DACRewardsBattlePassPage #SectionTitleArea
 
 .BPXPLabel
 {
-	color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
+	color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.3, #ffffff), color-stop( 0.3, #eddcb7), color-stop( 0.93, #b08d50), color-stop( 0.93, #b4712d),  to( #b4712d) );
 	font-size: 18px;
 	font-weight: black;
-	margin: 2px 0px 0px 4px;
+	margin: 4px 0px 0px 4px;
 	vertical-align: center;
 	text-overflow: shrink;
+	font-family: Ravenhook;
 
 	text-shadow: 1px 2px 0px 1.0 #00000099;
 }
 
+
+#DACPlayPage #BattlePassProgress
+{
+	padding-top: 4px;
+}
 
 #BattlePassProgress
 {
@@ -202,28 +213,11 @@ DACControlBattlePass.OnDACHomePage
     horizontal-align: left;
 }
 
-.OnDACHomePage #BattlePassProgress
+.AspectRatio21x9.IsLayoutSmallScreen DACControlBattlePass.OnDACHomePage
 {
-    background-image: none;
-    background-color: none;
-    box-shadow: none;
-    padding-top: 0px;
-    width: 504px;
-}
-
-.OnDACHomePage #PlayerBPLevel
-{
-    
-}
-
-.OnDACHomePage .BPLevelProgressContainer
-{
-	margin-top: 10px;
-}
-
-.OnDACHomePage .PlayerProgressContainer
-{
-    margin-top: 8px;
+	ui-scale: 90%;
+	width: 600px;
+	margin-left: -95px;
 }
 
 .OnDACHomePage .BattlePassCurrentLevelProgress
@@ -283,7 +277,7 @@ DACControlBattlePass.OnDACHomePage
 
 .BattlePassCurrentLevelProgress
 {
-	color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
+	color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.3, #ffffff), color-stop( 0.3, #eddcb7), color-stop( 0.93, #b08d50), color-stop( 0.93, #b4712d),  to( #b4712d) );
 	font-size: 24px;
 	font-weight: black;
 	text-transform: uppercase;
@@ -293,7 +287,7 @@ DACControlBattlePass.OnDACHomePage
 	letter-spacing: 1px;
 	text-align: right;
 	margin-right: 1px;
-
+	font-family: Ravenhook;
 	text-shadow: 1px 2px 0px 1.0 #00000099;
 }
 
@@ -350,13 +344,39 @@ DACRewardsProtopassPage DACDailyChallenge
 	margin-bottom: 12px;
 }
 
-
-.ChallengeTitle {
+.ChallengeTitle
+{
 	color: #4b4e5d;
 	font-size: 24px;
 	font-weight: black;
 	text-transform: uppercase;
-	margin-top: 4px;
+	margin-top: 12px;
+}
+
+.ObjectiveTitleContainer
+{
+	flow-children: right;
+	horizontal-align: center;
+	margin-top: 20px;
+}
+
+.ObjectiveTitle
+{
+	color: #000000;
+	font-size: 28px;
+	font-family: Early Bird;
+	text-transform: lowercase;
+}
+
+.ObjectiveIcon
+{
+	background-image: url("s2r://panorama/images/challenge_map/icon_objective_png.vtex");
+	background-size: 100% 100%;
+	wash-color: #000000;
+	width: 20px;
+	height: 20px;
+	margin-right: 8px;
+	margin-top: 8px;
 }
 
 .ChallengeSlot2 .DailyChallenge
@@ -450,7 +470,7 @@ DACRewardsProtopassPage DACDailyChallenge
 .DailyChallengeRewardPlacement,
 .ChallengeReward
 {
-	color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
+	color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.3, #ffffff), color-stop( 0.3, #eddcb7), color-stop( 0.93, #b08d50), color-stop( 0.93, #b4712d),  to( #b4712d) );
 	font-size: 24px;
 	font-weight: black;
 	text-transform: uppercase;
@@ -458,6 +478,7 @@ DACRewardsProtopassPage DACDailyChallenge
 	letter-spacing: 1px;
 	text-align: right;
 	margin-left: -1px;
+	font-family: Ravenhook;
 
 	text-shadow: 1px 2px 0px 1.0 #00000099;
 }
@@ -480,11 +501,12 @@ DACRewardsProtopassPage DACDailyChallenge
 
 .DailyChallengeDesc
 {
-	color: #c7dbda;
+	color: #F4F4F4bb;
 	font-size: 24px;
 	vertical-align: center;
 	width: 440px;
 	text-overflow: shrink;
+	font-weight: semi-bold;
 }
 
 .DailyChallengeDescContainer
@@ -497,7 +519,7 @@ DACRewardsProtopassPage DACDailyChallenge
 {
 	
 	font-size: 52px;
-	color: #c7dbda;
+	color: #F4F4F4;
 	horizontal-align: left;
 	text-overflow: shrink;
 	z-index: 20;
@@ -548,6 +570,23 @@ DACRewardsProtopassPage DACDailyChallenge
 
 	flow-children: down;
 	margin-right: 18px;
+
+	visibility: collapse;
+}
+
+#DACProfilePage .PlayerProgressContainer
+{
+	visibility: visible;
+	margin-right: 0px;
+}
+.ShowProgress .PlayerProgressContainer
+{
+	visibility: visible;
+}
+
+.ShowHeader .PlayerProgressContainer
+{
+	margin-top: 0px;
 }
 
 #PlayerProgress
@@ -556,6 +595,10 @@ DACRewardsProtopassPage DACDailyChallenge
 	width: 316px;
 }
 
+#PlayerProgress
+{
+	visibility: collapse;
+}
 .OnDACHomePage #PlayerProgress
 {
 	background-color: #21232a;
@@ -714,13 +757,68 @@ ParticleProgressBar {
 	//flow-children: down;
 }
 
-#BattlePassProgress #PlayerProgress
+#BattlePassProgress #Header
+{
+	color: #4b4e5d;
+	text-transform: uppercase;
+	font-size: 22px;
+	font-weight: black;
+
+	margin-bottom: 4px;
+
+	visibility: collapse;
+}
+
+.ShowHeader #BattlePassProgress #Header
 {
 	visibility: visible;
 }
 
+.ShowHeader #BattlePassProgress #PlayerProgress
+{
+	height: 12px;
+}
 
 
+#RewardGroupProgressBarContainer
+{
+    z-index: 0;
+    width: 100%;
+    height: 20px;
+    margin-top: 7px;
+
+    //background-image: url("s2r://panorama/images/battle_pass/bp1/reward_item_progress_bar_container_background_png.vtex");
+    //background-repeat: no-repeat;
+    //background-size: 100%;
+
+    padding: 3px;
+    border-top: 2px solid #5c3806;
+    border-left: 2px solid #5c3806;
+    border-right: 2px solid #574f34;
+    border-bottom: 2px solid #574f34;
+
+}
+
+#RewardGroupProgressBar
+{
+    width: 100%;
+    height: 100%;
+}
+
+#RewardGroupProgressBar .ProgressBarLeft
+{
+    background-image: url("s2r://panorama/images/battle_pass/bp1/reward_item_progress_bar_fill_png.vtex");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+
+#RewardGroupProgressBar .ProgressBarRight
+{
+    background-image: url("s2r://panorama/images/battle_pass/bp1/reward_item_progress_bar_unfilled_png.vtex");
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
 
 .DailyChallengeRerollButton
 {
@@ -896,7 +994,7 @@ DACRewardsBattlePassPage #RewardsAboutButton
 	overflow: noclip;
 	background-color: gradient( linear, 0% 90%, 0% 0%, from( #836218 ), to( #4a370e) );
 	height: 40px;
-	border: 2px solid #fbbc2e ;
+	border: 2px solid #c6aa76 ;
 	text-overflow: shrink;
 	visibility: visible;
 	opacity: 1.0;
@@ -948,7 +1046,7 @@ DACRewardsBattlePassPage #RewardsAboutButton
 
 #RerollClaimableText
 {
-	color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
+	color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.3, #ffffff), color-stop( 0.3, #eddcb7), color-stop( 0.93, #b08d50), color-stop( 0.93, #b4712d),  to( #b4712d) );
 	font-weight: black;
 	font-size: 24px;
 	padding: 2px 20px 2px 20px;
@@ -981,20 +1079,6 @@ DACRewardsBattlePassPage #RewardsAboutButton
 	visibility: collapse;
 }
 
-.InGameProgressLegend
-{
-	height: 50px;
-	width: 100%;
-
-	visibility: collapse;
-}
-
-.HUD_BattlePassProgressVisible .InGameProgressLegend
-{
-	visibility: collapse;
-	flow-children: right;
-}
-
 .InGameProgressColorSwatch
 {
 	height: 15px;
@@ -1020,19 +1104,6 @@ DACRewardsBattlePassPage #RewardsAboutButton
 .HUD_BattlePassProgressVisible #InGameChallengeProgress
 {
 	visibility: visible;
-}
-
-.InGameProgressLegendDesc
-{
-	color: #8588a0;
-	font-size: 24px;
-	text-shadow: 1px 2px 0px 2.0 #00000066;
-	margin-left: 22px;
-	font-weight: semi-bold;
-	vertical-align: center;
-	margin-top: 0px;
-	width: 460px;
-	text-overflow: shrink;
 }
 
 .RewardBackground
@@ -1084,10 +1155,8 @@ DACRewardsBattlePassPage #ErrorContainer
 {
 	color: #bdbdbd;
 	font-size: 26px;
-	/*font-weight: bold;*/
-	/*text-transform: uppercase;*/
 	vertical-align: top;
-	padding: 10px;
+	padding-top: 12px;
 	letter-spacing: 0.5px;
 	text-shadow: 1px 2px 0px 2.0 #00000066;
 }
@@ -1096,58 +1165,16 @@ DACRewardsBattlePassPage #ErrorContainer
 	font-size: 30px;
 	color: #ffffff;
 	font-weight: black;
-	margin-left: 10px;
+	margin-left: 2px;
 	text-transform: uppercase;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
 	text-overflow: shrink;
 }
 
-#ConnectToSteamContainer,
-#ReconnectToSteamContainer
-{
-	flow-children: down;
-}
-
-#GCErrorContainer,
-#ConnectToSteamContainer,
-#ReconnectToSteamContainer
+#BattlePassPanel .ErrorTitle
 {
 	visibility: collapse;
 }
-
-.NeedsGC #QuestLevelContainer
-{
-	visibility: collapse;
-}
-
-.NeedsGC #ErrorContainer,
-.NeedsSteamLogin #ErrorContainer
-{
-	visibility: visible;
-}
-
-.HasEventData #ConnectToSteamContainer,
-.NeedsGC.NeedsSteamLogin #GCErrorContainer
-{
-	visibility: collapse;
-}
-
-.NeedsSteamLogin #ConnectToSteamContainer,
-.NeedsSteamLogin.HasCredential #ReconnectToSteamContainer
-{
-	visibility: visible;
-}
-
-.NeedsSteamLogin.HasCredential #ConnectToSteamContainer
-{
-	visibility: collapse;
-}
-
-.NeedsGC #GCErrorContainer
-{
-	visibility: visible;
-}
-
 
 #MainContent,
 #ErrorContent
@@ -1183,3 +1210,180 @@ DACRewardsBattlePassPage #ErrorContainer
 }
 
 
+#ActiveChallengeContainer
+{
+	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+	background-image: url("s2r://panorama/images/challenge_map/challenge_puzzle_bg_psd.vtex");
+	margin-top: 20px;
+	height: 200px;
+	width: 440px;
+
+	flow-children: down;
+
+	visibility: collapse;
+	transition-property: brightness;
+	transition-duration: 0.2s;
+}
+
+#ActiveChallengeContainer:hover
+{
+	brightness: 1.8;
+}
+
+#DACPlayPage .HasAvailableObjectives #ActiveChallengeContainer
+{
+	visibility: visible;
+}
+
+.CityCrawlChallengeTitle
+{
+	color: white;
+	font-size: 40px;
+}
+
+.CityCrawlChallengeBody
+{
+	color: white;
+	font-size: 30px;
+}
+
+.CityCrawlChallengeCount
+{
+	color: white;
+	font-size: 34px;
+	visibility: collapse;
+}
+
+.HasChallengesAvailable .CityCrawlChallengeCount
+{
+	visibility: visible;
+}
+
+.CityCrawlNoChallengesAvailable
+{
+	color: white;
+	font-size: 34px;
+	visibility: collapse;
+}
+
+.HasChallengesAvailable .CityCrawlNoChallengesAvailable
+{
+	visibility: collapse;
+}
+
+
+.ChallengeSelectedContainer
+{	
+	background-color: gradient (linear, 0% 0%, 0% 100%, from(#2c2e37ee), to(#000000ee));
+	visibility: collapse;
+
+	flow-children: down;
+}
+
+.ActiveChallengeSelected .ChallengeSelectedContainer
+{
+	visibility: visible;
+}
+
+#CityCrawlText
+{
+	width:100%;
+	height:fit-children;
+	flow-children:down;
+}
+
+#CityCrawlButton
+{	
+	width: 100%;
+	height: 240px;
+	background-image: none;
+	font-size: 26px;
+	transition-property: transform, brightness, opacity;
+	transition-duration: 0.2s;
+	padding: 10px 10px 0px 24px;
+	background-image: url("s2r://panorama/images/challenge_map/challenge_progress_bg_psd.vtex");
+	background-size: 100%;
+}
+
+.CityCrawlHeader
+{
+	font-size: 46px;
+	font-weight: black;
+	letter-spacing: 1px;
+	color: #F4F4F4;
+	text-transform: uppercase;
+	margin-left: safe-area-inset-left;
+	text-align: left;
+	font-family: Ravenhook;
+	text-shadow: 2px 2px 2.0 #333333;
+}
+
+.CityCrawlBody
+{
+	text-transform: uppercase;
+	font-family: Ravenhook;
+	color: #000000;
+	horizontal-align: center;
+	text-align: center;
+}
+
+.CityCrawlNeedsSteamLabel
+{
+	visibility: collapse;
+}
+
+.CityCrawlActiveLabel
+{
+	margin-top:0px;
+}
+
+#DACPlayPage .CityCrawlActiveLabel
+{
+	font-size: 36px;
+	margin-top: 4px;
+}
+
+.CityCrawlRecommendedHeader
+{
+	font-size: 28px;
+	line-height: 24px;	
+	width:100%;
+	height:64px;
+	text-overflow:shrink;
+	horizontal-align:left;
+	visibility: collapse;
+	color: #000000;
+	font-family: Early Bird;
+	text-transform: lowercase;
+}
+
+.CityCrawlRecommendedHeader
+{
+	text-align: center;
+	horizontal-align: center;
+	color:#000000;	
+}
+
+
+
+.CityCrawlRecommendedHeader .RecommendedChallengeDesc
+{
+
+	font-weight: normal;
+	text-transform: none;
+}
+
+#CityCrawlChallengeProgressBar
+{
+	margin-top:5px;
+	height: 8px;
+	width:100%;
+	background-color: #0e101b;	
+	visibility: collapse;
+}
+
+.HasRecommendedChallenge.ShowChallengeProgressBar #CityCrawlChallengeProgressBar,
+.HasRecommendedChallenge .CityCrawlRecommendedHeader
+{
+	visibility: visible;
+}

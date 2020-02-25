@@ -256,10 +256,13 @@ $gender
 ../../public/appframework/tier2app.h
 ../../public/ordered_constructor.h
 ../../public/tier1/utlrbtree.h
+../../thirdparty/protobuf-3.5.1/src/google/protobuf/map_field.h
+../../thirdparty/protobuf-3.5.1/src/google/protobuf/map_field_inl.h
 ../gamecore/igamesystem.cpp
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utlsymbol.h
 ..\content
 ..\src\shaders\
 ./google/protobuf/arena.h
@@ -293,6 +296,7 @@ $gender
 00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899
 0123456789abcdef
 0x%016llX
+0x%08X %s,
 0x%p
 1
 1 1 1
@@ -309,6 +313,7 @@ $gender
 10IAppSystem
 10IHostUtils
 11CMsgGCError
+11CMsgMapProp
 11CMsgSynergy
 11CMsgUseItem
 11CNETMsg_NOP
@@ -317,7 +322,6 @@ $gender
 11CSOEconItem
 11IGameSystem
 11IVSSequence
-12CEmptyConVar
 12CMsgItemAges
 12CMsgItemSlot
 12CMsgPosition
@@ -326,13 +330,16 @@ $gender
 12CMsgVector2D
 12CNETMsg_Tick
 12CThreadEvent
+12DACPuzzleDef
 12ISource2Host
 13CLoopModeBase
 13CMsgAddSocket
+13CMsgHistogram
 13CMsgSOIDOwner
 13CMsgSortItems
 13CMsgWebAPIKey
 13CSOItemRecipe
+13DAC_BotData_t
 13IBaseSequence
 13IPrerequisite
 14CBaseAppSystemI10IHostUtilsE
@@ -354,6 +361,7 @@ $gender
 14CGameAppSystemI18IPredictionDiffMgrLi0EE
 14CGameAppSystemI20IGameSystem2HostHookLi0EE
 14CGameModelInfo
+14CMsgBoardBuddy
 14CMsgLeaveParty
 14CMsgMatchState
 14CMsgPlayerInfo
@@ -412,10 +420,12 @@ $gender
 15IFootstepSounds
 16CDefaultAccessor
 16CGCToGCMsgRouted
+16CInitializeUtils
 16CLoopModeFactoryI20CLoopModeGameHostDACE
 16CMsgGCClientPing
 16CMsgHttpResponse
 16CMsgModifierName
+16CMsgUnitPosition
 16CMsgUnitSnapshot
 16CProtoItemSocket
 16CSOEconClaimCode
@@ -445,6 +455,7 @@ $gender
 17CUserMessageShake
 17CUserMessageTrain
 17CUserMsg_HudError
+17DACStreetfightDef
 17DAC_AbilityData_t
 17DAC_SynergyData_t
 18CDebugDrawQueueMgr
@@ -463,6 +474,7 @@ $gender
 18CMsgSOCacheVersion
 18CMsgSOSingleObject
 18CNETMsg_Disconnect
+18CPlaceholderConVar
 18CPredictionDiffMgr
 18CSODACParty_Invite
 18CSODACParty_Member
@@ -492,6 +504,7 @@ $gender
 19CUserMessageHudText
 19CUserMessageSayText
 19CUserMessageTextMsg
+19DAC_BotDifficulty_t
 19IKeyValuesErrorSpew
 19ISaveRestoreDataMgr
 1DBlend
@@ -531,6 +544,7 @@ $gender
 20CUserMessageShowMenu
 20CUserMessageVGUIMenu
 20DACTutorialDef_State
+20DAC_BotPersonality_t
 20IGameSystem2HostHook
 20IResourceTypeManager
 21CEntityMessageDoSpark
@@ -549,6 +563,7 @@ $gender
 21CMsgPlayerPreferences
 21CMsgPublicPlayerState
 21CMsgRequestCrateItems
+21CMsgRoundCombatGlobal
 21CMsgSOCacheSubscribed
 21CMsgSOMultipleObjects
 21CMsgSerializedSOCache
@@ -591,12 +606,14 @@ $gender
 22CUserMessageCreditsMsg
 22CUserMessageItemPickup
 22CUserMessageScreenTilt
+22IDACGD_InitializeUtils
 22IVTableIndexCalculator
 23CGCMsgSystemStatsSchema
 23CMsgAMGrantGuestPasses2
 23CMsgAMSendEmailResponse
 23CMsgAddItemToSocketData
 23CMsgApplyPennantUpgrade
+23CMsgCombatDebugSnapshot
 23CMsgExtractGemsResponse
 23CMsgGCGetAppFriendsList
 23CMsgGCShowItemsPickedUp
@@ -611,6 +628,7 @@ $gender
 23CMsgRecordLocalBotStats
 23CMsgSOCacheUnsubscribed
 23CMsgSQLAddDropRateBonus
+23CMsgStreetfightSettings
 23CMsgUnitAbilityCooldown
 23CNETMsg_SpawnGroup_Load
 23CNETMsg_SplitScreenUser
@@ -627,6 +645,7 @@ $gender
 24CMsgGCToGCRefreshSOCache
 24CMsgGameModeState_Normal
 24CMsgGameModeState_Puzzle
+24CMsgPlayerMapPropCommand
 24CMsgPlayerOrderProcessed
 24CMsgPlayerSelectedTalent
 24CMsgPublicPostMatchStats
@@ -671,6 +690,7 @@ $gender
 26CMsgAMFindAccountsResponse
 26CMsgClientToGCSetItemStyle
 26CMsgClientToGCUnpackBundle
+26CMsgClientToServerClickMsg
 26CMsgClientToServerInitData
 26CMsgClientUnderlordLoadout
 26CMsgClientWelcome_Location
@@ -683,6 +703,7 @@ $gender
 26CMsgGameModeState_Tutorial
 26CMsgGameReplayActionMarker
 26CMsgHttpRequest_QueryParam
+26CMsgServerToClientClickMsg
 26CProtoItemSocket_Autograph
 26CProtoItemSocket_Spectator
 26CUserMessageAudioParameter
@@ -756,7 +777,9 @@ $gender
 29CMsgGCToClientPollFileRequest
 29CMsgGCToGCAddSubscriptionTime
 29CMsgGCToGCCanUseDropRateBonus
+29CMsgGameModeState_Streetfight
 29CMsgGameStateIntegrationBlock
+29CMsgHistogram_HistogramBucket
 29CMsgHttpRequest_RequestHeader
 29CMsgRequestCrateItemsResponse
 29CMsgSOCacheSubscribedUpToDate
@@ -782,6 +805,7 @@ $gender
 30CMsgGameStateIntegrationUpdate
 30CMsgLookupMultipleAccountNames
 30CMsgPlayerStateUpdatesComplete
+30CMsgPuzzleLeaderboardHistogram
 30CMsgSOCacheSubscriptionRefresh
 30CProtoItemSocket_AssetModifier
 30CProtoItemSocket_StaticVisuals
@@ -806,6 +830,7 @@ $gender
 31CMsgHttpResponse_ResponseHeader
 31CMsgItemAges_MaxItemIDTimestamp
 31CMsgRequestCrateEscalationLevel
+31CMsgRoundCombatGlobal_EventList
 31CMsgSQLGCToGCGrantBackpackSlots
 31CMsgSerializedSOCache_TypeCache
 31CUserMessageAnimStateGraphState
@@ -854,6 +879,7 @@ $gender
 34CEcon_FlushInventoryCache_Response
 34CMsgClientToGCSetItemStyleResponse
 34CMsgClientToGCUnpackBundleResponse
+34CMsgCombatDebugSnapshot_ActivePath
 34CMsgDPPartnerMicroTxns_PartnerInfo
 34CMsgDevUnlockAllItemStylesResponse
 34CMsgGCCheckClanMembership_Response
@@ -863,11 +889,13 @@ $gender
 34CMsgGCToGCPerformManualOpCompleted
 34CMsgIndividualPostMatchStats_Event
 34CMsgIndividualPostMatchStats_Round
+34CMsgPuzzleLeaderboardHistogramList
 34CMsgSOMultipleObjects_SingleObject
 34CNETMsg_SpawnGroup_SetCreationTick
 34CSVCMsgList_UserMessages_usermsg_t
 34CWorkshop_GetContributors_Response
 35CGCMsgMemCachedGetResponse_ValueTag
+35CMsgClientToServerBoardBuddyCommand
 35CMsgGCRequestStoreSalesDataResponse
 35CMsgGCStorePurchaseFinalizeResponse
 35CMsgGameModeState_Puzzle_ActiveRule
@@ -901,6 +929,7 @@ $gender
 37CMsgGCToGCClientServerVersionsUpdated
 37CMsgGCToGCMasterSubscribeToCacheAsync
 37CMsgIndividualPostMatchStats_Currency
+37CMsgPlayerChallengeCompletePrediction
 37CMsgPlayerRecievedUnitFromDuosPartner
 37CMsgServerToClientNotificationChanged
 37CMsgServerToClientTeammateDuosMessage
@@ -928,6 +957,7 @@ $gender
 39CGCSystemMsg_GetAccountDetails_Response
 39CMsgClientConnectionStarted_GameManager
 39CMsgClientToGCLookupAccountNameResponse
+39CMsgCombatDebugSnapshot_PathfindingCell
 39CMsgGCPartnerRechargeRedirectURLRequest
 39CMsgGCToClientStoreTransactionCompleted
 39CMsgGCToGCApplyLocalizationDiffResponse
@@ -964,16 +994,19 @@ $gender
 41CMsgGCToGCCheckAccountTradeStatusResponse
 41CMsgRequestItemPurgatory_FinalizePurchase
 41CWorkshop_GetPackageDailyRevenue_Response
+42CMsgClientToServerPuzzleLeaderboardCommand
 42CMsgGCGetPersonaNames_Response_PersonaName
 42CMsgGCToClientCurrencyPricePoints_Currency
 42CUserMsg_ParticleManager_UpdateParticleEnt
 42CUserMsg_ParticleManager_UpdateParticleFwd
 42CWorkshop_PopulateItemDescriptions_Request
+43CGCSystemMsg_ReportExternalPurchase_Request
 43CMsgAMSendEmail_PersonaNameReplacementToken
 43CMsgGCMsgMasterSetClientMsgRouting_Response
 43CMsgGCRequestStoreSalesDataUpToDateResponse
 43CMsgGCToGCSOCacheSubscribe_CMsgHaveVersions
 43CMsgPublicPostMatchStats_PlayerPerRoundInfo
+44CGCSystemMsg_ReportExternalPurchase_Response
 44CUserMsg_ParticleManager_SetTextureAttribute
 45CUserMsg_ParticleManager_ReleaseParticleIndex
 45CUserMsg_ParticleManager_SetControlPointModel
@@ -997,6 +1030,7 @@ $gender
 50CMsgClientToServerLocalPlayerInventory_LoadoutItem
 50CUserMessageCameraTransition_Transition_DataDriven
 50CUserMsg_ParticleManager_SetParticleShouldCheckFoW
+50CUserMsg_ParticleManager_SetSceneObjectGenericFlag
 51CMsgClientToGCCreateStaticRecipeResponse_InputError
 51CMsgClientToGCCreateStaticRecipeResponse_OutputItem
 51CMsgServerToClientNotificationChanged_UpvoteSubtype
@@ -1012,6 +1046,7 @@ $gender
 59CProtoItemSocket_AssetModifier_DESERIALIZE_FROM_STRING_ONLY
 6
 60CMsgEconPlayerStrangeCountAdjustment_CStrangeCountAdjustment
+60CMsgRoundCombatGlobal_CombatPlayerSlotToEventsEntry_DoNotUse
 60CWorkshop_SetItemPaymentRules_Request_PartnerItemPaymentRule
 61CWorkshop_GetPackageDailyRevenue_Response_CountryDailyRevenue
 61CWorkshop_SetItemPaymentRules_Request_WorkshopItemPaymentRule
@@ -1048,8 +1083,11 @@ $gender
 <INVALID_RBF_TYPE>
 <NO EXPRESSION>
 <NULL>
+<deferred>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 =
 = { <proto text format> }". To set fields within it, use syntax like "
 =.=
@@ -1057,7 +1095,7 @@ $gender
 ?
 ?GameSystem2HostHook
 @
-@A  0x%08X %s,
+@Aphysaggregatedata.cpp
 @spawn
 A
 A file with this name is already in the pool.
@@ -1109,7 +1147,10 @@ APPSYSTEM: In ConnectGameInterfaces(), tried to use different connection modes!
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
 APPSYSTEM: In ReconnectGameInterface(), tried to use different connection modes!
 ATTACHMENT_INFLUENCE_FLAGS_NONE
+Abilities
 AbsolutePoseControl
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Activate diffcheck system.
 ActivateDefinitionSet
 Activating Definition Set (%s): bStaging = %s
@@ -1173,10 +1214,7 @@ AssetSystem001
 AssetSystemTest001
 Attempting to get the Skeletal Input settings from model %s, which doesn't have any.  Please add a Skeletal Input Settings node to the model in ModelDoc
 Attempting to get the movement settings from model %s, for which movement settings have not been set.  Please add a MovementSettings node to the model in ModelDoc
-Attribute counts between meshes is inconsistent
 AuthenticAMD
-AvailableItems
-AvailableUnderlords
 AvailableUnits
 B
 B->C
@@ -1214,6 +1252,9 @@ BodyGroup
 BodyGroupChoice
 BoneChannel
 Boolean default must be true or false.
+BotDifficulties
+BotPersonalities
+Bots
 BreakCommand
 BreakPieceEmbedded
 BreakPieceExternal
@@ -1234,6 +1275,8 @@ CAimConstraint
 CAnimBone
 CAnimDataChannelDesc
 CAnimKeyData
+CAnimMotorList
+CAnimMovementManager
 CAnimRetargetChainData
 CAnimRetargetData
 CAnimRetargetElementData
@@ -1271,6 +1314,7 @@ CBufferString::ShortenPath()
 CBufferString::StripTrailingSlash()
 CBufferString::Swap(CBufferString&)
 CBufferString::ToLowerFast(int)
+CBufferStringN
 CCommand::Tokenize: Encountered command which overflows the argument buffer.. Clamped!
 CCommand::Tokenize: Encountered command which overflows the tokenizer buffer.. Skipping!
 CConstraintSlave
@@ -1515,6 +1559,7 @@ CHECK failed: table_[b] == table_[b + 1] && (b & 1) == 0:
 CHECK failed: target_ != NULL:
 CHECK failed: this != other:
 CHECK failed: this == other_mutator:
+CHECK failed: this->MapFieldBase::repeated_field_ != NULL:
 CHECK failed: trees:
 CHECK failed: type == WireFormatLite::TYPE_MESSAGE || type == WireFormatLite::TYPE_GROUP:
 CHECK failed: type > 0 && type <= FieldDescriptor::MAX_TYPE:
@@ -1529,6 +1574,7 @@ CMaterialDrawDescriptor
 CMemAllocSystemInitialize
 CModelConfig
 CModelConfigElement
+CModelConfigElement_Command
 CModelConfigElement_UserPick
 CModelConfigList
 CMorphConstraint
@@ -1564,15 +1610,15 @@ CSisterResourceBlockLoader::BlockingLoadResourceFileData: Trying to load an ille
 CStrongHandle
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
-CThreadMutex::TryLock()
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
+CThreadMutex::TryLock(char const*, int)
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::Wait(unsigned int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
@@ -1712,7 +1758,7 @@ ConnectInterfaces
 ConsoleStartup
 Could not create an instance of
 Could not find type "
-Couldn't find an available content type with the specified name when loading a puzzle definition.
+Couldn't find an available content type named '%s' when loading a puzzle definition.
 Couldn't parse default value "
 CreateInterface
 Cubic
@@ -1721,11 +1767,14 @@ D
 DAC Game Manager
 DACAbilityID_t
 DACGameManager001
+DACLobbyID_t
 DACPuzzleID_t
+DACStreetfightID_t
 DATA_LOSS
 DEADLINE_EXCEEDED
 DEFAULT_WRITE_PATH
 DEMO
+DacGestureSlot_t
 DebugDrawQueueManager001
 DebugTextureInfo001
 Decompression failure
@@ -1749,6 +1798,12 @@ Double-save to Member '%s'
 DynamicConfigList
 E
 EDACItemType_
+EDACUnderlordEquipSlot
+EDACUnderlordEquipSlot_First
+EDACUnderlordEquipSlot_Max
+EDACUnderlordEquipSlot_None
+EDACUnderlordEquipSlot_Skin
+EDACUnderlordEquipSlot_VictoryDance
 ERROR
 ERROR: Resource name "%s" has the incorrect extension "%s" for the specified resource type (expected "%s")!
 ERROR: Specified full path %s does not lie under the mod search path!)
@@ -1780,6 +1835,8 @@ EnvironmentMapBuilder_001
 Error
 Error loading %s: %s
 Error parsing text-format
+Error processing modifier for puzzle
+Error processing unit addition for puzzle
 Error reporting not implemented.
 Error while parsing option value for "
 EventAdvanceTick_t
@@ -1880,6 +1937,7 @@ Failed to find valid Underlord ID for '%s'
 Failed to initialize game definition for '%s': KV3 Table Name '%s'
 Failed to load 'rewardTiers' for Wave '%s'
 Failed to map from %s to content-path
+Failed to merge reload data for %s (%s)
 Failed to open file
 Failed to open file: %s
 False
@@ -1929,9 +1987,9 @@ FontManager_001
 FormatV
 Found ID collision when loading game definitions for '%s': Name '%s', ID %lld
 Found Invalid ID when loading game definitions for '%s': Name '%s'
-Found empty name when loading game definitions for '%s': KV3 Table Name '%s'
 Found invalid proto option data for:
 Found name collision when loading game definitions for '%s': Name '%s'
+Found uninitialized or empty name when loading game definitions for '%s': KV3 Table Name '%s'
 G
 G->B
 GAME
@@ -1939,6 +1997,18 @@ GAMEBIN
 GAMECONSOLE
 GCC: (SteamRT 5.4.0-7.really.6+steamrt1.2+srt2) 5.4.1 20160803
 GCC: (crosstool-NG 1.17.0) 4.6.3
+GESTURE_SLOT_ABILITY
+GESTURE_SLOT_ABSOLUTE
+GESTURE_SLOT_ATTACK
+GESTURE_SLOT_CONSTANT
+GESTURE_SLOT_COUNT
+GESTURE_SLOT_CUSTOM
+GESTURE_SLOT_CUSTOM2
+GESTURE_SLOT_CUSTOM3
+GESTURE_SLOT_NONE
+GESTURE_SLOT_OVERRIDE
+GESTURE_SLOT_STOLEN_ABILITY_BIT
+GESTURE_SLOT_TAUNT
 GLIBCXX_3.4
 GLIBCXX_3.4.10
 GLIBCXX_3.4.11
@@ -1968,6 +2038,7 @@ GetAvailableAddonMaps failed to find any maps in the '%s' addon - trying fallbac
 GetBool
 GetCPUInformation
 GetCStringCharConversion
+GetDefinitionByName
 GetDouble
 GetEnumValue
 GetFloat
@@ -1998,7 +2069,9 @@ H
 HBm_influenceFlags
 HELPER_BONE
 HIGHDPI
+HSCRIPT
 HammerMapLoader001
+HandleReload
 HangWatchdog_IndicateActivity
 Has Collision;
 HasField
@@ -2042,7 +2115,7 @@ Integer out of range (
 Intentionally vague touch behavior for %p
 Interpreting non ascii codepoint %d.
 Invalid EDACPuzzleRule specified in PuzzleDef '%s': '%s'
-Invalid Underlord ID for Underlord Build '%s'
+Invalid access of deferred ConVarRef for '%s'
 Invalid compressed buffer size
 Invalid control characters encountered in text.
 Invalid data for member '%s'
@@ -2160,6 +2233,7 @@ MapValueRef::GetStringValue
 MapValueRef::GetUInt32Value
 MapValueRef::GetUInt64Value
 MapValueRef::type MapValueRef is not initialized.
+MatchID_t
 MaterialParamBuffer_t
 MaterialParamFloat_t
 MaterialParamInt_t
@@ -2172,6 +2246,7 @@ MaterialUtils_001
 MathLib_Init
 MemAlloc_AllocFunc
 MemAlloc_FreeFunc
+Merged Reload Data for %s (%s)
 MeshSystem001
 MeshUtils001
 Message class "
@@ -2196,6 +2271,7 @@ Model %s missing bone and flex counts (%d < %d), init %d
 ModelCompile/UseShadowFastPathHeuristic
 ModelConfigAttachmentType_t
 ModelDocUtils001
+Modifiers
 MountAddon: Failed to find ADDONS search path.
 MountAddonSearchPaths: Failed to find CONTENTADDONS search path.
 MovementSettings
@@ -2288,6 +2364,8 @@ N6google8protobuf4hashINS0_6MapKeyEEE
 N6google8protobuf7ClosureE
 N6google8protobuf7MessageE
 N6google8protobuf8internal12FieldSkipperE
+N6google8protobuf8internal12MapEntryImplI60CMsgRoundCombatGlobal_CombatPlayerSlotToEventsEntry_DoNotUseNS0_7MessageEj31CMsgRoundCombatGlobal_EventListLNS1_14WireFormatLite9FieldTypeE13ELS7_11ELi0EE15MapEntryWrapperE
+N6google8protobuf8internal12MapEntryImplI60CMsgRoundCombatGlobal_CombatPlayerSlotToEventsEntry_DoNotUseNS0_7MessageEj31CMsgRoundCombatGlobal_EventListLNS1_14WireFormatLite9FieldTypeE13ELS7_11ELi0EEE
 N6google8protobuf8internal12MapFieldBaseE
 N6google8protobuf8internal15DynamicMapFieldE
 N6google8protobuf8internal15ExtensionFinderE
@@ -2311,6 +2389,7 @@ N6google8protobuf8internal22MessageSetFieldSkipperE
 N6google8protobuf8internal23RepeatedPtrFieldWrapperINS0_7MessageEEE
 N6google8protobuf8internal23RepeatedPtrFieldWrapperISsEE
 N6google8protobuf8internal23TypeDefinedMapFieldBaseINS0_6MapKeyENS0_11MapValueRefEEE
+N6google8protobuf8internal23TypeDefinedMapFieldBaseIj31CMsgRoundCombatGlobal_EventListEE
 N6google8protobuf8internal24GeneratedExtensionFinderE
 N6google8protobuf8internal26GeneratedMessageReflectionE
 N6google8protobuf8internal27UnknownFieldSetFieldSkipperE
@@ -2327,6 +2406,8 @@ N6google8protobuf8internal30RepeatedFieldPrimitiveAccessorImEE
 N6google8protobuf8internal30RepeatedPtrFieldStringAccessorE
 N6google8protobuf8internal31RepeatedPtrFieldMessageAccessorE
 N6google8protobuf8internal33RandomAccessRepeatedFieldAccessorE
+N6google8protobuf8internal8MapEntryI60CMsgRoundCombatGlobal_CombatPlayerSlotToEventsEntry_DoNotUsej31CMsgRoundCombatGlobal_EventListLNS1_14WireFormatLite9FieldTypeE13ELS6_11ELi0EEE
+N6google8protobuf8internal8MapFieldI60CMsgRoundCombatGlobal_CombatPlayerSlotToEventsEntry_DoNotUsej31CMsgRoundCombatGlobal_EventListLNS1_14WireFormatLite9FieldTypeE13ELS6_11ELi0EEE
 NETWORK_FIELD_CHANGED_ARRAY_WITH_VALUE
 NETWORK_FIELD_CHANGED_NO_VALUE
 NETWORK_FIELD_CHANGED_NO_VALUE_NO_CONTEXT
@@ -2365,7 +2446,6 @@ NoDefaultModPath
 NoPoseControl
 Non-repeated Any specified multiple times.
 Non-repeated field "
-None
 Not implemented field number
 Not implemented.
 Note that enum values use C++ scoping rules, meaning that enum values are siblings of their type, not children of it.  Therefore, "
@@ -2415,6 +2495,8 @@ PanoramaTextServices001
 PanoramaUIClient001
 PanoramaUIEngine001
 Parameter to BackUp() can't be negative.
+ParseAndBindAvailableContent
+ParseAvailableFromOperations
 ParseFromString failed
 ParticleSystemMgr003
 PerVertexLighting
@@ -2465,6 +2547,7 @@ Plat_MessageBox
 Plat_Printf
 Plat_RelativeTicks
 Plat_SetActiveWindow
+Plat_SetDenormalsAreZero
 Plat_SetGameDirectories
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_ShutdownCOM
@@ -2473,6 +2556,7 @@ Plat_UUIDFromString
 Plat_UUIDToString
 Plat_UnloadModule
 Plat_UnloadSDL
+PlayerSlot_t
 PosXYZ
 PostProcessingSystem_001
 PredictionDiffManager001
@@ -2503,11 +2587,13 @@ Protocol Buffer map usage error:
 Protocol Buffer reflection usage error:  Method      : google::protobuf::Reflection::
 Protocol message could not be serialized.
 Protocol message serialized itself in invalid fashion.
+Puzzles
 Q
 QAngle
 Quaternion
 QueuedLoaderVersion001
 Quintic
+R
 RESOURCE_EXHAUSTED
 RESOURCE_TYPE_DAC_GAME_JSON_DATA
 ROTATION
@@ -2633,6 +2719,7 @@ Stack depth limit hit (%d)
 StatsService_001
 SteamAudio001
 SteamToursHost001
+Streetfights
 String field
 String literals cannot cross line boundaries.
 StringOutputStream.
@@ -2644,6 +2731,9 @@ Syntax Error at offset: %d
 System %s failed to init
 T
 TILT_TWIST
+TRS_FALSE
+TRS_NONE
+TRS_TRUE
 TestFormatA
 TestFormatB
 TestFormatC
@@ -2664,6 +2754,7 @@ This program was compiled against version
 This shouldn't be called if all the sizes are equal.
 ThreadGetCurrentId
 ThreadSleep
+ThreeState_t
 TimestampedEvent
 TimestampedEventMsgV
 To google::protobuf::internal::down_cast(From*) [with To = const google::protobuf::Message*, From = const google::protobuf::MessageLite]
@@ -2688,6 +2779,7 @@ True
 Truncated data
 Trying to concatenate meshes with different numbers of attributes!
 Trying to concatenate meshes with incompatible attribute sets!
+TutorialStates
 Two Bone
 Two KV3 format GUIDs with the same human-friendly name ('%s')
 Type appears to be in generated pool but wasn't
@@ -2704,11 +2796,14 @@ Unable to Start Game
 Unable to determine buffer encoding.
 Unable to read resource file %s!
 Unable to write file '%s'
+UnderlordBuilds
 Unexpected end of file
 Unexpected failure while serializing option submessage
 Unimplemented Map Reflection API.
 Unknown available content type in PuzzleDef '%s'
 Unknown enumeration value of "
+Unknown item '%s' specified when loading puzzle
+Unknown setup operation '%s' in PuzzleDef '%s'
 UnmountAddon: Failed to find %s search path.
 Unrecognized flag name '%s'
 Unrecognized resource version (%d): %s
@@ -2856,6 +2951,7 @@ WINXP
 Warning
 Warning parsing text-format
 Warning:  %s = '%s' is infinite, clamping value.
+Waves
 When enum name is stripped and label is PascalCased (
 WorkshopSetup001
 WorldRendererBuilderMgr001
@@ -2947,8 +3043,12 @@ a
 a protocol
 abs( %s )
 activityOverride
+add_modifiers
+add_owned_items
+add_owned_units
 addoninfo.txt
 addonroot
+affects_all_allied_summons_of_keyword_and_allied_heroes
 affects_all_allied_units
 affects_all_allies_with_keyword
 affects_all_enemies_with_keyword
@@ -2970,6 +3070,9 @@ aiTierOffset
 ai_model_info
 all
 allactors
+allowCombines
+allowLevel3
+allowRerolls
 allowed in proto3.
 allowstatic
 alphasort64
@@ -2980,8 +3083,9 @@ anim_name
 anim_name_a
 anim_name_b
 animationlength
-animationsystem
 animgraph0
+animgraph1
+any
 application
 appliesToItems
 applies_to_untargetable_units
@@ -2999,9 +3103,11 @@ attackAnimationPoint
 attackRange
 attackRate
 attack_damage
+attack_range
 attack_speed
 auto_unragdoll_duration
 available_content
+away
 b
 bUpdate
 bad
@@ -3019,10 +3125,10 @@ binary_auto
 binary_bc
 binary_lz4
 blendamount
-blendindices
 blendweight
 blendweights
 blockLOS
+board_code
 body_groups
 body_type
 bone_name
@@ -3037,6 +3143,15 @@ bool google::protobuf::safe_parse_positive_int(std::string, IntType*) [with IntT
 bool google::protobuf::safe_parse_positive_int(std::string, IntType*) [with IntType = long unsigned int, std::string = std::basic_string<char>]
 bool google::protobuf::safe_parse_positive_int(std::string, IntType*) [with IntType = unsigned int, std::string = std::basic_string<char>]
 borrow
+bot_brawny_kills
+bot_buying_disabled
+bot_gold
+bot_ignore_neutrals
+bot_ignore_units
+bot_items
+bot_personality
+bots
+botsPB
 break_create_joint_revolute
 break_uniform_burst
 breakable_count
@@ -3054,6 +3169,7 @@ cable
 calloc
 can't reach here.
 cantdie
+careAboutDupes
 castAnimation
 castPoint
 castRange
@@ -3101,6 +3217,8 @@ curvature
 d
 dac/dac_gamedefinitions.cpp
 dac/dac_gamemanager.cpp
+dac_gamemessages.proto
+dac_gcmessages_common.proto
 dac_npc
 damageMax
 damageMin
@@ -3109,6 +3227,7 @@ death_modifier
 default
 delete
 description
+description_strings
 details:
 developer
 diffcheck
@@ -3116,6 +3235,7 @@ diffcheck_playerslot
 diffcheck_spew
 diffcheck_spew_diff_filter
 diffcheck_spew_diff_only
+difficulty
 disable_attack
 disable_items
 disable_movement
@@ -3158,6 +3278,8 @@ f
 f %d %d %d
 f == __null || dynamic_cast<To>(f) != __null
 faceMergeAngle
+fallback
+fallbacks
 false
 fclose
 fcntl
@@ -3173,6 +3295,7 @@ float( %f )
 floor
 floorf
 fltx4
+followRandomBoughtSynergies
 fopen64
 force
 format
@@ -3200,7 +3323,6 @@ game_nontools
 gameinterfaces.cpp
 gcsystemmsgs.proto
 generated_protodac/linuxsteamrt64/base_gcmessages.pb.cc
-generated_protodac/linuxsteamrt64/dac_gamemessages.pb.cc
 generated_protodac/linuxsteamrt64/dac_gcmessages_common.pb.cc
 generated_protodac/linuxsteamrt64/econ_gcmessages.pb.cc
 generated_protodac/linuxsteamrt64/econ_shared_enums.pb.cc
@@ -3305,6 +3427,7 @@ hideHealthBar
 highlander
 highlight_keywords
 hintWords
+home
 host
 hurt_me
 hurt_them
@@ -3320,6 +3443,7 @@ i >= 0
 icon
 idle
 ignoreForRoundEnd
+ignore_cap
 ignore_ms_limit
 ikdata
 import "$0";
@@ -3329,6 +3453,7 @@ increases_kill_counts
 index < 10
 inf
 infinity
+initial_position
 int google::protobuf::CalculateBase64EscapedLen(int, bool)
 int( %d = 0x%X )
 int32
@@ -3337,17 +3462,22 @@ internal error in map key sorting
 introSoundEvent
 invert_orientation
 isBarricade
+isPersonality
 isPlaceable
+isStub
 isUnderlord
 is_debris
 isgame
+item
 j
 jiggle bone %u
 json_name = "
 jstype is only allowed on int64, uint64, sint64, fixed64 or sfixed64 fields.
 k
 k_EDACPuzzleRule_%s
+keepCombineds
 key
+keyvalues.cpp
 kv3
 kv3format_manager.cpp
 l
@@ -3381,6 +3511,7 @@ lowprecisionuv1
 lseek
 lseek64
 m
+m_Args
 m_AttachmentName
 m_AttachmentType
 m_Bone
@@ -3389,6 +3520,7 @@ m_Children
 m_Choices
 m_Color
 m_ColorScale
+m_Command
 m_ConeAxis
 m_ConeCutoff
 m_ConfigName
@@ -3422,6 +3554,7 @@ m_Joints
 m_LiteralColor
 m_LoopState
 m_MaterialGroupName
+m_MotorList
 m_Name
 m_NestedElements
 m_Operators
@@ -3454,7 +3587,6 @@ m_bHasBakedLightingBasisInVertex
 m_bHasBakedLightingFromLightMap
 m_bHasBakedLightingFromVertexStream
 m_bHasCullingData
-m_bHasPerInstanceBakedLightingData
 m_bHideMaterialGroupInTools
 m_bHideRenderColorInTools
 m_bIgnoreRotation
@@ -3667,6 +3799,7 @@ m_nTotalTicks
 m_nTotalTicksThisFrame
 m_nType
 m_nUpType
+m_nVRDisplayID
 m_nVectorComponent
 m_nVertexCount
 m_outerKnuckle1
@@ -3677,6 +3810,7 @@ m_outputWeightList
 m_pBody
 m_pD3DSemanticName
 m_pJointConstraintData
+m_pMovementManager
 m_pName
 m_pParent
 m_pSemantic
@@ -3743,8 +3877,7 @@ m_vTraceScale
 m_vUpLS
 m_vUpVector
 m_value
-m_vecAvailableItems.IsEmpty()
-m_vecAvailableUnderlords.IsEmpty()
+m_vecAvailableAlliances.IsEmpty()
 m_vecAvailableUnits.IsEmpty()
 m_vecCenter
 m_vecColorScale
@@ -3779,7 +3912,11 @@ max( %s, %s )
 max. %f
 maxHullVertices
 maxLevel
+maxLevelToBuy
 maxSpringTension
+maxTierForLevel3
+maxToTakeToLevel3
+maxUnitTier
 maxVerticesPerHull
 max_allowed
 max_angle
@@ -3852,6 +3989,7 @@ nav_data
 network_connection.proto
 networkbasetypes.proto
 neutral_creep
+neutrals_count_for_cap
 no
 none
 norm
@@ -3884,6 +4022,8 @@ parent of jiggle bone %u: %s
 parse
 parsing
 particles/
+personalities
+personalityGroup
 pervertexlighting
 phys_res
 physgun_interactions
@@ -3894,7 +4034,9 @@ placement_attach
 placement_bone
 placement_mode
 play_endcap
+player_brawny_kills
 player_dmg_override
+player_gold
 please implement MergeFrom for your type.
 point0
 point1
@@ -3913,6 +4055,7 @@ projectileName
 projectile_model
 projectile_speed
 prop_data
+props
 proto
 proto2
 proto3
@@ -3938,6 +4081,7 @@ q
 radius0
 radius1
 random_count
+ranged_only
 rb
 read
 readdir64
@@ -3953,10 +4097,12 @@ repeated
 required
 requires_ability
 resource
+resourcesystem
 rewardTiers
 rnd_down
 rnd_up
 rootNode
+rounds
 rules
 runleft
 runright
@@ -3969,9 +4115,14 @@ sched_yield
 schema
 schemabindings.cpp
 scripts/abilities.vdacdefs
+scripts/bots.vdacdefs
+scripts/bots_difficulties.vdacdefs
+scripts/bots_personalities.vdacdefs
 scripts/global_actors.txt
 scripts/items.vdacdefs
 scripts/modifiers.vdacdefs
+scripts/puzzles.vdacdefs
+scripts/streetfights.vdacdefs
 scripts/surfaceproperties_footsteps.txt
 scripts/synergies.vdacdefs
 scripts/tutorialstates.vdacdefs
@@ -3979,6 +4130,7 @@ scripts/underlord_builds.vdacdefs
 scripts/units.vdacdefs
 scripts/waves.vdacdefs
 secondary
+sellObsolete
 seq_trans
 sequence_name
 sequence_number
@@ -3987,6 +4139,7 @@ serializing
 server_can_execute
 service $0 {
 set_normal
+setup
 sfixed32
 sfixed64
 shapeType
@@ -4120,7 +4273,6 @@ std::tr1::__detail::__prime_list
 stderr
 stdout
 stealable
-steammessages.proto
 stop_immediately
 stop_instantly
 stop_on_seq_change
@@ -4151,8 +4303,11 @@ syntax = "$0";
 t
 table
 talent%d
+talents
 tangent
 tangentu_signv
+target_team
+target_unit_name
 team_invisible
 test_angles_relative
 texcoord
@@ -4194,10 +4349,12 @@ u64( %lld = 0x%llX )
 uint32
 uint64
 ultimate
+underlords
 unexpected for field
 unimplemented
 uninterpreted_option
 unit
+unitCapCost
 unitCount
 unitName
 unitcount
@@ -4212,10 +4369,12 @@ use_additional_offset
 user
 usermessages.proto
 utlstring.cpp
+utlsymbol.cpp
 v
 v %g %g %g
 v %g %g %g%s
 value
+valveextensions.proto
 vanmgrph
 vb phys
 vector::_M_fill_insert
@@ -4232,6 +4391,7 @@ vmdlkeys3
 vmin < 0
 vmin <= 0 - base
 vn %g %g %g
+vo
 void google::protobuf::FieldDescriptorProto::set_label(google::protobuf::FieldDescriptorProto_Label)
 void google::protobuf::FieldDescriptorProto::set_type(google::protobuf::FieldDescriptorProto_Type)
 void google::protobuf::FieldOptions::set_ctype(google::protobuf::FieldOptions_CType)

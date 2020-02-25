@@ -1,0 +1,51 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/dac_ui_popup_battlepass_s1_intro.vcss_c" />
+	</styles>
+
+	<PopupBattlePassS1Intro class="PopupPanel" popupbackground="blur" acceptsinput="true" >
+		
+
+		<Panel id="CarouselContent" >
+			<Panel id="Page1" class="BattlePassIntroCarouselItem">
+				<Label class="PageText" text="#DAC_Battlepass_Welcome_Page1" />
+			</Panel>
+
+			<Panel id="Page2" class="BattlePassIntroCarouselItem" >
+				<Label class="PageText" text="#DAC_Battlepass_Welcome_Page2" />
+			</Panel>
+			
+			<Panel id="Page3" class="BattlePassIntroCarouselItem">
+				<Label class="PageText" text="#DAC_Battlepass_Welcome_Page3" />
+			</Panel>
+		</Panel>
+
+		<Panel id="CarouselNav" >
+			
+			<Panel id="ItemPips" >
+				<Panel class="ItemPip Page1" />
+				<Panel class="ItemPip Page2" />
+				<Panel class="ItemPip Page3" />
+			</Panel>
+		
+			<Button id="PreviousItemButton" class="PaginationArrow Left" onactivate="PageSelectIncrement( -1 )" />
+			<Button id="NextItemButton" class="PaginationArrow Right" onactivate="PageSelectIncrement( 1 )" />
+		</Panel>
+
+		<Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
+		<!--Label class="BattlePassTitle HeadlineFont" html="true" text="#DAC_BattlePass" />
+		<Label class="SeasonOneTitle" text="#DAC_Battlepass_SeasonTitle" />-->
+		
+		<Panel id="Title">
+				<DACBattlepassLevel class="NoText" id="CurrentLevel" />
+				<Panel id="TitleText">
+					<Label class="UnlockOnly" id="BattlePassTitle" text="#DAC_Battlepass" />
+					<Label class="UnlockOnly" id="SeasonOneTitle" text="#DAC_Rewards_BattlePass_Title" />
+				</Panel>
+		</Panel>
+		
+	</PopupBattlePassS1Intro>
+
+</root>

@@ -1,0 +1,44 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_page_credits.vcss_c" />
+	</styles>
+	<snippets>
+
+		<snippet name="DevName">
+			<Panel class="DevName">
+				<Label id="Text" class="NameLabel" text="{s:name}"/>
+			</Panel>
+		</snippet>
+
+		<snippet name="ActorName">
+			<Panel class="ActorName">
+				<Label id="Text" class="NameLabel" text="{s:name}"/>
+				<Panel class="ActorSplitter" />
+				<Label id="RoleText" class="RoleNames" text="{s:roles}"/>
+			</Panel>
+		</snippet>
+
+	</snippets>
+
+
+	<DACCreditsPage  class="DashboardPage">
+		<Panel class="DashboardHeader">
+			<Panel id="BackButton2" onactivate="DACShowHomePage(); DACShowSettingsPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )" />
+		</Panel>
+
+		<Panel id="CreditsContainer">
+			<Panel class="ValveLogo" />
+			<Panel id="DevNamesContainer" /> <!-- filled in by code -->
+
+			<Label class="CreditsHeader" text="#DAC_Credits_Contractors" />
+			<Panel id="ContractorNamesContainer" /> <!-- filled in by code -->
+
+			<Label class="CreditsHeader" text="#DAC_Credits_VoiceActors" />
+			<Panel id="ActorNamesContainer" /> <!-- filled in by code -->
+
+			<Label class="CreditsHeader" text="#DAC_Credits_Thanks" />
+			<Panel id="ThanksNamesContainer" /> <!-- filled in by code -->
+		</Panel>
+	</DACCreditsPage>
+</root>

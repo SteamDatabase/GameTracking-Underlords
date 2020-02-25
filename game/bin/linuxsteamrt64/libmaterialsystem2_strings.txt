@@ -34,6 +34,7 @@ $ORIGIN
 %d)
 %d..%d
 %f %f %f %f
+%g
 %hd
 %hu
 %i %i %i %i
@@ -197,8 +198,8 @@ $ORIGIN
 *** vfx_common.cpp(5608): Error opening file "%s"!
 *** vfx_common.cpp(5712): Error opening file "%s"!
 *** vfx_common.cpp(6167): Programmer Error! The order of VfxVariableSourceType_t does not match s_shaderVariableSource!
-*** vfx_common.cpp(7302): Programmer Error! NULL pointer passed into function!
-*** vfx_common.cpp(7328): Programmer Error! Non feature rule found in feature rule array!
+*** vfx_common.cpp(7304): Programmer Error! NULL pointer passed into function!
+*** vfx_common.cpp(7330): Programmer Error! Non feature rule found in feature rule array!
 *15CMemberFunctor1IP26CParallelProcessorAbstractI26CFunctorParallelControllerIZ48CompileComboAndGetVariables_DynamicShaderCompileR10CUtlVectorI26DynamicShaderCompileTask_t10CUtlMemoryIS3_iEEPFviiEEUliE_EEMSC_FviEi12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 *Z31CompileAllShadersForStaticComboyR19CVfxStaticComboDataR4CVfx12VfxProgram_tP4IVfxEUlRiE_
 +
@@ -252,12 +253,15 @@ $ORIGIN
 .
 .%s
 ../public/ordered_constructor.h
+../public/scenesystem/vertexformat.h
 ../public/tier0/tslist.h
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utlleanvector.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlntree.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utlsymbol.h
+../public/tier1/utltshash.h
 .ini
 .vcs
 .vfont
@@ -286,7 +290,6 @@ $ORIGIN
 11CTextLayout
 11IRefCounted
 11ITextLayout
-12CEmptyConVar
 12CFontManager
 12CFunctorData
 12CRefCounted1I12CFunctorData20CRefCountServiceBaseILb1E6CRefMTEE
@@ -332,6 +335,7 @@ $ORIGIN
 16CMaterialSystem2
 16IMaterialSystem2
 17IQueuedRenderable
+18CPlaceholderConVar
 18CTextureDictionary
 18ITSHashConstructorIP4CVfxE
 18ITextureDictionary
@@ -436,15 +440,19 @@ $ORIGIN
 <Unknown font>
 <anon>/
 <anon>:
+<deferred>
 <invalid>
+<no deferred ref found>
 <no failure reason set>
 <no text for the token>
 <null>
+<unconnected>
 <unknown>
 ==
 ==%d
 >
 >=
+?
 ???
 ?a`
 @
@@ -497,6 +505,8 @@ ATI2N
 ATI_DST16
 ATI_DST24
 AbsolutePoseControl
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Actually dude, we didn't seem to be expecting anything here, or at least
 AddMultipleToTail
 AddToTailGetPtr
@@ -548,6 +558,7 @@ AssetSystem001
 AssetSystemTest001
 Attribute-based texture %s not bound for material "%s"!
 Attribute-based texture %s not bound for material "%s"! Missing render attribute "%s"
+Attribute-based texture %s not bound for material "%s"! Missing render attribute "%s".  Context %s
 B
 B->C
 BC6H
@@ -612,6 +623,8 @@ BreakPieceExternal
 C
 C->D
 C->E
+CAnimMotorList
+CAnimMovementManager
 CAuthPhysBody
 CAuthPhysJoint
 CBufferString::AppendConcat(int, char const* const*, int const*, bool)
@@ -682,15 +695,15 @@ CTextureDictionary::LoadDeferredIdNOW() blocking load of "%s"
 CTextureDictionary::ProcessDeferredResourceLoading()
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadMultiWaitEvent::Set()
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
 CTransform
@@ -952,7 +965,6 @@ Failed to Allocate a Dynamic Vertex Buffer of size %u
 Failed to allocate an instance of a class
 Failed to assign bool literal value
 Failed to call CBaseIntrospectedToKV3TypeManager::Init
-Failed to convert KV3 to string; error: %s
 Failed to load font file '%s'
 Failed to parse custom font file '%s'
 FcCharSetCopy
@@ -1056,6 +1068,7 @@ InstallSchemaBindings
 Intentionally vague touch behavior for %p
 InvTextureDim
 InvViewportSize
+Invalid access of deferred ConVarRef for '%s'
 Invalid compressed buffer size
 Invalid data for member '%s'
 Invalid data.
@@ -1149,7 +1162,6 @@ MaterialParam_t
 MaterialResourceData_t
 MaterialSystem
 MaterialSystem2
-MaterialSystem2/ShaderIDColors/
 MaterialSystem2/ToolsShadingComplexity/TargetRenderMode
 MaterialSystem2DefaultDebugFont
 MaterialSystem2DefaultDebugFontOutline
@@ -1301,6 +1313,7 @@ Plat_IsHighDPI
 Plat_IsInDebugSession
 Plat_LoadInterface
 Plat_LoadModuleRaw
+Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_UUIDFromString
 Plat_UUIDToString
@@ -1442,6 +1455,7 @@ Shader expected %d bytes of push constants but only got %d (%s)!
 Shader expression for constant %s is dynamic.
 Shader uses push constants but they weren't supplied through attributes (%s)!
 ShaderIDColor
+ShaderIDColors
 ShadingComplexity
 Skipped %d%% of all combos
 Slider
@@ -1558,7 +1572,6 @@ VFONT1
 VFX value %s out of range %d-%d: %d
 VFX_DLL_001
 VFX_PROGRAM_MAX
-VFileSystem017
 VGUI_Input005
 VGUI_Panel010
 VGUI_Scheme010
@@ -1790,6 +1803,7 @@ anim_name
 anim_name_a
 anim_name_b
 animgraph0
+animgraph1
 appendstructuredbuffer
 archive
 attach_point
@@ -1956,6 +1970,7 @@ is also the end of the line, so you must check your lexer rules
 is_debris
 j
 k
+keyvalues.cpp
 kv3
 kv3format_manager.cpp
 l
@@ -2005,6 +2020,7 @@ m_JointConstraintPairs
 m_JointName
 m_Joints
 m_LiteralColor
+m_MotorList
 m_Name
 m_Operators
 m_PreEmissionOperators
@@ -2134,6 +2150,7 @@ m_nVariableSourceMax
 m_nVectorComponent
 m_pBody
 m_pJointConstraintData
+m_pMovementManager
 m_pParent
 m_pValue
 m_pszSnapshotName
@@ -2231,32 +2248,32 @@ material2.cpp(629): Error! Material "%s" doesn't have any valid layers to get th
 material2.cpp(661): Error! Material "%s" doesn't have a CVsInputSignatureVector!
 material_command_buffer.cpp
 material_shader_params.cpp
-material_shader_params.cpp(1011): Invalid data type for render state variable %s in material "%s"!
-material_shader_params.cpp(1018): Error evaluating expression for render state variable %s in material "%s"!
-material_shader_params.cpp(1024): Invalid variable source type for render state variable %s in material "%s"!
-material_shader_params.cpp(1095): Unsupported render state type in material "%s"!
-material_shader_params.cpp(1113): Sampler index %d out of bounds for "%s" in material "%s"!
-material_shader_params.cpp(1186): Unsupported sampler state type for "%s" in material "%s"!
-material_shader_params.cpp(1269): Could not bind constant buffer "%s" because the constant buffer handle was invalid in material "%s"!
-material_shader_params.cpp(1284): Error setting constant for REGISTER_FLOAT4 for "%s" in material "%s"! Talk to a programmer!
-material_shader_params.cpp(1346): Trying to set VFX_VARIABLE_TYPE_MATRIX_* but this isn't supported yet! In material "%s"
-material_shader_params.cpp(1351): Bad VFX_VARIABlE type for VFX_VARIABLE_SOURCE_SET_BY_ARTIST %s in material "%s"!
-material_shader_params.cpp(1650): Invalid data type for render state variable %s in material "%s"!
-material_shader_params.cpp(1686): Invalid data type for render state variable %s in material "%s"!
-material_shader_params.cpp(1772): Invalid data type for render state variable %s in material "%s"!
-material_shader_params.cpp(1780): Invalid variable source type for render state variable %s in material "%s"!
-material_shader_params.cpp(1878): Unsupported render state type in material "%s"!
-material_shader_params.cpp(1965): Unsupported render state in material "%s"!
-material_shader_params.cpp(2038): Unsupported sampler state type for "%s" in material "%s"!
-material_shader_params.cpp(2060): Unsupported sampler state type for "%s" in material "%s"!
+material_shader_params.cpp(1000): Invalid data type for render state variable %s in material "%s"!
+material_shader_params.cpp(1007): Error evaluating expression for render state variable %s in material "%s"!
+material_shader_params.cpp(1013): Invalid variable source type for render state variable %s in material "%s"!
+material_shader_params.cpp(1084): Unsupported render state type in material "%s"!
+material_shader_params.cpp(1102): Sampler index %d out of bounds for "%s" in material "%s"!
+material_shader_params.cpp(1175): Unsupported sampler state type for "%s" in material "%s"!
+material_shader_params.cpp(1258): Could not bind constant buffer "%s" because the constant buffer handle was invalid in material "%s"!
+material_shader_params.cpp(1273): Error setting constant for REGISTER_FLOAT4 for "%s" in material "%s"! Talk to a programmer!
+material_shader_params.cpp(1335): Trying to set VFX_VARIABLE_TYPE_MATRIX_* but this isn't supported yet! In material "%s"
+material_shader_params.cpp(1340): Bad VFX_VARIABlE type for VFX_VARIABLE_SOURCE_SET_BY_ARTIST %s in material "%s"!
+material_shader_params.cpp(1639): Invalid data type for render state variable %s in material "%s"!
+material_shader_params.cpp(1675): Invalid data type for render state variable %s in material "%s"!
+material_shader_params.cpp(1761): Invalid data type for render state variable %s in material "%s"!
+material_shader_params.cpp(1769): Invalid variable source type for render state variable %s in material "%s"!
+material_shader_params.cpp(1867): Unsupported render state type in material "%s"!
+material_shader_params.cpp(1954): Unsupported render state in material "%s"!
+material_shader_params.cpp(2027): Unsupported sampler state type for "%s" in material "%s"!
+material_shader_params.cpp(2049): Unsupported sampler state type for "%s" in material "%s"!
 material_shader_params.cpp(369): Trying to set VFX_VARIABLE_TYPE_MATRIX_* but this isn't supported yet! In material "%s"
 material_shader_params.cpp(374): Bad VFX_VARIABlE type for VFX_VARIABLE_SOURCE_SET_BY_ARTIST %s in material "%s"!
 material_shader_params.cpp(429): Trying to set VFX_VARIABLE_TYPE_MATRIX_* but this isn't supported yet! In material "%s"
 material_shader_params.cpp(434): Bad VFX_VARIABlE type for VFX_VARIABLE_SOURCE_SET_BY_ARTIST %s in material "%s"!
 material_shader_params.cpp(511): Trying to set VFX_VARIABLE_TYPE_MATRIX_* but this isn't supported yet! In material "%s"
 material_shader_params.cpp(516): Bad VFX_VARIABlE type for VFX_VARIABLE_SOURCE_SET_BY_ARTIST %s in material "%s"!
-material_shader_params.cpp(923): Unknown variable type for %s in material "%s"!
-material_shader_params.cpp(969): Invalid data type for render state variable %s in material "%s"!
+material_shader_params.cpp(912): Unknown variable type for %s in material "%s"!
+material_shader_params.cpp(958): Invalid data type for render state variable %s in material "%s"!
 material_type_manager.cpp
 material_type_manager.cpp(53): GetErrorMaterial() called before error material exists!
 materials/dev/combine_colorcorrection_lut_cs.vmat
@@ -2268,13 +2285,13 @@ materialsystem2
 materialsystem2.cpp
 materialsystem2.cpp(145): ERROR! Empty shader mode string found! Use "Default" instead!
 materialsystem2.cpp(161): ERROR! Shader mode "%s" has unsupported type "%s" specified gameinfo.gi!
-materialsystem2.cpp(2769): pVfx == NULL!
-materialsystem2.cpp(2818): pVfx == NULL!
-materialsystem2.cpp(3090): Error reading index!
-materialsystem2.cpp(353): ERROR!!! Materials not released by other systems on shutdown! (See spew above)
-materialsystem2.cpp(358): ERROR!!! Shaders not freed on shutdown, likely due to unreleased materials! (See spew above)
-materialsystem2.cpp(372): GetErrorMaterial() called when m_pMaterialTypeManager == NULL!
-materialsystem2.cpp(841): ERROR!!! Shaders not freed before shader reload! (See spew above)
+materialsystem2.cpp(2788): pVfx == NULL!
+materialsystem2.cpp(2837): pVfx == NULL!
+materialsystem2.cpp(3109): Error reading index!
+materialsystem2.cpp(366): ERROR!!! Materials not released by other systems on shutdown! (See spew above)
+materialsystem2.cpp(371): ERROR!!! Shaders not freed on shutdown, likely due to unreleased materials! (See spew above)
+materialsystem2.cpp(385): GetErrorMaterial() called when m_pMaterialTypeManager == NULL!
+materialsystem2.cpp(854): ERROR!!! Shaders not freed before shader reload! (See spew above)
 matrix3x4_t
 matrix3x4a_t
 matsystemtexture_%s_%lld.vtex
@@ -2474,6 +2491,7 @@ t
 tan
 test_angles_relative
 text
+texturedictionary.cpp
 texturescale
 tools
 true
@@ -2488,17 +2506,18 @@ using substring "%s"
 utils/materialsystem2utils.cpp
 utlbuffer.cpp
 utlstring.cpp
+utlsymbol.cpp
 v
 vanmgrph
 version
 vfx_common.cpp
 vfx_common.cpp(3591): Error! Ref count !=0 for static combo data cache entry!
 vfx_common.cpp(3678): Error! Ref count !=0 for static combo data cache entry!
-vfx_common.cpp(6838): Error opening file %s
-vfx_common.cpp(6912): VCS %s Unserialize failed
-vfx_common.cpp(6926): VCS %s Unserialize hit EOF
-vfx_common.cpp(7064): Error opening file %s
-vfx_common.cpp(7071): Error calling SkipAndValidateVCSHeader() for %s
+vfx_common.cpp(6840): Error opening file %s
+vfx_common.cpp(6914): VCS %s Unserialize failed
+vfx_common.cpp(6928): VCS %s Unserialize hit EOF
+vfx_common.cpp(7066): Error opening file %s
+vfx_common.cpp(7073): Error calling SkipAndValidateVCSHeader() for %s
 vfx_compile_target_expr.cpp(106): : Failed to create lexer from "%s"
 vfx_compile_target_expr.cpp(114): : Failed to create token stream from "%s"
 vfx_compile_target_expr.cpp(122): : Failed to create parser from "%s"

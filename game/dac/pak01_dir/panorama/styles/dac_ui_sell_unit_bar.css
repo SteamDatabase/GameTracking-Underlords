@@ -75,7 +75,7 @@
 	border-left: 2px solid #41396133;
 	border-right: 2px solid #413961aa;
 	border-bottom: 2px solid #8a7bc1aa;
-	background-color: gradient(linear, 0% 100%, 0% 0%, from(#45455c88), to(#1a1a1d88));
+	background-color: gradient(linear, 0% 100%, 0% 0%, from(#45455c), to(#1a1a1d));
 
 	//background-image: url("s2r://panorama/images/hud/sell_unit_button_psd.vtex");
 	//background-repeat: no-repeat;
@@ -85,7 +85,6 @@
 
 .GameMode_Duos .UnitBarButtonContainer
 {
-	height: 92%;
 	width: 95%;
 }
 
@@ -99,6 +98,8 @@
 
 #SellUnitIcon
 {
+	opacity: 0;
+
 	//width: 120px;
 	//height: 130px;
 	width: 110px;
@@ -109,20 +110,24 @@
 	background-repeat: no-repeat;
 	background-size: contain;
 	background-position: 50% 50%;
-	transition-property: background-image, wash-color, brightness;
+	transition-property: background-image, wash-color, brightness, opacity;
 	transition-duration: .2s;
+}
+
+.DraggingUnit #SellUnitIcon {
+	opacity: 1;
 }
 
 .IsLayoutSmallScreen #SellUnitIcon
 {
-    width: 175px;
-    height: 175px;
-    margin-top: 12px; 
+    width: 172px;
+    height: 172px;
+	margin-top: 12px;
+	opacity: 1; 
 }
 
-.AspectRatio4x3.IsLayoutSmallScreen #SellUnitIcon
+.AspectRatio4x3.IsLayoutSmallScreen #SellUnitIcon, .AspectRatio4x3.IsLayoutSmallScreen #SendUnitIcon
 {
-	margin-top: 100px;
 	ui-scale: 80%;
 }
 
@@ -205,19 +210,18 @@
 .GameMode_Duos.IsLayoutSmallScreen.InCombat .SellLabel
 {
 	font-size: 32px;
-	//margin-bottom: 125px;
-	margin-bottom: 115px;
+	margin-bottom: 104px;
 }
 
-.AspectRatio4x3.IsLayoutSmallScreen .SellLabel
+.AspectRatio4x3.IsLayoutSmallScreen .SellLabel, .AspectRatio4x3.IsLayoutSmallScreen .SendLabel
 {
-	margin-bottom: 200px;
+	margin-bottom: 160px;
 }
 
 .GameMode_Duos .SellLabel
 {
-   font-size: 21px;
-   margin-bottom: 65px;
+   font-size: 22px;
+   margin-bottom: 72px;
 }
 
 .GameMode_Duos.InCombat .SellLabel
@@ -303,7 +307,7 @@
 .GameMode_Duos.IsLayoutSmallScreen.AspectRatio4x3 #GoldValueContainer,
 .InCombat.GameMode_Duos.IsLayoutSmallScreen.AspectRatio4x3 #GoldValueContainer
 {
-	margin-bottom: 115px;
+	margin-bottom: 72px;
 }
 
 .GameMode_Duos.InCombat #GoldValueContainer
@@ -335,13 +339,6 @@
 {
 	font-size: 36px;
 	margin-top: 15px;
-}
-
-.GameMode_Duos #UnitCost
-{
-	padding-right: 4px;
-	margin-top: 7px;
-	font-size: 28px;
 }
 
 #PlusMinus

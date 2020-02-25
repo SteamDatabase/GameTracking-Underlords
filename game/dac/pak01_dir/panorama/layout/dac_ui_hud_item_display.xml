@@ -1,0 +1,41 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_hud_item_display.vcss_c" />
+	</styles>
+
+	<snippets>
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<snippet name="HeroItemSlot">
+			<Panel class="HUDItem">
+				<Image id="ItemImage" />
+				<Panel class="Unavailable" />
+				<Panel id="RankButtons">
+					<Button id="IncreaseUnitRankButton" class="ModifyRankButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( 1 )"/>
+					<Button id="DecreaseUnitRankButton" class="ModifyRankButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( -1 )"/>
+				</Panel>
+				<Panel id="BottomRow" always-cache-composition-layer="true">
+					<Image id="HeroImage" />
+					<Image id="WorthNoGold" />
+					<Image class="RankStar" id="Rank1Star" />
+					<Image class="RankStar" id="Rank2Star" />
+					<Image class="RankStar" id="Rank3Star" />
+				</Panel>
+			</Panel>
+		</snippet>
+		
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+		<snippet name="PropSnippet_RickyStatue">
+			<Panel class="PropSnippet">
+				<DACBattlepassLevel id="BattlePassLevel"/>
+			</Panel>
+		</snippet>
+		
+		<snippet name="PropSnippet_GoldenRickyStatue">
+			<Panel class="PropSnippet">
+				<Image class="PropImage" id="GoldenRickyImage" />
+			</Panel>
+		</snippet>
+	</snippets>
+	<DACHUDItemDisplay/>
+</root>

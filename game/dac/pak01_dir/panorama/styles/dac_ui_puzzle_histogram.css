@@ -1,0 +1,317 @@
+
+DACPuzzleHistogram
+{
+	width: 700px;
+	height: 300px;
+
+	flow-children: down;
+}
+
+.Tabs 
+{
+	width: 100%;
+	height: 50px;
+
+	flow-children: right;
+}
+
+.Tabs .Tab 
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	text-align: center;
+
+	font-size: 20px;
+	color: #B4B4B4;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+
+	padding-top: 12px;
+
+	background-color: #121212;
+}
+
+.Tabs .Tab:not(.First)
+{
+	margin-left: 2px;
+}
+
+.Tabs .Tab:not(.Last)
+{
+	margin-right: 2px;
+}
+
+.TabNetWorth .Tabs .Tab.NetWorth,
+.TabDuration .Tabs .Tab.Duration,
+.TabSurvival .Tabs .Tab.Survival,
+.TabUnits .Tabs .Tab.Units
+{
+	color: #D4D4D4;
+	background-color: #1F1F1F;
+}
+
+.Tabs .Tab:not(.Active):hover
+{
+	brightness: 2.0;
+}
+
+.ScoreContainer
+{
+	width: 100%;
+	height: 30px;
+
+	background-color: #333;
+
+	visibility: collapse;
+}
+
+.ShowPersonalScore .ScoreContainer
+{
+	visibility: visible;
+}
+
+.ScoreContainer .Score
+{
+	width: 100%;
+	vertical-align: center;
+
+	font-size: 20px;
+	color: white;
+	text-align: center;
+
+	visibility: collapse;
+}
+
+.TabNetWorth .ScoreContainer .Score.NetWorth,
+.TabDuration .ScoreContainer .Score.Duration,
+.TabSurvival .ScoreContainer .Score.Survival,
+.TabUnits .ScoreContainer .Score.Units
+{
+	visibility: visible;
+}
+
+.BottomContainer
+{
+	width: 100%;
+	height: fill-parent-flow( 1.0 );
+
+	flow-children: right;
+
+	background-color: #1F1F1F;
+
+}
+
+.BottomContainer .HistogramContainer
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	vertical-align: bottom;
+	flow-children: down;
+
+	margin: 20px;
+	margin-top: 0px;
+}
+
+.BottomContainer .HistogramContainer .Header,
+.BottomContainer .LeaderboardContainer .Header
+{
+	width:  100%;
+	height: 30px;
+}
+
+.BottomContainer .HistogramContainer .Header Label,
+.BottomContainer .LeaderboardContainer .Header Label
+{
+	color: white;
+	horizontal-align: center;
+	vertical-align: center;
+
+	font-size: 16px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+
+.BottomContainer .HistogramContainer .Histogram
+{
+	width: 100%;
+	height: fill-parent-flow( 0.9 );
+
+	vertical-align: top;
+
+	background-color: #000;
+
+	flow-children: right;
+
+	visibility: collapse;
+}
+
+.BottomContainer .HistogramContainer .HistogramValueContainer
+{
+	width: 100%;
+	height: fill-parent-flow( 0.1 );
+
+	background-color: black;
+}
+
+.BottomContainer .HistogramContainer .HistogramValueContainer .Value
+{
+	color: #666;
+	font-size: 16px;
+	margin-top: 3px;
+}
+
+.NoData .BottomContainer .HistogramContainer .HistogramValueContainer .Value
+{
+	visibility: collapse;
+}
+
+.BottomContainer .HistogramContainer .HistogramValueContainer .Value.Min
+{
+	horizontal-align: left;
+	margin-left: 3px;
+}
+
+.BottomContainer .HistogramContainer .HistogramValueContainer .Value.Max
+{
+	text-align: right;
+	horizontal-align: right;
+	margin-right: 3px;
+}
+
+
+.TabNetWorth .BottomContainer .HistogramContainer #HistogramNetWorth,
+.TabDuration .BottomContainer .HistogramContainer #HistogramDuration,
+.TabSurvival .BottomContainer .HistogramContainer #HistogramSurvival,
+.TabUnits .BottomContainer .HistogramContainer #HistogramUnits
+{
+	visibility: visible;
+}
+
+.BottomContainer .HistogramContainer .Histogram .HistogramBar
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	flow-children: down;
+}
+
+.BottomContainer .HistogramContainer .Histogram .HistogramBar .SubBar
+{
+	width: 100%;
+}
+
+.BottomContainer .HistogramContainer .Histogram .HistogramBar #BarLower
+{
+	border-top: 2px solid #333;
+}
+
+.BottomContainer .HistogramContainer .Histogram .HistogramEdge
+{
+	height: 100%;
+	flow-children: down;
+}
+
+.BottomContainer .HistogramContainer .Histogram .HistogramEdge #Edge
+{
+	border-left: 2px solid #333;
+}
+
+.BottomContainer .HistogramContainer .Histogram .HistogramEdge .Spacer
+{
+	width: 2px;
+}
+
+.BottomContainer .HistogramContainer .Histogram .HistogramBar.Self #BarLower
+{
+	background-color: #7b9f7b;
+}
+
+.BottomContainer .LeaderboardContainer
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	flow-children: down;
+
+	background-color: #1F1F1F;
+
+	padding-bottom: 20px;
+}
+
+.BottomContainer .LeaderboardContainer .Leaderboard
+{
+	width: 100%;
+	height: 100%;
+
+	flow-children: down;
+	overflow: squish scroll;
+
+	padding-right: 20px;
+
+	visibility: collapse;
+}
+
+.TabNetWorth .BottomContainer .LeaderboardContainer #LeaderboardNetWorth,
+.TabDuration .BottomContainer .LeaderboardContainer #LeaderboardDuration,
+.TabSurvival .BottomContainer .LeaderboardContainer #LeaderboardSurvival,
+.TabUnits .BottomContainer .LeaderboardContainer #LeaderboardUnits
+{
+	visibility: visible;
+}
+
+.BottomContainer .LeaderboardContainer .Leaderboard .LeaderboardEntryContainer
+{
+	width: 100%;
+	height: 26px;
+
+	flow-children: right;
+
+	padding: 4px 8px;
+}
+
+.BottomContainer .LeaderboardContainer .Leaderboard .LeaderboardEntryContainer.Even
+{
+	background-color: #121212;
+}
+
+.BottomContainer .LeaderboardContainer .Leaderboard .LeaderboardEntryContainer.Empty .Name,
+.BottomContainer .LeaderboardContainer .Leaderboard .LeaderboardEntryContainer.Empty .Score
+{
+	visibility: collapse;
+}
+
+.BottomContainer .LeaderboardContainer .Leaderboard .LeaderboardEntryContainer .Name
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	font-size: 16px;
+	color: #CCC;
+
+	text-align: left;
+}
+
+.BottomContainer .LeaderboardContainer .Leaderboard .LeaderboardEntryContainer .Score
+{
+	width: 40px;
+	height: 100%;
+
+	font-size: 16px;
+	color: #DDD;
+
+	text-align: right;
+}
+
+.BottomContainer .LeaderboardContainer .Leaderboard .LeaderboardEntryContainer.Self .Name
+{
+	color: #ADA;
+}
+
+.BottomContainer .LeaderboardContainer .Leaderboard .LeaderboardEntryContainer.Self .Score
+{
+	color: #BEB;
+}
+

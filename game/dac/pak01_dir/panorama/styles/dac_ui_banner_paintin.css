@@ -7,12 +7,22 @@ DACBannerPaintin
 	transform: rotateZ(-2.5deg);
 }
 
-DACRoundOverScreen.ShowVictory DACBannerPaintin #Headline Label
+DACRoundOverScreen DACBannerPaintin #Headline Label
 {
 	color: gradient(linear, 0% 0%, 0% 100%, from( #ffc400 ), to(#fffdd7));
-	padding: 10px 38px 18px;
+	padding: 10px 48px 18px;
+	ui-scale: 64%;
 }
 
+DACRoundOverScreen DACBannerPaintin.Victory
+{
+	margin-top: 112px;
+}
+
+DACRoundOverScreen.ShowDefeat DACBannerPaintin #Headline Label
+{
+	color: #000;
+}
 
 .BannerPaintin_BG Label {
 	opacity: 0;
@@ -54,15 +64,41 @@ DACBannerPaintin AnimatedImageStrip {
 	-s2-mix-blend-mode: multiply;
 }
 
-#Headline, #Subhead {
+#Headline, #Subhead
+{
 	horizontal-align: center;
 }
 
-#Subhead {
-	margin-top: 145px;
+
+.GameMode_Puzzle .TopFour	DACBannerPaintin.RoundStart #Subhead,
+.GameMode_Puzzle .TopThree	DACBannerPaintin.RoundStart #Subhead,
+.GameMode_Puzzle .TopTwo		DACBannerPaintin.RoundStart #Subhead,
+.GameMode_Streetfight .TopFour	DACBannerPaintin.RoundStart #Subhead,
+.GameMode_Streetfight .TopThree	DACBannerPaintin.RoundStart #Subhead,
+.GameMode_Streetfight .TopTwo		DACBannerPaintin.RoundStart #Subhead,
+{
 	visibility: collapse;
 }
-.WithSubhead #Subhead {
+
+#Subhead
+{
+	margin-top: -40px;
+	visibility: collapse;
+}
+.WithSubhead #Subhead
+{
+	visibility: visible;
+}
+
+DACBannerPaintin.RoundStart #Subhead
+{
+	visibility: collapse;
+}
+
+.TopFour	DACBannerPaintin.RoundStart #Subhead,
+.TopThree	DACBannerPaintin.RoundStart #Subhead,
+.TopTwo		DACBannerPaintin.RoundStart #Subhead
+{
 	visibility: visible;
 }
 
@@ -91,7 +127,7 @@ DACBannerPaintin AnimatedImageStrip {
 	text-transform: uppercase;
 	text-align: center;
 	letter-spacing: 4px;
-	padding: 9px 40px 30px;
+	padding: 16px 40px 6px;
 	horizontal-align: center;
 }
 

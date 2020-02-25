@@ -1,0 +1,135 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass_rewardline.vcss_c" />		
+		<include src="s2r://panorama/styles/popups/popup_battlepass_purchase.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_battlepass_level.vcss_c" />
+	</styles>
+
+	<snippets>
+		<snippet name="RewardItem">
+			<Panel class="RewardItemContainer">
+				<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" class="RewardLineItemImage" hittest="true" use_3D_preview="false" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" preview_model_scale="1" enable_sound_effects="false" use_portrait_camera="false" />
+				<Panel class="MainRewardPanelFrame"/>
+				<Panel class="RequireBattlePassIcon">  
+					<Label id="DoNotRequireBattlePassText" text="#DAC_Rewards_Free" /> 
+				</Panel>				
+				<Label class="PurchaseRewardLabel" text="{s:reward_name}" />
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<PopupBattlepassPurchase class="PopupPanel" popupbackground="blur">
+		<Panel id="PopUpBPBacker"/>
+		<Panel id="CloseBG" hittest="true" onactivate="UIPopupButtonClicked( close ); PlaySoundEffect( 'UL_UI.BattlePass_PurchaseCancel' );" />
+		<Panel id="Body" hittest="true">
+			<Panel id="Title">
+				<DACBattlepassLevel class="NoText" id="CurrentLevel" />
+				<Panel id="TitleText">
+					<Label class="UnlockOnly" id="BattlePassTitle" text="#DAC_Battlepass" />
+					<Label class="UnlockOnly" id="SeasonOneTitle" text="#DAC_Rewards_BattlePass_Title" />
+					<Label class="LevelUpOnly" id="BuyLevelsTitle" text="#DAC_Battlepass_LevelUpText" />
+				</Panel>
+			</Panel>
+			<Panel id="BodyMessage">
+				<Panel class="LevelUpOnly" id="Description">
+					<Label id="RewardsDescription" text="#DAC_Battlepass_YouWillUnlockTheseRewards" />
+				</Panel>
+				<Panel id="ItemContainer">
+					<!-- populated by code -->
+				</Panel>
+				<Panel class="UnlockOnly" id="ImageNoRewards"/>
+				<Panel class="UnlockOnly" id="Violator" >
+					<Panel class="UnlockOnly" id="ViolatorArt" />
+					<Label class="UnlockOnly" id="IncludesLevels" text="#DAC_Battlepass_IncludesLevels" />
+				</Panel>
+				<Panel class="UnlockOnly" id="PurchaseRewardsDescription">
+					<Label id="DescriptionNoRewards" text="#DAC_Battlepass_UnlockDescriptionNoRewards" />
+					<Label id="RewardsDescriptionMany" text="#DAC_Battlepass_LockedRewardsDescription" />
+					<Label id="RewardsDescriptionOne" text="#DAC_Battlepass_LockedRewardsDescription1Reward" />
+				</Panel>
+				<Panel id="Buttons">
+					<Panel id="PurchaseOptions">
+						<Panel id="SelectHeader" >
+							<Label id="SelectHeaderLabel" text="#DAC_Battlepass_SelectHeader" />
+						</Panel>
+						<Panel id="MainButtonsContainer">
+							<Panel id="LevelUpOffer1" class="LevelUpOnly LevelUpOfferButton" onactivate="DACOnSelectLevelUpOffer(1); PlaySoundEffect( 'UL_UI.BattlePass_PurchaseActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.BattlePass_PurchaseRollover' )">
+								<Label text="#DAC_Battlepass_LevelUpBuy2" />
+							</Panel>
+
+							<Panel id="LevelUpOffer2" class="LevelUpOnly LevelUpOfferButton" onactivate="DACOnSelectLevelUpOffer(2); PlaySoundEffect( 'UL_UI.BattlePass_PurchaseActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.BattlePass_PurchaseRollover' )">
+								<Label text="#DAC_Battlepass_LevelUpBuy10" />
+							</Panel>
+
+							<Panel id="PurchaseContainer" onactivate="DACOnPurchaseConfirm(); PlaySoundEffect( 'UL_UI.BattlePass_LevelupActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.BattlePass_LevelupRollover' )">
+								<Panel id="LevelUpTextContainer">
+									<Panel class="LevelUpTextSpacer" />
+									<Label class="LevelUpText LevelUpOnly" text="#DAC_Purchase" />
+									<Label class="UnlockBattlepassText UnlockOnly" text="#DAC_Battlepass_UnlockText" />
+									<Panel class="LevelUpTextSpacer" />
+								</Panel>
+								<Panel id="PurchasePrice">
+									<Panel class="CurrencyIcon" />
+									<Label id="JustThePrice" text="{d:credits_price}" />
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+
+<!--
+					<Panel id="AcceptButton" class="PanelButton" onactivate="DACOnPurchaseConfirm(); PlaySoundEffect( 'UL_UI.BattlePass_PurchaseActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.BattlePass_PurchaseRollover' )">
+						<Panel id="AcceptButtonLabel">
+							<Label class="UnlockOnly" text="#DAC_Battlepass_UnlockTheBattlepass" />
+							<Label class="LevelUpOnly" text="#DAC_Battlepass_LevelUpPlus" />
+							<Label class="HasEnoughCreditsOnly" text="#DAC_Battlepass_PurchasePrice" />
+							<Label class="NeedsCreditsOnly" text="#DAC_Battlepass_PurchasePriceWithCurrency" />
+						</Panel>
+					</Panel>
+				-->
+					<Label id="StorePrice" text="#DAC_Battlepass_PurchaseItemStorePrice" />
+				</Panel>
+			</Panel>
+		</Panel>
+		<Panel id="CreditBalanceContainer">
+			<Label text="#DAC_Battlepass_CreditsBalance" />
+			<Panel class="CurrencyIcon" />
+		</Panel>
+
+		<Panel id="CloseButton" onactivate="UIPopupButtonClicked( close )" />
+
+
+		<Panel id="DebugButtons" hittest="true">
+
+			<Panel class="DebugButton" onactivate="DACDebugEventResetEverything()">
+				<Label text="Reset Everything" />
+			</Panel>
+
+			<Panel class="DebugButton" onactivate="DACDebugUnlockBattlepass()">
+				<Label text="Unlock Battlepass" />
+			</Panel>
+
+			<Panel class="DebugButton" onactivate="DACDebugEventGainLevel(.5)">
+				<Label text="Gain Half a Level" />
+			</Panel>
+
+			<Panel class="DebugButton" onactivate="DACDebugEventGainLevel(1)">
+				<Label text="Gain 1 Level" />
+			</Panel>
+
+			<Panel class="DebugButton" onactivate="DACDebugEventGainLevel(10)">
+				<Label text="Gain 10 Levels" />
+			</Panel>
+
+			<Panel class="DebugButton" onactivate="DACDebugEventGainLevel(50)">
+				<Label text="Gain 50 Levels" />
+			</Panel>
+
+			<Panel class="ShowDebugButton DebugButton" onactivate="DACToggleDebugPurchaseButtons()">
+				<Label text="DEBUG" />
+			</Panel>
+		</Panel>
+	</PopupBattlepassPurchase>
+</root>

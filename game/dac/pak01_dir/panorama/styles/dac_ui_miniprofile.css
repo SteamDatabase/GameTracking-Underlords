@@ -41,10 +41,11 @@ DACMiniProfile.DashboardProfile
 	overflow:noclip;
 }
 
+#OverridePlayerName,
 #PlayerNameContainer
 {
 	horizontal-align: center;
-	vertical-align: bottom;		
+	vertical-align: top;		
 }
 
 .GameMode_Duos #MatchIntro #PlayerNameContainer
@@ -60,10 +61,11 @@ DACMiniProfile.DashboardProfile
 	height: 100%;	
 }
 
-.GameMode_Turbo .Eliminated #PlayerAvatar {
-	saturation: 0;
-	brightness: 0.3;
-	wash-color: #00000080;
+.GameMode_Turbo .Eliminated #PlayerAvatar,
+.GameMode_Streetfight .Eliminated #PlayerAvatar {
+    saturation: 0;
+    brightness: 0.3;
+    wash-color: #00000080;
 }
 
 
@@ -71,9 +73,6 @@ DACMiniProfile.DashboardProfile
 {		
 	width: 100%;
 	height: 100%;
-	opacity-mask: url("s2r://panorama/images/post_game/wanted_poster_portrait_opacitymask_psd.vtex");
-	background-size:cover;
-
 }
 
 .GameMode_Duos #MatchIntro #PlayerProfile
@@ -131,8 +130,12 @@ DACMiniProfile.DashboardProfile
 
 .LocalPlayer .HeaderPlayerName
 {	
-	color: gradient( linear, 0% 0%, 0% 75%, from( #5a6c75 ), to( #000000 ) );	
-	font-size:60px;
+	color: gradient( linear, 0% 0%, 0% 75%, from( #9a8874 ), to( #777777FF ) );	
+}
+
+.GameMode_Duos #MatchIntro .LocalPlayer .HeaderPlayerName
+{
+	color: #222;
 }
 
 #IntroBGContainer_1 { background-image: url("s2r://panorama/images/post_game/wanted_poster_01_psd.vtex"); }
@@ -149,18 +152,17 @@ DACMiniProfile.DashboardProfile
 #PlayerSubtitleContainer
 {
 	horizontal-align: center;
-	width:70%;	
-	margin-top:30px;
-	height:50px;
+	margin-left:5px;
+	height:500px;
+	width:400px;
 }
 
-.PlayerSubtitle
+#PlayerSubtitleContainer .PosterTitleText
 {
-	color: #9a8874;
-	vertical-align: center;
-	horizontal-align: center;
-	text-align: center;
-	visibility: collapse;
+	height:50px;
+	width:340px;
+	margin-bottom:3px;
+	font-size:35px;		
 }
 
 .DirtyText
@@ -285,10 +287,11 @@ DACMiniProfile.DashboardProfile
 	visibility: collapse;
 }
 
-.GameMode_Turbo .EliminatedX {
-	width: 400px;
-	height: 400px;
-	margin-left: 10px;
+.GameMode_Turbo .EliminatedX,
+.GameMode_Streetfight .EliminatedX {
+    width: 400px;
+    height: 400px;
+    margin-left: 10px;
 }
 
 
@@ -426,14 +429,14 @@ DACParticleScenePanel {
 }
 
 .HeaderPlayerName {
-	margin-top: 8px;	
-	margin-bottom:25px;	
-	height:70px;
+	height:44px;
 	max-width:280px;
 	text-align: center;	
-	visibility:collapse;
-	color: #2c282a;
-	font-size:45px;
+	vertical-align: top;
+	margin-top:40px;
+	visibility:collapse;	
+	color: #9a8874;
+	text-overflow: shrink;
 }
 
 .GameMode_Duos #MatchIntro .HeaderPlayerName
@@ -443,7 +446,6 @@ DACParticleScenePanel {
 	line-height: 55px;
 	margin-bottom: -50px;
 	font-size: 50px;
-	text-overflow: shrink;
 }
 
 /*#MatchIntro .HeaderPlayerName {
@@ -464,7 +466,8 @@ DACRoundOverScreen #MiniProfile .HeaderPlayerName
 	text-shadow: 0px 1px 0px 2.0 #000;
 }
 
-.ShowName .HeaderPlayerName
+.OverrideName #OverridePlayerName,
+.ShowName #PlayerNameContainer
 {
 	visibility: visible;
 }
@@ -481,76 +484,7 @@ DACRoundOverScreen #MiniProfile .HeaderPlayerName
 	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_placeholder_png.vtex");
 }
 
-.NeutralRound1 #PlayerProfileAvatar
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round1_avatar_png.vtex");
-    background-size: cover;
-}
-.NeutralRound2 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round2_avatar_png.vtex");
-    background-size: cover;
-}
 
-.NeutralRound3 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round3_avatar_png.vtex");
-    background-size: cover;
-}
-
-.NeutralRound10 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round10_avatar_png.vtex");
-    background-size: cover;
-}
-
-.NeutralRound15 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round15_avatar_png.vtex");
-    background-size: cover;
-}
-
-.NeutralRound20 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round20_avatar_png.vtex");
-    background-size: cover;
-}
-
-.NeutralRound25 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round25_avatar_png.vtex");
-    background-size: cover;
-}
-
-.NeutralRound30 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round30_avatar_png.vtex");
-    background-size: cover;
-}
-
-.NeutralRound35 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round35_avatar_png.vtex");
-    background-size: cover;
-}
-
-.NeutralRound40 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round40_avatar_png.vtex");
-    background-size: cover;
-}
-
-.NeutralRound45 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round45_avatar_png.vtex");
-    background-size: cover;
-}
-
-.NeutralRound50 #PlayerProfileAvatar 
-{
-    background-image: url("s2r://panorama/images/hud/neutral_round50_avatar_png.vtex");
-    background-size: cover;
-}
 
 #RankIcon
 {
@@ -717,7 +651,6 @@ DACRewardsBattlePassPage #RankIcon
 {
 	margin-top: -100px;
 }
-
 
 .IntroProfileContainerRow .MuteButton,
 .LocalPlayerBoard #PlayerProfile .MuteButton,

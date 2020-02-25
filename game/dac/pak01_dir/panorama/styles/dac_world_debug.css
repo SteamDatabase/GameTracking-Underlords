@@ -1,0 +1,247 @@
+@define CellSizePX: 128px;
+@define BoardSizePX: 1024px;
+
+DACWorldDebug
+{
+	width: 100%;
+	height: 100%;
+}
+
+DACWorldDebug Label.ProbablyUnlocalizedText
+{
+	background-color: transparent;
+	color: white;
+	animation: none;
+}
+
+#BoardCommonContainer
+{
+	margin-top: 1152px; /* calc( BoardSizePX + CellSizePX ) */
+	width: 100%;
+	height: CellSizePX;
+	flow-children: down;
+	visibility: collapse;
+	padding-top: 16px;
+}
+
+.DebugText
+{
+	background-color: #000000AA;
+	flow-children: right;
+	width: fit-children;
+	padding: 6px 8px;
+}
+
+.DebugText Label
+{
+	font-size: 18px;
+}
+
+DACWorldDebug.MirroredCombat .DebugText Label.NotMirrored,
+DACWorldDebug:not(.MirroredCombat) .DebugText Label.Mirrored
+{
+	visibility: collapse;
+}
+
+.ViewModelLayer .HasCombat #BoardCommonContainer
+{
+	visibility: visible;
+}
+
+#BoardCellContainer
+{
+	margin-top: CellSizePX;
+	width: BoardSizePX;
+	height: BoardSizePX;
+	visibility: collapse;
+}
+
+#BoardCellContainer.HasPathfindingCells
+{
+	visibility: visible;
+}
+
+.BoardCell .BoardCellBorder
+{
+	width: 100%;
+	height: 100%;
+	border: 2px solid transparent;
+}
+
+.BoardCell .BoardCellBorder .Inner
+{
+	width: 100%;
+	height: 100%;
+}
+
+.NormalLayer .BoardCell .BoardCellBorder
+{
+	border-color: #000000BF;
+}
+
+/* These are all "error cases" that I don't understand happening */
+.NormalLayer .BoardCell.Reserved.ReservedInvalid,
+.NormalLayer .BoardCell.Reserved:not(.HasOwner),
+.NormalLayer .BoardCell.HasOwner:not(.Reserved)
+{
+	background-color: magenta;
+}
+
+.NormalLayer .BoardCell .BoardCellBorder .Inner
+{
+	border: 8px solid transparent;
+}
+
+.NormalLayer .BoardCell.ReservedHome .BoardCellBorder .Inner
+{
+	background-color: #008F00BF;
+	border-color: #008F00FF;
+}
+
+.NormalLayer .BoardCell.ReservedAway .BoardCellBorder .Inner
+{
+	background-color: #A40000BF;
+	border-color: #A40000FF;
+}
+
+.ViewModelLayer .BoardCell .BoardCellBorder .Inner
+{
+	border: 6px solid transparent;
+}
+
+.ViewModelLayer .BoardCell.ReservedHome .BoardCellBorder .Inner
+{
+	border-color: #008F009F;
+}
+
+.ViewModelLayer .BoardCell.ReservedAway .BoardCellBorder .Inner
+{
+	border-color: #A400009F;
+}
+
+.BoardCell #OwnerName
+{
+	padding: 6px;
+	flow-children: down;
+}
+
+.BoardCell #OwnerName Label
+{
+	padding-left: 6px;
+	font-size: 18px;
+	height: 22px;
+}
+
+.NormalLayer .BoardCell #OwnerName Label
+{
+	text-shadow: 0px 0px 0px 3.0 #000000FF;
+	color: #ffffffff;
+}
+
+.ViewModelLayer .BoardCell #OwnerName Label
+{
+	text-shadow: 0px 0px 0px 3.0 #000000FF;
+	color: #FFFFFFFF;
+}
+
+#BoardPathContainer
+{
+	margin-top: CellSizePX;
+	width: BoardSizePX;
+	height: BoardSizePX;
+	visibility: collapse;
+}
+
+#BoardPathContainer.HasActivePaths
+{
+	visibility: visible;
+}
+
+.ViewModelLayer .BoardPathNode
+{
+	visibility: collapse;
+}
+
+.BoardPathNode
+{
+	width: 100%;
+	height: 100%;
+	border: 6px solid #FF00FFFF;
+	background-color: #FF00FF83;
+}
+
+.BoardPathNode Label
+{
+	color: #FFFFFF;
+	width: 100%;
+	font-size: 64px;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.BoardPathNode.BeforeActive
+{
+	opacity: 0.65;
+}
+
+.BoardPathNode.Active
+{
+	background-color-opacity: 0.8;
+}
+
+.BoardPathNode.BeforeActive,
+.BoardPathNode.AfterActive
+{
+	background-color-opacity: 0.5;
+}
+
+/* Use these in order when you have a bunch of things to render that you want to look different. As you go deeper, it explores more a deeper range of hues. */
+@define genericColor1: #4040BF;
+@define genericColor2: #40BF40;
+@define genericColor3: #BF4040;
+@define genericColor4: #40BFBF;
+@define genericColor5: #BFBF40;
+@define genericColor6: #BF40B3;
+@define genericColor7: #4080BF;
+@define genericColor8: #40BF80;
+@define genericColor9: #7FBF40;
+@define genericColor10: #BF8040;
+@define genericColor11: #BF4079;
+@define genericColor12: #8640BF;
+@define genericColor13: #4060BF;
+@define genericColor14: #40A0BF;
+@define genericColor15: #40BF9F;
+@define genericColor16: #40BF60;
+@define genericColor17: #5FBF40;
+@define genericColor18: #9FBF40;
+@define genericColor19: #BFA040;
+@define genericColor20: #BF6040;
+@define genericColor21: #BF405C;
+@define genericColor22: #BF4096;
+@define genericColor23: #A940BF;
+@define genericColor24: #6340BF;
+
+.GenericColor1Background { background-color: genericColor1; border-color: genericColor1; }
+.GenericColor2Background { background-color: genericColor2; border-color: genericColor2; }
+.GenericColor3Background { background-color: genericColor3; border-color: genericColor3; }
+.GenericColor4Background { background-color: genericColor4; border-color: genericColor4; }
+.GenericColor5Background { background-color: genericColor5; border-color: genericColor5; }
+.GenericColor6Background { background-color: genericColor6; border-color: genericColor6; }
+.GenericColor7Background { background-color: genericColor7; border-color: genericColor7; }
+.GenericColor8Background { background-color: genericColor8; border-color: genericColor8; }
+.GenericColor9Background { background-color: genericColor9; border-color: genericColor9; }
+.GenericColor10Background { background-color: genericColor10; border-color: genericColor10; }
+.GenericColor11Background { background-color: genericColor11; border-color: genericColor11; }
+.GenericColor12Background { background-color: genericColor12; border-color: genericColor12; }
+.GenericColor13Background { background-color: genericColor13; border-color: genericColor13; }
+.GenericColor14Background { background-color: genericColor14; border-color: genericColor14; }
+.GenericColor15Background { background-color: genericColor15; border-color: genericColor15; }
+.GenericColor16Background { background-color: genericColor16; border-color: genericColor16; }
+.GenericColor17Background { background-color: genericColor17; border-color: genericColor17; }
+.GenericColor18Background { background-color: genericColor18; border-color: genericColor18; }
+.GenericColor19Background { background-color: genericColor19; border-color: genericColor19; }
+.GenericColor20Background { background-color: genericColor20; border-color: genericColor20; }
+.GenericColor21Background { background-color: genericColor21; border-color: genericColor21; }
+.GenericColor22Background { background-color: genericColor22; border-color: genericColor22; }
+.GenericColor23Background { background-color: genericColor23; border-color: genericColor23; }
+.GenericColor24Background { background-color: genericColor24; border-color: genericColor24; }

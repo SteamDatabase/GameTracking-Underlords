@@ -42,7 +42,6 @@ $ORIGIN
 0x%p
 10ConCommand
 10IAppSystem
-12CEmptyConVar
 12CThreadEvent
 13IVConPipeHost
 14CBaseAppSystemI10IAppSystemE
@@ -59,6 +58,7 @@ $ORIGIN
 16ILoggingListener
 17CVConBasePipeHost
 17CVConFocusMessage
+18CPlaceholderConVar
 18CServicePollThread
 18CVConCommThread_PC
 20CPostConnectCallback
@@ -81,14 +81,19 @@ $ORIGIN
 << NULL >>
 <NULL>
 <Unknown Shutdown Context>
+<deferred>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 =============== End VConsole Buffered Messages ===============
 =============== Excessive Messages Truncacted - Buffer Size: %d bytes ===============
 =============== VConsole Buffered Messages ===============
 ==========================================================
 ==============================================================
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 AnimGraphEditorUtils001
 AnimationSystemUtils_001
 AnimationSystem_001
@@ -124,7 +129,7 @@ CThread::~CThread()
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Reset()
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadSyncObject::Wait(unsigned int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
@@ -191,6 +196,7 @@ InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 Intentionally vague touch behavior for %p
+Invalid access of deferred ConVarRef for '%s'
 Invalid connection type.
 JSON error, unterminated element:
 KV Conditional Evaluation Error
@@ -564,6 +570,7 @@ int( %d = 0x%X )
 interfaces.cpp
 invalid
 ioctl
+keyvalues.cpp
 l
 libc.so.6
 libpthread.so.0
@@ -602,7 +609,6 @@ socketlib.cpp
 ss_added
 strchr
 strcmp
-strcpy
 strlen
 text
 typeinfo for CThread

@@ -6,19 +6,21 @@
     <include src="s2r://panorama/styles/popups/popup_looking_for_match.vcss_c" />
   </styles>
 
-  <PopupLookingForMatch>
-   <Panel id="DevMMContainer">
-      <Label id="DevMMCount" class="ValveOnly" text="#DAC_Home_Play"/>
-      <Button class="TempButton DefaultHidden" id="ForceMatch" onactivate="DACMatchMakingForceMatch()">
-        <Label text="#DAC_Home_ForceMatch"/>
-      </Button>
-     </Panel>   
-    <Panel class="Contents PopupPanel">
-      <Panel id="DescAndSpinner">
-        <Label id="LFMDesc" class="Title" text="#DAC_LookingForMatch_Desc"/>
-        <Panel class="Spinner"/>
-        <Button id="CancelSearchButton" onactivate="DACCancelLookingForMatch()" />
-      </Panel>
-    </Panel>
-  </PopupLookingForMatch>
+	<PopupLookingForMatch>
+		<Panel id="DevMMContainer">
+			<Label id="DevMMCount" class="ValveOnly" text="#DAC_Home_Play"/>
+			<Button class="TempButton DefaultHidden" id="ForceMatch" onactivate="DACMatchMakingForceMatch()">
+				<Label text="#DAC_Home_ForceMatch"/>
+			</Button>
+		</Panel>   
+		<Panel class="Contents PopupPanel">
+			<Panel id="DescAndSpinner">
+				<Label id="LFMDesc" class="Title CollapseOnLoading" text="#DAC_LookingForMatch_Desc"/>
+				<Label id="LDesc" class="Title" text="#DAC_LookingForMatch_Loading"/>
+				<Panel class="Spinner"/>
+				<Button id="CancelSearchButton" onactivate="DACCancelLookingForMatch()" />
+			</Panel>
+		</Panel>
+		<DACParticleScenePanel class="FindingMatchEffect" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/generic/ui_find_match_status_steam.vpcf" fov="-200" />
+	</PopupLookingForMatch>
 </root>

@@ -1,57 +1,876 @@
 @import url("file://{resources}/styles/battle_pass/current_battlepass.css");
 
+@define panelpadding: 30px;
+
+
+
 DACProfilePage
 {
-    width:100%;
-    height:100%;
-    background-color:#333333;
-    flow-children:down;
+	width:100%;
+	height:100%;
+
+	font-family: 'Radiance';
 }
 
-#BackButton
+.ScoreboardDimmer,
+.Dimmer
 {
-    horizontal-align:right;
-    height:50px;
-    width:50px;
+	width: 100%;
+	height: 100%;
+
+	background-color: #000000EE;
 }
 
-#BackButton Label
+.MainContainer
 {
-    font-size:40px;
+	width: 100%;
+	height: 100%;
 }
 
-.ProfileTitle 
+.ProfileFlow
 {
-    horizontal-align: center;
-    font-size: 70px;
-    font-family: 'Comic Sans MS';
-} 
+	horizontal-align: center;
 
-#TopRow
-{
-    width:100%;
-    border: 1px solid white;
-    height:400px;
-    flow-children:right;
+	width: 1820px;
+	height: 100%;
+
+	margin: 50px;
+	margin-top: 120px;
+
+	background-image: url("s2r://panorama/images/dashboard/equip_bg_psd.vtex");
+	background-size: 100%;
+
+	flow-children: right;
 }
 
-#BottomRow
+#LeftColumn
 {
-    width:100%;
-    border:1px solid white;
-    height:550px;
-    flow-children:right;
+	width: 400px;
+	height: 100%;
+
+	margin: panelpadding;
+	margin-right: 0px;
+
+	flow-children: down;
 }
 
-#ProfileContainer
+#CenterColumn
 {
-    height:100%;
-    width:50%;
-    border-right: 1px solid white;
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	flow-children: down;
+
+	margin: panelpadding;
+	margin-bottom: 0;
 }
 
-#MiniProfile
+#CenterColumn .Top
 {
-    horizontal-align:center;
-    vertical-align:center;
+	width: 100%;
+	height: 200px;
+
+	flow-children: right;
 }
+
+#CenterColumn .TopFinishes
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	background-color: #202028;
+	//background-color: gradient (linear, 0% 100%, 0% 0%, from(#202028), to(#292b35));
+	box-shadow: fill 0px 0px 24px #00000066;
+
+	flow-children: down;
+}
+
+.Header
+{
+	width: 100%;
+
+	font-size: 24px;
+
+	padding-top: 14px;
+	text-transform: uppercase;
+	color: #5A5A64;
+
+	font-weight: black;
+	letter-spacing: 1px;
+
+	text-align: center;
+	text-overflow: shrink;
+}
+
+#CenterColumn .TopFinishes .Finishes
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+	flow-children: right;
+
+	transition-property: opacity;
+	transition-duration: 1.2s;
+	transition-timing-function: ease-in;
+}
+
+#CenterColumn .TopFinishes .Finishes .Finish
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	flow-children: down;
+}
+
+#CenterColumn .TopFinishes .Finishes .Finish.First .Count
+{
+	color: gradient( linear, 0% 0%, 100% 100%, from( #C16A09 ), color-stop( 0.05, #C16A09 ), color-stop( 0.25, #ffe190 ), color-stop( 0.45, #C16A09 ), to( #C16A09 ) );
+}
+
+#CenterColumn .TopFinishes .Finishes .Finish.Second .Count
+{
+	color: gradient( linear, 0% 0%, 100% 100%, from( #8b8b8b ), color-stop( 0.05, #8b8b8b ), color-stop( 0.25, #E1E1E3 ), color-stop( 0.45, #8b8b8b ), to( #8b8b8b ) );
+}
+
+#CenterColumn .TopFinishes .Finishes .Finish.Third .Count
+{
+	color: gradient( linear, 0% 0%, 100% 100%, from( #986d37 ), color-stop( 0.05, #986d37 ), color-stop( 0.25, #ffbf70 ), color-stop( 0.45, #986d37 ), to( #986d37 ) );
+}
+
+
+#CenterColumn .TopFinishes .Finishes .Finish .Count
+{
+	font-size: 80px;
+	font-weight: black;
+
+	width: 100%;
+	text-align: center;
+}
+
+#CenterColumn .TopFinishes .Finishes .Finish .Place
+{
+	width: 100%;
+	text-align: center;
+
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: black;
+
+	color: #5A5A64;
+}
+
+#CenterColumn .Divider
+{
+	width: panelpadding;
+	height: 100%;
+}
+
+#CenterColumn .TopAlliances
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	background-color: #202028;
+	box-shadow: fill 0px 0px 24px #00000066;
+
+	flow-children: down;
+}
+
+#CenterColumn .TopAlliances .Alliances
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+	flow-children: right;
+
+	padding: 0px 40px;
+
+	transition-property: opacity;
+	transition-duration: 1.2s;
+	transition-timing-function: ease-in;
+}
+
+#CenterColumn .TopAlliances .Alliances .Alliance
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	flow-children: down;
+}
+
+#CenterColumn .TopAlliances .Alliances .Alliance .AllianceLogo
+{
+	width: 80px;
+	height: 80px;
+	margin: 20px;
+	margin-bottom:0px;
+
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	horizontal-align: center;
+}
+
+#CenterColumn .TopAlliances .Alliances .Alliance .PercentageWrapper.Hidden,
+#CenterColumn .TopAlliances .Alliances .Alliance .AllianceLogo.Hidden
+{
+	visibility: collapse;
+}
+
+
+#CenterColumn .TopAlliances .Alliances .Alliance .PercentageWrapper
+{
+	flow-children: right;
+	height: 38px;
+
+	font-size: 30px;
+	font-weight: black;
+	font-family: 'Radiance';
+
+	color: #CBCDE2;
+
+	padding-left: 5px;
+
+	horizontal-align: center;
+}
+
+#CenterColumn .TopAlliances .Alliances .Alliance .PercentageWrapper .Percentage
+{
+	font-size: 30px;
+	font-weight: black;
+	font-family: 'Radiance';
+
+	text-align: center;
+
+	height: 30px;
+}
+
+#CenterColumn .TopAlliances .Alliances .Alliance .PercentageWrapper .PercentSymbol
+{
+	font-size: 15px;
+	transform: translateY( 3px );
+}
+
+#CenterColumn .Bottom
+{
+	width: 100%;
+	height: fill-parent-flow( 1.0 );
+
+	margin-top: panelpadding;
+	box-shadow: fill 0px 0px 24px #00000066;
+	margin-bottom: panelpadding;
+
+	flow-children: down;
+}
+
+#CenterColumn .Bottom .TabContainer
+{
+	width: 100%;
+	flow-children: right;
+	height: 100px;
+
+}
+
+#CenterColumn .Bottom .TabContainer .Tab
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #212530 ), to( #292C3F ) );
+
+	border-top: 2px solid #2a2933;
+	border-bottom: 2px solid #2D334B;
+
+	transition-property: brightness;
+	transition-duration: 0.2s;
+}
+
+.StatsSelected #CenterColumn .Bottom .TabContainer .Tab.Progress:hover,
+.ProgressSelected #CenterColumn .Bottom .TabContainer .Tab.Stats:hover
+{
+	brightness: 1.8;
+}
+
+.ProgressSelected #CenterColumn .Bottom .TabContainer .Tab.Progress,
+.StatsSelected #CenterColumn .Bottom .TabContainer .Tab.Stats
+{
+	background-color: gradient( linear, 0% 100%, 0% 0%, from( #28293B ), to( #3a4380 ) );
+
+}
+
+#CenterColumn .Bottom .TabContainer .Tab Label
+{
+	horizontal-align: center;
+	vertical-align: center;
+	text-align: center;
+
+	text-transform: uppercase;
+	letter-spacing: 1px;
+
+	font-size: 34px;
+	font-weight: black;
+
+	color: #5F6275;
+}
+
+.ProgressSelected #CenterColumn .Bottom .TabContainer .Tab.Progress Label,
+.StatsSelected #CenterColumn .Bottom .TabContainer .Tab.Stats Label
+{
+	color: #DEE3F9;
+}
+
+#CenterColumn .Bottom .TabContents
+{
+	flow-children: down;
+}
+
+#CenterColumn .Bottom .ProgressContainer
+{
+	width: 100%;
+	height: 472px;
+	flow-children: right;
+	background-color: #202028;
+	visibility: collapse;
+}
+
+#CenterColumn .Bottom .ProgressContainer .Column
+{
+	width: fill-parent-flow( 1.0 );
+
+	padding: 40px;
+
+	vertical-align: top;
+
+	flow-children: down;
+}
+
+#CenterColumn .Bottom .ProgressContainer .Column .ProgressSpacer
+{
+	width: 100%;
+	height: 90px;
+}
+
+#CenterColumn .Bottom .StatsContainer
+{
+	width: 100%;
+	height: 472px;
+
+	flow-children: right;
+	background-color: #202028;
+
+	visibility: collapse;
+}
+
+#CenterColumn .Bottom .StatsContainer .Column
+{
+	width: fill-parent-flow( 1.0 );
+	height: 100%;
+
+	padding: 2px 20px 20px 20px;
+
+	flow-children: down;
+}
+
+#CenterColumn .Bottom .StatsContainer .Column .Header
+{
+	horizontal-align: center;
+
+	text-transform: uppercase;
+	letter-spacing: 1px;
+
+	font-size: 24px;
+	font-weight: black;
+
+	color: #5F6275;
+
+	padding-top: 14px;
+}
+
+#CenterColumn .Bottom .StatsContainer .Column .Value
+{
+	horizontal-align: center;
+
+	text-transform: uppercase;
+	letter-spacing: 1px;
+
+	font-size: 34px;
+	font-weight: black;
+
+	color: #DEE3F9;
+}
+
+.ProgressSelected #CenterColumn .Bottom .ProgressContainer,
+.StatsSelected #CenterColumn .Bottom .StatsContainer
+{
+	visibility: visible;
+}
+
+
+#CenterColumn .Bottom .Footer
+{
+	width: 100%;
+	height: 40px;
+	background-color: #202028;
+}
+
+#CenterColumn .Bottom .Footer Label
+{
+	vertical-align: center;
+	horizontal-align: center;
+	text-align: center;
+
+	font-size: 24px;
+	color: #4b4e5d;
+
+	text-transform: uppercase;
+	font-weight: black;
+	letter-spacing: 0.5px;
+	text-overflow: shrink;
+}
+
+#RightColumn 
+{
+	width: 400px;
+	height: 100%;
+}
+
+#RightColumn #RecentMatches
+{
+	width: 100%;
+	height: 100%;
+
+	flow-children: down;
+
+	background-color: #202028;
+
+	margin: panelpadding;
+	margin-left: 0px;
+	box-shadow: fill 0px 0px 24px #00000066;
+}
+
+#RightColumn #RecentMatches #MatchList
+{
+	width: 100%;
+	height: fill-parent-flow( 1.0 );
+
+	margin-top: 20px;
+
+	flow-children: down;
+	overflow: clip scroll;
+}
+
+#RightColumn #RecentMatches .BotToggleContainer
+{
+	width: 100%;
+	height: 70px;
+
+	background-color: #282830;
+}
+
+#RightColumn #RecentMatches .BotToggleContainer #HideBotMatchesCheckbox
+{
+	height: 100%;
+	horizontal-align: center;
+	vertical-align: center;
+}
+
+#RightColumn #RecentMatches .BotToggleContainer .TickBox
+{
+	border: 3px solid #6F737E;
+}
+
+#RightColumn #RecentMatches .BotToggleContainer Label
+{
+	text-transform: uppercase;
+	font-size: 24px;
+	font-weight: black;
+	margin-top: 0px;
+	color: #6F737E;
+}
+
+#RightColumn #RecentMatches .BotToggleContainer DACSettingsCheckbox:hover .TickBox
+{
+	border: 3px solid #8b909d;
+}
+
+#RightColumn #RecentMatches .BotToggleContainer DACSettingsCheckbox:hover Label
+{
+	color: #8b909d;
+}
+
+#RightColumn #RecentMatches .BotToggleContainer DACSettingsCheckbox:selected .TickBox
+{
+	border: 3px solid #a4a9b9;
+	background-color: #a4a9b9;
+}
+
+.FadeIn
+{
+	transition-property: opacity;
+	transition-duration: 0.5s;
+	transition-timing-function: ease-in;
+}
+
+.StatusPending #RightColumn #RecentMatches #MatchList,
+.StatusFailure #RightColumn #RecentMatches #MatchList,
+.StatusPending #CenterColumn .TopFinishes .Finishes,
+.StatusFailure #CenterColumn .TopFinishes .Finishes,
+.StatusPending #CenterColumn .TopAlliances .Alliances,
+.StatusFailure #CenterColumn .TopAlliances .Alliances,
+.StatusPending #CenterColumn .Bottom .TabContents,
+.StatusFailure #CenterColumn .Bottom .TabContents,
+.StatusPending #LeftColumn #Poster,
+.StatusFailure #LeftColumn #Poster
+{
+	opacity: 0;
+}
+
+.RecentMatchContainer
+{
+	width: 300px;
+	height: 100px;
+	horizontal-align: center;
+
+	transition-property: height, opacity, brightness;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+}
+
+.RecentMatchContainer:hover
+{
+	brightness: 2.0;
+}
+
+.RecentMatchContainer.Hidden
+{
+	height: 0px;
+	opacity: 0;
+}
+
+.RecentMatchContainer .PlaceWrapper
+{
+	flow-children: right;
+
+	horizontal-align: left;
+	vertical-align: top;
+
+	font-weight: black;
+
+	font-size: 32px;
+	margin-left: -5px;
+	margin-top: -5px;
+
+}
+
+.RecentMatchContainer .PlaceWrapper .Place
+{
+	text-shadow: 0px 0px 0px 3.0 #000;
+
+	color: gradient( linear, 0% 0%, 100% 100%, from( #656565 ), color-stop( 0.25, #656565 ), color-stop( 0.45, #9b9b9b ), color-stop( 0.65, #9b9b9b ), to( #656565 ) );
+
+	padding: 3px;
+}
+
+.RecentMatchContainer .PlaceWrapper .PlaceOrdinal
+{
+	font-size: 16px;
+	text-transform: uppercase;
+
+	text-shadow: 0px 0px 0px 3.0 #000;
+
+	transform: translateY( 4px );
+
+	color: gradient( linear, 0% 0%, 100% 100%, from( #656565 ), color-stop( 0.05, #656565 ), color-stop( 0.25, #9b9b9b ), color-stop( 0.65, #9b9b9b ), to( #656565 ) );
+
+	padding: 3px;
+}
+
+.RecentMatchContainer .PlaceWrapper .PlaceOrdinal.Prefix
+{
+	margin-right: -6px;
+}
+
+.RecentMatchContainer .PlaceWrapper .PlaceOrdinal.Postfix
+{
+	margin-left: -6px;
+}
+
+.LoadMoreContainer
+{
+	width: 100%;
+	height: 50px;
+}
+
+.LoadMoreContainer Label
+{
+	horizontal-align: center;
+	vertical-align: center;
+
+	font-size: 24px;
+	text-transform: uppercase;
+	font-weight: black;
+	transition-duration: 0.2s;
+	transition-property: brightness;
+
+	color: #535363;
+}
+
+.LoadMoreContainer:hover Label
+{
+	brightness: 1.6;
+}
+
+.FirstPlace.RecentMatchContainer .PlaceWrapper
+{
+}
+
+.FirstPlace.RecentMatchContainer .PlaceWrapper .Place
+{
+	font-size: 44px;
+
+	color: gradient( linear, 0% 0%, 100% 100%, from( #FBCD55 ), color-stop( 0.25, #FBCD55 ), color-stop( 0.45, #FCEFCD ), color-stop( 0.65, #FCEFCD ), to( #FBCD55 ) );
+}
+
+.FirstPlace.RecentMatchContainer .PlaceWrapper .PlaceOrdinal
+{
+	font-size: 24px;
+	text-transform: uppercase;
+
+	transform: translateY( 4px );
+
+	color: gradient( linear, 0% 0%, 100% 100%, from( #FBCD55 ), color-stop( 0.05, #FBCD55 ), color-stop( 0.25, #FCEFCD ), color-stop( 0.65, #FCEFCD ), to( #FBCD55 ) );
+}
+
+.SecondPlace.RecentMatchContainer .PlaceWrapper
+{
+}
+
+.SecondPlace.RecentMatchContainer .PlaceWrapper .Place
+{
+	font-size: 41px;
+
+	color: gradient( linear, 0% 0%, 100% 100%, from( #8b8b8b ), color-stop( 0.25, #8b8b8b ), color-stop( 0.45, #E1E1E3 ), color-stop( 0.65, #E1E1E3 ), to( #8b8b8b ) );
+}
+
+.SecondPlace.RecentMatchContainer .PlaceWrapper .PlaceOrdinal
+{
+	font-size: 21px;
+	text-transform: uppercase;
+
+	transform: translateY( 4px );
+
+	color: gradient( linear, 0% 0%, 100% 100%, from( #8b8b8b ), color-stop( 0.05, #8b8b8b ), color-stop( 0.25, #E1E1E3 ), color-stop( 0.65, #E1E1E3 ), to( #8b8b8b ) );
+}
+
+.ThirdPlace.RecentMatchContainer .PlaceWrapper
+{
+}
+
+.ThirdPlace.RecentMatchContainer .PlaceWrapper .Place
+{
+	font-size: 38px;
+
+	color: gradient( linear, 0% 0%, 100% 100%, from( #986d37 ), color-stop( 0.25, #986d37 ), color-stop( 0.45, #ffbf70 ), color-stop( 0.65, #ffbf70 ), to( #986d37 ) );
+}
+
+.ThirdPlace.RecentMatchContainer .PlaceWrapper .PlaceOrdinal
+{
+	font-size: 18px;
+	text-transform: uppercase;
+
+	transform: translateY( 4px );
+
+	color: gradient( linear, 0% 0%, 100% 100%, from( #986d37 ), color-stop( 0.05, #986d37 ), color-stop( 0.25, #ffbf70 ), color-stop( 0.65, #ffbf70 ), to( #986d37 ) );
+}
+
+
+.RecentMatchContainer .RecentMatchInner
+{
+	width: 100%;
+	height: 100%;
+
+	flow-children: right;
+}
+
+.RecentMatchContainer .RecentMatchInner .UnderlordImage
+{
+	width: 80px;
+	height: 80px;
+
+	background-color: #322;
+
+	vertical-align: center;
+
+	margin-right: 10px;
+	margin-left: 10px;
+
+	background-size: cover;
+	background-repeat: no-repeat;
+
+}
+
+.Underlord0.RecentMatchContainer .RecentMatchInner .UnderlordImage
+{
+	background-image: url("s2r://panorama/images/dashboard/avatar_unknown_psd.vtex");
+}
+
+
+.Underlord1.RecentMatchContainer .RecentMatchInner .UnderlordImage
+{
+	background-image: url("s2r://panorama/images/dashboard/avatar_anessix_psd.vtex");
+}
+
+.Underlord2.RecentMatchContainer .RecentMatchInner .UnderlordImage
+{
+	background-image: url("s2r://panorama/images/dashboard/avatar_jull_psd.vtex");
+}
+
+.Underlord3.RecentMatchContainer .RecentMatchInner .UnderlordImage
+{
+	background-image: url("s2r://panorama/images/dashboard/avatar_enno_psd.vtex");
+}
+
+.Underlord4.RecentMatchContainer .RecentMatchInner .UnderlordImage
+{
+	background-image: url("s2r://panorama/images/dashboard/avatar_hobgen_psd.vtex");
+}
+
+.RecentMatchContainer .RecentMatchInner .RightColumn
+{
+	width: fill-parent-flow( 1.0 );
+
+	vertical-align: center;
+
+	flow-children: down;
+	font-size: 24px;
+}
+
+.RecentMatchContainer .RecentMatchInner .RightColumn .ModeContainer
+{
+	flow-children: down;
+}
+
+.RecentMatchContainer .RecentMatchInner .RightColumn .Mode
+{
+	color: #d3d1e1;
+	font-weight: bold;
+}
+
+.RecentMatchContainer .RecentMatchInner .RightColumn .BotMatch
+{
+	color: #54535B;
+
+	margin-left: 4px;
+
+	visibility: collapse;
+}
+
+.RecentMatchContainer.IsBotMatch  .RecentMatchInner .RightColumn .BotMatch
+{
+	visibility: visible;
+}
+
+.RecentMatchContainer .RecentMatchInner .RightColumn .Round
+{
+	color: #54535B;
+}
+
+.RecentMatchContainer .RecentMatchInner .RightColumn .Timestamp
+{
+	color: #54535B;
+}
+
+#AvatarImage
+{
+	margin-top: 32px;
+	width: 48px;
+	height: 48px;
+}
+
+#ProfileName
+{
+	margin-left: 200px;
+}
+
+#ScoreboardContainer,
+#ScoreboardContainerNoData
+{
+	horizontal-align: center;
+	vertical-align: center;
+
+	flow-children: down;
+
+	transition-property: opacity;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+
+	opacity: 0;
+}
+
+.ScoreboardDimmer
+{
+	transition-property: opacity;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in-out;
+
+	opacity: 0;
+}
+
+.ShowPostGameScoreboard .ScoreboardDimmer,
+.ShowPostGameScoreboard.ScoreboardStatusValid #ScoreboardContainer
+{
+	opacity: 1;
+}
+
+.ShowPostGameScoreboard.ScoreboardStatusNoData #ScoreboardContainerNoData
+{
+	opacity: 1;
+}
+
+.NoData
+{
+	font-size: 50px;
+	font-weight: black;
+	letter-spacing: 1px;
+	text-transform:  uppercase;
+	horizontal-align: center;
+	text-align: center;
+
+	background-color: black;
+	padding: 40px;
+
+	margin-bottom: 20px;
+
+	width: 800px;
+
+	color: #d8e9ee;
+}
+
+.CloseButton
+{
+	font-size: 32px;
+	font-weight: black;
+	letter-spacing: 1px;
+	text-transform:  uppercase;
+	horizontal-align: center;
+
+	color: white;
+
+	margin-top: 20px;
+
+	transition-property: transform;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
+
+}
+
+.CloseButton:hover
+{
+	transform: scaleX( 1.1 ) scaleY( 1.1 );
+}
+
+
+VerticalScrollBar:active .ScrollThumb, HTMLVerticalScrollBar:active .ScrollThumb
+{
+	background-color: #5A5A64;
+}
+
+

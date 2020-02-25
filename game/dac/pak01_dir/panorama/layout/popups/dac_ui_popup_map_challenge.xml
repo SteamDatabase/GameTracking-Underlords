@@ -1,0 +1,155 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/dac_ui_popup_map_challenge.vcss_c" />
+	</styles>
+
+	<PopupMapChallenge class="PopupPanel" popupbackground="blur" acceptsinput="true">
+
+		<Panel class="Body">
+			
+
+			<Panel class="ChallengeContent">
+				<Panel class="ChallengeLeft">
+						<Panel id="MostWantedContainer">
+							<Label class="MostWanted" text="#DAC_CC_MostWanted_Title" />
+						</Panel>
+					<Panel id="ChallengeImagePanel" class="ChallengeImage" />
+					<Panel class="ObjectiveUnderlord" />
+					
+					<Panel id="ChallengeRewardBlock">
+						
+						<Panel id="RewardItem">
+							<Panel id="RewardImage" />
+							<Panel class="PosterFrame"/>
+							<Panel class="PosterBG"/>
+							<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" class="RewardLineItemImage" hittest="true" use_3D_preview="false" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" preview_model_scale="1" enable_sound_effects="false" use_portrait_camera="false" />
+							<Panel id="MainRewardPanel"  />
+							<Label id="RewardFreeLabel" text="#DAC_Rewards_Free" />						
+						</Panel>
+						<Panel id="RewardInfo">
+							<Panel id="EquipmentType">
+								<Panel class="EquipmentTypeIcon" /> 
+								<Label class="RewardType" text="#DAC_Reward_Item_Type" />
+							</Panel>
+							
+							<Label class="RewardName" text="#DAC_Reward_Item_Name" />
+							<Label class="RewardDesc" text="#DAC_Reward_Item_Desc" />
+						</Panel>
+					</Panel>
+
+					<DACPuzzleHistogram id="PuzzleHistogram"/>
+				</Panel>
+
+				<Panel class="NodeContent">
+					<Panel class="ChallengeText">
+						
+						<Panel id="ChallengeType">
+							<Panel id="ChallengeIcon" />
+							<Label class="ChallengeTypeLabel" text="{s:challenge_type}" />
+							<Label class="StreetfightDifficulty Unlocked" text="{s:challenge_difficulty}" />
+						</Panel>
+						<Label class="ChallengeName Unlocked" html="true" text="{s:challenge_name}" />
+						<Label class="ChallengeName Locked" html="true" text="#DAC_CC_Locked_Content_Title" />
+						<Label class="ChallengeLore Unlocked" html="true" text="{s:challenge_lore}" />
+						<Panel class="LockedDescription Locked">
+							<Label class="ChallengeLore Locked" html="true" text="#DAC_CC_Locked_Content_Desc" />
+							<Button class="MulliganButton BuyBattlePassButton" onactivate="UIPopupButtonClickedEvent( DACGoToBattlePassPurchase() ); PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeRollover' )">
+								<Label text="#DAC_Battlepass_UnlockFullText" />
+							</Button>
+						</Panel>
+						<Panel id="StreetfightDescriptionArea">
+							<Label class="StreetfightDescriptionLabel" text="#DAC_CC_Streetfight_Goal" />
+							<Label class="StreetFightDescription" html="true" text="#dac_challenge_street_fight_extra_info" />
+						</Panel>
+						<Label id="ChallengeDescription" class="ChallengeDescription DescriptionTop" html="true" text="{s:challenge_text}" />
+						
+						<Panel id="ObjectiveProgressArea">
+							
+							<Panel class="WithActiveUnderlord Hobgen">
+								<Label class="ProgressBarLabel SpaceRight" text="#DAC_CC_Challenge_Part1" />
+								<Label class="ProgressBarLabel UnderlordHighlight" text="#DAC_Underlord_4" />
+								<Panel class="UnderlordIcon" />
+								<Label class="ProgressBarLabel" text="#DAC_CC_Challenge_Part2" />
+							</Panel>
+							<Panel class="WithActiveUnderlord Jull">
+								<Label class="ProgressBarLabel SpaceRight" text="#DAC_CC_Challenge_Part1" />
+								<Label class="ProgressBarLabel UnderlordHighlight" text="#DAC_Underlord_2" />
+								<Panel class="UnderlordIcon" />
+								<Label class="ProgressBarLabel" text="#DAC_CC_Challenge_Part2" />
+							</Panel>
+							<Panel class="WithActiveUnderlord Anessix">
+								<Label class="ProgressBarLabel SpaceRight" text="#DAC_CC_Challenge_Part1" />
+								<Label class="ProgressBarLabel UnderlordHighlight" text="#DAC_Underlord_1" />
+								<Panel class="UnderlordIcon" />
+								<Label class="ProgressBarLabel" text="#DAC_CC_Challenge_Part2" />
+							</Panel>
+							<Panel class="WithActiveUnderlord Enno">
+								<Label class="ProgressBarLabel SpaceRight" text="#DAC_CC_Challenge_Part1" />
+								<Label class="ProgressBarLabel UnderlordHighlight" text="#DAC_Underlord_3" />
+								<Panel class="UnderlordIcon" />
+								<Label class="ProgressBarLabel" text="#DAC_CC_Challenge_Part2" />
+							</Panel>
+							<Label id="ObjectiveDescription" class="ChallengeDescription DescriptionLower" html="true" text="{s:challenge_text}" />
+							<Label class="ProgressBarCounter" text="{d:challenge_progress} / {d:challenge_max}" />
+							<Panel class="ProgressBars">
+								<ParticleProgressBar id="InGameChallengeProgress" class="DailyChallengeProgressBar" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar_complete.vpcf" fov="-200" />
+								<ParticleProgressBar id="ChallengeProgress" class="DailyChallengeProgressBar" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar_complete.vpcf" fov="-200" />
+							</Panel>
+						</Panel>
+
+
+						
+
+					
+						<Panel id="PuzzleRulesContainer" class="Unlocked">
+							<Label class="PuzzleRulesLabel" text="#DAC_CC_Puzzle_Requirements" />
+							<DACUIPuzzleRules id="PuzzleRules" />
+						</Panel>
+
+						<Label class="ChallengeQuote" html="true" text="{s:challenge_quote}" />
+						
+					</Panel>
+					<DACParticleScenePanel id="ClaimRewardParticle" hittest="false" startActive="true" cameraLeft="0" cameraUp="100" particleName="particles/ui/challenge_claim_box.vpcf" squarepixels="true" fov="200" />
+					<Button class="CCButton LaunchStreetFightButton LaunchButton" onactivate="UIPopupButtonClicked(); DACLaunchSelectedChallengeStreetFight(); PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeRollover' )">
+						<Label text="#dac_launch_street_fight" />
+					</Button> 
+
+					<Button class="CCButton LaunchPuzzleButton LaunchButton" onactivate="UIPopupButtonClicked(); DACLaunchSelectedChallengePuzzle(); PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeRollover' )">
+						<Label text="#dac_launch_street_fight" />
+					</Button>
+
+					
+				
+					<Button class="CCButton LaunchChallengeButton LaunchButton" onactivate="UIPopupButtonClicked(); DACSelectAsActiveChallenge(); PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeRollover' )">
+						<Label text="#DAC_DBHome_Mobile_Play" />
+					</Button>
+
+					<Button class="CCButton LaunchIntroChallengeButton LaunchButton" onactivate="UIPopupButtonClicked(); DACLaunchIntroChallenge(); PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeRollover' )">
+						<Label text="#DAC_DBHome_Mobile_Play" />
+					</Button>
+
+					<Button class="CCButton ClaimButton" onactivate="UIPopupButtonClicked(); DACClaimChallenge(); PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeRollover' )">
+						<Label text="#dac_claim_challenge" />
+					</Button>
+
+					<Button class="MulliganButton UseKeyButton" onactivate="DACConfirmCityKey(); PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeRollover' )">
+						<Label text="#dac_use_city_key" />
+					</Button>
+
+					<!-- <Label id="KeyLabel" class="UseKeyButton" text="#dac_use_city_key_label" /> -->
+
+					<Label id="ModeRestrictionLabel" text="" />
+				</Panel>
+			</Panel>
+			
+			<Button class="CloseButton2" onactivate="UIPopupButtonClicked(); PlaySoundEffect( 'UL_UI.CityCrawl_NodeBackoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_NodeBackoutRollover' )"/>
+
+		</Panel>
+
+
+	</PopupMapChallenge>
+</root>

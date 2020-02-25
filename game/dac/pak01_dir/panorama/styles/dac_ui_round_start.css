@@ -42,7 +42,7 @@ DACRoundStart.Visible
 	height: 800px;
 	horizontal-align: center;
 	vertical-align: center;
-	flow-children: down;
+	flow-children: none;
 }
 
 .IsLayoutLargeScreen .NextRound_BG
@@ -137,6 +137,11 @@ DACRoundStart.Visible
 	padding: 0px 50px 0px 50px;
 }
 
+.RoundNumber_0 DACRoundStart.Visible
+{
+	visibility: collapse;
+}
+
 #NeutralRoundName
 {
 	visibility: collapse;
@@ -181,7 +186,7 @@ DACRoundStart.Visible
 
 .NeutralRound #NeutralRoundName
 {
-	visibility: visible;
+	visibility: collapse;
 }
 
 .NextRound_GoldInfo
@@ -190,7 +195,12 @@ DACRoundStart.Visible
 	height: 100%;
 	flow-children: down;
 	horizontal-align: center;
-	margin-top: 44px;
+	margin-top: 440px;
+}
+
+.IsLayoutSmallScreen .NextRound_GoldInfo
+{
+	margin-top: 460px;
 }
 
 .NextRound_GoldInfoBreakdown
@@ -209,18 +219,81 @@ DACRoundStart.Visible
 	text-align: center;
 	width: 100%;
 	text-overflow: shrink;
-	color: gradient(linear, 0% 0%, 0% 100%, from( #d8b14a ), to(#ffe287));
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ecb00e ), to(#f7e062));
 	text-shadow: 0px 1px 0px 3.0 #000;
 	font-size: 36px;
 	font-weight: bold;
 	
 	transition-property: height, transform, opacity;
-	transition-duration: 0s, .5s, .5s;
+	transition-duration: 0s, .1s, .1s;
 	transition-delay: 0s;
 	transition-timing-function: ease-in;
 	opacity: 0;
-	transform: translateX(100%);
+	transform: translateY(-36px);
 	height: 0px;
+}
+
+.TopRound
+{
+	//background-color: red;
+	horizontal-align: center;
+	width: 300px;
+	height: 48px;
+	margin-top: 284px;
+	z-index: 2;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+	transition-delay: 0.4s;
+	transform: rotateZ(-3deg);
+	background-image: url("s2r://panorama/images/hud/top_round_bg_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	opacity: 0;
+}
+
+.GameMode_Streetfight .TopRound
+{
+    visibility: collapse;
+}
+
+.TopFour .TopRound,
+.TopThree .TopRound,
+.TopTwo .TopRound
+{
+	opacity: 1;
+}
+.TopFour .TopFourLabel,
+.TopThree .TopThreeLabel,
+.TopTwo .TopTwoLabel
+{
+	opacity: 1;
+}
+
+.TopFour .TopThreeLabel,
+.TopFour .TopTwoLabel,
+.TopThree .TopFourLabel,
+.TopThree .TopTwoLabel,
+.TopTwo .TopFourLabel,
+.TopTwo .TopThreeLabel
+
+{
+	opacity: 0;
+}
+
+.TopRoundLabel
+{
+	horizontal-align: center;
+	vertical-align: center;
+	text-align: center;
+	font-size: 40px;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ffc400 ), to(#fffdd7));
+	padding: 0px;
+	text-overflow: shrink;
+	text-shadow: 0px 1px 0px 3.0 #000;
+}
+
+.GameMode_Streetfight .TopRoundLabel {
+    visibility: collapse;
 }
 
 .ShowOffensiveGem .BreakdownFreeOffensiveGemLabel
@@ -251,7 +324,7 @@ DACRoundStart.Visible
 {
 	height: 40px;
 	opacity: 1.0;
-	transform: translateX(0%);
+	transform: translateY(36px);
 }
 
 .ShowTotalGold #BreakdownTotalGold
@@ -259,12 +332,13 @@ DACRoundStart.Visible
 	margin-top: 20px;
 	opacity: 1.0;
 	height: 100px;
-	transform: translateX(0%);
+	transform: translateY(36px);
 }
 
 #BreakdownTotalGold
 {
 	font-size: 60px;
+	text-shadow: 0px 1px 0px 3.0 #000;
 }
 
 .LineBreak

@@ -1,0 +1,206 @@
+.PopupGameModeIntro
+{
+    width: 100%;
+    height: 100%;
+    pre-transform-scale2d: .7;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    visibility: collapse;
+    vertical-align: top;
+}
+.PopupGameModeIntro.ShowIntro
+{
+    visibility: visible;
+    animation-name: IntroAppearAnim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    pre-transform-scale2d: .7;
+}
+
+
+// Individual profile anim
+@keyframes 'IntroAppearAnim' {
+	0% {
+		opacity: 0;
+		pre-transform-scale2d: 3.0;
+	}
+	1% {
+		opacity: 1;
+		pre-transform-scale2d: 3.0;
+	}
+	5% {
+		opacity: 1;
+		pre-transform-scale2d: .5;
+	}		
+	8%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: .7;
+	}
+	97%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: .7;
+	}
+	100%
+	{
+		opacity: 1; 
+		pre-transform-scale2d: .7;
+	}
+}
+.LowVisualQuality .PopupGameModeIntro.ShowIntro
+{
+    animation-name: none;
+    visibility: visible;
+    opacity: 1;
+}
+
+
+#Background
+{
+    width: 100%;
+    height: 100%;
+    //background-image: url("s2r://panorama/images/challenge_map/dac_banner_bg_png.vtex");
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* #GameModeIcon
+{
+    width: 500px;
+    height: 500px;
+    vertical-align: center;
+    margin-left: 300px;
+
+    background-image: url("s2r://panorama/images/hud/dac_banner_postgame_fg_png.vtex");
+    background-position: center center;
+} */
+
+.GameModeTextContainer
+{
+    width: 2000px;
+    height: fit-children;
+    flow-children: down;
+    vertical-align: middle;
+    horizontal-align: center;
+    padding: 200px;
+    visibility: collapse;
+    background-image: url("s2r://panorama/images/hud/dac_banner_postgame_bg_png.vtex");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    overflow: noclip;
+}
+.GameMode_Streetfight #StreetfightText,
+.GameMode_Puzzle #PuzzleText,
+{
+    visibility: visible;
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9 .GameModeTextContainer {
+    background-size: cover;
+}
+
+.ModalTitle {
+    flow-children: right;
+    horizontal-align: center;
+}
+
+.PuzzleIcon {
+    width: 100px;
+    height: 100px;
+    margin-right: 40px;
+    vertical-align: middle;
+    background-image: url("s2r://panorama/images/challenge_map/icon_puzzle_png.vtex");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.StreetFightIcon {
+    width: 80px;
+    height: 80px;
+    margin-right: 40px;
+    vertical-align: middle;
+    background-image: url("s2r://panorama/images/challenge_map/icon_streetfight_png.vtex");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.GameModeHeader
+{
+    font-size: 100px;
+    font-family: Ravenhook, Radiance;
+    text-transform: uppercase;
+    font-weight: semi-bold;
+    text-overflow: shrink;
+    color: white;
+    text-shadow: 0px 1px 0px 3.0 #000;
+    margin-bottom: 10px;
+    horizontal-align: center;
+    letter-spacing: 2px;
+    vertical-align: middle;
+    color: gradient( linear, 0% 0%, 0% 100%, from( #C6DCFE ), to( #fff ) );
+}
+
+.GameModeDesc
+{
+    font-size: 30px;
+    font-family: Radiance;
+    font-weight: semi-bold;
+    text-overflow: shrink;
+    color: textBrighter;
+    horizontal-align: center;
+    text-align: center;
+    text-shadow: 0px 1px 0px 3.0 #000;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.GameModeSubDesc
+{
+    font-size: 30px;
+    width: 750px;
+    font-family: Radiance;
+    text-overflow: shrink;
+    color: textBrighter;
+    text-shadow: 0px 1px 0px 3.0 #000;
+    //margin-bottom: 20px;
+    horizontal-align: center;
+    text-align: center;
+}
+
+.CCButton {
+	background-image: url("s2r://panorama/images/ui/splash_btn_white_bg_psd.vtex");
+	background-size: 100% 100%;
+	width: 800px;
+	height: 300px;
+	opacity: 0.9;
+	transition-property: opacity, ui-scale;
+	transition-duration: 0.2s;
+	horizontal-align: center;
+	vertical-align: bottom;
+}
+
+.CCButton Label {
+	font-family: Ravenhook;
+	font-size: 100px;
+	letter-spacing: 2px;
+	color: #000000;
+    transform: rotateZ(-1deg);
+    margin-top: 50px;
+
+	width: 600px;
+	horizontal-align: center;
+	text-align: center;
+}
+
+.CCButton:hover {
+	opacity: 0.5;
+}
+
+
+
+.IsLayoutSmallScreen .GameModeTextContainer {
+    ui-scale: 150%;
+}

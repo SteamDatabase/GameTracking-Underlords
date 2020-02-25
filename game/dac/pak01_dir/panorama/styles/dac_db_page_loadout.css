@@ -7,7 +7,7 @@ DACLoadoutPage
     height:100%;
     background-color:#333333;
     flow-children:none;
-    background-image: url("s2r://panorama/images/dashboard/background/flattened-bg_jpg.vtex");
+    background-image: url("s2r://panorama/images/battle_pass/bp1/items/bg_loot_list_psd.vtex"); 
     background-size: 100%;
 }
 
@@ -15,20 +15,45 @@ DACLoadoutPage
 {
     width:100%;
     height:100%;
-	background-color: #060606cc;
+	//background-color: #060606cc;
 }
 
-.IsLayoutSmallScreen .PreviewBanner,
-.IsLayoutSmallScreen .LoadoutMaps,
-.IsLayoutSmallScreen .LoadoutSigils,
-.IsLayoutSmallScreen .LoadoutFlags,
-.IsLayoutSmallScreen .LoadoutStandards,
-.IsLayoutSmallScreen .LoadoutTeleports,
-.IsLayoutSmallScreen .LoadoutFireworks,
-.IsLayoutSmallScreen .LoadoutStreaks,
-.IsLayoutSmallScreen .LoadoutYos
+#PageMap,
+#PageUnderlord,
+#PageGame
 {
-    box-shadow: none;
+    //visibility: collapse;
+    transition-property: opacity, pre-transform-scale2d;
+    transition-duration: .2s;
+    opacity: 0;
+    pre-transform-scale2d: 1.05;
+}
+
+.ShowPageMap #PageMap,
+.ShowPageUnderlord #PageUnderlord,
+.ShowPageGame #PageGame
+{
+    visibility: visible;
+    opacity: 1;
+    pre-transform-scale2d: 1;
+}
+
+
+.DashboardHeader
+{
+    visibility: collapse;
+}
+
+.ShowCategorySelect .DashboardHeader.CategoryHeader
+{
+    visibility: visible;
+}
+
+.ShowPageMap .DashboardHeader.MapHeader,
+.ShowPageUnderlord .DashboardHeader.UnderlordsHeader,
+.ShowPageGame .DashboardHeader.GameHeader
+{
+    visibility: visible;
 }
 
 #TopRow
@@ -84,9 +109,10 @@ DACLoadoutPage
     margin-left: 40px;
 }
 
-#BottomRow
+#Items
 {
-    //width: 100%;
+    visibility: collapse;
+
     width: fit-children;
     horizontal-align: center;
     vertical-align: center;
@@ -94,37 +120,351 @@ DACLoadoutPage
     flow-children: right;
     padding-left: 20px;
     margin-top: 60px;
-    //background-color: red;
+}
+
+#SelectCategory
+{
+    visibility: collapse;
+
+    width: fit-children;
+    horizontal-align: center;
+    vertical-align: center;
+    flow-children: right;
+    margin-top: 60px;
+}
+
+#PageMap,
+#PageUnderlord,
+#PageGame,
+#PageOld
+{
+    visibility: collapse;
+    width: fit-children;
+    flow-children: right;
+}
+
+.ShowPageMap #PageMap,
+.ShowPageUnderlord #PageUnderlord,
+.ShowPageGame #PageGame
+{
+    visibility: visible;
+}
+
+.ShowCategorySelect #SelectCategory,
+.ShowPageMap #Items,
+.ShowPageUnderlord #Items,
+.ShowPageGame #Items
+{
+    visibility: visible;
+}
+
+.ShowCategorySelect #Items,
+.ShowPageMap #SelectCategory,
+.ShowPageUnderlord #SelectCategory,
+.ShowPageGame #SelectCategory
+{
+    visibility: collapse;
+}
+
+.CategoryGradient
+{
+    width: 100%;
+    height: 100%;
+    background-color: gradient (linear, 0% 0%, 0% 100%, from(#6777ca00), color-stop( 0.2, #6777ca00), to(#100f10bb));
+}
+
+.LoadoutCategoryButton
+{
+    height: fit-children;
+    height: 776px;
+    width: 542px;
+    vertical-align: middle;
+    horizontal-align: center;
+
+    margin: 10px;
+    border-top: 3px solid #4a5259;
+    border-right: 3px solid #383e44;
+    border-bottom: 3px solid #232631;
+    border-left: 3px solid #383e44;
+
+    background-image: url("s2r://panorama/images/dashboard/loadout_section_bg_psd.vtex");
+    background-color: #00000088;
+
+    transition-property: brightness, transform;
+    transition-duration: .2s;
+    background-size: 100%;
+
+}
+
+.LoadoutCategoryButton:hover
+{
+    brightness: 2;
+    transform: translatey(-3px);
+}
+
+.CategoryButtonLabel
+{
+    font-size: 60px;
+    color: #c7dbda;
+    font-family: Ravenhook, Radiance;
+
+    horizontal-align: center;
+    vertical-align: bottom;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 2.0 #333333;
+}
+
+#MapCategory
+{
+    background-image: url("s2r://panorama/images/battle_pass/loadout_map_category_preview_psd.vtex");
+    background-size: 100%;
+    //width: 430px;
+}
+
+
+#GameCategory
+{
+    background-image: url("s2r://panorama/images/battle_pass/loadout_game_category_preview_psd.vtex");
+    background-size: 100%;
+    width: 430px;
+}
+
+#UnderlordsCategory
+{
+    //background-image: url("s2r://panorama/images/battle_pass/loadout_underlord_category_preview_psd.vtex");
+    background-size: 100%;
+    width: 430px;
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#UnderlordCategoryScenePanel
+{
+    width: 100%;
+    height: 100%;
+}
+
+.CloseButton
+{
+    horizontal-align: right;
+    vertical-align: top;
+    width: 60px;
+    height: 60px;
+    background-image: url("s2r://panorama/images/hud/close-button_png.vtex");
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    opacity: 1.0;
+    //wash-color: #999;
+    wash-color: none;
+    margin-top: -8px;
+}
+
+.CloseButton:hover
+{
+    brightness: 2.0;
+}
+
+.ShowCategorySelect .CloseButton
+{
+    visibility: collapse;
 }
 
 .LoadoutContainer
 {
-    height: 750px;
-    width: 550px;
-    background-image: url("s2r://panorama/images/dashboard/loadout_section_bg_psd.vtex");
+    height: 776px;
+    width: fit-children;
+    padding-right: 24px;
+    margin-right: 24px;
+    background-image: url("s2r://panorama/images/dashboard/equip_bg_psd.vtex");
     background-size: 100%;
-    box-shadow: fill 0px 0px 24px #000000cc;
+    box-shadow: fill 0px 0px 24px #00000033;
+    flow-children: right;
 }
 
+.ShowCategorySelect .LoadoutContainer
+{
+    background-image: none;
+    box-shadow: none;
+}
 
 .LoadoutContainer.Left
 {
-    width: 645px;
     background-image: url("s2r://panorama/images/dashboard/loadout_section_bg_left_psd.vtex");
-    flow-children: right;
+    flow-children: down;
     margin-right: 25px;
+
+    width: 400px;
 }
 
 .LoadoutContainer.Right
 {
     flow-children: down;
+
+    width: 400px;
 }
 
 .LoadoutContainer.Center
 {
     flow-children: down;
-    width: 400px;
-    margin-right: 25px;
+    width: 588px;
+    padding: 0px;
+}
+
+.DAC_Underlord_0 .LoadoutContainer.UnderlordRight
+{
+    saturation: .5;
+    brightness: .5;
+}
+
+.DAC_Underlord_0 .underlord_cosmetic
+{
+    opacity: 0;
+}
+
+.LoadoutContainer.GameLeft
+{
+    width: 825px;
+    background-image: url("s2r://panorama/images/dashboard/loadout_section_bg_left_psd.vtex");
+    flow-children: right;
+    margin-right: 24px;
+}
+
+.LoadoutContainer.GameCenter
+{
+    //width: 775px;
+    width: 300px;
+    background-image: url("s2r://panorama/images/dashboard/loadout_section_bg_left_psd.vtex");
+    flow-children: right;
+}
+
+.LoadoutColumn
+{
+    flow-children: down;
+    margin-left: 25px;
+}
+
+#PosterProfile
+{    
+    vertical-align: center;
+    horizontal-align:center;
+}
+
+#PosterButtonUnknown { background-image: url("s2r://panorama/images/dashboard/avatar_unknown_psd.vtex"); }
+#PosterButtonHobgen { background-image: url("s2r://panorama/images/dashboard/avatar_hobgen_psd.vtex"); }
+#PosterButtonAnessix { background-image: url("s2r://panorama/images/dashboard/avatar_anessix_psd.vtex"); }
+#PosterButtonEnno { background-image: url("s2r://panorama/images/dashboard/avatar_enno_psd.vtex"); }
+#PosterButtonJull { background-image: url("s2r://panorama/images/dashboard/avatar_jull_psd.vtex"); }
+
+.PosterButtonPanel
+{
+    border: 3px solid #383943;
+    width: 100px;
+    height:100px;
+    margin:8px;
+    background-color: gradient (linear, 0% 100%, 60% 0%, from(#000000), to(#00000020));
+    transition-property: brightness;
+    transition-duration: 0.2s;
+}
+.PosterButtonPanel
+{
+    box-shadow: fill 0px 0px 24px #00000066;
+    brightness: 0.6;
+}
+
+.DAC_Underlord_0 #PosterButtonPanel_Unknown,
+.DAC_Underlord_1 #PosterButtonPanel_Anessix,
+.DAC_Underlord_2 #PosterButtonPanel_Jull,
+.DAC_Underlord_3 #PosterButtonPanel_Enno,
+.DAC_Underlord_4 #PosterButtonPanel_Hobgen,
+{
+    brightness: 1.5;
+    pre-transform-scale2d: 1.2;
+    border: 3px solid #424f95;
+}
+
+#LeftUnderlordArrow
+{
+    background-image: url("s2r://panorama/images/dashboard/arrow_left_underlord_psd.vtex");
+    background-repeat: no-repeat;
+    background-size: 30% 50%;
+    background-position: 50% 50%;
+//    margin-left: 130px;
+    visibility: collapse;
+}
+
+#RightUnderlordArrow
+{
+    background-image: url("s2r://panorama/images/dashboard/arrow_right_underlord_psd.vtex");
+    background-repeat: no-repeat;
+    background-size: 30% 50%;
+    background-position: 50% 50%;
+    visibility: collapse;
+}
+
+.PosterHeroSelectionButton
+{
+    background-repeat:no-repeat;    
+    background-position: center center;
+    background-size:cover;    
+    height:100%;
+    width:100%;
+    horizontal-align:center;
+    vertical-align:center;   
+}
+
+.PosterButtonPanel:hover
+{
+    //border: 3px solid #424f95;
+    brightness: 1.5;
+    //background-color: gradient (linear, 0% 100%, 100% 0%, from(#000000), to(#140a2770));
+}
+
+.WantedPoster
+{
+    width:600px;
+    height:fit-children;
+    horizontal-align:center;
+    vertical-align:center;
+    transform: rotateZ(3deg);
+    pre-transform-scale2d:1.1;
+}
+
+#PosterImagePanel,
+#PosterTitlePanel
+{    
+    height: 350px;
+    width: 215px;
+    //height:fill-parent-flow(.5);
+}
+
+.PosterTitle .PosterTitleText
+{
+transform: translateY(-28px);
+}
+
+#LoadoutFX
+{
+    width:100%;
+    height:100%;
+}
+
+#LoadoutPosterPickers
+{
+    //width:100%;
+    height:100%;
+}
+
+.LoadoutPoster
+{
+    width:475px;
+}
+
+.LoadoutPoster .LoadoutDetail
+{
+    width:100%;
+    height:600px;
 }
 
 .LeftSide
@@ -145,20 +485,32 @@ DACLoadoutPage
 
 .LoadoutDetail
 {
-    border: 3px solid #66666620;
-    //border-top: 4px solid #444;
-    //border-right: 4px solid #333;
-    //border-bottom: 4px solid #222;
-    //border-left: 4px solid #222;
-    transition-property: border, brightness, transform;
+    border: 3px solid #383943;
+    transition-property: border, brightness, transform, background-image;
     transition-duration: .2s;
     background-color: gradient (linear, 0% 100%, 60% 0%, from(#000000), to(#00000020));
     brightness: 1.0;
+    width: 215px;
+    height: 350px;
+    margin-top: 24px;
+    box-shadow: fill 0px 0px 24px #00000066;
+}
+.LoadoutDetail #RewardPreviewScenePanel
+{
+    height: 84%;
+}
+
+.MiddleContainer .LoadoutDetail
+{
+    margin: 0px;
+    margin-top: 25px;
+    margin-left: 25px;
+    width: 336px;
 }
 
 .LoadoutDetail:hover
 {
-    border: 3px solid #8D60C6;
+    border: 3px solid #424f95;
     //border: 3px solid gold;
     //transform: translateY(-2px);
     brightness: 1.5;
@@ -172,6 +524,13 @@ DACLoadoutPage
     transition-duration: .2s;
     horizontal-align: right;
     margin-right: 40px;
+}
+
+.MapImage.ImageDetail
+{
+    margin: 0px;
+    vertical-align: center;
+    horizontal-align: center;
 }
 
 .RightSide .ImageDetail
@@ -188,67 +547,67 @@ DACLoadoutPage
 .LoadoutDetail:hover .LoadoutLabel
 {
     color: #ffffff;
-    background-color: #8D60C6;
+    background-color: #424f95;
 
     /*background-color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );*/
 
 }
-
-
-
 
 .LoadoutLabel
 {
     horizontal-align: right;
     vertical-align: top;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: black;
     text-transform: uppercase;
     color: #ffffff30;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     transition-property: color, transform;
     transition-duration: .2s;
-    background-color: #292D2E;
-    padding: 2px 10px 2px 15px;
+    background-color: #383943;
+    padding: 0px 10px 2px 15px;
 }
 
-#EquippedItemName {
-    horizontal-align: left;
+#EquippedItemName 
+{
+    width: 100%;
+    height: 52px;
+    background-color: #333;
     vertical-align: bottom;
-    margin-bottom: 20px;
-    flow-children: down;
-    margin-left: 30px;
-    width: 280px;
-    /*border: 1px solid yellow;*/
-    /*height: fit-content;*/
+    background-image: url("s2r://panorama/images/dashboard/equipped_item_bg_psd.vtex");
+    background-size: 100%;
+}
+
+.LoadoutDetail:hover #EquippedItemName 
+{
+    background-image: url("s2r://panorama/images/dashboard/equipped_item_bg_hover_psd.vtex");
 }
 
 .EquippedText
 {
-    horizontal-align: left;
-    /*margin-right: 25px;*/
-    vertical-align: bottom;
-    font-size: 30px;
-    line-height: 32px;
+    vertical-align: center;
+    horizontal-align: center;
+    font-size: 24px;
+    text-align: center;
     font-weight: bold;
     color: #ffffffaa;
     text-overflow: shrink;
     transition-property: transform;
     transition-duration: .2s;
-
+    line-height: 22px;
+    padding: 0px 10px 0px 10px;
+    text-shadow: 2px 2px 2.0 #333333;
 }
 
 .EquippedLabel {
     font-size: 14px;
     text-transform: uppercase;
     color: #8D60C6;
-    width: 220px;
-    height: 20px;
+    //width: 220px;
+    //height: 20px;
     horizontal-align: left;
     font-weight: bold;
     letter-spacing: 1px;
-    //text-align: right;
-
 }
 
 .PreviewBanner
@@ -288,10 +647,10 @@ DACLoadoutPage
 .LoadoutFlags,
 .LoadoutSigils
 {
-    width: 235px;
-    height: 220px;
+    //width: 235px;
+    //height: 220px;
     horizontal-align: center;
-    margin-top: 25px;
+    //margin-top: 25px;
     /*background-color: #000000aa;*/
     /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
     //background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #55555588 ), to( #33333333 ) );
@@ -302,26 +661,42 @@ DACLoadoutPage
 
 .LoadoutStandards
 {
-    height: 210px;
+    //height: 210px;
 }
 
 
 .LoadoutMaps
 {
-    width: 500px;
-    height: 220px;
+    width: 540px;
+    height: 540px;
     margin-top: 25px;
     horizontal-align: center;
-    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
-    box-shadow: inset #000000cc 0px 1px 14px 0px;
+    box-shadow: fill 0px 0px 24px #00000066;
     background-position: center;
 }
+
+#MapPreview
+{
+    width:100%;
+    height:100%;
+}
+
+.LoadoutMapProps.LoadoutDetail
+{
+    //width: 700px;
+    width: 540px;
+    margin: 0px;
+    height: 160px;
+    margin-top: 24px;
+    horizontal-align: center;
+}
+
 
 .LoadoutTitles
 {
     width: 500px;
-    height: 175px;
-    margin-top: 25px;
+    height: 172px;
+    margin-top: 24px;
     horizontal-align: center;
     /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
     box-shadow: inset #000000cc 0px 1px 14px 0px;
@@ -338,7 +713,15 @@ DACLoadoutPage
 
 .MiddleContainer
 {
+    width: 100%;
     flow-children: right;
+}
+
+.UnderlordItemListContainer
+{
+    width: 100%;
+    height: 100%;
+    flow-children: right-wrap;
 }
 
 .BottomContainer
@@ -346,51 +729,37 @@ DACLoadoutPage
     flow-children: right;
 }
 
+
 .LoadoutYos
 {
-    width: 235px;
-    height: 210px;
     horizontal-align: center;
-    margin-top: 25px;
-    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
-    box-shadow: inset #000000cc 0px 1px 14px 0px;
     background-size: 50% 75%;
     background-position: 0%;
-    margin-left: 25px;
 }
 
 .LoadoutStreaks
 {
-    width: 235px;
-    height: 210px;
     horizontal-align: center;
     margin-top: 25px;
-    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
-    box-shadow: inset #000000cc 0px 1px 14px 0px;
+}
+
+.LoadoutUnderlordItem
+{
+    horizontal-align: left;
     margin-left: 25px;
 }
 
 .LoadoutTeleports
 {
-    width: 235px;
-    height: 210px;
     horizontal-align: center;
-    margin-top: 25px;
-    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
-    box-shadow: inset #000000cc 0px 1px 14px 0px;
     background-size: 50% 75%;
     background-position: 0%;
-    margin-left: 25px;
 }
 
-.LoadoutFireworks//temp
+.LoadoutFireworks
 {
-    width: 235px;
-    height: 210px;
     horizontal-align: center;
     margin-top: 25px;
-    /*background-color: gradient( radial, 50% 20%, 0% 0%, 180% 80%, from( #00000088 ), to( #22222233 ) );*/
-    box-shadow: inset #000000cc 0px 1px 14px 0px;
     margin-left: 25px;
 }
 
@@ -402,9 +771,23 @@ DACLoadoutPage
 
 .MapImage
 {
-    width: 200px;
-    height: 200px;
+    width: 100%;
+    height: width-percentage( 100% );
     vertical-align: center;
+}
+
+.LoadoutDetail:hover .MapImage
+{
+    transform: translateY(0px);
+}
+
+.MapPropImage
+{
+    background-image: url("s2r://panorama/images/dashboard/loadout_map_props_psd.vtex");
+    vertical-align: center;   
+    background-size: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .FlagBaseImage,
@@ -415,57 +798,255 @@ DACLoadoutPage
     vertical-align: bottom;
 }
 
-.TeleportImage
+DACRewardPreviewScenePanel
 {
-    width: 140px;
-    height: 140px;
-    margin-right: 0px;
-		margin-top: 20px;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+}
+
+
+.PosterTitle
+{
+    width: 100%;
+    height: 100%;
+    vertical-align: center; 
+    horizontal-align: center; 
+    background-position: center center;    
+    transition-property: transform;
+    transition-duration: .2s;
+    background-size:cover;
+}
+
+#LoadoutPosterFrame,
+#LoadoutPosterBG
+{
+    height:100%;
+    width:100%; 
+    horizontal-align: center;
+    vertical-align: center; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;        
+}
+
+#LoadoutPosterBG
+{
+    background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_5_png.vtex"); 
+    transform:translateY(-25px);
+}
+
+#LoadoutPosterFrame
+{
+    background-image: url("s2r://panorama/images/post_game/wanted_poster_plain_psd.vtex");     
+}
+
+.PosterImage
+{
+    width: 100%;
+    height: 100%;
+    margin-right:0;
+    horizontal-align: center;
+    vertical-align: center; 
+    transform: translateY(-25px);
+    background-position: center center;    
+}
+
+#PosterImagePanel.LoadoutDetail:hover .ImageDetail
+{
+    transform: translateY(-25px);
+}
+
+.LoadoutDetail:hover .ImageDetail
+{
+    //transform: translateY(-8px);
+}
+
+.UnderlordSelectContainer
+{
+    //width: 100%;
+    width: 500px;
+    height: 100px;
+    horizontal-align: center;
+    vertical-align: bottom;
+    flow-children: down;
+    overflow: noclip;
+
+    //visibility: collapse;
+    margin-left: -350px;
+}
+
+.UnderlordSelectContainer .UnderlordArrow
+{
+    background-image: url("s2r://panorama/images/dashboard/arrow_right_underlord_psd.vtex"); 
+    height: 78px;
+    width: 50px;
+    background-size: 100%;
     horizontal-align: right;
-    vertical-align: top;
+    vertical-align: center;
+    wash-color: textDefault;
+    opacity: 0.6;
+    transition-property: opacity;
+    transition-duration: 0.2s;
 }
 
-.FireworksImage
+.UnderlordSelectContainer .UnderlordArrow:hover
 {
-    width: 140px;
-    height: 140px;
-    margin-right: 0px;
-		margin-top: 20px;
+    opacity: 1;
+}
+
+.UnderlordSelectContainer .UnderlordArrow
+{
+    background-image: url("s2r://panorama/images/dashboard/arrow_right_underlord_psd.vtex"); 
+}
+
+.UnderlordSelectContainer .UnderlordArrow.ArrowLeft
+{
+    horizontal-align: left;
+    background-image: url("s2r://panorama/images/dashboard/arrow_left_underlord_psd.vtex"); 
+}
+
+.UnderlordName,
+.UnderlordDesc {
+    horizontal-align: center;
+    text-align: center; 
+}
+
+.UnderlordName {
+    font-family: ravenhook, radiance;
+    color: textBright;
+    font-size: 60px;
+    text-overflow: shrink;
+    width: 100%;
+    margin-bottom: -5px;
+    letter-spacing: 1px;
+}
+
+
+.UnderlordDesc {
+    font-size: 20px;
+    font-family: Radiance;
+    font-weight: black;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ddd;
+    margin-bottom:12px;
+}
+
+.UnderlordName
+{
+    text-shadow: 0px 1px 0px 3.0 #000;
+}
+
+
+#PageUnderlord #UnderlordItemScenePanel
+{
+    width: 100%;
+    height: 100%;
+    opacity-mask: url("s2r://panorama/images/masks/underlord_mask_psd.vtex");
+}
+
+
+
+#PageUnderlord .LoadoutDetail.Locked,
+#PageUnderlord .LoadoutDetail.Locked:hover
+{
+    brightness: 0.25;
+}
+
+#PageUnderlord .LoadoutDetail.CanEquip:hover
+{
+    border: 3px solid #424f95;
+    //border: 3px solid gold;
+    //transform: translateY(-2px);
+    brightness: 1.5;
+    /*background-color: #00000090;*/
+    background-color: gradient (linear, 0% 100%, 100% 0%, from(#000000), to(#140a2770));
+}
+
+
+.LoadoutUnderlordItem #EquipButton
+{
+    width: 100%;
+    height: 100%;
+}
+
+.LoadoutUnderlordItem #EquipButton .EquippedLabel,
+.LoadoutUnderlordItem #EquipButton .EquipLabel,
+{
+    visibility: collapse;
+}
+
+.LoadoutUnderlordItem.IsEquipped #EquipButton .EquippedLabel
+{
+    visibility: visible;
+}
+
+.UnderlordSelectToggles
+{
+    width: 100%;
+    height: 64px;
+}
+
+#PageUnderlord .Locked #Lock
+{
+    width: 32px;
+    height: 32px;
+    vertical-align: top;
     horizontal-align: right;
-    vertical-align: top;
+    margin: 24px;
+
+    background-image: url("s2r://panorama/images/control_icons/lock_png.vtex");
+    background-size: 100%;
 }
 
 
-.YoImage,
-.StreakImage
+.LoadoutContainer.PlayerCenter
 {
-    width: 150px;
-    height: 150px;
+    width: 1000px;
+    flow-children: down;
+    padding-right: 0px;
+}
+
+.PlayerCenterTop
+{
+    width: 1000px;
+    height: 650px;
+    flow-children: right;
+}
+
+.PosterPreview
+{
+    width: 500px;
+    height: 700px;
+}
+
+#PlayerCenterBottomContainer
+{
+    height: fit-children;
+    width: 100%;
+    margin-bottom: 24px;
+}
+#PosterHeroSelection
+{
+    width: fit-children;
+    height: 100px;
+    horizontal-align: center;
+    flow-children: right;
+}
+
+#SelectCategory #UnderlordCategoryScenePanel
+{
+    visibility: collapse;
+}
+
+#SelectCategory.LoadoutContainer
+{
     margin-right: 0px;
+    padding-right: 0px;
 }
 
-.YoImage
+#PlayerCategory .WantedPoster
 {
-    margin-top: 5px;
-}
-
-.StreakImage
-{
-    margin-top: -5px;
-    margin-right: -5px;
-}
-
-.StreakImage,
-.YoImage
-{
-    vertical-align: top;
-    /*horizontal-align: center;*/
-    //margin-right: 10px;
-}
-
-
-
-.LoadoutYos .EquippedText,
-.LoadoutStreaks .EquippedText {
-    font-size: 26px;
+    margin-bottom: 48px;
 }

@@ -43,9 +43,9 @@ $tI
 %.2f
 %.2f Hz (%s/%s -> %s/%s) %.3f ms/frame
 %.2f Hz (%s/%s) %.3f ms/frame
+%.2f MP / sec
 %.2f mm
 %.2f%%
-%.2f%s
 %.3f
 %.4f
 %01d
@@ -63,7 +63,6 @@ $tI
 %d
 %d = %d
 %d = %f
-%d%s
 %dx%d
 %dx%d @ (%d,%d)
 %g
@@ -98,15 +97,12 @@ $tI
 (GPU
 (H/V):
 (None)
-(Will use first output for the adapter)
 (fWeightSumLeft + fWeightSumRight) > 0.0f
 (fWeightSumTop + fWeightSumBottom) > 0.0f
 )
 ) + SubmitToRT(
 ) = Total
 *
-*** Eye %d Pixel( %d, %d ) has the smallest uv area
-*** Eye %d: %dx%d area RenderTarget( %f, %f ) Scale( %f, %f )
 *St19_Sp_counted_deleterIPhZN3Etc13EncodeMipmapsEPfjjNS1_5Image6FormatENS1_11ErrorMetricEfjjjjPNS1_8RawImageEPibEUlS0_E_SaIiELN9__gnu_cxx12_Lock_policyE2EE
 *ZN3Etc13EncodeMipmapsEPfjjNS_5Image6FormatENS_11ErrorMetricEfjjjjPNS_8RawImageEPibEUlPhE_
 +inf
@@ -144,7 +140,6 @@ $tI
 -nohmd
 -nohmd      Renders through the VR code paths without using the HMD's tracking or display
 -nomultiview
--novrcomp
 -scale
 -scale [x]  Available with either -vrdebug or -nohmd. Will scale window by float amount (0.5 is half width & height)
 -sse2
@@ -168,6 +163,7 @@ $tI
 . Renderer now requires
 ...
 ../public/ordered_constructor.h
+../public/scenesystem/vertexformat.h
 ../public/tier0/tslist.h
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utlfixedmemory.h
@@ -195,7 +191,6 @@ $tI
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 3 4 3 3 3 3 4 4 4 6 3 4 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 13 20 11 11 10 11 11 11 11 10 10 10 11 10 11 9 9 9 9 9 9 11 11 11 11 11 11 11 11 11 23 30 23 22 22 23 23 24 23 23 23 23 23 22 23 22 22 22 20 20 20 19 19 19 22 22 22 23 23 23 36 41 38 36 35 36 36 36 36 34 35 34 35 35 35 33 33 33 33 33 33 32 32 32 31 31 31 31 31 31 55 58 55 52 52 52 54 54 54 52 52 52 52 51 52 51 51 51 49 49 49 47 47 47 48 48 48 47 47 47 95 96 95 93 93 93 94 94 94 93 92 93 91 90 91 91 91 91 87 87 87 86 86 86 85 85 85 85 85 85 165 165 165 161 161 161 163 163 163 159 159 159 160 160 160 158 158 158 155 155 155 151 151 151 151 151 151 148 148 148 220 220 220 216 216 216 217 217 217 214 214 214 215 215 215 212 212 212 209 209 209 205 205 205 203 203 203 203 203 203 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 7 7 7 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 15 22 13 16 13 12 11 11 11 9 9 9 9 9 9 9 9 9 9 9 9 7 7 7 7 7 7 7 7 7 27 39 27 27 20 27 24 24 24 23 23 23 22 22 22 22 22 22 20 20 20 19 19 19 19 19 19 18 18 18 39 48 41 39 37 39 38 38 38 36 36 36 35 35 35 34 34 34 33 33 33 31 31 31 30 30 30 29 29 29 60 66 62 58 55 57 56 54 54 54 54 54 52 52 52 51 51 51 49 49 49 47 47 47 46 46 46 44 44 44 106 110 105 104 96 98 98 95 95 93 93 93 92 92 92 90 90 90 87 87 87 84 84 84 82 82 82 80 80 80 177 182 176 175 169 173 171 168 168 166 166 166 162 162 162 160 160 160 155 155 155 151 151 151 148 148 148 146 146 146 241 242 238 234 224 230 227 224 224 222 221 221 220 220 220 215 215 215 211 211 211 205 205 205 203 203 203 200 200 200 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255 255
 0 180 0
-0.0
 0.04
 0.10
 0.6
@@ -210,11 +205,11 @@ $tI
 1.0
 1.8
 100
+100.0
 10ConCommand
 10IAppSystem
 11IRefCounted
 11IVSSequence
-12CEmptyConVar
 12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE
 12CThreadEvent
 13IBaseSequence
@@ -230,7 +225,9 @@ $tI
 15CTier2AppSystemI3IVrLi0EE
 15CVrWarpRenderer
 16CDefaultAccessor
-18CVrDebugVisualizer
+16IDebugVisualizer
+18CPlaceholderConVar
+18CVrPerfHUDRenderer
 18CVrStencilRenderer
 19CVRFly_InputHandler
 19CVRShutdownCallback
@@ -246,8 +243,11 @@ $tI
 23CDebugVisualizerAbsTime
 23IConCommandBaseAccessor
 24IProceduralLayerRenderer
+25CVrPerfHUDDebugVisualizer
 25CVrReconstructionRenderer
 25CVrSubviewStencilRenderer
+26CEndRenderingSceneCallback
+28CBeginRenderingSceneCallback
 28CVRSetOverlayTextureCallback
 28CVRSetSkyboxOverrideCallback
 2Way_0( %s )
@@ -255,7 +255,10 @@ $tI
 2_BONE_IK
 3
 3.0
-36CVrAutoFidelityVisualizationRenderer
+30CPresentRenderTrackingCallback
+32CDisableNonBlockingInputCallback
+33CSignalFrameDiscontinuityCallback
+34CUpdateHmdDataFromHardwareCallback
 3C
 3CVr
 3IVr
@@ -277,8 +280,11 @@ $tI
 <INVALID EXPRESSION>
 <INVALID_RBF_TYPE>
 <NO EXPRESSION>
+<deferred>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 <unknown>
 >
 ?
@@ -337,10 +343,11 @@ ATI_DST24
 ATTACHMENT_INFLUENCE_FLAGS_NONE
 AbsolutePoseControl
 AbsoluteTrackingToTracking
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Acquired overlay %s has unsupported API type: %d
 Acquired overlay %s texture failed to be shared.
 Acquired overlay %s texture isn't available. (yet)
-Adapter:
 Adding animation group resource in replace animations: %s
 AllocInternal
 Allocating %s bytes for perf test data
@@ -384,7 +391,6 @@ Attempting to get the Skeletal Input settings from model %s, which doesn't have 
 Attempting to get the movement settings from model %s, for which movement settings have not been set.  Please add a MovementSettings node to the model in ModelDoc
 Attempting to re-register existing mailbox!
 Attempting to send mailbox message without having first registerd our mailbox address!
-Attribute counts between meshes is inconsistent
 AuthenticAMD
 Average fidelity from perf test %.2f from %d valid frames
 B
@@ -421,12 +427,18 @@ BreakCommand
 BreakPieceEmbedded
 BreakPieceExternal
 Broadcast
+ButtonPress
+ButtonTouch
+ButtonUnpress
+ButtonUntouch
 C->D
 C->E
 CAimConstraint
 CAnimBone
 CAnimDataChannelDesc
 CAnimKeyData
+CAnimMotorList
+CAnimMovementManager
 CAnimRetargetChainData
 CAnimRetargetData
 CAnimRetargetElementData
@@ -481,6 +493,7 @@ CMemAllocSystemInitialize
 CMesh Cannot create packed input layout, because the bone indices are out of range (0x%X)
 CModelConfig
 CModelConfigElement
+CModelConfigElement_Command
 CModelConfigElement_UserPick
 CModelConfigList
 CMorphConstraint
@@ -504,23 +517,23 @@ CStrongHandle
 CTSQueue corruption
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadMultiWaitEvent::CThreadMultiWaitEvent(bool)
 CThreadMultiWaitEvent::Set()
 CThreadMultiWaitEvent::~CThreadMultiWaitEvent()
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
 CThreadRWLock_FastRead::CThreadRWLock_FastRead()
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
-CThreadRWLock_FastRead::UnlockReadAccounting(unsigned int)
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int)
+CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
+CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
 CThreadSemaphore::Release(int, int*)
 CThreadSemaphore::~CThreadSemaphore()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::Wait(unsigned int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
@@ -641,6 +654,7 @@ Cannot read file
 Cannot reconstruct lineOffset table in DecodeEXRImage.
 Cannot write a file
 Checker.
+Clear Color
 Clip Space Bounds Left Eye  (L/R/T/B):
 Clip Space Bounds Right Eye (L/R/T/B):
 ClothShapeCapsule
@@ -665,10 +679,7 @@ Controller %d Serial Number:
 Controller %d, input %2d
 Controller %d, input %2d, VR_CONTROLLER_INPUT_BUTTON
 Controller at tracked device slot: %d %s
-Controller event vr::VREvent_ButtonPress
-Controller event vr::VREvent_ButtonTouch
-Controller event vr::VREvent_ButtonUnpress
-Controller event vr::VREvent_ButtonUntouch
+Controller event vr::VREvent_%s, name = %-10s
 ConvertFloatToChannel: Trying to convert to a a float to a destation of byte size %d
 ConvertFloatToChannel: Trying to convert to a a normalized float to a destation of byte size %d
 ConvertGammaToLinear
@@ -692,14 +703,19 @@ DXT3
 DXT5
 DXT5_NM
 Data size too short
+DebugDrawObjects
 DebugTextureInfo001
+DebugVisualizerMgr
 Decompression failure
 Default
 DepthPassBatchID
 DevMsg
 DevMsg(char const*, ...)
+Display VR Perf HUD in HMD
+Display fidelity visualizer in VR Perf HUD (vr_perf_hud must be 1)
 Dominate(
 DotaCardGameClient_001
+Double-save to Member '%s'
 Driver high = 0x%x, low = 0x%x
 Dump the left-hand controller render data to an OBJ + TGA files
 DynamicConfigList
@@ -801,6 +817,7 @@ FormatV
 Found overlay %s is invalid
 Found unknown controller product id: 0x%04x, using default WindowsMR controller.
 Foveated 2x.
+Frame time: %5.1f ms, 240 frames avg: %5.1f max: %5.1f ms
 FrameIndex,NumDroppedFrames,PreSubmitGpuMs,PostSubmitGpuMs,CompositorRenderGpuMs,ClientFrameIntervalMs,FidelityLevel
 G channel not found
 G channel not found!
@@ -824,6 +841,7 @@ GLIBC_2.3
 GLIBC_2.3.4
 GLIBC_2.4
 GNU
+GPU Memory: %s / %s MB
 GPU:
 GameResourceServiceClientV001
 GameResourceServiceServerV001
@@ -864,21 +882,20 @@ IKRigBiped
 IKRigBug
 IKRigSimple
 IQuickTime001
-IVRApplications_006
+IVRApplications_007
 IVRChaperone_003
+IVRCompositor::%s() failed with error '%s'
 IVRCompositor::Submit() failed with error '%s'
-IVRCompositor_022
-IVRCompositor_024
+IVRCompositor_026
 IVRControlPanel::RegisterExternalWebRoot() failed with error '%s'
-IVRControlPanel_006
-IVRExtendedDisplay_001
 IVRInputInternal_002
-IVRInput_005
+IVRInput_008
 IVRMailbox_001
 IVROverlayView_002
-IVROverlay_019
+IVROverlay_023
 IVRRenderModels_006
-IVRSystem_019
+IVRSystem_021
+IXrProto_001
 If you don't have a VR device, you can run with -vrdebug to see vr rendering as a side-by-side stereo render.
 Ignore Always
 Ignore Once
@@ -900,6 +917,7 @@ Intentionally vague touch behavior for %p
 Internal inconsistency between the layout format and attribute is detected.Try changing the number of bones per vertex or the skin weighting, and send Sergiy a repro mesh with this error description.
 Invalid EXR header.
 Invalid `part number' in EXR header chunks.
+Invalid access of deferred ConVarRef for '%s'
 Invalid argument for DecodeEXRImage().
 Invalid argument for LoadDeepEXR
 Invalid argument for LoadEXR()
@@ -1003,6 +1021,8 @@ MaterialParam_t
 MaterialResourceData_t
 MaterialUtils_001
 MathLib_Init
+Measured GPU Speed:
+Median client cpu usage=%fms
 MemAlloc_AllocFunc
 MemAlloc_FreeFunc
 Mesh contains %d blend weights per vertex;  truncating to %d
@@ -1072,7 +1092,6 @@ Only DXT1/DXT5 online texture compression supported.
 OpenVR event vr::VREvent_InputFocusCaptured
 OpenVR event vr::VREvent_InputFocusReleased
 Output memory size is zero
-Output:
 Overall FOV (H/V):
 P8
 P@
@@ -1142,9 +1161,13 @@ Plat_GlobalMemoryStatus
 Plat_IsHighDPI
 Plat_IsInDebugSession
 Plat_MessageBox
+Plat_RelativeTicks
+Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
+Plat_TickDiffSec
 Plat_UUIDFromString
 Plat_UUIDToString
+Please verify you are running the latest version of SteamVR by fully exiting and relaunching Steam,then manually launch SteamVR from your Steam Library.Minimum supported version is v%d.%d.%d.
 PosXYZ
 PostProcessingSystem_001
 PreviewAttachmentModel
@@ -1197,6 +1220,7 @@ RandomSeed
 Raw matrices from SteamVR (all units in meters):
 Re-acquired overlay has lost its texture!
 Received event: %d, Dashboard Showing: %d
+Recommended GPU Speed for HMD:
 Recommended Render Target Size:
 Refresh Rate:
 RegisterAllModuleData
@@ -1290,8 +1314,11 @@ Stats:
 StatsService_001
 SteamAudio001
 SteamVR initialized!
+SteamVR runtime is out of date!
 Stencil mask reduces rendering area by:
 Stereo FOV (H/V):
+Submit
+SubmitEye
 Submitting first frame to the compositor
 Subview Mode =
 Subview stencil mesh reduces rendering area by
@@ -1312,6 +1339,9 @@ ThreadGetCurrentId
 ThreadGetCurrentProcessId
 ThreadMultiWait
 ThreadSleep
+Throttling due to cpu usage: disabled
+Throttling due to cpu usage: off (median=%fms)
+Throttling due to cpu usage: on (median=%fms)
 ToolFramework2_002
 ToolGameSimulationDispatcher_001
 ToolGameSimulationSystem_001
@@ -1386,33 +1416,22 @@ VPhysics2_Interface_001
 VProcessUtils002
 VProfService_001
 VR
-VR - ERROR! Applications failed initialization with error code:%s "%s"
 VR - ERROR! Compositor failed initialization with error code %s: "%s"!
-VR - ERROR! Compositor failed initialization with error code:%s "%s"
-VR - ERROR! Overlay failed initialization with error code:%s "%s"
 VR - ERROR! VRInput failed initialization!
 VR - ERROR! VrApplications failed initialization with error code %s: "%s"!
 VR - ERROR! VrApplications failed to LaunchInternalProcess( %s, %s, %s ) with error code:%i "%s"
-VR - ERROR! VrExtendedDisplay failed initialization with error code %s: "%s"!
-VR - ERROR! VrExtendedDisplay failed initialization with error code:%s "%s"
 VR - ERROR! VrOverlay failed initialization with error code %s: "%s"!
 VR - Error calling g_pVr->GenerateWarpMeshVbAndIb()!
 VR - Error! SteamVR failed initialization with error code %s: "%s"!
-VR - Error! SteamVR failed initialization with error code:%s "%s"
 VR - GPU( %5.2f )
 VR - IdentifyApplicaton steam.app.450390 AFTER VR Init
 VR - IdentifyApplicaton steam.app.450390 BEFORE VR Init
-VR - IdleGPU( %4.2f ) + GPU( %5.2f ) + WaitVsync( %4.2f ) = Total %6.3f ms
-VR - SteamVR Compositor Failed!
-VR - SteamVR Failed Initialization!
-VR - SteamVR Input Failed!
-VR - SteamVR VrApplications Failed!
-VR - SteamVR VrExtendedDisplay Failed!
-VR - SteamVR VrOverlay Failed!
 VR - Warning! IVRInput version %s unavailable.
 VR - Warning! SteamVR failed initialization with error code %s: "%s"!
 VR - Warning! VRChaperone failed initialization with error code %s: "%s"!
 VR - Warning! VrRenderModels failed initialization with error code %s: "%s"!
+VR - vr_test_nonblocking_hmd_input available
+VR GPU Compositor benchmark data not available.
 VR Multiview Instancing enabled.
 VR failure loading render model %s: %d
 VR load render model texture failure: %d
@@ -1438,6 +1457,7 @@ VRControlPanel
 VRFlyInputContext
 VRFlyInputHandler
 VRInit
+VRPerfHUDDebugView
 VRPerformanceTest.csv
 VR_001
 VR_GetGenericInterface
@@ -1465,6 +1485,7 @@ V_GetFileExtension
 V_IsAbsolutePath
 V_PathContainsPath
 V_PrettifyMem
+V_PrettifyNum
 V_RemoveDotSlashes
 V_SetErrno
 V_StrTrim
@@ -1535,6 +1556,7 @@ Virtual reality command line args:
 VisBuilder_001
 Vr/MultiviewInstancing
 Vr/PreAllocateScratchRenderTargets
+Vr/TickRateLockedToDisplayRate
 VrAutoFidelityVisualization
 VrGhostCorrectionTexture
 VrGroup
@@ -1542,6 +1564,7 @@ VrInputInternal failed initialization with error code %s: "%s"!
 VrMailbox failed initialization with error code %s: "%s"!
 VrManifest
 VrOverlayView failed initialization with error code %s: "%s"!
+VrPerfHUD
 VrReconstructionQuadLayout
 VrStartup
 VrStencilLayout
@@ -1637,7 +1660,6 @@ __tls_get_addr
 _edata
 _end
 _fini
-_modelbuilder_phys_%i.vphys
 _root_keyname
 _setjmp
 _test_conversion_counter
@@ -1662,6 +1684,7 @@ anim_name
 anim_name_a
 anim_name_b
 animgraph0
+animgraph1
 archive
 atan2
 attach_point
@@ -1766,7 +1789,6 @@ explosion_delay
 explosion_type
 explosive_damage
 explosive_radius
-eye
 eye_data
 eye_data_list
 f %d %d %d
@@ -1790,17 +1812,18 @@ float Etc::Block4x4Encoding::CalcPixelError(Etc::ColorFloatRGBA, float, Etc::Col
 float Etc::Block4x4Encoding::GetError()
 floatbitmap.cpp
 floatbitmap.cpp(141): Unknown gamma type "%s"!
-floatbitmap.cpp(2473): Error calling TGALoader::GetInfo( %s )
-floatbitmap.cpp(2484): Error loading %s
-floatbitmap.cpp(2507): Error! Unknown file type for %s
-floatbitmap.cpp(2526): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
-floatbitmap.cpp(325): Conversion not supported yet!
-floatbitmap.cpp(425): Conversion not supported yet!
-floatbitmap.cpp(888): Unsupported color format "%s", skipping!
+floatbitmap.cpp(2486): Error calling TGALoader::GetInfo( %s )
+floatbitmap.cpp(2497): Error loading %s
+floatbitmap.cpp(2520): Error! Unknown file type for %s
+floatbitmap.cpp(2539): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
+floatbitmap.cpp(338): Conversion not supported yet!
+floatbitmap.cpp(438): Conversion not supported yet!
+floatbitmap.cpp(901): Unsupported color format "%s", skipping!
 floor
 floorf
 fopen64
 force
+formats.cpp
 fprintf
 fputc
 frame
@@ -1902,6 +1925,7 @@ loop_in_action
 looping
 lowprecisionuv
 lowprecisionuv1
+m_Args
 m_AttachmentName
 m_AttachmentType
 m_Bone
@@ -1910,6 +1934,7 @@ m_Children
 m_Choices
 m_Color
 m_ColorScale
+m_Command
 m_ConeAxis
 m_ConeCutoff
 m_ConfigName
@@ -1941,6 +1966,7 @@ m_JointName
 m_Joints
 m_LiteralColor
 m_MaterialGroupName
+m_MotorList
 m_Name
 m_NestedElements
 m_Operators
@@ -1972,7 +1998,6 @@ m_bHasBakedLightingBasisInVertex
 m_bHasBakedLightingFromLightMap
 m_bHasBakedLightingFromVertexStream
 m_bHasCullingData
-m_bHasPerInstanceBakedLightingData
 m_bHideMaterialGroupInTools
 m_bHideRenderColorInTools
 m_bIgnoreRotation
@@ -2171,7 +2196,6 @@ m_nStartInstance
 m_nTargetAxis
 m_nType
 m_nUpType
-m_nValue
 m_nVectorComponent
 m_nVertexCount
 m_outerKnuckle1
@@ -2182,6 +2206,7 @@ m_outputWeightList
 m_pBody
 m_pD3DSemanticName
 m_pJointConstraintData
+m_pMovementManager
 m_pName
 m_pParent
 m_pSemantic
@@ -2268,6 +2293,7 @@ mapbuilder.occluder
 master_morph_weight
 material_group
 materials/dev/steamvr_controller_base.vmat
+materials/dev/vr_perf_hud.vmat
 materials/dev/vr_quality_vis.vmat
 materials/dev/vr_stencil.vmat
 materials/dev/vr_warp.vmat
@@ -2299,6 +2325,7 @@ model.cpp
 model_default_preview_sequence_name
 model_dump_convert_info
 model_name
+model_old_disk.cpp
 modeldoc0
 modeldoc1
 modeldoc10
@@ -2332,6 +2359,7 @@ modellib
 ms
 ms )
 multiplayer_break
+n@
 nB
 nTries < 10000000
 nan
@@ -2361,7 +2389,6 @@ origin_relative
 osvr
 out of memory
 overlay
-pA
 parameter error
 parent of jiggle bone %u: %s
 particles/
@@ -2371,6 +2398,7 @@ pbucket->plinkLast->GetNext() == nullptr
 perftest_multigpu
 pervertexlighting
 phys_res
+physaggregatedata.cpp
 physgun_interactions
 physib
 physicsmode
@@ -2650,19 +2678,19 @@ vpcf7
 vpcf8
 vpcf9
 vr.cpp
-vr.cpp(4832): ERROR! Unknown controller axis type %d!
-vr.cpp(5949): VR - Destroying old VB for Stenciling!
-vr.cpp(5994): VR - Error! VB handle is invalid in CVrStencilRenderer!
-vr.cpp(6138): VR - Destroying old VB for SubviewStenciling!
-vr.cpp(6480): VR - Error! VB handle is invalid in CVrSubviewStencilRenderer!
-vr.cpp(6661): VR - Destroying old IB for warping!
-vr.cpp(6739): VR - Error! VB handle is invalid in CVrWarpRenderer!
-vr.cpp(6748): VR - Error! IB handle is invalid in CVrWarpRenderer!
-vr.cpp(6898): VR - Destroying old VB for reconstruction eye %d!
-vr.cpp(6905): VR - Destroying old IB for reconstruction eye %d!
-vr.cpp(6926): VR - Destroying old IB for reconstruction!
-vr.cpp(7066): VR - Error! VB handle is invalid in CVrReconstructionRenderer!
-vr.cpp(7075): VR - Error! IB handle is invalid in CVrReconstructionRenderer!
+vr.cpp(4482): ERROR! Unknown controller axis type %d!
+vr.cpp(6218): VR - Destroying old VB for Stenciling!
+vr.cpp(6263): VR - Error! VB handle is invalid in CVrStencilRenderer!
+vr.cpp(6407): VR - Destroying old VB for SubviewStenciling!
+vr.cpp(6749): VR - Error! VB handle is invalid in CVrSubviewStencilRenderer!
+vr.cpp(6930): VR - Destroying old IB for warping!
+vr.cpp(7008): VR - Error! VB handle is invalid in CVrWarpRenderer!
+vr.cpp(7017): VR - Error! IB handle is invalid in CVrWarpRenderer!
+vr.cpp(7167): VR - Destroying old VB for reconstruction eye %d!
+vr.cpp(7174): VR - Destroying old IB for reconstruction eye %d!
+vr.cpp(7195): VR - Destroying old IB for reconstruction!
+vr.cpp(7335): VR - Error! VB handle is invalid in CVrReconstructionRenderer!
+vr.cpp(7344): VR - Error! IB handle is invalid in CVrReconstructionRenderer!
 vr_author_refpt vrfly_refpt_pos vrfly_refpt_ang anchor models/dev/gordon_at_desk.vmdl
 vr_black_level_clamp
 vr_carry_type
@@ -2670,10 +2698,9 @@ vr_chaperone_hardbounds_disabled
 vr_companion_window_always_on
 vr_companion_window_brightnessmultiplier
 vr_companion_window_zoom
-vr_compute_ideal_render_target_scalars
+vr_decouple_tick_rate_and_display_rate
 vr_eye_separation_mm
 vr_eye_separation_mm_enable
-vr_fast_gs
 vr_fidelity_level
 vr_fidelity_level = [
 vr_fidelity_level_auto
@@ -2686,6 +2713,7 @@ vr_fidelity_threshold_frame_percent_critical
 vr_fidelity_threshold_frame_percent_extrapolation
 vr_fidelity_threshold_frame_percent_max
 vr_fidelity_threshold_frame_percent_min
+vr_fidelity_visualizer
 vr_foveated_boundary
 vr_foveated_inner_scalar
 vr_foveated_outer_scalar
@@ -2701,8 +2729,8 @@ vr_ghost_decrement
 vr_ghost_increment
 vr_ghost_next
 vr_ghost_previous
+vr_gpu_flush_timer
 vr_info
-vr_interleaved_reprojection
 vr_loading_card_fg_offset_x
 vr_loading_card_fg_offset_y
 vr_loading_card_fg_offset_z
@@ -2715,7 +2743,14 @@ vr_msaa
 vr_multiview_instancing
 vr_mura_correction
 vr_no_transform
+vr_perf_hud
+vr_perf_hud_dist_from_eye
+vr_perf_hud_frame_time
+vr_perf_hud_size_x
+vr_perf_hud_size_y
 vr_perf_test_capture
+vr_perfhud
+vr_perfhud.vtex
 vr_player_height_offset
 vr_player_height_offset %d ; vr_player_x_offset %d ; vr_player_y_offset %d ; vr_player_rotate %d
 vr_player_offset_move_looking_xy
@@ -2723,13 +2758,11 @@ vr_player_rotate
 vr_player_x_offset
 vr_player_y_offset
 vr_predict
-vr_present_read_pixel
-vr_present_spin_on_query
 vr_print_controllers
 vr_render_target_scale
 vr_render_target_scale =
 vr_reprojection_cpu_auto
-vr_running_start_ms
+vr_reprojection_cpu_auto_spew
 vr_save_render_model
 vr_shadows_debug
 vr_spew_fidelity_data
@@ -2740,6 +2773,7 @@ vr_spew_time_cpu
 vr_spew_time_cpu %d - ClientServer(
 vr_stencil_hidden_pixels
 vr_subview_mode
+vr_test_nonblocking_hmd_input
 vr_warp
 vr_warp_debug
 vr_warp_debug_reverse_mesh

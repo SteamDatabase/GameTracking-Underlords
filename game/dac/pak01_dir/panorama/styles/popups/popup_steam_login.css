@@ -1,417 +1,470 @@
+
 PopupSteamLogin
 {
-    width: 1300px;
-    height: 450px;
-    //height: fit-children;
-    horizontal-align:center;
-    vertical-align: top;
-    margin-top: 32px;
-    sound: "DCG_Progression.Ranked_Tier_01";
+	width: 100%;
+	height: 100%;
+	//height: fit-children;
+	horizontal-align:center;
+	vertical-align: top;
+	sound: "DCG_Progression.Ranked_Tier_01";
+	font-family: Arial;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #0C0C0C ), to( #212121 ) );
+
+
+	animation-duration: 0.6s;
+	animation-delay: 0.0s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: 1;
+	animation-direction: normal;
+
+	transition-property: transform, pre-transform-scale2d, opacity, background-color, height, margin;
+	transition-duration: 0.2s;
+	transition-timing-function: ease-in;
+	transition-delay: 0.0s;
 }
 
-
-.SoftwareKeyboardVisible PopupSteamLogin .PopupPanel
+/* PopupSteamLogin.StateIntro
 {
-    margin-bottom: 0%;
-}
+	transform: translateY( 200px );
+} */
 
-#EffectsPanel
+PopupSteamLogin.Hidden
 {
-    width: 100%;
-    height: 100%;
+	opacity: 0.0;
+	pre-transform-scale2d: 1.25;
+	transform: translateY( -10px );
+	sound: "ui_custom_lobby_dialog_slide";
 }
 
-.Contents
+PopupSteamLogin .PopupPanel
 {
-    width: 100%;
-    height: 100%;
-    flow-children: Right;
+	width: 100%;
+	height: 100%;
+	padding: 0px;
+
+	flow-children: none;
+
+	border-width: 0px;
+	background-color: none;
 }
 
-.LoginContainer
+PopupSteamLogin .BackgroundSteamLogo
 {
-    width: 65%;
-    //width: fit-children;
-    height: 100%;
-    padding: 20px;
-    flow-children: down;
+	width: 800px;
+	height: 800px;
+
+	opacity-mask: url("s2r://panorama/images/dashboard/steam_logo_high_png.vtex");
+
+	margin-left: -100px;
+	margin-top: 240px;
+	margin-bottom: -210px;
+	vertical-align: bottom;
+
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #191919 ), to( #292929 ) );
 }
 
-.AttemptingLogin .LoginContainer
+#CloseButton
 {
-    visibility: collapse;
+	border: 3px solid #666;
+	border-radius: 50%;
+
+	horizontal-align: right;
+	vertical-align: top;
+
+	width: 100px;
+	height: 100px;
+
+	margin: 40px;
+
+	transition-property: brightness;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
 }
 
-#LoginTitle
+#CloseButton:hover
 {
-    margin-top: 16px;
-    horizontal-align: left;
-    color: uiLightGrey;
-    font-size: 32px;
-    font-weight: light;
-    visibility: collapse;
+	brightness: 2.0;
 }
 
-#CreateAccountButton 
+#CloseButton .ThinX
 {
-    vertical-align: bottom;
-    horizontal-align: center;
+	width: 50%;
+	height: 50%;
+
+	horizontal-align: center;
+	vertical-align: center;
+
+	background-image: url("s2r://panorama/images/control_icons/plus_extra_thin_png.vtex");
+	background-size: cover;
+	background-repeat: no-repeat;
+
+	transform: rotateZ( 45deg );
+
+	wash-color: #666;
 }
 
-#LogInDataEntryContainer
+.MainPage
 {
-    width: 100%;
-    height: fit-children;
-    //padding-bottom: 10px;
-    flow-children: down;
+	transition-property: opacity;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
+
+	flow-children: down;
+
+	width:100%;
+	height: 100%;
+
+	opacity: 0;
 }
 
-.NeedsSteamGuard #SteamRememberCredentials,
-.NeedsSteamGuard #SteamIDEntry,
-.NeedsSteamGuard #SteamPasswordEntry,
+.StateIntro #Intro,
+.StateEnterUsernamePassword #EnterUsernamePassword,
+.StateEnterSteamGuard #EnterSteamGuard,
+.StateLoginFailed #LoginFailed,
+.StateWorking #Working,
+.StateConnecting #Working
 {
-    visibility: collapse;
+	opacity: 1;
 }
 
-#SteamGuardEntry 
+#Working .Header
 {
-    text-transform: uppercase;
-    margin-top: 150px;
+	visibility: collapse;
 }
 
-.NeedsSteamGuard #SteamGuardEntry
+.StateConnecting #Working .Header
 {
-    visibility: visible;
+	visibility: visible;
 }
 
-.SettingsTextEntryUserName
+.StateConnecting #Working #SteamLogoThrobber
 {
-    font-size: 30px;
-    width: 100%;
-    height: 60px;
-    border: 2px solid #5e686966;
-    padding-top: 3px;
+	margin-top: 50px;
 }
 
-.SettingsTextEntryPassword
+.Header
 {
-    font-size: 24px;
-    width: 100%;
-    height: 60px;
-    border: 2px solid #5e686966;
-    padding-top: 10px;
+	width: 100%;
+	text-align: center;
+
+	font-size: 80px;
+	letter-spacing: 2px;
+	text-transform: uppercase;
+	color: white;
+	font-weight: normal;
+
+	margin-top: 80px;
 }
 
-.LoginFailed .SettingsTextEntryPassword,
-.LoginFailed .SettingsTextEntryUserName {
-    border: 2px solid #e75050;
-}
-
-.SettingTitle
+#Intro .SubHeader
 {
-    font-size: 28px;
-    margin-top: 8px;
-    color: #1e212d;
-    text-transform: uppercase;
+	margin-top: 10px;
+
+	horizontal-align: center;
+	width: 60%;
+	height: fit-children;
+	text-align: center;
+
+	font-size: 46px;
+	color: #868686;
+	line-height: 40px;
+	line-height: 50px;
+	font-weight: normal;
+
+	letter-spacing: 1px;
 }
 
-#SteamGuardEntry
+#Intro .NoAccount
 {
-    visibility: collapse;
+	horizontal-align: center;
+	width: 60%;
+	text-align: center;
+
+	font-size: 46px;
+	color: #868686;
+	line-height: 40px;
+	font-weight: thin;
+
 }
 
-
-.LoginFailed #SteamGuardEntry
+#Intro .Separator
 {
-    border: 0px;
+	horizontal-align: center;
+
+	width: 600px;
+	height: 1px;
+	border: 1px solid #333;
+
+	margin-top: 40px;
+	margin-bottom: 30px;
 }
 
-#LogInButtonContainer
+#LoginFailed #FailMessage
 {
-    width: 100%;
-    height: fit-children;
-    flow-children: down;
-    vertical-align: top;
-    margin-top: 45px;
+	horizontal-align: center;
+	width: 60%;
+	text-align: center;
+
+	font-size: 46px;
+	color: #DE3F3F;
+	line-height: 40px;
+	font-weight: normal;
+
+
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
-#LogInButtonContainer Button
+.Forms
 {
-    height: 100px;
-    width: 400px;
+	margin-top: 80px;
+	horizontal-align: center;
+	flow-children: right;
 }
 
-.LoginButton 
+.Forms .Form
 {
-    width: 100%;
-    margin-bottom: 16px;
+	flow-children: down;
+
+	margin-right: 20px;
 }
 
-#SteamLoginButton {
-	background-color: gradient( linear, 0% 0%, 100% 0%, from( #15aad8 ), to( #4168b2 ) );
-    border: 0px solid #ffffff;
-    margin-bottom: 67px;
-}
-
-#SteamLoginButton:hover {
-    brightness: 2;
-}
-
-#SteamLoginButton Label {
-    font-size: 40px;
-}
-
-.LogInDataEntry
+.Forms .Form .FormHeader
 {
-    width: 100%;
-    height: fit-children;
-    flow-children: down;
+	font-size: 36px;
+	font-weight: normal;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+
+	margin-bottom: 4px;
+	margin-left: 4px;
+
+	color: #AAA;
 }
 
-#HelpButton,
-#CreateAccountButton 
+.Forms .Form .FormEntry
 {
-    height: 60px;
-    margin: 0px;
-    padding: 0px;
-    padding-top: 5px;
-    margin-left: 5px;
-    width: fit-children;
-    text-align: left;
-    horizontal-align: left;
-    border: 0px;
-    text-transform: none;
+	padding-top: 26px;
+	padding-left: 12px;
+	font-size: 60px;
+	min-width: 600px;
+	height: 120px;
+	font-weight: normal;
+
+	background-color: #282828;
+	border-radius: 4px;
+
+	margin-bottom: 10px;
+	text-transform: none;
+
+	color: white;
 }
 
-#HelpButton Label,
-#CreateAccountButton Label
+.Forms .Form #SteamGuard.FormEntry
 {
-    font-size: 28px;
-    color: #888888;
-    text-align: left;
-    horizontal-align: left;
-    vertical-align: bottom;
-    border-bottom: 2px solid grey;
+	text-transform: uppercase;
 }
 
-#HelpButton {
-    horizontal-align: left;
-}
 
-.BottomButtons {
-    width: 100%;
-    flow-children: right;
-}
-
-#SteamRememberCredentials {
-    margin-top: 8px;
-    visibility: collapse;
-}
-
-#CancelButton
+.Forms .Form #Password.FormEntry
 {
-    margin-bottom: 0px;
+	padding-top: 12px;
+
 }
 
-#PasswordTitle
+.Forms .Form .FormFooter
 {
-    width: 100%;
-    flow-children: right;
+	font-size: 40px;
+	font-weight: thin;
+	letter-spacing: 1px;
+	text-decoration: underline;
+
+	color: #777;
 }
 
-#ViewPasswordIcon
+.Forms .Form .FormFooter:hover
 {
-    horizontal-align: right;
-    width:60px;
-    height: 40px;
-    vertical-align: center;
-    background-image: url("s2r://panorama/images/dashboard/eye_png.vtex");
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: 100% 100%;
+	brightness: 2.0;
 }
 
-#SteamIDEntry Label,
-#SteamPasswordEntry Label,
-#SteamGuardEntry Label
+.Forms .SteamButton
 {
-    font-weight: semi-bold;
-    color: #999999;
-    letter-spacing: 2px;
-    margin-bottom: 3px;
-}
-
-.LoginFailed #SteamIDEntry Label,
-.LoginFailed #SteamPasswordEntry Label,
-.LoginFailed #SteamGuardEntry Label
-{
-    color: #e75050;
+	margin-top: 46px;
 }
 
 
-#SteamPasswordEntry
+
+.SteamButton
 {
-    margin-top: 20px;
+
+	min-width: 600px;
+	height: 120px;
+
+	horizontal-align: center;
+
+	border-radius: 4px;
+	background-color: gradient( linear, 0% 0%, 100% 0%, from( #3899EB ), to( #235ECE ) ); 
+
+	transition-property: brightness;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
 }
 
-#SteamIDTextEntry,
-#SteamPasswordTextEntry,
-#SteamGuardTextEntry
+.SteamButton:hover
 {
-    height: 100px;
-    font-size: 70px;
-    text-transform: none;
-    margin-top: 1px;
+	brightness: 2.0;
 }
 
-#SteamPasswordTextEntry
-{
-    font-size: 50px;
+#SubmitUsernamePasswordButton .Forms .SteamButton {
+	margin-top: 40px;
 }
 
-#SteamGuardTextEntry
+.SteamButton > Label,
+.SteamButton > Panel
 {
-    text-transform: uppercase;
+	color: white;
+	font-size: 50px;
+	font-weight: bold;
+
+	padding: 0px 40px;
+
+	vertical-align: center;
+	horizontal-align: center;
+	
 }
 
-.ConnectingContainer
+.SteamButtonOutline
 {
-    width: 100%;
-    height: 100%;
-    visibility: collapse;
+	margin-top: 20px;
+
+	min-width: 600px;
+	height: 120px;
+	border-radius: 4px;
+	border: 2px solid #888;
+
+	horizontal-align: center;
+
+	transition-property: brightness, background-color;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
 }
 
-#ConnectingDesc
+.SteamButtonOutline:hover
 {
-    margin-top: 33%;
-    horizontal-align: center;
-    flow-children: left;
+	background-color: #222;
+	brightness: 2.0;
 }
 
-.AttemptingLogin .ConnectingContainer
+
+.SteamButtonOutline .TextAndLogo
 {
-    visibility: visible;
+	flow-children: right;
+
+	padding: 0px 40px;
+
+	vertical-align: center;
+	horizontal-align: center;
 }
 
-#ConnectingLabel
+
+.SteamButtonOutline .TextAndLogo Label
 {
-    font-size: 80px;
-    color: uiLightGrey;
+	color: #EEE;
+	font-size: 50px;
+
+	margin-right: 20px;
+
+	vertical-align: center;
 }
 
-@keyframes 'Throbber'
+.ExternalLinkIcon
 {
-    0%
-    {
-        transform: rotateZ( 360deg );
-    }
+	vertical-align: center;
 
-    50%
-    {
-        transform: rotateZ( 180deg );
-    }
+	width: 35px;
+	height: 35px;
 
-    100%
-    {
-        transform: rotateZ( 0deg );
-    }
+	background-image: url("s2r://panorama/images/control_icons/external_link_png.vtex");
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
-#CancelLoginButton
+#SteamLogoThrobber
 {
-    width: 50%;
-    height: 20%;
-    vertical-align: bottom;
-    horizontal-align: center;
-}
-
-#SteamLogo
-{
-    width: 96px;
-    height: 96px;
-    /*    background-image: url("s2r://panorama/images/dashboard/steam_logo_high_png.vtex");
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;*/
-    horizontal-align: center;
-    margin-bottom: 32px;
-    margin-left: 32px;
+	margin-top: 200px;
+	width: 300px;
+	height: 300px;
+	horizontal-align: center;
 }
 
 .SteamLogoAnimated
 {
-    width: 100%;
-    height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
+@keyframes 'radiallines'
+{
+	0%
+	{
+		pre-transform-rotate2d: 0deg;
+	}
+
+	100%
+	{
+		pre-transform-rotate2d: 360deg;
+	}
+}
+
+@keyframes 'steamlogopulse'
+{
+	0%
+	{
+		opacity: .3;
+	}
+
+	50%
+	{
+		opacity: 1;
+	}
+
+	to
+	{
+		opacity: .3;
+	}
+}
 
 #radial3
 {
-    background-image: url("s2r://panorama/images/dashboard/steamlogo_radiallines_psd.vtex");
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;
-    animation-name: radiallines;
-    animation-duration: 2s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
-    animation-direction: reverse;
-    margin: 3px;
+	background-image: url("s2r://panorama/images/dashboard/steamlogo_radiallines_psd.vtex");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+	animation-name: radiallines;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-direction: reverse;
+	margin: 3px;
 }
 
 #radialMask
 {
-    width: 100%;
-    height: 100%;
-    opacity-mask: url("s2r://panorama/images/dashboard/steamlogo_mask_psd.vtex");
+	width: 100%;
+	height: 100%;
+	opacity-mask: url("s2r://panorama/images/dashboard/steamlogo_mask_psd.vtex");
 }
 
-#steamlogo_bg
+#steamlogothrobber_bg
 {
-    background-image: url("s2r://panorama/images/dashboard/steamlogo_bg_psd.vtex");
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;
-    animation-name: steamlogopulse;
-    animation-duration: 2.0s;
-    animation-iteration-count: infinite;
-    animation-timing-function: linear;
+	background-image: url("s2r://panorama/images/dashboard/steam_logo_solid_high_png.vtex");
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+	animation-name: steamlogopulse;
+	animation-duration: 2.0s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
 }
 
-@keyframes
-
-'radiallines'
-{
-    0%
-
-{
-    pre-transform-rotate2d: 0deg;
-}
-
-100%
-{
-    pre-transform-rotate2d: 360deg;
-}
-
-}
-
-@keyframes
-
-'steamlogopulse'
-{
-    0%
-
-{
-    opacity: .3;
-}
-
-50%
-{
-    opacity: 1;
-}
-
-to
-{
-    opacity: .3;
-}
-}

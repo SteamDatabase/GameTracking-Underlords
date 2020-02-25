@@ -386,8 +386,8 @@ DACUIShop.Visible
 	color: #fff;
 	transition-timing-function: ease-in;
 
-	transition-property: transform, opacity;
-	transition-duration: 0s;
+	transition-property: background-color, transform, opacity;
+	transition-duration: 1s;
 	transform: translateY(-500px);
 	opacity: 0;
 
@@ -402,6 +402,9 @@ DACUIShop.Visible
 	//horizontal-align: center;
 	//width: fill-parent-flow(1);
 }
+
+
+
 
 .ShopEntry.CannotAfford #WashLayer
 {
@@ -430,15 +433,17 @@ DACUIShop.Visible
 	color: black;
 }
 
-.ShopEntry.Purchased
+#UnitsShop .ShopEntry.Purchased
 {
 	opacity: 0;
 }
+
 
 .ShopEntry.Loaded
 {
 	transform: translateY(0px);
 	transition-duration: 0s;
+	transition-property: transform, opacity; 
 	transition-delay: 0s;
 	opacity: 1;
 }
@@ -554,28 +559,94 @@ DACSynergyIcon.HiddenInactive,
 
 #ShopUnit1
 {
-	transition-delay: 0s;
+	transition-delay: .1s;
+	transition-property: background-color, transform, opacity, pre-transform-scale2d;
+	transition-duration: .2s;
+	opacity: 0;
+	transform: translateY(-100px);
+	transition-timing-function: ease-in;
+	pre-transform-scale2d: 1.5;
 }
+
+.Visible #ShopUnit1
+{
+	opacity: 1;
+	transform: translateY(0px);
+	pre-transform-scale2d: 1;
+}	
+
 
 #ShopUnit2
 {
-	transition-delay: 0.1s;
+	transition-delay: .14s;
+	transition-property: background-color, transform, opacity, pre-transform-scale2d;
+	transition-duration: .2s;
+	opacity: 0;
+	transform: translateY(-100px);
+	transition-timing-function: ease-in;
+	pre-transform-scale2d: 1.5;
 }
+
+.Visible #ShopUnit2
+{
+	opacity: 1;
+	transform: translateY(0px);
+	pre-transform-scale2d: 1;
+}	
 
 #ShopUnit3
 {
-	transition-delay: 0.2s;
+	transition-delay: .18s;
+	transition-property: background-color, transform, opacity, pre-transform-scale2d;
+	transition-duration: .2s;
+	opacity: 0;
+	transform: translateY(-100px);
+	transition-timing-function: ease-in;
+	pre-transform-scale2d: 1.5;
 }
+
+.Visible #ShopUnit3
+{
+	opacity: 1;
+	transform: translateY(0px);
+	pre-transform-scale2d: 1;
+}	
 
 #ShopUnit4
 {
-	transition-delay: 0.3s;
+	transition-delay: .22s;
+	transition-property: background-color, transform, opacity, pre-transform-scale2d;
+	transition-duration: .2s;
+	opacity: 0;
+	transform: translateY(-100px);
+	transition-timing-function: ease-in;
+	pre-transform-scale2d: 1.5;
 }
+
+.Visible #ShopUnit4
+{
+	opacity: 1;
+	transform: translateY(0px);
+	pre-transform-scale2d: 1;
+}	
 
 #ShopUnit5
 {
-	transition-delay: 0.4s;
+	transition-delay: .26s;
+	transition-property: background-color, transform, opacity, pre-transform-scale2d;
+	transition-duration: .2s;
+	opacity: 0;
+	transform: translateY(-100px);
+	transition-timing-function: ease-in;
+	pre-transform-scale2d: 1.5;
 }
+
+.Visible #ShopUnit5
+{
+	opacity: 1;
+	transform: translateY(0px);
+	pre-transform-scale2d: 1;
+}	
 
 #UnitsShopBG
 {
@@ -661,9 +732,10 @@ DACSynergyIcon.HiddenInactive,
 }
 
 .GameMode_Turbo #LevelUp .GoldValueContainer,
-.GameMode_Turbo #LevelUp #StatusXP
-{
-	visibility: collapse;
+.GameMode_Turbo #LevelUp #StatusXP,
+.GameMode_Streetfight #LevelUp .GoldValueContainer,
+.GameMode_Streetfight #LevelUp #StatusXP {
+    visibility: collapse;
 }
 
 #Rulebook
@@ -751,6 +823,11 @@ height: 90px;
 	visibility: collapse;
 	
 	text-shadow: 0px 0px 0px 3.0 #000;
+}
+
+.IsLayoutLargeScreen .FreeRerollLabel
+{
+	margin-bottom: 28px;
 }
 
 .FreeReroll .FreeRerollLabel
@@ -1044,7 +1121,7 @@ height: 90px;
 
 #ShopUnitHintsContainer
 {
-	visibility: collapse;
+	opacity:0;
 	width:1000px;
 	height:145px;
 	flow-children:right;	
@@ -1054,11 +1131,17 @@ height: 90px;
 	background-size: 100% 130%;
 	background-position: 45% 90%;
 	background-repeat: no-repeat;
+	transform:translateY(-10px);
+	transition-property: opacity, transform;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out, ease-in-out;
 }
 
+.ShowHintsContainer #ShopUnitHintsContainer,
 .GameMode_Tutorial #ShopUnitHintsContainer
 {
-	visibility: visible;
+	transform:translateY(0px);
+	opacity:1;
 }
 
 .UnitHintContainer
@@ -1141,10 +1224,11 @@ height: 90px;
 }
 
 .HintIcon {
-	width: 25px;
-	height: 25px;
+	width: 26px;
+	height: 26px;
 	margin-right: 2px;
 	background-size: 100%;
+	img-shadow: 0px 1px 0px 3.0 #000000aa;
 }
 
 .Melee .HintIcon { 
@@ -1536,9 +1620,9 @@ height: 90px;
 	animation-timing-function: ease-out;
 }
 
-.GameMode_Turbo #LevelUp.PressButtonAnim
-{
-	animation-name: none;
+.GameMode_Turbo #LevelUp.PressButtonAnim,
+.GameMode_Streetfight #LevelUp.PressButtonAnim {
+    animation-name: none;
 }
 
 
@@ -1835,19 +1919,19 @@ height: 90px;
 	//visibility: collapse;
 }
 
-.GameMode_Turbo.AspectRatio16x9 .ButtonGutterLeft
-{
-	margin-top: 162px;
+.GameMode_Turbo.AspectRatio16x9 .ButtonGutterLeft,
+.GameMode_Streetfight.AspectRatio16x9 .ButtonGutterLeft {
+    margin-top: 162px;
 }
 
-.GameMode_Turbo.AspectRatio16x10 .ButtonGutterLeft
-{
-	margin-top: 162px;
+.GameMode_Turbo.AspectRatio16x10 .ButtonGutterLeft,
+.GameMode_Streetfight.AspectRatio16x10 .ButtonGutterLeft {
+    margin-top: 162px;
 }
 
-.GameMode_Turbo.IsLayoutLargeScreen.AspectRatio21x9 .ButtonGutterLeft
-{
-	margin-top: 162px;
+.GameMode_Turbo.IsLayoutLargeScreen.AspectRatio21x9 .ButtonGutterLeft,
+.GameMode_Streetfight.IsLayoutLargeScreen.AspectRatio21x9 .ButtonGutterLeft {
+    margin-top: 162px;
 }
 
 .ButtonGutterRight
@@ -1926,23 +2010,22 @@ height: 90px;
 	
 }
 
-.GameMode_Turbo.AspectRatio21x9.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft
-{
-	margin-top: 178px;
-	ui-scale: 112%;
-	
+.GameMode_Turbo.AspectRatio21x9.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft,
+.GameMode_Streetfight.AspectRatio21x9.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft {
+    margin-top: 178px;
+    ui-scale: 112%;
 }
 
-.GameMode_Turbo.AspectRatio16x9.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft
-{
-	margin-top: 166px;
-	ui-scale: 112%;
+.GameMode_Turbo.AspectRatio16x9.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft,
+.GameMode_Streetfight.AspectRatio16x9.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft {
+    margin-top: 166px;
+    ui-scale: 112%;
 }
 
-.GameMode_Turbo.AspectRatio4x3.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft
-{
-	margin-top: 166px;
-	//ui-scale: 112%;
+.GameMode_Turbo.AspectRatio4x3.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft,
+.GameMode_Streetfight.AspectRatio4x3.IsLayoutSmallScreen .ButtonGutter.ButtonGutterLeft {
+    margin-top: 166px;
+    //ui-scale: 112%;
 }
 
 

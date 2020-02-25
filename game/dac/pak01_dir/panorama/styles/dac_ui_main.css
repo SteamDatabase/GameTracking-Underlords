@@ -31,11 +31,25 @@ DACUIMain.InGame
 	margin-bottom: 100px;
 }
 
-#HudModeDropdown {
+#HudModeDropdown 
+{
 	vertical-align: bottom;
 	width: 200px;
 	margin-left: 60px;
-	//opacity: 0;
+	
+	visibility: collapse;
+}
+
+.BuildMain #HudModeDropdown,
+.BetaUniverse #HudModeDropdown
+{
+	visibility: visible;
+}
+
+.TrailerMode.BuildMain #HudModeDropdown,
+.TrailerMode.BetaUniverse #HudModeDropdown
+{
+	visibility: collapse;
 }
 
 #TooltipManager, #ContextMenuManager, #DashboardPopupManager, #PopupManager
@@ -46,32 +60,6 @@ DACUIMain.InGame
 
 #ContextMenuManager
 {
-}
-
-.GCStatusVisible #MainMenuContainer
-{
-	margin-top: 30px;
-}
-
-.IsLayoutSmallScreen.GCStatusVisible #MainMenuContainer
-{
-	margin-top: 45px;
-}
-
-
-.Loading #MainMenuContainer,
-{
-	visibility: collapse;
-}
-
-.IsLayoutLargeScreen #MainMenuContainer
-{
-	ui-scale: 80%;
-}
-
-.Page_DACPagePostGame #MainMenuContainer
-{
-	visibility: collapse;
 }
 
 @define toastExitDuration: 0.3s;
@@ -97,29 +85,6 @@ DACUIMain.InGame
 {
 	opacity: 1.0;
 	transform: none;
-}
-
-.TempButton
-{
-	border: 1px solid black;
-	background-color: black;
-	min-width: 300px;
-	height: 80px;
-	padding: 0 3px;
-	margin: 3px;
-	flow-children: down;
-}
-
-.TempButton Label
-{
-	font-size: 24px;
-	horizontal-align: center;
-	vertical-align: center;
-}
-
-.TempButton:hover
-{
-	background-color: #444;
 }
 
 .DefaultHidden
@@ -242,12 +207,6 @@ DACUIMain.InGame
 	visibility: collapse;
 }
 
-.IsLayoutSmallScreen.NeedsSteamLogin #MainMenuContainer
-{
-	margin: 0px;
-}
-
-
 #Background
 {
 	width: 100%;
@@ -279,85 +238,6 @@ DACUIMain.InGame
 	height:100%;
 }
 
-#MainMenuContainer
-{
-	width: fit-children;
-	height: 158px;
-	overflow: noclip;
-	vertical-align: top;
-	horizontal-align: center;
-	flow-children: right;
-
-	//Season 1
-	visibility: collapse;
-}
-.MainMenuButtonContainer 
-{
-	/*width: 204px;*/
-	height: 200px;
-	/*height: 129px;*/
-	/*border-right: 4px solid #9086c344;*/
-	/*border-bottom: 4px solid #58518c44;*/
-	/*border-left: 4px solid #8c919244;*/
-	/*background-color: gradient(linear, 12% 100%, 0% 0%, from( #22222277 ), to( #ffffff13 ));*/
-	margin: 0px -5px 0px -5px;
-	transition-property: brightness;
-	transition-duration: 0.2s;
-}
-
-.MainMenuButton 
-{
-	//width: 150px;
-	horizontal-align: center;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-image: url("s2r://panorama/images/dashboard/top-btn-play_png.vtex");
-	//transition-property: transform;
-	//transition-duration: .2s;
-}
-
-.MainMenuButton:hover 
-{
-	//transform: translateY(3px);
-}
-
-#MainMenuContainer Label {
-	visibility: collapse;
-}
-
-.Selected #MainMenuLabel {
-	visibility: visible;
-}
-
-/*.MainMenuButton:hover {*/
-	/*brightness: 1.6;*/
-/*}*/
-
-#MainMenuLabel {
-	font-size: 30px;
-	color: #ffffff;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-	font-weight: bold;
-}
-
-.PlayLabel {
-	transform: rotateZ(-2deg);
-	margin-top: 163px;
-	margin-left: 10px;
-}
-
-.HeropediaLabel {
-	transform: rotateZ(2deg);
-	margin-top: 93px;
-}
-
-.SettingsLabel {
-	transform: rotateZ(-2deg);
-	margin-top: 93px;
-	margin-left: 0px;
-}
-
 #PatchNotesViolator, #AchievementsViolator
 {
 	visibility: collapse;
@@ -365,8 +245,8 @@ DACUIMain.InGame
 	width: 36px;
 	height: 36px;
 
-	margin-top: 64px;
-	margin-right: 10px;
+	margin-top: 20px;
+	margin-right: 15px;
 	
 	background-image: url("s2r://panorama/images/dashboard/patch_notes_violator_psd.vtex");
 	background-size: 100%;
@@ -401,116 +281,6 @@ DACUIMain.InGame
 	visibility: visible;
 }
 
-.MainMenuButtonContainer.Selected
-{
-	/*brightness:1.2;*/
-} 
-
-#PlayButtonContainerheroe
-{
-	x:0px;
-}
-
-#HeropediaButtonContainer {
-	x: 180px;
-}
-
-#BattlePassButtonContainer
-{
-	x: 360px;
-}
-
-.EventActive #BattlePassButtonContainer
-{
-	visibility: visible;
-}
-
-#LoadoutButtonContainer
-{
-	x: 540px;
-	visibility: collapse;
-}
-
-.EventActive #LoadoutButtonContainer
-{
-	visibility: visible;
-}
-
-#ProfileButtonContainer
-{
-	visibility: collapse;
-	x: 720px;
-}
-
-.PlayContainer #PlayButton #PlayButtonParticle,
-.HeropediaContainer #HeropediaButton #HeropediaButtonParticle,
-.BattlePassContainer #BattlePassButton #BattlePassButtonParticle,
-.LoadoutButtonContainer #LoadoutButton #LoadoutButtonParticle
-{
-	visibility: visible;
-	opacity: .20;
-}
-
-
-#PlayButton
-{
-	background-image: url("s2r://panorama/images/dashboard/top_btn_play_psd.vtex");
-	background-size: 100%;
-	width: 200px;
-	height: 140px;
-	
-	transition-property: background-image;
-	transition-duration: .1s;//temp
-}
-
-.PlayContainer #PlayButton:hover,
-.HeropediaContainer #HeropediaButton:hover
-{
-	opacity: 1;
-}
-
-.PlayContainer #PlayButton
-{
-	background-image: url("s2r://panorama/images/dashboard/top_btn_play_active_psd.vtex");
-	
-	transition-property: background-image;
-	transition-duration: .3s;
-	
-	animation-name: LightGlowPulse;
-	animation-duration: 4.0s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
-
-#HeropediaButton 
-{
-	background-image: url("s2r://panorama/images/dashboard/top_btn_heropedia_psd.vtex");
-	background-size: 100%;
-	height: 131px;
-	width: 200px;
-	
-	transition-property: background-image;
-	transition-duration: .1s;
-}
-
-.HeropediaContainer #HeropediaButton
-{
-	background-image: url("s2r://panorama/images/dashboard/top_btn_heropedia_active_psd.vtex");
-	
-	transition-property: background-image;
-	transition-duration: .3s;
-	
-	animation-name: LightGlowPulse;
-	animation-duration: 5.0s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
-
-#PlayButton:hover,
-#SettingsMenuButton:hover,
-#HeropediaButton:hover
-{
-}
 
 @keyframes 'LightGlowPulse'
 {
@@ -565,43 +335,6 @@ DACUIMain.InGame
 	visibility: visible;
 }
 
-#ProfileButton 
-{
-	background-image: url("s2r://panorama/images/dashboard/profilebutton_png.vtex");
-}
-
-
-#BattlePassButton 
-{
-	background-image: url("s2r://panorama/images/dashboard/top_btn_battlepass_psd.vtex");
-	background-size: 100%;
-	height: 131px;
-	width: 200px;
-	
-	transition-property: background-image;
-	transition-duration: .1s;
-}
-
-.BattlePassContainer #BattlePassButton 
-{
-	background-image: url("s2r://panorama/images/dashboard/top_btn_battlepass_active_psd.vtex");
-}
-
-#LoadoutButton 
-{
-	background-image: url("s2r://panorama/images/dashboard/top_btn_loadout_psd.vtex");
-	background-size: 100%;
-	height: 131px;
-	width: 200px;
-	
-	transition-property: background-image;
-	transition-duration: .1s;
-}
-
-.LoadoutButtonContainer #LoadoutButton 
-{
-	background-image: url("s2r://panorama/images/dashboard/top_btn_loadout_active_psd.vtex");
-}
 
 .GCStatusVisible .SystemButtons
 {
@@ -617,8 +350,21 @@ DACUIMain.InGame
 	vertical-align: top;
 	horizontal-align: right;
 	flow-children: down;
+	wash-color: textDefault;
+	transition-property: wash-color;
+	transition-duration: 0.2s;
 
-	margin-right: safe-area-inset-right;
+	margin-right: 32px;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 .SystemButtons
+{
+	margin-right: 81px;
+}
+
+.Page_DACHomePage .SystemButtons
+{
+	wash-color: none;
 }
 
 .SystemButtonsTop
@@ -665,13 +411,13 @@ DACUIMain.InGame
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-image: url("s2r://panorama/images/dashboard/icon_achievements_psd.vtex");
-	opacity: 0.6;
 
-	height: 50px;
-	width: 50px;
-	margin-top: 40px;
-	margin-right: 20px;
+	height: 70px;
+	width: 70px;
+	margin-top: 20px;
+	margin-right: 10px;
 	wash-color: textDefault;
+	wash-color: #ffffff;
 	transition-property: brightness;
 	transition-duration: 0.2s;
 }
@@ -688,13 +434,13 @@ DACUIMain.InGame
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-image: url("s2r://panorama/images/dashboard/icon_quit_psd.vtex");
-	opacity: 0.6;
 
-	height: 50px;
-	width: 50px;
-	margin-top: 40px;
-	margin-right: 40px;
+	height: 70px;
+	width: 70px;
+	margin-top: 20px;
+	margin-right: 10px;
 	wash-color: textDefault;
+	wash-color: #ffffff;
 }
 
 .PatchNotesContainer #PatchNotesButton,
@@ -703,7 +449,7 @@ DACUIMain.InGame
 {
 	wash-color: textBrighter;
 	opacity: 1.0;
-	brightness: 1.2;
+	brightness: 2.0;
 }
 
 .ZooContainer #ZooButton
@@ -728,13 +474,12 @@ DACUIMain.InGame
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-image: url("s2r://panorama/images/dashboard/icon_settings_psd.vtex");
-	opacity: 0.6;
 
-	height: 52px;
-	width: 52px;
-	margin-top: 40px;
-	margin-right: 20px;
-	wash-color: textDefault;
+	height: 70px;
+	width: 70px;
+	margin-top: 20px;
+	margin-right: 10px;
+	wash-color: #ffffff;
 }
 
 #PatchNotesButton 
@@ -743,13 +488,12 @@ DACUIMain.InGame
 	background-repeat: no-repeat;
 	background-position: 50% 50%;
 	background-image: url("s2r://panorama/images/dashboard/icon_updates_psd.vtex");
-	opacity: 0.6;
 
-	height: 50px;
-	width: 50px;
-	margin-top: 40px;
-	margin-right: 20px;
-	wash-color: textDefault;
+	height: 70px;
+	width: 70px;
+	margin-top: 20px;
+	margin-right: 10px;
+	wash-color: #ffffff;
 }
 
 #ZooButton 
@@ -777,6 +521,12 @@ DACUIMain.InGame
 {
 	visibility: visible;
 }
+
+.BetaUniverse.TrailerMode #ZooButton
+{
+	visibility: collapse;
+}
+
 
 .IsLayoutSmallScreen #QuitButton,
 .IsLayoutSmallScreen #SettingsMenuButton,
@@ -809,21 +559,22 @@ DACUIMain.InGame
 
 #GameLogo
 {
-	width: 320px;
+	width: 220px;
 	background-image: url("s2r://panorama/images/dashboard/underlords_logo_psd.vtex");
-	height: 70px;
+	height: 48px;
 	background-size: 100%;
-	margin-top: 24px;
+	margin-top: 40px;
 	margin-right: 20px;
-	wash-color: #d2e8e5;
+	wash-color: #ffffff;
 	opacity: 0;
 	transition-property: opacity;
 	transition-duration: 0.2s;
+	visibility: collapse;
 }
 
 .Page_DACHomePage #GameLogo
 {
-	opacity: 1;
+	opacity: 0.5;
 }
 
 .IsLayoutSmallScreen #GameLogo
@@ -866,45 +617,12 @@ DACUIMain.InGame
 	padding: 0px 16px 0px 12px;
 }
 
-#IntroScreen
+#IntroLogo
 {
 	width: 100%;
 	height: 100%;
-	background-color: #00000000;
-}
 
-.Startup #IntroScreen
-{
-	background-color: black;
-	transition-property: background-color;
-	transition-duration: 2.0s;
-}
-
-.IntroFinished #IntroScreen
-{
-	visibility: collapse;
-}
-
-#IntroLogo
-{
-	width: 655px;
-	height: 274px;
-	horizontal-align: center;
-	vertical-align: center;
-	background-image: url("s2r://panorama/images/logos/valve_white_png.vtex");
-	background-size: contain;
-	background-repeat: no-repeat;
-	
-	opacity: 0.0;
-	transition-property: opacity;
-	transition-duration: 1s;
-}
-
-.Startup #IntroLogo
-{
-	opacity: 1;
-	transition-property: opacity;
-	transition-duration: 0.5s;
+	z-index: 4200;
 }
 
 #UnderlordPortrait
@@ -915,6 +633,7 @@ DACUIMain.InGame
 	height: 100%;
 	z-index: 0;
 	opacity: 1;
+	//transform: translateX( -280px );
 	transition-property: width,height, opacity;
 	transition-duration: 300ms;
 	transition-timing-function: ease-in-out;
@@ -926,10 +645,12 @@ DACUIMain.InGame
 }
 
 
+.Page_DACMapPropEditorPage #UnderlordPortrait,
 .Page_DACLoadoutPage #UnderlordPortrait,
 .Page_DACRewardsBattlePassPage #UnderlordPortrait,
 .Page_DACRewardsProtopassPage #UnderlordPortrait,
-.Page_DACLoadoutProtopassPage #UnderlordPortrait
+.Page_DACLoadoutProtopassPage #UnderlordPortrait,
+.Page_DACSelectUnderlordPage #UnderlordPortrait
 {
 	visibility: collapse;
 }
@@ -944,7 +665,7 @@ DACUIMain.InGame
 
 .Page_DACPagePostGame #MainFade
 {
-	opacity: 1;
+	opacity: 0;
 }
 
 .Page_DACPagePostGame #UnderlordPortrait,
@@ -992,11 +713,11 @@ DACUIMain.InGame
 }
 
 
-.Page_DACPlayPage
+.Page_DACPlayPage, .Page_DACSelectUnderlordPage
 {
-	//background-color: gradient( linear, 0% 100%, 0% 0%, from( #232d35 ), to( #14191e ) );
-	background-color: gradient (linear, 0% 100%, 0% 0%, from(#0b0f14dd), to(#191c2fee));
-	//background-image: url("s2r://panorama/images/heropedia/heropedia-bg-2_psd.vtex");
+	background-color: gradient(linear, 0% 100%, 0% 0%, from( #30244cee ), to( #025760ee ));
+	background-image: url("s2r://panorama/images/dashboard/play_screen_tint_psd.vtex"); 
+	background-size: 100%;
 }
 
 #PopupFog
@@ -1005,9 +726,20 @@ DACUIMain.InGame
 	height: 100%;
 }
 
+.Page_DACMapPropEditorPage #BackgroundTint,
+.Page_DACMapPropEditorPage #PopupFog
+{
+	opacity:0;
+}
+
+.Page_DACPlayPage #BackgroundTint
+{
+	//background-color: gradient (linear, 0% 0%, 100% 0%, from(#000000ee), to(#000000aa));
+}
+
 #BackgroundTint
 {
-	background-color: gradient (linear, 0% 0%, 100% 0%, from(#000000aa), to(#00000077));
+	background-color: gradient (linear, 0% 0%, 100% 0%, from(#000000aa), to(#00000055));
 	width: 100%;
 	height: 100%;
 	transition-property: background-color;
@@ -1068,4 +800,33 @@ DACUIMain.InGame
 	vertical-align: bottom;
 	horizontal-align: right;
 	transform: rotateZ(180deg);
+}
+
+#PlayButtonContainer
+{
+    width: 900px;
+    height: 400px;
+    vertical-align: bottom;
+	horizontal-align: right;
+	margin-top: 12px;
+	overflow: noclip;
+
+	
+}
+
+#PlayButtonBG {
+	background-repeat: no-repeat;	
+	//background-image: url("s2r://panorama/images/dashboard/play_btn_splatter_png.vtex");
+	background-size: 100%;
+	width: 90%;
+	horizontal-align: right;
+	vertical-align: bottom;
+	height: 90%;
+	//z-index: 1;
+	opacity: 0.5;
+	visibility: collapse;
+}
+
+.Page_DACHomePage #PlayButtonBG {
+	visibility: visible;
 }

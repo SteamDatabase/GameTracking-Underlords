@@ -10,7 +10,13 @@ DACWorldMain
 	margin-top: 64%;
 	height: 50%;
 	color: #fff;
-	visibility: collapse;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: 0.4s;
+}
+
+.LowVisualQuality #UnitCountDisplay {
+	transition-property: none;
 }
 
 .InCombatPreview #UnitCountDisplay,
@@ -36,6 +42,38 @@ DACWorldMain
 .NotEnoughUnits #UnitCountPanel
 {
 	opacity: 0.6;
+
+	animation-name: UnitCountPulseAnimation5;
+	animation-duration: 4.0s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+
+}
+
+.LowVisualQuality .TooManyUnits #UnitCountPanel,
+.LowVisualQuality .NotEnoughUnits #UnitCountPanel {
+	animation-name: none;
+}
+
+@keyframes 'UnitCountPulseAnimation5'
+{
+	0%
+	{
+		opacity: 0.6;
+		pre-transform-scale2d: 0.98;
+	}
+
+	50%
+	{
+		opacity: 0.7;
+		pre-transform-scale2d: 1.0;
+	}
+
+	100%
+	{
+		opacity: 0.6;
+		pre-transform-scale2d: 0.98;
+	}
 }
 
 .LowVisualQuality #UnitCountPanel,
@@ -83,6 +121,12 @@ DACWorldMain
 	flow-children: none;
 	color: gradient(linear, 0% 0%, 0% 100%, from( #b0d3ff ), to(#ffffff));
 	text-shadow: 0px 1px 0px 2.9 #000;
+	transition-property: text-shadow;
+	transition-duration: 0.5s;
+}
+
+.LowVisualQuality .UnitCountLabel {
+	transition-property: none;
 }
 
 .TooManyUnits .UnitCountLabel,
@@ -108,9 +152,9 @@ DACWorldMain
 	visibility: collapse;
 }
 
-.CanManipulateUnits:not(.InfiniteUnitLimit) #UnitCountLabel_Finite,
-.CanManipulateUnits.InfiniteUnitLimit #UnitCountLabel_Infinite,
-.CanManipulateUnits #UnitCountIconPanel
+#DACWorldMain:not(.InfiniteUnitLimit) #UnitCountLabel_Finite,
+.InfiniteUnitLimit #UnitCountLabel_Infinite,
+#UnitCountIconPanel
 {
 	visibility: visible;
 }
@@ -186,28 +230,17 @@ DACWorldMain
 	text-shadow: 0px 0px 0px 3.0 #000;
 }
 
-.GameMode_Duos .CanManipulateUnits #DuosContainer
-{
-	//visibility: visible;
-}
+
 
 .WaitingLabel
 {
 	visibility: collapse;
 }
 
-.GameMode_Duos .CanManipulateUnits.TeammateCombatInProgress .BoardPrepLabel.WaitingLabel
-{
-	visibility: visible;
-}
 
-.GameMode_Duos .CanManipulateUnits.TeammateCombatInProgress .BoardPrepLabel
-{
-	visibility: collapse;
-}
 
 .GameMode_Duos.LocalPlayerBoard .CanManipulateUnits #DuosContainer,
 .LocalPlayerBoard .CanManipulateUnits #UnitCountDisplay
 {
-	visibility: visible;
+	opacity: 1;
 }

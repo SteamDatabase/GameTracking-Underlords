@@ -37,8 +37,9 @@ DACRoundOverScreen .Defeat
 	visibility: collapse;
 }
 
-DACRoundOverScreen.ShowVictory .Victory,
-DACRoundOverScreen.ShowDraw	   .Draw
+DACRoundOverScreen.ShowVictory	.Victory,
+DACRoundOverScreen.ShowDraw		.Draw,
+DACRoundOverScreen.ShowDefeat	.Defeat
 {
 	visibility: visible;
 }
@@ -67,13 +68,14 @@ DACRoundOverScreen.ShowDefeat #DuosDataContainer
 }
 
 
-.ShowDraw DACBannerPaintin #Headline Label
+.ShowDraw DACBannerPaintin #Headline Label,
+.ShowDefeat DACBannerPaintin #Headline Label
 {
-	color: #fff;
-	animation-name: FightResultLabelIn;
-	font-size: 120px;
-	height: 148px;
-	padding: 10px 30px 18px;
+	//animation-name: FightResultLabelIn;
+	//font-size: 120px;
+	//height: 148px;
+	//padding: 10px 30px 18px;
+	//ui-scale: 62%;
 }
 
 .ShowDraw .FightResultLabel
@@ -89,15 +91,9 @@ DACRoundOverScreen.ShowDefeat #DuosDataContainer
 	visibility: collapse;
 }
 
-.IsLayoutLargeScreen #FightResultPanel
-{
-	ui-scale: 100%;
-	margin-top: 150px;
-	//padding: 10%;
-}
-
-.IsLayoutLargeScreen.GameMode_Turbo #FightResultPanel {
-	margin-top: 20px;
+.IsLayoutLargeScreen.GameMode_Turbo #FightResultPanel,
+.IsLayoutLargeScreen.GameMode_Streetfight #FightResultPanel {
+    margin-top: 20px;
 }
 
 .IsLayoutLargeScreen DACBannerPaintin
@@ -174,7 +170,6 @@ DACRoundOverScreen.AnimateOut
 {
 	width: 100%;
 	height: 100%;
-	/*margin-top: -300px;*/
 	vertical-align: top;
 	horizontal-align: center;
 	visibility: visible;
@@ -183,6 +178,12 @@ DACRoundOverScreen.AnimateOut
 	transition-timing-function: ease-in;
 	
 	flow-children: down;
+}
+
+.GameMode_Normal #FightResultPanel
+{
+	height: 300px;
+	animation-name: none;
 }
 
 .GameMode_Duos #FightResultPanel
@@ -292,7 +293,7 @@ DACRoundOverScreen.AnimateOut
 {
 	width: 100%;
 	//margin-top: 200px;
-	margin-top: 150px;
+	margin-top: 84px;
 
 	overflow: noclip;
 	opacity: 0;
@@ -322,9 +323,8 @@ DACRoundOverScreen.AnimateOut
 	background-image: url("s2r://panorama/images/hud/black_text_bg_psd.vtex");
 	background-size: cover;
 	background-repeat: no-repeat;
-	padding: 0px 30px;
+	padding: 0px 44px 6px;
 	transform: rotateZ(-2deg);
-	box-shadow: 0px 0px 3px #000000;
 	margin-top: 420px;
 	margin-left: 0px;
 	margin-bottom: 0px;
@@ -337,33 +337,8 @@ DACRoundOverScreen.AnimateOut
 	animation-iteration-count: 1;
 	animation-timing-function: ease-out;
 	transform-origin: 50% 50%;
+	ui-scale: 60%;
 }
-
-
-/*
-.FightResultLabel
-{
-	letter-spacing: 8px;
-	margin-top: 350px;
-	margin-left: 0px;
-	margin-bottom: 0px;
-	
-	text-transform: uppercase;
-	text-align: center;
-	width: 100%;
-	height: 250px;
-	color: gradient(linear, 0% 0%, 0% 100%, from( #edce6e ), to(#fffdd7));
-	text-shadow: 2px 2px 0px 2.0 #000000aa;
-	font-size: 170px;
-	font-weight: bold;  
-	z-index: 0;
-	animation-delay: 0.0s;
-	animation-duration: 1.2s;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-out;
-	transform-origin: 50% 50%;
-}
-*/
 
 .Language_schinese .FightResultLabel.Break1,
 .Language_schinese .FightResultLabel.Break2,
@@ -385,14 +360,14 @@ DACRoundOverScreen.AnimateOut
 .FightResultLabel.Break1
 {
 	margin-top: 0;
-	opacity-mask: url("s2r://panorama/images/masks/break_01_psd.vtex");
+	//opacity-mask: url("s2r://panorama/images/masks/break_01_psd.vtex");
 	vertical-align: middle;
 }
 
 .FightResultLabel.Break2
 {
 	margin-top: 0;
-	opacity-mask: url("s2r://panorama/images/masks/break_02_psd.vtex");
+	//opacity-mask: url("s2r://panorama/images/masks/break_02_psd.vtex");
 	vertical-align: middle;
 }
 
@@ -541,7 +516,7 @@ DACRoundOverScreen.AnimateOut
 	//margin-top: 8px;
 	margin-bottom: 16px;
 	pre-transform-scale2d: 4;
-
+	visibility: collapse;
 }
 
 .ShowHealthLost #RoundAndRoundDamage
@@ -603,27 +578,20 @@ DACRoundOverScreen.AnimateOut
 
 .ShowDefeat .FightResultLabel
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from( #a82a2a ), to(#ce5747));
+	color: gradient(linear, 0% 0%, 0% 100%, from( #000000 ), to(#070708));
 	animation-name: FightResultLabelIn;
-	font-size: 120px;
-	height: 148px;
-	box-shadow: 0px 0px 3px #00000000;
-}
-
-.IsLayoutSmallScreen .ShowDefeat .FightResultLabel
-{
-		ui-scale: 85%;
-}
-
-.IsLayoutLargeScreen .ShowDefeat .FightResultLabel
-{
-		ui-scale: 80%;
+	font-size: 110px;
+	height: 132px;
+	background-image: url("s2r://panorama/images/hud/red_text_bg_psd.vtex");
+	transition-duration: 0.2s;
+	background-size: 100%;
+	background-repeat: no-repeat;
 }
 
 
 .ShowDefeat .FightResultLabel.Break2 
 {
-	color: gradient(linear, 0% 0%, 0% 100%, from( #942929 ), to(#9e4236));
+	color: gradient(linear, 0% 0%, 0% 100%, from( #000000 ), to(#070708));
 }
 
 .ShowDefeat .Break2
@@ -635,18 +603,6 @@ DACRoundOverScreen.AnimateOut
 .ShowDefeat .BreakDebris
 {
 	animation-name: FightResultLabelInBreakDebris;
-}
-
-.IsLayoutSmallScreen .ShowDraw .FightResultLabel,
-.IsLayoutSmallScreen .ShowDraw DACBannerPaintin
-{
-		ui-scale: 85%;
-}
-
-.IsLayoutLargeScreen .ShowDraw .FightResultLabel,
-.IsLayoutLargeScreen .ShowDraw DACBannerPaintin
-{
-		ui-scale: 80%;
 }
 
 #RoundOverSpecialLabel
@@ -696,6 +652,7 @@ DACRoundOverScreen.AnimateOut
 	transition-timing-function: ease-in;
 	opacity: 0;
 	transform: translateX(100%);
+	visibility: collapse;
 }
 
 .ShowDefeat #OpponentHeroesPanel
@@ -741,26 +698,26 @@ DACRoundOverScreen.AnimateOut
 
 #HealthPanel
 {
-	width: 100%;
-	height: 150px;
+	width: fit-children;
+	height: 50px;
 		
-	flow-children: down;
 	horizontal-align: center;
 	
-	margin-bottom: 0px;
-	
 	transition-property: transform, opacity;
-	transition-duration: .51s;
+	transition-duration: .2s;
 	transition-delay: 1s;
 	transition-timing-function: ease-in;
 	opacity: 0;
-	transform: translateX(100%);
+	transform: translateY(-40px);
+	flow-children: right;
+	vertical-align: top;
+	margin-top: 188px;
 }
 
 .ShowDefeat #HealthPanel
 {
 	opacity: 1;
-	transform: translateX(0%);
+	transform: translateY(40px);
 }
 
 .ShowVictory #HealthPanel
@@ -770,20 +727,16 @@ DACRoundOverScreen.AnimateOut
 
 #HealthNumberLabel
 {
-	letter-spacing: 5px;
-	margin-top: 0px;
-	margin-left: 0px;
 	text-transform: uppercase;
-	width: 200px;
-	height: 100px;
-	/*line-height: 30px;*/
 	//color: gradient(linear, 0% 0%, 0% 100%, from( #ff3d18 ), to(#b38d20));
 	color: #c0493d;
 	text-shadow: 0px 1px 0px 3.0 #000;
-	font-size: 100px;
-	font-weight: bold;
-	text-align: center;
-	horizontal-align: center;
+	font-size: 36px;
+	font-weight: black;
+	text-align: right;
+	vertical-align: center;
+	width: 64px;
+	letter-spacing: -3px;
 }
 
 #LostLabel
@@ -794,23 +747,13 @@ DACRoundOverScreen.AnimateOut
 
 #HealthLostLabel
 {
-	letter-spacing: 3px;
-	margin-top: 4px;
-	margin-left: 0px;
-	margin-bottom: 0px;
-	
-	horizontal-align: center;
+	margin-left: 8px;
 	text-transform: uppercase;
-	width: 500px;
-	/*height: 200px;
-	line-height: 30px;*/
-	text-overflow: shrink;
 	text-shadow: 0px 1px 0px 3.0 #000;
 	color: #c0493d;
 	font-size: 36px;
-	font-weight: bold;
-	text-align: center;
-	/*vertical-align: bottom;*/
+	vertical-align: center;
+	padding-right: 28px;
 }
 
 
@@ -947,6 +890,7 @@ DACRoundOverScreen.AnimateOut
 	opacity: 1.0;
 	height: 75px;
 	transform: translateX(0%);
+	text-shadow: 2px 2px 0px 2.0 #000000aa;
 }
 
 .RoundOpponent
@@ -1002,9 +946,9 @@ DACRoundOverScreen.AnimateOut
 	transform: translateX(0);
 }
 
-.GameMode_Turbo #HealthPanel
-{
-	visibility: collapse;
+.GameMode_Turbo #HealthPanel,
+.GameMode_Streetfight #HealthPanel {
+    visibility: collapse;
 }
 
 #TurboHealth
@@ -1015,17 +959,17 @@ DACRoundOverScreen.AnimateOut
 
 	horizontal-align: center;
 	flow-children: right;
+	margin-top: 240px;
 }
 
-.GameMode_Turbo #TurboHealth
-{
-	visibility: visible;
+.GameMode_Turbo #TurboHealth {
+    visibility: visible;
 }
 
 #TurboHealth .TurboHeart
 {
-	width: 87px;
-	height: 87px;
+	width: 84px;
+	height: 84px;
 	vertical-align: center;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
@@ -1264,4 +1208,9 @@ DACRoundOverScreen.AnimateOut
 	animation-timing-function: ease-out;
 	animation-name: HealthDeltaBlockedByAegisAnim;
 	animation-iteration-count: 1;
+}
+
+#FightResultPanel.Hidden
+{
+    visibility: collapse;
 }

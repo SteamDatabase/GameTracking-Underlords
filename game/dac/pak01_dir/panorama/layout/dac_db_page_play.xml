@@ -52,30 +52,30 @@
         <Panel id="ChallengesContainer">
           <Panel id="LeftContainer" hittest="false">
             <Panel id="BattlePassContainer">
-              <DACControlBattlePass id="BattlePassOverview" />
+              <DACControlBattlePass id="BattlePassOverview" class="ShowProgress" />
             </Panel>
           </Panel>
         </Panel>
         <Panel id="GameModeSelectionContainer">
-          <Panel id="TurboGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(0) PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' )">
+          <Panel id="TurboGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(0); PlaySoundEffect( 'UL_UI.Fight_GameModeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_GameModeRollover' )">
             <Panel class="GameModeDescContainer">
               <Label text="#DAC_MatchTypeTurbo" class="GameModeButtonTitle HeadlineFont"/>
               <Label text="#DAC_MatchTypeDescTurbo" class="GameModeButtonDesc"/>
             </Panel>  
           </Panel>
-          <Panel id="StandardGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(1) PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' )">
+          <Panel id="StandardGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(1); PlaySoundEffect( 'UL_UI.Fight_GameModeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_GameModeRollover' )">
             <Panel class="GameModeDescContainer">
               <Label text="#DAC_MatchTypeStandard" class="GameModeButtonTitle HeadlineFont"/>
               <Label text="#DAC_MatchTypeDescStandard" class="GameModeButtonDesc"/>
             </Panel>
           </Panel>
-          <Panel id="DuosGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(2) PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' )">
+          <Panel id="DuosGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(2); PlaySoundEffect( 'UL_UI.Fight_GameModeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_GameModeRollover' )">
             <Panel class="GameModeDescContainer">
               <Label text="#DAC_MatchTypeName3" class="GameModeButtonTitle HeadlineFont"/>
               <Label text="#DAC_MatchTypeDescDuos" class="GameModeButtonDesc"/>
             </Panel>
           </Panel>
-          <Panel id="TrainingGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(3) PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' )">
+          <Panel id="TrainingGameModeButton" class="GameModeButton" onactivate="DACPlaySelectMode(3); PlaySoundEffect( 'UL_UI.Fight_GameModeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_GameModeRollover' )">
              <Panel class="GameModeDescContainer">
               <Label text="#DAC_Training" class="GameModeButtonTitle HeadlineFont"/>
               <Label text="#DAC_MatchTypeDescTraining" class="GameModeButtonDesc"/>
@@ -93,26 +93,25 @@
             
             <Panel class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_MatchOpponent"/>
-              <Panel id="TurboMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchType(0) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="TurboMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchType(0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_MatchTypeMultiplayer"/>
               </Panel>
 
-              <Panel id="TurboMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchType(3) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">  <!--EDACMatchMode-->
+              <Panel id="TurboMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchType(3); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EDACMatchMode-->
                 <Label class="BotMatchLabel" text="#DAC_MatchTypeBotMatch"/>
                 <Label class="PrivateMatchLabel" text="#DAC_Party_PrivateMatch"/>
               </Panel>
             </Panel>
-           
 
 
-            <Panel class="GameModeOptionsSettingsContainer">
+            <Panel class="GameModeOptionsSettingsContainer MatchTypeSettingsContainer">
               <Panel id="TurboSubSettingMultiplayer" class="GameModeOptionsSettingsSubContainer">
                 <Label class="OptionHeader" text="#DAC_MatchType"/>
-                <Panel id="TurboMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchmakingType(1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">  <!--EDACMatchMode-->
+                <Panel id="TurboMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchmakingType(1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeName0"/>
                 </Panel>
 
-                <Panel id="TurboMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchmakingType(4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
+                <Panel id="TurboMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayTurboSetMatchmakingType(4); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeNameRanked"/>
                 </Panel>
                 <Label class="LockedLabel RankedLockedLabel" text="{s:ranked_locked}"/>
@@ -136,20 +135,20 @@
             </Panel>
             <Panel id="TurboSubSettingBots" class="GameModeOptionsSettingsSubContainer">
               <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-              <Panel id="LocalTurboBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(0) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">  <!--EPlayBotDifficultyType-->
+              <Panel id="LocalTurboBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EPlayBotDifficultyType-->
                 <Label id="TurboBotDifficultyLabel" text="{s:local_turbo_bot_difficulty}"/>
               </Panel>
-              <Panel id="GCTurboBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">  <!--EPlayBotDifficultyType-->
+              <Panel id="GCTurboBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EPlayBotDifficultyType-->
                 <Label id="TurboBotDifficultyLabel" text="{s:gc_turbo_bot_difficulty}"/>
               </Panel>
             </Panel>
 
             <Panel id="TurboSubSettingResume" class="GameModeOptionsSettingsSubContainer">
               <Label class="OptionHeader" text="#DAC_MatchResume"/>
-              <Panel id="TurboResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="TurboResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_Play_ResumeBots"/>
               </Panel>
-              <Panel id="TurboDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="TurboDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotSaveGameExists_Button_NewGame"/>
               </Panel>
 
@@ -168,46 +167,58 @@
 
             <Panel id="LocalTurboBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-              <Panel id="EasyLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,0) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="EasyLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="MediumLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,2) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="ChallengingLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,2); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="HardcoreLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,3) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="HardcoreLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,3); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName3"/>
-              </Panel>
+			  </Panel>
 
-              <Panel id="BattlepassLocalTurboBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(0,4) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+			  <!--<Panel id="InsaneLocalTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(0,6); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+				  <Label text="#DAC_BotDifficultyName6"/>
+			  </Panel>-->
+              <Label class="OptionHeader BattlePassOptionHeader" text="#DAC_BattlePassRewardInfo"/>
+              <Panel id="BattlepassLocalTurboBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(0,4); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName5"/>
+                <Panel class="BattlePassMode"/>
               </Panel>
             </Panel>
 
             <Panel id="GCTurboBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
-              <Panel id="EasyGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="EasyGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,2) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="MediumGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,2); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,3) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="ChallengingGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,3); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="BattlepassGCTurboBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(1,4) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <!--<Panel id="InsaneGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,6); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                <Label text="#DAC_BotDifficultyName6"/>
+              </Panel>-->
+
+              <Label class="OptionHeader BattlePassOptionHeader" text="#DAC_BattlePassRewardInfo"/>
+              <Panel id="BattlepassGCTurboBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(1,4); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName5"/>
+                <Panel class="BattlePassMode"/>
               </Panel>
 
-              <Panel id="NoBotGCTurboBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(1,0) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+              <Panel id="NoBotGCTurboBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(1,0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName4"/>
+                <Panel class="BattlePassMode"/>
               </Panel>
             </Panel>
 
@@ -224,11 +235,11 @@
 
             <Panel class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_MatchOpponent"/>
-              <Panel id="StandardMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchType(0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="StandardMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchType(0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_MatchTypeMultiplayer"/>
               </Panel>
 
-              <Panel id="StandardMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchType(3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
+              <Panel id="StandardMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchType(3); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EDACMatchMode-->
                 <Label class="BotMatchLabel" text="#DAC_MatchTypeBotMatch"/>
                 <Label class="PrivateMatchLabel" text="#DAC_Party_PrivateMatch"/>
               </Panel>
@@ -236,14 +247,14 @@
 
             <!-- <Panel class="GameModeOptionsDiv"/> -->
 
-            <Panel class="GameModeOptionsSettingsContainer">
+            <Panel class="GameModeOptionsSettingsContainer MatchTypeSettingsContainer">
               <Panel id="StandardSubSettingMultiplayer" class="GameModeOptionsSettingsSubContainer">
                 <Label class="OptionHeader" text="#DAC_MatchType"/>
-                <Panel id="StandardMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchmakingType(1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
+                <Panel id="StandardMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchmakingType(1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeName0"/>
                 </Panel>
 
-                <Panel id="StandardMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchmakingType(4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
+                <Panel id="StandardMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayStandardSetMatchmakingType(4); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeNameRanked"/>
                 </Panel>
                 <Label class="LockedLabel RankedLockedLabel" text="{s:ranked_locked}"/>
@@ -264,30 +275,30 @@
                   </Panel>
                 </Panel>
               </Panel>
+            </Panel>
 
-              <Panel id="StandardSubSettingBots" class="GameModeOptionsSettingsSubContainer">
-                <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-                <Panel id="LocalStandardBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(2) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EPlayBotDifficultyType-->
-                  <Label text="{s:local_standard_bot_difficulty}"/>
-                </Panel>
-                <Panel id="GCStandardBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EPlayBotDifficultyType-->
-                  <Label text="{s:gc_standard_bot_difficulty}"/>
-                </Panel>
+            <Panel id="StandardSubSettingBots" class="GameModeOptionsSettingsSubContainer">
+              <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
+              <Panel id="LocalStandardBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(2); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EPlayBotDifficultyType-->
+                <Label text="{s:local_standard_bot_difficulty}"/>
+              </Panel>
+              <Panel id="GCStandardBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(3); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EPlayBotDifficultyType-->
+                <Label text="{s:gc_standard_bot_difficulty}"/>
+              </Panel>
+            </Panel>
+
+            <Panel id="StandardSubSettingResume" class="GameModeOptionsSettingsSubContainer">
+              <Label class="OptionHeader" text="#DAC_MatchResume"/>
+              <Panel id="StandardResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                <Label text="#DAC_Play_ResumeBots"/>
+              </Panel>
+              <Panel id="StandardDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                <Label text="#DAC_BotSaveGameExists_Button_NewGame"/>
               </Panel>
 
-              <Panel id="StandardSubSettingResume" class="GameModeOptionsSettingsSubContainer">
-                <Label class="OptionHeader" text="#DAC_MatchResume"/>
-                <Panel id="StandardResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
-                  <Label text="#DAC_Play_ResumeBots"/>
-                </Panel>
-                <Panel id="StandardDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
-                  <Label text="#DAC_BotSaveGameExists_Button_NewGame"/>
-                </Panel>
-
-                <Panel class="ResumeInfoContainer">
-                  <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Desc"/>
-                  <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Timestamp"/>
-                </Panel>
+              <Panel class="ResumeInfoContainer">
+                <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Desc"/>
+                <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Timestamp"/>
               </Panel>
             </Panel>
           </Panel>
@@ -299,46 +310,57 @@
             </Panel>
             <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
             <Panel id="LocalStandardBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
-              <Panel id="EasyLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="EasyLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="MediumLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,2) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="ChallengingLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,2); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="HardcoreLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="HardcoreLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,3); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName3"/>
               </Panel>
 
-              <Panel id="BattlepassLocalStandardBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(2,4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <!--<Panel id="InsaneLocalStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(2,6); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                <Label text="#DAC_BotDifficultyName6"/>
+              </Panel>-->
+              <Label class="OptionHeader BattlePassOptionHeader" text="#DAC_BattlePassRewardInfo"/>
+              <Panel id="BattlepassLocalStandardBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(2,4); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName5"/>
+                <Panel class="BattlePassMode"/>
               </Panel>
             </Panel>
 
             <Panel id="GCStandardBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
-              <Panel id="EasyGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="EasyGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,2) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="MediumGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,2); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="ChallengingGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,3); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="BattlepassGCStandardBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(3,4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <!--<Panel id="InsaneGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,6); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                <Label text="#DAC_BotDifficultyName6"/>
+              </Panel>-->
+              <Label class="OptionHeader BattlePassOptionHeader" text="#DAC_BattlePassRewardInfo"/>
+              <Panel id="BattlepassGCStandardBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(3,4); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName5"/>
+                <Panel class="BattlePassMode"/>
               </Panel>
 
-              <Panel id="NoBotGCStandardBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(3,0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="NoBotGCStandardBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(3,0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName4"/>
+                <Panel class="BattlePassMode"/>
               </Panel>
             </Panel>
 
@@ -355,24 +377,24 @@
 
             <Panel class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_MatchOpponent"/>
-              <Panel id="DuosMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchType(0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="DuosMatchTypeButtonMultiplayer" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchType(0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_MatchTypeMultiplayer"/>
               </Panel>
 
-              <Panel id="DuosMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchType(3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
+              <Panel id="DuosMatchTypeButtonBots" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchType(3); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EDACMatchMode-->
                 <Label class="BotMatchLabel" text="#DAC_MatchTypeBotMatch"/>
                 <Label class="PrivateMatchLabel" text="#DAC_Party_PrivateMatch"/>
               </Panel>
             </Panel>
 
-            <Panel class="GameModeOptionsSettingsContainer">
+            <Panel class="GameModeOptionsSettingsContainer MatchTypeSettingsContainer">
               <Panel id="DuosSubSettingMultiplayer" class="GameModeOptionsSettingsSubContainer">
                 <Label class="OptionHeader" text="#DAC_MatchType"/>
-                <Panel id="DuosMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchmakingType(1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
+                <Panel id="DuosMatchmakingTypeButtonCasual" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchmakingType(1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeName0"/>
                 </Panel>
 
-                <Panel id="DuosMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchmakingType(4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EDACMatchMode-->
+                <Panel id="DuosMatchmakingTypeButtonRanked" class="GameModeOptionButton" onactivate="DACPlayDuosSetMatchmakingType(4); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EDACMatchMode-->
                   <Label text="#DAC_MatchTypeNameRanked"/>
                 </Panel>
                 <Label class="LockedLabel RankedLockedLabel" text="{s:ranked_locked}"/>
@@ -395,44 +417,45 @@
                 </Panel>
               </Panel>
 
-              <Panel id="DuosSubSettingBots" class="GameModeOptionsSettingsSubContainer">
-                <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-                <Panel id="LocalDuosBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EPlayBotDifficultyType-->
-                  <Label text="{s:local_duos_bot_difficulty}"/>
-                </Panel>
-                <Panel id="GCDuosBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(5) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">  <!--EPlayBotDifficultyType-->
-                  <Label text="{s:gc_duos_bot_difficulty}"/>
-                </Panel>
-              </Panel>
-              
-              <Panel id="DuosSubSettingResume" class="GameModeOptionsSettingsSubContainer">
-                <Label class="OptionHeader" text="#DAC_MatchResume"/>
-                <Panel id="DuosResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
-                  <Label text="#DAC_Play_ResumeBots"/>
-                </Panel>
-                <Panel id="DuosDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
-                  <Label text="#DAC_BotSaveGameExists_Button_NewGame"/>
-                </Panel>
+              <Panel class="GameModeOptionsSettingsContainer">
+                <Panel id="DuosSubSettingTeammate" class="GameModeOptionsSettingsSubContainer">
+                  <Label class="OptionHeader" text="#DAC_MatchTeammate"/>
+                  <DACSettingsCheckbox id="DuosTeammateToggle" class="PlayCheckbox" text="#DAC_MatchTypeBotTeammate" onactivate="DACSetBotTeammate()" />
+                  <Panel id="DuosTeammateButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayDuosTeammateOptions(); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                    <Label text="{s:duos_teammate}"/>
+                  </Panel>
 
-                <Panel class="ResumeInfoContainer">
-                  <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Desc"/>
-                  <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Timestamp"/>
                 </Panel>
               </Panel>
             </Panel>
 
+            <Panel id="DuosSubSettingBots" class="GameModeOptionsSettingsSubContainer">
+              <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
+              <Panel id="LocalDuosBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(4); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EPlayBotDifficultyType-->
+                <Label text="{s:local_duos_bot_difficulty}"/>
+              </Panel>
+              <Panel id="GCDuosBotDifficultyButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayBotDifficulty(5); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">  <!--EPlayBotDifficultyType-->
+                <Label text="{s:gc_duos_bot_difficulty}"/>
+              </Panel>
+            </Panel>
+              
+            <Panel id="DuosSubSettingResume" class="GameModeOptionsSettingsSubContainer">
+              <Label class="OptionHeader" text="#DAC_MatchResume"/>
+              <Panel id="DuosResumeBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(false); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                <Label text="#DAC_Play_ResumeBots"/>
+              </Panel>
+              <Panel id="DuosDeleteBotGameButton" class="GameModeOptionButton" onactivate="DACPlaySetSaveGameAction(true); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                <Label text="#DAC_BotSaveGameExists_Button_NewGame"/>
+              </Panel>
 
-            <Panel class="GameModeOptionsSettingsContainer">
-              <Panel id="DuosSubSettingTeammate" class="GameModeOptionsSettingsSubContainer">
-                <Label class="OptionHeader" text="#DAC_MatchTeammate"/>                
-                <DACSettingsCheckbox id="DuosTeammateToggle" class="PlayCheckbox" text="#DAC_MatchTypeBotTeammate" onactivate="DACSetBotTeammate()" />
-                <Panel id="DuosTeammateButton" class="BotDifficultyDropdown" onactivate="DACPlayDisplayDuosTeammateOptions() PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
-                  <Label text="{s:duos_teammate}"/>
-                </Panel>
-
+              <Panel class="ResumeInfoContainer">
+                <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Desc"/>
+                <Label class="PlayPageLabel ResumeLabel" text="#DAC_ResumeInfo_Timestamp"/>
               </Panel>
             </Panel>
           </Panel>
+
+
 
           <!-- *************************Duos Bot Difficulty************************* -->
           <Panel id="DuosBotDifficulty" class="GameModeOptionsPanel">
@@ -442,46 +465,58 @@
 
             <Panel id="LocalDuosBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-              <Panel id="EasyLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="EasyLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="MediumLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,2) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="ChallengingLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,2); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="HardcoreLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="HardcoreLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,3); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName3"/>
               </Panel>
 
-              <Panel id="BattlepassLocalDuosBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(4,4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
-                <Label text="#DAC_BotDifficultyName5"/>
+              <!--<Panel id="InsaneLocalDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(4,6); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                <Label text="#DAC_BotDifficultyName6"/>
+              </Panel>-->
+              <Label class="OptionHeader BattlePassOptionHeader" text="#DAC_BattlePassRewardInfo"/>
+              <Panel id="BattlepassLocalDuosBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(4,4); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                <Label class="BattlePassModeLabel" text="#DAC_BotDifficultyName5"/>
+                <Panel class="BattlePassMode"/>
               </Panel>
             </Panel>
 
             <Panel id="GCDuosBotDifficultyContainer" class="GameModeOptionsSettingsContainer">
-              <Panel id="EasyGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="EasyGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName0"/>
               </Panel>
 
-              <Panel id="MediumGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,2) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="MediumGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,2); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName1"/>
               </Panel>
 
-              <Panel id="ChallengingGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,3) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="ChallengingGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,3); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName2"/>
               </Panel>
 
-              <Panel id="BattlepassGCDuosBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(5,4) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <!--<Panel id="InsaneGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,6); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
+                <Label text="#DAC_BotDifficultyName6"/>
+              </Panel>-->
+
+              <Label class="OptionHeader BattlePassOptionHeader" text="#DAC_BattlePassRewardInfo"/>
+              <Panel id="BattlepassGCDuosBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(5,4); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName5"/>
+                <Panel class="BattlePassMode"/>
               </Panel>
 
-              <Panel id="NoBotGCDuosBotOptionButton" class="GameModeOptionButton" onactivate="DACPlaySetBotDifficulty(5,0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="NoBotGCDuosBotOptionButton" class="GameModeOptionButton BattlepassOptionButton" onactivate="DACPlaySetBotDifficulty(5,0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_BotDifficultyName4"/>
+                <Panel class="BattlePassMode"/>
               </Panel>
 
             </Panel>
@@ -497,11 +532,11 @@
 
             <Panel id="DuosTeammateOptionsContainer" class="GameModeOptionsSettingsContainer">
               <Label class="OptionHeader" text="#DAC_BotDifficulty_Desc"/>
-              <Panel id="DuosTeammateTypeButtonInvite" class="GameModeOptionButton" onactivate="DACPlayDuosSetTeammateType(0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="DuosTeammateTypeButtonInvite" class="GameModeOptionButton" onactivate="DACPlayDuosSetTeammateType(0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_MatchTypeInviteAFriend"/>
               </Panel>
 
-              <Panel id="DuosTeammateTypeButtonBot" class="GameModeOptionButton" onactivate="DACPlayDuosSetTeammateType(1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="DuosTeammateTypeButtonBot" class="GameModeOptionButton" onactivate="DACPlayDuosSetTeammateType(1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_MatchTypeBotTeammate"/>
               </Panel>
 
@@ -518,50 +553,26 @@
             </Panel>
 
             <Panel class="GameModeOptionsSettingsContainer">
-              <Panel id="TrainingTypeButtonTutorial" class="GameModeOptionButton" onactivate="DACPlayTrainingSetMatchType(1) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+              <Panel id="TrainingTypeButtonTutorial" class="GameModeOptionButton" onactivate="DACPlayTrainingSetMatchType(1); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_MatchTypeName7"/>
               </Panel>
               <Label class="GameModeOptionsDesc TrainingDesc" text="#DAC_ReplayTheTutorial"/>
-               <Panel id="TrainingTypeButtonFreestyle" class="GameModeOptionButton" onactivate="DACPlayTrainingSetMatchType(0) PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+               <Panel id="TrainingTypeButtonFreestyle" class="GameModeOptionButton" onactivate="DACPlayTrainingSetMatchType(0); PlaySoundEffect( 'UL_UI.Fight_MatchActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_MatchRollover' )">
                 <Label text="#DAC_MatchTypeName5"/>
               </Panel>
               <Label class="GameModeOptionsDesc FreestyleDesc" text="#DAC_MatchTypeDescFreestyle"/>
             </Panel>
           </Panel>
+          <Panel id="ChallengeRequirementsNotMetPanel">
+            <Label class="CityCrawlRequirementsNotMet GameModeRequirements" text="#DAC_ChallengeGameModeRequirementsNotMet"/>
+            <Label class="CityCrawlRequirementsNotMet DifficultyRequirements" text="#DAC_ChallengeDifficultyRequirementsNotMet"/>
+          </Panel>
         </Panel>
       </Panel>
-      
-      <Panel id="Footer">
-        
-        <Panel id="PlayButtonContainer">
-          <Panel id="TurboPlayButton" class="PlayButton" onactivate="DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' ); DACPlayLaunchTurbo();">
-            <Label id="TurboFindMatchLabel" class="FindMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_FindMatch"/>
-            <Label id="TurboBeginMatchLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_BeginMatch"/>
-          </Panel>
-          <Panel id="StandardPlayButton" class="PlayButton" onactivate="DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' ); DACPlayLaunchStandard();">
-            <Label id="StandardFindMatchLabel" class="FindMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_FindMatch"/>
-            <Label id="StandardBeginMatchLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_BeginMatch"/>
-          </Panel>
-          <Panel id="DuosPlayButton" class="PlayButton" onactivate="DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' ); DACPlayLaunchDuos();">
-            <Label id="DuosFindMatchLabel" class="FindMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_FindMatch"/>
-            <Label id="DuosBeginMatchLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_PreMatchDetails_BeginMatch"/>
-            <Label id="DuosInviteFriendLabel" class="InviteFriendLabel HeadlineFont" text="#DAC_Play_Duos_Invite"/>
-          </Panel>
-          <Panel id="TrainingPlayButton" class="PlayButton" onactivate="DACPlayLaunchTraining()">
-            <Label id="TrainingStartLabel" class="StartLabel HeadlineFont" text="#DAC_Start"/>
-          </Panel>
-          <Panel id="SaveGamePlayButton" class="PlayButton" onactivate="DACPlayHandleSaveGame()">
-            <Label id="ResumeGameLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_Home_ResumeBots"/>
-            <Label id="NewGameLabel" class="BeginMatchLabel HeadlineFont" text="#DAC_BotSaveGameExists_Button_NewGame"/>
-          </Panel>
-          <Label id="DuosLockedLabel" class="LockedLabel" hittest="false" text="{s:duos_state}"/>
-          <Label id="CasualLockedLabel" class="LockedLabel" text="{s:casual_locked}"/>
-          <Label class="LoginRequired" text="#DAC_SteamLogIn_Desc4" onactivate="DACSelectMatchTypeLogin()"/>
-        </Panel>
-      </Panel>
-		</Panel>
+    </Panel>
     <Panel class="DashboardHeader">
-			<Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
+			<Panel id="BackButton2" onactivate="DACSelectDashboardButton('PlayContainer'); DACNavigateBack(); PlaySoundEffect( 'UL_UI.Fight_BackoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Fight_BackoutRollover' )"/>
+      <!--<Label class="PageTitle HeadlineFont" text="#DAC_DBHome_Fight"/>-->
     </Panel>    
 	</DACPlayPage>
 </root>

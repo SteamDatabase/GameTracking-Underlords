@@ -4,21 +4,178 @@
 		<include src="s2r://panorama/styles/dac_db_page_profile.vcss_c" />
 	</styles>
 	<snippets>
-		
-		
-	</snippets>
-	<DACProfilePage  class="DashboardPage">
 
-		
-		<Label class="ProfileTitle" text="Battle Pass"/>
-		<Panel id="TopRow">
-			<Panel id="ProfileContainer">
-				<DACMiniProfile id="MiniProfile" dashboardmode="true"/>
+		<snippet name="RecentMatch">
+			<Panel class="RecentMatchContainer">
+				<Panel class="RecentMatchInner">
+					<Panel class="UnderlordImage"/>
+					<Panel class="RightColumn">
+						<Panel class="ModeContainer">
+							<Label class="Mode" text="{s:mode}"/>
+							<Label class="BotMatch" text="#DAC_Profile_BotMatch"/>
+						</Panel>
+						<Label class="Round" text="#DAC_Profile_Round"/>
+						<Label class="Timestamp" text="{t:s:timestamp}"/>
+					</Panel>
+				</Panel>
+				<Panel class="PlaceWrapper">
+					<Label class="PlaceOrdinal Prefix HeadlineFont" text="{s:place_ordinal_prefix}"/>
+					<Label class="Place HeadlineFont" text="{i:place}"/>
+					<Label class="PlaceOrdinal Postfix HeadlineFont" text="{s:place_ordinal_postfix}"/>
+				</Panel>
+			</Panel>
+		</snippet>
+
+		<snippet name="LoadMore">
+			<Panel class="LoadMoreContainer"  onactivate="DACProfileLoadMoreMatches()">
+				<Label text="#DAC_Profile_LoadMore"/>
+			</Panel>
+		</snippet>
+
+	</snippets>
+	
+	
+	<DACProfilePage hittest="false"  class="DashboardPage">
+
+		<Panel class="Dimmer" />
+		<Panel class="MainContainer">
+
+			<Panel class="ProfileFlow">
+				
+				<Panel id="LeftColumn">
+					<DACMiniProfile id="Poster" class="FadeIn" showparticles="false"  showname="true"/>
+					<Panel id="BPProgress">
+					</Panel>
+					<Panel id="SteamID">
+					</Panel>
+				</Panel>
+
+				<Panel id="CenterColumn">
+					<Panel class="Top">
+						<Panel class="TopFinishes">
+							<Label class="Header" text="#DAC_Profile_TopFinishes"/>
+							<Panel class="Finishes FadeIn">
+								<Panel class="Finish First">
+									<Label class="Count HeadlineFont" text="{i:finishes_first}"/>
+									<Label class="Place" text="#DAC_Profile_FinishFirst"/>
+								</Panel>
+								<Panel class="Finish Second">
+									<Label class="Count HeadlineFont" text="{i:finishes_second}"/>
+									<Label class="Place" text="#DAC_Profile_FinishSecond"/>
+								</Panel>
+								<Panel class="Finish Third">
+									<Label class="Count HeadlineFont" text="{i:finishes_third}"/>
+									<Label class="Place" text="#DAC_Profile_FinishThird"/>
+								</Panel>
+							</Panel>
+						</Panel>
+						<Panel class="Divider"/>
+						<Panel class="TopAlliances">
+							<Label class="Header" text="#DAC_Profile_TopAlliances"/>
+							<Panel class="Alliances FadeIn">
+								<Panel class="Alliance First">
+									<DACSynergyIcon id="AllianceLogo1" class="AllianceLogo"/>
+									<Panel id="AlliancePct1" class="PercentageWrapper">
+										<Label class="Percentage HeadlineFont" text="{i:alliance_pct_first}" html="true"/>
+										<Label class="PercentSymbol HeadlineFont" text="#DAC_PercentSymbol"/>
+									</Panel>
+								</Panel>
+								<Panel class="Alliance Second">
+									<DACSynergyIcon id="AllianceLogo2" class="AllianceLogo"/>
+									<Panel id="AlliancePct2" class="PercentageWrapper">
+										<Label class="Percentage HeadlineFont" text="{i:alliance_pct_second}" html="true"/>
+										<Label class="PercentSymbol HeadlineFont" text="#DAC_PercentSymbol"/>
+									</Panel>
+								</Panel>
+								<Panel class="Alliance Third">
+									<DACSynergyIcon id="AllianceLogo3" class="AllianceLogo"/>
+									<Panel id="AlliancePct3" class="PercentageWrapper">
+										<Label class="Percentage HeadlineFont" text="{i:alliance_pct_third}" html="true"/>
+										<Label class="PercentSymbol HeadlineFont" text="#DAC_PercentSymbol"/>
+									</Panel>
+								</Panel>
+							</Panel>
+						</Panel>
+					</Panel>
+					<Panel class="Bottom">
+						<Panel class="TabContainer">
+							<Panel class="Tab Progress" onactivate="DACProfileSelectTab(0)">
+								<Label text="#DAC_Profile_Progress"/>
+							</Panel>
+							<Panel class="Tab Stats" onactivate="DACProfileSelectTab(1)">
+								<Label text="#DAC_Profile_Stats"/>
+							</Panel>
+						</Panel>
+						<Panel class="TabContents FadeIn ProgressContainer">
+							<Panel class="Column">
+								<DACControlBattlePass id="BattlePass" class="HideQuests ShowHeader" manuallyupdated="true"/>
+								<DACControlRank id="KnockoutRank"/>
+							</Panel>
+							<Panel class="Column">
+								<DACControlCityCrawl id="CityCrawl"/>
+								<Panel class="ProgressSpacer"/>
+								<DACControlRank id="StandardRank"/>
+							</Panel>
+						</Panel>
+						<Panel class="TabContents FadeIn StatsContainer">
+							<Panel class="Column">
+								<Label class="Header" text="#DAC_Profile_GamesPlayed"/>
+								<Label class="Value HeadlineFont" text="{i:games_played}"/>
+								<Label class="Header" text="#DAC_Profile_MostTotalDamage"/>
+								<Label class="Value HeadlineFont" text="{i:most_total_damage}"/>
+								<Label class="Header" text="#DAC_Profile_HighestNetWorth"/>
+								<Label class="Value HeadlineFont" text="{i:highest_net_worth}"/>
+								<Label class="Header" text="#DAC_Profile_HighestRound"/>
+								<Label class="Value HeadlineFont" text="{i:highest_round}"/>
+								<Label class="Header HeadlineFont" text="#DAC_Profile_UndefeatedKOGames"/>
+								<Label class="Value" text="{i:undefeated_ko_games}"/>
+							</Panel>
+							<Panel class="Column">
+								<Label class="Header" text="#DAC_Profile_UnderlordPlacement1"/>
+								<Label class="Value HeadlineFont" text="{s:underlord_winrate_1}"/>
+								<Label class="Header" text="#DAC_Profile_UnderlordPlacement2"/>
+								<Label class="Value HeadlineFont" text="{s:underlord_winrate_2}"/>
+								<Label class="Header" text="#DAC_Profile_UnderlordPlacement3"/>
+								<Label class="Value HeadlineFont" text="{s:underlord_winrate_3}"/>
+								<Label class="Header" text="#DAC_Profile_UnderlordPlacement4"/>
+								<Label class="Value HeadlineFont" text="{s:underlord_winrate_4}"/>
+							</Panel>
+						</Panel>
+						<Panel class="Footer">
+							<Label text="#DAC_Profile_Footer"/>
+						</Panel>
+					</Panel>
+				</Panel>
+
+				<Panel id="RightColumn">
+					<Panel id="RecentMatches">
+						<Label class="Header" text="#DAC_Profile_RecentMatches"/>
+						<Panel id="MatchList" class="FadeIn">
+							<!-- Filled with RecentMatch -->
+						</Panel>
+						<Panel class="BotToggleContainer">
+							<DACSettingsCheckbox id="HideBotMatchesCheckbox" convar="dac_profile_hide_bot_matches" text="#DAC_Profile_HideBotMatches" onactivate="DACProfileBotMatchFilterChanged()"/>
+						</Panel>
+					</Panel>
+				</Panel>
+
+			</Panel>
+			
+			<Panel class="DashboardHeader">
+				<Panel id="BackButton2" onactivate="DACSelectDashboardButton('PlayContainer'); DACNavigateBack(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
+				<DACAvatarImage id="AvatarImage" class="PageTitle"/>
+				<Label class="PageTitle HeadlineFont" id="ProfileName" text="{g:dac_persona:account_id}" html="true"/>
 			</Panel>
 			
 		</Panel>
-		<Panel id="BottomRow">
-			
+		<Panel class="ScoreboardDimmer" />
+		<Panel id="ScoreboardContainerNoData">
+			<Label class="NoData" text="#DAC_Profile_ScoreboardNoData"/>
+			<Label class="CloseButton" text="#Close" onactivate="DACProfileCloseMatchStats()"/>
+		</Panel>
+		<Panel id="ScoreboardContainer">
+			<DACScoreboard id="PostGameScoreboard" postgame="true"/>
+			<Label class="CloseButton" text="#Close" onactivate="DACProfileCloseMatchStats()"/>
 		</Panel>
 	</DACProfilePage>
 </root>

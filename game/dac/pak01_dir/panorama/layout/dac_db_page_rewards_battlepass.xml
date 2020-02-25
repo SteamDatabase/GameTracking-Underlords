@@ -2,102 +2,19 @@
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_global.vcss_c" />
-		<include src="s2r://panorama/styles/dac_db_page_rewards_battlepass.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_home.vcss_c" />
-		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_page_rewards_battlepass.vcss_c" />
 	</styles>
+
 	<snippets>
-		<snippet name="Reward">
-			<Panel class="RewardLineItem" >
-				<Panel id="MainRewardPanel" class="RewardLineItemImage" />
-				<Panel id="RewardLineItemPathIcon" />
-				<Button id="RewardLineItemClaimButton">
-					<Label text="#DAC_Rewards_Level"/>
-				</Button>
-			</Panel>
-		</snippet>
-
-		<snippet name="EmptyReward">
-			<Panel class="RewardLineItem EmptyReward" >
-				<Panel id="MainRewardPanel" class="RewardLineItemImage" onmouseover="PlaySoundEffect('DAC_UI.ProtoPass_RankHover')" />
-				<Panel id="RewardLineItemPathIcon" />
-				<Button id="RewardLineItemClaimButton">
-					<Label text="#DAC_Rewards_Level"/>
-				</Button>
-			</Panel>
-		</snippet>
-
-		<snippet name="DailyChallenge">
-			<Panel class="DailyChallenge" >
-				<Label text="{s:challenge_text}" />
-				<ParticleProgressBar id="ChallengeProgress" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_level.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_level_complete.vpcf" />
-			</Panel>
-		</snippet>
-		
-		<snippet name="RewardLevel5">
-			<Panel class="RewardLineItem" >
-				<Panel id="MainRewardPanel" class="RewardLineItemImage">
-					<Label class="ComingSoonViolator" text="#DAC_ComingSoon"/>	
-				</Panel>
-				<Panel id="RewardLineItemPathIcon" />
-				<Button id="RewardLineItemClaimButton">
-					<Label text="#DAC_Rewards_Level"/>
-				</Button>
-			</Panel>
-		</snippet>
 	</snippets>
 	
 	<DACRewardsBattlePassPage hittest="false" class="DashboardPage">
-		<Panel id="ProtopassOverlay" />
-		<Panel id="BattlePassImage" />
-<!--		<Panel id="ProtopassContainer">-->
-		<Panel id="BottomRow">
-			<!--			<Label class="RewardLabel" text="#DAC_Rewards_Rewards"/>-->
-			<Panel id="RewardLineContainer">
-				<!-- <Button id="ScrollLeft" onactivate="ScrollPrevious()"/> -->
-				
-				<ParticleProgressBar id="MainProgress" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_progress_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_progress_bar_complete.vpcf" />
-				<DelayLoadList itemheight="350px" itemwidth="133px" spacersize="0px" spacerperiod="1" id="RewardLine">
-				</DelayLoadList >
+		<DACBattlePassRewardLine id="BattlePassRewardLine"/>
 
-				<!-- <Button id="ScrollRight" onactivate="ScrollNext()"/> -->
-			</Panel>
-		</Panel>
-		<Panel id="TopRow" hittest="false">
-
-			<Panel class="RewardsInfo">
-			    <Panel class="RewardsDesc">
-			    	<Label class="Header" text="#DAC_MainNav_SecretSociety" />
-			        <Label class="Intro" text="#DAC_Rewards_Intro"/>
-			        <Label class="Description" text="#DAC_Rewards_Description"/>
-			 	</Panel>         
-		 	</Panel>
- 
-			<Panel id="BattlePassProgressContainer">
-				<Panel id="BattlePassProgress">
-					<Panel id="PlayerBPBackgroundTop" />
-					<Panel class="PlayerProgressContainer">
-						<ParticleProgressBar id="PlayerProgress" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar_complete.vpcf" />
-					</Panel>
-					<Panel class="BPBottomRow">
-						<Panel id="PlayerBPBackgroundBottom" />
-						<Panel class="BPLevelProgressContainer">
-							<Label class="BattlePassCurrentLevelProgress" text="#DAC_Rewards_BPCurrentLevelProgress"/>
-
-							<Label class="BPXPLabel" text="#DAC_BP_XP" />
-						</Panel>
-					</Panel>
-				</Panel>
-				<Panel id="PlayerBPLevel">
-					<Label class="BPLevel" text="{d:current_level}" id="PlayerBPLevelGraphLevel" />
-				</Panel>
-			</Panel>
-
-		</Panel>
 		<Panel class="DashboardHeader">
-            <Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
-            <!--<Label class="PageTitle DistressedFont" text="#DAC_InGame_Heropedia"/>
-            <Label class="PageSubtitle" text="#DAC_Season_Subhead"/>-->
+            <Panel id="BackButton2" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'UL_UI.BattlePass_BackoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.BattlePass_BackoutRollover' )"/>
+            <!--<Label class="PageTitle HeadlineFont" text="#DAC_BattlePass"/>-->
         </Panel>
 	</DACRewardsBattlePassPage>
 </root>

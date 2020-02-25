@@ -1,28 +1,361 @@
 DACUIPuzzleRules
 {
-	background-color: #00000030;
-	padding: 20px 30px;
+	width: 420px;
 }
 
 #ActiveRules
 {
+	width: 100%;
 	flow-children: down;
 }
 
-.ActiveRule Label
+#ActiveRules .ActiveRule
 {
+	width: 100%;
+}
+
+#ActiveRules .Rule
+{
+	flow-children: right;
+
+	width: 100%;
+	min-height: 40px;
+	padding: 2px;
+
+	visibility: collapse;
+}
+
+.Invalid .Rule
+{
+	background-color: #FF000022;
+}
+
+#ActiveRules .Rule > Panel,
+#ActiveRules .Rule > Label
+{
+	vertical-align: center;
+}
+
+
+#ActiveRules .IsUnitCountLimit .Rule.UnitCountLimit,
+#ActiveRules .IsStarLimit .Rule.UnitStarLimit,
+#ActiveRules .IsBoardCostLimit .Rule.BoardCostLimit,
+#ActiveRules .IsItemCountLimit .Rule.ItemCountLimit,
+#ActiveRules .IsValidBoardPositions .Rule.ValidBoardPositions,
+#ActiveRules .IsCustom .Rule.CustomRule,
+#ActiveRules .IsAlliancePositive .Rule.AllianceRulePositive,
+#ActiveRules .IsAllianceNegative .Rule.AllianceRuleNegative,
+#ActiveRules .IsUnitPositive .Rule.UnitRulePositive,
+#ActiveRules .IsUnitNegative .Rule.UnitRuleNegative
+{
+	visibility: visible;
+}
+
+.Rule .ConditionContainer
+{
+	width: fill-parent-flow( 1.0 );
+	flow-children: down;
+}
+
+.Rule .Condition,
+.Rule .CurrentValue
+{
+	width: 100%;
+
+	vertical-align: center;
+
+	color: textBrighter;
 	font-size: 20px;
-	color: #FF0000;
-    margin-top: 6px;
-    margin-bottom: 6px;
+	font-weight: normal;
+
+	visibility: collapse;
+	text-overflow: shrink;
 }
 
-.ActiveRule.Satisfied Label
+
+
+.Rule .CurrentValue
 {
-	color: #FFFFFF;
+	color: #999;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 16px;
 }
 
-#PuzzleTopLeft .ActiveRule.Satisfied Label
-{
-	color: #44FF44;
+.Rule .Condition {
+	font-family: Radiance;
+	letter-spacing: 0px;
+	font-weight: normal;
 }
+
+
+
+
+.HasBoth .Rule .Condition.Both,
+.HasMax .Rule .Condition.High,
+.HasMin .Rule .Condition.Low,
+.HasNone .Rule .Condition.None
+{
+	visibility: visible;
+}
+
+.HasCurrent .Rule .CurrentValue
+{
+	visibility: visible;
+}
+
+/* ----------------------- */
+
+.Rule.BoardCostLimit .BoardCost 
+{
+	width: 40px;
+	height: 40px;
+
+	margin-right: 8px;
+
+	vertical-align: center;
+
+	background-image: url("file://{images}/hud/dac_shop_button_psd.vtex");
+	background-position: -2px 0px;
+	background-size: 120%;
+	background-repeat: no-repeat;
+}
+
+.Rule.BoardCostLimit .BoardCost Label
+{
+	vertical-align: center;
+	horizontal-align: center;
+
+	color: gradient(linear, 0% 0%, 0% 100%, from(#000), to(#956015));
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	margin-left: 3px;
+	margin-bottom: 0px;
+
+	height: 20px;
+
+}
+
+/* ----------------------- */
+
+.Rule.UnitCountLimit .UnitCount 
+{
+	width: 40px;
+	margin-right: 8px;
+	padding-left: 6px;
+
+	flow-children: right;
+}
+
+
+.Rule.UnitCountLimit .UnitCount .UnitCountIcon
+{
+	width: 18px;
+	height: 18px;
+
+	margin-top: 1px;
+	margin-left: -2px;
+
+	background-image: url("s2r://panorama/images/leaderboard/player_level_psd.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.Rule.UnitCountLimit .UnitCount .UnitCountLabel
+{
+	font-size: 18px;
+	font-weight: bold;
+	color: #BAD1FF;
+
+	margin-left: 2px;
+
+	vertical-align: center;
+}
+
+/* ----------------------- */
+
+.Rule.UnitStarLimit .UnitStar
+{
+	width: 40px;
+	margin-right: 8px;
+	padding-left: 6px;
+
+	flow-children: right;
+}
+
+.Rule.UnitStarLimit .UnitStar .UnitStarIcon
+{
+	width: 18px;
+	height: 18px;
+
+	margin-top: 1px;
+	margin-left: -2px;
+
+	background-image: url("s2r://panorama/images/hud/star_gradient_psd.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	wash-color: #95b9ff;
+	brightness: 2;
+
+	visibility: collapse;
+}
+
+.HasStarLimit1 .Rule.UnitStarLimit .UnitStar .UnitStarIcon.Star1
+{
+	margin-left: 6px;
+}
+
+.HasStarLimit1 .Rule.UnitStarLimit .UnitStar .UnitStarIcon.Star1,
+.HasStarLimit2 .Rule.UnitStarLimit .UnitStar .UnitStarIcon.Star1,
+.HasStarLimit2 .Rule.UnitStarLimit .UnitStar .UnitStarIcon.Star2
+{
+	visibility: visible;
+}
+
+.Rule.UnitCountLimit .UnitStar .UnitStarLabel
+{
+	font-size: 18px;
+	font-weight: bold;
+	color: #BAD1FF;
+
+	vertical-align: center;
+}
+
+/* ----------------------- */
+
+.Rule.ValidBoardPositions
+{
+	margin-right: 8px;
+
+	flow-children: right;
+}
+
+
+.Rule.ValidBoardPositions .PositionIcon
+{
+	width: 30px;
+	height: 30px;
+
+	margin-right: 13px;
+	margin-left: 5px;
+
+	background-image: url("s2r://panorama/images/hud/puzzle_position_icon_png.vtex"); 
+	background-size: 100% 100%;
+}
+
+/* ----------------------- */
+
+.Rule.ItemCountLimit .ItemCount 
+{
+	width: 40px;
+	margin-right: 8px;
+	padding-left: 6px;
+
+	flow-children: right;
+}
+
+
+.Rule.ItemCountLimit .ItemCount .ItemCountIcon
+{
+	width: 18px;
+	height: 18px;
+
+	margin-top: 1px;
+	margin-left: -2px;
+
+	background-image: url("s2r://panorama/images/hud/items_png.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 120%;
+}
+
+.Rule.ItemCountLimit .ItemCount .ItemCountLabel
+{
+	font-size: 18px;
+	font-weight: bold;
+	color: #dec0ff;
+
+	margin-left: 4px;
+
+	vertical-align: center;
+}
+
+/* ----------------------- */
+
+.Rule.CustomRule
+{
+	margin-right: 8px;
+
+	flow-children: right;
+}
+
+
+.Rule.CustomRule .CustomIcon
+{
+	width: 40px;
+	height: 40px;
+
+	margin-right: 8px;
+
+	background-image: url("s2r://panorama/images/control_icons/exclamation_png.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 20% 60%;
+
+	wash-color: #f8ff52;
+}
+
+/* ----------------------- */
+
+.Rule.AllianceRulePositive,
+.Rule.AllianceRuleNegative
+{
+	margin-right: 8px;
+
+	flow-children: right;
+}
+
+.Rule.AllianceRulePositive DACSynergyIcon,
+.Rule.AllianceRuleNegative DACSynergyIcon
+{
+	ui-scale: 37%;
+
+	margin-right: 8px;
+}
+
+/* ----------------------- */
+
+.Rule.UnitRulePositive,
+.Rule.UnitRuleNegative
+{
+	margin-right: 8px;
+
+	flow-children: right;
+}
+
+.Rule.UnitRulePositive Image,
+.Rule.UnitRuleNegative Image
+{
+	width: 32px;
+	height: 32px;
+	margin: 4px;
+
+	margin-right: 8px;
+}
+
+.Rule.UnitRuleNegative .Strikeout,
+.Rule.AllianceRuleNegative .Strikeout
+{
+	width: 100%;
+	height: 100%;
+
+	background-image: url("s2r://panorama/images/hud/synergy_slash_psd.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 80% 80%;
+}
+

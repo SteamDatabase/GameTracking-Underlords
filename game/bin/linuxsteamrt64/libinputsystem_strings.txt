@@ -57,7 +57,6 @@ $ORIGIN
 1
 10ConCommand
 10IAppSystem
-12CEmptyConVar
 12CInputSystem
 12CThreadEvent
 12IInputSystem
@@ -73,6 +72,7 @@ $ORIGIN
 16CDefaultAccessor
 17CInputStackSystem
 17IInputStackSystem
+18CPlaceholderConVar
 19IKeyValuesErrorSpew
 2
 20CPostConnectCallback
@@ -92,8 +92,11 @@ $ORIGIN
 <
 << NULL >>
 <NULL>
+<deferred>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 =
 >
 ?
@@ -125,6 +128,8 @@ A_WITH_DIAERESIS
 A_WITH_GRAVE
 A_WITH_RING_ABOVE
 A_WITH_TILDE
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Analog axis range before a button press is registered.
 AnimGraphEditorUtils001
 AnimationSystemUtils_001
@@ -178,14 +183,14 @@ COPYRIGHT_SIGN
 CRSEL
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
 CURRENCYSUBUNIT
@@ -357,6 +362,7 @@ InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 Intentionally vague touch behavior for %p
+Invalid access of deferred ConVarRef for '%s'
 J
 JOY1
 JOY10
@@ -982,6 +988,7 @@ joy_wingmanwarrior_turnhack
 joystick not found -- driver not present
 key_updatelayout
 keyc
+keyvalues.cpp
 l
 libc.so.6
 libinputsystem.so

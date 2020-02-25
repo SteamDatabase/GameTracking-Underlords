@@ -165,6 +165,7 @@ $tIsteamnetworkingsockets_sdr_p2p.cpp
 %8sSubject Unique ID:
 %8sVersion: %lu (0x%lx)
 %[0-9]-%[0-9]
+%d byte buffer not big enough; %d bytes required
 %d byte packet is too small
 %d consecutive session request timeouts at %s; marking address as failed.
 %d%+d/%d%+d
@@ -537,6 +538,8 @@ $tIsteamnetworkingsockets_sdr_p2p.cpp
 A
 A connection with that ID already exists.
 A file with this name is already in the pool.
+A listen socket handle was used where a poll group handle was expected
+A poll group handle was used where a listen socket handle was expected
 A protocol message was rejected because it was too big (more than
 A:
 AA Compromise
@@ -666,6 +669,7 @@ Assertion Failed: !data.m_bLast
 Assertion Failed: !g_mapConnections.IsValidIndex( idx )
 Assertion Failed: !g_mapListenSockets.IsValidIndex( idx )
 Assertion Failed: !g_mapP2PConnections.HasElement( key )
+Assertion Failed: !g_mapPollGroups.IsValidIndex( idx )
 Assertion Failed: !g_mapSharedClusterData[ hCluster ]->m_pConfig
 Assertion Failed: !g_sLauncherPartner.empty()
 Assertion Failed: !identityRemote.IsInvalid()
@@ -681,6 +685,8 @@ Assertion Failed: !m_pInt
 Assertion Failed: !m_pLast
 Assertion Failed: !m_pParentListenSocket
 Assertion Failed: !m_pPartner
+Assertion Failed: !m_pPollGroup
+Assertion Failed: !m_pPollGroup->m_vecConnections.HasElement( this )
 Assertion Failed: !m_pSocket
 Assertion Failed: !m_pTransport
 Assertion Failed: !m_senderState.m_mapInFlightPacketsByPktNum.empty()
@@ -723,6 +729,9 @@ Assertion Failed: (int)cbEncrypted <= k_cbSteamNetworkingSocketsMaxEncryptedPayl
 Assertion Failed: (int)cbEncrypted >= cbPlainText
 Assertion Failed: (links.m_pNext->*pMbrLinks).m_pPrev == this
 Assertion Failed: (links.m_pPrev->*pMbrLinks).m_pNext == this
+Assertion Failed: (pPrev->*pMbrLinks).m_pNext == pSuccessor
+Assertion Failed: (pPrev->*pMbrLinks).m_pQueue == pQueue
+Assertion Failed: (pSuccessor->*pMbrLinks).m_pQueue == pQueue
 Assertion Failed: *ita > va
 Assertion Failed: *itb > vb
 Assertion Failed: *pcubDecodedData
@@ -902,6 +911,7 @@ Assertion Failed: m_eTrust <= k_ETrust_NotTrusted
 Assertion Failed: m_fnCallback
 Assertion Failed: m_hConnectionSelf == k_HSteamNetConnection_Invalid
 Assertion Failed: m_hListenSocketSelf == k_HSteamListenSocket_Invalid
+Assertion Failed: m_hPollGroupSelf == k_HSteamNetPollGroup_Invalid
 Assertion Failed: m_heap.IsValidIndex(index)
 Assertion Failed: m_identityRemote.IsInvalid()
 Assertion Failed: m_idxServerMigrationTarget != m_vecActiveSessions[0]->m_pServer->m_idx
@@ -950,6 +960,7 @@ Assertion Failed: m_pParentListenSocket == nullptr
 Assertion Failed: m_pParentListenSocket == nullptr || m_pSteamNetworkingSocketsInterface == m_pParentListenSocket->m_pSteamNetworkingSocketsInterface
 Assertion Failed: m_pPartner
 Assertion Failed: m_pPartner->m_pPartner == nullptr
+Assertion Failed: m_pPollGroup && pMsg->m_linksSecondaryQueue.m_pQueue == &m_pPollGroup->m_queueRecvMessages
 Assertion Failed: m_pRawSock == nullptr
 Assertion Failed: m_pSock == nullptr
 Assertion Failed: m_pSock->GetRemoteHostAddr() == m_adr
@@ -1001,6 +1012,7 @@ Assertion Failed: m_vecAllRelaySessions.Count() == 0
 Assertion Failed: m_vecAllRelaySessions.Count() == i
 Assertion Failed: m_vecAllRelaySessions.Count() > 0
 Assertion Failed: m_vecAllRelaySessions.IsEmpty()
+Assertion Failed: m_vecConnections.Count() == i
 Assertion Failed: m_vecRoutes.empty()
 Assertion Failed: marker.m_nIndirectPing >= 0 && marker.m_nIndirectPing <= SteamNetworkPingLocationInternal_t::k_nMaxReasonablePing
 Assertion Failed: maxLen == 0 || pDest != NULL
@@ -1102,6 +1114,7 @@ Assertion Failed: pConn->m_identityRemote == identityRemote
 Assertion Failed: pConn->m_pMessagesSession == this
 Assertion Failed: pConn->m_pParentListenSocket == nullptr
 Assertion Failed: pConn->m_pParentListenSocket == this
+Assertion Failed: pConn->m_pPollGroup == this
 Assertion Failed: pConn->m_unConnectionIDRemote == msg.from_connection_id()
 Assertion Failed: pConv && pConv->GetDelimiterLength() > 0
 Assertion Failed: pData
@@ -1114,12 +1127,18 @@ Assertion Failed: pFormat != NULL
 Assertion Failed: pGlobal->m_bValueSet
 Assertion Failed: pGlobal->m_pInherit == nullptr
 Assertion Failed: pHdr
+Assertion Failed: pInsertBefore->m_linksSecondaryQueue.m_pQueue == &pPollGroup->m_queueRecvMessages
 Assertion Failed: pKey->m_eTrust != k_ETrust_UnknownWorking
 Assertion Failed: pKey->m_eTrust != k_ETrust_UnknownWorking && pKey->m_eTrust != k_ETrust_Unknown
 Assertion Failed: pKey->m_eTrust == k_ETrust_Revoked
+Assertion Failed: pMsg != m_queueRecvMessages.m_pFirst
 Assertion Failed: pMsg->SNPSend_IsReliable()
 Assertion Failed: pMsg->SNPSend_ReliableStreamPos() > 0
 Assertion Failed: pMsg->m_identityPeer == identityRemote
+Assertion Failed: pMsg->m_links.m_pQueue != nullptr
+Assertion Failed: pMsg->m_links.m_pQueue == &m_queueRecvMessages
+Assertion Failed: pMsg->m_linksSecondaryQueue.m_pQueue == &m_pPollGroup->m_queueRecvMessages
+Assertion Failed: pMsg->m_linksSecondaryQueue.m_pQueue == &m_queueRecvMessages
 Assertion Failed: pMsg->m_linksSecondaryQueue.m_pQueue == nullptr
 Assertion Failed: pMsg->m_nChannel >= 0
 Assertion Failed: pMsg->m_nMessageNumber > m_pLast->m_nMessageNumber
@@ -1139,8 +1158,10 @@ Assertion Failed: pPrimarySession->m_pServer->m_stats.m_usecTimeLastRecv > 0
 Assertion Failed: pPublicKey->GetKeyType() == k_ECryptoKeyTypeKeyExchangePublic
 Assertion Failed: pPublicKey->GetKeyType() == k_ECryptoKeyTypeSigningPublic
 Assertion Failed: pQueue->m_pFirst
+Assertion Failed: pQueue->m_pFirst != pSuccessor
+Assertion Failed: pQueue->m_pFirst == pSuccessor
+Assertion Failed: pQueue->m_pLast
 Assertion Failed: pRelay->m_stats.m_nMaxRecvPktNum > 0
-Assertion Failed: pResult && pResult->m_hListenSocketSelf == sock
 Assertion Failed: pResult->m_identityRemote == identityRemote
 Assertion Failed: pResult->m_links.m_pPrev == nullptr
 Assertion Failed: pResult->m_links.m_pQueue == this
@@ -1534,6 +1555,7 @@ CMS_SharedInfo
 CMS_SignedData
 CMS_SignerIdentifier
 CMS_SignerInfo
+CMsgSteamDatagramCertificateSigned failed protobuf parse
 CMsgSteamDatagramClientPingSampleRequest
 CMsgSteamDatagramConnectOK
 CMsgSteamDatagramConnectRequest
@@ -1646,10 +1668,12 @@ Cannot find session to mark as MRU!
 Cannot locate connection by handle to process connect request?
 Cannot post failure callback for non-SteamID-based P2P
 Cannot request a cert; we don't know our SteamID (yet?).
+Cannot set cert.  No private key?
 Cannot talk to any relays. Check Internet connection
 Cannot use specific IP address.
 Cert allows POPID %s, but CA trust chain does not
 Cert allows appid %u, but CA trust chain does not
+Cert does not authorize us for App %u
 Cert expired %d seconds ago.  Discarding and requesting another
 Cert expired %lld seconds ago
 Cert expires in %d seconds.  Not requesting another
@@ -1658,8 +1682,11 @@ Cert failed protobuf decode
 Cert failed protobuf parse
 Cert failure %d: %s
 Cert failure: %s
+Cert has invalid identity.  %s
+Cert has invalid public key
 Cert has no expiry
 Cert is bound to particular identity; doesn't go in the cert store
+Cert is for identity '%s'.  We are '%s'
 Cert is not authorized for POPID %s, only %s
 Cert is not authorized for POPID %s, only %s (and %d more)
 Cert is not authorized for appid %u, only %u
@@ -1668,6 +1695,7 @@ Cert is not restricted by POPID, by CA trust chain is, and does not authorize %s
 Cert is not restricted by appid, by CA trust chain is, and does not authorize %u
 Cert isn't a valid PEM-like text block
 Cert must be bound to an AppID.
+Cert public key does not match our private key
 Cert request for %s failed with reason code %d.  %s
 Cert request returned invalid cert
 Cert request returned invalid key type %d
@@ -1747,6 +1775,7 @@ Couldn't parse default value "
 CreateHostedDedicatedServerListenSocket should be called through a gameserver's ISteamSocketNetworking
 CreateListenSocketIP
 CreateListenSocketP2P
+CreatePollGroup
 CreateSocketPair
 Created
 CrlID
@@ -1800,8 +1829,10 @@ DataPacket
 DataRouterToClient
 Dec
 Decipher Only
+Deduced universe %d from certificate
 Default value for an enum field must be an identifier.
 Destroy() not used properly
+DestroyPollGroup
 Dg*
 Didn't find quality metrics for old primary?
 Didn't send valid connection ID
@@ -2084,6 +2115,7 @@ Generator (compressed):
 Generator (hybrid):
 Generator (uncompressed):
 GetBool
+GetCertificateRequest
 GetConfigValue
 GetConnectionInfo
 GetConnectionName
@@ -2180,6 +2212,7 @@ Ig*
 Ignored bad %s from %s.  %s
 Ignoring P2P CMsgSteamDatagramConnectRequest from %s; can't get NetworkingMessages interface!
 Ignoring P2P CMsgSteamDatagramConnectRequest from %s; missing required fields
+Ignoring P2P CMsgSteamDatagramConnectRequest from %s; we're not listening on virtual port %d
 Ignoring P2P connect request through Steam backend from %s; no virual_port!
 Ignoring P2P connect_ok from %s, since they initiated the connection
 Ignoring P2P connection request from %s.  We cannot accept it since we don't have a cert from Steam yet!
@@ -2226,6 +2259,7 @@ Integer out of range.
 Internal P2P message from %s is %d bytes; that's not big enough for the header!
 Internal callback failure
 Internal error accepting connection.  %s
+Internal error accepting connection.  Can't get NetworkingMessages interface
 Internal order of operations bug.  Can't create socket, because low level systems not initialized
 International Organizations
 Interpreting non ascii codepoint %d.
@@ -2314,6 +2348,7 @@ Listening for SDR relayed traffic on UDP port %d (virtual port %d).
 Loaded network config revision %d OK
 Loaded network config revision %d from '%s' as per SDR_NETWORK_CONFIG
 Loaded revision %d OK
+Local identity established from certificate.  We are '%s'
 Local routes: %s
 LocalKeySet
 LogLevel_AckRTT
@@ -2411,7 +2446,6 @@ MutableRepeatedMessage
 N
 N25SteamNetworkingSocketsLib13CPacketLaggerE
 N25SteamNetworkingSocketsLib13CSharedSocket10RemoteHostE
-N25SteamNetworkingSocketsLib15CSDRHTTPRequestE
 N25SteamNetworkingSocketsLib15IBoundUDPSocketE
 N25SteamNetworkingSocketsLib16LinkStatsTrackerINS_24LinkStatsTrackerEndToEndEEE
 N25SteamNetworkingSocketsLib16LinkStatsTrackerINS_27LinkStatsTrackerRelayClientEEE
@@ -2437,6 +2471,7 @@ N25SteamNetworkingSocketsLib27CSteamNetworkConnectionPipeE
 N25SteamNetworkingSocketsLib27LinkStatsTrackerRelayClientE
 N25SteamNetworkingSocketsLib28CSteamNetworkListenSocketP2PE
 N25SteamNetworkingSocketsLib29CSteamNetworkConnectionP2PSDRE
+N25SteamNetworkingSocketsLib29CSteamNetworkListenSocketBaseE
 N25SteamNetworkingSocketsLib30CSteamNetworkingUtilsSteamBaseE
 N25SteamNetworkingSocketsLib30SteamNetworkingMessagesSessionE
 N25SteamNetworkingSocketsLib31CSteamNetworkingSocketsCallbackI23SteamServersConnected_tEE
@@ -2620,7 +2655,6 @@ Not from trusted address; dropped
 Not in manual poll mode!
 Not initialized
 Not initialized!
-Not listening for P2P on that virtual port
 Note that enum values use C++ scoping rules, meaning that enum values are siblings of their type, not children of it.  Therefore, "
 Nov
 Numbers starting with leading zero must be in octal.
@@ -2818,6 +2852,7 @@ Pinging %s (%s).
 Pkt number lurch by %lld; %04x->%04x
 Policy Qualifier CPS
 Policy Qualifier User Notice
+Poll group handle bookkeeping bug!
 Polynomial:
 Pop ID '%s' appears more than once in the config.  (Possibly as an alias.)
 Port failure on %s was %.1fs ago.  Discarding record of failure on that port, might try again.
@@ -2830,6 +2865,7 @@ Prime:
 Private
 Private Key
 Private key doesn't match public key from cert
+Private key mismatch
 Private-Key: (%d bit)
 Privilege Withdrawn
 Probe
@@ -2903,7 +2939,7 @@ Reached an unintended state: CPPTYPE_MESSAGE
 Reading dangerously large protocol message.  If the message turns out to be larger than
 ReceiveMessagesOnChannel
 ReceiveMessagesOnConnection
-ReceiveMessagesOnListenSocket
+ReceiveMessagesOnPollGroup
 Received %s from %s using active connection ID %u, but we didn't know about a session on that relay for this connection.  Dropped without reply.
 Received %s from %s using incorrect/stale connection ID %u.  Dropped without reply due to global spam reply rate limit.
 Received %s from %s using incorrect/stale connection ID %u.  Rejecting wth NoConnection reply.
@@ -3106,8 +3142,11 @@ Session Idle Timeout
 SessionRequestCheck
 SetAllocatedMessage
 SetBool
+SetCertificate
+SetCertificate: We are not currently able to verify our own cert!  %s.  Continuing anyway!
 SetConfigValue
 SetConnectionName
+SetConnectionPollGroup
 SetConnectionUserData
 SetDouble
 SetEnum
@@ -3129,6 +3168,7 @@ SetUInt64
 Should be called through a gameserver's ISteamSocketNetworking
 Should not be called before calling SteamDatagramServer_Init.
 Shouldn't be receiving this unless on accepted connections, only connections initiated locally.
+Shouldn't be sending end-to-end connect request!  Connection was initiated remotely!
 Shouldn't need to ask this question
 Shutting down low level socket/threading support.
 Signature Algorithm:
@@ -3172,7 +3212,6 @@ SteamAPI_ISteamNetworkingSockets_GetListenSocketAddress
 SteamAPI_ISteamNetworkingSockets_GetQuickConnectionStatus
 SteamAPI_ISteamNetworkingSockets_InitAuthentication
 SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnConnection
-SteamAPI_ISteamNetworkingSockets_ReceiveMessagesOnListenSocket
 SteamAPI_ISteamNetworkingSockets_ReceivedRelayAuthTicket
 SteamAPI_ISteamNetworkingSockets_RunConnectionStatusChangedCallbacks
 SteamAPI_ISteamNetworkingSockets_SendMessageToConnection
@@ -3231,7 +3270,9 @@ SteamDatagramServer_Init
 SteamDatagramServer_Init called more than once.
 SteamDatagramServer_Init_InternalV2
 SteamDatagramServer_Kill
+SteamDatagram_GetNetworkConfigURL
 SteamDatagram_InitClient called more than once.
+SteamDatagram_SetNetworkConfig
 SteamGameServer012
 SteamGameServerNetworkingMessages_Lib
 SteamGameServerNetworkingSockets_Lib
@@ -3249,6 +3290,8 @@ SteamNetworkingSocketsRecvP2PFailure_t with unknown failure code
 SteamNetworkingSocketsSerialized003
 SteamNetworkingSockets_Lib
 SteamNetworkingSockets_Poll
+SteamNetworkingSockets_SetLockAcquiredCallback
+SteamNetworkingSockets_SetLockWaitWarningThreshold
 SteamNetworkingSockets_SetManualPollMode
 SteamNetworkingSockets_SteamNetworkingIPAddr_ParseString
 SteamNetworkingSockets_SteamNetworkingIPAddr_ToString
@@ -3448,6 +3491,7 @@ We shouldn't get this callback after being canceled!
 We're not logged into Steam
 Weird RouterPingReply timestamps from %s.  Reply contained %u, current is %u (elapsed %d)
 Why are making API calls on this connection?
+Why are we asking this?
 X
 X400Name
 X400Name:<unsupported>

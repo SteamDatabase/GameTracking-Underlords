@@ -9,32 +9,101 @@
 	<snippets>
 		<snippet name="EquippableItem">
 			<Panel class="EquippableItem" >
-				<Label class="EquipText" text="{s:reward_name}"/>
+				<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" class="RewardLineItemImage" hittest="true" use_3D_preview="false" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" preview_model_scale="1" enable_sound_effects="false" use_portrait_camera="true" />				
+				<Label class="EquipText HeadlineFont" text="{s:reward_name}"/>
 				<Button id="EquipButton">
-					<Label class="EquipLabel" text="#DAC_LoadoutEquip"/>
-					<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+					<Panel class="EquipLabelContainer">
+						<Panel id="EquippedPipContainer"/>
+						<Label class="EquipLabel" text="#DAC_LoadoutEquip"/>
+						<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+					</Panel>	
 				</Button>
+				<Panel class="LockIcon" />
+				<Panel id="GrantButton">
+					<Label text="GRANT" />
+				</Panel>
 			</Panel>
 		</snippet>
 
 		<!-- snippets with names that match classes in items_prefabs.txt will be used over default item above, if provided -->
 		<snippet name="flag_base">
 			<Panel class="EquippableItem" >
-				<Label class="EquipText" text="{s:reward_name}"/>
+				<Label class="EquipText HeadlineFont" text="{s:reward_name}"/>
 				<Button id="EquipButton">
-					<Label class="EquipLabel" text="#DAC_LoadoutEquip"/>
-					<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+					<Panel class="EquipLabelContainer">
+						<Panel id="EquippedPipContainer"/>
+						<Label class="EquipLabel" text="#DAC_LoadoutEquip"/>
+						<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+					</Panel>	
 				</Button>
 			</Panel>
-		</snippet>		
+		</snippet>
+
+		<snippet name="poster_title">
+			<Panel class="EquippableItem" >
+				<DACWantedPosterTitle id="RewardPreviewScenePanel"/>				
+				<Button id="EquipButton">
+					<Panel class="EquipLabelContainer">
+						<Panel id="EquippedPipContainer"/>
+						<Label class="EquipLabel" text="#DAC_LoadoutEquip"/>
+						<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+					</Panel>	
+				</Button>
+				<Panel class="LockIcon" />
+				<Panel id="GrantButton">
+					<Label text="GRANT" />
+				</Panel>
+			</Panel>
+		</snippet>
+
+		<snippet name="wanted_poster">
+			<Panel class="EquippableItem" >
+				<Panel id="PosterFrame"/>
+				<Panel id="PosterBG"/>
+				<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" class="WantedPosterImage RewardLineItemImage" hittest="true" use_3D_preview="false" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" preview_model_scale="1" enable_sound_effects="false" use_portrait_camera="true" />				
+				<Button id="EquipButton">
+					<Panel class="EquipLabelContainer">
+						<Panel id="EquippedPipContainer"/>
+						<Label class="EquipLabel" text="#DAC_LoadoutEquip"/>
+						<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+					</Panel>	
+				</Button>
+				<Panel class="LockIcon" />
+				<Panel id="GrantButton">
+					<Label text="GRANT" />
+				</Panel>
+			</Panel>
+		</snippet>
+
 	</snippets>
 
 	<DACEquipControl>
-		<Panel id="EquippableItemContainer">
-			<!-- filled in through code with snippet "EquippableItem" -->
+		<Panel class="ContentContainer">
+			<Panel id="CurrentlyEquipped">
+				<Panel id="BattlepassBackgroundImage" />
+				<Panel id="CurrentPosterFrame"/>
+				<Panel id="CurrentPosterBG"/>
+				<DACRewardPreviewScenePanel hittest="true" id="EquippedItemPreview" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" use_portrait_camera="true" camera_set="EquipmentPanelCamera" use_portrait_lighting="true" use_portrait_backgrounds="false" >					
+					<DACParticleScenePanel id="LoadoutFX" hittest="false" startActive="true" cameraLeft="0" cameraUp="90" fov="-250" />
+					<Label class="EquippedItemLabel HeadlineFont" text="{s:reward_name}"/>
+				</DACRewardPreviewScenePanel>
+			</Panel>
+			<Panel id="EquippableItemContainer">
+				<!-- filled in through code with snippet "EquippableItem" -->
+			</Panel>
 		</Panel>
-		<Panel id="EquippableItemContainer">
-			<!-- filled in through code with snippet "EquippableItem" -->
+		<Panel class="Footer">
+			<Button id="EquipSelectionButton">
+				<Label class="EquipItemButtonLabel" text="#DAC_LoadoutEquip"/>
+			</Button>
+			<Panel class="PaginationContainer">
+				<Panel class="ArrowLeft" onactivate="DACEquipControlPageLeft()" />
+				<Panel id="PageNum">
+					<Label class="PageNumbers HeadlineFont" text="{d:page_current} / {d:page_total}" />
+				</Panel>
+				<Panel class="ArrowRight"  onactivate="DACEquipControlPageRight()" />
+			</Panel>
 		</Panel>
+
 	</DACEquipControl>
 </root> 

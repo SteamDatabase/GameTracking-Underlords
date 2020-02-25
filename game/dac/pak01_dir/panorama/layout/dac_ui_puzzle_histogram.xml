@@ -1,0 +1,88 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_hud.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_puzzle_histogram.vcss_c" />
+	</styles>
+
+	<snippets>
+		<snippet name="LeaderboardEntry">
+			<Panel class="LeaderboardEntryContainer">
+				<Label class="Name" text="{g:dac_persona:b:account_id}" html="true"/>
+				<Label class="Score" text="{i:score}"/>
+			</Panel>
+		</snippet>
+		<snippet name="HistogramBar">
+			<Panel class="HistogramBar">
+				<Panel id="BarUpper" class="SubBar"/>
+				<Panel id="BarLower" class="SubBar"/>
+			</Panel>
+		</snippet>
+		<snippet name="HistogramEdge">
+			<Panel class="HistogramEdge">
+				<Panel id="SpacerUpper" class="Spacer"/>
+				<Panel id="Edge" class="Spacer"/>
+				<Panel id="SpacerLower" class="Spacer"/>
+			</Panel>
+		</snippet>
+
+
+	</snippets>
+
+	<DACPuzzleHistogram>
+		<Panel class="Tabs">
+			<Label class="Tab NetWorth First" text="#DAC_InGame_Puzzle_NetWorth" onactivate="DACPuzzleHistogramSelectTab(1)"/>
+			<Label class="Tab Duration" text="#DAC_InGame_Puzzle_Duration" onactivate="DACPuzzleHistogramSelectTab(2)"/>
+			<!--Label class="Tab Survival" text="#DAC_InGame_Puzzle_Survival" onactivate="DACPuzzleHistogramSelectTab(3)"/-->
+			<Label class="Tab Units Last" text="#DAC_InGame_Puzzle_Units" onactivate="DACPuzzleHistogramSelectTab(4)"/>
+		</Panel>
+		<Panel class="ScoreContainer">
+			<Label class="Score NetWorth" text="#DAC_InGame_Stat_BestNetWorth"/>
+			<Label class="Score Duration" text="#DAC_InGame_Stat_BestDuration"/>
+			<!--Label class="Score Survival" text="#DAC_InGame_Stat_BestSurvival"/-->
+			<Label class="Score Units" text="#DAC_InGame_Stat_BestUnits"/>
+		</Panel>
+		<Panel class="BottomContainer">
+			<Panel class="HistogramContainer">
+				<Panel class="Header">
+					<Label text="#DAC_Puzzle_Histogram"/>
+				</Panel>
+				<Panel id="HistogramNetWorth" class="Histogram">
+					<!-- Dynamically filled with histogram stuff-->
+				</Panel>
+				<Panel id="HistogramDuration" class="Histogram">
+					<!-- Dynamically filled with histogram stuff-->
+				</Panel>
+				<Panel id="HistogramSurvival" class="Histogram">
+					<!-- Dynamically filled with histogram stuff-->
+				</Panel>
+				<Panel id="HistogramUnits" class="Histogram">
+					<!-- Dynamically filled with histogram stuff-->
+				</Panel>
+				<Panel class="HistogramValueContainer">
+					<Label class="Min Value" text="{i:min_value}"/>
+					<Label class="Max Value" text="{i:max_value}"/>
+				</Panel>
+			</Panel>
+			<Panel class="LeaderboardContainer">
+				<Panel class="Header">
+					<Label text="#DAC_Puzzle_Leaderboard"/>
+				</Panel>
+				<Panel id="LeaderboardNetWorth" class="Leaderboard">
+					<!-- Dynamically filled with leaderboard entries-->
+				</Panel>
+				<Panel id="LeaderboardDuration" class="Leaderboard">
+					<!-- Dynamically filled with leaderboard entries-->
+				</Panel>
+				<Panel id="LeaderboardSurvival" class="Leaderboard">
+					<!-- Dynamically filled with leaderboard entries-->
+				</Panel>
+				<Panel id="LeaderboardUnits" class="Leaderboard">
+					<!-- Dynamically filled with leaderboard entries-->
+				</Panel>
+			</Panel>
+		</Panel>
+	</DACPuzzleHistogram>
+
+</root>

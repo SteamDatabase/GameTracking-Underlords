@@ -89,10 +89,11 @@ $ORIGIN
 ...
 ../public/ordered_constructor.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utlsymbol.h
+../public/tier1/utltshash.h
 10ConCommand
 10IAppSystem
 11CSchemaType
-12CEmptyConVar
 12CThreadEvent
 13CSchemaSystem
 13ISchemaSystem
@@ -104,6 +105,7 @@ $ORIGIN
 15CTier2AppSystemI13ISchemaSystemLi0EE
 16CDefaultAccessor
 16ICommandCallback
+18CPlaceholderConVar
 18CSchemaType_Atomic
 19CSchemaRegistration
 19CSchemaType_Builtin
@@ -130,11 +132,15 @@ $ORIGIN
 6ConVar
 7IConVar
 8CFmtStrNILi256ELb0EE
+::
 <!--
 <No schema binary for binding>
 <No schemasystem>
+<deferred>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 <unknown>
 =
 A->B
@@ -174,6 +180,8 @@ ANIMATION_TYPE_FIT_LIFETIME
 ANIMATION_TYPE_FIXED_RATE
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
 AbsolutePoseControl
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Alignment: %d bytes%s
 AnimAddLayer
 AnimAlign
@@ -224,6 +232,8 @@ BreakPieceEmbedded
 BreakPieceExternal
 C->D
 C->E
+CAnimMotorList
+CAnimMovementManager
 CAuthPhysBody
 CAuthPhysJoint
 CBitVec
@@ -256,14 +266,14 @@ CSchemaType
 CSplitScreenSlot
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
 CUtlIncrementalVector
@@ -498,6 +508,7 @@ InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 InstallSchemaClassBinding
 Intentionally vague touch behavior for %p
+Invalid access of deferred ConVarRef for '%s'
 Invalid data for member '%s'
 Invalid data.
 Invalid header
@@ -606,6 +617,7 @@ Plat_GetEnv
 Plat_GetModuleProcAddress
 Plat_IsInDebugSession
 Plat_LoadModule
+Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_UUIDFromString
 Plat_UUIDToString
@@ -866,6 +878,7 @@ anim_name_a
 anim_name_b
 animationsystem
 animgraph0
+animgraph1
 archive
 attach_point
 attachment
@@ -1015,6 +1028,7 @@ m_JointConstraintPairs
 m_JointName
 m_Joints
 m_LiteralColor
+m_MotorList
 m_Name
 m_Operators
 m_PreEmissionOperators
@@ -1120,6 +1134,7 @@ m_nVectorComponent
 m_pBody
 m_pJointConstraintData
 m_pKeyValues
+m_pMovementManager
 m_pParent
 m_pszSnapshotName
 m_snapshotName
@@ -1225,7 +1240,6 @@ relative_origin
 renderingpipelines
 replicated
 resource
-resourcefile
 resourcesystem
 rnd_down
 rnd_up
@@ -1251,6 +1265,7 @@ schemaclassinfo.cpp
 schemalib
 schemamismatchreport.cpp
 schemasystem
+schemasystem.h
 schematype.cpp
 secondary
 sequence_name
@@ -1288,6 +1303,7 @@ unsigned char
 use_additional_offset
 user
 utlstring.cpp
+utlsymbol.cpp
 vanmgrph
 version
 vmdl

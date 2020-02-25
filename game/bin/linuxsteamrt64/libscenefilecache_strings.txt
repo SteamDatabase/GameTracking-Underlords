@@ -30,10 +30,10 @@ $ORIGIN
 ../../public/tier1/utlleanvector.h
 ../../public/tier1/utlrbtree.h
 ../public/ordered_constructor.h
+../public/tier1/utlsymbol.h
 .vcd
 10IAppSystem
 11CRefCountedI20CRefCountServiceBaseILb1E6CRefMTEE
-12CEmptyConVar
 12CThreadEvent
 14CBaseAppSystemI10IAppSystemE
 14CBaseAppSystemI15ISceneFileCacheE
@@ -51,6 +51,7 @@ $ORIGIN
 16CDefaultAccessor
 17CChoreoStringPool
 17IChoreoStringPool
+18CPlaceholderConVar
 19CGameResponseSystem
 19CSchemaRegistration
 20CPostConnectCallback
@@ -72,8 +73,11 @@ $ORIGIN
 7IConVar
 8CFmtStrNILi1024ELb0EE
 <%s%.3f
+<deferred>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 <unknown>
 =
 >%s%.3f
@@ -84,6 +88,8 @@ AGResp_%s_%d
 AGRule_%s
 AI_ResponseSystem:  Unxpected TokenWaiting() with NULL buffer in %s
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 AddToTailGetPtr
 AnimGraphEditorUtils001
 AnimationSystemUtils_001
@@ -120,14 +126,14 @@ CResponseSystem::LoadFromFile took %f msec
 CSoundEmitterSystem:  Unknown sound level %s
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
 CTransform
@@ -218,6 +224,7 @@ InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 Intentionally vague touch behavior for %p
+Invalid access of deferred ConVarRef for '%s'
 KeyValueCache001
 Kochanek-Bartels
 Kochanek-Bartels Early
@@ -536,6 +543,7 @@ binary_auto
 binary_bc
 binary_lz4
 bspline
+cancel_existing
 catmullrom
 catmullrom_normalize
 catmullrom_normalize_x
@@ -543,6 +551,7 @@ catmullrom_tangent
 cheat
 client
 clientcmd_can_execute
+conceptpriority
 configvalue.cpp
 criteria
 criterion
@@ -619,6 +628,7 @@ memset
 min. %f
 nodelay
 none
+nopriority
 norepeat
 noscene
 notconnected
@@ -677,6 +687,7 @@ stop_on_nonidle
 strchr
 strcmp
 strcpy
+stringpool.cpp
 strlen
 targetclassname
 then
@@ -684,6 +695,7 @@ thensimple
 typeinfo for CThreadSyncObject
 user
 utlstring.cpp
+utlsymbol.cpp
 vtable for __cxxabiv1::__class_type_info
 vtable for __cxxabiv1::__si_class_type_info
 vtable for __cxxabiv1::__vmi_class_type_info

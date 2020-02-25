@@ -1,0 +1,339 @@
+DACPlayButton
+{
+    visibility: collapse;
+    //transform: rotateZ(-3deg);
+    z-index: 100;
+    vertical-align: bottom;
+    margin-top: 180px;
+
+    width: 100%;
+    height: 100%;
+}
+.Page_DACHomePage DACPlayButton,
+.Page_DACPlayPage DACPlayButton,
+{
+    visibility: visible;
+}
+DACPlayButton.Disabled
+{
+    visibility: collapse;
+}
+
+DACPlayButton.HomeType_Reconnect,
+DACPlayButton.HomeType_Resume,
+{
+    margin-top: 100px;
+}
+
+.ButtonContainer
+{
+    width: fit-children;
+    height: fit-children;
+    horizontal-align: right;
+    visibility: collapse;
+}
+#HomeButtonContainer
+{
+    flow-children: down;
+}
+.PageName_Home #HomeButtonContainer,
+.PageName_Play #PlayButtonContainer,
+{
+    visibility: visible;
+}
+
+.PlayButton
+{
+    horizontal-align: right;
+	opacity: 1;
+	transition-property: brightness;
+	transition-duration: .2s; 
+    background-size: 100%;
+    transition-property: background-image, max-width, brightness;
+    transition-duration: 0.2s;
+    visibility: collapse;
+    background-image: url("s2r://panorama/images/dashboard/fight_btn_bg_psd.vtex"); 
+    background-size: cover;
+    height: 200px;
+    width: 600px;
+    margin-right: 40px;
+}
+
+.PageName_Home .PlayButton
+{
+    horizontal-align: right;
+    max-width: 700px;
+    opacity: 1;
+    transition-property: brightness, transform;
+    transition-duration: .2s;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.AspectRatio4x3 .PlayButton
+{
+    max-width: 800px;
+}
+
+.PlayButton:hover
+{
+    brightness: 2.0;
+}
+
+.MoveUp {
+	transition-property: transform, brightness;
+	transition-duration: 0.2s;
+}
+
+.MoveUp:hover {
+	transform: translateY(-3px);
+}
+
+.Disabled.PlayButton
+{
+    visibility: collapse;
+}
+
+.HomeType_Reconnect #ReconnectButton,
+.HomeType_Reconnect #LeaveButton,
+.HomeType_Play #HomePlayButton,
+.HomeType_Resume #ResumeGameLabel,
+.HomeType_Resume #ResumeButton,
+.HomeType_Resume #LeaveButton,
+{
+    visibility: visible;
+}
+
+.AspectRatio21x9 .PlayButton
+{
+    max-width: 800px;
+}
+
+.DuoPartyState_Ready.SelectedModeDuos .PlayButton,
+.DuosMatchTypeBots.SelectedModeDuos .PlayButton
+{
+	background-image: url("s2r://panorama/images/dashboard/play/play_button_find_match_psd.vtex");
+}
+
+.PlayType_Play #GamePlayButton,
+.PlayType_InviteFriend #GamePlayButton,
+.PlayType_Resume #SaveGamePlayButton,
+.PlayType_NewGame #SaveGamePlayButton,
+.PlayMode_Training #TrainingPlayButton,
+.NotConnectedToGC .PlayType_Play:not(.PlayType_SoloBot) #SignInPlayButton,
+.NotConnectedToGC .PlayType_InviteFriend #SignInPlayButton
+{
+    visibility: visible;
+}
+
+.FindMatchLabel, .BeginMatchLabel, .InviteFriendLabel, .StartLabel, .SaveGameLabel, .HomeLabel, .SignInLabel
+{
+    font-size: 80px;
+    font-weight: black;
+    letter-spacing: 1px;
+    vertical-align: center;
+    horizontal-align: center;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+    text-overflow: shrink;
+    overflow: noclip;
+    height: fit-children;
+    transition-property: brightness;
+    transition-duration: .2s;
+    //opacity-mask: url("s2r://panorama/images/dashboard/homebutton_mask_psd.vtex");
+    visibility: collapse;
+    padding: 44px 0px 30px 0px;
+    text-shadow: 2px 2px 3.0 #1f296188;
+    width: 460px;
+}
+
+.HomeLabel
+{
+    padding-top: 36px;
+    font-size: 100px;
+}
+.HasSafeAreaRight .FindMatchLabel, .HasSafeAreaRight .BeginMatchLabel, .HasSafeAreaRight .InviteFriendLabel, .HasSafeAreaRight .StartLabel, .HasSafeAreaRight .SaveGameLabel, .HasSafeAreaRight .HomeLabel, .HasSafeAreaRight .SignInLabel
+{
+
+}
+
+
+.PlayType_Play.PlayType_Multiplayer_Casual .FindMatchLabel,
+.PlayType_Play.PlayType_Multiplayer_Ranked .FindMatchLabel,
+.PlayType_SoloBot .BeginMatchLabel,
+.PlayType_Training .StartLabel,
+.PlayType_Resume #ResumeGameLabel,
+.PlayType_NewGame #NewGameLabel,
+.PlayType_InviteFriend .InviteFriendLabel,
+.HomeLabel,
+.NotConnectedToGC .PlayType_Multiplayer_Casual .SignInLabel,
+.NotConnectedToGC .PlayType_Multiplayer_Ranked .SignInLabel,
+{
+    visibility: visible;
+}
+.NotConnectedToGC .PlayType_InviteFriend .InviteFriendLabel,
+.NotConnectedToGC .PlayType_Play.PlayType_Multiplayer_Ranked .FindMatchLabel,
+.NotConnectedToGC .PlayType_Play.PlayType_Multiplayer_Casual .FindMatchLabel,
+{
+    visibility: collapse;
+}
+
+.AspectRatio4x3 .FindMatchLabel, .AspectRatio4x3 .BeginMatchLabel, .AspectRatio4x3 .InviteFriendLabel, .AspectRatio4x3 .StartLabel
+{
+    ui-scale: 116%;
+    max-width: 800px;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 .FindMatchLabel, .IsLayoutSmallScreen.AspectRatio21x9 .BeginMatchLabel, .IsLayoutSmallScreen.AspectRatio21x9 .InviteFriendLabel, .IsLayoutSmallScreen.AspectRatio21x9 .StartLabel
+{
+    //margin-right: safe-area-inset-right;
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .FindMatchLabel, .IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .BeginMatchLabel, .IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .InviteFriendLabel, .IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .StartLabel
+{
+    //margin-right: safe-area-inset-right;
+}
+
+.AspectRatio21x9 .FindMatchLabel, .AspectRatio21x9 .BeginMatchLabel, .IsLayoutSmallScree.AspectRatio21x9 .InviteFriendLabel, .AspectRatio21x9 .StartLabel
+{
+    //margin-right: 80px;
+}
+
+.DuoPartyState_Ready #DuosFindMatchLabel,
+{
+    visibility: visible;
+}
+
+#LockedLabelContainer,
+{
+    height: 64px;
+    width: fit-children;
+    vertical-align: bottom;
+    horizontal-align: right;
+}
+.PageName_Home #LockedLabelContainer,
+{
+    visibility: collapse;
+}
+
+.LockedLabel, .LoginRequired
+{
+    color: #c13939;
+    font-weight: black;
+    text-transform: uppercase;
+    font-size: 24px;
+    visibility: collapse;
+    horizontal-align: right;
+    text-align: right;
+    margin-right: 32px;
+}
+
+#DuosLockedLabel
+{
+    color: textDark;
+}
+
+.HasSafeAreaRight .LockedLabel, .HasSafeAreaRight .LoginRequired
+{
+    margin-right: safe-area-inset-right;	
+}
+
+.CasualIsLocked #CasualLockedLabel,
+.RankedIsLocked .RankedLockedLabel,
+.PlayMode_Duos.DuosIsLocked #DuosLockedLabel,
+.NotConnectedToGC .PlayType_Play.PlayType_Multiplayer_Casual #SignInLockedLabel,
+.NotConnectedToGC .PlayType_Play.PlayType_Multiplayer_Ranked #SignInLockedLabel,
+.NotConnectedToGC .PlayType_InviteFriend.PlayType_Multiplayer_Casual #SignInLockedLabel,
+.NotConnectedToGC .PlayType_InviteFriend.PlayType_Multiplayer_Ranked #SignInLockedLabel,
+{
+    visibility: visible;
+}
+.NotConnectedToGC .PlayMode_Duos.DuosIsLocked #DuosLockedLabel,
+{
+    visibility: collapse;
+}
+
+#LeaveButton
+{
+    width: fit-children;
+    height: fit-children;
+    margin-right: 80px;
+    horizontal-align: right;
+    visibility: collapse;
+}
+
+#LeaveButton Label
+{
+    font-size: 36px;
+    horizontal-align: left;
+    text-align: center;
+    //background-color: #de3c3c;
+    padding: 4px 28px 4px 28px;
+    color: textBrighter;
+    font-weight: black;
+    text-transform: uppercase;
+    transition-property: brightness, transform;
+    transition-duration: 0.2s;
+    background-image: url("s2r://panorama/images/dashboard/leave_game_button_psd.vtex");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-shadow: 2px 2px 2.0 #8d262677;
+}
+
+#LeaveButton Label:hover
+{
+    brightness: 1.4;
+}
+
+#PartyLabelContainer,
+{
+    height: 100px;
+    width: fit-children;
+    vertical-align: bottom;
+    horizontal-align: right;
+    visibility: collapse;
+}
+.HasParty .PageName_Home #PartyLabelContainer,
+{
+    visibility: visible;
+}
+
+#PartyMatchLabel
+{
+    font-size: 32px;
+    letter-spacing: 2px;
+    horizontal-align: right;
+    margin-top: 12px;
+    width: fit-children;
+    background-image: url("s2r://panorama/images/dashboard/party_match_button_psd.vtex");
+    background-size: 100%;
+    font-weight: black;
+    text-transform: uppercase;
+    color: textBrighter;
+    padding: 2px 12px 2px 12px;
+}
+.HasParty.PartyNotReady #PartyMatchLabel { visibility: collapse; }
+
+#PartyNotReadyLabel
+{
+    margin-top: 40px;
+    color: #dc5357;
+    text-transform: uppercase;
+    font-size: 34px;
+    margin-left: 64px;
+    margin-right: 20px;
+    font-weight: black;
+    visibility: collapse;
+}
+.HasParty.PartyNotReady #PartyNotReadyLabel
+{
+    visibility: visible;
+}
+
+
+.InvalidChallengeDifficulty #GamePlayButton,
+.InvalidChallengeGameMode #GamePlayButton
+{   
+     // TODO: Some color to indicate invalid game mode on the button
+}

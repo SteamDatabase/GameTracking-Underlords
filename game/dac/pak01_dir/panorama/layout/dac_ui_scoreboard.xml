@@ -2,24 +2,247 @@
 	<styles>
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_ui_scoreboard.vcss_c" />
-		<include src="s2r://panorama/styles/dac_ui_scoreboard_entry.vcss_c" />
 	</styles>
 
-  <DACScoreboard>
-		<Panel id="Header">
+	<snippets>
+		
+		<snippet name="Team">
+			<Panel class="Team Entry">
+				<Panel class="TopContainer">
+					<Label class="TeamName" text="{s:team_name}"/>
+				</Panel>
+				<Panel class="BottomContainer">
+					<Panel class="HealthCount">
+						<Label class="HealthLabel" text="{i:health}"/>
+						<Panel class="HealthIcon"/>
+					</Panel>
+					<Panel class="UnitCount">
+						<Label class="UnitLabel" text="{i:unit_count}"/>
+						<Panel class="UnitIcon"/>
+					</Panel>
+				</Panel>
+			</Panel>
+		</snippet>
 
-			<Label id="PlaceHeader" text="#dac_scoreboard_heading_place" />
-			<Label id="DuosHeader" text="#dac_scoreboard_heading_duos" />
-			<Label id="NameHeader" text="#dac_scoreboard_heading_name" />
-			<Label id="RankHeader" text="#dac_scoreboard_heading_rank" />
-			<Label id="WinLossHeader" text="#dac_scoreboard_heading_winloss" />
-			<Label id="TotalGoldHeader" text="#dac_scoreboard_heading_totalgold" />
-			<Label id="RosterHeader" text="#dac_scoreboard_heading_roster" />
-			<Label id="AlliancesHeader" text="#dac_scoreboard_heading_alliances" />
-			<Label id="TalentHeader" text="#dac_scoreboard_heading_talents" />
-			<Label id="GlobalHeader" text="#dac_scoreboard_heading_global" />
-			<Label id="BenchHeader" text="#dac_scoreboard_heading_bench" />
+		<snippet name="Place">
+			<Panel class="Place Entry">
+				<Label class="PlaceNumber" text="{s:place}"/>
+			</Panel>
+		</snippet>
+
+		<snippet name="Poster">
+			<Panel class="Poster Entry">
+				<DACPlayerAvatar id="PlayerAvatar" fullSize="true"/>
+			</Panel>
+		</snippet>
+
+		<snippet name="Name">
+			<Panel class="Name Entry">
+				<Label class="Persona" text="{g:dac_persona:b:account_id}" html="true"/>
+				<Label class="PersonaPlayerSlot" text="{g:dac_player_slot_persona:b:player_slot}" html="true"/>
+				<Panel class="BottomRow">
+					<Panel class="UnitCount">
+						<Label text="{i:unit_count}"/>
+						<Panel class="UnitIcon"/>
+					</Panel>
+					<Panel class="GoldCount">
+						<Label text="{i:gold_count}"/>
+						<Panel class="GoldIcon"/>
+					</Panel>"
+				</Panel>
+			</Panel>
+		</snippet>
+
+		<snippet name="Health">
+			<Panel class="Health Entry">
+				<Label text="{i:health}"/>
+				<Panel class="HealthIcon HealthIcon1"/>
+				<Panel class="HealthIcon HealthIcon2"/>
+				<Panel class="HealthIcon HealthIcon3"/>
+				<Panel class="HealthIcon HealthIcon4"/>
+			</Panel>
+		</snippet>
+
+		<snippet name="Rank">
+			<Panel class="Rank Entry">
+				<Panel id="RankPin"/>
+				<Label text="{s:rank_name}"/>
+				<Label text="{s:rank_tier}"/>
+			</Panel>
+		</snippet>
+
+		<snippet name="Record">
+			<Panel class="Record Entry">
+				<Label text="{i:wins} - {i:losses}"/>
+			</Panel>
+		</snippet>
+
+		<snippet name="NetWorth">
+			<Panel class="NetWorth Entry">
+				<Label text="{i:net_worth}"/>
+			</Panel>
+		</snippet>
+
+		<snippet name="Alliances">
+			<Panel class="Alliances Entry">
+				<!-- Dynamically filled with DACSynergyIcon -->
+			</Panel>
+		</snippet>
+
+		<snippet name="Underlord">
+			<Panel class="Underlord Entry">
+				<Image id="UnderlordPortrait" />
+				<Image id="UnderlordTalent" />
+			</Panel>
+		</snippet>
+
+		<snippet name="Roster">
+			<Panel class="Roster Entry">
+				<!-- Dynamically filled with RosterUnit snippets -->
+			</Panel>
+		</snippet>
+
+		<snippet name="Bench">
+			<Panel class="Bench Entry">
+				<!-- Dynamically filled with RosterUnit snippets -->
+			</Panel>
+		</snippet>
+
+		<snippet name="RosterUnit">
+			<Panel class="RosterUnit">
+				<Image id="HeroPortrait"/>
+				<Panel class="StarsContainer">
+					<Panel class="Rank1 StarList">
+						<Panel class="Rank1Star Star"/>
+					</Panel>
+					<Panel class="Rank2 StarList">
+						<Panel class="Rank2Star Star"/>
+						<Panel class="Rank2Star Star"/>
+					</Panel>
+					<Panel class="Rank3 StarList">
+						<Panel class="Rank3Star Star"/>
+						<Panel class="Rank3Star Star"/>
+						<Panel class="Rank3Star Star"/>
+					</Panel>
+				</Panel>
+				<Panel class="ItemContainer">
+					<Panel class="ItemShadow">
+						<DACInventoryItem id="InventoryItem"/>
+					</Panel>
+				</Panel>
+			</Panel>
+		</snippet>
+
+		<snippet name="Globals">
+			<Panel class="Globals Entry">
+				<!-- Dynamically filled with GlobalUnit snippets -->
+			</Panel>
+		</snippet>
+
+		<snippet name="GlobalUnit">
+			<Panel class="GlobalUnit">
+				<Image id="GlobalImage"/>
+			</Panel>
+		</snippet>
+
+
+	</snippets>
+
+	<DACScoreboard>
+
+		<Panel id="RoundSelectContainer">
+			<Button id="LeftRoundArrow" class="RoundArrow ArrowLeft" onactivate="DACChangeScoreboardRound(-1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )"/>
+			<Panel>
+				<Label id="RoundText" class="DistressedFont" text="#DAC_PostGameStats_RoundSelector"/>
+			</Panel>
+			<Button id="RightRoundArrow" class="RoundArrow ArrowRight" onactivate="DACChangeScoreboardRound(1) PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )"/>
 		</Panel>
-		<Panel id="ScoreboardEntryContainer" />
+
+		<Panel id="Scoreboard">
+
+			<Panel id="SectionPrefix">
+				<Panel id="PlaceColumn" class="Column">
+					<Label id="PlaceHeader" class="Header" text="#dac_scoreboard_heading_place"/>
+					<Panel id="PlaceContainer" class="EntryContainer">
+						<!-- Dynamically filled with Place snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="TeamColumn" class="Column">
+					<Label id="TeamHeader" class="Header" text="#dac_scoreboard_heading_duos"/>
+					<Panel id="TeamContainer" class="EntryContainer">
+						<!-- Dynamically filled with Duos snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="PosterColumn" class="Column">
+					<Label id="PosterHeader" class="Header" text=""/>
+					<Panel id="PosterContainer" class="EntryContainer">
+						<!-- Dynamically filled with Poster snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="NameColumn" class="Column">
+					<Label id="NameHeader" class="Header" text="#dac_scoreboard_heading_name"/>
+					<Panel id="NameContainer" class="EntryContainer">
+						<!-- Dynamically filled with Name snippets-->
+					</Panel>
+				</Panel>
+			</Panel>
+			
+			<Panel id="SectionScrollable">
+				<Panel id="HealthColumn" class="Column">
+					<Label id="HealthHeader" class="Header" text="#dac_scoreboard_heading_health"/>
+					<Panel id="HealthContainer" class="EntryContainer">
+						<!-- Dynamically filled with Health snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="RankColumn" class="Column">
+					<Label id="RankHeader" class="Header" text="#dac_scoreboard_heading_rank"/>
+					<Panel id="RankContainer" class="EntryContainer">
+						<!-- Dynamically filled with Rank snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="RecordColumn" class="Column">
+					<Label id="RecordHeader" class="Header" text="#dac_scoreboard_heading_winloss"/>
+					<Panel id="RecordContainer" class="EntryContainer">
+						<!-- Dynamically filled with Record snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="NetWorthColumn" class="Column">
+					<Label id="NetWorthHeader" class="Header" text="#dac_scoreboard_heading_totalgold"/>
+					<Panel id="NetWorthContainer" class="EntryContainer">
+						<!-- Dynamically filled with NetWorth snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="AlliancesColumn" class="Column">
+					<Label id="AlliancesHeader" class="Header" text="#dac_scoreboard_heading_alliances"/>
+					<Panel id="AlliancesContainer" class="EntryContainer">
+						<!-- Dynamically filled with Alliances snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="RosterColumn" class="Column">
+					<Label id="RosterHeader" class="Header" text="#dac_scoreboard_heading_roster"/>
+					<Panel id="RosterContainer" class="EntryContainer">
+						<!-- Dynamically filled with Roster snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="UnderlordColumn" class="Column">
+					<Label id="UnderlordHeader" class="Header" text="#dac_scoreboard_heading_underlord"/>
+					<Panel id="UnderlordContainer" class="EntryContainer">
+						<!-- Dynamically filled with Underlord snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="GlobalsColumn" class="Column">
+					<Label id="GlobalsHeader" class="Header" text="#dac_scoreboard_heading_global"/>
+					<Panel id="GlobalsContainer" class="EntryContainer">
+						<!-- Dynamically filled with Global snippets-->
+					</Panel>
+				</Panel>
+				<Panel id="BenchColumn" class="Column">
+					<Label id="BenchHeader" class="Header" text="#dac_scoreboard_heading_bench"/>
+					<Panel id="BenchContainer" class="EntryContainer">
+						<!-- Dynamically filled with Roster snippets-->
+					</Panel>
+				</Panel>
+			</Panel>
+		</Panel>
 	</DACScoreboard>
 </root>

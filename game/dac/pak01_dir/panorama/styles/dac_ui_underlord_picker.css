@@ -44,6 +44,11 @@ DACUIUnderlordPicker.Visible
 	flow-children: down;
 }
 
+.GameMode_Tutorial #MainContainer
+{
+	vertical-align: top;
+}
+
 .IsLayoutSmallScreen.AspectRatio21x9 #MainContainer
 {
 	margin-top: 25px;
@@ -99,10 +104,17 @@ DACUIUnderlordPicker.Visible
 	width: fit-children;
 	height: fit-children;
 	horizontal-align: center;
-	flow-children: right;
 
 	opacity: 1;
 	//margin-top: 230px;
+}
+
+#UnderlordSelectButtons
+{
+	overflow: noclip;
+	horizontal-align: center;
+	width: fit-children;
+	flow-children: right;
 }
 
 .IsLayoutLargeScreen.AspectRatio4x3 #UnderlordSelectButtons
@@ -167,8 +179,11 @@ DACUIUnderlordPicker.Visible
 .UnderlordSelectButton
 {
 	flow-children: none;
-	overflow: noclip;
-	transition-property: pre-transform-scale2d;
+	overflow: clip;
+	transition-property: transform;
+
+	pre-transform-scale2d: 1.0;
+
 	transition-duration: .1s;
 	height: 680px;
 	width: 480px;
@@ -186,11 +201,10 @@ DACUIUnderlordPicker.Visible
 
 .UnderlordSelectButton:hover
 {
-	transition-property: transform, pre-transform-scale2d;
-	transform: rotateY( 0deg ) translateY(0px) translateZ( 0px);
 	pre-transform-scale2d: 1.03;
-	brightness: 1.5;
 	overflow: noclip;
+	brightness: 1.5;
+	z-index: 1000;
 	background-image: url("s2r://panorama/images/underlords/select_box_bg_png.vtex");
 }
 
@@ -254,50 +268,17 @@ DACUIUnderlordPicker.Visible
 {
 }
 
-/* MOBILE CARD PLACEMENT */
-
-.IsLayoutSmallScreen #UnderlordSelectButton0
-{
-	transform: translateX(-30px);
-}
-
-.IsLayoutSmallScreen #UnderlordSelectButton1
-{
-	transform: translateX(-110px);
-}
-
-.IsLayoutSmallScreen #UnderlordSelectButton2
-{
-	transform: translateX(-190px);
-}
-
-.IsLayoutSmallScreen #UnderlordSelectButton3
-{
-	transform: translateX(-270px);
-}
-
 /* IPHONE X CARD PLACEMENT */
 
-.IsLayoutSmallScreen.AspectRatio21x9  #UnderlordSelectButton0
+.IsLayoutSmallScreen #UnderlordSelectButton0,
+.IsLayoutSmallScreen #UnderlordSelectButton1,
+.IsLayoutSmallScreen #UnderlordSelectButton2,
+.IsLayoutSmallScreen #UnderlordSelectButton3
 {
-	transform: translateX(-75px);
+	transform: translateX(0px);
+	margin-left: -62px;
+	margin-right: -62px;
 }
-
-.IsLayoutSmallScreen.AspectRatio21x9  #UnderlordSelectButton1
-{
-	transform: translateX(-208px);
-}
-
-.IsLayoutSmallScreen.AspectRatio21x9  #UnderlordSelectButton2
-{
-	transform: translateX(-340px);
-}
-
-.IsLayoutSmallScreen.AspectRatio21x9  #UnderlordSelectButton3
-{
-	transform: translateX(-470px);
-}
-
 
 .UnderlordPortrait
 {
@@ -508,4 +489,46 @@ DACUIUnderlordPicker.Visible
 .IsLayoutSmallScreen .AbilityDesc 
 {
 	font-size: 22px;
+}
+
+#ChallengesAvailableText
+{	
+	horizontal-align: center;
+	vertical-align: top;
+	text-overflow: shrink;	
+	text-align: center;	
+	width:370px;		
+	height:35px;
+	border-radius: 4px;	
+	
+	margin-top:-35px;
+	padding:5px;
+
+	color: #cdd2f3;
+    font-size: 18px;
+    font-weight: semi-bold;
+    letter-spacing: 3px;    
+    text-shadow: 0px 0px 0px 2.0 #4242b4;
+    text-transform: uppercase;
+	background-color:none;
+	font-family: Radiance;
+	opacity: 0.5;
+	visibility: collapse;
+}
+
+.IsBattlePassGame .HasAnyChallenges #ChallengesAvailableText
+{
+	visibility: visible;
+}
+
+.HasChallenges #ChallengesAvailableText
+{
+	opacity: 1;
+}
+
+.HasRecommendedChallenge #ChallengesAvailableText
+{
+	color: #ffbf00;
+	text-shadow: 0px 0px 0px 2.0 black;
+	font-weight: black;
 }

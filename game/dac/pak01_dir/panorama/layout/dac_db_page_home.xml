@@ -4,64 +4,64 @@
 		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_home.vcss_c" />
 		<include src="s2r://panorama/styles/dac_ui_underlord.vcss_c" />
-		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
 	</styles>
 	<snippets>
 	</snippets>
 
 	<DACHomePage hittest="false" class="DashboardPage">
+		<Panel id="BackgroundGradient" />
 
-		<Panel id="BetaBackground">
-			<Image id="Layer6" src="s2r://panorama/images/dashboard/background/flattened-bg_jpg.vtex" />
-			<Image id="Layer5" src="s2r://panorama/images/dashboard/underlords-v2_png.vtex" />
-		</Panel>
 
 		<Panel id="ForegroundContainer">
-			
+			<!-- <Panel id="PromoBox" class="Season1" >
+					<Panel id="PromoBoxGradient" />
+					<Label id="PromoBoxTitle" text="#DAC_Dashboard_Promo_Season1_Title" />
+				</Panel> -->
 			<Panel id="MainNav">
-				<Panel class="MainNavButton MainNav01" onactivate="DACSelectDashboardButton('UnderlordsContainer'); DACShowUnderlordsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
+				<!-- <Panel class="MainNavButton MoveUp MainNav01" onactivate="DACSelectDashboardButton('UnderlordsSelectContainer'); DACShowSelectUnderlordPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
 					<Label class="MainNavLabel DistressedFont" text="#DAC_Underlords"/>	
-				</Panel>
-				<Panel class="MainNavButton MainNav02" onactivate="DACSelectDashboardButton('HeropediaContainer'); DACShowHeropediaPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )">
+				</Panel> -->
+				<Panel class="MainNavButton MoveUp MainNav02" onactivate="DACSelectDashboardButton('HeropediaContainer'); DACShowHeropediaPage(); PlaySoundEffect( 'UL_UI.MainMenu_RulebookActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_RulebookRollover' )">
+					<!-- <Panel id="MainNavBG" /> -->
 					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_SeasonInfo"/>
 				</Panel>		
-				<Panel class="MainNavButton MainNav03 LoadoutButton" onactivate="DACSelectDashboardButton('LoadoutButtonContainer'); DACShowLoadoutProtopassPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' );">
+				
+				<!-- Season 0 -->
+				<Panel id="ProtopassLoadoutButton" class="MainNavButton MainNav03 LoadoutButton" onactivate="DACSelectDashboardButton('LoadoutButtonContainer'); DACShowLoadoutProtopassPage(); PlaySoundEffect( 'UL_UI.MainMenu_LoadoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_LoadoutRollover' )">
 					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_Loadout"/>
 				</Panel>
-				<Panel class="MainNavButton MainNavBattlePass" onactivate="DACSelectDashboardButton('BattlePassContainer'); DACShowRewardsProtopassPage(); PlaySoundEffect( 'DAC_UI.MainMenu_ProtPassActivate' );">
+				<Panel id="ProtopassButton" class="MainNavButton MainNavBattlePass" onactivate="DACSelectDashboardButton('BattlePassContainer'); DACShowRewardsProtopassPage();" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_BattlePassRollover' )">
 					<Panel id="BattlePassPanel">
 						<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_Battlepass"/>
 						<DACControlBattlePass id="BattlePassOverview" class="OnDACHomePage HideSectionTitle HideQuests"/>
 					</Panel>
 				</Panel>
-			</Panel>
 
-			<Panel class="UnderlordSelectContainer HomeMenu" id="UnderlordSelector">
-			<Panel id="SelectEmpty" onactivate="DACSelectDashboardButton('UnderlordsContainer'); DACShowUnderlordsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
-				<Label class="DistressedFont" hittest="false" html="true" text="#DAC_Underlord_NoneSelected" id="SelectEmpty" />
-			</Panel>
-				<Panel class="UnderlordSelectTopContainer">
-					<Panel class="UnderlordSelectBackground"/>
-					<Panel class="UnderlordSelectTop">
-						<Button id="LeftUnderlordArrow" class="UnderlordArrow ArrowLeft" onactivate="DACHomeChangeUnderlord(-1)"/>
-						<Panel class="UnderlordButton">
-							<Label class="DistressedFont" html="true" text="{s:underlord_name}"/>
-						</Panel>
-						<Button id="RightUnderlordArrow" class="UnderlordArrow" onactivate="DACHomeChangeUnderlord(1)"/>
+				<!-- Season 1 -->
+				<Panel id="LoadoutButton" class="MainNavButton MainNav03 MoveUp LoadoutButton" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_LoadoutRollover' )">
+					<!-- <Panel id="MainNavBG" /> -->
+					<Label class="MainNavLabel DistressedFont" text="#DAC_MainNav_Loadout"/>
+				</Panel>
+			
+				<Panel id="BattlepassButton" class="MainNavButton MoveUp MainNavBattlePass" onactivate="DACSelectDashboardButton('BattlePassContainer'); DACShowRewardsBattlePassPage();" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_BattlePassRollover' )">
+					<Panel id="BattlePassPanel">
+						<Label class="MainNavLabel DistressedFont" text="#DAC_BattlePass"/>
+						<DACControlBattlePass id="BattlePassOverview" class="OnDACHomePage HideSectionTitle HideQuests"/>
 					</Panel>
 				</Panel>
-				<Panel class="UnderlordSelectMiddleContainer">
-					<Panel id="ViewDetails" class="MiddleButton" onactivate="DACSelectDashboardButton('UnderlordsContainer'); DACShowUnderlordsPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' )">
-						<Label text="#DAC_Reward_Item_ViewDetails"/>
-					</Panel>
+				<Panel id="PromoBox" class="Season1" onactivate="DACShowSeason1Intro();" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_SeasonPanelRollover' )">
+					<Panel id="PromoBoxGradient" />
+					<Label id="PromoBoxTitle" text="#DAC_Dashboard_Promo_Season1_Title" />
 				</Panel>
-				<!-- 				
-				<Panel class="UnderlordSelectBottomContainer">
-					<Label class="TalentsUnlockedNumbers HeadlineFont" text="#DAC_Reward_Item_TalentCount"/>
-					<Label class="TalentsUnlocked" text="#DAC_Reward_Item_TalentUnlockedLabel"/>
-					<Image class="InfoImage" onmouseover="DACShowTalentInfoTooltip()" onmouseout="DACHideTalentInfoTooltip()" onactivate="DACShowTalentInfoPopup()"/>
-				</Panel> 
-				-->
+				<Panel id="CityCrawlButton" class="MoveUp"  onactivate="DACShowChallengeWorldMapPage(); PlaySoundEffect( 'UL_UI.MainMenu_CityCrawlActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_CityCrawlRollover' )">
+					<Panel id="CityCrawlBG" />
+					<Panel id="CityCrawlBrochure" />
+					<Label class="MainNavLabel DistressedFont" text="#DAC_ChallengeWorldMapPage"/>
+					<Label id="CityCrawlTakeOverLabel" class="CityCrawlChallengesLabel" text="#DAC_CC_TakeOverWhiteSpire"/>
+					<Label id="CityCrawlActiveChallengesLabel" class="CityCrawlChallengesLabel" text="#DAC_ChallengeWorldMapPage_Challenges"/>
+					<Label id="CityCrawlClaimableChallengesLabel" class="CityCrawlChallengesLabel" text="#DAC_ChallengeWorldMapPage_ClaimableChallenges"/>
+					<Label class="CityCrawlNeedsSteamLabel" text="#DAC_CityCrawlButtonNeedsSteam" />
+				</Panel>
 			</Panel>
 
 			<Panel id="LogoArea">
@@ -107,14 +107,47 @@
 				</Panel>	
 			</Panel>
 
-			<Panel class="SafeArea" hittest="false">
-				<Panel id="SocialPanelButton" onactivate="DACToggleSocialPanel(); PlaySoundEffect('DAC_UI.MainMenu_SocialActivate')" onmouseover="PlaySoundEffect(DAC_UI.MainMenu_SocialHover')">
-					<Panel class="SocialViolatorList">
-						<Panel class="SocialViolator PartyInvitesViolator">
-							<Panel class="InviteIcon"/>
-							<Panel class="InviteIconBright"/>
+			<Panel id="ProfileArea" class="SafeArea">
+				<Panel id="ErrorContainer">
+					<Panel id="ConnectToSteamContainer" onactivate="DACSteamLogin(); PlaySoundEffect( 'UL_UI.CityCrawlChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawlChallengeRollover' )">
+						<Button class="LoginButton" id="SteamLoginButton">
+							<Panel id="SteamLogo" />
+							<Label text="#DAC_SteamAccountLogin" />
+						</Button>
+						<Label class="ConnectToSteamText" text="#DAC_BattlePass_ConnectConvert" />
+					</Panel>
+
+					<Panel id="ReconnectToSteamContainer">
+						<Button class="LoginButton" id="SteamReconnectButton" onactivate="DACSteamReconnect(); PlaySoundEffect( 'UL_UI.CityCrawlChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawlChallengeRollover' )">
+							<Panel id="SteamLogo" />
+							<Label text="#DAC_Home_Reconnect" />
+						</Button>
+						<Label class="ConnectToSteamText" text="#DAC_BattlePass_ReconnectConvert" />
+					</Panel>
+
+					<Panel id="GCErrorContainer">
+						<Label class="ConnectToSteamText HeadlineFont" text="#DAC_BattlePass_GCIssue" />
+					</Panel>
+				</Panel>
+
+				<Panel id="UserData" onactivate="DACSelectDashboardButton('ProfileContainer'); DACShowProfilePage( 0 ); PlaySoundEffect( 'UL_UI.MainMenu_ProfileActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_ProfileRollover' )">
+					<DACAvatarImage id="SteamAvatar"/>
+					<Panel id="PersonaName" >
+						<Label id="PersonaNameString" text="{g:dac_persona:account_id}" html="true"/>
+						<Label id="GoToProfile" class="HeadlineFont" text="#DAC_Social_Profile" />
+					</Panel>
+					<Panel id="SocialPanelButton" onactivate="DACToggleSocialPanel(); PlaySoundEffect('DAC_UI.MainMenu_SocialActivate')" onmouseover="PlaySoundEffect(DAC_UI.MainMenu_SocialHover')">
+						<Panel class="SocialViolator FriendsPlayingViolator">
+							<Label text="{i:friends_playing}" class="HeadlineFont"/>
 						</Panel>
-						<Panel class="SocialViolator PartyReadyViolator"/>
+						<Panel id="SocialPanelIcon"/>
+						<Panel class="SocialViolatorList">
+							<Panel class="SocialViolator PartyInvitesViolator">
+								<Panel class="InviteIcon"/>
+								<Panel class="InviteIconBright"/>
+							</Panel>
+							<Panel class="SocialViolator PartyReadyViolator"/>
+						</Panel>
 					</Panel>
 				</Panel>
 			</Panel>
@@ -122,45 +155,6 @@
 			<Panel id="SocialPanel" hittest="false">
 				<Panel id="SocialPanelClickEater" hittest="true" onactivate="DACToggleSocialPanel()"/>
 				<Panel id="SocialPanelContents" hittest="true" onactivate="">
-					<Panel id="SteamLoginRequired">
-						<Button class="SocialButtonClose" onactivate="DACToggleSocialPanel()" />
-						<Panel id="SteamLoginRequiredContents">
-							<Panel id="SteamLogo"/>
-							<Panel class="LoginDescContainer">
-								<Panel class="LogInDesc">
-									<Panel class="LogInDescBullet"/>
-									<Label text="#DAC_SteamLogIn_Desc1" class="LogInDescText"/>
-								</Panel>
-							</Panel>
-							<Button class="PopupButton LoginButton" id="SteamLoginButton" onactivate="DACSteamLogin()">
-								<Label text="#DAC_SteamAccountLogin" />
-							</Button>
-							<Button class="PopupButton LoginButton" id="SteamReconnectButton" onactivate="DACSteamReconnect()">
-								<Label text="#DAC_Home_Reconnect" />
-							</Button>
-							<Button class="PopupButton LoginButton" id="SteamCreateButton" onactivate="DACSteamCreateAccount()">
-								<Label text="#DAC_SteamCreateAccount" />
-							</Button>
-						</Panel>
-					</Panel>
-
-					<Panel class="ConnectingContainer">
-						<Panel id="ConnectingDesc">
-						<Panel id="SteamLogoThrobber">
-							<Panel id="steamlogothrobber_bg" class="SteamLogoAnimated"/>
-							<Panel id="radialMask" class="SteamLogoAnimated">
-								<Panel id="radial3" class="SteamLogoAnimated"/>
-							</Panel>
-						</Panel>
-						<Panel id="ConnectingLabel">
-							<Label text="#DAC_SteamLogIn_Connecting"/>
-						</Panel>
-						</Panel>
-						<Button class="PopupButton LoginButton" id="CancelLoginButton" onactivate="DACCancelSteamLogin()">
-							<Label text="#Cancel" />
-						</Button>
-					</Panel>
-
 					<Panel id="SocialPanelHeader">
 						<Button class="SocialButtonClose" onactivate="DACToggleSocialPanel()" />
 						<Button id="SocialButtonFriends" class="SocialTabButton" onactivate="DACSelectSocialTab( 'Friends' ); PlaySoundEffect('DAC_UI.SocialMenu_Activate')">
@@ -192,7 +186,7 @@
 			</Panel>
 
 			<Panel class="ReadyUpContainer SafeArea">
-				<Button id="ReadyUpButton" class="ReadyUpButton" onactivate="DACPartyMemberToggleReady(); PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' );" onmouseover="PlaySoundEffect('DAC_UI.MainMenu_PlayHover')">
+				<Button id="ReadyUpButton" class="ReadyUpButton MoveUp" onactivate="DACPartyMemberToggleReady(); PlaySoundEffect( 'DAC_UI.MainMenu_PlayActivate' );" onmouseover="PlaySoundEffect('DAC_UI.MainMenu_PlayHover')">
 					<Label class="HeadlineFont" text="#DAC_DBHome_ReadyUp" hittest="false" />
 				</Button>
 			</Panel>

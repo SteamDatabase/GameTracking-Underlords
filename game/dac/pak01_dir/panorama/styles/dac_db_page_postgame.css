@@ -6,18 +6,20 @@ DACPagePostGame
 	height:100%;
 	flow-children:none;
 
-	background-image: url("s2r://panorama/images/hud/post_game/post-game-bg_jpg.vtex");
+	//background-image: url("s2r://panorama/images/hud/post_game/post-game-bg_jpg.vtex");
 	background-size: cover;
 	background-position: center;
 	
-	opacity: 0;
+	opacity: 1;
+}
+
+.Hidden {
+	visibility: collapse;
 }
 
 DACPagePostGame.DashboardPage
 {
-	transition-property: opacity;
-	transition-duration: 1s;
-	transition-timing-function: ease-in;
+	
 }
 
 #BlackBG
@@ -55,12 +57,12 @@ DACPagePostGame.DashboardPage.PageVisible #BlackBG
 
 .LowVisualQuality DACPagePostGame
 {
-	background-image: url("s2r://panorama/images/hud/post_game/post-game-bg-lowres_jpg.vtex");
+	//background-image: url("s2r://panorama/images/hud/post_game/post-game-bg-lowres_jpg.vtex");
 }
 
 .IsLayoutSmallScreen DACPagePostGame
 {
-	background-image: url("s2r://panorama/images/hud/post_game/post-game-bg-mobile_jpg.vtex");
+	//background-image: url("s2r://panorama/images/hud/post_game/post-game-bg-mobile_jpg.vtex");
 	background-position: center;
 }
 .LowVisualQuality DACPagePostGame Label
@@ -82,14 +84,135 @@ DACPagePostGame.DashboardPage.PageVisible #BlackBG
 
 #ScrollingPage
 {
-	height: fill-parent-flow( 1.0 );
-	width: 5760px; // this will be overridden by code
-	flow-children: right;
+	
+	width: 100%;
+	margin-top: -100px;
+	
+	height: 1580px;
 	visibility: collapse;
-	transition-property: transform;
-	transition-duration: 0.2s;
-	background-image: url("s2r://panorama/images/post_game/postgame_bg_psd.vtex");
+	transition-property: transform, opacity;
+	opacity: 0;
+	transition-duration: 0.5s;
+	transition-delay: 0.5s;
+	//background-image: url("s2r://panorama/images/post_game/postgame_bg_psd.vtex");
 	background-size: cover;
+
+	overflow: clip scroll;
+
+	transform-origin: 950px 500px;
+	transform: rotateZ(-3deg);
+	
+	
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+}
+
+.DisableScrolling #ScrollingPage {
+	overflow: clip;
+}
+
+.DisableScrolling #ScrollingPage #SeasonProgressPage {
+	margin-top: -400px;
+}
+
+.SpinIn #ScrollingPage {
+	animation-name: NewspaperSpin;
+	transform: scale3d(1,1,1);
+	opacity: 1;
+	transition-duration: 200ms;
+	transition-delay: 0s;
+	transform: rotateZ(-2deg);
+	transform: translateY(50px) rotateZ(-2deg);
+}
+
+.SeasonProgressPage {
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: 1.5s;
+}
+
+.SpinIn .SeasonProgressPage {
+	opacity: 1;
+}
+
+#NewspaperSpin {
+	opacity: 1;
+	transition-property: opacity;
+	transition-duration: 1s;
+	ui-scale: 58%;
+	horizontal-align: center;
+	transition-timing-function: linear;
+		
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+}
+
+.SpinIn #NewspaperSpin {
+	animation-name: NewspaperSpin;
+	opacity: 0;
+}
+
+DACPagePostGame.DashboardPage {
+	wash-color: none;
+}
+
+DACPagePostGame.DashboardPage.SpinIn {
+	wash-color: none;
+	transition-duration: 200ms;
+}
+
+@keyframes 'NewspaperSpin'
+{
+	0%
+	{
+		transform: scale3d(0,0,0) rotateZ(0deg) ;
+	}
+	10%
+	{
+		transform: scale3d(0.1,0.1,0.1) rotateZ(180deg) ;
+	}
+	20%
+	{
+		transform: scale3d(0.2,0.2,0.2) rotateZ(359deg) ;
+	}
+	30%
+	{
+		transform: scale3d(0.3,0.3,0.3) rotateZ(178deg) ;
+	}
+	40%
+	{
+		transform: scale3d(0.4,0.4,0.4) rotateZ(357deg) ;
+	}
+	50%
+	{
+		transform: scale3d(0.5,0.5,0.5) rotateZ(176deg) ;
+	}
+	60%
+	{
+		transform: scale3d(0.6,0.6,0.6) rotateZ(355deg) ;
+	}
+	70%
+	{
+		transform: scale3d(0.7,0.7,0.7) rotateZ(174deg) ;
+	}
+	80%
+	{
+		transform: scale3d(0.8,0.8,0.8) rotateZ(353deg) ;
+	}
+	90%
+	{
+		transform: scale3d(0.9,0.9,0.9) rotateZ(172deg) ;
+	}
+	99%
+	{
+		transform: scale3d(0.9,0.9,0.9) rotateZ(351deg) ;
+	}
+	100%
+	{
+		transform: none ;
+	}
 }
 
 #ResultPage
@@ -101,28 +224,35 @@ DACPagePostGame.DashboardPage.PageVisible #BlackBG
 	visibility: visible;
 }
 
+DACPagePostGame DACScoreboard.GameMode_Duos
+{
+	ui-scale: 70%;
+}
+
+
 .SeasonProgressPage #ScrollingPage,
 .StatsPage #ScrollingPage,
-.ScoreboardPage #ScrollingPage,
+.ScoreboardPage #ScrollingPage
 {
 	visibility: visible;
+	
 }
 
 .StatsPage #ScrollingPage
 {
-	transform: translateX( -100% );
+	
 }
 .ScoreboardPage #ScrollingPage
 {
-	transform: translateX( -200% );
+	
+	opacity: 0;
 }
 
 
 .OverlayContainer
 {
 	flow-children: down;
-	width: fill-parent-flow( .3333333 );
-	height: fill-parent-flow( 1.0 );
+	width: fill-parent-flow( .5 );
 	background-position: center;
 }
 
@@ -141,30 +271,91 @@ DACPagePostGame.DashboardPage.PageVisible #BlackBG
 	horizontal-align: center;
 	vertical-align: center;
 	flow-children:down;
+	visibility: collapse;
+}
+
+.ScoreboardPage #ScoreboardContainer {
+	visibility: visible;
 }
 
 #HeroImage
 {
-	width: 88px;
-	height: 88px;
-	opacity-mask: url("s2r://panorama/images/masks/portrait_scratch_psd.vtex") 1;
-	background-position: center center;
+	width: 128px;
+	height: 72px;
+	vertical-align: top;
+	
 }
 
-.HeroIconPanel DACInventoryItem,
-.IsLayoutSmallScreen .HeroIconPanel DACInventoryItem
+#HeroesContainer .HeroName {
+	
+	max-height: 55px;
+	//border: 1px solid red;
+
+	font-family: Early Bird;
+	letter-spacing: 1px;
+	font-size: 22px;
+	line-height: 18px;
+	text-transform: lowercase;
+	
+	text-overflow: shrink;
+	color: #e7e0d1;
+
+	vertical-align: bottom;
+	text-align: center;
+}
+
+.Language_tchinese .HeroName,
+.Language_schinese .HeroName,
+.Language_koreana .HeroName,
+.Language_japanese .HeroName
 {
-	width: 50px;
-	height: 50px;
-	horizontal-align: center;
-	margin-top: -20px;
+	line-height: 25px;
+}
+
+#PostGameHeroItem
+{
+	ui-scale: 50%;
+	
+	horizontal-align: right;
+	margin: 0px;
+	
+	
+}
+
+#ScrollLabel {
+	width: 300px;
+	height: 100px;
+	horizontal-align: right;
+	vertical-align: bottom;
+	margin: 0px 60px 30px 0px;
+	flow-children: down;
+	opacity: 0.6;
+}
+
+.IsLayoutSmallScreen #ScrollLabel {
+	ui-scale: 130%;
+	margin-right: 0px;
+}
+
+#ScrollIcon {
+	width: 15px;
+	height: 15px;
+	background-image: url("s2r://panorama/images/post_game/icon_scroll_png.vtex");
+	background-size: 100% 100%;
+	margin-bottom: 10px;
+}
+
+#ScrollLabel Label {
+	color: #999;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	font-size: 14px;
 }
 
 DACPlayerAvatar
 {
 	width: 88px;
 	height: 88px;
-	margin: 4px;
 }
 
 #TalentsContainer Image
@@ -183,18 +374,38 @@ DACPlayerAvatar
 .PlaceTitle
 {
 	font-weight: black;
-	letter-spacing: 2px;
-	color: #2f2a28;
-	horizontal-align: center;
-	vertical-align: middle;
-	text-transform: uppercase;
-	font-size: 100px;
-	margin-top: 0px;
+	letter-spacing: 3px;
+	
+	text-transform: lowercase;
+	font-size: 300px;
+	text-align: center;
+	width: 100%;
+	margin-top: -30px;
+	padding: 0px 50px;
+	
 	transition-duration: 4s;
 	transition-timing-function: ease-in;
 	transition-property: color;
-	padding: 0px 48px;
+	
+	
 	visibility: visible;
+	white-space: nowrap;
+	text-overflow: shrink;
+	vertical-align: middle;
+	
+	font-family: "Early Bird";
+	
+	/* TEXTFIX */
+	
+}
+
+.Language_tchinese .PlaceTitle,
+.Language_schinese .PlaceTitle,
+.Language_koreana .PlaceTitle,
+.Language_japanese .PlaceTitle
+{
+	margin: 0px;
+	font-size: 200px;
 }
 
 .PlaceQuote
@@ -219,24 +430,27 @@ DACPlayerAvatar
 
 .ButtonContainer
 {
-	width: 100%;
-	vertical-align: bottom;
+	height: 100%;
+	horizontal-align: right;
 	height: fit-children;
+	flow-children: down;
 
 	margin-left: safe-area-inset-left;
-	margin-right: safe-area-inset-right;
+	margin-top: safe-area-inset-top;
 	margin-bottom: safe-area-inset-bottom;
+	margin-right: -40px;
 }
 
 #StatsPageContainer
 {
-	width: 1600px;
-	height: 800px;
+	width: 1448px;
+	
 	horizontal-align: center;
 	vertical-align: center;
 	flow-children: down;
 	margin-top: 80px;
-	background-image: url("s2r://panorama/images/post_game/stats_bg_01_psd.vtex");
+	margin: 80px 150px 0px 150px;
+	//background-image: url("s2r://panorama/images/post_game/stats_bg_01_psd.vtex");
 	background-size: 100%;
 }
 
@@ -275,31 +489,48 @@ DACPlayerAvatar
 
 .LowerNavButton
 {
-  	vertical-align: center;
-  	margin-left: 4%;
-  	width: 400px;
+	vertical-align: center;
+	width: 400px;
 	height: 64px;
+	horizontal-align: left;
 	transition-property: brightness, background-color;
 	transition-duration: .2s; 
-	margin: 16px;
+	horizontal-align: right;
+	background-image: url("s2r://panorama/images/ui/splash_btn_bg_psd.vtex");
+	//background-image: url("s2r://panorama/images/dashboard/fight_btn_bg_psd.vtex");
+	background-size: 100% 100%;
+	width: 600px;
+	height: 300px;
+	margin-bottom: -100px;
+}
+
+.LowerNavButtonSmall
+{
+	vertical-align: center;
+	horizontal-align: left; 
+	horizontal-align: right;
+    //background-image: url("s2r://panorama/images/ui/splash_btn_bg_psd.vtex");
+    //background-image: url("s2r://panorama/images/dashboard/fight_btn_bg_psd.vtex");
+    background-size: 100% 100%;
+    min-width: 400px;
+	height: fit-children;
 }
 
 .AspectRatio21x9.IsLayoutSmallScreen .LowerNavButton
 {
-	margin: 0px;	
+	
 }
 
 .LowerNavButton Label
 {
-	font-size: 64px;
-	text-overflow: shrink;
-	font-weight: black;
-	letter-spacing: 1px;
-	vertical-align: center;
-	text-align: center;
-	color: textBrighter;
-	opacity: 0.8;
+	font-family: Ravenhook;
+	vertical-align: top;
+	margin-top: 63px;
+	transform: rotateZ(-1deg);
+	font-size: 65px;
+	color: #ffffff;
 }
+
 
 .GlassButton:hover
 {
@@ -352,33 +583,55 @@ DACPlayerAvatar
 	flow-children: right;
 	margin-top: 32px;
 	width: 100%;
-	height: 100%;
+	margin: 0px 150px 15px 150px;
+	overflow: noclip;
+	
 }
 
 .ProgressContainer
 {
 	width: 556px;
-	margin-left: 52px;
+	
+	
+}
+
+#AdSpot {
+	width: 100%;
 	height: 100%;
-	flow-children: down;
+	background-image: url("s2r://panorama/images/post_game/ad_zenoks_psd.vtex");
+	background-size: contain;
+
 }
 #RightPanel.ProgressContainer
 {
+	width: 550px;
 	margin-left: 26px;
+	overflow: noclip;
 }
+
+.GameMode_Duos #RightPanel.ProgressContainer
+{
+	margin-left: 0px;
+	width: 1150px;
+}
+
 #UnderlordContainer
 {
-	background-color: #00000040;
-	width: 556px;
-	height: 556px;
+	background-color: #000000;
+	width: 600px;
+	height: 560px;
 	vertical-align: top;
 	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
 	background-size: 100%;
 	flow-children: right;
+	border: 10px solid black;
+	saturation: 0.6;
 }
+
 .GameMode_Duos #UnderlordContainer
 {
 	height: 302px;
+	width: 300px;
 	margin-bottom: 26px;
 }
 
@@ -435,10 +688,12 @@ DACPlayerAvatar
 
 .InfoBlock
 {
-	background-color: #00000040;
+
 	width: 100%;
 	flow-children: down;
-	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+	//opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+	background-image: url("s2r://panorama/images/post_game/newspaper_rank_container_psd.vtex");
+	background-size: 100% 100%;
 }
 
 .BattlePassBlock
@@ -463,12 +718,14 @@ DACPlayerAvatar
 }
 
 #SoloRankTitle,
-#TurboRankTitle
+#TurboRankTitle,
+#BotDifficultyTitle
 {
 	visibility: collapse;
 }
 
-.GameMode_Normal #SoloRankTitle,
+.RankedMatch.GameMode_Normal #SoloRankTitle,
+.BotMatch.GameMode_Normal #BotDifficultyTitle,
 .GameMode_Turbo #TurboRankTitle,
 .GameMode_Duos #SoloRankTitle
 {
@@ -486,7 +743,15 @@ DACPlayerAvatar
 	animation-timing-function: ease-in;
 
 	width: 100%;
-	height: 420px;
+	margin: 0px 0px;
+	margin-bottom: 20px;
+	background-color: #00000040;
+	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+}
+
+.StatsMainRow.Synergies 
+{
+	height: 130px;
 }
 
 .IsLayoutSmallScreen .StatsMainRow
@@ -502,29 +767,51 @@ DACPlayerAvatar
 
 .StatsColumn
 {
-	flow-children: down;
+	
 	height: 100%;
-	background-color: #00000040;
+	width: 100%;
+	
 	horizontal-align: center;
-	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");	
+	//opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");	
+
 }
+
+DACPlayerAvatar {
+	width: 100%;
+	height: 100%;
+}
+
 
 .SynergiesColumn
 {
-	width: 400px;
-	margin-left: 28px;
+	width: 100%;
+	background-color: #00000040;
+}
+
+.UnderlordAbility {
+	visibility: collapse;
 }
 
 .HeroesColumn
 {
-	width: 700px;
-	margin: 0px 20px 0px 20px;
-	horizontal-align: center;
+	width: 800px;
+	height: 310px;
+	margin: 0px 0px 0px 0px;
+	horizontal-align: right;
 }
 
 .ItemsAndTalentsColumn
 {
-	flow-children: down;
+	height: 100%;
+	width: 330px;
+	//flow-children: down;
+	margin-right: 20px;
+	
+}
+
+.ItemsAndTalentsColumn DACPlayerAvatar {
+	height: 440px;
+	
 }
 
 .ItemsColumn
@@ -533,25 +820,29 @@ DACPlayerAvatar
 	margin-right: 28px;
 	height: fill-parent-flow(1);
 	margin-top: 20px;
+	margin-right: 20px;
 }
 
 .TalentsColumn
 {
 	width: 400px;
+	height: 100%;
 	margin-right: 28px;
-	height: fit-children;
+	visibility: collapse;
+	
 }
 
 #SynergiesContainer
 {
-	margin-top: 32px;
+	margin-top: 18px;
 	horizontal-align: center;
-	flow-children: right-wrap;
+	flow-children: right;
+	width: fit-children;
 }
 
 #SynergiesContainer DACSynergyIcon
 {
-	ui-scale: 64%;
+	ui-scale: 50%;
 }
 
 #HeroesContainer
@@ -559,6 +850,8 @@ DACPlayerAvatar
 	margin-top: 10px;
 	horizontal-align: center;
 	flow-children: right-wrap;
+	width: 100%;
+	
 }
 
 #HeroesContainer DACPlayerAvatar
@@ -618,35 +911,50 @@ DACPlayerAvatar
 .FinalCrewTitle,
 .TalentsTitle
 {
-	font-size: 28px;
+	vertical-align: bottom;
+	font-size: 34px;
 	font-weight: black;
-	letter-spacing: 1px;
+	letter-spacing: 2px;
 	text-align: center;
-	color: #908680;
-	padding: 4px 12px 4px 12px;
-	text-transform: uppercase;
-	background-color: #3f3836;
+	color: #e7e0d1;
+	font-family: Early Bird;
+	padding-top: 5px;
+	margin-top: -20px;
+	text-transform: lowercase;
+	//background-color: #3f3836;
+	background-image: url("s2r://panorama/images/post_game/paper_backing_psd.vtex");
 	//background-image: url("s2r://panorama/images/post_game/title_bg_01_psd.vtex");
 	width: 100%;
-	background-size: 100%;
-	background-repeat: no-repeat;
 	horizontal-align: center;
+	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+}
+
+.Language_tchinese .FinalCrewTitle,
+.Language_schinese .FinalCrewTitle,
+.Language_koreana .FinalCrewTitle,
+.Language_japanese .FinalCrewTitle
+{
+	line-height: 25px;
+}
+
+.TalentsTitle {
+	height: 73px;
+	padding-top: 10px;
 }
 
 .StatsContainer
 {
 	horizontal-align: center;
 	flow-children: right;
-	margin-top: 20px;
 	overflow: noclip;
+	width: 100%;
 }
 
 .StatsSubContainer
 {
-	min-width: 341px;
+	width: fill-parent-flow(.333);
 	flow-children: down;
-	margin: 0px 10px 0px 10px;
-	padding-bottom: 20px;
+	margin: 0px 5px 0px 5px;
 	background-color: #00000040;
 	
 	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
@@ -694,8 +1002,10 @@ DACPlayerAvatar
 .StatsSubContainer Label
 {
 	horizontal-align: center;
-	//line-height: 40px;
 }
+
+
+
 
 .tilt-left
 {
@@ -710,10 +1020,21 @@ DACPlayerAvatar
 .PlaceContainer
 {
 	horizontal-align: center;
-	width: 100%;
-	flow-children: down;
+	width: fill-parent-flow(1.0);
+	max-height: 210px;
+	overflow: noclip;
+	
 	margin-top: 40px;
 	visibility: visible;
+
+	margin: 5px 150px;
+
+	//background-color: #2e2120;
+	background-image: url("s2r://panorama/images/post_game/paper_backing_psd.vtex");
+	color: #e7e0d1;
+	text-align: center;
+	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+	
 }
 
 .BigStat
@@ -727,19 +1048,28 @@ DACPlayerAvatar
 
 .StatDescription
 {
-	font-size: 28px;
+	font-size: 34px;
 	font-weight: black;
 	letter-spacing: 1px;
 	text-align: center;
-	color: #908680;
-	padding: 4px 12px 4px 12px;
-	margin-bottom: 4px;
-	text-transform: uppercase;
-	background-color: #3f3836;
+	color: #e7e0d1;
+	font-family: Early Bird;
+	padding-top: 5px;
+	letter-spacing: 2px;
+	text-transform: lowercase;
+	//background-color: #3f3836;
 	//background-image: url("s2r://panorama/images/post_game/title_bg_01_psd.vtex");
+	background-image: url("s2r://panorama/images/post_game/paper_backing_psd.vtex");
 	width: 100%;
-	background-size: 100%;
-	background-repeat: no-repeat;
+	vertical-align: bottom;
+}
+
+.Language_tchinese .StatDescription,
+.Language_schinese .StatDescription,
+.Language_koreana .StatDescription,
+.Language_japanese .StatDescription
+{
+	margin-top: 0px;
 }
 
 #EndGameDamageDealt .StatDescription
@@ -773,29 +1103,54 @@ DACPlayerAvatar
 	horizontal-align: center;
 }
 
-#MainMenuButton
-{
-	horizontal-align: left;
-}
 
-#PlayAgainButton
+/* #PlayAgainButton, #ReturnToCityCrawlButton
 {
-	horizontal-align: right;
+    horizontal-align: right;
+	opacity: 0;
 	visibility: collapse;
-	background-image: url("s2r://panorama/images/post_game/play_button_bg_psd.vtex");
-	background-size: 100%;
-	transition-property: brightness;
-	transition-duration: 0.2s;
-}
+    //background-image: url("s2r://panorama/images/ui/splash_btn_bg_psd.vtex");
+    //background-image: url("s2r://panorama/images/dashboard/fight_btn_bg_psd.vtex");
+    background-size: 100% 100%;
+    transition-property: brightness;
+    transition-duration: 0.2s;
 
-#PlayAgainButton:hover
+} */
+
+#PlayAgainButton:hover, #ReturnToCityCrawlButton:hover
 {
 	brightness: 1.4;
+}
+
+.LowerNavButton Label {
+	font-family: Ravenhook;
+	vertical-align: top;
+	margin-top: 63px;
+	transform: rotateZ(-1deg);
+	font-size: 65px;
+}
+
+#ReturnToCityCrawlButton Label,
+#MainMenuButton Label
+{
+	font-size: 32px;
+	padding-top: 10px;
 }
 
 .PlayAgainAvailable #PlayAgainButton
 {
 	visibility: visible;
+	opacity: 1;
+}
+
+#MainMenuButton {
+	visibility: visible;
+}
+
+.ReturnToCityCrawlVisible #ReturnToCityCrawlButton
+{
+	visibility: visible;
+	opacity: 1;
 }
 
 .ConnectedToGame #ReturnToGameButton
@@ -804,7 +1159,7 @@ DACPlayerAvatar
 }
 
 .FirstPlace #ReturnToGameButton,
-.SecondPlace #ReturnToGameButton,
+.SecondPlace #ReturnToGameButton
 {
 	visibility: collapse;
 }
@@ -812,8 +1167,17 @@ DACPlayerAvatar
 .HideRank .HeroRank
 {
 	opacity: 0.01;
+	font-size: 25px;
 }
 
+.HeroIconPanel .HeroRank {
+	position: 0px 43px 0px;
+	font-size: 30px;
+
+	color: #9b7653;
+	text-shadow: 0px 0px 1.5 #73490d;
+}
+/*
 .HeroIconPanel.Rank1 .HeroRank
 {
 	color: rank1Color;
@@ -827,15 +1191,91 @@ DACPlayerAvatar
 .HeroIconPanel.Rank3 .HeroRank
 {
 	color: rank3Color;
+}*/
+
+.StatsTitleRow {
+	width: 100%;
+	height: 70px;
+	background-image: url("s2r://panorama/images/post_game/paper_backing_psd.vtex");
+	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+	margin-bottom: 0px;
+	padding: 10px 30px;
+}
+
+.SummaryTitle {
+	font-family: Early Bird;
+	font-size: 55px;
+	color: #e7e0d1;
+	text-transform: lowercase;
+	letter-spacing: 3px;
+	margin-top: -15px;
+
+}
+
+.Language_tchinese .SummaryTitle,
+.Language_schinese .SummaryTitle,
+.Language_koreana .SummaryTitle,
+.Language_japanese .SummaryTitle
+{
+	margin-top: 0px;
+}
+
+
+.MatchDetails {
+	horizontal-align: right;
+	flow-children: right;
+	
+}
+
+.MatchDetails Label {
+	font-family: Early Bird;
+	font-size: 45px;
+	color: #e7e0d1;
+	text-transform: lowercase;
+	letter-spacing: 3px;
+	opacity: 0.6;
+	vertical-align: middle;
+	margin-top: -5px;
+}
+
+.Language_tchinese .MatchDetails Label,
+.Language_schinese .MatchDetails Label,
+.Language_koreana .MatchDetails Label,
+.Language_japanese .MatchDetails Label
+{
+	margin-top: 0px;
+}
+
+
+
+.SummaryDivider {
+	width: 2px;
+	height: 100%;
+	background-color: #ffffff30;
+	margin: 0px 20px;
+}
+.GameMode_Streetfight .SummaryDivider
+{
+    visibility: collapse;
 }
 
 .HeroIconPanel
 {
-	flow-children: down;
+	
 	margin-left: 8px;
 	margin-right: 8px;
-	margin-bottom: 8px;
-	height: fit-children;
+	margin-bottom: 16px;
+
+	width: 119px;
+	height: 115px;
+
+	ui-scale: 120%;
+	background-image: url("s2r://panorama/images/post_game/paper_backing_psd.vtex");
+	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+}
+
+.IsLayoutSmallScreen .HeroIconPanel {
+	ui-scale: 100%;
 }
 
 .HeroIconPanel Label
@@ -843,6 +1283,7 @@ DACPlayerAvatar
 	horizontal-align: center;
 	font-size: 20px;
 	color: white;
+	font-family: Ravenhook;
 }
 
 #ScoreboardButton,
@@ -923,15 +1364,30 @@ DACPlayerAvatar
 
 #SeasonProgressContainer
 {
-	width: 1248px;
-	height: 828px;
-	horizontal-align: center;
+	width: 1448px;
+	height: fit-children;
+
+	overflow: squish scroll;
+	
+	horizontal-align: left;
 	vertical-align: center;
-	margin-top: 80px;
+	margin: 80px 0px;
+	margin-left: 60px;
 	background-size: 100%;
-	background-image: url("s2r://panorama/images/post_game/progress_bg_psd.vtex");
+	background-image: url("s2r://panorama/images/post_game/newspaper_bg_psd.vtex");
 	flow-children: down;
+	transform: rotateZ(0deg);
+	padding-top: 30px;
+
+
+
+	//background-color: #e7e0d1;
 }
+
+.AspectRatio21x9 #SeasonProgressContainer {
+	margin-left: 300px;
+}
+
 
 
 #SeasonProgressContainer .ProgressBar
@@ -948,7 +1404,7 @@ DACPlayerAvatar
 	background-color: #00000033;
 	margin-top: 44px;
 	margin-left: 132px;
-  	border: 4px solid #2f2a28;	
+	border: 4px solid #2f2a28;	
 	box-shadow: inset 0px 6px 20px #000000cc;
 }
 
@@ -1015,6 +1471,13 @@ DACPlayerAvatar
 	background-position: bottom;
 
 	width: 100%;
+}
+
+#BottomGradient {
+	width: 100%;
+	height: 400px;
+	background-color: gradient( linear, 0% 0%, 0% 100%, from( #00000000 ), to( #000000ee ) );
+	vertical-align: bottom;
 }
 
 #LevelDescriptionContainer
@@ -1096,6 +1559,7 @@ DACPlayerAvatar
 
 }
 
+
 #NextRewardBg
 {
 	/* horizontal-align: right; */
@@ -1115,6 +1579,7 @@ DACPlayerAvatar
 	height: 132px;
 }
 
+DACRewardPreviewScenePanel,
 #NextRewardImage
 {
 	width: 100%;
@@ -1197,9 +1662,9 @@ DACPlayerAvatar
 
 .TopBarButton
 {
-  	vertical-align: center;
-  	margin-left: 4%;
-  	width: 400px;
+	vertical-align: center;
+	margin-left: 4%;
+	width: 400px;
 	height: 64px;
 	transition-property: brightness, background-color;
 	transition-duration: .2s; 
@@ -1260,7 +1725,7 @@ DACPlayerAvatar
 .ChallengeAndRankContainer
 {
 	width: 100%;
-	height: 228px;
+	height: 550px;
 }
 #TeamRankContainer
 {
@@ -1271,22 +1736,89 @@ DACPlayerAvatar
 	visibility: visible;
 }
 
+
+.GameMode_Duos.MatchModeCasual #TeamRankContainer,
+.GameMode_Duos.BotMatch #TeamRankContainer {
+	visibility: collapse;
+}
+
+.ShowScoreboardButton
+{
+	width: 46px;
+	height: 46px;
+	background-image: none;
+	//background-color: red;
+	background-image: url("s2r://panorama/images/control_icons/open_scoreboard_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	overflow: noclip;
+	margin-top: 15px;
+	margin-left: 15px;
+	margin-right: 5px;
+	brightness: .25;
+	opacity: 1;
+	transition-property: opacity, background-image; 
+	transition-duration: .2s;
+	vertical-align: top;
+}
+
 .RankIndicator
 {
-	width: 500px;
-	height: 250px;
+	
 	//background-image: url("s2r://panorama/images/dashboard/rank_backing_psd.vtex");
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	horizontal-align: center;
-	flow-children: right;
+	
 	visibility: collapse;
-	margin-left: -24px;
-	margin-top: 4px;
+	width: 100%;
+	height: 100%;
 }
 
 .RankedMatch #SoloRankDataContainer,
 .RankedMatch.GameMode_Duos #TeamRankDataContainer
+{
+	visibility: visible;
+}
+
+.BotDifficultyContainer
+{
+	vertical-align: center;
+	horizontal-align: center;
+	font-size: 28px;
+	height: 100%;
+	//text-transform: uppercase;
+	color: #2f2a28;
+	font-weight: black;
+	margin-top: 32px;
+	text-align: center;
+	padding: 0px 24px 0px 24px;
+	visibility: collapse;
+
+}
+
+#NotRankedContainer {
+	visibility: visible;
+}
+
+.GameMode_Duos #NotRankedContainer {
+	visibility: collapse;
+}
+
+.RankedMatch #NotRankedContainer {
+	visibility: collapse;
+}
+
+#SoloRankContainer
+{
+	visibility: collapse;
+}
+
+.RankedMatch #SoloRankContainer {
+	visibility: visible;
+}
+
+.BotMatch .BotDifficultyContainer
 {
 	visibility: visible;
 }
@@ -1310,13 +1842,54 @@ DACPlayerAvatar
 	visibility: collapse;
 }
 
+.BotMatch .NonRankedContainer
+{
+	visibility: collapse;
+}
+
 DACRankIcon
 {
-	margin-left: 26px;
 	vertical-align: middle;
 	horizontal-align: center;
-	ui-scale: 84%;
+	ui-scale: 200%;
+	margin-left: 10px;
+	margin-top: -20px;
 }
+
+#RankUpIcon {
+
+	ui-scale: 50%;
+	pre-transform-scale2d: 4;
+	transform: rotateZ(-20deg);
+	background-repeat: no-repeat;
+	
+	opacity: 0;
+
+	transition-property: opacity, pre-transform-scale2d, transform;
+	transition-duration: 250ms;
+
+}
+
+.RankUp #RankUpIcon{
+	opacity: 1;
+	pre-transform-scale2d: 1;
+	transform: none;
+}
+
+.RankUpContainer {
+	position: 300px -50px 0px;
+	/* This needs to be big enough to at least partially render inside the container to trick panorama into not culling it */
+	width:100px;
+	height: 100px;
+	overflow: noclip;
+}
+
+#Comic {
+	width: 100%;
+	margin: 40px 85px;
+}
+
+
 
 /* Center heavy icons */
 .MajorRank1 #RankIcon
@@ -1371,12 +1944,40 @@ DACRankIcon
 
 .NameContainer
 {
-	flow-children: down;
-	vertical-align: top;
-	margin-top: 24px;
-	margin-left: 10px;
-	width: fill-parent-flow(1.0);
+	vertical-align: bottom;
+	width: 100%;
+	height: 100%;
 }
+
+.TeamRankLabel {
+	font-size: 30px;
+	horizontal-align: center;
+	font-family: Ravenhook;
+	color: #221c1c;
+	vertical-align: bottom;
+	text-shadow: 1px 1px 4.0 #ffffff;
+	visibility: collapse;
+}
+
+.GameMode_Duos .TeamRankLabel {
+	visibility: visible;
+}
+
+.YourRankLabel {
+	font-size: 30px;
+	horizontal-align: center;
+	font-family: Ravenhook;
+	color: #221c1c;
+	vertical-align: bottom;
+	text-shadow: 1px 1px 4.0 #ffffff;
+	visibility: collapse;
+}
+
+.GameMode_Duos .YourRankLabel {
+	visibility: visible;
+}
+
+
 
 #PlayerName
 {
@@ -1390,20 +1991,34 @@ DACRankIcon
 
 .RankDesc
 {
-	font-size: 28px;
-	text-transform: uppercase;
-	width: fit-children;
+	font-size: 70px;
+	text-transform: lowercase;
+	width: 320px;
+	height: 70px;
 	color: #2f2a28;
-	margin-top: 8px;
 	font-weight: black;
+	text-align: center;
+	horizontal-align: center;
+	font-family: "Early Bird";
+	line-height: 30px;
+	letter-spacing: 2px;
+	margin-top: 360px;
+	text-overflow: shrink;
 }
+
 
 .RankScore
 {
-	font-size: 28px;
+	font-size: 70px;
 	font-weight: black;
 	color: #2f2a28;
+	text-align: center;
+	horizontal-align: center;
 	text-transform: uppercase;
+	font-family: Early Bird;
+	vertical-align: top;
+	margin-top: 425px;
+
 }
 
 .MajorRank9 .RankProgressBar
@@ -1427,12 +2042,15 @@ DACRankIcon
 	margin-top: 0px;
 	letter-spacing: 1px;
 	color: gradient( linear, 80% 100%, 0% 0%, from( #f8cc33 ), to( #f8ad33 ) );
+	visibility: collapse;
 }
 
 .MajorRank9 .LeaderboardPosition
 {
 	visibility: visible;
-	margin-top: -8px;
+	margin-top: 8px;
+	margin-left: 3px;
+	visibility: collapse;
 }
 
 .MajorRank9 .RankDesc
@@ -1493,11 +2111,15 @@ DACRankIcon
 	transition-property: opacity, transform;
 	transform: translateX( 200px );
 	transition-duration: 0.5s;
-   	font-size: 28px;
+	font-size: 28px;
 	font-weight: black;
 	text-shadow: 0px 0px 0px 3.0 #2f2a28;
 	text-transform: uppercase;
 	margin-left: 8px;
+	text-align: center;
+	horizontal-align: center;
+	vertical-align: top;
+	margin-top: 280px;
 }
 
 .ShowRankLevelDelta .RankScoreDelta
@@ -1509,14 +2131,15 @@ DACRankIcon
 
 .RankProgressBar 
 {
-	width: 360px;
+	width: 250px;
 	height: 28px;
 	horizontal-align: center;
 	background-color: #00000033;
-	margin-top: 2px;
-  	border: 4px solid #2f2a28;	
-	box-shadow: inset 0px 6px 20px #000000cc;
-	horizontal-align: left;
+	border: 4px solid #2f2a28;	
+	box-shadow: inset 0px 6px 20px #00000030;
+	horizontal-align: center;
+	margin-top: 320px;
+
 }
 
 #PlayerRankProgressBar_Left,
@@ -1660,6 +2283,290 @@ DACRankIcon
 
 #RoundSliderContainer 
 {
-    vertical-align: bottom;
-    horizontal-align: center;
+	vertical-align: bottom;
+	horizontal-align: center;
+}
+
+#EarlyBirdLogo {
+	width: 78%;
+	height: 300px;
+	horizontal-align: center;
+	margin: 60px 0 00px 0;
+
+	background-image: url("s2r://panorama/images/post_game/early_bird_logo_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+#LocalUnderlordPortrait
+{
+    visibility: collapse;
+}
+
+#CityCrawlContainer {
+	margin: 25px 150px;
+	border: 2px solid black;
+	width: 1448px;
+	height: 300px;
+	visibility: collapse;
+}
+
+#ScoreboardButton {
+	visibility: collapse;
+}
+
+.ScoreboardPage #ScoreboardButton {
+	visibility: collapse;
+}
+
+.SeasonProgressPage #OverviewButton {
+	visibility: collapse;
+}
+
+#BreakingNewsText {
+	width: 100%;
+	color: #483331;
+	font-size: 20px;
+	margin-left: 100px;
+	visibility: collapse;
+}
+
+#PlaceSubText {
+	margin: 0 150px;
+	margin-top: -20px;
+	width: 100%;
+	height: 150px;
+	color: #483331;
+	font-size: 85px;
+	line-height: 60px;
+	font-family: "Early Bird";
+	text-transform: lowercase;
+	text-overflow: shrink;
+
+}
+
+.Language_tchinese #PlaceSubText,
+.Language_schinese #PlaceSubText,
+.Language_koreana #PlaceSubText,
+.Language_japanese #PlaceSubText
+{
+	margin-top: 0px;
+	font-size: 85px;
+	line-height: 95px;
+}
+
+/* Duos styling overrides */
+#DuosRankContainer {
+	visibility: collapse;
+	width:1280px;
+	height: 550px;
+	flow-children: right;
+}
+
+#DuosRankContainer .InfoBlock {
+	width: 550px;
+	height: 550px;
+	margin: 25px;
+}
+
+.GameMode_Duos #ProgressBody {
+	flow-children: down;
+}
+
+.GameMode_Duos.MatchModeCasual #RightPanel,
+.GameMode_Duos.BotMatch #RightPanel {
+	visibility: collapse;
+}
+
+
+.GameMode_Duos .ProgressContainer, .GameMode_Duos #UnderlordContainer {
+	width: 1160px;
+	height: 600px;
+	flow-children: right;
+}
+
+.GameMode_Duos .ChallengeAndRankContainer {
+	width: 500px;
+	margin-right: 40px;
+	margin-left: 40px;
+}
+
+
+#RickyComic {
+	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_01_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 962px;
+	margin-bottom: 420px;
+	margin-left:5px;
+	margin-top:20px;
+	background-position: center;
+}
+
+#RickyComic.PostgameRickyComic02 {
+	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_02_psd.vtex");
+}
+
+#RickyComic.PostgameRickyComic03 {
+	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_03_psd.vtex");
+}
+#RickyComic.PostgameRickyComic04 {
+	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_04_psd.vtex");
+}
+
+#RickyComic.PostgameRickyComic05 {
+	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_05_psd.vtex");
+}
+
+#RickyComic.PostgameRickyComic06 {
+	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_06_psd.vtex");
+}
+
+#RickyComic.PostgameRickyComic07 {
+	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_07_psd.vtex");
+}
+
+
+.BotMatchLabelContainer {
+	visibility: collapse;
+}
+
+.HasBots:not(.GameMode_Streetfight) .BotMatchLabelContainer {
+	visibility: visible;
+}
+
+.RankedModeMatchContainer {
+	visibility: visible;
+}
+
+.HasBots .RankedModeMatchContainer,
+.GameMode_Streetfight .RankedModeMatchContainer
+{
+	visibility: collapse;
+}
+
+#ReturnToCityCrawlButton
+{
+	visibility: collapse;
+}
+
+.GameMode_Streetfight #ReturnToCityCrawlButton
+{
+	visibility: visible;
+}
+
+.WonStreetFight #PlayAgainButton {
+	visibility: collapse;
+}
+
+
+/* LOC FOR REGION IMAGES */
+
+.Language_brazilian #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/brazilian_png.vtex");
+}
+
+.Language_bulgarian #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/bulgarian_png.vtex");
+}
+
+.Language_czech #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/czech_png.vtex");
+}
+
+.Language_danish #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/danish_png.vtex");
+}
+
+.Language_dutch #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/dutch_png.vtex");
+}
+
+.Language_finnish #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/finnish_png.vtex");
+}
+
+.Language_french #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/french_png.vtex");
+}
+
+.Language_german #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/german_png.vtex");
+}
+
+.Language_greek #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/greek_png.vtex");
+}
+
+.Language_hungarian #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/hungarian_png.vtex");
+}
+
+.Language_italian #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/italian_png.vtex");
+}
+
+.Language_japanese #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/japanese_png.vtex");
+}
+
+.Language_korean #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/korean_png.vtex");
+}
+
+.Language_latam #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/latam_png.vtex");
+}
+
+.Language_norwegian #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/norwegian_png.vtex");
+}
+
+.Language_polish #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/polish_png.vtex");
+}
+
+.Language_portuguese #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/portuguese_png.vtex");
+}
+
+.Language_romanian #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/romanian_png.vtex");
+}
+
+.Language_russian #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/russian_png.vtex");
+}
+
+.Language_schinese #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/schinese_png.vtex");
+}
+
+.Language_spanish #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/spanish_png.vtex");
+}
+
+.Language_swedish #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/swedish_png.vtex");
+}
+
+.Language_tchinese #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/tchinese_png.vtex");
+}
+
+.Language_thai #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/thai_png.vtex");
+}
+
+.Language_turkish #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/turkish_png.vtex");
+}
+
+.Language_ukrainian #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/ukrainian_png.vtex");
+}
+
+.Language_vietnamese #SeasonProgressContainer #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/vietnamese_png.vtex");
 }

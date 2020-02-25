@@ -16,7 +16,7 @@ DACPlayPage
 #GameModeContainer
 {
     width: fit-children;
-    height: 776px;
+    height: fit-children;
     flow-children: right;
     margin-top: 120px;
     horizontal-align: center;
@@ -114,7 +114,7 @@ DACPlayPage
 .IsLayoutSmallScreen .SelectedModeTraining #TrainingGameModeButton .GameModeButtonDesc,
 {
     opacity: 1.0;
-    color: #c7dbda;
+    color: #F4F4F4;
 }
 
 
@@ -130,7 +130,7 @@ DACPlayPage
 .SelectedModeDuosTeammateOptions #DuosGameModeButton Label,
 .SelectedModeTraining #TrainingGameModeButton Label,
 {
-    color: #c7dbda;
+    color: #F4F4F4;
     //text-shadow: 0px 0px 1px 2.0 #393c8e88;
 }
 
@@ -169,11 +169,14 @@ DACPlayPage
 {
     font-size: 52px;
     horizontal-align: center;
+    text-align: center;
     vertical-align: top;
     margin-bottom: 16px;
     padding: 0px 20px 0px 20px;
     color: textDark;
     height: 52px;
+    width: 100%;
+    text-overflow: shrink;
 }
 
 .Language_korean .GameModeButtonTitle, .Language_tchinese .GameModeButtonTitle, .Language_schinese .GameModeButtonTitle, .Language_japanese .GameModeButtonTitle
@@ -201,12 +204,12 @@ DACPlayPage
 .GameModeButton:hover .GameModeButtonDesc
 {
     opacity: 1.0;
-    color: #c7dbda;
+    color: #F4F4F4bb;
 }
 
 .GameModeButton:hover .GameModeButtonTitle
 {
-    color: #c7dbda;
+    color: #F4F4F4;
 }
 
 .GameModeButtonDesc
@@ -230,8 +233,10 @@ DACPlayPage
 #GameModeOptionsContainer
 {
     width: 440px;
-    height: 100%;
+    height: 96%;
     padding: 8px 20px 20px 20px;
+    //background-image: url("s2r://panorama/images/dashboard/loadout_section_bg_psd.vtex");
+    //background-size: 100%;
     background-color: gradient (linear, 0% 0%, 0% 100%, from(#2c2e37cc), to(#00000000));
     //margin-right: 48px;
 }
@@ -307,12 +312,18 @@ DACPlayPage
     visibility: visible;
 }
 
+.NotConnectedToGC .GameModeOptionsSettingsContainer.MatchTypeSettingsContainer,
+{
+    visibility: collapse;
+}
+
+
 .GameModeOptionsTitle
 {
     font-size: 52px;
     margin-bottom: 4px;
     margin-top: -4px;
-    color: #c7dbda;
+    color: #F4F4F4;
 }
 .GameModeOptionsDesc
 {
@@ -362,14 +373,26 @@ DACPlayPage
     transition-property: background-color, brightness;
     transition-duration: 0.2s;
     background-color: #1e222f;
-    brightness: 1.0;
+    brightness: 1.4;
+    flow-children: right;
 }
 
 .GameModeOptionButton:hover
 {
-    brightness: 1.5;
+    brightness: 1.8;
 }
 
+
+.BattlePassMode
+{
+	background-image: url("s2r://panorama/images/battle_pass/bp1/bp1_logo_small_psd.vtex");
+    background-size: 100%;
+    width: 60px;
+    height: 60px;
+    vertical-align: center;
+    margin-right: 20px;
+    horizontal-align: right;
+}
 
 .TurboMatchTypeMultiplayer #TurboMatchTypeButtonMultiplayer,
 .TurboMatchTypeBots #TurboMatchTypeButtonBots,
@@ -432,7 +455,6 @@ DACPlayPage
     background-color: gradient (linear, 0% 0%, 100% 0%, from(#6777ca88), to(#100f10));
 }
 
-
 .TurboMatchTypeMultiplayer #TurboMatchTypeButtonMultiplayer:hover,
 .TurboMatchTypeBots #TurboMatchTypeButtonBots:hover,
 .TurboMatchmakingTypeCasual #TurboMatchmakingTypeButtonCasual:hover,
@@ -483,40 +505,31 @@ DACPlayPage
 .DuosTeammateTypeInvite #DuosTeammateTypeButtonInvite Label,
 .DuosTeammateTypeBot #DuosTeammateTypeButtonBot Label,
 {
-    color: #c7dbda;
+    color: #F4F4F4;
 }
 .LocalTurboBotDifficulty0 #EasyLocalTurboBotOptionButton Label,
 .LocalTurboBotDifficulty1 #MediumLocalTurboBotOptionButton Label,
 .LocalTurboBotDifficulty2 #ChallengingLocalTurboBotOptionButton Label,
 .LocalTurboBotDifficulty3 #HardcoreLocalTurboBotOptionButton Label,
-.LocalTurboBotDifficulty4 #BattlepassLocalTurboBotOptionButton Label,
 .GCTurboBotDifficulty1 #EasyGCTurboBotOptionButton Label,
 .GCTurboBotDifficulty2 #MediumGCTurboBotOptionButton Label,
 .GCTurboBotDifficulty3 #ChallengingGCTurboBotOptionButton Label,
-.GCTurboBotDifficulty4 #BattlepassGCTurboBotOptionButton Label,
-.GCTurboBotDifficulty0 #NoBotGCTurboBotOptionButton Label,
 .LocalStandardBotDifficulty0 #EasyLocalStandardBotOptionButton Label,
 .LocalStandardBotDifficulty1 #MediumLocalStandardBotOptionButton Label,
 .LocalStandardBotDifficulty2 #ChallengingLocalStandardBotOptionButton Label,
 .LocalStandardBotDifficulty3 #HardcoreLocalStandardBotOptionButton Label,
-.LocalStandardBotDifficulty4 #BattlepassLocalStandardBotOptionButton Label,
 .GCStandardBotDifficulty1 #EasyGCStandardBotOptionButton Label,
 .GCStandardBotDifficulty2 #MediumGCStandardBotOptionButton Label,
 .GCStandardBotDifficulty3 #ChallengingGCStandardBotOptionButton Label,
-.GCStandardBotDifficulty4 #BattlepassGCStandardBotOptionButton Label,
-.GCStandardBotDifficulty0 #NoBotGCStandardBotOptionButton Label,
 .LocalDuosBotDifficulty0 #EasyLocalDuosBotOptionButton Label,
 .LocalDuosBotDifficulty1 #MediumLocalDuosBotOptionButton Label,
 .LocalDuosBotDifficulty2 #ChallengingLocalDuosBotOptionButton Label,
 .LocalDuosBotDifficulty3 #HardcoreLocalDuosBotOptionButton Label,
-.LocalDuosBotDifficulty4 #BattlepassLocalDuosBotOptionButton Label,
 .GCDuosBotDifficulty1 #EasyGCDuosBotOptionButton Label,
 .GCDuosBotDifficulty2 #MediumGCDuosBotOptionButton Label,
 .GCDuosBotDifficulty3 #ChallengingGCDuosBotOptionButton Label,
-.GCDuosBotDifficulty4 #BattlepassGCDuosBotOptionButton Label,
-.GCDuosBotDifficulty0 #NoBotGCDuosBotOptionButton Label,
 {
-    color: #c7dbda;
+    color: #F4F4F4;
 }
 
 .SelectedModeTurbo #TurboBotDifficulty,
@@ -590,6 +603,26 @@ DACPlayPage
     padding: 0px 20px;
     transition-property: color;
     transition-duration: 0.2s;
+    text-overflow: shrink;
+}
+.BattlepassOptionButton Label
+{
+    color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.3, #ffffff), color-stop( 0.3, #eddcb7), color-stop( 0.93, #b08d50), color-stop( 0.93, #b4712d),  to( #b4712d) );
+    brightness: 0.25;
+}
+
+.LocalTurboBotDifficulty4 #BattlepassLocalTurboBotOptionButton Label,
+.GCTurboBotDifficulty4 #BattlepassGCTurboBotOptionButton Label,
+.LocalStandardBotDifficulty4 #BattlepassLocalStandardBotOptionButton Label,
+.GCStandardBotDifficulty4 #BattlepassGCStandardBotOptionButton Label,
+.LocalDuosBotDifficulty4 #BattlepassLocalDuosBotOptionButton Label,
+.GCDuosBotDifficulty4 #BattlepassGCDuosBotOptionButton Label,
+.GCTurboBotDifficulty0 #NoBotGCTurboBotOptionButton Label,
+.GCStandardBotDifficulty0 #NoBotGCStandardBotOptionButton Label,
+.GCDuosBotDifficulty0 #NoBotGCDuosBotOptionButton Label
+{
+    color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.3, #ffffff), color-stop( 0.3, #eddcb7), color-stop( 0.93, #b08d50), color-stop( 0.93, #b4712d),  to( #b4712d) );
+    brightness: 1; 
 }
 
 .OptionHeader
@@ -617,6 +650,17 @@ DACPlayPage
 .BotDifficultyDropdown:hover
 {
     background-color: #32353f;
+}
+
+.GCTurboBotDifficulty4 #GCTurboBotDifficultyButton Label,
+.GCStandardBotDifficulty4 #GCStandardBotDifficultyButton Label,
+.GCDuosBotDifficulty4 #GCDuosBotDifficultyButton Label,
+.LocalTurboBotDifficulty4 #LocalTurboBotDifficultyButton Label,
+.LocalStandardBotDifficulty4 #LocalStandardBotDifficultyButton Label,
+.LocalDuosBotDifficulty4 #LocalDuosBotDifficultyButton Label
+{
+    color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.3, #ffffff), color-stop( 0.3, #eddcb7), color-stop( 0.93, #b08d50), color-stop( 0.93, #b4712d),  to( #b4712d) );
+    brightness: 1;
 }
 
 #DuosTeammateButton
@@ -664,7 +708,7 @@ DACSettingsCheckbox:selected .PlayCheckbox
 
 DACSettingsCheckbox:selected Label
 {
-    color: #c7dbda;
+    color: #F4F4F4;
 }
 
 .PlayCheckbox .TickBox
@@ -681,7 +725,7 @@ DACSettingsCheckbox:selected .TickBox
 {
     border: 4px solid #4b4e5d;
     padding: 2px;
-    background-color: #c7dbda;
+    background-color: #F4F4F4;
 }
 
 #GCTurboBotDifficultyButton,
@@ -705,7 +749,7 @@ DACSettingsCheckbox:selected .TickBox
     font-weight: black;
     text-transform: uppercase;
     vertical-align: center;
-    color: #c7dbda;
+    color: #F4F4F4;
     padding-left: 20px;
 }
 
@@ -733,7 +777,7 @@ DropDownMenu Label
 
 DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
 {
-    color: #c7dbda;  
+    color: #F4F4F4;  
 }
 
 .PlayPageLabel
@@ -749,145 +793,7 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
     text-align: left;
 }
 
-
-#Footer
-{
-    width: 100%;
-    height: 25%;
-    vertical-align: bottom;
-}
-
-#PlayButtonContainer
-{
-    width: fit-children;
-    height: 100%;
-    horizontal-align: right;
-    margin-top: 24px;
-    flow-children: down;
-}
-
-.AspectRatio4x3 #PlayButtonContainer
-{
-    margin-top: 120px;
-}
-
-.PlayButton
-{
-    horizontal-align: right;
-	max-width: 800px;
-	height: 128px;
-	opacity: 1;
-	transition-property: brightness;
-	transition-duration: .2s; 
-	background-image: url("s2r://panorama/images/dashboard/play/play_button_find_match_psd.vtex");
-    background-size: 100%;
-    transition-property: background-image, max-width, brightness;
-    transition-duration: 0.2s;
-}
-
-.AspectRatio4x3 .PlayButton
-{
-    max-width: 800px;
-}
-
-.PlayButton:hover
-{
-    brightness: 2.0;
-}
-
-.AspectRatio21x9 .PlayButton
-{
-    max-width: 800px;
-}
-
-.SelectedModeDuos .PlayButton
-{
-    background-image: url("s2r://panorama/images/dashboard/play/play_button_invite_psd.vtex");
-}
-
-.DuoPartyState_Ready.SelectedModeDuos .PlayButton,
-.DuosMatchTypeBots.SelectedModeDuos .PlayButton
-{
-	background-image: url("s2r://panorama/images/dashboard/play/play_button_find_match_psd.vtex");
-}
-
-#TurboPlayButton,
-#StandardPlayButton,
-#DuosPlayButton,
-#TrainingPlayButton,
-{
-    visibility: collapse;
-}
-
-
-
-.SelectedModeTurbo #TurboPlayButton,
-.SelectedModeStandard #StandardPlayButton,
-.SelectedModeDuos #DuosPlayButton,
-.SelectedModeTraining #TrainingPlayButton,
-{
-    visibility: visible;
-}
-
-.FindMatchLabel, .BeginMatchLabel, .InviteFriendLabel, .StartLabel
-{
-    font-size: 80px;
-	font-weight: black;
-	letter-spacing: 1px;
-	vertical-align: center;
-	color: textBrighter;
-	text-transform: uppercase;
-	text-align: right;
-	text-overflow: shrink;
-	overflow: noclip;
-    height: fit-children;
-	transition-property: brightness;
-	transition-duration: .2s; 
-	//opacity-mask: url("s2r://panorama/images/dashboard/homebutton_mask_psd.vtex");
-	padding-left: 44px;
-    margin-right: 32px;
-}
-
-.AspectRatio4x3 .FindMatchLabel, .AspectRatio4x3 .BeginMatchLabel, .AspectRatio4x3 .InviteFriendLabel, .AspectRatio4x3 .StartLabel
-{
-    ui-scale: 116%;
-    max-width: 800px;
-}
-
-.IsLayoutSmallScreen.AspectRatio21x9 .FindMatchLabel, .IsLayoutSmallScreen.AspectRatio21x9 .BeginMatchLabel, .IsLayoutSmallScreen.AspectRatio21x9 .InviteFriendLabel, .IsLayoutSmallScreen.AspectRatio21x9 .StartLabel
-{
-    margin-right: safe-area-inset-right;
-}
-
-.IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .FindMatchLabel, .IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .BeginMatchLabel, .IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .InviteFriendLabel, .IsLayoutSmallScreen.AspectRatio16x9.HasSafeAreaRight .StartLabel
-{
-    margin-right: safe-area-inset-right;
-}
-
-.AspectRatio21x9 .FindMatchLabel, .AspectRatio21x9 .BeginMatchLabel, .IsLayoutSmallScree.AspectRatio21x9 .InviteFriendLabel, .AspectRatio21x9 .StartLabel
-{
-    margin-right: 80px;
-}
-
-#DuosFindMatchLabel,
-.TurboMatchTypeBots #TurboFindMatchLabel,
-.TurboMatchTypeMultiplayer #TurboBeginMatchLabel,
-.StandardMatchTypeBots #StandardFindMatchLabel,
-.StandardMatchTypeMultiplayer #StandardBeginMatchLabel,
-.DuosMatchTypeBots #DuosFindMatchLabel,
-.DuosMatchTypeBots.DuoPartyState_Ready #DuosFindMatchLabel,
-.DuosMatchTypeMultiplayer #DuosBeginMatchLabel,
-.DuoPartyState_Ready #DuosInviteFriendLabel,
-.DuosMatchTypeBots #DuosInviteFriendLabel,
-{
-    visibility: collapse;
-}
-.DuoPartyState_Ready #DuosFindMatchLabel,
-{
-    visibility: visible;
-}
-
-.LockedLabel, .LoginRequired
+.LockedLabel
 {
     color: #c13939;
     font-weight: black;
@@ -905,7 +811,7 @@ DropDown:focus Label, DropDown.DropDownMenuVisible:focus Label
     color: textDark;
 }
 
-.HasSafeAreaRight .LockedLabel, .HasSafeAreaRight .LoginRequired
+.HasSafeAreaRight .LockedLabel, .HasSafeAreaRight
 {
     margin-right: safe-area-inset-right;	
 }
@@ -988,23 +894,17 @@ DACPlayPage #ViewDetails,
 	background-size: cover;
 }
 
-.NotConnectedToGC #TurboMatchTypeButtonMultiplayer,
-.NotConnectedToGC #StandardMatchTypeButtonMultiplayer,
-.NotConnectedToGC #DuosMatchTypeButtonMultiplayer,
-{
-    visibility: collapse;
-}
-
 .NotConnectedToGC #BattlepassLocalStandardBotOptionButton,
 .NotConnectedToGC #BattlepassLocalDuosBotOptionButton,
 {
     visibility: collapse;
 }
 
-.ResumeAvailable.SaveGameMode2.SelectedModeTurbo #TurboPlayButton,
-.ResumeAvailable.SaveGameMode1.SelectedModeStandard #StandardPlayButton,
-.ResumeAvailable.SaveGameMode3.SelectedModeDuos #DuosPlayButton,
-#SaveGamePlayButton,
+.NotConnectedToGC .BattlePassOptionHeader
+{
+    visibility: collapse;
+}
+
 .ResumeAvailable.SaveGameMode2.SelectedModeTurbo #TurboSubSettingBots,
 .ResumeAvailable.SaveGameMode1.SelectedModeStandard #StandardSubSettingBots,
 .ResumeAvailable.SaveGameMode3.SelectedModeDuos #DuosSubSettingBots,
@@ -1012,13 +912,10 @@ DACPlayPage #ViewDetails,
 #StandardSubSettingResume,
 #DuosSubSettingResume,
 .ResumeAvailable.SaveGameMode2.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboSubSettingResume,
-.ResumeAvailable.SaveGameMode2.SelectedModeTurbo.TurboMatchTypeMultiplayer #SaveGamePlayButton,
 .ResumeAvailable.SaveGameMode2.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboSubSettingBots,
 .ResumeAvailable.SaveGameMode1.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardSubSettingResume,
-.ResumeAvailable.SaveGameMode1.SelectedModeStandard.StandardMatchTypeMultiplayer #SaveGamePlayButton,
 .ResumeAvailable.SaveGameMode1.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardSubSettingBots,
 .ResumeAvailable.SaveGameMode3.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosSubSettingResume,
-.ResumeAvailable.SaveGameMode3.SelectedModeDuos.DuosMatchTypeMultiplayer #SaveGamePlayButton,
 .ResumeAvailable.SaveGameMode3.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosSubSettingBots,
 {
     visibility: collapse;
@@ -1027,12 +924,6 @@ DACPlayPage #ViewDetails,
 .ResumeAvailable.SaveGameMode2 #TurboSubSettingResume,
 .ResumeAvailable.SaveGameMode1 #StandardSubSettingResume,
 .ResumeAvailable.SaveGameMode3 #DuosSubSettingResume,
-.ResumeAvailable.SaveGameMode2.SelectedModeTurbo #SaveGamePlayButton,
-.ResumeAvailable.SaveGameMode1.SelectedModeStandard #SaveGamePlayButton,
-.ResumeAvailable.SaveGameMode3.SelectedModeDuos #SaveGamePlayButton,
-.ResumeAvailable.SelectedModeTurbo.TurboMatchTypeMultiplayer #TurboPlayButton,
-.ResumeAvailable.SelectedModeStandard.StandardMatchTypeMultiplayer #StandardPlayButton,
-.ResumeAvailable.SelectedModeDuos.DuosMatchTypeMultiplayer #DuosPlayButton,
 {
     visibility: visible;
 }
@@ -1083,6 +974,12 @@ DACPlayPage #ViewDetails,
     margin-left: -36px;
     visibility: collapse;
     transition-property: visibility;
+}
+.TurboMatchmakingTypeRanked #RankContainer2,
+.StandardMatchmakingTypeRanked #RankContainer1,
+.DuosMatchmakingTypeRanked #RankContainer3,
+{
+    visibility: visible;
 }
 
 DACPlayPage .RankContainer DACRankIcon
@@ -1147,7 +1044,7 @@ DACPlayPage .RankContainer DACRankIcon
 {
     font-size: 24px;
     text-transform: uppercase;
-    color: #c7dbda;
+    color: #F4F4F4bb;
     font-weight: black;
 }
 
@@ -1259,13 +1156,6 @@ DACPlayPage .RankContainer DACRankIcon
     visibility: collapse;
 }
 
-.TurboMatchmakingTypeRanked #RankContainer2,
-.StandardMatchmakingTypeRanked #RankContainer1,
-.DuosMatchmakingTypeRanked #RankContainer3,
-{
-    visibility: visible;
-}
-
 #BattlePassContainer
 {
     width: 440px;
@@ -1290,4 +1180,110 @@ DACPlayPage .RankContainer DACRankIcon
 .NeedsSteamLogin .BattlepassOptionButton
 {
     visibility: collapse;
+}
+
+.CityCrawlRequirementsNotMet
+{
+    font-size: 24px;
+    line-height: 26px;
+    text-overflow: shrink;
+    text-align: center;
+    font-family: Ravenhook;
+    background-image: url("s2r://panorama/images/dashboard/error_bg_psd.vtex");
+    background-size: 100%;
+    color: textBrighter;
+    border-radius:2px;
+    width:100%;
+    padding:4px;
+    text-shadow: 2px 2px 2.0 #8d262677;
+}
+
+@keyframes 'ErrorAlert'
+{
+    0%
+    {
+        brightness:1;
+        pre-transform-scale2d:1;
+    }
+    25%
+    {
+        brightness:2;
+        pre-transform-scale2d:0.97;
+    }
+    50%
+    {
+        brightness:1;
+        pre-transform-scale2d:1;
+    }
+    75%
+    {
+        brightness:2;
+        pre-transform-scale2d:0.97;
+    }
+    100%
+    {
+        brightness:1;
+        pre-transform-scale2d:1;
+    }
+}
+
+
+.InvalidActiveChallengeLabel
+{
+    color: red;
+    font-size: 34px;
+}
+
+.ActiveChallengeValid .InvalidActiveChallengeLabel
+{
+    visibility: collapse;
+}
+
+
+.DifficultyRequirements,
+.GameModeRequirements
+{
+    visibility: collapse;   
+}
+
+.InvalidChallengeDifficulty .DifficultyRequirements
+{
+    visibility: visible;
+
+
+    animation-name: ErrorAlert;
+    animation-duration:1s;
+    animation-iteration-count: 3;
+}
+
+.InvalidChallengeGameMode .GameModeRequirements
+{   
+    visibility: visible;
+
+    animation-name: ErrorAlert;
+    animation-duration:1s;
+    animation-iteration-count: 3;
+}
+
+.InvalidChallengeGameMode #ChallengeRequirementsNotMetPanel,
+.InvalidChallengeDifficulty #ChallengeRequirementsNotMetPanel
+{
+    visibility: visible;
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+#ChallengeRequirementsNotMetPanel
+{
+    width:100%;
+    margin-bottom: 48px;
+    height:100px;
+    flow-children:down;
+    vertical-align: bottom;
+    visibility: collapse;
+    opacity:0;
+    transform: translateX(500px);
+    transition-property: transform, opacity;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
 }

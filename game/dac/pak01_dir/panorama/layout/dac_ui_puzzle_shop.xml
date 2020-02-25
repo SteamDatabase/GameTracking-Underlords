@@ -1,0 +1,114 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_puzzle_shop.vcss_c" />
+	</styles>
+
+	<snippets>
+		<snippet name="DragUnitTooltipSnippet">
+			<Panel class="DragUnitTooltipContainer" hittest="false">
+				<Panel class="GoldValueCoin" hittest="false">
+					<Panel class="PlusMinus"/>
+					<Label class="CostLabel" text="{d:purchase_cost}" />
+				</Panel>
+			</Panel>
+		</snippet>
+
+		<snippet name="AllianceEntry">
+		  <Panel class="AllianceDescEntry">
+			<Label text="{s:alliance_name}" class="HeadlineFont"/>
+			<DACSynergyIcon id="AllianceEntryIcon" class="AllianceEntryIcon" iconstyle="circle" notooltip="1"/>
+		  </Panel>
+		</snippet>
+             
+		<snippet name="ShopEntry">
+			<Button class="ShopEntry">
+				<Panel class="BenchSlotPanel">
+					<DACScenePanel class="BenchSlotEmptyFX" hittest="false" map="scenes/bench" camera="cam_main" particleonly="true" renderdeferred="false" loadmaponmobile="false"/>
+					<Panel class="BenchSlotShadow" hittest="false" />
+					<Panel class="BenchSlotHighlight" hittest="false" />
+				</Panel>
+				<Panel id="InfoRow" hittest="false" hittestchildren="false">
+					<Label class="HeroName" text="{s:UnitName}" />
+				</Panel>
+				<Panel id="HeroCardRow" hittest="true">
+					<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" renderbatch="shop" usePortraitData="false" usePortraitCamera="false" usePortraitLighting="false" unitYaw="-90" cameraDistance="400" cameraOrthographicSize="275" />
+					<DACParticleScenePanel class="ParticleOverlay" id="HoverParticle" hittest="false" startActive="false" particleName="particles/ui/shop/ui_shop_hero_hover2.vpcf" fov="-900" />
+
+					<Panel id="UnitHeader" class="LeftRightFlow">
+						<Panel class="CostContainer">
+							<Label id="CostNumber" text="{i:UnitCost}" />
+						</Panel>
+					</Panel>
+					<Panel id="BottomFade" />
+					<Panel id="WashLayer" hittest="false"/>
+					<Panel id="CostContainer" />
+					<Panel id="BorderContainer" />
+					<Panel id="ContentBG" class="TopBottomFlow">
+						<DACSynergyCapsule id="SynergyCapsule" />
+					</Panel>
+					<Panel id="InfoButton" />
+				</Panel>
+				<Panel class="SynergyHelpersContainer">
+					<Panel id="SynergyHelpers"/>
+				</Panel>
+			</Button>
+		</snippet>
+
+		<snippet name="OwnedUnitEntry">
+			<Button class="OwnedUnitEntry">
+				<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" renderbatch="shop" usePortraitData="true" />
+				<Panel id="ContentBG" class="TopBottomFlow">
+					<Label text="{s:UnitName}" />
+					<Label text="#DAC_InGame_Rank" />
+					<Panel id="UnitTypesContainer" class="LeftRightFlow"/>
+				</Panel>
+			</Button>
+		</snippet>
+
+		<snippet name="UnitIcon">
+			<Panel class="UnitIcon">
+				<Panel class="Divider" />
+				<Panel class="UnitContent">
+					<Label class="HeroRankLabel" text="{s:heroRankStr}" />
+					<Image class="HeroIcon" id="HeroIcon"/>
+				</Panel>
+			</Panel>
+		</snippet>
+
+		<snippet name="LevelBarCostIncrementGap">
+			<Panel class="LevelBarCostIncrementGap">
+				<Panel class="LevelBarCostGap"/>
+			</Panel>
+		</snippet>
+	</snippets>
+
+	<DACUIPuzzleShop hittest="false">
+		<Panel id="DACUIShopContainer">
+			<Panel id="AllianceControlContainer">
+				<Panel id="AllianceDescContainer"/>
+		    </Panel>
+
+			<Panel id="UnitsInfoContainer" hittest="false">
+				<Panel id="ScrollAllianceLeft" class="ScrollAllianceButton" onactivate="DACMovePuzzleShopCarousel(-1)">
+				<Panel class="ScrollAllianceArrow" />
+					<Panel id="AllianceArrow">
+					<DACSynergyIcon id="ScrollAllianceLeftIcon" class="ScrollAllianceIcon" iconstyle="circle" notooltip="1" hittest="false"/>
+					<Label text="{s:alliance_name}" class="HeadlineFont"/>
+					</Panel>
+				</Panel>
+				<Panel id="UnitsShopContainer"/>
+				<Panel id="ScrollAllianceRight" class="ScrollAllianceButton" onactivate="DACMovePuzzleShopCarousel(1)">
+					<Panel class="ScrollAllianceArrow" />
+					<Panel id="AllianceArrow">
+						<DACSynergyIcon id="ScrollAllianceRightIcon" class="ScrollAllianceIcon" iconstyle="circle" notooltip="1" hittest="false"/>
+						<Label text="{s:alliance_name}" class="HeadlineFont"/>
+					</Panel>
+				</Panel>
+			</Panel>
+
+			<Panel id="SynergyHelpersContainer"/>
+		</Panel>
+	</DACUIPuzzleShop>
+</root>

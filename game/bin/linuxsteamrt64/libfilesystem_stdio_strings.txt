@@ -62,6 +62,7 @@ $ORIGIN
 ../public/tier1/utlfixedmemory.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utlsymbol.h
 ../public/tier2/fileutils.h
 ./
 .360
@@ -82,7 +83,6 @@ $ORIGIN
 11CRefCountedI20CRefCountServiceBaseILb0E6CRefMTEE
 11IFileSystem
 11IRefCounted
-12CEmptyConVar
 12CRefCounted1I11IRefCounted20CRefCountServiceBaseILb1E6CRefMTEE
 12CThreadEvent
 12CThreadedJob
@@ -111,6 +111,7 @@ $ORIGIN
 17IAsyncRequestBase
 18CCountedStringPool
 18CFileAsyncWriteJob
+18CPlaceholderConVar
 18CStdFilesystemFile
 18FileAsyncRequest_t
 19CAsyncSearchRequest
@@ -136,13 +137,18 @@ $ORIGIN
 << NULL >>
 <Invalid file time %lld>
 <NULL>
+<deferred>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 ???
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
 AWATING_FINISH
 AbortAfterServicing
 Aborting IO request for %s
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Add N ms of delay to every low-level read operation, to simulate a slow disk
 Adding VPK file: %s
 Addreffing existing VPK file: %s
@@ -158,7 +164,6 @@ AssetBrowserSystem_001
 AssetPreviewSystem_001
 AssetSystem001
 AssetSystemTest001
-Async I/O disabled from command line
 Async Request has not finished, unable to release (state=%i)
 Async result Status %d makes no sense
 AsyncIOCallBackHandler
@@ -229,6 +234,7 @@ CBufferString::Swap(CBufferString&)
 CBufferString::ToLowerFast(int)
 CCommand::Tokenize: Encountered command which overflows the argument buffer.. Clamped!
 CCommand::Tokenize: Encountered command which overflows the tokenizer buffer.. Skipping!
+CFileAsyncJob
 CMemAllocSystemInitialize
 COLORCORRECTION_VERSION_1
 COMPLETED
@@ -247,21 +253,21 @@ CThread::WaitForCreateComplete(CThreadEvent*)
 CThread::~CThread()
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadMultiWaitEvent::Set()
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
 CThreadRWLock_FastRead::CThreadRWLock_FastRead()
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
-CThreadRWLock_FastRead::UnlockReadAccounting(unsigned int)
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int)
+CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
+CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
 CThreadSemaphore::Release(int, int*)
 CThreadSemaphore::~CThreadSemaphore()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::Wait(unsigned int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
@@ -404,6 +410,7 @@ InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 Intentionally vague touch behavior for %p
 Invalid Path
+Invalid access of deferred ConVarRef for '%s'
 Invalid async read of %s
 JSON error, unterminated element:
 KV Conditional Evaluation Error
@@ -440,7 +447,6 @@ MemAlloc_FreeFunc
 MeshSystem001
 MeshUtils001
 ModelDocUtils001
-Modifying Async Filesystem Request after it has been submitted
 MustRead
 NULL
 NetworkClientService_001
@@ -792,6 +798,7 @@ asyncwrite
 bIsLive
 bIsLive && !pRequestBase->m_bUsedAsContext
 basefilesystem.cpp
+basefilesystemasync.cpp
 binary
 binary_auto
 binary_bc
@@ -827,7 +834,7 @@ filesystem_native
 filesystem_report_buffered_io
 filesystem_stdio
 filesystem_unbuffered_io
-filesystemasync.cpp
+filesystemasync.h
 filetime
 flags
 float( %f )
@@ -856,6 +863,7 @@ generic
 int( %d = 0x%X )
 interfaces.cpp
 internalFileAttribs
+keyvalues.cpp
 l
 lastModifiedDate
 lastModifiedTime
@@ -953,6 +961,7 @@ unlink
 update
 user
 utlstring.cpp
+utlsymbol.cpp
 versionMadeBy
 versionNeededToExtract
 vpk:

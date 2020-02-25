@@ -50,6 +50,7 @@ $ORIGIN
 ../../public/tier1/utllinkedlist.h
 ../../public/tier1/utlrbtree.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utlsymbol.h
 .>KEY_PERIOD
 .layout
 .pic
@@ -71,7 +72,6 @@ $ORIGIN
 10IAppSystem
 11CInputWin32
 11ImageBorder
-12CEmptyConVar
 12CThreadEvent
 13VPanelWrapper
 14CBaseAppSystemIN4vgui14IInputInternalEE
@@ -94,6 +94,7 @@ $ORIGIN
 15CTier3AppSystemIN4vgui6IPanelELi0EE
 16CDefaultAccessor
 16CStyleAppearance
+18CPlaceholderConVar
 19
 19IKeyValuesErrorSpew
 19ScalableImageBorder
@@ -137,11 +138,16 @@ $ORIGIN
 <
 << NULL >>
 <NULL>
+<deferred>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 =+KEY_EQUAL, L
 >@danish
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 AllocInternal
 AnimGraphEditorUtils001
 AnimationSystemUtils_001
@@ -188,14 +194,14 @@ COM_TimestampedLog
 CScheme::LoadFromFile( %s )
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
 CUtlLinkedList overflow! (exhausted index range)
@@ -322,6 +328,7 @@ InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 Intentionally vague touch behavior for %p
+Invalid access of deferred ConVarRef for '%s'
 JSON error, unterminated element:
 KEY_APP
 KEY_BACKSPACE
@@ -912,6 +919,7 @@ jJKEY_J
 japanese
 kKKEY_K
 keyboard input
+keyvalues.cpp
 korean
 koreana
 l
@@ -1079,7 +1087,9 @@ update
 user
 uses_appearances
 utlstring.cpp
+utlsymbol.cpp
 vVKEY_V
+vgui.cpp
 vgui/%s
 vgui_dll
 vgui_spew_fonts

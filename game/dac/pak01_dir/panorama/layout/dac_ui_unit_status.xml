@@ -18,11 +18,11 @@
 
 	<DACUnitStatus>
 		<Panel class="UnitNameContainer">
+			<Label class="HeaderPlayerName HeadlineFont" id="PlayerNameContainer" text="{s:selectedUnitName}" html="true" />
 			<Label class="Rank1Label RankLabel" text="★" />
 			<Label class="Rank2Label RankLabel" text="★★" />
 			<Label class="Rank3Label RankLabel" text="★★★" />
 			<Panel class="UnderlordIcon" />
-			<Label class="HeaderPlayerName" id="PlayerNameContainer" text="{s:selectedUnitName}" html="true" />
 		</Panel>
 
 
@@ -32,31 +32,59 @@
 				<Panel id="PlayerFlag" />
 				<Panel id="PlayerAvatar">
 <!-- 					<DACUnitScenePanel id="UnitPortraitView" map="scenes/shop" camera="cam_main" renderdeferred="false" usePortraitData="true" cameraUp="0" cameraLeft="0" cameraDistance="300"/> -->
-					<DACUnitScenePanel id="UnitPortraitView" map="scenes/shop" camera="cam_main" renderdeferred="false" usePortraitData="true" cameraUp="0" cameraLeft="0" cameraDistance="1000" glowsize="0.01" />
-					<CircularProgressBar id="HealthBar" max="100" min="0" />
-					<Panel class="TextContainer" />
-					<Label text="{i:selectedUnitHP}" id="StatusHP" class="HPLabel" />
-					<Label text="{i:selectedUnitHP} / {i:selectedUnitMaxHP}" id="StatusHPInCombat" class="HPLabel" />
-				
+					<DACUnitScenePanel rendershadows="true" id="UnitPortraitView" map="scenes/shop" camera="cam_main" renderdeferred="false"  usePortraitData="true" usePortraitLighting="true" cameraUp="0" cameraLeft="0" cameraDistance="25" forcehighlod="true" />
+					<Panel id="PlayerProfileAvatarOverlay"/>
+					<Panel class="SynergyContainer">
+						<DACSynergyCapsule id="SynergyCapsule" />
+					</Panel>
+
+					<Panel class="StatusPanel">
+						<Image id="StatusIcon" />
+
+						<Label class="StatusLabel HeadlineFont" text="{s:selectedUnitStatusName}" />
+						
+					</Panel>				
 				</Panel>
-				<Panel id="SelectUnitItem" />
-
-				<Panel id="PlayerProfileAvatarOverlay"/>
+				<Panel id="SelectUnitItem"/>
 		</Panel>
 
-		<Panel class="SynergyContainer">
-			<DACSynergyCapsule id="SynergyCapsule" />
-		</Panel>
+
+		<ProgressBar id="HealthBar" max="100" min="0" >
+			<Label text="{i:selectedUnitHP}" id="StatusHP" class="HPLabel HeadlineMonoFont" />
+			<Label text="{i:selectedUnitHP} / {i:selectedUnitMaxHP}" id="StatusHPInCombat" class="HPLabel HeadlineMonoFont" />
+		</ProgressBar>
+
 
 
 		<Panel class="UnitStatsDetails">
-			<Label class="Stat" text="#DAC_InGame_UnitDamage_Query" html="true" />
-			<Label class="Stat" text="#DAC_InGame_AttackSpeed_Query" html="true" />
-			<Label class="Stat" text="#DAC_InGame_UnitDPS_Query" html="true" />
-			<Label class="Stat" text="#DAC_InGame_UnitArmor_Query" html="true" />
-			<Label class="Stat" text="#DAC_InGame_KillCount_Query" html="true" />
-      <Label class="Stat BrawnyKillsStat" text="#DAC_InGame_BrawnyKillCount_Query" html="true" />
-			<Label class="Stat DuelBonusDamageStat" text="#DAC_InGame_DuelBonusDamage_Query" html="true" />
+			<Panel class="StatRow">
+				<Label class="Stat HeadlineMonoFont" text="{i:attack_damage}{s:bonus_damage}" html="true" />
+				<Label class="StatLabel" text="#DAC_InGame_UnitDamage_Label" html="true" />
+			</Panel>
+			<Panel class="StatRow">
+				<Label class="Stat HeadlineMonoFont" text="{f:attack_speed}{s:bonus_attack_speed}" html="true" />
+				<Label class="StatLabel" text="#DAC_InGame_AttackSpeed_Label" html="true" />
+			</Panel>
+			<Panel class="StatRow">
+				<Label class="Stat HeadlineMonoFont" text="{i:attack_dps}" html="true" />
+				<Label class="StatLabel" text="#DAC_InGame_UnitDPS_Label" html="true" />
+			</Panel>
+			<Panel class="StatRow">
+				<Label class="Stat HeadlineMonoFont" text="{i:selectedUnitArmor}{s:selectedUnitBonusArmor}" html="true" />
+				<Label class="StatLabel" text="#DAC_InGame_UnitArmor_Label" html="true" />
+			</Panel>
+			
+			<Panel class="StatRow">
+				<Label class="Stat HeadlineMonoFont" text="{d:kill_count}" html="true" />
+				<Label class="StatLabel" text="#DAC_InGame_KillCount_Label" html="true" />
+			</Panel>
+			<Panel class="StatRow DuelBonusDamageStat">
+				<Label class="Stat HeadlineMonoFont" text="{d:duel_bonus_damage}" html="true" />
+				<Label class="StatLabel" text="#DAC_InGame_DuelBonusDamage_Label" html="true" />
+			</Panel>
+
+
+			
 		</Panel>
 
 		<Panel class="AbilityRow">

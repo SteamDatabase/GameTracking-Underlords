@@ -27,7 +27,7 @@
 					<Label class="HeroName" text="{s:UnitName}" />
 				</Panel>
 				<Panel id="HeroCardRow" hittest="true">
-					<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" renderbatch="shop" usePortraitData="false" usePortraitCamera="false" usePortraitLighting="false" unitYaw="-90" cameraDistance="400" cameraOrthographicSize="275" />
+					<DACUnitScenePanel id="SceneView" map="scenes/shop" camera="cam_main" renderdeferred="false" rendershadows="false" renderbatch="shop" usePortraitData="false" usePortraitCamera="false" usePortraitLighting="false" unitYaw="-90" cameraUp="-16" cameraDistance="400" cameraOrthographicSize="275" />
 					<DACParticleScenePanel class="ParticleOverlay" id="HoverParticle" hittest="false" startActive="false" particleName="particles/ui/shop/ui_shop_hero_hover2.vpcf" fov="-900" />
 
 					<Panel id="UnitHeader" class="LeftRightFlow">
@@ -74,7 +74,6 @@
 
 	<DACUIShop hittest="false">
 		<Panel id="DACUIShopContainer">
-			<Panel id="UnitShopHitTestBG" hittest="true" onactivate="DACCloseShop()" />
 			<Panel id="UnitShopContainer" hittest="false">
 				<Panel id="TimerContainer">
 					<Panel id="TimerBar" />
@@ -166,7 +165,7 @@
 						<Panel class="HintTextContainer">
 							<Panel class="HintHeaderContainer">
 								<Panel class="HintIcon" />
-								<Label class="HintHeader"/>
+								<Label class="HintHeader HeadlineFont"/>
 							</Panel>
 							<Label class="HintText"/>
 						</Panel>
@@ -176,7 +175,7 @@
 						<Panel class="HintTextContainer">
 							<Panel class="HintHeaderContainer">
 								<Panel class="HintIcon" />
-								<Label class="HintHeader"/>
+								<Label class="HintHeader HeadlineFont"/>
 							</Panel>
 							<Label class="HintText"/>
 						</Panel>
@@ -186,7 +185,7 @@
 						<Panel class="HintTextContainer">
 							<Panel class="HintHeaderContainer">
 								<Panel class="HintIcon" />
-								<Label class="HintHeader"/>
+								<Label class="HintHeader HeadlineFont"/>
 							</Panel>
 							<Label class="HintText"/>
 						</Panel>
@@ -196,7 +195,7 @@
 						<Panel class="HintTextContainer">
 							<Panel class="HintHeaderContainer">
 								<Panel class="HintIcon" />
-								<Label class="HintHeader"/>
+								<Label class="HintHeader HeadlineFont"/>
 							</Panel>
 							<Label class="HintText"/>
 						</Panel>
@@ -206,7 +205,7 @@
 						<Panel class="HintTextContainer">
 							<Panel class="HintHeaderContainer">
 								<Panel class="HintIcon" />
-								<Label class="HintHeader"/>
+								<Label class="HintHeader HeadlineFont"/>
 							</Panel>
 							<Label class="HintText"/>
 						</Panel>
@@ -215,10 +214,10 @@
 			</Panel>	
 
 			<Panel class="ButtonGutter ButtonGutterLeft">
-
-				<Button class="ShopButton" id="Rulebook" onactivate="DACShowHeropediaPopup()">
+				<DACDelayedPressButton class="ShopButton" id="Rulebook" minholdduration=".15" ontapped="DACShowHeropediaPopup()" onheld="DACShowShopTips(true)" onreleased="DACShowShopTips(false)">
 					<Panel id="RulebookButton" />
-				</Button>
+				</DACDelayedPressButton>
+
 
 				<Button class="ShopButton" id="LockShop" onactivate="DACLockShop( true )">
 					<Panel id="LockButton" />

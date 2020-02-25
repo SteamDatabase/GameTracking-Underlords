@@ -10,12 +10,15 @@
 				<Panel id="QuestItemContainer" />
 
 				<Panel id="BattlePassProgress">
-					<Panel id="PlayerBPLevel">
-						<Label class="BPLevelText" text="#DAC_BPLevelHeader" />
-						<Label class="BPLevel" text="{d:current_level}" id="PlayerBPLevelGraphLevel" />
-					</Panel>
+					<DACBattlepassLevel />
 
 					<Panel class="PlayerProgressContainer">
+						<Label id="Header" text="#DAC_BattlePass"/>
+
+						<Panel id="RewardGroupProgressBarContainer">
+							<ProgressBar id="RewardGroupProgressBar"/>
+						</Panel>
+
 						<ParticleProgressBar id="PlayerProgress" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_level_bar_complete.vpcf" />
 					
 						
@@ -26,32 +29,21 @@
 						</Panel>
 					</Panel>
 				</Panel>
-				
-				<Panel class="InGameProgressLegend">
-					<Panel class="InGameProgressColorSwatch"/>
-					<Label class="InGameProgressLegendDesc" text="#DAC_BPInGameProgressLegend" />
-				</Panel>
-			</Panel>
-			<Panel id="ErrorContainer">
-				<Panel id="ConnectToSteamContainer">
-					<Label class="ErrorTitle" text="#DAC_Rewards_Sell" />
-					<Label class="ConnectToSteamText" text="#DAC_BattlePass_ConnectConvert" />
-					<Button class="PopupButton LoginButton" id="SteamLoginButton" onactivate="DACShowSocialPanel()">
-						<Label text="#DAC_SteamAccountLogin" />
-					</Button>
-				</Panel>
 
-				<Panel id="ReconnectToSteamContainer">
-					<Label class="ErrorTitle" text="#DAC_Rewards_Sell" />
-					<Label class="ConnectToSteamText" text="#DAC_BattlePass_ReconnectConvert" />
-					<Button class="PopupButton LoginButton" id="SteamReconnectButton" onactivate="DACSteamReconnect()">
-						<Label text="#DAC_Home_Reconnect" />
-					</Button>
-				</Panel>
-
-				<Panel id="GCErrorContainer">
-					<Label class="ConnectToSteamText" text="#DAC_BattlePass_GCIssue" />
-				</Panel>
+				<Panel id="ActiveChallengeContainer">
+					<Panel id="CityCrawlButton" class="MoveUp" onactivate="DACShowCityCrawlChallenges(); PlaySoundEffect( 'UL_UI.CityCrawlChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawlChallengeRollover' )">
+						<Panel id="CityCrawlText">
+						<Panel class="ObjectiveTitleContainer">
+							<Panel class="ObjectiveIcon" />
+							<Label class="ObjectiveTitle" text="#DAC_CityCrawlObjectives"/>
+						</Panel>	
+						<Label class="CityCrawlActiveLabel CityCrawlBody" text="#DAC_CityCrawl_ChallengeHeader"/>
+						<Label class="CityCrawlNeedsSteamLabel CityCrawlBody" text="#DAC_CityCrawlButtonNeedsSteam" />
+							<Label class="CityCrawlRecommendedHeader" text="#DAC_CityCrawl_RecommendedHeader" html="true"/>
+							<ParticleProgressBar id="CityCrawlChallengeProgressBar" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar_complete.vpcf" fov="-200" />
+						</Panel>
+					</Panel>					
+				</Panel>			
 			</Panel>
 		</Panel>
 	</DACControlBattlePass>

@@ -183,27 +183,27 @@ DACUIHud.FadeOut
 .LowVisualQuality #WorldVignette,
 .LowVisualQuality .EGameState_Intro #WorldVignette
 {
-    opacity: 0;
-    visibility: collapse;
+	opacity: 0;
+	visibility: collapse;
 }
 
 .CombatChatBubbleLeft,
 .CombatChatBubbleRight {
-    font-size: 26px;
-    color: white;
-    background-image: url("s2r://panorama/images/hud/taunt_box_psd.vtex");
-    background-size: 100% 100%;
-    font-family: Ravenhook, Radiance;
+	font-size: 26px;
+	color: white;
+	background-image: url("s2r://panorama/images/hud/taunt_box_psd.vtex");
+	background-size: 100% 100%;
+	font-family: Ravenhook, Radiance;
 	max-width: 320px;
 	min-width: 150px;
-    min-height: 60px;
-    max-height: 140px;
-    text-overflow: ellipsis;
-    padding: 20px 30px;
-    horizontal-align: right;
-    vertical-align: bottom;
-    margin-bottom: 120px;
-    margin-right: 25px;
+	min-height: 60px;
+	max-height: 140px;
+	text-overflow: ellipsis;
+	padding: 20px 30px;
+	horizontal-align: right;
+	vertical-align: bottom;
+	margin-bottom: 120px;
+	margin-right: 25px;
 }
 
 .PlayerHasUnderlord .CombatChatBubbleLeft,
@@ -220,14 +220,14 @@ DACUIHud.FadeOut
 
 
 .CombatChatBubbleLeft {
-    color: gradient(linear, 0% 0%, 0% 100%, from( #ff5539 ), to(#ffddcd)) horizontal-align: left;
-    horizontal-align: left;
-    margin-left: 25px;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ff5539 ), to(#ffddcd)) horizontal-align: left;
+	horizontal-align: left;
+	margin-left: 25px;
 }
 
 .CombatChatBubbleRight 
 {
-    color: gradient(linear, 0% 0%, 0% 100%, from( #84abd9 ), to(#FFFFFF));
+	color: gradient(linear, 0% 0%, 0% 100%, from( #84abd9 ), to(#FFFFFF));
 }
 
 .IsLayoutSmallScreen.AspectRatio21x9 .CombatChatBubbleRight
@@ -243,13 +243,13 @@ DACUIHud.FadeOut
 .CombatChatBubbleLeft.Underlord_1,
 .CombatChatBubbleRight.Underlord_1
 {
-    color: gradientAnessix;
+	color: gradientAnessix;
 }
 
 .CombatChatBubbleLeft.Underlord_2,
 .CombatChatBubbleRight.Underlord_2
 {
-    color: gradientJull;
+	color: gradientJull;
 }
 
 .CombatChatBubbleLeft.Underlord_3,
@@ -261,15 +261,15 @@ DACUIHud.FadeOut
 .CombatChatBubbleLeft.Underlord_4,
 .CombatChatBubbleRight.Underlord_4
 {
-    color: gradientHobgen;
+	color: gradientHobgen;
 }
 
 #GoOnlineButton {
-    visibility: collapse;
+	visibility: collapse;
 }
 
 .IsTutorialDisabled #TutorialButton {
-    visibility: collapse;
+	visibility: collapse;
 }
 
 // new debug menu stuff
@@ -277,6 +277,11 @@ DACUIHud.FadeOut
 .CheatsEnabled #DebugMenuWrapper {
 	visibility: visible;
 }
+.CheatsEnabled.GameMode_Puzzle #DebugMenuWrapper
+{
+	visibility: collapse;
+}
+
 
 #DebugMenuWrapper {
 	horizontal-align: left;
@@ -290,17 +295,23 @@ DACUIHud.FadeOut
 
 #PuzzleTopLeft
 {	
-	transform:translateY(25px);
-	transition-property: transform;
-	transition-duration: .1s;
+	vertical-align: top;	
+	transition-property: transform, opacity;
+	transition-duration: .2s;
+	flow-children: down;
+	margin-left: safe-area-inset-left;
+
+	height: 100%;
 }
 
-.DebugMenuOpen #PuzzleTopLeft
-{	
-	transform:translateY(575px);
+.GameMode_Puzzle.ShowingPuzzleIntro .PlayPauseContainer,
+.GameMode_Puzzle.ShowingPuzzleIntro .PlayerState,
+.GameMode_Puzzle.ShowingPuzzleIntro #DebugMenuWrapper,
+.GameMode_Puzzle.ShowingPuzzleIntro #PuzzleTopLeft
+{
+	visibility: collapse;
 }
 
-.GameMode_Puzzle #DebugMenuWrapper,
 .GameMode_Sandbox #DebugMenuWrapper
 {
 	vertical-align: top;
@@ -308,6 +319,11 @@ DACUIHud.FadeOut
 	margin-top: 0px;
 
 	visibility: visible;
+}
+
+.TrailerMode #DebugMenuWrapper
+{
+	visibility: collapse;
 }
 
 .IsLayoutSmallScreen #DebugMenuWrapper
@@ -377,7 +393,6 @@ DACUIHud.FadeOut
 
 #OpenDebugMenuButton:hover,
 #CloseDebugMenuButton:hover,
-.FastForwardButton_Sandbox:hover,
 .DevButton:hover
 {
 	background-color: #444444;
@@ -547,10 +562,6 @@ DACUIHud.FadeOut
 DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 {
 	visibility: collapse;
-	transform:translateY(300px);
-	transition-property: transform;
-	transition-duration: .2s;
-	transition-timing-function: ease-in;
 }
 
 #DevCopyShareCode_Success,
@@ -585,26 +596,33 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	width: fit-children;
 }
 
-.FastForwardButton_Sandbox
+.CombatButtonContainer
 {
-	margin-top: 20px;
 	visibility: collapse;
 }
 
-.GameMode_Sandbox.CanFastForward .FastForwardButton_Sandbox,
-.GameMode_Puzzle.CanFastForward.Puzzle_RulesSatisfied .FastForwardButton_Sandbox
+.GameMode_Sandbox.CanFastForward .CombatButtonContainer,
+.GameMode_Puzzle.CanFastForward.Puzzle_RulesSatisfied .CombatButtonContainer,
+.GameMode_Streetfight.CanFastForward .CombatButtonContainer
 {
 	visibility: visible;
+}
+
+.TrailerMode.GameMode_Sandbox.CanFastForward .CombatButtonContainer,
+.TrailerMode.GameMode_Streetfight.CanFastForward .CombatButtonContainer,
+.TrailerMode.GameMode_Puzzle.CanFastForward.Puzzle_RulesSatisfied .CombatButtonContainer
+{
+	visibility: collapse;
 }
 
 .FastForwardButton_Sandbox Label
 {
 	text-align: center;
 	horizontal-align: center;
-	font-size: 18px;
+	font-size: 26px;
 	text-transform: uppercase;
 	color: #ffffff;
-	letter-spacing: 2px;
+	text-shadow: 2px 2px 1.0 #1f296188;
 	width: fit-children;
 }
 
@@ -637,16 +655,14 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 
 #DebugMenuWrapper .DoubleClickButton Label
 {
-    color: #FEC2C2ee;
+	color: #FEC2C2ee;
 
 }
 
 
 #OpenDebugMenuButton,
-#CloseDebugMenuButton,
-.FastForwardButton_Sandbox
+#CloseDebugMenuButton
 {
-	//width:220px;
 	vertical-align: top;
 	background-color: black;
 	opacity: .8;
@@ -657,6 +673,80 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	color: #999;
 	transition-property: color;
 	transition-duration: 0.2s;
+}
+
+.FastForwardButton_Sandbox
+{
+	padding: 4px 20px;
+	transition-property: brightness, opacity;
+	transition-duration: 0.2s;
+	width: fit-children;
+	background-size: 100%;
+
+	border: 2px solid #b7d5ffaa;
+	box-shadow: inset 0px 0px 20px #4b5affcc;	
+
+
+	//animation-name: LookAtMe;
+    animation-duration:2.54s;
+    animation-iteration-count: infinite;
+	overflow: noclip;
+}
+
+.CombatButtonContainer
+{
+	box-shadow: 0px 0px 20px #4b5aff44;
+	width: fit-children;
+	height: fit-children;
+	margin-top: 40px;
+	transition-duration: 0.2s;
+	transition-property: opacity, brightness;
+}
+
+.CombatButtonContainer:hover
+{
+	brightness: 1.8;
+}
+
+@keyframes 'LookAtMe'
+{
+    0%
+    {
+		brightness: 1.6;
+        pre-transform-scale2d:1;
+    }
+    25%
+    {
+		brightness: 1;
+        pre-transform-scale2d:.93;
+    }
+    50%
+    {
+		brightness: 1.6;
+        pre-transform-scale2d:1;
+    }
+    75%
+    {
+		brightness: 1;
+        pre-transform-scale2d:.93;
+    }
+    100%
+    {
+		brightness: 1.6;
+        pre-transform-scale2d:1;
+    }
+}
+
+.IsLayoutSmallScreen .CombatButtonContainer
+{
+	ui-scale: 120%;
+	margin-top: 18px;
+}
+
+.GameMode_Puzzle #OpenDebugMenuButton,
+.GameMode_Puzzle #CloseDebugMenuButton,
+{
+	visibility: collapse;
 }
 
 #OpenDebugMenuButton Label,
@@ -700,6 +790,11 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	height:230px;
 }
 
+.GameMode_Puzzle #CombinedDropdown
+{
+	height:320px;
+}
+
 #CombinedDropdown #VerticalScrollBar
 {
 	box-shadow: fill #000000AA -3px 0px 3px 4px;
@@ -710,32 +805,115 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	background-color: white;
 }
 
-#CombinedLevelDropdown
+#BotSeparator
 {
-	background-position: right 22px 50%;
-	background-size: 16px 16px;
+	width: 50px;
+}
+
+.BotDropdownLabel
+{
 	text-align: center;
-	visibility: collapse;
-	width: fill-parent-flow( 1.0 );
-	height: 50px;	
-	padding: 5px;	
-	margin: 2px;
+	horizontal-align: center;
+	font-weight: semi-bold;
+	margin: 10px 0px;
+	color: #999;
 }
 
-#CombinedLevelDropdown Label
+#BotDropdown
 {
-	text-align: left;
-	margin-left: 10px;
+	flow-children: down;
+	overflow: squish scroll;
+	width:250px;
+	height:290px;
 }
 
-#CombinedLevelDropdownDropDownMenu
+#BotDropdown #VerticalScrollBar
 {
-	width: 150px;
+	box-shadow: fill #000000AA -3px 0px 3px 4px;
 }
 
-.HeroLevelOption
+#BotDropdown #ScrollThumb
+{
+	background-color: white;
+}
+
+.BotSetLabel
+{
+	text-align: center;
+	horizontal-align: center;
+	font-weight: semi-bold;
+	margin: 10px 0px;
+	color: #999;
+}
+
+.TeamSizeLabel
+{
+	text-align: center;
+	horizontal-align: center;
+	font-weight: semi-bold;
+	margin: 10px 0px;
+	color: #999;
+}
+
+#SetTeamAsBotSpacer
+{
+	height:20px;
+}
+
+#HeroRankContainer
+{
+	margin:0px 10px;
+}
+
+.HeroRankOption
 {	
 	font-size:10px;
+}
+
+#PlayerLevelContainer
+{
+	margin:0px 10px;
+}
+
+.PlayerLevelOption
+{
+	font-size:10px;
+}
+
+.OptionsCheckBox {    
+	padding-top: 12px;
+	padding-bottom: 12px;
+	width:fill-parent-flow(1.0);
+}
+
+.OptionsCheckBox Label {
+	vertical-align: middle;
+	color: #7d8688;
+	letter-spacing: 1px;
+	font-size: 18px;
+	margin: 0;
+	margin-left: 12px;
+}
+
+.OptionsCheckBox
+{
+	opacity: 0.4;
+}
+
+.OptionsCheckBox:hover
+{
+	opacity: 0.6;
+}
+
+.OptionsCheckBox:selected
+{
+	opacity: 1.0;    
+}
+
+
+.OptionsCheckBox:active
+{
+	transform: translateZ(-6px);
 }
 
 .GiveTalentButton
@@ -764,6 +942,10 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	transition-property: opacity, transform, position;
 	transition-delay: 0.1s;
 	transition-duration: 0.15s;	
+}
+
+.GameMode_Puzzle.ShopVisible .PlayerState {
+	opacity: 0;
 }
 
 .PlayerState.LeftPlayer 
@@ -806,6 +988,11 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 .GameMode_Duos.ERoundState_Preparing #DuosBuddyPlayerStateContainer
 {
 	visibility: visible;
+}
+
+.GameMode_Puzzle #OpponentPlayerStateContainer
+{
+	visibility: collapse;
 }
 
 #PowerBarContainer
@@ -977,31 +1164,47 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 
 #LeftInfoZone
 {
-	width: 246px;
-	height: 600px;
-	padding-left: 20px;
-	padding-top: 0px;
+	width: 248px;
+	height: 612px;
 
-	flow-children: down;
 	vertical-align: bottom;
 	horizontal-align: left;
-	background-color: #00000090;
+	background-color: #18151b00;
 	transform: translateX(-600px);
 	transition-property: transform;
-	transition-duration: 0.2s;	
+	transition-duration: 0.2s;
+}
+
+.ERoundState_Combat #LeftInfoZone
+{
+	height: 588px;
+}
+
+.ERoundState_Combat.GameMode_Duos #LeftInfoZone
+{
+	height: 524px;
+}
+
+.IsLayoutSmallScreen.ERoundState_Combat.GameMode_Duos #LeftInfoZone
+{
+	height: 100%;
 }
 
 .GameMode_Duos #LeftInfoZone
 {
 	height: 620px;
-	width: 260px;
+	width: 248px;
 }
-
+.GameMode_Puzzle #LeftInfoZone
+{
+	height: 700px;
+	width: 248px;
+}
 
 .IsLayoutSmallScreen #LeftInfoZone
 {
 	height: 100%;
-	width: 300px;
+	width: 384px;
 	margin: 0px;
 	padding-left: 0px;
 }
@@ -1018,29 +1221,30 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 
 #LeftDropZones
 {
-	height: 200px;
+	transition-property: height;
+	transition-duration: 200ms;
+	height: 108px;
 	width: 100%;
 	vertical-align: bottom;
 	horizontal-align: center;
 	flow-children: right;
 }
 
-
-.GameMode_Duos #LeftDropZones
-{
-	height: 190px;
+.DraggingUnit  #LeftDropZones {
+	height: 200px;
 }
+
+
 
 .IsLayoutSmallScreen #LeftDropZones
 {
-	height: 350px;
-	width: 300px;
+	height: 300px;
+	width: 100%;
 }
 
 .AspectRatio4x3.IsLayoutSmallScreen #LeftDropZones
 {
-	height: 500px;
-	width: 300px;
+	height: 360px;
 }
 
 #UnderlordTab
@@ -1176,6 +1380,11 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	ui-scale: 80%;
 }
 
+.TrailerMode .CornerButtons
+{
+	visibility: collapse;
+}
+
 #SystemButtonsSection
 {
 	horizontal-align: right;
@@ -1250,30 +1459,205 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	height: 100%;
 }
 
-#ShopButton 
+
+.UnitAndPuzzleStatsContainer
+{
+	horizontal-align: right;
+	height: fit-children;
+	width: fit-children;
+	margin-top: 768px;
+	flow-children: up;
+	margin-right: 368px;
+	transition-property: opacity;
+	transition-duration: 0.2s;
+	opacity: 1;
+	overflow: noclip;
+}
+.InCombat .UnitAndPuzzleStatsContainer
+{
+	opacity: 0;
+}
+
+.MatchBasicInfoCount
+{
+	width: fit-children;
+	flow-children: right;
+	background-image: url("s2r://panorama/images/hud/unit_stats_glow_psd.vtex");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	transition-property: background-image, ui-scale;
+	transition-duration: 0.2s;
+	ui-scale: 70%;
+	overflow: noclip;
+	padding: 0px 12px 0px 12px;
+}
+
+.TooManyUnits #UnitStats,
+.NotEnoughUnits #UnitStats,
+.PuzzleBoardCostExceeded #PuzzleCostTotal
+{
+	ui-scale: 90%;
+	animation-duration: 1s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-name: UnitStatsAlert;
+}
+.GameMode_Puzzle.NotEnoughUnits #UnitStats
+{
+	ui-scale: 100%;
+	animation-name: none;
+}
+
+@keyframes 'UnitStatsAlert'
+{
+	0%
+	{
+		transform: scale3d( 1, 1, 1 );
+	}
+
+	50%
+	{
+		transform: scale3d( 1.1, 1.1, 1.1 );
+	}
+
+	100%
+	{
+		transform: scale3d( 1, 1, 1 );
+	}
+}
+
+.AspectRatio16x10 .UnitAndPuzzleStatsContainer
+{
+	margin-top: 848px;
+	margin-right: 316px;
+}
+
+.AspectRatio21x9 .UnitAndPuzzleStatsContainer
+{
+	margin-right: 660px;
+}
+
+.IsLayoutSmallScreen.AspectRatio4x3 .UnitAndPuzzleStatsContainer
+{
+	margin-top: 1132px;
+	margin-right: 316px;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 .UnitAndPuzzleStatsContainer
+{
+	margin-right: 480px;
+}
+
+.TooManyUnits #UnitStats,
+.NotEnoughUnits #UnitStats,
+.PuzzleBoardCostExceeded #PuzzleCostTotal
+{
+	background-image: url("s2r://panorama/images/hud/unit_stats_glow_alert_psd.vtex");
+}
+.GameMode_Puzzle.NotEnoughUnits #UnitStats
+{
+	background-image: url("s2r://panorama/images/hud/unit_stats_glow_psd.vtex");
+}
+
+.MatchBasicInfoCount Label
+{
+	color: #CDD2f3;
+	text-shadow: 0px 1px 0px 2.0 #4c4db1;
+	font-size: 64px;
+	horizontal-align: right;
+	font-weight: black;
+	transition-property: color, text-shadow;
+	transition-duration: 0.2s;
+	margin-top: 20px;
+}
+
+.TooManyUnits #UnitStats Label,
+.NotEnoughUnits #UnitStats Label,
+.PuzzleBoardCostExceeded #PuzzleCostTotal Label
+{
+	color: #ff8b85;
+	text-shadow: 0px 1px 0px 3.0 #a01f00;
+}
+.GameMode_Puzzle.NotEnoughUnits #UnitStats Label
+{
+	color: #CDD2f3;
+	text-shadow: 0px 1px 0px 2.0 #4c4db1;
+}
+
+#UnitStatsIcon
+{
+	background-size: 100%;
+	height: 36px;
+	width: 36px;
+	horizontal-align: right;
+	background-image: url("s2r://panorama/images/hud/unit_stats_icon_psd.vtex");
+	vertical-align: center;
+	transition-property: background-image;
+	transition-duration: 0.2s;
+	margin-top: 2px;
+}
+
+.TooManyUnits #UnitStats #UnitStatsIcon,
+.NotEnoughUnits #UnitStats #UnitStatsIcon
+{
+	background-image: url("s2r://panorama/images/hud/unit_stats_icon_alert_psd.vtex");
+}
+.GameMode_Puzzle.NotEnoughUnits #UnitStats #UnitStatsIcon
+{
+	background-image: url("s2r://panorama/images/hud/unit_stats_icon_psd.vtex");
+}
+
+#PuzzleCostTotal
+{
+	visibility: collapse;
+	background-image: url("s2r://panorama/images/hud/unit_stats_gold_glow_psd.vtex");
+}
+.GameMode_Puzzle #PuzzleCostTotal
+{
+	visibility: visible;
+}
+
+#PuzzleCostTotalIcon
+{
+	width: 40px;
+	height: 40px;
+	background-image: url("s2r://panorama/images/hud/dac_shop_button_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
+	vertical-align: center;
+	margin-top: 24px;
+	margin-right: 4px;
+	margin-left: -4px;
+}
+
+#PuzzleCostTotal Label
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #ecb00e ), to(#f7e062));
+	text-shadow: 0px 1px 0px 3.0 #000000dd;
+	letter-spacing: 4px;
+}
+
+.ShopButton
 {
 	width: 135px;
 	height: 135px;
 	vertical-align: top;
 	horizontal-align: right;
 	tooltip-position: top left bottom right;
-
 	margin-top: 27px;
 	margin-top: 10px;
 	margin-right: 344px;
-	
 	overflow: noclip;
 }
-
-
-#ShopButton
+#PuzzleShopButton,
+.GameMode_Puzzle #ShopButton
 {
 	visibility: collapse;
 }
-
-#ShopButton:hover
+.GameMode_Puzzle #PuzzleShopButton
 {
-	//brightness: 2;
+	visibility: visible;
 }
 
 .GameMode_Tutorial.HideShopButton #ShopButton
@@ -1281,45 +1665,47 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	visibility: collapse;
 }
 
-.IsLayoutSmallScreen #ShopButton
+.IsLayoutSmallScreen .ShopButton
 {
 	ui-scale: 120%;
 }
 
-.EGameState_Playing #ShopButton
+.EGameState_Playing .ShopButton
 {
 	visibility: visible;
 }
 
-.IsLayoutSmallScreen.AspectRatio21x9 #ShopButton
+.IsLayoutSmallScreen.AspectRatio21x9 .ShopButton
 {
 	margin-right: 189px;
 	margin-top: 20px;
 }
 
-.IsLayoutSmallScreen.AspectRatio16x9 #ShopButton
+.IsLayoutSmallScreen.AspectRatio16x9 .ShopButton
 {
 	margin-right: 216px;
 	margin-right: 120px;
 }
 
-.IsLayoutSmallScreen.AspectRatio4x3 #ShopButton
+.IsLayoutSmallScreen.AspectRatio4x3 .ShopButton
 {
 	margin-right: 144px;
 }
 
 .EGameState_Intro #LeftInfoZone
-.EGameState_Intro #ShopButton
+.EGameState_Intro .ShopButton
 {
 	visibility: collapse;
 }
 
-.GameMode_Turbo.RoundNumber_0 #ShopButton
+.GameMode_Turbo.RoundNumber_0 #ShopButton,
+.GameMode_Streetfight.RoundNumber_0 #ShopButton
 {
 	visibility: collapse;
 }
 
-.GameMode_Turbo.RoundNumber_0 #GameUISection
+.GameMode_Turbo.RoundNumber_0 #GameUISection,
+.GameMode_Streetfight.RoundNumber_0 #GameUISection
 {
 	z-index: 1000;
 }
@@ -1329,7 +1715,7 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	z-index: 1000;
 }
 
-#OpenShopButton
+.OpenShopButton
 {
 	width: 100%;
 	height: 100%;
@@ -1341,12 +1727,24 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	opacity: 0;
 }
 
-.LocalPlayerBoard #OpenShopButton
+.HasntOpenedShop .OpenShopButton
+{
+	animation-name: LookAtMe;
+    animation-duration:2.11s;
+    animation-iteration-count: infinite;
+}
+
+.GameMode_Puzzle .OpenShopButton
+{
+	background-image: url("s2r://panorama/images/hud/icon_shop_open_nogold_psd.vtex");
+}
+
+.LocalPlayerBoard .OpenShopButton
 { 
 	opacity: 1;
 }
 
-.ShopVisible #OpenShopButton
+.ShopVisible .OpenShopButton
 {
 	opacity: 0;
 }
@@ -1375,7 +1773,7 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	opacity: 1;
 }
 
-#CloseShopButton
+.CloseShopButton
 {
 	width: 100%;
 	height: 100%;
@@ -1387,7 +1785,12 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	opacity: 0;
 }
 
-.LocalPlayerBoard.ShopVisible #CloseShopButton
+.GameMode_Puzzle .CloseShopButton
+{
+	background-image: url("s2r://panorama/images/hud/icon_shop_close_nogold_psd.vtex");
+}
+
+.LocalPlayerBoard.ShopVisible .CloseShopButton
 {
 	opacity: 1; 
 }
@@ -1402,11 +1805,11 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	visibility: visible;
 }
 
-.LocalPlayerBoard .GoHomeButtonContainer,
-.LocalPlayerNotInMatch .GoHomeButtonContainer
+.LocalPlayerBoard .GoHomeButtonContainer
 {
 	visibility: collapse;
 }
+
 
 #GoHomeButton 
 {
@@ -1424,6 +1827,12 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	opacity: 1;
 	flow-children: down;
 	margin-right: 340px;
+}
+
+.IsLocalPlayerSpectating #GoHomeButton
+{
+	background-image: none;
+	margin-right: 240px;
 }
 
 .ShopVisible #GoHomeButton
@@ -1613,45 +2022,30 @@ DACUIHud:not(.UnitSelected) .NeedsSelectedUnit
 	ui-scale: 80%;
 }
 
-#SelectedUnitContainer,
-.IsLayoutSmallScreen .AspectRatio4x3 #SelectedUnitContainer
+#SelectedUnitContainer
 {
 	horizontal-align: left;
 	width: 336px;
-	//height: fit-children;
-	//height: 375px;
-	height: 430px;
+	height: 100%;
 	margin-right: 0px;
 	opacity: 0;
+	box-shadow: #00000088 0px 0px 12px;
+	background-image: url("s2r://panorama/images/hud/inspect_panel_bg_psd.vtex");
+	background-repeat: no-repeat;
+	background-position: 0px 240px;
 }
 
-.GameMode_Duos #SelectedUnitContainer
+.IsLayoutSmallScreen #SelectedUnitContainer
 {
-	height: 435px;
+	width: 100%;
+	background-position: 0px 346px;
 }
 
-.IsLayoutSmallScreen #SelectedUnitContainer 
+.IsLayoutSmallScreen #SelectedUnitContainer
 {
-	//margin-top: 40px;
-	//margin-left: 220px;
-	margin-top: 30px;
-	height: 700px;
+	box-shadow: #00000000 0px 0px 12px;
+	background-image: url("s2r://panorama/images/hud/inspect_panel_bg_fade_psd.vtex");
 }
-
-.IsLayoutSmallScreen.AspectRatio4x3 #SelectedUnitContainer
-{
-	horizontal-align: left;
-	width: 336px;
-	//height: fit-children;
-	//height: 375px;
-	height: 700px;
-	margin-right: 0px;
-	ui-scale: 92%;
-	margin-top: 240px;
-	vertical-align: top;
-}
-
-
 
 .DraggingShopUnit #SelectedUnitContainer, 
 .UnitSelected #SelectedUnitContainer 
@@ -1780,6 +2174,7 @@ Label.ChoiceItem_Description
 	margin-top: 18px;
 	transition-property: transform;
 	transition-duration: .2s;
+	overflow: noclip;
 }
 
 .IsLayoutSmallScreen .PlayPauseContainer
@@ -1863,9 +2258,10 @@ Label.ChoiceItem_Description
 .GameMode_Sandbox #TopBar,
 .GameMode_Sandbox .PauseButton,
 .GameMode_Sandbox .FastForwardButton,
-.GameMode_Puzzle #TopBar,
 .GameMode_Puzzle .PauseButton,
-.GameMode_Puzzle .FastForwardButton
+.GameMode_Puzzle .FastForwardButton,
+.GameMode_Streetfight .PauseButton,
+.GameMode_Streetfight .FastForwardButton
 {
 	visibility: collapse;
 }
@@ -2472,24 +2868,34 @@ DropDown Label
 
 #SettingsMenuSection
 {
-	visibility: collapse;
 	width: 100%;
 	height: 100%;
-	background-color: #060606F0;
+	opacity:0;
 	transition-property: opacity;
-	transition-duration: .3s;
+	transition-duration: .2s;
+	background-size: cover;	
+	background-repeat: no-repeat;
+	background-position: center center;
+	horizontal-align: center;
+	flow-children:down;
+	background-color: gradient(linear, 0% 100%, 0% 0%, from( #30244cee ), to( #025760ee ));
+	background-image: url("s2r://panorama/images/vignettes/backing_vignette_soft_psd.vtex"); 
+}
 
+#SettingsBackground
+{
+	background-image: url("s2r://panorama/images/hud/escape_menu_bg_png.vtex");		
+	width: 100%;
+	height: 100%;
+	background-size: cover;	
+	background-repeat: no-repeat;
+	background-position: center center;
 	horizontal-align: center;
 }
 
-//.IsBattlePassGame.HasEventData #SettingsMenuSection
-//{
-//	flow-children: right;
-//}
-
 .MenuButtonsVisible #SettingsMenuSection
 {
-	visibility: visible;
+	opacity: 1;
 }
 
 .MenuButtonsVisible.SettingsPanelVisible .MenuButtonContainer
@@ -2505,8 +2911,8 @@ DropDown Label
 	background-image: none;
 	background-color: none;
 	border: 0px;
+	width: 100%;
 	flow-children: down;
-	width: 650px;
 }
 
 .IsLayoutLargeScreen .MenuButtonContainer.PopupPanel
@@ -2517,48 +2923,203 @@ DropDown Label
 .MenuLogo
 {
 	width: 500px;
-	height: 300px;
+	height: 220px;
 	horizontal-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	//height: 200px;
-	background-size: 100% 100%;
+	background-size: cover;
 	background-position: 80% 80%;
 	background-repeat: no-repeat;
 	background-image: url("s2r://panorama/images/dashboard/ul_title_png.vtex");
+	visibility: collapse;
 }
 
 .MenuButton 
 {
-	//border: 1px solid grey;
-	background-color: black;
-	padding: 10px;
-	margin: 3px;
-	margin: 10px 5px;
-	//border-radius: 10px;
-	width: fit-children;
-	min-width: 400px;
+	margin: 0px 12px 0px 12px;
+	width: 200px;
+	height: 150px;
+	z-index: 100;
+	vertical-align: center;
 	horizontal-align: center;
-	background-image: none;
-	border: 1px solid #555555;
-	background-color: #111111;
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
 }
 
-.MenuButton:hover
+.MenuButtonText
 {
-	//border: 1px solid white;
-	//background-color: #444;
-	border: 1px solid #555555;
-}
-
-.MenuButton Label
-{
-	color: white;
+	color: #cdd2f3;
 	font-size: 30px;
 	horizontal-align: center;
 	vertical-align: center;
 	text-overflow: shrink;
 	overflow: squish;
 	font-weight: black;
+	text-align: center;
+	max-height:50px;
+	width:100%;
+	margin-bottom: 10px;
+}
+
+.HorizontalStackPanel
+{
+	horizontal-align:center;	
+	flow-children:none;
+	width:60%;	
+}
+
+.VerticalStackPanel
+{
+	horizontal-align:center;
+	height:fit-children;
+	width:fit-children;
+	flow-children:down;		
+
+	transition-property: transform, brightness;
+	transition-duration: 0.15s;
+}
+
+.VerticalStackPanel:hover
+{
+	brightness: 1.6;
+	transform:translateY(-2px);
+}
+
+.ReturnToGame, .GameMode_Puzzle.IsBattlePassGame .ReturnToGame, .GameMode_Streetfight.IsBattlePassGame .ReturnToGame
+{
+	margin-top: 20px;
+	min-width: 50%;
+	height: 140px;
+	background-image: url("s2r://panorama/images/hud/turbo_reroll_button_psd.vtex");
+	background-size: 100%;
+	flow-children: right;
+	horizontal-align: center;
+	padding: 0px 20px 0px 40px;
+}
+
+.IsBattlePassGame .ReturnToGame
+{
+	horizontal-align: left;
+}
+
+.ReturnToGame .MenuButtonText
+{
+	font-size: 64px;
+	text-align: left;
+	text-shadow: 2px 2px 3.0 #1f296188;
+	max-height: 100px;
+	color: #F4F4F4;
+}
+
+.IsBattlePassGame #RightButtonOptions
+{
+	horizontal-align: right;
+	flow-children: left;
+	margin-top: 0px;
+	width: 35%;
+}
+
+#RightButtonOptions, .GameMode_Puzzle.IsBattlePassGame #RightButtonOptions, .GameMode_Streetfight.IsBattlePassGame #RightButtonOptions
+{
+	width: 30%;
+	horizontal-align: center;
+	flow-children: right;
+	margin-top: 220px;
+}
+
+
+#LeaveGameButton Label, 
+#LeaveTutorialButton Label
+{
+	font-size: 52px;
+	max-height:100px;
+	max-width:350px;
+    text-shadow: 2px 2px 2.0 #8d262677;
+    color: textBrighter;
+	padding: 4px 28px 4px 28px;
+	margin-bottom: 0px;
+}
+
+#LeaveGameButton
+{
+	transition-property: brightness, transform;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in-out;
+}
+
+#LeaveGameButton:hover
+{
+	brightness: 1.6;
+	transform: translateY( -4px );
+}
+
+
+#LeaveGameButton Label.Streetfight,
+.GameMode_Streetfight #LeaveGameButton Label:not(.Streetfight)
+{
+	visibility: collapse;
+}
+
+.GameMode_Streetfight #LeaveGameButton Label.Streetfight
+{
+	visibility: visible;
+}
+
+#LeaveGameButton, #LeaveTutorialButton,
+.GameMode_Puzzle.IsBattlePassGame #LeaveGameButton,
+.GameMode_Streetfight.IsBattlePassGame #LeaveGameButton,
+{
+	background-size: contain;
+	background-position:center center;
+	width:400px;
+	horizontal-align: center;
+}
+
+.IsBattlePassGame #LeaveGameButton, .IsBattlePassGame #LeaveTutorialButton
+{
+	horizontal-align: right;
+}
+
+#LeaveGameButton, #LeaveTutorialButton 
+{
+	background-image: url("s2r://panorama/images/dashboard/leave_game_button_psd.vtex");
+	background-size: 100%;
+	height: 80px;
+} 
+
+.IsBattlePassGame #ExitButtons
+{
+	margin-top: 0px;
+}
+
+#ExitButtons,
+.GameMode_Puzzle.IsBattlePassGame #ExitButtons,
+.GameMode_Streetfight.IsBattlePassGame #ExitButtons
+{
+	horizontal-align: center;
+	width: 60%;
+	flow-children: none;
+	overflow: noclip;
+	margin-top: -200px;
+}
+ 
+#ReturnToGameButton
+{ 
+	background-image: url("s2r://panorama/images/dashboard/icon_back_arrow_psd.vtex");
+	width: 64px;
+	height: 64px;
+	img-shadow: 2px 2px 2.0 #1f296188;
+	wash-color: #F4F4F4;
+	margin-right: 20px;
+	opacity: 0.4;
+}
+#HeropediaButton { background-image: url("s2r://panorama/images/hud/escape_menu_rulebook_button_psd.vtex"); }
+#SettingsButton { background-image: url("s2r://panorama/images/hud/escape_menu_settings_button_psd.vtex"); }
+
+#SettingsButton
+{
+	//margin-right: 20px;
 }
 
 .Language_russian .MenuButton Label
@@ -2566,37 +3127,49 @@ DropDown Label
 	font-size: 24px;
 }
 
-.MenuBattlePassContainer
+#GroupedChallengesEmptySeparator
 {
-	width: 0px;
-	height: 100%;
-	flow-children: right;
+	height:300px;
+}
 
+.IsBattlePassGame.ShowChallenges #GroupedChallengesEmptySeparator
+{
 	visibility: collapse;
 }
 
-.IsBattlePassGame.HasEventData .MenuBattlePassContainer
-{
-	visibility: visible;
-	width: 600px;
-	//horizontal-align: right;
-	horizontal-align: center;
+.GroupedChallengesPanel { visibility: collapse; }
+.IsBattlePassGame.ShowChallenges .GroupedChallengesPanel { visibility: visible; }
 
-	margin-left: 700px;
-	padding-right: 64px;
+
+.GroupedChallengesPanel
+{
+	horizontal-align:center;
+	width:60%;
+	height:750px;
+	flow-children:right;
+	padding:20px 0px;
 }
 
-.IsBattlePassGame.HasEventData .MenuButtonContainer.PopupPanel
+#CityCrawlChallenges
 {
-	margin-right: 500px;
+	height:100%;
+	width:70%;
+	margin-right:10px;
+}
+
+.MenuBattlePassContainer
+{
+	width: 30%;
+	height:100%;	
+	horizontal-align:right;
 }
 
 #BattlePassOverviewInMenu
 {
 	vertical-align: center;
 	visibility: visible;
-	margin-top: 110px;
-	ui-scale: 90%;
+	height:100%;
+	width:100%;
 }
 
 #ChallengeList
@@ -2778,218 +3351,21 @@ DropDown Label
 	font-size: 42px;
 }
 
-
-.EGameState_Playing DACHUDRankDisplay,
-.EGameState_Playing DACHUDItemDisplay
+#ErrorMsg
 {
-	visibility: visible;
-}
-
-DACHUDItemDisplay
-{
-	width: 100%;
-	height: 100%;
-	visibility: collapse;
-}
-
-DACHUDItemDisplay .HUDItem
-{
-	width: 128px;
-	height: 128px; 
-}
-
-
-DACHUDItemDisplay .HUDItem.OnItemPlaced
-{
-	width: 128px;
-	height: 128px;
-	transition-property: width, height;
-	transition-duration: 1000ms;
-	transition-timing-function: ease-out;
-}
-
-.IsLayoutLargeScreen DACHUDItemDisplay .HUDItem
-{
-	width: 128px;
-	height: 128px;
-}
-
-DACHUDItemDisplay .HUDItem.OnItemPlaced
-{
-	animation-name: OnPlaceItemSlamAnim;
-	animation-duration: 0.15s;
-	animation-timing-function: ease-out;
-	animation-iteration-count: 1;
-}
-
-@keyframes 'OnPlaceItemSlamAnim'
-{
-	0%
-	{
-		pre-transform-scale2d: 2.0;
-	}
-	100%
-	{
-		pre-transform-scale2d: 1.0;
-	}
-}
-
-DACHUDItemDisplay .HUDItem.UnitOnBench
-{
-	transform: translateY( -26px );
-}
-
-.IsDraggingItem .HUDItem.EmptySlot #ItemImage
-{
-	visibility: visible;
-}
-
-.HUDItem.EmptySlot #ItemImage
-{
-	visibility: collapse;
-}
-
-DACHUDItemDisplay #ItemImage
-{
-	width: 44px;
-	height: 44px;
 	horizontal-align: center;
-	vertical-align: bottom;
-	margin-bottom: 32px;
+	vertical-align: middle;
+	margin-top: 600px;
+	opacity: 0;
+	background-color: black;
+	padding: 6px 20px 6px 20px;
+	transition-property: opacity;
+	transition-duration: 0.4s;
 }
 
-DACHUDItemDisplay #BottomRow
+.IsLayoutLargeScreen #ErrorMsg
 {
-	width: fit-children;
-	height: 24px;
-	margin-top: 16px;
-	vertical-align: bottom;
-	horizontal-align: center;
-	flow-children: right;
-	margin-bottom: 16px;
-	background-image: url("s2r://panorama/images/hud/mini_hero_backer_psd.vtex");
-	brightness: 1.5;
-	background-size: 100%;
-}
-
-.LowVisualQuality DACHUDItemDisplay #BottomRow
-{
-	brightness: 1;
-}
-
-DACHUDItemDisplay .HUDItem #ItemImage
-{
-	margin-bottom: 40px;
-}
-
-DACHUDItemDisplay #HeroImage
-{
-	visibility: visible;
-	horizontal-align: left;
-	vertical-align: center;
-	width: 24px;
-	height: 24px;
-	margin: 0px;
-}
-
-DACHUDItemDisplay.HideUnitIcons #HeroImage
-{
-	visibility: collapse;
-}
-
-.IsUnderlord #BottomRow
-{
-	height: 32px;	
-}
-
-.IsUnderlord #HeroImage
-{
-	horizontal-align: left;
-	vertical-align: bottom;
-	width: 32px;
-	height: 32px;
-	margin: 0px;
-	margin-bottom: -2px;
-
-}
-
-DACHUDItemDisplay #Rank1Star, DACHUDItemDisplay #Rank2Star, DACHUDItemDisplay #Rank3Star 
-{
-	visibility: collapse;
-}
-
-DACHUDItemDisplay .RankStar
-{
-	vertical-align: center;
-	width: 16px;
-	height: 16px;
-	background-size: 100%;
-}
-
-DACHUDItemDisplay .HUDItem.Rank1 #Rank1Star
-{	
-	visibility: visible;
-	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_1_psd.vtex");
-}
-
-DACHUDItemDisplay .HUDItem.Rank2 #Rank1Star,
-DACHUDItemDisplay .HUDItem.Rank2 #Rank2Star
-{
-	visibility: visible;
-	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_2_psd.vtex");
-}
-
-DACHUDItemDisplay .HUDItem.Rank3 #Rank1Star,
-DACHUDItemDisplay .HUDItem.Rank3 #Rank2Star,
-DACHUDItemDisplay .HUDItem.Rank3 #Rank3Star
-{
-	visibility: visible;
-	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_3_psd.vtex");
-}
-
-DACHUDItemDisplay #WorthNoGold
-{
-	visibility: collapse;
-	background-repeat: no-repeat;
-	background-size: 100%;
-	horizontal-align: left;
-	vertical-align: center;
-	width: 22px;
-	height: 22px;
-	margin: 0px;
-	margin-bottom: -2px;
-	margin-left: 2px;
-	background-image: url("s2r://panorama/images/hud/turbo_no_gold_small_psd.vtex");
-}
-
-.WorthNoGold #WorthNoGold
-{
-	visibility: visible;
-}
-
-.IsDraggingItem .HUDItem.CannotAcceptDrag .Unavailable
-{
-	width: 100%;
-	height: 100%;
-	background-size: 50%;
-	background-repeat: no-repeat;
-	background-position: 50% 70%;
-	background-image: url("s2r://panorama/images/hud/synergy_slash_psd.vtex");
-}
-
-.ERoundState_Combat.IsVersusOrCombatRunning DACHUDItemDisplay:not(.IsDraggingItem) .HUDItem:not(.UnitOnBench)
-{
-	visibility: collapse;
-}
-
-.ERoundState_Combat.IsVersusOrCombatRunning DACHUDItemDisplay:not(.IsDraggingItem) .HUDItem.UnderlordHasItem
-{
-	visibility: visible;
-}
-
-.IsDraggingItem .HUDItem:not(.OnEquippableTeam)
-{
-	visibility: collapse;
+	ui-scale: 80%;
 }
 
 @keyframes 'PopupAnimation'
@@ -3010,44 +3386,6 @@ DACHUDItemDisplay #WorthNoGold
 	}
 }
 
-@keyframes 'FadeItem'
-{
-	0%
-	{
-		opacity: 0.95;
-	}
-
-	100%
-	{
-		opacity: 0.01;
-	}
-}
-
-.ERoundState_Combat.IsVersusOrCombatRunning .HUDItem.FadeItem
-{
-	animation-name: FadeItem;
-	animation-duration: 1.0s;
-	animation-timing-function: linear;
-	visibility:visible;
-	opacity:0.95;
-}
-
-#ErrorMsg
-{
-	horizontal-align: center;
-	vertical-align: middle;
-	margin-top: 600px;
-	opacity: 0;
-	background-color: black;
-	padding: 6px 20px 6px 20px;
-	transition-property: opacity;
-	transition-duration: 0.4s;
-}
-
-.IsLayoutLargeScreen #ErrorMsg
-{
-	ui-scale: 80%;
-}
 
 #ErrorMsg.Show
 {
@@ -3487,28 +3825,35 @@ DACHUDItemDisplay #WorthNoGold
 
 
 DACScoreboard {
-	position: 0px 0 0;
+	position: -1920px 0px 0px;
 	opacity: 0;
-	visibility: collapse;
 	transition-property: position, opacity;
-	transition-duration: 100ms;
+	transition-duration: 250ms;
 
 }
 
 .ScoreboardVisible DACScoreboard {
 	position: 0px 0px 0px;
-	visibility: visible;
 	opacity: 1;
 }
 
-.IsLayoutLargeScreen.ScoreboardVisible DACScoreboard
+.IsLayoutLargeScreen DACScoreboard
 {
-	margin-top: 75px;
+	margin-top: 45px;
 	margin-left: 20px;
 }
 
+.IsLayoutSmallScreen DACScoreboard
+{
+	margin-top: 15px;
+	margin-left: 10px;
+}
+
+
 #ScoreboardBG {
-	visibility:collapse;
+	opacity: 0;
+	transition-property: opacity;
+	transition-duration: 250ms;
 	width: 100%;
 	height: 100%;
 	background-color: #000000F0;
@@ -3522,14 +3867,13 @@ DACScoreboard {
 }
 
 .ScoreboardVisible #ScoreboardBG {
-	visibility: visible;
+	opacity: 1;
 }
 
 .ScoreboardVisible DACLeaderboard {
 	opacity: 0.2;
 }
 
-#HideScoreboardButton,
 #ShowBattlePassProgress,
 #HideBattlePassProgress
 {
@@ -3621,14 +3965,6 @@ DACScoreboard {
 	visibility:visible;
 }
 
-.IsLayoutSmallScreen.AspectRatio4x3 #HideScoreboardButton,
-.IsLayoutSmallScreen.AspectRatio4x3 #ShowBattlePassProgress,
-.IsLayoutSmallScreen.AspectRatio4x3 #HideBattlePassProgress
-{
-//	width: 90px;
-//	height: 90px;
-}
-
 .HudToggleContainer
 {
 	flow-children: down;
@@ -3655,25 +3991,6 @@ DACScoreboard {
 	horizontal-align: right;
 	vertical-align: bottom;
 	margin-bottom: 20px;
-}
-
-.GameMode_Duos #HideScoreboardButton,
-.IsLayoutSmallScreen #HideScoreboardButton
-{
-	width: 285px;
-	height: 50px;
-	//height: 27px;
-	
-}
-
-.IsLayoutSmallScreen.AspectRatio16x9 #HideScoreboardButton
-{
-	width: 285px;
-	height: 50px;
-	//height: 27px;
-	margin-top: 628px;
-
-	margin-left: safe-area-inset-left;
 }
 
 .IsLayoutSmallScreen.AspectRatio4x3 #TopScoreboardButton
@@ -3742,22 +4059,21 @@ DACScoreboard {
 {
 	visibility: collapse;
 }
+.IsLayoutSmallScreen.AspectRatio16x9:not(.ScoreboardVisible) #BottomScoreboardButton
+{
+    visibility: visible;
+}
 
 #BottomScoreboardButton.TutorialHide,
 #TopScoreboardButton.TutorialHide
 {
-	visibility: collapse;
-	opacity: 0; 
+    visibility: collapse;
+    opacity: 0;
 }
 
 .IsLayoutSmallScreen #TopScoreboardButton
 {
 	visibility: collapse;
-}
-
-.IsLayoutSmallScreen #BottomScoreboardButton
-{
-	visibility: visible;
 }
 
 .IsLayoutSmallScreen.AspectRatio4x3 #TopScoreboardButton,
@@ -3766,8 +4082,8 @@ DACScoreboard {
 	visibility: visible;
 }
 
-.IsLayoutSmallScreen.AspectRatio4x3 #BottomScoreboardButton,
-.IsLayoutSmallScreen.HasSafeAreaLeft #BottomScoreboardButton
+.GameMode_Sandbox #TopScoreboardButton,
+.GameMode_Puzzle #TopScoreboardButton
 {
 	visibility: collapse;
 }
@@ -3778,104 +4094,57 @@ DACScoreboard {
 }
 
 
-.IsLayoutSmallScreen.AspectRatio4x3 #HideScoreboardButton
+#HideScoreboardButton
 {
-	//visibility: collapse;
+    width: 46px;
+    height: 46px;
+    background-image: url("s2r://panorama/images/control_icons/close_scoreboard_psd.vtex");
+    background-size: contain;
+    background-repeat: no-repeat;
+    overflow: noclip;
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 5px;
+    brightness: .5;
+    opacity: .4;
+    transition-property: opacity, background-image;
+    transition-duration: .2s;
+    visibility: collapse;
 }
 
-
-
-.IsLayoutSmallScreen.AspectRatio16x9 #HideScoreboardButton
+.IsLayoutSmallScreen #HideScoreboardButton
 {
-	visibility: collapse;
+    width: 70px;
+    height: 70px;
+    background-image: url("s2r://panorama/images/control_icons/close_scoreboard_psd.vtex");
+    margin-top: 890px;
+    margin-left: 25px;
 }
 
-.IsLayoutLargeScreen #HideScoreboardButton
+.IsLayoutSmallScreen.GameMode_Streetfight #HideScoreboardButton
 {
-	width: 46px;
-	height: 46px;
-	background-image: none;
-	//background-color: red;
-	background-image: url("s2r://panorama/images/control_icons/close_scoreboard_psd.vtex");
-	background-size: contain;
-	background-repeat: no-repeat;
-	overflow: noclip;
-	margin-top: 15px;
-	margin-left: 15px;
-	margin-right: 5px;
-	brightness: .75;
-	opacity: .4;
-	transition-property: opacity, background-image; 
-	transition-duration: .2s;
+	margin-top: 300px;
 }
 
 .AspectRatio21x9.IsLayoutSmallScreen #HideScoreboardButton
 {
-	width: 70px;
-	height: 70px;
-	background-image: none;
-	//background-color: red;
-	background-image: url("s2r://panorama/images/control_icons/close_scoreboard_psd.vtex");
-	background-size: contain;
-	background-repeat: no-repeat;
-	overflow: noclip;
-	margin-top: 25px;
-	margin-left: 25px;
-	margin-right: 5px;
-	brightness: .75;
-	opacity: .4;
-	transition-property: opacity, background-image; 
-	transition-duration: .2s;
+    margin-top: 25px;
 }
-
-.AspectRatio4x3.IsLayoutSmallScreen #HideScoreboardButton
+.GameMode_Duos.IsLayoutSmallScreen:not(.AspectRatio21x9) #HideScoreboardButton
 {
-	width: 70px;
-	height: 70px;
-	background-image: none;
-	//background-color: red;
-	background-image: url("s2r://panorama/images/control_icons/close_scoreboard_psd.vtex");
-	background-size: contain;
-	background-repeat: no-repeat;
-	overflow: noclip;
-	margin-top: 15px;
-	margin-left: 25px;
-	margin-right: 5px;
-	brightness: .75;
-	opacity: .4;
-	transition-property: opacity, background-image; 
-	transition-duration: .2s;
+    margin-top: 940px;
 }
 
-.IsLayoutLargeScreen #HideScoreboardButton:hover
+#HideScoreboardButton:hover
 {
 	opacity: 1;
 }
 
-
-.AspectRatio21x9.IsLayoutSmallScreen #HideScoreboardButton:hover
-{
-	opacity: 1;
-}
-
-.AspectRatio21x9.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabelIcon,
-.AspectRatio21x9.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabel,
+#HideScoreboardButton .ScoreboardLabelIcon,
+#HideScoreboardButton .ScoreboardLabel,
 {
 	visibility: collapse;
 }
-
-.AspectRatio4x3.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabelIcon,
-.AspectRatio4x3.IsLayoutSmallScreen #HideScoreboardButton .ScoreboardLabel,
-{
-	visibility: collapse;
-}
-
-.IsLayoutLargeScreen #HideScoreboardButton .ScoreboardLabelIcon,
-.IsLayoutLargeScreen #HideScoreboardButton .ScoreboardLabel
-{
-	visibility: collapse;
-}
-
 
 .IsLayoutSmallScreen #ShowBattlePassProgress,
 .IsLayoutSmallScreen #HideBattlePassProgress
@@ -3898,15 +4167,6 @@ DACScoreboard {
 	brightness: 2.5;
 }
 
-#HideScoreboardButton
-{
-	brightness: .5;
-}
-
-#HideScoreboardButton {
-	visibility: collapse;
-}
-
 .ScoreboardVisible .ShowScoreboardButton
 {
 	visibility: collapse;
@@ -3915,15 +4175,6 @@ DACScoreboard {
 .ScoreboardVisible #HideScoreboardButton
 {
 	visibility: visible;
-	height: 46px;
-	width: 46px;
-}
-
-.AspectRatio4x3 .ScoreboardVisible #HideScoreboardButton
-{
-	visibility: visible;
-	height: 46px;
-	width: 46px;
 }
 
 .ScoreboardVisible .PlayerLeaderboardBackground
@@ -3934,21 +4185,6 @@ DACScoreboard {
 .ScoreboardVisible.AspectRatio21x9.IsLayoutSmallScreen .PlayerLeaderboardBackground {
 	width: 100%;
 	overflow: clip clip;
-}
-
-#HideScoreboardButton {
-	font-size: 35px;
-	color: #fff;
-	font-weight: bold;
-	margin-top: 20px;
-}
-
-
-
-.GameMode_Duos #HideScoreboardButton {
-	//margin-left: 13px;
-	//width: 275px;
-	//visibility: collapse;
 }
 
 .IsBattlePassGame #HideScoreboardButton
@@ -4104,13 +4340,13 @@ DACScoreboard {
 
 .DevItemOption:hover
  {
- 	brightness: 2; 	
+	brightness: 2; 	
 	background-color: #111111;
  }
 
 .DevItemOption.IsSelected
  {
- 	brightness: 1.5; 	
+	brightness: 1.5; 	
 	background-color: #222222;	
 	contrast: .8;
 	border-top: 1px solid #222;
@@ -4198,6 +4434,76 @@ DACScoreboard {
 .DevItemOption.Tier5 Label
 {
 	color: teal;
+}
+
+.DevBotOption
+{
+	height: fit-children;
+	flow-children: right;	
+	vertical-align:center;
+	width:100%;
+	margin: 0px;
+	padding: 5px;
+	border-top: 1px solid #00000000;
+	border-right: 1px solid #00000000;
+	border-left: 1px solid #00000000;
+	border-bottom: 1px solid #222;
+}
+
+.DevBotOption:hover
+ {
+	brightness: 2; 	
+	background-color: #111111;
+ }
+
+.DevBotOption:active
+{
+	brightness: 2.0;
+	hue-rotation:50deg;
+}
+
+.DevBotOption Label
+{
+	font-size:15px;
+	margin-left:10px;
+	vertical-align: middle;
+	font-weight: bold;
+}
+
+.DevBotOption:hover
+ {
+	brightness: 2; 	
+	background-color: #111111;
+ }
+
+.DevBotOption.IsSelected
+ {
+	brightness: 1.5; 	
+	background-color: #222222;	
+	contrast: .8;
+	border-top: 1px solid #222;
+	border-right: 1px solid #222;
+	border-left: 1px solid #222;
+	border-bottom: 1px solid #222;
+ }
+
+#ControlPanelContainer
+{	
+}
+
+#PuzzlePanelContainer
+{
+	visibility: collapse;
+}
+
+.GameMode_Puzzle #PuzzlePanelContainer
+{
+	visibility: visible;
+}
+
+.GameMode_Puzzle #ControlPanelContainer
+{
+	visibility: collapse;
 }
 
 .ControlPanelLabel {
@@ -4375,7 +4681,7 @@ DropDown > .DevItemOption > .DevItemImage
 .DuosMessageSelectionMode_DoYouWant .DuosIHaveHeader,
 .DuosMessageSelectionMode_NoLongerWant .DuosINoLongerWantHeader
 {
-    opacity: 1;
+	opacity: 1;
 }
 
 .DuosMessageHeaderLabel
@@ -4421,7 +4727,7 @@ DropDown > .DevItemOption > .DevItemImage
 .DuosMessageSelectionMode_DoYouWant .DuosMessageDim,
 .DuosMessageSelectionMode_NoLongerWant .DuosMessageDim
 {
-    opacity: .7;
+	opacity: .7;
 }
 
 .DuosMessageButtonHeader
@@ -4465,7 +4771,18 @@ DropDown > .DevItemOption > .DevItemImage
 	vertical-align: bottom;
 }
 
-.VersusScreenVisible #ShopButton,
+#OpponentDamageEffectTarget
+{
+	visibility: visible;
+	width: 20px;
+	height: 20px;
+	horizontal-align: left;
+	margin-left: 248px;
+	margin-bottom: 368px;
+	vertical-align: bottom;
+}
+
+.VersusScreenVisible .ShopButton,
 .VersusScreenVisible .DuosMessageContainer
 {
 	transform: translateX( 1000px );
@@ -4534,6 +4851,34 @@ DropDown > .DevItemOption > .DevItemImage
 	visibility: visible;
 }
 
+.GameMode_Puzzle.ShopVisible #PuzzleTopLeft {
+	transform: translateY( 500px );
+}
+
+.GameMode_Puzzle #PuzzleTopLeft #PuzzleStatsSection,
+.GameMode_Puzzle #PuzzleTopLeft #PuzzleExitContainer
+{
+	transition-property: opacity;
+	transition-duration: .2s;
+	transition-timing-function: ease-in-out;
+}
+
+
+.GameMode_Puzzle.ShopVisible #PuzzleTopLeft #PuzzleStatsSection,
+.GameMode_Puzzle.ShopVisible #PuzzleTopLeft #PuzzleExitContainer,
+.GameMode_Puzzle.ShopVisible #TopBar,
+.GameMode_Puzzle.ShopVisible #PlayPauseContainer,
+.GameMode_Puzzle.HasntOpenedShop #TopBar,
+.GameMode_Puzzle.HasntOpenedShop #PlayPauseContainer
+{
+	opacity: 0;
+}
+
+.UnitSelected #PuzzleTopLeft
+{
+	opacity:0;
+}
+
 DACUIHudTutorial.ShowTutorialHUD,
 .GameMode_Tutorial #LeaveTutorialButton,
 {
@@ -4551,12 +4896,14 @@ DACUIHudTutorial,
 	visibility: collapse;
 }
 
-.GameMode_Turbo.TurboShopVisible #LeaderboardSection
+.GameMode_Turbo.TurboShopVisible #LeaderboardSection,
+.GameMode_Streetfight.TurboShopVisible #LeaderboardSection
 {
 	visibility: collapse;
 }
 
-.GameMode_Turbo.TurboShopVisible.IsLocalPlayerSpectating #LeaderboardSection
+.GameMode_Turbo.TurboShopVisible.IsLocalPlayerSpectating #LeaderboardSection,
+.GameMode_Streetfight.TurboShopVisible.IsLocalPlayerSpectating #LeaderboardSection
 {
 	visibility: visible;
 	z-index: 100;
@@ -4612,3 +4959,314 @@ DACUIHudTutorial,
 	horizontal-align: right;
 	transform: rotateZ(180deg);
 }
+
+#PuzzleButtons
+{
+	width: 100px;
+	height: 300px;
+	margin-bottom: 350px;
+	margin-left: 248px;
+	vertical-align: bottom;
+	flow-children: down;
+	opacity: 0;
+	transition-duration: 0.3s;
+	transition-property: opacity, transform; 
+	transform: translateX(-248px);
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9.ShopVisible #PuzzleButtons,
+.IsLayoutSmallScreen.AspectRatio21x9.ShopVisible #PuzzleButtons,
+.IsLayoutSmallScreen.AspectRatio4x3.ShopVisible #PuzzleButtons
+{
+	transform: translateX(-384px);
+	opacity: 0;	
+}
+
+.IsLayoutSmallScreen #PuzzleButtons
+{
+	ui-scale: 112%;
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9 #PuzzleButtons,
+.IsLayoutSmallScreen.AspectRatio21x9 #PuzzleButtons
+{
+	margin-left: 384px;
+	margin-bottom: 640px;
+}
+
+.IsLayoutSmallScreen.AspectRatio4x3 #PuzzleButtons
+{
+	margin-left: 384px;
+	margin-bottom: 1000px;
+}
+
+.GameMode_Puzzle.SellUnitVisible #PuzzleButtons
+{
+	opacity: 1;
+	transform: translateX(0px);
+	visibility: collapse;
+}
+
+.PuzzleModifyRankButton
+{
+	height: 100px;
+	width: 100px;
+	background-size: contain;
+	background-position: center center;
+	background-repeat: no-repeat;
+	transition-property: brightness;
+	transition-duration: 0.2s;
+}
+
+.PuzzleModifyRankButton:hover
+{
+	brightness: 1.4;
+}
+
+#PuzzleIncreaseUnitRankButton
+{
+	background-image: url("s2r://panorama/images/hud/puzzle_increase_unit_rank_psd.vtex");
+	margin-bottom: 8px;
+}
+#PuzzleDecreaseUnitRankButton
+{
+	background-image: url("s2r://panorama/images/hud/puzzle_decrease_unit_rank_psd.vtex");
+}
+
+.Rank3 #PuzzleIncreaseUnitRankButton
+{
+	opacity: 0.7;
+}
+.Rank1 #PuzzleDecreaseUnitRankButton
+{
+	opacity: 0.7;
+}
+
+// BATTLE STATS SECTION
+
+#PuzzleStatsSection {
+	visibility: collapse;
+	flow-children: down;
+	width: 360px;
+}
+
+#PuzzleExitContainer
+{
+	width: 100%;
+	height: fill-parent-flow( 1.0 );
+
+	visibility: collapse;
+}
+
+#PuzzleExitContainer Label 
+{
+	font-size: 30px;
+	font-weight: bold;
+	padding: 20px;
+
+	horizontal-align: left;
+	vertical-align: bottom;
+
+	text-align: center;
+
+	color: #AAA;
+
+	transition-property: brightness;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in-out;
+
+
+	/* TEMP STYLES */
+
+	background-image: url("s2r://panorama/images/hud/puzzle_stats_button_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	margin: 0px 0px 10px 10px;
+
+
+	padding: 16px;
+	text-shadow: 0px 0px 0px 2.0 #000;
+	text-transform: uppercase;
+	font-family: Ravenhook;
+
+	font-size: 20px;
+	letter-spacing: 1px;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #7272c7 ), to(#cdd2f3) );
+	text-overflow: shrink;
+}
+
+#PuzzleExitContainer Label:hover
+{
+	brightness: 2.0;
+}
+
+
+.GameMode_Puzzle #PuzzleStatsSection,
+.GameMode_Puzzle #StatsContainer,
+.GameMode_Puzzle #PuzzleExitContainer 
+{
+	visibility: visible;
+}
+
+
+
+#BattleStatsSection,
+DACDPSChart
+{
+	horizontal-align: right;
+	margin-bottom: 8px;
+	
+}
+
+.IsLayoutSmallScreen #BattleStatsSection
+{
+	vertical-align: middle;
+}
+
+#BattleStatsSection,
+#IconsMobileSelector .LocalPlayer.ToggleSectionButton.BattleStats
+{
+	visibility: collapse;
+}
+.HasAnyBattleStats #BattleStatsSection,
+.HasAnyBattleStats #IconsMobileSelector .LocalPlayer.ToggleSectionButton.BattleStats
+{
+	visibility: visible;
+}
+
+#StatsContainer
+{
+	flow-children: down;
+	vertical-align: top;
+	visibility: collapse;
+}
+
+#StatBestGoldSpend
+{
+	margin-top: 38px;
+}
+
+#StatLastGoldSpend
+{
+	margin-top: 38px;
+}
+
+.PuzzleStats
+{
+	margin-left: 12px;
+	margin-top: 8px;
+	margin-right: 8px;
+	font-weight: black;
+	vertical-align: center;
+
+	transition-property: brightness, transform;
+	transition-duration: .2s;
+
+	horizontal-align: left;
+	
+	height: 68px;
+	width: 348px;
+
+	visibility: collapse;
+}
+
+.IsNonZero.PuzzleStats
+{
+	visibility: visible;
+}
+
+.IsNonZero.PuzzleStats:hover
+{
+	brightness: 2.0;
+}
+
+
+.PuzzleStats .Stat
+{
+	width: 100%;
+	height: 100%;
+
+	background-image: url("s2r://panorama/images/hud/puzzle_stats_button_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: 100%;
+
+	vertical-align: center;
+
+	padding: 20px 16px 20px 16px;
+	text-shadow: 0px 0px 0px 2.0 #000;
+
+	font-size: 24px;
+	letter-spacing: 1px;
+	color: gradient(linear, 0% 0%, 0% 100%, from( #7272c7 ), to(#cdd2f3) );
+	text-overflow: shrink;
+}
+
+.PuzzleStats .Stat.Highscore
+{
+	border: 1px solid #cc7676;
+	border-radius: 5px;
+
+	opacity: 0;
+	background-image: none;
+	background-color: gradient(linear, 0% 0%, 0% 100%, from( #de2222 ), to( #6f1111) );
+}
+
+.PuzzleStats .Stat.Highscore
+{
+	color: gradient(linear, 0% 0%, 0% 100%, from( #c77272 ), to(#f3cdcd) );
+}
+
+@keyframes 'NewHighScore'
+{
+	0%
+	{
+		opacity: 0;
+	}
+	10%
+	{
+		opacity: 1;
+	}
+	20%
+	{
+		brightness: 1;
+	}
+	50%
+	{
+		brightness: 3;
+	}
+	80%
+	{
+		brightness: 1;
+	}
+	90%
+	{
+		opacity: 1;
+	}
+	100%
+	{
+		opacity: 0;
+	}
+}
+
+.PuzzleStats.NewHighScore .Stat.Highscore
+{
+	animation-name: NewHighScore;
+	animation-duration: 4.0s;
+	animation-timing-function: linear;
+	animation-iteration-count: 1;
+
+}
+
+.PuzzleStats:hover
+{
+	brightness: 1.6;
+	transform: translateX(3px);
+}
+
+.AspectRatio4x3.IsLayoutSmallScreen .ShowAllTabs .SidebarLabel
+{
+	font-size: 20px;
+}
+
+
+

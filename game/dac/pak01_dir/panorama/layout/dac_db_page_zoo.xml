@@ -12,6 +12,7 @@
 					<Panel class="ItemTypeIcon ItemTypeIconOffensive" />
 					<Panel class="ItemTypeIcon ItemTypeIconDefensive" />
 					<Panel class="ItemTypeIcon ItemTypeIconSupport" />
+          <Panel class="ItemTypeIcon ItemTypeIconHat" />
 					<Panel class="ItemTypeIcon ItemTypeIconGlobal" />
 					<Label class="ItemName" text="{s:item_name}" />
 				</Panel>
@@ -30,7 +31,7 @@
 	<DACZooPage class="DashboardPage">
 
 		<Panel class="DashboardHeader">
-			<Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
+			<Panel id="BackButton2" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
 			<Label class="PageTitle DistressedFont" text="#DAC_Zoo"/>
 		</Panel>
 
@@ -50,9 +51,9 @@
 
 		<Panel class="ZooPage1 ZooPage">
 			<Panel class="ZooColumn">
+				<TextButton class="BevelButton" text="Protopass" onactivate="DACShowRewardsProtopassPage()"/>
+				<TextButton class="BevelButton" text="Protopass Loadout" onactivate="DACShowLoadoutProtopassPage()"/>
 				<TextButton class="BevelButton" text="City Crawl" onactivate="DACShowChallengeWorldMapPage()" />
-				<TextButton class="BevelButton" text="Season 1 Battle Pass" onactivate="DACShowRewardsBattlePassPage()"/>
-				<TextButton class="BevelButton" text="Season 1 Loadout" onactivate="DACShowLoadoutPage()"/>				
 				<TextButton class="BevelButton" text="Start Tutorial (Phase 1)" onactivate="DACStartTutorial(0)" />
 				<TextButton class="BevelButton" text="Start Tutorial (Phase 2)" onactivate="DACStartTutorial(1)" />
 			</Panel>
@@ -89,7 +90,7 @@
 				<Label class="ZooTextHeader" text=".TextLabel" />
 				<Label class="TextLabel" text="#dac_zoo_temptext" />
 			</Panel>
-			<Panel class="ZooColumn">
+			<Panel class="ZooColumn ScrollColumn">
 				<Label class="TextSmallHeader" text="TITLE STYLES" />
 				<Label class="ZooTextHeader" text=".TextTitle" />		
 				<Label class="TextTitle" text="#dac_zoo_temptext" />
@@ -99,6 +100,12 @@
 				<Label class="TextTitleAlt" text="#dac_zoo_temptext" />
 				<Label class="ZooTextHeader" text=".TextSubTitleAlt" />	
 				<Label class="TextSubTitleAlt" text="#dac_zoo_temptext" />
+				<Label class="ZooTextHeader" text=".HeadlineFont" />	
+				<Label class="ZooHeadlineMono HeadlineFont" text="#dac_zoo_temptext_numbers" />
+				<Label class="ZooTextHeader" text=".HeadlineMonoFont" />	
+				<Label class="ZooHeadlineMono HeadlineMonoFont" text="#dac_zoo_temptext_numbers" />
+				<Label class="ZooTextHeader" text=".EarlyBirdFont" />	
+				<Label class="ZooHeadlineMono EarlyBirdFont" text="#dac_zoo_temptext_numbers" />
 			</Panel>
 			<Panel class="ZooColumn">
 				<Label class="TextSmallHeader" text="BUTTON STYLES" />
@@ -112,6 +119,10 @@
 				</Button>
 				<Label class="ZooTextHeader" text=".FancyButton" />		
 				<Button class="FancyButton">
+					<Label text="#dac_zoo_temptext" />
+				</Button>
+				<Label class="ZooTextHeader" text=".MiniButton" />		
+				<Button class="MiniButton">
 					<Label text="#dac_zoo_temptext" />
 				</Button>
 			</Panel>
@@ -284,11 +295,11 @@
 				<Button class="SimpleButton" onactivate="DACShowTutorialIntroPopup()">
 					<Label text="#DAC_MatchTypeName7" />
 				</Button>
-				<Button class="SimpleButton" onactivate="DACShowUnderlordPickerPopup()">
-					<Label text="Underlord Picker" />
-				</Button>
 				<Button class="SimpleButton" onactivate="DACShowGameModePickerPopup()">
 					<Label text="Gamemode Picker" />
+				</Button>
+				<Button class="SimpleButton" onactivate="DACShowTestMoviePopup()">
+					<Label text="Test Movie" />
 				</Button>
 			</Panel>
 
@@ -304,7 +315,6 @@
 		</Panel>
 
 		<Panel class="ZooPage5 ZooPage">
-			<DACChallengeMap id="ChallengeMap" />
 		</Panel>
 
 		<Panel class="ZooPage6 ZooPage">
@@ -316,6 +326,7 @@
 						<Label id="1" class="GameModeOption" text="#DAC_MatchTypeName1" value="1" />
 						<Label id="2" class="GameModeOption" text="#DAC_MatchTypeName2" value="2" />
 						<Label id="3" class="GameModeOption" text="#DAC_MatchTypeName3" value="3" />
+						<Label id="8" class="GameModeOption" text="#DAC_MatchTypeName8" value="8" />
 					</DropDown>
 				</Panel>
 
@@ -342,6 +353,10 @@
 				<Panel class="PostGameOption">
 					<Label text="#DAC_Zoo_PostGame_CurrencyGain" />
 					<TextEntry id="AddCurrencyTextEntry" textmode="numeric" text="0" />
+				</Panel>
+
+				<Panel class="PostGameOption">
+					<DACSettingsCheckbox id="CompleteChallengesCheckbox" convar="" text="Complete Challenges" />
 				</Panel>
 
 				<Label class="TextSmallHeader" text="DAC_Zoo_PostGame_RankHeader" />
@@ -372,9 +387,15 @@
 					<TextEntry id="FinalDuosRankTextEntry" textmode="numeric" text="0" />
 				</Panel>
 
-				<Button id="PostGameButton" class="SimpleButton" onactivate="DACZooShowPostGame()">
-					<Label text="#dac_zoo_show_post_game" />
-				</Button>
+				<Panel id="PostGameLaunchButtons">
+					<Button class="SimpleButton PostGameButton" onactivate="DACZooShowPostGame()">
+						<Label text="Show Post Game" />
+					</Button>
+
+					<Button class="SimpleButton PostGameButton" onactivate="DACZooShowPostGameBattlepass()">
+						<Label text="Show Post Game Battlepass" />
+					</Button>
+				</Panel>
 
 			</Panel>
 		</Panel>

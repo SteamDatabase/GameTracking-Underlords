@@ -80,6 +80,8 @@ $ORIGIN
 %llu
 %ls [wstring, len = %d]
 %s
+%s / %s MB
+%s / %s MB (non-evictable: %s MB)
 %s 0..0
 %s allocation count overflow
 %s called on an immutable constant buffer
@@ -178,6 +180,7 @@ $ORIGIN
 -avx
 -debugdxsupport
 -deferTextureLoads
+-dev
 -disableboneuniformbuffers
 -disallowhwmorph
 -dontEvictTextures
@@ -245,10 +248,14 @@ $ORIGIN
 ...
 ../public/ordered_constructor.h
 ../public/tier0/tslist.h
+../public/tier1/memstack.h
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utlfixedmemory.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utltshash.h
+./inputlayoutbase.h
+./renderresource.h
 .360
 .[\()*+?{|^$
 .[\*^$
@@ -277,6 +284,8 @@ $ORIGIN
 /data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcBlock4x4Encoding_RGBA8.cpp
 /data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcIndividualTrys.cpp
 0
+0.2
+0.90
 0123456789)"
 0: Bilinear, 1: Trilinear, 2: Aniso 2x, 3: Aniso 4x, 4: Aniso 8x, 5: Aniso 16x
 0A
@@ -295,7 +304,6 @@ $ORIGIN
 11CRefCountedI20CRefCountServiceBaseILb1E6CRefMTEE
 11IRefCounted
 12CDeviceFence
-12CEmptyConVar
 12CFrameSyncGL
 12CFunctorData
 12CRefCounted1I11IRefCounted20CRefCountServiceBaseILb1E6CRefMTEE
@@ -329,10 +337,10 @@ $ORIGIN
 15CGLMProgramBase
 15CGLMShaderCache
 15CMemberFunctor1IP26CParallelProcessorAbstractI18CParallelProcessorIi27CMemberFuncJobItemProcessorIi11CCallQueueTI8CTSQueueIP8CFunctorLb0EEES8_ELi1EEEMSB_FviEi12CRefCounted1IS5_20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
-15CMemberFunctor4IP19CTextureManagerBaseMS0_FvP25IAsyncResourceDataRequestP12CTextureBase22TextureSpecification_tiES3_S5_S6_i12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
+15CMemberFunctor5IP19CTextureManagerBaseMS0_FvP25IAsyncResourceDataRequest11CWeakHandleI31InfoForResourceTypeCTextureBaseEP12CTextureBase22TextureSpecification_tiES3_S6_S8_S9_i12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CMemberFunctor6IP13CSOAContainerMS0_FviiiiiDv4_fEiiiiiS2_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CMemberFunctor7IP13CSOAContainerMS0_FviiiiPKS0_iiEiiiiS3_ii12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
-15CMemberFunctor9IP19CTextureManagerBaseMS0_FvP12CTextureBase11CWeakHandleI31InfoForResourceTypeCTextureBaseE12ResourceId_tPvi22TextureSpecification_tS9_i23TextureBitsMemoryType_tES3_S6_S7_S8_iS9_S9_iSA_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
+15CMemberFunctor9IP19CTextureManagerBaseMS0_FvP12CTextureBase11CWeakHandleI31InfoForResourceTypeCTextureBaseE12ResourceId_tPvj22TextureSpecification_tS9_i23TextureBitsMemoryType_tES3_S6_S7_S8_iS9_S9_iSA_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CRenderDeviceGL
 15CRenderPassDesc
 15CRenderResource
@@ -363,6 +371,7 @@ $ORIGIN
 17CTextureManagerGL
 17CVertexBufferBase
 18CGLMShaderPipeline
+18CPlaceholderConVar
 18CRenderContextBase
 18CRenderDeviceMgrGL
 18CShaderStringTable
@@ -393,6 +402,7 @@ $ORIGIN
 23CTextureStreamingHelper
 23IConCommandBaseAccessor
 24IRenderDeviceMgrBackdoor
+256.0
 25CConCommandMemberAccessorI17CRenderDeviceBaseE
 25CConCommandMemberAccessorI19CTextureManagerBaseE
 26CDefaultKeyValuesErrorSpew
@@ -421,6 +431,7 @@ $ORIGIN
 5_0_gl
 5_0_vulkan
 6
+64.0
 6ConVar
 7
 7CGLMTex
@@ -442,12 +453,15 @@ $ORIGIN
 <EOR>
 <NULL>
 <UP>
+<deferred>
 <error>
 <invalid %d>
 <invalid>
+<no deferred ref found>
 <no failure reason set>
 <none>
 <null>
+<unconnected>
 <unknown multisample type
 <x360>
 =
@@ -462,7 +476,6 @@ $ORIGIN
 ?(3w
 ???
 ?a`
-?cfg/moddefaults.txt
 @
 @&LH
 @@
@@ -493,7 +506,10 @@ ATIRagePro
 ATI_DST16
 ATI_DST24
 ATTEMPTED TO DECOMMIT OWNED MEMORY STACK SPACE
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Adobe APP14 marker: version %d, flags 0x%04x 0x%04x, transform %d
+After hitting throttling limits for streamout, allow it to continue up to this number of milliseconds.
 AllocInternal
 AllocTextureSlot
 Allocate
@@ -639,23 +655,23 @@ CTextureManagerBase::WasAsyncUpdatedThisFrame - Invalid texture handle.
 CTextureManagerGL::ComputeTextureObject: Tried to create a depth-stencil texture which is *not* a render target!
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadMultiWaitEvent::CThreadMultiWaitEvent(bool)
 CThreadMultiWaitEvent::Set()
 CThreadMultiWaitEvent::~CThreadMultiWaitEvent()
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
 CThreadRWLock_FastRead::CThreadRWLock_FastRead()
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
-CThreadRWLock_FastRead::UnlockReadAccounting(unsigned int)
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int)
+CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
+CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
 CThreadSemaphore::Release(int, int*)
 CThreadSemaphore::~CThreadSemaphore()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::Wait(unsigned int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
@@ -688,6 +704,7 @@ CXXABI_1.3
 CXXABI_1.3.3
 Call to NULL read function
 Can't clear TEXTURE_WAITING_FOR_IO flag because of streaming request mismatch: %d in handle, %d in request
+Can't clear TEXTURE_WAITING_FOR_IO flag because pTexture is NULL
 Can't detect memory size on this platform!
 Can't discard critical data on CRC error
 Can't set both read_data_fn and write_data_fn in the same structure
@@ -820,6 +837,7 @@ DynamicCombo
 DynamicComboFromFeature
 DynamicComboRule
 DynamicComboRule(
+Dynamically adjust texture streaming budget based on GPU memory usage.
 EDeviceCreated
 END_UNIFORMBINDINGS*/
 ENQ
@@ -3030,6 +3048,8 @@ GL_ZOOM_X
 GL_ZOOM_Y
 GL_Z_EXT
 GNU
+GPU memory available (%d MB of %d MB used). Increasing texture pool size %d MB -> %d MB.
+GPU memory available (%d MB of %d MB used). Reducing texture pool size %d MB -> %d MB
 GPU reports %dMB available memory which is too low, using %d MB
 GS
 GameResourceServiceClientV001
@@ -3118,6 +3138,7 @@ Incorrect sBIT chunk length
 Incorrect sRGB chunk length
 Incorrect tIME chunk length
 Incorrect tRNS chunk length
+Increase texture memory pool size by this many MB / s when under budget.
 InitializeDisplayDB
 Input file read error
 InputLayoutVariation_t
@@ -3166,6 +3187,7 @@ Invalid PLTE after IDAT
 Invalid Path
 Invalid SOS parameters for sequential JPEG
 Invalid `part number' in EXR header chunks.
+Invalid access of deferred ConVarRef for '%s'
 Invalid argument for DecodeEXRImage().
 Invalid argument for LoadDeepEXR
 Invalid argument for LoadEXR()
@@ -3346,6 +3368,7 @@ Max Texture Dimensions : %d x %d
 Max Vertex Texture Image Units : %d
 Max committed memory: %u KB out of %d KB
 MaxDeviceID
+Maximum device access threads: %u
 Maximum supported image dimension is %u pixels
 May
 MemAlloc_AllocFunc
@@ -3529,6 +3552,7 @@ Out of place sRGB chunk
 Out of place tIME chunk
 Output file write error --- out of disk space?
 Output memory size is zero
+Overall System GPU memory use:
 Overflow of the sheet cache texture. Releasing and starting over. This is ok in asset browser, not so ok if the game is triggering this!
 Overflow of the sheet cache texture: Try increasing SheetCacheTextureRows in gameinfo.gi (current value %d)!
 P
@@ -3612,6 +3636,7 @@ Plat_NeedsLowFragmentation
 Plat_OsSpecificHandleToPlatWindow
 Plat_ReconfigureWindow
 Plat_RelativeTicks
+Plat_SetDenormalsAreZero
 Plat_SetWindowFullscreenState
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_TicksAfterSecsF
@@ -3738,6 +3763,8 @@ RecursiveLoadFromBuffer:  got conditional between key and value
 RecursiveLoadFromBuffer:  got empty keyname
 RecursiveLoadFromBuffer:  got } in key
 RecursiveLoadFromBuffer:  recursion overflow
+Reduce texture memory pool size by this many MB / s when over budget.
+Reduce texture memory pool size when this percentage of the budget is full.
 RegisterAllModuleData
 RegisterConfigValue: Unknown error constructing config value "%s"!
 RegisterHibernationListener
@@ -3906,6 +3933,7 @@ TEXMAN: %s MarkTextureBitsLoadRequired (%s)
 TEXMAN: %s MarkTextureBitsLoaded (%s)
 TEXMAN: %s loaded %s %i/%i mips (%ix%i / %ix%i) of %s (%i bytes)
 TEXMAN: Abandoning job in %s
+TEXMAN: Abandoning streaming request early in %s
 TEXMAN: Abandoning streaming request in %s
 TEXMAN: Adding %s, %llx to abandoned hookup jobs
 TEXMAN: DeferTextureLoads %s MarkTextureBitsLoaded (%s)
@@ -3944,9 +3972,10 @@ TestFormatE
 TestScriptMgr001
 TextLayout_001
 TextMessageMgr_001
+Texture Streaming:
 Texture manager out of space! Can't allocate new texture!
 Texture memory discrepancy! %llu != %llu
-Texture memory limit: %s; in use: %s in %s textures
+Texture memory: %s / %s MB; in %s textures (%s MB non-evictable)
 Texture streaming validation OK (%d texture loads in flight).
 TextureDimLog2
 TextureSheetData
@@ -3959,6 +3988,7 @@ ThreadJoin
 ThreadMultiWait
 ThreadSleep
 ThreadYield
+Time (in seconds) between updating texture memory budget.
 Timed out waiting for thread to exit? hung?
 Too many IDATs found
 Too many bytes for PNG signature
@@ -4152,6 +4182,7 @@ Version
 Vertex Shader
 Vfx
 Video Card %s (%04x : %04x)
+Video config version number changed ( '%s' is version %i, current version is %i ). Resetting video config.
 Virtual array controller messed up
 VisBuilder_001
 VoidFnPtrLookup_Tier0
@@ -4203,7 +4234,6 @@ Zero length tRNS chunk
 ^\s*layout\s*\(\s*binding\s*=\s*[0-9]+\s*\)\s*uniform\s+sampler
 ^\s*uniform\s+sampler
 ^oEZ
-_
 _A16B16G16R16
 _A16B16G16R16F
 _A8
@@ -4370,6 +4400,7 @@ ceil
 ceilf
 cfg/video.txt
 cfg/video_%02d.txt
+cfg/video_version.txt
 cfg/videodefaults.txt
 channels
 char* std::string::_S_construct<char*>(char*, char*, std::allocator<char> const&, std::forward_iterator_tag)
@@ -4454,13 +4485,13 @@ float4x3
 float4x4
 floatbitmap.cpp
 floatbitmap.cpp(141): Unknown gamma type "%s"!
-floatbitmap.cpp(2473): Error calling TGALoader::GetInfo( %s )
-floatbitmap.cpp(2484): Error loading %s
-floatbitmap.cpp(2507): Error! Unknown file type for %s
-floatbitmap.cpp(2526): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
-floatbitmap.cpp(325): Conversion not supported yet!
-floatbitmap.cpp(425): Conversion not supported yet!
-floatbitmap.cpp(888): Unsupported color format "%s", skipping!
+floatbitmap.cpp(2486): Error calling TGALoader::GetInfo( %s )
+floatbitmap.cpp(2497): Error loading %s
+floatbitmap.cpp(2520): Error! Unknown file type for %s
+floatbitmap.cpp(2539): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
+floatbitmap.cpp(338): Conversion not supported yet!
+floatbitmap.cpp(438): Conversion not supported yet!
+floatbitmap.cpp(901): Unsupported color format "%s", skipping!
 floor
 floorf
 fltx4
@@ -4493,10 +4524,12 @@ generic
 getenv
 gl/dynamicbuffermgrgl.cpp
 gl/rendercontextgl.cpp
+gl/renderdevicegl.cpp
 gl/renderdevicegl.cpp(2134):
 gl/renderdevicegl.cpp(657):
 gl/renderdevicegl.cpp(675):
 gl/renderthreadgl.cpp(1869):
+gl/togl/cglmtex.cpp
 gl/togl/glmdisplaydb.cpp
 gl/togl/glmgr_flush.inl
 glActiveShaderProgram
@@ -4926,6 +4959,7 @@ invalid literal/lengths set
 invalid stored block lengths
 invalid window size
 j
+keyvalues.cpp
 kh9F
 l
 l!;b
@@ -5120,6 +5154,7 @@ null
 nullFragmentProgram
 number-sign
 nvidia
+occlusionquerymgr.cpp
 offscreen plain surface
 okOP
 operator delete(void*)
@@ -5188,16 +5223,21 @@ r_frame_sync_enable
 r_fullscreen_gamma
 r_gpu_mem_stats
 r_max_texture_pool_size
+r_texture_budget_dynamic
+r_texture_budget_threshold
+r_texture_budget_update_period
 r_texture_eager_eviction
 r_texture_hookup_uses_threadpool
 r_texture_nonstreaming_load
 r_texture_nonstreaming_only_fullmipchain
+r_texture_pool_increase_rate
+r_texture_pool_reduce_rate
 r_texture_pool_size
-r_texture_stream_debug_spew
 r_texture_stream_mip_bias
 r_texture_stream_throttle_amount
 r_texture_stream_throttle_count
 r_texture_streaming_timesliced
+r_texture_streamout_unthrottle_ms
 r_texturefilteringquality
 r_textures_evict_all
 r_validate_texture_streaming
@@ -5206,7 +5246,10 @@ random
 rb
 realloc
 rendercontextbase.cpp
+renderdevicebase.cpp
 renderdevicemgrbase.cpp
+renderstatehelper.h
+rendersystem (%s) tracked resources:
 rendersystemgl
 rendersystemgl: FIXME: Can't set texture bits of a D3D surface
 replicated
@@ -5534,16 +5577,16 @@ tessfactor
 texcoord
 text compression mode is out of range
 texturebase.cpp
-texturebase.cpp(1731):Error loading texture: %s
-texturebase.cpp(2647):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2668):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2679):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2690):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2701):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2722):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2733):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2744):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2755):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(1803):Error loading texture: %s
+texturebase.cpp(2737):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2758):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2769):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2780):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2791):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2812):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2823):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2834):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2845):ResourceHandleToData( %s ) failed! Falling back to error texture!
 three
 tilde
 tiles
@@ -5628,7 +5671,6 @@ v%d
 v2f
 vQO+
 vTexCoordScaleOffset
-vb_created_input_layout
 vector::_M_default_append
 vector::_M_emplace_back_aux
 vector::_M_range_check: __n (which is %zu) >= this->size() (which is %zu)
@@ -5643,6 +5685,7 @@ vfx_gl
 vfx_shader_file.cpp
 vfxc
 video.cfg
+video_version
 virtual void Etc::Block4x4Encoding_ETC1::PerformIteration(float)
 virtual void Etc::Block4x4Encoding_ETC1::SetEncodingBits()
 virtual void Etc::Block4x4Encoding_R11::InitFromEncodingBits(Etc::Block4x4*, unsigned char*, Etc::ColorFloatRGBA*, Etc::ErrorMetric)

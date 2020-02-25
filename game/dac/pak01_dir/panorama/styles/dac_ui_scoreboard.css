@@ -1,176 +1,900 @@
-DACScoreboard, DACPostGameScoreboard {
+
+
+@define widthPlace: 60px;
+@define widthTeam: 150px;
+@define widthPoster: 60px;
+@define widthName: 150px;
+@define widthHealth: 130px;
+@define widthRank: 300px;
+@define widthRecord: 100px;
+@define widthNetWorth: 120px;
+@define widthAlliances: 40px;
+@define widthUnderlord: 140px;
+@define widthRoster: 40px;
+@define widthBench: 40px;
+@define widthGlobals: 140px;
+
+@define transitionTime: 0.4s;
+
+
+DACScoreboard
+{
+	width: 1900px;
 	flow-children: down;
-	vertical-align: top;
-	
-	
-	margin-top: 8px;
-	overflow: scroll scroll;
-	ui-scale: 70%;
-	
-	//background-color: #2c2a32;
 }
 
-DACScoreboard {
-	width: 100%;
-	max-height: 100%;
-	margin-top: 45px;
-	
-}
-
-.IsLayoutSmallScreen.IsLayoutSmallScreen.AspectRatio16x9 DACPostGameScoreboard
+.IsLayoutSmallScreen:not(.GameMode_Duos) DACScoreboard
 {
-	height: 810px;
+	ui-scale: 140%;
 }
 
-.IsLayoutSmallScreen.IsLayoutSmallScreen.AspectRatio21x9 DACPostGameScoreboard
+DACScoreboard.GameMode_Duos.PostGame
 {
-	height: 810px;
-}
-
-DACPostGameScoreboard
-{
-	//opacity-mask: url("s2r://panorama/images/post_game/scoreboard_fade_psd.vtex");
-}
-
-#ScoreboardEntryContainer {
-	background-image: url("s2r://panorama/images/hud/scoreboard_bg_psd.vtex");
-	background-size: 100%;
-	background-position: 50% 50%;
-	background-repeat: repeat-x;
-}
-
-DACPostGameScoreboard #ScoreboardEntryContainer {
-	background-image: none;
-	background-color: #00000088;
-}
-
-.IsLayoutSmallScreen DACScoreboard
-{
-	margin-top: 35px;
 	ui-scale: 90%;
 }
 
-.IsLayoutSmallScreen DACPostGameScoreboard
+.AspectRatio21x9 DACScoreboard
 {
-	margin-top: 20px;
-	ui-scale: 90%;	
+	width: 2400px;
 }
 
-.IsLayoutSmallScreen.AspectRatio16x9 DACScoreboard, .IsLayoutSmallScreen.AspectRatio16x9 DACPostGameScoreboard {
-	margin-bottom: 0px;
-}
-
-.IsLayoutSmallScreen.AspectRatio4x3 DACScoreboard, .IsLayoutSmallScreen.AspectRatio4x3 DACPostGameScoreboard {
-	ui-scale: 100%;
-	margin-top: 20px;
-}
-
-.IsLayoutSmallScreen.AspectRatio21x9 DACScoreboard, .IsLayoutSmallScreen.AspectRatio21x9 DACPostGameScoreboard {
-	ui-scale: 90%;
-	margin-bottom: 0px;
-	//max-width: 1920px;
-}
-
-
-.IsLayoutSmallScreen.AspectRatio16x9 #Header,
-.IsLayoutSmallScreen.AspectRatio21x9 #Header {
-	height: 30px;
-}
-
-.IsLayoutSmallScreen.AspectRatio4x3 #Header {
-	visibility: visible;
-}
-
-.PlayerLeaderboardBackground DACScoreboard #ScrollThumb, .PlayerLeaderboardBackground DACPostGameScoreboard #ScrollThumb
+#RoundSelectContainer
 {
-	background-color: #4b4354aa;
-	height: 20px;
+	flow-children:right;
+
+	horizontal-align: center;
+
+	margin-bottom: 20px;
 }
 
-.PlayerLeaderboardBackground DACScoreboard #HorizontalScrollBar, .PlayerLeaderboardBackground DACPostGameScoreboard #HorizontalScrollBar
+.InGame #RoundSelectContainer
 {
-	background-color: #000000;
-	//background-color: red;
-	height: 20px;
+	visibility: collapse;
 }
 
-.IsLayoutSmallScreen .PlayerLeaderboardBackground DACScoreboard #HorizontalScrollBar, .IsLayoutSmallScreen .PlayerLeaderboardBackground DACPostGameScoreboard #HorizontalScrollBar
+#RoundSelectContainer .RoundArrow
 {
-	height: 10px;
-	//background-color: #ffffff88;
+	background-image: url("s2r://panorama/images/dashboard/arrow_right_underlord_psd.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 48px;
+	width: 60px;
+	background-size: contain;
+
+	transition-property: opacity, brightness, transform;
+	transition-duration: 0.1s;
+	transition-timing-function: ease-in-out;
+
+	horizontal-align: right;
+	vertical-align: center;
+	wash-color: textDefault;
+	opacity: 0.6;	
 }
 
-#Header {
-	flow-children: right;
-	
-	max-height: 60px;
-}
-
-DACScoreboard #Header {
-	background-color: #352d3e;
-}
-
-
-
-#Header Label {
-	color: textBrighter;
-	font-size: 24px;
-	padding: 15px 10px 15px 10px;
-	text-transform: uppercase;
-	text-overflow: shrink;
-	font-weight: black;
-}
-
-.IsLayoutSmallScreen.AspectRatio16x9 #Header Label,
-.IsLayoutSmallScreen.AspectRatio21x9 #Header Label{
-	color: textBrighter;
-	font-size: 24px;
-	padding: 0px 10px 0px 10px;
-	text-transform: uppercase;
-	overflow: squish squish;
-}
-
-.IsLayoutSmallScreen.AspectRatio16x9 #Header{
-	padding-left: 64px;
-}
-
-.IsLayoutSmallScreen.AspectRatio21x9 #Header{
-	padding-left: 62px;
-	//margin-left: -60px;
-}
-
-#ScoreboardEntryContainer {
-	flow-children: down;
-	width: fit-children;
-}
-
-.MatchModeSoloBot #RankHeader,
-.MatchModeCasual #RankHeader
+#RoundSelectContainer .ArrowLeft
 {
-	width: 0;
+	horizontal-align: left;
+	background-image: url("s2r://panorama/images/dashboard/arrow_left_underlord_psd.vtex"); 
+}
+
+
+#RoundSelectContainer .RoundArrow:hover
+{
+	opacity: 1;
+	brightness: 2;
+	transform: scaleX( 1.1 ) scaleY( 1.1 );
+}
+
+.FirstRound #RoundSelectContainer .ArrowLeft,
+.LastRound #RoundSelectContainer .ArrowRight
+{
 	opacity: 0;
 }
 
-#DuosHeader, #DuosColumn {
+#RoundSelectContainer #RoundText
+{	
+	width:300px;
+	margin:0px 20px;
+	font-size: 58px;
+	text-overflow: shrink;
+	font-weight: black;
+	letter-spacing: 1px;
+	vertical-align: center;
+	text-align: center;
+	color: #FFF;
+	opacity: 0.8;
+}
+
+#Scoreboard
+{
+	flow-children: right;
+	background-color: #111014;
+}
+
+.IsLayoutSmallScreen.GameMode_Normal #Scoreboard,
+.IsLayoutSmallScreen.GameMode_Turbo #Scoreboard,
+.IsLayoutSmallScreen.GameMode_Streetfight #Scoreboard {
+	ui-scale: 120%;
+}
+
+.PostGame #Scoreboard
+{
+	horizontal-align: center;
+}
+
+#Scoreboard .Entry
+{
+	width: 100%;
+	height: 60px;
+
+	transition-property: position;
+	transition-duration: transitionTime;
+	transition-timing-function: ease-in-out;
+}
+
+.GameMode_Duos #Scoreboard .Entry
+{
+	height: 56px;
+}
+
+#Scoreboard .Entry.RowOdd
+{
+	background-color: #1D1C23;
+}
+
+.GameMode_Duos #Scoreboard .Place.Entry.RowOdd,
+.GameMode_Duos #Scoreboard .Team.Entry.RowOdd,
+.GameMode_Duos #Scoreboard .Record.Entry.RowOdd Label,
+.GameMode_Duos #Scoreboard .Rank.Entry.RowOdd > Label,
+.GameMode_Duos #Scoreboard .Rank.Entry.RowOdd > Panel
+{
+	opacity: 0;
+}
+
+.GameMode_Duos #Scoreboard .Team.Entry
+{
+	padding-bottom: 0px;
+}
+
+
+#Scoreboard .Entry.RowSelf
+{
+	background-color: #2E2B39;
+}
+
+#Scoreboard .Entry > DACPlayerAvatar,
+#Scoreboard .Entry > Panel,
+#Scoreboard .Entry > Label
+{
+	transition-property: brightness;
+	transition-duration: transitionTime;
+	transition-timing-function: ease-in-out;
+}
+ 
+#Scoreboard .Entry.IsOldRound > DACPlayerAvatar,
+#Scoreboard .Entry.IsOldRound > DACSynergyIcon,
+#Scoreboard .Entry.IsOldRound > Panel,
+#Scoreboard .Entry.IsOldRound > Label
+{
+	brightness: 0.1;
+}
+
+.Header
+{
+	padding: 4px 8px;
+	height: 25px;
+
+	color: #CACACA;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.Column
+{
+	flow-children: down;
+
+	background-color: #111014;
+}
+
+#SectionPrefix > Panel,
+#SectionScrollable > Panel
+{
 	visibility: collapse;
 }
 
-.GameMode_Duos #DuosHeader, .GameMode_Duos #DuosColumn {
+.PostGame #SectionPrefix #PlaceColumn,
+.PostGame #SectionPrefix #PosterColumn,
+.PostGame #SectionPrefix #NameColumn,
+.InGame #SectionPrefix #PosterColumn,
+.InGame #SectionPrefix #NameColumn,
+.GameMode_Duos #SectionPrefix #TeamColumn
+{
 	visibility: visible;
 }
 
-.GameMode_Duos DACScoreboard,
-.GameMode_Duos.ScoreboardVisible #ScoreboardBG
+DACScoreboard.PostGame:not(.GameMode_Duos) #SectionScrollable #HealthColumn,
+.PostGame #SectionScrollable #RankColumn,
+.PostGame #SectionScrollable #RecordColumn,
+.PostGame #SectionScrollable #NetWorthColumn,
+.PostGame #SectionScrollable #AlliancesColumn,
+.PostGame #SectionScrollable #UnderlordColumn,
+.PostGame #SectionScrollable #GlobalsColumn,
+.PostGame #SectionScrollable #RosterColumn,
+DACScoreboard.InGame:not(.GameMode_Duos) #SectionScrollable #HealthColumn,
+.InGame #SectionScrollable #RecordColumn,
+.InGame #SectionScrollable #NetWorthColumn,
+.InGame #SectionScrollable #AlliancesColumn,
+.InGame #SectionScrollable #UnderlordColumn,
+.InGame #SectionScrollable #RosterColumn,
+.InGame #SectionScrollable #BenchColumn,
+.InGame #SectionScrollable #GlobalsColumn
 {
-	// hiding scoreboard for Duos for the time being
-	//visibility: collapse; 
+	visibility: visible;
 }
 
-/* Visibility */
-DACScoreboardEntry .Place, DACScoreboard #PlaceHeader {
+
+#SectionPrefix
+{
+	flow-children: right;
+}
+
+#SectionPrefix #PlaceColumn
+{
+	width: widthPlace;
+}
+
+#SectionPrefix #TeamColumn
+{
+	width: widthTeam;
+}
+
+#SectionPrefix #PosterColumn
+{
+	width: widthPoster;
+}
+
+#SectionPrefix #PosterColumn .Poster
+{
+	width: height-percentage( 100% );
+}
+
+#SectionPrefix #PosterColumn .Poster #PlayerAvatar
+{
+	width: 100%;
+	height: 100%;
+}
+
+#SectionPrefix #NameColumn
+{
+	min-width: widthName;
+}
+
+#SectionScrollable
+{
+	flow-children: right;
+	overflow: scroll clip;
+
+	padding-bottom: 12px;
+	padding-right: 30px;
+
+	opacity-mask: url("s2r://panorama/images/masks/scoreboard_mask_psd.vtex");
+}
+
+#SectionScrollable #HealthColumn
+{
+	min-width: widthHealth;
+}
+
+#SectionScrollable #HealthColumn #HealthHeader
+{
+	padding-left: 30px;
+}
+
+#SectionScrollable #RankColumn
+{
+	min-width: widthRank;
+}
+
+#SectionScrollable #RecordColumn
+{
+	min-width: widthRecord;
+}
+
+#SectionScrollable #RecordColumn .Record.Entry Label
+{
+	padding-left: 8px;
+}
+
+.GameMode_Duos.InGame #SectionScrollable #RecordColumn #RecordHeader,
+.GameMode_Duos.InGame #SectionScrollable #RecordColumn .Record.Entry
+{
+	padding-left: 30px;
+}
+
+
+#SectionScrollable #NetWorthColumn
+{
+	min-width: widthNetWorth;
+}
+
+#SectionScrollable #AlliancesColumn
+{
+	min-width: widthAlliances;
+
+	transition-property: width;
+	transition-duration: 0.4s;
+	transition-timing-function: ease-in-out;
+}
+
+#SectionScrollable #UnderlordColumn
+{
+	min-width: widthUnderlord;
+}
+
+#SectionScrollable #RosterColumn
+{
+	min-width: widthRoster;
+
+	transition-property: width;
+	transition-duration: 0.4s;
+	transition-timing-function: ease-in-out;
+}
+
+#SectionScrollable #BenchColumn
+{
+	min-width: widthBench;
+
+	transition-property: width;
+	transition-duration: 0.4s;
+	transition-timing-function: ease-in-out;
+}
+
+#SectionScrollable #GlobalsColumn
+{
+	min-width: widthGlobals;
+}
+
+
+.EntryContainer
+{
+	width: 100%;
+	flow-children:down;
+}
+
+#PlaceContainer .Place
+{
+	width: 100%;
+}
+
+#PlaceContainer .PlaceNumber
+{
+	width: 100%;
+	height: 100%;
+
+	font-size: 26px;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	padding-top: 15px;
+}
+
+#TeamContainer .Team
+{
+	padding: 10px;
+
+	flow-children: down;
+}
+
+#TeamContainer .Team .TopContainer
+{
+	width: 100%;
+
+	flow-children: down;
+}
+
+#TeamContainer .Team .TopContainer .TeamName
+{
+	font-size: 17px;
+	color: #FFF;
+	margin-bottom: 6px;
+
+	height: 18px;
+}
+
+#TeamContainer .Team .BottomContainer,
+#TeamContainer .Team .BottomContainer .HealthCount,
+#TeamContainer .Team .BottomContainer .UnitCount
+{
+	flow-children: right;
+	padding-right: 4px;
+}
+
+#TeamContainer .Team .BottomContainer .UnitCount
+{
+	padding-top: 2px;
+}
+
+#TeamContainer .Team .HealthLabel
+{
+	font-size: 14px;
+	font-weight: bold;
+	color: #A2FF92;
+
+	text-shadow: 0px 0px 0px 3.0 #000;
+
+	vertical-align: center;
+}
+
+#TeamContainer .Team .HealthIcon
+{
+	width: 16px;
+	height: 16px;
+
+	margin-top: 5px;
+	margin-left: -1px;
+
+	vertical-align: center;
+
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#TeamContainer .Team .UnitLabel
+{
+	font-size: 14px;
+	color: #BAD1FF;
+
+	vertical-align: center;
+}
+
+#TeamContainer .Team .UnitIcon
+{
+	width: 12px;
+	height: 12px;
+
+	margin-top: 1px;
+	margin-left: -2px;
+
+	background-image: url("s2r://panorama/images/leaderboard/player_level_psd.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+	vertical-align: center;
+}
+
+#NameContainer .Name
+{
+	padding: 10px;
+
+	flow-children: down;
+}
+
+#NameContainer .Name .Persona,
+#NameContainer .Name .PersonaPlayerSlot
+{
+	font-size: 17px;
+	color: #FFF;
+}
+
+.InGame #NameContainer .Name .Persona,
+.PostGame #NameContainer .Name .PersonaPlayerSlot
+{
 	visibility: collapse;
 }
 
-DACPostGameScoreboard .Bench, DACPostGameScoreboard #BenchHeader {
+#NameContainer .Name .BottomRow
+{
+	width: fill-parent-flow( 1.0 );
+	flow-children: right;
+}
+
+#NameContainer .Name .BottomRow .UnitCount
+{
+	flow-children: right;
+	padding-left: 0px;
+}
+
+.GameMode_Duos #NameContainer .Name .BottomRow .UnitCount
+{
 	visibility: collapse;
+}
+
+#NameContainer .Name .BottomRow .UnitCount Label
+{
+	font-size: 15px;
+	color: #BAD1FF;
+}
+
+#NameContainer .Name .BottomRow .UnitCount .UnitIcon
+{
+	width: 12px;
+	height: 12px;
+
+	margin-top: 2px;
+	margin-left: -2px;
+
+	background-image: url("s2r://panorama/images/leaderboard/player_level_psd.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#NameContainer .Name .BottomRow .GoldCount
+{
+	flow-children: right;
+	margin-left: 8px;
+}
+
+#NameContainer .Name .BottomRow .GoldCount Label
+{
+	font-size: 15px;
+	color: #F5C95C;
+}
+
+#NameContainer .Name .BottomRow .GoldCount .GoldIcon
+{
+	width: 12px;
+	height: 12px;
+
+	margin-top: 2px;
+	margin-left: -1px;
+
+	background-image: url("s2r://panorama/images/leaderboard/icon_gold_bevel_psd.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+#HealthContainer .Health
+{
+	flow-children: right;
+
+	padding-left: 30px;
+}
+
+#HealthContainer .Health Label
+{
+	font-size: 32px;
+	font-weight: bold;
+	color: #A2FF92;
+
+	text-shadow: 0px 0px 0px 3.0 #000;
+
+	vertical-align: center;
+	padding: 4px;
+}
+
+#HealthContainer .Health .HealthIcon
+{
+	width: 20px;
+	height: 20px;
+
+	margin-top: 5px;
+	margin-left: -1px;
+
+	vertical-align: center;
+
+	background-image: url("s2r://panorama/images/leaderboard/icon_health_psd.vtex"); 
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+}
+
+.GameMode_Normal #HealthContainer .Health .HealthIcon.HealthIcon2,
+.GameMode_Normal #HealthContainer .Health .HealthIcon.HealthIcon3,
+.GameMode_Normal #HealthContainer .Health .HealthIcon.HealthIcon4,
+.GameMode_Streetfight #HealthContainer .Health .HealthIcon.HealthIcon2,
+.GameMode_Streetfight #HealthContainer .Health .HealthIcon.HealthIcon3,
+.GameMode_Streetfight #HealthContainer .Health .HealthIcon.HealthIcon4,
+.GameMode_Duos #HealthContainer .Health .HealthIcon.HealthIcon2,
+.GameMode_Duos #HealthContainer .Health .HealthIcon.HealthIcon3,
+.GameMode_Duos #HealthContainer .Health .HealthIcon.HealthIcon4,
+.GameMode_Streetfight #HealthContainer .Health Label,
+.GameMode_Turbo #HealthContainer .Health Label
+{
+	visibility: collapse;
+}
+
+.GameMode_Turbo #HealthContainer .Health .HealthIcon
+{
+	visibility: collapse;
+}
+
+.GameMode_Turbo #HealthContainer .Health.Has1Health .HealthIcon.HealthIcon1,
+.GameMode_Turbo #HealthContainer .Health.Has2Health .HealthIcon.HealthIcon2,
+.GameMode_Turbo #HealthContainer .Health.Has3Health .HealthIcon.HealthIcon3,
+.GameMode_Turbo #HealthContainer .Health.Has4Health .HealthIcon.HealthIcon4,
+.GameMode_Streetfight #HealthContainer .Health.Has1Health .HealthIcon.HealthIcon1,
+.GameMode_Streetfight #HealthContainer .Health.Has2Health .HealthIcon.HealthIcon2,
+.GameMode_Streetfight #HealthContainer .Health.Has3Health .HealthIcon.HealthIcon3,
+.GameMode_Streetfight #HealthContainer .Health.Has4Health .HealthIcon.HealthIcon4
+{
+	visibility: visible;
+}
+
+.GameMode_Duos.PostGame #SectionScrollable #RankColumn #RankHeader,
+.GameMode_Duos.PostGame #SectionScrollable #RankColumn .Rank.Entry
+{
+	padding-left: 30px;
+}
+
+#RankContainer .Rank
+{
+	flow-children: right;
+}
+
+
+#RankContainer .Rank #RankPin
+{
+	width: 30px;
+	height: 60px;
+}
+
+#RankContainer .Rank Label
+{
+	padding-top: 20px;
+	padding-left: 8px;
+
+	font-size: 18px;
+	color: #CCC;
+
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+#RecordContainer .Record Label
+{
+	padding-top: 16px;
+
+	font-size: 24px;
+	color: #CCC;
+
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+#NetWorthContainer .NetWorth Label
+{
+	padding-top: 16px;
+	padding-left: 8px;
+
+	font-size: 24px;
+	color: #FFF06D;
+
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+#AlliancesColumn
+{
+
+}
+
+#AlliancesContainer .Alliances
+{
+	padding-top: 6px;
+	flow-children: right;
+}
+
+#AlliancesContainer .Alliances DACSynergyIcon
+{
+	opacity: 0;
+	width: 0px;
+	ui-scale: 45%;
+
+
+	transition-property: width, opacity, brightness;
+	transition-duration: transitionTime;
+	transition-timing-function: ease-in-out;
+}
+
+#AlliancesContainer .Alliances DACSynergyIcon.Visible
+{
+	opacity: 1;
+}
+
+#AlliancesContainer .Alliances DACSynergyIcon.Levels_1.Visible,
+#AlliancesContainer .Alliances DACSynergyIcon.Levels_2.Visible,
+#AlliancesContainer .Alliances DACSynergyIcon.Levels_3.Visible
+{
+	width: 165px;
+}
+
+#UnderlordContainer .Underlord
+{
+	padding-left: 8px;
+	flow-children: right;
+}
+
+#UnderlordContainer .Underlord #UnderlordPortrait,
+#UnderlordContainer .Underlord #UnderlordTalent
+{
+	transition-property: opacity;
+	transition-duration: transitionTime;
+	transition-timing-function: ease-in-out;
+}
+
+#UnderlordContainer .Underlord #UnderlordPortrait.Hidden,
+#UnderlordContainer .Underlord #UnderlordTalent.Hidden
+{
+	opacity: 0;
+}
+
+#UnderlordContainer .Underlord #UnderlordPortrait
+{
+	height: 40px;
+	width: 40px;
+
+	vertical-align: center;
+
+	margin-right: 10px;
+}
+
+#UnderlordContainer .Underlord #UnderlordTalent
+{
+	height: 40px;
+	width: 40px;
+
+	vertical-align: center;
+
+	box-shadow: 0px 0px 15px #00000066;
+}
+
+#RosterContainer .Roster,
+#BenchContainer .Bench
+{
+	flow-children: right;
+}
+
+#BenchContainer .Bench
+{
+	saturation: 0.5;
+	brightness: 0.7;
+}
+
+#RosterContainer .Roster .RosterUnit,
+#BenchContainer .Bench .RosterUnit,
+#GlobalsContainer .Globals .GlobalUnit
+{
+	width: 60px;
+	height: 100%;
+
+	transition-property: width, opacity, saturation, brightness;
+	transition-duration: transitionTime;
+	transition-timing-function: ease-in-out;
+}
+
+#RosterContainer .Roster .RosterUnit.Hide,
+#BenchContainer .Bench .RosterUnit.Hide,
+#GlobalsContainer .Globals .GlobalUnit.Hide
+{
+	margin-right: 0px;	
+	width: 0px;
+	opacity: 0;
+}
+
+#RosterContainer .Roster .RosterUnit.Filtered,
+#BenchContainer .Bench .RosterUnit.Filtered
+{
+	saturation: 0.2;
+	brightness: 0.1;
+}
+
+#RosterContainer .Roster #HeroPortrait,
+#BenchContainer .Bench #HeroPortrait
+{
+	height: 40px;
+	width: 40px;
+
+	vertical-align: center;
+	horizontal-align: center;
+
+	margin-bottom: 5px;
+}
+
+#RosterContainer .Roster .StarsContainer,
+#BenchContainer .Bench .StarsContainer
+{
+	width: 100%;
+}
+
+#RosterContainer .Roster .StarList,
+#BenchContainer .Bench .StarList
+{
+	horizontal-align: center;
+	margin-top: 40px;
+
+	flow-children: right;
+
+	visibility: collapse;
+}
+
+#RosterContainer .Roster .IsRank1 .StarList.Rank1,
+#RosterContainer .Roster .IsRank2 .StarList.Rank2,
+#RosterContainer .Roster .IsRank3 .StarList.Rank3,
+#BenchContainer .Bench .IsRank1 .StarList.Rank1,
+#BenchContainer .Bench .IsRank2 .StarList.Rank2,
+#BenchContainer .Bench .IsRank3 .StarList.Rank3
+{
+	visibility: visible;
+}
+
+#RosterContainer .Roster .StarList .Star,
+#BenchContainer .Bench .StarList .Star
+{
+	width: 18px;
+	height: 18px;
+
+	margin-left: -2px;
+	margin-right: -2px;
+
+	background-size: cover;
+}
+
+#RosterContainer .Roster .StarList .Rank1Star,
+#BenchContainer .Bench .StarList .Rank1Star
+{
+	background-image: url("s2r://panorama/images/hud/star_rank1_psd.vtex");
+}
+
+#RosterContainer .Roster .StarList .Rank2Star,
+#BenchContainer .Bench .StarList .Rank2Star
+{
+	background-image: url("s2r://panorama/images/hud/star_rank2_psd.vtex");
+}
+
+#RosterContainer .Roster .StarList .Rank3Star,
+#BenchContainer .Bench .StarList .Rank3Star
+{
+	background-image: url("s2r://panorama/images/hud/star_rank3_psd.vtex");
+}
+
+#RosterContainer .Roster .HasNoItem .ItemContainer,
+#BenchContainer .Bench .HasNoItem .ItemContainer
+{
+	visibility: collapse;
+}
+
+#RosterContainer .Roster .ItemContainer,
+#BenchContainer .Bench .ItemContainer
+{
+	margin-left: 30px;
+	width: 36px;
+	height: 36px;
+}
+
+#RosterContainer .Roster .ItemContainer .ItemShadow,
+#BenchContainer .Bench .ItemContainer .ItemShadow
+{
+	width: 100%;
+	height: 100%;
+
+	background-image: url("s2r://panorama/images/masks/circular_shadow_psd.vtex");
+	background-size: cover;
+}
+
+
+#RosterContainer .Roster .ItemContainer DACInventoryItem,
+#BenchContainer .Bench .ItemContainer DACInventoryItem
+{
+	margin-left: 3px;
+	margin-top: 1px;
+	ui-scale: 45%;
+}
+
+#GlobalsContainer .Globals .GlobalUnit
+{
+	width: 60px;
+
+	margin-right: 10px;
+}
+
+#GlobalsContainer .GlobalUnit #GlobalImage
+{
+	width: 100%;
+	height: 100%;
 }

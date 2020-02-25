@@ -1,0 +1,51 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_citycrawl_challenges.vcss_c" />		
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />		
+	</styles>
+
+	<snippets>
+		<snippet name="ChallengeSnippet">
+			<Panel class="ChallengeSnippetPanel" hittest="true">				
+				<Label id="MostRecentText" text="#DAC_CityCrawl_MostRecent" class="HeadlineFont"/>
+				<Label id="ChallengeTitleText" class="HeadlineFont ChallengeText Title"/>
+				<Label class="ChallengeProgressText HeadlineFont" text="#DAC_AchievementProgress"/>
+				<Panel class="ChallengeProgressContainer">
+					<Panel class="ProgressBars">
+						<ParticleProgressBar id="InGameChallengeProgress" class="DailyChallengeProgressBar" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar_complete.vpcf" fov="-200" />
+						<ParticleProgressBar id="ChallengeProgress" class="DailyChallengeProgressBar" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar_complete.vpcf" fov="-200" />
+					</Panel>					
+				</Panel>
+				<Label id="ChallengeDescText" class="ChallengeText Desc"/>
+			</Panel>
+		</snippet>
+	</snippets>
+	<DACDBControlCityCrawlChallenges hittest="false">	
+		<Panel id="UnderlordTabs" hittest="true">
+			<Panel class="UnderlordTab" id="UnderlordTab_1" onactivate="DACChallengeSelectUnderlord(1)">				
+				<Label id="ChallengesAvailableText" class="HeadlineFont"/>
+				<Panel id="AnessixHeader" class="UnderlordHeader"/>				
+			</Panel>
+			<Panel class="UnderlordTab" id="UnderlordTab_2" onactivate="DACChallengeSelectUnderlord(2)">
+				<Label id="ChallengesAvailableText" class="HeadlineFont"/>
+				<Panel id="JullHeader" class="UnderlordHeader"/>
+			</Panel>
+			<Panel class="UnderlordTab" id="UnderlordTab_3" onactivate="DACChallengeSelectUnderlord(3)">
+				<Label id="ChallengesAvailableText" class="HeadlineFont"/>
+				<Panel id="EnnoHeader" class="UnderlordHeader"/>					
+			</Panel>
+			<Panel class="UnderlordTab" id="UnderlordTab_4" onactivate="DACChallengeSelectUnderlord(4)">
+				<Label id="ChallengesAvailableText" class="HeadlineFont"/>
+				<Panel id="HobgenHeader" class="UnderlordHeader"/>					
+			</Panel>			
+		</Panel>
+		<Panel id="UnderlordChallengeContainer" hittest="false">
+			<Panel id="UnderlordChallenges_1" class="UnderlordChallengeList"/>
+			<Panel id="UnderlordChallenges_2" class="UnderlordChallengeList"/>
+			<Panel id="UnderlordChallenges_3" class="UnderlordChallengeList"/>
+			<Panel id="UnderlordChallenges_4" class="UnderlordChallengeList"/>
+		</Panel>
+	</DACDBControlCityCrawlChallenges>
+</root>

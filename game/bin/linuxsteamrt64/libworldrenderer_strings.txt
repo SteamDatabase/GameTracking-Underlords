@@ -32,7 +32,6 @@ $ORIGIN
 %%%s
 %-120s
 %-120s - %s
-%.15lf
 %01d
 %02X
 %02d
@@ -123,7 +122,6 @@ $ORIGIN
 --%s is at refcount %d
 ----End Script Dump
 -->
--1
 -avx
 -entkv_use_schema
 -inf
@@ -135,12 +133,14 @@ $ORIGIN
 ../public/entity2/concreteentitylist.h
 ../public/networksystem/networkfieldscratchdata.h
 ../public/ordered_constructor.h
+../public/scenesystem/vertexformat.h
 ../public/tier0/tslist.h
+../public/tier1/memstack.h
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utlleanvector.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
-../public/tier2/fieldpath.h
+../public/tier1/utltshash.h
 .exr
 .jpg
 .pfm
@@ -151,7 +151,6 @@ $ORIGIN
 /data/source2_main/src/thirdparty/etc2comp/EtcLib/./EtcCodec/EtcBlock4x4Encoding.h
 /data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcBlock4x4Encoding.cpp
 /data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcBlock4x4Encoding.h
-/data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcBlock4x4Encoding_ETC1.cpp
 /data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcBlock4x4Encoding_R11.cpp
 /data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcBlock4x4Encoding_RG11.cpp
 /data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcBlock4x4Encoding_RGB8.cpp
@@ -180,7 +179,6 @@ $ORIGIN
 11CRefCountedI20CRefCountServiceBaseILb1E6CRefMTEE
 11IRefCounted
 11IVSSequence
-12CEmptyConVar
 12CRefCounted1I11IRefCounted20CRefCountServiceBaseILb1E6CRefMTEE
 12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE
 12CSceneObject
@@ -219,6 +217,7 @@ $ORIGIN
 17IGenericInterface
 17IWorldRendererMgr
 18CDefSaveRestoreOps
+18CPlaceholderConVar
 19CSchemaRegistration
 19CVariantSaveDataOps
 1DBlend
@@ -263,7 +262,7 @@ $ORIGIN
 27CSchemaUtlVectorManipulatorI10CUtlVectorI24RenderInputLayoutField_t10CUtlMemoryIS1_iEES1_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorI27ExtraVertexStreamOverride_t10CUtlMemoryIS1_iEES1_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorI27WorldNodeOnDiskBufferData_t10CUtlMemoryIS1_iEES1_E
-27CSchemaUtlVectorManipulatorI10CUtlVectorI40PerInstanceBakedLightingParamsOverride_t10CUtlMemoryIS1_iEES1_E
+27CSchemaUtlVectorManipulatorI10CUtlVectorI6AABB_t10CUtlMemoryIS1_iEES1_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorIh10CUtlMemoryIhiEEhE
 27CSchemaUtlVectorManipulatorI10CUtlVectorIi10CUtlMemoryIiiEEiE
 27CSchemaUtlVectorManipulatorI10CUtlVectorIj10CUtlMemoryIjiEEjE
@@ -311,11 +310,13 @@ $ORIGIN
 <No schemasystem>
 <classptr>
 <custom>
+<deferred>
 <embedded>
 <empty>
 <function>
 <input>
 <no classname>
+<no deferred ref found>
 <no failure reason set>
 <no targetname>
 <none>
@@ -323,6 +324,7 @@ $ORIGIN
 <resource>
 <shim>
 <type name is DEBUG only>
+<unconnected>
 <unknown hash %u>
 <unknown>
 <ununsed>
@@ -340,6 +342,7 @@ $ORIGIN
 @spawn
 A->B
 A=g?33s?
+AABB_t
 ACT_IDLE
 ACT_NEUTRAL_REF_POSE
 AE_ACTION_SET_TURN_RATE_SCALE
@@ -384,6 +387,8 @@ ATI_DST16
 ATI_DST24
 ATTACHMENT_INFLUENCE_FLAGS_NONE
 AbsolutePoseControl
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Add an output
 AddOutput
 AddResource
@@ -434,7 +439,6 @@ Attempted to set attribute %s as if it was a non-attribute key!
 Attempted to set non-attribute value %s as if it was an attribute!
 Attempting to get the Skeletal Input settings from model %s, which doesn't have any.  Please add a Skeletal Input Settings node to the model in ModelDoc
 Attempting to get the movement settings from model %s, for which movement settings have not been set.  Please add a MovementSettings node to the model in ModelDoc
-Attribute counts between meshes is inconsistent
 B channel not found
 B channel not found!
 B->C
@@ -506,6 +510,8 @@ CAimConstraint
 CAnimBone
 CAnimDataChannelDesc
 CAnimKeyData
+CAnimMotorList
+CAnimMovementManager
 CAnimRetargetChainData
 CAnimRetargetData
 CAnimRetargetElementData
@@ -580,6 +586,7 @@ CMaterialDrawDescriptor
 CMemAllocSystemInitialize
 CModelConfig
 CModelConfigElement
+CModelConfigElement_Command
 CModelConfigElement_UserPick
 CModelConfigList
 CMorphConstraint
@@ -616,23 +623,24 @@ CScriptKeyValues
 CScriptNativeOutputs
 CScriptPrecacheContext
 CSisterResourceBlockLoader::BlockingLoadResourceFileData: Trying to load an illegal resource name %s!
+CSolveIKChainAnimNode
 CSplitScreenSlot
 CStrongHandle
 CStrongHandleCopyable
 CTSQueue corruption
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadMultiWaitEvent::CThreadMultiWaitEvent(bool)
 CThreadMultiWaitEvent::Set()
 CThreadMultiWaitEvent::~CThreadMultiWaitEvent()
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
 CTiltTwistConstraint
@@ -788,6 +796,7 @@ ConnectInterfaces
 ConnectOutput
 ConnectOutputToScript
 ConnectOutputToScriptSelf
+ConvertGammaToLinear
 CopyAttrFrom
 Couldn't ReadTexturePixels when creating grass.
 CreateEntity
@@ -1178,6 +1187,7 @@ Insufficient header/data size.
 Intentionally vague touch behavior for %p
 Invalid EXR header.
 Invalid `part number' in EXR header chunks.
+Invalid access of deferred ConVarRef for '%s'
 Invalid argument for DecodeEXRImage().
 Invalid argument for LoadDeepEXR
 Invalid argument for LoadEXR()
@@ -1194,7 +1204,7 @@ Invalid argument for SaveEXRImageToMemory
 Invalid argument. `memory` or `exr_header` argument is null in ParseEXRHeaderFromMemory()
 Invalid channels format
 Invalid compressed buffer size
-Invalid conversion : CString '%s' to bool
+Invalid conversion : string '%s' to bool
 Invalid data for member '%s'
 Invalid data found when decoding pixels.
 Invalid data height value
@@ -1237,10 +1247,14 @@ LINEAR_RGBA16161616
 LINEAR_RGBA8888
 LOG_GENERAL
 Length;
+LightDesc_t
+LightSourceShape_t
+LightType_t
 LightingBasis
 Lightmap version number is out of date! Reverting to dynamic lighting
 LightmapUV
 LightmapUVW
+Line %d at "%s":
 Line %d at "%s": %s
 Line %d:
 Line %d: %s
@@ -1308,7 +1322,6 @@ MemAlloc_FreeFunc
 MeshDrawPrimitiveFlags_t
 MeshSystem001
 MeshUtils001
-Missing cubemap precomputed handshake for world geometry.
 Missing file '%s'
 Model %s missing bone and flex counts (%d < %d), init %d
 Model conversion: %d conversions in %.3fsec (%.3fms each)
@@ -1322,6 +1335,7 @@ Multiple entity classes have the same designer name "%s" ( alias class %s and cl
 Multiple entity classes have the same designer name "%s" ( class %s and class %s )
 Multiple registration of class %s
 N24CFieldPathHuffmanEncoder12InternalNodeE
+N24CFieldPathHuffmanEncoder5INodeE
 N24CFieldPathHuffmanEncoder8LeafNodeE
 N37CTypesafeIntrospectedToKV3TypeManagerILy431366240118E11WorldNode_tE26IKV3ResourceAllocatorUtilsE
 N37CTypesafeIntrospectedToKV3TypeManagerILy431366240118E11WorldNode_tE28IKV3ResourceDeallocatorUtilsE
@@ -1409,7 +1423,6 @@ Not safe to 'new' this class due to alignment requirements
 OBJECT_TYPE_BLOCK_LIGHT
 OBJECT_TYPE_DECAL
 OBJECT_TYPE_DISABLED_IN_LOW_QUALITY
-OBJECT_TYPE_EXCLUDE_FROM_IMPOSTORS
 OBJECT_TYPE_GEOMETRY_LOD
 OBJECT_TYPE_IMAGE_LOD
 OBJECT_TYPE_MODEL
@@ -1417,6 +1430,7 @@ OBJECT_TYPE_NO_SHADOWS
 OBJECT_TYPE_NO_SUN_SHADOWS
 OBJECT_TYPE_PRECOMPUTED_VISMEMBERS
 OBJECT_TYPE_RENDER_TO_CUBEMAPS
+OBJECT_TYPE_RENDER_WITH_DYNAMIC
 OBJECT_TYPE_WORLDSPACE_TEXURE_BLEND
 ORIENT
 ObjectTypeFlags_t
@@ -1460,9 +1474,7 @@ ParseEXRHeaderFromMemory failed! Error message: %s
 ParticleSystemMgr003
 Particles
 Particles.ControlPoints
-Path_SetCount failed, depth already == DEFAULT_MAX_PATH_DEPTH(%d)
 Pending List:
-PerInstanceBakedLightingParamsOverride_t
 PerVertexLighting
 PermEntityLumpData_t
 Pf%d %d-1.000000
@@ -1493,6 +1505,7 @@ Plat_GetThreadIndex
 Plat_IsHighDPI
 Plat_IsInDebugSession
 Plat_NeedsLowFragmentation
+Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_UUIDFromString
 Plat_UUIDToString
@@ -1585,6 +1598,7 @@ RenderUtils_001
 ReportClassError
 ResourceCompiler/BakedLighting/Version
 ResourceCompiler/DefaultMapBuilders/bakedlighting
+ResourceCompiler/DefaultMapBuilders/dontrequirebakedlighting
 ResourceCompilerSystem001
 ResourceHandleUtils001
 ResourceManifestRegistry001
@@ -1699,6 +1713,7 @@ Unable to determine buffer encoding.
 Unable to read file %s
 Unable to read resource file %s!
 Unable to stream in envmap texture "%s" (Error: %s)
+Unable to write file '%s'
 Unexpected end of file
 Unknown compression type.
 Unknown image format in gameinfo.gi WorldRenderer/EnvironmentMapFormat. Defaulting to DXT5.
@@ -1707,7 +1722,6 @@ Unrecognized flag name '%s'
 Unrecognized resource version (%d): %s
 Unrecognized type '%d'
 Unresolved object reference '%s'
-Unserialize
 UnserializeKeys
 Unsupported ETC image format %d.
 Unsupported Grass File Version. Expected %d. Found %d
@@ -1969,14 +1983,21 @@ anim_name
 anim_name_a
 anim_name_b
 animgraph0
+animgraph1
 archive
 attach_point
 attachment
 attachment_offset
 attachment_type
+attenuation0
+attenuation1
+attenuation2
 attrib
 auto_unragdoll_duration
 bUpdate
+baked_light_indexing
+bakelightindex
+bakelightindexscale
 baselayer
 basic_string::_S_construct null not valid
 before solve err=%f
@@ -1985,8 +2006,8 @@ binary
 binary_auto
 binary_bc
 binary_lz4
+bindlessfastpath: Missing cubemap precomputed handshake for world geometry (%s)
 blendamount
-blendindices
 blendweight
 blendweights
 blockLOS
@@ -1997,6 +2018,7 @@ bone_names
 bonemerge
 boolean
 borrow
+bouncecolor
 box2i
 break_create_joint_revolute
 break_uniform_burst
@@ -2011,6 +2033,7 @@ cables_list
 caller
 calloc
 cantdie
+castshadows
 ceil
 ceilf
 center
@@ -2055,6 +2078,8 @@ data_with or data_height too large. data_width:
 default
 delete
 developer
+dimension0
+dimension1
 dir=%d %d %d, err=%f
 displayWindow
 dl_iterate_phdr
@@ -2103,6 +2128,7 @@ fWeightSumLeft > 0.0f
 fWeightSumRight > 0.0f
 fWeightSumTop > 0.0f
 faceMergeAngle
+falloff
 false
 fclose
 fff?fff?fff?fff?
@@ -2118,16 +2144,18 @@ float32-quantized
 float64
 floatbitmap.cpp
 floatbitmap.cpp(141): Unknown gamma type "%s"!
-floatbitmap.cpp(2473): Error calling TGALoader::GetInfo( %s )
-floatbitmap.cpp(2484): Error loading %s
-floatbitmap.cpp(2507): Error! Unknown file type for %s
-floatbitmap.cpp(2526): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
-floatbitmap.cpp(325): Conversion not supported yet!
-floatbitmap.cpp(425): Conversion not supported yet!
-floatbitmap.cpp(888): Unsupported color format "%s", skipping!
+floatbitmap.cpp(2486): Error calling TGALoader::GetInfo( %s )
+floatbitmap.cpp(2497): Error loading %s
+floatbitmap.cpp(2520): Error! Unknown file type for %s
+floatbitmap.cpp(2539): Error! Slice %d format %dx%dx%d Attr(%d) != previous slices of %dx%d Attr(%d) for %s
+floatbitmap.cpp(338): Conversion not supported yet!
+floatbitmap.cpp(438): Conversion not supported yet!
+floatbitmap.cpp(901): Unsupported color format "%s", skipping!
 floor
 floorf
 fltx4
+fog_lighting
+fogcontributionstrength
 fopen64
 force
 formats.cpp
@@ -2192,6 +2220,7 @@ iRed2 >= 0 && iRed2 <= 31
 idle
 ikdata
 init
+innerconeangle
 int( %d = 0x%X )
 integer
 interfaces.cpp
@@ -2219,9 +2248,12 @@ libstdc++.so.6
 libtier0.so
 libvstdlib.so
 libworldrenderer.so
+lightcookie
 lightingbasis
 lightmap
 lightmapuv
+lightsourceshape
+lighttype
 lineOrder
 lineartogamma
 lockRotationAlpha
@@ -2233,9 +2265,14 @@ loop_in_action
 looping
 lowprecisionuv
 lowprecisionuv1
+m_Args
 m_AttachmentName
 m_AttachmentType
+m_Attenuation0
+m_Attenuation1
+m_Attenuation2
 m_Bone
+m_BounceColor
 m_CScriptComponent
 m_ChainData
 m_ChildNodeIndices
@@ -2243,6 +2280,7 @@ m_Children
 m_Choices
 m_Color
 m_ColorScale
+m_Command
 m_ConeAxis
 m_ConeCutoff
 m_ConfigName
@@ -2258,6 +2296,7 @@ m_Emitters
 m_EndEffectorBone
 m_EndEffectorTargetBone
 m_EntityClass
+m_Falloff
 m_Flags
 m_ForceGenerators
 m_Format
@@ -2276,19 +2315,24 @@ m_JointName
 m_Joints
 m_LiteralColor
 m_MaterialGroupName
+m_MotorList
 m_Name
 m_NestedElements
 m_Operators
 m_PathIndex
 m_PerVertexLightingDataPlainRGBM
+m_Phi
 m_PreEmissionOperators
+m_Range
 m_Renderers
+m_Shape
 m_SolverSettingSource
 m_SolverType
 m_SourceFilename
 m_Stops
 m_TargetSettingSource
 m_TargetSource
+m_Theta
 m_Value
 m_VisClusterMemberBits
 m_aAngOffset
@@ -2299,6 +2343,7 @@ m_bBuildBakedLighting
 m_bCacheAttempted
 m_bCacheOk
 m_bCanBatchWithDynamicShaderConstants
+m_bCastShadows
 m_bClamp
 m_bDisableChild
 m_bDisableOperator
@@ -2310,11 +2355,9 @@ m_bFitCycleToLifetime
 m_bForceLoopingAnimation
 m_bHasBakedLightingBasisInVertex
 m_bHasBakedLightingFromLightMap
-m_bHasBakedLightingFromLightmap
 m_bHasBakedLightingFromVertexStream
 m_bHasCullingData
 m_bHasLightmaps
-m_bHasPerInstanceBakedLightingData
 m_bHideMaterialGroupInTools
 m_bHideRenderColorInTools
 m_bIgnoreRotation
@@ -2331,6 +2374,9 @@ m_bOffsetExistingPos
 m_bOnlyDrawInFastShadowPath
 m_bParticleFeathering
 m_bRemapPullForceToLife
+m_bRenderDiffuse
+m_bRenderSpecular
+m_bRenderTransmissive
 m_bRunForParentApplyKillList
 m_bScaleCurrent
 m_bScaleInitialRange
@@ -2345,6 +2391,7 @@ m_bUseHighestEndCP
 m_bUseShadowFastPath
 m_bUserSpecifiedColor
 m_bUserSpecifiedMaterialGroup
+m_bUsesIndexedBakedLighting
 m_bVisible
 m_bWrapInAtlas
 m_bbox
@@ -2359,6 +2406,7 @@ m_bones
 m_bool
 m_boolDiff
 m_boolDiff == true
+m_boundsGroups
 m_builderParams
 m_cRenderColor
 m_chain
@@ -2391,6 +2439,7 @@ m_fForceAmount
 m_fForceAmountMin
 m_fLifespanScaleExp
 m_fingers
+m_flBakeLightIndexScale
 m_flBiasParameter
 m_flBindPoseDirectionMS
 m_flClusterCooldown
@@ -2413,6 +2462,7 @@ m_flFalloff
 m_flFingerScaleRatio
 m_flFingerWeight
 m_flFireTime
+m_flFogContributionStength
 m_flFootLength
 m_flGridSize
 m_flGutterSize
@@ -2422,6 +2472,10 @@ m_flHorzFOV
 m_flInitFromKilledParentParticles
 m_flInput0
 m_flInput1
+m_flLightSourceDim0
+m_flLightSourceDim1
+m_flLightSourceSize0
+m_flLightSourceSize1
 m_flLiteralValue
 m_flMass
 m_flMax
@@ -2439,13 +2493,14 @@ m_flOpStrengthMaxScale
 m_flOpStrengthMinScale
 m_flOutput0
 m_flOutput1
-m_flPosition
+m_flPrecomputedMaxRange
 m_flRadius
 m_flRadiusScale
 m_flRadiusTaper
 m_flRandomMax
 m_flRandomMin
 m_flScalePerParentParticle
+m_flShadowCascadeDistance
 m_flSphereRadius
 m_flSplayMaxAngle
 m_flSplayMinAngle
@@ -2495,8 +2550,8 @@ m_invTransform
 m_iszPrivateVScripts
 m_keyValuesData
 m_layerNames
+m_lightCookie
 m_lightMaps
-m_lightmapInstanceDataOverrides
 m_localHAnimArray
 m_localHAnimArray_Handle
 m_manifestName
@@ -2515,6 +2570,7 @@ m_nAnimationType
 m_nAtlasTextureSizeX
 m_nAtlasTextureSizeY
 m_nAttributeToWrite
+m_nBakeLightIndex
 m_nBaseVertex
 m_nBehaviorVersion
 m_nBiasType
@@ -2524,6 +2580,7 @@ m_nBoneHash
 m_nBoneIndex
 m_nBoneNameHash
 m_nBoneWeightCount
+m_nBoundsGroupIndex
 m_nCP
 m_nCPField
 m_nChainIndex
@@ -2550,6 +2607,7 @@ m_nFeatheringMode
 m_nFingerIndex
 m_nFirstMultipleOverride_BackwardCompat
 m_nFlags
+m_nFogLightingMode
 m_nGroupId
 m_nGroupType
 m_nHitBoxIndex
@@ -2582,7 +2640,6 @@ m_nParticlesToEmit
 m_nPerVertexLightingDataPlainRGBMDepth
 m_nPerVertexLightingDataPlainRGBMHeight
 m_nPerVertexLightingDataPlainRGBMWidth
-m_nPerVertexLightingOffsetInVertices
 m_nPrimitiveType
 m_nPriority
 m_nRandomMode
@@ -2599,6 +2656,10 @@ m_nSceneObjectIndex
 m_nSemanticIndex
 m_nSequenceOverride
 m_nSetMethod
+m_nShadowCascadeCount
+m_nShadowCascadeResolution
+m_nShadowHeight
+m_nShadowWidth
 m_nSlaveAxis
 m_nSlaveChannel
 m_nSlot
@@ -2636,6 +2697,7 @@ m_pId
 m_pInfo
 m_pJointConstraintData
 m_pMaterial
+m_pMovementManager
 m_pName
 m_pNetworkDataReferencedDescription
 m_pNetworkDataReferencedPtrPropDescription
@@ -2679,6 +2741,7 @@ m_scriptClassName
 m_shaderName
 m_skeleton
 m_skin
+m_skyVisibilityCluster
 m_slaves
 m_snapshotName
 m_stringAttributes
@@ -2793,6 +2856,7 @@ model.cpp
 model_default_preview_sequence_name
 model_dump_convert_info
 model_name
+model_old_disk.cpp
 modeldoc0
 modeldoc1
 modeldoc10
@@ -2848,6 +2912,7 @@ operator new[](unsigned long, std::nothrow_t const&)
 origin_max_delta
 origin_relative
 out of memory
+outerconeangle
 outputid
 overlay
 parameter error
@@ -2858,6 +2923,7 @@ pass %u
 pbucket->plinkLast->GetNext() == nullptr
 pervertexlighting
 phys_res
+physaggregatedata.cpp
 physgun_interactions
 physib
 physicsmode
@@ -2876,7 +2942,9 @@ position
 positive_or_null
 postprocess
 posxyz
+precomputedmaxrange
 preferred_carryangles
+priority
 prop_data
 ptestbed
 pthread_mutex_destroy
@@ -2921,6 +2989,9 @@ relative_angles
 relative_origin
 remapping vertex %d[w%d] invalid: %d->%d >= %d
 remapping vertex %d[w%d] invalid: %d->? >= %d
+renderdiffuse
+renderspecular
+rendertransmissive
 resourcehandle
 resourcesystem
 rnd_down
@@ -2946,12 +3017,19 @@ seq_trans
 sequence_name
 sequence_number
 server_can_execute
+shadowcascadecount
+shadowcascadedistance%d
+shadowcascaderesolution%d
+shadowtextureheight
+shadowtexturewidth
 shapeType
 sharpStartAngle
 sin
 sin( %s )
 singleplayer
 size
+size0
+size1
 soundname
 source_filename
 spawn_motion_disabled
@@ -3191,7 +3269,6 @@ walkspeed
 wb
 wcscmp
 wcslen
-width
 world renderer - %s
 world_dump_loaded_worlds
 world_layer_list

@@ -1,0 +1,155 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_page_home.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass_rewardline.vcss_c" />
+	</styles>
+	<snippets>
+ 
+
+		<snippet name="RewardLevelContainer">
+			<Panel class="RewardLevelContainer" >
+				<Panel id="RewardsGroup" class="RewardsGroup"/><!-- "Reward" or "EmptyReward" get attached here></!-->
+				<Panel id="RewardGroupProgressBarContainer">
+					<ProgressBar id="RewardGroupProgressBar"/>
+				</Panel>
+				<Panel id="RewardLevelTextContainer" >
+					<Panel class="RewardLockedIcon"/>
+					<Label class="RewardLevelText" text="{s:reward_level_range}"/>
+					<Panel id="RewardLevelCorner" />
+					<Panel id="RewardLevelVerticalBar" /> 
+				</Panel>
+			</Panel>
+		</snippet>
+
+		<snippet name="Reward">
+			<Panel class="RewardLineItem">
+				<Panel id="RewardEntry">
+					<Panel id="MainRewardPanel" onmouseover="PlaySoundEffect('UL_UI.BattlePass_PanelRollover')">
+						<Panel class="PosterFrame"/>
+						<Panel class="PosterBG"/>
+						<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" class="RewardLineItemImage" hittest="true" use_3D_preview="false" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" preview_model_scale="1" enable_sound_effects="false" use_portrait_camera="false" />
+						
+					</Panel>
+
+					<Button id="RewardLineItemClaimButton">
+						<Label text="{d:reward_level}"/>
+						<Panel id="RewardLineItemPathIcon" />
+					</Button>
+
+				</Panel>
+				<Panel class="MainRewardPanelFrame"/>
+				<Panel id="SelectedFrameParticle" hittest="false" >
+					<DACParticleScenePanel id="BattlePassSelectedParticle" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/battlepass/battlepass_selected_reward_alt.vpcf" squarepixels="true" fov="-200" />
+				</Panel>
+				<Panel class="IsLoadoutSelectionIcon" /> 
+				<Panel class="EquipmentTypeIcon" /> 
+				<Panel class="RequireBattlePassIcon">  
+					<Label id="DoNotRequireBattlePassText" text="#DAC_Rewards_Free" /> 
+				</Panel>
+			</Panel>
+		</snippet>
+
+		<snippet name="EmptyReward">
+			<Panel class="EmptyReward">
+				<Panel id="MainRewardPanel" onmouseover="PlaySoundEffect('DAC_UI.ProtoPass_RankHover')" />
+			</Panel>
+		</snippet>
+
+		<snippet name="DailyChallenge">
+			<Panel class="DailyChallenge" >
+				<Label text="{s:challenge_text}" />
+				<ParticleProgressBar id="ChallengeProgress" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_level.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_level_complete.vpcf" />
+			</Panel>
+		</snippet>
+
+		<snippet name="ItemInspectorSnippet">
+			<Panel class="ItemPanel">
+
+				<Panel id="ItemContents">
+					<Panel id="RewardTextContainer">
+						<Panel id="RewardTextHeadnote">
+							<Label class="RewardText RewardTextLevel" html="true" text="#DAC_Reward_Item_Level" />
+							<Panel class="EquipmentTypeIcon" /> 
+							<Label class="RewardText RewardTypeDesc" html="true" text="#DAC_Reward_Item_Type" />
+						</Panel>
+						<Label class="RewardText RewardTextName HeadlineFont" html="true" text="#DAC_Reward_Item_Name" />
+						
+					</Panel>
+				</Panel>
+				<Label class="RewardText RewardTextDesc" html="true" text="#DAC_Reward_Item_Desc" />
+				<DACQuickEquipButton id="QuickEquipButton" hittest="true" onmouseover="PlaySoundEffect('UL_UI.BattlePass_EquipRollover')"/>
+				
+				
+			</Panel>
+
+		</snippet> 
+
+		<snippet name="EventInfo">
+			<Panel class="EventInfo">
+				<Panel id="EventInfoTop">
+					<Label class="EventTitle" text="{s:title}" />
+				</Panel>
+				<Panel id="EventInfoMiddle">
+					<Label class="EventDescription" id="EventDescriptionLabel" />
+				</Panel>
+				<Panel id="EventInfoBottom">
+					<Label class="EventXPGain" text="#DAC_BattlepassProgress_Increase" />
+				</Panel>
+			</Panel>
+		</snippet>
+
+	</snippets>
+	
+	<DACBattlePassRewardLine hittest="false">
+		<Panel id="BattlePassAspectRatioBacker" />
+		<Panel id="BattlepassBackgroundImage" >
+			<Panel id="OptionalBackground" />	
+		</Panel>
+	
+<!--		<Panel id="ProtopassContainer">-->
+		
+		<Panel id="TopRow" hittest="true">
+			
+			<Panel id="ItemInspector"><!-- ItemInspectorSnippet is ItemInspector on this -->
+				<Panel class="PosterFrame"/>
+				<Panel class="PosterBG PosterBGTopRow"/>
+				<DACRewardPreviewScenePanel hittest="true" id="RewardPreviewScenePanel" use_3D_preview ="true" use_inventory_image_if_3D_preview_not_found="true" map="scenes/banner" camera="cam_item_preview_big_preview" renderdeferred="false" rendershadows="true" squarepixels="true" preview_model_scale="1.0" glowsize="0" enable_sound_effects="true" use_portrait_camera="true" camera_set="BattlePass" use_portrait_lighting="true" use_portrait_backgrounds="false">
+					<Panel id="OptionalImage" />
+				</DACRewardPreviewScenePanel>
+				<Panel id="OptionalForeground" />
+				<Panel id="ItemInspectorSnippetHandle"/>
+				
+			</Panel>
+			
+			<Panel id="EventInfoContainer" >
+				<Panel class="EventInfoBG" />
+
+				<Panel id="EventInfoItems" >
+					<!-- comes from code -->
+				</Panel>
+			</Panel>
+
+			<Panel class="RewardsInfo">
+			    <Panel class="RewardsDesc">
+			    	 <DACBattlepassLevel id="BattlePassLevel" class="ShowBuy" />
+			 	</Panel>         
+		 	</Panel>
+		</Panel>
+		
+		<Panel id="BottomRow">
+			<!--			<Label class="RewardLabel" text="#DAC_Rewards_Rewards"/>-->
+			<Panel id="RewardLineContainer">
+				
+			
+				<DACMagnifingScrollList spacersize="0px" id="RewardLine" hittest="true"/>
+				<!--<Button id="ScrollLeft" onactivate="ScrollPrevious()"/> 	-->
+				<!--<Button id="ScrollRight" onactivate="ScrollNext()"/> -->
+			</Panel>
+		</Panel>
+
+		<Panel id="InputBlocker" hittest="true" onactivate="DACBlockInput()"/>
+	</DACBattlePassRewardLine>
+</root>

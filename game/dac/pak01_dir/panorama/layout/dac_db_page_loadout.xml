@@ -3,108 +3,283 @@
 		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
 		<include src="s2r://panorama/styles/dac_global.vcss_c" />
 		<include src="s2r://panorama/styles/dac_db_page_loadout.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_equip_control.vcss_c" />
+
 	</styles>
 	
+	<snippets>
+		<snippet name="UnderlordItem">
+			<Panel class="LoadoutUnderlordItem LoadoutDetail Locked" onactivate="">
+				<Button id="EquipButton" hittest="true">
+					<Panel id="Lock" />
+					<Panel id="EquippedItemName">
+						<Label class="EquipLabel" text="#DAC_LoadoutEquip"/>
+						<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+						<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>						
+					</Panel>
+				</Button>
+			</Panel>
+		</snippet>
+	</snippets>
+
 	<DACLoadoutPage hittest="false" class="DashboardPage">
 		<Panel class="Dimmer"/>
-		<Panel id="BottomRow">
-			<Panel class="LoadoutContainer Left">
-				<Panel class="LeftSide">
-					<Panel class="PreviewBanner">
-						<Label class="LoadoutLabel" text="#DAC_Loadout_BannerPreview" />
-						<DACBannerPreviewScenePanel hittest="true" id="BannerSceneView" map="scenes/banner" camera="cam_main" renderdeferred="false" rendershadows="false" squarepixels="true"/>
-					</Panel>
-				</Panel>
-				<Panel class="RightSide">
-
-					<Panel class="LoadoutSigils LoadoutDetail" onactivate="DACShowEquipDialog('flag_image')">
-						<Panel class="FlagShapeImage ImageDetail" slotName='flag_image' />
-						<Label class="LoadoutLabel" text="#DAC_Loadout_BannerSigils" />
-						<Panel id="EquippedItemName">
-							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
-							<Label class="EquippedText" text="{s:reward_name}"/>
-						</Panel>
-					</Panel>
-					
-					<Panel class="LoadoutFlags LoadoutDetail" onactivate="DACShowEquipDialog('flag_shape')">
-						<Panel class="FlagShapeImage ImageDetail" slotName='flag_shape' />
-						<Label class="LoadoutLabel" text="#DAC_Loadout_BannerShapes" />
-						<Panel id="EquippedItemName">
-							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
-							<Label class="EquippedText" text="{s:reward_name}"/>
-						</Panel>
-					</Panel>
-					
-					<Panel class="LoadoutStandards LoadoutDetail" onactivate="DACShowEquipDialog('flag_base')">
-						<Label class="LoadoutLabel" text="#DAC_Loadout_BannerBases" />
-						<Panel class="FlagBaseImage ImageDetail" slotName='flag_base' />
-						<Panel id="EquippedItemName">
-							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
-							<Label class="EquippedText" text="{s:reward_name}"/>
-						</Panel>
-					</Panel>
-				</Panel>
+		<Panel id="SelectCategory" class="LoadoutContainer">
+			<Panel id="MapCategory" class="LoadoutCategoryButton" onactivate="DACShowLoadoutCategory('PageGame'); PlaySoundEffect( 'UL_UI.Loadout_GameActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_GameRollover' )">
+				<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" class="RewardLineItemImage" hittest="true" use_3D_preview="false" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" preview_model_scale="1" enable_sound_effects="false" use_portrait_camera="false" />
+				<Panel class="CategoryGradient" />
+				<Label class="CategoryButtonLabel" text="#DAC_Loadout_Category_Game" />
 			</Panel>
-			<Panel class="LoadoutContainer Center">
-
+			<Panel id="PlayerCategory" class="LoadoutCategoryButton" onactivate="DACShowLoadoutCategory('PageUnderlord'); PlaySoundEffect( 'UL_UI.Loadout_PlayerActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_PlayerRollover' )">
+				<DACMiniProfile class="WantedPoster" showparticles="false"  showname="true"/>
+				<Panel class="CategoryGradient" />
+				<Label class="CategoryButtonLabel" text="#DAC_Loadout_Category_Underlords" />
 			</Panel>
-			<Panel class="LoadoutContainer Right">
-				
-					<Panel class="LoadoutMaps LoadoutDetail" onactivate="DACShowEquipDialog('map')">
+			<DACUnderlordScenePanel id="UnderlordCategoryScenePanel" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" cameraUp="155" cameraLeft="10" cameraDistance="120" glowsize="0" squarepixels="true" />
+		</Panel>
+		<Panel id="Items">
+			<!-- - - - - - -  GAME ITEMS  - - - - - -  -->
+			<Panel id="PageGame">
+
+				<Panel class="LoadoutContainer">
+
+					<Panel class="LoadoutColumn">	
+
+						<Panel class="LoadoutStreaks LoadoutDetail" onactivate="DACShowEquipDialog('board_spray'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<DACRewardPreviewScenePanel id="RewardPreviewScenePanel"  use_3D_preview="false" hittest="true" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" />
+							<Panel class="StreakImage ImageDetail" slotName='board_spray' />
+							<Label class="LoadoutLabel" text="#DAC_Loadout_BoardSpray" />
+							<Panel id="EquippedItemName">
+								<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+								<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+							</Panel>
+						</Panel>
+						<Panel class="LoadoutDetail" onactivate="DACShowEquipDialog('yo'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" use_3D_preview="false" hittest="true" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" />
+							<Panel class="YoImage ImageDetail" slotName='yo' />
+							<Label class="LoadoutLabel" text="#DAC_Loadout_Yos" />
+							<Panel id="EquippedItemName">
+								<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+								<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+							</Panel>
+						</Panel>
+
+					</Panel>
+
+					<Panel class="LoadoutColumn">	
+						<Panel class="LoadoutTargetBuddy LoadoutDetail" onactivate="DACShowEquipDialog('target_buddy_skin'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" use_3D_preview="false" hittest="true" map="scenes/banner" camera="cam_item_preview_big_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" auto_scale="false" preview_model_scale="2" camera_offset_z="40"/>
+							<Panel slotName='target_buddy_skin' />
+							<Label class="LoadoutLabel" text="#DAC_Loadout_TargetBuddy" />
+								<Panel id="EquippedItemName">
+								<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+								<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+							</Panel>
+						</Panel>
+						
+						<Panel class="LoadoutBarricade LoadoutDetail" onactivate="DACShowEquipDialog('barricade_skin'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" use_3D_preview="false" hittest="true" map="scenes/banner" camera="cam_item_preview_big_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" auto_scale="false" preview_model_scale="2" camera_offset_z="10"/>
+							<Panel slotName='barricade_skin' />
+							<Label class="LoadoutLabel" text="#DAC_Loadout_Barricade" />
+							<Panel id="EquippedItemName">
+								<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+								<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+							</Panel>
+						</Panel>
+					</Panel>	
+
+				</Panel>
+
+				<Panel class="LoadoutContainer Center">
+					<Panel class="LoadoutMaps LoadoutDetail" onactivate="DACShowEquipDialog('map'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
 						<Panel class="MapImage ImageDetail" slotName='map' />
+						<!-- <DACScenePanel class="ImageDetail" id="MapPreview" hittest="false" map="dac_townsquare" camera="game_cam_low"/> -->
 						<Label class="LoadoutLabel" text="#DAC_Loadout_Maps" />
 						<Panel id="EquippedItemName">
 							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
-							<Label class="EquippedText" text="{s:reward_name}"/>
+							<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+						</Panel>
+					</Panel>						
+					<Panel class="MiddleContainer">				
+						<Panel class="LoadoutDetail LoadoutMapProps" onactivate="DACEditBoardProps(); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<Panel class="MapPropImage" />
+							<Label class="LoadoutLabel" text="#DAC_Loadout_Map_Props" />
 						</Panel>
 					</Panel>
-				
-				<Panel class="MiddleContainer">				
-					<Panel class="LoadoutStreaks LoadoutDetail" onactivate="DACShowEquipDialog('fireworks')">
-					<Panel class="FireworksImage ImageDetail" slotName='fireworks' />
-					<Label class="LoadoutLabel" text="#DAC_Loadout_Fireworks" />
-							<Panel id="EquippedItemName">
-							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
-							<Label class="EquippedText" text="{s:reward_name}"/>
-						</Panel>
-					</Panel>
-					
-					<Panel class="LoadoutYos LoadoutDetail" onactivate="DACShowEquipDialog('teleport')">
-					<Panel class="TeleportImage ImageDetail" slotName='teleport' />
-					<Label class="LoadoutLabel" text="#DAC_Loadout_Teleports" />
-						<Panel id="EquippedItemName">
-							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
-							<Label class="EquippedText" text="{s:reward_name}"/>
-						</Panel>
-					</Panel>
+
 				</Panel>
-				
-				<Panel class="BottomContainer">
+
+				<Panel class="LoadoutContainer">
 					
-					<Panel class="LoadoutStreaks LoadoutDetail" onactivate="DACShowEquipDialog('kill_streak')">
-						<Label class="LoadoutLabel" text="#DAC_Loadout_Streaks" />
-						<Panel class="StreakImage ImageDetail" slotName='kill_streak' />
-						<Panel id="EquippedItemName">
-							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
-							<Label class="EquippedText" text="{s:reward_name}"/>
+					<Panel class="LoadoutColumn">				
+
+						<Panel class="LoadoutStreaks LoadoutDetail" onactivate="DACShowEquipDialog('fireworks'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" use_3D_preview="false" hittest="true" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" />
+							<Panel class="FireworksImage ImageDetail" slotName='fireworks' />
+							<Label class="LoadoutLabel" text="#DAC_Loadout_Fireworks" />
+							<Panel id="EquippedItemName">
+								<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+								<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+							</Panel>
+						</Panel>
+						
+						<Panel class="LoadoutYos LoadoutDetail" onactivate="DACShowEquipDialog('teleport'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" use_3D_preview="false" hittest="true" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" />
+							<Panel class="TeleportImage ImageDetail" slotName='teleport' />
+							<Label class="LoadoutLabel" text="#DAC_Loadout_Teleports" />
+							<Panel id="EquippedItemName">
+								<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+								<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+							</Panel>
+						</Panel>
+
+					</Panel>
+
+					<Panel class="LoadoutColumn">	
+						<Panel class="LoadoutDetail" onactivate="DACShowEquipDialog('kill_streak'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" use_3D_preview="false" hittest="true" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" />
+							<Label class="LoadoutLabel" text="#DAC_Loadout_Streaks" />
+							<Panel class="StreakImage ImageDetail" slotName='kill_streak' />
+							<Panel id="EquippedItemName">
+								<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+								<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+							</Panel>
+						</Panel>
+
+						<Panel class="LoadoutDetail" onactivate="DACShowEquipDialog('underlord_damage_effect'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" use_3D_preview="false" hittest="true" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" />
+							<Label class="LoadoutLabel" text="#DAC_Loadout_DamageEffect" />
+							<Panel class="DamageImage ImageDetail" slotName='underlord_damage_effect' />
+							<Panel id="EquippedItemName">
+								<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+								<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+							</Panel>
+						</Panel>						
+
+					</Panel>
+
+				</Panel>
+
+			</Panel>
+
+
+
+			<!-- - - - - - -  PLAYER ITEMS  - - - - - -  -->
+			<Panel id="PageUnderlord">
+
+					<Panel class="LoadoutContainer PlayerLeft">
+					<!-- 				
+					<Panel class="LeftSide">
+						<Panel class="PreviewBanner">
+							<Label class="LoadoutLabel" text="#DAC_Loadout_BannerPreview" />
+							<DACBannerPreviewScenePanel hittest="true" id="BannerSceneView" map="scenes/banner" camera="cam_main" renderdeferred="false" rendershadows="false" squarepixels="true"/>
+						</Panel>
+					</Panel> 
+					-->
+					
+					<Panel id="LoadoutPosterPickers" class="LoadoutColumn">
+						<Panel id="PosterImagePanel" class="LoadoutDetail" onactivate="DACShowEquipDialog('wanted_poster'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<Panel id="LoadoutPosterFrame"/>
+							<Panel id="LoadoutPosterBG"/>
+							<Panel class="PosterImage ImageDetail" slotName='wanted_poster' filterByUnderlord='true'/>
+							<Label class="LoadoutLabel" text="#DAC_Loadout_PosterArt" />							
+						</Panel>
+						
+						<Panel id="PosterTitlePanel" class="LoadoutDetail" onactivate="DACShowEquipDialog('wanted_poster_title'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+							<Panel id="LoadoutPosterFrame"/>
+							<Label class="LoadoutLabel" text="#DAC_Loadout_PosterTitle" />
+							<Panel class="PosterTitle" slotName='wanted_poster_title'>
+								<DACParticleScenePanel id="LoadoutFX" hittest="false" startActive="true" cameraLeft="0" cameraUp="90" fov="-250" />
+								<Label class="PosterTitleText" text="{s:reward_name}"/>
+							</Panel>
 						</Panel>
 					</Panel>
 					
-					<Panel class="LoadoutYos LoadoutDetail" onactivate="DACShowEquipDialog('yo')">
-						<Panel class="YoImage ImageDetail" slotName='yo' />
-						<Label class="LoadoutLabel" text="#DAC_Loadout_Yos" />
-						<Panel id="EquippedItemName">
-							<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
-							<Label class="EquippedText" text="{s:reward_name}"/>
+
+
+
+				</Panel>
+
+				<Panel class="LoadoutContainer PlayerCenter">
+					<Panel class="PlayerCenterTop">
+						<Panel class="PosterPreview">
+							<DACMiniProfile class="WantedPoster" showparticles="false"  showname="true"/>
+						</Panel>
+						<DACUnderlordScenePanel id="UnderlordItemScenePanel" forcehighlod="true" map="scenes/shop" renderdeferred="false" cleardepth="true" usePortraitData="true" fov="50" cameraUp="155" cameraLeft="10" cameraDistance="120" glowsize="0" squarepixels="true" />
+
+					</Panel>
+					<Panel id="PlayerCenterBottomContainer">
+						<Panel id="PosterHeroSelection" class="PlayerCenterBottom">
+							<Button id="LeftUnderlordArrow" class="UnderlordArrow ArrowLeft" onactivate="DACLoadoutChangeUnderlord(-1); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )"/>
+							<Panel id="PosterButtonPanel_Unknown" class="PosterButtonPanel">
+								<Panel id="PosterButtonUnknown" class="PosterHeroSelectionButton" onactivate="DACSelectPosterUnderlord(0); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )"/>
+							</Panel>
+							<Panel id="PosterButtonPanel_Anessix" class="PosterButtonPanel">
+								<Panel id="PosterButtonAnessix" class="PosterHeroSelectionButton" onactivate="DACSelectPosterUnderlord(1); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )"/>
+							</Panel>
+							<Panel id="PosterButtonPanel_Jull" class="PosterButtonPanel">
+								<Panel id="PosterButtonJull" class="PosterHeroSelectionButton" onactivate="DACSelectPosterUnderlord(2); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )"/>
+							</Panel>
+							<Panel id="PosterButtonPanel_Enno" class="PosterButtonPanel">
+								<Panel id="PosterButtonEnno" class="PosterHeroSelectionButton" onactivate="DACSelectPosterUnderlord(3); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )"/>
+							</Panel>
+							<Panel id="PosterButtonPanel_Hobgen" class="PosterButtonPanel">
+								<Panel id="PosterButtonHobgen" class="PosterHeroSelectionButton" onactivate="DACSelectPosterUnderlord(4); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )"/>
+							</Panel>
+							<Button id="RightUnderlordArrow" class="UnderlordArrow" onactivate="DACLoadoutChangeUnderlord(1); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )"/>
+						</Panel>
+					</Panel>
+
+				</Panel>
+
+
+				<Panel class="LoadoutContainer UnderlordRight">
+					<Panel id="UnderlordItems" class="LoadoutColumn">
+						<Panel class="LoadoutYos LoadoutDetail" onactivate="DACShowUnderlordEquipDialog('victory_dance'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+						<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" use_3D_preview="false" hittest="true" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" use_portrait_camera="true" />
+						<Panel class="TeleportImage ImageDetail" slotName='underlord_cosmetic' underlordEquipSlot='victory_dance' />
+						<Label class="LoadoutLabel" text="#DAC_Loadout_UnderlordVictoryDance" />
+							<Panel id="EquippedItemName">
+								<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+								<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+							</Panel>
+						</Panel>
+
+						<Panel class="LoadoutYos LoadoutDetail" onactivate="DACShowUnderlordEquipDialog('skin'); PlaySoundEffect( 'UL_UI.Loadout_TabActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_TabRollover' )">
+						<DACRewardPreviewScenePanel id="RewardPreviewScenePanel" use_3D_preview="false" hittest="true" map="scenes/banner" camera="cam_item_preview" renderdeferred="false" rendershadows="false" squarepixels="true" glowsize="0" use_portrait_camera="true" />							
+						<Panel class="TeleportImage ImageDetail" slotName='underlord_cosmetic' underlordEquipSlot='skin' />
+						<Label class="LoadoutLabel" text="#DAC_Loadout_UnderlordSkin" />
+							<Panel id="EquippedItemName">
+								<Label class="EquippedLabel" text="#DAC_LoadoutEquipped"/>
+								<Label class="EquippedText HeadlineFont" text="{s:reward_name}"/>
+							</Panel>
 						</Panel>
 					</Panel>
 				</Panel>
 			</Panel>
+			
+			
 		</Panel>
-		<Panel class="DashboardHeader">
-			<Panel id="BackButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" />
-			<Label class="PageTitle DistressedFont" text="#DAC_Loadout"/>
+		<Panel class="DashboardHeader CategoryHeader">
+			<Panel id="BackButton2" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'UL_UI.Loadout_BackoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_BackoutRollover' )"/>
+			<Label class="PageTitle HeadlineFont" text="#DAC_Loadout"/>
 			<!--<Label class="PageSubtitle" text="#DAC_AchievementsSubtitle"/>-->
 		</Panel>
+		<Panel class="DashboardHeader UnderlordsHeader" onactivate="DACShowLoadoutCategory('CategorySelect'); PlaySoundEffect( 'UL_UI.Loadout_BackoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_BackoutRollover' )">
+			<Panel id="BackButton2" onactivate="DACShowLoadoutCategory('CategorySelect')"/>
+			<Label class="PageTitle HeadlineFont" text="#DAC_LoadoutUnderlords"/>
+			<!--<Label class="PageSubtitle" text="#DAC_AchievementsSubtitle"/>-->
+		</Panel>
+		<Panel class="DashboardHeader MapHeader" onactivate="DACShowLoadoutCategory('CategorySelect'); PlaySoundEffect( 'UL_UI.Loadout_BackoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_BackoutRollover' )">
+			<Panel id="BackButton2" onactivate="DACShowLoadoutCategory('CategorySelect')"/>
+			<Label class="PageTitle HeadlineFont" text="#DAC_LoadoutGame"/>
+			<!--<Label class="PageSubtitle" text="#DAC_AchievementsSubtitle"/>-->
+		</Panel>
+		<Panel class="DashboardHeader GameHeader" onactivate="DACShowLoadoutCategory('CategorySelect'); PlaySoundEffect( 'UL_UI.Loadout_BackoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.Loadout_BackoutRollover' )">
+			<Panel id="BackButton2"  onactivate="DACShowLoadoutCategory('CategorySelect')"/>
+			<Label class="PageTitle HeadlineFont" text="#DAC_LoadoutGame"/>
+			<!--<Label class="PageSubtitle" text="#DAC_AchievementsSubtitle"/>-->
+		</Panel>
+
 	</DACLoadoutPage>
 </root>

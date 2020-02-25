@@ -154,6 +154,7 @@ $U
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utlsymbol.h
 //
 /content/
 /game/
@@ -162,7 +163,6 @@ $U
 0x%p
 10ConCommand
 10IAppSystem
-12CEmptyConVar
 12CThreadEvent
 14CBaseAppSystemI9ILocalizeE
 14ConCommandBase
@@ -170,6 +170,7 @@ $U
 15CTier1AppSystemI9ILocalizeLi0EE
 15CTier2AppSystemI9ILocalizeLi0EE
 16CDefaultAccessor
+18CPlaceholderConVar
 20CPostConnectCallback
 22CSchemaInstallCallback
 23IConCommandBaseAccessor
@@ -184,6 +185,7 @@ $U
 <
 << NULL >>
 <NULL>
+<deferred>
 <floating-point value out of range>
 <invalid currency %d>
 <invalid date format %d>
@@ -192,14 +194,18 @@ $U
 <invalid integral number format %d>
 <invalid ordinal format %d>
 <invalid precision %d>
+<no deferred ref found>
 <no failure reason set>
 <none>
 <null>
 <space>
+<unconnected>
 >
 A$
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
 ARS$
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Add
 AddTokenMiss
 AnimGraphEditorUtils001
@@ -238,14 +244,14 @@ COL$
 COLORCORRECTION_VERSION_1
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
 CUtlBlockMemory overflow!
@@ -320,6 +326,7 @@ InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 Intentionally vague touch behavior for %p
+Invalid access of deferred ConVarRef for '%s'
 KD
 KeyValueCache001
 KeyValuesSystem
@@ -675,6 +682,7 @@ italian
 ja
 ja_JP
 japanese
+keyvalues.cpp
 ko
 ko_KR
 korean
@@ -781,6 +789,7 @@ unlink
 update
 user
 utlstring.cpp
+utlsymbol.cpp
 v
 vi
 vi_VN

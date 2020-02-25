@@ -7,7 +7,13 @@ PopupReward
 	overflow: noclip;
 	width: 100%;
 	height: 100%;
+
+	background-color: gradient(linear, 0% 100%, 0% 0%, from( #30244cee ), to( #025760ee ));
+	background-image: url("s2r://panorama/images/vignettes/backing_vignette_soft_psd.vtex"); 
+	background-size: 100%;
 }
+
+
 
 #RewardFX
 {
@@ -15,7 +21,7 @@ PopupReward
 	height: 100%;
 	horizontal-align: center;
 	vertical-align: center;
-	opacity: 0.1;
+	opacity: 0.3;
 }
 
 .IsLayoutSmallScreen PopupReward 
@@ -28,12 +34,33 @@ PopupReward
 
 #Overlay
 {
-	background-color: gradient( radial, 50% 50%, 0% 0%, 100% 100%, from( #14465c ), color-stop( 0.35, #102634fa ), color-stop( 0.6, #000000 ), to( #000000 ) );
+	opacity: 0;
+	pre-transform-scale2d: 1.1;
+
+	transition-property: opacity, pre-transform-scale2d;
+	transition-duration: 5.2s;
+	transition-timing-function: ease-in;
+
+	horizontal-align: center;
+	vertical-align: center;
+
+	width: 75%;
+	height: 75%;
+	//width: 100%;
+	//height: 100%;
+
+    border-top: 4px solid #50505055; 
+    border-right: 4px solid #35314755;
+    border-bottom: 4px solid #2e2a4955;
+    border-left: 4px solid #35363755;	
+
+}
+
+//pop in
+.Appear #Overlay
+{
 	opacity: 1;
-	transition-property: opacity, background-color;
-	transition-duration: .2s;
-	width: 100%;
-	height: 100%;
+	pre-transform-scale2d: 1;
 }
 
 #EquipButton
@@ -75,13 +102,15 @@ PopupReward
 
 #RewardContainer
 {
-	flow-children: down;
-	vertical-align: center;
+	flow-children: none;
+	vertical-align: top;
 	horizontal-align: center;
 	width: 100%;
-	height: fit-children;
-	padding-top: 40px;
+	height: 100%;
+	//padding-top: 40px;
 	margin-bottom: 40px;
+
+	max-width: 1200px;
 }
 
 .IsLayoutSmallScreen #RewardContainer
@@ -91,27 +120,66 @@ PopupReward
 
 .TitleContainer
 {
-	transform: rotateZ(-3deg);
-	align: center top;
-	opacity: 1;
-	transition-property: opacity, transform;
-	transition-duration: 200ms, 300ms;
-	flow-children: down;
+	
+	align: center center;
+	
+    animation-name: TitleContainerAppear;
+    animation-duration: 2.4s;
+    //animation-iteration-count: infinite;
+    animation-iteration-count: 1;
+	opacity: 0;
+	
+	background-image: url("s2r://panorama/images/battle_pass/bp1/earned_item_title_backer_psd.vtex");
+	background-repeat: no-repeat;
+	//background-size: 120% 150%;
+	
+	background-size: 100%;
+	background-position: 50% 50%;
 }
+
+
+@keyframes 'TitleContainerAppear'
+{
+	0%
+	{
+		transform: rotateZ(-30deg);
+		pre-transform-scale2d: 10;
+		opacity: 0;
+	} 
+
+
+	7%
+	{
+		opacity: 1;
+	} 
+
+	15%
+	{
+		pre-transform-scale2d: .9;
+		transform: translateY(0px) rotateZ(-5deg);
+	} 
+
+	85%
+	{
+		pre-transform-scale2d: .89;
+		opacity: 1;
+		transform: translateY(0px) rotateZ(-4.5deg);
+	} 
+
+	100%
+	{
+		opacity: 0;
+		pre-transform-scale2d: 10;
+		transform: translateY(120px) rotateZ(15deg);
+	}
+}
+
 
 .IsLayoutSmallScreen #RewardContainer
 {
 	ui-scale: 90%;
 }
 
-.AspectRatio4x3.IsLayoutSmallScreen .TitleContainer
-{
-}
-
-
-.IsLayoutSmallScreen .TitleContainer
-{
-}
 
 
 .Title
@@ -124,11 +192,26 @@ PopupReward
 
 .MajorTitle
 {
-	font-size: 120px;
+	font-size: 80px;
+	//line-height: 120px;
+	height: 220px;
+	text-overflow: shrink;
 	horizontal-align: center;
+	vertical-align: center;
 	color: textBrightest;
 	font-weight: black;
 	text-align: center;
+	//padding: 40px;
+	padding: 60px 70px;
+
+	//background-image: url("s2r://panorama/images/battle_pass/bp1/earned_item_title_backer_psd.vtex");
+	//background-repeat: no-repeat;
+	//background-size: 120% 150%;
+	
+	//background-size: 100%;
+	//background-position: 50% 50%;
+	
+	overflow: noclip;
 }
 
 .MinorTitle
@@ -174,6 +257,11 @@ PopupReward
 	padding: 40px;
 }
 
+.RewardLevel-1 #RewardTextContainer
+{
+	padding: 0px;
+}
+
 .IsLayoutSmallScreen #RankTextContainer
 {
 	margin-top: 580px;
@@ -209,6 +297,33 @@ PopupReward
 	text-shadow: 0px 1px 0px 2.0 black;
 }
 
+.RewardTextCityCrawl
+{
+   
+    color: gradient (linear, 0% 0%, 0% 100%, from(#C6DCFE), to(#fff));
+    color: #ffffff55;
+    font-size: 28px;
+    font-weight: medium;
+    letter-spacing: 0px;    
+    text-align: left;
+    width: fit-children;
+    //text-shadow: 0px 0px 0px 1.0 black;
+    text-transform: uppercase;
+	margin-top: 1px;
+	visibility: collapse;
+}
+
+.Page_DACChallengeWorldMap .RewardTextCityCrawl {
+	visibility: visible;
+}
+
+.Page_DACChallengeWorldMap .RewardTextLevel {
+	visibility: collapse;
+}
+
+.NoLevel .RewardTextLevel {
+	visibility: collapse;
+}
 
 .ItemContainer
 {
@@ -304,6 +419,7 @@ PopupReward
 	padding-top: 50px;
 }
 
+#SkipAllButton,
 #ContinueButton
 {
 	horizontal-align: right;
@@ -319,33 +435,330 @@ PopupReward
 	//hue-rotation: 156deg;
 }
 
-.IsLayoutSmallScreen #ContinueButton.PopupButton{
-	margin-right: 100px;
-	margin-top: 80px;
+.IsLayoutSmallScreen #SkipAllButton.PopupButton,
+.IsLayoutSmallScreen #ContinueButton.PopupButton
+{
+	margin-right: 33px;
+	margin-top: 33px;
 	ui-scale: 125%;
 }
 
-#ContinueButton.PopupButton {
-	margin-top: 50px;
-	margin-right: 50px;
-	height: 72px;
-	width: 72px;
+
+#SkipAllButton.PopupButton,
+#ContinueButton.PopupButton 
+{
+	margin-top: 30px;
+	margin-right: 30px;
+	height: 90px;
+	width: 90px;
 	align: right top;
-	background-image: url("s2r://panorama/images/hud/round_exit_button_psd.vtex");	
-	background-size: 70px 70px;
+	background-image: url("s2r://panorama/images/hud/forward_arrow_single_psd.vtex");	
+	background-size: 100%;
 	background-position: 100%;
 	background-repeat: no-repeat;
 	border: 0px;
 	overflow: noclip;
 	opacity: .5;
-	transition-property: opacity;
+	transition-property: opacity, brightness;
 	transition-duration: .2s;
+	min-width: 90px;
 }
 
+.RewardPopupQueueNotEmpty #SkipAllButton.PopupButton
+{
+	margin-top: 150px;
+}
+
+.IsLayoutSmallScreen .RewardPopupQueueNotEmpty #SkipAllButton.PopupButton
+{
+	margin-top: 250px;
+}
+
+#SkipAllButton.PopupButton
+{
+	background-image: url("s2r://panorama/images/hud/forward_arrow_double_psd.vtex");
+	visibility: collapse;
+}
+
+.RewardPopupQueueNotEmpty #SkipAllButton.PopupButton
+{
+	visibility: visible;
+}
+
+
+.RewardPopupQueueNotEmpty #ContinueButton.PopupButton 
+{
+	background-image: url("s2r://panorama/images/hud/forward_arrow_single_psd.vtex");	
+}
+
+#SkipAllButton.PopupButton:hover
 #ContinueButton.PopupButton:hover {
 	background-color: none;
-	brightness: 1.2; 
+	brightness: 1.6; 
 	opacity: 1;
 }
 
 
+
+
+
+
+
+PopupReward DACQuickEquipButton
+{
+	vertical-align: bottom;
+	horizontal-align: right;
+	margin-right: 52px;
+	margin-bottom: 52px;
+}
+
+
+PopupReward #ItemInspector .RewardTextDesc
+{
+	//vertical-align: center;
+	horizontal-align: left;
+	margin-top: 190px;
+	//visibility: collapse;
+	//Attempted to position but it was a tricky one - inherits from dac_db_control_battlepass_rewardline.css
+}
+
+.wanted_poster_title .PosterTitleText
+{
+	visibility: visible;
+}
+
+.PosterTitleText
+{
+	visibility: collapse;
+    font-size: 48px;
+    color:white;
+    horizontal-align:center;
+    vertical-align: bottom;      
+    text-overflow: shrink;
+    text-align:center;
+    transform:translateY(-8px);
+    width:400px;
+    height:120px;
+	font-family: Ravenhook, k_alwaysFontNames;
+}
+
+.the_closer .PosterTitleText { color: #e1d3c6; }
+.ash_man .PosterTitleText { color: #2e2a2d; }
+.throne_collector .PosterTitleText { color: #2e2a2d; }
+.money_man .PosterTitleText { color: #1f1c1e;  }
+.default_title .PosterTitleText { color: #97887d; }
+.black_title .PosterTitleText { color: black; }
+.white_title .PosterTitleText { color: white; }
+
+PopupReward #OptionalImage
+{
+	background-repeat: no-repeat;
+	background-size: 100%;
+	width: 320px;
+	height: 320px;
+	vertical-align: middle;
+	horizontal-align: center;
+	visibility: collapse;
+}
+
+// streetfight items
+
+.streetfight_item #BattlepassBackgroundImage
+{
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: top;
+	background-image: url("s2r://panorama/images/battle_pass/bp1/fightem_bg_png.vtex"); 
+}
+
+.AspectRatio21x9 .streetfight_item #BattlepassBackgroundImage
+{
+	background-position: center;
+}
+
+.streetfight_item.UsedByUnderlord_1 #BattlepassBackgroundImage {background-image: url("s2r://panorama/images/battle_pass/bp1/fightem_bg_anessix_png.vtex"); }
+.streetfight_item.UsedByUnderlord_2 #BattlepassBackgroundImage {background-image: url("s2r://panorama/images/battle_pass/bp1/fightem_bg_jull_png.vtex"); }
+.streetfight_item.UsedByUnderlord_3 #BattlepassBackgroundImage {background-image: url("s2r://panorama/images/battle_pass/bp1/fightem_bg_enno_png.vtex"); }
+.streetfight_item.UsedByUnderlord_4 #BattlepassBackgroundImage {background-image: url("s2r://panorama/images/battle_pass/bp1/fightem_bg_hobgen_png.vtex"); }
+
+// see: items.vdacdefs
+PopupReward.streetfight_item #OptionalImage
+{
+	width: 200px;
+	height: 200px;
+	margin: 0px;
+	vertical-align: center;
+	horizontal-align: center;
+	visibility: visible;
+
+	margin-left: 20%;
+	margin-top: 42%;
+}
+
+.AspectRatio16x9 PopupReward.streetfight_item #OptionalImage
+{
+	margin-left: 20%;
+	margin-top: 42%;
+}
+
+.AspectRatio16x10 PopupReward.streetfight_item #OptionalImage
+{
+	margin-left: 23%;
+	margin-top: 42%;
+}
+
+.AspectRatio21x9 PopupReward.streetfight_item #OptionalImage
+{
+	margin-left: 28%;
+	margin-top: 47%;
+}
+
+.AspectRatio4x3 PopupReward.streetfight_item #OptionalImage
+{
+	margin-left: 24%;
+	margin-top: 43%;
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9 PopupReward.streetfight_item #OptionalImage
+{
+	margin-left: 18%;
+	margin-top: 47%;
+}
+
+.IsLayoutSmallScreen.AspectRatio21x9 PopupReward.streetfight_item #OptionalImage
+{
+	margin-left: 22%;
+	margin-top: 47%;
+}
+
+///
+// There be dragons below this line, you've been warned.  These are the ashes of the work for Season 1
+///
+.wanted_poster #OptionalBackground2
+{ 
+    height:100%;
+    width:100%;
+    visibility: visible; 
+    horizontal-align: center;
+    vertical-align: center; 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;   
+    transform:translateY(-35px);
+	background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_5_png.vtex"); 
+}
+
+.streetfight_item.IngameItemId_10100 #OptionalImage { background-image: url("s2r://panorama/images/items/claymore_psd.vtex"); }
+.streetfight_item.IngameItemId_10101 #OptionalImage { background-image: url("s2r://panorama/images/items/void_stone_psd.vtex"); }
+.streetfight_item.IngameItemId_10102 #OptionalImage { background-image: url("s2r://panorama/images/items/vitality_booster_psd.vtex"); }
+.streetfight_item.IngameItemId_10103 #OptionalImage { background-image: url("s2r://panorama/images/items/chainmail_psd.vtex"); }
+.streetfight_item.IngameItemId_10104 #OptionalImage { background-image: url("s2r://panorama/images/items/gloves_of_haste_psd.vtex"); }
+.streetfight_item.IngameItemId_10105 #OptionalImage { background-image: url("s2r://panorama/images/items/headdress_psd.vtex"); }
+.streetfight_item.IngameItemId_10106 #OptionalImage { background-image: url("s2r://panorama/images/items/mask_of_death_psd.vtex"); }
+.streetfight_item.IngameItemId_10107 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10108 #OptionalImage { background-image: url("s2r://panorama/images/items/kaya_psd.vtex"); }
+.streetfight_item.IngameItemId_10109 #OptionalImage { background-image: url("s2r://panorama/images/items/talisman_of_evasion_psd.vtex"); }
+
+.streetfight_item.IngameItemId_10111 #OptionalImage { background-image: url("s2r://panorama/images/items/hand_of_midas_psd.vtex"); }
+.streetfight_item.IngameItemId_10112 #OptionalImage { background-image: url("s2r://panorama/images/items/vanguard_psd.vtex"); }
+.streetfight_item.IngameItemId_10113 #OptionalImage { background-image: url("s2r://panorama/images/items/crystalis_psd.vtex"); }
+.streetfight_item.IngameItemId_10114 #OptionalImage { background-image: url("s2r://panorama/images/items/desolator_psd.vtex"); }
+.streetfight_item.IngameItemId_10115 #OptionalImage { background-image: url("s2r://panorama/images/items/arcane_boots_psd.vtex"); }
+.streetfight_item.IngameItemId_10116 #OptionalImage { background-image: url("s2r://panorama/images/items/stonehall_pike_psd.vtex"); }
+.streetfight_item.IngameItemId_10117 #OptionalImage { background-image: url("s2r://panorama/images/items/stonehall_cloak_psd.vtex"); }
+.streetfight_item.IngameItemId_10118 #OptionalImage { background-image: url("s2r://panorama/images/items/blink_dagger_psd.vtex"); }
+.streetfight_item.IngameItemId_10119 #OptionalImage { background-image: url("s2r://panorama/images/items/orb_of_venom_psd.vtex"); }
+.streetfight_item.IngameItemId_10120 #OptionalImage { background-image: url("s2r://panorama/images/items/force_staff_psd.vtex"); }
+
+.streetfight_item.IngameItemId_10121 #OptionalImage { background-image: url("s2r://panorama/images/items/maelstrom_psd.vtex"); }
+.streetfight_item.IngameItemId_10122 #OptionalImage { background-image: url("s2r://panorama/images/items/mask_of_madness_psd.vtex"); }
+.streetfight_item.IngameItemId_10123 #OptionalImage { background-image: url("s2r://panorama/images/items/mekansm_psd.vtex"); }
+.streetfight_item.IngameItemId_10124 #OptionalImage { background-image: url("s2r://panorama/images/items/blade_mail_psd.vtex"); }
+.streetfight_item.IngameItemId_10125 #OptionalImage { background-image: url("s2r://panorama/images/items/basher_psd.vtex"); }
+.streetfight_item.IngameItemId_10126 #OptionalImage { background-image: url("s2r://panorama/images/items/eul_scepter_psd.vtex"); }
+.streetfight_item.IngameItemId_10127 #OptionalImage { background-image: url("s2r://panorama/images/items/silver_edge_psd.vtex"); }
+.streetfight_item.IngameItemId_10128 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10129 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+
+.streetfight_item.IngameItemId_10130 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10131 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10132 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10133 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10134 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10135 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10136 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10137 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10138 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10139 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+
+.streetfight_item.IngameItemId_10140 #OptionalImage { background-image: url("s2r://panorama/images/items/vladmirs_offering_psd.vtex"); }
+.streetfight_item.IngameItemId_10141 #OptionalImage { background-image: url("s2r://panorama/images/items/big_time_contract_psd.vtex"); }
+.streetfight_item.IngameItemId_10142 #OptionalImage { background-image: url("s2r://panorama/images/items/battle_fury_psd.vtex"); }
+.streetfight_item.IngameItemId_10143 #OptionalImage { background-image: url("s2r://panorama/images/items/black_king_bar_psd.vtex"); }
+.streetfight_item.IngameItemId_10144 #OptionalImage { background-image: url("s2r://panorama/images/items/diffusal_blade_psd.vtex"); }
+.streetfight_item.IngameItemId_10145 #OptionalImage { background-image: url("s2r://panorama/images/items/moon_shard_psd.vtex"); }
+.streetfight_item.IngameItemId_10146 #OptionalImage { background-image: url("s2r://panorama/images/items/scythe_of_vyse_psd.vtex"); }
+.streetfight_item.IngameItemId_10147 #OptionalImage { background-image: url("s2r://panorama/images/items/skadi_psd.vtex"); }
+.streetfight_item.IngameItemId_10148 #OptionalImage { background-image: url("s2r://panorama/images/items/dagon_psd.vtex"); }
+.streetfight_item.IngameItemId_10149 #OptionalImage { background-image: url("s2r://panorama/images/items/aeon_disk_psd.vtex"); }
+
+.streetfight_item.IngameItemId_10150 #OptionalImage { background-image: url("s2r://panorama/images/items/refresher_orb_psd.vtex"); }
+.streetfight_item.IngameItemId_10151 #OptionalImage { background-image: url("s2r://panorama/images/items/pipe_of_insight_psd.vtex"); }
+.streetfight_item.IngameItemId_10152 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10153 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10154 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+.streetfight_item.IngameItemId_10155 #OptionalImage { background-image: url("s2r://panorama/images/items/satanic_psd.vtex"); }
+.streetfight_item.IngameItemId_10156 #OptionalImage { background-image: url("s2r://panorama/images/items/radiance_psd.vtex"); }
+.streetfight_item.IngameItemId_10157 #OptionalImage { background-image: url("s2r://panorama/images/items/divine_rapier_psd.vtex"); }
+.streetfight_item.IngameItemId_10158 #OptionalImage { background-image: url("s2r://panorama/images/items/shivas_guard_psd.vtex"); }
+.streetfight_item.IngameItemId_10159 #OptionalImage { background-image: url("s2r://panorama/images/items/bloodthorn_psd.vtex"); }
+
+.streetfight_item.IngameItemId_10160 #OptionalImage { background-image: url("s2r://panorama/images/items/butterfly_psd.vtex"); }
+.streetfight_item.IngameItemId_10161 #OptionalImage { background-image: url("s2r://panorama/images/items/heart_psd.vtex"); }
+.streetfight_item.IngameItemId_10162 #OptionalImage { background-image: url("s2r://panorama/images/items/octarine_fragment_psd.vtex"); }
+.streetfight_item.IngameItemId_10163 #OptionalImage { background-image: url("s2r://panorama/images/items/horn_of_the_alpha_psd.vtex"); }
+.streetfight_item.IngameItemId_10164 #OptionalImage { background-image: url("s2r://panorama/images/items/vesture_of_the_tyrant_psd.vtex"); }
+.streetfight_item.IngameItemId_10165 #OptionalImage { background-image: url("s2r://panorama/images/items/aegis_psd.vtex"); }
+.streetfight_item.IngameItemId_10166 #OptionalImage { background-image: url("s2r://panorama/images/items/build_healing_ward_psd.vtex"); }
+.streetfight_item.IngameItemId_10167 #OptionalImage { background-image: url("s2r://panorama/images/items/build_barricade_psd.vtex"); }
+.streetfight_item.IngameItemId_10168 #OptionalImage { background-image: url("s2r://panorama/images/items/build_undying_tower_psd.vtex"); }
+.streetfight_item.IngameItemId_10169 #OptionalImage { background-image: url("s2r://panorama/images/items/hood_psd.vtex"); }
+
+.streetfight_item.IngameItemId_10170 #OptionalImage { background-image: url("s2r://panorama/images/items/hunting_hat_psd.vtex"); }
+.streetfight_item.IngameItemId_10171 #OptionalImage { background-image: url("s2r://panorama/images/items/demon_hat_psd.vtex"); }
+.streetfight_item.IngameItemId_10172 #OptionalImage { background-image: url("s2r://panorama/images/items/brute_hat_psd.vtex"); }
+.streetfight_item.IngameItemId_10173 #OptionalImage { background-image: url("s2r://panorama/images/items/dwarf_hat_psd.vtex"); }
+.streetfight_item.IngameItemId_10174 #OptionalImage { background-image: url("s2r://panorama/images/items/dragon_lance_psd.vtex"); }
+.streetfight_item.IngameItemId_10175 #OptionalImage { background-image: url("s2r://panorama/images/items/tank_buster_psd.vtex"); }
+.streetfight_item.IngameItemId_10176 #OptionalImage { background-image: url("s2r://panorama/images/items/armlet_psd.vtex"); }
+.streetfight_item.IngameItemId_10177 #OptionalImage { background-image: url("s2r://panorama/images/items/build_mango_tree_psd.vtex"); }
+.streetfight_item.IngameItemId_10178 #OptionalImage { background-image: url("s2r://panorama/images/items/quelling_blade_psd.vtex"); }
+
+
+// Apparently this is a super dirty hack to hide the map preview image for battle-pass map rewards - yup, it is
+// History is written by the victors, so let's win this
+.EquipmentType_map #RewardContainer
+{
+    visibility: collapse;
+}
+
+
+// more dirty hacks to get background images from season 0 map unlocks
+
+.reward_item_id_10090.EquipmentType_map #BattlepassBackgroundImage
+{
+	background-image: url("s2r://panorama/images/battle_pass/bp1/items/bg_map_path_psd.vtex");
+	background-position: top;
+}
+
+.reward_item_id_10091.EquipmentType_map #BattlepassBackgroundImage
+{
+	background-image: url("s2r://panorama/images/battle_pass/bp1/items/bg_map_streets_psd.vtex");
+	background-position: top;
+}
+
+#OptionalImage
+{
+	tooltip-position: right;
+}

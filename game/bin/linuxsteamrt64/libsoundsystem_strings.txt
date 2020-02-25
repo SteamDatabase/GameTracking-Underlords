@@ -87,6 +87,8 @@ $tI
 %s_KV3
 %s_mult
 %s_random_add
+%s_random_max
+%s_random_min
 %s_random_variance
 %s_seek_speed_filter
 %s|  % 2d: %s [Offset: %d]
@@ -134,6 +136,7 @@ $tI
 ../public/tier0/tslist.h
 ../public/tier1/utlleanvector.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utlsymbol.h
 .wav
 /
 0
@@ -164,14 +167,18 @@ $tI
 114
 118
 11CAudioMixer
+11CFunctorJob
+11IRefCounted
 122
 126
 128
 12CAudioSource
-12CEmptyConVar
+12CRefCounted1I11IRefCounted20CRefCountServiceBaseILb1E6CRefMTEE
+12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE
 12CSosOperator
 12CSoundSystem
 12CThreadEvent
+12CThreadedJob
 12ISoundSystem
 130
 13CSosDependent
@@ -229,6 +236,7 @@ $tI
 18CAudioOutputStream
 18CAudioSourceCached
 18CEQ8AudioProcessor
+18CPlaceholderConVar
 18CSDLAudioSubsystem
 18CSosOperatorConvar
 18CSosOperatorCurve4
@@ -261,6 +269,7 @@ $tI
 20CAudioMixerWaveADPCM
 20CDelayAudioProcessor
 20CPostConnectCallback
+20CRefCountServiceBaseILb1E6CRefMTE
 20CSosGroupActionLimit
 20CSosOperatorDBToGain
 20CSosOperatorDistance
@@ -359,6 +368,7 @@ $tI
 26CSosOperatorGetOpVarFloat3
 26CSosOperatorGetOpVarString
 26CSosOperatorMixLayerAmount
+26CSosOperatorPointOnCapsule
 26CSosOperatorRandomizeFloat
 26CSosOperatorSetOpVarFloat3
 26CSosOperatorSetOpVarString
@@ -394,6 +404,7 @@ $tI
 30CSosOperatorGetOpVarArrayIndex
 30CSosOperatorLogicSwitch12Float
 30CSosOperatorLogicSwitch3Float3
+30CSosOperatorMixGraphInputReset
 30CSosOperatorSetOpVarArrayIndex
 30CSosOperatorSpatializeSpeakers
 30CSosOperatorStopAllSoundEvents
@@ -409,6 +420,7 @@ $tI
 33CSosOperatorMixGraphInputGetFloat
 34CSosOperatorMixGraphInputDSPPreset
 35CSosOperatorIterateAndMergeSpeakers
+35CSosOperatorLogicSwitchStringHandle
 36
 4
 4000
@@ -425,9 +437,11 @@ $tI
 8
 80
 8CFmtStrNILi256ELb0EE
+8CFunctor
 8CSosEdit
 9
 9CAudioSDL
+9CFunctor1IPFvPK11CAudioStateEP19CAudioStateInternal12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEEE
 9CSfxTable
 :
 : %s : vol: %4.2f, sndlvl: %4.2f
@@ -442,9 +456,12 @@ $tI
 <NULL>
 <No schemasystem>
 <UNRESOLVED>
+<deferred>
 <invalid soundevent name>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 <unknown>
 =
 >
@@ -454,8 +471,6 @@ $tI
 @?
 @@
 @A
-@distance_to_source.output
-@get_event_info.output_elapsed_time
 @public.%s
 A
 A->B
@@ -496,9 +511,12 @@ ANIMATION_TYPE_FIXED_RATE
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
 Abort processing sound event %s (scheduled recursively will not process this frame)
 AbsolutePoseControl
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Action Type
 ActionType_t
 Active ?: %s
+Active Sound events: %d
 Active Voices: %d
 AddNewSoundEvent:  %s has a hash collision with existing %s
 AddSoundEvent event with empty name
@@ -603,6 +621,8 @@ BreakPieceExternal
 C
 C->D
 C->E
+CAnimMotorList
+CAnimMovementManager
 CAsyncWavDataCache:  %i sounds total %s, %.2f %% of capacity
 CAudioMixThread
 CAuthPhysBody
@@ -706,15 +726,15 @@ CSoundSampler: SoundEvent: %s
 CTSQueue corruption
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
-CThreadMutex::TryLock()
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
+CThreadMutex::TryLock(char const*, int)
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::Wait(unsigned int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
@@ -836,6 +856,8 @@ Can't find mix layer %s
 Can't find mixgroup name %s for submix
 Can't find sound event to remove for %s!
 Can't parse mp3 encoding %u
+Can't read from type %d for field %s
+Can't write to type %d for field %s
 Cannot allocate abstract class
 Cannot construct abstract class
 Cannot copy abstract class
@@ -917,6 +939,9 @@ Detected %d-level recursion in sound operator stack, abort!
 DevMsg
 DevMsg(char const*, ...)
 DevWarning(char const*, ...)
+Did not find valid MixGroups entry in soundmixers.txt
+Did not find valid MixLayers entry in soundmixers.txt
+Did not find valid SoundMixers entry in soundmixers.txt
 Didn't find index %s in list (%d events)
 Displaying %d probes around (%.1f, %.1f, %.1f) with influence for %.2f seconds.
 Displaying %d probes around (%.1f, %.1f, %.1f) within %.2f radius for %.2f seconds.
@@ -967,7 +992,6 @@ Error: MixLayer operator has invalid mix group index!
 Error: MixLayer operator has invalid mix layer index!
 Error: Operator %s, EntryMatchList has no free slots!
 Error: Operator %s, problems parsing operator field %s
-Error: Operator %s, unknown sound operator attribute %s
 Error: Parsing soundmixers.txt, mixgroup rules incomplete at group %s!
 Error: Parsing soundmixers.txt, mixgroup rules incomplete!
 Error: Parsing soundmixers.txt, soundmixer mix group values incomplete!
@@ -1014,6 +1038,7 @@ FILTER_LOWPASS
 FILTER_LOW_SHELF
 FILTER_NOTCH
 FILTER_PEAKING_EQ
+FILTER_UNKNOWN
 FIND ELEMENT: (%s)
 FX Mix (1.0 == wet)
 Fade In
@@ -1025,6 +1050,7 @@ Failed to convert KV3 to string; error: %s
 Failed to decode %s
 Failed to get p4 file info for %s
 Failed to load soundstacks/mixgraph.vmix
+Failed to read soundmixers.txt as KV3: %s
 Feedback
 Feedback scale
 Field Type: %i
@@ -1133,6 +1159,7 @@ InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 Intentionally vague touch behavior for %p
+Invalid access of deferred ConVarRef for '%s'
 Invalid compressed buffer size
 Invalid data for member '%s'
 Invalid data.
@@ -1143,6 +1170,7 @@ Invert Match
 Is Oneshot
 J
 JSON error, unterminated element:
+Job
 K
 KV Conditional Evaluation Error
 KeyValueCache001
@@ -1267,7 +1295,6 @@ NOTE OFF: %u : %f
 NOTE ON: %u : %f : %s
 NULL
 NULL m_pSfx
-NUM LAYERS: %d
 NetworkClientService_001
 NetworkMessagesVersion001
 NetworkP2PService_001
@@ -1279,6 +1306,7 @@ New Group
 NewNode
 Newline in string literal
 No
+No 'Mixers' member found in MixLayer in soundmixers.txt
 No Buffer
 No DATA block for resource '%s'
 No MP3 support, can't compile!
@@ -1376,6 +1404,7 @@ Plat_IsHighDPI
 Plat_IsInDebugSession
 Plat_LoadSDL
 Plat_RequireSDL
+Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_UUIDFromString
 Plat_UUIDToString
@@ -1463,12 +1492,13 @@ RenderService_001
 RenderSystemSurface001
 RenderUtils_001
 ReportClassError
-Reset Steam Audio Reverb Level value to %f
 Resolve the inputs and execute one specified operator from a specified stack
 ResourceCompilerSystem001
 ResourceHandleUtils001
 ResourceManifestRegistry001
 ResourceSystem013
+RetriggerSoundEvent
+ReturnJobManualEventToPool
 Reverb Depth ms
 Reverb Height ms
 Reverb Width ms
@@ -1525,14 +1555,12 @@ Set named Mixgroup of named mix layer to mix vol, mute, solo.
 Set named mix layer / mix group, trigger amount.
 Set named mix layer mix amount.
 Set physics surface properties for materials. Usage: <heuristic #> <commit>
-Set reverb level for Steam Audio Reverb. Suggested values from [.0f, 10.0f]. Setting it to zero disables all simulation for reverb calculation as well.
 SetDataFromKV3: Unrecognized KV3 type on field %s.
 Sets the tempo of the specified track
 Sets the transposition of the specified track
 Setting MixLayer %s
 Setting MixLayer %s : mix %f
 Setting Mixer %s: MixGroup %s: %s : %f
-Setting Steam Audio Reverb Level to %.3f.
 Setting field %s to %s
 Setting null device for -nosound
 Show async memory stats
@@ -1555,7 +1583,6 @@ SosOpFieldInfo_t::ValueToString: Unable to find ENUM match for %i on %s
 SosOpFieldInfo_t::ValueToString: Unable to find ENUM tokenset on %s
 Sound Disabled
 Sound Initialization: Finish, Sampling Rate: %i
-Sound delay clock error!: %.2f %.2f
 Sound merge method (0 == sum and clip, 1 == max, 2 == avg).
 Sound system not started
 Sound volume
@@ -1614,7 +1641,6 @@ Starts a specified soundevent
 Starts the specified arrangement.
 Static
 StatsService_001
-Steam Audio Reverb Level value changed from %.3f to %.3f for this map.
 Steam Audio could not create probes.
 Steam Audio is not enabled.
 SteamAudio001
@@ -1658,6 +1684,8 @@ Threshold dB
 Time Limiter
 Timed ?: %s
 Tokenset: %p
+Too many mix groups specified.
+Too many sound mixers specified
 ToolFramework2_002
 ToolGameSimulationDispatcher_001
 ToolGameSimulationSystem_001
@@ -1718,7 +1746,6 @@ Usage:  snd_sos_set_operator_field <stackname> <operator> <field> <index> <float
 Usage:  snd_sos_start_soundevent <eventname> <ent id)
 Usage:  snd_sos_stop_soundevent_guid <guid>
 Usage:  snd_sos_stop_soundevent_index <index>
-Usage:  snd_steamaudio_set_reverb_level <level in following range: [0.0 10.0]>. Current value = %.3f
 Usage: movie_fixwave wavname
 Usage: snd_get_physics_surface_properties <all|null|assigned|default|material-name>.
 Usage: snd_set_physics_surface_properties <diffmaterials|diffmapping|set|overwrite|single> <mapping-file|material-name,material,...>
@@ -1945,10 +1972,12 @@ _V_wcsncpy_bytes
 __UNKNOWN__
 __bss_start
 __customstack
+__customstack_components
 __customstack_curve_input
 __customstack_curve_mixgraph_send
 __customstack_curve_name
 __customstack_curve_output
+__customstack_curve_submix_send
 __customstack_field
 __customstack_has_random
 __customstack_hidden
@@ -1963,10 +1992,14 @@ __cxa_finalize
 __cxa_guard_acquire
 __cxa_guard_release
 __cxa_pure_virtual
+__fields
 __gmon_start__
 __memcpy_chk
+__move_to_end
 __oldschema_object_name
 __remap_input
+__remap_input1
+__remap_input2
 __stack_chk_fail
 __temp_unserialization_member__
 __toolspreview__
@@ -2011,18 +2044,21 @@ anim_name_a
 anim_name_b
 anim_type
 animgraph0
+animgraph1
 aplay
 apply
 archive
 array_selection_type
 asin
 assigned
+async_load
 atan
 attach_point
 attachment
 attachment_offset
 attachment_type
 attackTime
+audio_stream_attached.cpp
 auto_connect_public_fields
 auto_unragdoll_duration
 b
@@ -2053,6 +2089,7 @@ c
 cable
 calc_angles_facing
 calc_audibility
+calc_closest_point_on_capsule
 calc_closest_point_on_line
 calc_closest_point_on_sphere
 calc_closest_point_on_volume
@@ -2066,6 +2103,7 @@ calc_spatialize_VR
 calc_spatialize_speakers
 calloc
 cantdie
+causes_ducking
 ceil
 ceilf
 center1
@@ -2080,6 +2118,7 @@ circle
 circle_bounce
 cl
 clamp_range
+class_substring
 client
 clientcmd_can_execute
 cloth_collide
@@ -2108,6 +2147,7 @@ ctrl_switch3_float3
 ctrl_switch_float
 ctrl_switch_float3
 ctrl_switch_speakers
+ctrl_switch_string
 curve_type
 custom_stack
 d
@@ -2117,6 +2157,7 @@ dBLimiterThreshold
 dBNoiseGateThreshold
 data_type
 debug.solo
+debug_visualizer.cpp
 default_to_max
 delay count
 denominator
@@ -2151,6 +2192,8 @@ dsp_vol_2ch
 dsp_vol_4ch
 dsp_vol_5ch
 dsp_volume
+duck_to_percent
+ducker_threshold
 dynamicEQScale
 dynamic_interaction
 e
@@ -2166,6 +2209,7 @@ enum_field
 event_class
 event_keys
 eventindex
+exclude_group_name
 execlp
 execute_once
 exit_if_blocked
@@ -2181,6 +2225,7 @@ fabs
 faceMergeAngle
 false
 field_curve_2d_editor
+field_linear_atten_editor
 field_override
 float( %f )
 float16
@@ -2207,6 +2252,7 @@ g_Tier1_ExtraMasks
 g_VProfCurrentProfile
 g_mastermixlayer:
 g_pMemAlloc
+g_pThreadPool
 gainReduction
 game_class
 game_entity_info
@@ -2237,11 +2283,9 @@ import_public_opvars
 index %i = %i guid : %i dependents
 input %s received updated value from processor %d (%x)
 input0
-input1
 input10
 input11
 input12
-input2
 input3
 input4
 input5
@@ -2363,6 +2407,7 @@ input_near_min
 input_observer_position
 input_occlusion_method
 input_occlusion_mode
+input_occlusion_samples
 input_operator_name
 input_opvar
 input_pathing_enabled
@@ -2409,6 +2454,10 @@ input_source_position
 input_source_radius
 input_spawn_oneshots
 input_speaker_volumes
+input_sphere_1_pos
+input_sphere_1_radius
+input_sphere_2_pos
+input_sphere_2_radius
 input_sphere_pos
 input_sphere_radius
 input_spread_max
@@ -2427,6 +2476,7 @@ input_start6
 input_start7
 input_start8
 input_start_position
+input_start_time_offset
 input_start_value
 input_stop
 input_stop_at_time
@@ -2486,6 +2536,7 @@ invert
 invert_orientation
 invert_scale
 is_debris
+is_ducked
 is_untimed
 itemKVString
 itemName
@@ -2495,6 +2546,7 @@ j
 k
 k@
 key_groups
+keyvalues.cpp
 kv3
 kv3format_manager.cpp
 l
@@ -2530,6 +2582,7 @@ loop
 loop_break_on_damage
 loop_break_on_flashlight
 loop_in_action
+lvl
 lvl: %3.2f
 m
 m_Angles
@@ -2558,6 +2611,7 @@ m_JointName
 m_Joints
 m_LiteralColor
 m_MixCommands
+m_MotorList
 m_Name
 m_Operators
 m_PreEmissionOperators
@@ -2608,7 +2662,6 @@ m_controlInputs
 m_controlMeters
 m_controlPoints
 m_curves
-m_effectName
 m_fForceAmount
 m_fForceAmountMin
 m_fLifespanScaleExp
@@ -2737,6 +2790,7 @@ m_nameInputs
 m_pBody
 m_pHandle
 m_pJointConstraintData
+m_pMovementManager
 m_pParent
 m_pStack
 m_pVoice
@@ -2830,6 +2884,7 @@ min_output
 min_velocity_db
 mixDownRule
 mix_input
+mixamount
 mod
 mod_LFO
 model_name
@@ -2913,6 +2968,7 @@ numerator
 numsegments
 o
 occlusion_db_loss
+opFields
 operator delete(void*)
 operator delete[](void*)
 operator new(unsigned long)
@@ -3044,6 +3100,7 @@ parallel filters
 paramName
 particles/
 pass_opvar_args
+path_substring
 paused
 perlin
 physgun_interactions
@@ -3114,6 +3171,7 @@ replicated
 reserve_array
 resource
 resourcesystem
+retrigger_current_event
 right_down
 right_front
 right_front1
@@ -3138,6 +3196,7 @@ scripts/vmidi/vmidi_manifest.txt
 secondary
 send%d
 sendOperator
+send_mixgraph_%s
 send_type
 send_voicegraph_%s
 sequence
@@ -3190,6 +3249,7 @@ snd_list
 snd_list_soundevents
 snd_list_soundevents_by_stack
 snd_mergemethod
+snd_mix.cpp
 snd_mix_async
 snd_mix_minframetime
 snd_mixahead
@@ -3198,6 +3258,7 @@ snd_mixer_master_level
 snd_mixgroups.cpp
 snd_musicvolume
 snd_occlusion_debug
+snd_op_sys/sos_op_vmix.cpp
 snd_op_sys/sos_system.cpp
 snd_op_test_convar
 snd_print_activetracks
@@ -3294,7 +3355,6 @@ snd_steamaudio_export_scene
 snd_steamaudio_pathing_enablevalidationvis
 snd_steamaudio_pathing_enablevis
 snd_steamaudio_probes_nearby
-snd_steamaudio_set_reverb_level
 snd_stereo_speaker_pan_exponent
 snd_stereo_speaker_pan_radial_weight
 snd_surround_speaker_pan_exponent
@@ -3303,7 +3363,10 @@ snd_toolvolume
 snd_vmidi_flush
 snd_vmix_show_input_updates
 snd_voipvolume
+snd_wave_data.cpp
 snd_wave_mixer_mp3.cpp
+sndlvl_max
+sndlvl_min
 sndplaydelay
 solo: %3.2f
 soloname
@@ -3347,6 +3410,7 @@ soundstacks/sosstrings.txt
 soundstacks/soundeventgroups.vsndgrps
 soundstacks/soundstacks_manifest.vrman
 soundsystem
+soundsystem.cpp
 source_filename
 sparse_convolution
 spawn_motion_disabled
@@ -3425,6 +3489,7 @@ util_timer_ramp
 utlbuffer.cpp
 utlmemoryarena.cpp
 utlstring.cpp
+utlsymbol.cpp
 v
 value%d
 value1
@@ -3440,10 +3505,10 @@ vmdlkeys0
 vmdlkeys1
 vmdlkeys2
 vmdlkeys3
-vmix.cpp
 vmix:%02d: %s
 vmix_delay_desc_t
 vmix_dynamics_desc_t
+vmix_engine.cpp
 vmix_envelope_desc_t
 vmix_eq8_desc_t
 vmix_filter_desc_t
@@ -3451,6 +3516,7 @@ vmix_filter_type_t
 vmix_mixgraph_input
 vmix_mixgraph_input_dsp_preset
 vmix_mixgraph_input_get_float
+vmix_mixgraph_input_reset
 vmix_mixgraph_send
 vmix_pitch_shift_desc_t
 vmix_processor_type_t
@@ -3459,6 +3525,7 @@ vmix_start_vsnd: %s Voice count >= MAX_VOICES, aborting starting vsnd %s
 vmix_voicegraph_input
 vmix_voicegraph_inputarray
 vmix_voicegraph_start_8track
+vmix_voicelist.cpp
 vmix_vsnd_info
 vmix_vsnd_start has empty vsnd string
 voiceList

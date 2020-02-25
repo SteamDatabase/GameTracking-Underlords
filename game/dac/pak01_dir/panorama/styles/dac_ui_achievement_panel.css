@@ -1,98 +1,48 @@
+//turning these off for season 1 achievements
 
-.AchievementProgressBoxTitle
-{
-	color: #d7d7d7;
-	font-size: 21px;
-	text-shadow: 1px 2px 0px 2.0 #00000066;
-	margin-left: 12px;
-	font-weight: semi-bold;
-	vertical-align: center;
-	margin-top: 10px;
-	width: 460px;
-	text-overflow: shrink;
-}
-
-.AchievementProgressBar
-{
-	width: 380px;
-	height: 21px;
-	overflow: noclip;
-	//padding: 2px;
-	horizontal-align: center;
-	margin-top: 6px;
-	background-color: black;
-}
-
-.AchievementProgressBar .ProgressBarLeft
-{
-	height: 21px;
-	background-color: gradient (linear, 0% 0%, 100% 0%, from(#402c5a), to(#8D60C6));
-	transition-property: width;
-	transition-duration: .5s;
-	transition-timing-function: ease-out;
-	border-top: 1px solid #7b54ad;
-	border-bottom: 1px solid #522848;
-	border-right: 1px solid #8d60c6;
-}
-.AchievementProgressBar .ProgressBarRight
-{
-	background-color: #000;
-}
-
+.AchievementProgressBar,
 .AchievementProgressLabelsRow
 {
-	width: 100%;
+	vertical-align: bottom;
+	horizontal-align: center;
 }
 
-.AchievementProgressCounter
+DACAchievementPanel
+{
+	height:400px;
+	width:400px;
+	background-color: gradient (linear, 0% 0%, 0% 100%, from(#2c2e37cc), to(#00000000));
+	margin:10px;
+	padding:20px;
+}
+
+.AchievementDesc
 {
 	color: #d7d7d7;
-	font-size: 18px;
-	font-weight: semi-bold;
-	margin-top: 8px;
+	font-size: 27px;
 	text-shadow: 1px 2px 0px 2.0 #00000066;
 	margin-left: 12px;
-
-	//visibility: collapse;
-}
-
-.AchievementProgressTier
-{
-	horizontal-align: center;
+	font-family: ravenhook;
 	vertical-align: top;
-	height: 24px;
-	width: 24px;
-	background-size: contain;
-	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_1_psd.vtex");
-	margin-top: 8px;
+	text-align:center;
+	margin-top: 10px;
+	width: 100%;
+	text-overflow: shrink;
+	text-transform: uppercase;		
 }
 
-.Rank2 .AchievementProgressTier
+#PosterPanel
 {
-	width: 48px;
-	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_2_psd.vtex");
+	height:100%;
+	width:100%;
 }
 
-.Rank3 .AchievementProgressTier
-{
-	width: 72px;
-	background-image: url("s2r://panorama/images/hud/healthbar_one_star_rank_3_psd.vtex");
-}
-
-.AchievementProgressReward
-{
-	horizontal-align: right;
-	color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
-	font-size: 18px;
-	font-weight: bold;
-	text-transform: uppercase;
-	vertical-align: top;
-	margin-top: 8px;
-	margin-right: 10px;
-	letter-spacing: 1px;
-	text-align: right;
-
-	text-shadow: 1px 2px 0px 1.0 #00000099;
+#PosterTitle
+{	
+	width: 400px;
+	height: 200px;		
+	background-size:cover; 
+	background-position:0 100%;
 }
 
 
@@ -118,11 +68,15 @@
 	margin-top: -2px;
 }
 
+.Claimed .DailyChallengeClaimFX
+{
+	visibility: collapse;
+}
+
 #DailyChallengeClaimButtonContainer
 {
 	margin-top: 8px;
-	margin-left: 12px;
-	visibility: collapse;
+	margin-left: 12px;	
 	overflow: noclip;
 	background-color: gradient( linear, 0% 90%, 0% 0%, from( #836218 ), to( #4a370e) );
 	height: 36px;
@@ -130,8 +84,10 @@
 	border: 2px solid #fbbc2e ;
 	max-width: 170px;
 	text-overflow: shrink;
+	visibility: collapse;
 }
 
+.Claimed #DailyChallengeClaimButtonContainer,
 .Claimable #DailyChallengeClaimButtonContainer
 {
 	visibility: visible;
@@ -150,20 +106,24 @@
 	visibility: collapse;
 }
 
+.AchievementClaimed,
 .AchievementClaim
 {
-	color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
+	color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.3, #ffffff), color-stop( 0.3, #eddcb7), color-stop( 0.93, #b08d50), color-stop( 0.93, #b4712d),  to( #b4712d) );
 	font-size: 20px;
 	text-transform: uppercase;
 	text-shadow: 1px 1px 0px 2.0 #00000066;
-	vertical-align: center;
 	letter-spacing: 1px;
-	margin-top: 2px;
-	visibility: collapse;
 	font-weight: black;
-	padding: 2px 12px 2px 12px;
+	text-align:center;
+	padding: 5px 2px;
 	text-overflow: shrink;
-	max-width: 170px;
+	max-width: 200px;
+}
+
+.AchievementClaimed
+{
+	color:white;
 }
 
 .Language_korean .AchievementClaim, .Language_tchinese .AchievementClaim, .Language_schinese .AchievementClaim, .Language_japanese .AchievementClaim
@@ -171,6 +131,19 @@
 	margin-top: -4px;
 }
 
+.Claimed .AchievementClaim
+{
+	visibility: collapse;
+}
+.Claimed .AchievementClaimed
+{
+	visibility: visible;
+}
+
+.Claimable .AchievementClaimed
+{
+	visibility: collapse;
+}
 .Claimable .AchievementClaim
 {
 	visibility: visible;

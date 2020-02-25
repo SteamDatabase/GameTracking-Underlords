@@ -119,7 +119,6 @@ $ORIGIN
 1.0
 10ConCommand
 127.0.0.1
-12CEmptyConVar
 12CThreadEvent
 1434713789_main
 14CBaseAppSystemI14IScriptManagerE
@@ -131,6 +130,7 @@ $ORIGIN
 15CTier2AppSystemI14IScriptManagerLi0EE
 15IScriptDebugger
 16CDefaultAccessor
+18CPlaceholderConVar
 2
 20CPostConnectCallback
 22CSchemaInstallCallback
@@ -156,15 +156,18 @@ $ORIGIN
 <=
 <?xml version="1.0" encoding="UTF-8"?>
 <NULL>
+<deferred>
 <eof>
 <goto %s> jumps into the scope of local '%s'
 <identifier>
 <integer>
 <name>
 <name> or '...' expected
+<no deferred ref found>
 <no failure reason set>
 <number>
 <string>
+<unconnected>
 <unknown>
 =(debug command)
 =(load)
@@ -182,6 +185,8 @@ $ORIGIN
 @@
 @libvscript.so
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 AnimGraphEditorUtils001
 AnimationSystemUtils_001
 AnimationSystem_001
@@ -212,14 +217,14 @@ CMemAllocSystemInitialize
 COLORCORRECTION_VERSION_1
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
 CUtlBuffer::VaPrintf: String overflowed buffer [%llu]
@@ -305,6 +310,7 @@ InstallChangeCallback called with NULL callback, ignoring!!!
 InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 Intentionally vague touch behavior for %p
+Invalid access of deferred ConVarRef for '%s'
 Invalid connection type.
 Invalid context (id=%d)
 Invalid stack level (%d)
@@ -399,6 +405,7 @@ Plat_GetOSType
 Plat_IsHighDPI
 Plat_IsInDebugSession
 Plat_MSTime
+Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_VirtualAlloc
 Plat_VirtualFree
@@ -760,7 +767,6 @@ __volatile__
 _edata
 _end
 _fini
-_t
 `
 abort
 accept
@@ -983,9 +989,11 @@ js_array
 js_object
 js_raw_args
 js_value
+keyvalues.cpp
 kv
 l
 language
+languages/lua/vlua/vlua.cpp
 lastlinedefined
 ld-linux-x86-64.so.2
 ldexp
@@ -1312,6 +1320,7 @@ strerror
 string length overflow
 string slice too long
 string/function/table expected
+string_t
 strlen
 strpbrk
 strrchr

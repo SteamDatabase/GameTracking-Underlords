@@ -18,66 +18,38 @@
 		
 		<PageManager id="PageManager" />
 
-		<Panel id="MainMenuContainer" hittest="false">
-			<Panel id="PlayButtonContainer" class="MainMenuButtonContainer">
-				<Button id="PlayButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" onmouseover="DACHighlightDashboardButton('PlayButtonContainer')" onmouseout="DACUnhighlightDashboardButton('PlayButtonContainer')">
-					<DACParticleScenePanel class="ParticleOverlay" id="PlayButtonParticle" hittest="false" startActive="true" particleName="particles/world_environmental_fx/candle_flame_medium_nl.vpcf" cameraUp="3.5" fov="-30" />
-				</Button>
-				<!--<Label id="MainMenuLabel" class="PlayLabel" text="#DAC_DBHome_Mobile_Play"/>-->
-			</Panel>
-			<Panel id="HeropediaButtonContainer" class="MainMenuButtonContainer">
-				<Button id="HeropediaButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('HeropediaContainer'); DACShowHeropediaPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SeasonInfoActivate' )" onmouseover="DACHighlightDashboardButton('HeropediaButtonContainer')" onmouseout="DACUnhighlightDashboardButton('HeropediaButtonContainer')">
-					<DACParticleScenePanel class="ParticleOverlay" id="HeropediaButtonParticle" hittest="false" startActive="true" particleName="particles/world_environmental_fx/candle_flame_medium_nl.vpcf" cameraUp="5.5" fov="-30" />
-				</Button>
-				<!--<Label id="MainMenuLabel" class="HeropediaLabel" text="#DAC_InGame_Heropedia"/>-->
-			</Panel>
-
-			<Panel id="AchievementsButtonContainer" class="MainMenuButtonContainer">
-				<Button id="AchievementsButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('AchievementsContainer'); DACShowAchievementsPage();" onmouseover="DACHighlightDashboardButton('AchievementsButtonContainer')" onmouseout="DACUnhighlightDashboardButton('AchievementsButtonContainer')"/>
-				<DACParticleScenePanel class="AchievementsClaimFX" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="econ/s0/particles/battlepass/s0_battlepass_claim_reward_star.vpcf" fov="-200" />
-			</Panel>
-
-			<Panel id="BattlePassButtonContainer" class="MainMenuButtonContainer">
-				<Button id="BattlePassButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('BattlePassContainer'); DACShowRewardsProtopassPage(); PlaySoundEffect( 'DAC_UI.MainMenu_ProtPassActivate' );" onmouseover="DACHighlightDashboardButton('BattlePassButtonContainer')" onmouseout="DACUnhighlightDashboardButton('BattlePassButtonContainer')">
-					<DACParticleScenePanel class="ParticleOverlay" id="BattlePassButtonParticle" hittest="false" startActive="true" particleName="particles/world_environmental_fx/candle_flame_medium_nl.vpcf" cameraUp="3.5" fov="-30" />
-				</Button>
-			</Panel>
-			<Panel id="LoadoutButtonContainer" class="MainMenuButtonContainer">
-				<Button id="LoadoutButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('LoadoutButtonContainer'); DACShowLoadoutPage(); PlaySoundEffect( 'DAC_UI.MainMenu_LoadoutActivate' );" onmouseover="DACHighlightDashboardButton('LoadoutButtonContainer')" onmouseout="DACUnhighlightDashboardButton('BattlePassButtonContainer')">
-					<DACParticleScenePanel class="ParticleOverlay" id="LoadoutButtonParticle" hittest="false" startActive="true" particleName="particles/world_environmental_fx/candle_flame_medium_nl.vpcf" cameraUp="3.5" fov="-30" />
-				</Button>
-			</Panel>
-			<Panel id="ProfileButtonContainer" class="MainMenuButtonContainer">
-				<Button id="ProfileButton" class="MainMenuButton" onactivate="DACSelectDashboardButton('ProfileContainer'); DACShowProfilePage();" onmouseover="DACHighlightDashboardButton('ProfileButtonContainer')" onmouseout="DACUnhighlightDashboardButton('ProfileButtonContainer')"/>
-			</Panel>
-
-		</Panel>
-
 		<Panel class="SystemButtons">
 
 			<Panel class="SystemButtonsTop">
 				<Panel id="GameLogo" />
 				<Panel id="AchievementsButtonContainer">
-					<Button id="AchievementsButton" class="SystemButtonHover" onactivate="DACSelectDashboardButton('AchievementsContainer'); DACShowAchievementsPage();"/>
+					<Button id="AchievementsButton" class="SystemButtonHover" onactivate="DACSelectDashboardButton('AchievementsContainer'); DACShowAchievementsPage(); PlaySoundEffect( 'UL_UI.MainMenu_AchievementsActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_AchievementsRollover' );"/>
 					<Panel id="AchievementsViolator" hittest="false" />
 				</Panel>
 				<Panel id="PatchNotesButtonContainer">
-					<Button id="PatchNotesButton" class="PatchNotesButton SystemButtonHover" onactivate="DACSelectDashboardButton('PatchNotesContainer'); DACShowPatchNotesPage();" />
+					<Button id="PatchNotesButton" class="PatchNotesButton SystemButtonHover" onactivate="DACSelectDashboardButton('PatchNotesContainer'); DACShowPatchNotesPage(); PlaySoundEffect( 'UL_UI.MainMenu_UpdateNotesActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_UpdateNotesRollover' );"/>
 					<Panel id="PatchNotesViolator" hittest="false" />
 				</Panel>
 				<Panel id="SettingsMenuButtonContainer">
-					<Button id="SettingsMenuButton" class="SystemButtonHover" onactivate="DACShowSettingsPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )" onmouseover="DACHighlightDashboardButton('SettingsMenuButtonContainer')" onmouseout="DACUnhighlightDashboardButton('SettingsMenuButtonContainer')" />
+					<Button id="SettingsMenuButton" class="SystemButtonHover" onactivate="DACShowSettingsPopup(); PlaySoundEffect( 'UL_UI.MainMenu_SettingsActivate' );" onmouseover="DACHighlightDashboardButton('SettingsMenuButtonContainer'); PlaySoundEffect( 'UL_UI.MainMenu_SettingsRollover' );" onmouseout="DACUnhighlightDashboardButton('SettingsMenuButtonContainer')" />
 				</Panel>
 				<Panel id="QuitButtonContainer">
-					<Button id="QuitButton" class="QuitButton SystemButtonHover" onactivate="DACQuitApp()"/>
+					<Button id="QuitButton" class="QuitButton SystemButtonHover" onactivate="DACQuitApp(); PlaySoundEffect( 'UL_UI.MainMenu_QuitGameActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.MainMenu_QuitGameRollover' );"/>
 				</Panel>
 			</Panel>
 
 		</Panel>
 		<Button id="ZooButton" onactivate="DACSelectDashboardButton('ZooContainer'); DACShowZooPage(); PlaySoundEffect( 'DAC_UI.MainMenu_SettingsActivate' );" />
 
+	<Panel id="PlayButtonContainer"  hittest="false">
+	<Panel id="PlayButtonBG" />
+		<DACPlayButton id="PlayButton"/>
+		<Button id="PlayButtonOLD" class="MainMenuButton" onactivate="DACSelectDashboardButton('PlayContainer'); DACShowHomePage(); PlaySoundEffect( 'DAC_UI.MainMenu_GameActivate' );" onmouseover="DACHighlightDashboardButton('PlayButtonContainer')" onmouseout="DACUnhighlightDashboardButton('PlayButtonContainer')">
+			<DACParticleScenePanel class="ParticleOverlay" id="PlayButtonParticle" hittest="false" startActive="true" particleName="particles/world_environmental_fx/candle_flame_medium_nl.vpcf" cameraUp="3.5" fov="-30" />
+		</Button>
+	</Panel>
 
-		<DropDown id="HudModeDropdown">
+	<DropDown id="HudModeDropdown">
 			<!-- Dynamic Content -->
 		</DropDown>
 
@@ -93,9 +65,7 @@
 			</Panel>
 		</Panel>
 
-		<Panel id="IntroScreen" hittest="false">
-			<Panel id="IntroLogo" hittest="false"/>
-		</Panel>
+		<DACDBControlIntroLogo id="IntroLogo" hittest="false"/>
 
 		<Panel id="DebugCorners" hittestchildren="false" hittest="false">
 			<Panel id="DebugCornerTopLeft" />

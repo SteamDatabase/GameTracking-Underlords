@@ -1,0 +1,24 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_citycrawl_challenges.vcss_c" />
+		<include src="s2r://panorama/styles/dac_db_control_battlepass.vcss_c" />
+	</styles>
+
+	<Panel class="PopupPanel Hidden" popupbackground="dim" oncancel="UIPopupButtonClicked();" onactivate="UIPopupButtonClicked();">
+		<Panel class="Header">
+			<Label class="PanelHeader HeadlineFont" text="#DAC_CityCrawlObjectives" />
+			<Button class="CloseButton" onactivate="UIPopupButtonClicked(); PlaySoundEffect( 'UL_UI.Loadout_CloseActivate' );" />
+		</Panel>
+		<Panel id="DynamicPopupContainer">			
+			<Panel class="PopupContent">				
+				<DACDBControlCityCrawlChallenges id="ChallengesList" />
+				<Panel id="GoToCityCrawlButton" onactivate="UIPopupButtonClicked(); DACShowChallengeWorldMapPage();">
+					<Label id="CityCrawlButtonText" text="#DAC_CityCrawlButton"/>
+				</Panel>
+			</Panel>
+		</Panel>
+	</Panel>
+</root>

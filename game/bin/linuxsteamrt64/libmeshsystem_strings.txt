@@ -52,7 +52,6 @@ $ORIGIN
 (None)
 *
 *ZN24CDecalDrawDataRefCounted7ReleaseEvEUlvE_
-+inf
 ,
 , %s
 , parent:
@@ -66,15 +65,18 @@ $ORIGIN
 -sse4
 ...
 ../public/ordered_constructor.h
-../public/scenesystem/memoryvertex.h(156):
+../public/scenesystem/memoryvertex.h(160):
 ../public/tier0/tslist.h
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utllinkedlist.h
 ../public/tier1/utlrbtree.h
+../public/tier1/utlsymbol.h
+../public/tier1/utltshash.h
 ../public/tier2/fileutils.h
 0.0
 0.1
 00000000-0000-0000-0000-000000000000
+0x%08X %s,
 1 1 1
 1.0
 10CMeshUtils
@@ -84,10 +86,10 @@ $ORIGIN
 10IMeshUtils
 11CMeshSystem
 11CRefCountedI20CRefCountServiceBaseILb1E6CRefMTEE
+11CRenderMesh
 11IMeshSystem
 11IRefCounted
 11IVSSequence
-12CEmptyConVar
 12CRefCounted1I13IMeshRayTrace20CRefCountServiceBaseILb1E6CRefMTEE
 12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE
 12CSceneObject
@@ -128,6 +130,7 @@ $ORIGIN
 17IGenericInterface
 18CBreakLegacyParser
 18CMorphSetManagerV0
+18CPlaceholderConVar
 18CRenderMeshManager
 19CBoneConstraintBase
 19CModelConfigElement
@@ -146,6 +149,7 @@ $ORIGIN
 23IConCommandBaseAccessor
 24CSceneSkeletonObjectDesc
 25IVPhysicsLegacyKeyHandler
+27CModelConfigElement_Command
 27CSchemaUtlVectorManipulatorI10CUtlVectorI10CHitBoxSet10CUtlMemoryIS1_iEES1_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorI10CMorphData10CUtlMemoryIS1_iEES1_E
 27CSchemaUtlVectorManipulatorI10CUtlVectorI10CTransform10CUtlMemoryIS1_iEES1_E
@@ -242,16 +246,19 @@ $ORIGIN
 <!-- kv3 encoding:%s:version{%s} format:%s:version{%s} -->
 <INVALID EXPRESSION>
 <INVALID_RBF_TYPE>
+<No schemasystem>
+<deferred>
+<no deferred ref found>
 <no failure reason set>
 <null>
+<unconnected>
 <unknown>
 =
 >
->nL>nL>nL>nL
 ?
 ?a`
 @@
-@A  0x%08X %s,
+@Aphysaggregatedata.cpp
 A->B
 ACTIVITY WEIGHTS
 ACT_IDLE
@@ -294,6 +301,8 @@ ANIMATION_TYPE_FIXED_RATE
 APPSYSTEM: In ConnectInterfaces(), s_nRegistrationCount is %d!
 ATTACHMENT_INFLUENCE_FLAGS_NONE
 AbsolutePoseControl
+Access of unconnected ConVarRef
+Access of unconnected SplitScreenConVarRef
 Activity %s has %d sequences with a total weight of %d!
 AllocateAndLoad failed for '%s'
 AllocateAndLoad failed for '%s' (%s)
@@ -347,7 +356,6 @@ AssetSystem001
 AssetSystemTest001
 Attempting to get the Skeletal Input settings from model %s, which doesn't have any.  Please add a Skeletal Input Settings node to the model in ModelDoc
 Attempting to get the movement settings from model %s, for which movement settings have not been set.  Please add a MovementSettings node to the model in ModelDoc
-Attribute counts between meshes is inconsistent
 B->C
 Bad KV3 data for '%s': %s
 Bad KV3 data for resource '%s': %s
@@ -407,6 +415,8 @@ CAnimBone
 CAnimCycle
 CAnimDataChannelDesc
 CAnimKeyData
+CAnimMotorList
+CAnimMovementManager
 CAnimRetargetChainData
 CAnimRetargetData
 CAnimRetargetElementData
@@ -481,6 +491,7 @@ CMesh Cannot create packed input layout, because the bone indices are out of ran
 CModelConfig
 CModelConfigElement
 CModelConfigElement_AttachedModel
+CModelConfigElement_Command
 CModelConfigElement_RandomColor
 CModelConfigElement_RandomPick
 CModelConfigElement_SetMaterialGroup
@@ -517,18 +528,18 @@ CStrongHandle
 CTSQueue corruption
 CThreadEvent::CThreadEvent(bool)
 CThreadEvent::Set()
-CThreadFastMutex::Lock(unsigned long long, unsigned int) volatile
+CThreadFastMutex::Lock(char const*, int, unsigned long long, unsigned int) volatile
 CThreadMultiWaitEvent::CThreadMultiWaitEvent(bool)
 CThreadMultiWaitEvent::Reset()
 CThreadMultiWaitEvent::Set()
 CThreadMultiWaitEvent::~CThreadMultiWaitEvent()
-CThreadRWLock::LockForWrite()
-CThreadRWLock::UnlockWrite()
+CThreadRWLock::LockForWrite(char const*, int)
+CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadSpinRWLock::LockForRead()
-CThreadSpinRWLock::SpinLockForWrite(unsigned long long)
-CThreadSpinRWLock::UnlockRead()
-CThreadSpinRWLock::UnlockWrite()
+CThreadSpinRWLock::LockForRead(char const*, int)
+CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
+CThreadSpinRWLock::UnlockRead(char const*, int)
+CThreadSpinRWLock::UnlockWrite(char const*, int)
 CThreadSyncObject::WaitImpl(unsigned int)
 CThreadSyncObject::~CThreadSyncObject()
 CTiltTwistConstraint
@@ -679,6 +690,7 @@ DevMsg(char const*, ...)
 Dominate(
 DotaCardGameClient_001
 Double-register of KV3 conversion (from '%s' to '%s')
+Double-save to Member '%s'
 DynamicConfigList
 ENCODING_TYPE_COUNT
 ENCODING_TYPE_OBJECT_SPACE
@@ -931,6 +943,7 @@ InstallChangeCallback ignoring duplicate change callback!!!
 InstallSchemaBindings
 Intentionally vague touch behavior for %p
 Internal inconsistency between the layout format and attribute is detected.Try changing the number of bones per vertex or the skin weighting, and send Sergiy a repro mesh with this error description.
+Invalid access of deferred ConVarRef for '%s'
 Invalid compressed buffer size
 Invalid data for member '%s'
 Invalid data.
@@ -958,6 +971,7 @@ JointMotion_t
 KV3 load transfer failed for mesh '%s': %s
 KV3 load transfer failed: %s
 KeyValueCache001
+KeyValues3
 KeyValuesSystem
 LOG_GENERAL
 LOOKUP_TYPE_COUNT
@@ -1208,6 +1222,7 @@ Plat_GetOSType
 Plat_GetThreadIndex
 Plat_IsHighDPI
 Plat_IsInDebugSession
+Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_UUIDFromString
 Plat_UUIDToString
@@ -1566,6 +1581,7 @@ anim_name_a
 anim_name_b
 animationsystem
 animgraph0
+animgraph1
 archive
 attach_point
 attachment_offset
@@ -1725,6 +1741,7 @@ fog_lighting
 fogcontributionstrength
 force
 format
+formats.cpp
 frame
 free
 g default
@@ -1732,6 +1749,7 @@ g_Tier1_BitWriteMasks
 g_Tier1_CRC32Table
 g_Tier1_CRC64Table
 g_Tier1_ExtraMasks
+g_hSkeletonMeshLayout
 g_pMemAlloc
 g_pThreadPool
 game
@@ -1788,6 +1806,7 @@ looping
 lowprecisionuv
 lowprecisionuv1
 m_AnimStrayRadii
+m_Args
 m_AttachmentName
 m_AttachmentType
 m_Attenuation0
@@ -1811,6 +1830,7 @@ m_CollisionPlanes
 m_CollisionSpheres
 m_Color
 m_ColorScale
+m_Command
 m_ConeAxis
 m_ConeCutoff
 m_Configs
@@ -1887,6 +1907,7 @@ m_Materials
 m_Mesh
 m_MorphLayers
 m_MorphSetData
+m_MotorList
 m_Name
 m_NestedElements
 m_NodeBases
@@ -1976,7 +1997,6 @@ m_bHasBakedLightingBasisInVertex
 m_bHasBakedLightingFromLightMap
 m_bHasBakedLightingFromVertexStream
 m_bHasCullingData
-m_bHasPerInstanceBakedLightingData
 m_bHidden
 m_bHideMaterialGroupInTools
 m_bHideRenderColorInTools
@@ -1995,6 +2015,7 @@ m_bParticleFeathering
 m_bRemapPullForceToLife
 m_bRenderDiffuse
 m_bRenderSpecular
+m_bRenderTransmissive
 m_bRunForParentApplyKillList
 m_bScaleCurrent
 m_bScaleInitialRange
@@ -2402,7 +2423,6 @@ m_nTriangleOffset
 m_nTwin
 m_nType
 m_nUpType
-m_nValue
 m_nVectorComponent
 m_nVertexCount
 m_nWeight0
@@ -2422,7 +2442,9 @@ m_pBody
 m_pD3DSemanticName
 m_pFeModel
 m_pJointConstraintData
+m_pMemPool == nullptr
 m_pModelConfigList
+m_pMovementManager
 m_pName
 m_pParent
 m_pSemantic
@@ -2615,7 +2637,9 @@ min_angle
 model.cpp
 model_default_preview_sequence_name
 model_dump_convert_info
+model_imp.cpp
 model_name
+model_old_disk.cpp
 modeldoc0
 modeldoc1
 modeldoc10
@@ -2715,6 +2739,8 @@ placementbone
 play_endcap
 point0
 point1
+pool_size_hint
+pool_size_hint_physics
 pose_control
 pose_control_type
 posxyz
@@ -2734,6 +2760,7 @@ qAdjust
 radius0
 radius1
 ragdoll
+raytrace.cpp
 recenter_on_parent_bone
 relative_angles
 relative_origin
@@ -2742,10 +2769,10 @@ remapping vertex %d[w%d] invalid: %d->? >= %d
 renderdiffuse
 rendermeshmgr.cpp
 renderspecular
+rendertransmissive
 resourcesystem
 rnd_down
 rnd_up
-root
 rootNode
 runspeed
 s offg cMeshusemtl initialShadingGroup
@@ -2817,6 +2844,7 @@ use_additional_offset
 user
 utlbuffer.cpp
 utlstring.cpp
+utlsymbol.cpp
 v %g %g %g
 v %g %g %g%s
 v1x
@@ -2881,5 +2909,6 @@ zero
 {}()':
 |B
 } %llu aggs, %s total data
+~CModel_Imp
 C
 D

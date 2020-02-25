@@ -23,20 +23,6 @@
 			</Panel>
 		</snippet>
 
-		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<snippet name="HeroItemSlot">
-			<Panel class="HUDItem">
-				<Image id="ItemImage" />
-				<Panel class="Unavailable" />
-				<Panel id="BottomRow" >
-					<Image id="HeroImage" />
-					<Image id="WorthNoGold" />
-					<Image class="RankStar" id="Rank1Star" />
-					<Image class="RankStar" id="Rank2Star" />
-					<Image class="RankStar" id="Rank3Star" />
-				</Panel>
-			</Panel>
-		</snippet>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<snippet name="HeroRankDisplay">
@@ -87,7 +73,7 @@
 		<Panel id="BenchPanelContainer" hittest="false">
 			<Panel id="BenchBG" />
 			<Panel id="BenchFX"/>
-			<DACScenePanel id="BenchPanel" hittest="false" camera="cam_main" renderdeferred="false" rendershadows="true" glowsize="0.5" />
+			<DACScenePanel id="BenchPanel" hittest="false" camera="cam_main" renderdeferred="false" rendershadows="true" glowsize="0.5" cameraUp="-16" />
 		</Panel>
 
 		<Panel class="SpectateFadePanel" />
@@ -118,6 +104,7 @@
 		</Panel>
 		
 		<Panel id="OpponentPlayerStateContainer" class="LeftPlayer PlayerState" hittest="false">
+				<Panel id="OpponentDamageEffectTarget" />
 				<DACUnderlordStatus id="OpponentPlayerProfile" hittest="false" />
 		</Panel>
 		
@@ -142,6 +129,10 @@
 					<Panel id="BottomScoreboardButton" class="ShowScoreboardButton" onactivate="DACShowScoreboard()" />
 				</Panel>
 			</Panel>
+			<Panel id="PuzzleButtons">
+			    <Button id="PuzzleIncreaseUnitRankButton" class="PuzzleModifyRankButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( 1 )"/>
+          		<Button id="PuzzleDecreaseUnitRankButton" class="PuzzleModifyRankButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( -1 )"/>
+        	</Panel>
 			<Panel id="LeftInfoZone">
 				<DACUnitStatus id="SelectedUnitContainer" hittest="false" />
 				<Panel id="LeftDropZones" hittestchildren="true">
@@ -166,23 +157,41 @@
 		
 		<Panel id="ShopSection" hittest="false">
 			<DACUIShop hittest="false"/>
+			<DACUIPuzzleShop hittest="false"/>
 		</Panel>
 			
-		<Panel id="ShopButton" onactivate="DACToggleShop()">
+		<Panel id="ShopButton" class="ShopButton" onactivate="DACToggleShop()">
 			<Label text="{i:shopGold}" id="StatusGold" />
-			<Panel id="OpenShopButton" />
-			<Panel id="CloseShopButton" />
+			<Panel class="OpenShopButton" />
+			<Panel class="CloseShopButton" />
 		</Panel>
-		
+		<Panel id="PuzzleShopButton" class="ShopButton" onactivate="DACTogglePuzzleShop()">
+			<Panel class="OpenShopButton" />
+			<Panel class="CloseShopButton" />
+		</Panel>
+
+		<Panel class="UnitAndPuzzleStatsContainer">
+			<Panel id="UnitStats" class="MatchBasicInfoCount">
+				<Panel id="UnitStatsIcon"/>
+				<Label text="#DAC_InGame_UnitCount" class="HeadlineMonoFont" html="true"/>
+			</Panel>
+			<Panel id="PuzzleCostTotal" class="MatchBasicInfoCount">
+				<Panel id="PuzzleCostTotalIcon"/>
+				<Label text="#DAC_InGame_PuzzleCost" class="HeadlineFont" html="true"/>
+			</Panel>
+		</Panel>
+
 		<Panel class="PlayPauseContainer" id="PlayPauseContainer" hittest="false">
 				<Panel class="PauseButton" onactivate="DACTogglePauseGame()" />
 				<Panel class="FastForwardButton" id="FastForwardButton" onactivate="DACStepForward()">
 					<DACParticleScenePanel id="FastForwardButtonTutorialHighlight" hittest="false" startActive="true" cameraLeft="0" cameraUp="0" particleName="particles/ui/tutorial/ui_tutorial_callout.vpcf" fov="-200"/>
 				</Panel>
+				<Panel class="CombatButtonContainer">
 				<Panel class="FastForwardButton_Sandbox" onactivate="DACStepForward()">
-					<Label class="DebugText FFBSB_ToCombat" text="#DAC_InGame_DevToCombat" />
-					<Label class="DebugText FFBSB_ToSetup" text="#DAC_InGame_DevBackToSetup" />
+					<Label class="DebugText HeadlineFont FFBSB_ToCombat" text="#DAC_InGame_DevToCombat" />
+					<Label class="DebugText HeadlineFont FFBSB_ToSetup" text="#DAC_InGame_DevBackToSetup" />
 				</Panel>
+			</Panel>	
 		</Panel>
 
 		<Panel class="GoHomeButtonContainer" hittest="false">
@@ -198,7 +207,7 @@
 		</Panel>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-		<Panel id="ScoreboardBG" onactivate="DACHideScoreboard()" />	
+		<Panel id="ScoreboardBG" onactivate="DACHideScoreboard()" hittest="true"/>	
 		
 		<Panel id="ScoreboardSection" class="SafeArea" hittest="false">
 			<DACScoreboard />
@@ -213,7 +222,27 @@
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<Panel id="PuzzleTopLeft" hittest="false">
-			<!-- This will get stuff added to it if the game is in Puzzle mode -->
+			<DACUIPuzzleStatus/>
+			<Panel id="PuzzleStatsSection" class="IconSection">
+				<Panel id="StatsContainer" class="IconTab">
+					<Panel id="StatBestGoldSpend" class="PuzzleStats" onactivate="DACLoadPuzzleCode(1)">
+						<Label class="Stat HeadlineFont" text="#DAC_InGame_Stat_BestNetWorth"/>
+						<Label class="Stat Highscore HeadlineFont" text="#DAC_InGame_Stat_NewBestNetWorth"/>
+					</Panel>
+					<Panel id="StatBestDuration" class="PuzzleStats" onactivate="DACLoadPuzzleCode(2)">
+						<Label class="Stat HeadlineFont" text="#DAC_InGame_Stat_BestDuration"/>
+						<Label class="Stat Highscore HeadlineFont" text="#DAC_InGame_Stat_NewBestDuration"/>
+					</Panel>
+					<Panel id="StatBestUnits" class="PuzzleStats" onactivate="DACLoadPuzzleCode(4)">
+						<Label class="Stat HeadlineFont" text="#DAC_InGame_Stat_BestUnits"/>
+						<Label class="Stat Highscore HeadlineFont" text="#DAC_InGame_Stat_NewBestUnits"/>
+					</Panel>
+				</Panel>
+				<!-- correct button will be shown based on css -->
+			</Panel>
+			<Panel id="PuzzleExitContainer">
+				<Label text="#DAC_Puzzle_Exit" onactivate="DACReturnToDashboard(true)" />
+			</Panel>
 		</Panel>
 		
 		<!-- Debug menu under chat, so tooltips work properly 	-->
@@ -246,14 +275,27 @@
 						<Button id="GiveSelectedToOpponentButton" class="DevButton GiveSelectedButton" onactivate="DACDebugGiveSelected(1)">
 							<Label text="#DAC_InGame_DevGiveSelectedToOpponent"/>
 						</Button>
-						<DropDown id="CombinedLevelDropdown" >
-							<Label id="1" class="HeroLevelOption" text="★" level="1" />
-							<Label id="2" class="HeroLevelOption" text="★★" level="2" />
-							<Label id="3" class="HeroLevelOption" text="★★★" level="3" />
-						</DropDown>
+						<Panel id="HeroRankContainer" class="TopBottomFlow">
+							<RadioButton group="HeroRankOption" selected="true" class="OptionsCheckBox" onactivate="DACEnableCustomResolution(1);" id="HeroRank1" text="★" />
+							<RadioButton group="HeroRankOption" class="OptionsCheckBox" onactivate="DACEnableCustomResolution(1);" id="HeroRank2" text="★★" />
+							<RadioButton group="HeroRankOption" class="OptionsCheckBox" onactivate="DACEnableCustomResolution(1);" id="HeroRank3" text="★★★" />
+						</Panel>						
 					</Panel>
 				</Panel>
-		
+				<Panel id="PuzzlePanelContainer" class="TopBottomFlow">
+					<Panel class="DebugButtonRow LeftRightFlow DebugSection">						
+						<Button class="DevButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( -1 )">
+							<Label html="true" text="#DAC_InGame_DevDecreaseSelectedUnitRank"/>
+						</Button>
+						<Button class="DevButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( 1 )">
+							<Label html="true" text="#DAC_InGame_DevIncreaseSelectedUnitRank"/>
+						</Button>
+					</Panel>
+					<Button class="DevButton DoubleClickButton" id="ButtonClearBoardPuzzle" ondblclick="DACDebugClearBoard()" onmouseover="UIShowTextTooltip( #DAC_InGame_DevDoubleClickTooltip )" onmouseout="UIHideTextTooltip()">
+						<Label text="#DAC_InGame_DevClearBoard"/>
+					</Button>
+				</Panel>
+				<Panel id="ControlPanelContainer">
 					<Panel id="DebugCommandButtons DebugSection" class="TopBottomFlow">
 						<Label class="ControlPanelLabel" text="#DAC_InGame_DevControlPanel"/>
 					<Panel id="Row_0" class="DebugButtonRow LeftRightFlow DebugSection">
@@ -268,12 +310,12 @@
 						</Button>
 						<Button class="DevButton" onactivate="DACDebugGiveGold( 100 )">
 							<Label html="true" text="#DAC_InGame_DevGiveMaxGold"/>
+						</Button>						
+						<Button class="DevButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( -1 )">
+							<Label html="true" text="#DAC_InGame_DevDecreaseSelectedUnitRank"/>
 						</Button>
 						<Button class="DevButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( 1 )">
 							<Label html="true" text="#DAC_InGame_DevIncreaseSelectedUnitRank"/>
-						</Button>
-						<Button class="DevButton NeedsSelectedUnit" onactivate="DACDebugModifySelectedUnitRank( -1 )">
-							<Label html="true" text="#DAC_InGame_DevDecreaseSelectedUnitRank"/>
 						</Button>
 					</Panel>
 					<Panel id="Row_1" class="DebugButtonRow LeftRightFlow">
@@ -298,6 +340,30 @@
 							<Label id="DevPasteShareCode_Success" text="#DAC_InGame_DevPasteShareCode_Success" />
 						</Button>
 					</Panel>
+					<Panel id="Bot_Dev" class="DebugButtonRow LeftRightFlow">
+						<Panel id="BotDropdownContainer" class="TopBottomFlow">
+							<Label class="BotDropdownLabel" text="#DAC_InGame_DevBots"/>
+							<Panel id="BotDropdown" />
+						</Panel>
+						<Panel id="BotSeparator" />
+						<Panel id="SetTeamAsBotColumn" class="TopBottomFlow DebugSection">
+							<Panel id="SetTeamAsBotSpacer" />
+							<Label class="BotSetLabel" text="#DAC_InGame_DevBotSet"/>
+							<Button id="AwayTeamBot" class="DevButton">
+								<Label id="DevAwayTeamBot_Label" text="#DAC_InGame_AwayTeamBot" onactivate="DACDebugSetAwayTeamBot()" />
+							</Button>
+							<Button id="HomeTeamBot" class="DevButton">
+								<Label id="DevHomeTeamBot_Label" text="#DAC_InGame_HomeTeamBot" onactivate="DACDebugSetHomeTeamBot()" />
+							</Button>
+							<Panel id="SetTeamAsBotSpacer" />
+							<Label class="TeamSizeLabel" text="#DAC_InGame_DevTeamSize"/>
+							<Panel id="PlayerLevelContainer" class="TopBottomFlow">
+								<RadioButton group="PlayerLevelOption" selected="true" class="OptionsCheckBox" onactivate="DACEnableCustomResolution(1);" id="PlayerLevel6" text="6" playerLevel="6" />
+								<RadioButton group="PlayerLevelOption" class="OptionsCheckBox" onactivate="DACEnableCustomResolution(1);" id="PlayerLevel7" text="7" playerLevel="7" />
+								<RadioButton group="PlayerLevelOption" class="OptionsCheckBox" onactivate="DACEnableCustomResolution(1);" id="PlayerLevel8" text="8"  playerLevel="8" />
+							</Panel>
+						</Panel>
+					</Panel>
 					<Panel id="Column_3" class="LeftRightFlow">
 						<Button class="DevButton DoubleClickButton" id="ButtonClearBoard" ondblclick="DACDebugClearBoard()" onmouseover="UIShowTextTooltip( #DAC_InGame_DevDoubleClickTooltip )" onmouseout="UIHideTextTooltip()">
 							<Label text="#DAC_InGame_DevClearBoard"/>
@@ -309,6 +375,7 @@
 						<Label text="#DAC_InGame_DevRestartMatch"/>
 						</Button>				
 					</Panel>
+				</Panel>
 				</Panel>	
 	
 				<Panel class="LeftRightFlow CombatListSection DebugSection">
@@ -387,34 +454,48 @@
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<Panel id="SettingsMenuSection" hittest="true" onactivate="DACHideMenuButtons(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
-			<Panel class="MenuButtonContainer PopupPanel" hittest="true">
-				<Panel class="MenuLogo" />
-				<Button class="MenuButton BevelButton" onactivate="DACHideMenuButtons(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
-					<Label text="#DAC_InGame_MenuCancel"></Label>
-				</Button>
-				<Button id="HeropediaButton" class="MenuButton BevelButton" onactivate="DACShowHeropediaPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
-					<Label text="#DAC_InGame_Heropedia"></Label>
-				</Button>
-				<Button class="MenuButton BevelButton SettingsButton" onactivate="DACShowSettingsPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
-					<Label text="#DAC_InGame_ShowSettings"></Label>
-				</Button>
-				<Button id="ZooButton" class="MenuButton BevelButton" onactivate="DACShowHudZoo(); DACHideMenuButtons()">
-					<Label text="#DAC_InGame_Zoo"></Label>
-				</Button>
-				<Button  id="LeaveGameButton" class="MenuButton BevelButton" onactivate="DACReturnToDashboard( false ); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
-					<Label text="#DAC_InGame_ReturnToMainMenu"></Label>
-				</Button>
-				<Button id="LeaveTutorialButton" class="MenuButton BevelButton" onactivate="DACReturnToDashboard( false ); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
-					<Label text="#DAC_InGame_LeaveTutorial"></Label>
-				</Button>
-			</Panel>
-			<Panel class="MenuBattlePassContainer">
-				<DACControlBattlePass id="BattlePassOverviewInMenu" updateingame="true"/>
-				<!--DACControlChallengeList id="ChallengeList" updateingame="true" /-->
-			</Panel>			
+			<Panel id="SettingsBackground">
+				<Panel class="MenuButtonContainer PopupPanel" hittest="true">
+					<Panel class="MenuLogo" />
+					<Panel class="HorizontalStackPanel">
+						<Panel class="VerticalStackPanel ReturnToGame">
+							<Button id="ReturnToGameButton" class="MenuButton" onactivate="DACHideMenuButtons(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )"/>
+							<Label text="#DAC_InGame_MenuCancel" class="HeadlineFont MenuButtonText"/>					
+						</Panel>
+						<Panel id="RightButtonOptions">
+							<Panel class="VerticalStackPanel">
+								<Button id="HeropediaButton" class="MenuButton" onactivate="DACShowHeropediaPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )"/>
+								<Label text="#DAC_InGame_Heropedia" class="HeadlineFont MenuButtonText"/>
+							</Panel>
+							<Panel class="VerticalStackPanel">
+								<Button id="SettingsButton" class="MenuButton" onactivate="DACShowSettingsPopup(); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )"/>
+								<Label text="#DAC_InGame_ShowSettings" class="HeadlineFont MenuButtonText"/>
+							</Panel>
+						</Panel>
+						<Button id="ZooButton" class="MenuButton" onactivate="DACShowHudZoo(); DACHideMenuButtons()">
+							<Label text="#DAC_InGame_Zoo" class="HeadlineFont"/>
+						</Button>
+					</Panel>
+					<Panel id="GroupedChallengesEmptySeparator"/>
+					<Panel class="GroupedChallengesPanel" hittest="true" onactivate="">
+						<DACDBControlCityCrawlChallenges id="CityCrawlChallenges"/>
+						<Panel class="MenuBattlePassContainer">
+							<DACControlBattlePass id="BattlePassOverviewInMenu" updateingame="true"/>
+							<!--DACControlChallengeList id="ChallengeList" updateingame="true" /-->
+						</Panel>		
+					</Panel>
+					<Panel id="ExitButtons">
+						<Button  id="LeaveGameButton" class="MenuButton" onactivate="DACReturnToDashboard( false ); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
+							<Label text="#DAC_InGame_ReturnToMainMenu" class="HeadlineFont MenuButtonText"></Label>
+							<Label text="#DAC_InGame_LeaveStreetfight" class="HeadlineFont MenuButtonText Streetfight"></Label>
+						</Button>
+						<Button id="LeaveTutorialButton" class="MenuButton" onactivate="DACReturnToDashboard( false ); PlaySoundEffect( 'DAC_UI.InGame_SettingsActivate' )">
+							<Label text="#DAC_InGame_LeaveTutorial" class="HeadlineFont MenuButtonText"></Label>
+						</Button>
+					</Panel>	
+				</Panel>
+			</Panel>	
 		</Panel>
-
-		<DACPopupManager id="PopupManager"/>		
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<Panel class="FadeOutPanel" />
@@ -425,6 +506,10 @@
 		</Panel>
 
 		<DACUIPuzzleIntro id="PuzzleIntro" />
+
+		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+		<DACPopupManager id="PopupManager"/>
 
 		<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 		<Panel class="SafeArea" hittest="false">

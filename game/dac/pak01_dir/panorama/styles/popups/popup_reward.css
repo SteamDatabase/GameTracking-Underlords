@@ -118,6 +118,76 @@ PopupReward
 	margin-top: 20px;
 }
 
+#RewardParticleBackingGlow
+{
+	width: 100%;
+	height: 100%;
+	
+	background-image: url("s2r://panorama/images/battle_pass/bp1/reward_pop_up_backing_glow_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: 50% 50%;
+	
+	animation-name: BackerParticleAppear;
+    animation-duration: 2.4s;
+    //animation-iteration-count: infinite;
+    animation-iteration-count: 1;
+	opacity: 0;
+	
+	transform: rotateZ(-5deg);
+}	
+
+#EarnedRewardBackerParticle
+{
+	width: 1400px;
+	height: 500px;
+	margin-top: 180px;
+	transform: rotateZ(-5deg);
+	
+	animation-name: BackerParticleAppear;
+    animation-duration: 2.4s;
+    //animation-iteration-count: infinite;
+    animation-iteration-count: 1;
+	opacity: 0;
+}
+
+@keyframes 'BackerParticleAppear'
+{
+	0%
+	{
+		//transform: rotateZ(-30deg);
+		//pre-transform-scale2d: 10;
+		opacity: 0;
+	} 
+
+
+	7%
+	{
+		opacity: 0;
+	} 
+
+	15%
+	{
+		//pre-transform-scale2d: .9;
+		//transform: translateY(0px) rotateZ(-5deg);
+		opacity: 0;
+	} 
+
+	85%
+	{
+		//pre-transform-scale2d: .89;
+		opacity: 1;
+		//transform: translateY(0px) rotateZ(-4.5deg);
+	} 
+
+	100%
+	{
+		opacity: 0;
+		//pre-transform-scale2d: 10;
+		//transform: translateY(120px) rotateZ(15deg);
+	}
+}
+
 .TitleContainer
 {
 	
@@ -136,6 +206,8 @@ PopupReward
 	background-size: 100%;
 	background-position: 50% 50%;
 }
+
+
 
 
 @keyframes 'TitleContainerAppear'
@@ -530,16 +602,22 @@ PopupReward #ItemInspector .RewardTextDesc
 .PosterTitleText
 {
 	visibility: collapse;
-    font-size: 48px;
+    font-size: 52px;
     color:white;
     horizontal-align:center;
     vertical-align: bottom;      
     text-overflow: shrink;
     text-align:center;
-    transform:translateY(-8px);
-    width:400px;
-    height:120px;
+    margin-bottom:10%;
+    width:40%;
+    height:52px;    
 	font-family: Ravenhook, k_alwaysFontNames;
+}
+
+.IsLayoutSmallScreen.AspectRatio16x9 .PosterTitleText,
+.IsLayoutSmallScreen.AspectRatio21x9 .PosterTitleText
+{
+	margin-bottom:9%;
 }
 
 .the_closer .PosterTitleText { color: #e1d3c6; }

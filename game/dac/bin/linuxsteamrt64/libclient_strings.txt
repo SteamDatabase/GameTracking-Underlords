@@ -1126,6 +1126,7 @@ $tI
 %s caches (type %u) - %u
 %s called on fill brush type %d
 %s copying array count %d
+%s created page that doesn't auto-delete "%s"
 %s down %s impdown %s impup %s
 %s executing script: %s
 %s for copy type: %s, packing: %s
@@ -1554,7 +1555,7 @@ $tI
 *N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_Popup_FriendCode17OnCheckFriendCodeEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_Popup_RenameTeam15InternalSetNameEPKcEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_QuickEquipButton13OnEquipFailedERKN8panorama9CPanelPtrINS2_8IUIPanelEEE23item_definition_index_tEUlvE_EE
-*N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_QuickEquipButton16EquipLoadoutItemERKN8panorama9CPanelPtrINS2_8IUIPanelEEE23item_definition_index_tEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_QuickEquipButton16EquipLoadoutItemE23item_definition_index_t21EDACGlobalLoadoutSlot17DACEquipSubSlot_tEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN25CClientAccountSyncStorage10ForceValueE15AccountSyncID_ttEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN25CClientAccountSyncStorage15ReconcileWithGCEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN25CDAC_DB_Page_Achievements25OnRedeemAchievementRewardEiiEUlvE_EE
@@ -1941,6 +1942,8 @@ $tI
 -tickrate
 -toggle
 -tools_sun_shadow_size
+-ui_page_manager_auto_delete
+-ui_page_manager_disable_auto_delete
 -use
 -useforcedmparms
 -uselocalweb
@@ -2938,6 +2941,7 @@ $tI
 17C_ServerPeerGroup
 17C_SingleplayRules
 17C_ViewmodelWeapon
+17DACEquipSubSlot_t
 17EVideoPlayerEvent
 17IDACEventProgress
 17IEntityFindFilter
@@ -3514,6 +3518,7 @@ $tI
 21C_PointClientUIDialog
 21C_PropVRTrackedObject
 21C_VRHandModelOverride
+21EDACGlobalLoadoutSlot
 21IDynamicPanelListData
 21IFieldChangeLimitSpew
 21IFlexSceneFileManager
@@ -5647,8 +5652,6 @@ $tI
 @panorama_dragscroll_minflickvelocity_vr
 @panorama_early_anim_dispatch
 @panorama_frame_limit_microseconds
-@panorama_highlight_bad_opacity_masks
-@panorama_highlight_slow_operations
 @panorama_hsbc_through_fast_path
 @panorama_movie_async_load_size_bytes
 @sm_pGlobalLight
@@ -7384,6 +7387,7 @@ AimTargetManager
 AlgorithmicUpdateVersion
 All itemsets must have names.
 All lootlists must have names.
+AllBots
 AllPartyMembersReady
 AllReady
 Alliance%d
@@ -7492,6 +7496,7 @@ AnimationSystemUtils_001
 AnimationSystem_001
 Animgraph Parameters (%d)
 Animgraph debugging entity '%s' (class='%s', index='%d')
+Announcer
 Anti Addiction Timer Expired
 Any
 AnyFriendsPlaying
@@ -11792,6 +11797,7 @@ Enno.CityCrawl_Objective_Victory
 Enno.CityCrawl_Puzzle_Victory
 Enno.CityCrawl_Streetfight_Victory
 EnsureCapacity
+EnsurePage
 Ent %3d: %s class %s name %s
 EntCmpOverride_CBodyComponent
 EntComponentInfo_t
@@ -15216,6 +15222,7 @@ N8panorama14CUIPanelEvent1IjEE
 N8panorama14CUIPanelEvent1IyEE
 N8panorama14CUIPanelEvent2I12EUnitKeyword12PlayerSlot_tEE
 N8panorama14CUIPanelEvent2I20GenericPopupResult_tPKcEE
+N8panorama14CUIPanelEvent2I21EDACGlobalLoadoutSlot17DACEquipSubSlot_tEE
 N8panorama14CUIPanelEvent2INS_16ScrollBehavior_tEbEE
 N8panorama14CUIPanelEvent2INS_18HtmlFormHasFocus_tEPKcEE
 N8panorama14CUIPanelEvent2IP8CUI_PageS2_EE
@@ -15446,6 +15453,7 @@ N8panorama9CUIEvent2IyjEE
 N8panorama9CUIEvent3I12PlayerSlot_tRK22CMsgPlayerCombatResultbEE
 N8panorama9CUIEvent3I18DACStreetfightID_t13UnderlordID_tbEE
 N8panorama9CUIEvent3I19EDACResponseConcepti13UnderlordID_tEE
+N8panorama9CUIEvent3I23item_definition_index_t21EDACGlobalLoadoutSlot17DACEquipSubSlot_tEE
 N8panorama9CUIEvent3IPKcS2_bEE
 N8panorama9CUIEvent3IPNS_25CVideoPlayerAudioRendererEiiEE
 N8panorama9CUIEvent3IffbEE
@@ -16898,6 +16906,7 @@ RenderPanel
 RenderPipelineDac
 RenderPipelineDacPostUI
 RenderPipelineDota
+RenderPortraits
 RenderPrimitiveType_t
 RenderService_001
 RenderSkeletonBone_t
@@ -18186,7 +18195,6 @@ StepSimulationHook
 Stick_Pri
 Stick_Snd
 Stinger.MatchReady
-Stingers
 Stop listening to a particular game event.
 Stop listening to all game events within a specific context.
 Stop named sound on Entity
@@ -18833,6 +18841,8 @@ UL_MusicStinger.CityCrawl_02
 UL_MusicStinger.CityCrawl_03
 UL_MusicStinger.CityCrawl_05
 UL_MusicStinger.CityCrawl_Locked
+UL_MusicStinger.PuzzleNewRecord
+UL_MusicStinger.RewardEarned
 UL_MusicStinger.RoundDraw_01
 UL_Soundscape.CityCrawl_Anessix
 UL_Soundscape.CityCrawl_Enno
@@ -19941,6 +19951,7 @@ _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_h
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_inventory.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_match_intro.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_round_over.cpp
+_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_scene_panel.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_shop.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_synergy_icon.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/renderingpipeline_dac_portrait.cpp
@@ -21340,6 +21351,7 @@ dac_draw_unit_outlines
 dac_dump_keybindings
 dac_duos_notification_hold_time
 dac_edit_all_underlords
+dac_enable_standard_test_rank_data
 dac_equipcontrol_num_items
 dac_event_auto_time_refresh_s
 dac_event_fake_no_data
@@ -21358,7 +21370,6 @@ dac_force_panorama_login
 dac_force_underlord_slot_num
 dac_force_web_login
 dac_forced_map_name
-dac_forest
 dac_gamemessages.proto
 dac_gamemode_puzzle_intro
 dac_gamemode_streetfight_intro
@@ -21628,7 +21639,8 @@ dac_tap_move
 dac_terrible_challenge_node_scale_hack
 dac_test_battle_pass_first_time
 dac_test_citycrawl_intro
-dac_test_multimap
+dac_test_major_rank
+dac_test_minor_rank
 dac_test_opponent_chat_combat
 dac_test_player_chat_combat
 dac_test_player_chat_global
@@ -27311,6 +27323,7 @@ pEt : lower-mid front unrounded vowel
 pField
 pMain
 pMessage
+pPortrait
 pSynergyData
 pUnitDef
 pUnitDef && pUnitDef->nUnitID == msgUnit.unit_id()
@@ -27797,6 +27810,8 @@ portrait_background_map
 portrait_background_model
 portrait_background_particle
 portrait_game
+portraitsThisFrame.Count() == 1
+portraitsThisFrame.Count() == viewportsThisFrame.Count()
 portuguese
 pos-Vector
 pos-cellorigin
@@ -29530,6 +29545,7 @@ typeinfo for void*
 typeinfo name for CDACUIFindOpponentState::EFindingState
 typeinfo name for EDACChartType
 typeinfo name for EDACGameMode
+typeinfo name for EDACGlobalLoadoutSlot
 typeinfo name for EDACMatchMode
 typeinfo name for EDACResponseConcept
 typeinfo name for EDuosMessageTargetType
@@ -29562,6 +29578,7 @@ ui-scale-x
 ui-scale-y
 ui-scale-z
 ui.shortwhoosh
+ui/citycrawl/bp1_city_crawl_map
 uiTransparentPixels < PIXELS
 ui_duos_msg_confirm
 ui_duos_msg_deny

@@ -5,7 +5,7 @@ DACQuickEquipButton
 	
 	vertical-align: top;
 	horizontal-align: left;
-	flow-children: down;//temp
+	flow-children: right;
 	brightness: 1;
 	visibility: collapse;
 
@@ -36,7 +36,7 @@ DACQuickEquipButton:hover
 }
 
 
-DACQuickEquipButton.CanCategoricallyBeEquipped.IsUnlocked
+DACQuickEquipButton.CanCategoricallyBeEquipped
 {
 	visibility: visible;
 }
@@ -101,36 +101,57 @@ DACQuickEquipButton.CanCategoricallyBeEquipped.IsUnlocked
 
 
 
-.IsCurrentlyEquipped #AlreadyEquippedPanel
+.IsCurrentlyEquipped.IsUnlocked #AlreadyEquippedPanel
 {
 	visibility: visible;
 }
 
-.GoToLoadoutScreen #GotoLoadoutScreenButton
+.CanCategoricallyBeEquipped #GotoLoadoutScreenButton
+{
+	width: 58px;
+	height: 58px;
+
+  	background-repeat: no-repeat;
+    background-size: 100%;
+
+	visibility: visible;
+}
+
+//show the button but disabled
+.CanCategoricallyBeEquipped #EquipButton
 {
 	visibility: visible;
 }
 
+#EquipButton:disabled
+{
+	border: 2px solid #ff0000;
+}
+
+//Just for now, hide "goto props board" page
+.EquipmentType_map_prop #GotoLoadoutScreenButton, 
+.EquipmentType_map_prop #EquipButton,
+.EquipmentType_streetfight_item #EquipButton,
 .EquipmentType_streetfight_item #GotoLoadoutScreenButton
 {
 	visibility: collapse;
 }
 
-
-.IsUnlocked.CanCategoricallyBeEquipped #EquipButton
+.EquipmentType_map_prop .CanCategoricallyBeEquipped #GotoLoadoutScreenButton, 
 {
 	visibility: visible;
 }
 
-.Requires_BattlePass,
-.IsUnlocked.IsCurrentlyEquipped #EquipButton,
-.IsUnlocked.GoToLoadoutScreen #EquipButton
+.IsCurrentlyEquipped #EquipButton
 {
 	visibility: collapse;
 }
 
+.EquipmentType_map_prop .HideMapPropEquipButton #GotoLoadoutScreenButton
+{
+	visibility: collapse;
+}
 
-//todo: requires battlepass label
 
 .PosterTitleText
 {

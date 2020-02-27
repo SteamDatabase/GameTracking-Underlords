@@ -458,15 +458,19 @@
 #DAC_Postgame_ChallengeComplete
 #DAC_Postgame_MatchXP
 #DAC_Profile_PlacementNA
+#DAC_PurchaseError_CannotPurchase
 #DAC_PurchaseError_Disabled
 #DAC_PurchaseError_ErrorTitle
 #DAC_PurchaseError_ExceedsCreditLimit
 #DAC_PurchaseError_InternalError
+#DAC_PurchaseError_InternalStore
 #DAC_PurchaseError_InvalidClientVersion
 #DAC_PurchaseError_InvalidItem
 #DAC_PurchaseError_InvalidQuantity
 #DAC_PurchaseError_ItemDisabled
+#DAC_PurchaseError_MissingItem
 #DAC_PurchaseError_NotConnectedToGC
+#DAC_PurchaseError_NotSignedIn
 #DAC_PurchaseError_OutstandingReservations
 #DAC_PurchaseError_ReservationBody
 #DAC_PurchaseError_ReservationTitle
@@ -488,7 +492,6 @@
 #DAC_PurchaseEventCurrency_TooBusy
 #DAC_PurchaseEvent_AlreadyOwned
 #DAC_PurchaseEvent_Disabled
-#DAC_PurchaseEvent_ErrorTitle
 #DAC_PurchaseEvent_ExpectedCostMismatch
 #DAC_PurchaseEvent_FailedToGetResponse
 #DAC_PurchaseEvent_GCContact
@@ -598,6 +601,7 @@
 #DAC_StartMatchmaking_UnableToFillTeam
 #DAC_SteamLogIn_FailedGeneric
 #DAC_SteamLogIn_FailedPassword
+#DAC_SteamLogIn_Title
 #DAC_StopMatchMaking_ErrorTitle
 #DAC_StopMatchMaking_FailedToGetResponse
 #DAC_StopMatchMaking_GeneralError
@@ -1546,6 +1550,7 @@ $tI
 *N5GCSDK17GCClientJobLambdaIZN22CDAC_UI_HudPlayerIcons16OnLoadPuzzleCodeEiEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN22CDAC_UI_Settings_Panel21LanguageChangeWarningEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN22CDAC_UI_Settings_Panel22EventDACSetLowViolenceEvEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN23CDAC_UI_BattlepassLevel12OnBuyPressedEvEUlvE0_EE
 *N5GCSDK17GCClientJobLambdaIZN23CDAC_UI_BattlepassLevel12OnBuyPressedEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN23CDAC_UI_PuzzleHistogram15UpdateHistogramEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN24CDAC_UI_AchievementPanel18OnClaimAchievementEvEUlvE_EE
@@ -1633,10 +1638,9 @@ $tI
 *ZN20CDAC_DB_Page_Profile26EventBotMatchFilterChangedEvEUlPN8panorama8CPanel2DEE_
 *ZN20CDAC_HUD_ItemDisplay11EventUpdateEvEUliP9C_DAC_NPCE_
 *ZN20CDAC_HUD_RankDisplay11EventUpdateEvEUliP9C_DAC_NPCE_
-*ZN20CDAC_UI_EquipControl10SetupItemsE23item_definition_index_tEUlPN8panorama14IUIPanelClientES3_E2_
 *ZN20CDAC_UI_EquipControl10SetupItemsE23item_definition_index_tEUlvE0_
 *ZN20CDAC_UI_EquipControl10SetupItemsE23item_definition_index_tEUlvE1_
-*ZN20CDAC_UI_EquipControl10SetupItemsE23item_definition_index_tEUlvE_
+*ZN20CDAC_UI_EquipControl10SetupItemsE23item_definition_index_tEUlvE2_
 *ZN20CDAC_UI_EquipControl16SetupEquipButtonE23item_definition_index_tEUlvE_
 *ZN20CDAC_UI_Hud_Tutorial25UpdatePlayerStateTriggersEvEUliP9C_DAC_NPCE_
 *ZN20CDAC_UI_Hud_Tutorial28OnTutorialSetHUDClassEnabledEPKcS1_bEUlPN8panorama8CPanel2DEE_
@@ -10618,7 +10622,6 @@ DACPuzzleShopMouseOut
 DACPuzzleShopMouseOver
 DACPuzzleVictoryReturnToCrawl
 DACQuickEquipButton
-DACQuickEquipLoadoutGotoLoadoutPage
 DACQuickEquipLoadoutItem
 DACQuitApp
 DACQuitAppConfirmed
@@ -10630,7 +10633,6 @@ DACRankPopupTriggerSound
 DACReceivedGCWelcome
 DACReconnectLobby
 DACRedeemAchievementReward
-DACRefreshAutoSaveState
 DACRefreshUnderlordDisplay
 DACRemoveBannerPaintin
 DACRemoveClass
@@ -11861,7 +11863,6 @@ EnvironmentMapBuilder_001
 EnvironmentMaps
 Epsilon to trigger movement of VR subtitle panel in world space
 EquipInProgress
-EquipLabelGoto
 EquipSelectionButton
 EquipmentType
 EquipmentType_%s
@@ -12878,7 +12879,6 @@ Glows: Render Objects Solid Color
 Glows: Stencil To Screen
 GoOffline
 GoOnline
-GoToLoadoutScreen
 Goal found in Challenge ID: %u config %u without a goal number
 Goal found in Challenge ID: %u config %u without reward data
 Goal found in challenge ID: %u config %u with an unexpected required progress: %u
@@ -13200,6 +13200,7 @@ Hide the underlord ability tooltip
 Hide the xp tooltip
 HideBG
 HideGameStatePanel
+HideMapPropEquipButton
 HideMinorRank
 HidePlayer
 HideProgress
@@ -15222,7 +15223,6 @@ N8panorama14CUIPanelEvent1IjEE
 N8panorama14CUIPanelEvent1IyEE
 N8panorama14CUIPanelEvent2I12EUnitKeyword12PlayerSlot_tEE
 N8panorama14CUIPanelEvent2I20GenericPopupResult_tPKcEE
-N8panorama14CUIPanelEvent2I21EDACGlobalLoadoutSlot17DACEquipSubSlot_tEE
 N8panorama14CUIPanelEvent2INS_16ScrollBehavior_tEbEE
 N8panorama14CUIPanelEvent2INS_18HtmlFormHasFocus_tEPKcEE
 N8panorama14CUIPanelEvent2IP8CUI_PageS2_EE
@@ -21261,7 +21261,6 @@ dac_activate_info_world_layer: requires info_worldlayer name.
 dac_active_challenge_slot_id
 dac_auto_deploy_units
 dac_auto_open_shop
-dac_autosave_sequence_number_backchannel
 dac_banner
 dac_banner_base_itemdef
 dac_banner_preview_pan_multitouch
@@ -21606,6 +21605,7 @@ dac_show_gamemode_intro_popup
 dac_show_localization_errors
 dac_show_looking_for_match
 dac_show_match_over_screen
+dac_show_post_game_popup
 dac_show_puzzle_victory
 dac_show_rank_tier_desc
 dac_show_rankup_popup

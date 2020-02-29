@@ -503,6 +503,7 @@
 	"DAC_GenericError_RegionInfoNotProvided"			"Per giocare online devi registrare il tuo account."
 	"DAC_GenericError_DurationControlBlocked"				"Hai superato il limite di tempo a tua disposizione per giocare online."
 
+	"DAC_PurchaseError_NotSignedIn"						"Per fare acquisti devi aver effettuato l'accesso a Steam."
 	"DAC_PurchaseError_NotConnectedToGC"				"Per effettuare acquisti devi essere connesso alla rete di Dota Underlords"
 	"DAC_PurchaseError_NoResponse"						"Impossibile contattare la rete di Dota Underlords. Riprova tra qualche minuto."
 	"DAC_PurchaseError_InternalError"					"Si è verificato un errore inaspettato nella verifica dell'idoneità all'acquisto dell'oggetto. Riprova più tardi."
@@ -515,6 +516,11 @@
 	"DAC_PurchaseError_InvalidQuantity"					"La quantità richiesta non è valida per questo oggetto."
 	"DAC_PurchaseError_OutstandingReservations"			"Sono già in corso dei tentativi di acquisto di questo oggetto. Per acquistarne altre copie, elimina o completa le transazioni in corso."
 	"DAC_PurchaseError_ExceedsCreditLimit"				"Hai già troppi crediti inutilizzati su questo account. Spendili prima di acquistarne di nuovi."
+
+	"DAC_PurchaseError_InternalStore"					"Si è verificato un errore inaspettato mentre cercavi di acquistare l'articolo."
+	"DAC_PurchaseError_CannotPurchase"					"Non puoi effettuare acquisti con il tuo account."
+	"DAC_PurchaseError_MissingItem"						"Errore inaspettato: articolo mancante."
+	"DAC_PurchaseError_Cancelled"						"L'acquisto è stato annullato."
 
 	"DAC_ReservationError_NoResponse"					"Impossibile contattare la rete di Dota Underlords. Riprova tra qualche minuto."
 	"DAC_ReservationError_InternalError"				"Si è verificato un errore. Riprova tra qualche minuto."
@@ -1082,7 +1088,7 @@
 	"dac_item_mana_sponge_lore"							"I più grandi atti di eroismo arrivano nei momenti peggiori. - <i>Zenok, guardiano di Guglia bianca</i>"
 	
 	"dac_item_quelling_blade"							"Lama della Repressione"
-	"dac_item_quelling_blade_desc"						"{d:damage} punti danno. L'eroe equipaggiato preferisce attaccare le unità evocate. Gli attacchi contro le unità evocate infliggono il {d:crit_bonus_vs_neutrals}% di danni da colpo critico."
+	"dac_item_quelling_blade_desc"						"+{d:damage} punti danno. L'eroe equipaggiato preferisce attaccare le unità evocate. Gli attacchi contro le unità evocate infliggono il {d:crit_bonus_vs_neutrals}% di danni da colpo critico."
 	"dac_item_quelling_blade_lore"						"A Grek non piace quando la gente fa questi acquisti. - <i>Zenok, guardiano di Guglia bianca</i>"
 	
 	"dac_item_boots_of_speed"							"Stivali della Velocità"
@@ -1518,7 +1524,7 @@
 	"DAC_InGame_DevSetLevel10"							"Imposta al<br>livello 10"
 	"DAC_InGame_DevGiveUnit"							"Equipaggia"
 	"DAC_InGame_DevToCombat"							"Passa al combattimento"
-	"DAC_InGame_DevBackToSetup"							"Torna alla configurazione"
+	"DAC_InGame_DevBackToSetup"							"Torna alla preparazione"
 	"DAC_InGame_DevRestartMatch"						"Ricomincia partita"
 	"DAC_InGame_DevDoubleClickTooltip"					"Doppio clic"
 	"DAC_InGame_DevClearBoard"							"Ripulisci scacchiera"	
@@ -2162,7 +2168,7 @@
 	"DAC_FinalCrew_Title"								"Squadra finale"
 	"DAC_EndGame_DamageDealt"							"Danni inflitti"
 	"DAC_EndGame_DamagePlayers"							"Danno giocatore"
-	"DAC_EndGame_GoldEarned"							"Oro ottenuto"
+	"DAC_EndGame_GoldEarned"							"Oro guadagnato"
 	"DAC_EndGame_RoundsWon"								"Round vinti"
 
 	"DAC_PostGame_Alliances_Title"						"Sinergie"
@@ -2257,7 +2263,7 @@
 	"DAC_ChallengeWorldMapPage"							"Guerriglia in città"
 	"DAC_CityCrawlObjectives"							"Obiettivi di Guerriglia in città"
 	"DAC_ChallengeWorldMapPage_Challenges"				"{d:city_crawl_challenges_available} obiettivi attivi"
-	"DAC_ChallengeWorldMapPage_ClaimableChallenges"		"{d:city_crawl_challenges_claimable} obiettivi riscattabili"
+	"DAC_ChallengeWorldMapPage_ClaimableChallenges"		"Obiettivi riscattabili: {d:city_crawl_challenges_claimable}"
 	"DAC_CityCrawlButtonNeedsSteam"						"Richiede l'accesso a Steam"
 
 	"DAC_Zoo_PostGame_GameMode"							"Modalità di gioco"
@@ -4593,7 +4599,7 @@
 
 	"DAC_Play_City_Challenges_Available"			"Attivi: {d:city_objectives_available}"
 	"DAC_Play_City_Challenges_OneAvailable"			"Attivi: {d:city_objectives_available}"
-	"DAC_Play_City_Challenges_None_Available"		"0 attive"
+	"DAC_Play_City_Challenges_None_Available"		"Attivi: 0"
 	"DAC_Play_City_Crawl_Invalid_Challenge"			"L'obiettivo selezionato non è valido per la modalità di gioco selezionata"
 	"DAC_Play_Visit_City_Crawl"						"Vai a Guerriglia in città"
 	"DAC_City_Crawl_Intro_Video_Subtitle"			"La morte di Mamma Eeb ha scatenato un terremoto in tutta la città. Ora, quattro Underlord cercano di dimostrare di avere ciò che serve per regnare su Guglia bianca."
@@ -4603,15 +4609,15 @@
 	// Hobgen S1 City Crawl Street Fights	
 	
 	"DAC_Challenge_Streetfight_assassins_title"		"Primo colpo"
-	"DAC_Challenge_Streetfight_assassins_Bot"		"Assassini"
+	"DAC_Challenge_Streetfight_assassins_Bot"		"Gli assassini"
 	"DAC_Challenge_Streetfight_assassins_BotDesc"	"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_assassins_Lore"		"Gli assassini si trovano facilmente a Guglia bianca e, dietro il giusto compenso, chiunque può diventare il loro bersaglio."
 	"DAC_Challenge_Streetfight_assassins_Quote"		"Sono sempre molto lusingato quando gli assassini mi danno la caccia, significa che sto facendo qualcosa di eccezionale. - <i>Hobgen mostra un ottimismo sorprendente</i>"
 	"DAC_Challenge_Streetfight_assassins_Win"		"La città è in lutto perché Hobgen è sfuggito a un altro tentativo di assassinio"
 	"DAC_Challenge_Streetfight_assassins_Lose"		"Hobgen è lasciato morire a Nuove tenebre"
 	
-	"DAC_Challenge_Streetfight_peacekeepers_title"		"Guastafeste"
-	"DAC_Challenge_Streetfight_peacekeepers_Bot"		"Pacificatori"
+	"DAC_Challenge_Streetfight_peacekeepers_title"		"I guastafeste"
+	"DAC_Challenge_Streetfight_peacekeepers_Bot"		"I pacificatori"
 	"DAC_Challenge_Streetfight_peacekeepers_BotDesc"	"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_peacekeepers_Lore"		"Benché non esista un vero e proprio corpo di polizia a Guglia bianca, non mancano quelli disposti a far rispettare la legge in cambio di denaro."
 	"DAC_Challenge_Streetfight_peacekeepers_Quote"		"Appiccare incendi è molto divertente, finché non arrivano i pacificatori a rovinare la festa... <i>Hobgen scappa senza guardarsi indietro</i>"
@@ -4619,7 +4625,7 @@
 	"DAC_Challenge_Streetfight_peacekeepers_Lose"		"Hobgen viene mandato in gattabuia, ma fugge poco dopo."
 	
 	"DAC_Challenge_Streetfight_golems_title"		"Saluti da Rosa Piangente"
-	"DAC_Challenge_Streetfight_golems_Bot"		"Golem piantagrane"
+	"DAC_Challenge_Streetfight_golems_Bot"		"I golem piantagrane"
 	"DAC_Challenge_Streetfight_golems_BotDesc"	"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_golems_Lore"		"Il patto di non aggressione tra Rosa Piangente e Guglia bianca sembra essere scaduto con la morte di Mamma Eeb"
 	"DAC_Challenge_Streetfight_golems_Quote"	"Eeb era molto brava a tenere il Quorum alla larga dai suoi affari. Sembra che Rosa Piangente non abbia intenzione di farmi la stessa cortesia... - <i>Hobgen deve raccogliere un'eredità pesante</i>"
@@ -4627,7 +4633,7 @@
 	"DAC_Challenge_Streetfight_golems_Lose"		"I Golem di Rosa Piangente hanno fatto nero Hobgen"
 	
 	"DAC_Challenge_Streetfight_troll_grift_title"		"I troll di Guglia bianca"
-	"DAC_Challenge_Streetfight_troll_grift_Bot"			"Pollastrelli"
+	"DAC_Challenge_Streetfight_troll_grift_Bot"			"I pollastrelli"
 	"DAC_Challenge_Streetfight_troll_grift_BotDesc"		"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_troll_grift_Lore"		"Shadow Shaman si è fatto le ossa sulle strade di Guglia bianca e sembrerebbe che lui e alcuni suoi vecchi amici siano tornati a fare i loro giochetti."
 	"DAC_Challenge_Streetfight_troll_grift_Quote"		"Witch Doctor e Shadow Shaman pensano di poter commettere tutte le truffe che vogliono ora che Mamma Eeb se n'è andata... Devo rimetterli in riga. - <i>Hobgen, metaforicamente il nuovo sceriffo della città</i>"
@@ -4651,7 +4657,7 @@
 	"DAC_Challenge_Streetfight_insect_warlocks_Lose"		"Cadavere imbozzolato trovato a Nuove tenebre"
 	
 	"DAC_Challenge_Streetfight_ogre_poker_title"			"Poker per orchi"
-	"DAC_Challenge_Streetfight_ogre_poker_Bot"			"Bari"
+	"DAC_Challenge_Streetfight_ogre_poker_Bot"			"I bari"
 	"DAC_Challenge_Streetfight_ogre_poker_BotDesc"		"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_ogre_poker_Lore"			"Una partita a poker tra maghi ha preso una brutta piega dopo che una delle teste dell'Ogre Magi è stata beccata a barare. Lo scontro che ne è scaturito potrebbe mettere a ferro e fuoco Nuove tenebre."
 	"DAC_Challenge_Streetfight_ogre_poker_Quote"		"Un idiota ha invitato l'Ogre Magi a giocare a carte e una delle sue teste ha cominciato a barare... se non fermo la rissa, presto metteranno a ferro e fuoco il quartiere. - <i>Hobgen è segretamente offeso perché non è stato invitato a giocare</i>"
@@ -4659,7 +4665,7 @@
 	"DAC_Challenge_Streetfight_ogre_poker_Lose"			"Hobgen non perde solo la vita, ma anche tutto il piatto."
 	
 	"DAC_Challenge_Streetfight_peacekeepers-T3_title"		"Una visitina in gattabuia"
-	"DAC_Challenge_Streetfight_peacekeepers-T3_Bot"			"Pacificatori"
+	"DAC_Challenge_Streetfight_peacekeepers-T3_Bot"			"I pacificatori"
 	"DAC_Challenge_Streetfight_peacekeepers-T3_BotDesc"		"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_peacekeepers-T3_Lore"		"Una volta la gattabuia era una prigione terrificante... ora i suoi ospiti evadono molto più facilmente."
 	"DAC_Challenge_Streetfight_peacekeepers-T3_Quote"		"Alcuni dei miei amici sono in gattabuia. Penso che sia ora di organizzare una bella evasione. - <i>Hobgen non ha tempo di mettere una lima in una torta</i>"
@@ -4676,7 +4682,7 @@
 	"DAC_Challenge_Streetfight_leg_breakers_Lose"			"Mentre Hobgen viene pestato a morte, gli spettatori cantano \"Vogliamo tavoli!\"."
 	
 	"DAC_Challenge_Streetfight_street_healers_title"			"Problemi di salute"
-	"DAC_Challenge_Streetfight_street_healers_Bot"			"Allegri chirurghi"
+	"DAC_Challenge_Streetfight_street_healers_Bot"			"Gli allegri chirurghi"
 	"DAC_Challenge_Streetfight_street_healers_BotDesc"		"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_street_healers_Lore"			"I medici senza licenza guadagnano un sacco di soldi a Guglia bianca. Se Hobgen dovesse riuscire a controllare il mercato, avrebbe non solo un vantaggio sulla concorrenza, ma vedrebbe anche dei bei profitti."
 	"DAC_Challenge_Streetfight_street_healers_Quote"		"Devo impedire agli altri Underlord di vedere i medici... Se non hanno gente pronta per rattopparli, forse ci penseranno due volte prima di intralciarmi. - <i>Hobgen, assassino senza pietà</i>"
@@ -4684,7 +4690,7 @@
 	"DAC_Challenge_Streetfight_street_healers_Lose"			"Temuto piromane messo in fuga da dottori arrabbiati e polizze assicurative elevate"
 	
 	"DAC_Challenge_Streetfight_meatsacks_title"			"Sacchi di carne"
-	"DAC_Challenge_Streetfight_meatsacks_Bot"			"Sacchi di carne"
+	"DAC_Challenge_Streetfight_meatsacks_Bot"			"I sacchi di carne"
 	"DAC_Challenge_Streetfight_meatsacks_BotDesc"		"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_meatsacks_Lore"			"I medici senza licenza guadagnano un sacco di soldi a Guglia bianca. Se Hobgen dovesse riuscire a controllare il mercato, avrebbe non solo un vantaggio sulla concorrenza, ma vedrebbe anche dei bei profitti."
 	"DAC_Challenge_Streetfight_meatsacks_Quote"			"Carl paga fior di quattrini per i cadaveri con cui produrre i cappelli. È il momento di contribuire agli affari locali. - <i>Hobgen e l'alta moda</i>"
@@ -4693,7 +4699,7 @@
 	
 	
 	"DAC_Challenge_Streetfight_protection_title"			"Partner silenzioso"
-	"DAC_Challenge_Streetfight_protection_Bot"				"Guardie del corpo"
+	"DAC_Challenge_Streetfight_protection_Bot"				"Le guardie del corpo"
 	"DAC_Challenge_Streetfight_protection_BotDesc"			"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_protection_Lore"				"Pagare per ricevere protezione a Guglia bianca è una tradizione secolare, ma dopo la morte di Eeb non tutti decidono di onorarla."
 	"DAC_Challenge_Streetfight_protection_Quote"			"Con la morte di Eeb sembra che la gente abbia deciso, con noncuranza, di non pagare per la propria protezione... credono che reclutare un paio di scagnozzi possa fermarmi dal prendere ciò che mi appartiene... - <i>Hobgen, impresario nemichevole</i>"
@@ -4709,7 +4715,7 @@
 	"DAC_Challenge_Streetfight_hunters_Lose"				"Hobgen perde punti con Lord Brezzasolare e non ne guadagna con Mireska"
 	
 	"DAC_Challenge_Streetfight_scaled_slark_title"			"Ci serve una barca più grossa"
-	"DAC_Challenge_Streetfight_scaled_slark_Bot"			"Agenti della Scogliera Profonda"
+	"DAC_Challenge_Streetfight_scaled_slark_Bot"			"Gli agenti della Scogliera Profonda"
 	"DAC_Challenge_Streetfight_scaled_slark_BotDesc"		"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_scaled_slark_Lore"			"Slark e i suoi amici della Scogliera Profonda hanno iniziato a farsi strada a Nuove tenebre. Vanno fermati subito, o sarà troppo tardi."
 	"DAC_Challenge_Streetfight_scaled_slark_Quote"			"Non so se Slark esegua gli ordini di Jull o abbia un suo piano, ma non cederò di un centimetro di fronte a quel bastardo squamoso. - <i>Hobgen risponde a una nuova minaccia</i>"
@@ -4719,7 +4725,7 @@
 	
 	
 	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_title"		"I ragazzi di J'Muy"
-	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_Bot"		"Troll nomadi"
+	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_Bot"		"I troll nomadi"
 	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_BotDesc"	"Is it broken here?"
 	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_Lore"		"I Troll oscuri stanno fomentando disordini a Nuove tenebre dietro ordine del loro capo J'Muy"
 	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_Quote"	"Non so perché J'Muy si sia piazzato qui, dovrebbe essere impegnato a portare la sua gente a Rosa Piangente… - <i>Hobgen ha problemi con i Troll oscuri</i>"
@@ -4872,7 +4878,7 @@
 	"DAC_Challenge_Streetfight_creeps_Lose"				"Impegnato su più fronti, Jull non riesce a tenere testa alle forze di Grek"
 
 	"DAC_Challenge_Streetfight_golems_jull_title"		"Spacca qualche roccia"
-	"DAC_Challenge_Streetfight_golems_jull_Bot"			"Golem piantagrane"
+	"DAC_Challenge_Streetfight_golems_jull_Bot"			"I golem piantagrane"
 	"DAC_Challenge_Streetfight_golems_jull_BotDesc"		"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_golems_jull_Lore"		"Tradizionalmente, i golem vengono tenuti sotto controllo dai loro padroni... ma se lasciate a se stesse, queste creature di roccia si divertono un mondo a fracassare tutto ciò che non è fatto di pietra."
 	"DAC_Challenge_Streetfight_golems_jull_Quote"		"Non importa se sono stati evocati da Anessix o forgiati dai maghi di Rosa Piangente... Non lascerò che i golem gettino scompiglio nella mia città. - <i>Jull lo spaccapietre</i>"
@@ -4889,7 +4895,7 @@
 	
 	
 	"DAC_Challenge_Streetfight_druids_title"				"Favore per Enno"
-	"DAC_Challenge_Streetfight_druids_Bot"					"Druidi"
+	"DAC_Challenge_Streetfight_druids_Bot"					"I Druidi"
 	"DAC_Challenge_Streetfight_druids_BotDesc"				"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_druids_Lore"					"L'hobby di Enno è infastidire Jull e, quando non può farlo personalmente, si assicura che lo facciano i suoi amici."
 	"DAC_Challenge_Streetfight_druids_Quote"				"Enno crede di poter ricorrere ai suoi amici della foresta per fermarmi... ma sarà tutto inutile. - <i>Jull si ripromette di prendere a pugni Enno la prossima volta che lo vedrà</i>"
@@ -4897,7 +4903,7 @@
 	"DAC_Challenge_Streetfight_druids_Lose"					"Enno mette Jull in imbarazzo senza neanche farsi vivo"
 	
 	"DAC_Challenge_Streetfight_warriors_title"				"Non puoi uccidere ciò che è già morto"
-	"DAC_Challenge_Streetfight_warriors_Bot"				"Guerrieri"
+	"DAC_Challenge_Streetfight_warriors_Bot"				"I guerrieri"
 	"DAC_Challenge_Streetfight_warriors_BotDesc"			"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_warriors_Lore"				"Le punzecchiature di Enno nei confronti di Jull sono incessanti. Le molestie del giorno sono rappresentate da scagnozzi prezzolati."
 	"DAC_Challenge_Streetfight_warriors_Quote"				"Sul campo di battaglia, un guerriero può ucciderti solo una volta. Qui, muori un po' ogni singolo giorno. - <i>Jull, morto dentro</i>"
@@ -4905,7 +4911,7 @@
 	"DAC_Challenge_Streetfight_warriors_Lose"				"Jull le prende in una rissa e beve per dimenticare"
 	
 	"DAC_Challenge_Streetfight_warlocks_dark_trolls_title"				"Stranieri e connazionali"
-	"DAC_Challenge_Streetfight_warlocks_dark_trolls_Bot"				"Stregoni e troll"
+	"DAC_Challenge_Streetfight_warlocks_dark_trolls_Bot"				"Gli Stregoni e i Troll"
 	"DAC_Challenge_Streetfight_warlocks_dark_trolls_BotDesc"			"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_warlocks_dark_trolls_Lore"				"J'Muy cerca rifugio per la sua gente a Rosa Piangente... ma prima gli è stato richiesto un aiuto nella conquista di Guglia bianca."
 	"DAC_Challenge_Streetfight_warlocks_dark_trolls_Quote"				"Non so perché il Quorum di Rosa Piangente si immischi negli affari di Guglia bianca, ma non saremo mai dei burattini di un'altra città. - <i>Jull, pilastro di Guglia bianca</i>"
@@ -4913,7 +4919,7 @@
 	"DAC_Challenge_Streetfight_warlocks_dark_trolls_Lose"				"Jull muore per mano dei Troll oscuri. Per fortuna possono resuscitare i morti."
 	
 	"DAC_Challenge_Streetfight_bot_with_items_title"			"Rispedisci al mittente"
-	"DAC_Challenge_Streetfight_bot_with_items_Bot"				"Scagnozzi armati"
+	"DAC_Challenge_Streetfight_bot_with_items_Bot"				"Gli scagnozzi armati"
 	"DAC_Challenge_Streetfight_bot_with_items_BotDesc"			"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_bot_with_items_Lore"				"Enno ruba segretamente da Jull da settimane, usando i suoi stessi beni di contrabbando contro di lui."
 	"DAC_Challenge_Streetfight_bot_with_items_Quote"			"Quel mezzo topo di Enno si è messo a vestire i suoi agenti con roba rubata a me. Non continuerà per molto. - <i>Jull, fine dei giochi</i>"
@@ -4921,7 +4927,7 @@
 	"DAC_Challenge_Streetfight_bot_with_items_Lose"				"Jull viene pugnalato con le sue stesse armi"
 	
 	"DAC_Challenge_Streetfight_mage_warlocks_T3_title"				"Cocktail e conflitti"
-	"DAC_Challenge_Streetfight_mage_warlocks_T3_Bot"				"Maghi ubriachi"
+	"DAC_Challenge_Streetfight_mage_warlocks_T3_Bot"				"I Maghi ubriachi"
 	"DAC_Challenge_Streetfight_mage_warlocks_T3_BotDesc"			"unused description about Graveyard Trolls"
 	"DAC_Challenge_Streetfight_mage_warlocks_T3_Lore"				"Dopo la prova di forza di Jull ai danni del proprietario del Cantrip Cocktails, i maghi frequentatori abituali di quel locale hanno deciso di mandargli un messaggio personalizzato."
 	"DAC_Challenge_Streetfight_mage_warlocks_T3_Quote"				"A quanto pare la rivalità tra me e il Cantrip non è più molto amichevole. - <i>Jull riflette sulla concorrenza</i>"
@@ -4929,7 +4935,7 @@
 	"DAC_Challenge_Streetfight_mage_warlocks_T3_Lose"				"Il Cantrip ha mandato in bancarotta il Sundered Moon"
 
 	"DAC_Challenge_Streetfight_peacekeepers-T3-Jull_Title"		"Chi prende a pugni le sentinelle?"
-	"DAC_Challenge_Streetfight_peacekeepers-T3-Jull_Bot"		"Guardia cittadina"
+	"DAC_Challenge_Streetfight_peacekeepers-T3-Jull_Bot"		"La guardia cittadina"
 	"DAC_Challenge_Streetfight_peacekeepers-T3-Jull_BotDesc"	"peacekeepers-T3-Jull Desc"
 	"DAC_Challenge_Streetfight_peacekeepers-T3-Jull_Lore"		"I volontari che fanno parte della guardia cittadina a Guglia bianca sono diversi dalla maggior parte dei cittadini. Questi uomini e queste donne hanno molto a cuore l'ordine pubblico... e non si fermeranno davanti a niente per ripristinarlo."
 	"DAC_Challenge_Streetfight_peacekeepers-T3-Jull_Quote"		"Non tutte le pattuglie di Guglia bianca sono disposte a lasciarsi corrompere per guardare dall'altra parte... in queste spiacevoli situazioni farò tutto il necessario per assicurarmi che il mio prodotto possa muoversi liberamente in tutta la città. - <i>Jull l'affabile</i>"
@@ -4938,7 +4944,7 @@
 
 
 	"DAC_Challenge_Streetfight_brawny_brutes_Title"		"Ubriaco di botte"
-	"DAC_Challenge_Streetfight_brawny_brutes_Bot"		"Rissosi"
+	"DAC_Challenge_Streetfight_brawny_brutes_Bot"		"I rissosi"
 	"DAC_Challenge_Streetfight_brawny_brutes_BotDesc"	"brawny_brutes Desc"
 	"DAC_Challenge_Streetfight_brawny_brutes_Lore"		"Goodkind voleva appianare i rapporti tra Axe e Jull, ma entrambi sono le creature più testarde di tutto il creato."
 	"DAC_Challenge_Streetfight_brawny_brutes_Quote"		"Axe non mi ha ancora perdonato per averlo bandito temporaneamente dal Sundered Moon... probabilmente perché Goodkind deve ancora spiegare ad Axe cosa significa \"temporaneamente\". - <i>Jull non teme gli scambi di idee</i>"
@@ -4956,7 +4962,7 @@
 
 
 	"DAC_Challenge_Streetfight_wildwings_Title"		"La riscossa delle pecore nere"
-	"DAC_Challenge_Streetfight_wildwings_Bot"		"Selvalate"
+	"DAC_Challenge_Streetfight_wildwings_Bot"		"I selvalati"
 	"DAC_Challenge_Streetfight_wildwings_BotDesc"		"wildwings Desc"
 	"DAC_Challenge_Streetfight_wildwings_Lore"		"Grek si sentiva insultato dal fatto che Mamma Eeb non lo considerasse allo stesso livello di Jull. Quindi ora vuole disperatamente mettere al suo posto Jull per dimostrare che merita di essere considerato un pezzo grosso della città."
 	"DAC_Challenge_Streetfight_wildwings_Quote"		"Una volta pensavo che Grek fosse una semplice distrazione, ma ormai è ovvio che stia cercando un posto a tavola. - <i>Jull ha a che fare con una matricola</i>"
@@ -4965,7 +4971,7 @@
 
 
 	"DAC_Challenge_Streetfight_dragons_Title"		"Delizioso ma letale"
-	"DAC_Challenge_Streetfight_dragons_Bot"		"Dragoni"
+	"DAC_Challenge_Streetfight_dragons_Bot"		"I Dragoni"
 	"DAC_Challenge_Streetfight_dragons_BotDesc"		"dragons Desc"
 	"DAC_Challenge_Streetfight_dragons_Lore"		"Il filetto di wyrm è una prelibatezza popolare per le Orchidee bianche, un fatto che non è sfuggito alla comunità dei Dragoni. Quindi, ora i membri delle Orchidee bianche sono diventati una prelibatezza per i Dragoni."
 	"DAC_Challenge_Streetfight_dragons_Quote"		"Il mio coinvolgimento con le Orchidee bianche non è privo di controversie: ad esempio, ci sono molte creature che non apprezzano il fatto che io voglia mangiarle. - <i>Jull, goloso di carne di Dragoni</i>"
@@ -4983,7 +4989,7 @@
 
 
 	"DAC_Challenge_Streetfight_mages_and_golems_Title"		"Le spine della rosa"
-	"DAC_Challenge_Streetfight_mages_and_golems_Bot"		"Maghi e golem"
+	"DAC_Challenge_Streetfight_mages_and_golems_Bot"		"I Maghi e i golem"
 	"DAC_Challenge_Streetfight_mages_and_golems_BotDesc"		"mages_and_golems Desc"
 	"DAC_Challenge_Streetfight_mages_and_golems_Lore"		"Gli agenti di Rosa Piangente hanno cercato di intimidire Jull. Non è andata molto bene."
 	"DAC_Challenge_Streetfight_mages_and_golems_Quote"		"Quando impareranno questi maghi e le loro bestioline? - <i>Jull lo schiacciasassi</i>"
@@ -5103,7 +5109,7 @@
 	
 	// Anessix S1 City Crawl Street Fights
 	"DAC_Challenge_Streetfight_spirits_Title"		"Questo è lo Spirito giusto!"
-	"DAC_Challenge_Streetfight_spirits_Bot"			"Fratelli Spiriti"
+	"DAC_Challenge_Streetfight_spirits_Bot"			"I Fratelli Spiriti"
 	"DAC_Challenge_Streetfight_spirits_BotDesc"		"spirits Desc"
 	"DAC_Challenge_Streetfight_spirits_Lore"		"Nonostante tutti i loro difetti, i fratelli Spiriti, in fondo, sono brave persone e non amano l'idea che Guglia bianca cada nelle mani di un demone."
 	"DAC_Challenge_Streetfight_spirits_Quote"		"Guarda, mi rendo conto che sia divertente per le divinità minori gonfiare il petto e mostrare superiorità ai mortali... ma io non sono una mortale e i fratelli Spiriti si pentiranno della loro trasgressione - <i>Anessix ha problemi da immortale</i>"
@@ -5114,7 +5120,7 @@
 	
 
 	"DAC_Challenge_Streetfight_warlocks_Title"		"Blocco degli Stregoni"
-	"DAC_Challenge_Streetfight_warlocks_Bot"		"Stregoni"
+	"DAC_Challenge_Streetfight_warlocks_Bot"		"Gli Stregoni"
 	"DAC_Challenge_Streetfight_warlocks_BotDesc"		"warlocks Desc"
 	"DAC_Challenge_Streetfight_warlocks_Lore"		"Può sembrare che il Conclave di Zaffiro voglia regolamentare la magia, ma Anessix mira a controllarla... ecco perché vuole obbligare ogni incantatore della città a essere nel suo libro paga."
 	"DAC_Challenge_Streetfight_warlocks_Quote"		"Il mio obiettivo è avere il monopolio della magia... la prima fase del mio piano consiste nel mettere in riga gli Stregoni. - <i>Anessix cerca di monopolizzare il mercato</i>"
@@ -5123,7 +5129,7 @@
 
 
 	"DAC_Challenge_Streetfight_heartless_Title"		"La regina dei dannati"
-	"DAC_Challenge_Streetfight_heartless_Bot"		"Non morto"
+	"DAC_Challenge_Streetfight_heartless_Bot"		"I non morti"
 	"DAC_Challenge_Streetfight_heartless_BotDesc"		"heartless Desc"
 	"DAC_Challenge_Streetfight_heartless_Lore"		"Il potere ha rispetto solo per il potere e non c'è niente che Anessix desideri più del rispetto."
 	"DAC_Challenge_Streetfight_heartless_Quote"		"I dannati non hanno una morale, ma hanno una gerarchia… e io dovrei esserne a capo. - <i>Anessix, predatrice alfa</i>"
@@ -5132,7 +5138,7 @@
 
 
 	"DAC_Challenge_Streetfight_hellbears_Title"		"Evviva!"
-	"DAC_Challenge_Streetfight_hellbears_Bot"		"Orsi infernali addomesticati"
+	"DAC_Challenge_Streetfight_hellbears_Bot"		"Gli Orsi infernali addomesticati"
 	"DAC_Challenge_Streetfight_hellbears_BotDesc"		"hellbears Desc"
 	"DAC_Challenge_Streetfight_hellbears_Lore"		"Tra tutti gli Underlord, Anessix è quella a disprezzare di più Grek."
 	"DAC_Challenge_Streetfight_hellbears_Quote"		"Grek pensa che un paio dei suoi orsi infernali addomesticati saranno abbastanza per rallentarmi… ridicolo. - <i>Ad Anessix non piacciono gli orsi infernali</i>"
@@ -5141,7 +5147,7 @@
 
 
 	"DAC_Challenge_Streetfight_bloodbounds_Title"		"Parole pesanti"
-	"DAC_Challenge_Streetfight_bloodbounds_Bot"			"Patti di sangue"
+	"DAC_Challenge_Streetfight_bloodbounds_Bot"			"I Patto di sangue"
 	"DAC_Challenge_Streetfight_bloodbounds_BotDesc"		"bloodbounds Desc"
 	"DAC_Challenge_Streetfight_bloodbounds_Lore"		"Una delle teste di Ogre Magi non ha esitato a esprimere il suo parere su Anessix durante una partita a carte e le voci sui suoi insulti si sono diffuse in tutta la città, con grande imbarazzo di Anessix."
 	"DAC_Challenge_Streetfight_bloodbounds_Quote"		"Sai, Ogre Magi è veramente troppo stupido per essere un servitore utile, ma il suo rifiuto di inchinarsi al mio cospetto deve essere punito. - <i>Anessix crede di non essere stata abbastanza severa</i>"
@@ -5159,7 +5165,7 @@
 
 
 	"DAC_Challenge_Streetfight_primordials_Title"		"Collisione tra mondi"
-	"DAC_Challenge_Streetfight_primordials_Bot"			"Primordiali"
+	"DAC_Challenge_Streetfight_primordials_Bot"			"I Primordiali"
 	"DAC_Challenge_Streetfight_primordials_BotDesc"		"primordials Desc"
 	"DAC_Challenge_Streetfight_primordials_Lore"		"Anessix non cerca solo il potere sul piano mortale, vuole anche il predominio sui primordiali."
 	"DAC_Challenge_Streetfight_primordials_Quote"		"Le forze primordiali temono ciò che succederà se riesco a mettere piede qui. Ma non importa, i loro sforzi falliranno come tutti gli altri. - <i>Anessix, una forza della natura</i>"
@@ -5168,7 +5174,7 @@
 
 
 	"DAC_Challenge_Streetfight_freed_summons_Title"		"L'incantesimo è spezzato"
-	"DAC_Challenge_Streetfight_freed_summons_Bot"		"Servitori liberati"
+	"DAC_Challenge_Streetfight_freed_summons_Bot"		"I Servitori liberati"
 	"DAC_Challenge_Streetfight_freed_summons_BotDesc"	"freed_summons Desc"
 	"DAC_Challenge_Streetfight_freed_summons_Lore"		"Incantare le creature è un ottimo sistema per ottenerne la lealtà finché l'effetto non svanisce... chiunque tu abbia incantato ti vorrà probabilmente morto."
 	"DAC_Challenge_Streetfight_freed_summons_Quote"		"I miei servitori vengono trattati bene... ma se rifiuti i miei favori e ti ribelli, non posso fare altro che sopprimerti. - <i>Anessix giustifica le sue azioni</i>"
@@ -5195,7 +5201,7 @@
 
 
 	"DAC_Challenge_Streetfight_bloodbounds_and_savage_Title"		"Attento agli antichi Dei"
-	"DAC_Challenge_Streetfight_bloodbounds_and_savage_Bot"		"Patto di sangue selvaggio"
+	"DAC_Challenge_Streetfight_bloodbounds_and_savage_Bot"		"I Patto di sangue selvaggi"
 	"DAC_Challenge_Streetfight_bloodbounds_and_savage_BotDesc"		"bloodbounds_and_savage Desc"
 	"DAC_Challenge_Streetfight_bloodbounds_and_savage_Lore"		"I Gemelli Flagellati sono tanto enigmatici quanto terrificanti... e i demoni hanno ragione a temerli."
 	"DAC_Challenge_Streetfight_bloodbounds_and_savage_Quote"		"Il servo dei Gemelli Flagellati ha messo gli occhi su di me. Mentirei se dicessi che la cosa non mi preoccupa. - <i>Anessix ci tiene a tenere il sangue all'interno del corpo</i>"
@@ -5204,7 +5210,7 @@
 
 
 	"DAC_Challenge_Streetfight_tb_and_hunters_Title"		"Dal Cristallo Nero con amore"
-	"DAC_Challenge_Streetfight_tb_and_hunters_Bot"		"Cacciatori di demoni"
+	"DAC_Challenge_Streetfight_tb_and_hunters_Bot"		"I Cacciatori e i Demoni"
 	"DAC_Challenge_Streetfight_tb_and_hunters_BotDesc"		"tb_and_hunters Desc"
 	"DAC_Challenge_Streetfight_tb_and_hunters_Lore"		"Per la maggior parte dei mortali non c'è alcuna differenza tra Anessix e quelli come Terrorblade, ma in realtà c'è una differenza abissale tra i due, sia in termini di metodologia che di filosofia. Dire che tra i due non corre buon sangue è un eufemismo."
 	"DAC_Challenge_Streetfight_tb_and_hunters_Quote"		"Sembrerebbe che non tutti i Demoni apprezzino il fatto che io sia disposta a lavorare con i mortali invece di schiavizzarli. A Guglia bianca non c'è posto per le idee antiquate di Terrorblade. - <i>Anessix, Demone progressista</i>"
@@ -5213,7 +5219,7 @@
 
 
 	"DAC_Challenge_Streetfight_savage_druids_anessix_Title"		"Furia della natura"
-	"DAC_Challenge_Streetfight_savage_druids_anessix_Bot"		"Druidi Selvaggi"
+	"DAC_Challenge_Streetfight_savage_druids_anessix_Bot"		"I Druidi Selvaggi"
 	"DAC_Challenge_Streetfight_savage_druids_anessix_BotDesc"	"savage_druids_anessix Desc"
 	"DAC_Challenge_Streetfight_savage_druids_anessix_Lore"		"I Demoni non appartengono a questo mondo, quindi le forze della natura insorgono istintivamente contro di loro."
 	"DAC_Challenge_Streetfight_savage_druids_anessix_Quote"		"Lasciate pure che gli abitanti della foresta e i loro scagnozzi cerchino di spodestarmi. Un Demone non ha niente da temere dal mondo naturale. - <i>Anessix ama il campeggio di lusso</i>"
@@ -5222,7 +5228,7 @@
 
 
 	"DAC_Challenge_Streetfight_brawny_brutes_anessix_Title"		"L'unione fa la forza"
-	"DAC_Challenge_Streetfight_brawny_brutes_anessix_Bot"		"Bruti reclutati"
+	"DAC_Challenge_Streetfight_brawny_brutes_anessix_Bot"		"I Bruti reclutati"
 	"DAC_Challenge_Streetfight_brawny_brutes_anessix_BotDesc"	"brawny_brutes_anessix Desc"
 	"DAC_Challenge_Streetfight_brawny_brutes_anessix_Lore"		"O'nia e Grek non erano interessati a scontrarsi direttamente con Anessix… ma questo non ha impedito loro di finanziare dei mercenari per tentare di cacciarla dalla città."
 	"DAC_Challenge_Streetfight_brawny_brutes_anessix_Quote"		"Questa non è la prima volta che devo sopportare una crociata contro di me. Sopravviverò alle loro fionde e alle loro frecce come ho già fatto nelle ere passate. - <i>Niente di nuovo per Anessix</i>"
@@ -5231,7 +5237,7 @@
 
 
 	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_anessix_Title"		"J'Muy' non è il suo ragazzo"
-	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_anessix_Bot"		"Troll nomadi"
+	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_anessix_Bot"		"I Troll nomadi"
 	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_anessix_BotDesc"		"dark_trolls_and_tombstones_anessix Desc"
 	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_anessix_Lore"		"Ad Anessix piace far finta che i suoi poteri siano illimitati, ma in realtà nemmeno lei ha potere sui morti... qualcosa di cui si ricorda ogni volta che vede i Troll oscuri. Quindi è disposta a fare il possibile per cacciarli da Guglia bianca."
 	"DAC_Challenge_Streetfight_dark_trolls_and_tombstones_anessix_Quote"		"I Troll oscuri giocano a fare i padroni dei morti... ma il loro potere non è niente in confronto al mio. - <i>Anessix protesta un po' troppo</i>"
@@ -5240,7 +5246,7 @@
 
 
 	"DAC_Challenge_Streetfight_sf_and_golems_Title"		"Ordine a corte"
-	"DAC_Challenge_Streetfight_sf_and_golems_Bot"		"Cospirazione demoniaca"
+	"DAC_Challenge_Streetfight_sf_and_golems_Bot"		"La Cospirazione demoniaca"
 	"DAC_Challenge_Streetfight_sf_and_golems_BotDesc"		"botdesc"
 	"DAC_Challenge_Streetfight_sf_and_golems_Lore"		"Shadow Fiend si è stancato dell'ascesa al potere di Anessix e cerca di metterla al suo posto"
 	"DAC_Challenge_Streetfight_sf_and_golems_Quote"		"Era già abbastanza brutto avere a che fare con Enno, Jull e Hobgen… ma ora Nevermore sta cercando di scacciarmi dalla Corte di Ristul. Questa è una situazione che devo gestire di persona. - <i>Le mura si stanno chiudendo attorno ad Anessix</i>"
@@ -5249,7 +5255,7 @@
 
 
 	"DAC_Challenge_Streetfight_axe_and_friends_Title"		"La vendetta della Nebbia Rossa"
-	"DAC_Challenge_Streetfight_axe_and_friends_Bot"			"Oglodi"
+	"DAC_Challenge_Streetfight_axe_and_friends_Bot"			"Gli Oglodi"
 	"DAC_Challenge_Streetfight_axe_and_friends_BotDesc"		"desc"
 	"DAC_Challenge_Streetfight_axe_and_friends_Lore"		"Axe si è allontanato di proposito dal resto degli Oglodi. Tuttavia, anche se ha rifiutato la Nebbia Rossa e il suo retaggio, condivide ancora il loro odio verso i Demoni. Quindi, non appena Axe è venuto a conoscenza dell'esistenza di Anessix, sapeva di doverle fare un salutino."
 	"DAC_Challenge_Streetfight_axe_and_friends_Quote"		"L'odio degli Oglodi verso i Demoni è risaputo, era solo una questione di tempo prima che Axe mi venisse a cercare... fortunatamente non è un idiota. - <i>Anessix si prepara all'inevitabile</i>"
@@ -5258,7 +5264,7 @@
 
 
 	"DAC_Challenge_Streetfight_spirits_and_voids_Title"		"Nell'ignoto"
-	"DAC_Challenge_Streetfight_spirits_and_voids_Bot"		"Creature celesti"
+	"DAC_Challenge_Streetfight_spirits_and_voids_Bot"		"Le Creature celesti"
 	"DAC_Challenge_Streetfight_spirits_and_voids_BotDesc"	"spirits_and_voids Desc"
 	"DAC_Challenge_Streetfight_spirits_and_voids_Lore"		"Anessix non si limita a guardare nell'abisso… lo stuzzica. Lo provoca. E sta per scoprire che farlo comporta delle conseguenze."
 	"DAC_Challenge_Streetfight_spirits_and_voids_Quote"		"Se i cieli stanno cercando di fermarmi, significa che il mio potere sta crescendo. Una volta che mi sarò occupata delle creature celesti, nessuno si azzarderà a contrastarmi. - <i>Anessix, cercatrice dell'Apoteosi</i>"
@@ -5267,7 +5273,7 @@
 
 
 	"DAC_Challenge_Streetfight_dk_and_black_dragons_Title"		"Vendetta di Slyrak"
-	"DAC_Challenge_Streetfight_dk_and_black_dragons_Bot"		"Dragoni e Dragoni"
+	"DAC_Challenge_Streetfight_dk_and_black_dragons_Bot"		"I Dragoni e i Dragoni"
 	"DAC_Challenge_Streetfight_dk_and_black_dragons_BotDesc"		"dk_and_black_dragons Desc"
 	"DAC_Challenge_Streetfight_dk_and_black_dragons_Lore"		"A Davion non è piaciuto venire incantato da Anessix… Adesso, come Slyrak, guida i suoi alleati Dragoni verso una sanguinosa vendetta"
 	"DAC_Challenge_Streetfight_dk_and_black_dragons_Quote"		"Quando ho lasciato andare Davion, credevo avrebbe compreso la misericordia del mio gesto… alzare la sua spada contro di me per vendicarsi sarà il suo ultimo errore. - <i>Anessix, nessuna buona azione resta impunita</i>"
@@ -5430,7 +5436,7 @@
 
 	// Enno S1 City Crawl Street Fights
 	"DAC_Challenge_Streetfight_humans_and_hunters_enno_Title"		"Benvenuti a Guglia bianca"
-	"DAC_Challenge_Streetfight_humans_and_hunters_enno_Bot"			"Turisti"
+	"DAC_Challenge_Streetfight_humans_and_hunters_enno_Bot"			"I Turisti"
 	"DAC_Challenge_Streetfight_humans_and_hunters_enno_BotDesc"		"humans_and_hunters_enno Desc"
 	"DAC_Challenge_Streetfight_humans_and_hunters_enno_Lore"		"Enno ama derubare i turisti che si ritrovano nelle Tane"
 	"DAC_Challenge_Streetfight_humans_and_hunters_enno_Quote"		"Enno spiega la sua passione per assaltare le matricole di Guglia bianca"
@@ -5439,7 +5445,7 @@
 
 
 	"DAC_Challenge_Streetfight_trolls_enno_Title"		"Visitatori indesiderati"
-	"DAC_Challenge_Streetfight_trolls_enno_Bot"		"Troll"
+	"DAC_Challenge_Streetfight_trolls_enno_Bot"		"I Troll"
 	"DAC_Challenge_Streetfight_trolls_enno_BotDesc"		"trolls_enno Desc"
 	"DAC_Challenge_Streetfight_trolls_enno_Lore"		"I Troll stanno ficcando il naso nelle Tane e Enno vuole capire il perché."
 	"DAC_Challenge_Streetfight_trolls_enno_Quote"		"Enno esprime la sua opinione sui Troll che si sono infiltrati nel suo territorio"
@@ -5448,7 +5454,7 @@
 
 
 	"DAC_Challenge_Streetfight_heartless_enno_Title"		"Dei cadaveri non si butta via niente"
-	"DAC_Challenge_Streetfight_heartless_enno_Bot"		"Non morti"
+	"DAC_Challenge_Streetfight_heartless_enno_Bot"		"I Non morti"
 	"DAC_Challenge_Streetfight_heartless_enno_BotDesc"		"heartless_enno Desc"
 	"DAC_Challenge_Streetfight_heartless_enno_Lore"		"Il sarto, Carl, paga un bel po' per materiali di qualità e in molti si aggirano tra le discariche delle Tane per trovare cadaveri da vendere."
 	"DAC_Challenge_Streetfight_heartless_enno_Quote"		"Enno vuole essere l'unico a trarre profitto dai cadaveri"
@@ -5457,7 +5463,7 @@
 
 
 	"DAC_Challenge_Streetfight_hunters_enno_Title"		"La stagione della caccia"
-	"DAC_Challenge_Streetfight_hunters_enno_Bot"		"Cacciatori"
+	"DAC_Challenge_Streetfight_hunters_enno_Bot"		"I Cacciatori"
 	"DAC_Challenge_Streetfight_hunters_enno_BotDesc"		"hunters_enno Desc"
 	"DAC_Challenge_Streetfight_hunters_enno_Lore"		"Le Tane sono la dimora di molte creature… e dei loro predatori."
 	"DAC_Challenge_Streetfight_hunters_enno_Quote"		"A Enno non piace ricevere visite sul suo territorio."
@@ -5475,7 +5481,7 @@
 
 
 	"DAC_Challenge_Streetfight_brutes_enno_Title"		"Galateo degli scippi"
-	"DAC_Challenge_Streetfight_brutes_enno_Bot"		"Bruti"
+	"DAC_Challenge_Streetfight_brutes_enno_Bot"		"I Bruti"
 	"DAC_Challenge_Streetfight_brutes_enno_BotDesc"		"brutes_enno Desc"
 	"DAC_Challenge_Streetfight_brutes_enno_Lore"		"Enno prende molto sul serio la violenza nelle strade e non apprezza quando quei teppisti dei Bruti la praticano senza arte."
 	"DAC_Challenge_Streetfight_brutes_enno_Quote"		"Enno spiega gli elementi fondamentali dello scippo"
@@ -5484,7 +5490,7 @@
 
 
 	"DAC_Challenge_Streetfight_assassins_enno_Title"		"B&B Assassino"
-	"DAC_Challenge_Streetfight_assassins_enno_Bot"		"Assassini"
+	"DAC_Challenge_Streetfight_assassins_enno_Bot"		"Gli Assassini"
 	"DAC_Challenge_Streetfight_assassins_enno_BotDesc"		"assassins_enno Desc"
 	"DAC_Challenge_Streetfight_assassins_enno_Lore"		"La Cerchia di Diaspro ha dei rifugi sparsi in tutta la città che affitta ai nuovi arrivati che cercano di tenere un profilo basso... tuttavia i rifugi diventano meno sicuri quando vengono scoperti"
 	"DAC_Challenge_Streetfight_assassins_enno_Quote"		"Enno vuole che l'affitto venga pagato a lui, non alla Cerchia di Diaspro"
@@ -5493,7 +5499,7 @@
 
 
 	"DAC_Challenge_Streetfight_street_healers_enno_Title"		"Quarantena"
-	"DAC_Challenge_Streetfight_street_healers_enno_Bot"			"Dottori pestilenziali"
+	"DAC_Challenge_Streetfight_street_healers_enno_Bot"			"I Dottori pestilenziali"
 	"DAC_Challenge_Streetfight_street_healers_enno_BotDesc"		"street_healers_enno Desc"
 	"DAC_Challenge_Streetfight_street_healers_enno_Lore"		"Nel tentativo di diffondere la pestilenza, Necrophos si affida alle Tane."
 	"DAC_Challenge_Streetfight_street_healers_enno_Quote"		"Enno puntualizza in modo specifico cosa farà a Necrophos se non se ne va."
@@ -5502,7 +5508,7 @@
 
 
 	"DAC_Challenge_Streetfight_bloodbounds_and_warlocks_Title"		"Crescita sperimentale"
-	"DAC_Challenge_Streetfight_bloodbounds_and_warlocks_Bot"		"Stregoni Patto di sangue"
+	"DAC_Challenge_Streetfight_bloodbounds_and_warlocks_Bot"		"Gli Stregoni e i Patto di sangue"
 	"DAC_Challenge_Streetfight_bloodbounds_and_warlocks_BotDesc"		"bloodbounds_and_warlock Desc"
 	"DAC_Challenge_Streetfight_bloodbounds_and_warlocks_Lore"		"Non è raro vedere gli Stregoni recarsi nelle Tane alla ricerca di qualche \"volontario\" per i loro esperimenti."
 	"DAC_Challenge_Streetfight_bloodbounds_and_warlocks_Quote"		"Enno dichiara che la vita non è sacra a Guglia bianca, ma i suoi uomini non sono in vendita"
@@ -5510,7 +5516,7 @@
 	"DAC_Challenge_Streetfight_bloodbounds_and_warlocks_Lose"		"Pettegolezzo! Giganti con trapianti di carne infestano le Tane"
 	
 	"DAC_Challenge_Streetfight_bloodbounds_and_warlock_Title"		"Crescita sperimentale"
-	"DAC_Challenge_Streetfight_bloodbounds_and_warlock_Bot"		"Stregoni Patto di sangue"
+	"DAC_Challenge_Streetfight_bloodbounds_and_warlock_Bot"		"Gli Stregoni e i Patto di sangue"
 	"DAC_Challenge_Streetfight_bloodbounds_and_warlock_BotDesc"		"bloodbounds_and_warlock Desc"
 	"DAC_Challenge_Streetfight_bloodbounds_and_warlock_Lore"		"Non è raro vedere gli Stregoni recarsi nelle Tane alla ricerca di qualche \"volontario\" per i loro esperimenti."
 	"DAC_Challenge_Streetfight_bloodbounds_and_warlock_Quote"		"Enno dichiara che la vita vale poco a Guglia bianca, ma i suoi uomini non sono in vendita"
@@ -5520,7 +5526,7 @@
 
 
 	"DAC_Challenge_Streetfight_dragons_enno_Title"		"Spuntino di mezzanotte"
-	"DAC_Challenge_Streetfight_dragons_enno_Bot"		"Dragoni"
+	"DAC_Challenge_Streetfight_dragons_enno_Bot"		"I dragoni"
 	"DAC_Challenge_Streetfight_dragons_enno_BotDesc"		"dragons_enno Desc"
 	"DAC_Challenge_Streetfight_dragons_enno_Lore"		"I Dragoni hanno la tendenza a sbranare ciò che vogliono e quando vogliono... e, purtroppo per la gente di Enno, i Dragoni li trovano deliziosi."
 	"DAC_Challenge_Streetfight_dragons_enno_Quote"		"Enno promette di evitare che la sua gente venga sbranata"
@@ -5529,7 +5535,7 @@
 
 
 	"DAC_Challenge_Streetfight_wildwings_and_druids_Title"		"Domatori"
-	"DAC_Challenge_Streetfight_wildwings_and_druids_Bot"		"Selvalati e Druidi"
+	"DAC_Challenge_Streetfight_wildwings_and_druids_Bot"		"I Selvalati e i Druidi"
 	"DAC_Challenge_Streetfight_wildwings_and_druids_BotDesc"	"wildwings_and_druids Desc"
 	"DAC_Challenge_Streetfight_wildwings_and_druids_Lore"		"Grek introduce continuamente creature esotiche nei suoi spettacoli di combattimento... forse avrebbe dovuto pagare per importarli in città invece di farli sgattaiolare attraverso le Tane"
 	"DAC_Challenge_Streetfight_wildwings_and_druids_Quote"		"Enno ricorda al popolo che, se vuole attraversare in sicurezza le Tane, è meglio pagare il tributo"
@@ -5538,7 +5544,7 @@
 
 
 	"DAC_Challenge_Streetfight_knights_Title"		"Spazzini"
-	"DAC_Challenge_Streetfight_knights_Bot"			"Cavalieri"
+	"DAC_Challenge_Streetfight_knights_Bot"			"I Cavalieri"
 	"DAC_Challenge_Streetfight_knights_BotDesc"		"knights Desc"
 	"DAC_Challenge_Streetfight_knights_Lore"		"È inevitabile che, quando le parti più \"civilizzate\" della città pensano che le Tane stiano andando fuori controllo, vengano arruolati dei mercenari per liberarsi degli abitanti più discutibili delle Tane."
 	"DAC_Challenge_Streetfight_knights_Quote"		"Enno condivide la sua opinione su cosa voglia dire essere civilizzati"
@@ -5547,7 +5553,7 @@
 
 
 	"DAC_Challenge_Streetfight_dark_trolls_Title"		"Non fare il Troll"
-	"DAC_Challenge_Streetfight_dark_trolls_Bot"			"Troll oscuri"
+	"DAC_Challenge_Streetfight_dark_trolls_Bot"			"I Troll oscuri"
 	"DAC_Challenge_Streetfight_dark_trolls_BotDesc"		"dark_trolls Desc"
 	"DAC_Challenge_Streetfight_dark_trolls_Lore"		"J'Muy sperava che le Tane fossero un buon luogo per consolidare il suo potere... Non aveva considerato però quanto fosse territoriale Enno"
 	"DAC_Challenge_Streetfight_dark_trolls_Quote"		"Enno si dilunga nello spiegare di cosa sia capace pur di difendere la sua casa"
@@ -5556,7 +5562,7 @@
 
 
 	"DAC_Challenge_Streetfight_wolves_Title"		"MANGIAMO I LUPI!"
-	"DAC_Challenge_Streetfight_wolves_Bot"		"Lupi gustosi"
+	"DAC_Challenge_Streetfight_wolves_Bot"		"I Lupi gustosi"
 	"DAC_Challenge_Streetfight_wolves_BotDesc"	"wolves Desc"
 	"DAC_Challenge_Streetfight_wolves_Lore"		"Enno vuole solo mangiare qualche lupo"
 	"DAC_Challenge_Streetfight_wolves_Quote"	"Enno manifesta il suo desiderio di gustarsi qualche lupo"

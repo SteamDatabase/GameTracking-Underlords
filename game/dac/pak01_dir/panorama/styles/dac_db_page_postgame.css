@@ -6,7 +6,6 @@ DACPagePostGame
 	height:100%;
 	flow-children:none;
 
-	//background-image: url("s2r://panorama/images/hud/post_game/post-game-bg_jpg.vtex");
 	background-size: cover;
 	background-position: center;
 	
@@ -55,16 +54,12 @@ DACPagePostGame.DashboardPage.PageVisible #BlackBG
 	opacity:0;
 }
 
-.LowVisualQuality DACPagePostGame
-{
-	//background-image: url("s2r://panorama/images/hud/post_game/post-game-bg-lowres_jpg.vtex");
-}
-
 .IsLayoutSmallScreen DACPagePostGame
 {
-	//background-image: url("s2r://panorama/images/hud/post_game/post-game-bg-mobile_jpg.vtex");
 	background-position: center;
 }
+
+.IsLowMemoryDevice DACPagePostGame Label,
 .LowVisualQuality DACPagePostGame Label
 {
 	transition-property: none;
@@ -108,6 +103,12 @@ DACPagePostGame.DashboardPage.PageVisible #BlackBG
 	animation-timing-function: linear;
 }
 
+.IsLowMemoryDevice #ScrollingPage,
+.LowVisualQuality #ScrollingPage {
+	transition-property: none;
+	transform: none;
+}
+
 .DisableScrolling #ScrollingPage {
 	overflow: clip;
 }
@@ -126,10 +127,21 @@ DACPagePostGame.DashboardPage.PageVisible #BlackBG
 	transform: translateY(50px) rotateZ(-2deg);
 }
 
+.IsLowMemoryDevice .SpinIn #ScrollingPage,
+.LowVisualQuality .SpinIn #ScrollingPage {
+	animation-name: none;
+	transform: none;
+}
+
 .SeasonProgressPage {
 	opacity: 0;
 	transition-property: opacity;
 	transition-duration: 1.5s;
+}
+
+.IsLowMemoryDevice .SeasonProgressPage,
+.LowVisualQuality .SeasonProgressPage {
+	transition-property: none;
 }
 
 .SpinIn .SeasonProgressPage {
@@ -152,6 +164,18 @@ DACPagePostGame.DashboardPage.PageVisible #BlackBG
 .SpinIn #NewspaperSpin {
 	animation-name: NewspaperSpin;
 	opacity: 0;
+}
+
+.IsLowMemoryDevice #NewspaperSpin,
+.LowVisualQuality #NewspaperSpin
+{
+	visibility: collapse;
+}
+
+.IsLowMemoryDevice .SpinIn #NewspaperSpin,
+.LowVisualQuality .SpinIn #NewspaperSpin {
+	
+	animation-name: none;
 }
 
 DACPagePostGame.DashboardPage {
@@ -332,6 +356,11 @@ DACPagePostGame DACScoreboard.GameMode_Duos
 	opacity: 0.6;
 }
 
+.LowVisualQuality #ScrollLabel
+{
+	opacity: 1;
+}
+
 .IsLayoutSmallScreen #ScrollLabel {
 	ui-scale: 130%;
 	margin-right: 0px;
@@ -398,6 +427,7 @@ DACPlayerAvatar
 	/* TEXTFIX */
 	
 }
+
 
 .Language_tchinese .PlaceTitle,
 .Language_schinese .PlaceTitle,
@@ -628,6 +658,12 @@ DACPlayerAvatar
 	saturation: 0.6;
 }
 
+.LowVisualQuality #UnderlordContainer
+{
+	opacity-mask: none;
+	saturation: 1;
+}
+
 .GameMode_Duos #UnderlordContainer
 {
 	height: 302px;
@@ -641,6 +677,7 @@ DACPlayerAvatar
 	height: 100%;
 	flow-children: down;
 }
+
 .GameMode_Duos .PlayerUnderlordContainer
 {
 	width: 50%;
@@ -747,6 +784,11 @@ DACPlayerAvatar
 	margin-bottom: 20px;
 	background-color: #00000040;
 	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+}
+
+.LowVisualQuality .StatsMainRow
+{
+	opacity-mask: none;
 }
 
 .StatsMainRow.Synergies 
@@ -929,6 +971,12 @@ DACPlayerAvatar {
 	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
 }
 
+.LowVisualQuality .FinalCrewTitle,
+.LowVisualQuality .TalentsTitle
+{
+	opacity-mask: none;
+}
+
 .Language_tchinese .FinalCrewTitle,
 .Language_schinese .FinalCrewTitle,
 .Language_koreana .FinalCrewTitle,
@@ -958,6 +1006,11 @@ DACPlayerAvatar {
 	background-color: #00000040;
 	
 	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+}
+
+.LowVisualQuality .StatsSubContainer
+{
+	opacity-mask: none;
 }
 
 @keyframes 'StatsPanelIn'
@@ -1035,6 +1088,12 @@ DACPlayerAvatar {
 	text-align: center;
 	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
 	
+}
+
+.LowVisualQuality .PlaceContainer
+{
+	opacity-mask: none;
+	overflow: clip;
 }
 
 .BigStat
@@ -1130,6 +1189,11 @@ DACPlayerAvatar {
 	font-size: 65px;
 }
 
+.LowVisualQuality .LowerNavButton Label
+{
+	transform: rotateZ(0deg);
+}
+
 #ReturnToCityCrawlButton Label,
 #MainMenuButton Label
 {
@@ -1203,6 +1267,11 @@ DACPlayerAvatar {
 	padding: 10px 30px;
 }
 
+.LowVisualQuality .StatsTitleRow
+{
+	opacity-mask: none;
+}
+
 .SummaryTitle {
 	font-family: Early Bird;
 	font-size: 55px;
@@ -1231,10 +1300,9 @@ DACPlayerAvatar {
 .MatchDetails Label {
 	font-family: Early Bird;
 	font-size: 45px;
-	color: #e7e0d1;
+	color: #b9b3a7;
 	text-transform: lowercase;
 	letter-spacing: 3px;
-	opacity: 0.6;
 	vertical-align: middle;
 	margin-top: -5px;
 }
@@ -1273,6 +1341,11 @@ DACPlayerAvatar {
 	ui-scale: 120%;
 	background-image: url("s2r://panorama/images/post_game/paper_backing_psd.vtex");
 	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+}
+
+.LowVisualQuality .HeroIconPanel
+{
+	opacity-mask: none;
 }
 
 .IsLayoutSmallScreen .HeroIconPanel {
@@ -1335,7 +1408,6 @@ DACPlayerAvatar {
 {
 	width: 850px;
 	height: 212px;
-	background-image: url("s2r://panorama/images/battle_pass/protopass_logo_png.vtex");
 	background-size: 100%;
 	background-repeat: no-repeat;
 	transform: rotatez(-2deg);
@@ -1384,6 +1456,12 @@ DACPlayerAvatar {
 
 	//background-color: #e7e0d1;
 }
+
+.IsLowMemoryDevice #SeasonProgressContainer
+{
+	background-image: url("s2r://panorama/images/post_game/newspaper_bg_mobile_psd.vtex");
+}
+
 
 .AspectRatio21x9 #SeasonProgressContainer {
 	margin-left: 300px;
@@ -2393,6 +2471,8 @@ DACRankIcon
 }
 
 
+
+
 #RickyComic {
 	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_01_psd.vtex");
 	background-size: contain;
@@ -2405,29 +2485,20 @@ DACRankIcon
 	background-position: center;
 }
 
-#RickyComic.PostgameRickyComic02 {
-	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_02_psd.vtex");
-}
+#RickyComic.PostgameRickyComic02 {	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_02_psd.vtex"); }
+#RickyComic.PostgameRickyComic03 {	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_03_psd.vtex"); }
+#RickyComic.PostgameRickyComic04 {	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_04_psd.vtex"); }
+#RickyComic.PostgameRickyComic05 {	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_05_psd.vtex"); }
+#RickyComic.PostgameRickyComic06 {	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_06_psd.vtex"); }
+#RickyComic.PostgameRickyComic07 {	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_07_psd.vtex"); }
 
-#RickyComic.PostgameRickyComic03 {
-	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_03_psd.vtex");
-}
-#RickyComic.PostgameRickyComic04 {
-	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_04_psd.vtex");
-}
-
-#RickyComic.PostgameRickyComic05 {
-	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_05_psd.vtex");
-}
-
-#RickyComic.PostgameRickyComic06 {
-	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_06_psd.vtex");
-}
-
-#RickyComic.PostgameRickyComic07 {
-	background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_07_psd.vtex");
-}
-
+.IsLowMemoryDevice #RickyComic { background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_01_mobile_psd.vtex"); }
+.IsLowMemoryDevice #RickyComic.PostgameRickyComic02 { background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_02_mobile_psd.vtex"); }
+.IsLowMemoryDevice #RickyComic.PostgameRickyComic03 { background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_03_mobile_psd.vtex"); }
+.IsLowMemoryDevice #RickyComic.PostgameRickyComic04 { background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_04_mobile_psd.vtex"); }
+.IsLowMemoryDevice #RickyComic.PostgameRickyComic05 { background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_05_mobile_psd.vtex"); }
+.IsLowMemoryDevice #RickyComic.PostgameRickyComic06 { background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_06_mobile_psd.vtex"); }
+.IsLowMemoryDevice #RickyComic.PostgameRickyComic07 { background-image: url("s2r://panorama/images/econ/s1/comics/ricky_comics_07_mobile_psd.vtex"); }
 
 .BotMatchLabelContainer {
 	visibility: collapse;

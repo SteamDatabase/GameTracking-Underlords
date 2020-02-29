@@ -357,7 +357,7 @@ $ORIGIN
 %s  ATTACK_START;  attacker %s, speed %f
 %s  DAMAGE;  target %s, attacker %s, damage %f, type %d, critical %d
 %s  DEATH;  deceased %s
-%s  KILLS;  deceased %s, killer %s, kills %u, kill streak %u
+%s  KILLS;  deceased %s, killer %s, kills %1.f, kill streak %u
 %s  RESURRECTION;  deceased %s
 %s "%s" (level %d)
 %s %.0f%%
@@ -3270,7 +3270,6 @@ $ORIGIN
 23CCommentaryViewPosition
 23CCustomGameEventManager
 23CDACServerCrashSentinel
-23CDACUniformRandomStream
 23CDAC_Ability_Enno_Steal
 23CDAC_Axe_BerserkersCall
 23CDAC_Item_BattleFuryOLD
@@ -4099,6 +4098,7 @@ $ORIGIN
 28VPhysicsCollisionAttribute_t
 29CBodyComponentBaseModelEntity
 29CCLCMsg_SplitPlayerDisconnect
+29CDACCombatUniformRandomStream
 29CDACGameRulesHookupGameSystem
 29CDAC_Ability_Anessix_Enthrall
 29CDAC_Ability_Anessix_PurePain
@@ -7710,6 +7710,7 @@ CCustomGameEventManager::Script_RegisterListener - Invalid callback
 CCustomGameEventManager::Script_RegisterListener - Invalid event name
 CCustomGameEventManager::Script_UnregisterListener - ID %d not found.
 CCustomGameEventManager::Script_UnregisterListener - Invalid ID
+CDACCombatUniformRandomStream::s_pInstalledStream
 CDACGameConstants
 CDACGameMode
 CDACGameRules
@@ -7737,8 +7738,6 @@ CDACServerGCSystem
 CDACServerStaticLobby
 CDACShopUnitState
 CDACTurboShopOfferingState
-CDACUnderlordPickerOfferingState
-CDACUniformRandomStream::s_pInstalledStream
 CDACUnitState
 CDAC_Ability
 CDAC_Ability_Abaddon_AphoticShield
@@ -9433,7 +9432,7 @@ CollisonGroupOverride
 ColorCorrectionName
 ColorCorrectionSystem
 Combat %u: %u vs %u: (%.2f+%.2f s) - %s
-Combat Share Code: %s (RNG Seed: %u)
+Combat Share Code: %s
 Combat Simulation for Player %d took %f seconds
 CombatCharVisCache
 Combo(
@@ -9638,7 +9637,6 @@ DACGameConstants is being called before the actual game constants have been init
 DACGameConstantsGameSystem
 DACGameManager001
 DACGameRules()->GetCurrentCombat()
-DACGameRules()->IsListenServerGame()
 DACItemChoiceReward
 DACItemChoiceReward_Choice
 DACItemSlot
@@ -11095,7 +11093,6 @@ GetClassNameOverride
 GetClassname
 GetColor
 GetCombatForPlayerSlot
-GetCombatRNGSeedForRoundNumber
 GetCommandClient
 GetCommandClient() : returns the player who issued this console command.
 GetContext
@@ -16900,7 +16897,6 @@ _vpc_/unity_server_dota_auto_chess/linuxsteamrt64/../../../../../_generated_code
 _vpc_/unity_server_dota_auto_chess/linuxsteamrt64/../../../../../_generated_code/server_dota_auto_chess/release/linuxsteamrt64/../../../../game/server/dac/dac_npc.cpp
 _vpc_/unity_server_dota_auto_chess/linuxsteamrt64/../../../../../_generated_code/server_dota_auto_chess/release/linuxsteamrt64/../../../../game/server/dac/dac_underlord_thinker.cpp
 _vpc_/unity_server_dota_auto_chess/linuxsteamrt64/../../../../../_generated_code/server_dota_auto_chess/release/linuxsteamrt64/../../../../game/server/dac/gamemodes/dac_gm_duos.cpp
-_vpc_/unity_server_dota_auto_chess/linuxsteamrt64/../../../../../_generated_code/server_dota_auto_chess/release/linuxsteamrt64/../../../../game/server/dac/gamemodes/dac_gm_normal.cpp
 _vpc_/unity_server_dota_auto_chess/linuxsteamrt64/../../../../../_generated_code/server_dota_auto_chess/release/linuxsteamrt64/../../../../game/server/dac/gamemodes/dac_gm_puzzle.cpp
 _vpc_/unity_server_dota_auto_chess/linuxsteamrt64/../../../../../_generated_code/server_dota_auto_chess/release/linuxsteamrt64/../../../../game/server/dac/gamemodes/dac_gm_sandbox.cpp
 _vpc_/unity_server_dota_auto_chess/linuxsteamrt64/../../../../../_generated_code/server_dota_auto_chess/release/linuxsteamrt64/../../../../game/server/dac/gamemodes/dac_gm_streetfight.cpp
@@ -21769,6 +21765,7 @@ m_flJoystickAnalogValueY
 m_flKillDelay
 m_flKillMultiplier
 m_flKillRate
+m_flKills
 m_flLODBias
 m_flLaggedMovementValue
 m_flLastAccess
@@ -22075,6 +22072,7 @@ m_flTimeoutInterval
 m_flTonemapMinAvgLum
 m_flTonemapPercentBrightPixels
 m_flTonemapPercentTarget
+m_flTotalKills
 m_flTotalMass
 m_flTouchOutputPerEntityDelay
 m_flTraceHeight
@@ -23200,7 +23198,6 @@ m_nTimesToFire
 m_nTotalDamageGiven
 m_nTotalExperience
 m_nTotalHealingDone
-m_nTotalKills
 m_nTotalTicks
 m_nTotalTicksThisFrame
 m_nTouchers
@@ -23643,7 +23640,6 @@ m_unHumanPlayerSlot
 m_unHumanPlayerSlot != INVALID_PLAYER_SLOT
 m_unItemID
 m_unKillStreak
-m_unKills
 m_unOrientation
 m_unOverrideOrigin
 m_unOwnerContext

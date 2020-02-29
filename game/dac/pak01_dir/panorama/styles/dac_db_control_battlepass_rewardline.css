@@ -78,11 +78,6 @@ DACBattlePassRewardLine #BattlePassOverview .Description
 }
 
 
-/*#ProtopassContainer {*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    flow-children: down;*/
-/*}*/
 
 // TOP ROW
 
@@ -326,7 +321,6 @@ DACControlBattlePass.OnBattlePass_Page
     vertical-align: bottom;
     overflow: noclip;
     margin-bottom: 10px;
-
 }
 
 .RewardLineTitle {
@@ -531,10 +525,21 @@ DACControlBattlePass.OnBattlePass_Page
     //padding-top: 40px;
 }
 
-.IsLayoutSmallScreen.AspectRatio4x3 #RewardLineContainer
+.IsLayoutSmallScreen.AspectRatio4x3 #BottomRow
 {
-	//margin-bottom: 60px;
-	ui-scale: 142%;
+    // ipad
+	margin-bottom: 40px;
+    
+    // NOTE: DO NOT uiscale or scale2d this, it will break scrolling
+    //pre-transform-scale2d: 1.4;
+}
+
+.IsLayoutSmallScreen.AspectRatio4x3 .RewardLineItem, 
+.IsLayoutSmallScreen.AspectRatio4x3 .EmptyReward 
+{
+    // normally 185 x 290
+    width: 240px;
+    height: 376px;
 }
 
 
@@ -570,7 +575,7 @@ DACControlBattlePass.OnBattlePass_Page
     vertical-align: bottom;
 	
 }
- 
+
 #RewardLineItemClaimButton Label
 {
  
@@ -697,10 +702,7 @@ DACControlBattlePass.OnBattlePass_Page
 {
     //flow-children: down;
     width: 16px;
-    height: 290px;
-	//height: 310px;
-
-    
+    height: 290px;   
 	padding: 5px;
     padding-bottom: 15px;
 
@@ -1697,7 +1699,8 @@ Label#DoNotRequireBattlePassText
 
 .EventInfoBG
 {
-    background-image: url("s2r://panorama/images/battle_pass/reward_event_bg_psd.vtex");
+    background-color: gradient(linear, 0% 100%, 0% 0%, from( #30244cee ), to( #025760ee ));
+    background-image: url("s2r://panorama/images/vignettes/backing_vignette_soft_psd.vtex"); 
     
     background-repeat: no-repeat;
     background-size: 100% 100%;

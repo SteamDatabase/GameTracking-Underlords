@@ -1035,6 +1035,7 @@ $tI
 %d unhooked %s
 %d x %s
 %d |
+%d%%  %s
 %d-%d
 %d.%d.%d
 %d.%d.%d.%d:%d
@@ -2969,7 +2970,6 @@ $tI
 18CDACItemDefinition
 18CDAC_UI_FriendMenu
 18CDAC_UI_ItemSelect
-18CDAC_UI_Popup_Hero
 18CDAC_UI_Popup_Item
 18CDAC_UI_RoundStart
 18CDAC_UI_ScenePanel
@@ -3818,6 +3818,7 @@ $tI
 24CDAC_UI_QuickEquipButton
 24CDAC_UI_SettingsCheckbox
 24CDAC_UI_Underlord_Picker
+24CDAC_UI_UserRichPresence
 24CDAC_Wanted_Poster_Title
 24CDeferredLightObjectDesc
 24CDemoCustomDataCallbacks
@@ -4114,6 +4115,7 @@ $tI
 26CDAC_UI_ContextMenu_Player
 26CDAC_UI_DelayedPressButton
 26CDAC_UI_ParticleScenePanel
+26CDAC_UI_Popup_LootListOdds
 26CDAC_UI_Popup_Player_State
 26CDAC_UI_Popup_RewardsAbout
 26CDAC_UI_Popup_Season0Intro
@@ -5391,7 +5393,6 @@ $tI
 9CBaseProp
 9CCallbackI16CDACRichPresence20PersonaStateChange_tLb0EE
 9CCallbackI16CDACRichPresence26FriendRichPresenceUpdate_tLb0EE
-9CCallbackI16CDAC_UI_UserName20PersonaStateChange_tLb0EE
 9CCallbackI16CSteamController22GameOverlayActivated_tLb0EE
 9CCallbackI19CClientSteamContext23SteamServersConnected_tLb0EE
 9CCallbackI19CClientSteamContext26SteamServersDisconnected_tLb0EE
@@ -7481,7 +7482,6 @@ AnimVRFinger_t
 AnimVRHand_t
 AnimatableSceneObjectDesc
 AnimateDuringGameplayPause
-AnimateIn
 AnimateInAndOut
 AnimateOut
 AnimatePlayers
@@ -7794,6 +7794,8 @@ BoardCell
 BoardCellContainer
 BoardPathContainer
 BoardPathNode
+BoardPropOddsTable
+BoardSprayBinder
 Bodies: %d (%d)
 Body Component Scriptdesc
 BodyGameSystem
@@ -10755,6 +10757,7 @@ DACShowLeaderboardHealthDelta
 DACShowLeaderboardTab
 DACShowLoadoutCategory
 DACShowLoadoutPage
+DACShowLootItemOdds
 DACShowMapPropEditor
 DACShowMatchOverScreen
 DACShowMenuButtons
@@ -16388,8 +16391,10 @@ PopupItem
 PopupJullIntro
 PopupLegendaryDescription
 PopupLookingForMatch
+PopupLootListOdds
 PopupMapChallenge
 PopupMovie
+PopupOdds
 PopupPartyInviteFriend
 PopupPartySelectTeam
 PopupPlayPageSeasonInfo
@@ -17094,6 +17099,8 @@ Running command: %s
 Runs a series of tests over net buffers to ensure proper transmission
 Runs for copy type: %s, packing: %s
 S
+S1 Anessix Street Fight Items Tier %d
+S1 Map Prop List
 SAR
 SAVE/
 SAVE/%s.HL%s
@@ -18212,6 +18219,7 @@ StreakLevel3
 StreakLevel4
 StreamEntitiesToFile
 StreetFightChallenge
+StreetFightItemsTier%dOddsTable
 StreetFightSlot
 String field
 String literals cannot cross line boundaries.
@@ -21269,6 +21277,8 @@ dac_board_Buddy
 dac_board_buddy_default_destRadius
 dac_board_buddy_default_movespeed
 dac_board_buddy_default_turnRate
+dac_board_spray_at_cursor
+dac_boardspray_rate_limit
 dac_boarspray_hold_time
 dac_bot_match_game_mode
 dac_bp_set_active_avatar
@@ -22472,6 +22482,7 @@ file://{resources}/layout/popups/popup_item.xml
 file://{resources}/layout/popups/popup_join_party.xml
 file://{resources}/layout/popups/popup_legendary_desc.xml
 file://{resources}/layout/popups/popup_looking_for_match.xml
+file://{resources}/layout/popups/popup_lootlistodds.xml
 file://{resources}/layout/popups/popup_manager.xml
 file://{resources}/layout/popups/popup_movie.xml
 file://{resources}/layout/popups/popup_party_invite_friend.xml
@@ -22571,6 +22582,7 @@ flMotorMaxTorque
 flMotorTargetAngSpeed
 flOriginalDamage
 flOut
+flScale: %f  left: %f  right: %f (paint width: %f) scrollX: %f
 flScaleAmount
 flStabilityDamage
 flag_base
@@ -23763,7 +23775,6 @@ leaderboard_gold_delta
 leaderboardposition
 left hand
 left-wrap
-left: %f  right: %f (paint width: %f) scrollX: %f
 left_
 left_cheek_raiser
 left_corner_puller

@@ -1179,7 +1179,7 @@ DACControlBattlePass.OnBattlePass_Page
 
     margin-top: 87px;
     width: 37%;
-    height: 400px; 
+    height: 500px; 
 }
 #ItemInspector .ItemPanel
 {
@@ -1695,6 +1695,13 @@ Label#DoNotRequireBattlePassText
 
     vertical-align: bottom;
     horizontal-align: center;
+
+    overflow: noclip;
+}
+
+.AspectRatio4x3 #EventInfoItems
+{
+    padding-top: 350px;
 }
 
 .ShowProgressEvent #EventInfoContainer
@@ -1787,17 +1794,32 @@ Label#DoNotRequireBattlePassText
 
 #EventInfoMiddle
 {
-    background-image: url("s2r://panorama/images/battle_pass/bp1/progress_event_description_bg_psd.vtex");
+    background-image: url("s2r://panorama/images/battle_pass/bp1/earned_item_title_backer_psd.vtex");
     background-repeat: no-repeat;
     background-size: 100% 100%;
+
+    max-width: 1900px;
+    height: 196px;
+
+    opacity: 0;
 
     padding: 50px;
 
     transform: translateY(150px) rotateZ(-3deg);
 }
 
+.ShowEvent #EventInfoMiddle
+{
+    animation-name: EventTitleAppear;
+    animation-duration: 3.99s;
+
+    //animation-iteration-count: infinite;
+}
+
 .LowVisualQuality #EventInfoMiddle
 {
+    animation-name: none;
+
     transform: translateY(150px);
 }
 
@@ -1872,6 +1894,41 @@ Label#DoNotRequireBattlePassText
 .IsLayoutSmallScreen.AspectRatio21x9 .kill_streak #Overlay #RewardContainer
 {
     margin-left: 400px;
+}
+
+
+@keyframes 'EventTitleAppear'
+{
+    0%
+    {
+        transform: translateY(150px) rotateZ(-30deg);
+        pre-transform-scale2d: 10;
+        opacity: 0;
+    } 
+
+    8%
+    {
+        opacity: 1;
+    } 
+
+    10%
+    {
+        pre-transform-scale2d: 1.05;
+        transform: translateY(150px) rotateZ(-3.2deg);
+    } 
+
+    92%
+    {
+        opacity: 1;
+    }
+
+    100%
+    {
+        pre-transform-scale2d: 1;
+        transform: translateY(150px) rotateZ(-3deg);
+
+        opacity: 0;
+    }
 }
 
 
@@ -2022,3 +2079,6 @@ Label#DoNotRequireBattlePassText
 {
     visibility: collapse;
 }
+
+
+

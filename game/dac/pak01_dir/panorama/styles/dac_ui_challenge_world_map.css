@@ -79,10 +79,11 @@ DACChallengeWorldMap
 {
 	visibility: collapse;
 }
+
 .ZoomOutButton
 {
-	margin-left: 130px;
-	margin-top: 45px;
+	margin-left: 140px;
+	margin-top: 33px;
 	height: 50px;
 	background-color: #00000090;
 	border: 3px solid #ffffff90;
@@ -90,12 +91,32 @@ DACChallengeWorldMap
 	flow-children: right;
 }
 
-.IsLayoutSmallScreen .ZoomOutButton {
-	ui-scale: 130%;
+.BlueGlowButton {
+	background-color: #00000055;
+	border: 2px solid #b7d5ffaa;
+	box-shadow: inset 0px 0px 20px #4b5affcc;
+
+	transition-property: background-color, border, box-shadow;
+	transition-duration: .2s;
 }
 
+.BlueGlowButton:hover {
+	box-shadow: inset 0px 0px 50px #4b5affcc;
+	border: 2px solid #b7d5ff;
+}
+
+.BlueGlowButton Label {
+	font-family: Ravenhook;
+	color: #ffffff;
+	letter-spacing: 1px;
+	font-size: 18px;
+	vertical-align: middle;
+}
+
+
+
 .IsLayoutSmallScreen.AspectRatio21x9 .ZoomOutButton {
-	margin-left: 220px;
+	margin-left: 160px;
 }
 
 .ZoomOutButton Label {
@@ -528,10 +549,16 @@ DACChallengeWorldMap
 	flow-children:right;
 }
 
-.ShowChallengesContainer,
 .CityKeyContainer {
 	width: fit-children;
 	height: 115px;
+	vertical-align: bottom;
+	horizontal-align: left;
+	margin: 20px;
+}
+
+.ShowChallengesContainer {
+	width: fit-children;
 	vertical-align: bottom;
 	horizontal-align: left;
 	margin: 20px;
@@ -556,7 +583,6 @@ DACChallengeWorldMap
 	background-size: 100% 100%;
 }
 
-.ObjectivesCount,
 .KeyCount {
 	width: 40px;
 	height: 40px;
@@ -564,7 +590,6 @@ DACChallengeWorldMap
 	horizontal-align: right;
 }
 
-.ObjectivesCountLabel,
 .CityKeyLabel {
 	font-family: Ravenhook;
 	font-size: 36px;
@@ -574,13 +599,38 @@ DACChallengeWorldMap
 	vertical-align: middle;
 }
 
+.ObjectivesImg
+{		
+	width: 18px;
+	height: 22px;
+	horizontal-align: left;
+	vertical-align: center;
+	background-image: url("s2r://panorama/images/challenge_map/icon_objective_png.vtex");
+	background-size: 100% 100%;
+	margin-right: 10px;
+}
+
+.ObjectivesCount {
+	vertical-align: bottom;
+	horizontal-align: right;
+	flow-children: right;
+	width: fit-children;
+	height: 50px;
+	padding: 10px 20px;
+}
+
+
 .CityKeyBG {
 	width: 40px;
 	height: 40px;
-	background-color: red;
 	opacity-mask: url("s2r://panorama/images/masks/circle_psd.vtex");
 	background-color: gradient( linear, 0% 90%, 0% 0%, from( #fbbc2e ), to( #ebd784 ) );
 
+}
+
+.IsLayoutSmallScreen .ZoomOutButton,
+.IsLayoutSmallScreen .ObjectivesCount {
+	ui-scale: 130%;
 }
 
 

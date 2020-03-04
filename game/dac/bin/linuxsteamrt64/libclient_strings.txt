@@ -1927,6 +1927,7 @@ $tI
 -noscripting
 -novid
 -playtest
+-precache_wearables_2gb
 -pressdemo
 -reload
 -reset_keybindings
@@ -5664,8 +5665,6 @@ A directional light entity
 A file with this name is already in the pool.
 A protobuf object %s with a repeated field %s was used in a container, this will crash
 A protocol message was rejected because it was too big (more than
-A screen-space particle "%s" attached to "%s" is trying to read a control point before the panel has dimensions.
-A screen-space particle "%s" was attached to a panel that was deleted before being assigned dimensions.
 A specific_item component must define either an exact item to use or a lootlist to select an item from!
 A spot light entity
 A->B
@@ -8124,6 +8123,7 @@ CDAC_DB_Page_Challenge_World_Map::ClaimItem
 CDAC_DB_Page_Profile::EventLoadMoreMatches
 CDAC_DB_Page_Profile::EventShowMatchStats
 CDAC_DB_Page_Profile::Update
+CDAC_ParticleManager::CreateParticleEffectInternal() Lazy loading mode
 CDAC_PlayController::BCheckLaunchParameters() - We are in a game we could try to reconnect to -- ignoring launch parameters
 CDAC_PlayController::BCheckLaunchParameters() - no SteamApps() - steam not initialized yet?
 CDAC_PlayController::CDAC_PlayController()
@@ -8357,6 +8357,7 @@ CGameMovement(%s):  %d/%s Got a NaN velocity on %s
 CGameMovement(%s):  %d/%s Got a velocity too high (>%.2f) on %s
 CGameMovement(%s):  %d/%s Got a velocity too low (<%.2f) on %s
 CGameParticleManager: missing effect index: %s
+CGameParticleManager::RunQueuedParticleManagerCreate() Lazy loading mode
 CGameParticleManagerSystem
 CGameSceneNode
 CGameSceneNode::AddHierarchyUpdate: Encountered unknown bone in parent entity %s (model %s)!
@@ -10647,6 +10648,7 @@ DACReturnFromSpectating
 DACReturnToDashboard
 DACReturnUnitToBench
 DACRewardClaimReward
+DACRewardLineItemDestroyed
 DACRewardPreviewScenePanel
 DACRewardRedeemedSuccess
 DACRewardsAbout
@@ -16097,7 +16099,6 @@ ParticleEffectStop
 ParticleEffectStop_global_client
 ParticleEffect_global_client
 ParticleFG
-ParticleHandleToPanoramaPanelBound
 ParticleIndex_t
 ParticleMgr()->Init
 ParticleProgressBar
@@ -19970,7 +19971,6 @@ _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../fx_tracer.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../fx_water.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../glow_overlay.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../hud.cpp
-_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../particleslibhost_client.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../renderingpipeline_dac.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../renderingpipeline_dota.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../renderingpipeline_dota_reflect_refract.cpp
@@ -28445,7 +28445,6 @@ s2r://
 sRGB
 s_DACGameConstantsSystem.m_pConstants
 s_EntComponentInfo
-s_ParticlePanelRefs[nIndex].isValid
 s_bAbsQueriesValid
 s_bAbsRecomputationEnabled
 s_bComputingInterpolatedValues

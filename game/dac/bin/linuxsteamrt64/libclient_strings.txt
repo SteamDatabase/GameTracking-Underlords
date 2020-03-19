@@ -636,6 +636,8 @@
 #DAC_Underlord_Talent_UnlockConditionS
 #DAC_Underlord_TalentsSelectHeader_Available
 #DAC_Underlord_TalentsSelectHeader_Future
+#DAC_citycrawl_complete_%s
+#DAC_citycrawl_complete_district_name_%s
 #DCG_ChatWheel_Custom_Short
 #DOTA_Crafting_Quality
 #DOTA_Crafting_Quality_Output
@@ -1156,6 +1158,7 @@ $tI
 %s%20s : %40s %5.3f
 %s%d
 %s%d out of %d waiting jobs printed.
+%s%d%s
 %s%i
 %s%i:'%s'
 %s%s%s crc=0x%x metadatasz=%d
@@ -1576,6 +1579,7 @@ $tI
 *N5GCSDK17GCClientJobLambdaIZN32CDAC_DB_Page_Challenge_World_Map28OnChallengeMapClaimChallengeE22EventChallengeSlotID_tEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN32CDAC_UI_Popup_FriendCodeAddPopup9OnConfirmEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN33CDAC_UI_Popup_Battlepass_Progress20ProcessPostgameStatsEvEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN35CDAC_UI_Popup_CityCrawl_Zone_Reward7OnCloseEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN37CDAC_DB_Control_BattlePass_RewardLine9ClaimItemE14EventClaimID_tEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZNK21CDAC_SeasonController25SendClientChallengeUpdateE22EventChallengeSlotID_tjyEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZNK21CDAC_SeasonController29UseCityKeyToCompleteChallengeE22EventChallengeSlotID_tjyEUlvE_EE
@@ -2304,6 +2308,7 @@ $tI
 120
 120.0
 1200
+12667
 127.0.0.1
 128.0
 12CBaseCubemap
@@ -4876,6 +4881,7 @@ $tI
 35CDAC_DB_Page_Heropedia_Items_ByName
 35CDAC_DB_Page_Heropedia_Items_ByTier
 35CDAC_DB_Page_Heropedia_Items_ByType
+35CDAC_UI_Popup_CityCrawl_Zone_Reward
 35CDAC_UI_Popup_Legendary_Description
 35CDAC_UI_Popup_Play_Page_Season_Info
 35CDynamicFaceOcclusionRendererObject
@@ -5394,6 +5400,7 @@ $tI
 9CBaseProp
 9CCallbackI16CDACRichPresence20PersonaStateChange_tLb0EE
 9CCallbackI16CDACRichPresence26FriendRichPresenceUpdate_tLb0EE
+9CCallbackI16CDAC_UI_UserName20PersonaStateChange_tLb0EE
 9CCallbackI16CSteamController22GameOverlayActivated_tLb0EE
 9CCallbackI19CClientSteamContext23SteamServersConnected_tLb0EE
 9CCallbackI19CClientSteamContext26SteamServersDisconnected_tLb0EE
@@ -8701,6 +8708,7 @@ CInlineJob_CMsgGCToClientDevMMStatus
 CInlineJob_CMsgGCToClientDurationControlWarning
 CInlineJob_CMsgGCToClientEventInfo
 CInlineJob_CMsgGCToClientGameModifiersUpdated
+CInlineJob_CMsgGCToClientMatchmakingStopped
 CInlineJob_CMsgGCToClientPartyEvent
 CInlineJob_CMsgGCToClientSDRTicket
 CInlineJob_CMsgGCToClientUpdateConsoleCommands
@@ -10147,12 +10155,14 @@ DACChallengeWorldMapCamera
 DACChallengeWorldMapCompleteTutorial
 DACChallengeWorldMapDevBuildings
 DACChallengeWorldMapDevGetAKey
+DACChallengeWorldMapDevZoneRewardPopup
 DACChallengeWorldMapHideChallenge
 DACChallengeWorldMapHideChallengePopup
 DACChallengeWorldMapHideClaimPopup
 DACChallengeWorldMapReset
 DACChallengeWorldMapSelectChallenge
 DACChallengeWorldMapToggleClaimMode
+DACChallengeWorldMapZoneAnimTest
 DACChangeScoreboardRound
 DACChatLineContextMenuCooldownUpdate
 DACChatTextSubmitted
@@ -10523,6 +10533,7 @@ DACPlayDuosSetLocalBotDifficulty
 DACPlayDuosSetMatchType
 DACPlayDuosSetMatchmakingType
 DACPlayDuosSetTeammateType
+DACPlayFireworkAtEntity
 DACPlayLaunchLastPlayedMode
 DACPlayMatchTypeChanged
 DACPlayPage
@@ -10976,6 +10987,7 @@ DACWorldBanner
 DACWorldDebug
 DACWorldMain
 DACXPTooltip
+DACZoneCompleteAnimationFinishedEvent
 DACZooGiveItem
 DACZooHeroDropdownChanged
 DACZooPage
@@ -13295,9 +13307,15 @@ HypeMeter
 HypeMeterActive
 I
 IA88
+IAP Already applied %d YieldingApplyConsumedItem
+IAP Bad request fail %d YieldingApplyConsumedItem
 IAP Details for %s: price: %s original price: %s
+IAP Fail Try agin %d YieldingApplyConsumedItem
 IAP Pending purchase %s not found
+IAP Permanent error %d YieldingApplyConsumedItem
+IAP Purchase Successful %d YieldingApplyConsumedItem
 IAP State for %s: token: %s status: %d ack: %s
+IAP Temp error %d YieldingApplyConsumedItem
 IClientAlphaProperty
 IClientStats
 IDR
@@ -14053,7 +14071,6 @@ LeftHandle
 LeftLegend
 LeftMouseScrollRegion
 LeftOfFocus%d
-LegendExpanded
 Length;
 Lepcha
 LerpVectors
@@ -16374,6 +16391,7 @@ PopupBattlepassPurchase
 PopupBlurBackgroundClicked
 PopupButton
 PopupCityCrawlIntro
+PopupCityCrawlZoneReward
 PopupCustomLayout
 PopupEnableButtons
 PopupEquipSlot
@@ -18853,9 +18871,12 @@ UL_Soundscape.CityCrawl_ZoomedOut
 UL_UI.BattlePass_EquipActivate
 UL_UI.BattlePass_PanelActivate
 UL_UI.CityCrawl_NodeActivate
+UL_UI.CityCrawl_ZoneCompletePopup_%d
+UL_UI.CityCrawl_ZoneComplete_%d
 UL_UI.Loadout_Panel_Activate
 UL_UI.Loadout_Panel_Rollover
 UL_UI.MainMenu_LoadoutActivate
+UL_UI.PostGame_BattlepassProgress
 UL_UI.PostGame_PaperSpin
 UL_UI.PostGame_StampRankDown
 UL_UI.PostGame_StampRankUp
@@ -19279,6 +19300,7 @@ V_UnicodeLength(wchar_t const*)
 V_UnqualifiedFileName
 V_acosf
 V_asinf
+V_atan
 V_atan2f
 V_atanf
 V_atof
@@ -19978,7 +20000,6 @@ _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../renderingpipeline_dot
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../warp_overlay.cpp
 _z0
 `
-`A
 `chunkCount' attribute is not found in the header.
 `fread' error. file may be corrupted.
 `jF
@@ -20196,7 +20217,6 @@ asset
 asset_modifier
 asset_modifiers
 associated_item
-atan
 atan2
 att(%d:%s)
 attach particle effect
@@ -20501,10 +20521,7 @@ cache_%u.soc
 cadetblue
 caller
 calloc
-cam_area_1
-cam_area_2
-cam_area_3
-cam_area_4
+cam_area_
 cam_collision
 cam_command
 cam_command <0, 1, or 2>
@@ -20517,6 +20534,7 @@ cam_idealyaw
 cam_overview
 cam_showangles
 cam_snapto
+cam_zoomed_in
 camera offset
 cameraDistance
 cameraLeft
@@ -21301,7 +21319,6 @@ dac_challenge_map_challenge
 dac_challenge_map_challenge_model_scale
 dac_challenge_map_claim
 dac_challenge_map_claim_model_scale
-dac_challenge_map_lock_during_presentation
 dac_challenge_map_manual_hitbox
 dac_challenge_map_neutral_zone_radius
 dac_challenge_map_particle_color_1
@@ -21312,6 +21329,7 @@ dac_challenge_map_particle_color_5
 dac_challenge_map_show_all_buildings
 dac_challenge_map_units_per_mousewheel
 dac_challenge_map_z_offset
+dac_challenge_map_zone_reward_claim_id
 dac_chart_type_%s
 dac_chat_allow_custom_messages
 dac_chat_message_duration
@@ -21899,6 +21917,8 @@ displaytext
 distance from the player to the hud
 distance_falloff
 distancetotarget
+district_desc
+district_name
 district_progress
 district_total
 dl_iterate_phdr
@@ -22457,6 +22477,7 @@ file://{resources}/layout/number_entry.xml
 file://{resources}/layout/offscreen_indicator.xml
 file://{resources}/layout/popups/dac_ui_popup_battlepass_s1_intro.xml
 file://{resources}/layout/popups/dac_ui_popup_citycrawl_intro.xml
+file://{resources}/layout/popups/dac_ui_popup_citycrawl_zone_reward.xml
 file://{resources}/layout/popups/dac_ui_popup_map_challenge.xml
 file://{resources}/layout/popups/popup_ability.xml
 file://{resources}/layout/popups/popup_about_duos.xml
@@ -27327,6 +27348,7 @@ p2p_ping could not ping "%s" because they are an unknown peer
 p2p_ping requires a destination address
 p2p_ping sending to "%s"
 pB
+pC
 pData->GetDataDescMap() == pTemplateDataMap
 pDef
 pEt : lower-mid front unrounded vowel
@@ -27455,6 +27477,7 @@ particles/citycrawl/challenge_icon_locked.vpcf
 particles/citycrawl/challenge_icon_puzzle_completed.vpcf
 particles/citycrawl/challenge_icon_puzzle_easy.vpcf
 particles/citycrawl/challenge_icon_street_fight.vpcf
+particles/citycrawl/city_crawl_zone_complete_fireworks.vpcf
 particles/citycrawl/claim_claimable.vpcf
 particles/entity/env_explosion/explosion_barrel.vpcf
 particles/entity/env_explosion/explosion_default.vpcf
@@ -28159,6 +28182,7 @@ rain_fx
 rain_inner_amount
 rain_inner_radius
 rain_outer_radius
+rand
 random_attributes
 random_spawn_chance
 random_weight
@@ -29607,6 +29631,8 @@ uint8
 uk
 uk_UA
 ukrainian
+ulti_poster_name
+ulti_skin_name
 ultra_rare
 un-grabs all objects
 unable to load S1 to S2 decal mappings
@@ -30249,7 +30275,6 @@ world geometry
 worldAxisDirection
 worldPosition
 world_interactions
-world_map_lock
 world_origin
 world_units_per_pixel
 worldent

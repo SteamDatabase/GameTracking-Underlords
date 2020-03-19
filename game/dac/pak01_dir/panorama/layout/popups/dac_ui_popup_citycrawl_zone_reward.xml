@@ -1,0 +1,36 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/dac_ui_popup_citycrawl_zone_reward.vcss_c" />
+	</styles>
+
+	<PopupCityCrawlZoneReward class="PopupPanel" popupbackground="blur" acceptsinput="true">
+
+		<Panel class="Body">						
+			<!-- <Button class="CloseButton" onactivate="UIPopupButtonClicked()" /> -->
+			<Panel class="UnderlordImg Anessix" />
+			<Panel class="UnderlordImg Hobgen" />
+			<Panel class="UnderlordImg Enno" />
+			<Panel class="UnderlordImg Jull" />
+
+			<Label class="RewardLabel OutfitLabel" text="{s:ulti_skin_name}" />
+			<Label class="RewardLabel PosterLabel" text="{s:ulti_poster_name}" />
+			<Panel class="ModalContent">
+				<Panel id="ModalText">
+					<Label class="CCDistrict" html="true" text="{s:district_name}" />
+					<Label class="CCIntro" html="true" text="#DAC_CC_DistrictCompleted" />
+					<Label class="CCDesc" text="{s:district_desc}" />
+				</Panel>
+				
+				<Panel id="ClaimArea">
+					<DACParticleScenePanel id="ClaimRewardParticle" hittest="false" startActive="true" cameraLeft="0" cameraUp="100" particleName="particles/ui/challenge_claim_box.vpcf" squarepixels="true" fov="200" />
+					<Button class="CCButton ClaimButton" onactivate="UIPopupButtonClicked(); PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeRollover' )">
+						<Label text="#dac_claim_district" />
+					</Button>
+				</Panel>
+			</Panel>
+		</Panel>
+
+	</PopupCityCrawlZoneReward>
+</root>

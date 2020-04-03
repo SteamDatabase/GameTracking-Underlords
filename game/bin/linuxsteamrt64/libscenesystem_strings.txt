@@ -276,6 +276,7 @@ $tI
 -1.0
 ->
 -avx
+-enable_2gb_morphs
 -inf
 -scene_system_partitions
 -shadowTargetSize
@@ -381,6 +382,7 @@ $tI
 12CThreadEvent
 12ISceneSystem
 13CLightBinner2
+13CNoRefFunctor
 13IBaseSequence
 14CBaseAppSystemI11ISceneUtilsE
 14CBaseAppSystemI12ISceneSystemE
@@ -392,11 +394,8 @@ $tI
 14ConCommandBase
 14ITonemapSystem
 14IVolumetricFog
-15CMemberFunctor1IP12CSceneSystemMS0_FvP10CSceneViewES3_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CMemberFunctor1IP26CParallelProcessorAbstractI18CParallelProcessorIP12CSceneObject21CFuncJobItemProcessorIS3_ELi1EEEMS7_FviEi12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CMemberFunctor1IP26CParallelProcessorAbstractI18CParallelProcessorIi27CMemberFuncJobItemProcessorIi11CCallQueueTI8CTSQueueIP8CFunctorLb0EEES8_ELi1EEEMSB_FviEi12CRefCounted1IS5_20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
-15CMemberFunctor5IP12CSceneSystemMS0_FvP10CSceneViewP11CSceneLayerP14CSceneDrawListP16CRenderBatchList18EBatchStartFlags_tES3_S5_S7_S9_SA_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
-15CMemberFunctor5IP12CSceneSystemMS0_FvP10CSceneViewiiyyES3_iiii12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CMemberFunctor6IP13CSOAContainerMS0_FviiiiiDv4_fEiiiiiS2_12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE18CFuncMemPolicyNoneE
 15CMsg_CVars_CVar
 15CTier0AppSystemI11ISceneUtilsE
@@ -542,14 +541,18 @@ $tI
 4
 4.0
 4096.0f
+40CFunctor_SceneSystem_Thread_DrawDrawList
 40ISceneAnimatableProceduralBoneTransforms
 41CCopySkyLightingReadTexturePixelsCallback
+43CFunctor_SceneSystem_Thread_RenderPartition
 4C
 4CMDL
 4IPVS
 5
+50CFunctor_SceneSystem_Thread_ProcessProceduralLayer
 6
 64
+67CFunctor_SceneSystem_Thread_RenderOccludersAndQueueRenderPartitions
 6ConVar
 7
 7IConVar
@@ -560,7 +563,6 @@ $tI
 8CMsgRGBA
 9
 9.1.15
-9CFunctor3IPFvP10CSceneViewP11CSceneLayerbES1_S3_b12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEEE
 9ISequence
 :
 : "
@@ -984,6 +986,10 @@ CFingerBone
 CFingerChain
 CFingerSource
 CFootDefinition
+CFunctor_SceneSystem_Thread_DrawDrawList CUtlMemoryPoolMT
+CFunctor_SceneSystem_Thread_ProcessProceduralLayer CUtlMemoryPoolMT
+CFunctor_SceneSystem_Thread_RenderOccludersAndQueueRenderPartitions CUtlMemoryPoolMT
+CFunctor_SceneSystem_Thread_RenderPartition CUtlMemoryPoolMT
 CHECK failed: !TableEntryIsTree(b) && !TableEntryIsTree(b ^ 1):
 CHECK failed: !aggregate_value_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()):
 CHECK failed: !checkpoints_.empty():
@@ -1327,11 +1333,11 @@ CThreadMultiWaitEvent::~CThreadMultiWaitEvent()
 CThreadRWLock::LockForWrite(char const*, int)
 CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadRWLock_FastRead::CThreadRWLock_FastRead()
+CThreadRWLock_FastRead::CThreadRWLock_FastRead(bool)
+CThreadRWLock_FastRead::EncounteredComplexReadLockOperation(unsigned int, bool, char const*, int)
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
 CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
-CThreadSemaphore::Release(int, int*)
+CThreadRWLock_FastRead::UnlockWrite(char const*, int)
 CThreadSemaphore::~CThreadSemaphore()
 CThreadSpinRWLock::LockForRead(char const*, int)
 CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
@@ -2362,6 +2368,7 @@ Plat_GetThreadIndex
 Plat_IsHighDPI
 Plat_IsInDebugSession
 Plat_MSTime
+Plat_NeedsLowFragmentation
 Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
 Plat_UUIDFromString
@@ -2972,6 +2979,8 @@ X360_DST24F
 Y
 Yaw;
 Z
+ZN26CParallelProcessorAbstractI18CParallelProcessorIP12CSceneObject21CFuncJobItemProcessorIS2_ELi1EEE3RunEvE13CStackFunctor
+ZN26CParallelProcessorAbstractI18CParallelProcessorIi27CMemberFuncJobItemProcessorIi11CCallQueueTI8CTSQueueIP8CFunctorLb0EEES7_ELi1EEE3RunEvE13CStackFunctor
 [
 [$0]
 [%.3f server clamped to %.3f]
@@ -4334,8 +4343,8 @@ scenesysCone
 scenesysDodecahedron
 scenesystem
 scenesystem.cpp
-scenesystem.cpp(6399): Expecting 1 renderable pass for material "%s" but found %d!
-scenesystem.cpp(7715): Waited 500 ms for jobs to complete. Attempt to drain windows message queue. Jobs in queue = %d
+scenesystem.cpp(6510): Expecting 1 renderable pass for material "%s" but found %d!
+scenesystem.cpp(7826): Waited 500 ms for jobs to complete. Attempt to drain windows message queue. Jobs in queue = %d
 scenesystem.h
 scenesystemdebug
 sceneviewdebugoverlays.cpp

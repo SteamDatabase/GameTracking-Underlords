@@ -651,12 +651,13 @@ CThreadRWLock::UnlockRead_LockForWrite(char const*, int)
 CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::UnlockWrite_LockForRead(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadRWLock_FastRead::CThreadRWLock_FastRead()
+CThreadRWLock_FastRead::CThreadRWLock_FastRead(bool)
+CThreadRWLock_FastRead::EncounteredComplexReadLockOperation(unsigned int, bool, char const*, int)
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
 CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
-CThreadRWLock_FastRead::UnlockRead_LockForWrite()
-CThreadRWLock_FastRead::UnlockWrite_LockForRead()
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
+CThreadRWLock_FastRead::UnlockRead_LockForWrite(char const*, int)
+CThreadRWLock_FastRead::UnlockWrite(char const*, int)
+CThreadRWLock_FastRead::UnlockWrite_LockForRead(char const*, int)
 CThreadSemaphore::CThreadSemaphore(int, int, char const*, bool)
 CThreadSemaphore::Release(int, int*)
 CThreadSemaphore::WaitImpl(unsigned int)
@@ -990,6 +991,7 @@ LoggingSystem_SetChannelVerbosityByTag
 LoggingSystem_SetLoggingResponsePolicy
 LoggingSystem_TagName
 LoggingSystem_UnregisterLoggingListener
+M
 MB
 Mac OS
 MacOS 10.10

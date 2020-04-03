@@ -850,6 +850,9 @@ $ORIGIN
 *ZN20CNavSearchHexLattice14DoSearchScaledEvEUlttE_
 *ZN20CNavSplitObstacleMgr17SplitObstacleCoreER17CNavSplitObstacleEUlvE_
 *ZN21CPathOptimizerNavmesh20FindNextOccludedNodeER5CPathRK13CPathCostBaseiP23CUtlVectorFixedGrowableI15NavTransition_tLm16EEEUlRK8CNavAreaRK8NavAdj_tRK6VectorPSG_E_
+*ZN26CParallelProcessorAbstractI26CFunctorParallelControllerIZ25Physics_RunThinkFunctionsbEUliE_EE3RunEvE13CStackFunctor
+*ZN26CParallelProcessorAbstractI26CFunctorParallelControllerIZN20CAnimGraphGameSystem26FrameUpdatePostEntityThinkERK28EventServerPostEntityThink_tEUliE0_EE3RunEvE13CStackFunctor
+*ZN26CParallelProcessorAbstractI26CFunctorParallelControllerIZN20CAnimGraphGameSystem26FrameUpdatePostEntityThinkERK28EventServerPostEntityThink_tEUliE_EE3RunEvE13CStackFunctor
 *ZN7CNavGen13SplitArea_OldER8CNavMeshR8CNavAreaRK6VectorfPPS2_S8_EUlvE_
 *ZN8CNavArea15SplitAreaByPolyER8CNavMeshiP8Vector2DbbPPS_PSt8functionIFP8CNavPolyvEEEUlvE_
 *ZN8CNavArea16SplitAreaByPlaneER8CNavMeshRK6VectorfbPPS_bEUlvE_
@@ -977,6 +980,7 @@ $ORIGIN
 -dac_offline
 -dac_use_mobile_renderer
 -defaultgamedir
+-enable_2gb_morphs
 -entkv_use_schema
 -gamestatsfileoutputonly
 -gamestatslogging
@@ -1453,6 +1457,7 @@ $ORIGIN
 13CNetMessagePBILin1E27DestroyAllEntitiesToolEventL13SignonGroup_t11EL19NetChannelBufType_t1ELb0EE
 13CNetMessagePBILin1E29ToolEvent_GetEntityInfoResultL13SignonGroup_t11EL19NetChannelBufType_t1ELb0EE
 13CNetMessagePBILin1E31ToolEvent_GetEntityInputsResultL13SignonGroup_t11EL19NetChannelBufType_t1ELb0EE
+13CNoRefFunctor
 13COrnamentProp
 13CPathCostBase
 13CPathKeyFrame
@@ -1558,6 +1563,7 @@ $ORIGIN
 14CMsgIPCAddress
 14CMsgLeaveParty
 14CMsgMatchState
+14CMsgMatchStats
 14CMsgPlayerInfo
 14CMsgRedeemCode
 14CMsgSHA1Digest
@@ -3635,6 +3641,8 @@ $ORIGIN
 25CMsgGCToGCUniverseStartup
 25CMsgGCToServerRequestPing
 25CMsgGameModeState_Sandbox
+25CMsgMatchStats_EntityInfo
+25CMsgMatchStats_RoundStats
 25CMsgModifierName_Modifier
 25CMsgRegionPingTimesClient
 25CMsgServerToClientChatMsg
@@ -4184,6 +4192,8 @@ $ORIGIN
 29CMsgGameStateIntegrationBlock
 29CMsgHistogram_HistogramBucket
 29CMsgHttpRequest_RequestHeader
+29CMsgMatchStats_RoundUnitStats
+29CMsgMatchStats_UnderlordStats
 29CMsgRequestCrateItemsResponse
 29CMsgSOCacheSubscribedUpToDate
 29CMsgServerNetworkStats_Player
@@ -9011,12 +9021,12 @@ CThreadMutex::TryLock(char const*, int)
 CThreadRWLock::LockForWrite(char const*, int)
 CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadRWLock_FastRead::CThreadRWLock_FastRead()
+CThreadRWLock_FastRead::CThreadRWLock_FastRead(bool)
+CThreadRWLock_FastRead::EncounteredComplexReadLockOperation(unsigned int, bool, char const*, int)
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
 CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
-CThreadRWLock_FastRead::UnlockRead_LockForWrite()
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
-CThreadSemaphore::Release(int, int*)
+CThreadRWLock_FastRead::UnlockRead_LockForWrite(char const*, int)
+CThreadRWLock_FastRead::UnlockWrite(char const*, int)
 CThreadSemaphore::~CThreadSemaphore()
 CThreadSpinRWLock::LockForRead(char const*, int)
 CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
@@ -13996,6 +14006,7 @@ Plat_IsHighDPI
 Plat_IsInDebugSession
 Plat_IsInTestMode
 Plat_MSTime64
+Plat_NeedsLowFragmentation
 Plat_RelativeTicks
 Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
@@ -16716,6 +16727,8 @@ You must now restart to use Grunt-o-matic.
 Z
 Z tolerance for adding new nav areas.
 Z0000
+ZN26CParallelProcessorAbstractI18CParallelProcessorI24QueryCacheUpdateRecord_t21CFuncJobItemProcessorIS1_ELi1EEE3RunEvE13CStackFunctor
+ZN26CParallelProcessorAbstractI18CParallelProcessorI9PVSWork_t27CMemberFuncJobItemProcessorIS1_20CSource2GameEntitiesS3_ELi1EEE3RunEvE13CStackFunctor
 ZN29CNavSearchHexLatticeCollectorC4E9NavHull_tRK6VectorRSt8functionIF20NavSearchPosResult_tS3_EEffEUlS3_E_
 ZN9NavSearch16TestRayToNavMeshERK6VectorPK8CNavAreaS2_9NavHull_tP15CNavTraceResultP17CNavTestRayParamsPSt8functionIFbRS4_RK8NavAdj_tS2_PS1_EEbEUlSC_SF_S2_SG_E_
 [
@@ -17985,7 +17998,6 @@ dac_force_underlord
 dac_gamemessages.proto
 dac_gamerules
 dac_gcmessages_common.proto
-dac_gcmessages_server.proto
 dac_heal_dampening
 dac_heal_dampening_bias
 dac_health_mod

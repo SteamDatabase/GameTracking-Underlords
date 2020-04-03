@@ -129,6 +129,7 @@ $tI
 -autofidelityconfig
 -avx
 -cyclerandom
+-enable_2gb_morphs
 -forcefidelitylevel
 -h
 -height
@@ -212,6 +213,7 @@ $tI
 11IVSSequence
 12CRefCounted1I8CFunctor20CRefCountServiceBaseILb1E6CRefMTEE
 12CThreadEvent
+13CNoRefFunctor
 13IBaseSequence
 13IInputHandler
 14CBaseAppSystemI3IVrE
@@ -524,11 +526,11 @@ CThreadMultiWaitEvent::~CThreadMultiWaitEvent()
 CThreadRWLock::LockForWrite(char const*, int)
 CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadRWLock_FastRead::CThreadRWLock_FastRead()
+CThreadRWLock_FastRead::CThreadRWLock_FastRead(bool)
+CThreadRWLock_FastRead::EncounteredComplexReadLockOperation(unsigned int, bool, char const*, int)
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
 CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
-CThreadSemaphore::Release(int, int*)
+CThreadRWLock_FastRead::UnlockWrite(char const*, int)
 CThreadSemaphore::~CThreadSemaphore()
 CThreadSpinRWLock::LockForRead(char const*, int)
 CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
@@ -1161,6 +1163,7 @@ Plat_GlobalMemoryStatus
 Plat_IsHighDPI
 Plat_IsInDebugSession
 Plat_MessageBox
+Plat_NeedsLowFragmentation
 Plat_RelativeTicks
 Plat_SetDenormalsAreZero
 Plat_ShouldCollectMiniDumpsForFatalErrors
@@ -1595,6 +1598,7 @@ Yaw;
 Z
 ZFP compression is not supported in this build
 ZFP compression is not supported.
+ZN26CParallelProcessorAbstractI18CParallelProcessorIi27CMemberFuncJobItemProcessorIi11CCallQueueTI8CTSQueueIP8CFunctorLb0EEES7_ELi1EEE3RunEvE13CStackFunctor
 [
 [ Broadcasting from within VR; note taking skipped. ]
 [%.3f server clamped to %.3f]

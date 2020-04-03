@@ -1665,6 +1665,11 @@ $tI
 *ZN24CDAC_UI_QuickEquipButton10SetupItemsEvEUlvE_
 *ZN25CDAC_DB_Page_Achievements16LoadAchievementsEvEUlP24CDAC_UI_AchievementPanelE_
 *ZN26CDAC_Client_CombatIncident16FindClientEntityEiEUliP9C_DAC_NPCE_
+*ZN26CParallelProcessorAbstractI26CFunctorParallelControllerIZN12C_BaseEntity16PerformLatchWorkE22InterpolatedVarPhase_t38InterpolatedVarInterpolationTimeType_tiP11LatchWork_tEUliE0_EE3RunEvE13CStackFunctor
+*ZN26CParallelProcessorAbstractI26CFunctorParallelControllerIZN12_GLOBAL__N_119CParticleJobUpdater21UpdateNewEffectsJobFnEvEUliE_EE3RunEvE13CStackFunctor
+*ZN26CParallelProcessorAbstractI26CFunctorParallelControllerIZN17CRenderGameSystem17OnClientPreOutputERK22EventClientPreOutput_tEUliE0_EE3RunEvE13CStackFunctor
+*ZN26CParallelProcessorAbstractI26CFunctorParallelControllerIZN22CAnimGraphBatchUpdaterC4EPP12C_BaseEntityiEUliE0_EE3RunEvE13CStackFunctor
+*ZN26CParallelProcessorAbstractI26CFunctorParallelControllerIZNK13FloatBitMap_t20WriteInMemoryEXRFastER10CUtlBufferEUliE_EE3RunEvE13CStackFunctor
 *ZN28CDAC_UI_Tooltip_MeterDetails6UpdateEvEUlPN8panorama14IUIPanelClientES2_E_
 *ZN29CDAC_UI_NotificationContainer18DeleteNotificationEPN8panorama8CPanel2DEEUlP26CDAC_UI_ParticleScenePanelE_
 *ZN29CDAC_UI_NotificationContainer24ProcessNotificationQueueEvEUlP26CDAC_UI_ParticleScenePanelE_
@@ -1891,6 +1896,8 @@ $tI
 -defaultgamedir
 -dev
 -duck
+-enable_2gb_high_lod
+-enable_2gb_morphs
 -entkv_use_schema
 -filmgrain
 -find_unlocalized
@@ -2459,6 +2466,7 @@ $tI
 13CNetMessagePBILin1E29ToolEvent_GetEntityInfoResultL13SignonGroup_t11EL19NetChannelBufType_t1ELb0EE
 13CNetMessagePBILin1E31ToolEvent_GetEntityInputsResultL13SignonGroup_t11EL19NetChannelBufType_t1ELb0EE
 13CNoClipCamera
+13CNoRefFunctor
 13CSOItemRecipe
 13CSVCMsg_Print
 13CScriptScopeTI22CDefScriptAccessorBaseLb1EE
@@ -2557,6 +2565,7 @@ $tI
 14CMsgIPCAddress
 14CMsgLeaveParty
 14CMsgMatchState
+14CMsgMatchStats
 14CMsgPlayerInfo
 14CMsgRedeemCode
 14CMsgSHA1Digest
@@ -4051,6 +4060,8 @@ $tI
 25CMsgGCToGCUniverseStartup
 25CMsgGCToServerRequestPing
 25CMsgGameModeState_Sandbox
+25CMsgMatchStats_EntityInfo
+25CMsgMatchStats_RoundStats
 25CMsgModifierName_Modifier
 25CMsgRegionPingTimesClient
 25CMsgServerToClientChatMsg
@@ -4465,6 +4476,8 @@ $tI
 29CMsgGameStateIntegrationBlock
 29CMsgHistogram_HistogramBucket
 29CMsgHttpRequest_RequestHeader
+29CMsgMatchStats_RoundUnitStats
+29CMsgMatchStats_UnderlordStats
 29CMsgRequestCrateItemsResponse
 29CMsgSOCacheSubscribedUpToDate
 29CMsgServerNetworkStats_Player
@@ -9068,12 +9081,12 @@ CThreadMutex::TryLock(char const*, int)
 CThreadRWLock::LockForWrite(char const*, int)
 CThreadRWLock::UnlockWrite(char const*, int)
 CThreadRWLock::WaitForRead()
-CThreadRWLock_FastRead::CThreadRWLock_FastRead()
+CThreadRWLock_FastRead::CThreadRWLock_FastRead(bool)
+CThreadRWLock_FastRead::EncounteredComplexReadLockOperation(unsigned int, bool, char const*, int)
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
 CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
-CThreadRWLock_FastRead::UnlockRead_LockForWrite()
-CThreadRWLock_FastRead::WaitForReadLockTransition(unsigned int, char const*, int)
-CThreadSemaphore::Release(int, int*)
+CThreadRWLock_FastRead::UnlockRead_LockForWrite(char const*, int)
+CThreadRWLock_FastRead::UnlockWrite(char const*, int)
 CThreadSemaphore::~CThreadSemaphore()
 CThreadSpinRWLock::LockForRead(char const*, int)
 CThreadSpinRWLock::SpinLockForWrite(char const*, int, unsigned long long)
@@ -19668,6 +19681,10 @@ ZB
 ZFP compression is not supported in this build
 ZFP compression is not supported.
 ZN18CNewParticleEffect7RestartEvEUlvE_
+ZN26CParallelProcessorAbstractI18CParallelProcessorIN23IWrappedInterpolatedVar10WorkItem_tE21CFuncJobItemProcessorIS2_ELi1EEE3RunEvE13CStackFunctor
+ZN26CParallelProcessorAbstractI18CParallelProcessorIi27CMemberFuncJobItemProcessorIi11CCallQueueTI8CTSQueueIP8CFunctorLb0EEES7_ELi1EEE3RunEvE13CStackFunctor
+ZN26CParallelProcessorAbstractI22CParallelLoopProcessorI13FloatBitMap_t31CLoopMemberFuncJobItemProcessorIS1_S1_S1_EEE3RunEvE13CStackFunctor
+ZN26CParallelProcessorAbstractI77CRestoreLastSimulationValuesForInterpolationList_ParallelProcessingControllerE3RunEvE13CStackFunctor
 ZN8panorama8CPanel2D21IterateChildrenOfTypeI21CDAC_UI_Popup_SynergyEEbSt8functionIFbPT_EEEUlPS0_E_
 ZN8panorama8CPanel2D29IterateChildrenTraverseOfTypeI24CDAC_UI_AchievementPanelEEbSt8functionIFbPT_EEEUlPS0_E_
 ZN8panorama8CPanel2D29IterateChildrenTraverseOfTypeI26CDAC_UI_ParticleScenePanelEEbSt8functionIFbPT_EEEUlPS0_E_
@@ -21422,7 +21439,6 @@ dac_gameplay_camera_vertical_multiplier
 dac_gameplay_camera_yaw
 dac_gamerules
 dac_gcmessages_common.proto
-dac_gcmessages_server.proto
 dac_generate_sharecode
 dac_glow_color_hover_ally
 dac_glow_color_hover_enemy
@@ -22012,6 +22028,7 @@ easeout
 econ
 econ/particles/fluff/banners/s0/fluff_banners_s0.vpcf
 econ/s0/particles/battlepass/s0_battlepass_progress_up.vpcf
+econ/s1/particles/board_sprays/s1_spray_generic_00.vpcf
 econ_gcmessages.proto
 econ_memory_optimization
 econ_show_items_with_tag
@@ -27348,7 +27365,6 @@ p2p_ping could not ping "%s" because they are an unknown peer
 p2p_ping requires a destination address
 p2p_ping sending to "%s"
 pB
-pC
 pData->GetDataDescMap() == pTemplateDataMap
 pDef
 pEt : lower-mid front unrounded vowel
@@ -27465,7 +27481,6 @@ particles/beams/default_beam.vpcf
 particles/blood_impact/blood_impact_green_01.vpcf
 particles/blood_impact/blood_impact_red_01.vpcf
 particles/blood_impact/blood_impact_yellow_01.vpcf
-particles/board_sprays/boardspray_base.vpcf
 particles/board_sprays/boardspray_placement.vpcf
 particles/burning_fx/burning_character.vpcf
 particles/citycrawl/challenge_claimable.vpcf

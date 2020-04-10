@@ -182,6 +182,7 @@
 #DAC_CC_ChallengeType_StreetFight_PosterTitle
 #DAC_CC_Confirm_Key_Desc
 #DAC_CC_Confirm_Key_Title
+#DAC_CC_Prestige_DamageReduction_%d
 #DAC_CC_StreetFight_Difficulty_%d
 #DAC_CancelFriendInvite_Body
 #DAC_CancelFriendInvite_ConfirmBody
@@ -1575,8 +1576,10 @@ $tI
 *N5GCSDK17GCClientJobLambdaIZN28CDAC_DB_Page_Map_Prop_Editor29OnMapPropEditorDiscardChangesERKN8panorama9CPanelPtrINS2_8IUIPanelEEEEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN28CDAC_UI_Popup_GameModePicker10GrantTitleEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN28CDAC_UI_Popup_GameModePicker22OnTutorialStartBotGameEvEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN32CDAC_DB_Page_Challenge_World_Map12CompleteZoneEiEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN32CDAC_DB_Page_Challenge_World_Map17CompleteChallengeE22EventChallengeSlotID_tEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN32CDAC_DB_Page_Challenge_World_Map28OnChallengeMapClaimChallengeE22EventChallengeSlotID_tEUlvE_EE
+*N5GCSDK17GCClientJobLambdaIZN32CDAC_UI_Popup_CityCrawl_Prestige26OnPopupCityCrawlDoPrestigeEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN32CDAC_UI_Popup_FriendCodeAddPopup9OnConfirmEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN33CDAC_UI_Popup_Battlepass_Progress20ProcessPostgameStatsEvEUlvE_EE
 *N5GCSDK17GCClientJobLambdaIZN35CDAC_UI_Popup_CityCrawl_Zone_Reward7OnCloseEvEUlvE_EE
@@ -1616,6 +1619,7 @@ $tI
 *ZN13CDACCS_Combat25HandleCombatDurationEndedEvEUliP9C_DAC_NPCE_
 *ZN13CDACCS_Combat29HandleCombatEvent_CombatEndedERK18CDACCS_CombatEventI27CMsgCombatEvent_CombatEndedEEUliP9C_DAC_NPCE_
 *ZN15C_EnvTimeOfDay29PreRenderE16CSplitScreenSlotEUlvE_
+*ZN16CDAC_DB_Page_ZooC4EPN8panorama8CPanel2DEPKcEUlvE_
 *ZN17CDAC_DB_Page_Home25OnConnectionStatusUpdatedEjEUlvE0_
 *ZN17CDAC_DB_Page_Home25OnConnectionStatusUpdatedEjEUlvE_
 *ZN18CDAC_UI_Scoreboard11UpdateBenchEPK21CMsgPublicPlayerStateEUlPN8panorama14IUIPanelClientES5_E0_
@@ -1812,6 +1816,8 @@ $tI
 --------
 ----------------- CMsgIndividualPostMatchStats:
 ----------------- frame %d -----------------
+----------------- popup closed
+----------------- popup queued
 ----------------- removed reward lock '%s'
 -------------------------
 ----------------------------------
@@ -2961,7 +2967,9 @@ $tI
 17C_SingleplayRules
 17C_ViewmodelWeapon
 17DACEquipSubSlot_t
+17DungeonActionCard
 17EVideoPlayerEvent
+17EventCurrencyID_t
 17IDACEventProgress
 17IEntityFindFilter
 17IGenericInterface
@@ -2985,6 +2993,7 @@ $tI
 18CDACItemDefinition
 18CDAC_UI_FriendMenu
 18CDAC_UI_ItemSelect
+18CDAC_UI_Popup_Hero
 18CDAC_UI_Popup_Item
 18CDAC_UI_RoundStart
 18CDAC_UI_ScenePanel
@@ -4021,6 +4030,7 @@ $tI
 25CDAC_DB_Control_CityCrawl
 25CDAC_DB_Page_Achievements
 25CDAC_UI_ContextMenu_Party
+25CDAC_UI_Panorama_Tutorial
 25CDAC_UI_Popup_Steam_Login
 25CDAC_UI_SettingsKeyBinder
 25CDemoStringTables_items_t
@@ -4059,6 +4069,7 @@ $tI
 25CMsgGCToGCPerformManualOp
 25CMsgGCToGCUniverseStartup
 25CMsgGCToServerRequestPing
+25CMsgGameModeState_Dungeon
 25CMsgGameModeState_Sandbox
 25CMsgMatchStats_EntityInfo
 25CMsgMatchStats_RoundStats
@@ -4234,6 +4245,7 @@ $tI
 27CDAC_UI_Popup_Map_Challenge
 27CDAC_UI_Popup_PuzzleVictory
 27CDAC_UI_Popup_Support_Grant
+27CDAC_UI_Randomized_Children
 27CDAC_UI_Synergy_Icon_NoBars
 27CDAC_UI_Tooltip_Talent_Info
 27CDAC_UI_UnderlordScenePanel
@@ -4423,6 +4435,7 @@ $tI
 28C_DAC_NPC_AnimState_Portrait
 28C_DAC_NPC_AnimState_Spawning
 28C_EnvDeferredLightClientOnly
+28C_EnvVolumetricFogController
 28C_NetTestBaseCombatCharacter
 28IAnimGraphNetworkedVariables
 28IEconItemAttributeDefinition
@@ -4447,6 +4460,7 @@ $tI
 29CDAC_UI_NotificationContainer
 29CDAC_UI_Popup_CityCrawl_Intro
 29CDAC_UI_Popup_PartySelectTeam
+29CDAC_UI_Poster_Prestige_Level
 29CDecalSaveRestoreBlockHandler
 29CDefaultIdleExpresionModifier
 29CEntityMessageRemoveAllDecals
@@ -4646,6 +4660,7 @@ $tI
 31CDAC_UI_Popup_Looking_For_Match
 31CDAC_UI_Popup_PartyInviteFriend
 31CDAC_UI_PostGame_Stats_Overview
+31CDAC_UI_Poster_BattlePass_Level
 31CDecalGameSystemDebugVisualizer
 31CEntityComponentHelperContainedI16CHitboxComponentE
 31CEntityMessageRemoveAllDecals_t
@@ -4723,6 +4738,7 @@ $tI
 32CDAC_DB_Page_Heropedia_HowToPlay
 32CDAC_DB_Page_Heropedia_Synergies
 32CDAC_UI_Popup_BattlepassPurchase
+32CDAC_UI_Popup_CityCrawl_Prestige
 32CDAC_UI_Popup_FriendCodeAddPopup
 32CDAC_UI_Tooltip_UnderlordAbility
 32CDirtySpatialPartitionEntityList
@@ -7659,6 +7675,8 @@ BGVisible
 BInit
 BLAST_SURFACE
 BPIN_txt
+BPLevelBadgePanel
+BPLevelRandomized
 BRANCH_PANORAMA_CLASS_NAME
 BRL
 BRUSHSOLID_ALWAYS
@@ -7739,7 +7757,6 @@ BaseSettings
 Base_CmdKeyValues
 BasicVideo
 Batak
-BattlePassLevel
 BattlePassProgressActive
 BattleStatsSection
 BattlepassBackgroundImage
@@ -8049,6 +8066,7 @@ CBufferString::Relinquish(CBufferString::EAllocationOption_t)
 CBufferString::RemoveAt(int, int)
 CBufferString::RemoveDotSlashes(char)
 CBufferString::RemoveFirstDir(CBufferString*)
+CBufferString::Replace(char const*, char const*, bool)
 CBufferString::SetExtension(char const*)
 CBufferString::SetLength(int, bool, int*)
 CBufferString::SetPtr(char*, int, int, bool, bool)
@@ -8140,6 +8158,7 @@ CDACWorldParticleSystem
 CDAC_DB_Control_BattlePass_RewardLine::ClaimItem
 CDAC_DB_Page_Challenge_World_Map::ClaimChallenge
 CDAC_DB_Page_Challenge_World_Map::ClaimItem
+CDAC_DB_Page_Challenge_World_Map::OnCityCrawlPrestige
 CDAC_DB_Page_Profile::EventLoadMoreMatches
 CDAC_DB_Page_Profile::EventShowMatchStats
 CDAC_DB_Page_Profile::Update
@@ -8317,6 +8336,7 @@ CEnvVolumetricFogController
 CEnvVolumetricFogVolume
 CEnvWind
 CEventDataCache
+CEventDataCache::OnAppShutdown
 CFiber::ReachedZeroReferences()
 CFingerBone
 CFingerChain
@@ -8394,7 +8414,6 @@ CGameSceneNode::m_hParent
 CGameSceneNode::m_hierarchyAttachName
 CGameSceneNode::m_vecOrigin
 CGameSceneNodeHandle
-CGameUIService::OnAppShutdown
 CGaussianRandomStream::AttachToStream(IUniformRandomStream*)
 CGaussianRandomStream::CGaussianRandomStream(IUniformRandomStream*)
 CGenericFlexCycler
@@ -8721,7 +8740,6 @@ CInlineJob_CMsgGCToClientDevMMStatus
 CInlineJob_CMsgGCToClientDurationControlWarning
 CInlineJob_CMsgGCToClientEventInfo
 CInlineJob_CMsgGCToClientGameModifiersUpdated
-CInlineJob_CMsgGCToClientMatchmakingStopped
 CInlineJob_CMsgGCToClientPartyEvent
 CInlineJob_CMsgGCToClientSDRTicket
 CInlineJob_CMsgGCToClientUpdateConsoleCommands
@@ -9555,6 +9573,7 @@ CanManipulateUnits
 CanPageLeft
 CanPageRight
 CanPauseOrResume
+CanPrestige
 CanReconnect
 CanRename
 CanReroll
@@ -9859,6 +9878,7 @@ Commit the result of QueryBestResponse back to the given entity to play. Call wi
 Common
 Compat Version
 Compendium Event ID:
+Complete Everything
 CompleteChallengesCheckbox
 Completed (Post-Chargeback)
 Completed partial cache for %s from %d parts (%d up to date)
@@ -10168,6 +10188,7 @@ DACChallengeWorldMapCamera
 DACChallengeWorldMapCompleteTutorial
 DACChallengeWorldMapDevBuildings
 DACChallengeWorldMapDevGetAKey
+DACChallengeWorldMapDevPrestigePopup
 DACChallengeWorldMapDevZoneRewardPopup
 DACChallengeWorldMapHideChallenge
 DACChallengeWorldMapHideChallengePopup
@@ -10181,7 +10202,9 @@ DACChatLineContextMenuCooldownUpdate
 DACChatTextSubmitted
 DACChatWheel
 DACCheckPurchaseProgress
+DACCityCrawlCompleteEverything
 DACCityCrawlMapUpdate
+DACCityCrawlPrestige
 DACClaimAchievement
 DACClaimChallenge
 DACClearKeybinding
@@ -10190,6 +10213,7 @@ DACClickedDebugBot
 DACClickedDebugItem
 DACClickedDebugItemSelect
 DACClickedMapProp
+DACClickedPanel
 DACClientConnectionStateChanged
 DACClientCore
 DACClientSimulation
@@ -10299,6 +10323,7 @@ DACEquipSubSlot_t
 DACEvaluateEndGame
 DACEventChallengeSlotUpdated
 DACEventClaimUpdated
+DACEventCurrencyUpdated
 DACEventDataUpdated
 DACEventUnderlordUpdated
 DACEventVirtualItemUnlocked
@@ -10565,6 +10590,7 @@ DACPlayTurboSetMatchType
 DACPlayTurboSetMatchmakingType
 DACPlayUpdateLayout
 DACPlayViewSeasonInfo
+DACPlayZoneCompleteVO
 DACPlayerAcquiredItem
 DACPlayerAvatar
 DACPlayerChatMessage
@@ -10580,6 +10606,7 @@ DACPlayerTooltip
 DACPlayerWinStreak
 DACPlayersDoneAnimating
 DACPopupCityCrawlChallenges
+DACPopupCityCrawlDoPrestige
 DACPopupClearTeamName
 DACPopupFriendCodeAddFriend
 DACPopupFriendCodeChecked
@@ -10652,6 +10679,7 @@ DACQuickEquipLoadoutItem
 DACQuitApp
 DACQuitAppConfirmed
 DACQuitAppConfirmed()
+DACRandomizeChildren
 DACRankIcon
 DACRankPopupChangeRank
 DACRankPopupTriggerParticle
@@ -10673,6 +10701,8 @@ DACReturnToDashboard
 DACReturnUnitToBench
 DACRewardClaimReward
 DACRewardLineItemDestroyed
+DACRewardPopupClosed
+DACRewardPopupClosed()
 DACRewardPreviewScenePanel
 DACRewardRedeemedSuccess
 DACRewardsAbout
@@ -10930,10 +10960,14 @@ DACUIHudTopBar
 DACUIHudTutorial
 DACUIMain
 DACUIMatchIntro
+DACUIPanoramaTutorial
+DACUIPosterBattlePassLevel
+DACUIPosterPrestigeLevel
 DACUIPuzzleIntro
 DACUIPuzzleRules
 DACUIPuzzleShop
 DACUIPuzzleStatus
+DACUIRandomizedChildren
 DACUISettingsPanel
 DACUIShop
 DACUITurboShop
@@ -11006,6 +11040,7 @@ DACZooHeroDropdownChanged
 DACZooPage
 DACZooShowPostGame
 DACZooShowPostGameBattlepass
+DACZoomToPrestige
 DAC_BotDifficultyName0
 DAC_BotDifficultyName1
 DAC_BotDifficultyName2
@@ -12142,6 +12177,8 @@ FIELD_VECTOR4D
 FIELD_VMATRIX
 FIELD_VMATRIX_WORLDSPACE
 FIELD_VOID
+FIRST POPUP
+FOURTH POPUP
 FRAME_NET_BLOCKING_LOAD_SPAWN_GROUP
 FRAME_NET_POST_PROCESS_NETWORKING
 FRAME_NET_PRE_PROCESS_NETWORKING
@@ -12212,6 +12249,7 @@ Failed to find any valid threshold values for criteria
 Failed to find attachment point specified for particle effect anim event. Trying to spawn effect '%s' on attachment named '%s' on model %s
 Failed to find attachment point specified for particle effect in model '%s' keyvalues section. Trying to spawn effect '%s' on attachment named '%s'
 Failed to find challenge slot %s for reward!
+Failed to find claim %s for claim_grant
 Failed to find currency with name %s
 Failed to find either a child criteria or criteria set while parsing a criteria set!
 Failed to find function %s
@@ -12313,6 +12351,7 @@ Failed to update item schema: couldn't fetch %s
 Failed to update on remove script entity %s of type %s: script entity instance is null
 Failed to write %s
 Failed to write %s!
+Failure on challenge %d
 Fairy Shadow Realm Overlay Effect
 FakeVRMoveInputContext
 FakeVRMoveInputHandler
@@ -12357,6 +12396,7 @@ FieldSize
 Fields in the same oneof must be defined consecutively. "$0" cannot be defined before the completion of the "$1" oneof definition.
 Fields of oneofs must themselves have label LABEL_OPTIONAL.
 FifthPlace
+Fig
 FightResultAnimation
 FightResultPanel
 File '%s' not found or failed to open.
@@ -12475,6 +12515,7 @@ FogVars
 FolderUpButton
 FontManager_001
 Fonts
+FoodType
 Footstep doesn't have valid sound hash.  Is override sound setup incorrectly, or did we expect to do a trace?
 Footstep doesn't have valid sound hash.  Trace missed=%s, or trace didn't hit a surface property, or the sound table for entity %s wasn't setup correctly.
 Footstep sound event invalid: %s (Anim: %s)
@@ -12485,6 +12526,7 @@ For development: Unbind a key to in dota (ALT+key) allowed.
 Force Display:
 Force all clients to disable their game instructors.
 Force match intro to hold
+Force prestige level on posters to be this value
 Force the height to something.  -1 to ignore
 Force the tutorial into a specific state by name.
 ForceRefresh
@@ -12506,6 +12548,7 @@ Found an invalid points per level of %u in currency %s
 Found both a criteria and a criteria set! Only one of these may be set!
 Found claim that granted challenge %u multiple times!
 Found claim that granted currency %u multiple times!
+Found claim that granted progress on claim id %u multiple times!
 Found invalid min and max place on match reward: %u %u
 Found invalid proto option data for:
 Found multiple claims using the same ID of %u
@@ -13047,6 +13090,7 @@ HasAnyActiveSynergies
 HasAnyBattleStats
 HasAnyChallenges
 HasAnyItems
+HasAnyPrestige
 HasAnySynergies
 HasAvailableObjectives
 HasBenchedItems
@@ -13237,7 +13281,6 @@ HideScrollLeft
 HideScrollRight
 HideScrollUp
 HideSection
-HideTalentCount
 HideUnitIcons
 HideWorldLayerAndDestroyEntities
 Hides this layer
@@ -13656,6 +13699,7 @@ Invalid challenge config in match reward list: %s %u
 Invalid challenge in match reward list: %s
 Invalid challenge progress amount %u specified
 Invalid channels format
+Invalid claim progress amount %u specified
 Invalid clip-path %s, expecting url(#...)
 Invalid code point \u%04x
 Invalid compressed buffer size
@@ -13683,6 +13727,7 @@ Invalid grant quantity of %u found on currency %s
 Invalid header
 Invalid item %s referenced in item rewards
 Invalid item %s referenced in virtual item rewards
+Invalid item %s referenced in virtual_item_remove
 Invalid item quality specified for component!
 Invalid job ID %llu
 Invalid key for map field.
@@ -14065,6 +14110,7 @@ LatchDirtyPermission_t
 LatchVariables
 Latin
 Launch with -rr_allow_reload to use this command.
+LaunchStreetFight
 Layout File
 LayoutDirtied
 LayoutPositionType_e
@@ -14111,6 +14157,7 @@ Level: %s
 LevelBarCostIncrementGap
 LevelDescription
 LevelRow
+LevelText
 LevelUpFlash
 LevelUpFlashText
 LevelsWithAnyFilled
@@ -15456,6 +15503,7 @@ N8panorama9CUIEvent2I13UnderlordID_tS1_EE
 N8panorama9CUIEvent2I22EventChallengeSlotID_t18EventChallengeID_tEE
 N8panorama9CUIEvent2I23item_definition_index_tbEE
 N8panorama9CUIEvent2I9EventID_t14EventClaimID_tEE
+N8panorama9CUIEvent2I9EventID_t17EventCurrencyID_tEE
 N8panorama9CUIEvent2I9EventID_t22EventChallengeSlotID_tEE
 N8panorama9CUIEvent2INS_9CPanelPtrINS_8IUIPanelEEEPKcEE
 N8panorama9CUIEvent2IPK12C_DACMapPropfEE
@@ -15479,7 +15527,6 @@ N8panorama9CUIEvent2IjiEE
 N8panorama9CUIEvent2IyiEE
 N8panorama9CUIEvent2IyjEE
 N8panorama9CUIEvent3I12PlayerSlot_tRK22CMsgPlayerCombatResultbEE
-N8panorama9CUIEvent3I18DACStreetfightID_t13UnderlordID_tbEE
 N8panorama9CUIEvent3I19EDACResponseConcepti13UnderlordID_tEE
 N8panorama9CUIEvent3I23item_definition_index_t21EDACGlobalLoadoutSlot17DACEquipSubSlot_tEE
 N8panorama9CUIEvent3IPKcS2_bEE
@@ -15492,6 +15539,7 @@ N8panorama9CUIEvent3IjffEE
 N8panorama9CUIEvent3IjiP13EconItemIDs_tEE
 N8panorama9CUIEvent3IjiiEE
 N8panorama9CUIEvent3IyjjEE
+N8panorama9CUIEvent4I18DACStreetfightID_t13UnderlordID_tjbEE
 N8panorama9CUIEvent4IPKciNS_9CPanelPtrINS_8CPanel2DEEEiEE
 N8panorama9CUIEvent4IPKciiiEE
 N8panorama9CUIEvent4Ij12PlayerSlot_tS1_jEE
@@ -15711,6 +15759,7 @@ Normalize3ComponentVectorInAttributes
 Normalized3x3SobelEdgeFilterFrom
 Not Found!
 Not Success
+Not Success on claim challenge
 Not connected to the GC
 Not expecting FIELD_EMBEDDED in flattened list (%s)
 Not implemented field number
@@ -15718,6 +15767,7 @@ Not implemented.
 Not safe to 'new' this class due to alignment requirements
 Not sending message type %u (%s); simulating connection failure
 Not success on claim claim
+Not success on prestige
 Not using save-in-memory path!
 NotConnectedToGC
 NotEnoughUnits
@@ -15910,6 +15960,7 @@ Overrides
 Overrides the map's fog settings (-1 populates fog_ vars with map's values)
 Overview: scale %.2f, pos_x %.0f, pos_y %.0f
 OwnerName
+OwnsBattlePass
 OwnsBattlepass
 P
 P10CUtlBuffer
@@ -16225,6 +16276,7 @@ Physics_SimulateEntity
 Pi
 Picked
 Pickup Item:
+Pineapple
 Ping a peer.
 Pitch: %6.1f   Yaw: %6.1f   Dist: %6.1f %16s
 Pitch: %6.1f   Yaw: %6.1f   Dist: %6.1f %19s
@@ -16396,6 +16448,10 @@ PopNPlusOne
 PopOnePlusN
 PopOnePlusOne
 Pops the identifier used to group overlays. Overlays marked with this identifier can be deleted in a big batch.
+Popup1
+Popup2
+Popup3
+Popup4
 PopupAbility
 PopupAboutDuos
 PopupBattlePassS1Intro
@@ -16404,6 +16460,7 @@ PopupBattlepassPurchase
 PopupBlurBackgroundClicked
 PopupButton
 PopupCityCrawlIntro
+PopupCityCrawlPrestige
 PopupCityCrawlZoneReward
 PopupCustomLayout
 PopupEnableButtons
@@ -16553,6 +16610,9 @@ Prerequisite %s added by lesson %s doesn't exist!
 Preroll time ahead of the action when camera motion starts.
 PressButtonAnim
 PressButtonAnimSpin
+PrestigeDropDown
+PrestigeLevelBadgePanel
+Prestige_%d
 PrettyFont:%s:%d:%d
 PrevSearch
 Prevent jiggle bones from pointing directly away from their target in case of numerical instability.
@@ -16670,6 +16730,7 @@ PuzzleBoardCostExceeded
 PuzzleButtons
 PuzzleChallenge
 PuzzleImage
+PuzzlePlaytest_PuzzleSelector_%d
 PuzzleShopButton
 PuzzleSlot
 PuzzleVictory
@@ -17153,6 +17214,7 @@ SCRIPT_DONE
 SCRIPT_ERROR
 SCRIPT_RUNNING
 SChinese
+SECOND POPUP
 SENT MESSAGES
 SERVERSIDE
 SFM_SSAO_Target
@@ -17861,6 +17923,8 @@ ShowPaintInfo
 ShowPanelZoo
 ShowPlayerBattleStats
 ShowPostGameScoreboard
+ShowPrestige
+ShowPrestigeBacking
 ShowProgressEvent
 ShowQuitDialog
 ShowRankLevelDelta
@@ -17877,7 +17941,6 @@ ShowStreak
 ShowSubtitle
 ShowSynergies
 ShowSynergiesCondensed
-ShowTalentBrowser
 ShowTitle
 ShowTotalGold
 ShowTutorialHUD
@@ -18252,6 +18315,7 @@ StreakLevel4
 StreamEntitiesToFile
 StreetFightChallenge
 StreetFightItemsTier%dOddsTable
+StreetFightList
 StreetFightSlot
 String field
 String literals cannot cross line boundaries.
@@ -18267,8 +18331,10 @@ SubheadLabel
 Subtitle offset distance (forward, in front of player)
 Subtitle vertical offset distance (positive is up)
 Subtitles and Captions
+Success on challenge %d
 Success on claim challenge
 Success on claim claim
+Success on prestige
 SuggestionPanel
 Summarizes (by class) all extant entities. Optional 2nd arg is a substring of a classname that the list will be filtered by.
 SunShadowColorTexture
@@ -18322,7 +18388,6 @@ SynergyIcon_%s
 SynergyIcons
 SynergyList
 SynergyPanel
-SynergyPanelVisible
 SynergyRow
 SynergyShrinkLevel1
 SynergyShrinkLevel2
@@ -18369,6 +18434,7 @@ TF_Unique_Prepend_Proper
 THB
 THEM
 THEN
+THIRD POPUP
 THen : voiced dental fricative
 THin : voiceless dental fricative
 TICK:%5d:Ragdoll separation count: %d
@@ -18491,6 +18557,7 @@ Test the looking for match popup.
 Test the puzzle victory dialog.
 Test the rank up dialog.
 Test the reward dialog.
+Test the reward popup queue with multiple popups.
 Test the season_1_intro page.
 Test the steam login popup.
 TestFormatA
@@ -18582,6 +18649,10 @@ ThirdPlace
 This ZeroCopyOutputStream doesn't support aliasing. Reaching here usually means a ZeroCopyOutputStream implementation bug.
 This can't happen; base64 decoder state =
 This is the description for a particular puzzle
+This one was queued first, should be before items.
+This one was queued last, should be before items (queued AFTER first popup showed).
+This one was queued second BUT should be after items.
+This one was queued third and should be after items as well.
 This program requires version
 This program was compiled against version
 This shouldn't be called if all the sizes are equal.
@@ -18871,7 +18942,9 @@ UL_MusicStinger.CityCrawl_01
 UL_MusicStinger.CityCrawl_02
 UL_MusicStinger.CityCrawl_03
 UL_MusicStinger.CityCrawl_05
+UL_MusicStinger.CityCrawl_DoPrestige
 UL_MusicStinger.CityCrawl_Locked
+UL_MusicStinger.CityCrawl_PrestigePopup
 UL_MusicStinger.PuzzleComplete
 UL_MusicStinger.PuzzleNewRecord
 UL_MusicStinger.RewardEarned
@@ -18884,8 +18957,10 @@ UL_Soundscape.CityCrawl_ZoomedOut
 UL_UI.BattlePass_EquipActivate
 UL_UI.BattlePass_PanelActivate
 UL_UI.CityCrawl_NodeActivate
+UL_UI.CityCrawl_Prestige_VO_1
 UL_UI.CityCrawl_ZoneCompletePopup_%d
 UL_UI.CityCrawl_ZoneComplete_%d
+UL_UI.CityCrawl_ZoneComplete_VO_%d
 UL_UI.Loadout_Panel_Activate
 UL_UI.Loadout_Panel_Rollover
 UL_UI.MainMenu_LoadoutActivate
@@ -18995,6 +19070,7 @@ UnderlordHasItem
 UnderlordID
 UnderlordID_t
 UnderlordId
+UnderlordIsSelected
 UnderlordItemScenePanel
 UnderlordName
 UnderlordPageViewing
@@ -19162,6 +19238,7 @@ Usage: %s x y z f a dwhere x,y,z are direction of screen punch      f     is  fr
 Use IK on in-place turns.
 Use Raw Input for mouse input.
 Use compute shader for Bloom downsample
+Use fake data for the battlepass level, set to any number greater than 1 to seed a different value
 Use fixed size spheres instead of variable size hitboxes for unit selection and hover over
 Use the garbage collector to track down reference cycles
 Use the specified entity for animation debugging.
@@ -19602,6 +19679,7 @@ Wingman warrior hack related to turn axes.
 With : voiced labial-velar approximant
 WithSubhead
 WizardSubPanel.BgColor
+WolfPeach
 WonStreetFight
 WordBubble%d
 Work Item for Work Pool %s completed but job no longer existed to notify
@@ -20338,7 +20416,6 @@ basemodelentity
 basic_string::_S_construct null not valid
 battlepass_bar_animate_duration
 battlepass_level
-battlepass_progress
 battlepass_xp_progress_event_duration
 bbox.m_vMaxBounds
 bbox.m_vMinBounds
@@ -20452,7 +20529,6 @@ box-shadow
 box2i
 box_maxs
 box_mins
-box_size
 br
 branding
 brass_eject_model
@@ -20739,6 +20815,7 @@ city_key
 city_keys
 city_objectives
 city_objectives_available
+city_prestige
 cl
 cl_ShowBoneSetupEnts
 cl_aggregate_particles
@@ -21041,6 +21118,7 @@ clabelleddebughelper.cpp
 claimID
 claim_end_time
 claim_exp
+claim_progress_no_reward
 claim_value
 claimable
 claimcode
@@ -21336,13 +21414,13 @@ dac_challenge_map_challenge
 dac_challenge_map_challenge_model_scale
 dac_challenge_map_claim
 dac_challenge_map_claim_model_scale
-dac_challenge_map_manual_hitbox
 dac_challenge_map_neutral_zone_radius
 dac_challenge_map_particle_color_1
 dac_challenge_map_particle_color_2
 dac_challenge_map_particle_color_3
 dac_challenge_map_particle_color_4
 dac_challenge_map_particle_color_5
+dac_challenge_map_prestige_node
 dac_challenge_map_show_all_buildings
 dac_challenge_map_units_per_mousewheel
 dac_challenge_map_z_offset
@@ -21356,6 +21434,7 @@ dac_city_crawl_dof_mode
 dac_client_msg_report
 dac_client_net_buffer_report
 dac_client_solo_mm_keep_alive_check_s
+dac_clock_drift_ticks_behind_trigger
 dac_colourblind_mode
 dac_combat_resolution_framing_duration
 dac_connect
@@ -21397,6 +21476,8 @@ dac_event_fake_no_data
 dac_fake_gc_connection_state
 dac_fake_gc_est_time
 dac_fake_gc_queue_pos
+dac_fake_poster_battlepass_level
+dac_fake_poster_prestige_level
 dac_filter_full
 dac_filter_offensive_text
 dac_filtered_string
@@ -21685,6 +21766,7 @@ dac_test_player_chat_combat
 dac_test_player_chat_global
 dac_test_prop_animation
 dac_test_prop_animation: requires activity to trigger.
+dac_test_reward_popup_queue
 dac_test_support_grant_credits
 dac_timescale_clock_drift_catchup
 dac_toggle_chat
@@ -21944,6 +22026,7 @@ dmg.bullets
 dmg.club
 dmg.explosive
 dmg.fire
+dmg_reduction
 doClientSideAnimation
 dodgerblue
 dog
@@ -22444,10 +22527,13 @@ file://{resources}/layout/dac_ui_match_over.xml
 file://{resources}/layout/dac_ui_miniprofile.xml
 file://{resources}/layout/dac_ui_notification_container.xml
 file://{resources}/layout/dac_ui_notifications.xml
+file://{resources}/layout/dac_ui_panorama_tutorial.xml
 file://{resources}/layout/dac_ui_party.xml
 file://{resources}/layout/dac_ui_party_invite.xml
 file://{resources}/layout/dac_ui_party_member.xml
 file://{resources}/layout/dac_ui_player_avatar.xml
+file://{resources}/layout/dac_ui_poster_battlepass_level.xml
+file://{resources}/layout/dac_ui_poster_prestige_level.xml
 file://{resources}/layout/dac_ui_postgame_stats_overview.xml
 file://{resources}/layout/dac_ui_puzzle_histogram.xml
 file://{resources}/layout/dac_ui_puzzle_intro.xml
@@ -22476,6 +22562,7 @@ file://{resources}/layout/dac_ui_underlord_picker.xml
 file://{resources}/layout/dac_ui_underlord_status.xml
 file://{resources}/layout/dac_ui_unit_modifiers.xml
 file://{resources}/layout/dac_ui_unit_status.xml
+file://{resources}/layout/dac_ui_vs_screen.xml
 file://{resources}/layout/dac_ui_zoo.xml
 file://{resources}/layout/dac_wanted_poster_title.xml
 file://{resources}/layout/dac_world_debug.xml
@@ -22494,6 +22581,7 @@ file://{resources}/layout/number_entry.xml
 file://{resources}/layout/offscreen_indicator.xml
 file://{resources}/layout/popups/dac_ui_popup_battlepass_s1_intro.xml
 file://{resources}/layout/popups/dac_ui_popup_citycrawl_intro.xml
+file://{resources}/layout/popups/dac_ui_popup_citycrawl_prestige.xml
 file://{resources}/layout/popups/dac_ui_popup_citycrawl_zone_reward.xml
 file://{resources}/layout/popups/dac_ui_popup_map_challenge.xml
 file://{resources}/layout/popups/popup_ability.xml
@@ -22924,6 +23012,7 @@ generate bone setup statistics
 generated_protodac/linuxsteamrt64/base_gcmessages.pb.cc
 generated_protodac/linuxsteamrt64/c_peer2peer_netmessages.pb.cc
 generated_protodac/linuxsteamrt64/clientmessages.pb.cc
+generated_protodac/linuxsteamrt64/dac_gamemessages.pb.cc
 generated_protodac/linuxsteamrt64/dac_gcmessages_client.pb.cc
 generated_protodac/linuxsteamrt64/dac_gcmessages_common.pb.cc
 generated_protodac/linuxsteamrt64/dac_gcmessages_server.pb.cc
@@ -24621,6 +24710,7 @@ m_bPoweredRagdoll
 m_bPredictHidden
 m_bPredictable
 m_bPredictionEligible
+m_bPrestige
 m_bPrevEndPointPos
 m_bPreventLoopback
 m_bRandomAnimator
@@ -26126,6 +26216,7 @@ m_pClientsideRagdoll
 m_pCollision
 m_pCombatGlobalSimulation
 m_pController == NULL
+m_pCosmeticParticleEffect
 m_pCurrentCommand
 m_pD3DSemanticName
 m_pDebugName
@@ -26364,6 +26455,7 @@ m_unOrientation
 m_unOverrideOrigin
 m_unOwnerContext
 m_unOwnerPlayerSlot
+m_unPresitgeLevel
 m_unPuzzleID
 m_unStreetFightID
 m_unTeamID
@@ -27128,8 +27220,8 @@ no-repeat
 noEnemyUnits
 no_NO
 no_border
+no_dupe_group
 no_dupe_list
-no_dupe_lists
 no_dupe_loot_list_override
 no_equip_to_use
 no_key_required
@@ -27346,6 +27438,7 @@ outputid
 outputintermediate
 outroPanoramaEvents
 overflow_members
+overhead_attach
 overhead_follow
 overlay_vars
 overrideTint: <
@@ -27365,6 +27458,7 @@ p2p_ping could not ping "%s" because they are an unknown peer
 p2p_ping requires a destination address
 p2p_ping sending to "%s"
 pB
+pC
 pData->GetDataDescMap() == pTemplateDataMap
 pDef
 pEt : lower-mid front unrounded vowel
@@ -27489,6 +27583,7 @@ particles/citycrawl/challenge_icon_base.vpcf
 particles/citycrawl/challenge_icon_base_complete.vpcf
 particles/citycrawl/challenge_icon_base_incomplete.vpcf
 particles/citycrawl/challenge_icon_locked.vpcf
+particles/citycrawl/challenge_icon_prestige.vpcf
 particles/citycrawl/challenge_icon_puzzle_completed.vpcf
 particles/citycrawl/challenge_icon_puzzle_easy.vpcf
 particles/citycrawl/challenge_icon_street_fight.vpcf
@@ -27647,6 +27742,7 @@ particles/ui/streaks/ui_win_leaderboard_lvl%d_bkg.vpcf
 particles/ui/timer/ui_timer_ticks.vpcf
 particles/ui/xp/ui_xp_invest.vpcf
 particles/ui/xp/ui_xp_lvlup.vpcf
+particles/underlords/%s/%s
 particles/underlords/hobgen/hobgen_ambient.vpcf
 particles/underlords/hobgen/hobgen_fireball.vpcf
 particles/units/heroes/hero_drow/drow_base_attack.vpcf
@@ -27890,6 +27986,7 @@ pre
 pre-transform-rotate2d
 pre-transform-scale2d
 pread64
+precache
 precache_shared.cpp PrecacheMaterial:: path '%s' missing extension!
 preciptype
 precomputedboundsmaxs
@@ -27909,6 +28006,9 @@ prerequisite
 present
 preserve_cycle
 preservefadedtoasts
+prestige_halo.vpcf
+prestige_hitbox_size
+prestige_level
 prev_cycle_event
 prevent_duplicate_challenges
 prevent_gifting
@@ -28318,6 +28418,7 @@ reroll_cooldown
 reroll_cost
 reset view angles!
 reset_cycle
+reset_no_dupe_lists
 resetting interpolated var spew
 resolution
 resource/core.gameevents
@@ -28708,6 +28809,7 @@ shop_units_level_modifier
 short (%i)
 short differs (net %i pred %i) diff(%i)
 showBroadcastingParties
+showBroadcastingPartiesAsRegularParties
 showDuration
 showLobbies
 showTime
@@ -28718,6 +28820,7 @@ show_post_match_claim
 show_visibility_boxes
 showatday
 showatnight
+showing_popup
 showname
 shownotifications
 showparticlecounts
@@ -29210,6 +29313,7 @@ stream
 stream end
 stream error
 street_fight
+street_fight_id
 streetfight_id
 streetfight_item
 streetfight_victory
@@ -29362,8 +29466,6 @@ talent_data
 talent_enabled
 talent_header
 talent_prereq
-talents_total
-talents_unlocked
 tan
 tangentu_signv
 tank
@@ -29406,6 +29508,8 @@ test_angles_relative
 test_existing_item
 test_netbuffer
 test_restoreonnewmodel
+testing
+testing_anotherlock
 texcoord
 text format contains deprecated field "
 text-align
@@ -29912,6 +30016,7 @@ virtual void Etc::Block4x4Encoding_RGBA8_Transparent::PerformIteration(float)
 virtual_grant_item
 virtual_grant_items
 virtual_item_unlocks
+virtual_revoke_items
 vis_enable
 visuals
 vive
@@ -30308,13 +30413,11 @@ x
 x = %i, y = %i, w = %i h = %i text %s
 x axis
 x360
-x_pos
 xdigit
 xlook
 xmove
 y
 y axis
-y_pos
 yaw_end
 yaw_start
 year

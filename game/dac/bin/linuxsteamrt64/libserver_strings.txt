@@ -1994,6 +1994,7 @@ $ORIGIN
 16CModifierFactoryI28CDAC_Modifier_MangoTreeDeathE
 16CModifierFactoryI28CDAC_Modifier_Mech_ExplosionE
 16CModifierFactoryI28CDAC_Modifier_OrbOfVenom_DotE
+16CModifierFactoryI28CDAC_Modifier_PrestigeDamageE
 16CModifierFactoryI28CDAC_Modifier_ReplaceSynergyE
 16CModifierFactoryI28CDAC_Modifier_Slark_DarkPactE
 16CModifierFactoryI28CDAC_Modifier_StonehallCloakE
@@ -2387,6 +2388,7 @@ $ORIGIN
 16CModifierFactoryI49CDAC_Modifier_SpiritBrother_JumpForTriangleAttackE
 16CModifierFactoryI50CDAC_Modifier_EarthSpirit_Geogmagnetic_Grip_DebuffE
 16CModifierFactoryI50CDAC_Modifier_EmberSpirit_SleightOfFist_InProgressE
+16CModifierFactoryI50CDAC_Modifier_Legion_Commander_Duel_HealingDisableE
 16CModifierFactoryI50CDAC_Modifier_LoneDruid_SpiritBear_Entangle_EffectE
 16CModifierFactoryI50CDAC_Modifier_SpiritBrother_OutsideTheTriangleSlowE
 16CModifierFactoryI51CDAC_Modifier_MassSerpentWard_CellReservationEffectE
@@ -2597,6 +2599,7 @@ $ORIGIN
 17CUtlVectorDataOpsI21CNetworkUtlVectorBaseIhN28CAnimGraphNetworkedVariables29NetworkVar_m_NetByteVariablesELin1EELi8EE
 17CUtlVectorDataOpsI21CNetworkUtlVectorBaseIiN28CAnimGraphNetworkedVariables28NetworkVar_m_NetIntVariablesELin1EELi5EE
 17DAC_AbilityData_t
+17DungeonActionCard
 17IEntityFindFilter
 17IPredictionSystem
 17fogplayerparams_t
@@ -3640,6 +3643,7 @@ $ORIGIN
 25CMsgGCToGCPerformManualOp
 25CMsgGCToGCUniverseStartup
 25CMsgGCToServerRequestPing
+25CMsgGameModeState_Dungeon
 25CMsgGameModeState_Sandbox
 25CMsgMatchStats_EntityInfo
 25CMsgMatchStats_RoundStats
@@ -4018,6 +4022,7 @@ $ORIGIN
 28CDAC_Modifier_MangoTreeDeath
 28CDAC_Modifier_Mech_Explosion
 28CDAC_Modifier_OrbOfVenom_Dot
+28CDAC_Modifier_PrestigeDamage
 28CDAC_Modifier_ReplaceSynergy
 28CDAC_Modifier_Slark_DarkPact
 28CDAC_Modifier_StonehallCloak
@@ -5234,6 +5239,7 @@ $ORIGIN
 5
 50CDAC_Modifier_EarthSpirit_Geogmagnetic_Grip_Debuff
 50CDAC_Modifier_EmberSpirit_SleightOfFist_InProgress
+50CDAC_Modifier_Legion_Commander_Duel_HealingDisable
 50CDAC_Modifier_LoneDruid_SpiritBear_Entangle_Effect
 50CDAC_Modifier_SpiritBrother_OutsideTheTriangleSlow
 50CMsgClientToGCGetProfileResponse_CityCrawlProgress
@@ -7673,6 +7679,7 @@ CBufferString::Relinquish(CBufferString::EAllocationOption_t)
 CBufferString::RemoveAt(int, int)
 CBufferString::RemoveDotSlashes(char)
 CBufferString::RemoveFirstDir(CBufferString*)
+CBufferString::Replace(char const*, char const*, bool)
 CBufferString::SetExtension(char const*)
 CBufferString::SetPtr(char*, int, int, bool, bool)
 CBufferString::ShortenPath()
@@ -10584,7 +10591,7 @@ FadeInThink
 FadeThink
 Failable achievement %s has been evaluated (%s), now inactive
 Failable achievement %s now active
-Failed to InitializeConstants for game mode in InitializeGameMode.
+Failed to InitializeConstants for game mode in InitializeNewGame.
 Failed to activate script entity %s of type %s: script entity instance is null
 Failed to allocate an instance of a class
 Failed to allocate an instance of class '%s'
@@ -10603,6 +10610,7 @@ Failed to find any players Level components
 Failed to find any players WinsLosses components
 Failed to find any valid threshold values for criteria
 Failed to find challenge slot %s for reward!
+Failed to find claim %s for claim_grant
 Failed to find currency with name %s
 Failed to find custom physics damage table name: %s
 Failed to find either a child criteria or criteria set while parsing a criteria set!
@@ -10876,6 +10884,7 @@ Found an invalid points per level of %u in currency %s
 Found both a criteria and a criteria set! Only one of these may be set!
 Found claim that granted challenge %u multiple times!
 Found claim that granted currency %u multiple times!
+Found claim that granted progress on claim id %u multiple times!
 Found invalid min and max place on match reward: %u %u
 Found invalid proto option data for:
 Found multiple claims using the same ID of %u
@@ -11682,7 +11691,7 @@ Initialize
 Initialize with number of outputs
 InitializeConstants
 InitializeForPuzzleDef
-InitializeGameMode
+InitializeNewGame
 Inner maxs
 Inner mins
 Input %s for %s entity dropped because the entity is in stasis.
@@ -12128,6 +12137,7 @@ Invalid blackbox type: %s
 Invalid challenge config in match reward list: %s %u
 Invalid challenge in match reward list: %s
 Invalid challenge progress amount %u specified
+Invalid claim progress amount %u specified
 Invalid code point \u%04x
 Invalid compressed buffer size
 Invalid control characters encountered in text.
@@ -12152,6 +12162,7 @@ Invalid grant quantity of %u found on currency %s
 Invalid header
 Invalid item %s referenced in item rewards
 Invalid item %s referenced in virtual item rewards
+Invalid item %s referenced in virtual_item_remove
 Invalid item quality specified for component!
 Invalid job ID %llu
 Invalid key for map field.
@@ -15348,7 +15359,6 @@ Shifts the selected areas by the specified amount
 Shoots a phys object.
 Shortest time we'll let a combat round simulate for.
 Should not reach here.
-Should streetfights launched from console give fake items?
 Should the mover proxy be a capsule shape?
 ShouldCheckEndConditions()
 ShouldClientReceiveStringTableUserData called with NULL GameRules() on table %s, string %d
@@ -17701,6 +17711,7 @@ childSpawnGroup
 child_piece
 chin_raiser
 choices
+city_prestige
 cl
 cl_clock_unhook
 cl_ideal_spec_mode %d
@@ -17716,6 +17727,7 @@ cl_soundscape_flush
 cl_updaterate
 clabelleddebughelper.cpp
 claim_end_time
+claim_progress_no_reward
 claim_value
 claimcode
 class %s - %s instance%s (%.2f%%)
@@ -18077,7 +18089,6 @@ dac_spirit_brothers_synergy_slow_units_outside_triangle
 dac_spirit_brothers_synergy_unit_test_radius
 dac_status
 dac_streetfight_early_preparing_duration
-dac_streetfight_fake_items
 dac_streetfight_max_combat_round_duration
 dac_streetfight_preparing_duration
 dac_team_dies_as_time_expires
@@ -19168,6 +19179,7 @@ gender_t
 generate bone setup statistics
 generated_protodac/linuxsteamrt64/base_gcmessages.pb.cc
 generated_protodac/linuxsteamrt64/clientmessages.pb.cc
+generated_protodac/linuxsteamrt64/dac_gamemessages.pb.cc
 generated_protodac/linuxsteamrt64/dac_gcmessages_client.pb.cc
 generated_protodac/linuxsteamrt64/dac_gcmessages_common.pb.cc
 generated_protodac/linuxsteamrt64/dac_gcmessages_server.pb.cc
@@ -19627,6 +19639,7 @@ in_game_display_interval
 in_game_item_def
 includes
 incoming
+incoming_damage
 incomming_damage_percentage
 increase_amount
 increase_keyword
@@ -23655,6 +23668,8 @@ m_unOrientation
 m_unOverrideOrigin
 m_unOwnerContext
 m_unPlayerSlot
+m_unPresitgeLevel
+m_unPrestigeLevel
 m_unRerollsThisRound
 m_unShopGenerationID
 m_unStreetfightID
@@ -24525,6 +24540,7 @@ modifier_kunkka_ghost_ship_movespeed
 modifier_legion_commander_champion_bonus
 modifier_legion_commander_duel
 modifier_legion_commander_duel_damage_boost
+modifier_legion_commander_duel_healingdisable
 modifier_legion_commander_will_of_the_bullsnake
 modifier_lich_chain_frost
 modifier_lich_chainfrost_slow
@@ -24608,6 +24624,7 @@ modifier_pipe_old
 modifier_plague_ward_magic_resist
 modifier_poison
 modifier_positive_feedback
+modifier_prestige_damage
 modifier_primordial
 modifier_primordial_bonus
 modifier_primordial_malefice_killer
@@ -25267,8 +25284,8 @@ no model
 no samples latched
 no such entity %s
 no usable entity found
+no_dupe_group
 no_dupe_list
-no_dupe_lists
 no_dupe_loot_list_override
 no_equip_to_use
 no_key_required
@@ -26514,6 +26531,7 @@ reroll_cooldown
 reroll_modifier
 reserved
 reset_cycle
+reset_no_dupe_lists
 resolution
 resource/core.gameevents
 resource/game.gameevents
@@ -26546,7 +26564,6 @@ reversalsoundSmall
 reversalsoundthresholdLarge
 reversalsoundthresholdMedium
 reversalsoundthresholdSmall
-reward
 rewardItems
 reward_damage
 reward_id
@@ -27900,6 +27917,7 @@ vecAlternateOrigin
 vecBots.Count() >= nFakePlayers
 vecImpulse
 vecPlayerStates.Count() == 1
+vecPlayerStates.Count() == 2
 vecSave
 vecSortRelativePosition != vec3_invalid
 vecVelocity
@@ -27939,6 +27957,7 @@ violence_hgibs
 virtual_grant_item
 virtual_grant_items
 virtual_item_unlocks
+virtual_revoke_items
 vis_force
 visibilitySamples
 vision_cone
@@ -28175,13 +28194,11 @@ wt
 ww
 x
 xPos
-x_pos
 xc_crouch_debounce
 xen_plant*
 xuid
 y
 yPos
-y_pos
 yawVel
 yaw_end
 yaw_start

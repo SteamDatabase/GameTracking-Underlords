@@ -1,0 +1,34 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/dac_ui_popup_citycrawl_prestige.vcss_c" />
+	</styles>
+
+	<PopupCityCrawlPrestige class="PopupPanel" popupbackground="blur" acceptsinput="true">
+		<Panel class="Body">
+			<Button class="CloseButton" onactivate="UIPopupButtonClicked()" />
+			<Panel class="UnderlordImg Anessix" />
+
+			
+			<Panel class="ModalContent">
+
+				<Panel id="ModalText">
+					<Label class="CCDistrict" html="true" text="#DAC_challenge_map_prestige_label" />
+					<Label class="CCIntro" html="true" text="#DAC_challenge_map_prestige_title" />
+					<Label class="CCDesc CCDescTop" text="#DAC_challenge_map_prestige_intro" />
+					<Label class="CCDesc" text="#DAC_challenge_map_prestige_desc" />
+
+					<Label class="CCNote" text="#DAC_challenge_map_prestige_node" />
+				</Panel>
+				<Panel id="ClaimArea">
+					<DACParticleScenePanel id="ClaimRewardParticle" hittest="false" startActive="true" cameraLeft="0" cameraUp="100" particleName="particles/ui/challenge_claim_box.vpcf" squarepixels="true" fov="200" />
+					<Button class="CCButton ClaimButton" onactivate="DACPopupCityCrawlDoPrestige(); UIPopupButtonClicked(); PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_NodeChallengeRollover' )">
+						<Label text="#dac_claim_prestige" />
+						<Label class="Subtitle" text="#dac_claim_prestige_level" />
+					</Button>
+				</Panel>
+			</Panel>
+		</Panel>
+	</PopupCityCrawlPrestige>
+</root>

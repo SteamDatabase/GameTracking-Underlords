@@ -712,23 +712,7 @@ DACHomePage.DashboardPage
 	visibility: collapse;
 }
 
-#LogoArea 
-{
-	width: fit-children;
-	height: fit-children;
-	horizontal-align: right;
-	vertical-align: bottom;
-	visibility: collapse;
-}
 
-
-.IsLayoutLargeScreen #LogoArea
-{
-	//width: 400px;
-	width: fit-children;
-	//margin-right: 380px;
-	margin-top: 30px;
-}
 
 
 #TitleImage
@@ -744,42 +728,6 @@ DACHomePage.DashboardPage
 	visibility: collapse;
 }
 
-#EarlyAccessLabel {
-	background-color: #000000;
-	font-size: 24px;
-	color: #6f7286;
-	vertical-align: bottom;
-	horizontal-align: center;
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: black;
-	letter-spacing: 3px;
-	padding: 5px 45px;
-	//transform: rotateZ(-3deg);
-	margin-bottom: 36px;
-	margin-right: 40px;
-	text-overflow: shrink;
-}
-
-.IsLayoutLargeScreen #EarlyAccessLabel
-{
-	padding: 5px 5px;
-}
-
-.Language_japanese #EarlyAccessLabel 
-{
-	font-size: 22px;
-}
-
-.Language_russian #EarlyAccessLabel 
-{
-	font-size: 22px;
-}
-
-.IsLayoutSmallScreen #EarlyAccessLabel
-{
-	visibility: collapse;
-}
 
 #Background
 {
@@ -2321,8 +2269,8 @@ to
 }
 
 #PromoBox {
-	width: 330px;
-	height: 200px;
+	width: 400px;
+	height: 230px;
 	background-color: #00000090;
 	border: 1px solid #333333;
 	margin: 20px 0px 50px 30px;
@@ -2369,8 +2317,14 @@ to
 	transform: translateY(-3px);
 }
 
+#PromoBox .MainNavLabel {
+	vertical-align: bottom;
+	margin-left: 15px;
+	margin-bottom: 35px;
+}
+
 .Season1 {
-	background-image: url("s2r://panorama/images/dashboard/promo/promo_tile_season1_welcome_psd.vtex"); 
+	background-image: url("s2r://panorama/images/dashboard/promo/promo_tile_city_crawl_psd.vtex"); 
 	background-size: 100%;
 	background-repeat: no-repeat;
 }
@@ -2381,10 +2335,17 @@ to
 	height: 200px;
 	margin-left: -36px;
 	//transition-property: transform, brightness;
+    visibility: collapse;
 }
 
-.NeedsGC #CityCrawlButton,
-.NeedsSteamLogin #CityCrawlButton
+.BuildMain #CityCrawlButton
+{
+    visibility: visible;
+}
+
+
+.NeedsGC #EarlyBirdButton,
+.NeedsSteamLogin #EarlyBirdButton
 {
 	//border: 1px solid red;
 }
@@ -2392,13 +2353,14 @@ to
 .IsLayoutSmallScreen.AspectRatio21x9 #CityCrawlButton {
 	margin-left: 30px;
 }
+
 #CityCrawlButton .MainNavLabel  {
 	margin-left: 70px;
 	margin-top: 20px;
 	text-shadow: 2px 2px 3.0 #1f296188;
 }
 
-#CityCrawlBG {
+#EarlyBirdBG {
 	background-image: url("s2r://panorama/images/dashboard/city_crawl_bg_psd.vtex"); 
 	background-size: 100%;
 	background-repeat: no-repeat;
@@ -2428,7 +2390,39 @@ to
 	transition-duration: 0.3s;
 }
 
+#EarlyBirdNewspaper {
+	background-image: url("s2r://panorama/images/dashboard/newspaper_psd.vtex"); 
+	width: 250px;
+	height: 400px;
+	margin-top: -80px;
+	margin-right: 40px;
+	horizontal-align: right;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	transform: rotateZ(6deg);
+	transition-property: transform, brightness;
+	transition-duration: 0.3s;
+}
+
 .CityCrawlChallengesLabel {
+	font-size: 20px;
+	text-transform: uppercase;
+	font-family: Ravenhook;
+	color: textDefault;
+	margin-bottom: 10px;
+	margin-left: 15px;
+	letter-spacing: 2px;
+	visibility: collapse;
+	text-shadow: 2px 2px 3.0 #1f296188;
+	vertical-align: bottom;
+}
+
+#PromoBox .CityCrawlChallengesLabel {
+	color: #f4f4f4;
+	margin-bottom: 15px;
+}
+
+.EarlyBirdChallengesLabel {
 	font-size: 20px;
 	text-transform: uppercase;
 	font-family: Ravenhook;
@@ -2448,7 +2442,8 @@ to
 }
 .CityCrawlChallengesClaimable.CityCrawlChallengesAvailable #CityCrawlActiveChallengesLabel,
 .CityCrawlChallengesAvailable #CityCrawlTakeOverLabel,
-.CityCrawlChallengesClaimable #CityCrawlTakeOverLabel
+.CityCrawlChallengesClaimable #CityCrawlTakeOverLabel,
+.CanPrestige #CityCrawlTakeOverLabel
 {
     visibility: collapse;
 }
@@ -2478,6 +2473,27 @@ to
 	margin-top: 70px;
 	margin-left: 75px;
 	letter-spacing: 2px;
+	visibility: visible;
+}
+
+.CityCrawlChallengesLabel .CityCrawlCanPrestige
+{
+	visibility: collapse;
+
+	//width: fit-children;
+	//height: 40px;
+	//background-color: gold;
+	//border: 1px solid red;
+
+	//margin: 10px;
+
+	color: gradient( linear, 0% 0%, 0% 100%, from( #ffffff ), color-stop( 0.3, #ffffff), color-stop( 0.3, #eddcb7), color-stop( 0.93, #b08d50), color-stop( 0.93, #b4712d),  to( #b4712d) );
+	//font-size: 30px;
+	
+}
+
+.CanPrestige .CityCrawlCanPrestige
+{
 	visibility: visible;
 }
 
@@ -2574,7 +2590,6 @@ DACViolator.Acknowledged
 }
 
 #BattlepassButton,
-#CityCrawlButton,
 #LoadoutButton
 {
 	visibility: visible;

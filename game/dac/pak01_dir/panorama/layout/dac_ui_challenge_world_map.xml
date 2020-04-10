@@ -103,6 +103,8 @@
 
 			</Panel>
 
+			<Panel class="ZoomToPrestigeButton" onactivate="DACZoomToPrestige();" />
+
 			<Panel id="BackButton2" onactivate="DACSelectDashboardButton('PlayContainer'); DACNavigateBack(); PlaySoundEffect( 'UL_UI.CityCrawl_BackoutActivate' );" onmouseover="PlaySoundEffect( 'UL_UI.CityCrawl_BackoutRollover' )"/>
 
 			<Button class="ZoomOutButton BlueGlowButton" onactivate="DACChallengeWorldMapCamera(0)">
@@ -139,6 +141,15 @@
 					<Label text="#dac_challenge_map_dev_zone" />
 				</Button>
 
+				<Button class="MiniButton" onactivate="DACChallengeWorldMapDevPrestigePopup()">
+					<Label text="#dac_challenge_map_dev_prestige" />
+				</Button>
+
+				<Button class="MiniButton" onactivate="DACCityCrawlCompleteEverything()">
+					<Label text="#dac_challenge_map_dev_complete" />
+				</Button>
+
+
 				<Button class="MiniButton" onactivate="DACShowCityCrawlIntro()">
 					<Label text="#dac_challenge_map_intro_popup" />
 				</Button>
@@ -153,14 +164,18 @@
 					</Panel>				
 				</Panel>
 
+				<DACUIPosterPrestigeLevel id="PrestigeLevelBadgePanel" onmouseover="UIShowTextTooltip( #DAC_CC_Prestige_Title )" onmouseout="UIHideTextTooltip()"/>
+
 				<Panel class="ShowChallengesContainer" onactivate="DACShowCityCrawlChallenges()" >
 					<Panel class="ObjectivesCount BlueGlowButton">
 						<Panel class="ObjectivesImg" />
 						
 						<Label class="ObjectivesCountLabel" text="#DAC_Play_CityChallenges_Avauilable_Button" />
 						
-					</Panel>				
+					</Panel>
 				</Panel>
+
+				
 			</Panel>
 
 			<Panel class="AreaLabels">

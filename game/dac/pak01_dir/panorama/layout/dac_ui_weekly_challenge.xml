@@ -1,0 +1,91 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_ui_weekly_challenge.vcss_c" />
+	</styles>
+
+	<DACUIWeeklyChallenge>	
+		<Panel id="RootPanel">
+			<Panel class="ScrollPanel">
+				<Image id="EarlyBirdLogo" />
+
+				<Panel class="HeadlineContainer" id="ScrollTarget">
+					<Label class="WeeklyHeadline" html="true" text="{s:weekly_headline}"/>			
+				</Panel>
+
+				<Label class="WeeklySubHeadline" html="true" text="{s:weekly_subheadline}" />
+
+				<Panel class="WeeklyHeaderImage">
+					<Panel class="RewardCallout">						
+						<Panel id="RewardImage">
+							<DACWantedPosterTitle id="RewardPosterTitle" customBGStyle="true"/>
+						</Panel>
+						<Label class="ChallengesComplete" text="#DAC_Weekly_ChallengesComplete"/>
+						<Panel class="WeeklyClaimButton" onactivate="DACClaimWeeklyChallenge()">
+							<Label class="WeeklyClaimLabel" text="#DAC_Weekly_Claim" />
+						</Panel>
+					</Panel>
+				</Panel>
+
+				<Panel class="SubheadContainer">
+					<Label class="SubheadTitle" text="#DAC_Weekly_WeeklyChallenges"/>				
+					<Label id="TimeRemainingLabel" class="TimeRemaining" text="#DAC_Weekly_TimeRemaining"/>			
+				</Panel>
+
+				<Panel id="ObjectivesContainer">
+					<Panel id="PuzzlePanel" class="ObjectivePanel">
+						<Panel id="PuzzleBG" class="ObjectiveBG" onactivate="DACStartWeeklyPuzzle()"/>
+						<Panel class="ChallengeTypeContainer">
+							<Panel class="PuzzleTypeIcon" />
+							<Label text="#DAC_CC_ChallengeType_Puzzle" class="ChallengeType"/>
+						</Panel>
+						<Label class="ChallengeDescription" html="true" text="{s:puzzle_name}" />
+						<Label class="ChallengeDescription" html="true" text="{s:puzzle_lore}" />
+						<Panel id="PuzzleFightButton" class="FightButton" onactivate="DACStartWeeklyPuzzle()">
+							<Label class="FightButtonLabel" text="#DAC_Weekly_Fight" />
+						</Panel>
+					</Panel>
+					<Panel id="StreetFightPanel" class="ObjectivePanel">
+						<Panel id="StreetFightBG" class="ObjectiveBG" onactivate="DACStartWeeklyStreetFight()"/>
+						<Panel class="ChallengeTypeContainer">
+							<Panel class="StreetfightTypeIcon" />
+							<Label text="#DAC_CC_ChallengeType_StreetFight" class="ChallengeType"/>							
+						</Panel>						
+						<Label class="ChallengeDescription" html="true" text="{s:streetfight_name}" />
+						<Label class="ChallengeDescription" html="true" text="{s:streetfight_lore}" />
+						<Panel id="StreetFightButton" class="FightButton" onactivate="DACStartWeeklyStreetFight()">
+							<Label class="FightButtonLabel" text="#DAC_Weekly_Fight" />
+						</Panel>
+					</Panel>
+				</Panel>
+
+				<Panel id="ChallengePanel" class="ObjectivePanel">						
+					<Panel id="ChallengeBGPanel">
+						<Panel id="ChallengeBG" class="ObjectiveBG" onactivate="DACStartWeeklyPuzzle()"/>						
+						<Label class="ChallengeProgressText HeadlineFont" text="#DAC_AchievementProgress"/>
+						<ParticleProgressBar id="ChallengeProgress" class="WeeklyChallengeProgressBar" min="0" max="1" barParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar.vpcf" barCompleteParticle="econ/s0/particles/battlepass/s0_battlepass_challenge_bar_complete.vpcf" fov="-200" />
+					</Panel>
+					<Panel class="ChallengeTypeContainer" id="ObjectiveTypeContainer">
+							<Panel class="ObjectiveTypeIcon" />
+							<Label text="#DAC_CC_ChallengeType_Objective" class="ChallengeType"/>
+						</Panel>
+					<Label class="ChallengeDescription" html="true" text="{s:challenge_name}" />
+					<Label class="ChallengeDescription" html="true" text="{s:challenge_lore}" />									
+					<Panel id="PuzzleButton" class="FightButton" onactivate="DACStartWeeklyPuzzle()">
+						<Label class="FightButtonLabel" text="#DAC_Weekly_Fight" />
+					</Panel>
+				</Panel>
+
+				<Panel class="SubheadContainer">
+					<Label class="SubheadTitle" text="#DAC_Weekly_Arcade"/>				
+				</Panel>
+
+				<Panel id="NonoGramPanel">
+					<DACUINonoGramPuzzle/>
+				</Panel>
+
+			</Panel>
+		</Panel>
+	</DACUIWeeklyChallenge>
+</root>
+

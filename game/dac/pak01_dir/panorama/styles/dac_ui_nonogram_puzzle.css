@@ -1,0 +1,182 @@
+DACUINonoGramPuzzle 
+{
+	horizontal-align: center;
+	vertical-align: center;
+	width: 100%;
+	height: 100%;
+}
+
+#PuzzleRoot
+{
+	width:fit-children;
+	height:fit-children;
+	vertical-align: center;
+	horizontal-align:center;
+	overflow:noclip noclip;
+}
+#PuzzleContainer
+{
+	flow-children:down;
+	width:fit-children;
+	height:fit-children;
+	vertical-align: center;
+	horizontal-align:center;
+	border: 1px solid black;
+}
+
+#ColumnHeaders
+{
+	width:100%;
+	flow-children:right;
+	height:223px;
+	margin-top:-97px;
+	overflow:noclip noclip;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+.ColumnHeader
+{
+	width:32px;
+	height:fit-children;
+	flow-children:down;
+	transform:translateY(-128px);
+	vertical-align: bottom;
+	//background-color:#BBBBBB;
+	
+}
+
+#RowHeaders
+{
+	width:223px;
+	flow-children:down;
+	height:fit-children;
+	margin-left:-97px;
+	overflow:noclip noclip;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+.RowHeader
+{
+	height:32px;
+	width:fit-children;
+	flow-children:right;
+	transform:translateX(-128px);
+	horizontal-align: right;
+	//background-color:#BBBBBB;
+}
+
+.HintLabel
+{
+	width:32px;
+	height:32px;	
+	text-align: center;	
+	color: black;
+	font-size:24px;
+	font-family: Ravenhook, k_alwaysFontNames;
+	text-transform: uppercase;
+}
+
+.ColumnHeader .HintLabel
+{
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.RowHeader .HintLabel
+{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+
+.PuzzleRow
+{
+	width:fit-children;
+	height:fit-children;
+	flow-children:right;
+}
+
+.PuzzleCell
+{
+	transition-property: background-color, brightness, border;
+	transition-duration: .1s;
+	width:32px;
+	height:32px;
+
+	border: 1px solid black;	
+
+	background-size: 100%;
+	background-position: 50%;
+	background-repeat:no-repeat;
+}
+
+.PuzzleCell:hover,
+.CellEmpty:hover,
+.CellFilled:hover
+{
+	brightness: .6;
+
+	animation-name: borderPulse;
+	animation-duration: 2.0s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+}
+
+@keyframes 'borderPulse'
+{
+	0%
+	{
+		border: 3px solid red;
+	}
+
+	50%
+	{
+		border: 1px solid black;
+	}
+
+	100%
+	{
+		border: 3px solid red;
+	}
+}
+
+.PuzzleCell:active,
+.CellEmpty:active,
+.CellFilled:active
+{
+	brightness: .6;
+	border: 3px solid red;
+	background-color: white;
+}
+
+.CellEmpty
+{
+	background-color:#ffffff88;
+}
+
+.CellFilled
+{
+	background-color:#372a2a;
+}
+
+.CellX
+{
+	background-color: white;
+	background-image: url("s2r://panorama/images/hud/cross_out_psd.vtex");
+	background-size: 100% 100%;
+}
+
+#SolvedPicture
+{
+	width:100%;
+	height:100%;
+	background-position:center;
+	opacity:0;
+	transition-duration:1s;
+	transition-property:opacity;
+	transition-timing-function: ease-in-out;
+}
+
+.Solved #SolvedPicture
+{
+	opacity:1;
+}

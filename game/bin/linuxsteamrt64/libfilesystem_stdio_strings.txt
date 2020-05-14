@@ -58,6 +58,7 @@ $ORIGIN
 -onethreadpool
 ...
 ../public/ordered_constructor.h
+../public/tier0/threadtools.h
 ../public/tier0/tslist.h
 ../public/tier1/utlblockmemory.h
 ../public/tier1/utlfixedmemory.h
@@ -128,11 +129,13 @@ $ORIGIN
 22CSchemaInstallCallback
 23CFileAsyncAppendFileJob
 23IConCommandBaseAccessor
+24CMemoryMappedFileSection
 25CFileSystemReloadFileList
 26CDefaultKeyValuesErrorSpew
 26CFileAsyncDirectoryScanJob
 28CFioReadOnlyMemoryMappedFile
 28CPackedStoreMemoryMappedFile
+35CMemoryMappedFileSection_SelfDelete
 6ConVar
 7IConVar
 8CFmtStrNILi256ELb0EE
@@ -267,6 +270,7 @@ CThreadRWLock_FastRead::CThreadRWLock_FastRead(bool)
 CThreadRWLock_FastRead::EncounteredComplexReadLockOperation(unsigned int, bool, char const*, int)
 CThreadRWLock_FastRead::HandleFirstWriteLockTransition()
 CThreadRWLock_FastRead::UnlockReadAccounting(char const*, int, unsigned int)
+CThreadRWLock_FastRead::UnlockRead_LockForWrite(char const*, int)
 CThreadRWLock_FastRead::UnlockWrite(char const*, int)
 CThreadSemaphore::~CThreadSemaphore()
 CThreadSpinRWLock::LockForRead(char const*, int)
@@ -345,7 +349,6 @@ EnableWhitelistFileTracking
 EngineServiceMgr001
 EnvironmentMapBuilder_001
 EventSystem001
-Exceeded limit of number of vpk files supported (%d)!
 FATAL ERROR: unable to register all schema data: %s
 FCVAR_NEVER_AS_STRING
 FS:  Tried to Close NULL file handle!
@@ -391,7 +394,6 @@ GNU
 GameResourceServiceClientV001
 GameResourceServiceServerV001
 GameUIService_001
-GetFileHandle
 GetInterfaceBase
 GetProfilingInfo
 GetResourceManifestCount

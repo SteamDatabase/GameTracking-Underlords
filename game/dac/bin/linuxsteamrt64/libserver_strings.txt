@@ -2076,6 +2076,7 @@ $ORIGIN
 16CModifierFactoryI30CDAC_Modifier_Primordial_BonusE
 16CModifierFactoryI30CDAC_Modifier_RaiseZombiesAuraE
 16CModifierFactoryI30CDAC_Modifier_RaiseZombiesBuffE
+16CModifierFactoryI30CDAC_Modifier_Razor_StaticLinkE
 16CModifierFactoryI30CDAC_Modifier_SerpentWardDeathE
 16CModifierFactoryI30CDAC_Modifier_SheepStick_TauntE
 16CModifierFactoryI30CDAC_Modifier_Shivas_Guard_OldE
@@ -2210,6 +2211,7 @@ $ORIGIN
 16CModifierFactoryI34CDAC_Modifier_Juggernaut_BladeFuryE
 16CModifierFactoryI34CDAC_Modifier_Lich_ChainFrost_SlowE
 16CModifierFactoryI34CDAC_Modifier_OnFireSilencedTalentE
+16CModifierFactoryI34CDAC_Modifier_Razor_StaticLinkBuffE
 16CModifierFactoryI34CDAC_Modifier_SandKing_Impale_LeapE
 16CModifierFactoryI34CDAC_Modifier_SheepStick_DebuffOLDE
 16CModifierFactoryI34CDAC_Modifier_Slark_Pounce_DisableE
@@ -2265,6 +2267,7 @@ $ORIGIN
 16CModifierFactoryI36CDAC_Modifier_Medusa_StoneGaze_StoneE
 16CModifierFactoryI36CDAC_Modifier_OctarineEssence_ShieldE
 16CModifierFactoryI36CDAC_Modifier_PlagueWard_MagicResistE
+16CModifierFactoryI36CDAC_Modifier_Razor_StaticLinkDeBuffE
 16CModifierFactoryI36CDAC_Modifier_Sand_King_BurrowStrikeE
 16CModifierFactoryI36CDAC_Modifier_Shivas_Guard_Old_BlastE
 16CModifierFactoryI36CDAC_Modifier_Slardar_Amplify_DamageE
@@ -2989,7 +2992,7 @@ $ORIGIN
 20CVRHandModelOverride
 20GameFileWeaponInfo_t
 20IChoreoEventCallback
-20IHibernationListener
+20IMobileEventListener
 20INavPhysicsInterface
 20IParticleSystemQuery
 20IPointHintUiAutoList
@@ -4126,6 +4129,7 @@ $ORIGIN
 29CDAC_Ability_Medusa_SplitShot
 29CDAC_Ability_Medusa_StoneGaze
 29CDAC_Ability_Puck_IllusoryOrb
+29CDAC_Ability_Razor_StaticLink
 29CDAC_Ability_Treant_LeechSeed
 29CDAC_Ability_Tusk_WalrusPunch
 29CDAC_Clockwerk_BatteryAssault
@@ -4266,6 +4270,7 @@ $ORIGIN
 30CDAC_Modifier_Primordial_Bonus
 30CDAC_Modifier_RaiseZombiesAura
 30CDAC_Modifier_RaiseZombiesBuff
+30CDAC_Modifier_Razor_StaticLink
 30CDAC_Modifier_SerpentWardDeath
 30CDAC_Modifier_SheepStick_Taunt
 30CDAC_Modifier_Shivas_Guard_Old
@@ -4694,6 +4699,7 @@ $ORIGIN
 34CDAC_Modifier_Juggernaut_BladeFury
 34CDAC_Modifier_Lich_ChainFrost_Slow
 34CDAC_Modifier_OnFireSilencedTalent
+34CDAC_Modifier_Razor_StaticLinkBuff
 34CDAC_Modifier_SandKing_Impale_Leap
 34CDAC_Modifier_SheepStick_DebuffOLD
 34CDAC_Modifier_Slark_Pounce_Disable
@@ -4850,6 +4856,7 @@ $ORIGIN
 36CDAC_Modifier_Medusa_StoneGaze_Stone
 36CDAC_Modifier_OctarineEssence_Shield
 36CDAC_Modifier_PlagueWard_MagicResist
+36CDAC_Modifier_Razor_StaticLinkDeBuff
 36CDAC_Modifier_Sand_King_BurrowStrike
 36CDAC_Modifier_Shivas_Guard_Old_Blast
 36CDAC_Modifier_Slardar_Amplify_Damage
@@ -7759,6 +7766,7 @@ CDACServerGCSystem
 CDACServerStaticLobby
 CDACShopUnitState
 CDACTurboShopOfferingState
+CDACUnderlordPickerOfferingState
 CDACUnitState
 CDAC_Ability
 CDAC_Ability_Abaddon_AphoticShield
@@ -7844,6 +7852,7 @@ CDAC_Ability_Puck_IllusoryOrb
 CDAC_Ability_Puck_PhaseShift
 CDAC_Ability_Pudge_Pound
 CDAC_Ability_Razor_PlasmaField
+CDAC_Ability_Razor_StaticLink
 CDAC_Ability_Roshan_SpellImmune
 CDAC_Ability_SandKing_BurrowStrike
 CDAC_Ability_SandKing_CausticFinale
@@ -10884,6 +10893,7 @@ Found %s
 Found a claim with an empty name, likely missing the 'name' field
 Found a claim with an invalid ID, likely missing the 'id' field. 0 is not a valid ID
 Found a match reward that had no currency and no challenge progress associated with it
+Found a weekly challenge with an invalid ID, likely missing the 'id' field. 0 is not a valid ID
 Found an invalid max value for currency %s: %d
 Found an invalid points per level of %u in currency %s
 Found both a criteria and a criteria set! Only one of these may be set!
@@ -10897,6 +10907,7 @@ Found multiple claims using the same name of %s
 Found multiple currencies that share the same id %u
 Found multiple currencies that share the same name %s
 Found multiple human players which is not supported.
+Found multiple weekly challenges using the same ID of %u
 Found no entity at %d.
 Found soundscape entity "%s" with no soundscape name.
 Found zero human players which is not supported.
@@ -14369,7 +14380,7 @@ RegisterEntityClass
 RegisterFormatConversion
 RegisterGameEventMessages
 RegisterGlobalObject
-RegisterHibernationListener
+RegisterMobileEventListener
 RegisterSpawnGroupFilterProxy
 RegisterStringToken
 Relationship_t
@@ -14637,6 +14648,7 @@ SNDLVL_NORM
 SNDLVL_STATIC
 SNDLVL_TALKING
 SOCache
+SOCacheSubscribed owner = %s event=%d
 SOCacheUnsubscribed owner = %s event=%d
 SOCacheUnsubsribe called for the active lobby
 SOCreated type = %d owner = %s event=%d
@@ -16279,7 +16291,7 @@ Unrecognized resource version (%d): %s
 Unrecognized syntax:
 Unrecognized type '%d'
 UnregisterAssertionFailureListener
-UnregisterHibernationListener
+UnregisterMobileEventListener
 Unresolved object reference '%s'
 Unserialize
 UnserializeKeys
@@ -17418,6 +17430,7 @@ baselayer %d
 basemodelentity
 basevelocity
 bash_chance
+bash_damage
 bash_duration
 bash_percent
 basher_new
@@ -17686,6 +17699,7 @@ challenge_instance
 challenge_level
 challenge_list
 challenge_lists
+challenge_slot_id
 challenge_slots
 chances
 change callback spew threshold %f msecs
@@ -17733,6 +17747,7 @@ cl_soundscape_flush
 cl_updaterate
 clabelleddebughelper.cpp
 claim_end_time
+claim_id
 claim_progress_no_reward
 claim_value
 claimcode
@@ -17781,6 +17796,8 @@ cloth_enable
 cloth_iv_store_back
 cojob.cpp
 cojobmgr.cpp
+col
+col_hints
 cold_attack_speed
 cold_duration_melee
 cold_duration_ranged
@@ -17831,7 +17848,6 @@ conection lost
 config
 config_id
 config_state
-configs
 configvalue.cpp
 conflicts with an existing enum type.
 conflicts with an existing field.
@@ -18342,6 +18358,7 @@ disable_duration
 disable_dynamic_prop_loading
 disable_dynamic_prop_loading - Skipped door '%s'
 disable_mip_gen
+disable_prettify_of_configs
 disable_style_selector
 disableallshadows
 disabledValue
@@ -19377,6 +19394,7 @@ hardstopspeakevent
 has%sSynergy_%s
 hasEnemy_%s
 hasFriendly_%s
+has_active_synergy
 has_extent
 has_rotation
 has_store_custom_item_details_panel
@@ -19752,6 +19770,7 @@ is_gem
 is_hidden_set
 is_loadout_intro_effect
 is_test_item_set
+is_weekly_puzzle
 isbetween
 isbot
 isstairs
@@ -21015,6 +21034,7 @@ m_bIgnoreInput
 m_bIgnoreObstructions
 m_bIgnorePredictionCull
 m_bIgnoreRotation
+m_bIgnoreUnitCombinesOnBoard
 m_bInAbilityPhase
 m_bInDuckJump
 m_bInFogVolumesList
@@ -24658,6 +24678,9 @@ modifier_raise_zombies_aura_old
 modifier_raise_zombies_buff
 modifier_rapid_fire
 modifier_razor_plasma_field
+modifier_razor_static_link
+modifier_razor_static_link_buff
+modifier_razor_static_link_debuff
 modifier_refresh
 modifier_refresher_orb
 modifier_refresher_orb_old
@@ -25315,6 +25338,7 @@ non-
 non-entity blocked area %d
 non-moveable %s '%s' is pushed
 non-networkable
+nonogram
 norm
 noscene
 nose_controller
@@ -26380,12 +26404,12 @@ push_damage
 push_length
 pushdir
 pushdir_islocal
-puzzle
 puzzle_id
 puzzle_leaderboard_gold_%u
 puzzle_leaderboard_health_%u
 puzzle_leaderboard_time_%u
 puzzle_leaderboard_units_%u
+puzzle_slot_id
 puzzle_victory
 pve
 pvs_debugentity
@@ -26456,6 +26480,7 @@ ratchetType
 ray_bench
 rays.bin
 razor
+razor_3star
 read weapon file '%s'
 readdir64
 reading weapons from %s
@@ -26619,6 +26644,7 @@ round_result
 round_start_pre_entity
 round_type
 roundnumber
+row_hints
 rr_AddDecisionRule
 rr_CommitAIResponse
 rr_GetResponseTargets
@@ -26991,6 +27017,8 @@ socket_chisel
 socket_hammer
 socket_hammer_safe
 solidbsp
+solution_image
+solution_str
 soothing_balm_talent
 sortPriority
 sos_debug_emit
@@ -27280,7 +27308,6 @@ store_remap
 stored_as_integer
 storm_spirit_ball_lightning
 storm_spirit_element
-str
 strange part new counter ID
 strange_control_point
 strange_part
@@ -27297,6 +27324,7 @@ stream
 street_fight
 streetfight_id
 streetfight_item
+streetfight_slot_id
 streetfight_victory
 strerror
 strftime
@@ -27329,6 +27357,7 @@ subtype
 subtype mismatch
 summonID
 summon_cooldown
+summon_count
 summon_duration
 summon_golem_stun_talent
 summon_in_backline
@@ -27649,6 +27678,8 @@ timbersaw_whirling_death
 time %f %f
 time: %6.3f   sound name: %s   scene: %s
 timeSpoken
+time_end
+time_start
 timeofday
 timeofday %s
 timeofday_reload
@@ -27796,6 +27827,8 @@ unitID
 unitName
 unit_cap_modifier
 unit_cost_modifier
+unit_id_for_always_adjacent
+unit_id_to_prevent_silence
 unit_stunned
 unit_summoned
 unit_tier
@@ -28167,6 +28200,7 @@ weather_type
 webapi
 wedding_ring
 week
+weekly_challenges
 well_trained_talent
 wheel_loc_token
 wild_rumpus

@@ -1,0 +1,37 @@
+<root>
+	<styles>
+		<include src="s2r://panorama/styles/gamestyles.vcss_c" />
+		<include src="s2r://panorama/styles/dac_global.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popups_shared.vcss_c" />
+		<include src="s2r://panorama/styles/popups/popup_generic.vcss_c" />
+		<include src="s2r://panorama/styles/popups/dac_ui_popup_weekly_challenge_intro.vcss_c" />
+	</styles>
+
+	<Panel class="PopupPanel Hidden" popupbackground="dim">
+
+
+		<Panel class="MainPanel">
+			<Panel class="PanelLeft" />
+			<Panel class="PanelRight">
+				<Label class="TitleRow" text="#popup_weekly_challenge_title"/>				
+				<Label class="SubTitleRow" text="#popup_weekly_challenge_subtitle"/>				
+				<Label class="Description" text="#popup_weekly_challenge_description" html="true"/>
+				<Label class="Description BattlePassNotOwned" text="#popup_weekly_challenge_description_2_unlocked" html="true"/>
+				<Label class="Description BattlePassOwned" text="#popup_weekly_challenge_description_2_locked" html="true"/>
+				<Panel class="PurchaseBattlePassButton">
+			    	<DACBattlepassLevel id="BattlePassLevel" class="ShowBuy" />
+			 	</Panel>	
+				<Panel id="ButtonRow">
+					<Panel class="ChallengeButton" onactivate="DACBattlepassLevelBuyPressed()">
+						<Label class="OkLabel" text="#popup_weekly_challenge_ok_button" onactivate="UIPopupButtonClicked();" html="true"/>
+					</Panel>							
+				</Panel>
+			</Panel>
+		</Panel>
+
+
+
+		<Panel class="CloseButton" onactivate="UIPopupButtonClicked();" />
+
+	</Panel>
+</root>

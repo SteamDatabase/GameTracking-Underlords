@@ -596,6 +596,8 @@ $undefined
 -tx-struct
 -vktrace
 -vulkan
+-vulkan_aggressive_command_pool_rebalancing
+-vulkan_aggressive_command_pool_rebalancing_2gb
 -vulkan_alloc_callbacks
 -vulkan_amd_disable_bind_vertex_buffers_workaround
 -vulkan_cmd_buffer_pool_size
@@ -801,7 +803,7 @@ $undefined
 20CRenderContextVulkan
 20CRenderDeviceMgrBase
 20CVfxShaderFileVulkan
-20IHibernationListener
+20IMobileEventListener
 20IResourceTypeManager
 21CConstantBufferVulkan
 21CFramebufferMgrVulkan
@@ -1462,6 +1464,7 @@ CRenderDeviceVulkan::GetDeviceSpecificTexture() failed to get texture data.
 CRenderDeviceVulkan::InitDevice: failed to get queue properties
 CRenderDeviceVulkan::InitDevice: no graphics queue found
 CRenderDeviceVulkan::InitDevice: vkEnumerateDeviceExtensionProperties( ... ) failed.
+CRenderDeviceVulkan::OnLowMemoryNotification - evicting all textures to reduce memory pressure.
 CRenderDeviceVulkan::RebakeStaticDescriptorSetsReferencingTexture - could not allocate descriptor in new pool.
 CRenderDeviceVulkan::SetHardwareGammaRamp failed to get swap chain.
 CRenderDeviceVulkan::UpdateDescriptorSet: Failed to update descriptor set.
@@ -2295,6 +2298,7 @@ Empty JPEG image (DNL not supported)
 Empty input file
 EmptyAnim
 Enabling GPU validation.
+Enabling aggressive command pool rebalancing.
 Enabling instance extension: %s.
 Enabling validation layer: %s.
 Encountered extended instruction GLSLstd450Bad
@@ -4767,6 +4771,7 @@ ReadOnly
 ReadToken overflow
 Reading a token:
 Real:
+Rebalancing command buffer pool for thread (%s). Has %d command buffers, rebalancing to size %d command buffers
 Rebalancing command buffer pools. Largest has %d command buffers, rebalancing to size %d command buffers
 Recompile with DUMP_COUNTERS defined to see counters.
 Recorded:
@@ -4786,7 +4791,7 @@ Refract
 RegisterAllModuleData
 RegisterConfigValue: Unknown error constructing config value "%s"!
 RegisterFormatConversion
-RegisterHibernationListener
+RegisterMobileEventListener
 RegisterStringToken
 Reject swapchain blit request to swapchain that is no longer valid.
 RelaxedPrecision
@@ -5616,6 +5621,7 @@ There must be at most one object per Storage Class that can contain a structure 
 There must be no more than one push constant block
 These variables must have DescriptorSet and Binding decorations specified
 ThreadGetCurrentId
+ThreadGetDebugNameForThreadId
 ThreadJoin
 ThreadMultiWait
 ThreadSleep
@@ -5887,7 +5893,7 @@ Unrecognized component IDs %d %d %d, assuming YCbCr
 Unrecognized equation type for pCAL chunk
 Unrecognized flag name '%s'
 Unrecognized type '%d'
-UnregisterHibernationListener
+UnregisterMobileEventListener
 Unresolved object reference '%s'
 Unroll and DontUnroll loop controls must not both be specified
 Unsatisfied dependency at present time = death!
@@ -10711,15 +10717,15 @@ textureSize
 textureSize(
 texturebase.cpp
 texturebase.cpp(1821):Error loading texture: %s
-texturebase.cpp(2755):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2776):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2787):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2798):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2809):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2830):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2841):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2852):ResourceHandleToData( %s ) failed! Falling back to error texture!
-texturebase.cpp(2863):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2762):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2783):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2794):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2805):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2816):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2837):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2848):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2859):ResourceHandleToData( %s ) failed! Falling back to error texture!
+texturebase.cpp(2870):ResourceHandleToData( %s ) failed! Falling back to error texture!
 texturescale
 tgamma
 that allocate pointers must be in Function or Private

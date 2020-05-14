@@ -1,12 +1,12 @@
 DACUIWeeklyChallenge 
 {
 	height: fit-children;
+	horizontal-align: center;
 }
 
 DACUIWeeklyChallenge Label
 {
 	font-family: "Early Bird";
-	text-transform: lowercase;
 }
 
 #RootPanel
@@ -14,45 +14,92 @@ DACUIWeeklyChallenge Label
 	width: 1448px;
 	height: fit-children;
 	overflow: squish scroll;	
-
-
-	horizontal-align: left;
+	horizontal-align: center;
 	vertical-align: center;
 	margin: 0px;
 	flow-children: down;
 	transform: rotateZ(0deg);
+}
 
+.NoChallengeAvailable .Row,
+.NoChallengeAvailable .HeadlineContainer,
+.NoChallengeAvailable .WeeklySubHeadline,
+.NoChallengeAvailable .WeeklyHeaderImage,
+.NoChallengeAvailable .NonoGramContainer,
+.NoChallengeAvailable .WeeklyComic,
+.NoChallengeAvailable .CourierStats
+{
+	visibility: collapse;
+}
+
+.NoChallengeAvailable #NoActiveChallengePanel
+{
+	visibility: visible;	
+}
+
+#NoActiveChallengePanel
+{
+	width:1448px;
+	height:300px;
+	visibility: collapse;	
+	margin-bottom:100px;
+	margin-top:100px;
+	horizontal-align: center;
+	text-align: center;
+}
+
+.IsLayoutLargeScreen #RootPanel
+{
+	ui-scale: 90%;
 }
 
 .ScrollPanel
 {
 	background-size: 100%;
-	background-position: 50%;
+	background-position: 100%;
 	background-repeat: no-repeat;
 	background-image: url("s2r://panorama/images/post_game/newspaper_bg_psd.vtex");
+	padding: 120px 0px 50px 0px;
 	flow-children: down;
 }
 
-.HeaderText
+DACUIWeeklyChallenge #VerticalScrollBar
 {
-	font-size: 46px;
-	font-weight: black;
-	text-transform: uppercase;
-	letter-spacing: 2px;
-
-    color: white;
-	text-overflow: shrink;
+	opacity: 0;
 }
+
+.Row
+{
+	width: 1150px;
+	height: fit-children;
+	margin-top: 25px;
+	horizontal-align: center;
+	flow-children: right;
+
+}
+
+.Column
+{
+	width: 50%;
+	height: fit-children;
+	max-height: 940px;
+	flow-children: down;
+}
+
+//------------------
+//     HEADER
+//------------------
 
 #EarlyBirdLogo {
 	width: 78%;
 	height: 300px;
 	horizontal-align: center;
-	margin: 60px 0 0px 0;
 
 	background-image: url("s2r://panorama/images/post_game/early_bird_logo_psd.vtex");
 	background-size: contain;
 	background-repeat: no-repeat;
+
+	// localized versions for this image at the bottom of this file
 }
 
 .HeadlineContainer
@@ -60,19 +107,17 @@ DACUIWeeklyChallenge Label
 	horizontal-align: center;
 	width: fill-parent-flow(1.0);
 	height: fit-children;
-	max-height: 210px;
+	max-height: 150px;
 	overflow: noclip;
-	
 	margin-top: 40px;
 	visibility: visible;
-
 	margin: 5px 150px;
-
-	//background-color: #2e2120;
-	background-image: url("s2r://panorama/images/post_game/paper_backing_psd.vtex");
-	color: #e7e0d1;
 	text-align: center;
-	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+
+	background-image: url("s2r://panorama/images/weekly/newspaper_backing_psd.vtex");
+	background-size: cover;
+
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
 	
 }
 
@@ -85,175 +130,283 @@ DACUIWeeklyChallenge Label
 .WeeklyHeadline
 {
 	font-weight: black;
+	text-transform: lowercase;
 	letter-spacing: 3px;
-	
-	font-size: 300px;
+	color: #e7e0d1;
+
+	font-size: 150px;
 	text-align: center;
 	width: 100%;
 	height: 210px;
 	vertical-align: center;
-	margin-top: -20px;
+	margin-top: -15px;
 	padding: 0px 50px;
 	
 	transition-duration: 4s;
 	transition-timing-function: ease-in;
 	transition-property: color;
 	
-	
 	visibility: visible;
 	white-space: nowrap;
 	text-overflow: shrink;
 	vertical-align: middle;
-	
+	text-align: justify;
 }
 
 .WeeklySubHeadline
 {
-	margin: -20px 150px 20px 150px;
+	margin: -20px 150px 0px 150px;
 	width: 100%;
 	height: 150px;
-	color: #483331;
+	color: #332927;
 	font-size: 85px;
 	line-height: 60px;
-
+	text-transform: lowercase;
 	text-overflow: shrink;
+	text-align: justify;
 }
 
 .WeeklyHeaderImage
 {
 	width: 1150px;
-	height: 600px;
-	border: 3px solid #222;
-
+	height: 575px;
 	horizontal-align: center;
+
+	background-image: url("s2r://panorama/images/weekly/headline_images/week_1_axe_market_psd.vtex");
 }
+
+//-------------------------
+//     REWARD CALLOUT
+//-------------------------
 
 .RewardCallout
 {
-	width: 500px;
-	height: 400px;
-	background-color: #cba;
+	width: 100%;
+	height: fill-parent-flow(.5);
 	vertical-align: bottom;
 	horizontal-align: right;
 
-	margin: 0px 20px 20px 0px;
-	border: 3px solid #222;
+	margin-right: 25px;
+	//border: 5px solid #332927;
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
+	flow-children: down;
 
+	background-color: #7e684166;
+}
+
+.RewardCalloutHeader
+{
+	//width: 98%;
+	//margin-top: 5px;
+	width: 100%;
+	horizontal-align: center;
+	height: fit-children;
+	background-image: url("s2r://panorama/images/weekly/newspaper_backing_psd.vtex");
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
+	background-size: 150% 150%;
+	padding: 3px 3px 6px 3px;
+	//wash-color: #332927;
+
+
+}
+
+.RewardCalloutHeaderInner
+{
+	width: 100%;
+	height: 100px;
+}
+
+.RewardCalloutHeaderText
+{
+	text-transform: lowercase;
+	font-size: 75px;
+	color: #e7e0d1;
+	horizontal-align: center;
+	width: 100%;
+	padding: 0px 10px;
+	text-align: center;
+	vertical-align: center;
+	text-overflow: shrink;
+}
+
+.RewardCalloutDescription
+{
+	font-size: 26px;
+	font-family: radiance;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 26px;
+	color: #332927;
+	width: 90%;
+	horizontal-align: center;
+	height: fit-children;
+	max-height: 160px;
+	//text-overflow: shrink;
+	text-overflow: ellipsis;
+	text-align: justify;
+	margin: 15px 20px 0px 20px;
+}
+
+.RewardCalloutBody
+{
+	width: 100%;
+	height: 100%;
 	flow-children: none;
+
 }
 
 #RewardImage
 {
 	width:100%;
-	height:100%;	
+	vertical-align: center;
+	margin-bottom: 60px;
+	//pre-transform-scale2d:.95;
 }
 
 #RewardPosterTitle
 {
-	margin-top:20px;
-	vertical-align: top;
-	width: 500px;
-	height: 150px;	
-	background-size:cover; 
-	background-position:0 100%;
+	width:600px;
+    height:fit-children;
+    horizontal-align:center;
+    vertical-align:center;
+    transform: rotateZ(2deg);
+	//pre-transform-scale2d:.8;
 }
 
-#RewardPosterTitle .PosterTitleText
+.RewardCalloutDetails
 {
-	color:red;
-}
-
-.ChallengesComplete
-{
-	height: 55px;
+	width: 90%;
 	horizontal-align: center;
+	height: fit-children;
+	flow-children: down;
 	vertical-align: bottom;
-	margin-bottom: 120px;
+}
 
-	color: #222;
-	font-size: 45px;
+.ChallengesComplete,
+.TimeRemaining
+{
+	//height: fit-children;
+	//max-height: 40px;
+	height: 30px;
+	horizontal-align: center;
+	width: 100%;
+
+	font-family: radiance;
+	font-weight: semi-bold;
+	text-transform: uppercase;
+	color: #332927;
+	font-size: 28px;
 	text-align: center;
 	text-overflow: shrink;
+	
+}
+
+.TimeRemaining
+{
+	margin-bottom: 10px;
 }
 
 .WeeklyClaimButton
 {
-	width: 90%;
-	height: 100px;
+	width: 100%;
+	height: 80px;
 	horizontal-align: center;
 	vertical-align: bottom;
 	margin-bottom: 20px;
 	background-color: #333333aa;
 	border: 6px solid #00000000;	
-	opacity:.5;
-	transition-property: brightness, opacity, transform, border;
-	transition-duration: .1s;
+	opacity:.3;
+
+	background-image: url("s2r://panorama/images/weekly/newspaper_backing_psd.vtex");
+	background-size: cover;
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
+	transition-property: brightness, transform;
+	transition-duration: .2s;
 }
 
-.WeeklyClaimButton
+.DailyChallengeClaimFX
 {
- 	opacity:1;
+	width: 100%;
+	height: 100%;
+	//margin-left: -2px;
+	//margin-top: -2px;
+	visibility: collapse;
 }
 
-.WeeklyClaimButton:hover
+.RewardClaimable .WeeklyClaimButton
 {
- 	brightness: 1.2;
- 	background-color: #888888FF;
- 	border: 6px solid white;	
+	opacity:1;
+	transition-property: brightness;
 }
 
+.RewardClaimable .DailyChallengeClaimFX
+{
+	visibility: visible;
+}
+
+.RewardClaimable .WeeklyClaimButton:hover
+{
+ 	brightness: 2;
+ 	//background-color: #888888FF;
+ 	//border: 6px solid white;	
+}
+
+.RewardClaimedLabel,
 .WeeklyClaimLabel
 {
-	height: 80px;
-	horizontal-align: center;
+	text-transform: lowercase;
 	vertical-align: center;
-	margin-bottom: 10px;
-
-	color: #222;
-	font-size: 60px;
-	text-align: center;
-	text-overflow: shrink;
-
+	horizontal-align: center;
+	color: #e7e0d1;
+	font-size: 75px;
+	margin-top: -18px;
 }
+
+.RewardClaimed .WeeklyClaimLabel,
+.RewardClaimedLabel
+{
+	visibility: collapse;
+}
+.RewardClaimed .RewardClaimedLabel
+{
+	visibility: visible;
+}
+
 
 .SubheadContainer 
 {
 	width: 100%;
 	height: 70px;
-	margin: 30px 150px 20px 150px;
-	background-image: url("s2r://panorama/images/post_game/paper_backing_psd.vtex");
-	opacity-mask: url("s2r://panorama/images/post_game/poster_opacity_mask_square_psd.vtex");
+	margin: 30px 150px 0px 150px;
+	background-color: #332927;
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
 	margin-bottom: 0px;
 	//padding: 10px 30px;
 }
 
-.SubheadTitle,
-.TimeRemaining
+.SubheadTitle
 {
 	//height: 64px;
 	horizontal-align: left;
 	//vertical-align: bottom;
+	text-transform: lowercase;
 
-	color: #ddd;
+	color: #e7e0d1;
 	font-size: 64px;
 	margin-top: -10px;
 	margin-left: 20px;
 
 	text-align: center;
 	text-overflow: shrink;
-
 }
 
-.TimeRemaining
-{
-	horizontal-align: right;
-	font-size: 48px;
-	margin-top: 0px;
-	margin-right: 30px;
-}
+//-------------------------
+//     OBJECTIVES CHUNK
+//-------------------------
 
 #ObjectivesContainer
 {
+	// removed this panel
 	width:100%;
 	margin: 10px 150px;
 
@@ -268,6 +421,16 @@ DACUIWeeklyChallenge Label
 	flow-children: down;
 }
 
+
+.ObjectivePanelInner
+{
+	border: 1px solid #332927;
+	width: 100%;
+	height: fit-children;
+	flow-children: down;
+	padding: 35px;
+}
+
 #PuzzlePanel
 {
 	margin-right: 10px;
@@ -275,19 +438,39 @@ DACUIWeeklyChallenge Label
 
 #StreetFightPanel
 {
-	margin-left: 10px;
+	//margin-left: 10px;
 }
 
 #ChallengePanel
 {
-	margin: 10px 150px;
+	//margin: 10px 150px;
+
+	margin-top: 20px;
+	border: 4px solid #332927;
+	padding: 6px;
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
+
+}
+
+.ChallengeDivider
+{
+	width: 100%;
+	height: 40px;
+	margin: 5px 0px;
+	background-image: url("s2r://panorama/images/weekly/weekly_ornament_2_png.vtex");
+	background-size: contain;
+	background-position: 50%;
+	background-repeat: no-repeat;
+
+	visibility: collapse;	
 }
 
 #ChallengeBGPanel
 {
 	width:100%;	
 	height:fit-children;
-	flow-children:none;
+	flow-children:down;
+	//margin-top:30px;
 }
 
 #ObjectiveTypeContainer
@@ -306,6 +489,8 @@ DACUIWeeklyChallenge Label
 	border: 3px solid #222;
 	transition-property: transform;
 	transition-duration: .2s;
+
+	visibility: collapse;
 }
 
 .ObjectiveBG:hover
@@ -317,6 +502,8 @@ DACUIWeeklyChallenge Label
 .ChallengeTypeContainer
 {
 	flow-children: right;
+
+	visibility: collapse;
 }
 
 .ChallengeType
@@ -327,18 +514,18 @@ DACUIWeeklyChallenge Label
 
 .ChallengeProgressText
 {
-	color: #F4F4F499;
-	font-size: 52px;
-	font-weight: semi-bold;
-	vertical-align: top;
+	color: #332927;
+	font-size: 24px;
+	font-family: radiance black distressed;
 	text-align: left;
-	text-shadow: 1px 2px 0px 1.0 #000000FF;
 	text-overflow: shrink;
-	margin-left:15px;
-	width: 100%;
-	height:70px;
+	width: fit-children;
 }
 
+#ChallengeProgress
+{
+	margin-left: 5px;
+}
 
 #ChallengeProgress_Left
 {
@@ -348,20 +535,26 @@ DACUIWeeklyChallenge Label
 	transition-timing-function: ease-out;
 	border-top: 1px solid #7b54ad;
 	border-bottom: 1px solid #522848;
-	border-right: 2px solid white;
+	border-right: 2px solid #00000088;
 }
 
 #ChallengeProgress_Right
 {
-	opacity: 0.001;
+	//opacity: 0.001;
+	//background-color: black;
+	//border: 3px solid #332927;
+	background-color: #33292788;
+
+
 }
 
 .WeeklyChallengeProgressBar
 {
 	height:20px;
 	width:100%;
-	vertical-align: top;
-	margin: 65px 20px 0px 20px;
+	vertical-align: center;
+	//margin: 65px 20px 0px 20px;
+	//margin-bottom: 10px;
 }
 
 .ProgressBarParticle {
@@ -381,65 +574,365 @@ DACUIWeeklyChallenge Label
 .StreetfightTypeIcon,
 .ObjectiveTypeIcon
 {
-	width: 25px;
-	height: 25px;
+	width: 35px;
+	height: 35px;
 	background-size: contain;
 	background-repeat: no-repeat;
-	brightness: 0.1;
+	//brightness: 0.4;
+	wash-color: #e7e0d1;
 	vertical-align: center;
-	margin-top: 4px;
-	margin-right: 8px;
+	//margin-top: 4px;
+	//margin-right: 8px;
+	margin-left: 25px;
+	//wash-color: #ffec83;
+	brightness: 2;
 }
 
 .PuzzleTypeIcon { background-image: url("s2r://panorama/images/challenge_map/icon_puzzle_png.vtex"); }
 .StreetfightTypeIcon { background-image: url("s2r://panorama/images/challenge_map/icon_streetfight_png.vtex"); } 
 .ObjectiveTypeIcon { background-image: url("s2r://panorama/images/challenge_map/icon_objective_png.vtex"); }
 
+.PuzzleCheck,
+.StreetfightCheck,
+.ObjectiveCheck
+{
+	width: 35px;
+	height: 35px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	//wash-color: #e7e0d1;
+	//wash-color: #ffec83;
+	brightness: 2;
+	vertical-align: center;
+	margin-left: 25px;
+	background-image: url("s2r://panorama/images/weekly/icon_check_png.vtex");
+	visibility: collapse;
+}
+
+.ChallengeTitle
+{
+	text-transform: lowercase;
+	font-size: 55px;
+	line-height: 45px;
+	color: #332927;
+	width: 100%;
+	height: fit-children;
+	max-height: 145px;
+	//text-overflow: shrink;
+	text-overflow: ellipsis;
+	text-align: justify;
+
+	//compensating for this font
+	margin-top: -15px;
+}
+
+.PuzzleDesc .ChallengeTitle
+{
+	max-height: 150px;
+}
+
 .ChallengeDescription
 {
+	font-size: 28px;
+	font-family: Radiance;
+	text-transform: none;
+	line-height: 32px;
+	color: #332927;
+	width: 100%;
+	height: fit-children;
+	//text-overflow: shrink;
+	text-overflow: ellipsis;
+	text-align: justify;
+	white-space: normal;
+
+}
+
+#StreetFightPanel .ChallengeDescription
+{
+	//text-overflow: shrink;
+	max-height: 250px;
+	max-height: 300px;
+}
+
+#ChallengePanel .ChallengeTitle
+{
 	font-size: 36px;
-	line-height: 36px;
+	height: 50px;
+	text-overflow: shrink;
+	//text-transform: none;
+	margin: 0px;
+
+
+	font-family: ravenhook;
+}
+
+.Language_tchinese #ChallengePanel .ChallengeTitle,
+.Language_schinese #ChallengePanel .ChallengeTitle,
+.Language_koreana #ChallengePanel .ChallengeTitle,
+.Language_japanese #ChallengePanel .ChallengeTitle
+{
+	font-size: 120px;
+	height: 80px;
+}
+
+
+#ChallengePanel .ChallengeDescription
+{
+	margin: 0px;
+	font-family: radiance;
+	font-size: 25px;
+	line-height: 26px;
+	font-style: italic;
+	//text-overflow: shrink;
+	text-overflow: ellipsis;
+
+	width: 100%;
+	height: fit-children;
+	max-height: 180px;
+	horizontal-align: center;
+}
+
+.Language_english #ChallengePanel .ChallengeDescription
+{
+	margin: 0px;
+	font-family: radiance;
+	font-size: 28px;
+	line-height: 32px;
+	font-style: italic;
+	//text-overflow: shrink;
+	text-overflow: ellipsis;
+
+	width: 100%;
+	height: fit-children;
+	max-height: 220px;
+	horizontal-align: center;
+}
+
+
+
+.ChallengeActual
+{
+	font-size: 30px;
+	font-family: Radiance;
+	font-weight:bold;
+	text-transform: none;
+	//line-height: 36px;
 	color: #222;
 	width: 100%;
 	height: fit-children;
-	max-height: 200px;
+	text-overflow: shrink;
+	max-height: 40px;
+	margin-bottom: 3px;
 }
 
-.PuzzleComplete #PuzzleFightButton,
-.StreetFightComplete #StreetFightButton
+.ChallengeProgressRow
+{
+	height: fit-children;
+	width: 100%;
+	flow-children: right;
+}
+
+.PuzzleComplete .PuzzleTypeIcon,
+.StreetFightComplete .StreetfightTypeIcon,
+.ObjectiveComplete .ObjectiveTypeIcon
 {
 	visibility: collapse;
+}
+
+.PuzzleComplete .PuzzleCheck,
+.StreetFightComplete .StreetfightCheck,
+.ObjectiveComplete .ObjectiveCheck
+{
+	visibility: visible;
+}
+
+.PuzzleDesc
+{
+	width: 40%;
+	//height: 400px;
+	height: fit-children;
+	flow-children: down;
+}
+
+#PuzzleFightButton
+{
+	vertical-align: bottom;
+	width: 100%;
+	horizontal-align: left;
+}
+
+#PuzzleHistogram
+{
+	width:60%;
+	margin-left: 25px;
+	//height:400px;
+	height: 100%;
+	//wash-color: #332927aa;
+
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
 }
 
 .FightButton
 {
 	width: 100%;
 	height: 80px;
-	background-color: #222;
+	background-image: url("s2r://panorama/images/weekly/newspaper_backing_psd.vtex");
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
+   
+	// painty button style
+	//background-image: url("s2r://panorama/images/dashboard/fight_btn_bg_psd.vtex");
+	//background-size: cover;
+	//background-size: 110% 150%;
+	//background-position: 50%;
+	//brightness: 1.3;
+
 	transition-property: brightness, transform;
 	transition-duration: .2s;
 }
 
 .FightButton:hover
 {
-	brightness: 1.2;
-	transform: translateY(-3px);
+	brightness: 1.6;
+	//transform: translateY(-2px);
 }
 
 .FightButtonLabel
 {
+	text-transform: lowercase;
 	vertical-align: center;
 	horizontal-align: center;
-	color: #ccc;
-	font-size: 48px;
+	font-size: 65px;
 	margin-top: -8px;
+	color: #ffec83;
+	width: 70%;
+	text-align: center;
+	text-overflow: shrink;
+
+	//glowy button style
+	color: #5d7aff;
+	color: #92a6ff;
+	color: white;
+	text-shadow: 2px 2px 3.0 #5d7aff44;
+	
+	// painty button style
+	//color: white;
+	//font-family: ravenhook;
+	//font-size: 50px;
+	//margin: 0px;
+    //text-shadow: 2px 2px 3.0 #1f296188;
+
+	transition-property: transform, opacity;
+	transition-duration: 0.2s;
+}
+
+.CurrentGold,
+.RacingLabel
+{
+	text-transform: lowercase;
+	vertical-align: center;
+	horizontal-align: center;
+	
+	color: #ffec83;
+
+	font-size: 65px;
+	margin-top: -8px;
+
+	transition-property: transform, opacity;
+	transition-duration: 0.2s;
+}
+
+.RacingLabel
+{	
+	
+	color: #372a2a;
+	margin: 0px 5px;
+	font-size: 55px;
+	text-align:center;
+	height:80px;
+	width:100%;
+	text-overflow: shrink;	
+}
+
+.CurrentGold
+{
+	text-overflow: shrink;
+	font-size:55px;
+	width:100%;
+	text-align: right;
+	//margin-top:5px;
+	vertical-align: center;
+	margin-right: 22px;
+}
+
+.NewRace,
+.RaceInProgress,
+.PlaceBets,
+.StartRace
+{
+	opacity:0;
+}
+
+@keyframes 'RaceBounce'
+{
+ 0% { transform:translateY(0px); }
+ 30% { transform:translateY(-4px); }
+ 40% { transform:translateY(-3px); }
+100% { transform:translateY(0px); }
+}
+
+.PlacingBets .PlaceBets,
+.RaceFinished .NewRace,
+.ReadyToRace .StartRace,
+{
+	opacity:1.0;
+}
+
+.PlacingBets #StartRaceButton
+{
+	background-color: #e7e0d111;	
+}
+
+.PlacingBets .RacingLabel
+{
+	color: #e7e0d1;	
+}
+
+.Racing .RaceInProgress
+{
+	opacity:1.0;
+
+	animation-duration: 1.0s;
+	animation-timing-function: ease-in-out;
+	animation-iteration-count: infinite;
+	animation-name: RaceBounce;
+}
+
+#StartRaceButton
+{	
+	vertical-align: bottom;
+	horizontal-align:left;
+	height: fit-children;
+	width: 60%;
+	margin-left: 15px;
+	background-color:#e7e0d1;
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
+}
+
+.FooterPanel
+{
+	height:fit-children;
+	width:100%;
+	vertical-align: bottom;
+	horizontal-align:center;
+	flow-children:right;
 }
 
 #ChallengePanel .FightButton
 {
 	vertical-align: bottom;
 	horizontal-align: left;
-	margin: 0px 20px 20px 0px;
+	//margin: 0px 20px 20px 0px;
+	margin-top: 8px;
 	width: 100%;
 }
 
@@ -453,10 +946,462 @@ DACUIWeeklyChallenge Label
 	background-image: url("s2r://panorama/images/citycrawl/streetfight/dark_trolls_png.vtex");
 }
 
+
+.IsLayoutSmallScreen .ChallengeDescription
+{
+	ui-scale: 90%;
+}
+
+.ArcadeHeader
+{
+	visibility: collapse;
+}
+
+.NonoGramContainer
+{
+	width: 1150px;
+	height: 600px;
+
+	padding: 3px;
+	horizontal-align: center;
+	margin-top: 25px;
+	border: 5px solid #332927;
+
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
+
+	
+}
+
+.NonoGramInnerContainer
+{
+	width: 100%;
+	height: 100%;
+	border: 1px solid #332927;
+	padding: 40px 30px 30px 30px;
+
+	flow-children: right;
+}
+
+.NonoGramDescription
+{
+	width: 50%;
+	height: fit-children;
+	flow-children: down;
+}
+
 #NonoGramPanel
 {
+	width:500px;
+	height:500px;
+	margin-left: 30px;
+	margin-top: 30px;
+	padding-top: 60px;
+	padding-left: 50px;
+	//background-color:#444444;
+	vertical-align: center;
+	pre-transform-scale2d:1.2;
+}
+
+.WeeklyChallengeHeader
+{
+	margin-top: 20px;
+	margin-bottom: 150px;
+	flow-children: right;
+	visibility: collapse;
+}
+
+.NonoGramDescription .ChallengeTitle
+{
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+.NonoGramDescription .ChallengeDescription
+{
+	text-overflow: shrink;
+	//text-overflow: ellipsis;
+}
+
+// mobile styles for NonoGram
+
+.IsLayoutSmallScreen .NonoGramContainer
+{
+	height: 1390px;
+}
+
+.IsLayoutSmallScreen .NonoGramInnerContainer
+{
+	flow-children: none;
+}
+
+.IsLayoutSmallScreen .NonoGramDescription
+{
+	vertical-align: center;
+	width: 100%;
+	width: 1000px;
+	//margin-left: -500px;
+	flow-children: down;
+	margin-top: -515px;
+
+	//visibility: collapse;
+}
+
+.IsLayoutSmallScreen .NonoGramDescription .ChallengeDescription
+{
+	font-size: 28px;
+	height: 280px;
+	text-overflow: ellipsis;
+
+	//visibility: collapse;
+}
+
+
+.IsLayoutSmallScreen #NonoGramPanel
+{
+	width:800px;
+	height:800px;
+	margin: 0px;
+	padding: 0px;
+	margin-right: -200px;
+	margin-left: 75px;
+	//margin-top: -400px;
+	margin-top: 420px;
+	padding-top: 60px;
+	vertical-align: top;
+	horizontal-align: center;
+	//pre-transform-scale2d:2.5;
+	ui-scale: 185%;
+}
+
+.WeeklyComic
+{
+	width: 1200px;
+	height: 1000px;
+
+	horizontal-align: center;
+	background-image: url("s2r://panorama/images/weekly/comic/ilexias_corner_week_1_psd.vtex");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50%;
+
+	//border: 5px solid #332927;
+	//opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
+}
+
+.CourierStats
+{
+	width: 1150px;
+	horizontal-align: center;	
+	padding:20px;	
+	padding-bottom: 30px;
+	background-image: url("s2r://panorama/images/weekly/newspaper_backing_psd.vtex");
+	background-size: cover;
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
+	//background-color: #211b1b;
+	background-color: #372a2a;
+	margin-bottom:200px;
+	flow-children:down;
+
+}
+
+.CourierStatsInner
+{
+	width: 100%;
+	flow-children: right;
+	//border: 1px solid #332927;
+}
+
+.CourierStatsGrid
+{
+	height:fit-children;
+	width:100%;	
+	flow-children:down;
+	margin:15px;
+	border-bottom: 1px solid #e7e0d1;
+	padding-bottom: 5px;
+}
+
+.CourierTitle
+{
+	margin: 0px;
+	margin-bottom: 10px;
+	margin-top: -10px;
+	color: #e7e0d1;
+	text-transform: lowercase;
+}
+
+.CourierHeader
+{
+	border-bottom: 1px solid #e7e0d1;
+	border-top: 1px solid #e7e0d1;		
+}
+.CourierRowContainer
+{
 	width:100%;
-	margin: 10px 150px;
-	height:750px;
-	background-color:#444444;
+	height:42px;
+	margin-top: 3px;
+}
+
+.IsLayoutSmallScreen .CourierRowContainer,
+.IsLayoutSmallScreen .CourierEntry,
+{
+	height: 60px;
+}
+
+.IsLayoutSmallScreen .CourierEntry
+{
+	//margin-top: 10px;
+	padding-top: 10px;
+	vertical-align: center;
+}
+
+.IsLayoutSmallScreen .CourierEntry .goldcoin
+{
+	margin-top: -3px;
+}
+
+
+.CourierAnimation
+{
+	width:38px;
+	height:38px;
+	vertical-align: center;
+	horizontal-align:center;	
+	transform: translateX(220px);
+	transition-property: opacity;
+	transition-duration: .1s;
+	opacity:0.0;
+
+	background-image: url("s2r://panorama/images/weekly/donkey_races_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
+}
+
+.CourierTabard1 { wash-color:#8bc9e9;}
+.CourierTabard2 { wash-color:#371a2d;}
+.CourierTabard3 { wash-color:#791d41;}
+.CourierTabard4 { wash-color:#97e1c7;}
+.CourierTabard5 { wash-color:#0424c6;}
+.CourierTabard6 { wash-color:#1a347c;}
+.CourierTabard7 { wash-color:#5aacc2;}
+.CourierTabard8 { wash-color:#dc68c4;}
+.CourierTabard9 { wash-color:#c4483f;}
+.CourierTabard10 {wash-color:#0285e8;}
+.CourierTabard11 {wash-color:#579a12;}
+.CourierTabard12 {wash-color:#1c2903;}
+.CourierTabard
+{
+	width:100%;
+	height:100%;
+	background-image: url("s2r://panorama/images/weekly/donkey_races_tabard_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
+
+}
+
+.Racing .CourierAnimation
+{	
+	opacity:1.0;
+}
+
+.CourierRow
+{	
+	width:100%;
+	height: fit-children;
+	min-height: 42px;
+	flow-children:right;
+}
+
+.CourierEntry
+{
+	width:fill-parent-flow(.08);
+	height:100%;
+	margin:1px;
+
+	color: #e7e0d1aa;
+	font-size: 28px;
+	text-transform: lowercase;
+	text-overflow: shrink;
+	text-align:center;
+	vertical-align: center;	
+}
+
+.PlaceEntry
+{
+	transition-property: opacity;
+	transition-duration: .1s;
+	opacity:0;
+}
+
+.PlaceEntry.Appear
+{
+	opacity:1;
+	sound: "DAC_UI.MainMenu_PlayHover";
+}
+
+.CourierName
+{
+	text-align:left;
+	width:fill-parent-flow(.2);
+}
+
+.ReadyToRace .CourierBetPanel,
+.PlacingBets .CourierBetPanel
+{
+	border: 1px solid #ffffff22;
+	background-color: #e7e0d104;
+	transition-property: brightness;
+	transition-duration: .2s;
+}
+
+.ReadyToRace .CourierBetPanel:hover,
+.PlacingBets .CourierBetPanel:hover
+{
+	brightness: 1.5;
+}
+
+.goldcoin
+{
+	width: 20px;
+	height: 20px;
+
+	background-image: url("s2r://panorama/images/hud/dac_shop_button_psd.vtex");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: 50% 50%;
+	font-size: 32px;
+
+	margin-top:8px;
+	text-transform: lowercase;
+	text-overflow: shrink;
+	text-align:center;
+	vertical-align: center;
+}
+
+.CurrentGold .goldcoin
+{
+	width: 35px;
+	height: 35px;
+	margin-top: 20px;
+	margin-right: -5px;
+}
+
+#StartRaceButton .goldcoin
+{
+	width: 30px;
+	height: 30px;
+	margin-top: 5px;
+	margin-right: -5px;
+}
+
+/* LOC FOR REGION IMAGES */
+
+.Language_brazilian #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/brazilian_png.vtex");
+}
+
+.Language_bulgarian #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/bulgarian_png.vtex");
+}
+
+.Language_czech #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/czech_png.vtex");
+}
+
+.Language_danish #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/danish_png.vtex");
+}
+
+.Language_dutch #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/dutch_png.vtex");
+}
+
+.Language_finnish #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/finnish_png.vtex");
+}
+
+.Language_french #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/french_png.vtex");
+}
+
+.Language_german #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/german_png.vtex");
+}
+
+.Language_greek #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/greek_png.vtex");
+}
+
+.Language_hungarian #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/hungarian_png.vtex");
+}
+
+.Language_italian #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/italian_png.vtex");
+}
+
+.Language_japanese #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/japanese_png.vtex");
+}
+
+.Language_korean #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/korean_png.vtex");
+}
+
+.Language_latam #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/latam_png.vtex");
+}
+
+.Language_norwegian #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/norwegian_png.vtex");
+}
+
+.Language_polish #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/polish_png.vtex");
+}
+
+.Language_portuguese #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/portuguese_png.vtex");
+}
+
+.Language_romanian #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/romanian_png.vtex");
+}
+
+.Language_russian #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/russian_png.vtex");
+}
+
+.Language_schinese #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/schinese_png.vtex");
+}
+
+.Language_spanish #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/spanish_png.vtex");
+}
+
+.Language_swedish #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/swedish_png.vtex");
+}
+
+.Language_tchinese #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/tchinese_png.vtex");
+}
+
+.Language_thai #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/thai_png.vtex");
+}
+
+.Language_turkish #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/turkish_png.vtex");
+}
+
+.Language_ukrainian #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/ukrainian_png.vtex");
+}
+
+.Language_vietnamese #EarlyBirdLogo {
+    background-image: url("s2r://panorama/images/post_game/loc/vietnamese_png.vtex");
 }

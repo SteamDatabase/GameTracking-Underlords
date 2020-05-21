@@ -6,7 +6,7 @@ DACUIWeeklyChallenge
 
 DACUIWeeklyChallenge Label
 {
-	font-family: "Early Bird";
+	font-family: "Early Bird Lowercase";
 }
 
 #RootPanel
@@ -139,7 +139,6 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	width: 100%;
 	height: 210px;
 	vertical-align: center;
-	margin-top: -15px;
 	padding: 0px 50px;
 	
 	transition-duration: 4s;
@@ -171,8 +170,10 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	width: 1150px;
 	height: 575px;
 	horizontal-align: center;
-
-	background-image: url("s2r://panorama/images/weekly/headline_images/week_1_axe_market_psd.vtex");
+	background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    // The BG image is set from code
 }
 
 //-------------------------
@@ -254,14 +255,71 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	flow-children: none;
 
 }
+#RewardContainer
+{
+	height:100%;	
+	width:100%;
+	vertical-align: center;
+	margin-bottom: 70px;
+
+
+	width: 80%;
+	height: 80%;
+	horizontal-align: center;
+	vertical-align: bottom;
+	margin-bottom: 60px;
+}
+
+.wanted_poster #RewardContainer
+{
+	margin-bottom: 110px;
+	transform: rotateZ(2deg);
+
+}
 
 #RewardImage
 {
 	width:100%;
-	vertical-align: center;
-	margin-bottom: 60px;
-	//pre-transform-scale2d:.95;
+	height:100%;
+	vertical-align: center;		
 }
+
+.WantedPosterComponent
+{
+	height:80%;
+    width:85%; 
+    horizontal-align: center;
+    vertical-align: center; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    visibility: collapse;     
+}
+.wanted_poster #RewardImage
+{
+	transform:translateY(12px);
+}
+
+.wanted_poster .WantedPosterComponent
+{
+	visibility: visible;
+}
+
+.wanted_poster_title #RewardImage
+{
+	visibility: collapse;
+}
+
+#PosterBG
+{
+    background-image: url("s2r://panorama/images/hud/dac_profile_avatar_background_5_png.vtex"); 
+}
+
+#PosterFrame
+{
+    background-image: url("s2r://panorama/images/post_game/wanted_poster_plain_psd.vtex");     
+}
+
 
 #RewardPosterTitle
 {
@@ -271,6 +329,13 @@ DACUIWeeklyChallenge #VerticalScrollBar
     vertical-align:center;
     transform: rotateZ(2deg);
 	//pre-transform-scale2d:.8;
+	visibility: collapse;
+	margin-bottom: 60px;
+}
+
+.wanted_poster_title #RewardPosterTitle
+{
+	visibility: visible;
 }
 
 .RewardCalloutDetails
@@ -281,6 +346,50 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	flow-children: down;
 	vertical-align: bottom;
 }
+
+// expired reward for back issues
+
+.IsExpired #RewardContainer,
+.IsExpired .RewardCalloutDetails
+{
+	saturation: 0;
+	opacity: .7;
+	brightness: 0.6;
+}
+
+.IsExpired .WeeklyClaimButton
+{
+	color: #00000000;
+}
+
+.IsExpired .RewardCalloutExpired
+{
+	visibility: visible;
+}
+
+.RewardCalloutExpired
+{
+	horizontal-align: center;
+	vertical-align: center;
+	height: fit-children;
+	width: fit-children;
+	padding: 0px 15px;
+	border: 10px solid #ab0000;
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
+	box-shadow: 2px 2px 0px #000000aa;
+	transform: rotateZ(-7deg);
+	visibility: collapse;
+}
+
+.RewardCalloutExpiredLabel
+{
+	font-size: 110px;
+	font-family: radiance black distressed;
+	color: #ab0000;
+	//color: black;
+	text-shadow: 2px 2px 2.0 #00000044;
+}
+
 
 .ChallengesComplete,
 .TimeRemaining
@@ -354,12 +463,12 @@ DACUIWeeklyChallenge #VerticalScrollBar
 .RewardClaimedLabel,
 .WeeklyClaimLabel
 {
-	text-transform: lowercase;
 	vertical-align: center;
 	horizontal-align: center;
+	text-align: center;
+	font-family: early bird lowercase;
 	color: #e7e0d1;
-	font-size: 75px;
-	margin-top: -18px;
+	font-size: 60px;
 }
 
 .RewardClaimed .WeeklyClaimLabel,
@@ -617,13 +726,11 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	color: #332927;
 	width: 100%;
 	height: fit-children;
-	max-height: 145px;
+	//max-height: 145px;
 	//text-overflow: shrink;
 	text-overflow: ellipsis;
-	text-align: justify;
-
-	//compensating for this font
-	margin-top: -15px;
+	//text-align: justify;
+	text-overflow: shrink;
 }
 
 .PuzzleDesc .ChallengeTitle
@@ -697,7 +804,7 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	margin: 0px;
 	font-family: radiance;
 	font-size: 28px;
-	line-height: 32px;
+	line-height: 30px;
 	font-style: italic;
 	//text-overflow: shrink;
 	text-overflow: ellipsis;
@@ -802,7 +909,7 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	vertical-align: center;
 	horizontal-align: center;
 	font-size: 65px;
-	margin-top: -8px;
+	margin-bottom: 8px;
 	color: #ffec83;
 	width: 70%;
 	text-align: center;
@@ -848,8 +955,9 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	margin: 0px 5px;
 	font-size: 55px;
 	text-align:center;
-	height:80px;
-	width:100%;
+	margin-bottom: 5px;
+	//height:80px;
+	//width:100%;
 	text-overflow: shrink;	
 }
 
@@ -912,6 +1020,7 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	vertical-align: bottom;
 	horizontal-align:left;
 	height: fit-children;
+	padding: 10px;
 	width: 60%;
 	margin-left: 15px;
 	background-color:#e7e0d1;
@@ -960,7 +1069,7 @@ DACUIWeeklyChallenge #VerticalScrollBar
 .NonoGramContainer
 {
 	width: 1150px;
-	height: 600px;
+	height: 650px;
 
 	padding: 3px;
 	horizontal-align: center;
@@ -969,7 +1078,6 @@ DACUIWeeklyChallenge #VerticalScrollBar
 
 	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
 
-	
 }
 
 .NonoGramInnerContainer
@@ -986,6 +1094,8 @@ DACUIWeeklyChallenge #VerticalScrollBar
 {
 	width: 50%;
 	height: fit-children;
+	//max-height: 1200px;
+	//height: 1200px;
 	flow-children: down;
 }
 
@@ -993,13 +1103,33 @@ DACUIWeeklyChallenge #VerticalScrollBar
 {
 	width:500px;
 	height:500px;
-	margin-left: 30px;
-	margin-top: 30px;
-	padding-top: 60px;
-	padding-left: 50px;
+	margin-left: 15px;
+	margin-top: -50px;
+	padding-top: 150px;
+	padding-left: 80px;
 	//background-color:#444444;
 	vertical-align: center;
-	pre-transform-scale2d:1.2;
+	pre-transform-scale2d:1.1;
+}
+
+.NonoGramHint
+{
+	font-family: radiance;
+	font-weight: semi-bold;
+	font-style: italic;
+	font-size: 28px;
+	line-height: 32px;
+	color: #332927ff;
+	width: fit-children;
+	max-width: 600px;
+	horizontal-align: center;
+	border: 1px solid #332927dd;
+	padding:5px 20px;
+	text-align: center;
+	text-overflow: shrink;
+	height: 50px;
+	
+	opacity-mask: url("s2r://panorama/images/weekly/opacity_mask_square_psd.vtex");
 }
 
 .WeeklyChallengeHeader
@@ -1019,6 +1149,7 @@ DACUIWeeklyChallenge #VerticalScrollBar
 .NonoGramDescription .ChallengeDescription
 {
 	text-overflow: shrink;
+	max-height: 375px;
 	//text-overflow: ellipsis;
 }
 
@@ -1078,8 +1209,7 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	width: 1200px;
 	height: 1000px;
 
-	horizontal-align: center;
-	background-image: url("s2r://panorama/images/weekly/comic/ilexias_corner_week_1_psd.vtex");
+	horizontal-align: center;	
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: 50%;
@@ -1135,6 +1265,7 @@ DACUIWeeklyChallenge #VerticalScrollBar
 	border-bottom: 1px solid #e7e0d1;
 	border-top: 1px solid #e7e0d1;		
 }
+
 .CourierRowContainer
 {
 	width:100%;
@@ -1404,4 +1535,9 @@ DACUIWeeklyChallenge #VerticalScrollBar
 
 .Language_vietnamese #EarlyBirdLogo {
     background-image: url("s2r://panorama/images/post_game/loc/vietnamese_png.vtex");
+}
+
+.IsExpired
+{
+	// Add expired style here
 }

@@ -323,6 +323,7 @@
 #DAC_LoadoutUnderlords
 #DAC_Loadout_Generic
 #DAC_Loadout_PosterTitle
+#DAC_Loadout_WantedPoster
 #DAC_LoggedInElsewhere_Text
 #DAC_LoggedInElsewhere_Title
 #DAC_Looting
@@ -649,6 +650,7 @@
 #DAC_Underlord_TalentsSelectHeader_Future
 #DAC_Weekly_CourierEntry_CurrentBet
 #DAC_Weekly_CourierEntry_Prize
+#DAC_Weekly_NonogramHeader_%d
 #DAC_Weekly_TimeRemainingDays
 #DAC_Weekly_TimeRemainingHours
 #DAC_Weekly_TimeRemainingMinutes
@@ -2193,8 +2195,8 @@ $tI
 100.0
 100.0f
 1000
-1000 frames: %3.1f fps, avg time:%3.2fms, total frames: %u
-1000 server ticks: %3.1f tps, avg time:%3.2fms, total server ticks: %u
+1000 frames: %5.1f fps, avg time:%5.2fms, total frames: %u
+1000 server ticks: %5.1f tps, avg time:%5.2fms, total server ticks: %u
 1000.0
 10000
 104
@@ -3840,8 +3842,8 @@ $tI
 23TraceRayServerToolEvent
 23item_definition_index_t
 240
-240 frames: %3.1f fps, avg time:%3.2fms, abs_range:%3.2fms, min_time:%3.2fms, max_time:%3.2fms
-240 server ticks: %3.1f tps, avg time:%3.2fms, abs_range:%3.2fms, min_time:%3.2fms, max_time:%3.2fms
+240 frames: %5.1f fps, avg time:%5.2fms, abs_range:%7.2fms, min_time:%5.2fms, max_time:%5.2fms
+240 server ticks: %5.1f tps, avg time:%5.2fms, abs_range:%7.2fms, min_time:%5.2fms, max_time:%5.2fms
 240.0f
 24CAnimGraphSaveRestoreOps
 24CBoundedCvar_InterpRatio
@@ -5382,8 +5384,8 @@ $tI
 5ISave
 6
 6.0
-60 frames: %3.1f fps, avg time:%3.2fms abs_range:%3.2fms, min_time:%3.2fms, max_time:%3.2fms
-60 server ticks: %3.1f tps, avg time:%3.2fms abs_range:%3.2fms, min_time:%3.2fms, max_time:%3.2fms
+60 frames: %5.1f fps, avg time:%5.2fms, abs_range:%7.2fms, min_time:%5.2fms, max_time:%5.2fms
+60 server ticks: %5.1f tps, avg time:%5.2fms, abs_range:%7.2fms, min_time:%5.2fms, max_time:%5.2fms
 600.0
 60CMsgClientToGCGetPuzzleLeaderboardsResponse_LeaderboardEntry
 60CMsgEconPlayerStrangeCountAdjustment_CStrangeCountAdjustment
@@ -8227,7 +8229,6 @@ CDAC_UI_HudPlayerIcons::OnLoadPuzzleCode
 CDAC_UI_Main::OnSwitchToDashboard() (showing main)
 CDAC_UI_Main::OnSwitchToGame() (hiding main)
 CDAC_UI_Popup_FriendCode::OnCheckCode::Get
-CDAC_UI_Popup_FriendCode::OnConfirmCode::Get
 CDAC_UI_Popup_FriendCode::OnFindCode::Get
 CDAC_UI_Popup_FriendCode::OnGenerateCode::Get
 CDAC_UI_Popup_FriendCode::OnRevokeCode::Get
@@ -10176,6 +10177,7 @@ DACActiveChallengeUpdated
 DACAddNextGoldPanel
 DACAddNextHero
 DACAddSteamFriend
+DACAdvanceWeeklyChallenge
 DACApplyResolutionChoice
 DACAssignMapProp
 DACAttachProgressParticle
@@ -10999,6 +11001,7 @@ DACTooltipSynergy
 DACTooltipTalentInfo
 DACTooltipUnderlordAbility
 DACTooltipXP
+DACTriggerMemoryWarning
 DACTurboShopMulligan
 DACTurboShopSelectOffering
 DACTutorialAdvanceCombat
@@ -11649,6 +11652,7 @@ Dump the state of the VM to the console
 DumpMemory
 DumpMemoryStatsButton
 DumpScriptBindings()
+Dumped Memory Stats
 Dumps a list of caches that the GC currently has information about
 Dumps info about an entity
 Dumps out the information for the client sync storage state
@@ -13027,6 +13031,7 @@ GraphNode
 GraphNodeSlot
 GraphPanel.BgColor
 GraphPanel.FgColor
+Graphics Memory (%s):
 GraphicsComputeSync
 GraphicsSignalCompute
 GraphicsSignaled
@@ -13881,6 +13886,7 @@ IsDragging
 IsDraggingItem
 IsDraw
 IsDuoMessage
+IsExpired
 IsFinished
 IsGem
 IsHomeGame
@@ -14651,7 +14657,6 @@ MemAlloc_AllocFunc
 MemAlloc_FreeFunc
 MemFreeScratch
 MemberList
-Memory (%s):
 Memory Level - Default: High
 Memory trash in SortEntities.. overran the number of entity islands supported!
 Menu.ArmedBgColor
@@ -15743,6 +15748,7 @@ Next attempt: %s, Backoff count: %u
 NextHidden
 NextItemButton
 NextSearch
+NextWeekButton
 Nil time value
 Nko
 Nl
@@ -16697,6 +16703,7 @@ PrestigeLevelBadgePanel
 Prestige_%d
 PrettyFont:%s:%d:%d
 PrevSearch
+PrevWeekButton
 Prevent jiggle bones from pointing directly away from their target in case of numerical instability.
 PreviewAttachmentModel
 PreviewBoneAttachedModel
@@ -17218,6 +17225,7 @@ RewardPopupQueueNotEmpty
 RewardPosterTitle
 RewardQueueEmpty
 RewardRank
+RewardType
 RewardsAboutPopup
 RewardsGroup
 RichText.BgColor
@@ -18496,6 +18504,7 @@ Syntax Error at offset: %d
 Syriac
 System %s failed to init
 System Information
+System Memory (%s):
 SystemInputLanguageChanged
 T
 TB
@@ -18958,6 +18967,7 @@ Tried to calc delta to a src message of a different type.
 Tried to destroy (from script) a networked entity (%d/%s) on the client, the server controls lifespan, ignoring
 Tried to merge messages of different types
 Tried to register a non-generated type with the generated type registry.
+TriggerMemoryWarningButton
 TriggerOnce: %s
 TriggerStyle
 Tripmine.Explode
@@ -19705,7 +19715,6 @@ WakeDependentJobFinished
 WakeGotLock
 WakeRecvMsg
 WalkSpeed
-WantedPoster
 Warning font %s does not have a 'name' key! No windows font will be created. Check your scheme to make sure all machine configs are supported.
 Warning parsing text-format
 Warning! Can't specify mins/maxs for point entities! (%s)
@@ -19728,6 +19737,8 @@ WeaponSprites_client
 WeaponState_t
 Weather Type:
 WebBrowser
+WeeklyComic
+WeeklyHeaderImage
 WeightForPhoneme:: Unrecognized phoneme %s
 Welcome message contained %s twice
 WheelPointer
@@ -19965,6 +19976,7 @@ Zs
 \u00
 \x%02x
 ]
+] /
 ] is an invalid data character in JavaScript compatibility mode
 ]</span>
 ]]
@@ -22561,6 +22573,8 @@ file://{images}/post_game/wanted_poster_02.psd
 file://{images}/post_game/wanted_poster_03.psd
 file://{images}/post_game/wanted_poster_04.psd
 file://{images}/post_game/wanted_poster_05.psd
+file://{images}/weekly/comic/ilexias_corner_week_%d.psd
+file://{images}/weekly/headline_images/week_%d.psd
 file://{resources}/browser/webkit.css
 file://{resources}/images/videos/city_crawl_intro.webm
 file://{resources}/layout/banners/banner.xml
@@ -23021,6 +23035,7 @@ g_debug_ragdoll_visualize
 g_iStylePropertyIndexNextFree < 255
 g_pApplication->IsInToolsMode()
 g_pMemAlloc
+g_pScheduledFunctions
 g_pThreadPool
 g_ragdoll_fadespeed
 g_ragdoll_important_maxcount
@@ -27357,6 +27372,7 @@ non-networkable
 non-octal character in \o{} (closing brace missing?)
 none
 nonogram
+nonogram_hint
 nonzero
 norepeat_global
 norm

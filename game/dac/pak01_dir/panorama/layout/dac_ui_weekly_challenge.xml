@@ -8,7 +8,6 @@
 		<Panel id="RootPanel">
 			<Panel class="ScrollPanel">
 				<Image id="EarlyBirdLogo" />
-
 				<Panel class="HeadlineContainer" id="ScrollTarget">
 					<Label class="WeeklyHeadline" html="true" text="{s:weekly_headline}"/>			
 				</Panel>
@@ -28,8 +27,11 @@
 							</Panel>			
 							<Panel class="RewardCalloutBody">		
 								<Label class="RewardCalloutDescription" text="#DAC_Weekly_RewardCalloutDesc" />"
-								<Panel id="RewardImage">
-									<DACMiniProfile id="RewardPosterTitle" showparticles="false"  showname="true"/>									
+								<Panel id="RewardContainer">
+									<Panel id="PosterFrame" class="WantedPosterComponent"/>
+									<Panel id="PosterBG" class="WantedPosterComponent"/>
+									<Panel id="RewardImage"/>
+									<DACMiniProfile id="RewardPosterTitle" showparticles="false"  showname="true"/>
 								</Panel>
 								<Panel class="RewardCalloutDetails">
 									<Label class="ChallengesComplete" text="#DAC_Weekly_ChallengesComplete"/>
@@ -39,6 +41,9 @@
 										<Label class="WeeklyClaimLabel" text="#DAC_Weekly_Claim" />
 										<Label class="RewardClaimedLabel" text="#DAC_Challenge_ChallengeComplete"/>
 									</Panel>
+								</Panel>
+								<Panel class="RewardCalloutExpired">
+									<Label class="RewardCalloutExpiredLabel" text="#DAC_Weekly_Expired" />
 								</Panel>
 							</Panel>
 						</Panel>
@@ -115,16 +120,17 @@
 				<Panel class="NonoGramContainer">
 					<Panel class="NonoGramInnerContainer">
 						<Panel id="NonoGramPanel">
-							<DACUINonoGramPuzzle/>
-						</Panel>
+							<DACUINonoGramPuzzle id="NonoGramPuzzle"/>
+						</Panel>						
 						<Panel class="NonoGramDescription" >
 							<Label class="ChallengeTitle" text="#DAC_Weekly_NonogramTitle" />
 							<Label class="ChallengeDescription" text="#DAC_Weekly_NonogramDesc" />
+							<Label class="NonoGramHint" text="#DAC_Weekly_NonogramHint"/>
 						</Panel>
 					</Panel>
 				</Panel>
 
-				<Panel class="WeeklyComic" />
+				<Panel class="WeeklyComic" id="WeeklyComic"/>
 
 				<Panel class="CourierStats">										
 					<Panel class="CourierStatsInner">
@@ -231,7 +237,6 @@
 					<Label class="SubheadTitle" text="#DAC_Weekly_WeeklyChallenges"/>				
 					<Label id="TimeRemainingLabel" class="TimeRemaining" text="#DAC_Weekly_TimeRemaining"/>			
 				</Panel>
-
 			</Panel>			
 		</Panel>
 	</DACUIWeeklyChallenge>

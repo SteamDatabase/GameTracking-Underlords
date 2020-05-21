@@ -6,7 +6,18 @@
 	</styles>
 
 	<PopupWeeklyChallenge class="PopupPanel" popupbackground="dim" acceptsinput="true">	
-		<DACUIWeeklyChallenge/>
+		<DACUIWeeklyChallenge id="WeeklyChallenge"/>
 		<Button class="CloseButton" onactivate="UIPopupButtonClicked(); PlaySoundEffect( 'UL_UI.Loadout_CloseActivate' );" />
+		<Button id="NextWeekButton" class="AdvanceButton" onactivate="DACAdvanceWeeklyChallenge(1)"/>
+		<Button id="PrevWeekButton" class="AdvanceButton" onactivate="DACAdvanceWeeklyChallenge(-1)"/>
+
+		<Panel id="PrevWeekButton" class="AdvanceButton" onactivate="DACAdvanceWeeklyChallenge(-1)">
+			<Panel class="AdvanceButtonIcon" />
+			<Label class="AdvanceButtonLabel" text="#DAC_Weekly_LastWeek" />
+		</Panel>
+		<Panel id="NextWeekButton" class="AdvanceButton" onactivate="DACAdvanceWeeklyChallenge(1)">
+			<Panel class="AdvanceButtonIcon" />
+			<Label class="AdvanceButtonLabel" text="#DAC_Weekly_NextWeek" />
+		</Panel>
 	</PopupWeeklyChallenge>
 </root>

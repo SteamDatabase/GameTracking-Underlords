@@ -7,6 +7,7 @@ echo "Processing Underlords..."
 
 ProcessDepot ".so"
 ProcessVPK
+ProcessToolAssetInfo
 
 while IFS= read -r -d '' file
 do

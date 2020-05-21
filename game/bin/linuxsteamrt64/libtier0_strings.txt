@@ -297,6 +297,7 @@ $tI
 17CThreadSyncObject
 18CThreadManualEvent
 18IMemAlloc_Internal
+20IMobileEventListener
 22CPerfTraceDepotDefault
 22CSimpleLoggingListener
 22CStdMemAlloc_Data_Base
@@ -314,6 +315,7 @@ $tI
 28CStdMemAlloc_Data_StackStatsI9MemConfigILb0ELb0E27RuntimeAdditionalPropertiesELb0EE
 28CallStackStatStructDescFuncs
 29CDefaultLoggingResponsePolicy
+31CTier0MasterMobileEventListener
 31IForceSignalNumberIntoCallStack
 40CVProfileOutputColumn_AverageTimePerCall
 41CVProfileOutputColumn_AverageTimePerFrame
@@ -911,6 +913,9 @@ Heap: standard allocator
 I
 IAssertionFailureListener::AssertionFailure()
 IMemAlloc::DumpStats: could not open output file %s
+IMobileEventListener::OnEnterHibernationState()
+IMobileEventListener::OnExitHibernationState()
+IMobileEventListener::OnLowMemoryNotification()
 Ignore All Asserts
 Ignore For 24 Hours
 Ignore This File
@@ -1088,10 +1093,6 @@ Plat_DisableIOBuffering
 Plat_EnableCustomerMachineMode
 Plat_EnableHeadlessMode
 Plat_EndWatchdogTimer
-Plat_EnterHibernation
-Plat_EnterHibernation()
-Plat_ExitHibernation
-Plat_ExitHibernation()
 Plat_ExitProcess
 Plat_FastVerifyHardwareKey
 Plat_FileExists
@@ -1123,6 +1124,7 @@ Plat_GetGlobalListRegistry
 Plat_GetLastGameInstanceMutex
 Plat_GetLocalTime
 Plat_GetMainWindowSwapChainScale
+Plat_GetMasterMobileEventHandler
 Plat_GetMemPageSize
 Plat_GetMiniDumpErrorString
 Plat_GetModuleFilename
@@ -1192,8 +1194,6 @@ Plat_LoadInterface
 Plat_LoadModule
 Plat_LoadModuleRaw
 Plat_LoadSDL
-Plat_LowMemoryWarning
-Plat_LowMemoryWarning()
 Plat_MSTime
 Plat_MSTime64
 Plat_MessageBox

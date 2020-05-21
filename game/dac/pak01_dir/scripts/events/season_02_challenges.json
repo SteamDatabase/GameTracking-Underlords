@@ -6449,49 +6449,41 @@
 		},
 		"weekly_challenge_2": {
 			"id": 1105,
-			"event": 
-			{
-				"event_name": "unit_killed",
-				"condition": 
-				{
+			"event": {
+				"event_name": "round_end",
+				"condition": {
 					"operator": "AND",
-					"operands": 
-					[
+					"operands": [
 						{
-							"source_player": 
-							{
-								"=": "local"
+							"round_result": {
+								"=": "victory"
 							}
 						},
 						{
-							"player": 
-							{
-								"!=": "local"
+							"round_type": {
+								"=": "pvp"
 							}
 						},
 						{
-							"killer_synergy": 
-							{
-								"=": "undead"
+							"has_active_synergy": {
+								"=": "Brutal"
 							}
 						}
 					]
 				}
 			},
-			"goals": 
-			[
+			"goals": [
 				{
 					"goal": "$threshold",
-					"reward": {	}
+					"reward": {}
 				}
 			],
-			"configs": 
-			[
+			"configs": [
 				{
 					"id": 1,
-					"threshold": 300
+					"threshold": 75
 				}
-			],	
+			],
 			"locstring": "weekly_challenge_2"
 		},
 		"weekly_street_fight_3": {

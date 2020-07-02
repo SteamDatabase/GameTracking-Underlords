@@ -2177,6 +2177,7 @@ $ORIGIN
 16CModifierFactoryI32CDAC_Modifier_UnderlordExtraHypeE
 16CModifierFactoryI32CDAC_Modifier_VestureOfTheTyrantE
 16CModifierFactoryI32CDAC_Modifier_VitalityBoosterOldE
+16CModifierFactoryI33CDAC_Modifier_Abaddon_FrostmourneE
 16CModifierFactoryI33CDAC_Modifier_Alchemist_AcidSprayE
 16CModifierFactoryI33CDAC_Modifier_Anessix_DemonicRageE
 16CModifierFactoryI33CDAC_Modifier_Anessix_HellInACellE
@@ -2251,6 +2252,7 @@ $ORIGIN
 16CModifierFactoryI35CDAC_Modifier_BloodSeeker_BloodRageE
 16CModifierFactoryI35CDAC_Modifier_CriticalResponse_BuffE
 16CModifierFactoryI35CDAC_Modifier_Disruptor_StaticStormE
+16CModifierFactoryI35CDAC_Modifier_DrowRanger_FrostArrowE
 16CModifierFactoryI35CDAC_Modifier_Druid_Death_ExplosionE
 16CModifierFactoryI35CDAC_Modifier_Granny_Lizard_BazookaE
 16CModifierFactoryI35CDAC_Modifier_HobgenLetsGoCrazyCastE
@@ -2358,6 +2360,7 @@ $ORIGIN
 16CModifierFactoryI40CDOTA_Modifier_SandKing_CausticFinaleOrbE
 16CModifierFactoryI41CDAC_Modifier_Alchemist_AcidSpray_ThinkerE
 16CModifierFactoryI41CDAC_Modifier_ArcWarden_MagneticFieldAuraE
+16CModifierFactoryI41CDAC_Modifier_DrowRanger_FrostArrows_SlowE
 16CModifierFactoryI41CDAC_Modifier_FacelessVoid_Assassin_BonusE
 16CModifierFactoryI41CDAC_Modifier_Item_ShivasGuard_Armor_BuffE
 16CModifierFactoryI41CDAC_Modifier_Nyx_Assassin_SpikedCarapaceE
@@ -4535,6 +4538,7 @@ $ORIGIN
 31ToolEvent_GetEntityInputsResult
 320
 32CClientMsg_CustomGameEventBounce
+32CDAC_Ability_Abaddon_Frostmourne
 32CDAC_Ability_Alchemist_AcidSpray
 32CDAC_Ability_Anessix_MartyrsBoon
 32CDAC_Ability_Anessix_SummonGolem
@@ -4648,6 +4652,7 @@ $ORIGIN
 33CDAC_Ability_TemplarAssassin_Meld
 33CDAC_Ability_Viper_Corrosive_Skin
 33CDAC_Ability_Windrunner_Powershot
+33CDAC_Modifier_Abaddon_Frostmourne
 33CDAC_Modifier_Alchemist_AcidSpray
 33CDAC_Modifier_Anessix_DemonicRage
 33CDAC_Modifier_Anessix_HellInACell
@@ -4722,6 +4727,7 @@ $ORIGIN
 34CDAC_Ability_Batrider_StickyNapalm
 34CDAC_Ability_Bloodseeker_BloodRage
 34CDAC_Ability_Disruptor_StaticStorm
+34CDAC_Ability_DrowRanger_FrostArrow
 34CDAC_Ability_FacelessVoid_TimeWalk
 34CDAC_Ability_Legion_Commander_Duel
 34CDAC_Ability_Nyx_Assassin_Vendetta
@@ -4819,6 +4825,7 @@ $ORIGIN
 35CDAC_Modifier_BloodSeeker_BloodRage
 35CDAC_Modifier_CriticalResponse_Buff
 35CDAC_Modifier_Disruptor_StaticStorm
+35CDAC_Modifier_DrowRanger_FrostArrow
 35CDAC_Modifier_Druid_Death_Explosion
 35CDAC_Modifier_Granny_Lizard_Bazooka
 35CDAC_Modifier_HobgenLetsGoCrazyCast
@@ -5151,6 +5158,7 @@ $ORIGIN
 41CDAC_Ability_NaturesProphet_WrathOfNature
 41CDAC_Modifier_Alchemist_AcidSpray_Thinker
 41CDAC_Modifier_ArcWarden_MagneticFieldAura
+41CDAC_Modifier_DrowRanger_FrostArrows_Slow
 41CDAC_Modifier_FacelessVoid_Assassin_Bonus
 41CDAC_Modifier_Item_ShivasGuard_Armor_Buff
 41CDAC_Modifier_Nyx_Assassin_SpikedCarapace
@@ -7821,6 +7829,7 @@ CDACUnderlordPickerOfferingState
 CDACUnitState
 CDAC_Ability
 CDAC_Ability_Abaddon_AphoticShield
+CDAC_Ability_Abaddon_Frostmourne
 CDAC_Ability_Alchemist_AcidSpray
 CDAC_Ability_AnessixArcherPassive
 CDAC_Ability_Anessix_Enthrall
@@ -7853,6 +7862,7 @@ CDAC_Ability_DemonWarriorProtect
 CDAC_Ability_Disruptor_StaticStorm
 CDAC_Ability_DragonKnight_BreatheFire
 CDAC_Ability_DragonKnight_ElderDragonForm
+CDAC_Ability_DrowRanger_FrostArrow
 CDAC_Ability_Drow_Trueshot_Aura
 CDAC_Ability_EarthSpirit_Element
 CDAC_Ability_Earth_Spirit_Geomagnetic_Grip
@@ -17383,6 +17393,7 @@ attack_speed_bonus_trolls
 attack_speed_buff
 attack_speed_buff_pct
 attack_speed_debuff
+attack_speed_loss
 attack_speed_per_level
 attackfail
 attackspeed
@@ -24274,6 +24285,7 @@ min_place
 min_range
 min_rotation
 min_slow
+min_stacks
 min_travel_time
 min_unit_rank
 mincpulevel
@@ -24358,6 +24370,7 @@ models/w_models/weapons/w_desert_rifle.vmdl
 modelscale
 modifiedconvars_t
 modifier_%s
+modifier_abaddon_3star
 modifier_abaddon_aphotic_shield
 modifier_add_attack_damage
 modifier_add_mana_per_damage
@@ -24512,6 +24525,8 @@ modifier_dragon_knight_splash_attack
 modifier_dragon_lance
 modifier_dragonknight_breathefire_reduction
 modifier_dragons_hoard
+modifier_drow_ranger_3star
+modifier_drow_ranger_frost_arrows_slow
 modifier_drow_ranger_trueshot
 modifier_drow_ranger_trueshot_aura
 modifier_druid
@@ -24851,6 +24866,8 @@ modifier_sven_gods_strength
 modifier_sven_great_cleave
 modifier_sven_knight_bonus
 modifier_synergy_shaman_voodoo
+modifier_tag_aegis_holder
+modifier_tag_aegis_revive
 modifier_talisman_of_evasion
 modifier_talisman_of_evasion_attackspeed
 modifier_tank_buster
@@ -24973,6 +24990,7 @@ move_keyframed
 move_rope has TextureScale greater than 10 at (%2.2f, %2.2f, %2.2f)
 move_rope has TextureScale less than 0.1 at (%2.2f, %2.2f, %2.2f)
 move_slow
+move_speed_loss
 move_x
 move_y
 move_yaw
@@ -25847,6 +25865,7 @@ particles/status_fx/status_effect_arc_warden_tempest.vpcf
 particles/status_fx/status_effect_avatar.vpcf
 particles/status_fx/status_effect_combo_breaker.vpcf
 particles/status_fx/status_effect_doom.vpcf
+particles/status_fx/status_effect_drow_frost_arrow.vpcf
 particles/status_fx/status_effect_enigma_malefice.vpcf
 particles/status_fx/status_effect_faceless_chronosphere.vpcf
 particles/status_fx/status_effect_forcestaff.vpcf
@@ -25952,6 +25971,7 @@ particles/units/heroes/hero_dragon_knight/dragon_knight_corrosion_debuff.vpcf
 particles/units/heroes/hero_dragon_knight/dragon_knight_transform_blue.vpcf
 particles/units/heroes/hero_dragon_knight/dragon_knight_transform_green.vpcf
 particles/units/heroes/hero_dragon_knight/dragon_knight_transform_red.vpcf
+particles/units/heroes/hero_drow/drow_frost_arrow_debuff.vpcf
 particles/units/heroes/hero_earth_spirit/earth_spirit_geomagnetic_grip.vpcf
 particles/units/heroes/hero_ember_spirit/ember_spirit_sleight_of_fist_cast.vpcf
 particles/units/heroes/hero_ember_spirit/ember_spirit_sleight_of_fist_caster.vpcf

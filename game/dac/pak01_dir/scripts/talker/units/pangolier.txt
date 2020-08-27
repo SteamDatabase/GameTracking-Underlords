@@ -1,0 +1,149 @@
+// pangolier - Hero
+criterion "Ispangolier" "classname" "pangolier" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response pangolier_recruit_1
+{
+	speak "pangolier_recruit" noscene 
+}
+
+Rule pangolier_recruit_1_rule
+{
+	criteria Ispangolier ConceptRecruit UnitRank1
+	response pangolier_recruit_1
+}
+
+
+Response pangolier_recruit_2
+{
+	speak "pangolier_upgrade" noscene 
+}
+
+Rule pangolier_recruit_2_rule
+{
+	criteria Ispangolier ConceptRecruit UnitRank2
+	response pangolier_recruit_2
+}
+
+
+Response pangolier_recruit_3
+{
+	speak "pangolier_final_upgrade" noscene 
+}
+
+Rule pangolier_recruit_3_rule
+{
+	criteria Ispangolier ConceptRecruit UnitRank3
+	response pangolier_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response pangolier_start_round
+{
+	speak "pangolier_start_round" noscene 
+}
+
+Rule pangolier_start_round_rule
+{
+	criteria Ispangolier ConceptRoundStart 
+	response pangolier_start_round
+}
+
+
+Response pangolier_start_round_lost_last_round
+{
+	speak "pangolier_start_round_lost_last_round" noscene 
+}
+
+Rule pangolier_start_round_lost_last_round_rule
+{
+	criteria Ispangolier ConceptRoundStart LostLastGame
+	response pangolier_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response pangolier_flawless_victory
+{
+	speak "pangolier_flawless_victory" noscene 
+}
+
+Rule pangolier_flawless_victory_rule
+{
+	criteria Ispangolier ConceptRoundEnd Result_WinFlawless
+	response pangolier_flawless_victory
+}
+
+
+Response pangolier_decisive_victory
+{
+	speak "pangolier_decisive_victory" noscene 
+}
+
+Rule pangolier_decisive_victory_rule
+{
+	criteria Ispangolier ConceptRoundEnd Result_WinDecisive
+	response pangolier_decisive_victory
+}
+
+Response pangolier_narrow_victory
+{
+	speak "pangolier_narrow_victory" noscene 
+}
+
+Rule pangolier_narrow_victory_rule
+{
+	criteria Ispangolier ConceptRoundEnd Result_WinNarrow
+	response pangolier_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response pangolier_flawless_defeat
+{
+	speak "pangolier_flawless_defeat" noscene 
+}
+
+Rule pangolier_flawless_defeat_rule
+{
+	criteria Ispangolier ConceptRoundEnd Result_LoseFlawless
+	response pangolier_flawless_defeat
+}
+
+
+Response pangolier_decisive_defeat
+{
+	speak "pangolier_decisive_defeat" noscene 
+}
+
+Rule pangolier_decisive_defeat_rule
+{
+	criteria Ispangolier ConceptRoundEnd Result_LoseDecisive
+	response pangolier_decisive_defeat
+}
+
+Response pangolier_narrow_defeat
+{
+	speak "pangolier_narrow_defeat" noscene 
+}
+
+Rule pangolier_narrow_defeat_rule
+{
+	criteria Ispangolier ConceptRoundEnd Result_LoseNarrow
+	response pangolier_narrow_defeat
+}

@@ -329,6 +329,7 @@
 #DAC_LoggedInElsewhere_Title
 #DAC_Looting
 #DAC_MatchTypeBotTeammate
+#DAC_MatchTypeClassic
 #DAC_MatchTypeDescDuosCasual
 #DAC_MatchTypeDescDuosRanked
 #DAC_MatchTypeDuos
@@ -628,6 +629,7 @@
 #DAC_Synergy_Desc_%s_ExtraData
 #DAC_Synergy_Insect
 #DAC_Synergy_Void
+#DAC_Synergy_Wild
 #DAC_Tier_Name_%d
 #DAC_Tier_Name_Short_%d
 #DAC_TopFourPlayers
@@ -4679,6 +4681,7 @@ $tI
 31CComponentPredictionCopyDataOpsI35C_BodyComponentBaseAnimatingOverlayE
 31CDAC_DB_Page_Rewards_BattlePass
 31CDAC_UI_BannerPreviewScenePanel
+31CDAC_UI_Popup_HeroRotationIntro
 31CDAC_UI_Popup_Heropedia_Synergy
 31CDAC_UI_Popup_Looking_For_Match
 31CDAC_UI_Popup_PartyInviteFriend
@@ -10809,6 +10812,7 @@ DACSetNormalMaps
 DACSetPlayerMuteStatus
 DACSetPreviewsToMute
 DACSetShopSlotEnabled
+DACSetStandardClassicMode
 DACSetVSync
 DACSetVideoDefaults
 DACSetZooPage
@@ -14165,6 +14169,7 @@ Last selected duos matchmaking type.
 Last selected duos party bot difficulty
 Last selected duos teammate
 Last selected game mode.
+Last selected standard classic mode
 Last selected standard local bot difficulty
 Last selected standard match type.
 Last selected standard matchmaking type.
@@ -16561,6 +16566,7 @@ PopupGeneric
 PopupGenericTextEntry
 PopupHero
 PopupHeroOdds
+PopupHeroRotationIntro
 PopupHeropedia
 PopupHeropediaSynergy
 PopupItem
@@ -16645,7 +16651,6 @@ PostPanoramaRenderingPipeline
 PostProcessParameterNames_t
 PostProcessParameters_t
 PostProcessingSystem_001
-PosterContainer
 PostgameRickyComic%02d
 PreEntityPacketReceived
 PreEntityPacketReceived(no commands ack)
@@ -17096,6 +17101,7 @@ RenderPanel
 RenderPipelineDac
 RenderPipelineDacPostUI
 RenderPipelineDota
+RenderPortraits
 RenderPrimitiveType_t
 RenderService_001
 RenderSkeletonBone_t
@@ -18285,6 +18291,7 @@ St8functionIFvvEE
 Stabilize camera orientation/position during demo playback.  1 == remove roll, 2 == steadycam
 Stack depth limit hit (%d)
 StampedItems
+StandardClassicToggle
 StandardMatchType
 StandardMatchTypeBots
 StandardMatchTypeMultiplayer
@@ -18664,6 +18671,7 @@ Test team MMR level
 Test the about duos dialog.
 Test the about rankup popup.
 Test the gamemode intro popup.
+Test the hero_rotation_intro page.
 Test the looking for match popup.
 Test the puzzle victory dialog.
 Test the rank up dialog.
@@ -20189,6 +20197,7 @@ _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_i
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_match_intro.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_round_over.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_scene_panel.cpp
+_vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_scoreboard.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_shop.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/panorama/dac_ui_synergy_icon.cpp
 _vpc_/unity_client_dota_auto_chess/linuxsteamrt64/../../../dac/renderingpipeline_dac_portrait.cpp
@@ -21787,6 +21796,7 @@ dac_recent_duos_matchmaking_type
 dac_recent_duos_party_bot_difficulty
 dac_recent_duos_teammate
 dac_recent_selected_mode
+dac_recent_standard_classic
 dac_recent_standard_local_bot_difficulty
 dac_recent_standard_match_type
 dac_recent_standard_matchmaking_type
@@ -21846,6 +21856,7 @@ dac_show_banner_paintin
 dac_show_combat_chat_in_leaderboard
 dac_show_dashboard_level
 dac_show_gamemode_intro_popup
+dac_show_hero_rotation_popup
 dac_show_inactive_loadout_items
 dac_show_localization_errors
 dac_show_looking_for_match
@@ -22736,6 +22747,7 @@ file://{resources}/layout/popups/popup_generic.xml
 file://{resources}/layout/popups/popup_generic_text_entry.xml
 file://{resources}/layout/popups/popup_hero.xml
 file://{resources}/layout/popups/popup_hero_odds.xml
+file://{resources}/layout/popups/popup_hero_rotation_intro.xml
 file://{resources}/layout/popups/popup_heropedia.xml
 file://{resources}/layout/popups/popup_heropedia_synergy.xml
 file://{resources}/layout/popups/popup_invitation_accepted.xml
@@ -23447,7 +23459,7 @@ hour
 hourhandentity
 hours_left
 hover
-hp_bonus
+hp_bonus_kill_mult
 href="
 hscript
 hscript_lightbinding
@@ -26392,6 +26404,7 @@ m_pParticleOuterDef
 m_pParticlePreview
 m_pParticles
 m_pPlayer
+m_pPosterContainer
 m_pPredictionPlayer
 m_pPrev
 m_pPrevByClass
@@ -27607,6 +27620,7 @@ pEt : lower-mid front unrounded vowel
 pField
 pMain
 pMessage
+pPlayerAvatar
 pPortrait
 pSynergyData
 pUnitDef
@@ -28955,7 +28969,6 @@ shop_units_level_modifier
 short (%i)
 short differs (net %i pred %i) diff(%i)
 showBroadcastingParties
-showBroadcastingPartiesAsRegularParties
 showDuration
 showLobbies
 showTime
@@ -29597,6 +29610,7 @@ synergy_name
 synergy_tip_%d
 synergyicons/insect.psd
 synergyicons/void.psd
+synergyicons/wild.psd
 syntax = "$0";
 syntax error in subpattern name (missing terminator)
 sysconf

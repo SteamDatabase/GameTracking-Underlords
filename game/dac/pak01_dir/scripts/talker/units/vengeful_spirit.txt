@@ -1,0 +1,149 @@
+// vengeful_spirit - Hero
+criterion "Isvengeful_spirit" "classname" "vengefulspirit" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response vengeful_spirit_recruit_1
+{
+	speak "vengeful_spirit_recruit" noscene 
+}
+
+Rule vengeful_spirit_recruit_1_rule
+{
+	criteria Isvengeful_spirit ConceptRecruit UnitRank1
+	response vengeful_spirit_recruit_1
+}
+
+
+Response vengeful_spirit_recruit_2
+{
+	speak "vengeful_spirit_upgrade" noscene 
+}
+
+Rule vengeful_spirit_recruit_2_rule
+{
+	criteria Isvengeful_spirit ConceptRecruit UnitRank2
+	response vengeful_spirit_recruit_2
+}
+
+
+Response vengeful_spirit_recruit_3
+{
+	speak "vengeful_spirit_final_upgrade" noscene 
+}
+
+Rule vengeful_spirit_recruit_3_rule
+{
+	criteria Isvengeful_spirit ConceptRecruit UnitRank3
+	response vengeful_spirit_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response vengeful_spirit_start_round
+{
+	speak "vengeful_spirit_start_round" noscene 
+}
+
+Rule vengeful_spirit_start_round_rule
+{
+	criteria Isvengeful_spirit ConceptRoundStart 
+	response vengeful_spirit_start_round
+}
+
+
+Response vengeful_spirit_start_round_lost_last_round
+{
+	speak "vengeful_spirit_start_round_lost_last_round" noscene 
+}
+
+Rule vengeful_spirit_start_round_lost_last_round_rule
+{
+	criteria Isvengeful_spirit ConceptRoundStart LostLastGame
+	response vengeful_spirit_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response vengeful_spirit_flawless_victory
+{
+	speak "vengeful_spirit_flawless_victory" noscene 
+}
+
+Rule vengeful_spirit_flawless_victory_rule
+{
+	criteria Isvengeful_spirit ConceptRoundEnd Result_WinFlawless
+	response vengeful_spirit_flawless_victory
+}
+
+
+Response vengeful_spirit_decisive_victory
+{
+	speak "vengeful_spirit_decisive_victory" noscene 
+}
+
+Rule vengeful_spirit_decisive_victory_rule
+{
+	criteria Isvengeful_spirit ConceptRoundEnd Result_WinDecisive
+	response vengeful_spirit_decisive_victory
+}
+
+Response vengeful_spirit_narrow_victory
+{
+	speak "vengeful_spirit_narrow_victory" noscene 
+}
+
+Rule vengeful_spirit_narrow_victory_rule
+{
+	criteria Isvengeful_spirit ConceptRoundEnd Result_WinNarrow
+	response vengeful_spirit_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response vengeful_spirit_flawless_defeat
+{
+	speak "vengeful_spirit_flawless_defeat" noscene 
+}
+
+Rule vengeful_spirit_flawless_defeat_rule
+{
+	criteria Isvengeful_spirit ConceptRoundEnd Result_LoseFlawless
+	response vengeful_spirit_flawless_defeat
+}
+
+
+Response vengeful_spirit_decisive_defeat
+{
+	speak "vengeful_spirit_decisive_defeat" noscene 
+}
+
+Rule vengeful_spirit_decisive_defeat_rule
+{
+	criteria Isvengeful_spirit ConceptRoundEnd Result_LoseDecisive
+	response vengeful_spirit_decisive_defeat
+}
+
+Response vengeful_spirit_narrow_defeat
+{
+	speak "vengeful_spirit_narrow_defeat" noscene 
+}
+
+Rule vengeful_spirit_narrow_defeat_rule
+{
+	criteria Isvengeful_spirit ConceptRoundEnd Result_LoseNarrow
+	response vengeful_spirit_narrow_defeat
+}

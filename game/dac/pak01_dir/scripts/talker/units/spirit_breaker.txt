@@ -1,0 +1,149 @@
+// spirit_breaker - Hero
+criterion "Isspirit_breaker" "classname" "spirit_breaker" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response spirit_breaker_recruit_1
+{
+	speak "spirit_breaker_recruit" noscene 
+}
+
+Rule spirit_breaker_recruit_1_rule
+{
+	criteria Isspirit_breaker ConceptRecruit UnitRank1
+	response spirit_breaker_recruit_1
+}
+
+
+Response spirit_breaker_recruit_2
+{
+	speak "spirit_breaker_upgrade" noscene 
+}
+
+Rule spirit_breaker_recruit_2_rule
+{
+	criteria Isspirit_breaker ConceptRecruit UnitRank2
+	response spirit_breaker_recruit_2
+}
+
+
+Response spirit_breaker_recruit_3
+{
+	speak "spirit_breaker_final_upgrade" noscene 
+}
+
+Rule spirit_breaker_recruit_3_rule
+{
+	criteria Isspirit_breaker ConceptRecruit UnitRank3
+	response spirit_breaker_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response spirit_breaker_start_round
+{
+	speak "spirit_breaker_start_round" noscene 
+}
+
+Rule spirit_breaker_start_round_rule
+{
+	criteria Isspirit_breaker ConceptRoundStart 
+	response spirit_breaker_start_round
+}
+
+
+Response spirit_breaker_start_round_lost_last_round
+{
+	speak "spirit_breaker_start_round_lost_last_round" noscene 
+}
+
+Rule spirit_breaker_start_round_lost_last_round_rule
+{
+	criteria Isspirit_breaker ConceptRoundStart LostLastGame
+	response spirit_breaker_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response spirit_breaker_flawless_victory
+{
+	speak "spirit_breaker_flawless_victory" noscene 
+}
+
+Rule spirit_breaker_flawless_victory_rule
+{
+	criteria Isspirit_breaker ConceptRoundEnd Result_WinFlawless
+	response spirit_breaker_flawless_victory
+}
+
+
+Response spirit_breaker_decisive_victory
+{
+	speak "spirit_breaker_decisive_victory" noscene 
+}
+
+Rule spirit_breaker_decisive_victory_rule
+{
+	criteria Isspirit_breaker ConceptRoundEnd Result_WinDecisive
+	response spirit_breaker_decisive_victory
+}
+
+Response spirit_breaker_narrow_victory
+{
+	speak "spirit_breaker_narrow_victory" noscene 
+}
+
+Rule spirit_breaker_narrow_victory_rule
+{
+	criteria Isspirit_breaker ConceptRoundEnd Result_WinNarrow
+	response spirit_breaker_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response spirit_breaker_flawless_defeat
+{
+	speak "spirit_breaker_flawless_defeat" noscene 
+}
+
+Rule spirit_breaker_flawless_defeat_rule
+{
+	criteria Isspirit_breaker ConceptRoundEnd Result_LoseFlawless
+	response spirit_breaker_flawless_defeat
+}
+
+
+Response spirit_breaker_decisive_defeat
+{
+	speak "spirit_breaker_decisive_defeat" noscene 
+}
+
+Rule spirit_breaker_decisive_defeat_rule
+{
+	criteria Isspirit_breaker ConceptRoundEnd Result_LoseDecisive
+	response spirit_breaker_decisive_defeat
+}
+
+Response spirit_breaker_narrow_defeat
+{
+	speak "spirit_breaker_narrow_defeat" noscene 
+}
+
+Rule spirit_breaker_narrow_defeat_rule
+{
+	criteria Isspirit_breaker ConceptRoundEnd Result_LoseNarrow
+	response spirit_breaker_narrow_defeat
+}

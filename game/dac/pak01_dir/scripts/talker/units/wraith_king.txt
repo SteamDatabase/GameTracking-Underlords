@@ -1,0 +1,149 @@
+// wraith_king - Hero
+criterion "Iswraith_king" "classname" "wraith_king" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response wraith_king_recruit_1
+{
+	speak "wraith_king_recruit" noscene 
+}
+
+Rule wraith_king_recruit_1_rule
+{
+	criteria Iswraith_king ConceptRecruit UnitRank1
+	response wraith_king_recruit_1
+}
+
+
+Response wraith_king_recruit_2
+{
+	speak "wraith_king_upgrade" noscene 
+}
+
+Rule wraith_king_recruit_2_rule
+{
+	criteria Iswraith_king ConceptRecruit UnitRank2
+	response wraith_king_recruit_2
+}
+
+
+Response wraith_king_recruit_3
+{
+	speak "wraith_king_final_upgrade" noscene 
+}
+
+Rule wraith_king_recruit_3_rule
+{
+	criteria Iswraith_king ConceptRecruit UnitRank3
+	response wraith_king_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response wraith_king_start_round
+{
+	speak "wraith_king_start_round" noscene 
+}
+
+Rule wraith_king_start_round_rule
+{
+	criteria Iswraith_king ConceptRoundStart 
+	response wraith_king_start_round
+}
+
+
+Response wraith_king_start_round_lost_last_round
+{
+	speak "wraith_king_start_round_lost_last_round" noscene 
+}
+
+Rule wraith_king_start_round_lost_last_round_rule
+{
+	criteria Iswraith_king ConceptRoundStart LostLastGame
+	response wraith_king_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response wraith_king_flawless_victory
+{
+	speak "wraith_king_flawless_victory" noscene 
+}
+
+Rule wraith_king_flawless_victory_rule
+{
+	criteria Iswraith_king ConceptRoundEnd Result_WinFlawless
+	response wraith_king_flawless_victory
+}
+
+
+Response wraith_king_decisive_victory
+{
+	speak "wraith_king_decisive_victory" noscene 
+}
+
+Rule wraith_king_decisive_victory_rule
+{
+	criteria Iswraith_king ConceptRoundEnd Result_WinDecisive
+	response wraith_king_decisive_victory
+}
+
+Response wraith_king_narrow_victory
+{
+	speak "wraith_king_narrow_victory" noscene 
+}
+
+Rule wraith_king_narrow_victory_rule
+{
+	criteria Iswraith_king ConceptRoundEnd Result_WinNarrow
+	response wraith_king_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response wraith_king_flawless_defeat
+{
+	speak "wraith_king_flawless_defeat" noscene 
+}
+
+Rule wraith_king_flawless_defeat_rule
+{
+	criteria Iswraith_king ConceptRoundEnd Result_LoseFlawless
+	response wraith_king_flawless_defeat
+}
+
+
+Response wraith_king_decisive_defeat
+{
+	speak "wraith_king_decisive_defeat" noscene 
+}
+
+Rule wraith_king_decisive_defeat_rule
+{
+	criteria Iswraith_king ConceptRoundEnd Result_LoseDecisive
+	response wraith_king_decisive_defeat
+}
+
+Response wraith_king_narrow_defeat
+{
+	speak "wraith_king_narrow_defeat" noscene 
+}
+
+Rule wraith_king_narrow_defeat_rule
+{
+	criteria Iswraith_king ConceptRoundEnd Result_LoseNarrow
+	response wraith_king_narrow_defeat
+}

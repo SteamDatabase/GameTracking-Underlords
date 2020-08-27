@@ -1,0 +1,149 @@
+// spectre - Hero
+criterion "Isspectre" "classname" "spectre" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response spectre_recruit_1
+{
+	speak "spectre_recruit" noscene 
+}
+
+Rule spectre_recruit_1_rule
+{
+	criteria Isspectre ConceptRecruit UnitRank1
+	response spectre_recruit_1
+}
+
+
+Response spectre_recruit_2
+{
+	speak "spectre_upgrade" noscene 
+}
+
+Rule spectre_recruit_2_rule
+{
+	criteria Isspectre ConceptRecruit UnitRank2
+	response spectre_recruit_2
+}
+
+
+Response spectre_recruit_3
+{
+	speak "spectre_final_upgrade" noscene 
+}
+
+Rule spectre_recruit_3_rule
+{
+	criteria Isspectre ConceptRecruit UnitRank3
+	response spectre_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response spectre_start_round
+{
+	speak "spectre_start_round" noscene 
+}
+
+Rule spectre_start_round_rule
+{
+	criteria Isspectre ConceptRoundStart 
+	response spectre_start_round
+}
+
+
+Response spectre_start_round_lost_last_round
+{
+	speak "spectre_start_round_lost_last_round" noscene 
+}
+
+Rule spectre_start_round_lost_last_round_rule
+{
+	criteria Isspectre ConceptRoundStart LostLastGame
+	response spectre_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response spectre_flawless_victory
+{
+	speak "spectre_flawless_victory" noscene 
+}
+
+Rule spectre_flawless_victory_rule
+{
+	criteria Isspectre ConceptRoundEnd Result_WinFlawless
+	response spectre_flawless_victory
+}
+
+
+Response spectre_decisive_victory
+{
+	speak "spectre_decisive_victory" noscene 
+}
+
+Rule spectre_decisive_victory_rule
+{
+	criteria Isspectre ConceptRoundEnd Result_WinDecisive
+	response spectre_decisive_victory
+}
+
+Response spectre_narrow_victory
+{
+	speak "spectre_narrow_victory" noscene 
+}
+
+Rule spectre_narrow_victory_rule
+{
+	criteria Isspectre ConceptRoundEnd Result_WinNarrow
+	response spectre_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response spectre_flawless_defeat
+{
+	speak "spectre_flawless_defeat" noscene 
+}
+
+Rule spectre_flawless_defeat_rule
+{
+	criteria Isspectre ConceptRoundEnd Result_LoseFlawless
+	response spectre_flawless_defeat
+}
+
+
+Response spectre_decisive_defeat
+{
+	speak "spectre_decisive_defeat" noscene 
+}
+
+Rule spectre_decisive_defeat_rule
+{
+	criteria Isspectre ConceptRoundEnd Result_LoseDecisive
+	response spectre_decisive_defeat
+}
+
+Response spectre_narrow_defeat
+{
+	speak "spectre_narrow_defeat" noscene 
+}
+
+Rule spectre_narrow_defeat_rule
+{
+	criteria Isspectre ConceptRoundEnd Result_LoseNarrow
+	response spectre_narrow_defeat
+}

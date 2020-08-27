@@ -1,0 +1,149 @@
+// death_prophet - Hero
+criterion "Isdeath_prophet" "classname" "death_prophet" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response death_prophet_recruit_1
+{
+	speak "death_prophet_recruit" noscene 
+}
+
+Rule death_prophet_recruit_1_rule
+{
+	criteria Isdeath_prophet ConceptRecruit UnitRank1
+	response death_prophet_recruit_1
+}
+
+
+Response death_prophet_recruit_2
+{
+	speak "death_prophet_upgrade" noscene 
+}
+
+Rule death_prophet_recruit_2_rule
+{
+	criteria Isdeath_prophet ConceptRecruit UnitRank2
+	response death_prophet_recruit_2
+}
+
+
+Response death_prophet_recruit_3
+{
+	speak "death_prophet_final_upgrade" noscene 
+}
+
+Rule death_prophet_recruit_3_rule
+{
+	criteria Isdeath_prophet ConceptRecruit UnitRank3
+	response death_prophet_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response death_prophet_start_round
+{
+	speak "death_prophet_start_round" noscene 
+}
+
+Rule death_prophet_start_round_rule
+{
+	criteria Isdeath_prophet ConceptRoundStart 
+	response death_prophet_start_round
+}
+
+
+Response death_prophet_start_round_lost_last_round
+{
+	speak "death_prophet_start_round_lost_last_round" noscene 
+}
+
+Rule death_prophet_start_round_lost_last_round_rule
+{
+	criteria Isdeath_prophet ConceptRoundStart LostLastGame
+	response death_prophet_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response death_prophet_flawless_victory
+{
+	speak "death_prophet_flawless_victory" noscene 
+}
+
+Rule death_prophet_flawless_victory_rule
+{
+	criteria Isdeath_prophet ConceptRoundEnd Result_WinFlawless
+	response death_prophet_flawless_victory
+}
+
+
+Response death_prophet_decisive_victory
+{
+	speak "death_prophet_decisive_victory" noscene 
+}
+
+Rule death_prophet_decisive_victory_rule
+{
+	criteria Isdeath_prophet ConceptRoundEnd Result_WinDecisive
+	response death_prophet_decisive_victory
+}
+
+Response death_prophet_narrow_victory
+{
+	speak "death_prophet_narrow_victory" noscene 
+}
+
+Rule death_prophet_narrow_victory_rule
+{
+	criteria Isdeath_prophet ConceptRoundEnd Result_WinNarrow
+	response death_prophet_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response death_prophet_flawless_defeat
+{
+	speak "death_prophet_flawless_defeat" noscene 
+}
+
+Rule death_prophet_flawless_defeat_rule
+{
+	criteria Isdeath_prophet ConceptRoundEnd Result_LoseFlawless
+	response death_prophet_flawless_defeat
+}
+
+
+Response death_prophet_decisive_defeat
+{
+	speak "death_prophet_decisive_defeat" noscene 
+}
+
+Rule death_prophet_decisive_defeat_rule
+{
+	criteria Isdeath_prophet ConceptRoundEnd Result_LoseDecisive
+	response death_prophet_decisive_defeat
+}
+
+Response death_prophet_narrow_defeat
+{
+	speak "death_prophet_narrow_defeat" noscene 
+}
+
+Rule death_prophet_narrow_defeat_rule
+{
+	criteria Isdeath_prophet ConceptRoundEnd Result_LoseNarrow
+	response death_prophet_narrow_defeat
+}

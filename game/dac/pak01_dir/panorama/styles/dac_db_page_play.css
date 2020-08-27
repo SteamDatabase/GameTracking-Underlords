@@ -297,16 +297,21 @@ DACPlayPage
 
 .GameModeOptionsSettingsSubContainer,
 .DuosMatchTypeMultiplayer.DuosMatchmakingTypeRanked #DuosSubSettingTeammate,
+.StandardMatchTypeMultiplayer.StandardMatchmakingTypeRanked #StandardSubSettingClassic,
+.StandardMatchTypeBots #StandardSubSettingClassic
 {
     width: 100%;
     height: fit-children;
     flow-children: down;
     visibility: collapse;
 }
+
 .TurboMatchTypeMultiplayer #TurboSubSettingMultiplayer,
 .TurboMatchTypeBots #TurboSubSettingBots,
 .StandardMatchTypeMultiplayer #StandardSubSettingMultiplayer,
 .StandardMatchTypeBots #StandardSubSettingBots,
+.StandardMatchTypeMultiplayer.StandardMatchmakingTypeCasual #StandardSubSettingClassic,
+.HasParty .StandardMatchTypeBots #StandardSubSettingClassic,
 .DuosMatchTypeMultiplayer #DuosSubSettingMultiplayer,
 .DuosMatchTypeMultiplayer.DuosMatchmakingTypeCasual #DuosSubSettingTeammate,
 .DuosMatchTypeBots #DuosSubSettingBots,
@@ -1251,6 +1256,7 @@ DACPlayPage .RankContainer DACRankIcon
 
 .DifficultyRequirements,
 .GameModeRequirements,
+.MatchTypeRequirements,
 .PrivateServerRequirements
 {
     visibility: collapse;   
@@ -1306,4 +1312,9 @@ DACPlayPage .RankContainer DACRankIcon
     transition-property: transform, opacity;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out;
+}
+
+.HasParty .StandardMatchTypeBots #ChallengeRequirementsNotMetPanel,
+{
+    transform: translateY(50px);
 }

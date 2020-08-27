@@ -1,0 +1,149 @@
+// meepo - Hero
+criterion "Ismeepo" "classname" "meepo" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response meepo_recruit_1
+{
+	speak "meepo_recruit" noscene 
+}
+
+Rule meepo_recruit_1_rule
+{
+	criteria Ismeepo ConceptRecruit UnitRank1
+	response meepo_recruit_1
+}
+
+
+Response meepo_recruit_2
+{
+	speak "meepo_upgrade" noscene 
+}
+
+Rule meepo_recruit_2_rule
+{
+	criteria Ismeepo ConceptRecruit UnitRank2
+	response meepo_recruit_2
+}
+
+
+Response meepo_recruit_3
+{
+	speak "meepo_final_upgrade" noscene 
+}
+
+Rule meepo_recruit_3_rule
+{
+	criteria Ismeepo ConceptRecruit UnitRank3
+	response meepo_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response meepo_start_round
+{
+	speak "meepo_start_round" noscene 
+}
+
+Rule meepo_start_round_rule
+{
+	criteria Ismeepo ConceptRoundStart 
+	response meepo_start_round
+}
+
+
+Response meepo_start_round_lost_last_round
+{
+	speak "meepo_start_round_lost_last_round" noscene 
+}
+
+Rule meepo_start_round_lost_last_round_rule
+{
+	criteria Ismeepo ConceptRoundStart LostLastGame
+	response meepo_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response meepo_flawless_victory
+{
+	speak "meepo_flawless_victory" noscene 
+}
+
+Rule meepo_flawless_victory_rule
+{
+	criteria Ismeepo ConceptRoundEnd Result_WinFlawless
+	response meepo_flawless_victory
+}
+
+
+Response meepo_decisive_victory
+{
+	speak "meepo_decisive_victory" noscene 
+}
+
+Rule meepo_decisive_victory_rule
+{
+	criteria Ismeepo ConceptRoundEnd Result_WinDecisive
+	response meepo_decisive_victory
+}
+
+Response meepo_narrow_victory
+{
+	speak "meepo_narrow_victory" noscene 
+}
+
+Rule meepo_narrow_victory_rule
+{
+	criteria Ismeepo ConceptRoundEnd Result_WinNarrow
+	response meepo_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response meepo_flawless_defeat
+{
+	speak "meepo_flawless_defeat" noscene 
+}
+
+Rule meepo_flawless_defeat_rule
+{
+	criteria Ismeepo ConceptRoundEnd Result_LoseFlawless
+	response meepo_flawless_defeat
+}
+
+
+Response meepo_decisive_defeat
+{
+	speak "meepo_decisive_defeat" noscene 
+}
+
+Rule meepo_decisive_defeat_rule
+{
+	criteria Ismeepo ConceptRoundEnd Result_LoseDecisive
+	response meepo_decisive_defeat
+}
+
+Response meepo_narrow_defeat
+{
+	speak "meepo_narrow_defeat" noscene 
+}
+
+Rule meepo_narrow_defeat_rule
+{
+	criteria Ismeepo ConceptRoundEnd Result_LoseNarrow
+	response meepo_narrow_defeat
+}

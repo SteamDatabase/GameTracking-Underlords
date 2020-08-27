@@ -1,0 +1,149 @@
+// rubick - Hero
+criterion "Isrubick" "classname" "rubick" required
+
+////////////////
+//Recruit Unit//
+////////////////
+
+
+Response rubick_recruit_1
+{
+	speak "rubick_recruit" noscene 
+}
+
+Rule rubick_recruit_1_rule
+{
+	criteria Isrubick ConceptRecruit UnitRank1
+	response rubick_recruit_1
+}
+
+
+Response rubick_recruit_2
+{
+	speak "rubick_upgrade" noscene 
+}
+
+Rule rubick_recruit_2_rule
+{
+	criteria Isrubick ConceptRecruit UnitRank2
+	response rubick_recruit_2
+}
+
+
+Response rubick_recruit_3
+{
+	speak "rubick_final_upgrade" noscene 
+}
+
+Rule rubick_recruit_3_rule
+{
+	criteria Isrubick ConceptRecruit UnitRank3
+	response rubick_recruit_3
+}
+
+
+////////////////
+//Round Start///
+////////////////
+
+Response rubick_start_round
+{
+	speak "rubick_start_round" noscene 
+}
+
+Rule rubick_start_round_rule
+{
+	criteria Isrubick ConceptRoundStart 
+	response rubick_start_round
+}
+
+
+Response rubick_start_round_lost_last_round
+{
+	speak "rubick_start_round_lost_last_round" noscene 
+}
+
+Rule rubick_start_round_lost_last_round_rule
+{
+	criteria Isrubick ConceptRoundStart LostLastGame
+	response rubick_start_round_lost_last_round
+}
+
+
+
+
+///////////
+//Victory//
+///////////
+
+Response rubick_flawless_victory
+{
+	speak "rubick_flawless_victory" noscene 
+}
+
+Rule rubick_flawless_victory_rule
+{
+	criteria Isrubick ConceptRoundEnd Result_WinFlawless
+	response rubick_flawless_victory
+}
+
+
+Response rubick_decisive_victory
+{
+	speak "rubick_decisive_victory" noscene 
+}
+
+Rule rubick_decisive_victory_rule
+{
+	criteria Isrubick ConceptRoundEnd Result_WinDecisive
+	response rubick_decisive_victory
+}
+
+Response rubick_narrow_victory
+{
+	speak "rubick_narrow_victory" noscene 
+}
+
+Rule rubick_narrow_victory_rule
+{
+	criteria Isrubick ConceptRoundEnd Result_WinNarrow
+	response rubick_narrow_victory
+}
+
+//////////
+//Defeat//
+//////////
+
+Response rubick_flawless_defeat
+{
+	speak "rubick_flawless_defeat" noscene 
+}
+
+Rule rubick_flawless_defeat_rule
+{
+	criteria Isrubick ConceptRoundEnd Result_LoseFlawless
+	response rubick_flawless_defeat
+}
+
+
+Response rubick_decisive_defeat
+{
+	speak "rubick_decisive_defeat" noscene 
+}
+
+Rule rubick_decisive_defeat_rule
+{
+	criteria Isrubick ConceptRoundEnd Result_LoseDecisive
+	response rubick_decisive_defeat
+}
+
+Response rubick_narrow_defeat
+{
+	speak "rubick_narrow_defeat" noscene 
+}
+
+Rule rubick_narrow_defeat_rule
+{
+	criteria Isrubick ConceptRoundEnd Result_LoseNarrow
+	response rubick_narrow_defeat
+}

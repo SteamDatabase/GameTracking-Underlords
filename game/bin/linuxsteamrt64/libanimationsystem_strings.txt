@@ -69,8 +69,6 @@ $ORIGIN
 %s (%.2f)
 %s (%.2f, %.2f, %.2f)
 %s (%g)
-%s (Color)
-%s (Material)
 %s * %s
 %s + %s
 %s - %s
@@ -189,8 +187,6 @@ $ORIGIN
 %s: unexpected %s parameter: %s, bad %s element %d
 %s: unknown %s specified: %s, bad %s element %d
 %s:%s needs base %s:%s to be registered
-%s_color
-%s_matgrp
 %s|  % 2d: %s [Offset: %d]
 %s|  % 2d: [% 3d] %-12s %s
 %s| AlignOf: %d
@@ -211,7 +207,6 @@ $ORIGIN
 ***Shared activity collision with private activity! %s<->%s [%i]***
 ***Shared activity collision! %s<->%s***
 ***Shared<->Private Activity collision!***
-***Shared<->Private Event collision!***
 *Cm_TiltBone
 + Already Exists, ignoring
 + Default Morph Ctrl Weight :: %8.4f
@@ -876,7 +871,6 @@ $ORIGIN
 ?
 @
 @@
-@spawn
 A
 A master convar that effectively disables the entire footlock node.
 A->B
@@ -1539,11 +1533,6 @@ CLookHeadingCondition
 CLookPitchCondition
 CMaterialDrawDescriptor
 CMemAllocSystemInitialize
-CModelConfig
-CModelConfigElement
-CModelConfigElement_Command
-CModelConfigElement_UserPick
-CModelConfigList
 CModelVScriptCompile
 CMorphConstraint
 CMotionClip
@@ -2613,7 +2602,6 @@ MNetworkSerializeAs
 MNetworkSerializer
 MNetworkUserGroup
 MOD
-MODEL_CONFIG_ATTACHMENT_COUNT
 MODEL_PROCESSING_SCRIPT_INTERFACE_001
 MODEL_PROCESSING_SERVICES_INTERFACE_001
 MPropertyAttrChangeCallback
@@ -2690,7 +2678,6 @@ Model Space, Translation Only
 Model reference
 Model to world
 ModelCompile/UseShadowFastPathHeuristic
-ModelConfigAttachmentType_t
 ModelDocUtils001
 Modulate Step Height
 Motion Clip
@@ -4056,7 +4043,6 @@ blendlayer
 blendweight
 blendweights
 blockLOS
-body_groups
 body_type
 bodygroup
 bone_decode.cpp
@@ -4096,10 +4082,10 @@ cloth_enable
 cmds
 collision_group
 collision_prop
+color
 composite
 concept
 config
-config_state
 configvalue.cpp
 control_point
 copy
@@ -4323,23 +4309,16 @@ lowprecisionuv1
 mWsEndEffectorInitial
 m_AnimOverlay
 m_AnimgraphParameterNamePosition
-m_Args
-m_AttachmentName
-m_AttachmentType
 m_Bone
 m_BoneInfluenceDriver
 m_BoneName
 m_ChainData
 m_ChainName
 m_Children
-m_Choices
 m_Color
 m_ColorScale
-m_Command
 m_ConeAxis
 m_ConeCutoff
-m_ConfigName
-m_Configs
 m_Constraints
 m_ControlRigData
 m_CullDataIndex
@@ -4353,18 +4332,13 @@ m_DebugSetting
 m_DecodeDump
 m_DefaultSolverSettings
 m_DefaultTargetSettings
-m_ElementName
-m_Elements
 m_Emitters
 m_EndEffectorBone
 m_EndEffectorFixedOffsetAttachment
 m_EndEffectorTargetBone
-m_EntityClass
 m_EventData
 m_FootstepType
 m_ForceGenerators
-m_Gradient
-m_GroupName
 m_HingeAxis
 m_HitBoxSets
 m_HitBoxes
@@ -4373,7 +4347,6 @@ m_IKLockArray
 m_IkChain
 m_IkChains
 m_Initializers
-m_InstanceName
 m_JointConstraintData
 m_JointConstraintPairs
 m_JointName
@@ -4382,10 +4355,8 @@ m_LegacyKeyValueText
 m_LiteralColor
 m_LockBoneInfluenceDriver
 m_MasterBlendAnimgraphParameterName
-m_MaterialGroupName
 m_MovementSettings
 m_Name
-m_NestedElements
 m_Operators
 m_OverrideSolverSettings
 m_OverrideSoundName
@@ -4405,7 +4376,6 @@ m_SnapshotType
 m_SolverSettingSource
 m_SolverType
 m_SourceFilename
-m_Stops
 m_SystemType
 m_TargetBlendParameter
 m_TargetCoordSystem
@@ -4414,7 +4384,6 @@ m_TargetSource
 m_Text
 m_TiltAttachment
 m_TiltSource
-m_aAngOffset
 m_activeSegments
 m_activities
 m_activityArray
@@ -4506,8 +4475,6 @@ m_bHasRotation
 m_bHasRotationBitArray
 m_bHasUserBitArray
 m_bHidden
-m_bHideMaterialGroupInTools
-m_bHideRenderColorInTools
 m_bIgnoreDirection
 m_bIgnoreRotation
 m_bIgnoreSlope
@@ -4593,7 +4560,6 @@ m_bSyncCyclesOnChange
 m_bTagDispatchDirty
 m_bTagEndStopIsInstant
 m_bTeleported
-m_bTopLevel
 m_bTrailBias
 m_bTranslationOnly
 m_bTurnToFace
@@ -4604,8 +4570,6 @@ m_bUseHysteresis
 m_bUseManualTurnOffset
 m_bUseMostRecentValue
 m_bUseShadowFastPath
-m_bUserSpecifiedColor
-m_bUserSpecifiedMaterialGroup
 m_bVisible
 m_bX
 m_bXFade
@@ -4841,7 +4805,6 @@ m_flOutput1
 m_flOverrideTiltSpringStrength
 m_flPitchLimit
 m_flPosWeight
-m_flPosition
 m_flPredictionScale
 m_flPredictionTime
 m_flProgression
@@ -4927,7 +4890,6 @@ m_frameblockArray
 m_goalWayPointPos
 m_groupIndex
 m_hBuffer
-m_hModel
 m_hSnapshot
 m_hierarchyArray
 m_hingeAxis
@@ -5009,7 +4971,6 @@ m_nChainIndex
 m_nChainInvIndex
 m_nChainType
 m_nChannelElements
-m_nChoice
 m_nClipIndex
 m_nClusterSizeMax
 m_nClusterSizeMin
@@ -5314,7 +5275,6 @@ malloc
 mapbuilder.nodraw
 mapbuilder.occluder
 master_morph_weight
-material_group
 materials/error.vmat
 mathlib.cpp
 matrix3x4

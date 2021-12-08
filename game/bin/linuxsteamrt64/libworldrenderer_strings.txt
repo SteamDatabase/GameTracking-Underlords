@@ -53,8 +53,6 @@ $ORIGIN
 %ls [wstring, len = %d]
 %s
 %s  '%s' --> '%s' : %s (%s) [delay=%.2f;times=%d;type=%d]
-%s (Color)
-%s (Material)
 %s * %s
 %s + %s
 %s - %s
@@ -83,8 +81,6 @@ $ORIGIN
 %s== World '%s' Entity Lump '%s': %d entities ==
 %sEntity %d (%s '%s'):
 %sI/O Connections:
-%s_color
-%s_matgrp
 %s{
 %s|  % 2d: %s [Offset: %d]
 %s|  % 2d: [% 3d] %-12s %s
@@ -341,7 +337,6 @@ $ORIGIN
 @@/data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcBlock4x4.cpp
 @@/data/source2_main/src/thirdparty/etc2comp/EtcLib/EtcCodec/EtcDifferentialTrys.cpp
 @A
-@spawn
 A->B
 A=g?33s?
 AABB_t
@@ -587,11 +582,6 @@ CHitBoxSet
 CHitBoxSetList
 CMaterialDrawDescriptor
 CMemAllocSystemInitialize
-CModelConfig
-CModelConfigElement
-CModelConfigElement_Command
-CModelConfigElement_UserPick
-CModelConfigList
 CMorphConstraint
 CMotionTransform
 CMotionTransform-world
@@ -1034,6 +1024,7 @@ Failed to allocate an instance of a class
 Failed to assign bool literal value
 Failed to call CBaseIntrospectedToKV3TypeManager::Init
 Failed to compute channel layout.
+Failed to convert KV3 to string; error: %s
 Failed to convert introspected block: %s
 Failed to get material pointer for world node draw call. (material name: %s)
 Failed to include script "%s"
@@ -1301,7 +1292,6 @@ MNetworkSerializeAs
 MNetworkSerializer
 MNetworkUserGroup
 MNetworkVarNames
-MODEL_CONFIG_ATTACHMENT_COUNT
 MODEL_PROCESSING_SCRIPT_INTERFACE_001
 MODEL_PROCESSING_SERVICES_INTERFACE_001
 MResourceTypeForInfoType
@@ -1329,7 +1319,6 @@ Missing file '%s'
 Model %s missing bone and flex counts (%d < %d), init %d
 Model conversion: %d conversions in %.3fsec (%.3fms each)
 ModelCompile/UseShadowFastPathHeuristic
-ModelConfigAttachmentType_t
 ModelDocUtils001
 MountWorldVPK() ++%s is at refcount %d
 MovementSettings
@@ -1885,7 +1874,6 @@ WorldBuilderParams_t
 WorldExtraVertexStream
 WorldNodeOnDiskBufferData_t
 WorldNodeProceduralModel
-WorldNode_t
 WorldRenderer
 WorldRenderer/EnvironmentMapBlurType
 WorldRenderer/EnvironmentMapCacheSize
@@ -2016,7 +2004,6 @@ blendamount
 blendweight
 blendweights
 blockLOS
-body_groups
 body_type
 bone_name
 bone_names
@@ -2065,7 +2052,6 @@ collision_group
 collision_prop
 composite
 compression
-config_state
 configvalue.cpp
 control_point
 control_points_list
@@ -2270,9 +2256,6 @@ loop_in_action
 looping
 lowprecisionuv
 lowprecisionuv1
-m_Args
-m_AttachmentName
-m_AttachmentType
 m_Attenuation0
 m_Attenuation1
 m_Attenuation2
@@ -2282,47 +2265,35 @@ m_CScriptComponent
 m_ChainData
 m_ChildNodeIndices
 m_Children
-m_Choices
 m_Color
 m_ColorScale
-m_Command
 m_ConeAxis
 m_ConeCutoff
-m_ConfigName
-m_Configs
 m_Constraints
 m_ControlRigData
 m_CullDataIndex
 m_DefaultSolverSettings
 m_DefaultTargetSettings
-m_ElementName
-m_Elements
 m_Emitters
 m_EndEffectorBone
 m_EndEffectorTargetBone
-m_EntityClass
 m_Falloff
 m_Flags
 m_ForceGenerators
 m_Format
-m_Gradient
-m_GroupName
 m_HitBoxSets
 m_HitBoxes
 m_IKChains
 m_IkChain
 m_IkChains
 m_Initializers
-m_InstanceName
 m_JointConstraintData
 m_JointConstraintPairs
 m_JointName
 m_Joints
 m_LiteralColor
-m_MaterialGroupName
 m_MotorList
 m_Name
-m_NestedElements
 m_Operators
 m_PathIndex
 m_PerVertexLightingDataPlainRGBM
@@ -2334,13 +2305,11 @@ m_Shape
 m_SolverSettingSource
 m_SolverType
 m_SourceFilename
-m_Stops
 m_TargetSettingSource
 m_TargetSource
 m_Theta
 m_Value
 m_VisClusterMemberBits
-m_aAngOffset
 m_ankleBoneName
 m_attachments
 m_bApplyMinForce
@@ -2363,8 +2332,6 @@ m_bHasBakedLightingFromLightMap
 m_bHasBakedLightingFromVertexStream
 m_bHasCullingData
 m_bHasLightmaps
-m_bHideMaterialGroupInTools
-m_bHideRenderColorInTools
 m_bIgnoreRotation
 m_bInfluenceRootTransform
 m_bInitFromKilledParentParticles
@@ -2388,14 +2355,11 @@ m_bScaleInitialRange
 m_bScaleInitialValue
 m_bScalePerParticle
 m_bSelected
-m_bTopLevel
 m_bTrailBias
 m_bTranslationOnly
 m_bUseCompressedNormalTangent
 m_bUseHighestEndCP
 m_bUseShadowFastPath
-m_bUserSpecifiedColor
-m_bUserSpecifiedMaterialGroup
 m_bUsesIndexedBakedLighting
 m_bVisible
 m_bWrapInAtlas
@@ -2529,7 +2493,6 @@ m_hBuffer
 m_hCaller
 m_hEntTarget
 m_hEntity
-m_hModel
 m_hSnapshot
 m_hTarget
 m_hingeAxis
@@ -2592,7 +2555,6 @@ m_nChainIndex
 m_nChainInvIndex
 m_nChainType
 m_nChannelElements
-m_nChoice
 m_nClusterSizeMax
 m_nClusterSizeMin
 m_nCollisionMode
@@ -2827,7 +2789,6 @@ maps/%s/world_environmentmaps.vwenvmap
 maps/%s/world_visibility.vvis
 maps\%s.vpk
 master_morph_weight
-material_group
 materials/dev/convolve_environment_map.vmat
 materials/error.vmat
 materials/grass/grasstile.vmat
